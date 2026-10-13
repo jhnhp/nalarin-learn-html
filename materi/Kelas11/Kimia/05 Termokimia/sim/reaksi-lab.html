@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eksoterm atau Endoterm?</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  select{font:inherit;font-size:14px;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}
+  .lbl{font-family:var(--font);font-size:13px;fill:var(--muted)}
+  .big{font-family:var(--display);font-weight:800;font-size:22px;fill:var(--ink)}
+  .eq{font-size:14.5px;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 360" role="img" aria-label="Gelas kimia dengan termometer dan diagram tingkat energi"></svg></div>
+  <div class="panel">
+    <h3 class="t">Pilih proses</h3>
+    <select id="pick" aria-label="Pilih proses"></select>
+    <div class="eq" id="eq"></div>
+    <div>
+      <div class="lab" style="margin-bottom:6px"><span>Tebakanmu dulu</span></div>
+      <div class="seg" id="guess"><button data-g="ekso">Eksotermik</button><button data-g="endo">Endotermik</button></div>
+    </div>
+    <div class="row"><button class="btn primary" id="go">Mulai reaksi</button><button class="btn" id="again">Ulangi</button></div>
+    <div class="box hidden" id="fb"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const PROSES = [
+  {name: 'Logam magnesium + larutan HCl', eq: 'Mg(s) + 2HCl(aq) → MgCl<sub>2</sub>(aq) + H<sub>2</sub>(g)', dT: 8, gas: true,
+   why: 'Ikatan yang terbentuk melepaskan lebih banyak energi daripada yang diperlukan untuk memutus ikatan. Kelebihan energi keluar sebagai kalor.'},
+  {name: 'Larutan HCl + larutan NaOH', eq: 'HCl(aq) + NaOH(aq) → NaCl(aq) + H<sub>2</sub>O(l)', dT: 6.8,
+   why: 'Reaksi penetralan asam dan basa selalu eksotermik, sekitar −57 kJ per mol air yang terbentuk.'},
+  {name: 'Melarutkan NaOH padat dalam air', eq: 'NaOH(s) → Na<sup>+</sup>(aq) + OH<sup>−</sup>(aq)', dT: 9,
+   why: 'Ion-ion yang dikelilingi molekul air melepaskan energi lebih besar daripada energi untuk memisahkan kristal NaOH.'},
+  {name: 'Melarutkan CaCl₂ dalam air', eq: 'CaCl<sub>2</sub>(s) → Ca<sup>2+</sup>(aq) + 2Cl<sup>−</sup>(aq)', dT: 6,
+   why: 'Pelarutan CaCl<sub>2</sub> melepaskan kalor. Inilah prinsip kantong penghangat tangan instan.'},
+  {name: 'Melarutkan NH₄NO₃ dalam air', eq: 'NH<sub>4</sub>NO<sub>3</sub>(s) → NH<sub>4</sub><sup>+</sup>(aq) + NO<sub>3</sub><sup>−</sup>(aq)', dT: -7,
+   why: 'Memisahkan kristal NH<sub>4</sub>NO<sub>3</sub> memerlukan energi lebih besar daripada yang dilepaskan saat ion terhidrasi. Kekurangannya diambil dari air, sehingga air menjadi dingin. Inilah prinsip kompres dingin instan.'},
+  {name: 'Melarutkan NH₄Cl dalam air', eq: 'NH<sub>4</sub>Cl(s) → NH<sub>4</sub><sup>+</sup>(aq) + Cl<sup>−</sup>(aq)', dT: -5,
+   why: 'Pelarutan NH<sub>4</sub>Cl menyerap kalor dari air sehingga dinding gelas terasa dingin.'},
+  {name: 'Kristal Ba(OH)₂·8H₂O + NH₄Cl', eq: 'Ba(OH)<sub>2</sub>·8H<sub>2</sub>O(s) + 2NH<sub>4</sub>Cl(s) → BaCl<sub>2</sub>(aq) + 2NH<sub>3</sub>(g) + 10H<sub>2</sub>O(l)', dT: -22,
+   why: 'Reaksi ini menyerap kalor sangat banyak. Suhunya bisa turun di bawah 0 °C sampai gelas membeku menempel pada papan basah.'},
+  {name: 'Larutan NaHCO₃ + larutan HCl', eq: 'NaHCO<sub>3</sub>(aq) + HCl(aq) → NaCl(aq) + H<sub>2</sub>O(l) + CO<sub>2</sub>(g)', dT: -3, gas: true,
+   why: 'Meskipun berbuih, reaksi ini menyerap sedikit kalor dari lingkungan. Buih tidak selalu berarti panas.'},
+];
+const T0 = 25;
+let cur = 0, guess = null, t = 0, anim = null, done = false;
+
+$('pick').innerHTML = PROSES.map((p, i) => `<option value="${i}">${p.name}</option>`).join('');
+$('pick').onchange = e => { cur = +e.target.value; reset(); };
+$('guess').onclick = e => { const b = e.target.closest('button'); if(!b || anim) return; guess = b.dataset.g; document.querySelectorAll('#guess button').forEach(x => x.classList.toggle('on', x === b)); };
+$('go').onclick = () => {
+  if(anim || done) return;
+  const t0 = performance.now();
+  const step = now => { t = Math.min(1, (now - t0) / 2600); draw(); if(t < 1) anim = requestAnimationFrame(step); else { anim = null; finish(); } };
+  anim = requestAnimationFrame(step);
+};
+$('again').onclick = reset;
+Sim.onTheme(draw);
+
+function reset(){
+  if(anim) cancelAnimationFrame(anim); anim = null; t = 0; done = false; guess = null;
+  document.querySelectorAll('#guess button').forEach(x => x.classList.remove('on'));
+  $('fb').classList.add('hidden'); draw();
+}
+function finish(){
+  done = true; draw();
+  const P = PROSES[cur], ekso = P.dT > 0, fb = $('fb');
+  const verdict = ekso ? 'Eksotermik: sistem melepas kalor, suhu lingkungan naik, ΔH negatif.' : 'Endotermik: sistem menyerap kalor, suhu lingkungan turun, ΔH positif.';
+  const right = guess ? (guess === (ekso ? 'ekso' : 'endo')) : null;
+  fb.className = 'box ' + (right === false ? 'no' : right ? 'ok' : 'info');
+  fb.innerHTML = (right === null ? '' : right ? '<b>Tebakanmu benar!</b> ' : '<b>Tebakanmu belum tepat.</b> ') + `<b>${verdict}</b> ${P.why}`;
+}
+
+function draw(){
+  const P = PROSES[cur], ease = 1 - Math.pow(1 - t, 3), T = T0 + P.dT * ease, ekso = P.dT > 0;
+  $('eq').innerHTML = P.eq;
+  const hot = getComputedStyle(document.documentElement).getPropertyValue('--b').trim();
+  const cold = getComputedStyle(document.documentElement).getPropertyValue('--a').trim();
+  let s = '';
+  // gelas
+  const bx = 70, by = 120, bw = 150, bh = 170;
+  s += `<path d="M${bx} ${by} L${bx + 8} ${by + bh} Q${bx + 10} ${by + bh + 10} ${bx + 22} ${by + bh + 10} L${bx + bw - 22} ${by + bh + 10} Q${bx + bw - 10} ${by + bh + 10} ${bx + bw - 8} ${by + bh} L${bx + bw} ${by}" fill="none" style="stroke:var(--ink)" stroke-width="2.5"/>`;
+  const tint = t === 0 ? 'var(--surface-2)' : (ekso ? hot : cold);
+  s += `<path d="M${bx + 4} ${by + 50} L${bx + 10} ${by + bh} Q${bx + 12} ${by + bh + 8} ${bx + 22} ${by + bh + 8} L${bx + bw - 22} ${by + bh + 8} Q${bx + bw - 12} ${by + bh + 8} ${bx + bw - 10} ${by + bh} L${bx + bw - 4} ${by + 50} Z" style="fill:${tint}" fill-opacity="${t === 0 ? 1 : .12 + .25 * ease}"/>`;
+  if(t === 0) s += `<path d="M${bx + 4} ${by + 50} L${bx + 10} ${by + bh} Q${bx + 12} ${by + bh + 8} ${bx + 22} ${by + bh + 8} L${bx + bw - 22} ${by + bh + 8} Q${bx + bw - 12} ${by + bh + 8} ${bx + bw - 10} ${by + bh} L${bx + bw - 4} ${by + 50} Z" style="fill:var(--a)" fill-opacity=".1"/>`;
+  // gelembung gas
+  if(P.gas && t > 0 && t < 1) for(let i = 0; i < 9; i++){
+    const ph = (t * 3 + i / 9) % 1;
+    s += `<circle cx="${bx + 30 + (i * 37) % (bw - 50)}" cy="${by + bh - ph * (bh - 60)}" r="${3 + (i % 3)}" fill="none" style="stroke:var(--muted)" stroke-width="1.5"/>`;
+  }
+  // panah kalor
+  if(t > 0){
+    const c = ekso ? hot : cold;
+    [[bx - 10, 1], [bx + bw + 10, -1]].forEach(([x0, dir], k) => {
+      for(let j = 0; j < 2; j++){
+        const y = by + 80 + j * 50, off = ((t * 2 + j * .5) % 1) * 30;
+        const out = ekso ? -dir : dir;   // ekso: keluar dari gelas
+        const xs = x0 + (ekso ? 0 : -dir * 40), x1 = xs + out * 34;
+        s += `<g opacity="${.9 - (off / 40)}"><line x1="${xs + out * off * .3}" y1="${y}" x2="${x1 + out * off * .3}" y2="${y}" style="stroke:${c}" stroke-width="3"/>` +
+          `<polygon points="${x1 + out * off * .3 + out * 8},${y} ${x1 + out * off * .3},${y - 6} ${x1 + out * off * .3},${y + 6}" style="fill:${c}"/></g>`;
+      }
+    });
+    s += `<text class="lbl" x="${bx + bw / 2}" y="${by + bh + 40}" text-anchor="middle" style="fill:${c};font-weight:700">${ekso ? 'kalor keluar ke lingkungan' : 'kalor masuk ke sistem'}</text>`;
+  }
+  // termometer
+  const tx = bx + bw / 2 + 10, tTop = 30, tBot = by + bh - 10;
+  const yOf = v => tBot - 20 - (v + 5) / 45 * (tBot - tTop - 30);
+  s += `<rect x="${tx - 6}" y="${tTop}" width="12" height="${tBot - tTop}" rx="6" style="fill:var(--surface);stroke:var(--ink)" stroke-width="2"/>`;
+  s += `<circle cx="${tx}" cy="${tBot}" r="11" style="fill:${hot}"/>`;
+  s += `<rect x="${tx - 3}" y="${yOf(T)}" width="6" height="${tBot - yOf(T)}" style="fill:${hot}"/>`;
+  [0, 10, 20, 30, 40].forEach(v => s += `<line x1="${tx + 6}" y1="${yOf(v)}" x2="${tx + 14}" y2="${yOf(v)}" style="stroke:var(--muted)"/><text class="lbl" x="${tx + 18}" y="${yOf(v) + 4}" style="font-size:11px">${v}</text>`);
+  s += `<text class="big" x="${tx + 46}" y="${tTop + 18}">${fmt(T, 1)} °C</text>`;
+  if(t > 0) s += `<text class="lbl" x="${tx + 46}" y="${tTop + 38}">ΔT = ${P.dT > 0 ? '+' : ''}${fmt(P.dT * ease, 1)} °C</text>`;
+  // diagram tingkat energi kecil
+  const dx = 330, dTop = 100, dBot = 290;
+  s += `<text class="lbl" x="${dx + 70}" y="${dTop - 16}" text-anchor="middle" style="font-weight:700">Diagram tingkat energi</text>`;
+  s += `<line x1="${dx}" y1="${dBot + 10}" x2="${dx}" y2="${dTop}" style="stroke:var(--muted)" stroke-width="2"/><text class="lbl" x="${dx - 6}" y="${dTop + 10}" text-anchor="end">H</text>`;
+  if(done){
+    const yr = ekso ? dTop + 40 : dBot - 30, yp = ekso ? dBot - 30 : dTop + 40, c = ekso ? hot : cold;
+    s += `<line x1="${dx + 8}" y1="${yr}" x2="${dx + 70}" y2="${yr}" style="stroke:var(--ink)" stroke-width="3"/><text class="lbl" x="${dx + 39}" y="${yr - 8}" text-anchor="middle">reaktan</text>`;
+    s += `<line x1="${dx + 76}" y1="${yp}" x2="${dx + 140}" y2="${yp}" style="stroke:var(--ink)" stroke-width="3"/><text class="lbl" x="${dx + 108}" y="${yp - 8}" text-anchor="middle">produk</text>`;
+    const y2 = yp + (ekso ? -4 : 4);
+    s += `<line x1="${dx + 73}" y1="${yr}" x2="${dx + 73}" y2="${y2 + (ekso ? -8 : 8)}" style="stroke:${c}" stroke-width="3"/><polygon points="${dx + 73},${y2} ${dx + 67},${y2 + (ekso ? -10 : 10)} ${dx + 79},${y2 + (ekso ? -10 : 10)}" style="fill:${c}"/>`;
+    s += `<text class="lbl" x="${dx + 80}" y="${(yr + yp) / 2 + 4}" style="fill:${c};font-weight:700">ΔH ${ekso ? '< 0' : '> 0'}</text>`;
+  } else s += `<text class="lbl" x="${dx + 70}" y="${(dTop + dBot) / 2}" text-anchor="middle">muncul setelah</text><text class="lbl" x="${dx + 70}" y="${(dTop + dBot) / 2 + 18}" text-anchor="middle">reaksi selesai</text>`;
+  svg.innerHTML = s;
+}
+draw();
+</script>
+</body>
+</html>

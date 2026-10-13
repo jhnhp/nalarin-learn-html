@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalorimeter Virtual</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .lbl{font-family:var(--font);font-size:12px;fill:var(--muted)}
+  .big{font-family:var(--display);font-weight:800;font-size:20px;fill:var(--ink)}
+  .calc{font-size:14px;line-height:1.7;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Grafik suhu terhadap waktu di dalam kalorimeter"></svg></div>
+  <div class="panel">
+    <div class="seg" id="exp"><button data-e="0" class="on">Penetralan</button><button data-e="1">Pelarutan NaOH</button><button data-e="2">Pelarutan NH₄NO₃</button></div>
+    <p class="note" id="eq"></p>
+    <div id="ctl"></div>
+    <label class="chk"><input type="checkbox" id="c-kal"> Kalorimeter ikut menyerap kalor (C = 50 J/°C)</label>
+    <div class="row"><button class="btn primary" id="go">Campurkan</button><button class="btn" id="calc-btn" disabled>Tampilkan perhitungan</button></div>
+    <div class="read" id="read"></div>
+    <div class="calc hidden" id="calc"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const c = 4.2, Ckal = 50, T0 = 25;
+// dH: nilai sebenarnya (kJ/mol) yang "disembunyikan" di dalam simulasi
+const EXP = [
+  {eq: 'HCl(aq) + NaOH(aq) → NaCl(aq) + H<sub>2</sub>O(l). Volume dan konsentrasi kedua larutan sama.', dH: -57.1,
+   ctl: [{id: 'v', label: 'Volume tiap larutan', unit: 'mL', min: 25, max: 100, step: 25, val: 50}, {id: 'M', label: 'Konsentrasi', unit: 'M', min: 0.5, max: 2, step: 0.5, val: 1}],
+   mass: s => 2 * s.v, mol: s => s.v / 1000 * s.M, what: s => `${fmt(s.v / 1000 * s.M, 3)} mol H<sub>2</sub>O terbentuk`},
+  {eq: 'NaOH(s) → Na<sup>+</sup>(aq) + OH<sup>−</sup>(aq), dilarutkan dalam 100 g air. M<sub>r</sub> NaOH = 40.', dH: -44.5,
+   ctl: [{id: 'g', label: 'Massa NaOH', unit: 'g', min: 1, max: 8, step: 1, val: 4}],
+   mass: s => 100 + s.g, mol: s => s.g / 40, what: s => `${fmt(s.g)} g ÷ 40 = ${fmt(s.g / 40, 3)} mol NaOH`},
+  {eq: 'NH<sub>4</sub>NO<sub>3</sub>(s) → NH<sub>4</sub><sup>+</sup>(aq) + NO<sub>3</sub><sup>−</sup>(aq), dilarutkan dalam 100 g air. M<sub>r</sub> NH<sub>4</sub>NO<sub>3</sub> = 80.', dH: 25.7,
+   ctl: [{id: 'g', label: 'Massa NH₄NO₃', unit: 'g', min: 4, max: 16, step: 4, val: 8}],
+   mass: s => 100 + s.g, mol: s => s.g / 80, what: s => `${fmt(s.g)} g ÷ 80 = ${fmt(s.g / 80, 3)} mol NH<sub>4</sub>NO<sub>3</sub>`},
+];
+let ei = 0, st = {}, t = 0, anim = null, done = false;
+
+$('exp').onclick = e => { const b = e.target.closest('button'); if(!b) return; ei = +b.dataset.e; document.querySelectorAll('#exp button').forEach(x => x.classList.toggle('on', x === b)); build(); };
+$('c-kal').onchange = reset;
+$('go').onclick = () => {
+  if(anim) return; reset();
+  const t0 = performance.now();
+  const step = now => { t = Math.min(1, (now - t0) / 3000); draw(); if(t < 1) anim = requestAnimationFrame(step); else { anim = null; done = true; $('calc-btn').disabled = false; draw(); } };
+  anim = requestAnimationFrame(step);
+};
+$('calc-btn').onclick = () => { $('calc').classList.remove('hidden'); };
+Sim.onTheme(draw);
+
+function build(){
+  const E = EXP[ei]; st = {};
+  $('eq').innerHTML = E.eq;
+  $('ctl').innerHTML = E.ctl.map(k => { st[k.id] = k.val;
+    return `<div style="margin-bottom:8px"><div class="lab"><span>${k.label}</span><b id="o-${k.id}">${fmt(k.val)} ${k.unit}</b></div>` +
+      `<input type="range" id="r-${k.id}" min="${k.min}" max="${k.max}" step="${k.step}" value="${k.val}" aria-label="${k.label}"></div>`; }).join('');
+  E.ctl.forEach(k => $('r-' + k.id).oninput = ev => { st[k.id] = +ev.target.value; $('o-' + k.id).textContent = fmt(st[k.id]) + ' ' + k.unit; reset(); });
+  reset();
+}
+function reset(){
+  if(anim) cancelAnimationFrame(anim); anim = null; t = 0; done = false;
+  $('calc-btn').disabled = true; $('calc').classList.add('hidden'); draw();
+}
+// hasil "pengukuran": ΔT dibulatkan 0,1 °C seperti membaca termometer
+function result(){
+  const E = EXP[ei], m = E.mass(st), n = E.mol(st), C = $('c-kal').checked ? Ckal : 0;
+  const dT = Math.round(-E.dH * 1000 * n / (m * c + C) * 10) / 10;
+  return {m, n, C, dT};
+}
+
+function draw(){
+  const E = EXP[ei], R = result(), u = 1 - Math.pow(1 - Math.min(1, t * 1.6), 3);
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  // grafik suhu
+  const gx = 60, gy = 30, gw = 390, gh = 250, tMin = 5, tMax = 50;
+  const X = s => gx + s / 60 * gw, Y = v => gy + gh - (v - tMin) / (tMax - tMin) * gh;
+  let s = `<rect x="${gx}" y="${gy}" width="${gw}" height="${gh}" style="fill:var(--surface-2)" rx="6"/>`;
+  for(let v = tMin; v <= tMax; v += 5) s += `<line x1="${gx}" y1="${Y(v)}" x2="${gx + gw}" y2="${Y(v)}" style="stroke:var(--line)"/><text class="lbl" x="${gx - 8}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`;
+  for(let k = 0; k <= 60; k += 10) s += `<text class="lbl" x="${X(k)}" y="${gy + gh + 18}" text-anchor="middle">${k}</text>`;
+  s += `<text class="lbl" x="${gx + gw / 2}" y="${gy + gh + 36}" text-anchor="middle">waktu (s)</text>`;
+  s += `<text class="lbl" x="18" y="${gy + gh / 2}" text-anchor="middle" transform="rotate(-90 18 ${gy + gh / 2})">suhu (°C)</text>`;
+  s += `<line x1="${X(10)}" y1="${gy}" x2="${X(10)}" y2="${gy + gh}" style="stroke:var(--muted)" class="dash"/><text class="lbl" x="${X(10) + 4}" y="${gy + 14}">dicampur</text>`;
+  // kurva: datar 10 s, lalu naik/turun mendekati suhu akhir
+  const pts = [], tEnd = 60 * t;
+  for(let k = 0; k <= tEnd; k += .5){
+    const v = k < 10 ? T0 : T0 + R.dT * (1 - Math.exp(-(k - 10) / 4));
+    pts.push(`${X(k)},${Y(v)}`);
+  }
+  const col = R.dT >= 0 ? css('--b') : css('--a');
+  if(pts.length > 1) s += `<polyline points="${pts.join(' ')}" fill="none" style="stroke:${col}" stroke-width="3" stroke-linejoin="round"/>`;
+  const Tnow = tEnd < 10 ? T0 : T0 + R.dT * (1 - Math.exp(-(tEnd - 10) / 4));
+  s += `<text class="big" x="${gx + gw - 8}" y="${gy + 26}" text-anchor="end">${fmt(t ? (done ? T0 + R.dT : Tnow) : T0, 1)} °C</text>`;
+  if(!t) s += `<text class="lbl" x="${gx + gw / 2}" y="${gy + gh / 2 + 40}" text-anchor="middle" style="font-size:14px">Atur jumlah zat, lalu tekan Campurkan</text>`;
+  svg.innerHTML = s;
+
+  const Tf = T0 + R.dT;
+  $('read').innerHTML = `<div><span>Massa larutan (m)</span><b>${fmt(R.m)} g</b></div>` +
+    `<div><span>Suhu awal → akhir</span><b>${done ? fmt(T0, 1) + ' → ' + fmt(Tf, 1) + ' °C' : '–'}</b></div>` +
+    `<div><span>Perubahan suhu ΔT</span><b>${done ? (R.dT > 0 ? '+' : '') + fmt(R.dT, 1) + ' °C' : '–'}</b></div>`;
+  if(done){
+    const qL = R.m * c * R.dT, qK = R.C * R.dT, q = qL + qK, dH = -q / 1000 / R.n;
+    $('calc').innerHTML =
+      `q<sub>larutan</sub> = m · c · ΔT = ${fmt(R.m)} × 4,2 × ${fmt(R.dT, 1)} = <b>${fmt(qL, 1)} J</b><br>` +
+      (R.C ? `q<sub>kalorimeter</sub> = C · ΔT = 50 × ${fmt(R.dT, 1)} = <b>${fmt(qK, 1)} J</b><br>` : '') +
+      `q<sub>reaksi</sub> = −(${R.C ? 'q<sub>larutan</sub> + q<sub>kalorimeter</sub>' : 'q<sub>larutan</sub>'}) = <b>${fmt(-q / 1000, 3)} kJ</b><br>` +
+      `n = ${E.what(st)}<br>` +
+      `ΔH = q<sub>reaksi</sub> ÷ n = <b>${dH > 0 ? '+' : ''}${fmt(dH, 1)} kJ/mol</b> (${dH < 0 ? 'eksotermik' : 'endotermik'})`;
+  }
+}
+build();
+</script>
+</body>
+</html>
