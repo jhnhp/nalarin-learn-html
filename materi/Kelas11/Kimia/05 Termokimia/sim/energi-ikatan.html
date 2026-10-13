@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Putus dan Bentuk Ikatan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  select{font:inherit;font-size:14px;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}
+  .lbl{font-family:var(--font);font-size:12.5px;fill:var(--muted)}
+  .lvl{font-family:var(--font);font-size:13px;font-weight:700;fill:var(--ink)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+  td,th{padding:4px 6px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font-size:12px;color:var(--muted)}
+  td:last-child,th:last-child{text-align:right}
+  tr.tot td{font-weight:800;border-bottom:0}
+  .dim{opacity:.35}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 350" role="img" aria-label="Diagram energi: memutus ikatan reaktan lalu membentuk ikatan produk"></svg></div>
+  <div class="panel">
+    <h3 class="t">Pilih reaksi (wujud gas)</h3>
+    <select id="pick" aria-label="Pilih reaksi"></select>
+    <div class="row"><button class="btn primary" id="step">1. Putuskan ikatan</button><button class="btn" id="reset">Ulangi</button></div>
+    <div id="t-break"></div>
+    <div id="t-form"></div>
+    <div class="box hidden" id="fb"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// energi ikatan rata-rata (kJ/mol)
+const BE = {'H–H': 436, 'C–H': 413, 'C–C': 348, 'C=C': 614, 'C–O': 358, 'O–H': 463, 'O=O': 495, 'N≡N': 941, 'N–H': 391,
+  'Cl–Cl': 243, 'H–Cl': 432, 'C–Cl': 328, 'Br–Br': 193, 'H–Br': 366, 'I–I': 151, 'H–I': 299};
+const R = [
+  {eq: 'H<sub>2</sub> + Br<sub>2</sub> → 2HBr', name: 'H₂ + Br₂ → 2HBr', br: {'H–H': 1, 'Br–Br': 1}, fo: {'H–Br': 2}},
+  {eq: 'CH<sub>4</sub> + Cl<sub>2</sub> → CH<sub>3</sub>Cl + HCl', name: 'CH₄ + Cl₂ → CH₃Cl + HCl', br: {'C–H': 4, 'Cl–Cl': 1}, fo: {'C–H': 3, 'C–Cl': 1, 'H–Cl': 1}},
+  {eq: 'C<sub>2</sub>H<sub>4</sub> + H<sub>2</sub> → C<sub>2</sub>H<sub>6</sub>', name: 'C₂H₄ + H₂ → C₂H₆', br: {'C–H': 4, 'C=C': 1, 'H–H': 1}, fo: {'C–H': 6, 'C–C': 1}},
+  {eq: '2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O', name: '2H₂ + O₂ → 2H₂O', br: {'H–H': 2, 'O=O': 1}, fo: {'O–H': 4}},
+  {eq: 'N<sub>2</sub> + 3H<sub>2</sub> → 2NH<sub>3</sub>', name: 'N₂ + 3H₂ → 2NH₃', br: {'N≡N': 1, 'H–H': 3}, fo: {'N–H': 6}},
+  {eq: 'C<sub>2</sub>H<sub>4</sub> + H<sub>2</sub>O → C<sub>2</sub>H<sub>5</sub>OH', name: 'C₂H₄ + H₂O → C₂H₅OH', br: {'C–H': 4, 'C=C': 1, 'O–H': 2}, fo: {'C–H': 5, 'C–C': 1, 'C–O': 1, 'O–H': 1}},
+  {eq: '2HI → H<sub>2</sub> + I<sub>2</sub>', name: '2HI → H₂ + I₂', br: {'H–I': 2}, fo: {'H–H': 1, 'I–I': 1}},
+];
+let ri = 0, stage = 0;
+const sum = o => Object.entries(o).reduce((s, [b, n]) => s + BE[b] * n, 0);
+
+$('pick').innerHTML = R.map((r, i) => `<option value="${i}">${r.name}</option>`).join('');
+$('pick').onchange = e => { ri = +e.target.value; stage = 0; draw(); };
+$('step').onclick = () => { if(stage < 2){ stage++; draw(); } };
+$('reset').onclick = () => { stage = 0; draw(); };
+Sim.onTheme(draw);
+
+function table(o, title, cls){
+  const rows = Object.entries(o).map(([b, n]) => `<tr><td>${n} × ${b}</td><td>${n} × ${fmt(BE[b])}</td><td>${fmt(n * BE[b])}</td></tr>`).join('');
+  return `<table class="${cls}"><tr><th>${title}</th><th>kJ/mol</th><th>jumlah</th></tr>${rows}<tr class="tot"><td>Σ</td><td></td><td>${fmt(sum(o))}</td></tr></table>`;
+}
+
+function draw(){
+  const r = R[ri], B = sum(r.br), F = sum(r.fo), dH = B - F;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const up = css('--a'), down = css('--b'), dc = dH < 0 ? down : up;
+  const y0 = 240, s = 190 / B, yA = y0 - B * s, yP = y0 - dH * s;
+  let g = '';
+  g += `<line x1="40" y1="335" x2="40" y2="20" style="stroke:var(--muted)" stroke-width="2"/><text class="lbl" x="34" y="30" text-anchor="end">H</text>`;
+  g += `<text class="lbl" x="470" y="340" text-anchor="end">skala vertikal berbeda tiap reaksi</text>`;
+  // reaktan
+  g += `<line x1="56" y1="${y0}" x2="180" y2="${y0}" style="stroke:var(--ink)" stroke-width="3"/><text class="lvl" x="118" y="${y0 + 20}" text-anchor="middle">reaktan</text>`;
+  if(stage >= 1){
+    g += `<line x1="100" y1="${yA}" x2="370" y2="${yA}" style="stroke:var(--ink)" stroke-width="3"/><text class="lvl" x="235" y="${yA - 8}" text-anchor="middle">atom-atom bebas</text>`;
+    g += `<line x1="120" y1="${y0 - 4}" x2="120" y2="${yA + 12}" style="stroke:${up}" stroke-width="4"/><polygon points="120,${yA + 2} 113,${yA + 14} 127,${yA + 14}" style="fill:${up}"/>`;
+    g += `<text class="lvl" x="128" y="${(y0 + yA) / 2}" style="fill:${up}">+${fmt(B)}</text><text class="lbl" x="128" y="${(y0 + yA) / 2 + 16}">putus ikatan</text><text class="lbl" x="128" y="${(y0 + yA) / 2 + 30}">(menyerap energi)</text>`;
+  }
+  if(stage >= 2){
+    g += `<line x1="330" y1="${yP}" x2="450" y2="${yP}" style="stroke:var(--ink)" stroke-width="3"/><text class="lvl" x="390" y="${yP + 20}" text-anchor="middle">produk</text>`;
+    g += `<line x1="350" y1="${yA + 4}" x2="350" y2="${yP - 12}" style="stroke:${down}" stroke-width="4"/><polygon points="350,${yP - 2} 343,${yP - 14} 357,${yP - 14}" style="fill:${down}"/>`;
+    g += `<text class="lvl" x="358" y="${(yA + yP) / 2}" style="fill:${down}">−${fmt(F)}</text><text class="lbl" x="358" y="${(yA + yP) / 2 + 16}">bentuk ikatan</text><text class="lbl" x="358" y="${(yA + yP) / 2 + 30}">(melepas energi)</text>`;
+    g += ``;
+    const yy = dH < 0 ? yP - 10 : yP + 10;
+    g += `<line x1="466" y1="${y0}" x2="466" y2="${yy}" style="stroke:${dc}" stroke-width="3"/><polygon points="466,${yP} 460,${yy} 472,${yy}" style="fill:${dc}"/>`;
+    g += `<line x1="180" y1="${y0}" x2="472" y2="${y0}" style="stroke:var(--muted)" class="dash"/>`;
+    g += `<text class="lvl" x="460" y="${Math.min(y0, yP) - 8}" text-anchor="end" style="fill:${dc}">ΔH = ${dH > 0 ? '+' : ''}${fmt(dH)}</text>`;
+  }
+  svg.innerHTML = g;
+
+  $('t-break').innerHTML = table(r.br, 'Ikatan diputus', stage >= 1 ? '' : 'dim');
+  $('t-form').innerHTML = table(r.fo, 'Ikatan dibentuk', stage >= 2 ? '' : 'dim');
+  $('step').textContent = stage === 0 ? '1. Putuskan ikatan' : stage === 1 ? '2. Bentuk ikatan baru' : 'Selesai';
+  $('step').disabled = stage === 2;
+  const fb = $('fb');
+  if(stage === 2){
+    fb.className = 'box ' + (dH < 0 ? 'ok' : 'info');
+    fb.innerHTML = `ΔH = Σ putus − Σ bentuk = ${fmt(B)} − ${fmt(F)} = <b>${dH > 0 ? '+' : ''}${fmt(dH)} kJ</b>. ` +
+      (dH < 0 ? 'Energi yang dilepas saat membentuk ikatan lebih besar daripada yang diserap saat memutus ikatan, jadi reaksi <b>eksotermik</b>.'
+              : 'Energi untuk memutus ikatan lebih besar daripada yang dilepas saat membentuk ikatan, jadi reaksi <b>endotermik</b>.');
+  } else fb.className = 'box hidden';
+}
+draw();
+</script>
+</body>
+</html>

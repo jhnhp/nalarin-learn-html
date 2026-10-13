@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teka-teki Hukum Hess</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .wrap{padding:14px 16px;display:grid;gap:12px}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .dots{display:flex;gap:5px}
+  .dots i{width:12px;height:12px;border-radius:50%;background:var(--line-2)}
+  .dots i.ok{background:var(--ok)} .dots i.cur{outline:2px solid var(--brand);outline-offset:1px}
+  .target{padding:12px 14px;border-radius:12px;background:var(--surface-2);font-size:15.5px}
+  .target small,.sum small{display:block;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .eqrow{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
+  .eqrow.off{opacity:.55}
+  .eqrow .ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .eqrow .no{font-weight:800;color:var(--muted);min-width:26px}
+  .eqtext{font-size:15px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .eqtext b{white-space:nowrap}
+  .btn.sm{min-height:34px;padding:0 10px;font-size:13px}
+  .btn.on{background:var(--brand);border-color:var(--brand);color:#fff}
+  .seg.sm button{font-size:13px;padding:5px 9px;flex:0 0 auto}
+  .sum{padding:12px 14px;border-radius:12px;border:2px dashed var(--line-2);font-size:15.5px}
+  .sum.match{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+  .rest{color:var(--bad)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><h3 class="t" id="title">Teka-teki 1</h3><span class="dots" id="dots"></span></div>
+  <div class="target"><small>Reaksi yang dicari</small><span id="target"></span></div>
+  <p class="note">Susun ulang persamaan di bawah: <b>balik</b> jika zat berada di ruas yang salah, lalu <b>kalikan</b> agar koefisiennya sesuai. Zat yang muncul di kedua ruas akan saling menghapus.</p>
+  <div id="rows" style="display:grid;gap:10px"></div>
+  <div class="sum" id="sum"></div>
+  <div class="box hidden" id="fb"></div>
+  <div class="row"><button class="btn" id="prev">← Sebelumnya</button><button class="btn primary" id="next">Teka-teki berikutnya →</button></div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+// r: reaktan, p: produk (koefisien), dH dalam kJ
+const E = (r, p, dH) => ({r, p, dH});
+const PUZZLES = [
+  {target: E({'C(s)': 1, 'O2(g)': .5}, {'CO(g)': 1}),
+   given: [E({'C(s)': 1, 'O2(g)': 1}, {'CO2(g)': 1}, -393.5), E({'CO(g)': 1, 'O2(g)': .5}, {'CO2(g)': 1}, -283.0)],
+   why: 'Persamaan (1) tetap, persamaan (2) dibalik sehingga CO berada di ruas kanan. ΔH = −393,5 + 283,0 = −110,5 kJ.'},
+  {target: E({'S(s)': 2, 'O2(g)': 3}, {'SO3(g)': 2}),
+   given: [E({'S(s)': 1, 'O2(g)': 1}, {'SO2(g)': 1}, -296.8), E({'SO2(g)': 2, 'O2(g)': 1}, {'SO3(g)': 2}, -197.8)],
+   why: 'Persamaan (1) dikali 2 agar ada 2 S, persamaan (2) tetap. ΔH = 2(−296,8) + (−197,8) = −791,4 kJ.'},
+  {target: E({'H2O(l)': 1}, {'H2O(g)': 1}),
+   given: [E({'H2(g)': 1, 'O2(g)': .5}, {'H2O(l)': 1}, -285.8), E({'H2(g)': 1, 'O2(g)': .5}, {'H2O(g)': 1}, -241.8)],
+   why: 'Persamaan (1) dibalik (+285,8 kJ), persamaan (2) tetap. ΔH penguapan air = +285,8 − 241,8 = +44,0 kJ. Penguapan menyerap kalor.'},
+  {target: E({'N2(g)': 1, 'O2(g)': 2}, {'NO2(g)': 2}),
+   given: [E({'N2(g)': 1, 'O2(g)': 1}, {'NO(g)': 2}, 180.5), E({'NO(g)': 2, 'O2(g)': 1}, {'NO2(g)': 2}, -114.1)],
+   why: 'Kedua persamaan dijumlahkan apa adanya, 2NO saling menghapus. ΔH = +180,5 − 114,1 = +66,4 kJ.'},
+  {target: E({'C(s)': 1, 'H2(g)': 2}, {'CH4(g)': 1}),
+   given: [E({'C(s)': 1, 'O2(g)': 1}, {'CO2(g)': 1}, -393.5), E({'H2(g)': 1, 'O2(g)': .5}, {'H2O(l)': 1}, -285.8),
+           E({'CH4(g)': 1, 'O2(g)': 2}, {'CO2(g)': 1, 'H2O(l)': 2}, -890.3)],
+   why: '(1) tetap, (2) dikali 2, (3) dibalik. ΔH = −393,5 + 2(−285,8) + 890,3 = −74,8 kJ. Ini adalah ΔH<sub>f</sub>° metana.'},
+  {target: E({'C2H4(g)': 1, 'H2(g)': 1}, {'C2H6(g)': 1}),
+   given: [E({'C2H4(g)': 1, 'O2(g)': 3}, {'CO2(g)': 2, 'H2O(l)': 2}, -1411.0), E({'C2H6(g)': 1, 'O2(g)': 3.5}, {'CO2(g)': 2, 'H2O(l)': 3}, -1560.0),
+           E({'H2(g)': 1, 'O2(g)': .5}, {'H2O(l)': 1}, -285.8)],
+   why: '(1) tetap, (2) dibalik, (3) tetap. ΔH = −1.411,0 + 1.560,0 − 285,8 = −136,8 kJ.'},
+];
+const MULTS = [0.5, 1, 2, 3];
+let pi = 0, set = [];
+const solved = PUZZLES.map(() => false);
+
+const chem = s => s.replace(/([A-Za-z\)])(\d+)/g, '$1<sub>$2</sub>');
+const coef = k => { const w = Math.floor(k + 1e-9), f = k - w; const fr = Math.abs(f - .5) < 1e-9 ? '½' : f > 1e-9 ? fmt(f) : '';
+  return k === 1 ? '' : (w ? w : '') + fr; };
+const side = o => Object.entries(o).map(([s, k]) => coef(k) + chem(s)).join(' + ') || '—';
+const eqHtml = (e, dH) => `<span>${side(e.r)} → ${side(e.p)}</span><b>ΔH = ${dH > 0 ? '+' : ''}${fmt(dH, 1)} kJ</b>`;
+const net = e => { const n = {}; for(const s in e.r) n[s] = (n[s] || 0) - e.r[s]; for(const s in e.p) n[s] = (n[s] || 0) + e.p[s]; return n; };
+const split = n => { const r = {}, p = {}; for(const s in n){ const v = Math.round(n[s] * 1000) / 1000; if(v < 0) r[s] = -v; else if(v > 0) p[s] = v; } return {r, p}; };
+
+function load(){
+  const P = PUZZLES[pi];
+  set = P.given.map(() => ({rev: false, m: 1}));
+  $('title').textContent = `Teka-teki ${pi + 1} dari ${PUZZLES.length}`;
+  $('target').innerHTML = side(P.target.r) + ' → ' + side(P.target.p) + ' &nbsp; <b>ΔH = ?</b>';
+  $('rows').innerHTML = P.given.map((g, i) => `
+    <div class="eqrow" id="row${i}">
+      <div class="ctl"><span class="no">(${i + 1})</span>
+        <button class="btn sm" data-rev="${i}">⇄ Balik</button>
+        <span class="note">kali</span>
+        <div class="seg sm" data-mrow="${i}">${MULTS.map(m => `<button data-m="${m}"${m === 1 ? ' class="on"' : ''}>${m === .5 ? '½' : m}</button>`).join('')}</div>
+        <label class="chk" style="font-size:13px"><input type="checkbox" data-use="${i}" checked> dipakai</label>
+      </div>
+      <div class="eqtext" id="eq${i}"></div>
+    </div>`).join('');
+  document.querySelectorAll('[data-rev]').forEach(b => b.onclick = () => { const i = +b.dataset.rev; set[i].rev = !set[i].rev; b.classList.toggle('on', set[i].rev); draw(); });
+  document.querySelectorAll('[data-mrow]').forEach(g => g.onclick = e => {
+    const b = e.target.closest('button'); if(!b) return; const i = +g.dataset.mrow;
+    set[i].m = +b.dataset.m; g.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); draw(); });
+  document.querySelectorAll('[data-use]').forEach(c => c.onchange = () => { set[+c.dataset.use].off = !c.checked; draw(); });
+  $('prev').disabled = pi === 0;
+  draw();
+}
+
+function draw(){
+  const P = PUZZLES[pi], total = {}; let dH = 0;
+  P.given.forEach((g, i) => {
+    const s = set[i], f = s.off ? 0 : (s.rev ? -1 : 1) * s.m, n = net(g);
+    const shown = split(Object.fromEntries(Object.entries(n).map(([k, v]) => [k, v * (s.rev ? -1 : 1) * s.m])));
+    $('eq' + i).innerHTML = eqHtml(shown, g.dH * (s.rev ? -1 : 1) * s.m);
+    $('row' + i).classList.toggle('off', !!s.off);
+    for(const k in n) total[k] = (total[k] || 0) + n[k] * f;
+    dH += g.dH * f;
+  });
+  const want = net(P.target), keys = new Set([...Object.keys(total), ...Object.keys(want)]);
+  const diff = {}; keys.forEach(k => { const d = (total[k] || 0) - (want[k] || 0); if(Math.abs(d) > 1e-9) diff[k] = d; });
+  const match = !Object.keys(diff).length, sp = split(total), box = $('sum');
+  box.classList.toggle('match', match);
+  box.innerHTML = `<small>Hasil penjumlahan</small><div class="eqtext">${eqHtml(sp, dH)}</div>`;
+  const fb = $('fb');
+  if(match){
+    solved[pi] = true;
+    fb.className = 'box ok';
+    fb.innerHTML = `<b>Tepat! ΔH = ${dH > 0 ? '+' : ''}${fmt(dH, 1)} kJ.</b> ${P.why}`;
+  } else {
+    fb.className = 'box info';
+    fb.innerHTML = 'Belum sama dengan reaksi yang dicari. Selisih: ' + Object.entries(diff).map(([k, d]) =>
+      `<span class="rest">${chem(k)}</span> ${d > 0 ? 'masih tersisa di ruas kanan' : 'masih tersisa di ruas kiri'}` + (Math.abs(Math.abs(d) - 1) > 1e-9 ? ` (${coef(Math.abs(d))} mol)` : '')).join('; ') + '.';
+  }
+  $('dots').innerHTML = PUZZLES.map((_, i) => `<i class="${solved[i] ? 'ok' : ''}${i === pi ? ' cur' : ''}"></i>`).join('');
+  $('next').textContent = pi < PUZZLES.length - 1 ? 'Teka-teki berikutnya →' : 'Selesai';
+  $('next').disabled = pi === PUZZLES.length - 1 && !match;
+}
+$('next').onclick = () => {
+  if(pi < PUZZLES.length - 1){ pi++; load(); return; }
+  const fb = $('fb'); fb.className = 'box ok';
+  fb.innerHTML = `<b>Hebat!</b> Kamu menyelesaikan ${solved.filter(Boolean).length} dari ${PUZZLES.length} teka-teki Hukum Hess.`;
+};
+$('prev').onclick = () => { if(pi > 0){ pi--; load(); } };
+load();
+</script>
+</body>
+</html>
