@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2447F9">
+<title>Nalarin Kuis</title>
+<link rel="icon" type="image/png" href="Assets/Nalarin/web/favicon.png">
+<link rel="apple-touch-icon" href="Assets/Nalarin/web/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-view="start">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 21V5"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+  <symbol id="i-quiz" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.2-9.4C1.7 7.3 4 4 7.4 4c2 0 3.6 1.1 4.6 2.7C13 5.1 14.6 4 16.6 4 20 4 22.3 7.3 21.2 10.6 19.5 15.4 12 20 12 20z"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></symbol>
+</svg>
+
+<header>
+  <div class="hbar">
+    <a class="brand" href="?" aria-label="Nalarin Kuis, kembali ke daftar kuis">
+      <img class="ic" src="Assets/Nalarin/web/icon.png" alt="">
+      <img class="wm wm-b" src="Assets/Nalarin/web/wordmark-kuis-blue.png" alt="">
+      <img class="wm wm-w" src="Assets/Nalarin/web/wordmark-kuis-white.png" alt="">
+    </a>
+    <span class="sep"></span>
+    <div class="htitle" id="htitle"><small id="badge">Kuis</small><strong id="title">Memuat kuis…</strong></div>
+    <span class="grow"></span>
+    <nav class="nav" aria-label="Menu">
+      <a href="../index.html" id="nav-belajar" class="hidden"><svg class="i"><use href="#i-book"/></svg><span>Belajar</span></a>
+      <a href="?" class="on"><svg class="i"><use href="#i-quiz"/></svg><span>Kuis</span></a>
+      <a href="https://trakteer.id/nalarin-edu" class="dukung" data-dukung target="_blank" rel="noopener"><svg class="i"><use href="#i-heart"/></svg><span>Dukung</span></a>
+    </nav>
+    <span id="timer" class="chip hidden" aria-label="Waktu pengerjaan"><svg class="i" style="width:15px;height:15px"><use href="#i-clock"/></svg><span id="timer-t">00:00</span></span>
+    <span id="who" class="chip name hidden"></span>
+    <button class="icon-btn" id="theme" aria-label="Ganti tema terang/gelap">
+      <svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg>
+    </button>
+  </div>
+  <div class="progress"><i id="bar"></i></div>
+</header>
+
+<!-- Daftar kuis -->
+<main id="browse" class="bwrap hidden">
+  <nav class="b-crumbs hidden" id="crumbs" aria-label="Posisi"></nav>
+  <section class="hero" id="hero">
+    <h1 id="b-h1">Pilih kelas</h1>
+    <p class="b-lead" id="b-lead"></p>
+    <div class="sbox">
+      <svg class="i"><use href="#i-search"/></svg>
+      <input class="b-search" id="search" type="search" placeholder="Cari kuis…" aria-label="Cari kuis">
+    </div>
+  </section>
+  <p class="b-count hidden" id="bcount"></p>
+  <div id="blist"></div>
+  <button class="btn block hidden" id="more">Tampilkan lebih banyak</button>
+  <p class="b-empty hidden" id="bempty">Tidak ada kuis yang cocok.</p>
+  <div class="b-note hidden" id="berr"></div>
+  <section class="card support hidden" id="support">
+    <span class="heart"><svg class="i"><use href="#i-heart"/></svg></span>
+    <div class="txt">
+      <h2>Nalarin gratis untuk semua pelajar</h2>
+      <p>Tanpa iklan, tanpa akun, tanpa biaya. Kalau kuis ini membantumu belajar, kamu bisa ikut menjaganya tetap gratis lewat donasi di Trakteer.</p>
+    </div>
+    <a class="btn primary" href="https://trakteer.id/nalarin-edu" data-dukung target="_blank" rel="noopener">Dukung Nalarin <svg class="i"><use href="#i-arrow"/></svg></a>
+  </section>
+</main>
+
+<!-- Start -->
+<main id="start" class="center">
+  <div class="card panel">
+    <div class="s-top"><img src="Assets/Nalarin/web/icon.png" alt=""><span class="eyebrow">Siap mengerjakan</span></div>
+    <h2 id="s-title">Memuat kuis…</h2>
+    <p class="sub" id="s-sub">Pastikan koneksi internet stabil sebelum mulai.</p>
+    <div class="meta">
+      <span class="chip"><svg class="i"><use href="#i-list"/></svg><span id="s-count">… soal</span></span>
+      <span class="chip"><svg class="i"><use href="#i-check"/></svg>Jawaban tersimpan otomatis</span>
+    </div>
+    <div id="resume" class="resume hidden"></div>
+    <div class="field">
+      <label for="name">Nama lengkap</label>
+      <input id="name" type="text" autocomplete="name" placeholder="Tulis namamu" enterkeyhint="go">
+    </div>
+    <div class="stack">
+      <button class="btn primary block" id="go"><span id="go-t">Mulai mengerjakan</span><svg class="i"><use href="#i-arrow"/></svg></button>
+      <a class="btn ghost block" href="?" data-back><svg class="i"><use href="#i-back"/></svg>Kembali ke daftar kuis</a>
+    </div>
+  </div>
+</main>
+
+<!-- Quiz -->
+<main id="quiz" class="hidden">
+  <section class="card qcard">
+    <div class="qtop">
+      <div class="left"><span class="qnum" id="qn">Soal 1</span><span class="diff" id="qd"></span></div>
+      <button class="flag" id="flag" aria-pressed="false"><svg class="i"><use href="#i-flag"/></svg>Ragu-ragu</button>
+    </div>
+    <div class="qbody" id="qbody">
+      <aside class="psg hidden" id="psg">
+        <div class="psg-head"><b id="psg-title"></b><button class="flag psg-toggle" id="psg-toggle" type="button">Sembunyikan teks</button></div>
+        <div id="psg-fig" class="figure hidden"></div>
+        <div class="psg-text" id="psg-text"></div>
+        <small id="psg-for"></small>
+      </aside>
+      <div class="qmain">
+        <div id="fig" class="figure hidden"></div>
+        <p class="qtext" id="qt"></p>
+        <div class="opts" id="opts"></div>
+        <div class="expl hidden" id="expl"><b><svg class="i"><use href="#i-bulb"/></svg>Pembahasan</b><p id="expl-t"></p></div>
+      </div>
+    </div>
+    <div class="qnav">
+      <button class="btn" id="prev" aria-label="Soal sebelumnya"><svg class="i"><use href="#i-left"/></svg><span class="lbl">Sebelumnya</span></button>
+      <button class="btn pal only-m" id="open-pal" aria-label="Buka daftar nomor soal"><svg class="i"><use href="#i-grid"/></svg></button>
+      <button class="btn primary" id="next"><span id="next-t">Selanjutnya</span><svg class="i"><use href="#i-right"/></svg></button>
+    </div>
+    <p class="hint"><span><kbd>A</kbd>–<kbd>E</kbd> pilih jawaban</span><span><kbd>←</kbd> <kbd>→</kbd> pindah soal</span><span><kbd>F</kbd> tandai ragu-ragu</span></p>
+  </section>
+
+  <aside class="card side">
+    <div class="sidehead"><h3>Nomor soal</h3><span class="chip" id="cnt">0 / 0</span></div>
+    <div class="stats" id="stats"></div>
+    <div class="grid" id="grid"></div>
+    <button class="btn finish block" id="finish"><svg class="i"><use href="#i-send"/></svg>Kumpulkan jawaban</button>
+  </aside>
+</main>
+
+<!-- Result -->
+<main id="result" class="center hidden">
+  <div class="card panel result-panel">
+    <span class="eyebrow">Kuis selesai</span>
+    <h2 id="r-head">Kerja bagus!</h2>
+    <p class="sub" id="r-sub" style="margin-bottom:0"></p>
+    <div class="ring" id="ring"><div><b id="r-score">0</b><span>dari 100</span></div></div>
+    <div class="res">
+      <div class="a"><b id="r-ok">0</b>Benar</div>
+      <div class="b"><b id="r-no">0</b>Salah</div>
+      <div class="c"><b id="r-skip">0</b>Kosong</div>
+    </div>
+    <div class="save" id="save"></div>
+    <div class="stack">
+      <button class="btn primary block" id="review"><svg class="i"><use href="#i-book"/></svg>Lihat kunci &amp; pembahasan</button>
+      <button class="btn block" id="pdf"><svg class="i"><use href="#i-save"/></svg>Unduh laporan (PDF)</button>
+      <a class="btn ghost block" href="?" data-back><svg class="i"><use href="#i-back"/></svg>Kembali ke daftar kuis</a>
+    </div>
+  </div>
+</main>
+
+<footer>Dibuat oleh Johan Herdi Putra, 2026 · <a href="https://trakteer.id/nalarin-edu" data-dukung target="_blank" rel="noopener">Dukung Nalarin</a></footer>
+
+<!-- Mobile sheet -->
+<div class="sheet-wrap hidden" id="sheet-wrap">
+  <div class="sheet" role="dialog" aria-label="Nomor soal">
+    <div class="grab"></div>
+    <div class="sidehead"><h3>Nomor soal</h3><span class="chip" id="cnt-m">0 / 0</span></div>
+    <div class="stats" id="stats-m"></div>
+    <div class="grid" id="grid-m"></div>
+    <button class="btn finish block" id="finish-m"><svg class="i"><use href="#i-send"/></svg>Kumpulkan jawaban</button>
+  </div>
+</div>
+
+<div class="lb hidden" id="lb"><img id="lb-img" alt="Gambar diperbesar"></div>
+
+<!-- Confirm -->
+<div class="modal hidden" id="confirm">
+  <div class="card box" role="dialog" aria-modal="true" aria-labelledby="confirm-h">
+    <div class="mi"><svg class="i"><use href="#i-send"/></svg></div>
+    <h3 id="confirm-h">Kumpulkan jawaban?</h3>
+    <p id="confirm-msg"></p>
+    <div class="row">
+      <button class="btn" id="c-no">Kembali</button>
+      <button class="btn primary" id="c-yes">Ya, kumpulkan</button>
+    </div>
+  </div>
+</div>
+
+<!-- Alert -->
+<div class="modal hidden" id="alert">
+  <div class="card box" role="alertdialog" aria-modal="true" aria-labelledby="alert-h">
+    <div class="mi"><svg class="i"><use href="#i-alert"/></svg></div>
+    <h3 id="alert-h">Perhatian</h3>
+    <p id="alert-msg"></p>
+    <div class="row"><button class="btn primary" id="a-ok">Mengerti</button></div>
+  </div>
+</div>
+
+<!-- Saving -->
+<div class="modal hidden" id="saving">
+  <div class="card busy"><div class="spin"></div><b id="saving-t">Menyimpan nilai…</b></div>
+</div>
+
+<div id="report" aria-hidden="true"></div>
+
+<script src="js/kuis.js"></script>
+<script src="js/laporan.js"></script>
+<script src="js/daftar.js"></script>
+</body>
+</html>
