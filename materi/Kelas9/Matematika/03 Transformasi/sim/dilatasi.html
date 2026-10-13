@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dilatasi Bangun Datar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Bidang koordinat dengan segitiga ABC yang diperbesar atau diperkecil dari pusat dilatasi"></svg></div>
+  <div class="panel">
+    <h3 class="t">Atur faktor skala k</h3>
+    <div>
+      <div class="lab"><span>Faktor skala</span><b id="k-out">k = 2</b></div>
+      <input type="range" id="k" min="-3" max="3" step="0.5" value="2" aria-label="Faktor skala k">
+    </div>
+    <p class="note" id="k-note"></p>
+    <div class="formula" id="rule"></div>
+    <div class="read" id="read"></div>
+    <label class="chk"><input type="checkbox" id="c-ray" checked> Tampilkan garis dari pusat</label>
+    <div class="row"><button class="btn" id="home">Pusat ke O</button></div>
+    <p class="note">Geser titik A, B, C, atau pusat dilatasi P.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script src="bangun.js"></script>
+<script>
+const {fmt} = Sim, {pt, poly, labels, seg, signedArea, T, m} = Bangun;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const Pl = Sim.plane(svg, {xmin: -8, xmax: 8, ymin: -6, ymax: 6, scale: 30});
+const S = {A: {x: 1, y: 1}, B: {x: 3, y: 1}, C: {x: 1, y: 2}, P: {x: 0, y: 0}};
+let k = 2;
+
+Pl.draggable((h, x, y) => { const c = Pl.clamp(Math.round(x), Math.round(y)); S[h] = {x: c.x, y: c.y}; draw(); });
+$('k').oninput = e => { k = +e.target.value; draw(); };
+$('home').onclick = () => { S.P = {x: 0, y: 0}; draw(); };
+$('c-ray').onchange = draw;
+Sim.onTheme(draw);
+
+function draw(){
+  const c = S.P, obj = [S.A, S.B, S.C], img = obj.map(p => T.dilatasi(p, k, c));
+  let s = Pl.grid({xname: 'x', yname: 'y'});
+  if($('c-ray').checked) obj.forEach((p, i) => {
+    // garis dari pusat melewati titik asal sampai bayangannya
+    const far = Math.abs(k) >= 1 || k < 0 ? img[i] : p;
+    s += seg(Pl, k < 0 ? img[i] : c, k < 0 ? p : far, 'var(--muted)', {dash: true, opacity: .8});
+  });
+  s += poly(Pl, img, 'var(--comp)') + poly(Pl, obj, 'var(--a)');
+  s += labels(Pl, obj, ['A', 'B', 'C'], 'var(--a)') + labels(Pl, img, ['A′', 'B′', 'C′'], 'var(--comp)');
+  ['A', 'B', 'C'].forEach(n => s += Pl.handle(n, S[n].x, S[n].y, 'var(--a)'));
+  s += Pl.handle('P', c.x, c.y, 'var(--r)');
+  s += `<text class="vlabel" x="${Pl.X(c.x) - 12}" y="${Pl.Y(c.y) + 22}" text-anchor="end" style="fill:var(--r);font-size:14px">P${c.x || c.y ? pt(c.x, c.y) : ' = O'}</text>`;
+  svg.innerHTML = s;
+
+  $('k-out').textContent = 'k = ' + fmt(k);
+  const ak = Math.abs(k);
+  $('k-note').innerHTML = k === 0 ? 'k = 0 membuat semua titik jatuh ke pusat. Bangunnya hilang menjadi satu titik.' :
+    (ak > 1 ? 'Bangun <b>diperbesar</b> ' + fmt(ak) + ' kali.' : ak < 1 ? 'Bangun <b>diperkecil</b> menjadi ' + fmt(ak) + ' kali semula.' : 'Ukuran bangun <b>tetap</b>.') +
+    (k < 0 ? ' Karena k negatif, bayangan berada di <b>seberang pusat</b> dan terbalik.' : ' Bayangan berada di sisi yang sama dari pusat.');
+
+  const A = S.A, a = c.x, b = c.y, atO = !a && !b, par = v => v < 0 ? '(' + m(v) + ')' : fmt(v);
+  $('rule').innerHTML = atO
+    ? `Dilatasi [O, ${fmt(k)}]: (x, y) → (kx, ky)<br>A′(${par(k)}·${par(A.x)}, ${par(k)}·${par(A.y)}) = A′${pt(img[0].x, img[0].y)}`
+    : `Dilatasi [P${pt(a, b)}, ${fmt(k)}]:<br>(x, y) → (k(x − a) + a, k(y − b) + b)<br>A′(${par(k)}(${fmt(A.x)} − ${par(a)}) + ${par(a)}, ${par(k)}(${fmt(A.y)} − ${par(b)}) + ${par(b)}) = A′${pt(img[0].x, img[0].y)}`;
+
+  const L1 = Math.hypot(S.B.x - A.x, S.B.y - A.y), L2 = Math.hypot(img[1].x - img[0].x, img[1].y - img[0].y);
+  const s1 = Math.abs(signedArea(obj)), s2 = Math.abs(signedArea(img));
+  $('read').innerHTML = obj.map((p, i) => {
+    const n = 'ABC'[i];
+    return `<div><span><i class="sw" style="background:var(--a)"></i>${n}${pt(p.x, p.y)}</span><b>${n}′${pt(img[i].x, img[i].y)}</b></div>`;
+  }).join('') +
+  `<div><span>Panjang A′B′ ÷ AB</span><b>${L1 ? fmt(L2 / L1) : '–'}</b></div>` +
+  `<div><span>Luas: ABC → A′B′C′</span><b>${fmt(s1)} → ${fmt(s2)}</b></div>` +
+  `<div><span>Luas bayangan ÷ luas objek</span><b>${s1 ? fmt(s2 / s1) + ' = k²' : '–'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

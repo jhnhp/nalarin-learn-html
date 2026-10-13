@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Misi Transformasi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .mission{padding:12px;border-radius:12px;background:var(--surface-2);font-size:14.5px}
+  .mission small{display:block;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .score{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px}
+  .dots{display:flex;gap:5px}
+  .dots i{width:12px;height:12px;border-radius:50%;background:var(--line-2)}
+  .dots i.ok{background:var(--ok)} .dots i.no{background:var(--warn)} .dots i.cur{outline:2px solid var(--brand);outline-offset:1px}
+  .ctl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ctl .lab{margin-bottom:4px}
+  .seg.sm button{font-size:12.5px;padding:6px 7px}
+  ol.steps{padding-left:20px;font-size:14px;display:grid;gap:2px}
+  ol.steps:empty{display:none}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Bidang koordinat dengan bangun dan posisi target bayangan"></svg></div>
+  <div class="panel">
+    <div class="score"><span id="score">Skor 0</span><span class="dots" id="dots"></span></div>
+    <div class="mission"><small id="m-no">Misi 1</small><span id="m-text"></span></div>
+    <div class="seg" id="type">
+      <button data-t="translasi" class="on">Translasi</button><button data-t="refleksi">Refleksi</button><button data-t="rotasi">Rotasi</button><button data-t="dilatasi">Dilatasi</button>
+    </div>
+    <div id="p-translasi" class="ctl">
+      <div><div class="lab"><span>a (mendatar)</span></div>
+        <div class="step"><button data-d="a-1" aria-label="Kurangi a">−</button><output id="oa">0</output><button data-d="a1" aria-label="Tambah a">+</button></div></div>
+      <div><div class="lab"><span>b (tegak)</span></div>
+        <div class="step"><button data-d="b-1" aria-label="Kurangi b">−</button><output id="ob">0</output><button data-d="b1" aria-label="Tambah b">+</button></div></div>
+    </div>
+    <div id="p-refleksi" class="hidden" style="display:grid;gap:8px">
+      <div class="seg sm" id="mir">
+        <button data-j="x" class="on">sumbu x</button><button data-j="y">sumbu y</button><button data-j="O">titik O</button>
+        <button data-j="y=x">y = x</button><button data-j="y=-x">y = −x</button><button data-j="x=k">x = k</button><button data-j="y=h">y = h</button>
+      </div>
+      <div id="k-row" class="row hidden"><span class="lab" id="k-name">k</span>
+        <div class="step"><button data-d="k-1" aria-label="Kurangi">−</button><output id="ok">0</output><button data-d="k1" aria-label="Tambah">+</button></div></div>
+    </div>
+    <div id="p-rotasi" class="hidden seg sm">
+      <button data-r="90" class="on">90°</button><button data-r="-90">−90°</button><button data-r="180">180°</button><button data-r="270">270°</button>
+    </div>
+    <div id="p-dilatasi" class="hidden seg sm">
+      <button data-k="-2">−2</button><button data-k="-1">−1</button><button data-k="-0.5">−½</button><button data-k="0.5">½</button><button data-k="2" class="on">2</button><button data-k="3">3</button>
+    </div>
+    <p class="note" id="desc"></p>
+    <div class="row"><button class="btn primary" id="apply">Terapkan</button><button class="btn" id="reset">Ulangi</button>
+      <label class="chk"><input type="checkbox" id="c-prev"> Pratinjau</label></div>
+    <ol class="steps" id="steps"></ol>
+    <div class="box hidden" id="fb"></div>
+    <button class="btn hidden" id="next">Misi berikutnya</button>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script src="bangun.js"></script>
+<script>
+const {fmt} = Sim, {pt, poly, labels, T} = Bangun;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const Pl = Sim.plane(svg, {xmin: -7, xmax: 7, ymin: -7, ymax: 7, scale: 28});
+
+const tri = (...a) => [{x: a[0], y: a[1]}, {x: a[2], y: a[3]}, {x: a[4], y: a[5]}];
+const S = tri(1, 1, 4, 1, 1, 3);
+// sol: satu cara menyelesaikan misi; target dihitung dari sol, tetapi semua cara yang tepat diterima
+const MISSIONS = [
+  {text: 'Pindahkan segitiga tepat ke posisi target, tanpa memutar atau membalik.', obj: S, max: 1,
+   sol: [{t: 'translasi', a: -5, b: 2}], why: 'Setiap titik bergeser 5 satuan ke kiri dan 2 satuan ke atas, yaitu translasi (−5, 2). Contoh: A(1, 1) → A′(−4, 3).'},
+  {text: 'Bayangan target menghadap ke arah sebaliknya. Gunakan satu pencerminan.', obj: S, max: 1,
+   sol: [{t: 'refleksi', j: 'x'}], why: 'Refleksi terhadap sumbu x: koordinat x tetap, koordinat y berganti tanda. (x, y) → (x, −y).'},
+  {text: 'Target tidak terbalik, tetapi posisinya berubah arah. Cari transformasinya!', obj: S, max: 1,
+   sol: [{t: 'rotasi', d: 90}], why: 'Rotasi 90° berlawanan arah jarum jam terhadap O: (x, y) → (−y, x). Contoh: B(4, 1) → B′(−1, 4).'},
+  {text: 'Sekilas mirip misi 3, tetapi perhatikan letak A′, B′, dan C′.', obj: tri(2, 1, 5, 1, 2, 3), max: 1,
+   sol: [{t: 'refleksi', j: 'y=x'}], why: 'Refleksi terhadap garis y = x menukar koordinat: (x, y) → (y, x). Bentuknya mirip hasil rotasi 90°, tetapi urutan titiknya terbalik karena refleksi membalik bangun.'},
+  {text: 'Cerminnya bukan sumbu koordinat. Temukan garis cermin yang tepat.', obj: S, max: 1,
+   sol: [{t: 'refleksi', j: 'x=k', k: -1}], why: 'Cermin berada tepat di tengah A dan A′, yaitu garis x = −1. (x, y) → (2k − x, y) = (−2 − x, y). Contoh: A(1, 1) → A′(−3, 1).'},
+  {text: 'Target lebih besar dari bangun asalnya.', obj: tri(1, 1, 3, 1, 1, 2), max: 1,
+   sol: [{t: 'dilatasi', k: 2}], why: 'Dilatasi [O, 2]: (x, y) → (2x, 2y). Semua sisi menjadi 2 kali lebih panjang.'},
+  {text: 'Target lebih kecil dan berada di seberang titik O.', obj: tri(2, 2, 6, 2, 2, 6), max: 1,
+   sol: [{t: 'dilatasi', k: -0.5}], why: 'Dilatasi [O, −½]: (x, y) → (−½x, −½y). |k| = ½ membuatnya lebih kecil, dan tanda negatif membuat bayangan di seberang O.'},
+  {text: 'Misi komposisi: butuh <b>dua langkah</b>. Satu pencerminan, lalu satu pergeseran.', obj: S, max: 2,
+   sol: [{t: 'refleksi', j: 'y'}, {t: 'translasi', a: 2, b: -5}], why: 'Refleksi terhadap sumbu y menghasilkan (−1, 1), (−4, 1), (−1, 3). Kemudian translasi (2, −5) membawanya ke target.'},
+  {text: 'Target ini adalah hasil refleksi terhadap sumbu y, lalu terhadap sumbu x. Bisakah kamu mencapainya dengan <b>satu langkah</b> saja?', obj: tri(1, 2, 4, 2, 1, 5), max: 1,
+   sol: [{t: 'rotasi', d: 180}], why: '(x, y) → (−x, y) → (−x, −y). Hasilnya sama dengan rotasi 180° terhadap O, atau refleksi terhadap titik O.'},
+];
+
+function apply(p, op){
+  switch(op.t){
+    case 'translasi': return T.translasi(p, op.a, op.b);
+    case 'refleksi': return T.refleksi(p, op.j, op.k || 0);
+    case 'rotasi': return T.rotasi(p, op.d);
+    case 'dilatasi': return T.dilatasi(p, op.k);
+  }
+}
+const run = (pts, ops) => ops.reduce((cur, op) => cur.map(p => apply(p, op)), pts);
+const same = (P, Q) => P.every((p, i) => Math.abs(p.x - Q[i].x) < 1e-6 && Math.abs(p.y - Q[i].y) < 1e-6);
+const half = v => Math.abs(v) === .5 ? (v < 0 ? '−½' : '½') : fmt(v);
+function name(op){
+  switch(op.t){
+    case 'translasi': return `translasi (${fmt(op.a)}, ${fmt(op.b)})`;
+    case 'refleksi': return 'refleksi terhadap ' + {'x': 'sumbu x', 'y': 'sumbu y', 'O': 'titik O', 'y=x': 'garis y = x', 'y=-x': 'garis y = −x',
+      'x=k': 'garis x = ' + fmt(op.k), 'y=h': 'garis y = ' + fmt(op.k)}[op.j];
+    case 'rotasi': return `rotasi ${fmt(Math.abs(op.d))}° ${op.d < 0 ? 'searah' : 'berlawanan arah'} jarum jam (pusat O)`;
+    case 'dilatasi': return `dilatasi [O, ${half(op.k)}]`;
+  }
+}
+
+let mi = 0, score = 0, ops = [], firstTry = true, done = false;
+const res = MISSIONS.map(() => null);
+const sel = {t: 'translasi', a: 0, b: 0, j: 'x', k: 0, d: 90, s: 2};
+const current = () => ({translasi: {t: 'translasi', a: sel.a, b: sel.b}, refleksi: {t: 'refleksi', j: sel.j, k: sel.k},
+  rotasi: {t: 'rotasi', d: sel.d}, dilatasi: {t: 'dilatasi', k: sel.s}})[sel.t];
+
+function pick(group, attr, btn){ document.querySelectorAll(group + ' button').forEach(b => b.classList.toggle('on', b === btn)); return btn.dataset[attr]; }
+$('type').onclick = e => { const b = e.target.closest('button'); if(b){ sel.t = pick('#type', 't', b); draw(); } };
+$('mir').onclick = e => { const b = e.target.closest('button'); if(b){ sel.j = pick('#mir', 'j', b); draw(); } };
+$('p-rotasi').onclick = e => { const b = e.target.closest('button'); if(b){ sel.d = +pick('#p-rotasi', 'r', b); draw(); } };
+$('p-dilatasi').onclick = e => { const b = e.target.closest('button'); if(b){ sel.s = +pick('#p-dilatasi', 'k', b); draw(); } };
+document.querySelectorAll('[data-d]').forEach(btn => btn.onclick = () => {
+  const d = btn.dataset.d, key = d[0], v = +d.slice(1);
+  sel[key] = Math.max(-9, Math.min(9, sel[key] + v)); draw();
+});
+$('c-prev').onchange = draw;
+$('reset').onclick = () => { ops = []; $('fb').classList.add('hidden'); draw(); };
+$('apply').onclick = () => {
+  if(done) return;
+  const M = MISSIONS[mi];
+  ops.push(current());
+  const now = run(M.obj, ops), fb = $('fb');
+  if(same(now, M.target)){
+    done = true;
+    if(firstTry) score++;
+    res[mi] = firstTry ? 'ok' : 'no';
+    fb.className = 'box ok';
+    fb.innerHTML = `<b>Tepat!</b> ${M.why}` + (ops.length < M.max ? ' Kamu bahkan memakai lebih sedikit langkah.' : '');
+    $('next').classList.remove('hidden');
+    $('next').textContent = mi < MISSIONS.length - 1 ? 'Misi berikutnya' : 'Lihat hasil';
+  } else if(ops.length >= M.max){
+    firstTry = false;
+    fb.className = 'box no';
+    fb.innerHTML = `<b>Belum tepat.</b> Bangun belum berimpit dengan target. Bandingkan letak titik A dengan A′, lalu tekan <b>Ulangi</b> dan coba lagi.`;
+  } else {
+    fb.className = 'box info';
+    fb.innerHTML = `Langkah ${ops.length} dari ${M.max} diterapkan. Lanjutkan dengan langkah berikutnya.`;
+  }
+  draw();
+};
+$('next').onclick = () => {
+  if(mi < MISSIONS.length - 1){ mi++; load(); return; }
+  $('m-no').textContent = 'Selesai';
+  $('m-text').innerHTML = `Kamu menyelesaikan ${MISSIONS.length} misi. <b>${score}</b> di antaranya tepat pada percobaan pertama.`;
+  $('next').textContent = 'Main lagi';
+  $('next').onclick = () => location.reload();
+};
+Sim.onTheme(draw);
+
+function load(){
+  const M = MISSIONS[mi];
+  M.target = run(M.obj, M.sol);
+  ops = []; firstTry = true; done = false;
+  $('m-no').textContent = `Misi ${mi + 1} dari ${MISSIONS.length}` + (M.max > 1 ? ` · maksimal ${M.max} langkah` : ' · 1 langkah');
+  $('m-text').innerHTML = M.text;
+  $('fb').classList.add('hidden'); $('next').classList.add('hidden');
+  draw();
+}
+
+function draw(){
+  const M = MISSIONS[mi], now = run(M.obj, ops), names = ['A', 'B', 'C'];
+  ['translasi', 'refleksi', 'rotasi', 'dilatasi'].forEach(t => $('p-' + t).classList.toggle('hidden', t !== sel.t));
+  const kk = sel.j === 'x=k' || sel.j === 'y=h';
+  $('k-row').classList.toggle('hidden', !kk);
+  $('k-name').textContent = sel.j === 'x=k' ? 'Nilai k pada x = k' : 'Nilai h pada y = h';
+  $('oa').textContent = fmt(sel.a); $('ob').textContent = fmt(sel.b); $('ok').textContent = fmt(sel.k);
+  $('desc').innerHTML = done ? '' : `Akan diterapkan: <b>${name(current())}</b>`;
+  $('apply').disabled = done || ops.length >= M.max;
+
+  let s = Pl.grid({xname: 'x', yname: 'y'});
+  if(sel.t === 'refleksi' && !done){
+    const c = 'var(--r)', o = {width: 2, dash: true, opacity: .7}, L = Bangun.fullLine;
+    s += ({'x': () => L(Pl, {x: 0, y: 0}, {x: 1, y: 0}, c, o), 'y': () => L(Pl, {x: 0, y: 0}, {x: 0, y: 1}, c, o), 'O': () => Bangun.dot(Pl, {x: 0, y: 0}, c, 6),
+      'y=x': () => L(Pl, {x: 0, y: 0}, {x: 1, y: 1}, c, o), 'y=-x': () => L(Pl, {x: 0, y: 0}, {x: 1, y: -1}, c, o),
+      'x=k': () => L(Pl, {x: sel.k, y: 0}, {x: sel.k, y: 1}, c, o), 'y=h': () => L(Pl, {x: 0, y: sel.k}, {x: 1, y: sel.k}, c, o)})[sel.j]();
+  }
+  s += poly(Pl, M.target, 'var(--comp)', {fill: .1, dash: true}) + labels(Pl, M.target, names.map(n => n + '′'), 'var(--comp)');
+  if(ops.length) s += poly(Pl, M.obj, 'var(--a)', {fill: .05, opacity: .35});
+  if($('c-prev').checked && !done && ops.length < M.max){
+    const pv = now.map(p => apply(p, current()));
+    s += poly(Pl, pv, 'var(--k)', {fill: .08, dash: true});
+  }
+  s += poly(Pl, now, 'var(--a)') + labels(Pl, now, names, 'var(--a)');
+  svg.innerHTML = s;
+
+  $('steps').innerHTML = ops.map(op => `<li>${name(op)}</li>`).join('');
+  $('score').textContent = 'Skor ' + score;
+  $('dots').innerHTML = MISSIONS.map((_, i) => `<i class="${res[i] || ''}${i === mi ? ' cur' : ''}"></i>`).join('');
+}
+load();
+</script>
+</body>
+</html>

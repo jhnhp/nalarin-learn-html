@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotasi Bangun Datar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Bidang koordinat dengan segitiga ABC yang diputar terhadap pusat rotasi"></svg></div>
+  <div class="panel">
+    <h3 class="t">Atur sudut rotasi</h3>
+    <div>
+      <div class="lab"><span>Sudut θ</span><b id="t-out">90°</b></div>
+      <input type="range" id="t" min="-360" max="360" step="15" value="90" aria-label="Sudut rotasi">
+    </div>
+    <div class="seg" id="quick">
+      <button data-t="90">90°</button><button data-t="-90">−90°</button><button data-t="180">180°</button><button data-t="270">270°</button>
+    </div>
+    <div class="row"><button class="btn primary" id="play">Putar perlahan</button><button class="btn" id="home">Pusat ke O</button></div>
+    <div class="formula" id="rule"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Sudut positif = berlawanan arah jarum jam. Geser titik A, B, C, atau pusat rotasi P.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script src="bangun.js"></script>
+<script>
+const {fmt, deg} = Sim, {pt, poly, labels, seg, T} = Bangun;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const Pl = Sim.plane(svg, {xmin: -8, xmax: 8, ymin: -6, ymax: 6, scale: 30});
+const S = {A: {x: 2, y: 1}, B: {x: 5, y: 1}, C: {x: 2, y: 3}, P: {x: 0, y: 0}};
+let th = 90, shown = 90, anim = null;
+
+const RULE = {90: '(x, y) → (−y, x)', '-270': '(x, y) → (−y, x)', 180: '(x, y) → (−x, −y)', '-180': '(x, y) → (−x, −y)',
+  270: '(x, y) → (y, −x)', '-90': '(x, y) → (y, −x)', 0: '(x, y) → (x, y)', 360: '(x, y) → (x, y)', '-360': '(x, y) → (x, y)'};
+
+Pl.draggable((h, x, y) => { const c = Pl.clamp(Math.round(x), Math.round(y)); S[h] = {x: c.x, y: c.y}; draw(); });
+$('t').oninput = e => { stop(); th = shown = +e.target.value; draw(); };
+$('quick').onclick = e => { const b = e.target.closest('button'); if(!b) return; stop(); th = shown = +b.dataset.t; $('t').value = th; draw(); };
+$('home').onclick = () => { S.P = {x: 0, y: 0}; draw(); };
+$('play').onclick = () => {
+  stop(); const t0 = performance.now(), dur = Math.min(2400, 600 + Math.abs(th) * 6);
+  const step = now => { const u = Math.min(1, (now - t0) / dur); shown = th * (1 - Math.cos(u * Math.PI)) / 2; draw(); if(u < 1) anim = requestAnimationFrame(step); else anim = null; };
+  anim = requestAnimationFrame(step);
+};
+function stop(){ if(anim) cancelAnimationFrame(anim); anim = null; shown = th; }
+Sim.onTheme(draw);
+
+function draw(){
+  const c = S.P, obj = [S.A, S.B, S.C], img = obj.map(p => T.rotasi(p, shown, c));
+  let s = Pl.grid({xname: 'x', yname: 'y'});
+  s += poly(Pl, obj, 'var(--a)') + poly(Pl, img, 'var(--comp)');
+  // jari-jari dan busur dari A ke A′
+  const A = S.A, rA = Math.hypot(A.x - c.x, A.y - c.y);
+  if(rA > 0 && Math.abs(shown) > .5){
+    s += seg(Pl, c, A, 'var(--muted)', {dash: true}) + seg(Pl, c, img[0], 'var(--muted)', {dash: true});
+    const a0 = deg(A.x - c.x, A.y - c.y), r = Math.min(rA, 1.6);
+    s += shown > 0 ? Pl.arc(c.x, c.y, r, a0, a0 + Math.min(shown, 359.5), 'var(--r)', fmt(Math.round(shown)) + '°')
+                   : Pl.arc(c.x, c.y, r, a0 + Math.max(shown, -359.5), a0, 'var(--r)', fmt(Math.round(shown)) + '°');
+  }
+  s += labels(Pl, obj, ['A', 'B', 'C'], 'var(--a)') + labels(Pl, img, ['A′', 'B′', 'C′'], 'var(--comp)');
+  ['A', 'B', 'C'].forEach(n => s += Pl.handle(n, S[n].x, S[n].y, 'var(--a)'));
+  s += Pl.handle('P', c.x, c.y, 'var(--r)');
+  s += `<text class="vlabel" x="${Pl.X(c.x) - 12}" y="${Pl.Y(c.y) + 22}" text-anchor="end" style="fill:var(--r);font-size:14px">P${c.x || c.y ? pt(c.x, c.y) : ' = O'}</text>`;
+  svg.innerHTML = s;
+
+  $('t-out').textContent = fmt(th) + '°';
+  const arah = th > 0 ? 'berlawanan arah jarum jam' : th < 0 ? 'searah jarum jam' : 'tidak berputar';
+  const atO = !c.x && !c.y, rule = RULE[th];
+  $('rule').innerHTML = `Rotasi <b>${fmt(Math.abs(th))}°</b> ${arah}, pusat <b>${atO ? 'O(0, 0)' : 'P' + pt(c.x, c.y)}</b><br>` +
+    (atO && rule ? rule : atO ? 'Untuk sudut ini tidak ada rumus sederhana di kelas IX. Coba kelipatan 90°.' :
+      'Rumus (x, y) → … di kelas IX hanya untuk pusat O. Tekan <b>Pusat ke O</b>.');
+  $('read').innerHTML = obj.map((p, i) => {
+    const n = 'ABC'[i];
+    return `<div><span><i class="sw" style="background:var(--a)"></i>${n}${pt(p.x, p.y)}</span><b>${n}′${pt(img[i].x, img[i].y)}</b></div>`;
+  }).join('');
+}
+draw();
+</script>
+</body>
+</html>
