@@ -8,6 +8,7 @@ Situs belajar Matematika dan IPA Kurikulum Merdeka, bergaya Khan Academy. Cukup 
 nalarin-learn/
 ├── index.html            ← beranda (jenjang › kelas › mapel) dan halaman kursus (?kelas=…&mapel=…)
 ├── bab.html              ← halaman bab: daftar pelajaran di kiri, isi di tengah (?bab=…&p=…)
+├── dukung.html           ← cara mendukung Nalarin lewat donasi (trakteer.id/nalarin-edu)
 ├── css/learn.css         ← tampilan situs (warna sama dengan Nalarin Kuis, warna per mapel)
 ├── css/sim.css           ← tampilan bersama untuk simulasi
 ├── js/umum.js            ← tema, ikon, tautan, pemuat katalog

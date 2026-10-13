@@ -110,6 +110,27 @@ main.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 16px 64px}
 .kelas li a .dot{width:10px;height:10px;border-radius:3px;background:var(--c);flex:none}
 .kelas li a small{margin-left:auto;color:var(--muted);font-weight:500;font-size:13px}
 
+/* dukungan (beranda dan dukung.html) */
+.nav a.dukung svg{color:var(--bad)}
+.support{display:flex;align-items:center;gap:18px;padding:22px 24px;margin-top:36px;flex-wrap:wrap}
+.support .heart{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;flex:none;background:var(--bad-soft);color:var(--bad)}
+.support .heart svg{width:26px;height:26px}
+.support .txt{flex:1;min-width:240px}
+.support h2{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em;line-height:1.2}
+.support p{color:var(--muted);font-size:15px;margin-top:4px}
+.dk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.dk-grid .card{padding:20px}
+.dk-grid h3{font-family:var(--display);font-size:17px;font-weight:800;margin:10px 0 4px}
+.dk-grid p{color:var(--muted);font-size:15px}
+.dk-grid .kind{--c:var(--accent)}
+.steps{list-style:none;padding:0;display:grid;gap:12px;counter-reset:s}
+.steps li{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;counter-increment:s}
+.steps li::before{content:counter(s);width:32px;height:32px;border-radius:10px;background:var(--brand-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--display);font-weight:800;flex:none}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:15px}
+.dk-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.dk-link{font-size:14px;color:var(--muted);word-break:break-all}
+
 /* ---------- halaman kursus (Kelas + Mapel) ---------- */
 .crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px;color:var(--muted);padding-top:22px}
 .crumbs a{color:var(--muted);text-decoration:none;font-weight:600}
