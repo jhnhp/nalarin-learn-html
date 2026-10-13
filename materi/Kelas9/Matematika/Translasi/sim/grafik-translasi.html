@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translasi Grafik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.big{font-family:var(--display);font-weight:800;font-size:18px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2);line-height:1.6}
+.ctl{display:grid;gap:6px}.ctl>div{display:flex;justify-content:space-between;align-items:center;gap:8px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik fungsi dan bayangannya setelah ditranslasikan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="f"><button data-f="lin" class="on">y = 2x + 1</button><button data-f="par">y = x²</button><button data-f="abs">y = |x|</button></div>
+    <div class="ctl">
+      <div><span class="lab">a (mendatar)</span><div class="step"><button data-d="a-1">−</button><output id="oa"></output><button data-d="a1">+</button></div></div>
+      <div><span class="lab">b (tegak)</span><div class="step"><button data-d="b-1">−</button><output id="ob"></output><button data-d="b1">+</button></div></div>
+    </div>
+    <div class="big" id="eq"></div>
+    <p class="note" id="why"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -7, xmax: 7, ymin: -6, ymax: 8, scale: 28});
+const F = {lin: {f: x => 2 * x + 1, n: 'y = 2x + 1', pt: 0}, par: {f: x => x * x, n: 'y = x²', pt: 0}, abs: {f: x => Math.abs(x), n: 'y = |x|', pt: 0}};
+let key = 'lin', a = 3, b = -2;
+$('f').onclick = e => { const btn = e.target.closest('button'); if(!btn) return; key = btn.dataset.f; document.querySelectorAll('#f button').forEach(x => x.classList.toggle('on', x === btn)); draw(); };
+document.querySelectorAll('[data-d]').forEach(btn => btn.onclick = () => { const v = +btn.dataset.d.slice(1); if(btn.dataset.d[0] === 'a') a = Math.max(-5, Math.min(5, a + v)); else b = Math.max(-5, Math.min(5, b + v)); draw(); });
+Sim.onTheme(draw);
+const sh = (v, name) => v === 0 ? name : `(${name} ${v > 0 ? '−' : '+'} ${Math.abs(v)})`;
+function path(g, col, dash){
+  let d = '', pen = false;
+  for(let x = -7; x <= 7.001; x += .05){ const y = g(x); if(y < -6.5 || y > 8.5){ pen = false; continue; } d += (pen ? 'L' : 'M') + P.X(x).toFixed(1) + ',' + P.Y(y).toFixed(1); pen = true; }
+  return `<path d="${d}" fill="none" style="stroke:${col}" stroke-width="3"${dash ? ' class="dash"' : ''}/>`;
+}
+function draw(){
+  const f = F[key].f, g = x => f(x - a) + b;
+  let s = P.grid({xname: 'x', yname: 'y'}) + path(f, 'var(--muted)', true) + path(g, 'var(--a)');
+  const x0 = key === 'lin' ? 1 : 0, y0 = f(x0);
+  s += P.arrow(x0, y0, x0 + a, y0 + b, 'var(--b)', {width: 3, head: 12});
+  s += `<circle cx="${P.X(x0)}" cy="${P.Y(y0)}" r="5" style="fill:var(--muted)"/><circle cx="${P.X(x0 + a)}" cy="${P.Y(y0 + b)}" r="6" style="fill:var(--a)"/>`;
+  svg.innerHTML = s;
+  $('oa').textContent = fmt(a); $('ob').textContent = fmt(b);
+  const xs = sh(a, 'x'), ys = b === 0 ? 'y' : `y ${b > 0 ? '−' : '+'} ${Math.abs(b)}`;
+  let res = '';
+  if(key === 'lin'){ const c = 1 - 2 * a + b; res = `y = 2x ${c >= 0 ? '+ ' + c : '− ' + -c}`; }
+  if(key === 'par') res = `y = ${sh(a, 'x')}² ${b ? (b > 0 ? '+ ' + b : '− ' + -b) : ''}`;
+  if(key === 'abs') res = `y = |x ${a ? (a > 0 ? '− ' + a : '+ ' + -a) : ''}| ${b ? (b > 0 ? '+ ' + b : '− ' + -b) : ''}`;
+  $('eq').innerHTML = `${F[key].n} oleh T(${fmt(a)}, ${fmt(b)}):<br>${ys} = ${F[key].n.slice(4).replace(/x/g, xs)}<br><span style="color:var(--a)">${res}</span>`;
+  $('why').innerHTML = `Setiap titik (x, y) pada grafik asal pindah ke (x ${a < 0 ? '−' : '+'} ${Math.abs(a)}, y ${b < 0 ? '−' : '+'} ${Math.abs(b)}). Karena itu, pada persamaan asal, <b>x diganti (x − a)</b> dan <b>y diganti (y − b)</b>. Panah merah menunjukkan pergeseran satu titik.`;
+}
+draw();
+</script>
+</body>
+</html>

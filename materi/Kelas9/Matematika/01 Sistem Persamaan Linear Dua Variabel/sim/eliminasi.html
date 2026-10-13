@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Langkah Eliminasi dan Substitusi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .wrap{padding:14px 16px;display:grid;gap:12px}
+  .sys{font-family:var(--display);font-weight:800;font-size:19px;line-height:1.7;padding:10px 14px;border-radius:12px;background:var(--surface-2)}
+  .work{font-size:15.5px;line-height:1.9;font-variant-numeric:tabular-nums}
+  .work .ln{padding:6px 10px;border-left:4px solid var(--line-2);margin:6px 0}
+  .work .ln b{font-family:var(--display)}
+  .row .btn{min-height:38px}
+  .hl{color:var(--b)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row"><b>Soal:</b><button class="btn" id="new">Soal baru</button><div class="seg" id="var" style="flex:1"><button data-v="y" class="on">Eliminasi y</button><button data-v="x">Eliminasi x</button></div></div>
+  <div class="sys" id="sys"></div>
+  <div class="work" id="work"></div>
+  <div class="row"><button class="btn primary" id="next">Langkah berikutnya</button><button class="btn" id="all">Tampilkan semua</button></div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const gcd = (a, b) => b ? gcd(b, a % b) : Math.abs(a), lcm = (a, b) => Math.abs(a * b) / gcd(a, b);
+let A, steps = [], shown = 0, v = 'y';
+const term = (k, n, first) => { if(!k) return ''; const s = Math.abs(k) === 1 ? n : Math.abs(k) + n; return first ? (k < 0 ? '−' : '') + s : (k < 0 ? ' − ' : ' + ') + s; };
+const eq = ([a, b, c]) => term(a, 'x', true) + term(b, 'y', !a) + ' = ' + fmt(c);
+function newProblem(){
+  const r = () => [-4, -3, -2, -1, 1, 2, 3, 4, 5][Math.floor(Math.random() * 9)];
+  let x, y, a1, b1, a2, b2;
+  do { x = r(); y = r(); a1 = r(); b1 = r(); a2 = r(); b2 = r(); } while(a1 * b2 - a2 * b1 === 0 || Math.abs(a1) === Math.abs(a2) && Math.abs(b1) === Math.abs(b2));
+  A = [[a1, b1, a1 * x + b1 * y], [a2, b2, a2 * x + b2 * y]];
+}
+function build(){
+  const [[a1, b1, c1], [a2, b2, c2]] = A, i = v === 'y' ? 1 : 0, k1 = A[0][i], k2 = A[1][i], L = lcm(k1, k2), m1 = L / Math.abs(k1), m2 = L / Math.abs(k2);
+  const E1 = A[0].map(t => t * m1), E2 = A[1].map(t => t * m2), op = Math.sign(E1[i]) === Math.sign(E2[i]) ? -1 : 1;
+  const R = E1.map((t, j) => t + op * E2[j]), j = 1 - i, val = R[2] / R[j];
+  const other = v === 'y' ? 'x' : 'y', vname = v;
+  // substitusi ke persamaan (1)
+  const coefKnown = A[0][j], coefUnknown = A[0][i], rest = A[0][2] - coefKnown * val, val2 = rest / coefUnknown;
+  steps = [
+    `Samakan koefisien <b>${vname}</b>: kalikan persamaan (1) dengan <b>${m1}</b> dan persamaan (2) dengan <b>${m2}</b>.<br>(1) × ${m1}: <b>${eq(E1)}</b><br>(2) × ${m2}: <b>${eq(E2)}</b>`,
+    `Koefisien ${vname} ${op < 0 ? 'sama tandanya, jadi kedua persamaan <b>dikurangkan</b>' : 'berlawanan tanda, jadi kedua persamaan <b>dijumlahkan</b>'}:<br><b>${term(R[j], other, true)} = ${fmt(R[2])}</b>`,
+    `Bagi kedua ruas dengan ${fmt(R[j])}: <b class="hl">${other} = ${fmt(val)}</b>`,
+    `Substitusikan ${other} = ${fmt(val)} ke persamaan (1): ${eq(A[0]).replace(other, '(' + fmt(val) + ')')}<br>${term(coefUnknown, vname, true)} = ${fmt(A[0][2])} − (${fmt(coefKnown * val)}) = ${fmt(rest)}, sehingga <b class="hl">${vname} = ${fmt(val2)}</b>`,
+    `Periksa ke persamaan (2): ${fmt(a2)}(${fmt(v === 'y' ? val : val2)}) + (${fmt(b2)})(${fmt(v === 'y' ? val2 : val)}) = ${fmt(a2 * (v === 'y' ? val : val2) + b2 * (v === 'y' ? val2 : val))} ✓<br>Himpunan penyelesaian: <b class="hl">{(${fmt(v === 'y' ? val : val2)}, ${fmt(v === 'y' ? val2 : val)})}</b>`,
+  ];
+  shown = 0; draw();
+}
+function draw(){
+  $('sys').innerHTML = `(1) ${eq(A[0])}<br>(2) ${eq(A[1])}`;
+  $('work').innerHTML = steps.slice(0, shown).map(s => `<div class="ln">${s}</div>`).join('');
+  $('next').disabled = shown >= steps.length;
+  parent !== window && parent.postMessage({simHeight: document.body.scrollHeight + 10}, '*');
+}
+$('next').onclick = () => { shown++; draw(); };
+$('all').onclick = () => { shown = steps.length; draw(); };
+$('new').onclick = () => { newProblem(); build(); };
+$('var').onclick = e => { const b = e.target.closest('button'); if(!b) return; v = b.dataset.v; document.querySelectorAll('#var button').forEach(x => x.classList.toggle('on', x === b)); build(); };
+A = [[2, 3, 13], [3, -1, 3]]; build();
+</script>
+</body>
+</html>

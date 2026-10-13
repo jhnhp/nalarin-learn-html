@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPLDV dengan Metode Grafik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .eqrow{display:flex;align-items:center;gap:4px;flex-wrap:wrap;font-family:var(--display);font-weight:800;font-size:15px}
+  .eqrow .step button{width:26px;height:26px;font-size:15px}
+  .eqrow .step output{min-width:24px;font-size:15px}
+  .ar{font-family:var(--display);font-weight:800;font-size:14px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Dua garis pada bidang koordinat dan titik potongnya"></svg></div>
+  <div class="panel">
+    <div class="eqrow" style="color:var(--a)" id="e1"></div>
+    <div class="eqrow" style="color:var(--comp)" id="e2"></div>
+    <div class="box" id="fb"></div>
+    <div class="row"><button class="btn" data-ex="0">Contoh satu titik</button><button class="btn" data-ex="1">Contoh sejajar</button><button class="btn" data-ex="2">Contoh berimpit</button></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -7, xmax: 7, ymin: -7, ymax: 7, scale: 30});
+const EX = [[[1, 1, 5], [2, -1, 4]], [[1, 2, 4], [2, 4, -6]], [[1, -1, 2], [3, -3, 6]]];
+let E = EX[0].map(r => r.slice());
+function row(i){
+  const col = i ? 'var(--comp)' : 'var(--a)', [a, b, c] = E[i], k = (j, t) => `<div class="step"><button data-r="${i}" data-j="${j}" data-d="-1">−</button><output>${fmt(E[i][j])}</output><button data-r="${i}" data-j="${j}" data-d="1">+</button></div>${t}`;
+  return k(0, 'x +') + k(1, 'y =') + k(2, '');
+}
+function bind(){ document.querySelectorAll('[data-r]').forEach(b => b.onclick = () => { const i = +b.dataset.r, j = +b.dataset.j; E[i][j] = Math.max(-9, Math.min(9, E[i][j] + +b.dataset.d)); if(!E[i][0] && !E[i][1]) E[i][j] += +b.dataset.d; draw(); }); }
+document.querySelectorAll('[data-ex]').forEach(b => b.onclick = () => { E = EX[+b.dataset.ex].map(r => r.slice()); draw(); });
+Sim.onTheme(draw);
+function lineSvg([a, b, c], col){
+  if(b !== 0) return `<line x1="${P.X(-7)}" y1="${P.Y((c - a * -7) / b)}" x2="${P.X(7)}" y2="${P.Y((c - a * 7) / b)}" style="stroke:${col}" stroke-width="3"/>`;
+  return `<line x1="${P.X(c / a)}" y1="${P.Y(-7)}" x2="${P.X(c / a)}" y2="${P.Y(7)}" style="stroke:${col}" stroke-width="3"/>`;
+}
+const eqs = ([a, b, c]) => `${a === 1 ? '' : a === -1 ? '−' : fmt(a)}x ${b < 0 ? '−' : '+'} ${Math.abs(b) === 1 ? '' : fmt(Math.abs(b))}y = ${fmt(c)}`;
+function draw(){
+  $('e1').innerHTML = row(0); $('e2').innerHTML = row(1); bind();
+  const [[a1, b1, c1], [a2, b2, c2]] = E, D = a1 * b2 - a2 * b1;
+  let s = P.grid({xname: 'x', yname: 'y'}) + lineSvg(E[0], 'var(--a)') + lineSvg(E[1], 'var(--comp)');
+  const fb = $('fb');
+  if(D !== 0){
+    const x = (c1 * b2 - c2 * b1) / D, y = (a1 * c2 - a2 * c1) / D;
+    if(Math.abs(x) <= 7 && Math.abs(y) <= 7) s += `<circle cx="${P.X(x)}" cy="${P.Y(y)}" r="8" style="fill:var(--b)"/><text class="ar" x="${P.X(x) + 12}" y="${P.Y(y) - 10}" style="fill:var(--b)">(${fmt(x)}, ${fmt(y)})</text>`;
+    fb.className = 'box ok'; fb.innerHTML = `Kedua garis <b>berpotongan di satu titik</b>. Penyelesaian tunggal: <b>x = ${fmt(x)}, y = ${fmt(y)}</b>. Periksa: ${eqs(E[0])} dan ${eqs(E[1])}.`;
+  } else {
+    const same = a1 * c2 === a2 * c1 && b1 * c2 === b2 * c1;
+    fb.className = 'box ' + (same ? 'info' : 'no');
+    fb.innerHTML = same ? 'Kedua garis <b>berimpit</b> (persamaan yang satu kelipatan yang lain). Penyelesaiannya <b>tak hingga banyaknya</b>.'
+      : 'Kedua garis <b>sejajar</b> (kemiringannya sama) dan tidak pernah berpotongan. SPLDV ini <b>tidak memiliki penyelesaian</b>.';
+  }
+  svg.innerHTML = s;
+}
+draw();
+</script>
+</body>
+</html>

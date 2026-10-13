@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Busur dan Juring Lingkaran</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:14px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.calc{font-size:14.5px;line-height:1.85;padding:10px 12px;border-radius:10px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="-170 -160 340 320" role="img" aria-label="Lingkaran dengan juring yang diarsir"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Sudut pusat α</span><b id="aout"></b></div><input type="range" id="a" min="0" max="360" step="5" value="90"></div>
+    <div><div class="lab"><span>Jari-jari r</span><b id="rout"></b></div><input type="range" id="r" min="1" max="21" step="1" value="14"></div>
+    <div class="seg" id="pi"><button data-p="22/7" class="on">π = 22/7</button><button data-p="3.14">π = 3,14</button></div>
+    <div class="calc" id="calc"></div>
+    <p class="note">Busur dan juring adalah bagian dari lingkaran sebesar α/360°. Coba α = 90°, 180°, dan 360°.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let PIv = 22 / 7, pis = '22/7';
+['a', 'r'].forEach(id => $(id).oninput = draw);
+$('pi').onclick = e => { const b = e.target.closest('button'); if(!b) return; pis = b.dataset.p; PIv = pis === '22/7' ? 22 / 7 : 3.14; document.querySelectorAll('#pi button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+Sim.onTheme(draw);
+function draw(){
+  const a = +$('a').value, r = +$('r').value, R = 120, rad = a * Math.PI / 180;
+  const x2 = R * Math.cos(-rad), y2 = R * Math.sin(-rad);
+  let s = `<circle r="${R}" fill="none" style="stroke:var(--ink)" stroke-width="2"/>`;
+  if(a >= 360) s += `<circle r="${R}" style="fill:var(--a)" fill-opacity=".22"/><circle r="${R}" fill="none" style="stroke:var(--b)" stroke-width="5"/>`;
+  else if(a > 0){
+    s += `<path d="M0,0 L${R},0 A${R},${R} 0 ${a > 180 ? 1 : 0} 0 ${x2},${y2} Z" style="fill:var(--a)" fill-opacity=".22"/>`;
+    s += `<path d="M${R},0 A${R},${R} 0 ${a > 180 ? 1 : 0} 0 ${x2},${y2}" fill="none" style="stroke:var(--b)" stroke-width="5"/>`;
+  }
+  s += `<line x1="0" y1="0" x2="${R}" y2="0" style="stroke:var(--ink)" stroke-width="2"/><line x1="0" y1="0" x2="${x2}" y2="${y2}" style="stroke:var(--ink)" stroke-width="2"/><circle r="4" style="fill:var(--ink)"/>`;
+  s += `<text class="ar" x="${R / 2}" y="18" text-anchor="middle">r = ${r}</text>`;
+  if(a > 0 && a < 360) s += `<path d="M28,0 A28,28 0 ${a > 180 ? 1 : 0} 0 ${28 * Math.cos(-rad)},${28 * Math.sin(-rad)}" fill="none" style="stroke:var(--r)" stroke-width="2"/><text class="ar" x="${44 * Math.cos(-rad / 2)}" y="${44 * Math.sin(-rad / 2) + 5}" text-anchor="middle" style="fill:var(--r)">${a}°</text>`;
+  svg.innerHTML = s;
+  $('aout').textContent = a + '°'; $('rout').textContent = r;
+  const K = 2 * PIv * r, Lt = PIv * r * r, f = a / 360;
+  $('calc').innerHTML = `Keliling = 2πr = 2 × ${pis.replace('.', ',')} × ${r} = <b>${fmt(K)}</b><br>Luas = πr² = ${pis.replace('.', ',')} × ${r}² = <b>${fmt(Lt)}</b><br>` +
+    `<span style="color:var(--b)">Panjang busur = ${a}/360 × ${fmt(K)} = <b>${fmt(f * K)}</b></span><br>` +
+    `<span style="color:var(--a)">Luas juring = ${a}/360 × ${fmt(Lt)} = <b>${fmt(f * Lt)}</b></span>`;
+}
+draw();
+</script>
+</body>
+</html>

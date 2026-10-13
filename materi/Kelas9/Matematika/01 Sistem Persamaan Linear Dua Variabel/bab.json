@@ -1,0 +1,254 @@
+{
+  "title": "Sistem Persamaan Linear Dua Variabel",
+  "summary": "Persamaan linear dua variabel, SPLDV dengan metode grafik, substitusi, eliminasi, dan campuran, serta penerapannya.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "pldv",
+      "title": "Persamaan linear dua variabel",
+      "kind": "artikel",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Dina membeli 2 pensil dan 3 buku dengan harga Rp13.000,00. Jika harga pensil x rupiah (dalam ribuan) dan harga buku y, maka \\(2x + 3y = 13\\). Ada banyak pasangan (x, y) yang memenuhi: (2, 3), (5, 1), (0,5; 4), dan seterusnya. Persamaan seperti ini disebut <b>persamaan linear dua variabel</b> (PLDV).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "PLDV",
+          "html": "<p>Bentuk umum: \\(ax + by = c\\), dengan a dan b tidak keduanya nol. Penyelesaiannya adalah pasangan berurutan (x, y). Jika semua penyelesaiannya digambar pada bidang koordinat, terbentuklah sebuah <b>garis lurus</b>.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Satu PLDV saja tidak cukup untuk menentukan harga pensil dan buku. Kita perlu informasi kedua, misalnya \"Rani membeli 3 pensil dan 1 buku seharga Rp9.000,00\". Dua PLDV yang harus dipenuhi bersamaan disebut <b>sistem persamaan linear dua variabel</b> (SPLDV):</p>\\[\\begin{cases} 2x + 3y = 13 \\\\ 3x + y = 9 \\end{cases}\\]"
+        },
+        {
+          "type": "check",
+          "question": "Pasangan berikut yang merupakan penyelesaian \\(3x - 2y = 8\\) adalah ....",
+          "options": {
+            "A": "(2, 1)",
+            "B": "(4, 2)",
+            "C": "(2, −1)",
+            "D": "(0, 4)"
+          },
+          "answer": "B",
+          "hint": "Substitusikan setiap pasangan.",
+          "explanation": "3(4) − 2(2) = 12 − 4 = 8. Untuk (2, 1): 6 − 2 = 4 ≠ 8."
+        }
+      ]
+    },
+    {
+      "id": "metode-grafik",
+      "title": "Metode grafik",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Setiap persamaan dalam SPLDV adalah sebuah garis. Penyelesaian SPLDV adalah titik yang terletak pada <b>kedua garis sekaligus</b>, yaitu titik potongnya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Langkah metode grafik",
+          "html": "<ol><li>Gambar garis pertama (misalnya dari titik potong sumbu x dan y).</li><li>Gambar garis kedua pada bidang yang sama.</li><li>Baca koordinat titik potongnya, lalu periksa ke kedua persamaan.</li></ol>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/dua-garis.html",
+          "title": "SPLDV dengan metode grafik",
+          "height": 520,
+          "caption": "Ubah koefisien kedua persamaan. Coba ketiga contoh. Kapan kedua garis tidak berpotongan? Kapan berimpit?"
+        },
+        {
+          "type": "image",
+          "src": "gambar/jenis-penyelesaian.svg",
+          "alt": "Tiga kemungkinan: dua garis berpotongan, sejajar, atau berimpit",
+          "width": 640,
+          "caption": "Tiga kemungkinan penyelesaian SPLDV."
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kelemahan metode grafik",
+          "html": "<p>Jika titik potongnya bukan bilangan bulat, misalnya \\(\\left(\\tfrac{7}{3}, \\tfrac{5}{4}\\right)\\), sulit membacanya dari grafik. Karena itu kita juga memerlukan metode aljabar: substitusi dan eliminasi.</p>"
+        },
+        {
+          "type": "check",
+          "question": "SPLDV \\(x + 2y = 4\\) dan \\(2x + 4y = -6\\) memiliki ....",
+          "options": {
+            "A": "tepat satu penyelesaian",
+            "B": "dua penyelesaian",
+            "C": "tidak ada penyelesaian",
+            "D": "tak hingga penyelesaian"
+          },
+          "answer": "C",
+          "hint": "Bandingkan kemiringan kedua garis.",
+          "explanation": "Persamaan kedua dibagi 2 menjadi \\(x + 2y = -3\\). Kemiringannya sama tetapi ruas kanannya berbeda, jadi kedua garis sejajar dan tidak berpotongan."
+        }
+      ]
+    },
+    {
+      "id": "metode-substitusi",
+      "title": "Metode substitusi",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Langkah metode substitusi",
+          "html": "<ol><li>Pilih salah satu persamaan, lalu nyatakan satu variabel dalam variabel lain (misalnya y = …).</li><li>Substitusikan (ganti) ke persamaan yang lain sehingga tersisa satu variabel.</li><li>Selesaikan, lalu substitusikan kembali untuk mendapatkan variabel kedua.</li></ol><p>Metode ini paling mudah jika ada variabel berkoefisien 1 atau −1.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Selesaikan \\(2x + 3y = 13\\) dan \\(3x + y = 9\\).</p>",
+          "steps": [
+            "Dari persamaan kedua: \\(y = 9 - 3x\\).",
+            "Substitusikan ke persamaan pertama: \\(2x + 3(9 - 3x) = 13\\), sehingga \\(2x + 27 - 9x = 13\\).",
+            "\\(-7x = -14\\), jadi x = 2.",
+            "y = 9 − 3(2) = 3. Harga pensil Rp2.000,00 dan buku Rp3.000,00."
+          ],
+          "answer": "x = 2, y = 3"
+        },
+        {
+          "type": "check",
+          "question": "Penyelesaian \\(y = 2x - 1\\) dan \\(x + y = 11\\) adalah ....",
+          "options": {
+            "A": "x = 4, y = 7",
+            "B": "x = 3, y = 8",
+            "C": "x = 5, y = 6",
+            "D": "x = 6, y = 11"
+          },
+          "answer": "A",
+          "hint": "Ganti y pada persamaan kedua dengan 2x − 1.",
+          "explanation": "x + 2x − 1 = 11, sehingga 3x = 12 dan x = 4. y = 2(4) − 1 = 7."
+        }
+      ]
+    },
+    {
+      "id": "metode-eliminasi",
+      "title": "Metode eliminasi dan metode campuran",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Langkah metode eliminasi",
+          "html": "<ol><li>Samakan koefisien salah satu variabel dengan mengalikan persamaan (pakai KPK koefisiennya).</li><li>Jika tandanya sama, <b>kurangkan</b> kedua persamaan; jika berlawanan, <b>jumlahkan</b>. Variabel itu hilang (tereliminasi).</li><li>Selesaikan persamaan yang tersisa.</li></ol><p><b>Metode campuran</b>: eliminasi untuk mendapatkan satu variabel, lalu substitusi untuk variabel yang lain. Inilah cara yang paling sering dipakai.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/eliminasi.html",
+          "title": "Langkah eliminasi dan substitusi",
+          "height": 520,
+          "caption": "Tekan <b>Langkah berikutnya</b> satu per satu. Lalu pilih <b>Eliminasi x</b>: apakah penyelesaiannya sama? Tekan <b>Soal baru</b> untuk berlatih, kerjakan dulu di kertas sebelum melihat langkahnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Selesaikan \\(3x + 4y = 10\\) dan \\(2x - 3y = -16\\).</p>",
+          "steps": [
+            "Eliminasi x: kalikan persamaan pertama dengan 2 dan kedua dengan 3: \\(6x + 8y = 20\\) dan \\(6x - 9y = -48\\).",
+            "Kurangkan: \\(17y = 68\\), jadi y = 4.",
+            "Substitusi ke persamaan pertama: \\(3x + 16 = 10\\), jadi x = −2.",
+            "Periksa: 2(−2) − 3(4) = −16. Benar."
+          ],
+          "answer": "x = −2, y = 4"
+        },
+        {
+          "type": "check",
+          "question": "Penyelesaian \\(4x + 3y = 18\\) dan \\(2x - y = 4\\) adalah ....",
+          "options": {
+            "A": "x = 3, y = 2",
+            "B": "x = 2, y = 3",
+            "C": "x = 4, y = 4",
+            "D": "x = 1, y = −2"
+          },
+          "answer": "A",
+          "hint": "Kalikan persamaan kedua dengan 3, lalu jumlahkan.",
+          "explanation": "\\(6x - 3y = 12\\). Dijumlahkan dengan \\(4x + 3y = 18\\): \\(10x = 30\\), x = 3. Lalu 2(3) − y = 4, y = 2."
+        }
+      ]
+    },
+    {
+      "id": "soal-cerita",
+      "title": "Menyelesaikan masalah dengan SPLDV",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Langkah memodelkan",
+          "html": "<ol><li>Tentukan dua hal yang belum diketahui dan beri nama variabel.</li><li>Terjemahkan dua informasi menjadi dua persamaan.</li><li>Selesaikan dengan metode yang paling mudah.</li><li>Jawab pertanyaannya dengan kalimat dan periksa apakah masuk akal.</li></ol>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Di tempat parkir terdapat 40 kendaraan yang terdiri atas mobil dan motor. Jumlah roda seluruhnya 110. Berapa banyak mobil dan motor?</p>",
+          "steps": [
+            "Misalkan mobil m dan motor n: \\(m + n = 40\\) dan \\(4m + 2n = 110\\).",
+            "Kalikan persamaan pertama dengan 2: \\(2m + 2n = 80\\). Kurangkan dari persamaan kedua: \\(2m = 30\\), m = 15.",
+            "n = 40 − 15 = 25."
+          ],
+          "answer": "15 mobil dan 25 motor"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Harga 3 kg apel dan 2 kg jeruk Rp105.000,00. Harga 2 kg apel dan 3 kg jeruk Rp95.000,00. Berapa harga 1 kg apel dan 1 kg jeruk?</p>",
+          "steps": [
+            "\\(3a + 2j = 105\\) dan \\(2a + 3j = 95\\) (dalam ribu rupiah).",
+            "Jumlahkan kedua persamaan: \\(5a + 5j = 200\\), jadi \\(a + j = 40\\).",
+            "Kurangkan kedua persamaan: \\(a - j = 10\\).",
+            "Dari a + j = 40 dan a − j = 10: a = 25 dan j = 15."
+          ],
+          "answer": "apel Rp25.000,00, jeruk Rp15.000,00 per kg"
+        },
+        {
+          "type": "check",
+          "question": "Jumlah dua bilangan 34 dan selisihnya 8. Hasil kali kedua bilangan itu adalah ....",
+          "options": {
+            "A": "210",
+            "B": "273",
+            "C": "289",
+            "D": "136"
+          },
+          "answer": "B",
+          "hint": "x + y = 34 dan x − y = 8.",
+          "explanation": "2x = 42, x = 21 dan y = 13. Hasil kalinya 273."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>PLDV</td><td>\\(ax + by = c\\); penyelesaiannya tak hingga, membentuk garis.</td></tr><tr><td>SPLDV</td><td>Dua PLDV yang dipenuhi bersamaan.</td></tr><tr><td>Metode grafik</td><td>Titik potong kedua garis. Sejajar: tidak ada penyelesaian. Berimpit: tak hingga.</td></tr><tr><td>Substitusi</td><td>Nyatakan satu variabel, lalu ganti ke persamaan lain.</td></tr><tr><td>Eliminasi</td><td>Samakan koefisien, lalu jumlahkan atau kurangkan.</td></tr><tr><td>Campuran</td><td>Eliminasi untuk satu variabel, substitusi untuk variabel lain.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Hanya mengalikan sebagian suku saat menyamakan koefisien.</li><li>Menjumlahkan padahal koefisien bertanda sama (seharusnya dikurangkan).</li><li>Lupa memeriksa jawaban ke persamaan kedua.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas IX</i> (Kemendikbudristek), Bab 1 Sistem Persamaan Linear Dua Variabel.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang persamaan dan sistem persamaan linear dua variabel, metode grafik, substitusi, eliminasi, dan soal cerita. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

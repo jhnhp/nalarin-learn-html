@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penjelajah Bangun Ruang</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  #svg{cursor:grab;touch-action:none} #svg:active{cursor:grabbing}
+  select{font:inherit;font-size:14px;padding:7px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}
+  .calc{font-size:14px;line-height:1.75;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="-200 -170 400 340" role="img" aria-label="Bangun ruang tiga dimensi yang dapat diputar"></svg></div>
+  <div class="panel">
+    <select id="pick" aria-label="Pilih bangun"></select>
+    <div id="dims"></div>
+    <div class="read" id="read"></div>
+    <div class="calc" id="calc"></div>
+    <p class="note">Seret gambar untuk memutar bangun.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const PI = Math.PI;
+const SH = {
+  kubus: {name: 'Kubus', d: {s: ['rusuk s', 6]}, flat: true},
+  balok: {name: 'Balok', d: {p: ['panjang p', 8], l: ['lebar l', 5], t: ['tinggi t', 4]}, flat: true},
+  prisma: {name: 'Prisma segitiga (alas siku-siku)', d: {a: ['alas segitiga a', 6], b: ['tinggi segitiga b', 8], t: ['tinggi prisma t', 10]}, flat: true},
+  limas: {name: 'Limas persegi', d: {s: ['sisi alas s', 6], t: ['tinggi limas t', 4]}, flat: true},
+  tabung: {name: 'Tabung', d: {r: ['jari-jari r', 7], t: ['tinggi t', 10]}},
+  kerucut: {name: 'Kerucut', d: {r: ['jari-jari r', 6], t: ['tinggi t', 8]}},
+  bola: {name: 'Bola', d: {r: ['jari-jari r', 7]}},
+};
+let key = 'balok', dim = {}, rx = -0.45, ry = 0.6;
+$('pick').innerHTML = Object.entries(SH).map(([k, v]) => `<option value="${k}"${k === key ? ' selected' : ''}>${v.name}</option>`).join('');
+$('pick').onchange = e => { key = e.target.value; setup(); };
+function setup(){
+  const D = SH[key].d; dim = {};
+  $('dims').innerHTML = Object.entries(D).map(([k, [lab, v]]) => { dim[k] = v; return `<div><div class="lab"><span>${lab}</span><b id="o-${k}">${v}</b></div><input type="range" id="r-${k}" min="1" max="14" value="${v}"></div>`; }).join('');
+  Object.keys(D).forEach(k => $('r-' + k).oninput = e => { dim[k] = +e.target.value; $('o-' + k).textContent = dim[k]; draw(); });
+  draw();
+}
+// geometri: daftar titik dan rusuk (wireframe)
+function geom(){
+  const d = dim, V = [], E = [];
+  const box = (p, l, t) => { for(const x of [-p / 2, p / 2]) for(const y of [-t / 2, t / 2]) for(const z of [-l / 2, l / 2]) V.push([x, y, z]);
+    [[0, 1], [0, 2], [0, 4], [1, 3], [1, 5], [2, 3], [2, 6], [3, 7], [4, 5], [4, 6], [5, 7], [6, 7]].forEach(e => E.push(e)); };
+  const ring = (r, y, n = 40) => { const s = V.length; for(let i = 0; i < n; i++) V.push([r * Math.cos(2 * PI * i / n), y, r * Math.sin(2 * PI * i / n)]); for(let i = 0; i < n; i++) E.push([s + i, s + (i + 1) % n]); return s; };
+  if(key === 'kubus') box(d.s, d.s, d.s);
+  if(key === 'balok') box(d.p, d.l, d.t);
+  if(key === 'prisma'){ const a = d.a, b = d.b, t = d.t;
+    [[-a / 2, -b / 2], [a / 2, -b / 2], [-a / 2, b / 2]].forEach(([x, y]) => { V.push([x, y, -t / 2]); V.push([x, y, t / 2]); });
+    [[0, 2], [2, 4], [4, 0], [1, 3], [3, 5], [5, 1], [0, 1], [2, 3], [4, 5]].forEach(e => E.push(e)); }
+  if(key === 'limas'){ const s = d.s, t = d.t; [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(([x, z]) => V.push([x * s / 2, -t / 2, z * s / 2])); V.push([0, t / 2, 0]);
+    [[0, 1], [1, 2], [2, 3], [3, 0], [0, 4], [1, 4], [2, 4], [3, 4]].forEach(e => E.push(e)); }
+  if(key === 'tabung'){ const a = ring(d.r, -d.t / 2), b = ring(d.r, d.t / 2); for(let i = 0; i < 40; i += 10) E.push([a + i, b + i]); }
+  if(key === 'kerucut'){ const a = ring(d.r, -d.t / 2); V.push([0, d.t / 2, 0]); for(let i = 0; i < 40; i += 5) E.push([a + i, V.length - 1]); }
+  if(key === 'bola'){ for(let k = -3; k <= 3; k++) ring(d.r * Math.cos(k * PI / 8), d.r * Math.sin(k * PI / 8));
+    for(let m = 0; m < 4; m++){ const s = V.length; for(let i = 0; i < 40; i++){ const a = 2 * PI * i / 40; V.push([d.r * Math.cos(a) * Math.cos(m * PI / 4), d.r * Math.sin(a), d.r * Math.cos(a) * Math.sin(m * PI / 4)]); } for(let i = 0; i < 40; i++) E.push([s + i, s + (i + 1) % 40]); } }
+  return {V, E};
+}
+function proj([x, y, z]){
+  const cy = Math.cos(ry), sy = Math.sin(ry), cx = Math.cos(rx), sx = Math.sin(rx);
+  const x1 = x * cy + z * sy, z1 = -x * sy + z * cy, y1 = y * cx - z1 * sx, z2 = y * sx + z1 * cx;
+  return [x1, -y1, z2];
+}
+function draw(){
+  const {V, E} = geom(), maxd = Math.max(...Object.values(dim)) || 1, k = 120 / maxd;
+  const P = V.map(p => proj(p).map(c => c * k));
+  const zs = P.map(p => p[2]), zmid = (Math.max(...zs) + Math.min(...zs)) / 2;
+  let s = '';
+  E.forEach(([a, b]) => { const back = (P[a][2] + P[b][2]) / 2 < zmid - 1 && (SH[key].flat);
+    s += `<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" style="stroke:var(--a)" stroke-width="${back ? 1.6 : 2.6}"${back ? ' class="dash"' : ''} stroke-opacity="${back ? .55 : 1}"/>`; });
+  if(SH[key].flat) P.forEach(p => s += `<circle cx="${p[0]}" cy="${p[1]}" r="4" style="fill:var(--b)"/>`);
+  svg.innerHTML = s;
+  info();
+}
+function info(){
+  const d = dim, c = $('calc'), r = $('read');
+  const row = (a, b) => `<div><span>${a}</span><b>${b}</b></div>`;
+  let html = '', calc = '';
+  if(key === 'kubus'){ html = row('Sisi, rusuk, titik sudut', '6, 12, 8'); calc = `L = 6s² = 6 × ${d.s}² = <b>${fmt(6 * d.s ** 2)}</b><br>V = s³ = ${d.s}³ = <b>${fmt(d.s ** 3)}</b>`; }
+  if(key === 'balok'){ html = row('Sisi, rusuk, titik sudut', '6, 12, 8'); calc = `L = 2(pl + pt + lt) = 2(${d.p * d.l} + ${d.p * d.t} + ${d.l * d.t}) = <b>${fmt(2 * (d.p * d.l + d.p * d.t + d.l * d.t))}</b><br>V = p × l × t = <b>${fmt(d.p * d.l * d.t)}</b>`; }
+  if(key === 'prisma'){ const m = Math.hypot(d.a, d.b), La = d.a * d.b / 2, K = d.a + d.b + m; html = row('Sisi, rusuk, titik sudut', '5, 9, 6');
+    calc = `Alas: ½ × ${d.a} × ${d.b} = ${fmt(La)}; keliling alas = ${d.a} + ${d.b} + ${fmt(m)} = ${fmt(K)}<br>L = 2 × L<sub>alas</sub> + K<sub>alas</sub> × t = <b>${fmt(2 * La + K * d.t)}</b><br>V = L<sub>alas</sub> × t = <b>${fmt(La * d.t)}</b>`; }
+  if(key === 'limas'){ const ts = Math.hypot(d.s / 2, d.t); html = row('Sisi, rusuk, titik sudut', '5, 8, 5');
+    calc = `Tinggi sisi tegak = √((s/2)² + t²) = ${fmt(ts)}<br>L = s² + 4 × ½ × s × t<sub>sisi</sub> = <b>${fmt(d.s ** 2 + 2 * d.s * ts)}</b><br>V = ⅓ × s² × t = <b>${fmt(d.s ** 2 * d.t / 3)}</b>`; }
+  if(key === 'tabung'){ html = row('Sisi', '3 (2 lingkaran, 1 selimut)');
+    calc = `L = 2πr(r + t) = 2π × ${d.r} × ${d.r + d.t} ≈ <b>${fmt(2 * PI * d.r * (d.r + d.t))}</b><br>V = πr²t = π × ${d.r}² × ${d.t} ≈ <b>${fmt(PI * d.r ** 2 * d.t)}</b>`; }
+  if(key === 'kerucut'){ const sl = Math.hypot(d.r, d.t); html = row('Sisi', '2 (alas lingkaran, selimut)');
+    calc = `Garis pelukis s = √(r² + t²) = ${fmt(sl)}<br>L = πr(r + s) ≈ <b>${fmt(PI * d.r * (d.r + sl))}</b><br>V = ⅓πr²t ≈ <b>${fmt(PI * d.r ** 2 * d.t / 3)}</b>`; }
+  if(key === 'bola'){ html = row('Sisi', '1 (sisi lengkung)'); calc = `L = 4πr² ≈ <b>${fmt(4 * PI * d.r ** 2)}</b><br>V = ⁴⁄₃πr³ ≈ <b>${fmt(4 / 3 * PI * d.r ** 3)}</b>`; }
+  if(SH[key].flat){ const [Vn, En, Fn] = {kubus: [8, 12, 6], balok: [8, 12, 6], prisma: [6, 9, 5], limas: [5, 8, 5]}[key]; html += row('Rumus Euler: S + T − R', `${Fn} + ${Vn} − ${En} = ${Fn + Vn - En}`); }
+  r.innerHTML = html; c.innerHTML = calc + '<br><span style="color:var(--muted);font-size:13px">L = luas permukaan (satuan²), V = volume (satuan³), π ≈ 3,14159</span>';
+}
+let drag = null;
+svg.addEventListener('pointerdown', e => { drag = {x: e.clientX, y: e.clientY, rx, ry}; svg.setPointerCapture(e.pointerId); });
+svg.addEventListener('pointermove', e => { if(!drag) return; ry = drag.ry + (e.clientX - drag.x) / 120; rx = Math.max(-1.5, Math.min(1.5, drag.rx + (e.clientY - drag.y) / 120)); draw(); });
+svg.addEventListener('pointerup', () => drag = null);
+Sim.onTheme(draw);
+setup();
+</script>
+</body>
+</html>
