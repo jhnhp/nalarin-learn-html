@@ -1,0 +1,284 @@
+{
+  "title": "Analisis Data Bivariat",
+  "summary": "Data kategorikal dan numerikal, tabel silang dan matriks, frekuensi relatif bersyarat dan asosiasi, diagram pencar dan korelasi, serta garis best-fit untuk prediksi.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "data-bivariat",
+      "title": "Data kategorikal, numerikal, dan bivariat",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Data <b>kategorikal</b> berupa kelompok atau label (golongan darah, jenis kelamin, merek). Data <b>numerikal</b> berupa angka hasil mengukur atau mencacah (tinggi badan, banyak saudara) yang bermakna jika dioperasikan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Univariat dan bivariat",
+          "html": "<ul><li><b>Data univariat</b>: satu variabel diamati pada setiap individu, misalnya tinggi badan saja.</li><li><b>Data bivariat</b>: dua variabel diamati pada setiap individu, misalnya tinggi <i>dan</i> berat badan setiap siswa. Tujuannya melihat hubungan kedua variabel.</li></ul><p>Jika satu variabel diduga memengaruhi yang lain, yang memengaruhi disebut <b>variabel independen</b> (bebas, biasanya sumbu x) dan yang dipengaruhi <b>variabel dependen</b> (terikat, sumbu y).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Pasangan variabel</th><th>Cara menyajikan</th></tr><tr><td>kategorikal – kategorikal</td><td>tabel silang, diagram batang bertumpuk</td></tr><tr><td>numerikal – numerikal</td><td>diagram pencar</td></tr><tr><td>kategorikal – numerikal</td><td>box plot berdampingan</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Seorang peneliti mencatat jenis kelamin dan merek ponsel 50 siswa. Tentukan jenis datanya.</p>",
+          "steps": [
+            "Jenis kelamin: kategorikal. Merek ponsel: kategorikal.",
+            "Keduanya dicatat pada setiap siswa, jadi datanya bivariat kategorikal–kategorikal, disajikan dengan tabel silang."
+          ],
+          "answer": "data bivariat dua variabel kategorikal"
+        },
+        {
+          "type": "check",
+          "question": "Berikut yang merupakan data numerikal adalah ....",
+          "options": {
+            "A": "golongan darah",
+            "B": "nomor punggung pemain",
+            "C": "lama tidur per hari",
+            "D": "warna favorit"
+          },
+          "answer": "C",
+          "hint": "Apakah angkanya bermakna jika dijumlahkan atau dirata-rata?",
+          "explanation": "Lama tidur adalah hasil pengukuran. Nomor punggung memang angka, tetapi hanya label sehingga termasuk kategorikal."
+        }
+      ]
+    },
+    {
+      "id": "tabel-silang",
+      "title": "Tabel silang dan bentuk matriks",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Hubungan dua variabel kategorikal diringkas dalam <b>tabulasi silang</b> (tabel kontingensi): kategori satu variabel menjadi baris, kategori variabel lain menjadi kolom, dan setiap sel berisi frekuensi.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Uji coba vaksin hepatitis B di Bandung</b></p><table><tr><th>Status \\ Kondisi</th><th>Terserang</th><th>Tidak terserang</th><th>Jumlah</th></tr><tr><td>Divaksin</td><td>12</td><td>88</td><td>100</td></tr><tr><td>Tidak divaksin</td><td>28</td><td>72</td><td>100</td></tr><tr><td>Jumlah</td><td>40</td><td>160</td><td>200</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bentuk matriks",
+          "html": "<p>Jika judul baris dan kolom dihilangkan, isi tabel dapat ditulis sebagai <b>matriks</b>, yaitu susunan bilangan dalam baris dan kolom:</p>\\[\\begin{pmatrix} 12 & 88 \\\\ 28 & 72 \\end{pmatrix}\\]<p>Matriks ini berordo 2 × 2 (2 baris, 2 kolom). Bentuk ini memudahkan pengolahan data dalam jumlah besar, misalnya menjumlahkan data tiga kota sekaligus.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Di Palembang hasilnya \\(\\begin{pmatrix} 10 & 90 \\\\ 25 & 75 \\end{pmatrix}\\). Tentukan matriks gabungan Bandung dan Palembang.</p>",
+          "steps": [
+            "Jumlahkan elemen yang seletak.",
+            "\\(\\begin{pmatrix} 12+10 & 88+90 \\\\ 28+25 & 72+75 \\end{pmatrix} = \\begin{pmatrix} 22 & 178 \\\\ 53 & 147 \\end{pmatrix}\\)"
+          ],
+          "answer": "(22 178; 53 147)"
+        },
+        {
+          "type": "check",
+          "question": "Tabel silang dengan 3 kategori baris dan 4 kategori kolom (tanpa baris dan kolom jumlah) dapat ditulis sebagai matriks berordo ....",
+          "options": {
+            "A": "3 × 4",
+            "B": "4 × 3",
+            "C": "7 × 1",
+            "D": "12 × 1"
+          },
+          "answer": "A",
+          "hint": "Ordo ditulis banyak baris × banyak kolom.",
+          "explanation": "3 baris dan 4 kolom, jadi ordonya 3 × 4."
+        }
+      ]
+    },
+    {
+      "id": "frekuensi-bersyarat",
+      "title": "Frekuensi relatif bersyarat dan asosiasi",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Apakah tablet obat mual benar-benar mengurangi mual? Kita tidak cukup membandingkan frekuensi, apalagi jika banyak anggota tiap kelompok berbeda. Kita bandingkan <b>proporsi</b> di dalam setiap kelompok.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Dua jenis frekuensi relatif",
+          "html": "<ul><li><b>Frekuensi relatif (total)</b> = frekuensi sel ÷ total keseluruhan.</li><li><b>Frekuensi relatif bersyarat</b> = frekuensi sel ÷ jumlah baris (atau kolom) tempat sel itu berada. Contoh: dari yang divaksin, 12/100 = 12% terserang.</li></ul><p>Jika distribusi bersyarat antarbaris <b>berbeda jauh</b>, ada <b>asosiasi</b> antara kedua variabel. Jika hampir sama, tidak ada asosiasi.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/tabel-silang.html",
+          "title": "Tabel silang dan frekuensi relatif bersyarat",
+          "height": 560,
+          "caption": "Bandingkan panjang segmen warna yang sama pada setiap batang. Coba data <b>Tanpa asosiasi</b>, lalu ubah satu sel dan lihat kapan asosiasi muncul."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tablet obat: 41 tidak mual, 38 ringan, 16 sedang, 5 berat (dari 100). Placebo: 17, 30, 38, 15 (dari 100). Apakah ada asosiasi?</p>",
+          "steps": [
+            "Persentase tidak mual: 41% (obat) vs 17% (placebo).",
+            "Persentase mual sedang atau berat: 21% (obat) vs 53% (placebo).",
+            "Distribusi bersyarat berbeda jauh, jadi ada asosiasi: kelompok tablet obat cenderung lebih sedikit mual."
+          ],
+          "answer": "ada asosiasi"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Asosiasi bukan sebab-akibat",
+          "html": "<p>Asosiasi hanya menunjukkan kecenderungan. Untuk menyimpulkan sebab-akibat diperlukan desain penelitian khusus, misalnya eksperimen dengan pembagian kelompok secara acak dan placebo seperti uji obat di atas.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Dari 100 orang yang divaksin, 12 terserang. Dari 100 yang tidak divaksin, 28 terserang. Frekuensi relatif bersyarat “terserang” untuk kelompok tidak divaksin adalah ....",
+          "options": {
+            "A": "12%",
+            "B": "14%",
+            "C": "28%",
+            "D": "70%"
+          },
+          "answer": "C",
+          "hint": "Bagi dengan jumlah baris kelompok tidak divaksin.",
+          "explanation": "28/100 = 28%. Angka 14% adalah 28/200, frekuensi relatif terhadap total."
+        }
+      ]
+    },
+    {
+      "id": "korelasi",
+      "title": "Diagram pencar dan korelasi",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Untuk dua variabel numerikal, setiap individu digambar sebagai satu titik pada <b>diagram pencar</b>. Pola titik-titiknya memberi tiga informasi: <b>arah</b> (positif/negatif), <b>bentuk</b> (linear/kurva), dan <b>kekuatan</b> (rapat/menyebar).</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/jenis-korelasi.svg",
+          "alt": "Enam diagram pencar: positif kuat, positif lemah, negatif kuat, negatif lemah, tidak ada korelasi, dan tidak linear",
+          "width": 600,
+          "caption": "Makin rapat titik-titik membentuk garis, makin kuat korelasinya."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Koefisien korelasi r",
+          "html": "<p>Kekuatan hubungan linear diukur dengan koefisien korelasi r (Karl Pearson), −1 ≤ r ≤ 1.</p><ul><li>r mendekati 1: korelasi positif kuat; mendekati −1: negatif kuat.</li><li>r mendekati 0: tidak ada hubungan <i>linear</i> (mungkin tetap ada hubungan kurva).</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Korelasi dan kausalitas",
+          "html": "<p>Penjualan es krim berkorelasi positif dengan banyak kasus tenggelam, tetapi es krim tidak menyebabkan tenggelam. Keduanya dipengaruhi <b>variabel ketiga</b>: cuaca panas. Korelasi tidak sama dengan sebab-akibat.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Nilai koefisien korelasi yang menunjukkan hubungan linear paling kuat adalah ....",
+          "options": {
+            "A": "r = 0,75",
+            "B": "r = −0,92",
+            "C": "r = 0,10",
+            "D": "r = −0,40"
+          },
+          "answer": "B",
+          "hint": "Kekuatan dilihat dari besar |r|, bukan tandanya.",
+          "explanation": "|−0,92| = 0,92 adalah yang terbesar, jadi korelasinya paling kuat (arah negatif)."
+        }
+      ]
+    },
+    {
+      "id": "best-fit",
+      "title": "Garis best-fit dan prediksi",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Mona mencatat uang jajan dan uang yang ditabung 8 temannya (dalam ribu rupiah): (10, 2), (40, 11), (25, 8), (50, 14), (15, 5), (35, 10), (30, 7), (45, 15). Bisakah kita memprediksi tabungan siswa yang uang jajannya 20 ribu?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Garis best-fit (regresi linear)",
+          "html": "<p>Garis lurus \\(\\hat{y} = a + bx\\) yang paling mewakili data disebut garis <b>best-fit</b>. Garis ini tidak harus melalui titik data, tetapi selalu melalui titik rata-rata \\((\\bar{x}, \\bar{y})\\).</p><p><b>Residu</b> = y − ŷ, jarak tegak titik ke garis. Garis best-fit membuat jumlah kuadrat residu paling kecil (metode kuadrat terkecil).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/garis-best-fit.html",
+          "title": "Garis best-fit",
+          "height": 600,
+          "caption": "Geser P dan Q untuk membuat jumlah kuadrat residu sekecil mungkin, lalu bandingkan dengan garis best-fit. Gunakan penggeser prediksi untuk melihat beda interpolasi dan ekstrapolasi."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pengayaan: rumus kuadrat terkecil",
+          "html": "\\[b = \\frac{n\\sum xy - \\sum x \\sum y}{n\\sum x^2 - (\\sum x)^2}, \\qquad a = \\bar{y} - b\\bar{x}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan garis best-fit data Mona dan prediksi tabungan untuk uang jajan 20 ribu.</p>",
+          "steps": [
+            "n = 8, Σx = 250, Σy = 72, Σxy = 2.670, Σx² = 9.200.",
+            "b = (8 × 2.670 − 250 × 72)/(8 × 9.200 − 250²) = 3.360/11.100 ≈ 0,303.",
+            "a = 9 − 0,303 × 31,25 ≈ −0,46. Jadi ŷ = −0,46 + 0,303x.",
+            "x = 20: ŷ ≈ 5,6 ribu rupiah."
+          ],
+          "answer": "ŷ = −0,46 + 0,303x; prediksi sekitar Rp5.600,00"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Interpolasi dan ekstrapolasi",
+          "html": "<p><b>Interpolasi</b>: memprediksi di dalam jangkauan data (uang jajan 10–50 ribu). <b>Ekstrapolasi</b>: di luar jangkauan, misalnya 60 ribu. Ekstrapolasi kurang dapat dipercaya karena belum tentu polanya tetap berlaku. Pencilan juga dapat mengubah garis dan nilai r secara drastis.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Garis best-fit sebuah data adalah ŷ = 2 + 1,5x dengan x̄ = 4. Nilai ȳ adalah ....",
+          "options": {
+            "A": "6",
+            "B": "8",
+            "C": "10",
+            "D": "1,5"
+          },
+          "answer": "B",
+          "hint": "Garis best-fit selalu melalui (x̄, ȳ).",
+          "explanation": "ȳ = 2 + 1,5 × 4 = 8."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Data bivariat</td><td>dua variabel diamati pada setiap individu</td></tr><tr><td>Tabel silang</td><td>dua variabel kategorikal; dapat ditulis sebagai matriks</td></tr><tr><td>Frekuensi relatif bersyarat</td><td>sel ÷ jumlah baris; beda jauh antarbaris = asosiasi</td></tr><tr><td>Diagram pencar</td><td>arah, bentuk, kekuatan; r antara −1 dan 1</td></tr><tr><td>Garis best-fit</td><td>ŷ = a + bx, melalui (x̄, ȳ), meminimumkan jumlah kuadrat residu</td></tr><tr><td>Prediksi</td><td>interpolasi lebih dapat dipercaya daripada ekstrapolasi</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Membandingkan frekuensi, bukan frekuensi relatif bersyarat, pada kelompok berbeda ukuran.</li><li>Menganggap korelasi atau asosiasi sebagai sebab-akibat.</li><li>Mempercayai prediksi jauh di luar jangkauan data.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas XI</i> (Kemendikbudristek), Bab 1 Analisis Data Bivariat.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang data bivariat, tabel silang, frekuensi relatif bersyarat, korelasi, dan garis best-fit. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

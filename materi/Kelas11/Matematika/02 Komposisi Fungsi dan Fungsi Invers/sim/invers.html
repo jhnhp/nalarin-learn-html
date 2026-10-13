@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafik Fungsi Invers</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik fungsi dan inversnya, simetris terhadap garis y sama dengan x"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Fungsi f</span></div><select id="fn"></select></div>
+    <label class="chk"><input type="checkbox" id="c-inv" checked> Tampilkan grafik f⁻¹</label>
+    <label class="chk"><input type="checkbox" id="c-hl"> Uji garis mendatar (apakah f satu-satu?)</label>
+    <div class="read" id="read"></div>
+    <p class="note">Geser titik <b>A</b> pada grafik f. Titik pasangannya A′ pada grafik f⁻¹ diperoleh dengan menukar koordinat: (a, b) ↦ (b, a), yaitu pencerminan terhadap garis y = x.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -6, xmax: 6, ymin: -6, ymax: 6, scale: 30});
+const FN = [
+  {n: 'f(x) = 2x + 1', f: x => 2 * x + 1, inv: 'f⁻¹(x) = (x − 1)/2', ok: true},
+  {n: 'f(x) = (x + 3)/2', f: x => (x + 3) / 2, inv: 'f⁻¹(x) = 2x − 3', ok: true},
+  {n: 'f(x) = x³/4', f: x => x ** 3 / 4, inv: 'f⁻¹(x) = ∛(4x)', ok: true},
+  {n: 'f(x) = 2ˣ', f: x => 2 ** x, inv: 'f⁻¹(x) = ²log x', ok: true},
+  {n: 'f(x) = x² − 2', f: x => x * x - 2, inv: 'tidak punya invers pada domain bilangan real (tidak satu-satu)', ok: false},
+  {n: 'f(x) = x² − 2, x ≥ 0', f: x => x * x - 2, d: 0, inv: 'f⁻¹(x) = √(x + 2), x ≥ −2', ok: true},
+];
+$('fn').innerHTML = FN.map((F, i) => `<option value="${i}">${F.n}</option>`).join('');
+let ax = 1, hy = 2;
+['fn', 'c-inv', 'c-hl'].forEach(id => $(id).onchange = () => { const F = FN[$('fn').value]; if(F.d !== undefined && ax < F.d) ax = 1; draw(); });
+P.draggable((h, x, y) => { if(h === 'A'){ const F = FN[$('fn').value]; ax = Math.round(Math.min(6, Math.max(F.d ?? -6, x)) * 4) / 4; } else hy = Math.round(Math.min(6, Math.max(-6, y)) * 4) / 4; draw(); });
+Sim.onTheme(draw);
+function curve(pts, col, w = 3, dash){ let d = '', pen = false; pts.forEach(([x, y]) => { if(!isFinite(y) || Math.abs(y) > 6.5 || Math.abs(x) > 6.5){ pen = false; return; } d += (pen ? 'L' : 'M') + P.X(x).toFixed(1) + ',' + P.Y(y).toFixed(1); pen = true; }); return `<path d="${d}" fill="none" style="stroke:${col}" stroke-width="${w}"${dash ? ' class="dash"' : ''}/>`; }
+function draw(){
+  const F = FN[$('fn').value], x0 = F.d ?? -6, pts = [];
+  for(let x = x0; x <= 6.001; x += .03) pts.push([x, F.f(x)]);
+  let s = P.grid({labelStep: 2, xname: 'x', yname: 'y'});
+  s += `<line x1="${P.X(-6)}" y1="${P.Y(-6)}" x2="${P.X(6)}" y2="${P.Y(6)}" style="stroke:var(--muted)" stroke-width="1.5" class="dash"/><text class="ar" x="${P.X(5.2)}" y="${P.Y(5.6)}" style="fill:var(--muted)">y = x</text>`;
+  s += curve(pts, 'var(--a)');
+  if($('c-inv').checked) s += curve(pts.map(([x, y]) => [y, x]), F.ok ? 'var(--comp)' : 'var(--r)', 3, !F.ok);
+  const ay = F.f(ax);
+  let hits = [];
+  if($('c-hl').checked){
+    s += `<line x1="${P.X(-6)}" y1="${P.Y(hy)}" x2="${P.X(6)}" y2="${P.Y(hy)}" style="stroke:var(--r)" stroke-width="2"/>`;
+    for(let i = 1; i < pts.length; i++){ const [x1, y1] = pts[i - 1], [x2, y2] = pts[i]; if((y1 - hy) * (y2 - hy) <= 0 && y1 !== y2){ const xx = x1 + (hy - y1) / (y2 - y1) * (x2 - x1); if(!hits.some(h => Math.abs(h - xx) < .05)) hits.push(xx); } }
+    hits.forEach(xx => s += `<circle cx="${P.X(xx)}" cy="${P.Y(hy)}" r="5" style="fill:var(--r)"/>`);
+    s += P.handle('H', -5.5, hy, 'var(--r)');
+  }
+  if(Math.abs(ay) <= 6){
+    s += P.handle('A', ax, ay, 'var(--a)') + `<text class="ar" x="${P.X(ax) + 10}" y="${P.Y(ay) - 10}" style="fill:var(--a)">A(${fmt(ax)}, ${fmt(ay)})</text>`;
+    if($('c-inv').checked && F.ok) s += `<line x1="${P.X(ax)}" y1="${P.Y(ay)}" x2="${P.X(ay)}" y2="${P.Y(ax)}" style="stroke:var(--muted)" stroke-width="1.2" class="dash"/><circle cx="${P.X(ay)}" cy="${P.Y(ax)}" r="6" style="fill:var(--comp)"/><text class="ar" x="${P.X(ay) + 10}" y="${P.Y(ax) + 18}" style="fill:var(--comp)">A′(${fmt(ay)}, ${fmt(ax)})</text>`;
+  }
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span style="color:var(--a)">${F.n}</span><b>f(${fmt(ax)}) = ${fmt(ay)}</b></div>` +
+    `<div><span style="color:${F.ok ? 'var(--comp)' : 'var(--r)'}">Invers</span><b>${F.inv}</b></div>` +
+    (F.ok ? `<div><span>Periksa: f⁻¹(${fmt(ay)})</span><b>${fmt(ax)}</b></div>` : '') +
+    ($('c-hl').checked ? `<div><span style="color:var(--r)">Garis y = ${fmt(hy)} memotong grafik f</span><b>${hits.length} kali</b></div>` : '');
+}
+draw();
+</script>
+</body>
+</html>
