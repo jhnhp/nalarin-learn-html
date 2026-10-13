@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pola Korek Api</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+  td,th{padding:4px 6px;text-align:center;border-bottom:1px solid var(--line)}
+  th{font-size:12px;color:var(--muted);text-align:left}
+  .big{font-family:var(--display);font-weight:800;font-size:22px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 520 260" role="img" aria-label="Susunan korek api membentuk persegi berderet"></svg></div>
+  <div class="panel">
+    <div class="seg" id="pat"><button data-p="sq" class="on">Persegi</button><button data-p="tri">Segitiga</button></div>
+    <div><div class="lab"><span>Banyak bangun (n)</span><b id="nout"></b></div><input type="range" id="n" min="1" max="8" value="3"></div>
+    <label class="chk"><input type="checkbox" id="c-col" checked> Warnai korek pertama dan korek tambahan</label>
+    <table id="tab"></table>
+    <div class="big" id="rule"></div>
+    <p class="note" id="why"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let pat = 'sq';
+$('pat').onclick = e => { const b = e.target.closest('button'); if(!b) return; pat = b.dataset.p; document.querySelectorAll('#pat button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+$('n').oninput = draw; $('c-col').onchange = draw;
+Sim.onTheme(draw);
+const P = {
+  sq: {k: 3, c: 1, name: 'persegi', why: 'Persegi pertama memerlukan 4 korek: 1 korek di kiri (merah) dan 3 korek (biru). Setiap persegi berikutnya hanya perlu 3 korek tambahan karena memakai sisi kanan persegi sebelumnya.'},
+  tri: {k: 2, c: 1, name: 'segitiga', why: 'Segitiga pertama memerlukan 3 korek: 1 korek (merah) dan 2 korek (biru). Setiap segitiga berikutnya hanya perlu 2 korek tambahan karena memakai sisi segitiga sebelumnya.'},
+};
+function stick(x1, y1, x2, y2, c){ return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:${c}" stroke-width="7" stroke-linecap="round"/><circle cx="${x2}" cy="${y2}" r="5" style="fill:var(--b)"/>`; }
+function draw(){
+  const n = +$('n').value, p = P[pat], col = $('c-col').checked;
+  const first = col ? 'var(--b)' : 'var(--comp)', more = col ? 'var(--a)' : 'var(--comp)';
+  const L = pat === 'sq' ? Math.min(80, 480 / n) : Math.min(110, 960 / (n + 1)), x0 = (520 - (pat === 'sq' ? L * n : L * (n + 1) / 2)) / 2, y0 = 50;
+  let s = '';
+  if(pat === 'sq'){
+    s += stick(x0, y0 + L, x0, y0, first);
+    for(let i = 0; i < n; i++){ const x = x0 + i * L; s += stick(x, y0, x + L, y0, more) + stick(x + L, y0, x + L, y0 + L, more) + stick(x + L, y0 + L, x, y0 + L, more); }
+  } else {
+    const hgt = L * .866;
+    s += stick(x0, y0 + hgt, x0 + L / 2, y0, first);
+    for(let i = 0; i < n; i++){
+      const x = x0 + i * L / 2;
+      if(i % 2 === 0) s += stick(x + L / 2, y0, x + L, y0 + hgt, more) + stick(x + L, y0 + hgt, x, y0 + hgt, more);
+      else s += stick(x, y0, x + L, y0, more) + stick(x + L, y0, x + L / 2, y0 + hgt, more);
+    }
+  }
+  const total = p.k * n + p.c;
+  s += `<text x="260" y="${y0 + L + 70}" text-anchor="middle" style="font-family:var(--display);font-weight:800;font-size:20px;fill:var(--ink)">${n} ${p.name} → ${total} korek</text>`;
+  svg.innerHTML = s;
+  $('nout').textContent = 'n = ' + n;
+  const ns = [1, 2, 3, 4, 5, 10, 100];
+  $('tab').innerHTML = `<tr><th>n</th>${ns.map(v => `<td${v === n ? ' style="font-weight:800;color:var(--b)"' : ''}>${v}</td>`).join('')}</tr><tr><th>korek</th>${ns.map(v => `<td${v === n ? ' style="font-weight:800;color:var(--b)"' : ''}>${p.k * v + p.c}</td>`).join('')}</tr>`;
+  $('rule').innerHTML = `banyak korek = <span style="color:var(--a)">${p.k}n</span> + <span style="color:var(--b)">${p.c}</span>`;
+  $('why').innerHTML = p.why + ` Jadi untuk n bangun diperlukan <b>${p.k}n + ${p.c}</b> korek. Huruf <b>n</b> adalah <b>variabel</b>: bisa diganti bilangan berapa pun.`;
+}
+draw();
+</script>
+</body>
+</html>

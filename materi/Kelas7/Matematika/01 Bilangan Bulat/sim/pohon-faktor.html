@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pohon Faktor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .node{cursor:pointer}
+  .node text{font-family:var(--display);font-weight:800;font-size:15px}
+  input[type=number]{font:inherit;font-size:16px;font-weight:700;width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+  .res{font-family:var(--display);font-weight:800;font-size:20px;padding:10px 12px;border-radius:12px;background:var(--surface-2)}
+  .pairs{display:flex;flex-wrap:wrap;gap:6px}
+  .pairs .btn{min-height:34px;font-size:13px;padding:0 10px}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 520 360" role="img" aria-label="Pohon faktor"></svg></div>
+  <div class="panel">
+    <div><div class="lab" style="margin-bottom:4px"><span>Bilangan (4 sampai 999)</span></div>
+      <input type="number" id="n" min="4" max="999" value="60" aria-label="Bilangan"></div>
+    <div class="row"><button class="btn primary" id="auto">Pecah otomatis</button><button class="btn" id="reset">Ulangi</button></div>
+    <p class="note" id="hint"></p>
+    <div class="pairs" id="pairs"></div>
+    <div class="res" id="res"></div>
+    <p class="note">Lingkaran biru = bilangan prima (tidak bisa dipecah lagi). Cobalah memecah 60 dengan cara berbeda, misalnya 6 × 10 atau 4 × 15. Apakah hasil akhirnya berubah?</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const isPrime = n => { if(n < 2) return false; for(let d = 2; d * d <= n; d++) if(n % d === 0) return false; return true; };
+const sup = e => String(e).split('').map(c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]).join('');
+let root, sel = null;
+
+function make(v){ return {v, kids: null}; }
+function reset(){ let n = Math.round(+$('n').value); if(!(n >= 4 && n <= 999)) n = 60; $('n').value = n; root = make(n); sel = root; draw(); }
+function leaves(t){ return t.kids ? leaves(t.kids[0]) + leaves(t.kids[1]) : 1; }
+function primes(t, out = []){ if(t.kids){ primes(t.kids[0], out); primes(t.kids[1], out); } else out.push(t.v); return out; }
+function nextComposite(t){ if(!t.kids) return isPrime(t.v) ? null : t; return nextComposite(t.kids[0]) || nextComposite(t.kids[1]); }
+function split(t, d){ t.kids = [make(d), make(t.v / d)]; sel = nextComposite(root); draw(); }
+$('n').onchange = reset;
+$('reset').onclick = reset;
+$('auto').onclick = () => { let t; while((t = nextComposite(root))){ let d = 2; while(t.v % d) d++; t.kids = [make(d), make(t.v / d)]; } sel = null; draw(); };
+
+function draw(){
+  const W = 520, nodes = [];
+  const depth = t => t.kids ? 1 + Math.max(depth(t.kids[0]), depth(t.kids[1])) : 1;
+  const D = depth(root), dy = Math.min(70, 300 / Math.max(1, D - 1 || 1));
+  (function place(t, x0, x1, y){
+    const x = (x0 + x1) / 2; nodes.push({t, x, y});
+    if(t.kids){
+      const l = leaves(t.kids[0]), r = leaves(t.kids[1]), m = x0 + (x1 - x0) * l / (l + r);
+      t._c = [place(t.kids[0], x0, m, y + dy), place(t.kids[1], m, x1, y + dy)];
+    }
+    t._x = x; t._y = y; return t;
+  })(root, 10, W - 10, 34);
+  let s = '';
+  nodes.forEach(({t}) => { if(t.kids) t.kids.forEach(k => s += `<line x1="${t._x}" y1="${t._y}" x2="${k._x}" y2="${k._y}" style="stroke:var(--line-2)" stroke-width="2"/>`); });
+  nodes.forEach(({t, x, y}) => {
+    const p = isPrime(t.v), on = t === sel;
+    s += `<g class="node" data-v="${t.v}" data-id="${nodes.findIndex(n => n.t === t)}"><circle cx="${x}" cy="${y}" r="21" style="fill:${p ? 'var(--a)' : 'var(--surface-2)'};stroke:${on ? 'var(--b)' : p ? 'var(--a)' : 'var(--line-2)'}" stroke-width="${on ? 3 : 2}"/>` +
+      `<text x="${x}" y="${y + 5}" text-anchor="middle" style="fill:${p ? '#fff' : 'var(--ink)'}">${t.v}</text></g>`;
+  });
+  svg.setAttribute('viewBox', `0 0 ${W} ${Math.max(200, 34 + (D - 1) * dy + 40)}`);
+  svg.innerHTML = s;
+  svg.querySelectorAll('.node').forEach(g => g.onclick = () => { const t = nodes[+g.dataset.id].t; if(!t.kids && !isPrime(t.v)){ sel = t; draw(); } });
+
+  const ps = primes(root).sort((a, b) => a - b), cnt = {};
+  ps.forEach(p => cnt[p] = (cnt[p] || 0) + 1);
+  const done = ps.every(isPrime);
+  $('res').innerHTML = `${root.v} = ` + (done ? Object.entries(cnt).map(([p, e]) => p + (e > 1 ? sup(e) : '')).join(' × ') : ps.join(' × ') + ' …');
+  if(sel && !sel.kids){
+    const pairs = [];
+    for(let d = 2; d * d <= sel.v; d++) if(sel.v % d === 0) pairs.push(d);
+    $('hint').innerHTML = `Pecah <b>${sel.v}</b> menjadi dua faktor:`;
+    $('pairs').innerHTML = pairs.map(d => `<button class="btn" data-p="${d}">${d} × ${sel.v / d}</button>`).join('');
+    $('pairs').querySelectorAll('button').forEach(b => b.onclick = () => split(sel, +b.dataset.p));
+  } else {
+    $('hint').innerHTML = done ? '<b>Selesai!</b> Semua ujung pohon adalah bilangan prima. Inilah <b>faktorisasi prima</b>.' : 'Klik bilangan abu-abu untuk memecahnya.';
+    $('pairs').innerHTML = '';
+  }
+}
+reset();
+</script>
+</body>
+</html>

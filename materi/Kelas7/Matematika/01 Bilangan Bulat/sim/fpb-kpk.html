@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPB dan KPK dengan Diagram Venn</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .f{font-family:var(--display);font-weight:800;font-size:17px}
+  .cap{font-family:var(--font);font-weight:700;font-size:14px}
+  .ctl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  input[type=number]{font:inherit;font-size:16px;font-weight:700;width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 520 330" role="img" aria-label="Diagram Venn faktor prima dua bilangan"></svg></div>
+  <div class="panel">
+    <div class="ctl">
+      <div><div class="lab" style="margin-bottom:4px"><span>Bilangan A</span></div><input type="number" id="a" min="2" max="500" value="16"></div>
+      <div><div class="lab" style="margin-bottom:4px"><span>Bilangan B</span></div><input type="number" id="b" min="2" max="500" value="24"></div>
+    </div>
+    <div class="read" id="read"></div>
+    <p class="note">Faktor prima yang dimiliki <b>keduanya</b> ada di irisan. <b>FPB</b> = hasil kali isi irisan saja. <b>KPK</b> = hasil kali <b>semua</b> faktor di diagram (setiap faktor dihitung sekali).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const sup = e => String(e).split('').map(c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]).join('');
+function fact(n){ const f = []; for(let d = 2; d * d <= n; d++) while(n % d === 0){ f.push(d); n /= d; } if(n > 1) f.push(n); return f; }
+function pow(f){ const c = {}; f.forEach(p => c[p] = (c[p] || 0) + 1); return Object.entries(c).map(([p, e]) => p + (e > 1 ? sup(e) : '')).join(' × ') || '1'; }
+['a', 'b'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+
+function draw(){
+  let A = Math.round(+$('a').value), B = Math.round(+$('b').value);
+  if(!(A >= 2 && A <= 500)) A = 16; if(!(B >= 2 && B <= 500)) B = 24;
+  const fa = fact(A), fb = fact(B), both = [], onlyA = [], onlyB = [...fb];
+  fa.forEach(p => { const i = onlyB.indexOf(p); if(i >= 0){ both.push(p); onlyB.splice(i, 1); } else onlyA.push(p); });
+  const fpb = both.reduce((x, y) => x * y, 1), kpk = fpb * onlyA.reduce((x, y) => x * y, 1) * onlyB.reduce((x, y) => x * y, 1);
+  let s = `<ellipse cx="190" cy="170" rx="150" ry="120" style="fill:var(--a);stroke:var(--a)" fill-opacity=".12" stroke-width="2.5"/>` +
+          `<ellipse cx="330" cy="170" rx="150" ry="120" style="fill:var(--b);stroke:var(--b)" fill-opacity=".12" stroke-width="2.5"/>`;
+  s += `<text class="cap" x="110" y="40" text-anchor="middle" style="fill:var(--a)">faktor prima ${A}</text><text class="cap" x="410" y="40" text-anchor="middle" style="fill:var(--b)">faktor prima ${B}</text>`;
+  const place = (arr, cx, color) => arr.forEach((p, i) => {
+    const cols = arr.length > 4 ? 2 : 1, r = Math.floor(i / cols), c = i % cols, rows = Math.ceil(arr.length / cols);
+    s += `<text class="f" x="${cx + (cols > 1 ? (c - .5) * 34 : 0)}" y="${170 + (r - (rows - 1) / 2) * 30 + 6}" text-anchor="middle" style="fill:${color}">${p}</text>`;
+  });
+  place(onlyA, 120, 'var(--a)'); place(both, 260, 'var(--ink)'); place(onlyB, 400, 'var(--b)');
+  if(!both.length) s += `<text class="cap" x="260" y="176" text-anchor="middle" style="fill:var(--muted)">kosong</text>`;
+  s += `<text class="cap" x="260" y="318" text-anchor="middle" style="fill:var(--muted)">irisan = faktor prima bersama</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML =
+    `<div><span>${A} =</span><b>${pow(fa)}</b></div><div><span>${B} =</span><b>${pow(fb)}</b></div>` +
+    `<div><span>FPB(${A}, ${B})</span><b>${both.length ? both.join(' × ') + ' = ' : ''}${fmt(fpb)}</b></div>` +
+    `<div><span>KPK(${A}, ${B})</span><b>${fmt(kpk)}</b></div>` +
+    `<div><span>Periksa: FPB × KPK</span><b>${fmt(fpb * kpk)} = ${A} × ${B}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

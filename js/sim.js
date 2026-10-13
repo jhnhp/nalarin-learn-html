@@ -22,7 +22,8 @@ const Sim = (() => {
   /* angka gaya Indonesia: 2.50 → "2,5" */
   const fmt = (v, d = 2) => {
     if(!isFinite(v)) return '–';
-    let s = (Math.round(v * 10 ** d) / 10 ** d).toFixed(d).replace(/\.?0+$/, '');
+    let s = (Math.round(v * 10 ** d) / 10 ** d).toFixed(d);
+    if(s.includes('.')) s = s.replace(/\.?0+$/, '');
     if(s === '-0') s = '0';
     return s.replace('.', ',').replace('-', '−');
   };
