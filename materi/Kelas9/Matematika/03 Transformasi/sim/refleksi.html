@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refleksi Bangun Datar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Bidang koordinat dengan segitiga ABC, garis cermin, dan bayangannya"></svg></div>
+  <div class="panel">
+    <h3 class="t">Pilih cermin</h3>
+    <div class="seg" id="mode">
+      <button data-m="x" class="on">sumbu x</button><button data-m="y">sumbu y</button><button data-m="O">titik O</button>
+      <button data-m="y=x">y = x</button><button data-m="y=-x">y = −x</button><button data-m="x=k">x = k</button><button data-m="y=h">y = h</button>
+    </div>
+    <div id="k-row" class="hidden">
+      <div class="lab"><span id="k-name">Nilai k</span></div>
+      <div class="step"><button data-d="-1" aria-label="Kurangi">−</button><output id="ok">2</output><button data-d="1" aria-label="Tambah">+</button></div>
+    </div>
+    <div class="formula" id="rule"></div>
+    <div class="read" id="read"></div>
+    <label class="chk"><input type="checkbox" id="c-link" checked> Tampilkan ruas garis AA′, BB′, CC′</label>
+    <p class="note" id="orient"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script src="bangun.js"></script>
+<script>
+const {fmt} = Sim, {pt, poly, labels, seg, dot, fullLine, signedArea, T, m} = Bangun;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -8, xmax: 8, ymin: -6, ymax: 6, scale: 30});
+const S = {A: {x: 1, y: 1}, B: {x: 5, y: 2}, C: {x: 2, y: 4}};
+let mode = 'x', k = 2;
+
+const RULE = {
+  'x': 'P(x, y) → P′(x, −y)', 'y': 'P(x, y) → P′(−x, y)', 'O': 'P(x, y) → P′(−x, −y)',
+  'y=x': 'P(x, y) → P′(y, x)', 'y=-x': 'P(x, y) → P′(−y, −x)',
+  'x=k': 'P(x, y) → P′(2k − x, y)', 'y=h': 'P(x, y) → P′(x, 2h − y)',
+};
+
+P.draggable((h, x, y) => { const c = P.clamp(Math.round(x), Math.round(y)); S[h] = {x: c.x, y: c.y}; draw(); });
+$('mode').onclick = e => {
+  const b = e.target.closest('button'); if(!b) return;
+  mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); draw();
+};
+document.querySelectorAll('[data-d]').forEach(b => b.onclick = () => { k = Math.max(-6, Math.min(6, k + +b.dataset.d)); draw(); });
+$('c-link').onchange = draw;
+Sim.onTheme(draw);
+
+function mirror(){
+  const c = 'var(--r)', o = {width: 3};
+  switch(mode){
+    case 'x': return fullLine(P, {x: 0, y: 0}, {x: 1, y: 0}, c, o);
+    case 'y': return fullLine(P, {x: 0, y: 0}, {x: 0, y: 1}, c, o);
+    case 'O': return dot(P, {x: 0, y: 0}, c, 7);
+    case 'y=x': return fullLine(P, {x: 0, y: 0}, {x: 1, y: 1}, c, o);
+    case 'y=-x': return fullLine(P, {x: 0, y: 0}, {x: 1, y: -1}, c, o);
+    case 'x=k': return fullLine(P, {x: k, y: 0}, {x: k, y: 1}, c, o);
+    case 'y=h': return fullLine(P, {x: 0, y: k}, {x: 1, y: k}, c, o);
+  }
+}
+function mirrorName(){
+  return {'x': 'sumbu x', 'y': 'sumbu y', 'O': 'O(0, 0)', 'y=x': 'y = x', 'y=-x': 'y = −x', 'x=k': 'x = ' + fmt(k), 'y=h': 'y = ' + fmt(k)}[mode];
+}
+// substitusi angka untuk titik A, agar rumus terlihat dipakai
+function worked(p, q){
+  const par = v => v < 0 ? '(' + m(v) + ')' : v;
+  if(mode === 'x=k') return `A′(2·${par(k)} − ${par(p.x)}, ${m(p.y)}) = A′${pt(q.x, q.y)}`;
+  if(mode === 'y=h') return `A′(${m(p.x)}, 2·${par(k)} − ${par(p.y)}) = A′${pt(q.x, q.y)}`;
+  return `A${pt(p.x, p.y)} → A′${pt(q.x, q.y)}`;
+}
+
+function draw(){
+  const kk = mode === 'x=k' || mode === 'y=h';
+  $('k-row').classList.toggle('hidden', !kk);
+  $('k-name').textContent = mode === 'x=k' ? 'Nilai k (garis x = k)' : 'Nilai h (garis y = h)';
+  $('ok').textContent = fmt(k);
+
+  const obj = [S.A, S.B, S.C], img = obj.map(p => T.refleksi(p, mode, k));
+  let s = P.grid({xname: 'x', yname: 'y'}) + mirror();
+  s += poly(P, obj, 'var(--a)') + poly(P, img, 'var(--comp)');
+  if($('c-link').checked) obj.forEach((p, i) => s += seg(P, p, img[i], 'var(--muted)', {dash: true}));
+  s += labels(P, obj, ['A', 'B', 'C'], 'var(--a)') + labels(P, img, ['A′', 'B′', 'C′'], 'var(--comp)');
+  ['A', 'B', 'C'].forEach(n => s += P.handle(n, S[n].x, S[n].y, 'var(--a)'));
+  svg.innerHTML = s;
+
+  $('rule').innerHTML = `Refleksi terhadap <b>${mirrorName()}</b><br>${RULE[mode]}<br>${worked(S.A, img[0])}`;
+  $('read').innerHTML = obj.map((p, i) => {
+    const n = 'ABC'[i];
+    return `<div><span><i class="sw" style="background:var(--a)"></i>${n}${pt(p.x, p.y)}</span><b>${n}′${pt(img[i].x, img[i].y)}</b></div>`;
+  }).join('');
+
+  const o1 = signedArea(obj), o2 = signedArea(img), w = v => v > 0 ? 'berlawanan arah jarum jam ↺' : 'searah jarum jam ↻';
+  $('orient').innerHTML = o1 === 0 ? 'Titik A, B, C segaris. Geser salah satunya agar membentuk segitiga.' :
+    `Urutan A → B → C: <b>${w(o1)}</b>. Urutan A′ → B′ → C′: <b>${w(o2)}</b>. ` +
+    (Math.sign(o1) !== Math.sign(o2) ? 'Refleksi terhadap garis <b>membalik</b> arah bangun, seperti tangan kanan menjadi tangan kiri di cermin.'
+      : 'Refleksi terhadap titik O tidak membalik arah bangun. Hasilnya sama dengan rotasi 180°.');
+}
+draw();
+</script>
+</body>
+</html>

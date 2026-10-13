@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translasi Bangun Datar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .vec{display:inline-flex;align-items:center;gap:2px;vertical-align:middle;font-weight:800}
+  .vec span{display:inline-grid;line-height:1.05;text-align:center;padding:0 5px;border-left:2px solid currentColor;border-right:2px solid currentColor;border-radius:7px}
+  .ctl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ctl .lab{margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Bidang koordinat dengan segitiga ABC dan bayangannya hasil translasi"></svg></div>
+  <div class="panel">
+    <h3 class="t">Atur translasi <span class="vec" id="vec"></span></h3>
+    <div class="ctl">
+      <div><div class="lab"><span>a (mendatar)</span></div>
+        <div class="step"><button data-d="a-1" aria-label="Kurangi a">−</button><output id="oa">0</output><button data-d="a1" aria-label="Tambah a">+</button></div></div>
+      <div><div class="lab"><span>b (tegak)</span></div>
+        <div class="step"><button data-d="b-1" aria-label="Kurangi b">−</button><output id="ob">0</output><button data-d="b1" aria-label="Tambah b">+</button></div></div>
+    </div>
+    <p class="note" id="arah"></p>
+    <div class="read" id="read"></div>
+    <label class="chk"><input type="checkbox" id="c-arrow" checked> Tampilkan ruas garis berarah</label>
+    <p class="note">Geser titik A, B, atau C untuk mengubah segitiga. Geser titik A′ untuk mengatur translasi langsung di bidang.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script src="bangun.js"></script>
+<script>
+const {fmt} = Sim, {pt, poly, labels, T} = Bangun;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -8, xmax: 8, ymin: -6, ymax: 6, scale: 30});
+const S = {A: {x: -5, y: -4}, B: {x: -2, y: -4}, C: {x: -5, y: -2}};
+let a = 4, b = 3;
+
+P.draggable((h, x, y) => {
+  x = Math.round(x); y = Math.round(y);
+  const c = P.clamp(x, y);
+  if(h === "A'"){ a = c.x - S.A.x; b = c.y - S.A.y; }
+  else S[h] = {x: c.x, y: c.y};
+  draw();
+});
+document.querySelectorAll('[data-d]').forEach(btn => btn.onclick = () => {
+  const d = btn.dataset.d, v = +d.slice(1);
+  if(d[0] === 'a') a = Math.max(-12, Math.min(12, a + v)); else b = Math.max(-12, Math.min(12, b + v));
+  draw();
+});
+$('c-arrow').onchange = draw;
+Sim.onTheme(draw);
+
+function draw(){
+  const obj = [S.A, S.B, S.C], img = obj.map(p => T.translasi(p, a, b));
+  let s = P.grid({xname: 'x', yname: 'y'});
+  s += poly(P, obj, 'var(--a)') + poly(P, img, 'var(--comp)');
+  if($('c-arrow').checked && (a || b)) obj.forEach((p, i) => s += P.arrow(p.x, p.y, img[i].x, img[i].y, 'var(--muted)', {width: 2, head: 10, dash: true, opacity: .8}));
+  s += labels(P, obj, ['A', 'B', 'C'], 'var(--a)') + labels(P, img, ["A′", "B′", "C′"], 'var(--comp)');
+  ['A', 'B', 'C'].forEach(n => s += P.handle(n, S[n].x, S[n].y, 'var(--a)'));
+  s += P.handle("A'", img[0].x, img[0].y, 'var(--comp)');
+  svg.innerHTML = s;
+
+  $('oa').textContent = fmt(a); $('ob').textContent = fmt(b);
+  $('vec').innerHTML = `<span>${fmt(a)}<br>${fmt(b)}</span>`;
+  const h = a > 0 ? `${a} satuan ke kanan` : a < 0 ? `${-a} satuan ke kiri` : 'tidak bergeser mendatar';
+  const v = b > 0 ? `${b} satuan ke atas` : b < 0 ? `${-b} satuan ke bawah` : 'tidak bergeser tegak';
+  $('arah').innerHTML = `Setiap titik bergeser <b>${h}</b> dan <b>${v}</b>.`;
+  $('read').innerHTML = obj.map((p, i) => {
+    const n = 'ABC'[i];
+    return `<div><span><i class="sw" style="background:var(--a)"></i>${n}${pt(p.x, p.y)}</span><b>${n}′${pt(img[i].x, img[i].y)}</b></div>`;
+  }).join('') + `<div><span>Rumus</span><b>(x, y) → (x ${a < 0 ? '−' : '+'} ${fmt(Math.abs(a))}, y ${b < 0 ? '−' : '+'} ${fmt(Math.abs(b))})</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>
