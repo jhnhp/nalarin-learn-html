@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Misi Drone SAR</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .mission{padding:12px;border-radius:12px;background:var(--surface-2);font-size:14.5px}
+  .mission small{display:block;font-weight:800;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .score{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px}
+  .dots{display:flex;gap:5px}
+  .dots i{width:12px;height:12px;border-radius:50%;background:var(--line-2)}
+  .dots i.ok{background:var(--ok)} .dots i.no{background:var(--bad)} .dots i.cur{outline:2px solid var(--brand);outline-offset:1px}
+  .ctl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ctl .lab{margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Peta pencarian. Setiap kotak 100 meter."></svg></div>
+  <div class="panel">
+    <div class="score"><span id="score">Skor 0</span><span class="dots" id="dots"></span></div>
+    <div class="mission"><small id="m-no">Misi 1</small><span id="m-text"></span></div>
+    <p class="note">Satu kotak = 100 m. Timur ke kanan (+x), utara ke atas (+y). Atur perpindahan drone, atau geser titik bidiknya di peta.</p>
+    <div class="ctl">
+      <div><div class="lab"><span>Δx (timur +)</span></div>
+        <div class="step"><button data-d="x-1" aria-label="Kurangi Δx">−</button><output id="ox">0</output><button data-d="x1" aria-label="Tambah Δx">+</button></div></div>
+      <div><div class="lab"><span>Δy (utara +)</span></div>
+        <div class="step"><button data-d="y-1" aria-label="Kurangi Δy">−</button><output id="oy">0</output><button data-d="y1" aria-label="Tambah Δy">+</button></div></div>
+    </div>
+    <button class="btn primary" id="fly">Terbangkan drone</button>
+    <div class="box hidden" id="fb"></div>
+    <button class="btn hidden" id="next">Misi berikutnya</button>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -9, xmax: 9, ymin: -7, ymax: 7, scale: 30});
+
+// start: posisi drone sebelum langkah ini (kotak), target: lokasi korban (kotak)
+const MISSIONS = [
+  {text: 'Sinyal ponsel korban terdeteksi <b>500 m</b> dari pos, arah <b>37° dari timur ke utara</b>.',
+   start: [0, 0], target: [4, 3],
+   why: 'Δx = 500 cos 37° = 500 × 0,8 = 400 m (4 kotak ke timur). Δy = 500 sin 37° = 500 × 0,6 = 300 m (3 kotak ke utara).'},
+  {text: 'Korban kedua berada <b>500 m</b> dari pos, arah <b>53° dari timur ke selatan</b>.',
+   start: [0, 0], target: [3, -4],
+   why: 'Δx = 500 cos 53° = 300 m ke timur. Δy = 500 sin 53° = 400 m, tetapi ke <b>selatan</b>, jadi Δy = −400 m (−4 kotak).'},
+  {text: 'Korban berada <b>1000 m</b> dari pos, arah <b>37° dari barat ke selatan</b>.',
+   start: [0, 0], target: [-8, -6],
+   why: 'Sudut diukur dari arah barat. Komponen barat: 1000 cos 37° = 800 m → Δx = −8 kotak. Komponen selatan: 1000 sin 37° = 600 m → Δy = −6 kotak.'},
+  {text: 'Korban berada <b>500 m</b> dari pos, arah <b>53° dari utara ke barat</b>.',
+   start: [0, 0], target: [-4, 3],
+   why: 'Hati-hati, sudut diukur dari <b>utara</b>. Komponen utara: 500 cos 53° = 300 m → Δy = +3. Komponen barat: 500 sin 53° = 400 m → Δx = −4.'},
+  {text: 'Drone sudah terbang <b>300 m ke timur</b>. Korban berada <b>1000 m</b> dari <b>pos</b>, arah <b>37° dari timur ke utara</b>. Tentukan perpindahan drone <b>berikutnya</b>.',
+   start: [3, 0], target: [8, 6],
+   why: 'Posisi korban dari pos: (1000 cos 37°, 1000 sin 37°) = (800, 600) m. Drone sudah di (300, 0) m. Perpindahan berikutnya = (800 − 300, 600 − 0) = (500, 600) m → Δx = 5, Δy = 6. Ini pengurangan vektor: <b>B</b> = <b>R</b> − <b>A</b>.'},
+  {text: 'Drone sudah terbang <b>500 m</b> arah <b>37° dari barat ke utara</b>. Korban berada <b>300 m tepat ke timur</b> dari pos. Tentukan perpindahan berikutnya.',
+   start: [-4, 3], target: [3, 0],
+   why: 'Posisi drone: (−500 cos 37°, 500 sin 37°) = (−400, 300) m. Korban di (300, 0) m. Perpindahan = (300 − (−400), 0 − 300) = (700, −300) m → Δx = 7, Δy = −3.'},
+];
+let i = 0, score = 0, d = {x: 0, y: 0}, phase = 'aim', t = 0, results = [];
+
+function M(){ return MISSIONS[i]; }
+P.draggable((h, x, y) => {
+  if(phase !== 'aim') return;
+  const s = M().start, c = P.clamp(Math.round(x), Math.round(y));
+  d = {x: c.x - s[0], y: c.y - s[1]}; draw();
+});
+document.querySelectorAll('[data-d]').forEach(b => b.onclick = () => {
+  if(phase !== 'aim') return;
+  const k = b.dataset.d, v = +k.slice(1), s = M().start;
+  if(k[0] === 'x') d.x = Math.max(P.xmin - s[0], Math.min(P.xmax - s[0], d.x + v));
+  else d.y = Math.max(P.ymin - s[1], Math.min(P.ymax - s[1], d.y + v));
+  draw();
+});
+$('fly').onclick = () => {
+  phase = 'fly'; t = 0; $('fly').disabled = true;
+  const t0 = performance.now();
+  const step = now => {
+    t = Math.min(1, (now - t0) / 1100); draw();
+    if(t < 1) requestAnimationFrame(step); else finish();
+  };
+  requestAnimationFrame(step);
+};
+$('next').onclick = () => {
+  if(i === MISSIONS.length - 1){ i = 0; score = 0; results = []; } else i++;
+  load();
+};
+Sim.onTheme(draw);
+
+function finish(){
+  phase = 'done';
+  const m = M(), ok = m.start[0] + d.x === m.target[0] && m.start[1] + d.y === m.target[1];
+  if(ok) score++;
+  results[i] = ok;
+  const fb = $('fb'); fb.className = 'box ' + (ok ? 'ok' : 'no');
+  fb.innerHTML = (ok ? '<b>Tepat! Korban ditemukan.</b> ' : `<b>Meleset.</b> Seharusnya Δx = ${m.target[0] - m.start[0]}, Δy = ${m.target[1] - m.start[1]}. `) + m.why;
+  $('next').classList.remove('hidden');
+  $('next').textContent = i === MISSIONS.length - 1 ? `Selesai! Skor ${score}/${MISSIONS.length}. Main lagi` : 'Misi berikutnya';
+  draw();
+}
+
+function load(){
+  const m = M(); phase = 'aim'; d = {x: 0, y: 0};
+  $('m-no').textContent = `Misi ${i + 1} dari ${MISSIONS.length}`;
+  $('m-text').innerHTML = m.text;
+  $('fb').className = 'box hidden'; $('next').classList.add('hidden'); $('fly').disabled = false;
+  draw();
+}
+
+const drone = (x, y) => {
+  const X = P.X(x), Y = P.Y(y);
+  return `<g transform="translate(${X},${Y})"><g style="stroke:var(--ink)" stroke-width="2.5"><line x1="-11" y1="-11" x2="11" y2="11"/><line x1="11" y1="-11" x2="-11" y2="11"/></g>
+    ${[[-11, -11], [11, -11], [-11, 11], [11, 11]].map(([a, b]) => `<circle cx="${a}" cy="${b}" r="6" style="fill:var(--surface-2);stroke:var(--ink)" stroke-width="2"/>`).join('')}
+    <rect x="-7" y="-7" width="14" height="14" rx="4" style="fill:var(--brand)"/></g>`;
+};
+const victim = (x, y) => `<g transform="translate(${P.X(x)},${P.Y(y)})"><circle r="16" style="fill:var(--bad);opacity:.18"/><circle r="9" style="fill:var(--bad)"/>
+  <path d="M-4 0l3 3 6-6" style="stroke:#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></g>`;
+
+function draw(){
+  const m = M(), s = m.start;
+  let g = P.grid({labels: false});
+  g += `<g style="fill:var(--muted)" font-size="12" font-weight="700" font-family="Inter,sans-serif">
+    <text x="${P.W / 2 + 6}" y="14">U</text><text x="${P.W / 2 + 6}" y="${P.H - 6}">S</text>
+    <text x="${P.W - 14}" y="${P.Y(0) - 6}">T</text><text x="4" y="${P.Y(0) - 6}">B</text></g>`;
+  // pos
+  g += `<g transform="translate(${P.X(0)},${P.Y(0)})"><rect x="-9" y="-9" width="18" height="18" rx="4" style="fill:var(--ok)"/><text y="4" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="Inter,sans-serif">P</text></g>`;
+  if(s[0] || s[1]) g += P.arrow(0, 0, s[0], s[1], 'var(--muted)', {width: 3, dash: true, head: 11, label: 'sudah', side: -1});
+  if(phase === 'done') g += victim(...m.target);
+  if(phase === 'done' && !results[i]) g += P.arrow(s[0], s[1], m.target[0], m.target[1], 'var(--ok)', {width: 3, dash: true, head: 12});
+  g += P.arrow(s[0], s[1], s[0] + d.x, s[1] + d.y, 'var(--a)', {width: 4, opacity: phase === 'aim' ? 1 : .5});
+  const k = phase === 'aim' ? 0 : t;
+  g += drone(s[0] + d.x * k, s[1] + d.y * k);
+  if(phase === 'aim') g += P.handle('aim', s[0] + d.x, s[1] + d.y, 'var(--a)');
+  svg.innerHTML = g;
+  $('ox').textContent = d.x > 0 ? '+' + d.x : String(d.x).replace('-', '−');
+  $('oy').textContent = d.y > 0 ? '+' + d.y : String(d.y).replace('-', '−');
+  $('score').textContent = 'Skor ' + score;
+  $('dots').innerHTML = MISSIONS.map((_, j) => `<i class="${results[j] === true ? 'ok' : results[j] === false ? 'no' : ''}${j === i ? ' cur' : ''}"></i>`).join('');
+}
+load();
+</script>
+</body>
+</html>

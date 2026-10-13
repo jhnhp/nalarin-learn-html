@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lampu Gantung</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 540 380" role="img" aria-label="Lampu digantung dua tali dan diagram gayanya"></svg></div>
+  <div class="panel">
+    <h3 class="t">Lampu digantung dua tali</h3>
+    <div>
+      <div class="lab"><span>Sudut tali T<sub>1</sub> dengan langit-langit</span><b id="oa"></b></div>
+      <input type="range" id="a" min="10" max="85" value="37" aria-label="Sudut tali 1">
+    </div>
+    <div>
+      <div class="lab"><span>Sudut tali T<sub>2</sub> dengan langit-langit</span><b id="ob"></b></div>
+      <input type="range" id="b" min="10" max="85" value="53" aria-label="Sudut tali 2">
+    </div>
+    <div>
+      <div class="lab"><span>Berat lampu W</span><b id="ow"></b></div>
+      <input type="range" id="w" min="10" max="100" step="5" value="50" aria-label="Berat lampu">
+    </div>
+    <div class="read" id="read"></div>
+    <div class="formula" id="formula"></div>
+    <p class="note">Karena lampu diam, ketiga gaya membentuk <b>segitiga tertutup</b> jika disusun ujung ke pangkal: resultannya nol. Simulasi memakai nilai sinus yang tepat, jadi hasilnya bisa sedikit berbeda dari hitungan dengan sin 37° = 0,6.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt, rad} = Sim;
+const $ = id => document.getElementById(id);
+['a', 'b', 'w'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+
+function arrow(x1, y1, x2, y2, color, label, side = 1){
+  const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy); if(L < 2) return '';
+  const ux = dx / L, uy = dy / L, hl = Math.min(13, L * .5), hw = hl * .55;
+  const bx = x2 - ux * hl, by = y2 - uy * hl;
+  let s = `<line x1="${x1}" y1="${y1}" x2="${bx}" y2="${by}" style="stroke:${color}" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="${x2},${y2} ${bx - uy * hw},${by + ux * hw} ${bx + uy * hw},${by - ux * hw}" style="fill:${color}"/>`;
+  if(label) s += `<text class="vlabel" style="fill:${color};font-size:15px" x="${(x1 + x2) / 2 - uy * 16 * side}" y="${(y1 + y2) / 2 + ux * 16 * side + 5}" text-anchor="middle">${label}</text>`;
+  return s;
+}
+
+function draw(){
+  const a = +$('a').value, b = +$('b').value, W = +$('w').value;
+  const s = Math.sin(rad(a + b));
+  const T1 = W * Math.cos(rad(b)) / s, T2 = W * Math.cos(rad(a)) / s;
+  $('oa').textContent = a + '°'; $('ob').textContent = b + '°'; $('ow').textContent = W + ' N';
+
+  // adegan (kiri): langit-langit di y=40, simpul di (160,200)
+  const kx = 160, ky = 200, top = 40, h = ky - top;
+  const ax = kx - h / Math.tan(rad(a)), bx = kx + h / Math.tan(rad(b));
+  let g = `<defs><clipPath id="cl"><rect x="0" y="0" width="320" height="380"/></clipPath></defs>
+    <g clip-path="url(#cl)">
+    <rect x="0" y="${top - 14}" width="320" height="14" style="fill:var(--surface-2)"/>
+    <line x1="0" y1="${top}" x2="320" y2="${top}" style="stroke:var(--axis)" stroke-width="2"/>
+    <line x1="${kx}" y1="${ky}" x2="${ax}" y2="${top}" style="stroke:var(--muted)" stroke-width="2.5"/>
+    <line x1="${kx}" y1="${ky}" x2="${bx}" y2="${top}" style="stroke:var(--muted)" stroke-width="2.5"/>
+    <line x1="${kx}" y1="${ky}" x2="${kx}" y2="${ky + 60}" style="stroke:var(--muted)" stroke-width="2.5"/>
+    <path d="M${kx - 26} ${ky + 92} Q${kx} ${ky + 50} ${kx + 26} ${ky + 92} Z" style="fill:var(--warn)"/>
+    <circle cx="${kx}" cy="${ky + 98}" r="9" style="fill:var(--warn);opacity:.5"/>
+    <text x="${Math.max(ax, 0) + 34}" y="${top + 22}" style="fill:var(--muted)" font-size="13" font-weight="700">${a}°</text>
+    <text x="${Math.min(bx, 320) - 34}" y="${top + 22}" style="fill:var(--muted)" font-size="13" font-weight="700" text-anchor="end">${b}°</text>`;
+  // gaya pada simpul, skala menyesuaikan
+  const k = 120 / Math.max(W, T1, T2);
+  g += arrow(kx, ky, kx - T1 * k * Math.cos(rad(a)), ky - T1 * k * Math.sin(rad(a)), 'var(--a)', 'T₁', -1);
+  g += arrow(kx, ky, kx + T2 * k * Math.cos(rad(b)), ky - T2 * k * Math.sin(rad(b)), 'var(--b)', 'T₂');
+  g += arrow(kx, ky, kx, ky + W * k, 'var(--r)', 'W');
+  g += `<circle cx="${kx}" cy="${ky}" r="5" style="fill:var(--ink)"/></g>`;
+
+  // segitiga gaya (kanan): W lalu T2 lalu T1 kembali ke awal
+  const q = 220 / Math.max(W, T1 + T2) * .9;
+  const p0 = [0, 0], p1 = [0, W * q], p2 = [T2 * q * Math.cos(rad(b)), W * q - T2 * q * Math.sin(rad(b))];
+  const xs = [p0[0], p1[0], p2[0]], ys = [p0[1], p1[1], p2[1]];
+  const ox = 430 - (Math.min(...xs) + Math.max(...xs)) / 2, oy = 200 - (Math.min(...ys) + Math.max(...ys)) / 2;
+  const T = p => [p[0] + ox, p[1] + oy];
+  g += `<line x1="330" y1="20" x2="330" y2="360" style="stroke:var(--line)" stroke-width="1.5"/>
+    <text x="430" y="28" text-anchor="middle" style="fill:var(--muted)" font-size="12" font-weight="800" letter-spacing=".06em">DIAGRAM GAYA</text>`;
+  g += arrow(...T(p0), ...T(p1), 'var(--r)', 'W');
+  g += arrow(...T(p1), ...T(p2), 'var(--b)', 'T₂', -1);
+  g += arrow(...T(p2), ...T(p0), 'var(--a)', 'T₁', -1);
+  $('svg').innerHTML = g;
+
+  const fx = -T1 * Math.cos(rad(a)) + T2 * Math.cos(rad(b)), fy = T1 * Math.sin(rad(a)) + T2 * Math.sin(rad(b)) - W;
+  $('read').innerHTML = `
+    <div><span><i class="sw" style="background:var(--a)"></i>T<sub>1</sub></span><b>${fmt(T1, 1)} N</b></div>
+    <div><span><i class="sw" style="background:var(--b)"></i>T<sub>2</sub></span><b>${fmt(T2, 1)} N</b></div>
+    <div><span>ΣF<sub>x</sub> ; ΣF<sub>y</sub></span><b>${fmt(fx, 1)} ; ${fmt(fy, 1)}</b></div>`;
+  $('formula').innerHTML = `ΣF<sub>x</sub> = 0: T<sub>1</sub> cos ${a}° = T<sub>2</sub> cos ${b}°<br>ΣF<sub>y</sub> = 0: T<sub>1</sub> sin ${a}° + T<sub>2</sub> sin ${b}° = ${W} N`;
+}
+draw();
+</script>
+</body>
+</html>

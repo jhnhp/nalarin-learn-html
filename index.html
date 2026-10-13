@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2447F9">
+<meta name="description" content="Nalarin Belajar: materi Matematika dan IPA Kurikulum Merdeka dengan teks, video, dan simulasi interaktif.">
+<title>Nalarin Belajar</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/learn.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="hbar">
+    <a class="brand" href="index.html" aria-label="Nalarin Belajar, beranda">
+      <img class="ic" src="assets/icon.png" alt="">
+      <img class="wm wm-b" src="assets/wordmark-blue.png" alt="">
+      <img class="wm wm-w" src="assets/wordmark-white.png" alt="">
+      <span class="tag">Belajar</span>
+    </a>
+    <span class="grow"></span>
+    <nav class="nav">
+      <a href="index.html" class="on"><svg class="i"><use href="#i-book"/></svg><span>Belajar</span></a>
+      <a href="Kuis/index.html"><svg class="i"><use href="#i-quiz"/></svg><span>Kuis</span></a>
+    </nav>
+    <button class="icon-btn" id="theme" aria-label="Ganti tema terang/gelap">
+      <svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Beranda -->
+<main class="wrap hidden" id="home">
+  <section class="hero">
+    <h1>Pahami konsepnya, <em>bukan cuma rumusnya.</em></h1>
+    <p>Materi Matematika dan IPA Kurikulum Merdeka dengan penjelasan, video, dan simulasi yang bisa kamu coba sendiri. Setiap bab punya kuis untuk berlatih.</p>
+    <div class="sbox">
+      <svg class="i"><use href="#i-search"/></svg>
+      <input id="search" type="search" placeholder="Cari bab atau materi, misalnya “vektor”" aria-label="Cari materi" autocomplete="off">
+    </div>
+  </section>
+  <div class="sres" id="sres"></div>
+  <div id="featured"></div>
+  <div id="levels"></div>
+</main>
+
+<!-- Kursus: satu kelas + satu mapel -->
+<main class="wrap hidden" id="course">
+  <nav class="crumbs" id="crumbs" aria-label="Posisi"></nav>
+  <section class="banner" id="banner"></section>
+  <div class="course">
+    <aside class="card toc" id="toc" aria-label="Daftar bab"></aside>
+    <div id="units"></div>
+  </div>
+</main>
+
+<footer class="foot">Nalarin Belajar · tanpa akun, tanpa pelacakan · <a href="Kuis/index.html">Nalarin Kuis</a></footer>
+
+<script src="js/umum.js"></script>
+<script src="js/beranda.js"></script>
+</body>
+</html>

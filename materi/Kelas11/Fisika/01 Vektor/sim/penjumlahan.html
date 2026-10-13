@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penjumlahan Vektor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Penjumlahan vektor A dan B"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode" role="group" aria-label="Metode">
+      <button data-m="segitiga" class="on">Segitiga</button>
+      <button data-m="jajargenjang">Jajargenjang</button>
+      <button data-m="selisih">A − B</button>
+    </div>
+    <p class="note" id="how"></p>
+    <div class="read" id="read"></div>
+    <div class="formula" id="formula"></div>
+    <div class="box info" id="range"></div>
+    <label class="chk"><input type="checkbox" id="c-snap" checked> Kunci ke titik petak</label>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt, deg, len} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -8, xmax: 8, ymin: -6, ymax: 6, scale: 34});
+let A = {x: 4, y: 1}, B = {x: 1, y: 3}, mode = 'segitiga';
+const HOW = {
+  segitiga: 'Pangkal <b>B</b> dipindah ke ujung <b>A</b>. Resultan <b>R</b> ditarik dari pangkal A ke ujung B.',
+  jajargenjang: 'Pangkal A dan B disatukan. Tarik garis sejajar dari ujung masing-masing; diagonal jajargenjang adalah <b>R</b>.',
+  selisih: '<b>A − B</b> = <b>A</b> + (<b>−B</b>). Balik arah B, lalu sambungkan ke ujung A.',
+};
+
+P.draggable((h, x, y) => {
+  if($('c-snap').checked){ x = Math.round(x); y = Math.round(y); }
+  const c = P.clamp(x, y);
+  if(h === 'A') A = c; else B = c;
+  draw();
+});
+$('mode').onclick = e => {
+  const b = e.target.closest('button'); if(!b) return;
+  mode = b.dataset.m;
+  [...$('mode').children].forEach(x => x.classList.toggle('on', x === b));
+  draw();
+};
+$('c-snap').onchange = draw;
+Sim.onTheme(draw);
+
+function draw(){
+  const sub = mode === 'selisih';
+  const Bs = sub ? {x: -B.x, y: -B.y} : B;
+  const R = {x: A.x + Bs.x, y: A.y + Bs.y};
+  let s = P.grid({labels: false});
+  if(mode === 'segitiga' || sub){
+    s += P.arrow(0, 0, B.x, B.y, 'var(--b)', {width: 3, opacity: .3, label: 'B', side: -1});
+    s += P.arrow(A.x, A.y, A.x + Bs.x, A.y + Bs.y, 'var(--b)', {width: 5, label: sub ? '−B' : 'B', side: -1});
+  } else {
+    s += `<g style="stroke:var(--muted)" stroke-width="1.6" class="dash">
+      <line x1="${P.X(A.x)}" y1="${P.Y(A.y)}" x2="${P.X(R.x)}" y2="${P.Y(R.y)}"/>
+      <line x1="${P.X(B.x)}" y1="${P.Y(B.y)}" x2="${P.X(R.x)}" y2="${P.Y(R.y)}"/></g>`;
+    s += P.arrow(0, 0, B.x, B.y, 'var(--b)', {width: 5, label: 'B', side: -1});
+  }
+  s += P.arrow(0, 0, A.x, A.y, 'var(--a)', {width: 5, label: 'A'});
+  s += P.arrow(0, 0, R.x, R.y, 'var(--r)', {width: 6, label: sub ? 'A−B' : 'R', side: sub ? 1 : -1});
+  s += P.handle('A', A.x, A.y, 'var(--a)');
+  s += P.handle('B', B.x, B.y, 'var(--b)');
+  svg.innerHTML = s;
+
+  const a = len(A.x, A.y), b = len(B.x, B.y), r = len(R.x, R.y);
+  let th = Math.abs(deg(A.x, A.y) - deg(B.x, B.y)); if(th > 180) th = 360 - th;
+  const cos = Math.cos(Sim.rad(th));
+  $('how').innerHTML = HOW[mode];
+  $('read').innerHTML = `
+    <div><span><i class="sw" style="background:var(--a)"></i>|A|</span><b>${fmt(a)}</b></div>
+    <div><span><i class="sw" style="background:var(--b)"></i>|B|</span><b>${fmt(b)}</b></div>
+    <div><span>Sudut apit A dan B, θ</span><b>${fmt(th, 1)}°</b></div>
+    <div><span><i class="sw" style="background:var(--r)"></i>|${sub ? 'A − B' : 'R'}| (diukur)</span><b>${fmt(r)}</b></div>`;
+  const sign = sub ? '−' : '+';
+  $('formula').innerHTML = `Rumus kosinus:<br>|${sub ? 'A − B' : 'R'}| = √(A² + B² ${sign} 2AB cos θ)<br>
+    = √(${fmt(a * a)} + ${fmt(b * b)} ${sign} 2·${fmt(a)}·${fmt(b)}·${fmt(cos, 3)}) = <b>${fmt(Math.sqrt(Math.max(0, a * a + b * b + (sub ? -2 : 2) * a * b * cos)))}</b>`;
+  $('range').innerHTML = sub ? 'Semakin besar sudut apit θ, semakin <b>besar</b> selisih |A − B|. Coba buat A dan B searah!' :
+    `Resultan selalu di antara <b>${fmt(Math.abs(a - b))}</b> (berlawanan arah, θ = 180°) dan <b>${fmt(a + b)}</b> (searah, θ = 0°).`;
+}
+draw();
+</script>
+</body>
+</html>

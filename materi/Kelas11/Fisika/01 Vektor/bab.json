@@ -1,0 +1,585 @@
+{
+  "title": "Vektor",
+  "summary": "Besaran skalar dan vektor, komponen dan vektor satuan, penjumlahan secara grafis dan analitis, keseimbangan gaya, serta perkalian titik dan silang.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "skalar-dan-vektor",
+      "title": "Besaran skalar dan besaran vektor",
+      "kind": "video",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Bayangkan kamu berangkat dari rumah ke sekolah. Jalannya berkelok-kelok sepanjang 1,2 km, tetapi sekolahmu sebenarnya hanya 800 m di sebelah timur rumah. Mana yang benar: kamu menempuh 1,2 km atau 800 m?</p>\n<p>Keduanya benar, karena keduanya menjawab pertanyaan yang berbeda. <b>Jarak</b> (1,2 km) hanya menyatakan <i>seberapa jauh</i> kamu bergerak. <b>Perpindahan</b> (800 m ke timur) menyatakan seberapa jauh <i>dan ke mana</i> posisimu berubah.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/jarak-perpindahan.svg",
+          "alt": "Lintasan berkelok dari rumah ke sekolah sepanjang 1,2 km dan panah lurus perpindahan 800 m ke timur",
+          "caption": "Jarak mengikuti lintasan; perpindahan hanya melihat posisi awal dan akhir.",
+          "width": 560
+        },
+        {
+          "type": "h",
+          "text": "Dua jenis besaran"
+        },
+        {
+          "type": "text",
+          "html": "<p>Dalam fisika, besaran dibagi menjadi dua kelompok:</p>\n<ul>\n<li><b>Besaran skalar</b>: cukup dinyatakan dengan <b>nilai</b> (angka dan satuan). Contoh: massa 50 kg, suhu 30 °C, waktu 10 s.</li>\n<li><b>Besaran vektor</b>: harus dinyatakan dengan <b>nilai dan arah</b>. Contoh: gaya 20 N ke bawah, kecepatan 60 km/jam ke utara.</li>\n</ul>\n<table>\n<tr><th>Besaran skalar</th><th>Besaran vektor</th></tr>\n<tr><td>jarak</td><td>perpindahan</td></tr>\n<tr><td>kelajuan</td><td>kecepatan</td></tr>\n<tr><td>massa</td><td>berat (gaya gravitasi)</td></tr>\n<tr><td>waktu, suhu, energi, usaha, daya</td><td>gaya, percepatan, momentum, medan listrik</td></tr>\n</table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Cara cepat membedakan",
+          "html": "<p>Tanyakan: <i>\"Apakah arahnya penting?\"</i> Mendorong lemari 100 N ke kiri hasilnya berbeda dengan 100 N ke kanan, jadi gaya adalah vektor. Sedangkan 2 jam tetap 2 jam, tidak ada \"2 jam ke utara\", jadi waktu adalah skalar.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kelompok besaran berikut yang <b>semuanya</b> besaran skalar adalah ....",
+          "options": {
+            "A": "massa, waktu, dan percepatan",
+            "B": "jarak, kelajuan, dan energi",
+            "C": "gaya, usaha, dan suhu",
+            "D": "perpindahan, kecepatan, dan massa"
+          },
+          "answer": "B",
+          "hint": "Periksa satu per satu: adakah besaran di pilihan itu yang membutuhkan arah?",
+          "explanation": "Jarak, kelajuan, dan energi cukup dinyatakan dengan nilai. Percepatan, gaya, perpindahan, dan kecepatan adalah besaran vektor."
+        },
+        {
+          "type": "h",
+          "text": "Tonton penjelasannya"
+        },
+        {
+          "type": "video",
+          "youtube": "OJrffDuVXjM",
+          "title": "Vektor Fisika: Besaran Vektor",
+          "channel": "Quipper Indonesia"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah mobil bergerak dengan spidometer menunjukkan 60 km/jam. Angka pada spidometer adalah ....",
+          "options": {
+            "A": "kecepatan, karena memiliki satuan km/jam",
+            "B": "kelajuan, karena spidometer tidak menunjukkan arah",
+            "C": "perpindahan, karena mobil berpindah tempat",
+            "D": "percepatan, karena mobil sedang bergerak"
+          },
+          "answer": "B",
+          "hint": "Apakah spidometer memberi tahu ke mana mobil bergerak?",
+          "explanation": "Spidometer hanya menunjukkan nilai, tanpa arah. Besaran ini adalah kelajuan (skalar). Kecepatan adalah kelajuan beserta arahnya."
+        }
+      ]
+    },
+    {
+      "id": "menggambar-vektor",
+      "title": "Menggambar dan menuliskan vektor",
+      "kind": "artikel",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Vektor digambarkan sebagai <b>anak panah</b>. Panjang panah menyatakan <b>besar</b> vektor, dan ke mana panah menunjuk menyatakan <b>arahnya</b>.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/anatomi-vektor.svg",
+          "alt": "Panah vektor A dengan titik pangkal, titik ujung, dan sudut arah theta dari sumbu x positif",
+          "width": 560
+        },
+        {
+          "type": "h",
+          "text": "Cara menulis vektor"
+        },
+        {
+          "type": "text",
+          "html": "<ul>\n<li>Di buku cetak, vektor ditulis dengan <b>huruf tebal</b>: <b>A</b>, <b>F</b>, <b>v</b>.</li>\n<li>Saat menulis tangan, beri tanda panah di atas huruf: \\(\\vec{A}\\), \\(\\vec{F}\\).</li>\n<li><b>Besar</b> vektor ditulis dengan huruf miring biasa atau tanda mutlak: \\(A\\) atau \\(|\\vec{A}|\\). Besar vektor selalu positif.</li>\n</ul>\n<p><b>Arah</b> vektor biasanya dinyatakan dengan sudut \\(\\theta\\) yang diukur dari <b>sumbu x positif, berlawanan arah jarum jam</b>. Jadi arah 90° berarti ke atas (utara), 180° ke kiri (barat), dan 270° ke bawah (selatan).</p>"
+        },
+        {
+          "type": "h",
+          "text": "Vektor yang sama dan vektor negatif"
+        },
+        {
+          "type": "text",
+          "html": "<p>Dua vektor dikatakan <b>sama</b> jika besar <i>dan</i> arahnya sama, di mana pun letaknya. Artinya, kita boleh menggeser panah vektor ke mana saja asalkan panjang dan arahnya tidak berubah. Sifat ini nanti sangat berguna untuk menjumlahkan vektor.</p>\n<p><b>Vektor negatif</b> \\(-\\vec{A}\\) besarnya sama dengan \\(\\vec{A}\\), tetapi arahnya <b>berlawanan</b>. Arahnya berbeda tepat 180°.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Vektor \\(\\vec{A}\\) besarnya 8 satuan dengan arah 40°. Tentukan besar dan arah \\(-\\vec{A}\\).</p>",
+          "steps": [
+            "Besar vektor negatif sama dengan besar vektor asalnya: \\(|-\\vec{A}| = 8\\) satuan.",
+            "Arahnya berlawanan, jadi tambahkan 180°: \\(40^\\circ + 180^\\circ = 220^\\circ\\)."
+          ],
+          "answer": "besar 8 satuan, arah 220°"
+        },
+        {
+          "type": "h",
+          "text": "Perkalian vektor dengan skalar"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika vektor \\(\\vec{A}\\) dikalikan bilangan \\(k\\), hasilnya vektor \\(k\\vec{A}\\) yang:</p>\n<ul>\n<li>besarnya \\(|k|\\) kali besar \\(\\vec{A}\\);</li>\n<li>arahnya <b>sama</b> dengan \\(\\vec{A}\\) jika \\(k &gt; 0\\), dan <b>berlawanan</b> jika \\(k &lt; 0\\).</li>\n</ul>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/kelipatan-vektor.svg",
+          "alt": "Vektor A, 2A, minus A, dan minus setengah A",
+          "caption": "Mengalikan dengan bilangan negatif membalik arah vektor.",
+          "width": 560
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Contoh dalam kehidupan",
+          "html": "<p>Hukum II Newton \\(\\vec{F} = m\\vec{a}\\) adalah perkalian skalar. Massa \\(m\\) selalu positif, jadi gaya total selalu <b>searah</b> dengan percepatan.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Vektor \\(\\vec{B} = -3\\vec{A}\\). Pernyataan yang benar adalah ....",
+          "options": {
+            "A": "besar B sepertiga besar A, arahnya sama",
+            "B": "besar B tiga kali besar A, arahnya sama",
+            "C": "besar B tiga kali besar A, arahnya berlawanan",
+            "D": "besar B negatif, arahnya berlawanan"
+          },
+          "answer": "C",
+          "hint": "Ingat: besar vektor tidak pernah negatif. Tanda minus hanya mengubah arah.",
+          "explanation": "Besarnya \\(|-3| \\times A = 3A\\). Tanda negatif membalik arah sehingga B berlawanan arah dengan A."
+        }
+      ]
+    },
+    {
+      "id": "komponen-vektor",
+      "title": "Komponen vektor dan vektor satuan",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sebuah vektor miring selalu bisa dipecah menjadi dua vektor yang saling tegak lurus: satu sejajar sumbu x dan satu sejajar sumbu y. Keduanya disebut <b>komponen vektor</b>. Proses ini disebut <b>menguraikan</b> vektor.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/komponen-vektor.svg",
+          "alt": "Vektor A diuraikan menjadi komponen Ax sepanjang sumbu x dan Ay sepanjang sumbu y",
+          "caption": "Vektor A dan kedua komponennya membentuk segitiga siku-siku.",
+          "width": 560
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus komponen",
+          "html": "\\[A_x = A\\cos\\theta \\qquad A_y = A\\sin\\theta\\]\n<p>Sebaliknya, jika komponennya diketahui:</p>\n\\[A = \\sqrt{A_x^2 + A_y^2} \\qquad \\tan\\theta = \\frac{A_y}{A_x}\\]"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "sim",
+          "src": "sim/komponen.html",
+          "title": "Penjelajah vektor",
+          "height": 470,
+          "caption": "Geser titik di ujung vektor A. Perhatikan bagaimana komponen, besar, dan arahnya berubah. Coba juga buat vektor di kuadran II, III, dan IV, lalu geser penggaris k."
+        },
+        {
+          "type": "h",
+          "text": "Notasi vektor satuan i dan j"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Vektor satuan</b> adalah vektor yang besarnya 1. Ada dua vektor satuan khusus:</p>\n<ul><li>\\(\\mathbf{i}\\): besarnya 1, arahnya sumbu x positif;</li><li>\\(\\mathbf{j}\\): besarnya 1, arahnya sumbu y positif.</li></ul>\n<p>Dengan keduanya, setiap vektor dua dimensi bisa ditulis ringkas:</p>\n\\[\\vec{A} = A_x\\,\\mathbf{i} + A_y\\,\\mathbf{j}\\]\n<p>Misalnya \\(\\vec{A} = 4\\mathbf{i} + 3\\mathbf{j}\\) berarti 4 satuan ke kanan dan 3 satuan ke atas. Besarnya \\(\\sqrt{4^2 + 3^2} = 5\\).</p>\n<p>Vektor satuan searah \\(\\vec{A}\\) diperoleh dengan membagi vektor dengan besarnya: \\(\\hat{A} = \\dfrac{\\vec{A}}{A}\\). Untuk contoh tadi, \\(\\hat{A} = \\tfrac{4}{5}\\mathbf{i} + \\tfrac{3}{5}\\mathbf{j}\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Hati-hati dengan kuadran",
+          "html": "<p>Kalkulator memberi \\(\\tan^{-1}\\) hanya antara −90° dan 90°. Selalu lihat <b>tanda</b> \\(A_x\\) dan \\(A_y\\) untuk menentukan kuadran:</p>\n<table><tr><th>Tanda \\(A_x\\), \\(A_y\\)</th><th>Kuadran</th><th>Sudut θ</th></tr>\n<tr><td>+ , +</td><td>I</td><td>0° – 90°</td></tr>\n<tr><td>− , +</td><td>II</td><td>90° – 180°</td></tr>\n<tr><td>− , −</td><td>III</td><td>180° – 270°</td></tr>\n<tr><td>+ , −</td><td>IV</td><td>270° – 360°</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah gaya \\(\\vec{F} = (-8\\mathbf{i} + 6\\mathbf{j})\\) N. Tentukan besar dan arah gaya tersebut.</p>",
+          "steps": [
+            "Besar gaya: \\(F = \\sqrt{(-8)^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\\) N.",
+            "\\(F_x\\) negatif dan \\(F_y\\) positif, jadi vektor berada di <b>kuadran II</b>.",
+            "Sudut acuan: \\(\\tan\\alpha = \\frac{6}{8} = 0{,}75\\), sehingga \\(\\alpha = 37^\\circ\\) (sudut terhadap sumbu x negatif).",
+            "Arah dari sumbu x positif: \\(\\theta = 180^\\circ - 37^\\circ = 143^\\circ\\)."
+          ],
+          "answer": "10 N dengan arah 143°"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Sebuah gaya 40 N membentuk sudut 30° terhadap sumbu x positif. Tentukan komponen-komponennya.</p>",
+          "steps": [
+            "\\(F_x = F\\cos 30^\\circ = 40 \\times \\tfrac{1}{2}\\sqrt{3} = 20\\sqrt{3}\\) N.",
+            "\\(F_y = F\\sin 30^\\circ = 40 \\times \\tfrac{1}{2} = 20\\) N."
+          ],
+          "answer": "\\(\\vec{F} = (20\\sqrt{3}\\,\\mathbf{i} + 20\\,\\mathbf{j})\\) N"
+        },
+        {
+          "type": "check",
+          "question": "Vektor kecepatan \\(\\vec{v} = (5\\mathbf{i} - 12\\mathbf{j})\\) m/s. Besar kecepatan dan vektor satuannya adalah ....",
+          "options": {
+            "A": "13 m/s dan \\(\\tfrac{5}{13}\\mathbf{i} - \\tfrac{12}{13}\\mathbf{j}\\)",
+            "B": "17 m/s dan \\(\\tfrac{5}{17}\\mathbf{i} - \\tfrac{12}{17}\\mathbf{j}\\)",
+            "C": "13 m/s dan \\(5\\mathbf{i} - 12\\mathbf{j}\\)",
+            "D": "7 m/s dan \\(\\tfrac{5}{7}\\mathbf{i} - \\tfrac{12}{7}\\mathbf{j}\\)"
+          },
+          "answer": "A",
+          "hint": "Besar vektor bukan \\(5 + 12\\). Gunakan teorema Pythagoras.",
+          "explanation": "\\(v = \\sqrt{25 + 144} = 13\\) m/s. Vektor satuan = \\(\\vec{v}/v = \\tfrac{5}{13}\\mathbf{i} - \\tfrac{12}{13}\\mathbf{j}\\), yang besarnya tepat 1."
+        },
+        {
+          "type": "video",
+          "youtube": "mwqWiBxLErk",
+          "title": "Fisika Kelas XI Kurikulum Merdeka: Komponen Vektor",
+          "channel": "Zero Epsilon"
+        }
+      ]
+    },
+    {
+      "id": "penjumlahan-grafis",
+      "title": "Penjumlahan vektor secara grafis",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Menjumlahkan vektor tidak sama dengan menjumlahkan angka biasa. Berjalan 3 m ke timur lalu 4 m ke utara <b>tidak</b> membuatmu berpindah 7 m. Kamu hanya berpindah 5 m dari titik awal. Hasil penjumlahan vektor disebut <b>resultan</b>, biasanya diberi lambang \\(\\vec{R}\\).</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/metode-grafis.svg",
+          "alt": "Tiga metode grafis: segitiga, jajargenjang, dan poligon",
+          "caption": "Ketiga metode memberikan resultan yang sama.",
+          "width": 560
+        },
+        {
+          "type": "text",
+          "html": "<ol>\n<li><b>Metode segitiga</b>: gambar \\(\\vec{A}\\), lalu letakkan <b>pangkal</b> \\(\\vec{B}\\) di <b>ujung</b> \\(\\vec{A}\\). Resultan ditarik dari pangkal \\(\\vec{A}\\) ke ujung \\(\\vec{B}\\).</li>\n<li><b>Metode jajargenjang</b>: satukan pangkal \\(\\vec{A}\\) dan \\(\\vec{B}\\). Tarik garis sejajar dari ujung masing-masing hingga membentuk jajargenjang. Resultan adalah diagonal dari pangkal bersama.</li>\n<li><b>Metode poligon</b>: untuk tiga vektor atau lebih, sambungkan terus ujung ke pangkal. Resultan ditarik dari pangkal vektor pertama ke ujung vektor terakhir.</li>\n</ol>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/penjumlahan.html",
+          "title": "Penjumlahan dan pengurangan vektor",
+          "height": 480,
+          "caption": "Geser ujung A dan B. Bandingkan metode segitiga dan jajargenjang: resultannya selalu sama. Kapan resultan paling besar? Kapan paling kecil?"
+        },
+        {
+          "type": "h",
+          "text": "Menghitung besar resultan: rumus kosinus"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika dua vektor \\(\\vec{A}\\) dan \\(\\vec{B}\\) membentuk sudut apit \\(\\theta\\) (sudut antara keduanya saat pangkalnya disatukan), besar resultannya:</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Resultan dua vektor",
+          "html": "\\[R = |\\vec{A} + \\vec{B}| = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}\\]\n\\[|\\vec{A} - \\vec{B}| = \\sqrt{A^2 + B^2 - 2AB\\cos\\theta}\\]"
+        },
+        {
+          "type": "text",
+          "html": "<p>Tiga kasus khusus yang perlu diingat:</p>\n<table>\n<tr><th>Sudut apit θ</th><th>Resultan</th><th>Keterangan</th></tr>\n<tr><td>0° (searah)</td><td>\\(R = A + B\\)</td><td>paling besar</td></tr>\n<tr><td>90° (tegak lurus)</td><td>\\(R = \\sqrt{A^2 + B^2}\\)</td><td>teorema Pythagoras</td></tr>\n<tr><td>180° (berlawanan)</td><td>\\(R = |A - B|\\)</td><td>paling kecil</td></tr>\n</table>\n<p>Jadi resultan dua vektor <b>selalu</b> berada di rentang \\(|A - B| \\le R \\le A + B\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 4",
+          "question": "<p>Dua gaya, 5 N dan 3 N, bekerja pada satu titik dengan sudut apit 60°. Tentukan besar resultannya.</p>",
+          "steps": [
+            "Gunakan rumus kosinus: \\(R = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}\\).",
+            "\\(R = \\sqrt{5^2 + 3^2 + 2(5)(3)\\cos 60^\\circ} = \\sqrt{25 + 9 + 30 \\times \\tfrac{1}{2}}\\).",
+            "\\(R = \\sqrt{25 + 9 + 15} = \\sqrt{49} = 7\\) N."
+          ],
+          "answer": "7 N"
+        },
+        {
+          "type": "check",
+          "question": "Dua gaya, 7 N dan 3 N, bekerja pada satu titik dengan sudut apit yang bisa diatur. Besar resultan yang <b>tidak mungkin</b> adalah ....",
+          "options": {
+            "A": "4 N",
+            "B": "6 N",
+            "C": "10 N",
+            "D": "11 N"
+          },
+          "answer": "D",
+          "hint": "Tentukan dulu resultan terkecil (θ = 180°) dan terbesar (θ = 0°).",
+          "explanation": "Resultan berada di antara \\(7 - 3 = 4\\) N dan \\(7 + 3 = 10\\) N. Nilai 11 N di luar rentang itu."
+        },
+        {
+          "type": "check",
+          "question": "Dua vektor sama besar, masing-masing 6 satuan, membentuk sudut apit 120°. Besar resultannya adalah ....",
+          "options": {
+            "A": "0",
+            "B": "6 satuan",
+            "C": "\\(6\\sqrt{3}\\) satuan",
+            "D": "12 satuan"
+          },
+          "answer": "B",
+          "hint": "\\(\\cos 120^\\circ = -\\tfrac{1}{2}\\).",
+          "explanation": "\\(R = \\sqrt{36 + 36 + 2(36)(-\\tfrac12)} = \\sqrt{36} = 6\\). Dua vektor sama besar dengan sudut apit 120° selalu menghasilkan resultan yang sama besar dengan masing-masing vektor."
+        },
+        {
+          "type": "video",
+          "youtube": "rw27s75Eknc",
+          "title": "Menggambar resultan vektor: metode jajargenjang dan poligon",
+          "channel": "BELATIK"
+        }
+      ]
+    },
+    {
+      "id": "penjumlahan-analitis",
+      "title": "Penjumlahan vektor secara analitis",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Rumus kosinus praktis untuk dua vektor. Untuk tiga vektor atau lebih, cara paling andal adalah <b>metode analitis</b> (metode komponen): uraikan setiap vektor, jumlahkan komponennya, lalu gabungkan lagi.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Langkah metode komponen",
+          "html": "<ol>\n<li>Uraikan setiap vektor: \\(F_x = F\\cos\\theta\\) dan \\(F_y = F\\sin\\theta\\).</li>\n<li>Jumlahkan semua komponen x: \\(R_x = \\Sigma F_x\\). Lakukan hal yang sama untuk y: \\(R_y = \\Sigma F_y\\).</li>\n<li>Besar resultan: \\(R = \\sqrt{R_x^2 + R_y^2}\\).</li>\n<li>Arah resultan: \\(\\tan\\theta_R = \\dfrac{R_y}{R_x}\\). Perhatikan kuadrannya.</li>\n</ol>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Dalam notasi \\(\\mathbf{i}, \\mathbf{j}\\), langkah ini sangat ringkas: cukup jumlahkan koefisien \\(\\mathbf{i}\\) dengan \\(\\mathbf{i}\\), dan \\(\\mathbf{j}\\) dengan \\(\\mathbf{j}\\).</p>\n\\[(2\\mathbf{i} + 5\\mathbf{j}) + (4\\mathbf{i} - \\mathbf{j}) = 6\\mathbf{i} + 4\\mathbf{j}\\]\n\\[(2\\mathbf{i} + 5\\mathbf{j}) - (4\\mathbf{i} - \\mathbf{j}) = -2\\mathbf{i} + 6\\mathbf{j}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 5",
+          "question": "<p>Tiga gaya sebidang bekerja pada sebuah titik: \\(F_1 = 4\\) N arah 0°, \\(F_2 = 10\\) N arah 53°, dan \\(F_3 = 2\\) N arah 180°. Tentukan besar dan arah resultannya. (\\(\\sin 53^\\circ = 0{,}8\\), \\(\\cos 53^\\circ = 0{,}6\\))</p>",
+          "steps": [
+            "Uraikan setiap gaya:<br>\n<table><tr><th>Gaya</th><th>\\(F_x\\)</th><th>\\(F_y\\)</th></tr>\n<tr><td>\\(F_1\\)</td><td>\\(4\\cos 0^\\circ = 4\\)</td><td>0</td></tr>\n<tr><td>\\(F_2\\)</td><td>\\(10 \\times 0{,}6 = 6\\)</td><td>\\(10 \\times 0{,}8 = 8\\)</td></tr>\n<tr><td>\\(F_3\\)</td><td>\\(2\\cos 180^\\circ = -2\\)</td><td>0</td></tr></table>",
+            "Jumlahkan: \\(R_x = 4 + 6 - 2 = 8\\) N dan \\(R_y = 0 + 8 + 0 = 8\\) N.",
+            "Besar: \\(R = \\sqrt{8^2 + 8^2} = 8\\sqrt{2}\\) N.",
+            "Arah: \\(\\tan\\theta = \\frac{8}{8} = 1\\), dan kedua komponen positif (kuadran I), jadi \\(\\theta = 45^\\circ\\)."
+          ],
+          "answer": "\\(8\\sqrt{2}\\) N dengan arah 45°"
+        },
+        {
+          "type": "h",
+          "text": "Misi: temukan korban banjir"
+        },
+        {
+          "type": "text",
+          "html": "<p>Saatnya menerapkan penguraian vektor. Tim SAR hanya tahu jarak dan arah korban dari pos. Tugasmu: ubah informasi itu menjadi perpindahan ke timur (Δx) dan ke utara (Δy) agar drone mendarat tepat di lokasi korban. Pada misi 5 dan 6, drone sudah terbang lebih dulu, jadi kamu perlu <b>mengurangkan</b> vektor.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/misi-drone.html",
+          "title": "Misi Drone SAR",
+          "height": 520,
+          "caption": "Gunakan sin 37° = 0,6 dan cos 37° = 0,8 (sin 53° = 0,8 dan cos 53° = 0,6). Kerjakan di kertas dulu sebelum menerbangkan drone!"
+        },
+        {
+          "type": "check",
+          "question": "Diketahui \\(\\vec{A} = 3\\mathbf{i} + 4\\mathbf{j}\\) dan \\(\\vec{B} = \\mathbf{i} - 2\\mathbf{j}\\). Besar \\(\\vec{A} + \\vec{B}\\) adalah ....",
+          "options": {
+            "A": "\\(2\\sqrt{2}\\)",
+            "B": "\\(2\\sqrt{5}\\)",
+            "C": "6",
+            "D": "\\(\\sqrt{40}\\)"
+          },
+          "answer": "B",
+          "hint": "Jumlahkan dulu komponennya: \\((3 + 1)\\mathbf{i} + (4 - 2)\\mathbf{j}\\).",
+          "explanation": "\\(\\vec{A} + \\vec{B} = 4\\mathbf{i} + 2\\mathbf{j}\\), sehingga besarnya \\(\\sqrt{16 + 4} = \\sqrt{20} = 2\\sqrt{5}\\)."
+        },
+        {
+          "type": "video",
+          "youtube": "XaGSYtAXJ1M",
+          "title": "Vektor (part 6): Penjumlahan Vektor Metode Analitis",
+          "channel": "Ruang Cemerlang"
+        }
+      ]
+    },
+    {
+      "id": "kesetimbangan",
+      "title": "Resultan nol: keseimbangan gaya",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Lampu yang tergantung diam, jembatan yang berdiri kokoh, dan tali tambang yang tidak bergeser saat lomba tarik tambang punya satu kesamaan: <b>resultan semua gaya yang bekerja padanya nol</b>. Keadaan ini disebut <b>keseimbangan</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Syarat keseimbangan titik",
+          "html": "\\[\\Sigma \\vec{F} = 0 \\quad\\Longleftrightarrow\\quad \\Sigma F_x = 0 \\;\\text{ dan }\\; \\Sigma F_y = 0\\]\n<p>Secara grafis: jika semua gaya disambung ujung ke pangkal (metode poligon), poligonnya <b>tertutup</b>.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/keseimbangan.html",
+          "title": "Lampu gantung",
+          "height": 480,
+          "caption": "Ubah sudut tali dan berat lampu. Perhatikan bahwa diagram gaya selalu membentuk segitiga tertutup. Apa yang terjadi pada tegangan tali jika kedua sudut dibuat sangat kecil?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 6",
+          "question": "<p>Sebuah lampu seberat 50 N digantung dengan dua tali. Tali \\(T_1\\) membentuk sudut 37° dan tali \\(T_2\\) membentuk sudut 53° terhadap langit-langit. Tentukan tegangan kedua tali. (\\(\\sin 37^\\circ = 0{,}6\\), \\(\\cos 37^\\circ = 0{,}8\\))</p>",
+          "steps": [
+            "Komponen mendatar harus seimbang: \\(T_1\\cos 37^\\circ = T_2\\cos 53^\\circ \\Rightarrow 0{,}8\\,T_1 = 0{,}6\\,T_2 \\Rightarrow T_2 = \\tfrac{4}{3}T_1\\).",
+            "Komponen tegak harus menahan berat: \\(T_1\\sin 37^\\circ + T_2\\sin 53^\\circ = 50 \\Rightarrow 0{,}6\\,T_1 + 0{,}8\\,T_2 = 50\\).",
+            "Substitusi: \\(0{,}6\\,T_1 + 0{,}8 \\cdot \\tfrac{4}{3}T_1 = 50 \\Rightarrow \\tfrac{5}{3}T_1 = 50 \\Rightarrow T_1 = 30\\) N.",
+            "\\(T_2 = \\tfrac{4}{3} \\times 30 = 40\\) N. Periksa dengan simulasi di atas: atur 37°, 53°, dan 50 N."
+          ],
+          "answer": "\\(T_1 = 30\\) N dan \\(T_2 = 40\\) N"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Trik vektor ketiga",
+          "html": "<p>Jika dua gaya \\(\\vec{F_1}\\) dan \\(\\vec{F_2}\\) sudah diketahui, gaya ketiga yang membuat benda seimbang adalah <b>negatif dari resultan keduanya</b>: \\(\\vec{F_3} = -(\\vec{F_1} + \\vec{F_2})\\). Besarnya sama dengan resultan, arahnya berlawanan (selisih 180°).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Dua gaya mendatar, 6 N ke timur dan 8 N ke utara, bekerja pada sebuah titik. Agar titik itu seimbang, gaya ketiga yang diperlukan adalah ....",
+          "options": {
+            "A": "14 N ke arah barat daya",
+            "B": "10 N, arah 37° dari barat ke selatan",
+            "C": "10 N, arah 53° dari barat ke selatan",
+            "D": "10 N, arah 53° dari timur ke utara"
+          },
+          "answer": "C",
+          "hint": "Hitung dulu resultan kedua gaya beserta arahnya, lalu balik arahnya.",
+          "explanation": "Resultan kedua gaya: \\(\\sqrt{36 + 64} = 10\\) N dengan arah \\(\\tan\\theta = \\tfrac{8}{6}\\), yaitu 53° dari timur ke utara. Gaya ketiga besarnya sama tetapi berlawanan arah: 10 N, 53° dari barat ke selatan."
+        }
+      ]
+    },
+    {
+      "id": "perkalian-vektor",
+      "title": "Perkalian titik dan perkalian silang",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Ada dua cara mengalikan dua vektor. Hasilnya berbeda jenis: yang satu menghasilkan <b>skalar</b>, yang lain menghasilkan <b>vektor</b>.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Perkalian titik (dot product)"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Perkalian titik",
+          "html": "\\[\\vec{A}\\cdot\\vec{B} = AB\\cos\\theta = A_xB_x + A_yB_y\\]\n<p>Hasilnya <b>skalar</b>. Untuk vektor satuan: \\(\\mathbf{i}\\cdot\\mathbf{i} = \\mathbf{j}\\cdot\\mathbf{j} = 1\\) dan \\(\\mathbf{i}\\cdot\\mathbf{j} = 0\\).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Perkalian titik mengukur <b>seberapa searah</b> dua vektor. Nilainya maksimum jika searah, nol jika tegak lurus, dan negatif jika sudut apitnya lebih dari 90°.</p>\n<p>Contoh terpenting dalam fisika adalah <b>usaha</b>. Hanya bagian gaya yang searah perpindahan yang melakukan usaha.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/usaha-koper.svg",
+          "alt": "Koper ditarik gaya F miring dengan sudut theta; komponen F cos theta searah perpindahan s",
+          "caption": "Usaha adalah perkalian titik antara gaya dan perpindahan.",
+          "width": 560
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 7",
+          "question": "<p>Sebuah troli ditarik dengan gaya 50 N yang membentuk sudut 37° terhadap lantai sehingga berpindah 4 m mendatar. Berapa usaha gaya tarik tersebut?</p>",
+          "steps": [
+            "\\(W = \\vec{F}\\cdot\\vec{s} = Fs\\cos\\theta\\).",
+            "\\(W = 50 \\times 4 \\times \\cos 37^\\circ = 200 \\times 0{,}8 = 160\\) J."
+          ],
+          "answer": "160 J"
+        },
+        {
+          "type": "h",
+          "text": "Perkalian silang (cross product)"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Perkalian silang",
+          "html": "\\[|\\vec{A}\\times\\vec{B}| = AB\\sin\\theta\\]\n<p>Hasilnya <b>vektor</b> yang tegak lurus terhadap \\(\\vec{A}\\) dan \\(\\vec{B}\\). Untuk vektor di bidang xy: \\(\\vec{A}\\times\\vec{B} = (A_xB_y - A_yB_x)\\,\\mathbf{k}\\).</p>\n<p>\\(\\mathbf{i}\\times\\mathbf{j} = \\mathbf{k}\\), \\(\\mathbf{j}\\times\\mathbf{i} = -\\mathbf{k}\\), dan \\(\\mathbf{i}\\times\\mathbf{i} = \\mathbf{j}\\times\\mathbf{j} = 0\\).</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/tangan-kanan.svg",
+          "alt": "Kaidah tangan kanan: memutar A ke B, ibu jari menunjukkan arah A kali B yang tegak lurus bidang",
+          "caption": "Arah A × B ditentukan dengan kaidah tangan kanan. Akibatnya, A × B = −(B × A).",
+          "width": 560
+        },
+        {
+          "type": "text",
+          "html": "<p>Besar \\(\\vec{A}\\times\\vec{B}\\) sama dengan <b>luas jajargenjang</b> yang dibentuk kedua vektor. Nilainya maksimum jika kedua vektor tegak lurus dan nol jika sejajar. Dalam fisika, perkalian silang muncul pada <b>momen gaya (torsi)</b> \\(\\vec{\\tau} = \\vec{r}\\times\\vec{F}\\) dan gaya magnet (Kelas XII).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/perkalian.html",
+          "title": "Perkalian titik dan silang",
+          "height": 470,
+          "caption": "Geser A dan B. Pada mode titik, perhatikan panjang proyeksi. Pada mode silang, perhatikan luas jajargenjang dan arah ⊙/⊗ ketika B berpindah dari kiri ke kanan A."
+        },
+        {
+          "type": "check",
+          "question": "Vektor \\(\\vec{A}\\) besarnya 6 dan \\(\\vec{B}\\) besarnya 4, membentuk sudut 30°. Nilai \\(\\vec{A}\\cdot\\vec{B}\\) dan \\(|\\vec{A}\\times\\vec{B}|\\) berturut-turut adalah ....",
+          "options": {
+            "A": "12 dan \\(12\\sqrt{3}\\)",
+            "B": "\\(12\\sqrt{3}\\) dan 12",
+            "C": "24 dan 0",
+            "D": "\\(12\\sqrt{3}\\) dan \\(12\\sqrt{3}\\)"
+          },
+          "answer": "B",
+          "hint": "Titik memakai cos, silang memakai sin.",
+          "explanation": "\\(\\vec{A}\\cdot\\vec{B} = 24\\cos 30^\\circ = 12\\sqrt{3}\\) dan \\(|\\vec{A}\\times\\vec{B}| = 24\\sin 30^\\circ = 12\\)."
+        },
+        {
+          "type": "check",
+          "question": "Jika \\(\\vec{A} = 2\\mathbf{i} + 3\\mathbf{j}\\) dan \\(\\vec{B} = 3\\mathbf{i} - 2\\mathbf{j}\\), maka \\(\\vec{A}\\cdot\\vec{B}\\) bernilai ....",
+          "options": {
+            "A": "0",
+            "B": "12",
+            "C": "13",
+            "D": "−5"
+          },
+          "answer": "A",
+          "hint": "\\(A_xB_x + A_yB_y\\).",
+          "explanation": "\\(2(3) + 3(-2) = 6 - 6 = 0\\). Hasil nol berarti kedua vektor saling <b>tegak lurus</b>."
+        },
+        {
+          "type": "video",
+          "youtube": "4vXT5iSHAzs",
+          "title": "Perkalian Vektor: Dot Product dan Cross Product",
+          "channel": "Didi Yuli Setiaji"
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table>\n<tr><th>Konsep</th><th>Inti</th></tr>\n<tr><td>Skalar vs vektor</td><td>Skalar: nilai saja. Vektor: nilai dan arah.</td></tr>\n<tr><td>Vektor negatif</td><td>\\(-\\vec{A}\\): besar sama, arah berlawanan (+180°).</td></tr>\n<tr><td>Perkalian skalar</td><td>\\(k\\vec{A}\\): besar \\(|k|A\\); arah sama jika \\(k&gt;0\\), berlawanan jika \\(k&lt;0\\).</td></tr>\n<tr><td>Komponen</td><td>\\(A_x = A\\cos\\theta\\), \\(A_y = A\\sin\\theta\\), \\(A = \\sqrt{A_x^2 + A_y^2}\\).</td></tr>\n<tr><td>Vektor satuan</td><td>\\(\\vec{A} = A_x\\mathbf{i} + A_y\\mathbf{j}\\), \\(\\hat{A} = \\vec{A}/A\\).</td></tr>\n<tr><td>Resultan dua vektor</td><td>\\(R = \\sqrt{A^2 + B^2 + 2AB\\cos\\theta}\\), dengan \\(|A-B| \\le R \\le A+B\\).</td></tr>\n<tr><td>Metode analitis</td><td>\\(R_x = \\Sigma F_x\\), \\(R_y = \\Sigma F_y\\), \\(R = \\sqrt{R_x^2 + R_y^2}\\).</td></tr>\n<tr><td>Keseimbangan</td><td>\\(\\Sigma F_x = 0\\) dan \\(\\Sigma F_y = 0\\); poligon gaya tertutup.</td></tr>\n<tr><td>Perkalian titik</td><td>\\(\\vec{A}\\cdot\\vec{B} = AB\\cos\\theta\\) (skalar), contoh: usaha.</td></tr>\n<tr><td>Perkalian silang</td><td>\\(|\\vec{A}\\times\\vec{B}| = AB\\sin\\theta\\) (vektor, kaidah tangan kanan), contoh: torsi.</td></tr>\n</table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul>\n<li>Menjumlahkan besar vektor secara langsung (3 + 4 = 7) padahal arahnya berbeda.</li>\n<li>Lupa memeriksa kuadran saat menghitung arah dengan \\(\\tan^{-1}\\).</li>\n<li>Memakai sudut terhadap sumbu y, tetapi tetap menulis \\(A_x = A\\cos\\theta\\). Rumus komponen hanya berlaku untuk sudut dari sumbu x positif.</li>\n<li>Menganggap tanda negatif membuat besar vektor menjadi negatif.</li>\n</ul>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang vektor, dari besaran skalar hingga perkalian silang. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

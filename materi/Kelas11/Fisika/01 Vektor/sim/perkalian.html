@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perkalian Titik dan Silang</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Vektor A dan B untuk perkalian titik dan silang"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode" role="group" aria-label="Jenis perkalian">
+      <button data-m="dot" class="on">Titik (A · B)</button>
+      <button data-m="cross">Silang (A × B)</button>
+    </div>
+    <p class="note" id="how"></p>
+    <div class="read" id="read"></div>
+    <div class="formula" id="formula"></div>
+    <div class="box info" id="meaning"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt, deg, len} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -7, xmax: 7, ymin: -5, ymax: 6, scale: 38});
+let A = {x: 5, y: 1}, B = {x: 2, y: 4}, mode = 'dot';
+
+P.draggable((h, x, y) => {
+  const c = P.clamp(Math.round(x), Math.round(y));
+  if(h === 'A') A = c; else B = c;
+  draw();
+});
+$('mode').onclick = e => {
+  const b = e.target.closest('button'); if(!b) return;
+  mode = b.dataset.m; [...$('mode').children].forEach(x => x.classList.toggle('on', x === b)); draw();
+};
+Sim.onTheme(draw);
+
+function draw(){
+  const a = len(A.x, A.y), b = len(B.x, B.y);
+  const tA = deg(A.x, A.y), tB = deg(B.x, B.y);
+  let th = Math.abs(tA - tB); if(th > 180) th = 360 - th;
+  const dot = A.x * B.x + A.y * B.y, cross = A.x * B.y - A.y * B.x;
+  let s = P.grid({labels: false});
+
+  if(mode === 'dot' && a > 0){
+    const t = dot / (a * a), F = {x: t * A.x, y: t * A.y};
+    // garis bantu sepanjang A
+    s += `<line x1="${P.X(-A.x * 3)}" y1="${P.Y(-A.y * 3)}" x2="${P.X(A.x * 3)}" y2="${P.Y(A.y * 3)}" style="stroke:var(--line-2)" stroke-width="1.5" class="dash"/>`;
+    s += `<line x1="${P.X(B.x)}" y1="${P.Y(B.y)}" x2="${P.X(F.x)}" y2="${P.Y(F.y)}" style="stroke:var(--muted)" stroke-width="1.6" class="dash"/>`;
+    s += `<line x1="${P.X(0)}" y1="${P.Y(0)}" x2="${P.X(F.x)}" y2="${P.Y(F.y)}" style="stroke:var(--k)" stroke-width="12" stroke-linecap="round" opacity=".45"/>`;
+  }
+  if(mode === 'cross'){
+    s += `<polygon points="${P.X(0)},${P.Y(0)} ${P.X(A.x)},${P.Y(A.y)} ${P.X(A.x + B.x)},${P.Y(A.y + B.y)} ${P.X(B.x)},${P.Y(B.y)}" style="fill:var(--k);opacity:.22;stroke:var(--k)" stroke-width="1.5"/>`;
+    if(Math.abs(cross) > 0.01){
+      const cx = P.X((A.x + B.x) / 2), cy = P.Y((A.y + B.y) / 2);
+      s += `<g transform="translate(${cx},${cy})"><circle r="14" style="fill:var(--bg);stroke:var(--k)" stroke-width="2.5"/>` +
+        (cross > 0 ? `<circle r="4" style="fill:var(--k)"/>` : `<path d="M-7 -7L7 7M7 -7L-7 7" style="stroke:var(--k)" stroke-width="2.5"/>`) + '</g>';
+    }
+  }
+  if(a > 0 && b > 0){
+    const ccw = ((tB - tA) + 360) % 360 <= 180;
+    s += ccw ? P.arc(0, 0, 1, tA, tB, 'var(--muted)', 'θ') : P.arc(0, 0, 1, tB, tA, 'var(--muted)', 'θ');
+  }
+  s += P.arrow(0, 0, A.x, A.y, 'var(--a)', {width: 5, label: 'A'});
+  s += P.arrow(0, 0, B.x, B.y, 'var(--b)', {width: 5, label: 'B', side: -1});
+  s += P.handle('A', A.x, A.y, 'var(--a)') + P.handle('B', B.x, B.y, 'var(--b)');
+  svg.innerHTML = s;
+
+  const rows = `<div><span><i class="sw" style="background:var(--a)"></i>A</span><b>${fmt(A.x)}i ${A.y < 0 ? '−' : '+'} ${fmt(Math.abs(A.y))}j  (|A| = ${fmt(a)})</b></div>
+    <div><span><i class="sw" style="background:var(--b)"></i>B</span><b>${fmt(B.x)}i ${B.y < 0 ? '−' : '+'} ${fmt(Math.abs(B.y))}j  (|B| = ${fmt(b)})</b></div>
+    <div><span>Sudut apit θ</span><b>${fmt(th, 1)}°</b></div>`;
+  if(mode === 'dot'){
+    $('how').innerHTML = 'Pita hijau adalah <b>proyeksi B pada A</b>. Perkalian titik = |A| × panjang proyeksi.';
+    $('read').innerHTML = rows + `<div><span><i class="sw" style="background:var(--k)"></i>A · B</span><b>${fmt(dot)}</b></div>`;
+    $('formula').innerHTML = `A · B = |A||B| cos θ = ${fmt(a)} · ${fmt(b)} · ${fmt(Math.cos(Sim.rad(th)), 3)} = <b>${fmt(a * b * Math.cos(Sim.rad(th)))}</b><br>
+      A · B = A<sub>x</sub>B<sub>x</sub> + A<sub>y</sub>B<sub>y</sub> = ${fmt(A.x)}·${fmt(B.x)} + ${fmt(A.y)}·${fmt(B.y)} = <b>${fmt(dot)}</b>`;
+    $('meaning').innerHTML = Math.abs(dot) < 1e-9 ? '<b>Nol</b>: A dan B saling tegak lurus (θ = 90°).' :
+      dot > 0 ? '<b>Positif</b>: sudut apit kurang dari 90°.' : '<b>Negatif</b>: sudut apit lebih dari 90°.';
+    $('meaning').innerHTML += ' Hasil perkalian titik adalah <b>skalar</b> (hanya angka).';
+  } else {
+    $('how').innerHTML = 'Luas jajargenjang yang dibentuk A dan B sama dengan besar <b>A × B</b>.';
+    $('read').innerHTML = rows + `<div><span><i class="sw" style="background:var(--k)"></i>|A × B|</span><b>${fmt(Math.abs(cross))}</b></div>`;
+    $('formula').innerHTML = `|A × B| = |A||B| sin θ = ${fmt(a)} · ${fmt(b)} · ${fmt(Math.sin(Sim.rad(th)), 3)} = <b>${fmt(a * b * Math.sin(Sim.rad(th)))}</b><br>
+      A × B = (A<sub>x</sub>B<sub>y</sub> − A<sub>y</sub>B<sub>x</sub>) <b>k</b> = <b>${fmt(cross)} k</b>`;
+    $('meaning').innerHTML = Math.abs(cross) < 1e-9 ? '<b>Nol</b>: A dan B sejajar (θ = 0° atau 180°).' :
+      `Hasilnya <b>vektor</b> yang tegak lurus bidang layar, arahnya <b>${cross > 0 ? 'keluar layar (⊙)' : 'masuk layar (⊗)'}</b> menurut kaidah tangan kanan.`;
+  }
+}
+draw();
+</script>
+</body>
+</html>

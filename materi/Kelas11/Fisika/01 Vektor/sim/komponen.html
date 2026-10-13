@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penjelajah Vektor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Bidang koordinat dengan vektor A yang bisa digeser"></svg></div>
+  <div class="panel">
+    <h3 class="t">Geser ujung vektor A</h3>
+    <div class="read" id="read"></div>
+    <label class="chk"><input type="checkbox" id="c-comp" checked> Tampilkan komponen A<sub>x</sub> dan A<sub>y</sub></label>
+    <label class="chk"><input type="checkbox" id="c-unit"> Tampilkan vektor satuan Â</label>
+    <label class="chk"><input type="checkbox" id="c-snap" checked> Kunci ke titik petak</label>
+    <div>
+      <div class="lab"><span>Kalikan dengan skalar k</span><b id="k-out">k = 1</b></div>
+      <input type="range" id="k" min="-3" max="3" step="0.5" value="1" aria-label="Skalar k">
+    </div>
+    <p class="note" id="k-note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt, deg, len} = Sim;
+const svg = document.getElementById('svg');
+const P = Sim.plane(svg, {xmin: -8, xmax: 8, ymin: -6, ymax: 6, scale: 34});
+let A = {x: 4, y: 3}, k = 1;
+const $ = id => document.getElementById(id);
+
+P.draggable((h, x, y) => {
+  if($('c-snap').checked){ x = Math.round(x); y = Math.round(y); }
+  const c = P.clamp(x, y); A = {x: c.x, y: c.y}; draw();
+});
+['c-comp', 'c-unit', 'c-snap'].forEach(id => $(id).onchange = draw);
+$('k').oninput = e => { k = +e.target.value; draw(); };
+Sim.onTheme(draw);
+
+function draw(){
+  const m = len(A.x, A.y), th = deg(A.x, A.y);
+  let s = P.grid({xname: 'x', yname: 'y'});
+  // kA di belakang
+  if(k !== 1 && m > 0) s += P.arrow(0, 0, k * A.x, k * A.y, 'var(--k)', {width: 6, opacity: .55, label: fmt(k) + 'A', side: -1});
+  if($('c-comp').checked && m > 0){
+    s += P.arrow(0, 0, A.x, 0, 'var(--comp)', {width: 3, dash: true, head: 11, label: 'A<tspan font-size="11" dy="4">x</tspan>', side: A.y >= 0 ? -1 : 1});
+    s += P.arrow(A.x, 0, A.x, A.y, 'var(--comp)', {width: 3, dash: true, head: 11, label: 'A<tspan font-size="11" dy="4">y</tspan>', side: A.x >= 0 ? -1 : 1});
+  }
+  if(m > 0) s += P.arc(0, 0, .9, 0, th, 'var(--muted)', 'θ');
+  s += P.arrow(0, 0, A.x, A.y, 'var(--a)', {width: 5, label: 'A'});
+  if($('c-unit').checked && m > 0) s += P.arrow(0, 0, A.x / m, A.y / m, 'var(--r)', {width: 5, head: 12, label: 'Â', side: -1});
+  s += P.handle('A', A.x, A.y, 'var(--a)');
+  svg.innerHTML = s;
+
+  const sgn = v => v < 0 ? ' − ' + fmt(-v) : ' + ' + fmt(v);
+  $('read').innerHTML = `
+    <div><span><i class="sw" style="background:var(--a)"></i>Vektor <b>A</b></span><b>${fmt(A.x)}<b>i</b>${sgn(A.y)}<b>j</b></b></div>
+    <div><span>Komponen A<sub>x</sub>, A<sub>y</sub></span><b>${fmt(A.x)} ; ${fmt(A.y)}</b></div>
+    <div><span>Besar |A| = √(A<sub>x</sub>² + A<sub>y</sub>²)</span><b>${fmt(m)}</b></div>
+    <div><span>Arah θ (dari sumbu x+)</span><b>${m ? fmt(th, 1) + '°' : '–'}</b></div>
+    ${$('c-unit').checked && m ? `<div><span><i class="sw" style="background:var(--r)"></i>Vektor satuan Â = A/|A|</span><b>${fmt(A.x / m)}<b>i</b>${sgn(A.y / m)}<b>j</b></b></div>` : ''}`;
+  $('k-out').textContent = 'k = ' + fmt(k);
+  $('k-note').innerHTML = k === 1 ? 'Geser penggaris k untuk melihat vektor <b>kA</b>.' :
+    `<b>${fmt(k)}A</b> = ${fmt(k * A.x)}<b>i</b>${sgn(k * A.y)}<b>j</b>, besarnya ${fmt(Math.abs(k))} × ${fmt(m)} = ${fmt(Math.abs(k) * m)}. ` +
+    (k > 0 ? 'Arahnya <b>sama</b> dengan A.' : k < 0 ? 'Arahnya <b>berlawanan</b> dengan A (berbeda 180°).' : 'Hasilnya vektor nol.');
+}
+draw();
+</script>
+</body>
+</html>
