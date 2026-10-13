@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Histogram dan Data Kelompok</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:12px}
+table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}td,th{padding:3px 5px;text-align:center;border-bottom:1px solid var(--line)}th{font-size:11.5px;color:var(--muted)}
+tr.med td{background:color-mix(in srgb,var(--b) 14%,transparent)}tr.mod td:first-child{color:var(--comp);font-weight:800}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 330" role="img" aria-label="Histogram tinggi badan siswa"></svg></div>
+  <div class="panel">
+    <div class="row"><b>Tinggi badan 40 siswa (cm)</b><button class="btn" id="new">Data baru</button></div>
+    <div><div class="lab"><span>Panjang kelas</span><b id="pout"></b></div><input type="range" id="p" min="2" max="10" step="1" value="5"></div>
+    <div><div class="lab"><span>Batas bawah kelas pertama</span><b id="bout"></b></div><input type="range" id="b" min="0" max="9" step="1" value="0"></div>
+    <div class="seg" id="mode"><button data-m="f" class="on">Frekuensi</button><button data-m="r">Frekuensi relatif</button></div>
+    <table id="tab"></table>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let seed = 7, data = [], mode = 'f';
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+function gen(){ data = []; for(let i = 0; i < 40; i++){ let z = 0; for(let k = 0; k < 6; k++) z += rnd(); data.push(Math.round(160 + (z - 3) * 9)); } data.sort((a, b) => a - b); }
+['p', 'b'].forEach(id => $(id).oninput = draw);
+$('new').onclick = () => { seed = Math.floor(Math.random() * 1e6) + 1; gen(); draw(); };
+$('mode').onclick = e => { const t = e.target.closest('button'); if(!t) return; mode = t.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === t)); draw(); };
+Sim.onTheme(draw);
+function draw(){
+  const p = +$('p').value, mn = data[0], mx = data[data.length - 1], n = data.length;
+  $('b').max = p - 1; const off = Math.min(+$('b').value, p - 1);
+  const start = mn - off, cls = [];
+  for(let a = start; a <= mx; a += p) cls.push({a, z: a + p - 1, f: data.filter(v => v >= a && v <= a + p - 1).length});
+  $('pout').textContent = p; $('bout').textContent = start;
+  const fmax = Math.max(...cls.map(c => c.f)), W = 400, L = 46, B = 290, bw = W / cls.length;
+  const top = mode === 'f' ? Math.ceil(fmax / 2) * 2 + 2 : Math.ceil(fmax / n * 10) / 10 + .05, Y = v => B - v / top * 260;
+  let s = '<g style="stroke:var(--line)">';
+  const st = mode === 'f' ? 2 : .05;
+  for(let v = 0; v <= top + 1e-9; v += st) s += `<line x1="${L}" y1="${Y(v)}" x2="${L + W}" y2="${Y(v)}"/>`;
+  s += '</g><g style="fill:var(--muted)" font-size="11">';
+  for(let v = st; v <= top + 1e-9; v += st) s += `<text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${mode === 'f' ? v : fmt(v * 100, 0) + '%'}</text>`;
+  s += '</g>';
+  // kelas median & modus
+  let cum = 0, mi = 0; for(let i = 0; i < cls.length; i++){ if(cum + cls[i].f >= n / 2){ mi = i; break; } cum += cls[i].f; }
+  const moI = cls.findIndex(c => c.f === fmax);
+  cls.forEach((c, i) => {
+    const v = mode === 'f' ? c.f : c.f / n, x = L + i * bw;
+    s += `<rect x="${x}" y="${Y(v)}" width="${bw}" height="${B - Y(v)}" style="fill:${i === moI ? 'var(--comp)' : 'var(--a)'};stroke:var(--bg)" fill-opacity=".8" stroke-width="1.5"/>`;
+    if(c.f) s += `<text class="ar" x="${x + bw / 2}" y="${Y(v) - 5}" text-anchor="middle" style="fill:var(--ink)">${mode === 'f' ? c.f : fmt(c.f / n * 100, 1) + '%'}</text>`;
+    s += `<text x="${x}" y="${B + 15}" text-anchor="middle" font-size="10.5" style="fill:var(--muted)">${fmt(c.a - .5, 1)}</text>`;
+  });
+  s += `<text x="${L + W}" y="${B + 15}" text-anchor="middle" font-size="10.5" style="fill:var(--muted)">${fmt(cls[cls.length - 1].z + .5, 1)}</text>`;
+  s += `<line x1="${L}" y1="${B}" x2="${L + W}" y2="${B}" style="stroke:var(--ink)" stroke-width="1.6"/><text x="${L + W / 2}" y="${B + 34}" text-anchor="middle" font-size="12" font-weight="700" style="fill:var(--muted)">tinggi badan (cm), tepi kelas</text>`;
+  svg.innerHTML = s;
+  const xi = c => (c.a + c.z) / 2, meanG = cls.reduce((t, c) => t + c.f * xi(c), 0) / n, mean = data.reduce((t, v) => t + v, 0) / n;
+  const C = cls[mi], medG = (C.a - .5) + (n / 2 - cum) / C.f * p, med = (data[n / 2 - 1] + data[n / 2]) / 2;
+  $('tab').innerHTML = '<tr><th>Kelas</th><th>Tepi kelas</th><th>xᵢ</th><th>fᵢ</th><th>fᵢxᵢ</th><th>f kum</th></tr>' +
+    cls.map((c, i) => `<tr class="${i === mi ? 'med' : ''} ${i === moI ? 'mod' : ''}"><td>${c.a}–${c.z}</td><td>${fmt(c.a - .5, 1)}–${fmt(c.z + .5, 1)}</td><td>${fmt(xi(c), 1)}</td><td>${c.f}</td><td>${fmt(c.f * xi(c), 1)}</td><td>${cls.slice(0, i + 1).reduce((t, d) => t + d.f, 0)}</td></tr>`).join('');
+  $('read').innerHTML = `<div><span>Rata-rata data kelompok Σfᵢxᵢ/n</span><b>${fmt(meanG, 2)}</b></div><div><span>Rata-rata sebenarnya (data tunggal)</span><b>${fmt(mean, 2)}</b></div>` +
+    `<div><span style="color:var(--b)">Median kelompok (interpolasi)</span><b>${fmt(medG, 2)}</b></div><div><span>Median sebenarnya</span><b>${fmt(med, 2)}</b></div>` +
+    `<div><span style="color:var(--comp)">Kelas modus</span><b>${cls[moI].a}–${cls[moI].z}</b></div>`;
+}
+gen(); draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lintasan Lemparan Bola</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.big{font-family:var(--display);font-weight:800;font-size:18px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+.ar{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Lintasan bola yang dilempar ke atas sebagai grafik ketinggian terhadap waktu"></svg></div>
+  <div class="panel">
+    <div class="big" id="eq"></div>
+    <div><div class="lab"><span>Kecepatan awal v₀ (m/s)</span><b id="vout"></b></div><input type="range" id="v" min="5" max="25" step="1" value="20"></div>
+    <div><div class="lab"><span>Tinggi awal h₀ (m)</span><b id="hout"></b></div><input type="range" id="h" min="0" max="20" step="1" value="5"></div>
+    <div><div class="lab"><span>Waktu t (s)</span><b id="tout"></b></div><input type="range" id="t" min="0" max="1" step="0.01" value="0.3"></div>
+    <div class="row"><button class="btn primary" id="play">Lempar ▶</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Model: h(t) = −5t² + v₀t + h₀ (percepatan gravitasi dibulatkan 10 m/s²). Ketinggian maksimum dicapai di puncak parabola, t = v₀/10.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// skala berbeda untuk sumbu t dan h
+const W = 420, H = 330, L = 40, B = 300, sx = (W - L - 14) / 6, sy = (B - 14) / 52;
+svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+const X = t => L + t * sx, Y = h => B - h * sy;
+let timer = null;
+['v', 'h'].forEach(id => $(id).oninput = () => { stop(); $('t').value = 0; draw(); });
+$('t').oninput = () => { stop(); draw(); };
+$('play').onclick = () => {
+  stop(); const T = tEnd(); let t0 = performance.now();
+  timer = setInterval(() => { const t = Math.min(T, (performance.now() - t0) / 1000 * 1.2); $('t').value = t / T; draw(); if(t >= T) stop(); }, 30);
+};
+function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+Sim.onTheme(draw);
+const tEnd = () => { const v = +$('v').value, h0 = +$('h').value; return (v + Math.sqrt(v * v + 20 * h0)) / 10; };
+function draw(){
+  const v = +$('v').value, h0 = +$('h').value, T = tEnd(), t = +$('t').value * T, hf = x => -5 * x * x + v * x + h0;
+  const tp = v / 10, hp = hf(tp);
+  $('vout').textContent = v; $('hout').textContent = h0; $('tout').textContent = fmt(t, 2);
+  $('eq').textContent = `h(t) = −5t² + ${v}t${h0 ? ' + ' + h0 : ''}`;
+  let s = '<g style="stroke:var(--line)" stroke-width="1">';
+  for(let k = 0; k <= 6; k += 1) s += `<line x1="${X(k)}" y1="${Y(0)}" x2="${X(k)}" y2="${Y(52)}"/>`;
+  for(let k = 0; k <= 52; k += 10) s += `<line x1="${X(0)}" y1="${Y(k)}" x2="${X(6)}" y2="${Y(k)}"/>`;
+  s += '</g><g style="fill:var(--muted)" font-size="11">';
+  for(let k = 1; k <= 5; k++) s += `<text x="${X(k)}" y="${Y(0) + 15}" text-anchor="middle">${k}</text>`;
+  for(let k = 10; k <= 50; k += 10) s += `<text x="${X(0) - 6}" y="${Y(k) + 4}" text-anchor="end">${k}</text>`;
+  s += `<text x="${X(6)}" y="${Y(0) - 6}" text-anchor="end" font-weight="700">t (s)</text><text x="${X(0) + 6}" y="${Y(52) + 10}" font-weight="700">h (m)</text></g>`;
+  s += `<line x1="${X(0)}" y1="${Y(0)}" x2="${X(6)}" y2="${Y(0)}" style="stroke:var(--ink)" stroke-width="2"/><line x1="${X(0)}" y1="${Y(0)}" x2="${X(0)}" y2="${Y(52)}" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  let d = '';
+  for(let x = 0; x <= T + 1e-9; x += T / 120) d += (d ? 'L' : 'M') + X(x).toFixed(1) + ',' + Y(hf(x)).toFixed(1);
+  s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="2.5" class="dash"/>`;
+  d = ''; for(let x = 0; x <= t + 1e-9; x += Math.max(T / 120, 1e-3)) d += (d ? 'L' : 'M') + X(x).toFixed(1) + ',' + Y(hf(x)).toFixed(1);
+  if(d) s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="3.5"/>`;
+  s += `<line x1="${X(tp)}" y1="${Y(hp)}" x2="${X(tp)}" y2="${Y(0)}" style="stroke:var(--comp)" stroke-width="1.5" class="dash"/>`;
+  s += `<circle cx="${X(tp)}" cy="${Y(hp)}" r="5" style="fill:var(--b)"/><text class="ar" x="${X(tp)}" y="${Y(hp) - 10}" text-anchor="middle" style="fill:var(--b)">puncak (${fmt(tp)}; ${fmt(hp)})</text>`;
+  s += `<circle cx="${X(T)}" cy="${Y(0)}" r="5" style="fill:var(--r)"/>`;
+  s += `<circle cx="${X(t)}" cy="${Y(hf(t))}" r="9" style="fill:var(--ok)"/>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Ketinggian saat t = ${fmt(t, 2)} s</span><b>${fmt(hf(t), 2)} m</b></div>` +
+    `<div><span style="color:var(--b)">Waktu mencapai puncak t = −b/(2a)</span><b>${fmt(tp)} s</b></div>` +
+    `<div><span style="color:var(--b)">Tinggi maksimum</span><b>${fmt(hp)} m</b></div>` +
+    `<div><span style="color:var(--r)">Bola menyentuh tanah (h = 0)</span><b>t ≈ ${fmt(T, 2)} s</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

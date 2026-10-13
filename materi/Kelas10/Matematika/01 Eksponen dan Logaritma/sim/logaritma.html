@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eksponen dan Logaritma</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.big{font-family:var(--display);font-weight:800;font-size:19px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2);line-height:1.7}
+.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik eksponen dan logaritma yang saling mencerminkan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="base"><button data-b="2" class="on">basis 2</button><button data-b="3">basis 3</button><button data-b="10">basis 10</button></div>
+    <div><div class="lab"><span>Pangkat c</span><b id="cout"></b></div><input type="range" id="c" min="-2" max="4" step="0.5" value="3"></div>
+    <div class="big" id="eq"></div>
+    <label class="chk"><input type="checkbox" id="c-mir" checked> Tampilkan garis y = x</label>
+    <p class="note">Logaritma menjawab pertanyaan: <b>pangkat berapa</b> agar basis menjadi bilangan tertentu? Grafik y = log x adalah cerminan grafik y = bˣ terhadap garis y = x.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -3, xmax: 9, ymin: -3, ymax: 9, scale: 28});
+let B = 2;
+$('base').onclick = e => { const b = e.target.closest('button'); if(!b) return; B = +b.dataset.b; document.querySelectorAll('#base button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+['c', 'c-mir'].forEach(id => $(id).oninput = $(id).onchange = draw);
+Sim.onTheme(draw);
+function curve(f, x0, x1, col){ let d = '', pen = false; for(let x = x0; x <= x1; x += .02){ const y = f(x); if(!isFinite(y) || y < -3.5 || y > 9.5){ pen = false; continue; } d += (pen ? 'L' : 'M') + P.X(x).toFixed(1) + ',' + P.Y(y).toFixed(1); pen = true; } return `<path d="${d}" fill="none" style="stroke:${col}" stroke-width="3"/>`; }
+function draw(){
+  const c = +$('c').value, a = B ** c;
+  let s = P.grid({xname: 'x', yname: 'y'});
+  if($('c-mir').checked) s += `<line x1="${P.X(-3)}" y1="${P.Y(-3)}" x2="${P.X(9)}" y2="${P.Y(9)}" style="stroke:var(--muted)" class="dash"/>`;
+  s += curve(x => B ** x, -3, 9, 'var(--a)') + curve(x => Math.log(x) / Math.log(B), .01, 9, 'var(--comp)');
+  if(a <= 9){ s += `<circle cx="${P.X(c)}" cy="${P.Y(a)}" r="6" style="fill:var(--a)"/><circle cx="${P.X(a)}" cy="${P.Y(c)}" r="6" style="fill:var(--comp)"/>`;
+    s += `<line x1="${P.X(c)}" y1="${P.Y(a)}" x2="${P.X(a)}" y2="${P.Y(c)}" style="stroke:var(--muted)" class="dash"/>`;
+    s += `<text class="ar" x="${P.X(c) - 8}" y="${P.Y(a) - 8}" text-anchor="end" style="fill:var(--a)">(${fmt(c)}, ${fmt(a, 3)})</text><text class="ar" x="${P.X(a) + (a > 5 ? -8 : 8)}" y="${P.Y(c) + 22}" text-anchor="${a > 5 ? 'end' : 'start'}" style="fill:var(--comp)">(${fmt(a, 3)}, ${fmt(c)})</text>`; }
+  s += `<text class="ar" x="${P.X(1.7)}" y="${P.Y(Math.min(8.5, B ** 1.7))}" style="fill:var(--a)">y = ${B}ˣ</text><text class="ar" x="${P.X(4)}" y="${P.Y(Math.log(4) / Math.log(B)) + 22}" style="fill:var(--comp)">y = ${B === 10 ? '' : '<tspan font-size="10" dy="-6">' + B + '</tspan><tspan dy="6"></tspan>'}log x</text>`;
+  svg.innerHTML = s;
+  $('cout').textContent = fmt(c);
+  const pre = B === 10 ? 'log ' : `<sup>${B}</sup>log `;
+  $('eq').innerHTML = `${B}<sup>${fmt(c)}</sup> = ${fmt(a, 4)}<br>⇕<br>${pre}${fmt(a, 4)} = ${fmt(c)}`;
+}
+draw();
+</script>
+</body>
+</html>

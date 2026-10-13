@@ -1,0 +1,246 @@
+{
+  "title": "Barisan dan Deret",
+  "summary": "Barisan dan deret aritmetika dan geometri, deret geometri tak hingga, bunga tunggal dan majemuk, serta pertumbuhan dan peluruhan.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "barisan-aritmetika",
+      "title": "Barisan aritmetika",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Kursi pada sebuah gedung pertunjukan disusun 20 kursi di baris pertama, 24 di baris kedua, 28 di baris ketiga, dan seterusnya. Banyak kursi setiap baris bertambah dengan jumlah yang sama. Susunan bilangan seperti ini disebut <b>barisan aritmetika</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Barisan aritmetika",
+          "html": "<p>Selisih dua suku berurutan selalu sama, disebut <b>beda</b> \\(b = U_n - U_{n-1}\\).</p>\\[U_n = a + (n - 1)b\\]<p>a = suku pertama, n = nomor suku.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/barisan.html",
+          "title": "Barisan aritmetika dan geometri",
+          "height": 470,
+          "caption": "Mulai dari mode aritmetika: ubah a dan b. Kapan barisannya naik, turun, atau tetap? Lalu bandingkan dengan mode geometri."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Suku ke-3 sebuah barisan aritmetika 14 dan suku ke-7 adalah 30. Tentukan suku ke-20.</p>",
+          "steps": [
+            "U₇ − U₃ = 4b, sehingga 30 − 14 = 4b dan b = 4.",
+            "U₃ = a + 2b = 14, sehingga a = 6.",
+            "U₂₀ = 6 + 19 × 4 = 82."
+          ],
+          "answer": "82"
+        },
+        {
+          "type": "check",
+          "question": "Banyak kursi pada baris pertama 20, kedua 24, ketiga 28, dan seterusnya. Banyak kursi pada baris ke-15 adalah ....",
+          "options": {
+            "A": "76",
+            "B": "80",
+            "C": "60",
+            "D": "84"
+          },
+          "answer": "A",
+          "hint": "a = 20, b = 4.",
+          "explanation": "U₁₅ = 20 + 14 × 4 = 76."
+        }
+      ]
+    },
+    {
+      "id": "barisan-geometri",
+      "title": "Barisan geometri",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sebuah bola dijatuhkan dari ketinggian 8 m dan setiap memantul tingginya tinggal ¾ tinggi sebelumnya: 8, 6, 4,5, …. Kali ini setiap suku diperoleh dengan <b>mengalikan</b> bilangan yang sama.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/bola-memantul.svg",
+          "alt": "Bola memantul dengan tinggi pantulan yang makin rendah",
+          "width": 640,
+          "caption": "Tinggi pantulan bola membentuk barisan geometri."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Barisan geometri",
+          "html": "<p>Perbandingan dua suku berurutan selalu sama, disebut <b>rasio</b> \\(r = \\dfrac{U_n}{U_{n-1}}\\).</p>\\[U_n = a \\cdot r^{\\,n-1}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Suku ke-2 barisan geometri 6 dan suku ke-5 adalah 162. Tentukan suku ke-7.</p>",
+          "steps": [
+            "U₅ : U₂ = r³, sehingga r³ = 27 dan r = 3.",
+            "a = U₂ : r = 2.",
+            "U₇ = 2 × 3⁶ = 1.458."
+          ],
+          "answer": "1.458"
+        },
+        {
+          "type": "check",
+          "question": "Tinggi pantulan bola: 8 m, 6 m, 4,5 m, …. Tinggi pantulan keempat (suku ke-4) adalah ....",
+          "options": {
+            "A": "3 m",
+            "B": "3,375 m",
+            "C": "3,5 m",
+            "D": "2,25 m"
+          },
+          "answer": "B",
+          "hint": "r = 6/8 = 0,75.",
+          "explanation": "U₄ = 8 × 0,75³ = 8 × 0,421875 = 3,375 m. 3 m diperoleh jika barisannya dianggap aritmetika (berkurang 1,5)."
+        }
+      ]
+    },
+    {
+      "id": "deret",
+      "title": "Deret aritmetika dan deret geometri",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Deret</b> adalah jumlah suku-suku suatu barisan. Konon, Carl Friedrich Gauss kecil menjumlahkan 1 + 2 + … + 100 dalam sekejap: ia memasangkan 1 + 100, 2 + 99, …, sehingga ada 50 pasang yang masing-masing berjumlah 101. Hasilnya 5.050.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Jumlah n suku pertama",
+          "html": "<ul><li>Deret aritmetika: \\(S_n = \\dfrac{n}{2}(a + U_n) = \\dfrac{n}{2}\\big(2a + (n - 1)b\\big)\\).</li><li>Deret geometri: \\(S_n = \\dfrac{a(r^n - 1)}{r - 1}\\) untuk r &gt; 1, atau \\(S_n = \\dfrac{a(1 - r^n)}{1 - r}\\) untuk r &lt; 1.</li><li>Deret geometri tak hingga dengan |r| &lt; 1 <b>konvergen</b>: \\(S_\\infty = \\dfrac{a}{1 - r}\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan jumlah semua bilangan kelipatan 3 antara 1 dan 100.</p>",
+          "steps": [
+            "Barisannya 3, 6, …, 99: a = 3, b = 3, Uₙ = 99, sehingga n = 33.",
+            "S₃₃ = 33/2 × (3 + 99) = 33 × 51 = 1.683."
+          ],
+          "answer": "1.683"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Bola dijatuhkan dari ketinggian 8 m dan memantul ¾ tinggi sebelumnya terus-menerus. Berapa panjang seluruh lintasan bola sampai berhenti?</p>",
+          "steps": [
+            "Lintasan turun: 8 + 6 + 4,5 + … = 8 / (1 − ¾) = 32 m.",
+            "Lintasan naik: 6 + 4,5 + … = 6 / (1 − ¾) = 24 m.",
+            "Total = 32 + 24 = 56 m."
+          ],
+          "answer": "56 m"
+        },
+        {
+          "type": "check",
+          "question": "Jumlah deret geometri tak hingga 12 + 6 + 3 + 1,5 + … adalah ....",
+          "options": {
+            "A": "22,5",
+            "B": "24",
+            "C": "36",
+            "D": "tak hingga"
+          },
+          "answer": "B",
+          "hint": "a = 12, r = ½.",
+          "explanation": "S∞ = 12 / (1 − ½) = 24."
+        }
+      ]
+    },
+    {
+      "id": "bunga-pertumbuhan",
+      "title": "Bunga, pertumbuhan, dan peluruhan",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Barisan aritmetika dan geometri dipakai untuk menghitung bunga tabungan, pinjaman, pertumbuhan penduduk, dan penyusutan nilai barang.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bunga",
+          "html": "<ul><li><b>Bunga tunggal</b> (dihitung dari modal awal saja): \\(M_n = M_0(1 + n \\cdot i)\\), barisan aritmetika.</li><li><b>Bunga majemuk</b> (bunga ikut berbunga): \\(M_n = M_0(1 + i)^n\\), barisan geometri.</li></ul><p>M₀ = modal awal, i = suku bunga per periode, n = banyak periode.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/bunga.html",
+          "title": "Bunga tunggal dan majemuk",
+          "height": 470,
+          "caption": "Ubah suku bunga dan lama menabung. Kapan selisih kedua jenis bunga mulai terasa besar?"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Pertumbuhan dan peluruhan",
+          "html": "<p>Besaran yang naik r% per periode: \\(P_n = P_0(1 + r)^n\\). Yang turun r% per periode: \\(P_n = P_0(1 - r)^n\\). Contoh: penduduk naik 2% per tahun, nilai mobil menyusut 15% per tahun.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Modal Rp5.000.000,00 disimpan dengan bunga majemuk 8% per tahun. Berapa saldonya setelah 3 tahun?</p>",
+          "steps": [
+            "M₃ = 5.000.000 × 1,08³ = 5.000.000 × 1,259712.",
+            "M₃ = Rp6.298.560,00."
+          ],
+          "answer": "Rp6.298.560,00"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Penduduk sebuah kota 200.000 jiwa dan bertambah 2% per tahun. Berapa jumlah penduduknya setelah 2 tahun?</p>",
+          "steps": [
+            "P₂ = 200.000 × 1,02² = 200.000 × 1,0404 = 208.080 jiwa."
+          ],
+          "answer": "208.080 jiwa"
+        },
+        {
+          "type": "check",
+          "question": "Tabungan Rp2.000.000,00 dengan bunga tunggal 6% per tahun. Saldo setelah 5 tahun adalah ....",
+          "options": {
+            "A": "Rp2.600.000,00",
+            "B": "Rp2.676.451,00",
+            "C": "Rp2.120.000,00",
+            "D": "Rp2.300.000,00"
+          },
+          "answer": "A",
+          "hint": "Bunga tunggal: bunga setiap tahun selalu 6% dari modal awal.",
+          "explanation": "Bunga per tahun Rp120.000,00. Setelah 5 tahun: 2.000.000 + 5 × 120.000 = Rp2.600.000,00. Rp2.676.451,00 adalah hasil bunga majemuk."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th></th><th>Aritmetika</th><th>Geometri</th></tr><tr><td>Ciri</td><td>beda b tetap (ditambah)</td><td>rasio r tetap (dikali)</td></tr><tr><td>Suku ke-n</td><td>\\(a + (n-1)b\\)</td><td>\\(a r^{n-1}\\)</td></tr><tr><td>Jumlah n suku</td><td>\\(\\tfrac n2(a + U_n)\\)</td><td>\\(\\dfrac{a(r^n - 1)}{r - 1}\\)</td></tr><tr><td>Tak hingga</td><td>—</td><td>\\(S_\\infty = \\dfrac{a}{1-r}\\), |r| &lt; 1</td></tr><tr><td>Penerapan</td><td>bunga tunggal</td><td>bunga majemuk, pertumbuhan, peluruhan</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai (n − 1) pada rumus suku, tetapi lupa pada rumus jumlah aritmetika.</li><li>Mengira r = 1,5 menghasilkan deret tak hingga yang konvergen.</li><li>Memakai bunga tunggal untuk soal bunga majemuk.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 2 Barisan dan Deret.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang barisan dan deret aritmetika, geometri, deret tak hingga, bunga, pertumbuhan, dan peluruhan. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

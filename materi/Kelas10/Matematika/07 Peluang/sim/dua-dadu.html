@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ruang Sampel Dua Dadu</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:-1px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 400 400" role="img" aria-label="Tabel ruang sampel 36 hasil pelemparan dadu merah dan dadu putih"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span><i class="sw" style="background:var(--a)"></i>Kejadian A</span></div><select id="A"></select></div>
+    <div><div class="lab"><span><i class="sw" style="background:var(--comp)"></i>Kejadian B</span></div><select id="B"></select></div>
+    <div class="read" id="read"></div>
+    <div class="row"><button class="btn primary" id="roll">Lempar 1 kali</button><button class="btn" id="roll100">Lempar 100 kali</button><button class="btn" id="reset">Ulang</button></div>
+    <div class="read" id="emp"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const isPrime = n => [2, 3, 5, 7, 11].includes(n);
+const EV = [
+  ['jumlah kedua mata dadu 7', (m, p) => m + p === 7], ['jumlah 8', (m, p) => m + p === 8], ['jumlah lebih dari 9', (m, p) => m + p > 9], ['jumlah paling banyak 4', (m, p) => m + p <= 4],
+  ['jumlah bilangan prima', (m, p) => isPrime(m + p)], ['kedua mata dadu sama (dobel)', (m, p) => m === p], ['setidaknya satu dadu angka 5', (m, p) => m === 5 || p === 5],
+  ['dadu merah genap', m => m % 2 === 0], ['dadu putih angka 6', (m, p) => p === 6], ['dadu merah lebih besar daripada dadu putih', (m, p) => m > p],
+];
+['A', 'B'].forEach((id, k) => { $(id).innerHTML = EV.map((e, i) => `<option value="${i}"${i === [0, 5][k] ? ' selected' : ''}>${e[0]}</option>`).join(''); $(id).onchange = () => { reset(); }; });
+let rolls = 0, hitA = 0, hitB = 0, last = null;
+function reset(){ rolls = hitA = hitB = 0; last = null; draw(); }
+function roll(k){ const a = EV[$('A').value][1], b = EV[$('B').value][1]; for(let i = 0; i < k; i++){ const m = 1 + Math.floor(Math.random() * 6), p = 1 + Math.floor(Math.random() * 6); rolls++; if(a(m, p)) hitA++; if(b(m, p)) hitB++; last = [m, p]; } draw(); }
+$('roll').onclick = () => roll(1); $('roll100').onclick = () => roll(100); $('reset').onclick = reset;
+Sim.onTheme(draw);
+const gcd = (a, b) => b ? gcd(b, a % b) : a, fr = (k, n) => { if(!k) return '0'; const g = gcd(k, n); return `${k / g}/${n / g}`; };
+function draw(){
+  const a = EV[$('A').value][1], b = EV[$('B').value][1], c = 56, o = 50;
+  let s = `<text class="c" x="${o + 3 * c}" y="18" text-anchor="middle" style="fill:var(--muted)">dadu putih</text><text class="c" x="16" y="${o + 3 * c}" text-anchor="middle" transform="rotate(-90 16 ${o + 3 * c})" style="fill:var(--r)">dadu merah</text>`;
+  let nA = 0, nB = 0, nAB = 0;
+  for(let m = 1; m <= 6; m++){
+    s += `<text class="c" x="${o - 12}" y="${o + (m - .5) * c + 4}" text-anchor="middle" style="fill:var(--r)">${m}</text>`;
+    for(let p = 1; p <= 6; p++){
+      if(m === 1) s += `<text class="c" x="${o + (p - .5) * c}" y="${o - 10}" text-anchor="middle">${p}</text>`;
+      const A = a(m, p), B = b(m, p); nA += A; nB += B; nAB += A && B;
+      const x = o + (p - 1) * c, y = o + (m - 1) * c;
+      s += `<rect x="${x + 2}" y="${y + 2}" width="${c - 4}" height="${c - 4}" rx="7" style="fill:var(--surface-2);stroke:var(--line)"/>`;
+      if(A) s += `<rect x="${x + 2}" y="${y + 2}" width="${B ? (c - 4) / 2 : c - 4}" height="${c - 4}" rx="7" style="fill:var(--a)" fill-opacity=".55"/>`;
+      if(B) s += `<rect x="${x + 2 + (A ? (c - 4) / 2 : 0)}" y="${y + 2}" width="${A ? (c - 4) / 2 : c - 4}" height="${c - 4}" rx="7" style="fill:var(--comp)" fill-opacity=".6"/>`;
+      if(last && last[0] === m && last[1] === p) s += `<rect x="${x + 1}" y="${y + 1}" width="${c - 2}" height="${c - 2}" rx="8" fill="none" style="stroke:var(--ink)" stroke-width="3"/>`;
+      s += `<text class="c" x="${x + c / 2}" y="${y + c / 2 + 4}" text-anchor="middle">${m},${p}</text>`;
+    }
+  }
+  svg.innerHTML = s;
+  const lepas = nAB === 0;
+  $('read').innerHTML = `<div><span style="color:var(--a)">P(A) = n(A)/n(S)</span><b>${nA}/36 = ${fr(nA, 36)}</b></div><div><span style="color:var(--comp)">P(B)</span><b>${nB}/36 = ${fr(nB, 36)}</b></div>` +
+    `<div><span>P(A ∩ B) (sel dua warna)</span><b>${nAB}/36</b></div><div><span>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</span><b>${nA + nB - nAB}/36 = ${fr(nA + nB - nAB, 36)}</b></div>` +
+    `<div><span>P(Aᶜ) = 1 − P(A)</span><b>${36 - nA}/36 = ${fr(36 - nA, 36)}</b></div><div><span>A dan B</span><b>${lepas ? 'saling lepas' : 'tidak saling lepas'}</b></div>`;
+  $('emp').innerHTML = `<div><span>Banyak lemparan</span><b>${rolls}${last ? ` (terakhir: ${last[0]},${last[1]})` : ''}</b></div>` +
+    `<div><span style="color:var(--a)">Frekuensi relatif A</span><b>${rolls ? hitA + '/' + rolls + ' ≈ ' + fmt(hitA / rolls, 3) : '–'}</b></div><div><span>Peluang teoretis A</span><b>${fmt(nA / 36, 3)}</b></div>` +
+    `<div><span style="color:var(--a)">Frekuensi harapan A = n × P(A)</span><b>${rolls ? fmt(rolls * nA / 36, 1) : '–'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

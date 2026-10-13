@@ -1,0 +1,275 @@
+{
+  "title": "Peluang",
+  "summary": "Ruang sampel, distribusi peluang, frekuensi relatif dan frekuensi harapan, aturan penjumlahan untuk kejadian saling lepas, dan aturan perkalian untuk kejadian saling bebas.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "ruang-sampel",
+      "title": "Ruang sampel dan peluang kejadian",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Lemparkan sebuah dadu merah dan sebuah dadu putih. Hasil (3, 2) berarti dadu merah 3 dan dadu putih 2; hasil ini berbeda dengan (2, 3). Himpunan semua hasil yang mungkin disebut <b>ruang sampel</b> S. Untuk dua dadu, n(S) = 6 × 6 = 36.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Peluang kejadian",
+          "html": "<p>Jika semua hasil sama kemungkinannya, peluang kejadian A adalah</p>\\[P(A) = \\frac{n(A)}{n(S)}, \\qquad 0 \\le P(A) \\le 1\\]<p>P(A) = 0 berarti mustahil, P(A) = 1 berarti pasti terjadi.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/dua-dadu.html",
+          "title": "Ruang sampel dua dadu",
+          "height": 640,
+          "caption": "Pilih kejadian A dan B, lalu hitung sel yang berwarna. Setelah itu tekan <b>Lempar 100 kali</b> beberapa kali dan bandingkan frekuensi relatif dengan peluang teoretis."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua dadu dilempar sekali. Tentukan peluang jumlah mata dadu 11, dan peluang kedua mata dadu sama.</p>",
+          "steps": [
+            "Jumlah 11: (5, 6) dan (6, 5), jadi n = 2. P = 2/36 = 1/18.",
+            "Mata dadu sama: (1, 1), (2, 2), …, (6, 6), jadi n = 6. P = 6/36 = 1/6."
+          ],
+          "answer": "1/18 dan 1/6"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Komplemen",
+          "html": "<p>Kejadian “bukan A” ditulis A<sup>c</sup>, dengan P(A<sup>c</sup>) = 1 − P(A). Cara ini praktis untuk soal “setidaknya satu”. Contoh: peluang setidaknya satu dadu angka 5 = 1 − P(tidak ada angka 5) = 1 − 25/36 = 11/36.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Dua dadu dilempar. Peluang jumlah mata dadu 7 adalah ....",
+          "options": {
+            "A": "1/12",
+            "B": "1/6",
+            "C": "7/36",
+            "D": "1/36"
+          },
+          "answer": "B",
+          "hint": "Daftar pasangan yang jumlahnya 7.",
+          "explanation": "(1,6), (2,5), (3,4), (4,3), (5,2), (6,1): 6 hasil. P = 6/36 = 1/6."
+        }
+      ]
+    },
+    {
+      "id": "frekuensi-harapan",
+      "title": "Distribusi peluang, frekuensi relatif, dan frekuensi harapan",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jika semua kemungkinan jumlah mata dua dadu dicatat beserta peluangnya, kita mendapatkan <b>distribusi peluang</b>. Jumlah 7 paling mungkin karena paling banyak pasangan yang menghasilkannya.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/distribusi-jumlah.svg",
+          "alt": "Diagram batang peluang jumlah 2 sampai 12; naik dari 1/36 ke 6/36 pada jumlah 7 lalu turun lagi",
+          "width": 560,
+          "caption": "Distribusi peluang jumlah mata dua dadu. Jumlah semua peluang = 1."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Frekuensi relatif dan frekuensi harapan",
+          "html": "<ul><li><b>Frekuensi relatif</b> (peluang empiris) = banyak kejadian A muncul ÷ banyak percobaan.</li><li>Makin banyak percobaan, frekuensi relatif makin dekat ke peluang teoretis.</li><li><b>Frekuensi harapan</b>: F<sub>h</sub>(A) = n × P(A), yaitu banyak kejadian A yang diharapkan dalam n percobaan.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua dadu dilempar 180 kali. Berapa kali diharapkan muncul jumlah 5?</p>",
+          "steps": [
+            "Jumlah 5: (1,4), (2,3), (3,2), (4,1), jadi P = 4/36 = 1/9.",
+            "F<sub>h</sub> = 180 × 1/9 = 20 kali."
+          ],
+          "answer": "20 kali"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Dari 200 lampu yang diuji, 80 lampu menyala lebih dari 3.000 jam. Jika pabrik memproduksi 1.500 lampu, berapa yang diharapkan menyala lebih dari 3.000 jam?</p>",
+          "steps": [
+            "Peluang empiris = 80/200 = 0,4.",
+            "Frekuensi harapan = 1.500 × 0,4 = 600 lampu."
+          ],
+          "answer": "600 lampu"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah koin dilempar 200 kali. Frekuensi harapan muncul sisi angka adalah ....",
+          "options": {
+            "A": "50",
+            "B": "100",
+            "C": "150",
+            "D": "200"
+          },
+          "answer": "B",
+          "hint": "F<sub>h</sub> = n × P(A).",
+          "explanation": "200 × ½ = 100."
+        }
+      ]
+    },
+    {
+      "id": "aturan-penjumlahan",
+      "title": "Aturan penjumlahan",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Pertanyaan dengan kata <b>“atau”</b> menanyakan gabungan dua kejadian: A ∪ B. Cara menghitungnya bergantung pada apakah A dan B dapat terjadi bersamaan.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/venn.svg",
+          "alt": "Kiri dua lingkaran terpisah (saling lepas), kanan dua lingkaran beririsan",
+          "width": 600,
+          "caption": "Kejadian saling lepas tidak mempunyai irisan."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan penjumlahan",
+          "html": "\\[P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\]<p>Jika A dan B <b>saling lepas</b> (tidak mungkin terjadi bersamaan), P(A ∩ B) = 0 sehingga P(A ∪ B) = P(A) + P(B).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua dadu dilempar. Tentukan peluang jumlah 8 atau kedua mata dadu sama.</p>",
+          "steps": [
+            "Jumlah 8: 5 hasil. Mata sama: 6 hasil. Keduanya: (4, 4), 1 hasil.",
+            "P = 5/36 + 6/36 − 1/36 = 10/36 = 5/18."
+          ],
+          "answer": "5/18"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Satu kartu diambil dari 52 kartu remi. Tentukan peluang terambil kartu As atau kartu hati.</p>",
+          "steps": [
+            "P(As) = 4/52, P(hati) = 13/52, P(As hati) = 1/52.",
+            "P = (4 + 13 − 1)/52 = 16/52 = 4/13."
+          ],
+          "answer": "4/13"
+        },
+        {
+          "type": "sim",
+          "src": "sim/dua-dadu.html",
+          "title": "Uji aturan penjumlahan",
+          "height": 640,
+          "caption": "Pilih pasangan kejadian yang saling lepas dan yang tidak. Periksa bahwa P(A ∪ B) sama dengan banyak sel berwarna dibagi 36."
+        },
+        {
+          "type": "check",
+          "question": "Sebuah dadu dilempar sekali. Pasangan kejadian yang saling lepas adalah ....",
+          "options": {
+            "A": "muncul angka genap dan muncul angka 3",
+            "B": "muncul angka genap dan muncul angka prima",
+            "C": "muncul angka lebih dari 2 dan muncul angka 4",
+            "D": "muncul angka ganjil dan muncul angka kurang dari 3"
+          },
+          "answer": "A",
+          "hint": "Saling lepas berarti tidak ada hasil yang memenuhi keduanya.",
+          "explanation": "3 bukan bilangan genap, jadi tidak ada irisan. Pasangan lain beririsan: 2 (genap dan prima), 4, dan 1."
+        }
+      ]
+    },
+    {
+      "id": "aturan-perkalian",
+      "title": "Aturan perkalian dan kejadian saling bebas",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Pertanyaan dengan kata <b>“dan”</b> pada dua tahap percobaan (melempar dua kali, mengambil dua kali) menanyakan A ∩ B. Jika hasil tahap pertama tidak memengaruhi tahap kedua, kedua kejadian disebut <b>saling bebas</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan perkalian",
+          "html": "\\[P(A \\cap B) = P(A) \\times P(B) \\quad \\text{(A dan B saling bebas)}\\]<p>Model luas: lebar = P(A), tinggi = P(B), luas persegi panjang kecil = P(A ∩ B).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/model-luas.html",
+          "title": "Model luas dan diagram pohon",
+          "height": 600,
+          "caption": "Pilih contoh <b>Dobel dua kali</b>, lalu ubah peluangnya. Bandingkan luas persegi panjang A∩B dengan hasil perkalian pada diagram pohon."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sepasang dadu dilempar dua kali. Berapa peluang mendapat dobel pertama kali tepat pada lemparan kedua?</p>",
+          "steps": [
+            "Lemparan 1 tidak dobel: 5/6. Lemparan 2 dobel: 1/6.",
+            "Kedua lemparan saling bebas: P = 5/6 × 1/6 = 5/36."
+          ],
+          "answer": "5/36"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Tidak saling bebas: pengambilan tanpa pengembalian",
+          "html": "<p>Kantong berisi 5 bola merah dan 3 biru. Dua bola diambil satu per satu <b>tanpa dikembalikan</b>. Setelah bola merah pertama terambil, tersisa 4 merah dari 7 bola, sehingga</p><p>P(merah, merah) = 5/8 × 4/7 = 20/56 = 5/14.</p><p>Jika bola pertama dikembalikan, kejadiannya saling bebas: P = 5/8 × 5/8 = 25/64.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah dadu dilempar tiga kali. Berapa peluang muncul setidaknya satu angka 6?</p>",
+          "steps": [
+            "Gunakan komplemen: tidak ada angka 6 pada ketiga lemparan.",
+            "P(tidak ada 6) = (5/6)³ = 125/216.",
+            "P(setidaknya satu 6) = 1 − 125/216 = 91/216."
+          ],
+          "answer": "91/216"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah koin dan sebuah dadu dilempar bersamaan. Peluang muncul sisi angka dan mata dadu 6 adalah ....",
+          "options": {
+            "A": "1/12",
+            "B": "1/8",
+            "C": "2/3",
+            "D": "1/6"
+          },
+          "answer": "A",
+          "hint": "Kedua kejadian saling bebas.",
+          "explanation": "½ × 1/6 = 1/12."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Peluang</td><td>P(A) = n(A)/n(S), 0 ≤ P(A) ≤ 1</td></tr><tr><td>Komplemen</td><td>P(A<sup>c</sup>) = 1 − P(A)</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = n × P(A)</td></tr><tr><td>“atau”</td><td>P(A ∪ B) = P(A) + P(B) − P(A ∩ B); saling lepas: tanpa irisan</td></tr><tr><td>“dan” (saling bebas)</td><td>P(A ∩ B) = P(A) × P(B)</td></tr><tr><td>Tanpa pengembalian</td><td>peluang tahap kedua berubah</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa mengurangkan irisan pada aturan penjumlahan.</li><li>Memakai aturan perkalian untuk kejadian yang tidak saling bebas.</li><li>Menganggap (2, 3) sama dengan (3, 2) pada dua dadu berbeda.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 7 Peluang.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang ruang sampel, frekuensi harapan, aturan penjumlahan, dan aturan perkalian. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "title": "Perbandingan Trigonometri",
+  "summary": "Sinus, kosinus, dan tangen pada segitiga siku-siku, sudut istimewa, menentukan sisi dan sudut, serta penerapan sudut elevasi dan depresi.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "perbandingan",
+      "title": "Sinus, kosinus, dan tangen",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Bagaimana mengukur tinggi pohon tanpa memanjatnya, atau lebar sungai tanpa menyeberanginya? Kuncinya adalah hubungan antara <b>sudut</b> dan <b>perbandingan sisi</b> segitiga siku-siku.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Perbandingan trigonometri",
+          "html": "<p>Pada segitiga siku-siku dengan sudut lancip θ:</p>\\[\\sin\\theta = \\frac{\\text{depan}}{\\text{miring}} \\qquad \\cos\\theta = \\frac{\\text{samping}}{\\text{miring}} \\qquad \\tan\\theta = \\frac{\\text{depan}}{\\text{samping}}\\]<p>Kebalikannya: \\(\\csc\\theta = \\dfrac{1}{\\sin\\theta}\\), \\(\\sec\\theta = \\dfrac{1}{\\cos\\theta}\\), \\(\\cot\\theta = \\dfrac{1}{\\tan\\theta}\\). Cara mengingat: <b>sin</b> = <b>de</b>/<b>mi</b>, <b>cos</b> = <b>sa</b>/<b>mi</b>, <b>tan</b> = <b>de</b>/<b>sa</b>.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/segitiga-trig.html",
+          "title": "Perbandingan trigonometri",
+          "height": 460,
+          "caption": "Ubah sudut θ dan ukuran segitiga. Mengapa perbandingannya tetap saat segitiga diperbesar? Perhatikan juga sin² θ + cos² θ."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pada segitiga ABC siku-siku di B, AB = 8 cm dan BC = 6 cm. Tentukan sin A, cos A, dan tan A.</p>",
+          "steps": [
+            "Sisi miring AC = √(8² + 6²) = 10 cm.",
+            "Untuk sudut A: depan = BC = 6, samping = AB = 8.",
+            "sin A = 6/10 = 0,6; cos A = 8/10 = 0,8; tan A = 6/8 = 0,75."
+          ],
+          "answer": "sin A = 0,6; cos A = 0,8; tan A = 0,75"
+        },
+        {
+          "type": "check",
+          "question": "Jika sin θ = 5/13 dan θ lancip, nilai tan θ adalah ....",
+          "options": {
+            "A": "12/13",
+            "B": "5/12",
+            "C": "12/5",
+            "D": "13/5"
+          },
+          "answer": "B",
+          "hint": "Gambar segitiga dengan depan 5 dan miring 13, lalu hitung samping.",
+          "explanation": "Samping = √(169 − 25) = 12. tan θ = 5/12."
+        }
+      ]
+    },
+    {
+      "id": "sudut-istimewa",
+      "title": "Sudut-sudut istimewa",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Nilai trigonometri sudut 30°, 45°, dan 60° dapat ditentukan tepat dari segitiga istimewa yang sudah kamu kenal: separuh persegi (45°–45°–90°, sisi 1 : 1 : √2) dan separuh segitiga sama sisi (30°–60°–90°, sisi 1 : √3 : 2).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tabel sudut istimewa",
+          "html": "<table><tr><th>θ</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr><tr><td>sin</td><td>0</td><td>½</td><td>½√2</td><td>½√3</td><td>1</td></tr><tr><td>cos</td><td>1</td><td>½√3</td><td>½√2</td><td>½</td><td>0</td></tr><tr><td>tan</td><td>0</td><td>⅓√3</td><td>1</td><td>√3</td><td>tak terdefinisi</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Pola mudah diingat",
+          "html": "<p>sin 0°, 30°, 45°, 60°, 90° = ½√0, ½√1, ½√2, ½√3, ½√4. Nilai cos adalah urutan yang sama tetapi terbalik.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung nilai \\(\\sin 30^\\circ \\cdot \\cos 60^\\circ + \\tan 45^\\circ\\).</p>",
+          "steps": [
+            "½ × ½ + 1 = ¼ + 1 = 1¼."
+          ],
+          "answer": "1¼"
+        },
+        {
+          "type": "check",
+          "question": "Nilai dari \\(2\\sin 60^\\circ \\cos 30^\\circ\\) adalah ....",
+          "options": {
+            "A": "½",
+            "B": "1½",
+            "C": "√3",
+            "D": "¾"
+          },
+          "answer": "B",
+          "hint": "sin 60° = cos 30° = ½√3.",
+          "explanation": "2 × ½√3 × ½√3 = 2 × ¾ = 1½."
+        }
+      ]
+    },
+    {
+      "id": "menghitung-sisi",
+      "title": "Menentukan panjang sisi dan besar sudut",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jika satu sudut lancip dan satu sisi segitiga siku-siku diketahui, sisi lainnya dapat dihitung. Pilih perbandingan yang memuat sisi yang <b>diketahui</b> dan sisi yang <b>dicari</b>.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Segitiga siku-siku memiliki sisi miring 20 cm dan salah satu sudutnya 30°. Tentukan sisi di depan sudut 30° dan sisi di sampingnya.</p>",
+          "steps": [
+            "Depan = miring × sin 30° = 20 × ½ = 10 cm.",
+            "Samping = miring × cos 30° = 20 × ½√3 = 10√3 ≈ 17,3 cm."
+          ],
+          "answer": "10 cm dan 10√3 cm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tangga sepanjang 6 m bersandar pada dinding dan membentuk sudut 60° dengan lantai. Seberapa tinggi ujung tangga?</p>",
+          "steps": [
+            "Tinggi = depan sudut 60° = 6 × sin 60° = 6 × ½√3 = 3√3 ≈ 5,2 m."
+          ],
+          "answer": "3√3 m ≈ 5,2 m"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Mencari sudut",
+          "html": "<p>Jika dua sisi diketahui, hitung perbandingannya lalu cari sudut yang nilainya cocok (dengan tabel atau kalkulator, tombol sin⁻¹, cos⁻¹, tan⁻¹). Contoh: tan θ = 1 berarti θ = 45°.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada segitiga siku-siku, sisi samping sudut θ = 8 cm dan sisi depannya 8√3 cm. Besar θ adalah ....",
+          "options": {
+            "A": "30°",
+            "B": "45°",
+            "C": "60°",
+            "D": "75°"
+          },
+          "answer": "C",
+          "hint": "Hitung tan θ.",
+          "explanation": "tan θ = 8√3 / 8 = √3, sehingga θ = 60°."
+        }
+      ]
+    },
+    {
+      "id": "pemanfaatan",
+      "title": "Sudut elevasi dan depresi",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "gambar/elevasi-depresi.svg",
+          "alt": "Pengamat melihat puncak menara dengan sudut elevasi dan dari puncak menara melihat pengamat dengan sudut depresi",
+          "width": 640,
+          "caption": "Sudut elevasi dan sudut depresi."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Elevasi dan depresi",
+          "html": "<ul><li><b>Sudut elevasi</b>: sudut antara garis mendatar dan garis pandang ke atas.</li><li><b>Sudut depresi</b>: sudut antara garis mendatar dan garis pandang ke bawah.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/elevasi.html",
+          "title": "Mengukur tinggi pohon",
+          "height": 460,
+          "caption": "Ubah jarakmu ke pohon. Apa yang terjadi pada sudut elevasi? Centang latihan dan hitung sendiri tinggi pohonnya. Jangan lupa tinggi matamu."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dari puncak mercusuar setinggi 40 m, seorang penjaga melihat kapal dengan sudut depresi 30°. Berapa jarak kapal dari kaki mercusuar?</p>",
+          "steps": [
+            "Sudut depresi 30° sama dengan sudut elevasi dari kapal ke puncak (30°).",
+            "tan 30° = 40 / jarak, sehingga jarak = 40 / (⅓√3) = 40√3 ≈ 69,3 m."
+          ],
+          "answer": "40√3 m ≈ 69,3 m"
+        },
+        {
+          "type": "check",
+          "question": "Seorang anak setinggi 1,5 m berdiri 10 m dari tiang bendera dan melihat puncaknya dengan sudut elevasi 45°. Tinggi tiang bendera adalah ....",
+          "options": {
+            "A": "10 m",
+            "B": "11,5 m",
+            "C": "8,5 m",
+            "D": "15 m"
+          },
+          "answer": "B",
+          "hint": "Hitung tinggi di atas mata, lalu tambah tinggi mata.",
+          "explanation": "Tinggi di atas mata = 10 × tan 45° = 10 m. Tinggi tiang = 10 + 1,5 = 11,5 m."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>sin, cos, tan</td><td>de/mi, sa/mi, de/sa.</td></tr><tr><td>Kebalikan</td><td>csc = 1/sin, sec = 1/cos, cot = 1/tan.</td></tr><tr><td>Identitas</td><td>sin² θ + cos² θ = 1; tan θ = sin θ / cos θ.</td></tr><tr><td>Sudut istimewa</td><td>sin 30° = ½, sin 45° = ½√2, sin 60° = ½√3, tan 45° = 1.</td></tr><tr><td>Elevasi/depresi</td><td>Diukur dari garis mendatar; tinggi = jarak × tan α (+ tinggi mata).</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Tertukar sisi depan dan samping karena salah memilih sudut acuan.</li><li>Lupa menambahkan tinggi mata pengamat.</li><li>Mengukur sudut depresi dari garis tegak, bukan dari garis mendatar.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 3 Perbandingan Trigonometri.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang perbandingan trigonometri, sudut istimewa, menentukan sisi dan sudut, serta sudut elevasi dan depresi. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

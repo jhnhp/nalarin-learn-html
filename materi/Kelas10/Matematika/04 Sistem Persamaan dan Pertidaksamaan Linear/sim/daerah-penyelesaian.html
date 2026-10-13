@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daerah Penyelesaian Pertidaksamaan Linear</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .ineq{display:flex;align-items:center;gap:3px;flex-wrap:wrap;font-family:var(--display);font-weight:800;font-size:14px}
+  .ineq input{width:46px;font:inherit;padding:4px 5px;border-radius:7px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);text-align:center}
+  .ineq select{font:inherit;padding:4px;border-radius:7px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+  .sw{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:4px}
+  .ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Daerah penyelesaian sistem pertidaksamaan linear dua variabel"></svg></div>
+  <div class="panel">
+    <div id="rows"></div>
+    <label class="chk"><input type="checkbox" id="c-pos" checked> x ≥ 0 dan y ≥ 0</label>
+    <div class="read" id="read"></div>
+    <p class="note">Daerah biru adalah himpunan penyelesaian: titik-titik yang memenuhi <b>semua</b> pertidaksamaan. Geser titik uji T untuk memeriksa.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -2, xmax: 10, ymin: -2, ymax: 10, scale: 32});
+const COL = ['var(--a)', 'var(--comp)', 'var(--r)'];
+let C = [[1, 1, '≤', 8], [2, 1, '≤', 12], [0, 0, '≤', 0]], Tp = {x: 2, y: 3};
+$('rows').innerHTML = C.map((c, i) => `<div class="ineq"><span class="sw" style="background:${COL[i]}"></span><input data-i="${i}" data-j="0" value="${c[0]}">x +<input data-i="${i}" data-j="1" value="${c[1]}">y<select data-i="${i}" data-j="2"><option${c[2] === '≤' ? ' selected' : ''}>≤</option><option${c[2] === '≥' ? ' selected' : ''}>≥</option></select><input data-i="${i}" data-j="3" value="${c[3]}"></div>`).join('');
+$('rows').querySelectorAll('input,select').forEach(el => el.oninput = el.onchange = () => { const i = +el.dataset.i, j = +el.dataset.j; C[i][j] = j === 2 ? el.value : Number(el.value.replace(',', '.')) || 0; draw(); });
+$('c-pos').onchange = draw;
+P.draggable((h, x, y) => { Tp = P.clamp(Math.round(x * 2) / 2, Math.round(y * 2) / 2); draw(); });
+Sim.onTheme(draw);
+const active = () => C.filter(c => c[0] || c[1]);
+const holds = (c, p) => { const v = c[0] * p.x + c[1] * p.y; return c[2] === '≤' ? v <= c[3] + 1e-9 : v >= c[3] - 1e-9; };
+function clip(poly, c){ // Sutherland–Hodgman untuk setengah bidang
+  const out = [], f = p => (c[0] * p.x + c[1] * p.y - c[3]) * (c[2] === '≤' ? 1 : -1);
+  for(let i = 0; i < poly.length; i++){ const a = poly[i], b = poly[(i + 1) % poly.length], fa = f(a), fb = f(b);
+    if(fa <= 1e-9) out.push(a); if((fa < -1e-9 && fb > 1e-9) || (fa > 1e-9 && fb < -1e-9)){ const t = fa / (fa - fb); out.push({x: a.x + t * (b.x - a.x), y: a.y + t * (b.y - a.y)}); } }
+  return out;
+}
+function lineSeg(c){ const [a, b, , d] = c; if(b) return [{x: -2, y: (d + 2 * a) / b}, {x: 10, y: (d - 10 * a) / b}]; return [{x: d / a, y: -2}, {x: d / a, y: 10}]; }
+function draw(){
+  const cons = active().concat($('c-pos').checked ? [[1, 0, '≥', 0], [0, 1, '≥', 0]] : []);
+  let poly = [{x: -2, y: -2}, {x: 10, y: -2}, {x: 10, y: 10}, {x: -2, y: 10}];
+  cons.forEach(c => poly = poly.length ? clip(poly, c) : poly);
+  let s = P.grid({xname: 'x', yname: 'y', labelStep: 2});
+  if(poly.length > 2) s += `<polygon points="${poly.map(p => P.X(p.x) + ',' + P.Y(p.y)).join(' ')}" style="fill:var(--a)" fill-opacity=".22"/>`;
+  C.forEach((c, i) => { if(!c[0] && !c[1]) return; const [p, q] = lineSeg(c); s += `<line x1="${P.X(p.x)}" y1="${P.Y(p.y)}" x2="${P.X(q.x)}" y2="${P.Y(q.y)}" style="stroke:${COL[i]}" stroke-width="2.5"/>`; });
+  // titik pojok
+  const corners = poly.filter(p => p.x > -1.99 && p.x < 9.99 && p.y > -1.99 && p.y < 9.99);
+  corners.forEach(p => s += `<circle cx="${P.X(p.x)}" cy="${P.Y(p.y)}" r="4" style="fill:var(--ink)"/><text class="ar" x="${P.X(p.x) + 6}" y="${P.Y(p.y) - 6}">(${fmt(p.x)}, ${fmt(p.y)})</text>`);
+  const ok = cons.every(c => holds(c, Tp));
+  s += P.handle('T', Tp.x, Tp.y, ok ? 'var(--ok)' : 'var(--b)') + `<text class="ar" x="${P.X(Tp.x) + 12}" y="${P.Y(Tp.y) + 20}" style="fill:${ok ? 'var(--ok)' : 'var(--b)'}">T</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Titik uji T(${fmt(Tp.x)}, ${fmt(Tp.y)})</span><b style="color:${ok ? 'var(--ok)' : 'var(--b)'}">${ok ? 'memenuhi semua' : 'tidak memenuhi'}</b></div>` +
+    C.map((c, i) => (c[0] || c[1]) ? `<div><span><i class="sw" style="background:${COL[i]}"></i>${fmt(c[0])}(${fmt(Tp.x)}) + ${fmt(c[1])}(${fmt(Tp.y)}) = ${fmt(c[0] * Tp.x + c[1] * Tp.y)} ${c[2]} ${fmt(c[3])}?</span><b>${holds(c, Tp) ? 'ya' : 'tidak'}</b></div>` : '').join('');
+}
+draw();
+</script>
+</body>
+</html>

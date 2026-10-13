@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penjelajah Fungsi Kuadrat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.big{font-family:var(--display);font-weight:800;font-size:20px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+.ar{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik fungsi kuadrat dengan titik puncak, sumbu simetri, dan titik potong"></svg></div>
+  <div class="panel">
+    <div class="big" id="eq"></div>
+    <div><div class="lab"><span>a</span><b id="aout"></b></div><input type="range" id="a" min="-3" max="3" step="0.25" value="1"></div>
+    <div><div class="lab"><span>b</span><b id="bout"></b></div><input type="range" id="b" min="-8" max="8" step="1" value="-2"></div>
+    <div><div class="lab"><span>c</span><b id="cout"></b></div><input type="range" id="c" min="-8" max="8" step="1" value="-3"></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="why"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -7, xmax: 7, ymin: -9, ymax: 9, scale: 22});
+['a', 'b', 'c'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+const sgn = (k, first) => k < 0 ? (first ? '−' : ' − ') : (first ? '' : ' + ');
+function poly(a, b, c){
+  let s = '';
+  if(a) s += sgn(a, true) + (Math.abs(a) === 1 ? '' : fmt(Math.abs(a))) + 'x²';
+  if(b) s += sgn(b, !s) + (Math.abs(b) === 1 ? '' : fmt(Math.abs(b))) + 'x';
+  if(c || !s) s += sgn(c, !s) + fmt(Math.abs(c));
+  return s;
+}
+function draw(){
+  let a = +$('a').value; const b = +$('b').value, c = +$('c').value;
+  $('aout').textContent = fmt(a); $('bout').textContent = fmt(b); $('cout').textContent = fmt(c);
+  $('eq').textContent = 'f(x) = ' + poly(a, b, c);
+  const f = x => a * x * x + b * x + c;
+  let s = P.grid({labelStep: 2, xname: 'x', yname: 'y'}), d = '', pen = false;
+  for(let x = -7; x <= 7.001; x += .04){ const y = f(x); if(y > 9.5 || y < -9.5){ pen = false; continue; } d += (pen ? 'L' : 'M') + P.X(x).toFixed(1) + ',' + P.Y(y).toFixed(1); pen = true; }
+  if(!a){
+    s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`; svg.innerHTML = s;
+    $('read').innerHTML = ''; $('why').innerHTML = '<b>a = 0</b> membuat f(x) bukan fungsi kuadrat lagi: grafiknya garis lurus.'; return;
+  }
+  const xp = -b / (2 * a), yp = f(xp), D = b * b - 4 * a * c;
+  if(xp >= -7 && xp <= 7) s += `<line x1="${P.X(xp)}" y1="0" x2="${P.X(xp)}" y2="${P.Y(-9)}" style="stroke:var(--comp)" stroke-width="2" class="dash"/>`;
+  s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+  const dot = (x, y, col, t, dy = -8) => { if(x < -7 || x > 7 || y < -9 || y > 9) return; s += `<circle cx="${P.X(x)}" cy="${P.Y(y)}" r="5" style="fill:${col}"/>`; if(t) s += `<text class="ar" x="${P.X(x) + 7}" y="${P.Y(y) + dy}" style="fill:${col}">${t}</text>`; };
+  let roots = [];
+  if(D > 1e-9) roots = [(-b - Math.sqrt(D)) / (2 * a), (-b + Math.sqrt(D)) / (2 * a)].sort((p, q) => p - q);
+  else if(Math.abs(D) <= 1e-9) roots = [xp];
+  roots.forEach(r => dot(r, 0, 'var(--r)', '', 0));
+  dot(0, c, 'var(--ok)', '(0, ' + fmt(c) + ')', a > 0 ? 16 : -8);
+  dot(xp, yp, 'var(--b)', 'P(' + fmt(xp) + ', ' + fmt(yp) + ')', a > 0 ? 18 : -10);
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Arah grafik</span><b>${a > 0 ? 'terbuka ke atas' : 'terbuka ke bawah'}</b></div>` +
+    `<div><span style="color:var(--comp)">Sumbu simetri x = −b/(2a)</span><b>x = ${fmt(xp)}</b></div>` +
+    `<div><span style="color:var(--b)">Titik puncak</span><b>(${fmt(xp)}, ${fmt(yp)})</b></div>` +
+    `<div><span>${a > 0 ? 'Nilai minimum' : 'Nilai maksimum'}</span><b>${fmt(yp)}</b></div>` +
+    `<div><span style="color:var(--ok)">Titik potong sumbu y</span><b>(0, ${fmt(c)})</b></div>` +
+    `<div><span>Diskriminan D = b² − 4ac</span><b>${fmt(D)}</b></div>` +
+    `<div><span style="color:var(--r)">Titik potong sumbu x</span><b>${roots.length ? roots.map(r => '(' + fmt(r) + ', 0)').join(', ') : 'tidak ada'}</b></div>`;
+  $('why').innerHTML = D > 1e-9 ? '<b>D &gt; 0</b>: dua akar real berbeda, grafik memotong sumbu x di dua titik.' :
+    Math.abs(D) <= 1e-9 ? '<b>D = 0</b>: akar kembar, grafik menyinggung sumbu x tepat di puncaknya.' :
+    '<b>D &lt; 0</b>: tidak ada akar real, grafik tidak memotong sumbu x' + (a > 0 ? ' (definit positif).' : ' (definit negatif).');
+}
+draw();
+</script>
+</body>
+</html>

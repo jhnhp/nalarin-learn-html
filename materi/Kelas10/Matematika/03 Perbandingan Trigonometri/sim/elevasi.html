@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mengukur Tinggi dengan Sudut Elevasi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.calc{font-size:14.5px;line-height:1.85;padding:10px 12px;border-radius:10px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Siswa membidik puncak pohon dengan klinometer"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Jarak siswa ke pohon (m)</span><b id="dout"></b></div><input type="range" id="d" min="5" max="30" step="1" value="12"></div>
+    <div class="seg" id="tree"><button data-t="15" class="on">Pohon A</button><button data-t="22">Pohon B</button><button data-t="9">Pohon C</button></div>
+    <label class="chk"><input type="checkbox" id="c-hide"> Sembunyikan tinggi pohon (latihan)</label>
+    <div class="calc" id="calc"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let H = 15; const eye = 1.5;
+$('d').oninput = draw; $('c-hide').onchange = draw;
+$('tree').onclick = e => { const b = e.target.closest('button'); if(!b) return; H = +b.dataset.t; document.querySelectorAll('#tree button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+Sim.onTheme(draw);
+function draw(){
+  const d = +$('d').value, k = 11, gy = 290, tx = 420, px = tx - d * k;
+  const ang = Math.atan((H - eye) / d), deg = ang * 180 / Math.PI;
+  let s = `<line x1="0" y1="${gy}" x2="460" y2="${gy}" style="stroke:var(--ink)" stroke-width="2"/>`;
+  s += `<rect x="${tx - 6}" y="${gy - H * k * .45}" width="12" height="${H * k * .45}" fill="#8a5a2b"/><ellipse cx="${tx}" cy="${gy - H * k * .62}" rx="${H * 1.6}" ry="${H * k * .2}" style="fill:var(--ok)" fill-opacity=".7"/>`;
+  s += `<line x1="${tx}" y1="${gy - H * k}" x2="${tx}" y2="${gy - H * k * .82}" style="stroke:var(--ok)" stroke-width="4"/>`;
+  const ey = gy - eye * k;
+  s += `<circle cx="${px}" cy="${ey - 8}" r="7" style="fill:var(--a)"/><line x1="${px}" y1="${ey}" x2="${px}" y2="${gy}" style="stroke:var(--a)" stroke-width="4"/>`;
+  s += `<line x1="${px}" y1="${ey}" x2="${tx}" y2="${ey}" style="stroke:var(--comp)" stroke-width="2" class="dash"/>`;
+  s += `<line x1="${px}" y1="${ey}" x2="${tx}" y2="${gy - H * k}" style="stroke:var(--b)" stroke-width="2.5"/>`;
+  s += `<path d="M${px + 36} ${ey} A36,36 0 0 0 ${px + 36 * Math.cos(ang)},${ey - 36 * Math.sin(ang)}" fill="none" style="stroke:var(--r)" stroke-width="2.5"/><text class="ar" x="${px + 48}" y="${ey - 8}" style="fill:var(--r)">${fmt(deg, 1)}°</text>`;
+  s += `<text class="ar" x="${(px + tx) / 2}" y="${gy + 20}" text-anchor="middle" style="fill:var(--comp)">${d} m</text><text class="ar" x="${px - 8}" y="${(ey + gy) / 2 + 4}" text-anchor="end">1,5 m</text>`;
+  s += `<line x1="${px}" y1="${gy + 4}" x2="${tx}" y2="${gy + 4}" style="stroke:var(--comp)" stroke-width="2"/>`;
+  svg.innerHTML = s;
+  $('dout').textContent = d + ' m';
+  const hide = $('c-hide').checked, t = Math.tan(ang);
+  $('calc').innerHTML = `Klinometer menunjukkan sudut elevasi <b>${fmt(deg, 1)}°</b>, tan ${fmt(deg, 1)}° ≈ ${fmt(t, 3)}<br>` +
+    `Tinggi di atas mata = jarak × tan α = ${d} × ${fmt(t, 3)} = ${hide ? '?' : fmt(d * t, 2) + ' m'}<br>` +
+    `Tinggi pohon = tinggi di atas mata + 1,5 m = <b>${hide ? '?' : fmt(d * t + eye, 2) + ' m'}</b>`;
+}
+draw();
+</script>
+</body>
+</html>
