@@ -1,0 +1,307 @@
+{
+  "title": "Bangun Ruang",
+  "summary": "Jenis bangun ruang dan jaring-jaringnya, luas permukaan dan volume bangun sisi datar dan sisi lengkung, lingkaran, serta pengaruh perubahan skala.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "jenis-bangun-ruang",
+      "title": "Jenis bangun ruang dan jaring-jaringnya",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Kemasan susu berbentuk balok, kaleng berbentuk tabung, dan es krim cone berbentuk kerucut. Bangun-bangun tiga dimensi ini disebut <b>bangun ruang</b>. Berdasarkan sisinya, bangun ruang dibagi menjadi dua kelompok.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Kelompok</th><th>Contoh</th><th>Ciri</th></tr><tr><td><b>Sisi datar</b> (polihedron)</td><td>kubus, balok, prisma, limas</td><td>semua sisinya bidang datar; memiliki rusuk dan titik sudut</td></tr><tr><td><b>Sisi lengkung</b></td><td>tabung, kerucut, bola</td><td>memiliki sisi lengkung</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/bangun-3d.html",
+          "title": "Penjelajah bangun ruang",
+          "height": 540,
+          "caption": "Pilih bangun dan seret untuk memutarnya. Ubah ukurannya dan perhatikan luas permukaan dan volumenya. Untuk bangun sisi datar, periksa rumus Euler."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Rumus Euler",
+          "html": "<p>Pada setiap bangun ruang sisi datar berlaku: banyak sisi (S) + banyak titik sudut (T) − banyak rusuk (R) = 2. Contoh kubus: 6 + 8 − 12 = 2.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Jaring-jaring"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika permukaan bangun ruang diiris pada beberapa rusuk lalu dibuka, diperoleh <b>jaring-jaring</b>. Kubus memiliki 11 jaring-jaring berbeda. Tidak semua susunan 6 persegi dapat dilipat menjadi kubus.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/jaring-kubus.svg",
+          "alt": "Tiga susunan enam persegi yang merupakan jaring kubus dan satu yang bukan",
+          "width": 640,
+          "caption": "Susunan terakhir bukan jaring kubus: saat dilipat, dua persegi saling tumpang tindih."
+        },
+        {
+          "type": "check",
+          "question": "Sebuah prisma alasnya segi enam. Banyak rusuk prisma itu adalah ....",
+          "options": {
+            "A": "12",
+            "B": "18",
+            "C": "8",
+            "D": "6"
+          },
+          "answer": "B",
+          "hint": "Hitung rusuk alas, rusuk atap, dan rusuk tegak.",
+          "explanation": "Alas 6 rusuk, atap 6 rusuk, dan 6 rusuk tegak: 18 rusuk. Periksa Euler: sisi 8, titik sudut 12, 8 + 12 − 18 = 2."
+        }
+      ]
+    },
+    {
+      "id": "bangun-sisi-datar",
+      "title": "Luas permukaan dan volume bangun sisi datar",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Luas permukaan",
+          "html": "<table><tr><th>Bangun</th><th>Luas permukaan</th></tr><tr><td>Kubus (rusuk s)</td><td>\\(6s^2\\)</td></tr><tr><td>Balok</td><td>\\(2(pl + pt + lt)\\)</td></tr><tr><td>Prisma</td><td>\\(2 \\times L_{\\text{alas}} + K_{\\text{alas}} \\times t\\)</td></tr><tr><td>Limas</td><td>\\(L_{\\text{alas}} + \\text{jumlah luas sisi tegak}\\)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Volume",
+          "html": "<table><tr><th>Bangun</th><th>Volume</th></tr><tr><td>Kubus</td><td>\\(s^3\\)</td></tr><tr><td>Balok</td><td>\\(p \\times l \\times t\\)</td></tr><tr><td>Prisma</td><td>\\(L_{\\text{alas}} \\times t\\)</td></tr><tr><td>Limas</td><td>\\(\\tfrac{1}{3} \\times L_{\\text{alas}} \\times t\\)</td></tr></table><p>Volume limas sepertiga volume prisma yang alas dan tingginya sama: tiga limas yang sama dapat mengisi satu prisma.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Prisma tegak beralas segitiga siku-siku dengan sisi siku-siku 6 cm dan 8 cm, serta tinggi prisma 10 cm. Tentukan luas permukaan dan volumenya.</p>",
+          "steps": [
+            "Sisi miring alas = √(36 + 64) = 10 cm. Keliling alas = 6 + 8 + 10 = 24 cm.",
+            "Luas alas = ½ × 6 × 8 = 24 cm².",
+            "L = 2 × 24 + 24 × 10 = 48 + 240 = 288 cm².",
+            "V = 24 × 10 = 240 cm³."
+          ],
+          "answer": "L = 288 cm², V = 240 cm³"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Limas persegi bersisi alas 12 cm dan tinggi 8 cm. Tentukan luas permukaan dan volumenya.</p>",
+          "steps": [
+            "Tinggi sisi tegak = √(6² + 8²) = 10 cm.",
+            "Luas sisi tegak = 4 × ½ × 12 × 10 = 240 cm². Luas alas = 144 cm².",
+            "L = 144 + 240 = 384 cm².",
+            "V = ⅓ × 144 × 8 = 384 cm³."
+          ],
+          "answer": "L = 384 cm², V = 384 cm³"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah balok berukuran 10 cm × 6 cm × 4 cm. Luas permukaannya adalah ....",
+          "options": {
+            "A": "240 cm²",
+            "B": "248 cm²",
+            "C": "124 cm²",
+            "D": "320 cm²"
+          },
+          "answer": "B",
+          "hint": "2(pl + pt + lt).",
+          "explanation": "2(60 + 40 + 24) = 2 × 124 = 248 cm². 240 cm³ adalah volumenya."
+        }
+      ]
+    },
+    {
+      "id": "lingkaran",
+      "title": "Keliling, luas, busur, dan juring lingkaran",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sebelum menghitung tabung, kerucut, dan bola, kita perlu lingkaran. Perbandingan keliling lingkaran dengan diameternya selalu sama, yaitu bilangan \\(\\pi \\approx 3{,}14\\) atau \\(\\tfrac{22}{7}\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Lingkaran berjari-jari r",
+          "html": "\\[K = 2\\pi r = \\pi d \\qquad L = \\pi r^2\\]\\[\\text{panjang busur} = \\frac{\\alpha}{360^\\circ} \\times 2\\pi r \\qquad \\text{luas juring} = \\frac{\\alpha}{360^\\circ} \\times \\pi r^2\\]<p>α adalah sudut pusat juring. Pakai π = 22/7 jika jari-jarinya kelipatan 7.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/juring.html",
+          "title": "Busur dan juring",
+          "height": 470,
+          "caption": "Ubah sudut pusat dan jari-jari. Bandingkan panjang busur dengan keliling, serta luas juring dengan luas lingkaran."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah juring memiliki jari-jari 21 cm dan sudut pusat 60°. Tentukan panjang busur dan luas juringnya.</p>",
+          "steps": [
+            "Panjang busur = 60/360 × 2 × 22/7 × 21 = ⅙ × 132 = 22 cm.",
+            "Luas juring = 60/360 × 22/7 × 21² = ⅙ × 1.386 = 231 cm²."
+          ],
+          "answer": "busur 22 cm, juring 231 cm²"
+        },
+        {
+          "type": "check",
+          "question": "Keliling sebuah roda 88 cm. Jari-jari roda tersebut adalah .... (π = 22/7)",
+          "options": {
+            "A": "7 cm",
+            "B": "14 cm",
+            "C": "28 cm",
+            "D": "44 cm"
+          },
+          "answer": "B",
+          "hint": "K = 2πr, jadi r = K : (2π).",
+          "explanation": "r = 88 : (2 × 22/7) = 88 : 44/7 = 14 cm."
+        }
+      ]
+    },
+    {
+      "id": "bangun-sisi-lengkung",
+      "title": "Luas permukaan dan volume bangun sisi lengkung",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "gambar/jaring-lengkung.svg",
+          "alt": "Jaring tabung terdiri atas dua lingkaran dan persegi panjang; jaring kerucut terdiri atas lingkaran dan juring",
+          "width": 640,
+          "caption": "Jaring-jaring tabung dan kerucut."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tabung, kerucut, dan bola",
+          "html": "<table><tr><th>Bangun</th><th>Luas permukaan</th><th>Volume</th></tr><tr><td>Tabung</td><td>\\(2\\pi r(r + t)\\)</td><td>\\(\\pi r^2 t\\)</td></tr><tr><td>Kerucut</td><td>\\(\\pi r(r + s)\\), dengan \\(s = \\sqrt{r^2 + t^2}\\)</td><td>\\(\\tfrac13 \\pi r^2 t\\)</td></tr><tr><td>Bola</td><td>\\(4\\pi r^2\\)</td><td>\\(\\tfrac43 \\pi r^3\\)</td></tr></table><p>s adalah garis pelukis kerucut.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/archimedes.svg",
+          "alt": "Kerucut, bola, dan tabung dengan jari-jari dan tinggi sama; volumenya berbanding 1 : 2 : 3",
+          "width": 600,
+          "caption": "Penemuan Archimedes: perbandingan volume kerucut, bola, dan tabung."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah kerucut berjari-jari 7 cm dan tinggi 24 cm. Tentukan luas permukaan dan volumenya (π = 22/7).</p>",
+          "steps": [
+            "Garis pelukis s = √(7² + 24²) = √625 = 25 cm.",
+            "L = 22/7 × 7 × (7 + 25) = 22 × 32 = 704 cm².",
+            "V = ⅓ × 22/7 × 49 × 24 = 1.232 cm³."
+          ],
+          "answer": "L = 704 cm², V = 1.232 cm³"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah bola berdiameter 42 cm. Tentukan luas permukaan dan volumenya.</p>",
+          "steps": [
+            "r = 21 cm.",
+            "L = 4 × 22/7 × 21² = 5.544 cm².",
+            "V = 4/3 × 22/7 × 21³ = 38.808 cm³."
+          ],
+          "answer": "L = 5.544 cm², V = 38.808 cm³"
+        },
+        {
+          "type": "check",
+          "question": "Volume tabung berjari-jari 7 cm dan tinggi 10 cm adalah .... (π = 22/7)",
+          "options": {
+            "A": "440 cm³",
+            "B": "1.540 cm³",
+            "C": "770 cm³",
+            "D": "3.080 cm³"
+          },
+          "answer": "B",
+          "hint": "V = πr²t.",
+          "explanation": "22/7 × 49 × 10 = 154 × 10 = 1.540 cm³."
+        }
+      ]
+    },
+    {
+      "id": "perubahan-skala",
+      "title": "Pengaruh perubahan skala",
+      "kind": "simulasi",
+      "duration": "12 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jika semua ukuran sebuah bangun ruang dikalikan k (bangunnya diperbesar sebangun), luas permukaan dan volumenya tidak sekadar dikali k.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/skala-bangun.html",
+          "title": "Pengaruh perubahan skala",
+          "height": 420,
+          "caption": "Ubah faktor skala dan hitung kubus satuannya. Berapa kali volume naik jika rusuk dijadikan 4 kali?"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Faktor skala k",
+          "html": "<ul><li>Panjang (rusuk, jari-jari, tinggi) dikali k.</li><li>Luas permukaan dikali \\(k^2\\).</li><li>Volume dikali \\(k^3\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Jari-jari sebuah bola dijadikan 3 kali semula. Berapa kali luas permukaan dan volumenya?</p>",
+          "steps": [
+            "k = 3.",
+            "Luas permukaan dikali 3² = 9.",
+            "Volume dikali 3³ = 27."
+          ],
+          "answer": "luas 9 kali, volume 27 kali"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah kubus bervolume 64 cm³. Jika rusuknya diperkecil menjadi setengahnya, volumenya menjadi ....",
+          "options": {
+            "A": "32 cm³",
+            "B": "16 cm³",
+            "C": "8 cm³",
+            "D": "4 cm³"
+          },
+          "answer": "C",
+          "hint": "k = ½, volume dikali k³.",
+          "explanation": "64 × (½)³ = 64 × ⅛ = 8 cm³. Periksa: rusuk 4 cm menjadi 2 cm, volume 2³ = 8."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Bangun</th><th>Luas permukaan</th><th>Volume</th></tr><tr><td>Kubus</td><td>6s²</td><td>s³</td></tr><tr><td>Balok</td><td>2(pl + pt + lt)</td><td>plt</td></tr><tr><td>Prisma</td><td>2L<sub>alas</sub> + K<sub>alas</sub>·t</td><td>L<sub>alas</sub>·t</td></tr><tr><td>Limas</td><td>L<sub>alas</sub> + Σ sisi tegak</td><td>⅓L<sub>alas</sub>·t</td></tr><tr><td>Tabung</td><td>2πr(r + t)</td><td>πr²t</td></tr><tr><td>Kerucut</td><td>πr(r + s)</td><td>⅓πr²t</td></tr><tr><td>Bola</td><td>4πr²</td><td>⁴⁄₃πr³</td></tr></table><p>Lingkaran: K = 2πr, L = πr². Busur dan juring: kalikan α/360°. Skala k: luas × k², volume × k³.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai tinggi kerucut sebagai garis pelukis pada rumus luas.</li><li>Lupa mengubah diameter menjadi jari-jari.</li><li>Lupa faktor ⅓ pada limas dan kerucut.</li><li>Mengira volume dikali k saat ukuran dikali k.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas IX</i> (Kemendikbudristek), Bab 2 Bangun Ruang.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang unsur dan jaring-jaring bangun ruang, luas permukaan, volume, lingkaran, dan pengaruh perubahan skala. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

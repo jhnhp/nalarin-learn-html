@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Luas Perkalian Pecahan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .lbl{font-family:var(--display);font-weight:800;font-size:15px}
+  .ctl{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center}
+  .frac{display:inline-grid;text-align:center;line-height:1.1;vertical-align:middle;font-weight:800}
+  .frac span:first-child{border-bottom:2px solid currentColor;padding:0 3px}
+  .cmp{font-family:var(--display);font-weight:800;font-size:22px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 400 360" role="img" aria-label="Persegi satuan yang diarsir untuk menunjukkan perkalian dua pecahan"></svg></div>
+  <div class="panel">
+    <div class="ctl">
+      <b style="color:var(--a)">Pecahan 1</b><div class="row"><div class="step"><button data-d="a-1">−</button><output id="a"></output><button data-d="a1">+</button></div>/<div class="step"><button data-d="b-1">−</button><output id="b"></output><button data-d="b1">+</button></div></div>
+      <b style="color:var(--comp)">Pecahan 2</b><div class="row"><div class="step"><button data-d="c-1">−</button><output id="c"></output><button data-d="c1">+</button></div>/<div class="step"><button data-d="d-1">−</button><output id="d"></output><button data-d="d1">+</button></div></div>
+    </div>
+    <div class="cmp" id="res"></div>
+    <p class="note" id="why"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const st = {a: 2, b: 3, c: 3, d: 4};
+const gcd = (x, y) => y ? gcd(y, x % y) : x;
+const fr = (p, q, c = 'inherit') => `<span class="frac" style="color:${c}"><span>${p}</span><span>${q}</span></span>`;
+document.querySelectorAll('[data-d]').forEach(btn => btn.onclick = () => {
+  const k = btn.dataset.d[0], v = +btn.dataset.d.slice(1);
+  st[k] += v;
+  st.b = Math.max(1, Math.min(10, st.b)); st.d = Math.max(1, Math.min(10, st.d));
+  st.a = Math.max(0, Math.min(st.b, st.a)); st.c = Math.max(0, Math.min(st.d, st.c));
+  draw(); });
+Sim.onTheme(draw);
+
+function draw(){
+  const {a, b, c, d} = st, x0 = 40, y0 = 30, S = 300;
+  let s = '';
+  // pecahan 1: kolom (a dari b), pecahan 2: baris (c dari d)
+  s += `<rect x="${x0}" y="${y0}" width="${S * a / b}" height="${S}" style="fill:var(--a)" fill-opacity=".22"/>`;
+  s += `<rect x="${x0}" y="${y0 + S - S * c / d}" width="${S}" height="${S * c / d}" style="fill:var(--comp)" fill-opacity=".25"/>`;
+  s += `<rect x="${x0}" y="${y0 + S - S * c / d}" width="${S * a / b}" height="${S * c / d}" style="fill:var(--r)" fill-opacity=".55"/>`;
+  for(let i = 1; i < b; i++) s += `<line x1="${x0 + S * i / b}" y1="${y0}" x2="${x0 + S * i / b}" y2="${y0 + S}" style="stroke:var(--a)" stroke-width="1.5"/>`;
+  for(let j = 1; j < d; j++) s += `<line x1="${x0}" y1="${y0 + S * j / d}" x2="${x0 + S}" y2="${y0 + S * j / d}" style="stroke:var(--comp)" stroke-width="1.5"/>`;
+  s += `<rect x="${x0}" y="${y0}" width="${S}" height="${S}" fill="none" style="stroke:var(--ink)" stroke-width="2.5"/>`;
+  s += `<text class="lbl" x="${x0 + S * a / b / 2}" y="${y0 + S + 22}" text-anchor="middle" style="fill:var(--a)">${a}/${b}</text>`;
+  s += `<text class="lbl" x="${x0 - 8}" y="${y0 + S - S * c / d / 2 + 5}" text-anchor="end" style="fill:var(--comp)">${c}/${d}</text>`;
+  svg.innerHTML = s;
+  ['a', 'b', 'c', 'd'].forEach(k => $(k).textContent = st[k]);
+  const p = a * c, q = b * d, g = gcd(p, q) || 1;
+  $('res').innerHTML = `${fr(a, b, 'var(--a)')} × ${fr(c, d, 'var(--comp)')} = ${fr(p, q, 'var(--r)')}` + (g > 1 ? ` = ${q / g === 1 ? p / g : fr(p / g, q / g)}` : '');
+  $('why').innerHTML = `Persegi dibagi menjadi ${b} × ${d} = <b>${q}</b> kotak kecil (penyebut). Bagian ungu, tempat kedua arsiran bertumpuk, berisi ${a} × ${c} = <b>${p}</b> kotak (pembilang). Jadi hasil kalinya ${p}/${q} dari persegi utuh.`;
+}
+draw();
+</script>
+</body>
+</html>

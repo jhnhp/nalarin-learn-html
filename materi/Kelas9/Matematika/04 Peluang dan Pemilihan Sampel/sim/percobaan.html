@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Percobaan Peluang</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.lbl{font-family:var(--font);font-size:12px;fill:var(--muted)}.cat{font-family:var(--font);font-size:12.5px;fill:var(--ink)}.val{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Diagram frekuensi relatif hasil percobaan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="kind"><button data-k="koin" class="on">Koin</button><button data-k="dadu">Dadu</button><button data-k="dua">Jumlah 2 dadu</button></div>
+    <div class="row"><button class="btn" data-n="1">+1</button><button class="btn" data-n="10">+10</button><button class="btn" data-n="100">+100</button><button class="btn" data-n="1000">+1.000</button><button class="btn" id="reset">Ulangi</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Batang menunjukkan <b>frekuensi relatif</b> (peluang empiris). Garis putus-putus adalah <b>peluang teoretis</b>. Apa yang terjadi jika percobaan diulang sangat banyak?</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const K = {
+  koin: {cats: ['Angka', 'Gambar'], p: [1 / 2, 1 / 2], roll: () => Math.random() < .5 ? 0 : 1},
+  dadu: {cats: ['1', '2', '3', '4', '5', '6'], p: Array(6).fill(1 / 6), roll: () => Math.floor(Math.random() * 6)},
+  dua: {cats: Array.from({length: 11}, (_, i) => String(i + 2)), p: Array.from({length: 11}, (_, i) => (6 - Math.abs(i - 5)) / 36), roll: () => Math.floor(Math.random() * 6) + Math.floor(Math.random() * 6)},
+};
+let kind = 'koin', cnt, n, last = null;
+$('kind').onclick = e => { const b = e.target.closest('button'); if(!b) return; kind = b.dataset.k; document.querySelectorAll('#kind button').forEach(x => x.classList.toggle('on', x === b)); reset(); };
+document.querySelectorAll('[data-n]').forEach(b => b.onclick = () => { for(let i = 0; i < +b.dataset.n; i++){ const r = K[kind].roll(); cnt[r]++; n++; last = r; } draw(); });
+$('reset').onclick = reset;
+Sim.onTheme(draw);
+function reset(){ cnt = K[kind].cats.map(() => 0); n = 0; last = null; draw(); }
+function draw(){
+  const k = K[kind], m = k.cats.length, gx = 50, gy = 20, gw = 390, gh = 240, top = Math.max(.6, ...k.p.map(p => p * 1.5));
+  const Y = v => gy + gh - v / top * gh;
+  let s = '';
+  for(let v = 0; v <= top + 1e-9; v += .1) s += `<line x1="${gx}" y1="${Y(v)}" x2="${gx + gw}" y2="${Y(v)}" style="stroke:var(--grid)"/><text class="lbl" x="${gx - 6}" y="${Y(v) + 4}" text-anchor="end">${fmt(v, 1)}</text>`;
+  s += `<line x1="${gx}" y1="${gy + gh}" x2="${gx + gw}" y2="${gy + gh}" style="stroke:var(--ink)" stroke-width="1.6"/>`;
+  const bw = gw / m;
+  k.cats.forEach((c, i) => {
+    const f = n ? cnt[i] / n : 0, x = gx + i * bw;
+    s += `<rect x="${x + bw * .15}" y="${Y(f)}" width="${bw * .7}" height="${gy + gh - Y(f)}" rx="3" style="fill:${i === last ? 'var(--b)' : 'var(--a)'}"/>`;
+    s += `<line x1="${x + bw * .08}" y1="${Y(k.p[i])}" x2="${x + bw * .92}" y2="${Y(k.p[i])}" style="stroke:var(--comp)" stroke-width="3" class="dash"/>`;
+    s += `<text class="cat" x="${x + bw / 2}" y="${gy + gh + 18}" text-anchor="middle">${c}</text>`;
+    if(m <= 6 && n) s += `<text class="val" x="${x + bw / 2}" y="${Y(f) - 5}" text-anchor="middle" style="fill:var(--ink)">${fmt(f, 3)}</text>`;
+  });
+  svg.innerHTML = s;
+  const i0 = kind === 'dua' ? 5 : 0, name = kind === 'dua' ? 'jumlah 7' : k.cats[0];
+  $('read').innerHTML = `<div><span>Banyak percobaan</span><b>${n.toLocaleString('id-ID')}</b></div>` +
+    `<div><span>Frekuensi "${name}"</span><b>${cnt[i0]}</b></div>` +
+    `<div><span>Peluang empiris "${name}"</span><b>${n ? fmt(cnt[i0] / n, 3) : '–'}</b></div>` +
+    `<div><span>Peluang teoretis "${name}"</span><b>${kind === 'koin' ? '1/2 = 0,5' : kind === 'dadu' ? '1/6 ≈ 0,167' : '6/36 ≈ 0,167'}</b></div>`;
+}
+reset();
+</script>
+</body>
+</html>

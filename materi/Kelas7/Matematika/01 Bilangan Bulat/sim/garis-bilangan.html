@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operasi pada Garis Bilangan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .lbl{font-family:var(--font);font-size:13px;fill:var(--muted)}
+  .num{font-family:var(--font);font-size:12px;fill:var(--ink)}
+  .res{font-family:var(--display);font-weight:800;font-size:26px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+  .ctl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ctl .lab{margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 520 250" role="img" aria-label="Garis bilangan dengan panah yang menunjukkan operasi hitung"></svg></div>
+  <div class="panel">
+    <div class="seg" id="op"><button data-o="+" class="on">a + b</button><button data-o="-">a − b</button><button data-o="x">a × b</button></div>
+    <div class="ctl">
+      <div><div class="lab"><span>Bilangan a</span></div>
+        <div class="step"><button data-d="a-1" aria-label="Kurangi a">−</button><output id="oa">0</output><button data-d="a1" aria-label="Tambah a">+</button></div></div>
+      <div><div class="lab"><span>Bilangan b</span></div>
+        <div class="step"><button data-d="b-1" aria-label="Kurangi b">−</button><output id="ob">0</output><button data-d="b1" aria-label="Tambah b">+</button></div></div>
+    </div>
+    <div class="res" id="res"></div>
+    <p class="note" id="why"></p>
+    <button class="btn primary" id="play">Jalankan langkah demi langkah</button>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let op = '+', a = 3, b = -5, prog = 1, anim = null;
+const LIM = {'+': [-10, 10], '-': [-10, 10], 'x': [-5, 5]};
+
+$('op').onclick = e => { const btn = e.target.closest('button'); if(!btn) return; op = btn.dataset.o;
+  document.querySelectorAll('#op button').forEach(x => x.classList.toggle('on', x === btn));
+  const [lo, hi] = LIM[op]; a = Math.max(lo, Math.min(hi, a)); b = Math.max(lo, Math.min(hi, b)); stop(); draw(); };
+document.querySelectorAll('[data-d]').forEach(btn => btn.onclick = () => {
+  const d = btn.dataset.d, v = +d.slice(1), [lo, hi] = LIM[op];
+  if(d[0] === 'a') a = Math.max(lo, Math.min(hi, a + v)); else b = Math.max(lo, Math.min(hi, b + v));
+  stop(); draw(); });
+$('play').onclick = () => {
+  stop(); prog = 0; const t0 = performance.now();
+  const step = now => { prog = Math.min(1, (now - t0) / 2200); draw(); if(prog < 1) anim = requestAnimationFrame(step); else anim = null; };
+  anim = requestAnimationFrame(step);
+};
+function stop(){ if(anim) cancelAnimationFrame(anim); anim = null; prog = 1; }
+Sim.onTheme(draw);
+
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function arrow(x1, x2, y, color, label, lift = 0){
+  if(Math.abs(x2 - x1) < 1) return `<circle cx="${x1}" cy="${y}" r="5" style="fill:${color}"/>`;
+  const dir = Math.sign(x2 - x1), hx = x2 - dir * 10;
+  return `<path d="M${x1} ${y} Q${(x1 + x2) / 2} ${y - 34 - lift} ${hx} ${y - 4}" fill="none" style="stroke:${color}" stroke-width="3"/>` +
+    `<polygon points="${x2},${y} ${hx},${y - 9} ${hx - dir * 4},${y + 2}" style="fill:${color}"/>` +
+    (label ? `<text class="lbl" x="${(x1 + x2) / 2}" y="${y - 26 - lift}" text-anchor="middle" style="fill:${color};font-weight:700">${label}</text>` : '');
+}
+
+function draw(){
+  const lo = op === 'x' ? -25 : -20, hi = -lo, x0 = 20, x1 = 500, Y = 190;
+  const X = v => x0 + (v - lo) / (hi - lo) * (x1 - x0);
+  const A = css('--a'), B = css('--b'), R = css('--r');
+  let s = `<line x1="${x0 - 8}" y1="${Y}" x2="${x1 + 8}" y2="${Y}" style="stroke:var(--ink)" stroke-width="2"/>`;
+  for(let v = lo; v <= hi; v++){
+    const big = v % 5 === 0;
+    s += `<line x1="${X(v)}" y1="${Y - (big ? 7 : 4)}" x2="${X(v)}" y2="${Y + (big ? 7 : 4)}" style="stroke:var(--ink)" stroke-width="${big ? 1.6 : 1}"/>`;
+    if(big) s += `<text class="num" x="${X(v)}" y="${Y + 24}" text-anchor="middle">${fmt(v)}</text>`;
+  }
+  s += `<text class="lbl" x="${x0}" y="${Y + 44}">← lebih kecil</text><text class="lbl" x="${x1}" y="${Y + 44}" text-anchor="end">lebih besar →</text>`;
+  let r, why;
+  if(op === '+' || op === '-'){
+    const bb = op === '+' ? b : -b; r = a + bb;
+    const p1 = Math.min(1, prog * 2), p2 = Math.max(0, prog * 2 - 1);
+    s += arrow(X(0), X(a * p1), Y, A, p1 === 1 ? 'a = ' + fmt(a) : '');
+    if(p2 > 0) s += arrow(X(a), X(a + bb * p2), Y - 46, op === '+' ? B : R, p2 === 1 ? (op === '+' ? 'tambah ' + fmt(b) : 'kurangi ' + fmt(b)) : '', 6);
+    if(prog === 1) s += `<line x1="${X(r)}" y1="${Y - 52}" x2="${X(r)}" y2="${Y}" style="stroke:var(--muted)" class="dash"/><circle cx="${X(r)}" cy="${Y}" r="7" style="fill:var(--ink)"/>`;
+    why = op === '+'
+      ? (b >= 0 ? `Menambah bilangan positif: bergerak <b>ke kanan</b> ${fmt(b)} langkah.` : `Menambah bilangan negatif: bergerak <b>ke kiri</b> ${fmt(-b)} langkah.`)
+      : `Mengurangi ${fmt(b)} sama dengan menambah lawannya: ${fmt(a)} − (${fmt(b)}) = ${fmt(a)} + (${fmt(-b)}). Bergerak <b>ke ${-b >= 0 ? 'kanan' : 'kiri'}</b> ${fmt(Math.abs(b))} langkah.`;
+    $('res').innerHTML = `${fmt(a)} ${op === '+' ? '+' : '−'} ${b < 0 ? '(' + fmt(b) + ')' : fmt(b)} = ${prog === 1 ? fmt(r) : '…'}`;
+  } else {
+    r = a * b;
+    const p1 = Math.min(1, prog * 2), p2 = Math.max(0, prog * 2 - 1);
+    // panah b dari 0, lalu ditarik a kali (berbalik arah jika a negatif)
+    s += arrow(X(0), X(b * p1), Y, B, p1 === 1 ? 'b = ' + fmt(b) : '');
+    if(p2 > 0){
+      const k = 1 + (a - 1) * p2;
+      s += arrow(X(0), X(b * k), Y - 50, A, p2 === 1 ? fmt(a) + ' × b' : '', 10);
+    }
+    if(prog === 1) s += `<circle cx="${X(r)}" cy="${Y}" r="7" style="fill:var(--ink)"/>`;
+    why = a === 0 || b === 0 ? 'Apa pun yang dikali 0 hasilnya 0.' :
+      `Panah b ditarik ${fmt(Math.abs(a))} kali panjangnya` + (a < 0 ? ', lalu <b>dibalik arahnya</b> karena a negatif.' : ', arahnya tetap karena a positif.') +
+      ` Tanda hasil: ${a > 0 === b > 0 ? 'sama-sama ' + (a > 0 ? 'positif' : 'negatif') + ' → <b>positif</b>' : 'berbeda tanda → <b>negatif</b>'}.`;
+    $('res').innerHTML = `${a < 0 ? '(' + fmt(a) + ')' : fmt(a)} × ${b < 0 ? '(' + fmt(b) + ')' : fmt(b)} = ${prog === 1 ? fmt(r) : '…'}`;
+  }
+  svg.innerHTML = s;
+  $('oa').textContent = fmt(a); $('ob').textContent = fmt(b);
+  $('why').innerHTML = why;
+}
+draw();
+</script>
+</body>
+</html>

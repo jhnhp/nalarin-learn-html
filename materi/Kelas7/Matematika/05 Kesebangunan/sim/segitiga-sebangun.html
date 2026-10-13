@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Segitiga Sebangun</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+  td,th{padding:4px 6px;text-align:right;border-bottom:1px solid var(--line)}
+  th{font-size:12px;color:var(--muted)} td:first-child,th:first-child{text-align:left}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Segitiga ABC dan segitiga PQR"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Faktor skala k (PQR terhadap ABC)</span><b id="kout"></b></div><input type="range" id="k" min="0.5" max="1.5" step="0.25" value="1.5"></div>
+    <div><div class="lab"><span>Regangkan PQR ke samping</span><b id="sout"></b></div><input type="range" id="s" min="0.6" max="1.4" step="0.1" value="1"></div>
+    <table id="tab"></table>
+    <div class="box" id="fb"></div>
+    <p class="note">Geser titik A, B, atau C. Segitiga PQR selalu dibuat dari ABC.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: 0, xmax: 16, ymin: -0.8, ymax: 8, scale: 30});
+let A = {x: 1, y: 1}, B = {x: 5, y: 1}, C = {x: 2, y: 4};
+P.draggable((h, x, y) => { const c = P.clamp(Math.round(x * 2) / 2, Math.round(y * 2) / 2); c.x = Math.max(.5, Math.min(c.x, 5)); c.y = Math.max(.5, Math.min(c.y, 5)); if(h === 'A') A = c; if(h === 'B') B = c; if(h === 'C') C = c; draw(); });
+['k', 's'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+const len = (p, q) => Math.hypot(p.x - q.x, p.y - q.y);
+const angle = (p, q, r) => { const a = Math.atan2(q.y - p.y, q.x - p.x), b = Math.atan2(r.y - p.y, r.x - p.x); let d = Math.abs(a - b) * 180 / Math.PI; return d > 180 ? 360 - d : d; };
+function draw(){
+  const k = +$('k').value, st = +$('s').value, ox = 7.5, oy = .5;
+  const T = p => ({x: ox + (p.x - A.x) * k * st, y: oy + (p.y - A.y) * k});
+  const Pp = T(A), Qp = T(B), Rp = T(C);
+  const poly = (pts, c) => `<polygon points="${pts.map(p => P.X(p.x) + ',' + P.Y(p.y)).join(' ')}" style="fill:${c};stroke:${c}" fill-opacity=".15" stroke-width="2.5" stroke-linejoin="round"/>`;
+  const lab = (p, t, c, dx, dy) => `<text x="${P.X(p.x) + dx}" y="${P.Y(p.y) + dy}" text-anchor="middle" style="font-family:var(--display);font-weight:800;font-size:15px;fill:${c}">${t}</text>`;
+  let s = P.grid({labels: false}) + poly([A, B, C], 'var(--a)') + poly([Pp, Qp, Rp], 'var(--comp)');
+  s += lab(A, 'A', 'var(--a)', -10, 18) + lab(B, 'B', 'var(--a)', 10, 18) + lab(C, 'C', 'var(--a)', 0, -12);
+  s += lab(Pp, 'P', 'var(--comp)', -10, 18) + lab(Qp, 'Q', 'var(--comp)', 10, 18) + lab(Rp, 'R', 'var(--comp)', 0, -12);
+  s += P.handle('A', A.x, A.y, 'var(--a)') + P.handle('B', B.x, B.y, 'var(--a)') + P.handle('C', C.x, C.y, 'var(--a)');
+  svg.innerHTML = s;
+  $('kout').textContent = fmt(k); $('sout').textContent = st === 1 ? 'tidak' : '× ' + fmt(st);
+  const rows = [['AB', 'PQ', len(A, B), len(Pp, Qp)], ['BC', 'QR', len(B, C), len(Qp, Rp)], ['AC', 'PR', len(A, C), len(Pp, Rp)]];
+  const angs = [['∠A', '∠P', angle(A, B, C), angle(Pp, Qp, Rp)], ['∠B', '∠Q', angle(B, A, C), angle(Qp, Pp, Rp)], ['∠C', '∠R', angle(C, A, B), angle(Rp, Pp, Qp)]];
+  $('tab').innerHTML = '<tr><th>Sisi</th><th>ABC</th><th>PQR</th><th>PQR ÷ ABC</th></tr>' +
+    rows.map(([a, b, x, y]) => `<tr><td>${a} ↔ ${b}</td><td>${fmt(x)}</td><td>${fmt(y)}</td><td><b>${fmt(y / x)}</b></td></tr>`).join('') +
+    '<tr><th>Sudut</th><th></th><th></th><th></th></tr>' +
+    angs.map(([a, b, x, y]) => `<tr><td>${a} ↔ ${b}</td><td>${fmt(x, 1)}°</td><td>${fmt(y, 1)}°</td><td>${Math.abs(x - y) < .05 ? 'sama' : '<b style="color:var(--b)">beda</b>'}</td></tr>`).join('');
+  const sim = st === 1;
+  $('fb').className = 'box ' + (sim ? 'ok' : 'no');
+  $('fb').innerHTML = sim ? `<b>Sebangun.</b> Semua sudut yang bersesuaian sama besar, dan semua perbandingan sisi sama dengan k = ${fmt(k)}.` + (k === 1 ? ' Karena k = 1, kedua segitiga juga <b>kongruen</b>.' : '')
+    : '<b>Tidak sebangun.</b> Setelah diregangkan, perbandingan sisinya tidak sama lagi dan sudut-sudutnya berubah.';
+}
+draw();
+</script>
+</body>
+</html>

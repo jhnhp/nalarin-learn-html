@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Line Plot Panjang Nama</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .lbl{font-family:var(--font);font-size:12.5px;fill:var(--ink)}
+  textarea{font:inherit;font-size:14px;width:100%;min-height:120px;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);resize:vertical}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Line plot banyak huruf pada nama"></svg></div>
+  <div class="panel">
+    <h3 class="t">Nama panggilan siswa (satu per baris)</h3>
+    <textarea id="names" aria-label="Daftar nama"></textarea>
+    <div class="row"><button class="btn" id="add">Tambah nama acak</button><button class="btn" id="reset">Ulangi</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const BASE = ['Andi', 'Bunga', 'Citra', 'Dimas', 'Eka', 'Farhan', 'Gita', 'Hana', 'Indra', 'Joko', 'Kirana', 'Lia', 'Made', 'Nadia', 'Oki', 'Putri', 'Rizky', 'Sari', 'Tono', 'Wulan'];
+const POOL = ['Ayu', 'Bayu', 'Cahyo', 'Desi', 'Elang', 'Fitri', 'Galih', 'Hendra', 'Intan', 'Jihan', 'Kevin', 'Laras', 'Mutiara', 'Nanda', 'Oktavia', 'Rahmat', 'Siti', 'Yosef', 'Zahra', 'Bonifasius'];
+$('names').value = BASE.join('\n');
+$('names').oninput = draw;
+$('add').onclick = () => { $('names').value += '\n' + POOL[Math.floor(Math.random() * POOL.length)]; draw(); };
+$('reset').onclick = () => { $('names').value = BASE.join('\n'); draw(); };
+Sim.onTheme(draw);
+function draw(){
+  const lens = $('names').value.split('\n').map(s => s.replace(/[^A-Za-z]/g, '').length).filter(n => n > 0);
+  const lo = Math.min(2, ...lens), hi = Math.max(10, ...lens), cnt = {};
+  lens.forEach(n => cnt[n] = (cnt[n] || 0) + 1);
+  const gx = 30, gw = 400, Y = 250, X = v => gx + (v - lo) / (hi - lo) * gw, r = Math.min(9, 200 / Math.max(...Object.values(cnt), 1) / 2.4);
+  let s = `<line x1="${gx - 10}" y1="${Y}" x2="${gx + gw + 10}" y2="${Y}" style="stroke:var(--ink)" stroke-width="2"/>`;
+  for(let v = lo; v <= hi; v++) s += `<line x1="${X(v)}" y1="${Y - 5}" x2="${X(v)}" y2="${Y + 5}" style="stroke:var(--ink)"/><text class="lbl" x="${X(v)}" y="${Y + 22}" text-anchor="middle">${v}</text>`;
+  s += `<text x="${gx + gw / 2}" y="${Y + 44}" text-anchor="middle" style="font-family:var(--font);font-size:12.5px;fill:var(--muted)">banyak huruf pada nama</text>`;
+  Object.entries(cnt).forEach(([v, c]) => { for(let k = 0; k < c; k++) s += `<circle cx="${X(+v)}" cy="${Y - 14 - k * r * 2.3}" r="${r}" style="fill:var(--a)"/>`; });
+  svg.innerHTML = s;
+  const n = lens.length, sum = lens.reduce((a, b) => a + b, 0), mode = Object.entries(cnt).sort((a, b) => b[1] - a[1] || a[0] - b[0])[0];
+  const sorted = lens.slice().sort((a, b) => a - b);
+  $('read').innerHTML = `<div><span>Banyak siswa</span><b>${n}</b></div><div><span>Paling banyak dipakai (modus)</span><b>${mode ? mode[0] + ' huruf (' + mode[1] + ' siswa)' : '–'}</b></div>` +
+    `<div><span>Terpendek – terpanjang</span><b>${n ? sorted[0] + ' – ' + sorted[n - 1] + ' huruf' : '–'}</b></div><div><span>Total huruf semua nama</span><b>${sum}</b></div>` +
+    `<div><span>Lebih dari 5 huruf</span><b>${lens.filter(v => v > 5).length} siswa</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

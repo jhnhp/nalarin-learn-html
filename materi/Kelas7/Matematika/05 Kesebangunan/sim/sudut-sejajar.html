@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudut pada Garis Sejajar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .n{font-family:var(--display);font-weight:800;font-size:14px}
+  .lbl{font-family:var(--font);font-size:12px;fill:var(--muted)}
+  .seg button{flex:1 1 45%}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 340" role="img" aria-label="Dua garis sejajar dipotong garis transversal, membentuk delapan sudut"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Kemiringan garis potong</span><b id="tout"></b></div><input type="range" id="t" min="25" max="155" value="60"></div>
+    <div class="seg" id="pair">
+      <button data-p="sehadap" class="on">Sehadap</button><button data-p="dalam">Dalam berseberangan</button>
+      <button data-p="luar">Luar berseberangan</button><button data-p="sepihak">Dalam sepihak</button>
+      <button data-p="tolak">Bertolak belakang</button><button data-p="pelurus">Berpelurus</button>
+    </div>
+    <div class="box info" id="info"></div>
+    <label class="chk"><input type="checkbox" id="c-par" checked> Kedua garis sejajar</label>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let pair = 'sehadap', k = 0;
+// nomor sudut: 1 kanan-atas, 2 kiri-atas, 3 kiri-bawah, 4 kanan-bawah (di titik potong atas); 5–8 sama untuk titik potong bawah
+const PAIRS = {
+  sehadap: {list: [[1, 5], [2, 6], [3, 7], [4, 8]], rule: 'sama besar', name: 'Sudut sehadap', desc: 'letaknya sama pada masing-masing titik potong (misalnya sama-sama di kanan atas).'},
+  dalam: {list: [[3, 5], [4, 6]], rule: 'sama besar', name: 'Sudut dalam berseberangan', desc: 'berada di antara kedua garis sejajar, pada sisi garis potong yang berlawanan.'},
+  luar: {list: [[1, 7], [2, 8]], rule: 'sama besar', name: 'Sudut luar berseberangan', desc: 'berada di luar kedua garis sejajar, pada sisi garis potong yang berlawanan.'},
+  sepihak: {list: [[4, 5], [3, 6]], rule: 'jumlahnya 180°', name: 'Sudut dalam sepihak', desc: 'berada di antara kedua garis sejajar, pada sisi garis potong yang sama.'},
+  tolak: {list: [[1, 3], [2, 4], [5, 7], [6, 8]], rule: 'sama besar', name: 'Sudut bertolak belakang', desc: 'saling berhadapan di satu titik potong. Ini berlaku untuk dua garis yang berpotongan, sejajar atau tidak.'},
+  pelurus: {list: [[1, 2], [2, 3], [5, 6], [7, 8]], rule: 'jumlahnya 180°', name: 'Sudut berpelurus', desc: 'bersebelahan dan membentuk garis lurus.'},
+};
+$('pair').onclick = e => { const b = e.target.closest('button'); if(!b) return; pair = b.dataset.p; k = 0; document.querySelectorAll('#pair button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+svg.onclick = () => { k = (k + 1) % PAIRS[pair].list.length; draw(); };
+$('t').oninput = draw; $('c-par').onchange = draw;
+Sim.onTheme(draw);
+const rad = d => d * Math.PI / 180;
+
+function draw(){
+  const th = +$('t').value, par = $('c-par').checked, tilt = par ? 0 : 12;
+  // garis potong melalui (230,170) dengan sudut th terhadap horizontal
+  const cx = 230, cy = 170, dx = Math.cos(rad(th)), dy = -Math.sin(rad(th));
+  const at = y => ({x: cx + (y - cy) / dy * dx, y});
+  const A = at(110), B = at(230);
+  // garis bawah boleh dimiringkan
+  const ang = [0, tilt];
+  let s = '';
+  const line = (p, a, c) => { const ux = Math.cos(rad(a)), uy = -Math.sin(rad(a)); return `<line x1="${p.x - ux * 260}" y1="${p.y - uy * 260}" x2="${p.x + ux * 260}" y2="${p.y + uy * 260}" style="stroke:${c}" stroke-width="3"/>`; };
+  s += line(A, 0, 'var(--ink)') + line(B, tilt, 'var(--ink)');
+  if(par) s += `<text class="lbl" x="20" y="100">garis k</text><text class="lbl" x="20" y="220">garis l (k ∥ l)</text>`;
+  s += `<line x1="${cx - dx * 220}" y1="${cy - dy * 220}" x2="${cx + dx * 220}" y2="${cy + dy * 220}" style="stroke:var(--muted)" stroke-width="2.5"/>`;
+  // besar sudut di titik potong: sudut 1 = antara arah kanan garis dan arah atas garis potong
+  const a1 = th, a1b = th - tilt;
+  const val = {1: a1, 2: 180 - a1, 3: a1, 4: 180 - a1, 5: a1b, 6: 180 - a1b, 7: a1b, 8: 180 - a1b};
+  // arah awal tiap sudut (derajat, berlawanan jarum jam dari kanan)
+  const start = (n, base) => ({1: base, 2: th, 3: base + 180, 4: th + 180}[n]);
+  const PL = PAIRS[pair], hl = PL.list[k];
+  const wedge = (p, n, base, color, on) => {
+    const m = ((n - 1) % 4) + 1, s0 = start(m, base), sweep = val[n], r = on ? 34 : 24;
+    const a0 = rad(s0), a2 = rad(s0 + sweep);
+    const x1 = p.x + r * Math.cos(a0), y1 = p.y - r * Math.sin(a0), x2 = p.x + r * Math.cos(a2), y2 = p.y - r * Math.sin(a2);
+    const mid = rad(s0 + sweep / 2), lx = p.x + (r + 16) * Math.cos(mid), ly = p.y - (r + 16) * Math.sin(mid);
+    return `<path d="M${p.x},${p.y} L${x1},${y1} A${r},${r} 0 0 0 ${x2},${y2} Z" style="fill:${color}" fill-opacity="${on ? .45 : .08}"/>` +
+      `<text class="n" x="${lx}" y="${ly + 5}" text-anchor="middle" style="fill:${on ? color : 'var(--muted)'}">${n}</text>`;
+  };
+  for(let n = 1; n <= 8; n++){
+    const on = hl.includes(n), c = on ? (n === hl[0] ? 'var(--a)' : 'var(--b)') : 'var(--muted)';
+    s += wedge(n <= 4 ? A : B, n, n <= 4 ? 0 : tilt, c, on);
+  }
+  svg.innerHTML = s;
+  $('tout').textContent = th + '°';
+  const [p, q] = hl, vp = Math.round(val[p]), vq = Math.round(val[q]);
+  const holds = PL.rule === 'sama besar' ? vp === vq : vp + vq === 180;
+  $('info').className = 'box ' + (holds ? 'ok' : 'no');
+  $('info').innerHTML = `<b>${PL.name}</b> ${PL.desc}<br>∠${p} = <b>${vp}°</b> dan ∠${q} = <b>${vq}°</b> → ${PL.rule === 'sama besar' ? (vp === vq ? 'sama besar' : '<b>tidak</b> sama besar') : 'jumlahnya ' + (vp + vq) + '°'}.` +
+    (!par && !holds ? ' Sifat ini hanya berlaku jika kedua garis <b>sejajar</b>.' : '') + `<br><small>Klik gambar untuk melihat pasangan lain (${k + 1} dari ${PL.list.length}).</small>`;
+}
+draw();
+</script>
+</body>
+</html>

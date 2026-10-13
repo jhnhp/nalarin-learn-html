@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skala Semesta dan Bentuk Baku</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .obj{font-family:var(--display);font-weight:800;font-size:20px}
+  .lbl{font-family:var(--font);font-size:12px;fill:var(--muted)}
+  input[type=text]{font:inherit;font-size:16px;font-weight:700;width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+  .big{font-family:var(--display);font-weight:800;font-size:20px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 330" role="img" aria-label="Penggaris skala dari sangat kecil sampai sangat besar"></svg></div>
+  <div class="panel">
+    <h3 class="t">Jelajahi ukuran benda</h3>
+    <input type="range" id="e" min="-10" max="13" step="1" value="0" aria-label="Pangkat sepuluh">
+    <div class="big" id="cur"></div>
+    <p class="note" id="desc"></p>
+    <h3 class="t">Ubah ke bentuk baku</h3>
+    <input type="text" id="num" value="149.600.000.000" aria-label="Bilangan">
+    <div class="read" id="conv"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const OBJ = [
+  [-10, 'atom hidrogen', 'Diameter atom hidrogen sekitar 1 × 10⁻¹⁰ m.'], [-9, 'molekul DNA (lebar)', 'Lebar untai DNA sekitar 2 × 10⁻⁹ m.'],
+  [-7, 'virus corona', 'Diameter virus corona sekitar 1 × 10⁻⁷ m, hanya terlihat dengan mikroskop elektron.'], [-5, 'sel darah merah', 'Diameter sel darah merah sekitar 7 × 10⁻⁶ m.'],
+  [-3, 'semut kecil', 'Panjang semut kecil sekitar 2 × 10⁻³ m = 2 mm.'], [0, 'manusia', 'Tinggi manusia sekitar 1,6 × 10⁰ m.'],
+  [3, 'Gunung Semeru', 'Tinggi Gunung Semeru sekitar 3,676 × 10³ m.'], [6, 'Pulau Jawa (panjang)', 'Panjang Pulau Jawa sekitar 1 × 10⁶ m = 1.000 km.'],
+  [7, 'diameter Bumi', 'Diameter Bumi sekitar 1,27 × 10⁷ m.'], [9, 'diameter Matahari', 'Diameter Matahari sekitar 1,39 × 10⁹ m.'],
+  [11, 'jarak Bumi–Matahari', 'Jarak Bumi ke Matahari sekitar 1,496 × 10¹¹ m.'], [13, 'Tata Surya', 'Diameter orbit Neptunus sekitar 9 × 10¹² m.'],
+];
+const sup = n => String(n).replace('-', '⁻').split('').map(c => '⁰¹²³⁴⁵⁶⁷⁸⁹'['0123456789'.indexOf(c)] || c).join('');
+$('e').oninput = draw; $('num').oninput = conv;
+Sim.onTheme(draw);
+function draw(){
+  const e = +$('e').value, X = k => 30 + (k + 10) / 23 * 400;
+  let s = `<line x1="20" y1="250" x2="440" y2="250" style="stroke:var(--ink)" stroke-width="2"/>`;
+  for(let k = -10; k <= 13; k++) s += `<line x1="${X(k)}" y1="${250 - (k % 5 === 0 ? 8 : 4)}" x2="${X(k)}" y2="${250 + (k % 5 === 0 ? 8 : 4)}" style="stroke:var(--ink)"/>` + (k % 5 === 0 ? `<text class="lbl" x="${X(k)}" y="274" text-anchor="middle">10${sup(k)}</text>` : '');
+  s += `<text class="lbl" x="230" y="300" text-anchor="middle">ukuran dalam meter (setiap garis = 10 kali lipat)</text>`;
+  OBJ.forEach(([k, n]) => s += `<circle cx="${X(k)}" cy="250" r="${k === e ? 8 : 4}" style="fill:${k === e ? 'var(--b)' : 'var(--a)'}"/>`);
+  s += `<polygon points="${X(e)},238 ${X(e) - 8},224 ${X(e) + 8},224" style="fill:var(--b)"/>`;
+  const near = OBJ.reduce((b, o) => Math.abs(o[0] - e) < Math.abs(b[0] - e) ? o : b);
+  const r = 22 + (e + 10) * 3.5;
+  s += `<circle cx="230" cy="110" r="${Math.min(95, r)}" style="fill:var(--a)" fill-opacity=".15"/><text class="obj" x="230" y="116" text-anchor="middle" style="fill:var(--ink)">${near[0] === e ? near[1] : ''}</text>`;
+  svg.innerHTML = s;
+  const full = e >= 0 ? '1' + '0'.repeat(e) : '0,' + '0'.repeat(-e - 1) + '1';
+  $('cur').innerHTML = `10${sup(e)} m = ${full.replace(/\B(?=(\d{3})+(?!\d))/g, e >= 0 ? '.' : '')} m`;
+  $('desc').innerHTML = near[0] === e ? near[2] : 'Geser untuk menemukan benda yang ukurannya sekitar 10' + sup(e) + ' m.';
+}
+function conv(){
+  const raw = $('num').value.trim().replace(/\./g, '').replace(',', '.');
+  const v = Number(raw);
+  if(!raw || !isFinite(v) || v === 0){ $('conv').innerHTML = '<div><span>Tulis bilangan, misalnya 0,000007 atau 384.400.000</span></div>'; return; }
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / 10 ** e;
+  const mm = (Math.round(m * 1e6) / 1e6).toString().replace('.', ',');
+  $('conv').innerHTML = `<div><span>Bentuk baku</span><b>${mm} × 10${sup(e)}</b></div>` +
+    `<div><span>Koma digeser</span><b>${Math.abs(e)} angka ke ${e >= 0 ? 'kiri' : 'kanan'}</b></div>` +
+    `<div style="display:block;font-size:13px;color:var(--muted)">Bentuk baku: a × 10ⁿ dengan 1 ≤ a &lt; 10. ${e >= 0 ? 'Bilangan besar → pangkat positif.' : 'Bilangan kecil (kurang dari 1) → pangkat negatif.'}</div>`;
+}
+draw(); conv();
+</script>
+</body>
+</html>

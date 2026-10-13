@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perbandingan Senilai dan Berbalik Nilai</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .lbl{font-family:var(--font);font-size:12px;fill:var(--muted)}
+  .ax{font-family:var(--font);font-size:12.5px;font-weight:700;fill:var(--ink)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+  td,th{padding:4px 6px;text-align:right;border-bottom:1px solid var(--line)}
+  th{font-size:12px;color:var(--muted)}
+  tr.on td{background:var(--surface-2);font-weight:800}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 440 340" role="img" aria-label="Grafik hubungan dua besaran"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="s" class="on">Senilai</button><button data-m="b">Berbalik nilai</button></div>
+    <p class="note" id="story"></p>
+    <div><div class="lab"><span id="xname"></span><b id="xout"></b></div><input type="range" id="x" min="1" max="12" step="1" value="4"></div>
+    <div class="read" id="read"></div>
+    <table id="tab"></table>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const M = {
+  s: {story: 'Harga satu buku tulis Rp4.000,00. Semakin banyak buku dibeli, semakin besar harganya.', xn: 'Banyak buku', yn: 'Harga (ribu rupiah)', xu: 'buku', yu: 'ribu',
+      f: x => 4 * x, xmax: 12, ymax: 50, key: x => `${fmt(4 * x)} : ${x} = 4`, keyName: 'harga : banyak buku', law: 'Hasil <b>bagi</b> selalu sama. Grafiknya garis lurus melalui titik (0, 0).'},
+  b: {story: 'Persediaan pakan cukup untuk 12 ekor ayam selama 10 hari. Semakin banyak ayam, semakin cepat pakan habis.', xn: 'Banyak ayam', yn: 'Lama pakan habis (hari)', xu: 'ayam', yu: 'hari',
+      f: x => 120 / x, xmax: 12, ymax: 130, key: x => `${x} × ${fmt(120 / x, 2)} = 120`, keyName: 'banyak ayam × lama hari', law: 'Hasil <b>kali</b> selalu sama. Grafiknya melengkung turun dan tidak pernah menyentuh sumbu.'},
+};
+let mode = 's';
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+$('x').oninput = draw;
+Sim.onTheme(draw);
+
+function draw(){
+  const m = M[mode], x = +$('x').value, y = m.f(x);
+  const gx = 56, gy = 20, gw = 360, gh = 270;
+  const X = v => gx + v / m.xmax * gw, Y = v => gy + gh - v / m.ymax * gh;
+  let s = '';
+  const ys = mode === 's' ? 10 : 20;
+  for(let v = 0; v <= m.ymax; v += ys) s += `<line x1="${gx}" y1="${Y(v)}" x2="${gx + gw}" y2="${Y(v)}" style="stroke:var(--grid)"/><text class="lbl" x="${gx - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`;
+  for(let v = 0; v <= m.xmax; v += 2) s += `<text class="lbl" x="${X(v)}" y="${gy + gh + 16}" text-anchor="middle">${v}</text>`;
+  s += `<line x1="${gx}" y1="${gy + gh}" x2="${gx + gw}" y2="${gy + gh}" style="stroke:var(--ink)" stroke-width="1.6"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy + gh}" style="stroke:var(--ink)" stroke-width="1.6"/>`;
+  s += `<text class="ax" x="${gx + gw}" y="${gy + gh + 34}" text-anchor="end">${m.xn}</text><text class="ax" x="${gx + 6}" y="${gy + 12}">${m.yn}</text>`;
+  const pts = []; for(let k = mode === 's' ? 0 : 1; k <= m.xmax; k += .1) pts.push(`${X(k)},${Y(m.f(k))}`);
+  s += `<polyline points="${pts.join(' ')}" fill="none" style="stroke:var(--a)" stroke-width="2.5" class="dash"/>`;
+  for(let k = 1; k <= m.xmax; k++) s += `<circle cx="${X(k)}" cy="${Y(m.f(k))}" r="4" style="fill:var(--a)"/>`;
+  s += `<line x1="${X(x)}" y1="${Y(y)}" x2="${X(x)}" y2="${gy + gh}" style="stroke:var(--b)" class="dash"/><line x1="${gx}" y1="${Y(y)}" x2="${X(x)}" y2="${Y(y)}" style="stroke:var(--b)" class="dash"/>`;
+  s += `<circle cx="${X(x)}" cy="${Y(y)}" r="8" style="fill:var(--b)"/>`;
+  svg.innerHTML = s;
+  $('story').textContent = m.story; $('xname').textContent = m.xn; $('xout').textContent = x + ' ' + m.xu;
+  $('read').innerHTML = `<div><span>${m.yn}</span><b>${fmt(y, 2)} ${m.yu}</b></div><div><span>${m.keyName}</span><b>${m.key(x)}</b></div><div style="display:block">${m.law}</div>`;
+  const rows = [1, 2, 3, 4, 6, 12];
+  $('tab').innerHTML = `<tr><th>${m.xu}</th>${rows.map(r => `<td${r === x ? ' style="font-weight:800;color:var(--b)"' : ''}>${r}</td>`).join('')}</tr>` +
+    `<tr><th>${m.yu}</th>${rows.map(r => `<td${r === x ? ' style="font-weight:800;color:var(--b)"' : ''}>${fmt(m.f(r), 1)}</td>`).join('')}</tr>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pertidaksamaan pada Garis Bilangan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .num{font-family:var(--font);font-size:12px;fill:var(--ink)}
+  .ctl{display:grid;gap:6px}
+  .ctl>div{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .steps{font-size:14.5px;line-height:1.8;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+  .flip{color:var(--b);font-weight:800}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 170" role="img" aria-label="Himpunan penyelesaian pada garis bilangan"></svg></div>
+  <div class="panel">
+    <h3 class="t" id="ineq"></h3>
+    <div class="ctl">
+      <div><div class="lab"><span>koefisien a</span></div><div class="step"><button data-d="a-1">−</button><output id="oa"></output><button data-d="a1">+</button></div></div>
+      <div><div class="lab"><span>konstanta b</span></div><div class="step"><button data-d="b-1">−</button><output id="ob"></output><button data-d="b1">+</button></div></div>
+      <div><div class="lab"><span>ruas kanan c</span></div><div class="step"><button data-d="c-1">−</button><output id="oc"></output><button data-d="c1">+</button></div></div>
+    </div>
+    <div class="seg" id="sym"><button data-s="<">&lt;</button><button data-s="≤">≤</button><button data-s=">" class="on">&gt;</button><button data-s="≥">≥</button></div>
+    <div class="steps" id="steps"></div>
+    <p class="note">Coba buat a negatif. Perhatikan langkah terakhir: tanda pertidaksamaan berbalik.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const st = {a: 2, b: 3, c: 11}; let sym = '>';
+const FLIP = {'<': '>', '>': '<', '≤': '≥', '≥': '≤'}, HTML = s => s.replace('<', '&lt;').replace('>', '&gt;');
+document.querySelectorAll('[data-d]').forEach(btn => btn.onclick = () => {
+  const k = btn.dataset.d[0]; st[k] += +btn.dataset.d.slice(1);
+  st.a = Math.max(-5, Math.min(5, st.a)); if(st.a === 0) st.a = +btn.dataset.d.slice(1);
+  st.b = Math.max(-9, Math.min(9, st.b)); st.c = Math.max(-15, Math.min(15, st.c)); draw(); });
+$('sym').onclick = e => { const b = e.target.closest('button'); if(!b) return; sym = b.dataset.s; document.querySelectorAll('#sym button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+Sim.onTheme(draw);
+const term = (a, b) => `${a === 1 ? '' : a === -1 ? '−' : fmt(a)}x${b ? (b > 0 ? ' + ' + b : ' − ' + -b) : ''}`;
+function draw(){
+  const {a, b, c} = st, r = (c - b) / a, fin = a < 0 ? FLIP[sym] : sym;
+  $('oa').textContent = fmt(a); $('ob').textContent = fmt(b); $('oc').textContent = fmt(c);
+  $('ineq').innerHTML = `${term(a, b)} ${HTML(sym)} ${fmt(c)}`;
+  $('steps').innerHTML = (b ? `${b > 0 ? 'Kurangi' : 'Tambah'} ${Math.abs(b)} pada kedua ruas: ${fmt(a)}x ${HTML(sym)} ${fmt(c - b)}<br>` : '') +
+    `Bagi kedua ruas dengan ${fmt(a)}` + (a < 0 ? ' <span class="flip">(bilangan negatif, tanda dibalik!)</span>' : '') + `: x ${HTML(fin)} ${fmt(r, 2)}<br>` +
+    `Himpunan penyelesaian: <b>{x | x ${HTML(fin)} ${fmt(r, 2)}}</b>`;
+  const lo = Math.floor(r) - 8, hi = Math.floor(r) + 8, x0 = 25, x1 = 435, Y = 90, X = v => x0 + (v - lo) / (hi - lo) * (x1 - x0);
+  let s = '';
+  const right = fin === '>' || fin === '≥', closed = fin === '≤' || fin === '≥';
+  s += `<line x1="${X(r)}" y1="${Y}" x2="${right ? x1 + 10 : x0 - 10}" y2="${Y}" style="stroke:var(--a)" stroke-width="9" stroke-opacity=".45" stroke-linecap="round"/>`;
+  s += `<line x1="${x0 - 10}" y1="${Y}" x2="${x1 + 10}" y2="${Y}" style="stroke:var(--ink)" stroke-width="2"/>`;
+  for(let v = lo; v <= hi; v++) s += `<line x1="${X(v)}" y1="${Y - 5}" x2="${X(v)}" y2="${Y + 5}" style="stroke:var(--ink)"/>` + (v % 2 === 0 ? `<text class="num" x="${X(v)}" y="${Y + 24}" text-anchor="middle">${fmt(v)}</text>` : '');
+  s += `<circle cx="${X(r)}" cy="${Y}" r="8" style="fill:${closed ? 'var(--a)' : 'var(--bg)'};stroke:var(--a)" stroke-width="3"/>`;
+  s += `<text class="num" x="${X(r)}" y="${Y - 18}" text-anchor="middle" style="font-weight:800;fill:var(--a)">${fmt(r, 2)}</text>`;
+  s += `<text class="num" x="230" y="155" text-anchor="middle" style="fill:var(--muted)">${closed ? 'bulatan penuh: batas termasuk' : 'bulatan kosong: batas tidak termasuk'}</text>`;
+  svg.innerHTML = s;
+}
+draw();
+</script>
+</body>
+</html>

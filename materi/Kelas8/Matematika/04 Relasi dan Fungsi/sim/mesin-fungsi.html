@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesin Fungsi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .big{font-family:var(--display);font-weight:800;font-size:20px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+  table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+  td,th{padding:4px 6px;text-align:center;border-bottom:1px solid var(--line)}
+  th{font-size:12px;color:var(--muted);text-align:left}
+  .ctl{display:grid;gap:6px}
+  .ctl>div{display:flex;justify-content:space-between;align-items:center;gap:8px}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik fungsi pada bidang koordinat"></svg></div>
+  <div class="panel">
+    <div class="big" id="rule"></div>
+    <div class="ctl">
+      <div><span class="lab">a (pengali)</span><div class="step"><button data-d="a-1">−</button><output id="oa"></output><button data-d="a1">+</button></div></div>
+      <div><span class="lab">b (penambah)</span><div class="step"><button data-d="b-1">−</button><output id="ob"></output><button data-d="b1">+</button></div></div>
+    </div>
+    <div><div class="lab"><span>Masukan x</span><b id="xout"></b></div><input type="range" id="x" min="-4" max="4" step="1" value="2"></div>
+    <div class="big" id="io"></div>
+    <table id="tab"></table>
+    <label class="chk"><input type="checkbox" id="c-line"> Hubungkan titik-titiknya (domain bilangan real)</label>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -6, xmax: 6, ymin: -10, ymax: 10, scale: 20});
+const st = {a: 2, b: 1};
+document.querySelectorAll('[data-d]').forEach(btn => btn.onclick = () => { const k = btn.dataset.d[0]; st[k] = Math.max(-3, Math.min(3, st[k] + +btn.dataset.d.slice(1))); draw(); });
+['x', 'c-line'].forEach(id => $(id).oninput = $(id).onchange = draw);
+Sim.onTheme(draw);
+const f = x => st.a * x + st.b;
+function draw(){
+  const x = +$('x').value, {a, b} = st;
+  const rule = `f(x) = ${a === 0 ? '' : (a === 1 ? '' : a === -1 ? '−' : fmt(a)) + 'x'}${b ? (a ? (b > 0 ? ' + ' : ' − ') + Math.abs(b) : fmt(b)) : (a ? '' : '0')}`;
+  let s = P.grid({labelStep: 2, xname: 'x', yname: 'f(x)'});
+  if($('c-line').checked) s += `<line x1="${P.X(-6)}" y1="${P.Y(f(-6))}" x2="${P.X(6)}" y2="${P.Y(f(6))}" style="stroke:var(--a)" stroke-width="2.5" class="dash"/>`;
+  for(let k = -4; k <= 4; k++) if(Math.abs(f(k)) <= 10) s += `<circle cx="${P.X(k)}" cy="${P.Y(f(k))}" r="${k === x ? 8 : 5}" style="fill:${k === x ? 'var(--b)' : 'var(--a)'}"/>`;
+  if(Math.abs(f(x)) <= 10) s += `<line x1="${P.X(x)}" y1="${P.Y(0)}" x2="${P.X(x)}" y2="${P.Y(f(x))}" style="stroke:var(--b)" class="dash"/><line x1="${P.X(0)}" y1="${P.Y(f(x))}" x2="${P.X(x)}" y2="${P.Y(f(x))}" style="stroke:var(--b)" class="dash"/>`;
+  svg.innerHTML = s;
+  $('rule').textContent = rule; $('oa').textContent = fmt(a); $('ob').textContent = fmt(b); $('xout').textContent = fmt(x);
+  $('io').innerHTML = `f(${fmt(x)}) = ${fmt(a)} × ${x < 0 ? '(' + fmt(x) + ')' : fmt(x)} ${b < 0 ? '−' : '+'} ${Math.abs(b)} = <span style="color:var(--b)">${fmt(f(x))}</span>`;
+  const xs = [-4, -3, -2, -1, 0, 1, 2, 3, 4];
+  $('tab').innerHTML = `<tr><th>x</th>${xs.map(k => `<td${k === x ? ' style="font-weight:800;color:var(--b)"' : ''}>${fmt(k)}</td>`).join('')}</tr><tr><th>f(x)</th>${xs.map(k => `<td${k === x ? ' style="font-weight:800;color:var(--b)"' : ''}>${fmt(f(k))}</td>`).join('')}</tr>`;
+}
+draw();
+</script>
+</body>
+</html>

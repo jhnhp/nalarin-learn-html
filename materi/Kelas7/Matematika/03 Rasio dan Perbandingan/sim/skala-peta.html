@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skala Peta</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .city{font-family:var(--display);font-weight:800;font-size:14px}
+  .lbl{font-family:var(--font);font-size:11px;fill:var(--muted)}
+  select{font:inherit;font-size:14px;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}
+  .calc{font-size:14px;line-height:1.7;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 440 340" role="img" aria-label="Peta dengan dua kota yang bisa digeser dan penggaris"></svg></div>
+  <div class="panel">
+    <h3 class="t">Pilih skala peta</h3>
+    <select id="sk">
+      <option value="100000">1 : 100.000</option>
+      <option value="500000" selected>1 : 500.000</option>
+      <option value="2500000">1 : 2.500.000</option>
+      <option value="5000000">1 : 5.000.000</option>
+    </select>
+    <div class="calc" id="calc"></div>
+    <label class="chk"><input type="checkbox" id="c-hide"> Sembunyikan jarak sebenarnya (latihan)</label>
+    <p class="note">Geser kota A dan B. Setiap kotak pada peta = 1 cm. Jarak pada peta diukur lurus antara kedua titik.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const fmt = (v, d = 2) => (Math.round(v * 10 ** d) / 10 ** d).toLocaleString('id-ID', {maximumFractionDigits: d});
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: 0, xmax: 11, ymin: -0.6, ymax: 8.5, scale: 40});
+let A = {x: 2, y: 2}, B = {x: 8, y: 6};
+P.draggable((h, x, y) => { const c = P.clamp(Math.round(x * 2) / 2, Math.round(y * 2) / 2); if(h === 'A') A = c; else B = c; draw(); });
+$('sk').onchange = draw; $('c-hide').onchange = draw;
+Sim.onTheme(draw);
+
+function draw(){
+  let s = P.grid({labels: false});
+  // pulau sederhana
+  s += `<path d="M${P.X(.6)},${P.Y(3)} Q${P.X(1)},${P.Y(7.5)} ${P.X(5)},${P.Y(8)} T${P.X(10.4)},${P.Y(6)} Q${P.X(10.6)},${P.Y(.8)} ${P.X(6)},${P.Y(.6)} T${P.X(.6)},${P.Y(3)}Z" style="fill:var(--k);stroke:var(--k)" fill-opacity=".1" stroke-width="2"/>`;
+  s += `<line x1="${P.X(A.x)}" y1="${P.Y(A.y)}" x2="${P.X(B.x)}" y2="${P.Y(B.y)}" style="stroke:var(--b)" stroke-width="3" class="dash"/>`;
+  s += P.handle('A', A.x, A.y, 'var(--a)') + P.handle('B', B.x, B.y, 'var(--r)');
+  s += `<text class="city" x="${P.X(A.x) + 12}" y="${P.Y(A.y) - 10}" style="fill:var(--a)">Kota A</text><text class="city" x="${P.X(B.x) + 12}" y="${P.Y(B.y) - 10}" style="fill:var(--r)">Kota B</text>`;
+  // penggaris
+  s += `<rect x="${P.X(0.5)}" y="${P.Y(.2)}" width="${P.S * 5}" height="14" style="fill:var(--surface);stroke:var(--ink)"/>`;
+  for(let i = 0; i <= 5; i++) s += `<line x1="${P.X(.5 + i)}" y1="${P.Y(.2)}" x2="${P.X(.5 + i)}" y2="${P.Y(.2) + 8}" style="stroke:var(--ink)"/><text class="lbl" x="${P.X(.5 + i)}" y="${P.Y(.2) + 26}" text-anchor="middle">${i}</text>`;
+  s += `<text class="lbl" x="${P.X(5.7)}" y="${P.Y(.2) + 11}">cm</text>`;
+  svg.innerHTML = s;
+  const k = +$('sk').value, d = Math.round(Math.hypot(B.x - A.x, B.y - A.y) * 100) / 100, cm = d * k, km = cm / 100000, hide = $('c-hide').checked;
+  $('calc').innerHTML = `Jarak pada peta: <b>${fmt(d, 2)} cm</b><br>Skala 1 : ${fmt(k)} artinya 1 cm pada peta = ${fmt(k)} cm = <b>${fmt(k / 100000, 3)} km</b><br>` +
+    (hide ? 'Jarak sebenarnya: <b>?</b> (hitung sendiri, lalu hilangkan centang)' :
+      `Jarak sebenarnya = ${fmt(d, 2)} × ${fmt(k)} cm = ${fmt(cm, 0)} cm = <b>${fmt(km, 2)} km</b>`);
+}
+draw();
+</script>
+</body>
+</html>

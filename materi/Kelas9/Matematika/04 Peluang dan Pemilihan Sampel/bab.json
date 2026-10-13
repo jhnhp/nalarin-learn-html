@@ -1,0 +1,270 @@
+{
+  "title": "Peluang dan Pemilihan Sampel",
+  "summary": "Ruang sampel dan kejadian, nilai peluang, peluang empiris, frekuensi harapan, serta populasi dan pemilihan sampel.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "ruang-sampel",
+      "title": "Percobaan, ruang sampel, dan kejadian",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sebelum pertandingan sepak bola, wasit melempar koin untuk menentukan tim yang memulai. Hasilnya tidak bisa dipastikan, tetapi kita tahu semua kemungkinannya: angka atau gambar. Matematika yang mempelajari kemungkinan seperti ini disebut <b>peluang</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Istilah dasar",
+          "html": "<ul><li><b>Percobaan</b>: kegiatan yang hasilnya tidak pasti, misalnya melempar dadu.</li><li><b>Ruang sampel</b> (S): himpunan semua hasil yang mungkin. Dadu: S = {1, 2, 3, 4, 5, 6}, n(S) = 6.</li><li><b>Titik sampel</b>: setiap anggota ruang sampel.</li><li><b>Kejadian</b>: himpunan bagian ruang sampel, misalnya \"muncul bilangan genap\" = {2, 4, 6}.</li></ul>"
+        },
+        {
+          "type": "h",
+          "text": "Menentukan ruang sampel"
+        },
+        {
+          "type": "text",
+          "html": "<p>Untuk percobaan yang terdiri atas beberapa tahap, ruang sampel dapat didaftar dengan <b>diagram pohon</b> atau <b>tabel</b>.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/pohon-tiga-koin.svg",
+          "alt": "Diagram pohon pelemparan tiga koin dengan delapan hasil AAA sampai GGG",
+          "width": 440,
+          "caption": "Pelemparan tiga koin memiliki 2 × 2 × 2 = 8 titik sampel."
+        },
+        {
+          "type": "image",
+          "src": "gambar/dua-dadu.svg",
+          "alt": "Tabel 6 kali 6 jumlah mata dua dadu; enam kotak bernilai 7 diwarnai",
+          "width": 420,
+          "caption": "Pelemparan dua dadu memiliki 6 × 6 = 36 titik sampel."
+        },
+        {
+          "type": "check",
+          "question": "Banyak titik sampel pada pelemparan dua koin dan satu dadu adalah ....",
+          "options": {
+            "A": "8",
+            "B": "12",
+            "C": "24",
+            "D": "36"
+          },
+          "answer": "C",
+          "hint": "Kalikan banyak hasil setiap benda.",
+          "explanation": "2 × 2 × 6 = 24."
+        }
+      ]
+    },
+    {
+      "id": "nilai-peluang",
+      "title": "Nilai peluang",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Peluang kejadian A",
+          "html": "\\[P(A) = \\frac{n(A)}{n(S)}\\]<p>berlaku jika setiap titik sampel memiliki kesempatan yang sama untuk muncul.</p><ul><li>\\(0 \\le P(A) \\le 1\\). P = 0 berarti mustahil, P = 1 berarti pasti terjadi.</li><li><b>Komplemen</b>: peluang A tidak terjadi adalah \\(P(A^c) = 1 - P(A)\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua dadu dilempar bersamaan. Tentukan peluang muncul jumlah mata dadu 7, dan peluang jumlah mata dadu <i>bukan</i> 7.</p>",
+          "steps": [
+            "n(S) = 36. Pasangan berjumlah 7: (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1), jadi n(A) = 6.",
+            "P(jumlah 7) = 6/36 = 1/6.",
+            "P(bukan 7) = 1 − 1/6 = 5/6."
+          ],
+          "answer": "1/6 dan 5/6"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah kantong berisi 5 kelereng merah, 3 biru, dan 2 hijau. Diambil satu kelereng secara acak. Berapa peluang terambil kelereng yang bukan merah?</p>",
+          "steps": [
+            "n(S) = 10.",
+            "Bukan merah = biru atau hijau = 5 kelereng.",
+            "P = 5/10 = 1/2."
+          ],
+          "answer": "1/2"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah kartu diambil acak dari kartu bernomor 1 sampai 20. Peluang terambil kartu bernomor bilangan prima adalah ....",
+          "options": {
+            "A": "2/5",
+            "B": "1/2",
+            "C": "9/20",
+            "D": "8/20"
+          },
+          "answer": "A",
+          "hint": "Daftar bilangan prima dari 1 sampai 20.",
+          "explanation": "Prima: 2, 3, 5, 7, 11, 13, 17, 19 = 8 bilangan. P = 8/20 = 2/5. Pilihan D bernilai sama tetapi belum disederhanakan, sedangkan 1 bukan bilangan prima."
+        }
+      ]
+    },
+    {
+      "id": "peluang-empiris",
+      "title": "Peluang empiris",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Peluang teoretis dihitung dari ruang sampel. <b>Peluang empiris</b> dihitung dari hasil percobaan yang benar-benar dilakukan:</p>\\[P_{\\text{empiris}}(A) = \\frac{\\text{banyak kejadian A muncul}}{\\text{banyak percobaan}}\\]<p>Peluang empiris juga disebut <b>frekuensi relatif</b>. Peluang empiris dipakai ketika ruang sampelnya sulit ditentukan, misalnya peluang paku payung jatuh dengan ujung ke atas.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/percobaan.html",
+          "title": "Percobaan peluang",
+          "height": 470,
+          "caption": "Lakukan sedikit percobaan, lalu ribuan percobaan. Bandingkan batang (empiris) dengan garis putus-putus (teoretis). Untuk dua dadu, mengapa jumlah 7 paling sering muncul?"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Semakin banyak, semakin dekat",
+          "html": "<p>Jika percobaan diulang sangat banyak, peluang empiris cenderung mendekati peluang teoretis. Namun pada percobaan yang sedikit, hasilnya bisa sangat berbeda: melempar koin 10 kali bisa saja menghasilkan 7 angka.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah paku payung dilempar 200 kali dan jatuh dengan ujung ke atas 76 kali. Tentukan peluang empirisnya.</p>",
+          "steps": [
+            "P = 76/200 = 0,38."
+          ],
+          "answer": "0,38"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah dadu dilempar 60 kali dan mata dadu 4 muncul 15 kali. Pernyataan yang benar adalah ....",
+          "options": {
+            "A": "Peluang empiris mata 4 adalah 1/4, sedangkan teoretisnya 1/6.",
+            "B": "Peluang teoretis mata 4 adalah 1/4.",
+            "C": "Dadunya pasti tidak seimbang.",
+            "D": "Peluang empiris selalu sama dengan peluang teoretis."
+          },
+          "answer": "A",
+          "hint": "Hitung 15/60 dan bandingkan dengan 1/6.",
+          "explanation": "15/60 = 1/4, berbeda dari 1/6. Perbedaan ini wajar pada percobaan yang sedikit, sehingga belum tentu dadunya tidak seimbang."
+        }
+      ]
+    },
+    {
+      "id": "frekuensi-harapan",
+      "title": "Frekuensi harapan",
+      "kind": "artikel",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Frekuensi harapan",
+          "html": "\\[F_h(A) = P(A) \\times n\\]<p>n adalah banyak percobaan. Frekuensi harapan adalah banyak kejadian A yang <i>diharapkan</i> muncul, bukan yang pasti muncul.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua koin dilempar 120 kali. Berapa kali diharapkan muncul dua angka?</p>",
+          "steps": [
+            "S = {AA, AG, GA, GG}, P(AA) = 1/4.",
+            "F<sub>h</sub> = 1/4 × 120 = 30 kali."
+          ],
+          "answer": "30 kali"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Peluang seorang pasien sembuh dengan obat tertentu 0,85. Dari 400 pasien, berapa yang diharapkan sembuh?</p>",
+          "steps": [
+            "F<sub>h</sub> = 0,85 × 400 = 340 pasien."
+          ],
+          "answer": "340 pasien"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah dadu dilempar 300 kali. Frekuensi harapan muncul mata dadu kelipatan 3 adalah ....",
+          "options": {
+            "A": "50 kali",
+            "B": "100 kali",
+            "C": "150 kali",
+            "D": "200 kali"
+          },
+          "answer": "B",
+          "hint": "Kelipatan 3 pada dadu: 3 dan 6.",
+          "explanation": "P = 2/6 = 1/3. F<sub>h</sub> = 1/3 × 300 = 100 kali."
+        }
+      ]
+    },
+    {
+      "id": "pemilihan-sampel",
+      "title": "Populasi dan pemilihan sampel",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Untuk mengetahui pendapat seluruh siswa sekolah, kita tidak selalu bisa bertanya kepada semuanya. Kita memilih sebagian siswa, lalu menarik kesimpulan untuk semuanya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Populasi dan sampel",
+          "html": "<ul><li><b>Populasi</b>: seluruh objek yang ingin diteliti, misalnya semua siswa SMP di sebuah kota.</li><li><b>Sampel</b>: sebagian anggota populasi yang benar-benar diteliti.</li><li>Sampel yang baik <b>mewakili</b> populasi. Caranya: <b>sampel acak</b>, setiap anggota populasi memiliki peluang yang sama untuk terpilih.</li><li>Sampel yang tidak mewakili disebut <b>bias</b>.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/sampel.html",
+          "title": "Populasi dan sampel",
+          "height": 480,
+          "caption": "Ambil sampel acak beberapa kali, lalu ambil sampel hanya dari kelas dekat perpustakaan. Bandingkan perkiraannya dengan nilai sebenarnya."
+        },
+        {
+          "type": "text",
+          "html": "<p>Contoh sampel bias: menanyakan olahraga favorit hanya kepada anggota klub sepak bola, atau survei daring yang hanya dijawab orang yang tertarik dengan topiknya. Cara memilih sampel acak antara lain undian nomor, tabel bilangan acak, atau aplikasi pengacak.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Peneliti ingin mengetahui rata-rata waktu belajar siswa SMP di sebuah kota. Cara memilih sampel yang paling baik adalah ....",
+          "options": {
+            "A": "mewawancarai siswa yang sedang berada di perpustakaan",
+            "B": "mengundi secara acak siswa dari semua SMP di kota itu",
+            "C": "menyebarkan survei hanya kepada siswa juara kelas",
+            "D": "bertanya kepada siswa satu kelas yang paling dekat"
+          },
+          "answer": "B",
+          "hint": "Sampel harus mewakili seluruh populasi.",
+          "explanation": "Undian acak dari semua sekolah memberi setiap siswa peluang terpilih yang sama. Pilihan lain cenderung memilih siswa yang lebih rajin atau hanya dari satu kelompok."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Ruang sampel</td><td>Semua hasil yang mungkin. Dua koin: 4, dua dadu: 36.</td></tr><tr><td>Peluang teoretis</td><td>P(A) = n(A)/n(S), 0 ≤ P ≤ 1.</td></tr><tr><td>Komplemen</td><td>P(bukan A) = 1 − P(A).</td></tr><tr><td>Peluang empiris</td><td>banyak kejadian : banyak percobaan.</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = P(A) × n.</td></tr><tr><td>Sampel</td><td>Sebagian populasi; sampel acak mengurangi bias.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira jumlah dua dadu 2 sampai 12 sama peluangnya.</li><li>Menganggap frekuensi harapan pasti terjadi.</li><li>Menyimpulkan tentang populasi dari sampel yang bias.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas IX</i> (Kemendikbudristek), Bab 4 Peluang dan Pemilihan Sampel.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang ruang sampel, peluang teoretis dan empiris, frekuensi harapan, serta pemilihan sampel. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

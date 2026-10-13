@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persegi pada Sisi Segitiga</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .ar{font-family:var(--display);font-weight:800;font-size:15px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+  .big{font-family:var(--display);font-weight:800;font-size:20px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Segitiga dengan persegi pada setiap sisinya"></svg></div>
+  <div class="panel">
+    <h3 class="t">Geser titik B dan C</h3>
+    <label class="chk"><input type="checkbox" id="c-lock" checked> Kunci sudut A siku-siku</label>
+    <div class="read" id="read"></div>
+    <div class="big" id="big"></div>
+    <p class="note" id="why"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -8, xmax: 10, ymin: -7, ymax: 11, scale: 24});
+const A = {x: 0, y: 0};
+let B = {x: 4, y: 0}, C = {x: 0, y: 3};
+P.draggable((h, x, y) => {
+  x = Math.round(x); y = Math.round(y);
+  if($('c-lock').checked){ if(h === 'B') B = {x: Math.max(1, Math.min(8, x)), y: 0}; else C = {x: 0, y: Math.max(1, Math.min(8, y))}; }
+  else { const c = {x: Math.max(-4, Math.min(8, x)), y: Math.max(0, Math.min(8, y))}; if(h === 'B') B = {x: Math.max(1, c.x), y: 0}; else C = c.y < 1 ? {x: c.x, y: 1} : c; }
+  draw(); });
+$('c-lock').onchange = () => { if($('c-lock').checked) C = {x: 0, y: Math.max(1, Math.round(Math.hypot(C.x, C.y)))}; draw(); };
+Sim.onTheme(draw);
+// persegi di luar segitiga pada sisi p→q (titik ketiga r menentukan sisi luar)
+function square(p, q, r, color){
+  const dx = q.x - p.x, dy = q.y - p.y; let nx = -dy, ny = dx;
+  const side = (r.x - p.x) * nx + (r.y - p.y) * ny; if(side > 0){ nx = -nx; ny = -ny; }
+  const pts = [p, q, {x: q.x + nx, y: q.y + ny}, {x: p.x + nx, y: p.y + ny}];
+  const cx = (p.x + q.x) / 2 + nx / 2, cy = (p.y + q.y) / 2 + ny / 2;
+  return {svg: `<polygon points="${pts.map(t => P.X(t.x) + ',' + P.Y(t.y)).join(' ')}" style="fill:${color};stroke:${color}" fill-opacity=".18" stroke-width="2"/>`, cx, cy};
+}
+function draw(){
+  const a2 = (B.x - C.x) ** 2 + (B.y - C.y) ** 2, b2 = C.x ** 2 + C.y ** 2, c2 = B.x ** 2 + B.y ** 2;
+  // sisi di depan A adalah BC (sisi terpanjang jika A siku-siku)
+  const sBC = square(B, C, A, 'var(--b)'), sAC = square(A, C, B, 'var(--comp)'), sAB = square(A, B, C, 'var(--a)');
+  let s = P.grid({labels: false}) + sBC.svg + sAC.svg + sAB.svg;
+  s += `<polygon points="${[A, B, C].map(t => P.X(t.x) + ',' + P.Y(t.y)).join(' ')}" style="fill:var(--surface);stroke:var(--ink)" stroke-width="2.5"/>`;
+  const ang = Math.acos((b2 + c2 - a2) / (2 * Math.sqrt(b2 * c2))) * 180 / Math.PI;
+  if(Math.abs(ang - 90) < .01) s += `<path d="M${P.X(.6)} ${P.Y(0)} L${P.X(.6)} ${P.Y(.6)} L${P.X(0)} ${P.Y(.6)}" fill="none" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  s += `<text class="ar" x="${P.X(sBC.cx)}" y="${P.Y(sBC.cy) + 5}" text-anchor="middle" style="fill:var(--b)">${fmt(a2)}</text>`;
+  s += `<text class="ar" x="${P.X(sAC.cx)}" y="${P.Y(sAC.cy) + 5}" text-anchor="middle" style="fill:var(--comp)">${fmt(b2)}</text>`;
+  s += `<text class="ar" x="${P.X(sAB.cx)}" y="${P.Y(sAB.cy) + 5}" text-anchor="middle" style="fill:var(--a)">${fmt(c2)}</text>`;
+  s += `<text class="ar" x="${P.X(A.x) - 10}" y="${P.Y(A.y) + 18}" text-anchor="end" style="fill:var(--ink)">A</text>`;
+  s += P.handle('B', B.x, B.y, 'var(--a)') + P.handle('C', C.x, C.y, 'var(--comp)');
+  s += `<text class="ar" x="${P.X(B.x) + 12}" y="${P.Y(B.y) + 18}" style="fill:var(--a)">B</text><text class="ar" x="${P.X(C.x) - 14}" y="${P.Y(C.y) - 8}" style="fill:var(--comp)">C</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span><i class="sw" style="background:var(--a)"></i>AB²</span><b>${fmt(c2)}</b></div><div><span><i class="sw" style="background:var(--comp)"></i>AC²</span><b>${fmt(b2)}</b></div>` +
+    `<div><span><i class="sw" style="background:var(--b)"></i>BC² (sisi di depan sudut A)</span><b>${fmt(a2)}</b></div><div><span>Sudut A</span><b>${fmt(ang, 1)}°</b></div>`;
+  const sum = b2 + c2, cmp = Math.abs(sum - a2) < 1e-9 ? '=' : sum > a2 ? '&gt;' : '&lt;';
+  $('big').innerHTML = `${fmt(c2)} + ${fmt(b2)} ${cmp} ${fmt(a2)}`;
+  $('why').innerHTML = cmp === '=' ? `Sudut A siku-siku: luas dua persegi kecil <b>sama dengan</b> luas persegi terbesar. Itulah teorema Pythagoras. BC = √${fmt(a2)} ${Number.isInteger(Math.sqrt(a2)) ? '= ' + Math.sqrt(a2) : '≈ ' + fmt(Math.sqrt(a2))}.`
+    : cmp === '&gt;' ? 'Sudut A <b>lancip</b> (kurang dari 90°): jumlah dua persegi kecil lebih besar dari persegi di depan sudut A.'
+    : 'Sudut A <b>tumpul</b> (lebih dari 90°): jumlah dua persegi kecil lebih kecil dari persegi di depan sudut A.';
+}
+draw();
+</script>
+</body>
+</html>

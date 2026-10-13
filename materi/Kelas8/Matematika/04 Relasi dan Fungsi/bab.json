@@ -1,0 +1,212 @@
+{
+  "title": "Relasi dan Fungsi",
+  "summary": "Relasi dan cara menyajikannya, fungsi beserta domain, kodomain, dan range, rumus fungsi, serta korespondensi satu-satu.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "relasi",
+      "title": "Relasi dan cara menyajikannya",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Dalam pohon keluarga ada hubungan \"anak dari\", \"kakak dari\", dan \"kakek dari\". Di kelas ada hubungan \"menyukai pelajaran\". Hubungan yang memasangkan anggota satu himpunan dengan anggota himpunan lain disebut <b>relasi</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Relasi",
+          "html": "<p><b>Relasi</b> dari himpunan A ke himpunan B adalah aturan yang memasangkan anggota-anggota A dengan anggota-anggota B. Relasi dapat disajikan dengan</p><ol><li>diagram panah,</li><li>himpunan pasangan berurutan, atau</li><li>diagram Kartesius.</li></ol>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/tiga-cara.svg",
+          "alt": "Relasi pelajaran favorit dalam diagram panah, pasangan berurutan, dan diagram Kartesius",
+          "width": 640,
+          "caption": "Tiga cara menyajikan relasi yang sama."
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "sim",
+          "src": "sim/diagram-panah.html",
+          "title": "Diagram panah",
+          "height": 480,
+          "caption": "Pilih contoh relasi, lalu tambahkan atau hapus panah. Perhatikan himpunan pasangan berurutannya. Kapan relasi itu disebut fungsi?"
+        },
+        {
+          "type": "check",
+          "question": "Diketahui A = {2, 3, 5} dan B = {4, 6, 9, 10}. Relasi \"faktor dari\" dari A ke B dalam himpunan pasangan berurutan adalah ....",
+          "options": {
+            "A": "{(2, 4), (2, 6), (2, 10), (3, 6), (3, 9), (5, 10)}",
+            "B": "{(2, 4), (3, 6), (5, 10)}",
+            "C": "{(4, 2), (6, 3), (10, 5)}",
+            "D": "{(2, 4), (2, 6), (3, 9), (5, 10)}"
+          },
+          "answer": "A",
+          "hint": "Periksa setiap pasangan: apakah anggota A membagi habis anggota B?",
+          "explanation": "2 membagi 4, 6, 10; 3 membagi 6 dan 9; 5 membagi 10. Pilihan B dan D ada pasangan yang terlewat."
+        }
+      ]
+    },
+    {
+      "id": "fungsi",
+      "title": "Fungsi",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Fungsi (pemetaan)",
+          "html": "<p>Fungsi dari A ke B adalah relasi khusus yang memasangkan <b>setiap</b> anggota A dengan <b>tepat satu</b> anggota B.</p><ul><li><b>Domain</b> (daerah asal): himpunan A.</li><li><b>Kodomain</b> (daerah kawan): himpunan B.</li><li><b>Range</b> (daerah hasil): anggota B yang benar-benar mendapat pasangan.</li></ul>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/fungsi-bukan.svg",
+          "alt": "Tiga diagram panah: satu fungsi, satu bukan fungsi karena satu anggota punya dua panah, satu bukan fungsi karena ada anggota tanpa panah",
+          "width": 640,
+          "caption": "Cek setiap anggota domain: harus ada tepat satu panah keluar."
+        },
+        {
+          "type": "text",
+          "html": "<p>Boleh saja dua anggota A dipasangkan ke anggota B yang sama (seperti 1 dan 2 ke a), dan boleh ada anggota B yang tidak mendapat pasangan. Yang tidak boleh: anggota A tanpa pasangan, atau anggota A dengan dua pasangan.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Notasi dan rumus fungsi"
+        },
+        {
+          "type": "text",
+          "html": "<p>Fungsi f yang memetakan x ke 2x + 1 ditulis \\(f: x \\to 2x + 1\\) atau \\(f(x) = 2x + 1\\). Nilai fungsi untuk x = 3 adalah \\(f(3) = 2(3) + 1 = 7\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/mesin-fungsi.html",
+          "title": "Mesin fungsi",
+          "height": 520,
+          "caption": "Atur a dan b, lalu geser masukan x. Perhatikan tabel dan grafiknya. Untuk domain bilangan bulat, grafiknya berupa titik-titik; untuk domain bilangan real, titik-titik itu tersambung."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Fungsi \\(f(x) = ax + b\\) memiliki \\(f(2) = 7\\) dan \\(f(5) = 16\\). Tentukan rumus fungsi dan \\(f(-1)\\).</p>",
+          "steps": [
+            "\\(f(5) - f(2) = 3a\\), sehingga \\(16 - 7 = 3a\\) dan a = 3.",
+            "Dari \\(f(2) = 2(3) + b = 7\\), diperoleh b = 1.",
+            "\\(f(x) = 3x + 1\\), sehingga \\(f(-1) = -3 + 1 = -2\\)."
+          ],
+          "answer": "\\(f(x) = 3x + 1\\), \\(f(-1) = -2\\)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Fungsi \\(g(x) = 5 - 2x\\) dengan domain {−1, 0, 1, 2, 3}. Tentukan rangenya.</p>",
+          "steps": [
+            "g(−1) = 7, g(0) = 5, g(1) = 3, g(2) = 1, g(3) = −1.",
+            "Range = {−1, 1, 3, 5, 7}."
+          ],
+          "answer": "{−1, 1, 3, 5, 7}"
+        },
+        {
+          "type": "check",
+          "question": "Diketahui \\(f(x) = 4 - 3x\\). Nilai \\(f(-2)\\) adalah ....",
+          "options": {
+            "A": "−2",
+            "B": "10",
+            "C": "−10",
+            "D": "2"
+          },
+          "answer": "B",
+          "hint": "Ganti x dengan −2, gunakan kurung.",
+          "explanation": "\\(f(-2) = 4 - 3(-2) = 4 + 6 = 10\\)."
+        }
+      ]
+    },
+    {
+      "id": "korespondensi",
+      "title": "Korespondensi satu-satu dan banyak fungsi",
+      "kind": "artikel",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Di kelas yang setiap siswanya duduk di satu bangku dan setiap bangku diisi satu siswa, terjadi pemasangan yang istimewa: tidak ada siswa atau bangku yang tersisa, dan tidak ada yang berpasangan ganda.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Korespondensi satu-satu",
+          "html": "<p>Fungsi dari A ke B disebut <b>korespondensi satu-satu</b> jika setiap anggota A tepat satu pasangan di B <b>dan</b> setiap anggota B tepat satu pasangan di A. Syaratnya, banyak anggota A sama dengan banyak anggota B: n(A) = n(B).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Menghitung banyak pemetaan",
+          "html": "<ul><li>Banyak fungsi dari A ke B: \\(n(B)^{n(A)}\\).</li><li>Banyak korespondensi satu-satu jika n(A) = n(B) = n: \\(n! = n \\times (n-1) \\times \\cdots \\times 1\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>A = {1, 2, 3} dan B = {a, b}. Berapa banyak fungsi dari A ke B? Dari B ke A?</p>",
+          "steps": [
+            "Dari A ke B: setiap anggota A punya 2 pilihan, jadi \\(2^3 = 8\\) fungsi.",
+            "Dari B ke A: setiap anggota B punya 3 pilihan, jadi \\(3^2 = 9\\) fungsi."
+          ],
+          "answer": "8 dan 9"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Empat siswa akan menempati empat kursi. Berapa banyak cara (korespondensi satu-satu) yang mungkin?</p>",
+          "steps": [
+            "\\(4! = 4 \\times 3 \\times 2 \\times 1 = 24\\)."
+          ],
+          "answer": "24 cara"
+        },
+        {
+          "type": "check",
+          "question": "Banyak korespondensi satu-satu dari A = {p, q, r, s, t} ke B = {1, 2, 3, 4, 5} adalah ....",
+          "options": {
+            "A": "25",
+            "B": "120",
+            "C": "3.125",
+            "D": "5"
+          },
+          "answer": "B",
+          "hint": "n! dengan n = 5.",
+          "explanation": "5! = 120. 3.125 = 5⁵ adalah banyak fungsi dari A ke B, bukan korespondensi satu-satu."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Relasi</td><td>Aturan yang memasangkan anggota A dengan anggota B. Disajikan dengan diagram panah, pasangan berurutan, atau diagram Kartesius.</td></tr><tr><td>Fungsi</td><td>Setiap anggota domain tepat satu pasangan.</td></tr><tr><td>Domain, kodomain, range</td><td>A, B, dan anggota B yang mendapat pasangan.</td></tr><tr><td>Rumus fungsi</td><td>\\(f(x) = ax + b\\); nilai fungsi diperoleh dengan substitusi.</td></tr><tr><td>Banyak fungsi A → B</td><td>\\(n(B)^{n(A)}\\).</td></tr><tr><td>Korespondensi satu-satu</td><td>n(A) = n(B) = n, banyaknya n!.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira relasi bukan fungsi karena dua anggota A berpasangan ke anggota B yang sama. Itu tetap fungsi.</li><li>Tertukar antara kodomain dan range.</li><li>Tertukar menghitung \\(n(B)^{n(A)}\\) dan \\(n(A)^{n(B)}\\).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VIII</i> (Kemendikbudristek), Bab 4 Relasi dan Fungsi.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang relasi, fungsi, domain dan range, nilai fungsi, serta korespondensi satu-satu. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

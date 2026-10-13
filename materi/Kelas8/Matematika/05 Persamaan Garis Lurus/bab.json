@@ -1,0 +1,269 @@
+{
+  "title": "Persamaan Garis Lurus",
+  "summary": "Grafik persamaan garis lurus, kemiringan, menentukan persamaan garis, garis sejajar dan tegak lurus, serta penerapannya.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "grafik-garis",
+      "title": "Grafik persamaan garis lurus",
+      "kind": "artikel",
+      "duration": "12 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Persamaan seperti \\(y = 2x + 1\\) atau \\(4x - y = 5\\) disebut <b>persamaan garis lurus</b>, karena semua titik (x, y) yang memenuhinya terletak pada satu garis lurus. Bentuk umumnya:</p>\\[y = mx + c \\qquad \\text{atau} \\qquad ax + by = c\\]"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Cara cepat menggambar",
+          "html": "<ol><li>Cari dua titik pada garis. Paling mudah: titik potong dengan sumbu x (y = 0) dan sumbu y (x = 0).</li><li>Gambar kedua titik pada bidang koordinat.</li><li>Tarik garis lurus melalui keduanya.</li></ol>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Gambarlah grafik \\(4x - y = 5\\).</p>",
+          "steps": [
+            "Titik potong sumbu y (x = 0): \\(-y = 5\\), sehingga titik (0, −5).",
+            "Titik potong sumbu x (y = 0): \\(4x = 5\\), sehingga titik (1¼, 0).",
+            "Sebagai pemeriksaan, x = 2 memberi y = 3, jadi (2, 3) juga di garis itu.",
+            "Tarik garis melalui (0, −5) dan (2, 3)."
+          ],
+          "answer": "garis melalui (0, −5), (1¼, 0), dan (2, 3)"
+        },
+        {
+          "type": "check",
+          "question": "Titik berikut yang terletak pada garis \\(y = 2x - 1\\) adalah ....",
+          "options": {
+            "A": "(1, 3)",
+            "B": "(3, 5)",
+            "C": "(0, 1)",
+            "D": "(−1, 1)"
+          },
+          "answer": "B",
+          "hint": "Substitusikan x, lalu cocokkan y.",
+          "explanation": "Untuk x = 3: y = 2(3) − 1 = 5. Jadi (3, 5) terletak pada garis."
+        }
+      ]
+    },
+    {
+      "id": "kemiringan",
+      "title": "Kemiringan (gradien)",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jalan menanjak, atap rumah, dan tangga yang bersandar memiliki <b>kemiringan</b>. Semakin curam, semakin besar kemiringannya. Dalam matematika, kemiringan garis disebut juga <b>gradien</b> dan dilambangkan m.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kemiringan",
+          "html": "\\[m = \\frac{\\text{perubahan tegak}}{\\text{perubahan mendatar}} = \\frac{y_2 - y_1}{x_2 - x_1}\\]"
+        },
+        {
+          "type": "image",
+          "src": "gambar/tangga.svg",
+          "alt": "Tangga bersandar dengan tinggi 3 m dan jarak mendatar 1,5 m, kemiringannya 2",
+          "width": 520,
+          "caption": "Kemiringan tangga = tinggi : jarak mendatar."
+        },
+        {
+          "type": "image",
+          "src": "gambar/jenis-kemiringan.svg",
+          "alt": "Empat garis: naik ke kanan, turun ke kanan, mendatar, dan tegak",
+          "width": 640,
+          "caption": "Tanda kemiringan menunjukkan arah garis."
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "sim",
+          "src": "sim/dua-titik.html",
+          "title": "Kemiringan dari dua titik",
+          "height": 480,
+          "caption": "Geser A dan B. Perhatikan tanda Δx dan Δy. Buat garis mendatar dan garis tegak. Berapa kemiringannya?"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Kemiringan dari persamaan",
+          "html": "<ul><li>\\(y = mx + c\\): kemiringannya langsung m.</li><li>\\(ax + by = c\\): ubah dulu ke bentuk y = …, atau pakai \\(m = -\\dfrac{a}{b}\\). Contoh: 2x + 4y = 8 memiliki m = −2/4 = −½.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Jalan menanjak naik 15 m untuk setiap jarak mendatar 200 m. Berapa kemiringannya dalam persen?</p>",
+          "steps": [
+            "m = 15 : 200 = 0,075.",
+            "Dalam persen: 0,075 × 100% = 7,5%. Rambu jalan biasanya menulis \"tanjakan 7,5%\"."
+          ],
+          "answer": "0,075 atau 7,5%"
+        },
+        {
+          "type": "check",
+          "question": "Kemiringan garis yang melalui titik (1, 2) dan (4, 11) adalah ....",
+          "options": {
+            "A": "3",
+            "B": "⅓",
+            "C": "−3",
+            "D": "9"
+          },
+          "answer": "A",
+          "hint": "Δy = 11 − 2, Δx = 4 − 1.",
+          "explanation": "m = 9 / 3 = 3."
+        },
+        {
+          "type": "check",
+          "question": "Kemiringan garis 3x − 6y = 12 adalah ....",
+          "options": {
+            "A": "3",
+            "B": "−½",
+            "C": "½",
+            "D": "−2"
+          },
+          "answer": "C",
+          "hint": "Ubah ke bentuk y = mx + c.",
+          "explanation": "−6y = −3x + 12, sehingga y = ½x − 2. Kemiringannya ½. Rumus cepat: m = −a/b = −3/(−6) = ½."
+        }
+      ]
+    },
+    {
+      "id": "persamaan-garis",
+      "title": "Menentukan persamaan garis",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan garis",
+          "html": "<ul><li>Melalui titik \\((x_1, y_1)\\) dengan kemiringan m: \\(y - y_1 = m(x - x_1)\\).</li><li>Melalui dua titik: hitung dulu \\(m = \\dfrac{y_2 - y_1}{x_2 - x_1}\\), lalu pakai rumus di atas.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan persamaan garis melalui (−1, 4) dan (3, −4).</p>",
+          "steps": [
+            "\\(m = \\dfrac{-4 - 4}{3 - (-1)} = \\dfrac{-8}{4} = -2\\).",
+            "\\(y - 4 = -2(x + 1)\\), sehingga \\(y = -2x + 2\\).",
+            "Periksa dengan (3, −4): −2(3) + 2 = −4. Benar."
+          ],
+          "answer": "\\(y = -2x + 2\\)"
+        },
+        {
+          "type": "h",
+          "text": "Garis sejajar dan tegak lurus"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hubungan dua garis",
+          "html": "<ul><li><b>Sejajar</b>: kemiringannya sama, \\(m_1 = m_2\\).</li><li><b>Tegak lurus</b>: hasil kali kemiringannya −1, \\(m_1 \\times m_2 = -1\\). Contoh: m = ½ tegak lurus dengan m = −2.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/garis-mc.html",
+          "title": "Grafik y = mx + c",
+          "height": 520,
+          "caption": "Ubah m dan c. Apa pengaruh m? Apa pengaruh c? Centang <b>garis sejajar dan tegak lurus</b> dan amati kemiringan ketiga garis."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan persamaan garis yang melalui (1, 2) dan sejajar dengan \\(3x - y = 5\\).</p>",
+          "steps": [
+            "\\(3x - y = 5\\) sama dengan \\(y = 3x - 5\\), jadi m = 3.",
+            "Garis sejajar juga memiliki m = 3: \\(y - 2 = 3(x - 1)\\).",
+            "\\(y = 3x - 1\\)."
+          ],
+          "answer": "\\(y = 3x - 1\\)"
+        },
+        {
+          "type": "check",
+          "question": "Persamaan garis yang melalui (0, −1) dan tegak lurus dengan \\(y = \\tfrac{1}{2}x + 3\\) adalah ....",
+          "options": {
+            "A": "\\(y = \\tfrac12 x - 1\\)",
+            "B": "\\(y = -2x - 1\\)",
+            "C": "\\(y = 2x - 1\\)",
+            "D": "\\(y = -\\tfrac12 x - 1\\)"
+          },
+          "answer": "B",
+          "hint": "Kemiringan garis tegak lurus adalah kebalikan negatif dari ½.",
+          "explanation": "m = −2 dan titik potong sumbu y −1, jadi \\(y = -2x - 1\\)."
+        }
+      ]
+    },
+    {
+      "id": "penerapan",
+      "title": "Penerapan persamaan garis lurus",
+      "kind": "artikel",
+      "duration": "12 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Banyak hubungan sehari-hari berbentuk garis lurus: nilai truk yang turun dengan jumlah tetap setiap tahun, tarif air yang terdiri atas biaya tetap dan biaya per meter kubik, atau suhu yang naik secara teratur.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Arti m dan c dalam konteks",
+          "html": "<p>Pada \\(y = mx + c\\): <b>m</b> adalah laju perubahan (berapa y berubah untuk setiap 1 satuan x), dan <b>c</b> adalah nilai awal (nilai y ketika x = 0).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Nilai sebuah truk baru Rp400 juta dan turun Rp30 juta setiap tahun. Tulis rumus nilai truk, lalu tentukan nilainya setelah 6 tahun.</p>",
+          "steps": [
+            "Nilai awal c = 400 dan laju m = −30 (turun), dalam juta rupiah.",
+            "V(t) = −30t + 400.",
+            "V(6) = −180 + 400 = 220 juta rupiah."
+          ],
+          "answer": "Rp220 juta"
+        },
+        {
+          "type": "check",
+          "question": "Tarif air PDAM: biaya tetap Rp15.000,00 ditambah Rp4.000,00 per m³. Pada persamaan y = 4.000x + 15.000, angka 4.000 menyatakan ....",
+          "options": {
+            "A": "biaya tetap bulanan",
+            "B": "biaya setiap 1 m³ air",
+            "C": "total tagihan",
+            "D": "banyak air yang dipakai"
+          },
+          "answer": "B",
+          "hint": "Kemiringan = perubahan y untuk setiap kenaikan 1 pada x.",
+          "explanation": "4.000 adalah kemiringan: tagihan naik Rp4.000,00 untuk setiap 1 m³. 15.000 adalah biaya tetap (nilai awal)."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Persamaan garis</td><td>\\(y = mx + c\\) atau \\(ax + by = c\\).</td></tr><tr><td>Kemiringan</td><td>\\(m = \\dfrac{y_2 - y_1}{x_2 - x_1}\\); dari ax + by = c: \\(m = -\\tfrac{a}{b}\\).</td></tr><tr><td>Tanda m</td><td>positif naik, negatif turun, nol mendatar, garis tegak tidak terdefinisi.</td></tr><tr><td>Melalui satu titik</td><td>\\(y - y_1 = m(x - x_1)\\).</td></tr><tr><td>Sejajar, tegak lurus</td><td>\\(m_1 = m_2\\); \\(m_1 m_2 = -1\\).</td></tr><tr><td>Konteks</td><td>m = laju perubahan, c = nilai awal.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menghitung Δx/Δy, padahal yang benar Δy/Δx.</li><li>Mengambil m = a pada ax + by = c tanpa mengubah ke bentuk y = ….</li><li>Lupa membalik tanda saat mencari kemiringan garis tegak lurus.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VIII</i> (Kemendikbudristek), Bab 5 Persamaan Garis Lurus.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang grafik garis lurus, kemiringan, persamaan garis, garis sejajar dan tegak lurus, serta penerapannya. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

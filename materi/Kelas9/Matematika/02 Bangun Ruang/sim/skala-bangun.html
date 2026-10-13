@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pengaruh Perubahan Skala</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:13px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Kubus satuan disusun menjadi kubus yang lebih besar"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Faktor skala k (rusuk dikali k)</span><b id="kout"></b></div><input type="range" id="k" min="1" max="4" step="1" value="2"></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="why"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+$('k').oninput = draw;
+Sim.onTheme(draw);
+function cube(x, y, u, col, op = 1){
+  const d = u * .5, top = `${x},${y} ${x + u},${y} ${x + u + d},${y - d} ${x + d},${y - d}`, side = `${x + u},${y} ${x + u + d},${y - d} ${x + u + d},${y + u - d} ${x + u},${y + u}`;
+  return `<g opacity="${op}"><rect x="${x}" y="${y}" width="${u}" height="${u}" style="fill:${col};stroke:var(--bg)" stroke-width="1"/><polygon points="${top}" style="fill:${col};stroke:var(--bg)" fill-opacity=".7" stroke-width="1"/><polygon points="${side}" style="fill:${col};stroke:var(--bg)" fill-opacity=".45" stroke-width="1"/></g>`;
+}
+function draw(){
+  const k = +$('k').value, U = 26;
+  let s = cube(40, 200, U * 1.6, 'var(--comp)') + `<text class="ar" x="62" y="270" text-anchor="middle" style="fill:var(--comp)">rusuk 1</text>`;
+  // kubus besar dari k×k×k kubus satuan (gambar dari belakang ke depan)
+  const x0 = 170, y0 = 250 - k * U;
+  for(let z = k - 1; z >= 0; z--) for(let y = k - 1; y >= 0; y--) for(let x = 0; x < k; x++){
+    const px = x0 + x * U + z * U * .5, py = y0 + y * U - z * U * .5;
+    s += cube(px, py, U, 'var(--a)');
+  }
+  s += `<text class="ar" x="${x0 + k * U / 2}" y="285" text-anchor="middle" style="fill:var(--a)">rusuk ${k}</text>`;
+  svg.innerHTML = s;
+  $('kout').textContent = 'k = ' + k;
+  $('read').innerHTML = `<div><span>Rusuk</span><b>1 → ${k} (× ${k})</b></div><div><span>Luas permukaan</span><b>6 → ${6 * k * k} (× ${k * k} = k²)</b></div><div><span>Volume</span><b>1 → ${k ** 3} (× ${k ** 3} = k³)</b></div>`;
+  $('why').innerHTML = `Setiap sisi kubus besar terdiri atas ${k} × ${k} = ${k * k} persegi kecil, sehingga luas dikali <b>k²</b>. Kubus besar tersusun dari ${k} × ${k} × ${k} = ${k ** 3} kubus satuan, sehingga volume dikali <b>k³</b>. Aturan ini berlaku untuk semua bangun ruang yang diperbesar sebangun.`;
+}
+draw();
+</script>
+</body>
+</html>

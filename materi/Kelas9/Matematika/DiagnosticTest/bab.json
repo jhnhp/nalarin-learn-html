@@ -1,56 +1,243 @@
 {
-  "title": "Latihan Matematika",
-  "summary": "Ringkasan bab Latihan Matematika akan ditulis di sini.",
-  "status": "draf",
+  "title": "Persiapan Matematika Kelas 9 (Diagnostik)",
+  "summary": "Ulasan materi prasyarat: bilangan berpangkat dan bentuk akar, aritmetika sosial, pola dan barisan bilangan, serta sudut dan bangun ruang.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Latihan Matematika",
+      "id": "pangkat-akar",
+      "title": "Bilangan berpangkat dan bentuk akar",
+      "kind": "artikel",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Bab ini mengulang materi Kelas 7 dan 8 yang sering dipakai di Kelas 9. Kerjakan kuisnya untuk mengetahui bagian mana yang perlu dipelajari lagi.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Sifat penting",
+          "html": "\\[a^m \\times a^n = a^{m+n} \\qquad a^m : a^n = a^{m-n} \\qquad (a^m)^n = a^{mn} \\qquad \\sqrt{ab} = \\sqrt a \\sqrt b\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sederhanakan \\(2^5 \\times 2^3\\) dan \\(3\\sqrt5 \\times \\sqrt5\\).</p>",
+          "steps": [
+            "\\(2^{5+3} = 2^8 = 256\\).",
+            "\\(3\\sqrt5 \\times \\sqrt5 = 3 \\times 5 = 15\\)."
+          ],
+          "answer": "256 dan 15"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pembahasan lengkap: <a href=\"bab.html?bab=Kelas8%2FMatematika%2F01%20Bilangan%20Berpangkat\">Bilangan Berpangkat (Kelas 8)</a>.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Bentuk paling sederhana dari \\(\\sqrt{72}\\) adalah ....",
+          "options": {
+            "A": "\\(6\\sqrt2\\)",
+            "B": "\\(2\\sqrt{18}\\)",
+            "C": "\\(3\\sqrt8\\)",
+            "D": "\\(8\\sqrt3\\)"
+          },
+          "answer": "A",
+          "hint": "Cari bilangan kuadrat terbesar yang membagi 72.",
+          "explanation": "72 = 36 × 2, jadi \\(\\sqrt{72} = 6\\sqrt2\\)."
+        }
+      ]
+    },
+    {
+      "id": "aritmetika-sosial",
+      "title": "Aritmetika sosial: untung, rugi, diskon, dan pajak",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Persen dipakai setiap hari dalam jual beli: label diskon, keuntungan pedagang, pajak, dan bunga tabungan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Untung dan rugi",
+          "html": "<ul><li>Untung = harga jual − harga beli, jika harga jual lebih besar.</li><li>Rugi = harga beli − harga jual, jika harga jual lebih kecil.</li><li>Persentase untung atau rugi dihitung dari <b>harga beli</b>: \\(\\%\\text{untung} = \\dfrac{\\text{untung}}{\\text{harga beli}} \\times 100\\%\\).</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Diskon, pajak, dan bunga",
+          "html": "<ul><li>Harga setelah diskon p% = \\((100 - p)\\%\\) × harga awal.</li><li>Harga setelah pajak q% = \\((100 + q)\\%\\) × harga.</li><li>Bunga tunggal per tahun: \\(\\text{bunga} = \\text{modal} \\times p\\% \\times \\text{lama (tahun)}\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pedagang membeli tas seharga Rp240.000,00 dan ingin untung 25%. Berapa harga jualnya?</p>",
+          "steps": [
+            "Untung = 25% × 240.000 = 60.000.",
+            "Harga jual = 240.000 + 60.000 = Rp300.000,00. Atau langsung 125% × 240.000."
+          ],
+          "answer": "Rp300.000,00"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Setelah diskon 20%, harga sebuah barang Rp320.000,00. Berapa harga sebelum diskon?</p>",
+          "steps": [
+            "Rp320.000,00 adalah 80% harga awal.",
+            "Harga awal = 320.000 : 0,8 = Rp400.000,00. Bukan 320.000 + 20% × 320.000."
+          ],
+          "answer": "Rp400.000,00"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Harga sebuah barang dinaikkan 25%, lalu didiskon 20%. Apakah harganya kembali seperti semula?</p>",
+          "steps": [
+            "Misalkan harga awal 100. Setelah naik 25%: 125.",
+            "Setelah diskon 20%: 80% × 125 = 100. Harganya kembali sama.",
+            "Ini kebetulan karena 1,25 × 0,8 = 1. Diskon dan kenaikan dengan persen yang sama tidak saling menghapus."
+          ],
+          "answer": "ya, kembali seperti semula"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Diskon bertingkat",
+          "html": "<p>Diskon 20% + 10% bukan diskon 30%. Diskon kedua dihitung dari harga setelah diskon pertama: 0,8 × 0,9 = 0,72, jadi totalnya diskon 28%.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Harga sebuah baju Rp200.000,00 dengan diskon 15%. Harga yang harus dibayar adalah ....",
+          "options": {
+            "A": "Rp170.000,00",
+            "B": "Rp185.000,00",
+            "C": "Rp30.000,00",
+            "D": "Rp230.000,00"
+          },
+          "answer": "A",
+          "hint": "Bayar 85% dari harga.",
+          "explanation": "85% × 200.000 = Rp170.000,00. Rp30.000,00 adalah besar diskonnya."
+        }
+      ]
+    },
+    {
+      "id": "pola-barisan",
+      "title": "Pola bilangan dan barisan aritmetika",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Susunan kursi di aula, tumpukan kaleng, atau pola ubin sering membentuk pola bilangan. Jika selisih dua suku berurutan selalu sama, barisannya disebut <b>barisan aritmetika</b>.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/Matematika/04 Bentuk Aljabar/sim/pola-korek.html",
+          "title": "Pola korek api",
+          "height": 440,
+          "caption": "Banyak korek membentuk barisan 4, 7, 10, 13, …: setiap pola bertambah 3. Inilah barisan aritmetika dengan beda 3."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Barisan aritmetika",
+          "html": "<p>Suku pertama a dan beda b:</p>\\[U_n = a + (n - 1)b\\]<p>Jumlah n suku pertama: \\(S_n = \\dfrac{n}{2}(a + U_n)\\).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Pola bilangan</th><th>Barisan</th><th>Suku ke-n</th></tr><tr><td>bilangan ganjil</td><td>1, 3, 5, 7, …</td><td>2n − 1</td></tr><tr><td>bilangan persegi</td><td>1, 4, 9, 16, …</td><td>n²</td></tr><tr><td>bilangan persegi panjang</td><td>2, 6, 12, 20, …</td><td>n(n + 1)</td></tr><tr><td>bilangan segitiga</td><td>1, 3, 6, 10, …</td><td>n(n + 1)/2</td></tr></table><p>Barisan persegi, persegi panjang, dan segitiga <b>bukan</b> barisan aritmetika, karena selisihnya berubah-ubah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan suku ke-20 barisan 7, 11, 15, 19, ….</p>",
+          "steps": [
+            "a = 7 dan b = 4.",
+            "U<sub>20</sub> = 7 + 19 × 4 = 7 + 76 = 83."
+          ],
+          "answer": "83"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Baris pertama aula berisi 12 kursi, dan setiap baris berikutnya 2 kursi lebih banyak. Ada 15 baris. Berapa kursi seluruhnya?</p>",
+          "steps": [
+            "a = 12, b = 2, n = 15. U<sub>15</sub> = 12 + 14 × 2 = 40.",
+            "S<sub>15</sub> = 15/2 × (12 + 40) = 15/2 × 52 = 390."
+          ],
+          "answer": "390 kursi"
+        },
+        {
+          "type": "check",
+          "question": "Suku berikutnya dari barisan 2, 6, 12, 20, 30, … adalah ....",
+          "options": {
+            "A": "40",
+            "B": "42",
+            "C": "36",
+            "D": "44"
+          },
+          "answer": "B",
+          "hint": "Perhatikan selisihnya: 4, 6, 8, 10, …",
+          "explanation": "Selisih berikutnya 12, jadi 30 + 12 = 42. Rumusnya n(n + 1): 6 × 7 = 42."
+        }
+      ]
+    },
+    {
+      "id": "geometri-dasar",
+      "title": "Sudut, Pythagoras, dan volume",
+      "kind": "artikel",
+      "duration": "12 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Yang perlu diingat",
+          "html": "<ul><li>Sudut berpelurus jumlahnya 180°; pada garis sejajar, sudut dalam berseberangan sama besar.</li><li>Teorema Pythagoras: \\(c^2 = a^2 + b^2\\).</li><li>Volume kubus \\(s^3\\), volume balok \\(p \\times l \\times t\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Balok berukuran 18 cm × 12 cm × 9 cm dipotong menjadi kubus-kubus kecil bersisi 3 cm. Berapa banyak kubus yang diperoleh?</p>",
+          "steps": [
+            "Sepanjang panjang: 18 : 3 = 6, lebar: 12 : 3 = 4, tinggi: 9 : 3 = 3.",
+            "Banyak kubus = 6 × 4 × 3 = 72."
+          ],
+          "answer": "72 kubus"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pembahasan lengkap: <a href=\"bab.html?bab=Kelas7%2FMatematika%2F05%20Kesebangunan\">Kesebangunan dan hubungan sudut (Kelas 7)</a>, <a href=\"bab.html?bab=Kelas8%2FMatematika%2F02%20Teorema%20Pythagoras\">Teorema Pythagoras (Kelas 8)</a>, dan <a href=\"bab.html?bab=Kelas9%2FMatematika%2F02%20Bangun%20Ruang\">Bangun Ruang (Kelas 9)</a>.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Dua sudut saling berpelurus. Jika salah satunya 65°, sudut yang lain adalah ....",
+          "options": {
+            "A": "25°",
+            "B": "115°",
+            "C": "125°",
+            "D": "295°"
+          },
+          "answer": "B",
+          "hint": "Berpelurus: jumlah 180°.",
+          "explanation": "180° − 65° = 115°."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan dan kuis diagnostik",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Latihan Matematika</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Topik</th><th>Rumus kunci</th></tr><tr><td>Perpangkatan</td><td>\\(a^m a^n = a^{m+n}\\)</td></tr><tr><td>Bentuk akar</td><td>\\(\\sqrt{72} = 6\\sqrt2\\)</td></tr><tr><td>Diskon p%</td><td>bayar (100 − p)%</td></tr><tr><td>Untung</td><td>% dari harga beli</td></tr><tr><td>Barisan aritmetika</td><td>\\(U_n = a + (n-1)b\\), \\(S_n = \\tfrac n2(a + U_n)\\)</td></tr><tr><td>Volume balok</td><td>p × l × t</td></tr></table><p>Kuis berikut berisi 20 soal campuran untuk memeriksa kesiapanmu. Soal yang salah menunjukkan materi yang perlu diulang.</p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal diagnostik: perpangkatan, bentuk akar, aritmetika sosial, pola dan barisan bilangan, sudut, serta bangun ruang. Setiap soal dilengkapi pembahasan."
         }
       ]
     }
