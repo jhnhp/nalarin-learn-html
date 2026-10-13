@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuartil dan Jangkauan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .lbl{font-family:var(--font);font-size:12px;fill:var(--muted)}
+  .tag{font-family:var(--display);font-weight:800;font-size:13px}
+  input[type=text]{font:inherit;font-size:15px;width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+  .sorted{display:flex;flex-wrap:wrap;gap:4px}
+  .sorted span{min-width:30px;text-align:center;padding:4px 6px;border-radius:7px;background:var(--surface-2);font-weight:700;font-variant-numeric:tabular-nums;font-size:14px}
+  .sorted span.q1{background:var(--a);color:#fff} .sorted span.q2{background:var(--k);color:#fff} .sorted span.q3{background:var(--b);color:#fff}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 220" role="img" aria-label="Diagram kotak garis dari data"></svg></div>
+  <div class="panel">
+    <h3 class="t">Data (pisahkan dengan koma)</h3>
+    <input type="text" id="in" value="62, 75, 80, 58, 90, 72, 85, 68, 77, 95, 70">
+    <div class="sorted" id="sorted"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Data diurutkan dulu. Median (Q2) membagi data menjadi dua bagian. Q1 adalah median bagian bawah, Q3 median bagian atas. Jika banyak data ganjil, median tidak ikut ke bagian bawah atau atas.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+$('in').oninput = draw;
+Sim.onTheme(draw);
+const med = a => { const n = a.length; return n % 2 ? a[(n - 1) / 2] : (a[n / 2 - 1] + a[n / 2]) / 2; };
+function draw(){
+  const d = $('in').value.split(/[,;\s]+/).filter(t => t !== '').map(t => Number(t.replace(',', '.'))).filter(v => isFinite(v)).sort((a, b) => a - b);
+  const n = d.length;
+  if(n < 4){ svg.innerHTML = '<text x="230" y="110" text-anchor="middle" class="lbl">Masukkan paling sedikit 4 data</text>'; $('read').innerHTML = ''; $('sorted').innerHTML = ''; return; }
+  const lower = d.slice(0, Math.floor(n / 2)), upper = d.slice(Math.ceil(n / 2));
+  const Q1 = med(lower), Q2 = med(d), Q3 = med(upper), mn = d[0], mx = d[n - 1];
+  const lo = Math.floor(mn / 10) * 10, hi = Math.ceil(mx / 10) * 10 || lo + 10, X = v => 30 + (v - lo) / (hi - lo || 1) * 400;
+  let s = `<line x1="30" y1="170" x2="430" y2="170" style="stroke:var(--ink)" stroke-width="1.6"/>`;
+  for(let v = lo; v <= hi; v += (hi - lo) / 10) s += `<line x1="${X(v)}" y1="166" x2="${X(v)}" y2="174" style="stroke:var(--ink)"/><text class="lbl" x="${X(v)}" y="190" text-anchor="middle">${fmt(v, 1)}</text>`;
+  s += `<line x1="${X(mn)}" y1="95" x2="${X(Q1)}" y2="95" style="stroke:var(--ink)" stroke-width="2"/><line x1="${X(Q3)}" y1="95" x2="${X(mx)}" y2="95" style="stroke:var(--ink)" stroke-width="2"/>`;
+  s += `<line x1="${X(mn)}" y1="80" x2="${X(mn)}" y2="110" style="stroke:var(--ink)" stroke-width="2"/><line x1="${X(mx)}" y1="80" x2="${X(mx)}" y2="110" style="stroke:var(--ink)" stroke-width="2"/>`;
+  s += `<rect x="${X(Q1)}" y="65" width="${X(Q3) - X(Q1)}" height="60" style="fill:var(--a)" fill-opacity=".15"/>`;
+  s += `<line x1="${X(Q1)}" y1="65" x2="${X(Q1)}" y2="125" style="stroke:var(--a)" stroke-width="3"/><line x1="${X(Q2)}" y1="65" x2="${X(Q2)}" y2="125" style="stroke:var(--k)" stroke-width="3"/><line x1="${X(Q3)}" y1="65" x2="${X(Q3)}" y2="125" style="stroke:var(--b)" stroke-width="3"/>`;
+  s += `<text class="tag" x="${X(Q1)}" y="56" text-anchor="middle" style="fill:var(--a)">Q1</text><text class="tag" x="${X(Q2)}" y="40" text-anchor="middle" style="fill:var(--k)">Q2</text><text class="tag" x="${X(Q3)}" y="56" text-anchor="middle" style="fill:var(--b)">Q3</text>`;
+  s += `<text class="tag" x="${X(mn)}" y="140" text-anchor="middle">min</text><text class="tag" x="${X(mx)}" y="140" text-anchor="middle">maks</text>`;
+  s += `<line x1="${X(Q1)}" y1="205" x2="${X(Q3)}" y2="205" style="stroke:var(--r)" stroke-width="3"/><text class="tag" x="${(X(Q1) + X(Q3)) / 2}" y="218" text-anchor="middle" style="fill:var(--r)">jangkauan antarkuartil</text>`;
+  svg.innerHTML = s;
+  // tandai posisi kuartil pada daftar terurut
+  const pos = (arr, off) => { const m = arr.length; return (m % 2 ? [(m - 1) / 2] : [m / 2 - 1, m / 2]).map(i => i + off); };
+  const p1 = pos(lower, 0), p2 = pos(d, 0), p3 = pos(upper, Math.ceil(n / 2));
+  $('sorted').innerHTML = d.map((v, i) => `<span class="${p2.includes(i) ? 'q2' : p1.includes(i) ? 'q1' : p3.includes(i) ? 'q3' : ''}">${fmt(v)}</span>`).join('');
+  $('read').innerHTML = `<div><span>n</span><b>${n}</b></div><div><span>Minimum, maksimum</span><b>${fmt(mn)} dan ${fmt(mx)}</b></div>` +
+    `<div><span>Jangkauan (maks − min)</span><b>${fmt(mx - mn)}</b></div>` +
+    `<div><span style="color:var(--a)">Q1</span><b>${fmt(Q1)}</b></div><div><span style="color:var(--k)">Q2 (median)</span><b>${fmt(Q2)}</b></div><div><span style="color:var(--b)">Q3</span><b>${fmt(Q3)}</b></div>` +
+    `<div><span style="color:var(--r)">Jangkauan antarkuartil (Q3 − Q1)</span><b>${fmt(Q3 - Q1)}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+{
+  "title": "Persamaan dan Pertidaksamaan Linear Satu Variabel",
+  "summary": "Kalimat terbuka, menyelesaikan persamaan linear satu variabel, pertidaksamaan linear dan himpunan penyelesaiannya, serta penerapannya.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "konsep-persamaan",
+      "title": "Kalimat terbuka dan persamaan linear",
+      "kind": "artikel",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Di kebun apel Batu, Malang, sebuah keranjang berisi beberapa apel. Jika ditambah 12 apel, isinya menjadi 40 apel. Berapa apel mula-mula? Jika banyak apel mula-mula dimisalkan x, kalimat itu dapat ditulis \\(x + 12 = 40\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Istilah penting",
+          "html": "<ul><li><b>Pernyataan</b>: kalimat yang benar saja atau salah saja. \"5 + 3 = 8\" benar.</li><li><b>Kalimat terbuka</b>: kalimat yang memuat variabel sehingga belum bisa ditentukan benar atau salah, misalnya \\(x + 12 = 40\\).</li><li><b>Persamaan linear satu variabel</b> (PLSV): kalimat terbuka dengan tanda \"=\" dan satu variabel berpangkat satu, misalnya \\(2x + 4 = 8\\).</li><li><b>Penyelesaian</b>: nilai variabel yang membuat kalimat terbuka menjadi benar. Untuk \\(x + 12 = 40\\), penyelesaiannya x = 28.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>\\(x^2 + 1 = 5\\) bukan persamaan linear karena variabelnya berpangkat dua, dan \\(x + y = 7\\) bukan persamaan linear <i>satu</i> variabel karena memuat dua variabel.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kalimat berikut yang merupakan persamaan linear satu variabel adalah ....",
+          "options": {
+            "A": "\\(3x + 2y = 6\\)",
+            "B": "\\(x^2 - 4 = 0\\)",
+            "C": "\\(5x - 7 = 2x + 8\\)",
+            "D": "\\(2x + 1 &gt; 9\\)"
+          },
+          "answer": "C",
+          "hint": "Harus ada tanda sama dengan, satu variabel, dan pangkat satu.",
+          "explanation": "\\(5x - 7 = 2x + 8\\) memuat satu variabel berpangkat satu dan tanda \"=\". Pilihan D adalah pertidaksamaan."
+        }
+      ]
+    },
+    {
+      "id": "menyelesaikan-persamaan",
+      "title": "Menyelesaikan persamaan linear satu variabel",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Persamaan seperti timbangan yang seimbang: ruas kiri sama berat dengan ruas kanan. Timbangan tetap seimbang jika kita melakukan hal yang <b>sama pada kedua sisi</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan yang setara",
+          "html": "<p>Persamaan tetap setara (penyelesaiannya tidak berubah) jika kedua ruas</p><ul><li>ditambah atau dikurangi bilangan yang sama, atau</li><li>dikali atau dibagi bilangan yang sama (bukan nol).</li></ul>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "sim",
+          "src": "sim/timbangan.html",
+          "title": "Timbangan persamaan",
+          "height": 470,
+          "caption": "Pilih persamaan, lalu pakai tombol operasi sampai di satu sisi hanya tersisa satu kotak x. Lakukan setiap langkah pada <b>kedua sisi</b> agar timbangan tetap seimbang."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Selesaikan \\(5x - 7 = 2x + 8\\).</p>",
+          "steps": [
+            "Kurangi 2x pada kedua ruas: \\(3x - 7 = 8\\).",
+            "Tambah 7 pada kedua ruas: \\(3x = 15\\).",
+            "Bagi kedua ruas dengan 3: \\(x = 5\\).",
+            "Periksa: 5(5) − 7 = 18 dan 2(5) + 8 = 18. Sama."
+          ],
+          "answer": "x = 5"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Selesaikan \\(\\dfrac{x + 3}{4} = \\dfrac{x - 1}{2}\\).</p>",
+          "steps": [
+            "Kalikan kedua ruas dengan KPK penyebut, yaitu 4: \\(x + 3 = 2(x - 1)\\).",
+            "\\(x + 3 = 2x - 2\\), sehingga \\(3 + 2 = 2x - x\\).",
+            "x = 5."
+          ],
+          "answer": "x = 5"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Keliling sebuah kebun berbentuk persegi panjang 64 m. Panjangnya 8 m lebih dari lebarnya. Tentukan ukuran kebun.</p>",
+          "steps": [
+            "Misalkan lebar = l m, maka panjang = (l + 8) m.",
+            "Keliling: \\(2(l + 8 + l) = 64\\), sehingga \\(4l + 16 = 64\\).",
+            "\\(4l = 48\\), jadi l = 12 m dan panjang 20 m."
+          ],
+          "answer": "panjang 20 m, lebar 12 m"
+        },
+        {
+          "type": "check",
+          "question": "Penyelesaian dari \\(3(x - 2) = x + 10\\) adalah ....",
+          "options": {
+            "A": "x = 2",
+            "B": "x = 4",
+            "C": "x = 8",
+            "D": "x = 6"
+          },
+          "answer": "C",
+          "hint": "Jabarkan kurungnya dahulu.",
+          "explanation": "\\(3x - 6 = x + 10\\), sehingga \\(2x = 16\\) dan x = 8."
+        }
+      ]
+    },
+    {
+      "id": "konsep-pertidaksamaan",
+      "title": "Pertidaksamaan linear satu variabel",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Lift bertuliskan \"kapasitas maksimal 600 kg\". Jika berat rata-rata penumpang 60 kg, berapa orang yang boleh masuk? Bukan hanya satu jawaban: 1, 2, …, sampai 10 orang semuanya aman. Situasi ini ditulis dengan <b>pertidaksamaan</b> \\(60x \\leq 600\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Tanda pertidaksamaan",
+          "html": "<table><tr><th>Tanda</th><th>Arti</th><th>Pada garis bilangan</th></tr><tr><td>&lt;</td><td>kurang dari</td><td>bulatan kosong, arsir ke kiri</td></tr><tr><td>≤</td><td>kurang dari atau sama dengan (paling banyak)</td><td>bulatan penuh, arsir ke kiri</td></tr><tr><td>&gt;</td><td>lebih dari</td><td>bulatan kosong, arsir ke kanan</td></tr><tr><td>≥</td><td>lebih dari atau sama dengan (paling sedikit)</td><td>bulatan penuh, arsir ke kanan</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/hp-contoh.svg",
+          "alt": "Garis bilangan dengan bulatan penuh di 3 dan arsiran ke kanan",
+          "width": 520,
+          "caption": "Himpunan penyelesaian x ≥ 3."
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Aturan penting",
+          "html": "<p>Pertidaksamaan diselesaikan seperti persamaan, kecuali satu hal: jika kedua ruas <b>dikali atau dibagi bilangan negatif</b>, <b>tanda pertidaksamaan dibalik</b>.</p><p>Contoh: \\(-2x &lt; 6\\). Bagi dengan −2 dan balik tandanya: \\(x &gt; -3\\). Periksa dengan x = 0: −2(0) = 0 &lt; 6, benar, dan 0 memang lebih dari −3.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pertidaksamaan.html",
+          "title": "Pertidaksamaan pada garis bilangan",
+          "height": 420,
+          "caption": "Atur a, b, c, dan tanda. Buat a negatif dan perhatikan langkah pembagiannya. Kapan bulatannya penuh, kapan kosong?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan himpunan penyelesaian \\(4 - 3x \\geq 13\\), x bilangan real.</p>",
+          "steps": [
+            "Kurangi 4 pada kedua ruas: \\(-3x \\geq 9\\).",
+            "Bagi dengan −3 dan <b>balik tandanya</b>: \\(x \\leq -3\\).",
+            "HP = {x | x ≤ −3}."
+          ],
+          "answer": "{x | x ≤ −3}"
+        },
+        {
+          "type": "check",
+          "question": "Himpunan penyelesaian \\(2x + 5 &lt; 11\\), x bilangan asli, adalah ....",
+          "options": {
+            "A": "{1, 2}",
+            "B": "{1, 2, 3}",
+            "C": "{3, 4, 5, …}",
+            "D": "{0, 1, 2}"
+          },
+          "answer": "A",
+          "hint": "Selesaikan dulu, lalu pilih bilangan asli yang memenuhi.",
+          "explanation": "\\(2x &lt; 6\\), jadi \\(x &lt; 3\\). Bilangan asli yang kurang dari 3 adalah 1 dan 2. Angka 3 tidak termasuk karena tandanya \"&lt;\"."
+        }
+      ]
+    },
+    {
+      "id": "masalah-pertidaksamaan",
+      "title": "Masalah sehari-hari dengan pertidaksamaan",
+      "kind": "artikel",
+      "duration": "12 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Kata-kata seperti <i>paling banyak</i>, <i>tidak lebih dari</i>, <i>maksimal</i> berarti ≤. Kata <i>paling sedikit</i>, <i>minimal</i>, <i>tidak kurang dari</i> berarti ≥.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah lift berkapasitas paling banyak 600 kg. Petugas dengan troli seberat 120 kg naik bersama beberapa kotak barang yang masing-masing 40 kg. Berapa kotak paling banyak yang boleh dibawa?</p>",
+          "steps": [
+            "Misalkan banyak kotak x: \\(120 + 40x \\leq 600\\).",
+            "\\(40x \\leq 480\\), sehingga \\(x \\leq 12\\).",
+            "Paling banyak 12 kotak."
+          ],
+          "answer": "12 kotak"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Nilai ulangan Rina 78, 85, dan 80. Agar rata-rata empat ulangan paling sedikit 82, berapa nilai minimal ulangan keempat?</p>",
+          "steps": [
+            "Misalkan nilai keempat n: \\(\\dfrac{78 + 85 + 80 + n}{4} \\geq 82\\).",
+            "\\(243 + n \\geq 328\\), sehingga \\(n \\geq 85\\).",
+            "Nilai minimal 85."
+          ],
+          "answer": "85"
+        },
+        {
+          "type": "check",
+          "question": "Ongkos taksi daring Rp8.000,00 ditambah Rp4.500,00 per km. Budi hanya punya Rp80.000,00. Jarak terjauh yang bisa ditempuh Budi adalah ....",
+          "options": {
+            "A": "14 km",
+            "B": "16 km",
+            "C": "17 km",
+            "D": "18 km"
+          },
+          "answer": "B",
+          "hint": "Tulis \\(8.000 + 4.500x \\leq 80.000\\).",
+          "explanation": "\\(4.500x \\leq 72.000\\), sehingga \\(x \\leq 16\\). Jarak terjauh 16 km."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>PLSV</td><td>Kalimat terbuka dengan \"=\", satu variabel berpangkat satu.</td></tr><tr><td>Menyelesaikan PLSV</td><td>Lakukan operasi yang sama pada kedua ruas sampai variabel sendirian. Periksa jawabannya.</td></tr><tr><td>PtLSV</td><td>Memakai &lt;, ≤, &gt;, ≥. Penyelesaiannya berupa himpunan.</td></tr><tr><td>Aturan khusus</td><td>Dikali/dibagi bilangan negatif → tanda dibalik.</td></tr><tr><td>Garis bilangan</td><td>Bulatan penuh untuk ≤, ≥; bulatan kosong untuk &lt;, &gt;.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memindahkan suku tanpa mengubah tandanya.</li><li>Lupa membalik tanda saat membagi dengan bilangan negatif.</li><li>Salah menafsirkan \"paling sedikit\" dan \"paling banyak\".</li><li>Lupa mengalikan semua suku saat menghilangkan penyebut.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VIII</i> (Kemendikbudristek), Bab 3 Persamaan Linear dan Pertidaksamaan Linear Satu Variabel.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang persamaan dan pertidaksamaan linear satu variabel serta penerapannya. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "title": "Bilangan Berpangkat",
+  "summary": "Bilangan berpangkat bulat dan sifat-sifatnya, bentuk akar dan operasinya, serta bentuk baku untuk bilangan sangat besar dan sangat kecil.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "pangkat-bulat",
+      "title": "Bilangan berpangkat bulat",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Matahari memancarkan energi sekitar 384.000.000.000.000.000.000.000.000 watt, sedangkan diameter virus corona sekitar 0,0000001 m. Bilangan sebesar dan sekecil itu sulit dibaca dan mudah salah tulis. Perpangkatan membantu menuliskannya dengan singkat.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Arti perpangkatan",
+          "html": "\\[a^n = \\underbrace{a \\times a \\times \\cdots \\times a}_{n \\text{ faktor}}\\]<p>a disebut <b>bilangan pokok</b> dan n disebut <b>pangkat</b> (eksponen). Contoh: \\(2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Perhatikan tanda kurung",
+          "html": "<p>\\((-3)^2 = (-3) \\times (-3) = 9\\), tetapi \\(-3^2 = -(3 \\times 3) = -9\\). Bilangan pokok negatif berpangkat <b>genap</b> hasilnya positif, berpangkat <b>ganjil</b> hasilnya negatif.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Pangkat nol dan pangkat negatif"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pola-pangkat.html",
+          "title": "Pola bilangan berpangkat",
+          "height": 470,
+          "caption": "Turunkan pangkatnya satu per satu sampai negatif. Perhatikan bahwa setiap baris nilainya dibagi bilangan pokok. Dari pola inilah muncul aturan pangkat nol dan pangkat negatif."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pangkat nol dan negatif",
+          "html": "\\[a^0 = 1 \\qquad a^{-n} = \\frac{1}{a^n} \\qquad (a \\neq 0)\\]<p>Contoh: \\(7^0 = 1\\) dan \\(5^{-2} = \\tfrac{1}{25}\\).</p>"
+        },
+        {
+          "type": "h",
+          "text": "Sifat-sifat perpangkatan"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Sifat perpangkatan (m, n bilangan bulat)",
+          "html": "<table><tr><th>Sifat</th><th>Contoh</th></tr><tr><td>\\(a^m \\times a^n = a^{m+n}\\)</td><td>\\(2^3 \\times 2^4 = 2^7\\)</td></tr><tr><td>\\(a^m : a^n = a^{m-n}\\)</td><td>\\(3^5 : 3^2 = 3^3\\)</td></tr><tr><td>\\((a^m)^n = a^{m \\times n}\\)</td><td>\\((5^2)^3 = 5^6\\)</td></tr><tr><td>\\((ab)^n = a^n b^n\\)</td><td>\\((2x)^3 = 8x^3\\)</td></tr><tr><td>\\(\\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}\\)</td><td>\\(\\left(\\frac{2}{3}\\right)^2 = \\frac{4}{9}\\)</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sederhanakan \\(\\dfrac{2^3 \\times 2^5}{2^4}\\) dan \\((3x^2y)^3\\).</p>",
+          "steps": [
+            "\\(2^3 \\times 2^5 = 2^8\\), lalu \\(2^8 : 2^4 = 2^4 = 16\\).",
+            "\\((3x^2y)^3 = 3^3 \\times (x^2)^3 \\times y^3 = 27x^6y^3\\)."
+          ],
+          "answer": "16 dan \\(27x^6y^3\\)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kapasitas penyimpanan 1 GB = \\(2^{30}\\) byte. Berapa byte kapasitas ponsel 128 GB, dalam bentuk perpangkatan 2?</p>",
+          "steps": [
+            "128 = \\(2^7\\).",
+            "\\(128 \\text{ GB} = 2^7 \\times 2^{30} = 2^{37}\\) byte."
+          ],
+          "answer": "\\(2^{37}\\) byte"
+        },
+        {
+          "type": "check",
+          "question": "Hasil dari \\(\\dfrac{a^{-2} b^3}{a^3 b^{-1}}\\) adalah ....",
+          "options": {
+            "A": "\\(\\dfrac{b^4}{a^5}\\)",
+            "B": "\\(\\dfrac{b^2}{a}\\)",
+            "C": "\\(a^5 b^4\\)",
+            "D": "\\(\\dfrac{b^4}{a}\\)"
+          },
+          "answer": "A",
+          "hint": "Kurangkan pangkat yang bilangan pokoknya sama: a: −2 − 3, b: 3 − (−1).",
+          "explanation": "\\(a^{-2-3} b^{3-(-1)} = a^{-5} b^4 = \\dfrac{b^4}{a^5}\\)."
+        },
+        {
+          "type": "check",
+          "question": "Nilai dari \\(5^0 + 4^{-1}\\) adalah ....",
+          "options": {
+            "A": "\\(\\tfrac{1}{4}\\)",
+            "B": "\\(1\\tfrac{1}{4}\\)",
+            "C": "−3",
+            "D": "5"
+          },
+          "answer": "B",
+          "hint": "\\(5^0 = 1\\) dan \\(4^{-1} = \\tfrac{1}{4}\\).",
+          "explanation": "\\(1 + \\tfrac{1}{4} = 1\\tfrac{1}{4}\\). Pangkat 0 menghasilkan 1, bukan 0, dan pangkat negatif menghasilkan kebalikan, bukan bilangan negatif."
+        }
+      ]
+    },
+    {
+      "id": "bentuk-akar",
+      "title": "Bentuk akar",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sebuah ubin persegi luasnya 9 cm², sehingga sisinya 3 cm karena \\(3^2 = 9\\). Jika luasnya 50 cm², berapa sisinya? Tidak ada bilangan bulat yang kuadratnya 50, sehingga sisinya ditulis \\(\\sqrt{50}\\) cm.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/sisi-persegi.svg",
+          "alt": "Persegi luas 9 bersisi 3, dan persegi luas 50 bersisi akar 50",
+          "width": 600,
+          "caption": "Akar kuadrat adalah kebalikan dari kuadrat."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Akar dan pangkat pecahan",
+          "html": "\\[\\sqrt{a} = b \\iff b^2 = a \\;(b \\geq 0) \\qquad \\sqrt[n]{a} = a^{\\frac{1}{n}} \\qquad \\sqrt[n]{a^m} = a^{\\frac{m}{n}}\\]<p>Contoh: \\(\\sqrt[3]{8} = 8^{\\frac13} = 2\\) dan \\(8^{\\frac23} = (\\sqrt[3]{8})^2 = 4\\).</p>"
+        },
+        {
+          "type": "h",
+          "text": "Menyederhanakan bentuk akar"
+        },
+        {
+          "type": "text",
+          "html": "<p>Uraikan bilangan di dalam akar menjadi perkalian bilangan kuadrat terbesar dan bilangan lain, lalu pakai \\(\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}\\):</p>\\[\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2} \\qquad \\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}\\]"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Operasi bentuk akar",
+          "html": "<ul><li><b>Penjumlahan dan pengurangan</b>: hanya akar <b>sejenis</b> (bilangan di dalam akarnya sama): \\(3\\sqrt{2} + 5\\sqrt{2} = 8\\sqrt{2}\\). Tetapi \\(\\sqrt{2} + \\sqrt{3} \\neq \\sqrt{5}\\).</li><li><b>Perkalian</b>: \\(\\sqrt{a} \\times \\sqrt{b} = \\sqrt{ab}\\), misalnya \\(\\sqrt{3} \\times \\sqrt{12} = \\sqrt{36} = 6\\).</li><li><b>Merasionalkan penyebut</b>: kalikan pembilang dan penyebut dengan akar yang sama: \\(\\dfrac{6}{\\sqrt{3}} = \\dfrac{6\\sqrt{3}}{3} = 2\\sqrt{3}\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sederhanakan \\(3\\sqrt{2} + 5\\sqrt{8} - \\sqrt{18}\\).</p>",
+          "steps": [
+            "\\(\\sqrt{8} = 2\\sqrt{2}\\) dan \\(\\sqrt{18} = 3\\sqrt{2}\\).",
+            "\\(3\\sqrt{2} + 10\\sqrt{2} - 3\\sqrt{2} = 10\\sqrt{2}\\)."
+          ],
+          "answer": "\\(10\\sqrt{2}\\)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Rasionalkan penyebut \\(\\dfrac{10}{\\sqrt{5}}\\).</p>",
+          "steps": [
+            "Kalikan dengan \\(\\dfrac{\\sqrt{5}}{\\sqrt{5}}\\): \\(\\dfrac{10\\sqrt{5}}{5}\\).",
+            "Sederhanakan: \\(2\\sqrt{5}\\)."
+          ],
+          "answer": "\\(2\\sqrt{5}\\)"
+        },
+        {
+          "type": "check",
+          "question": "Bentuk sederhana dari \\(\\sqrt{75}\\) adalah ....",
+          "options": {
+            "A": "\\(3\\sqrt{5}\\)",
+            "B": "\\(5\\sqrt{3}\\)",
+            "C": "\\(25\\sqrt{3}\\)",
+            "D": "\\(15\\sqrt{5}\\)"
+          },
+          "answer": "B",
+          "hint": "Cari bilangan kuadrat terbesar yang membagi 75.",
+          "explanation": "\\(75 = 25 \\times 3\\), sehingga \\(\\sqrt{75} = 5\\sqrt{3}\\)."
+        },
+        {
+          "type": "check",
+          "question": "Nilai dari \\(27^{\\frac{2}{3}}\\) adalah ....",
+          "options": {
+            "A": "9",
+            "B": "18",
+            "C": "3",
+            "D": "81"
+          },
+          "answer": "A",
+          "hint": "Hitung dulu akar pangkat tiga dari 27, lalu kuadratkan.",
+          "explanation": "\\(27^{\\frac23} = (\\sqrt[3]{27})^2 = 3^2 = 9\\)."
+        }
+      ]
+    },
+    {
+      "id": "bentuk-baku",
+      "title": "Bentuk baku (notasi ilmiah)",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jarak Bumi ke Matahari sekitar 149.600.000.000 m, dan diameter sel darah merah sekitar 0,000007 m. Ilmuwan menuliskannya dengan <b>bentuk baku</b> agar ringkas dan mudah dibandingkan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bentuk baku",
+          "html": "\\[a \\times 10^n, \\qquad 1 \\leq a &lt; 10, \\; n \\text{ bilangan bulat}\\]<ul><li>149.600.000.000 = \\(1{,}496 \\times 10^{11}\\): koma digeser 11 angka ke kiri, pangkatnya positif.</li><li>0,000007 = \\(7 \\times 10^{-6}\\): koma digeser 6 angka ke kanan, pangkatnya negatif.</li></ul>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "sim",
+          "src": "sim/skala-semesta.html",
+          "title": "Skala semesta dan bentuk baku",
+          "height": 470,
+          "caption": "Geser penggaris dari atom sampai Tata Surya. Lalu tulis bilangan apa saja di kotak bawah untuk melihat bentuk bakunya."
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengalikan dan membagi bentuk baku",
+          "html": "<p>Kalikan (atau bagi) bagian a, lalu pakai sifat perpangkatan untuk 10. Jika hasil a tidak di antara 1 dan 10, rapikan lagi:</p>\\[(3 \\times 10^4)(5 \\times 10^6) = 15 \\times 10^{10} = 1{,}5 \\times 10^{11}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Cahaya merambat dengan kecepatan \\(3 \\times 10^8\\) m/s. Berapa lama cahaya Matahari sampai ke Bumi yang berjarak \\(1{,}5 \\times 10^{11}\\) m?</p>",
+          "steps": [
+            "Waktu = jarak : kecepatan = \\(\\dfrac{1{,}5 \\times 10^{11}}{3 \\times 10^8}\\).",
+            "\\(= 0{,}5 \\times 10^3 = 5 \\times 10^2 = 500\\) detik, sekitar 8 menit 20 detik."
+          ],
+          "answer": "500 detik"
+        },
+        {
+          "type": "check",
+          "question": "Bentuk baku dari 0,00052 adalah ....",
+          "options": {
+            "A": "\\(52 \\times 10^{-5}\\)",
+            "B": "\\(5{,}2 \\times 10^{-4}\\)",
+            "C": "\\(5{,}2 \\times 10^{4}\\)",
+            "D": "\\(0{,}52 \\times 10^{-3}\\)"
+          },
+          "answer": "B",
+          "hint": "Bilangan di depan harus antara 1 dan 10.",
+          "explanation": "Koma digeser 4 angka ke kanan menjadi 5,2, sehingga 0,00052 = \\(5{,}2 \\times 10^{-4}\\). Pilihan A dan D bernilai sama, tetapi bukan bentuk baku."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Perpangkatan</td><td>\\(a^n\\) = a dikali dirinya sendiri n kali.</td></tr><tr><td>Pangkat nol, negatif</td><td>\\(a^0 = 1\\), \\(a^{-n} = \\tfrac{1}{a^n}\\).</td></tr><tr><td>Sifat</td><td>\\(a^m a^n = a^{m+n}\\), \\(a^m : a^n = a^{m-n}\\), \\((a^m)^n = a^{mn}\\), \\((ab)^n = a^nb^n\\).</td></tr><tr><td>Bentuk akar</td><td>\\(\\sqrt[n]{a^m} = a^{m/n}\\). Sederhanakan dengan faktor kuadrat: \\(\\sqrt{50} = 5\\sqrt2\\).</td></tr><tr><td>Operasi akar</td><td>Jumlah/kurang hanya akar sejenis. \\(\\sqrt a \\sqrt b = \\sqrt{ab}\\). Rasionalkan penyebut.</td></tr><tr><td>Bentuk baku</td><td>\\(a \\times 10^n\\) dengan \\(1 \\le a &lt; 10\\).</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>\\(2^3 \\times 2^4 = 2^{12}\\). Yang benar \\(2^7\\): pangkat dijumlahkan, bukan dikalikan.</li><li>\\(5^0 = 0\\). Yang benar 1.</li><li>\\(2^{-3} = -8\\). Yang benar \\(\\tfrac18\\).</li><li>\\(\\sqrt{9 + 16} = 3 + 4\\). Yang benar \\(\\sqrt{25} = 5\\).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VIII</i> (Kemendikbudristek), Bab 1 Bilangan Berpangkat.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang perpangkatan, sifat-sifatnya, bentuk akar, dan bentuk baku. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pola Bilangan Berpangkat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+  td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left}
+  th{font-size:12px;color:var(--muted)}
+  tr.on td{background:var(--surface-2);font-weight:800}
+  td.arrow{color:var(--muted);font-size:12px;text-align:right}
+  .big{font-family:var(--display);font-weight:800;font-size:22px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+  .ctl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ctl .lab{margin-bottom:4px}
+  .stage{display:flex;align-items:flex-start}
+  .stage table{margin:6px}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><table id="tab"></table></div>
+  <div class="panel">
+    <div class="ctl">
+      <div><div class="lab"><span>Bilangan pokok a</span></div><div class="step"><button data-d="a-1">−</button><output id="a"></output><button data-d="a1">+</button></div></div>
+      <div><div class="lab"><span>Pangkat n</span></div><div class="step"><button data-d="n-1">−</button><output id="n"></output><button data-d="n1">+</button></div></div>
+    </div>
+    <div class="big" id="big"></div>
+    <p class="note" id="why"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const st = {a: 2, n: 3};
+const sup = n => String(n).replace('-', '⁻').split('').map(c => '⁰¹²³⁴⁵⁶⁷⁸⁹'['0123456789'.indexOf(c)] || c).join('');
+const frac = (p, q) => q === 1 ? String(p) : `${p}/${q}`;
+const BASES = [-3, -2, 2, 3, 4, 5, 10];
+document.querySelectorAll('[data-d]').forEach(b => b.onclick = () => {
+  const k = b.dataset.d[0], d = +b.dataset.d.slice(1);
+  if(k === 'a'){ const i = Math.max(0, Math.min(BASES.length - 1, BASES.indexOf(st.a) + d)); st.a = BASES[i]; }
+  else st.n = Math.max(-4, Math.min(5, st.n + d));
+  draw(); });
+const val = (a, n) => n >= 0 ? {p: a ** n, q: 1} : {p: Math.sign(a) ** (-n), q: Math.abs(a) ** -n};
+function expand(a, n){
+  const A = a < 0 ? `(${a})` : a;
+  if(n > 0) return Array(n).fill(A).join(' × ');
+  if(n === 0) return 'tidak ada faktor';
+  return `1 : (${Array(-n).fill(A).join(' × ')})`;
+}
+function draw(){
+  const {a, n} = st, A = a < 0 ? `(${String(a).replace('-', '−')})` : a;
+  let rows = '<tr><th>Bentuk</th><th>Arti</th><th>Nilai</th><th></th></tr>';
+  for(let k = 5; k >= -4; k--){
+    const v = val(a, k), s = (v.p < 0 ? '−' : '') + frac(Math.abs(v.p), v.q);
+    rows += `<tr${k === n ? ' class="on"' : ''}><td>${A}${sup(k)}</td><td style="font-size:12.5px;color:var(--muted)">${expand(a, k).replace(/-/g, '−')}</td><td>${s}</td><td class="arrow">${k > -4 ? ': ' + A + ' ↓' : ''}</td></tr>`;
+  }
+  $('tab').innerHTML = rows;
+  $('a').textContent = String(a).replace('-', '−'); $('n').textContent = String(n).replace('-', '−');
+  const v = val(a, n);
+  $('big').innerHTML = `${A}${sup(n)} = ${(v.p < 0 ? '−' : '') + frac(Math.abs(v.p), v.q)}`;
+  $('why').innerHTML = 'Setiap turun satu baris, pangkatnya berkurang 1 dan nilainya <b>dibagi ' + String(a).replace('-', '−') + '</b>. Lanjutkan pola itu: ' +
+    `${A}¹ : ${A} = 1, jadi <b>${A}⁰ = 1</b>. Lalu 1 : ${A} = 1/${A}, jadi <b>${A}⁻¹ = 1/${A}</b>.` + (a < 0 ? ' Bilangan pokok negatif: hasilnya positif jika pangkatnya genap dan negatif jika ganjil.' : '');
+}
+draw();
+</script>
+</body>
+</html>

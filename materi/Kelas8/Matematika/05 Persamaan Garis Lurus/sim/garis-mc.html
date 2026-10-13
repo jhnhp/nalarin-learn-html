@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafik y = mx + c</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.big{font-family:var(--display);font-weight:800;font-size:22px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+.ar{font-family:var(--display);font-weight:800;font-size:14px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik garis lurus"></svg></div>
+  <div class="panel">
+    <div class="big" id="eq"></div>
+    <div><div class="lab"><span>Kemiringan m</span><b id="mout"></b></div><input type="range" id="m" min="-3" max="3" step="0.25" value="0.5"></div>
+    <div><div class="lab"><span>Titik potong sumbu y, c</span><b id="cout"></b></div><input type="range" id="c" min="-5" max="5" step="1" value="1"></div>
+    <label class="chk"><input type="checkbox" id="c-tri" checked> Tampilkan segitiga kemiringan</label>
+    <label class="chk"><input type="checkbox" id="c-par"> Tampilkan garis sejajar dan tegak lurus</label>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -7, xmax: 7, ymin: -7, ymax: 7, scale: 30});
+['m', 'c', 'c-tri', 'c-par'].forEach(id => $(id).oninput = $(id).onchange = draw);
+Sim.onTheme(draw);
+const line = (m, c, col, extra = '') => `<line x1="${P.X(-7)}" y1="${P.Y(m * -7 + c)}" x2="${P.X(7)}" y2="${P.Y(m * 7 + c)}" style="stroke:${col}" stroke-width="3"${extra}/>`;
+const eqs = (m, c) => `y = ${m === 0 ? '' : (m === 1 ? '' : m === -1 ? '−' : fmt(m)) + 'x'}${c ? (m ? (c > 0 ? ' + ' : ' − ') + fmt(Math.abs(c)) : fmt(c)) : (m ? '' : '0')}`;
+function draw(){
+  const m = +$('m').value, c = +$('c').value;
+  let s = P.grid({xname: 'x', yname: 'y'});
+  if($('c-par').checked){
+    s += line(m, c - 3, 'var(--k)', ' class="dash"');
+    if(m !== 0) s += line(-1 / m, c, 'var(--r)', ' class="dash"');
+  }
+  s += line(m, c, 'var(--a)');
+  if($('c-tri').checked){
+    const x0 = 1, y0 = m * x0 + c, dx = 2, dy = m * dx;
+    s += `<line x1="${P.X(x0)}" y1="${P.Y(y0)}" x2="${P.X(x0 + dx)}" y2="${P.Y(y0)}" style="stroke:var(--comp)" stroke-width="3"/><line x1="${P.X(x0 + dx)}" y1="${P.Y(y0)}" x2="${P.X(x0 + dx)}" y2="${P.Y(y0 + dy)}" style="stroke:var(--b)" stroke-width="3"/>`;
+    s += `<text class="ar" x="${P.X(x0 + 1)}" y="${P.Y(y0) + (dy >= 0 ? 18 : -8)}" text-anchor="middle" style="fill:var(--comp)">2</text><text class="ar" x="${P.X(x0 + dx) + 8}" y="${P.Y(y0 + dy / 2) + 5}" style="fill:var(--b)">${fmt(dy)}</text>`;
+  }
+  s += `<circle cx="${P.X(0)}" cy="${P.Y(c)}" r="6" style="fill:var(--a)"/><text class="ar" x="${P.X(0) - 8}" y="${P.Y(c) - 8}" text-anchor="end" style="fill:var(--a)">(0, ${fmt(c)})</text>`;
+  if(m !== 0 && Math.abs(-c / m) <= 7) s += `<circle cx="${P.X(-c / m)}" cy="${P.Y(0)}" r="6" style="fill:var(--a)"/>`;
+  svg.innerHTML = s;
+  $('eq').textContent = eqs(m, c); $('mout').textContent = fmt(m); $('cout').textContent = fmt(c);
+  $('read').innerHTML = `<div><span>Arah garis</span><b>${m > 0 ? 'naik ke kanan' : m < 0 ? 'turun ke kanan' : 'mendatar'}</b></div>` +
+    `<div><span>Kemiringan = tegak : mendatar</span><b>${fmt(m * 2)} : 2 = ${fmt(m)}</b></div>` +
+    `<div><span>Titik potong sumbu y</span><b>(0, ${fmt(c)})</b></div>` +
+    `<div><span>Titik potong sumbu x</span><b>${m ? '(' + fmt(-c / m, 2) + ', 0)' : c ? 'tidak ada' : 'seluruh sumbu x'}</b></div>` +
+    ($('c-par').checked ? `<div><span style="color:var(--k)">Sejajar: m sama</span><b>${eqs(m, c - 3)}</b></div>` + (m ? `<div><span style="color:var(--r)">Tegak lurus: m₁ × m₂ = −1</span><b>m = ${fmt(-1 / m, 2)}</b></div>` : '') : '');
+}
+draw();
+</script>
+</body>
+</html>

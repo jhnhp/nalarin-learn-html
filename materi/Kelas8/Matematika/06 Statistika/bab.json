@@ -1,0 +1,203 @@
+{
+  "title": "Statistika",
+  "summary": "Ukuran pemusatan (mean, median, modus), memilih ukuran yang tepat, serta ukuran penyebaran data: jangkauan dan kuartil.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "ukuran-pemusatan",
+      "title": "Mean, median, dan modus",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Berita ekonomi sering menyebut \"rata-rata pendapatan\", dan laporan sekolah menyebut \"nilai rata-rata kelas\". Satu angka dipakai untuk mewakili sekumpulan data. Angka seperti itu disebut <b>ukuran pemusatan data</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tiga ukuran pemusatan",
+          "html": "<ul><li><b>Mean</b> (rata-rata): \\(\\bar{x} = \\dfrac{\\text{jumlah semua data}}{\\text{banyak data}}\\).</li><li><b>Median</b>: nilai tengah setelah data <b>diurutkan</b>. Jika banyak data genap, median adalah rata-rata dua data di tengah.</li><li><b>Modus</b>: data yang paling sering muncul. Bisa ada lebih dari satu modus, atau tidak ada sama sekali.</li></ul>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pusat-data.html",
+          "title": "Mean, median, dan modus",
+          "height": 430,
+          "caption": "Tambah dan hapus data dengan mengeklik. Lalu tekan <b>Tambah pencilan</b>. Ukuran mana yang paling banyak bergeser?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Data tinggi badan (cm): 152, 148, 160, 155, 148, 150, 157, 148. Tentukan mean, median, dan modus.</p>",
+          "steps": [
+            "Urutkan: 148, 148, 148, 150, 152, 155, 157, 160. Banyak data 8.",
+            "Mean = 1.218 : 8 = 152,25 cm.",
+            "Median = rata-rata data ke-4 dan ke-5 = (150 + 152) : 2 = 151 cm.",
+            "Modus = 148 cm (muncul 3 kali)."
+          ],
+          "answer": "mean 152,25 cm, median 151 cm, modus 148 cm"
+        },
+        {
+          "type": "h",
+          "text": "Mean dari tabel frekuensi"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika data disajikan dalam tabel frekuensi, kalikan setiap nilai dengan frekuensinya: \\(\\bar{x} = \\dfrac{\\Sigma (x \\times f)}{\\Sigma f}\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Ukuran sepatu 24 siswa: 37 (3 siswa), 38 (5), 39 (8), 40 (6), 41 (2). Tentukan mean dan median.</p>",
+          "steps": [
+            "Σ(x × f) = 111 + 190 + 312 + 240 + 82 = 935. Mean = 935 : 24 ≈ 38,96.",
+            "Median: data ke-12 dan ke-13. Kumulatif: 37 sampai data ke-3, 38 sampai ke-8, 39 sampai ke-16.",
+            "Data ke-12 dan ke-13 sama-sama 39, jadi median 39."
+          ],
+          "answer": "mean ≈ 38,96, median 39"
+        },
+        {
+          "type": "check",
+          "question": "Nilai rata-rata 5 siswa adalah 72. Setelah nilai Andi masuk, rata-ratanya menjadi 74. Nilai Andi adalah ....",
+          "options": {
+            "A": "74",
+            "B": "76",
+            "C": "84",
+            "D": "86"
+          },
+          "answer": "C",
+          "hint": "Hitung jumlah nilai sebelum dan sesudah.",
+          "explanation": "Jumlah 5 nilai = 360. Jumlah 6 nilai = 444. Nilai Andi = 444 − 360 = 84."
+        }
+      ]
+    },
+    {
+      "id": "memilih-ukuran",
+      "title": "Memilih ukuran pemusatan yang tepat",
+      "kind": "artikel",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "gambar/gaji-pencilan.svg",
+          "alt": "Diagram titik gaji 10 karyawan; satu gaji 40 juta menarik mean ke 9 juta, sedangkan median 5,5 juta",
+          "width": 640,
+          "caption": "Satu pencilan menarik mean jauh ke kanan, tetapi median hampir tidak berubah."
+        },
+        {
+          "type": "text",
+          "html": "<p>Di perusahaan itu, 9 karyawan bergaji 4–8 juta rupiah, tetapi direkturnya bergaji 40 juta rupiah. Rata-ratanya 9 juta, lebih tinggi daripada gaji 9 dari 10 karyawan! Data yang jauh berbeda dari data lain disebut <b>pencilan</b>.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Ukuran</th><th>Tepat dipakai jika</th></tr><tr><td>Mean</td><td>data numerik tanpa pencilan, misalnya nilai ulangan satu kelas.</td></tr><tr><td>Median</td><td>data numerik dengan pencilan, misalnya gaji atau harga rumah.</td></tr><tr><td>Modus</td><td>data kategorik, misalnya ukuran baju atau warna yang paling laku.</td></tr></table>"
+        },
+        {
+          "type": "check",
+          "question": "Toko sepatu ingin tahu ukuran yang paling banyak dibeli agar stoknya diperbanyak. Ukuran pemusatan yang paling tepat adalah ....",
+          "options": {
+            "A": "mean",
+            "B": "median",
+            "C": "modus",
+            "D": "jangkauan"
+          },
+          "answer": "C",
+          "hint": "Yang dicari adalah ukuran yang paling sering muncul.",
+          "explanation": "Modus menunjukkan ukuran yang paling sering dibeli. Mean ukuran sepatu, misalnya 38,96, tidak ada di toko."
+        }
+      ]
+    },
+    {
+      "id": "ukuran-penyebaran",
+      "title": "Jangkauan dan kuartil",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Dua kelas bisa memiliki rata-rata nilai sama, 75, tetapi pada kelas pertama semua siswa mendapat 70–80, sedangkan pada kelas kedua ada yang mendapat 40 dan ada yang 100. Selain pusat data, kita perlu mengukur seberapa <b>menyebar</b> data itu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Ukuran penyebaran",
+          "html": "<ul><li><b>Jangkauan</b> = data terbesar − data terkecil.</li><li><b>Kuartil</b> membagi data terurut menjadi empat bagian sama banyak: Q1 (kuartil bawah), Q2 (median), dan Q3 (kuartil atas).</li><li><b>Jangkauan antarkuartil</b> = Q3 − Q1, yaitu jangkauan 50% data di tengah.</li></ul>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kuartil.html",
+          "title": "Kuartil dan diagram kotak garis",
+          "height": 520,
+          "caption": "Ubah datanya. Ganti salah satu nilai dengan bilangan yang sangat besar. Apa yang berubah: jangkauan atau jangkauan antarkuartil?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan jangkauan, Q1, Q2, Q3, dan jangkauan antarkuartil dari data: 62, 75, 80, 58, 90, 72, 85, 68, 77, 95, 70.</p>",
+          "steps": [
+            "Urutkan: 58, 62, 68, 70, 72, 75, 77, 80, 85, 90, 95 (n = 11).",
+            "Jangkauan = 95 − 58 = 37.",
+            "Q2 = data ke-6 = 75.",
+            "Bagian bawah: 58, 62, 68, 70, 72, sehingga Q1 = 68. Bagian atas: 77, 80, 85, 90, 95, sehingga Q3 = 85.",
+            "Jangkauan antarkuartil = 85 − 68 = 17."
+          ],
+          "answer": "jangkauan 37, Q1 68, Q2 75, Q3 85, jangkauan antarkuartil 17"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa jangkauan antarkuartil?",
+          "html": "<p>Jangkauan sangat dipengaruhi pencilan, karena hanya memakai dua data paling ujung. Jangkauan antarkuartil hanya melihat bagian tengah data, sehingga lebih stabil.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Data: 4, 7, 2, 9, 5, 8, 3, 6. Kuartil atas (Q3) adalah ....",
+          "options": {
+            "A": "7",
+            "B": "7,5",
+            "C": "8",
+            "D": "6"
+          },
+          "answer": "B",
+          "hint": "Urutkan dulu, lalu ambil median dari 4 data teratas.",
+          "explanation": "Terurut: 2, 3, 4, 5, 6, 7, 8, 9. Bagian atas: 6, 7, 8, 9. Q3 = (7 + 8) : 2 = 7,5."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Ukuran</th><th>Cara menghitung</th></tr><tr><td>Mean</td><td>jumlah data : banyak data; dari tabel: Σ(x × f) : Σf.</td></tr><tr><td>Median (Q2)</td><td>nilai tengah data terurut.</td></tr><tr><td>Modus</td><td>data paling sering muncul.</td></tr><tr><td>Jangkauan</td><td>maksimum − minimum.</td></tr><tr><td>Q1, Q3</td><td>median bagian bawah dan bagian atas data terurut.</td></tr><tr><td>Jangkauan antarkuartil</td><td>Q3 − Q1.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mencari median tanpa mengurutkan data.</li><li>Pada tabel frekuensi, menjumlahkan nilai x tanpa mengalikan frekuensinya.</li><li>Memakai mean untuk data dengan pencilan besar.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VIII</i> (Kemendikbudristek), Bab 6 Statistika.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang mean, median, modus, jangkauan, dan kuartil. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}
