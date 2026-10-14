@@ -1,0 +1,344 @@
+{
+  "title": "Lingkaran",
+  "summary": "Sudut pusat dan sudut keliling, busur dan juring, garis singgung dan garis singgung persekutuan, tali busur, serta segi empat tali busur.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "sudut-lingkaran",
+      "title": "Sudut pusat dan sudut keliling",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Di SMP kamu sudah mengenal unsur lingkaran: pusat, jari-jari, diameter, busur, tali busur, juring, dan tembereng. Kini kita selidiki hubungan sudut-sudut pada lingkaran.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Dua jenis sudut",
+          "html": "<ul><li><b>Sudut pusat</b>: titik sudutnya di pusat O, kakinya jari-jari.</li><li><b>Sudut keliling</b>: titik sudutnya pada lingkaran, kakinya tali busur.</li></ul>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/sudut-pusat.svg",
+          "alt": "Sudut pusat AOB sebesar 2 alfa dan sudut keliling ACB sebesar alfa menghadap busur AB",
+          "width": 560,
+          "caption": "Hubungan sudut pusat dan sudut keliling."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Sifat sudut pada lingkaran",
+          "html": "<ol><li>Sudut pusat = 2 × sudut keliling yang menghadap busur yang sama.</li><li>Sudut-sudut keliling yang menghadap busur yang sama besarnya sama.</li><li><b>Teorema Thales</b>: sudut keliling yang menghadap diameter besarnya 90°.</li></ol>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/sudut-keliling.html",
+          "title": "Sudut pusat dan sudut keliling",
+          "height": 540,
+          "caption": "Geser titik C di sepanjang lingkaran: apakah sudut keliling berubah? Tekan <b>Jadikan AB diameter</b> untuk melihat Teorema Thales, lalu coba mode dua sudut keliling."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sudut pusat ∠AOB = 110°. Tentukan sudut keliling ∠ACB yang menghadap busur AB yang sama.</p>",
+          "steps": [
+            "∠ACB = ½ × ∠AOB.",
+            "∠ACB = 55°."
+          ],
+          "answer": "55°"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa 2 kali?",
+          "html": "<p>Tarik garis dari C melalui O. Terbentuk dua segitiga sama kaki (OA = OC = OB = r). Sudut luar segitiga sama kaki sama dengan dua kali sudut alasnya, sehingga sudut pusat = 2 × sudut keliling.</p>"
+        },
+        {
+          "type": "check",
+          "question": "AB diameter lingkaran dan C titik pada lingkaran. Besar ∠ACB adalah ....",
+          "options": {
+            "A": "45°",
+            "B": "60°",
+            "C": "90°",
+            "D": "180°"
+          },
+          "answer": "C",
+          "hint": "Sudut pusat yang menghadap diameter adalah 180°.",
+          "explanation": "Sudut keliling = ½ × 180° = 90° (Teorema Thales)."
+        }
+      ]
+    },
+    {
+      "id": "busur-juring",
+      "title": "Panjang busur dan luas juring",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Busur dan juring adalah “potongan” keliling dan luas lingkaran. Besarnya sebanding dengan sudut pusatnya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus",
+          "html": "\\[\\text{panjang busur} = \\frac{\\alpha}{360^\\circ} \\times 2\\pi r \\qquad \\text{luas juring} = \\frac{\\alpha}{360^\\circ} \\times \\pi r^2\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Jari-jari 14 cm, sudut pusat 90°. Tentukan panjang busur dan luas juring (π = 22/7).</p>",
+          "steps": [
+            "Busur = ¼ × 2 × 22/7 × 14 = 22 cm.",
+            "Juring = ¼ × 22/7 × 196 = 154 cm²."
+          ],
+          "answer": "22 cm dan 154 cm²"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sudut keliling ∠ACB = 36° pada lingkaran berjari-jari 10 cm. Berapa panjang busur AB?</p>",
+          "steps": [
+            "Sudut pusat = 2 × 36° = 72°.",
+            "Busur = 72/360 × 2 × π × 10 = 4π ≈ 12,57 cm."
+          ],
+          "answer": "4π cm"
+        },
+        {
+          "type": "check",
+          "question": "Luas juring dengan jari-jari 7 cm dan sudut pusat 72° adalah ....",
+          "options": {
+            "A": "15,4 cm²",
+            "B": "30,8 cm²",
+            "C": "44 cm²",
+            "D": "154 cm²"
+          },
+          "answer": "B",
+          "hint": "Bagian lingkaran = 72/360 = ⅕.",
+          "explanation": "⅕ × 22/7 × 49 = ⅕ × 154 = 30,8 cm²."
+        }
+      ]
+    },
+    {
+      "id": "garis-singgung",
+      "title": "Garis singgung lingkaran",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Roda sepeda menyentuh jalan tepat di satu titik. Garis yang memotong lingkaran tepat di satu titik disebut <b>garis singgung</b>, dan titik itu <b>titik singgung</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Sifat garis singgung",
+          "html": "<ul><li>Garis singgung <b>tegak lurus</b> jari-jari di titik singgung.</li><li>Dari titik P di luar lingkaran dapat dibuat <b>dua</b> garis singgung yang <b>sama panjang</b>.</li><li>Panjangnya dihitung dengan Teorema Pythagoras: \\(PS = \\sqrt{AP^2 - r^2}\\).</li></ul>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/garis-singgung.svg",
+          "alt": "Dua garis singgung PS dan PT dari titik P ke lingkaran berpusat A; jari-jari tegak lurus garis singgung",
+          "width": 440,
+          "caption": "Segitiga APS siku-siku di S."
+        },
+        {
+          "type": "sim",
+          "src": "sim/garis-singgung.html",
+          "title": "Garis singgung lingkaran",
+          "height": 480,
+          "caption": "Pada mode <b>Dari titik di luar</b>, ubah jarak AP dan jari-jari. Kapan garis singgung tidak dapat dibuat?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Jari-jari lingkaran A adalah 7 cm dan titik P berjarak 25 cm dari A. Tentukan panjang garis singgung dari P.</p>",
+          "steps": [
+            "Segitiga APB siku-siku di B (titik singgung).",
+            "PB = √(25² − 7²) = √(625 − 49) = √576 = 24 cm."
+          ],
+          "answer": "24 cm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>BD dan CD garis singgung lingkaran A dengan ∠BAC = 147°. Tentukan ∠BDC.</p>",
+          "steps": [
+            "Segi empat ABDC mempunyai ∠B = ∠C = 90°.",
+            "∠BDC = 360° − 90° − 90° − 147° = 33°."
+          ],
+          "answer": "33°"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Teorema Pitot",
+          "html": "<p>Jika keempat sisi segi empat menyinggung sebuah lingkaran, jumlah sisi yang berhadapan sama: AB + CD = BC + DA. Alasannya: dari setiap titik sudut, kedua garis singgungnya sama panjang.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Jari-jari lingkaran 5 cm dan jarak pusat ke titik P 13 cm. Panjang garis singgung dari P adalah ....",
+          "options": {
+            "A": "8 cm",
+            "B": "12 cm",
+            "C": "13 cm",
+            "D": "18 cm"
+          },
+          "answer": "B",
+          "hint": "Gunakan Pythagoras dengan hipotenusa 13.",
+          "explanation": "√(169 − 25) = √144 = 12 cm."
+        }
+      ]
+    },
+    {
+      "id": "persekutuan",
+      "title": "Garis singgung persekutuan dua lingkaran",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Rantai sepeda menghubungkan gir depan dan gir belakang. Bagian rantai yang lurus adalah <b>garis singgung persekutuan</b> kedua gir: garis yang menyinggung dua lingkaran sekaligus.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/persekutuan.svg",
+          "alt": "Kiri garis singgung persekutuan luar, kanan garis singgung persekutuan dalam yang memotong garis pusat",
+          "width": 600,
+          "caption": "Dua jenis garis singgung persekutuan."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Panjang garis singgung persekutuan",
+          "html": "<p>Dengan jari-jari R dan r serta jarak pusat AB = d:</p>\\[\\text{luar: } \\sqrt{d^2 - (R - r)^2} \\qquad \\text{dalam: } \\sqrt{d^2 - (R + r)^2}\\]<p>Geser ruas BD sejajar CD hingga melalui A, maka terbentuk segitiga siku-siku dengan sisi tegak R − r (luar) atau R + r (dalam).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/garis-singgung.html",
+          "title": "Garis singgung persekutuan",
+          "height": 480,
+          "caption": "Pilih mode persekutuan luar dan dalam. Kapan garis singgung persekutuan dalam tidak dapat dibuat?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua lingkaran berjari-jari 8 cm dan 3 cm, jarak pusatnya 13 cm. Tentukan panjang garis singgung persekutuan luar dan dalam.</p>",
+          "steps": [
+            "Luar: √(13² − 5²) = √144 = 12 cm.",
+            "Dalam: √(13² − 11²) = √48 = 4√3 ≈ 6,93 cm."
+          ],
+          "answer": "12 cm dan 4√3 cm"
+        },
+        {
+          "type": "check",
+          "question": "Jari-jari dua lingkaran 5 cm dan 3 cm, jarak pusat 17 cm. Panjang garis singgung persekutuan dalamnya adalah ....",
+          "options": {
+            "A": "15 cm",
+            "B": "16,9 cm",
+            "C": "8 cm",
+            "D": "√285 cm"
+          },
+          "answer": "A",
+          "hint": "Gunakan R + r = 8.",
+          "explanation": "√(17² − 8²) = √(289 − 64) = √225 = 15 cm. √285 adalah persekutuan luar."
+        }
+      ]
+    },
+    {
+      "id": "tali-busur",
+      "title": "Tali busur dan segi empat tali busur",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Sifat tali busur",
+          "html": "<ul><li>Tali busur terpanjang adalah diameter.</li><li>Tali busur yang sama panjang menghadap busur (dan sudut pusat) yang sama besar.</li><li>Garis dari pusat yang tegak lurus tali busur membagi tali busur itu menjadi dua sama panjang.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tali busur AB = 16 cm pada lingkaran berjari-jari 10 cm. Berapa jarak pusat ke tali busur?</p>",
+          "steps": [
+            "Garis tegak lurus dari O membagi AB: setengahnya 8 cm.",
+            "Jarak = √(10² − 8²) = 6 cm."
+          ],
+          "answer": "6 cm"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Segi empat tali busur",
+          "html": "<p>Segi empat yang keempat titik sudutnya terletak pada lingkaran:</p><ul><li>Sudut-sudut yang berhadapan <b>berpelurus</b>: ∠A + ∠C = ∠B + ∠D = 180°.</li><li><b>Teorema Ptolemeus</b>: AC × BD = AB × CD + AD × BC.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/sudut-keliling.html",
+          "title": "Segi empat tali busur",
+          "height": 540,
+          "caption": "Pilih mode <b>Segi empat tali busur</b>, geser keempat titik, dan periksa jumlah sudut berhadapan serta kesamaan Ptolemeus."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Terapkan Teorema Ptolemeus pada persegi panjang dengan sisi a, b dan diagonal c.</p>",
+          "steps": [
+            "Persegi panjang selalu dapat dibuat lingkaran luarnya.",
+            "Ptolemeus: c × c = a × a + b × b.",
+            "Jadi c² = a² + b², yaitu Teorema Pythagoras."
+          ],
+          "answer": "Teorema Pythagoras"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Teorema van Schooten",
+          "html": "<p>Jika ABC segitiga sama sisi dan P titik pada busur BC (yang tidak memuat A), maka PA = PB + PC. Ini akibat langsung Teorema Ptolemeus pada segi empat ABPC.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada segi empat tali busur ABCD, ∠A = 75°. Besar ∠C adalah ....",
+          "options": {
+            "A": "75°",
+            "B": "105°",
+            "C": "150°",
+            "D": "285°"
+          },
+          "answer": "B",
+          "hint": "Sudut berhadapan berpelurus.",
+          "explanation": "∠C = 180° − 75° = 105°."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Sudut pusat dan keliling</td><td>sudut pusat = 2 × sudut keliling; menghadap diameter = 90°</td></tr><tr><td>Busur, juring</td><td>(α/360°) × 2πr dan (α/360°) × πr²</td></tr><tr><td>Garis singgung</td><td>⊥ jari-jari; dari titik luar dua garis sama panjang √(d² − r²)</td></tr><tr><td>Persekutuan</td><td>luar √(d² − (R − r)²), dalam √(d² − (R + r)²)</td></tr><tr><td>Segi empat tali busur</td><td>sudut berhadapan 180°; Ptolemeus</td></tr><tr><td>Segi empat garis singgung</td><td>Pitot: AB + CD = BC + DA</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Membalik hubungan: sudut keliling bukan dua kali sudut pusat.</li><li>Tertukar R − r dan R + r pada garis singgung persekutuan.</li><li>Lupa bahwa sudut di titik singgung siku-siku.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas XI</i> (Kemendikbudristek), Bab 4 Lingkaran.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang sudut pada lingkaran, busur dan juring, garis singgung, dan tali busur. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

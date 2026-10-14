@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabel Silang dan Frekuensi Relatif Bersyarat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}td,th{padding:4px 5px;text-align:center;border-bottom:1px solid var(--line)}th{font-size:12px;color:var(--muted)}
+td input{width:52px;font:inherit;padding:3px 4px;border-radius:7px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);text-align:center}
+.tot{font-weight:800}.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Diagram batang bertumpuk 100 persen untuk setiap kategori baris"></svg></div>
+  <div class="panel">
+    <div class="seg" id="ds"><button data-d="0" class="on">Obat mual</button><button data-d="1">Vaksin</button><button data-d="2">Tanpa asosiasi</button></div>
+    <table id="tab"></table>
+    <div class="seg" id="mode"><button data-m="n">Frekuensi</button><button data-m="t">Relatif total</button><button data-m="r" class="on">Bersyarat baris</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const DS = [
+  {rv: 'Jenis tablet', cv: 'Tingkat kemualan', rows: ['Tablet obat', 'Placebo'], cols: ['Tidak', 'Ringan', 'Sedang', 'Berat'], d: [[41, 38, 16, 5], [17, 30, 38, 15]]},
+  {rv: 'Status vaksinasi', cv: 'Kondisi', rows: ['Divaksin', 'Tidak divaksin'], cols: ['Terserang', 'Tidak terserang'], d: [[12, 88], [28, 72]]},
+  {rv: 'Kelas', cv: 'Ekstrakurikuler', rows: ['X-A', 'X-B'], cols: ['Olahraga', 'Seni', 'Sains'], d: [[15, 9, 6], [20, 12, 8]]},
+];
+let D = JSON.parse(JSON.stringify(DS[0])), mode = 'r';
+const COL = ['var(--a)', 'var(--comp)', 'var(--k)', 'var(--r)'];
+$('ds').onclick = e => { const b = e.target.closest('button'); if(!b) return; D = JSON.parse(JSON.stringify(DS[+b.dataset.d])); document.querySelectorAll('#ds button').forEach(x => x.classList.toggle('on', x === b)); build(); };
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+Sim.onTheme(draw);
+const pct = v => fmt(v * 100, 1) + '%';
+function build(){
+  const rs = D.d.map(r => r.reduce((a, b) => a + b, 0));
+  $('tab').innerHTML = `<tr><th>${D.rv} \\ ${D.cv}</th>${D.cols.map(c => `<th>${c}</th>`).join('')}<th>Jumlah</th></tr>` +
+    D.rows.map((r, i) => `<tr><th>${r}</th>${D.d[i].map((v, j) => `<td><input data-i="${i}" data-j="${j}" value="${v}"></td>`).join('')}<td class="tot" id="rs${i}"></td></tr>`).join('') +
+    `<tr><th>Jumlah</th>${D.cols.map((c, j) => `<td class="tot" id="cs${j}"></td>`).join('')}<td class="tot" id="all"></td></tr>`;
+  $('tab').querySelectorAll('input').forEach(el => el.oninput = () => { D.d[+el.dataset.i][+el.dataset.j] = Math.max(0, Math.round(Number(el.value)) || 0); draw(); });
+  draw();
+}
+function draw(){
+  const rs = D.d.map(r => r.reduce((a, b) => a + b, 0)), cs = D.cols.map((c, j) => D.d.reduce((a, r) => a + r[j], 0)), N = rs.reduce((a, b) => a + b, 0) || 1;
+  D.rows.forEach((r, i) => $('rs' + i).textContent = mode === 'n' ? rs[i] : mode === 't' ? pct(rs[i] / N) : '100%');
+  D.cols.forEach((c, j) => $('cs' + j).textContent = mode === 'n' ? cs[j] : mode === 't' ? pct(cs[j] / N) : pct(cs[j] / N));
+  $('all').textContent = mode === 'n' ? N : '100%';
+  // nilai di dalam sel ditampilkan di diagram; tabel tetap dapat diedit
+  const W = 330, x0 = 110, bh = 54;
+  let s = `<text class="c" x="${x0 + W / 2}" y="20" text-anchor="middle" style="fill:var(--muted)">${mode === 'r' ? 'Frekuensi relatif bersyarat per baris (masing-masing 100%)' : mode === 't' ? 'Frekuensi relatif terhadap total' : 'Frekuensi'}</text>`;
+  const rowsAll = [...D.rows.map((r, i) => [r, D.d[i], rs[i]]), ['Semua', cs, N]];
+  rowsAll.forEach(([name, vals, tot], i) => {
+    const y = 40 + i * (bh + 22); let x = x0;
+    const denom = mode === 'r' || i === rowsAll.length - 1 ? (tot || 1) : mode === 't' ? N : Math.max(...rs, 1);
+    s += `<text class="c" x="${x0 - 8}" y="${y + bh / 2 + 4}" text-anchor="end">${name}</text>`;
+    vals.forEach((v, j) => { const w = W * v / denom; if(w > 0){ s += `<rect x="${x}" y="${y}" width="${w}" height="${bh}" style="fill:${COL[j]};stroke:var(--bg)" fill-opacity="${i === rowsAll.length - 1 ? .45 : .8}" stroke-width="1.5"/>`;
+      if(w > 34) s += `<text class="c" x="${x + w / 2}" y="${y + bh / 2 + 4}" text-anchor="middle" style="fill:#fff">${mode === 'n' ? v : pct(v / (mode === 'r' || i === rowsAll.length - 1 ? tot || 1 : N))}</text>`; } x += w; });
+  });
+  s += D.cols.map((c, j) => `<rect x="${x0 + j * 85}" y="276" width="11" height="11" rx="3" style="fill:${COL[j]}"/><text class="c" x="${x0 + j * 85 + 15}" y="286">${c}</text>`).join('');
+  svg.innerHTML = s;
+  const cond = D.d.map((r, i) => r.map(v => v / (rs[i] || 1)));
+  const diff = Math.max(...D.cols.map((c, j) => Math.max(...cond.map(r => r[j])) - Math.min(...cond.map(r => r[j]))));
+  $('read').innerHTML = D.cols.map((c, j) => `<div><span style="color:${COL[j]}">P(${c} | baris)</span><b>${cond.map(r => pct(r[j])).join(' vs ')}</b></div>`).join('') +
+    `<div><span>Selisih terbesar</span><b>${fmt(diff * 100, 1)} poin persen</b></div>` +
+    `<div><span>Kesimpulan</span><b>${diff < .05 ? 'tidak tampak asosiasi' : diff < .15 ? 'asosiasi lemah' : 'ada asosiasi'}</b></div>`;
+}
+build();
+</script>
+</body>
+</html>

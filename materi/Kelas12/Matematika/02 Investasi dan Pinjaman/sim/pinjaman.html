@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulasi Pinjaman</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}td,th{padding:3px 4px;text-align:right;border-bottom:1px solid var(--line)}th{font-size:11.5px;color:var(--muted)}td:first-child,th:first-child{text-align:center}
+.tw{max-height:240px;overflow:auto}.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Komposisi pembayaran pokok dan bunga setiap bulan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="anuitas" class="on">Anuitas (angsuran tetap)</button><button data-m="pokok">Pokok tetap</button></div>
+    <div><div class="lab"><span>Pinjaman</span><b id="pout"></b></div><input type="range" id="p" min="1000000" max="50000000" step="1000000" value="15000000"></div>
+    <div><div class="lab"><span>Bunga per tahun</span><b id="iout"></b></div><input type="range" id="i" min="3" max="24" step="1" value="12"></div>
+    <div><div class="lab"><span>Lama (bulan)</span><b id="nout"></b></div><input type="range" id="n" min="3" max="36" step="1" value="10"></div>
+    <div class="read" id="read"></div>
+    <div class="tw"><table id="tab"></table></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const rp = v => 'Rp' + Math.round(v).toLocaleString('id-ID'), jt = v => (v / 1e6).toLocaleString('id-ID', {maximumFractionDigits: 2}) + ' jt';
+let mode = 'anuitas';
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+['p', 'i', 'n'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function schedule(P, i, n, m){
+  const rows = []; let s = P;
+  const A = i ? P * i / (1 - (1 + i) ** -n) : P / n;
+  for(let k = 1; k <= n; k++){
+    const b = s * i, pk = m === 'anuitas' ? A - b : P / n, tot = b + pk;
+    rows.push({k, s, b, pk, tot, sisa: s - pk}); s -= pk;
+  }
+  return {rows, A};
+}
+function draw(){
+  const P = +$('p').value, I = +$('i').value, n = +$('n').value, i = I / 1200;
+  $('pout').textContent = rp(P); $('iout').textContent = I + '% (' + (I / 12).toLocaleString('id-ID', {maximumFractionDigits: 2}) + '% per bulan)'; $('nout').textContent = n;
+  const {rows, A} = schedule(P, i, n, mode), other = schedule(P, i, n, mode === 'anuitas' ? 'pokok' : 'anuitas');
+  const mx = Math.max(...rows.map(r => r.tot)), L = 50, B = 250, W = 400, H = 220, bw = W / n;
+  let s = '';
+  for(let k = 0; k <= 4; k++){ const v = mx * k / 4, y = B - H * k / 4; s += `<line x1="${L}" y1="${y}" x2="${L + W}" y2="${y}" style="stroke:var(--line)"/><text x="${L - 5}" y="${y + 4}" font-size="10.5" text-anchor="end" style="fill:var(--muted)">${jt(v)}</text>`; }
+  rows.forEach((r, k) => { const x = L + k * bw + bw * .12, w = bw * .76, hp = r.pk / mx * H, hb = r.b / mx * H;
+    s += `<rect x="${x}" y="${B - hp}" width="${w}" height="${hp}" style="fill:var(--a)" fill-opacity=".8"/><rect x="${x}" y="${B - hp - hb}" width="${w}" height="${hb}" style="fill:var(--comp)" fill-opacity=".85"/>`;
+    if(n <= 18 || (k + 1) % 3 === 0) s += `<text x="${x + w / 2}" y="${B + 14}" font-size="10.5" text-anchor="middle" style="fill:var(--muted)">${k + 1}</text>`; });
+  s += `<line x1="${L}" y1="${B}" x2="${L + W}" y2="${B}" style="stroke:var(--ink)" stroke-width="1.5"/><text x="${L + W / 2}" y="${B + 32}" font-size="11.5" text-anchor="middle" style="fill:var(--muted)">bulan ke-</text>`;
+  s += `<rect x="${L + 10}" y="12" width="11" height="11" rx="3" style="fill:var(--a)"/><text class="c" x="${L + 26}" y="22">angsuran pokok</text><rect x="${L + 140}" y="12" width="11" height="11" rx="3" style="fill:var(--comp)"/><text class="c" x="${L + 156}" y="22">bunga</text>`;
+  svg.innerHTML = s;
+  const totB = rows.reduce((a, r) => a + r.b, 0), totO = other.rows.reduce((a, r) => a + r.b, 0);
+  $('read').innerHTML = (mode === 'anuitas' ? `<div><span>Anuitas A = M·i / (1 − (1 + i)⁻ⁿ)</span><b>${rp(A)}</b></div>` : `<div><span>Angsuran pokok = M/n</span><b>${rp(P / n)}</b></div><div><span>Pembayaran bulan 1 → terakhir</span><b>${rp(rows[0].tot)} → ${rp(rows[n - 1].tot)}</b></div>`) +
+    `<div><span>Total bunga</span><b>${rp(totB)}</b></div><div><span>Total bunga skema lainnya</span><b>${rp(totO)}</b></div>`;
+  $('tab').innerHTML = '<tr><th>Bln</th><th>Pinjaman awal</th><th>Bunga</th><th>Pokok</th><th>Bayar</th><th>Sisa</th></tr>' + rows.map(r => `<tr><td>${r.k}</td><td>${rp(r.s)}</td><td>${rp(r.b)}</td><td>${rp(r.pk)}</td><td>${rp(r.tot)}</td><td>${rp(Math.max(0, r.sisa))}</td></tr>`).join('');
+}
+draw();
+</script>
+</body>
+</html>

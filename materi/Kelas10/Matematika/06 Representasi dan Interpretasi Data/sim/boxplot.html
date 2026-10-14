@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Box Plot dan Pencilan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.tag{font-family:var(--display);font-weight:800;font-size:12.5px}
+input[type=text]{font:inherit;font-size:15px;width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 260" role="img" aria-label="Diagram titik dan box plot dengan batas pencilan"></svg></div>
+  <div class="panel">
+    <div class="lab"><span>Data (pisahkan dengan koma)</span></div>
+    <input type="text" id="in" value="23, 24, 22, 25, 24, 26, 23, 36, 24, 25, 26, 23">
+    <div class="seg" id="ex"><button data-v="23, 24, 22, 25, 24, 26, 23, 36, 24, 25, 26, 23" class="on">Kecepatan unduh</button><button data-v="320, 350, 300, 410, 380, 360, 750, 340, 390, 330">Listrik (kWh)</button><button data-v="70, 72, 75, 78, 80, 81, 83, 85, 88, 90, 92, 95">Tanpa pencilan</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Letak Q1 = data ke-n/4 dan Q3 = data ke-3n/4. Jika hasilnya bulat m, ambil rata-rata data ke-m dan ke-(m + 1); jika tidak bulat, bulatkan ke atas. Pencilan: data di luar Q1 − 1,5·IQR dan Q3 + 1,5·IQR.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+$('in').oninput = draw;
+$('ex').onclick = e => { const b = e.target.closest('button'); if(!b) return; $('in').value = b.dataset.v; document.querySelectorAll('#ex button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+Sim.onTheme(draw);
+const ps = pos => Number.isInteger(pos) ? `data ke-${pos} dan ke-${pos + 1}` : `data ke-${Math.ceil(pos)}`;
+const at = (d, pos) => Number.isInteger(pos) ? (d[pos - 1] + d[pos]) / 2 : d[Math.ceil(pos) - 1];
+function draw(){
+  const d = $('in').value.split(/[;,\s]+/).filter(t => t).map(Number).filter(isFinite).sort((a, b) => a - b), n = d.length;
+  if(n < 4){ svg.innerHTML = '<text x="230" y="130" text-anchor="middle" class="tag">Masukkan paling sedikit 4 data</text>'; $('read').innerHTML = ''; return; }
+  const Q1 = at(d, n / 4), Q2 = at(d, n / 2), Q3 = at(d, 3 * n / 4), IQR = Q3 - Q1, lo = Q1 - 1.5 * IQR, hi = Q3 + 1.5 * IQR;
+  const out = d.filter(v => v < lo || v > hi), inn = d.filter(v => v >= lo && v <= hi);
+  const a = Math.min(d[0], lo), b = Math.max(d[n - 1], hi), pad = (b - a) * .06 || 1, A = a - pad, Bm = b + pad, X = v => 25 + (v - A) / (Bm - A) * 410;
+  let s = '';
+  // diagram titik
+  const cnt = {};
+  d.forEach(v => { cnt[v] = (cnt[v] || 0) + 1; const bad = v < lo || v > hi; s += `<circle cx="${X(v)}" cy="${118 - cnt[v] * 13}" r="5.5" style="fill:${bad ? 'var(--r)' : 'var(--a)'}"/>`; });
+  // garis bilangan
+  s += `<line x1="15" y1="230" x2="445" y2="230" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  const step = Math.pow(10, Math.floor(Math.log10((Bm - A) / 5))), st = (Bm - A) / step > 25 ? step * 5 : (Bm - A) / step > 10 ? step * 2 : step;
+  for(let v = Math.ceil(A / st) * st; v <= Bm; v += st) s += `<line x1="${X(v)}" y1="226" x2="${X(v)}" y2="234" style="stroke:var(--ink)"/><text x="${X(v)}" y="249" text-anchor="middle" font-size="11" style="fill:var(--muted)">${fmt(v)}</text>`;
+  // pagar pencilan
+  [lo, hi].forEach((v, i) => s += `<line x1="${X(v)}" y1="125" x2="${X(v)}" y2="222" style="stroke:var(--r)" stroke-width="1.5" class="dash"/><text class="tag" x="${X(v)}" y="218" text-anchor="${i || X(v) < 150 ? 'start' : 'end'}" dx="${i || X(v) < 150 ? 4 : -4}" dy="${!i && X(v) < 150 ? -14 : 0}" style="fill:var(--r)">${i ? 'batas atas' : 'batas bawah'} ${fmt(v)}</text>`);
+  // box plot
+  const y = 170, wl = inn[0], wh = inn[inn.length - 1];
+  s += `<line x1="${X(wl)}" y1="${y}" x2="${X(Q1)}" y2="${y}" style="stroke:var(--ink)" stroke-width="2"/><line x1="${X(Q3)}" y1="${y}" x2="${X(wh)}" y2="${y}" style="stroke:var(--ink)" stroke-width="2"/>`;
+  s += `<line x1="${X(wl)}" y1="${y - 10}" x2="${X(wl)}" y2="${y + 10}" style="stroke:var(--ink)" stroke-width="2"/><line x1="${X(wh)}" y1="${y - 10}" x2="${X(wh)}" y2="${y + 10}" style="stroke:var(--ink)" stroke-width="2"/>`;
+  s += `<rect x="${X(Q1)}" y="${y - 20}" width="${X(Q3) - X(Q1)}" height="40" style="fill:var(--a);stroke:var(--a)" fill-opacity=".18" stroke-width="2"/><line x1="${X(Q2)}" y1="${y - 20}" x2="${X(Q2)}" y2="${y + 20}" style="stroke:var(--comp)" stroke-width="3"/>`;
+  out.forEach(v => s += `<text class="tag" x="${X(v)}" y="${y + 5}" text-anchor="middle" style="fill:var(--r)">✱</text>`);
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>n (data terurut)</span><b>${n}</b></div><div><span>Q1 (${ps(n / 4)})</span><b>${fmt(Q1)}</b></div><div><span style="color:var(--comp)">Q2 median (${ps(n / 2)})</span><b>${fmt(Q2)}</b></div><div><span>Q3 (${ps(3 * n / 4)})</span><b>${fmt(Q3)}</b></div>` +
+    `<div><span>IQR = Q3 − Q1</span><b>${fmt(IQR)}</b></div><div><span style="color:var(--r)">Batas pencilan</span><b>${fmt(lo)} dan ${fmt(hi)}</b></div>` +
+    `<div><span style="color:var(--r)">Pencilan</span><b>${out.length ? out.map(v => fmt(v)).join(', ') : 'tidak ada'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

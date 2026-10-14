@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barisan Aritmetika dan Geometri</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.lbl{font-family:var(--font);font-size:11.5px;fill:var(--muted)}.val{font-family:var(--display);font-weight:800;font-size:11px;fill:var(--ink)}
+.calc{font-size:14px;line-height:1.8;padding:10px 12px;border-radius:10px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Diagram batang suku-suku barisan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="kind"><button data-k="ar" class="on">Aritmetika</button><button data-k="geo">Geometri</button></div>
+    <div><div class="lab"><span>Suku pertama a</span><b id="aout"></b></div><input type="range" id="a" min="-10" max="20" step="1" value="2"></div>
+    <div><div class="lab"><span id="dname">Beda b</span><b id="dout"></b></div><input type="range" id="d" min="-5" max="5" step="0.5" value="3"></div>
+    <div><div class="lab"><span>Banyak suku n</span><b id="nout"></b></div><input type="range" id="n" min="1" max="12" step="1" value="8"></div>
+    <div class="calc" id="calc"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let kind = 'ar';
+$('kind').onclick = e => { const b = e.target.closest('button'); if(!b) return; kind = b.dataset.k; document.querySelectorAll('#kind button').forEach(x => x.classList.toggle('on', x === b));
+  const d = $('d'); if(kind === 'geo'){ d.min = -2; d.max = 2; d.step = .25; d.value = .5; $('a').value = 16; } else { d.min = -5; d.max = 5; d.step = .5; d.value = 3; $('a').value = 2; } draw(); };
+['a', 'd', 'n'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function draw(){
+  const a = +$('a').value, d = +$('d').value, n = +$('n').value;
+  const U = k => kind === 'ar' ? a + (k - 1) * d : a * d ** (k - 1);
+  const terms = Array.from({length: n}, (_, i) => U(i + 1)), S = terms.reduce((x, y) => x + y, 0);
+  const mx = Math.max(1, ...terms.map(Math.abs)), gx = 30, gw = 410, Y0 = 150, H = 120, bw = gw / 12;
+  let s = `<line x1="${gx}" y1="${Y0}" x2="${gx + gw}" y2="${Y0}" style="stroke:var(--ink)" stroke-width="1.6"/>`;
+  terms.forEach((t, i) => {
+    const h = t / mx * H, x = gx + i * bw + bw * .15;
+    s += `<rect x="${x}" y="${h >= 0 ? Y0 - h : Y0}" width="${bw * .7}" height="${Math.abs(h)}" rx="2" style="fill:${t >= 0 ? 'var(--a)' : 'var(--b)'}"/>`;
+    s += `<text class="val" x="${x + bw * .35}" y="${h >= 0 ? Y0 - h - 4 : Y0 - h + 12}" text-anchor="middle">${fmt(t, 2)}</text><text class="lbl" x="${x + bw * .35}" y="${Y0 + (h >= 0 ? 14 : -6)}" text-anchor="middle">U${i + 1}</text>`;
+  });
+  if(kind === 'geo' && Math.abs(d) < 1){ const Sinf = a / (1 - d); s += `<text class="lbl" x="${gx}" y="292">Deret tak hingga konvergen: S∞ = ${fmt(Sinf, 3)}. Jumlah ${n} suku: ${fmt(S, 3)}.</text>`; }
+  svg.innerHTML = s;
+  $('aout').textContent = fmt(a); $('dout').textContent = fmt(d); $('nout').textContent = n;
+  $('dname').textContent = kind === 'ar' ? 'Beda b' : 'Rasio r';
+  $('calc').innerHTML = kind === 'ar'
+    ? `Uₙ = a + (n − 1)b = ${fmt(a)} + (n − 1)(${fmt(d)})<br>U<sub>${n}</sub> = <b>${fmt(U(n))}</b><br>Sₙ = n/2 (a + Uₙ) = ${n}/2 × (${fmt(a)} + ${fmt(U(n))}) = <b>${fmt(S)}</b><br><span style="color:var(--muted)">Setiap suku <b>ditambah</b> ${fmt(d)}.</span>`
+    : `Uₙ = a · rⁿ⁻¹ = ${fmt(a)} · (${fmt(d)})ⁿ⁻¹<br>U<sub>${n}</sub> = <b>${fmt(U(n), 4)}</b><br>Sₙ = <b>${fmt(S, 4)}</b><br>` +
+      (Math.abs(d) < 1 && d !== 0 ? `S∞ = a / (1 − r) = <b>${fmt(a / (1 - d), 4)}</b> (|r| &lt; 1)` : `<span style="color:var(--muted)">|r| ≥ 1: deret tak hingganya tidak konvergen.</span>`) +
+      `<br><span style="color:var(--muted)">Setiap suku <b>dikali</b> ${fmt(d)}.</span>`;
+}
+draw();
+</script>
+</body>
+</html>

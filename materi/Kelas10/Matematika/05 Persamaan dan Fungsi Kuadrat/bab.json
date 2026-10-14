@@ -1,0 +1,414 @@
+{
+  "title": "Persamaan dan Fungsi Kuadrat",
+  "summary": "Menyelesaikan persamaan kuadrat dengan faktorisasi, kuadrat sempurna, dan rumus abc; diskriminan; grafik dan karakteristik fungsi kuadrat; serta masalah nilai maksimum dan minimum.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "persamaan-kuadrat",
+      "title": "Persamaan kuadrat dan faktorisasi",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Dua bilangan berjumlah 16 dan hasil kalinya 63. Jika salah satunya x, yang lain 16 − x, sehingga x(16 − x) = 63 atau x² − 16x + 63 = 0. Persamaan seperti ini disebut <b>persamaan kuadrat</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bentuk umum",
+          "html": "\\[ax^2 + bx + c = 0, \\quad a \\neq 0\\]<p>a, b, c bilangan real. Nilai x yang memenuhi disebut <b>akar</b> (penyelesaian). Persamaan kuadrat paling banyak memiliki dua akar real.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Menyelesaikan dengan faktorisasi"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika hasil kali dua bilangan nol, salah satunya pasti nol: <b>pq = 0 ⇒ p = 0 atau q = 0</b>. Jadi, ubah ruas kiri menjadi perkalian dua faktor linear.</p><ul><li>x² + bx + c: cari dua bilangan yang <b>hasil kalinya c</b> dan <b>jumlahnya b</b>.</li><li>ax² + bx + c (a ≠ 1): cari dua bilangan yang hasil kalinya ac dan jumlahnya b, lalu pecah suku tengah.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Selesaikan x² − 16x + 63 = 0.</p>",
+          "steps": [
+            "Cari dua bilangan yang hasil kalinya 63 dan jumlahnya −16: yaitu −7 dan −9.",
+            "(x − 7)(x − 9) = 0",
+            "x = 7 atau x = 9."
+          ],
+          "answer": "kedua bilangan itu 7 dan 9"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Selesaikan 2x² − 5x − 3 = 0.</p>",
+          "steps": [
+            "ac = −6. Dua bilangan dengan hasil kali −6 dan jumlah −5: −6 dan 1.",
+            "2x² − 6x + x − 3 = 2x(x − 3) + 1(x − 3) = (2x + 1)(x − 3) = 0",
+            "x = −½ atau x = 3."
+          ],
+          "answer": "x = −½ atau x = 3"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Menyusun persamaan dari akar-akarnya",
+          "html": "<p>Jika akar-akarnya x₁ dan x₂, persamaannya (x − x₁)(x − x₂) = 0. Contoh: akar 2 dan −4 menghasilkan (x − 2)(x + 4) = 0, atau x² + 2x − 8 = 0.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Akar-akar persamaan x² − 5x + 6 = 0 adalah ....",
+          "options": {
+            "A": "2 dan 3",
+            "B": "−2 dan −3",
+            "C": "1 dan 6",
+            "D": "−1 dan 6"
+          },
+          "answer": "A",
+          "hint": "Cari dua bilangan dengan hasil kali 6 dan jumlah −5.",
+          "explanation": "(x − 2)(x − 3) = 0, jadi x = 2 atau x = 3."
+        }
+      ]
+    },
+    {
+      "id": "kuadrat-sempurna",
+      "title": "Melengkapkan kuadrat sempurna",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Tidak semua persamaan kuadrat mudah difaktorkan, misalnya x² + 6x + 2 = 0. Idenya: ubah ruas kiri menjadi bentuk <b>(x + p)²</b>, lalu tarik akar.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/kuadrat-sempurna.svg",
+          "alt": "Persegi x kali x ditambah dua persegi panjang 3x, kekurangan sudut 3 kali 3 untuk menjadi persegi (x+3) kuadrat",
+          "width": 560,
+          "caption": "Model ubin: x² + 6x perlu ditambah 9 agar menjadi persegi (x + 3)²."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Langkah melengkapkan kuadrat",
+          "html": "<ol><li>Jadikan koefisien x² sama dengan 1 (bagi dengan a).</li><li>Pindahkan konstanta ke ruas kanan.</li><li>Tambahkan (½ × koefisien x)² ke kedua ruas.</li><li>Tulis ruas kiri sebagai (x + p)², lalu tarik akar: x + p = ±√q.</li></ol>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Selesaikan x² + 6x + 2 = 0.</p>",
+          "steps": [
+            "x² + 6x = −2",
+            "Tambahkan (6/2)² = 9: x² + 6x + 9 = 7",
+            "(x + 3)² = 7, sehingga x + 3 = ±√7",
+            "x = −3 + √7 atau x = −3 − √7."
+          ],
+          "answer": "x = −3 ± √7"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Selesaikan 2x² − 8x − 10 = 0.</p>",
+          "steps": [
+            "Bagi 2: x² − 4x − 5 = 0, lalu x² − 4x = 5.",
+            "Tambahkan 4: (x − 2)² = 9.",
+            "x − 2 = ±3, jadi x = 5 atau x = −1."
+          ],
+          "answer": "x = 5 atau x = −1"
+        },
+        {
+          "type": "check",
+          "question": "Bentuk kuadrat sempurna dari x² − 10x + 3 = 0 adalah ....",
+          "options": {
+            "A": "(x − 5)² = 22",
+            "B": "(x − 5)² = 28",
+            "C": "(x − 10)² = 97",
+            "D": "(x + 5)² = 22"
+          },
+          "answer": "A",
+          "hint": "Tambahkan (−10/2)² = 25 ke kedua ruas setelah memindahkan 3.",
+          "explanation": "x² − 10x = −3, lalu x² − 10x + 25 = 22, yaitu (x − 5)² = 22."
+        }
+      ]
+    },
+    {
+      "id": "rumus-abc",
+      "title": "Rumus kuadrat dan diskriminan",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jika langkah melengkapkan kuadrat diterapkan pada bentuk umum ax² + bx + c = 0, kita memperoleh rumus yang selalu bisa dipakai.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kuadrat (rumus abc)",
+          "html": "\\[x_{1,2} = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\]<p>Bilangan di bawah tanda akar, <b>D = b² − 4ac</b>, disebut <b>diskriminan</b>.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Selesaikan x² − 4x + 1 = 0.</p>",
+          "steps": [
+            "a = 1, b = −4, c = 1, D = 16 − 4 = 12.",
+            "x = (4 ± √12)/2 = (4 ± 2√3)/2",
+            "x = 2 + √3 atau x = 2 − √3."
+          ],
+          "answer": "x = 2 ± √3"
+        },
+        {
+          "type": "h",
+          "text": "Jenis akar"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Diskriminan</th><th>Jenis akar</th><th>Grafik y = ax² + bx + c</th></tr><tr><td>D &gt; 0</td><td>dua akar real berbeda</td><td>memotong sumbu x di dua titik</td></tr><tr><td>D = 0</td><td>dua akar real kembar</td><td>menyinggung sumbu x</td></tr><tr><td>D &lt; 0</td><td>tidak ada akar real (akar imajiner)</td><td>tidak memotong sumbu x</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/diskriminan.svg",
+          "alt": "Tiga parabola: memotong sumbu x di dua titik, menyinggung, dan tidak memotong",
+          "width": 600,
+          "caption": "Diskriminan menentukan banyak titik potong grafik dengan sumbu x."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan nilai k agar x² + kx + 9 = 0 mempunyai akar kembar.</p>",
+          "steps": [
+            "Syarat akar kembar: D = 0.",
+            "k² − 4(1)(9) = 0, sehingga k² = 36.",
+            "k = 6 atau k = −6."
+          ],
+          "answer": "k = ±6"
+        },
+        {
+          "type": "check",
+          "question": "Persamaan x² + 2x + 5 = 0 mempunyai ....",
+          "options": {
+            "A": "dua akar real berbeda",
+            "B": "akar kembar",
+            "C": "tidak ada akar real",
+            "D": "satu akar real dan satu akar nol"
+          },
+          "answer": "C",
+          "hint": "Hitung D = b² − 4ac.",
+          "explanation": "D = 4 − 20 = −16 &lt; 0, jadi tidak ada akar real."
+        }
+      ]
+    },
+    {
+      "id": "karakteristik",
+      "title": "Grafik dan karakteristik fungsi kuadrat",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Fungsi <b>f(x) = ax² + bx + c</b> (a ≠ 0) disebut fungsi kuadrat. Grafiknya berbentuk <b>parabola</b>. Setiap koefisien memberi informasi tentang bentuk grafik.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Karakteristik grafik",
+          "html": "<ul><li><b>a</b>: a &gt; 0 terbuka ke atas (punya nilai minimum), a &lt; 0 terbuka ke bawah (punya nilai maksimum). Makin besar |a|, makin sempit.</li><li><b>c</b>: titik potong dengan sumbu y, yaitu (0, c).</li><li><b>Sumbu simetri</b>: \\(x_p = -\\dfrac{b}{2a}\\).</li><li><b>Titik puncak</b>: \\(\\left(-\\dfrac{b}{2a},\\; -\\dfrac{D}{4a}\\right)\\), atau hitung f(x<sub>p</sub>).</li><li><b>Titik potong sumbu x</b>: akar-akar f(x) = 0 (ada jika D ≥ 0).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/parabola.html",
+          "title": "Penjelajah fungsi kuadrat",
+          "height": 560,
+          "caption": "Geser a, b, dan c. Perhatikan apa yang berubah saat a bertanda negatif, saat c berubah, dan kapan grafik tidak memotong sumbu x."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan karakteristik grafik f(x) = −x² + 4x + 5.</p>",
+          "steps": [
+            "a = −1 &lt; 0: terbuka ke bawah. Titik potong sumbu y: (0, 5).",
+            "Sumbu simetri x = −4/(2 × (−1)) = 2. Puncak: f(2) = −4 + 8 + 5 = 9, jadi (2, 9) dan nilai maksimum 9.",
+            "Titik potong sumbu x: −x² + 4x + 5 = 0 ⇔ (x − 5)(x + 1) = 0, yaitu (−1, 0) dan (5, 0)."
+          ],
+          "answer": "puncak (2, 9), memotong sumbu x di (−1, 0) dan (5, 0)"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Langkah menggambar sketsa",
+          "html": "<ol><li>Tentukan arah terbuka dari a.</li><li>Gambar titik puncak dan sumbu simetri.</li><li>Gambar titik potong sumbu y dan pasangannya yang simetris.</li><li>Gambar titik potong sumbu x (jika ada), lalu hubungkan dengan kurva mulus.</li></ol>"
+        },
+        {
+          "type": "check",
+          "question": "Sumbu simetri grafik f(x) = x² − 6x + 5 adalah ....",
+          "options": {
+            "A": "x = 3",
+            "B": "x = −3",
+            "C": "x = 6",
+            "D": "x = 5"
+          },
+          "answer": "A",
+          "hint": "Gunakan x = −b/(2a).",
+          "explanation": "x = −(−6)/(2 × 1) = 3."
+        }
+      ]
+    },
+    {
+      "id": "mengonstruksi",
+      "title": "Menentukan rumus fungsi kuadrat",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Lengkungan busur panah, kabel jembatan, atau air mancur dapat dimodelkan dengan fungsi kuadrat. Rumusnya dapat ditentukan dari informasi yang kita ketahui tentang grafiknya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tiga bentuk fungsi kuadrat",
+          "html": "<table><tr><th>Diketahui</th><th>Gunakan bentuk</th></tr><tr><td>titik puncak (p, q) dan satu titik lain</td><td>f(x) = a(x − p)² + q</td></tr><tr><td>titik potong sumbu x (x₁, 0), (x₂, 0) dan satu titik lain</td><td>f(x) = a(x − x₁)(x − x₂)</td></tr><tr><td>tiga titik sembarang</td><td>f(x) = ax² + bx + c, lalu SPLTV</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan fungsi kuadrat dengan puncak (2, 3) yang melalui (0, −1).</p>",
+          "steps": [
+            "f(x) = a(x − 2)² + 3.",
+            "f(0) = 4a + 3 = −1, sehingga a = −1.",
+            "f(x) = −(x − 2)² + 3 = −x² + 4x − 1."
+          ],
+          "answer": "f(x) = −x² + 4x − 1"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Grafik memotong sumbu x di (−1, 0) dan (3, 0) serta memotong sumbu y di (0, −3). Tentukan fungsinya.</p>",
+          "steps": [
+            "f(x) = a(x + 1)(x − 3).",
+            "f(0) = a(1)(−3) = −3a = −3, sehingga a = 1.",
+            "f(x) = (x + 1)(x − 3) = x² − 2x − 3."
+          ],
+          "answer": "f(x) = x² − 2x − 3"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Fungsi kuadrat melalui (0, 1), (1, 4), dan (2, 9). Tentukan rumusnya.</p>",
+          "steps": [
+            "f(0) = c = 1.",
+            "f(1) = a + b + 1 = 4 → a + b = 3; f(2) = 4a + 2b + 1 = 9 → 2a + b = 4.",
+            "Kurangkan: a = 1, b = 2. Jadi f(x) = x² + 2x + 1."
+          ],
+          "answer": "f(x) = x² + 2x + 1"
+        },
+        {
+          "type": "check",
+          "question": "Fungsi kuadrat yang grafiknya memotong sumbu x di (1, 0) dan (4, 0) serta melalui (0, 8) adalah ....",
+          "options": {
+            "A": "f(x) = 2x² − 10x + 8",
+            "B": "f(x) = x² − 5x + 4",
+            "C": "f(x) = 2x² + 10x + 8",
+            "D": "f(x) = 8x² − 40x + 32"
+          },
+          "answer": "A",
+          "hint": "Mulai dari f(x) = a(x − 1)(x − 4).",
+          "explanation": "f(0) = 4a = 8, a = 2. f(x) = 2(x² − 5x + 4) = 2x² − 10x + 8."
+        }
+      ]
+    },
+    {
+      "id": "masalah",
+      "title": "Masalah nilai maksimum dan minimum",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Banyak masalah sehari-hari menanyakan nilai <b>terbesar</b> atau <b>terkecil</b>: luas kebun maksimum, tinggi lemparan maksimum, atau keuntungan maksimum. Jika besaran itu dinyatakan sebagai fungsi kuadrat, jawabannya ada di <b>titik puncak</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Nilai ekstrem",
+          "html": "<p>Untuk f(x) = ax² + bx + c, nilai ekstrem dicapai saat \\(x = -\\dfrac{b}{2a}\\), dan nilainya \\(-\\dfrac{D}{4a}\\). Maksimum jika a &lt; 0, minimum jika a &gt; 0.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/lemparan.html",
+          "title": "Lintasan lemparan bola",
+          "height": 560,
+          "caption": "Tekan <b>Lempar</b>. Ubah kecepatan awal dan tinggi awal, lalu bandingkan waktu puncak dengan rumus t = −b/(2a)."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bola dilempar ke atas dengan ketinggian h(t) = −5t² + 20t + 5 meter. Kapan bola mencapai tinggi maksimum dan berapa tingginya?</p>",
+          "steps": [
+            "t = −20/(2 × (−5)) = 2 sekon.",
+            "h(2) = −20 + 40 + 5 = 25 meter."
+          ],
+          "answer": "tinggi maksimum 25 m pada t = 2 s"
+        },
+        {
+          "type": "image",
+          "src": "gambar/pagar.svg",
+          "alt": "Kebun persegi panjang di tepi sungai dipagari pada tiga sisi: dua sisi x dan satu sisi 96 − 2x",
+          "width": 500,
+          "caption": "Pagar kawat 96 m untuk tiga sisi kebun."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Petani memiliki 96 m kawat untuk memagari kebun persegi panjang di tepi sungai (sisi sungai tidak dipagari). Berapa luas maksimum kebun?</p>",
+          "steps": [
+            "Lebar x, panjang 96 − 2x. Luas L(x) = x(96 − 2x) = −2x² + 96x.",
+            "x = −96/(2 × (−2)) = 24 m, panjang 96 − 48 = 48 m.",
+            "L = 24 × 48 = 1.152 m²."
+          ],
+          "answer": "1.152 m²"
+        },
+        {
+          "type": "check",
+          "question": "Keuntungan sebuah usaha K(x) = −2x² + 40x − 50 (juta rupiah), x banyak produk (ratusan). Keuntungan maksimumnya adalah ....",
+          "options": {
+            "A": "150 juta",
+            "B": "200 juta",
+            "C": "250 juta",
+            "D": "10 juta"
+          },
+          "answer": "A",
+          "hint": "Cari x puncak lalu substitusi.",
+          "explanation": "x = −40/(−4) = 10. K(10) = −200 + 400 − 50 = 150 juta rupiah."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Faktorisasi</td><td>pq = 0 ⇒ p = 0 atau q = 0</td></tr><tr><td>Kuadrat sempurna</td><td>tambahkan (½ koefisien x)², lalu tarik akar</td></tr><tr><td>Rumus abc</td><td>x = (−b ± √D)/(2a), D = b² − 4ac</td></tr><tr><td>Diskriminan</td><td>D &gt; 0 dua akar, D = 0 kembar, D &lt; 0 tidak real</td></tr><tr><td>Grafik</td><td>a: arah; c: potong sumbu y; puncak (−b/2a, −D/4a)</td></tr><tr><td>Bentuk fungsi</td><td>a(x − p)² + q atau a(x − x₁)(x − x₂)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Membagi kedua ruas dengan x sehingga akar x = 0 hilang (misalnya x² = 3x).</li><li>Lupa tanda ± saat menarik akar.</li><li>Salah tanda b pada rumus sumbu simetri −b/(2a).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 5 Persamaan dan Fungsi Kuadrat.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang persamaan kuadrat, diskriminan, grafik fungsi kuadrat, dan masalah nilai maksimum. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

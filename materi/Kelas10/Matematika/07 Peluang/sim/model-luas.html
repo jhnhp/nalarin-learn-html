@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Luas dan Diagram Pohon</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+input[type=text]{font:inherit;font-size:14px;width:100%;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 500" role="img" aria-label="Model luas dan diagram pohon dua kejadian saling bebas"></svg></div>
+  <div class="panel">
+    <div class="seg" id="pre"><button data-v="dobel" class="on">Dobel dua kali</button><button data-v="koin">Koin & dadu</button><button data-v="tembak">Tembakan bebas</button></div>
+    <div class="row"><input type="text" id="na" value="dobel pada lemparan 1"><select id="pa"></select></div>
+    <div class="row"><input type="text" id="nb" value="dobel pada lemparan 2"><select id="pb"></select></div>
+    <div class="read" id="read"></div>
+    <p class="note">Kejadian A dan B <b>saling bebas</b> jika terjadinya A tidak mengubah peluang B. Maka P(A ∩ B) = P(A) × P(B): luas persegi panjang kecil = lebar × tinggi.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const FR = [[1, 6], [1, 5], [1, 4], [1, 3], [2, 5], [1, 2], [3, 5], [2, 3], [3, 4], [4, 5], [5, 6], [7, 10], [9, 10]];
+const gcd = (a, b) => b ? gcd(b, a % b) : a, red = (p, q) => { const g = gcd(p, q); return [p / g, q / g]; }, f = ([p, q]) => `${p}/${q}`;
+['pa', 'pb'].forEach(id => { $(id).innerHTML = FR.map((x, i) => `<option value="${i}">${f(x)}</option>`).join(''); $(id).onchange = draw; });
+['na', 'nb'].forEach(id => $(id).oninput = draw);
+const PRE = {dobel: ['dobel pada lemparan 1', 0, 'dobel pada lemparan 2', 0], koin: ['koin muncul angka', 5, 'dadu muncul 6', 0], tembak: ['tembakan 1 masuk', 11, 'tembakan 2 masuk', 11]};
+$('pre').onclick = e => { const b = e.target.closest('button'); if(!b) return; const p = PRE[b.dataset.v]; $('na').value = p[0]; $('pa').value = p[1]; $('nb').value = p[2]; $('pb').value = p[3]; document.querySelectorAll('#pre button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+Sim.onTheme(draw);
+const esc = t => t.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
+function draw(){
+  const A = FR[$('pa').value], B = FR[$('pb').value], a = A[0] / A[1], b = B[0] / B[1];
+  const Ac = [A[1] - A[0], A[1]], Bc = [B[1] - B[0], B[1]];
+  const x0 = 130, y0 = 34, W = 200, H = 200;
+  let s = `<text class="c" x="${x0 + W / 2}" y="20" text-anchor="middle">Model luas</text>`;
+  // kolom: A / bukan A (lebar), baris: B / bukan B (tinggi)
+  const cells = [[0, 0, a * W, b * H, 'var(--k)', .7], [a * W, 0, (1 - a) * W, b * H, 'var(--comp)', .3], [0, b * H, a * W, (1 - b) * H, 'var(--a)', .3], [a * W, b * H, (1 - a) * W, (1 - b) * H, 'var(--line)', .5]];
+  cells.forEach(([x, y, w, h, col, op]) => s += `<rect x="${x0 + x}" y="${y0 + y}" width="${w}" height="${h}" style="fill:${col};stroke:var(--bg)" fill-opacity="${op}" stroke-width="2"/>`);
+  s += `<rect x="${x0}" y="${y0}" width="${W}" height="${H}" fill="none" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  s += `<text class="c" x="${x0 + a * W / 2}" y="${y0 + H + 18}" text-anchor="middle" style="fill:var(--a)">A: ${f(A)}</text>`;
+  if(a < 1) s += `<text class="c" x="${x0 + a * W + (1 - a) * W / 2}" y="${y0 + H + 18}" text-anchor="middle" style="fill:var(--muted)">Aᶜ</text>`;
+  s += `<text class="c" x="${x0 - 6}" y="${y0 + b * H / 2 + 4}" text-anchor="end" style="fill:var(--comp)">B: ${f(B)}</text>`;
+  if(b < 1) s += `<text class="c" x="${x0 - 6}" y="${y0 + b * H + (1 - b) * H / 2 + 4}" text-anchor="end" style="fill:var(--muted)">Bᶜ</text>`;
+  s += `<text class="c" x="${x0 + a * W / 2}" y="${y0 + b * H / 2 + 4}" text-anchor="middle">A∩B</text>`;
+  // diagram pohon
+  const tx = 70, ty = 285;
+  s += `<text class="c" x="${x0 + W / 2}" y="${ty - 8}" text-anchor="middle">Diagram pohon</text>`;
+  const node = (x, y, t, col) => `<text class="c" x="${x}" y="${y + 4}" style="fill:${col}">${t}</text>`;
+  const ln = (x1, y1, x2, y2, t) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:var(--line-2)" stroke-width="2"/><text x="${(x1 + x2) / 2 - 4}" y="${(y1 + y2) / 2 - 4}" font-size="11" text-anchor="end" style="fill:var(--muted)">${t}</text>`;
+  const leaves = [['A', 'B', A, B], ['A', 'Bᶜ', A, Bc], ['Aᶜ', 'B', Ac, B], ['Aᶜ', 'Bᶜ', Ac, Bc]];
+  s += ln(tx, ty + 100, tx + 100, ty + 45, f(A)) + ln(tx, ty + 100, tx + 100, ty + 155, f(Ac)) + node(tx + 104, ty + 45, 'A', 'var(--a)') + node(tx + 104, ty + 155, 'Aᶜ', 'var(--muted)');
+  [[45, 0], [155, 2]].forEach(([yy, k]) => { s += ln(tx + 126, ty + yy, tx + 210, ty + yy - 26, f(B)) + ln(tx + 126, ty + yy, tx + 210, ty + yy + 26, f(Bc)); });
+  leaves.forEach(([p, q, P, Q], i) => { const yy = ty + [19, 71, 129, 181][i], pr = red(P[0] * Q[0], P[1] * Q[1]); s += node(tx + 214, yy, `${q}  →  ${p}∩${q}: ${f(pr)}`, i === 0 ? 'var(--k)' : 'var(--ink)'); });
+  // bagan hasil
+  svg.innerHTML = s;
+  const ab = red(A[0] * B[0], A[1] * B[1]), na = esc($('na').value) || 'A', nb = esc($('nb').value) || 'B';
+  const none = red(Ac[0] * Bc[0], Ac[1] * Bc[1]), atleast = red(none[1] - none[0], none[1]);
+  $('read').innerHTML = `<div><span>P(${na} dan ${nb})</span><b>${f(A)} × ${f(B)} = ${f(ab)}</b></div>` +
+    `<div><span>P(keduanya tidak terjadi) = P(Aᶜ) × P(Bᶜ)</span><b>${f(Ac)} × ${f(Bc)} = ${f(none)}</b></div>` +
+    `<div><span>P(setidaknya satu terjadi) = 1 − P(Aᶜ ∩ Bᶜ)</span><b>${f(atleast)}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Langkah Menyelesaikan SPLTV</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+  .wrap{padding:14px 16px;display:grid;gap:12px}
+  .sys{font-family:var(--display);font-weight:800;font-size:18px;line-height:1.7;padding:10px 14px;border-radius:12px;background:var(--surface-2)}
+  .work .ln{padding:6px 10px;border-left:4px solid var(--line-2);margin:6px 0;font-size:15px;line-height:1.85;font-variant-numeric:tabular-nums}
+  .hl{color:var(--b);font-weight:800}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row"><b>Sistem persamaan:</b><button class="btn" id="new">Soal baru</button></div>
+  <div class="sys" id="sys"></div>
+  <div class="work" id="work"></div>
+  <div class="row"><button class="btn primary" id="next">Langkah berikutnya</button><button class="btn" id="all">Tampilkan semua</button></div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const gcd = (a, b) => b ? gcd(b, a % b) : Math.abs(a), lcm = (a, b) => Math.abs(a * b) / gcd(a, b);
+let E, steps = [], shown = 0;
+const term = (k, n, first) => { if(!k) return ''; const s = Math.abs(k) === 1 ? n : Math.abs(k) + n; return first ? (k < 0 ? '−' : '') + s : (k < 0 ? ' − ' : ' + ') + s; };
+const eq = e => { let s = '', f = true; ['x', 'y', 'z'].forEach((n, i) => { if(e[i]){ s += term(e[i], n, f); f = false; } }); return (s || '0') + ' = ' + fmt(e[3]); };
+function combine(e1, e2, k){ // hilangkan variabel ke-k dari e1 dan e2
+  const L = lcm(e1[k], e2[k]), m1 = L / Math.abs(e1[k]), m2 = L / Math.abs(e2[k]);
+  const A = e1.map(t => t * m1), B = e2.map(t => t * m2), op = Math.sign(A[k]) === Math.sign(B[k]) ? -1 : 1;
+  return {m1, m2, A, B, op, R: A.map((t, j) => t + op * B[j])};
+}
+function newProblem(){
+  const r = () => [-3, -2, -1, 1, 2, 3][Math.floor(Math.random() * 6)];
+  for(;;){
+    const s = [r() + 1, r() + 2, r()], M = [[1, r(), r()], [r(), 1, r()], [r(), r(), 1]];
+    if(M.some(row => row.some(v => v === 0))) continue;
+    const det = M[0][0] * (M[1][1] * M[2][2] - M[1][2] * M[2][1]) - M[0][1] * (M[1][0] * M[2][2] - M[1][2] * M[2][0]) + M[0][2] * (M[1][0] * M[2][1] - M[1][1] * M[2][0]);
+    if(!det) continue;
+    E = M.map(row => [...row, row[0] * s[0] + row[1] * s[1] + row[2] * s[2]]);
+    const a = combine(E[0], E[1], 2), b = combine(E[0], E[2], 2);
+    if(!a.R[1] || !b.R[1] || !combine(a.R, b.R, 1).R[0] || Math.max(...E.map(e => Math.abs(e[3]))) > 30) continue;
+    break;
+  }
+}
+function build(){
+  const [e1, e2, e3] = E, a = combine(e1, e2, 2), b = combine(e1, e3, 2);
+  const c = combine(a.R, b.R, 1), x = c.R[3] / c.R[0], y = (a.R[3] - a.R[0] * x) / a.R[1], z = (e1[3] - e1[0] * x - e1[1] * y) / e1[2];
+  const sh = (o, i, j) => `(${i}) × ${o.m1}: ${eq(o.A)}<br>(${j}) × ${o.m2}: ${eq(o.B)}<br>${o.op < 0 ? 'Kurangkan' : 'Jumlahkan'}: <b>${eq(o.R)}</b>`;
+  steps = [
+    `<b>Langkah 1.</b> Eliminasi z dari persamaan (1) dan (2):<br>${sh(a, 1, 2)} … (4)`,
+    `<b>Langkah 2.</b> Eliminasi z dari persamaan (1) dan (3):<br>${sh(b, 1, 3)} … (5)`,
+    `<b>Langkah 3.</b> Sekarang (4) dan (5) hanya memuat x dan y. Eliminasi y:<br>${sh(c, 4, 5)}<br>Jadi <span class="hl">x = ${fmt(x)}</span>`,
+    `<b>Langkah 4.</b> Substitusi x = ${fmt(x)} ke (4): ${fmt(a.R[0] * x)} ${a.R[1] < 0 ? '−' : '+'} ${Math.abs(a.R[1]) === 1 ? '' : Math.abs(a.R[1])}y = ${fmt(a.R[3])}, sehingga <span class="hl">y = ${fmt(y)}</span>`,
+    `<b>Langkah 5.</b> Substitusi x dan y ke (1): ${fmt(e1[0] * x + e1[1] * y)} ${e1[2] < 0 ? '−' : '+'} ${Math.abs(e1[2]) === 1 ? '' : Math.abs(e1[2])}z = ${fmt(e1[3])}, sehingga <span class="hl">z = ${fmt(z)}</span>`,
+    `<b>Periksa</b> ke (2) dan (3): ${fmt(e2[0] * x + e2[1] * y + e2[2] * z)} = ${fmt(e2[3])} ✓ dan ${fmt(e3[0] * x + e3[1] * y + e3[2] * z)} = ${fmt(e3[3])} ✓<br>Himpunan penyelesaian: <span class="hl">{(${fmt(x)}, ${fmt(y)}, ${fmt(z)})}</span>`,
+  ];
+  shown = 0; draw();
+}
+function draw(){
+  $('sys').innerHTML = E.map((e, i) => `(${i + 1}) ${eq(e)}`).join('<br>');
+  $('work').innerHTML = steps.slice(0, shown).map(s => `<div class="ln">${s}</div>`).join('');
+  $('next').disabled = shown >= steps.length;
+  parent !== window && parent.postMessage({simHeight: document.body.scrollHeight + 10}, '*');
+}
+$('next').onclick = () => { shown++; draw(); };
+$('all').onclick = () => { shown = steps.length; draw(); };
+$('new').onclick = () => { newProblem(); build(); };
+E = [[1, 1, 1, 6], [2, -1, 1, 3], [1, 2, -1, 2]]; build();
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudut Pusat dan Sudut Keliling</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Lingkaran dengan sudut pusat dan sudut keliling yang menghadap busur yang sama"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="1" class="on">Satu sudut keliling</button><button data-m="2">Dua sudut keliling</button><button data-m="t">Segi empat tali busur</button></div>
+    <label class="chk"><input type="checkbox" id="c-pusat" checked> Tampilkan sudut pusat AOB</label>
+    <div class="row"><button class="btn" id="thales">Jadikan AB diameter</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Geser titik A, B, C (dan D) di sepanjang lingkaran. Sudut keliling ACB menghadap busur AB yang tidak memuat C.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt, rad} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -6, xmax: 6, ymin: -6, ymax: 6, scale: 30});
+const R = 4.5;
+let ang = {A: 200, B: 340, C: 100, D: 50}, mode = '1';
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); if(mode === 't'){ ang = {A: 200, B: 300, C: 30, D: 110}; } else ang = {A: 200, B: 340, C: 100, D: 50}; draw(); };
+$('c-pusat').onchange = draw;
+$('thales').onclick = () => { ang.B = (ang.A + 180) % 360; draw(); };
+P.draggable((h, x, y) => { let a = Math.atan2(y, x) * 180 / Math.PI; if(a < 0) a += 360; ang[h] = Math.round(a); draw(); });
+Sim.onTheme(draw);
+const pt = n => ({x: R * Math.cos(rad(ang[n])), y: R * Math.sin(rad(ang[n]))});
+function angleAt(V, A, B){ const a1 = Math.atan2(A.y - V.y, A.x - V.x), a2 = Math.atan2(B.y - V.y, B.x - V.x); let d = Math.abs(a1 - a2) * 180 / Math.PI; return d > 180 ? 360 - d : d; }
+function arcMark(V, A, B, r, col, label){
+  let a1 = Math.atan2(A.y - V.y, A.x - V.x) * 180 / Math.PI, a2 = Math.atan2(B.y - V.y, B.x - V.x) * 180 / Math.PI;
+  let d = a2 - a1; while(d > 180) d -= 360; while(d < -180) d += 360;
+  return P.arc(V.x, V.y, r, a1, a1 + d, col, label);
+}
+const seg = (A, B, col, w = 2.5, dash) => `<line x1="${P.X(A.x)}" y1="${P.Y(A.y)}" x2="${P.X(B.x)}" y2="${P.Y(B.y)}" style="stroke:${col}" stroke-width="${w}"${dash ? ' class="dash"' : ''}/>`;
+// apakah C berada pada busur besar/kecil terhadap A–B
+const between = (a, s, e) => { const n = x => ((x % 360) + 360) % 360; return n(a - s) <= n(e - s); };
+function draw(){
+  const O = {x: 0, y: 0}, A = pt('A'), B = pt('B'), C = pt('C'), D = pt('D');
+  let s = P.grid({labels: false}) + `<circle cx="${P.X(0)}" cy="${P.Y(0)}" r="${R * 30}" fill="none" style="stroke:var(--ink)" stroke-width="2.5"/>`;
+  // busur yang dihadap (tidak memuat C)
+  const cOnAB = between(ang.C, ang.A, ang.B), [s1, e1] = cOnAB ? [ang.B, ang.A] : [ang.A, ang.B];
+  const sweep = ((e1 - s1) % 360 + 360) % 360, p = a => [P.X(R * Math.cos(rad(a))), P.Y(R * Math.sin(rad(a)))];
+  s += `<path d="M${p(s1)} A${R * 30},${R * 30} 0 ${sweep > 180 ? 1 : 0} 0 ${p(e1)}" fill="none" style="stroke:var(--k)" stroke-width="7" stroke-opacity=".55"/>`;
+  const Cang = angleAt(C, A, B), arcDeg = sweep;
+  if(mode !== 't'){
+    if($('c-pusat').checked){ s += seg(O, A, 'var(--comp)') + seg(O, B, 'var(--comp)') + arcMark(O, A, B, .9, 'var(--comp)', fmt(arcDeg > 180 ? arcDeg : arcDeg, 0) + '°'); }
+    s += seg(C, A, 'var(--a)') + seg(C, B, 'var(--a)') + arcMark(C, A, B, .8, 'var(--a)', fmt(Cang, 0) + '°');
+    if(mode === '2'){ s += seg(D, A, 'var(--r)') + seg(D, B, 'var(--r)') + arcMark(D, A, B, .8, 'var(--r)', fmt(angleAt(D, A, B), 0) + '°'); }
+  } else {
+    const Q = [A, B, C, D];
+    for(let i = 0; i < 4; i++) s += seg(Q[i], Q[(i + 1) % 4], 'var(--a)');
+    s += seg(A, C, 'var(--muted)', 1.5, true) + seg(B, D, 'var(--muted)', 1.5, true);
+    ['A', 'B', 'C', 'D'].forEach((n, i) => { const V = Q[i]; s += arcMark(V, Q[(i + 3) % 4], Q[(i + 1) % 4], .7, i % 2 ? 'var(--comp)' : 'var(--a)', fmt(angleAt(V, Q[(i + 3) % 4], Q[(i + 1) % 4]), 0) + '°'); });
+  }
+  s += `<circle cx="${P.X(0)}" cy="${P.Y(0)}" r="4" style="fill:var(--ink)"/><text class="ar" x="${P.X(0) + 6}" y="${P.Y(0) + 16}">O</text>`;
+  const names = mode === '1' ? ['A', 'B', 'C'] : ['A', 'B', 'C', 'D'];
+  names.forEach(n => { const V = pt(n); s += P.handle(n, V.x, V.y, n === 'C' ? 'var(--a)' : n === 'D' ? 'var(--r)' : 'var(--ink)') + `<text class="ar" x="${P.X(V.x * 1.13) - 5}" y="${P.Y(V.y * 1.13) + 5}">${n}</text>`; });
+  svg.innerHTML = s;
+  if(mode === 't'){
+    const a = [angleAt(A, D, B), angleAt(B, A, C), angleAt(C, B, D), angleAt(D, C, A)], d = (X, Y) => Math.hypot(X.x - Y.x, X.y - Y.y);
+    $('read').innerHTML = `<div><span>∠A + ∠C</span><b>${fmt(a[0], 0)}° + ${fmt(a[2], 0)}° = ${fmt(a[0] + a[2], 0)}°</b></div><div><span>∠B + ∠D</span><b>${fmt(a[1], 0)}° + ${fmt(a[3], 0)}° = ${fmt(a[1] + a[3], 0)}°</b></div>` +
+      `<div><span>Ptolemeus: AC × BD</span><b>${fmt(d(A, C) * d(B, D), 2)}</b></div><div><span>AB × CD + AD × BC</span><b>${fmt(d(A, B) * d(C, D) + d(A, D) * d(B, C), 2)}</b></div>` +
+      `<p class="note">Jika urutan titik pada lingkaran berubah (bukan A, B, C, D berurutan), segi empatnya tidak lagi tepat dan hubungan ini tidak berlaku.</p>`;
+  } else {
+    $('read').innerHTML = `<div><span style="color:var(--k)">Besar busur AB yang dihadap</span><b>${fmt(arcDeg, 0)}°</b></div><div><span style="color:var(--comp)">Sudut pusat (menghadap busur itu)</span><b>${fmt(arcDeg, 0)}°</b></div>` +
+      `<div><span style="color:var(--a)">Sudut keliling ACB</span><b>${fmt(Cang, 0)}°</b></div><div><span>Sudut pusat : sudut keliling</span><b>${fmt(arcDeg / Cang, 2)}</b></div>` +
+      (Math.abs(arcDeg - 180) < 1 ? `<div><span>AB diameter (Teorema Thales)</span><b>∠ACB = 90°</b></div>` : '');
+  }
+}
+draw();
+</script>
+</body>
+</html>

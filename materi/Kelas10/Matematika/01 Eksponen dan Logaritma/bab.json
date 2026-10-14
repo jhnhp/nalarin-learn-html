@@ -1,0 +1,291 @@
+{
+  "title": "Eksponen dan Logaritma",
+  "summary": "Sifat eksponen, persamaan eksponen, fungsi eksponensial untuk pertumbuhan dan peluruhan, bentuk akar, serta logaritma dan sifat-sifatnya.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "sifat-eksponen",
+      "title": "Eksponen dan sifat-sifatnya",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Satu bakteri <i>E. coli</i> membelah menjadi dua setiap 20 menit. Setelah 10 kali pembelahan, jumlahnya \\(2^{10} = 1.024\\). Setelah sehari (72 pembelahan), jumlahnya \\(2^{72}\\), bilangan yang memiliki 22 angka! Eksponen membantu menuliskan dan menghitung pertumbuhan secepat ini.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Definisi",
+          "html": "\\[a^n = \\underbrace{a \\times a \\times \\cdots \\times a}_{n} \\qquad a^0 = 1 \\qquad a^{-n} = \\frac{1}{a^n} \\qquad a^{\\frac{m}{n}} = \\sqrt[n]{a^m}\\]"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Sifat-sifat eksponen",
+          "html": "\\[a^m a^n = a^{m+n} \\quad \\frac{a^m}{a^n} = a^{m-n} \\quad (a^m)^n = a^{mn} \\quad (ab)^n = a^n b^n \\quad \\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sederhanakan \\(\\dfrac{(2x^3y^{-2})^3}{4x^5y^{-4}}\\).</p>",
+          "steps": [
+            "Pembilang: \\(2^3 x^9 y^{-6} = 8x^9y^{-6}\\).",
+            "Bagi: \\(\\dfrac{8}{4} x^{9-5} y^{-6-(-4)} = 2x^4y^{-2}\\).",
+            "Tanpa pangkat negatif: \\(\\dfrac{2x^4}{y^2}\\)."
+          ],
+          "answer": "\\(\\dfrac{2x^4}{y^2}\\)"
+        },
+        {
+          "type": "h",
+          "text": "Persamaan eksponen sederhana"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika \\(a^{f(x)} = a^{g(x)}\\) dengan a &gt; 0 dan a ≠ 1, maka \\(f(x) = g(x)\\). Kuncinya: samakan dulu bilangan pokoknya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan x yang memenuhi \\(4^{x+1} = 8^x\\).</p>",
+          "steps": [
+            "Ubah ke basis 2: \\(2^{2(x+1)} = 2^{3x}\\).",
+            "\\(2x + 2 = 3x\\), sehingga x = 2.",
+            "Periksa: \\(4^3 = 64 = 8^2\\)."
+          ],
+          "answer": "x = 2"
+        },
+        {
+          "type": "check",
+          "question": "Nilai x yang memenuhi \\(3^{2x - 1} = 27\\) adalah ....",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "4"
+          },
+          "answer": "B",
+          "hint": "27 = 3³.",
+          "explanation": "2x − 1 = 3, sehingga x = 2."
+        },
+        {
+          "type": "check",
+          "question": "Bentuk sederhana \\(\\left(27^{\\frac23}\\right) \\times 9^{-\\frac12}\\) adalah ....",
+          "options": {
+            "A": "1",
+            "B": "3",
+            "C": "9",
+            "D": "27"
+          },
+          "answer": "B",
+          "hint": "27^(2/3) = 9 dan 9^(−1/2) = 1/3.",
+          "explanation": "9 × 1/3 = 3."
+        }
+      ]
+    },
+    {
+      "id": "fungsi-eksponensial",
+      "title": "Fungsi eksponensial: pertumbuhan dan peluruhan",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Fungsi eksponensial",
+          "html": "\\[f(x) = a \\cdot b^x, \\qquad a &gt; 0,\\; b &gt; 0,\\; b \\neq 1\\]<ul><li>a: nilai awal (saat x = 0).</li><li>b &gt; 1: <b>pertumbuhan</b>, dikali b setiap satu satuan x.</li><li>0 &lt; b &lt; 1: <b>peluruhan</b>.</li></ul>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/tumbuh-luruh.svg",
+          "alt": "Grafik pertumbuhan bakteri yang naik makin cepat dan grafik peluruhan obat yang turun makin lambat",
+          "width": 640,
+          "caption": "Pertumbuhan dan peluruhan eksponensial."
+        },
+        {
+          "type": "sim",
+          "src": "sim/fungsi-eksponen.html",
+          "title": "Fungsi eksponensial",
+          "height": 470,
+          "caption": "Ubah a dan b. Bandingkan b = 2 dengan b = 0,5. Mengapa semua grafik melalui (0, a) dan tidak pernah menyentuh sumbu x?"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Persentase pertumbuhan",
+          "html": "<p>Jika suatu besaran tumbuh r% setiap periode, maka \\(b = 1 + \\tfrac{r}{100}\\). Jika berkurang r%, maka \\(b = 1 - \\tfrac{r}{100}\\). Contoh: populasi naik 2% per tahun berarti b = 1,02; obat berkurang 20% per jam berarti b = 0,8.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bakteri mula-mula berjumlah 500 dan membelah dua setiap 30 menit. Berapa jumlahnya setelah 3 jam?</p>",
+          "steps": [
+            "3 jam = 6 kali periode 30 menit.",
+            "N = 500 × 2⁶ = 500 × 64 = 32.000 bakteri."
+          ],
+          "answer": "32.000"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kadar obat dalam darah mula-mula 200 mg dan berkurang 20% setiap jam. Berapa kadarnya setelah 3 jam?</p>",
+          "steps": [
+            "b = 0,8.",
+            "200 × 0,8³ = 200 × 0,512 = 102,4 mg."
+          ],
+          "answer": "102,4 mg"
+        },
+        {
+          "type": "check",
+          "question": "Harga sebuah motor Rp20.000.000,00 dan nilainya menyusut 10% per tahun. Nilai motor setelah 2 tahun adalah ....",
+          "options": {
+            "A": "Rp16.000.000,00",
+            "B": "Rp16.200.000,00",
+            "C": "Rp18.000.000,00",
+            "D": "Rp15.000.000,00"
+          },
+          "answer": "B",
+          "hint": "Setiap tahun nilainya dikali 0,9.",
+          "explanation": "20.000.000 × 0,9² = 20.000.000 × 0,81 = Rp16.200.000,00. Rp16.000.000,00 diperoleh jika penyusutan 10% selalu dihitung dari harga awal."
+        }
+      ]
+    },
+    {
+      "id": "bentuk-akar",
+      "title": "Bentuk akar",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Operasi bentuk akar",
+          "html": "\\[\\sqrt{ab} = \\sqrt a \\sqrt b \\qquad \\sqrt{\\frac{a}{b}} = \\frac{\\sqrt a}{\\sqrt b} \\qquad p\\sqrt a + q\\sqrt a = (p + q)\\sqrt a\\]"
+        },
+        {
+          "type": "h",
+          "text": "Merasionalkan penyebut"
+        },
+        {
+          "type": "text",
+          "html": "<p>Penyebut berbentuk akar diubah menjadi bilangan rasional dengan mengalikan pembilang dan penyebut dengan bentuk yang tepat:</p><ul><li>\\(\\dfrac{a}{\\sqrt b} = \\dfrac{a\\sqrt b}{b}\\).</li><li>\\(\\dfrac{a}{\\sqrt b + \\sqrt c}\\): kalikan dengan <b>sekawannya</b> \\(\\sqrt b - \\sqrt c\\), karena \\((\\sqrt b + \\sqrt c)(\\sqrt b - \\sqrt c) = b - c\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rasionalkan penyebut \\(\\dfrac{6}{\\sqrt5 - \\sqrt2}\\).</p>",
+          "steps": [
+            "Kalikan dengan sekawan \\(\\sqrt5 + \\sqrt2\\).",
+            "Penyebut: 5 − 2 = 3.",
+            "\\(\\dfrac{6(\\sqrt5 + \\sqrt2)}{3} = 2(\\sqrt5 + \\sqrt2) = 2\\sqrt5 + 2\\sqrt2\\)."
+          ],
+          "answer": "\\(2\\sqrt5 + 2\\sqrt2\\)"
+        },
+        {
+          "type": "check",
+          "question": "Bentuk sederhana dari \\(\\sqrt{50} + \\sqrt{18} - \\sqrt{8}\\) adalah ....",
+          "options": {
+            "A": "\\(6\\sqrt2\\)",
+            "B": "\\(\\sqrt{60}\\)",
+            "C": "\\(8\\sqrt2\\)",
+            "D": "\\(4\\sqrt2\\)"
+          },
+          "answer": "A",
+          "hint": "Ubah semuanya ke kelipatan √2.",
+          "explanation": "\\(5\\sqrt2 + 3\\sqrt2 - 2\\sqrt2 = 6\\sqrt2\\)."
+        }
+      ]
+    },
+    {
+      "id": "logaritma",
+      "title": "Logaritma",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Bakteri berlipat dua setiap jam. Kapan jumlahnya menjadi 50 kali lipat? Kita mencari x pada \\(2^x = 50\\). Operasi kebalikan eksponen ini disebut <b>logaritma</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Definisi logaritma",
+          "html": "\\[{}^a\\!\\log b = c \\iff a^c = b, \\qquad a &gt; 0,\\; a \\neq 1,\\; b &gt; 0\\]<p>a disebut basis. Logaritma berbasis 10 disebut <b>logaritma umum</b> dan ditulis \\(\\log b\\) saja.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/logaritma.html",
+          "title": "Eksponen dan logaritma",
+          "height": 480,
+          "caption": "Geser pangkat c dan ganti basisnya. Perhatikan titik pada grafik eksponen dan pasangannya pada grafik logaritma."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Sifat-sifat logaritma",
+          "html": "\\[{}^a\\!\\log(bc) = {}^a\\!\\log b + {}^a\\!\\log c \\qquad {}^a\\!\\log\\frac{b}{c} = {}^a\\!\\log b - {}^a\\!\\log c\\]\\[{}^a\\!\\log b^n = n \\cdot {}^a\\!\\log b \\qquad {}^a\\!\\log b = \\frac{\\log b}{\\log a} \\qquad {}^a\\!\\log a = 1,\\; {}^a\\!\\log 1 = 0\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung \\({}^2\\!\\log 48 - {}^2\\!\\log 3 + {}^2\\!\\log 4\\).</p>",
+          "steps": [
+            "\\({}^2\\!\\log \\dfrac{48 \\times 4}{3} = {}^2\\!\\log 64\\).",
+            "\\(2^6 = 64\\), jadi hasilnya 6."
+          ],
+          "answer": "6"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Bakteri berlipat dua setiap jam. Setelah berapa jam jumlahnya 50 kali lipat? (log 2 ≈ 0,301; log 5 ≈ 0,699)</p>",
+          "steps": [
+            "\\(2^x = 50\\), sehingga \\(x = {}^2\\!\\log 50 = \\dfrac{\\log 50}{\\log 2}\\).",
+            "\\(\\log 50 = \\log 100 - \\log 2 = 2 - 0{,}301 = 1{,}699\\).",
+            "x ≈ 1,699 : 0,301 ≈ 5,64 jam."
+          ],
+          "answer": "sekitar 5,6 jam"
+        },
+        {
+          "type": "check",
+          "question": "Nilai dari \\({}^3\\!\\log 81 + \\log 1.000\\) adalah ....",
+          "options": {
+            "A": "5",
+            "B": "7",
+            "C": "12",
+            "D": "84"
+          },
+          "answer": "B",
+          "hint": "3 pangkat berapa = 81? 10 pangkat berapa = 1.000?",
+          "explanation": "\\({}^3\\!\\log 81 = 4\\) dan \\(\\log 1.000 = 3\\). Jumlahnya 7."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Eksponen</td><td>\\(a^0 = 1\\), \\(a^{-n} = 1/a^n\\), \\(a^{m/n} = \\sqrt[n]{a^m}\\).</td></tr><tr><td>Sifat</td><td>\\(a^m a^n = a^{m+n}\\), \\(a^m/a^n = a^{m-n}\\), \\((a^m)^n = a^{mn}\\).</td></tr><tr><td>Fungsi eksponensial</td><td>\\(f(x) = a \\cdot b^x\\); b &gt; 1 tumbuh, 0 &lt; b &lt; 1 meluruh; r% → b = 1 ± r/100.</td></tr><tr><td>Bentuk akar</td><td>Rasionalkan penyebut dengan akar sekawan.</td></tr><tr><td>Logaritma</td><td>\\({}^a\\log b = c \\iff a^c = b\\); log(bc) = log b + log c; log bⁿ = n log b.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>\\((a + b)^2 \\neq a^2 + b^2\\) dan \\(\\sqrt{a + b} \\neq \\sqrt a + \\sqrt b\\).</li><li>\\(\\log(b + c) \\neq \\log b + \\log c\\).</li><li>Menghitung penyusutan r% per tahun selalu dari nilai awal (itu penyusutan linear, bukan eksponensial).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 1 Eksponen.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang sifat eksponen, persamaan eksponen, fungsi eksponensial, bentuk akar, dan logaritma. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

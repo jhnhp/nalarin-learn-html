@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perbandingan Trigonometri</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:14px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Segitiga siku-siku dengan sudut theta"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Sudut θ</span><b id="tout"></b></div><input type="range" id="t" min="5" max="85" step="1" value="30"></div>
+    <div><div class="lab"><span>Ukuran segitiga (sisi miring)</span><b id="hout"></b></div><input type="range" id="h" min="4" max="10" step="0.5" value="8"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Ubah ukuran segitiga tanpa mengubah θ: panjang sisinya berubah, tetapi ketiga perbandingannya tetap. Karena itu sin, cos, dan tan hanya bergantung pada sudut.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['t', 'h'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function draw(){
+  const t = +$('t').value * Math.PI / 180, hyp = +$('h').value, k = 36;
+  const adj = hyp * Math.cos(t), opp = hyp * Math.sin(t);
+  const A = [40, 290], B = [40 + adj * k, 290], C = [40 + adj * k, 290 - opp * k];
+  let s = `<polygon points="${A} ${B} ${C}" style="fill:var(--a)" fill-opacity=".08"/>`;
+  s += `<line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" style="stroke:var(--comp)" stroke-width="5"/>`;
+  s += `<line x1="${B[0]}" y1="${B[1]}" x2="${C[0]}" y2="${C[1]}" style="stroke:var(--b)" stroke-width="5"/>`;
+  s += `<line x1="${A[0]}" y1="${A[1]}" x2="${C[0]}" y2="${C[1]}" style="stroke:var(--a)" stroke-width="5"/>`;
+  s += `<path d="M${B[0] - 14} ${B[1]} v-14 h14" fill="none" style="stroke:var(--ink)" stroke-width="1.6"/>`;
+  s += `<path d="M${A[0] + 40} ${A[1]} A40,40 0 0 0 ${A[0] + 40 * Math.cos(t)},${A[1] - 40 * Math.sin(t)}" fill="none" style="stroke:var(--r)" stroke-width="2.5"/><text class="ar" x="${A[0] + 54 * Math.cos(t / 2)}" y="${A[1] - 54 * Math.sin(t / 2) + 5}" style="fill:var(--r)">θ</text>`;
+  s += `<text class="ar" x="${(A[0] + B[0]) / 2}" y="${A[1] + 22}" text-anchor="middle" style="fill:var(--comp)">samping = ${fmt(adj)}</text>`;
+  s += `<text class="ar" x="${B[0] + 8}" y="${(B[1] + C[1]) / 2 + 5}" style="fill:var(--b)">depan = ${fmt(opp)}</text>`;
+  s += `<text class="ar" x="${(A[0] + C[0]) / 2 - 10}" y="${(A[1] + C[1]) / 2 - 8}" text-anchor="end" style="fill:var(--a)">miring = ${fmt(hyp)}</text>`;
+  svg.innerHTML = s;
+  $('tout').textContent = $('t').value + '°'; $('hout').textContent = fmt(hyp);
+  $('read').innerHTML = `<div><span style="color:var(--b)">sin θ</span><b>depan / miring = ${fmt(opp)} / ${fmt(hyp)} = ${fmt(Math.sin(t), 4)}</b></div>` +
+    `<div><span style="color:var(--comp)">cos θ</span><b>samping / miring = ${fmt(Math.cos(t), 4)}</b></div>` +
+    `<div><span>tan θ</span><b>depan / samping = ${fmt(Math.tan(t), 4)}</b></div>` +
+    `<div><span>sin² θ + cos² θ</span><b>${fmt(Math.sin(t) ** 2 + Math.cos(t) ** 2, 4)}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

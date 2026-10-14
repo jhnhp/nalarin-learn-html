@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garis Best-Fit</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+svg{touch-action:none}.h{cursor:grab}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 340" role="img" aria-label="Diagram pencar dengan garis yang dapat digeser"></svg></div>
+  <div class="panel">
+    <div class="seg" id="ds"><button data-d="jajan" class="on">Uang jajan & tabungan</button><button data-d="acak">Data acak</button></div>
+    <div id="rbox" hidden><div class="lab"><span>Kekuatan hubungan yang dibangkitkan</span><b id="rout"></b></div><input type="range" id="r" min="-1" max="1" step="0.1" value="0.8"><button class="btn" id="regen">Bangkitkan ulang</button></div>
+    <label class="chk"><input type="checkbox" id="c-res" checked> Tampilkan residu (jarak tegak titik ke garis)</label>
+    <label class="chk"><input type="checkbox" id="c-best"> Tampilkan garis best-fit (kuadrat terkecil)</label>
+    <div><div class="lab"><span>Prediksi untuk x =</span><b id="xout"></b></div><input type="range" id="xp" min="0" max="70" step="1" value="20"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Geser titik <b>P</b> dan <b>Q</b> untuk mengatur garismu. Garis terbaik membuat jumlah kuadrat residu sekecil mungkin dan selalu melalui titik rata-rata (x̄, ȳ).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const L = 46, B = 300, W = 400, H = 280, XM = 70, YM = 20;
+const X = x => L + x / XM * W, Y = y => B - y / YM * H, iX = px => (px - L) / W * XM, iY = py => (B - py) / H * YM;
+const JAJAN = [[10, 2], [40, 11], [25, 8], [50, 14], [15, 5], [35, 10], [30, 7], [45, 15]];
+let pts = JAJAN.slice(), P = {x: 10, y: 6}, Q = {x: 55, y: 12}, drag = null, ds = 'jajan';
+function gauss(){ let u = 0, v = 0; while(!u) u = Math.random(); v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+function gen(){ const r = +$('r').value; pts = []; for(let i = 0; i < 20; i++){ const zx = gauss(), zy = r * zx + Math.sqrt(1 - r * r) * gauss(); const x = 35 + zx * 11, y = 10 + zy * 3.2; if(x > 2 && x < 68 && y > .5 && y < 19.5) pts.push([Math.round(x), Math.round(y * 10) / 10]); else i--; } }
+$('ds').onclick = e => { const b = e.target.closest('button'); if(!b) return; ds = b.dataset.d; document.querySelectorAll('#ds button').forEach(x => x.classList.toggle('on', x === b)); $('rbox').hidden = ds !== 'acak'; if(ds === 'acak') gen(); else pts = JAJAN.slice(); draw(); };
+$('r').oninput = () => { gen(); draw(); }; $('regen').onclick = () => { gen(); draw(); };
+['c-res', 'c-best', 'xp'].forEach(id => $(id).oninput = $(id).onchange = draw);
+const toSvg = e => { const p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; return p.matrixTransform(svg.getScreenCTM().inverse()); };
+svg.addEventListener('pointerdown', e => { const t = e.target.closest('[data-h]'); if(!t) return; drag = t.dataset.h; svg.setPointerCapture(e.pointerId); });
+svg.addEventListener('pointermove', e => { if(!drag) return; const p = toSvg(e), o = {x: Math.min(XM, Math.max(0, Math.round(iX(p.x)))), y: Math.min(YM, Math.max(0, Math.round(iY(p.y) * 2) / 2))}; if(drag === 'P') P = o; else Q = o; if(P.x === Q.x) return; draw(); });
+['pointerup', 'pointercancel'].forEach(ev => svg.addEventListener(ev, () => drag = null));
+Sim.onTheme(draw);
+function stats(){
+  const n = pts.length, sx = pts.reduce((a, p) => a + p[0], 0), sy = pts.reduce((a, p) => a + p[1], 0), sxy = pts.reduce((a, p) => a + p[0] * p[1], 0), sxx = pts.reduce((a, p) => a + p[0] * p[0], 0), syy = pts.reduce((a, p) => a + p[1] * p[1], 0);
+  const b = (n * sxy - sx * sy) / (n * sxx - sx * sx), a = sy / n - b * sx / n, r = (n * sxy - sx * sy) / Math.sqrt((n * sxx - sx * sx) * (n * syy - sy * sy));
+  return {n, a, b, r, mx: sx / n, my: sy / n};
+}
+const sse = (a, b) => pts.reduce((t, [x, y]) => t + (y - a - b * x) ** 2, 0);
+function draw(){
+  $('rout').textContent = fmt(+$('r').value, 1);
+  const S = stats(), b = (Q.y - P.y) / (Q.x - P.x), a = P.y - b * P.x, xp = +$('xp').value;
+  let s = '<g style="stroke:var(--line)">';
+  for(let x = 10; x <= XM; x += 10) s += `<line x1="${X(x)}" y1="${Y(0)}" x2="${X(x)}" y2="${Y(YM)}"/>`;
+  for(let y = 5; y <= YM; y += 5) s += `<line x1="${X(0)}" y1="${Y(y)}" x2="${X(XM)}" y2="${Y(y)}"/>`;
+  s += '</g><g style="fill:var(--muted)" font-size="11">';
+  for(let x = 10; x <= XM; x += 10) s += `<text x="${X(x)}" y="${B + 15}" text-anchor="middle">${x}</text>`;
+  for(let y = 5; y <= YM; y += 5) s += `<text x="${L - 6}" y="${Y(y) + 4}" text-anchor="end">${y}</text>`;
+  s += `<text x="${X(XM)}" y="${B + 32}" text-anchor="end" font-weight="700">${ds === 'jajan' ? 'uang jajan (ribu Rp)' : 'x'}</text><text x="${L + 6}" y="${Y(YM) + 12}" font-weight="700">${ds === 'jajan' ? 'tabungan (ribu Rp)' : 'y'}</text></g>`;
+  s += `<line x1="${X(0)}" y1="${Y(0)}" x2="${X(XM)}" y2="${Y(0)}" style="stroke:var(--ink)" stroke-width="1.5"/><line x1="${X(0)}" y1="${Y(0)}" x2="${X(0)}" y2="${Y(YM)}" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  // rentang data (interpolasi)
+  const xmin = Math.min(...pts.map(p => p[0])), xmax = Math.max(...pts.map(p => p[0]));
+  s += `<rect x="${X(xmin)}" y="${Y(YM)}" width="${X(xmax) - X(xmin)}" height="${H}" style="fill:var(--a)" fill-opacity=".05"/>`;
+  const clipL = (aa, bb, col, w, dash) => { let x1 = 0, x2 = XM; const y1 = aa + bb * x1, y2 = aa + bb * x2; return `<line x1="${X(x1)}" y1="${Y(y1)}" x2="${X(x2)}" y2="${Y(y2)}" style="stroke:${col}" stroke-width="${w}"${dash ? ' class="dash"' : ''}/>`; };
+  s += `<defs><clipPath id="cp"><rect x="${L}" y="${Y(YM)}" width="${W}" height="${H}"/></clipPath></defs><g clip-path="url(#cp)">`;
+  if($('c-res').checked) pts.forEach(([x, y]) => s += `<line x1="${X(x)}" y1="${Y(y)}" x2="${X(x)}" y2="${Y(a + b * x)}" style="stroke:var(--r)" stroke-width="1.5"/>`);
+  if($('c-best').checked) s += clipL(S.a, S.b, 'var(--ok)', 2.5, true);
+  s += clipL(a, b, 'var(--a)', 3) + '</g>';
+  pts.forEach(([x, y]) => s += `<circle cx="${X(x)}" cy="${Y(y)}" r="5.5" style="fill:var(--ink)"/>`);
+  s += `<circle cx="${X(S.mx)}" cy="${Y(S.my)}" r="6" fill="none" style="stroke:var(--comp)" stroke-width="2.5"/><text class="c" x="${X(S.mx) + 8}" y="${Y(S.my) + 18}" style="fill:var(--comp)">(x̄, ȳ)</text>`;
+  const yp = a + b * xp;
+  if(yp >= 0 && yp <= YM) s += `<line x1="${X(xp)}" y1="${Y(0)}" x2="${X(xp)}" y2="${Y(yp)}" style="stroke:var(--k)" stroke-width="1.5" class="dash"/><circle cx="${X(xp)}" cy="${Y(yp)}" r="5" style="fill:var(--k)"/>`;
+  [['P', P], ['Q', Q]].forEach(([n, o]) => s += `<g class="h" data-h="${n}"><circle cx="${X(o.x)}" cy="${Y(o.y)}" r="14" style="fill:var(--a)" fill-opacity=".2"/><circle cx="${X(o.x)}" cy="${Y(o.y)}" r="7" style="fill:var(--a)"/><text class="c" x="${X(o.x) + 10}" y="${Y(o.y) - 10}" style="fill:var(--a)">${n}</text></g>`);
+  svg.innerHTML = s;
+  $('xout').textContent = xp;
+  const e1 = sse(a, b), e2 = sse(S.a, S.b), sg = v => (v < 0 ? '− ' : '+ ') + fmt(Math.abs(v), 3);
+  $('read').innerHTML = `<div><span style="color:var(--a)">Garismu</span><b>ŷ = ${fmt(a, 2)} ${sg(b)}x</b></div><div><span style="color:var(--r)">Jumlah kuadrat residu garismu</span><b>${fmt(e1, 1)}</b></div>` +
+    `<div><span style="color:var(--ok)">Best-fit</span><b>${$('c-best').checked ? `ŷ = ${fmt(S.a, 2)} ${sg(S.b)}x (${fmt(e2, 1)})` : 'centang untuk melihat'}</b></div>` +
+    `<div><span>Koefisien korelasi r</span><b>${fmt(S.r, 3)}</b></div>` +
+    `<div><span style="color:var(--k)">Prediksi garismu di x = ${xp}</span><b>${fmt(yp, 2)} (${xp >= xmin && xp <= xmax ? 'interpolasi' : 'ekstrapolasi'})</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

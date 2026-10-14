@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garis Singgung Lingkaran</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Garis singgung lingkaran dari titik luar dan garis singgung persekutuan dua lingkaran"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="titik" class="on">Dari titik di luar</button><button data-m="luar">Persekutuan luar</button><button data-m="dalam">Persekutuan dalam</button></div>
+    <div><div class="lab"><span>Jari-jari R (lingkaran A)</span><b id="Rout"></b></div><input type="range" id="R" min="1" max="4" step="0.5" value="3"></div>
+    <div id="rbox"><div class="lab"><span>Jari-jari r (lingkaran B)</span><b id="rout"></b></div><input type="range" id="r" min="0.5" max="3" step="0.5" value="1.5"></div>
+    <div><div class="lab"><span id="dlab">Jarak pusat ke titik P</span><b id="dout"></b></div><input type="range" id="d" min="2" max="12" step="0.5" value="8"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -5, xmax: 13, ymin: -6.5, ymax: 6.5, scale: 25});
+let mode = 'titik';
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+['R', 'r', 'd'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+const seg = (A, B, col, w = 2.5, dash) => `<line x1="${P.X(A.x)}" y1="${P.Y(A.y)}" x2="${P.X(B.x)}" y2="${P.Y(B.y)}" style="stroke:${col}" stroke-width="${w}"${dash ? ' class="dash"' : ''}/>`;
+const circ = (c, r, col) => `<circle cx="${P.X(c.x)}" cy="${P.Y(c.y)}" r="${r * 25}" fill="none" style="stroke:${col}" stroke-width="2.5"/><circle cx="${P.X(c.x)}" cy="${P.Y(c.y)}" r="3.5" style="fill:${col}"/>`;
+const lab = (p, t, col = 'var(--ink)', dx = 8, dy = -8) => `<text class="ar" x="${P.X(p.x) + dx}" y="${P.Y(p.y) + dy}" style="fill:${col}">${t}</text>`;
+const dot = (p, col) => `<circle cx="${P.X(p.x)}" cy="${P.Y(p.y)}" r="5" style="fill:${col}"/>`;
+function rightMark(T, C, Q){ // tanda siku di T antara arah ke C dan ke Q
+  const u = n => { const l = Math.hypot(n.x, n.y); return {x: n.x / l * .4, y: n.y / l * .4}; };
+  const a = u({x: C.x - T.x, y: C.y - T.y}), b = u({x: Q.x - T.x, y: Q.y - T.y});
+  return `<path d="M${P.X(T.x + a.x)} ${P.Y(T.y + a.y)} L${P.X(T.x + a.x + b.x)} ${P.Y(T.y + a.y + b.y)} L${P.X(T.x + b.x)} ${P.Y(T.y + b.y)}" fill="none" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+}
+function draw(){
+  const R = +$('R').value, r = +$('r').value, d = +$('d').value, A = {x: 0, y: 0};
+  $('rbox').hidden = mode === 'titik';
+  $('Rout').textContent = fmt(R); $('rout').textContent = fmt(r); $('dout').textContent = fmt(d);
+  $('dlab').textContent = mode === 'titik' ? 'Jarak pusat A ke titik P' : 'Jarak kedua pusat AB';
+  let s = P.grid({labels: false}) + circ(A, R, 'var(--a)') + lab(A, 'A', 'var(--a)', -16, 18);
+  if(mode === 'titik'){
+    const Pp = {x: d, y: 0};
+    if(d <= R){ svg.innerHTML = s + dot(Pp, 'var(--r)') + lab(Pp, 'P'); $('read').innerHTML = '<div><span>P berada di dalam atau pada lingkaran</span><b>tidak ada garis singgung dari luar</b></div>'; return; }
+    const t = Math.sqrt(d * d - R * R), th = Math.acos(R / d), T1 = {x: R * Math.cos(th), y: R * Math.sin(th)}, T2 = {x: T1.x, y: -T1.y};
+    s += seg(A, Pp, 'var(--muted)', 1.5, true) + seg(A, T1, 'var(--comp)') + seg(A, T2, 'var(--comp)', 1.5) + seg(T1, Pp, 'var(--r)', 3) + seg(T2, Pp, 'var(--r)', 3) + rightMark(T1, A, Pp) + rightMark(T2, A, Pp);
+    s += dot(T1, 'var(--r)') + dot(T2, 'var(--r)') + dot(Pp, 'var(--ink)') + lab(T1, 'S₁') + lab(T2, 'S₂', 'var(--ink)', 8, 20) + lab(Pp, 'P') + lab({x: T1.x / 2, y: T1.y / 2}, 'R', 'var(--comp)', -14, -2);
+    svg.innerHTML = s;
+    $('read').innerHTML = `<div><span>Jari-jari ⊥ garis singgung, sehingga △APS₁ siku-siku di S₁</span><b></b></div><div><span>PS₁ = √(AP² − R²)</span><b>√(${fmt(d * d)} − ${fmt(R * R)}) = ${fmt(t, 3)}</b></div><div><span>PS₂</span><b>${fmt(t, 3)} (sama panjang)</b></div>`;
+    return;
+  }
+  const B = {x: d, y: 0}, inner = mode === 'dalam';
+  s += circ(B, r, 'var(--comp)') + lab(B, 'B', 'var(--comp)', 8, 18) + seg(A, B, 'var(--muted)', 1.5, true);
+  const k = inner ? R + r : R - r;
+  if(d <= Math.abs(k) + 1e-9 || (!inner && d <= Math.abs(R - r))){ svg.innerHTML = s; $('read').innerHTML = `<div><span>Syarat</span><b>${inner ? 'AB harus lebih dari R + r' : 'AB harus lebih dari |R − r|'}</b></div>`; return; }
+  const L = Math.sqrt(d * d - k * k);
+  // arah normal garis singgung: n = (cos φ, sin φ) dengan cos φ = k/d
+  [1, -1].forEach(sg => {
+    const ph = Math.acos(k / d) * sg, n = {x: Math.cos(ph), y: Math.sin(ph)};
+    const T1 = {x: R * n.x, y: R * n.y}, T2 = inner ? {x: B.x - r * n.x, y: B.y - r * n.y} : {x: B.x + r * n.x, y: B.y + r * n.y};
+    s += seg(T1, T2, 'var(--r)', sg > 0 ? 3 : 1.5) + (sg > 0 ? seg(A, T1, 'var(--a)', 1.5) + seg(B, T2, 'var(--comp)', 1.5) + dot(T1, 'var(--r)') + dot(T2, 'var(--r)') + lab(T1, 'C') + lab(T2, 'D') : '');
+  });
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Panjang garis singgung persekutuan ${inner ? 'dalam' : 'luar'}</span><b></b></div><div><span>CD = √(AB² − (R ${inner ? '+' : '−'} r)²)</span><b>√(${fmt(d * d)} − ${fmt(k * k)}) = ${fmt(L, 3)}</b></div>` +
+    `<p class="note">Geser garis BD sejajar CD sampai melalui A: terbentuk segitiga siku-siku dengan sisi CD, hipotenusa AB, dan sisi tegak R ${inner ? '+' : '−'} r.</p>`;
+}
+draw();
+</script>
+</body>
+</html>

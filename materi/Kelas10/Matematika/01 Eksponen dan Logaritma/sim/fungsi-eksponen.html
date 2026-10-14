@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fungsi Eksponensial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.big{font-family:var(--display);font-weight:800;font-size:20px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}td,th{padding:3px 5px;text-align:center;border-bottom:1px solid var(--line)}th{font-size:12px;color:var(--muted);text-align:left}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik fungsi eksponensial"></svg></div>
+  <div class="panel">
+    <div class="big" id="eq"></div>
+    <div><div class="lab"><span>Nilai awal a</span><b id="aout"></b></div><input type="range" id="a" min="0.5" max="4" step="0.5" value="1"></div>
+    <div><div class="lab"><span>Bilangan pokok (faktor pengali) b</span><b id="bout"></b></div><input type="range" id="b" min="0.25" max="3" step="0.25" value="2"></div>
+    <table id="tab"></table>
+    <p class="note" id="why"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -4, xmax: 6, ymin: -1, ymax: 12, scale: 30});
+['a', 'b'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function draw(){
+  const a = +$('a').value, b = +$('b').value, f = x => a * b ** x;
+  let s = P.grid({labelStep: 2, xname: 'x', yname: 'y'}), d = '', pen = false;
+  for(let x = -4; x <= 6.001; x += .05){ const y = f(x); if(y > 12.5){ pen = false; continue; } d += (pen ? 'L' : 'M') + P.X(x).toFixed(1) + ',' + P.Y(y).toFixed(1); pen = true; }
+  s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+  for(let x = -2; x <= 4; x++) if(f(x) <= 12) s += `<circle cx="${P.X(x)}" cy="${P.Y(f(x))}" r="4.5" style="fill:var(--b)"/>`;
+  s += `<circle cx="${P.X(0)}" cy="${P.Y(a)}" r="7" style="fill:var(--comp)"/>`;
+  svg.innerHTML = s;
+  $('aout').textContent = fmt(a); $('bout').textContent = fmt(b);
+  $('eq').innerHTML = `f(x) = ${a === 1 ? '' : fmt(a) + ' · '}${fmt(b)}<sup>x</sup>`;
+  const xs = [-2, -1, 0, 1, 2, 3, 4];
+  $('tab').innerHTML = `<tr><th>x</th>${xs.map(x => `<td>${x}</td>`).join('')}</tr><tr><th>f(x)</th>${xs.map(x => `<td>${fmt(f(x), 2)}</td>`).join('')}</tr>`;
+  $('why').innerHTML = (b > 1 ? `<b>Pertumbuhan eksponensial</b>: setiap x bertambah 1, nilai f(x) dikali ${fmt(b)}.` : b < 1 ? `<b>Peluruhan eksponensial</b>: setiap x bertambah 1, nilai f(x) dikali ${fmt(b)} (mengecil).` : 'b = 1 membuat fungsi konstan, bukan fungsi eksponensial.') +
+    ` Grafik memotong sumbu y di (0, ${fmt(a)}) karena b⁰ = 1, dan tidak pernah menyentuh sumbu x (asimtot y = 0).`;
+}
+draw();
+</script>
+</body>
+</html>

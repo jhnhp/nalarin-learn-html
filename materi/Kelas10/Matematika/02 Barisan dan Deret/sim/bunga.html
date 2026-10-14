@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bunga Tunggal dan Bunga Majemuk</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.lbl{font-family:var(--font);font-size:11.5px;fill:var(--muted)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Grafik saldo bunga tunggal dan bunga majemuk"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Modal awal</span><b id="mout"></b></div><input type="range" id="m" min="1" max="20" step="1" value="10"></div>
+    <div><div class="lab"><span>Suku bunga per tahun</span><b id="iout"></b></div><input type="range" id="i" min="1" max="20" step="1" value="10"></div>
+    <div><div class="lab"><span>Lama menabung (tahun)</span><b id="nout"></b></div><input type="range" id="n" min="1" max="20" step="1" value="10"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Bunga tunggal dihitung dari modal awal saja (barisan aritmetika). Bunga majemuk dihitung dari saldo terakhir, sehingga bunga juga berbunga (barisan geometri).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const rp = v => 'Rp' + Math.round(v).toLocaleString('id-ID');
+['m', 'i', 'n'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function draw(){
+  const M = +$('m').value * 1e6, i = +$('i').value / 100, n = +$('n').value;
+  const T = k => M * (1 + k * i), C = k => M * (1 + i) ** k, top = C(20) * 1.05;
+  const gx = 70, gy = 20, gw = 370, gh = 250, X = k => gx + k / 20 * gw, Y = v => gy + gh - v / top * gh;
+  let s = '';
+  for(let k = 0; k <= 5; k++){ const v = top * k / 5; s += `<line x1="${gx}" y1="${Y(v)}" x2="${gx + gw}" y2="${Y(v)}" style="stroke:var(--grid)"/><text class="lbl" x="${gx - 6}" y="${Y(v) + 4}" text-anchor="end">${(v / 1e6).toLocaleString('id-ID', {maximumFractionDigits: 0})} jt</text>`; }
+  for(let k = 0; k <= 20; k += 5) s += `<text class="lbl" x="${X(k)}" y="${gy + gh + 16}" text-anchor="middle">${k}</text>`;
+  s += `<text class="lbl" x="${gx + gw}" y="${gy + gh + 32}" text-anchor="end">tahun</text>`;
+  s += `<line x1="${gx}" y1="${gy + gh}" x2="${gx + gw}" y2="${gy + gh}" style="stroke:var(--ink)"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy + gh}" style="stroke:var(--ink)"/>`;
+  const line = (f, col) => `<polyline points="${Array.from({length: 21}, (_, k) => X(k) + ',' + Y(f(k))).join(' ')}" fill="none" style="stroke:${col}" stroke-width="3"/>` + Array.from({length: n + 1}, (_, k) => `<circle cx="${X(k)}" cy="${Y(f(k))}" r="3.5" style="fill:${col}"/>`).join('');
+  s += line(T, 'var(--comp)') + line(C, 'var(--a)');
+  s += `<line x1="${X(n)}" y1="${gy}" x2="${X(n)}" y2="${gy + gh}" style="stroke:var(--muted)" class="dash"/>`;
+  s += `<text class="lbl" x="${X(15) - 6}" y="${Y(C(15)) - 8}" text-anchor="end" style="fill:var(--a);font-weight:700">majemuk</text><text class="lbl" x="${X(20) - 4}" y="${Y(T(20)) - 8}" text-anchor="end" style="fill:var(--comp);font-weight:700">tunggal</text>`;
+  svg.innerHTML = s;
+  $('mout').textContent = rp(M); $('iout').textContent = $('i').value + '%'; $('nout').textContent = n + ' tahun';
+  $('read').innerHTML = `<div><span style="color:var(--comp)">Bunga tunggal: M(1 + n·i)</span><b>${rp(T(n))}</b></div><div><span style="color:var(--a)">Bunga majemuk: M(1 + i)ⁿ</span><b>${rp(C(n))}</b></div><div><span>Selisih</span><b>${rp(C(n) - T(n))}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

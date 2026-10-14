@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformasi Fungsi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.big{font-family:var(--display);font-weight:800;font-size:18px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}
+.ar{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik fungsi dasar dan hasil transformasinya"></svg></div>
+  <div class="panel">
+    <div class="seg" id="base"><button data-b="0">y = x</button><button data-b="1" class="on">y = x²</button><button data-b="2">y = 2ˣ</button><button data-b="3">y = √x</button></div>
+    <div class="big" id="eq"></div>
+    <div><div class="lab"><span>a (regang/mampat vertikal, a &lt; 0 cermin sumbu x)</span><b id="aout"></b></div><input type="range" id="a" min="-3" max="3" step="0.5" value="1"></div>
+    <div><div class="lab"><span>b (regang/mampat horizontal, b &lt; 0 cermin sumbu y)</span><b id="bout"></b></div><input type="range" id="b" min="-3" max="3" step="0.5" value="1"></div>
+    <div><div class="lab"><span>h (geser horizontal)</span><b id="hout"></b></div><input type="range" id="h" min="-5" max="5" step="1" value="0"></div>
+    <div><div class="lab"><span>k (geser vertikal)</span><b id="kout"></b></div><input type="range" id="k" min="-5" max="5" step="1" value="0"></div>
+    <div class="row"><button class="btn" id="reset">Kembali ke fungsi dasar</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = Sim.plane(svg, {xmin: -7, xmax: 7, ymin: -7, ymax: 7, scale: 26});
+const B = [{n: 'x', f: x => x, p: 1, s: u => u}, {n: 'x²', f: x => x * x, p: 1, s: u => `${u}²`}, {n: '2ˣ', f: x => 2 ** x, p: 0, s: u => `2^${u}`}, {n: '√x', f: x => x >= 0 ? Math.sqrt(x) : NaN, p: 1, s: u => `√${u}`}];
+let bi = 1;
+$('base').onclick = e => { const t = e.target.closest('button'); if(!t) return; bi = +t.dataset.b; document.querySelectorAll('#base button').forEach(x => x.classList.toggle('on', x === t)); draw(); };
+['a', 'b', 'h', 'k'].forEach(id => $(id).oninput = draw);
+$('reset').onclick = () => { $('a').value = 1; $('b').value = 1; $('h').value = 0; $('k').value = 0; draw(); };
+Sim.onTheme(draw);
+function curve(f, col, w, dash){ let d = '', pen = false; for(let x = -7; x <= 7.001; x += .02){ const y = f(x); if(!isFinite(y) || Math.abs(y) > 7.5){ pen = false; continue; } d += (pen ? 'L' : 'M') + P.X(x).toFixed(1) + ',' + P.Y(y).toFixed(1); pen = true; } return `<path d="${d}" fill="none" style="stroke:${col}" stroke-width="${w}"${dash ? ' class="dash"' : ''}/>`; }
+function inner(b, h){ // teks b(x − h)
+  const xh = h === 0 ? 'x' : `x ${h > 0 ? '−' : '+'} ${Math.abs(h)}`;
+  if(b === 1) return h === 0 ? 'x' : `(${xh})`;
+  if(b === -1) return h === 0 ? '(−x)' : `(−(${xh}))`;
+  return h === 0 ? `(${fmt(b)}x)` : `(${fmt(b)}(${xh}))`;
+}
+function draw(){
+  let a = +$('a').value, b = +$('b').value; const h = +$('h').value, k = +$('k').value;
+  if(b === 0){ b = .5; $('b').value = .5; }
+  const F = B[bi], g = x => a * F.f(b * (x - h)) + k;
+  ['a', 'b', 'h', 'k'].forEach(id => $(id + 'out').textContent = fmt(+$(id).value));
+  let s = P.grid({labelStep: 2, xname: 'x', yname: 'y'}) + curve(F.f, 'var(--muted)', 2.5, true) + curve(g, 'var(--a)', 3.5);
+  // titik acuan dasar (p, f(p)) dan bayangannya
+  const px = F.p, py = F.f(px), qx = px / b + h, qy = a * py + k;
+  s += `<circle cx="${P.X(px)}" cy="${P.Y(py)}" r="5" style="fill:var(--muted)"/>`;
+  if(Math.abs(qx) <= 7 && Math.abs(qy) <= 7) s += `<line x1="${P.X(px)}" y1="${P.Y(py)}" x2="${P.X(qx)}" y2="${P.Y(qy)}" style="stroke:var(--comp)" stroke-width="1.5" class="dash"/><circle cx="${P.X(qx)}" cy="${P.Y(qy)}" r="6" style="fill:var(--comp)"/><text class="ar" x="${P.X(qx) + 9}" y="${P.Y(qy) - 9}" style="fill:var(--comp)">(${fmt(qx)}, ${fmt(qy)})</text>`;
+  svg.innerHTML = s;
+  const pre = a === 1 ? '' : a === -1 ? '−' : fmt(a) + '·';
+  $('eq').textContent = `y = ${pre}${F.s(inner(b, h))}${k ? (k > 0 ? ' + ' : ' − ') + Math.abs(k) : ''}`;
+  const st = [];
+  if(b < 0) st.push('dicerminkan terhadap sumbu y');
+  if(Math.abs(b) !== 1) st.push(`${Math.abs(b) > 1 ? 'dimampatkan' : 'diregangkan'} horizontal dengan faktor ${fmt(1 / Math.abs(b))}`);
+  if(a < 0) st.push('dicerminkan terhadap sumbu x');
+  if(Math.abs(a) !== 1) st.push(`${Math.abs(a) > 1 ? 'diregangkan' : 'dimampatkan'} vertikal dengan faktor ${fmt(Math.abs(a))}`);
+  if(h) st.push(`digeser ${Math.abs(h)} satuan ke ${h > 0 ? 'kanan' : 'kiri'}`);
+  if(k) st.push(`digeser ${Math.abs(k)} satuan ke ${k > 0 ? 'atas' : 'bawah'}`);
+  $('read').innerHTML = `<div><span>Urutan transformasi dari y = ${F.n}</span><b></b></div>` + (st.length ? st.map((t, i) => `<div><span>${i + 1}. ${t}</span><b></b></div>`).join('') : '<div><span>tidak ada (fungsi dasar)</span><b></b></div>') +
+    `<div><span style="color:var(--comp)">Titik (${fmt(px)}, ${fmt(py)}) menjadi</span><b>(${fmt(qx)}, ${fmt(qy)})</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>
