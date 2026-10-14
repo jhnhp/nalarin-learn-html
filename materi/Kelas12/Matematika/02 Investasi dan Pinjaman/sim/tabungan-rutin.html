@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabungan Rutin (Anuitas)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Pertumbuhan tabungan rutin: setoran dan bunga"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Setoran setiap akhir tahun A</span><b id="aout"></b></div><input type="range" id="a" min="1000000" max="20000000" step="1000000" value="5000000"></div>
+    <div><div class="lab"><span>Bunga majemuk per tahun</span><b id="iout"></b></div><input type="range" id="i" min="1" max="12" step="1" value="6"></div>
+    <div><div class="lab"><span>Lama menabung (tahun)</span><b id="nout"></b></div><input type="range" id="n" min="1" max="30" step="1" value="10"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Setoran tahun ke-1 berbunga n − 1 kali, setoran terakhir belum berbunga. Jumlahnya deret geometri: FV = A[(1 + i)ⁿ − 1]/i.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const rp = v => 'Rp' + Math.round(v).toLocaleString('id-ID'), jt = v => (v / 1e6).toLocaleString('id-ID', {maximumFractionDigits: 1}) + ' jt';
+['a', 'i', 'n'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function draw(){
+  const A = +$('a').value, I = +$('i').value, n = +$('n').value, i = I / 100;
+  $('aout').textContent = rp(A); $('iout').textContent = I + '%'; $('nout').textContent = n;
+  const fv = k => A * ((1 + i) ** k - 1) / i, mx = fv(n) * 1.05, L = 54, B = 260, W = 390, H = 230, bw = W / n;
+  let s = '';
+  for(let k = 0; k <= 4; k++){ const v = mx * k / 4, y = B - H * k / 4; s += `<line x1="${L}" y1="${y}" x2="${L + W}" y2="${y}" style="stroke:var(--line)"/><text x="${L - 5}" y="${y + 4}" font-size="10.5" text-anchor="end" style="fill:var(--muted)">${jt(v)}</text>`; }
+  for(let k = 1; k <= n; k++){ const x = L + (k - 1) * bw + bw * .12, w = bw * .76, dep = A * k, tot = fv(k), hd = dep / mx * H, ht = tot / mx * H;
+    s += `<rect x="${x}" y="${B - hd}" width="${w}" height="${hd}" style="fill:var(--a)" fill-opacity=".8"/><rect x="${x}" y="${B - ht}" width="${w}" height="${ht - hd}" style="fill:var(--ok)" fill-opacity=".85"/>`;
+    if(n <= 15 || k % 5 === 0) s += `<text x="${x + w / 2}" y="${B + 14}" font-size="10.5" text-anchor="middle" style="fill:var(--muted)">${k}</text>`; }
+  s += `<line x1="${L}" y1="${B}" x2="${L + W}" y2="${B}" style="stroke:var(--ink)" stroke-width="1.5"/><text x="${L + W / 2}" y="${B + 32}" font-size="11.5" text-anchor="middle" style="fill:var(--muted)">tahun ke-</text>`;
+  s += `<rect x="${L + 10}" y="12" width="11" height="11" rx="3" style="fill:var(--a)"/><text class="c" x="${L + 26}" y="22">total setoran</text><rect x="${L + 130}" y="12" width="11" height="11" rx="3" style="fill:var(--ok)"/><text class="c" x="${L + 146}" y="22">bunga yang terkumpul</text>`;
+  svg.innerHTML = s;
+  const F = fv(n), pv = A * (1 - (1 + i) ** -n) / i;
+  $('read').innerHTML = `<div><span>Nilai akhir FV</span><b>${rp(F)}</b></div><div><span>Total setoran n × A</span><b>${rp(A * n)}</b></div><div><span>Bunga yang diperoleh</span><b>${rp(F - A * n)} (${Math.round((F - A * n) / F * 100)}% dari saldo)</b></div>` +
+    `<div><span>Nilai sekarang PV = A[1 − (1 + i)⁻ⁿ]/i</span><b>${rp(pv)}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

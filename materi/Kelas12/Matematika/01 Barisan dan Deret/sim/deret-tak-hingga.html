@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deret Geometri Tak Hingga</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 340" role="img" aria-label="Visualisasi deret geometri tak hingga"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="bola" class="on">Bola memantul</button><button data-m="persegi">Persegi dibagi dua</button></div>
+    <div id="bbox">
+      <div><div class="lab"><span>Tinggi awal (m)</span><b id="hout"></b></div><input type="range" id="h" min="1" max="10" step="1" value="5"></div>
+      <div><div class="lab"><span>Rasio pantulan r</span><b id="rout"></b></div><input type="range" id="r" min="0.2" max="0.9" step="0.1" value="0.6"></div>
+    </div>
+    <div><div class="lab"><span>Banyak suku yang dijumlahkan n</span><b id="nout"></b></div><input type="range" id="n" min="1" max="20" step="1" value="4"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Jika −1 &lt; r &lt; 1, suku-sukunya makin kecil dan jumlahnya mendekati S∞ = a/(1 − r) (konvergen). Jika |r| ≥ 1, jumlahnya tidak terbatas (divergen).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'bola';
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+['h', 'r', 'n'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function draw(){
+  const n = +$('n').value; $('nout').textContent = n; $('bbox').hidden = mode !== 'bola';
+  let s = '';
+  if(mode === 'bola'){
+    const h = +$('h').value, r = +$('r').value; $('hout').textContent = h; $('rout').textContent = fmt(r, 1);
+    const B = 260, sy = 220 / 10, X0 = 30, W = 410;
+    // lintasan: jatuh dari h, lalu naik-turun h·r^k
+    const hs = [h]; for(let k = 1; k <= n; k++) hs.push(h * r ** k);
+    const widths = hs.map((v, i) => i === 0 ? 1 : 2 * Math.sqrt(v / h)), tot = widths.reduce((a, b) => a + b, 0), kx = W / Math.max(tot, 6);
+    let x = X0, d = `M${X0} ${B - h * sy}`;
+    s += `<line x1="0" y1="${B}" x2="460" y2="${B}" style="stroke:var(--ink)" stroke-width="2"/>`;
+    for(let v = 2; v <= 10; v += 2) s += `<line x1="${X0}" y1="${B - v * sy}" x2="450" y2="${B - v * sy}" style="stroke:var(--line)"/><text x="${X0 - 6}" y="${B - v * sy + 4}" font-size="11" text-anchor="end" style="fill:var(--muted)">${v}</text>`;
+    // jatuh pertama (setengah parabola)
+    const w0 = widths[0] * kx; d += ` Q${X0 + w0 * .1} ${B - h * sy} ${X0 + w0} ${B}`; x = X0 + w0;
+    for(let k = 1; k < hs.length; k++){ const w = widths[k] * kx, top = B - 2 * hs[k] * sy + B * 0; d += ` Q${x + w / 2} ${B - 2 * hs[k] * sy} ${x + w} ${B}`; s += `<text class="c" x="${x + w / 2}" y="${B - hs[k] * sy - 6}" text-anchor="middle" style="fill:var(--a)">${fmt(hs[k], 2)}</text>`; x += w; }
+    s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="2.5"/><circle cx="${X0}" cy="${B - h * sy - 8}" r="8" style="fill:var(--comp)"/>`;
+    const Sn = h + 2 * h * r * (1 - r ** n) / (1 - r), Sinf = h + 2 * h * r / (1 - r);
+    s += `<text class="c" x="${X0}" y="${B + 26}">panjang lintasan setelah ${n} pantulan: ${fmt(Sn, 3)} m</text><text class="c" x="${X0}" y="${B + 46}" style="fill:var(--r)">batasnya S∞ = ${fmt(Sinf, 3)} m</text>`;
+    svg.innerHTML = s;
+    $('read').innerHTML = `<div><span>Lintasan turun</span><b>${h} + ${fmt(h * r, 2)} + ${fmt(h * r * r, 2)} + …</b></div><div><span>Lintasan naik</span><b>${fmt(h * r, 2)} + ${fmt(h * r * r, 2)} + …</b></div>` +
+      `<div><span>Jumlah naik tak hingga = a/(1 − r)</span><b>${fmt(h * r, 2)}/(1 − ${fmt(r, 1)}) = ${fmt(h * r / (1 - r), 3)}</b></div>` +
+      `<div><span>Total = h + 2 × (jumlah naik)</span><b>${fmt(Sinf, 3)} m</b></div><div><span>Sisa menuju batas</span><b>${fmt(Sinf - Sn, 4)} m</b></div>`;
+  } else {
+    const S = 300, x0 = 20, y0 = 20; let x = x0, y = y0, w = S, hh = S, sum = 0;
+    s += `<rect x="${x0}" y="${y0}" width="${S}" height="${S}" fill="none" style="stroke:var(--ink)" stroke-width="2"/>`;
+    for(let k = 1; k <= n; k++){
+      const col = k % 2 ? 'var(--a)' : 'var(--comp)', op = .25 + .5 * ((k * 37) % 10) / 10;
+      if(k % 2){ s += `<rect x="${x}" y="${y}" width="${w / 2}" height="${hh}" style="fill:${col};stroke:var(--bg)" fill-opacity="${op}"/>`; if(k < 6) s += `<text class="c" x="${x + w / 4}" y="${y + hh / 2 + 4}" text-anchor="middle">1/${2 ** k}</text>`; x += w / 2; w /= 2; }
+      else { s += `<rect x="${x}" y="${y}" width="${w}" height="${hh / 2}" style="fill:${col};stroke:var(--bg)" fill-opacity="${op}"/>`; if(k < 6) s += `<text class="c" x="${x + w / 2}" y="${y + hh / 4 + 4}" text-anchor="middle">1/${2 ** k}</text>`; y += hh / 2; hh /= 2; }
+      sum += 1 / 2 ** k;
+    }
+    s += `<text class="c" x="335" y="60">Luas persegi = 1</text><text class="c" x="335" y="90" style="fill:var(--a)">S${n} = ${fmt(sum, 6)}</text><text class="c" x="335" y="120" style="fill:var(--r)">S∞ = 1</text>`;
+    svg.innerHTML = s;
+    $('read').innerHTML = `<div><span>Deret</span><b>½ + ¼ + ⅛ + …</b></div><div><span>a = ½, r = ½</span><b>S∞ = ½ / (1 − ½) = 1</b></div><div><span>Jumlah ${n} suku pertama</span><b>${fmt(sum, 6)}</b></div><div><span>Bagian persegi yang belum terisi</span><b>1/${2 ** n}</b></div>`;
+  }
+}
+draw();
+</script>
+</body>
+</html>

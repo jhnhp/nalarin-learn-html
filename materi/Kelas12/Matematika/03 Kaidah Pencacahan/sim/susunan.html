@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daftar Semua Susunan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.wrap{padding:14px 16px;display:grid;gap:12px}
+.list{display:flex;flex-wrap:wrap;gap:5px;max-height:300px;overflow:auto;padding:8px;border-radius:12px;background:var(--surface-2)}
+.chip{font-family:var(--display);font-weight:800;font-size:14px;padding:3px 7px;border-radius:7px;background:var(--surface);border:1px solid var(--line-2);letter-spacing:.06em}
+.chip.dup{opacity:.35;text-decoration:line-through}
+.big{font-family:var(--display);font-weight:800;font-size:17px;padding:8px 12px;border-radius:12px;background:var(--surface-2)}
+.grp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="seg" id="mode"><button data-m="perm" class="on">Permutasi (urutan penting)</button><button data-m="komb">Kombinasi (urutan tidak penting)</button><button data-m="siklis">Permutasi siklis</button></div>
+  <div class="grp">
+    <div><div class="lab"><span>Banyak objek n</span><b id="nout"></b></div><input type="range" id="n" min="2" max="6" step="1" value="4"></div>
+    <div id="rbox"><div class="lab"><span>Banyak yang dipilih r</span><b id="rout"></b></div><input type="range" id="r" min="1" max="6" step="1" value="2"></div>
+  </div>
+  <label class="chk" id="dupbox"><input type="checkbox" id="c-dup"> Tampilkan juga susunan yang dianggap sama (dicoret)</label>
+  <div class="big" id="formula"></div>
+  <div class="list" id="list"></div>
+  <p class="note" id="note"></p>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const OBJ = ['A', 'B', 'C', 'D', 'E', 'F'];
+let mode = 'perm';
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+['n', 'r', 'c-dup'].forEach(id => $(id).oninput = $(id).onchange = draw);
+const fact = k => k <= 1 ? 1 : k * fact(k - 1);
+function perms(arr, r){ if(!r) return [[]]; const out = []; arr.forEach((x, i) => perms(arr.filter((_, j) => j !== i), r - 1).forEach(p => out.push([x, ...p]))); return out; }
+function rot(p){ // bentuk kanonik putaran: mulai dari huruf terkecil
+  const k = p.indexOf([...p].sort()[0]); return p.slice(k).concat(p.slice(0, k)).join(''); }
+function draw(){
+  const n = +$('n').value; $('r').max = n; let r = Math.min(+$('r').value, n); $('r').value = r;
+  if(mode === 'siklis') r = n;
+  $('nout').textContent = n; $('rout').textContent = r; $('rbox').hidden = mode === 'siklis';
+  const objs = OBJ.slice(0, n), all = perms(objs, r), seen = new Set(), items = [];
+  all.forEach(p => { const key = mode === 'perm' ? p.join('') : mode === 'komb' ? [...p].sort().join('') : rot(p); const dup = seen.has(key); seen.add(key); items.push({t: p.join(''), dup}); });
+  const show = $('c-dup').checked ? items : items.filter(x => !x.dup), cnt = items.filter(x => !x.dup).length;
+  $('list').innerHTML = show.map(x => `<span class="chip${x.dup ? ' dup' : ''}">${x.t}</span>`).join('');
+  $('dupbox').style.visibility = mode === 'perm' ? 'hidden' : 'visible';
+  if(mode === 'perm') $('formula').innerHTML = `P(${n}, ${r}) = ${n}!/(${n} − ${r})! = ${fact(n)}/${fact(n - r)} = ${cnt}`;
+  else if(mode === 'komb') $('formula').innerHTML = `C(${n}, ${r}) = ${n}!/(${r}!·(${n} − ${r})!) = ${all.length}/${fact(r)} = ${cnt}`;
+  else $('formula').innerHTML = `P siklis = (${n} − 1)! = ${fact(n - 1)} &nbsp;(${fact(n)} susunan berjajar ÷ ${n} putaran)`;
+  $('note').innerHTML = mode === 'perm' ? `Ada ${n} pilihan untuk tempat pertama, ${n - 1} untuk tempat kedua, dan seterusnya: ${Array.from({length: r}, (_, k) => n - k).join(' × ')} = ${cnt}.` :
+    mode === 'komb' ? `Setiap kelompok ${r} objek muncul ${fact(r)} kali (= ${r}!) dalam daftar permutasi. Centang kotak di atas untuk melihat yang dicoret.` :
+    `Pada susunan melingkar, memutar semua orang tidak menghasilkan susunan baru. Setiap susunan muncul ${n} kali dalam daftar berjajar.`;
+}
+const qm = new URLSearchParams(location.search).get('mode');
+if(['perm', 'komb', 'siklis'].includes(qm)){ mode = qm; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x.dataset.m === qm)); }
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Segitiga Pascal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px;cursor:pointer}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 330" role="img" aria-label="Segitiga Pascal; klik sebuah bilangan untuk melihat kombinasinya"></svg></div>
+  <div class="panel">
+    <div class="read" id="read"></div>
+    <label class="chk"><input type="checkbox" id="c-path" checked> Tandai dua bilangan di atasnya</label>
+    <p class="note">Klik sebuah bilangan. Bilangan pada baris n posisi r (mulai dari 0) adalah C(n, r). Setiap bilangan sama dengan jumlah dua bilangan di atasnya: C(n, r) = C(n − 1, r − 1) + C(n − 1, r).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const N = 8; let sel = {n: 5, r: 2};
+const C = [[1]]; for(let n = 1; n <= N; n++){ C[n] = []; for(let r = 0; r <= n; r++) C[n][r] = (C[n - 1][r - 1] || 0) + (C[n - 1][r] || 0); }
+$('c-path').onchange = draw;
+svg.addEventListener('click', e => { const t = e.target.closest('[data-n]'); if(!t) return; sel = {n: +t.dataset.n, r: +t.dataset.r}; draw(); });
+Sim.onTheme(draw);
+const pos = (n, r) => ({x: 250 + (r - n / 2) * 48, y: 26 + n * 35});
+const sup = k => String(k).split("").map(d => "⁰¹²³⁴⁵⁶⁷⁸⁹"[d]).join("");
+function draw(){
+  let s = '';
+  const up = $('c-path').checked && sel.n > 0 ? [[sel.n - 1, sel.r - 1], [sel.n - 1, sel.r]].filter(([n, r]) => r >= 0 && r <= n) : [];
+  for(let n = 0; n <= N; n++) for(let r = 0; r <= n; r++){
+    const p = pos(n, r), on = n === sel.n && r === sel.r, isUp = up.some(([a, b]) => a === n && b === r);
+    s += `<g data-n="${n}" data-r="${r}"><circle cx="${p.x}" cy="${p.y}" r="15" style="fill:${on ? 'var(--a)' : isUp ? 'var(--comp)' : 'var(--surface-2)'};stroke:var(--line-2)"/><text class="c" x="${p.x}" y="${p.y + 4.5}" text-anchor="middle" style="fill:${on || isUp ? '#fff' : 'var(--ink)'}">${C[n][r]}</text></g>`;
+  }
+  for(let n = 0; n <= N; n++) s += `<text x="8" y="${26 + n * 35 + 4}" font-size="11" style="fill:var(--muted)">n=${n}</text>`;
+  svg.innerHTML = s;
+  const {n, r} = sel, row = C[n].reduce((a, b) => a + b, 0);
+  $('read').innerHTML = `<div><span>Bilangan terpilih</span><b>C(${n}, ${r}) = ${C[n][r]}</b></div>` +
+    (n > 0 ? `<div><span>Dua bilangan di atasnya</span><b>${C[n - 1][r - 1] || 0} + ${C[n - 1][r] || 0}</b></div>` : '') +
+    `<div><span>Simetri C(n, r) = C(n, n − r)</span><b>C(${n}, ${n - r}) = ${C[n][n - r]}</b></div><div><span>Jumlah baris ke-${n}</span><b>${row} = 2${sup(n)}</b></div>` +
+    `<div><span>Artinya</span><b>${C[n][r]} cara memilih ${r} dari ${n} objek</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>
