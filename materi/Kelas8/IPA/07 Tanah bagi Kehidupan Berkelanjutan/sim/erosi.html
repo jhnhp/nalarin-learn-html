@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erosi dan Konservasi Tanah</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Lereng bukit saat hujan dengan aliran permukaan dan tanah yang terkikis"></svg></div>
+  <div class="panel">
+    <div class="seg" id="cover"><button data-c="0" class="on">Gundul</button><button data-c="1">Rumput</button><button data-c="2">Hutan</button><button data-c="3">Terasering</button></div>
+    <div><div class="lab"><span>Curah hujan</span><b id="rout"></b></div><input type="range" id="r" min="1" max="5" step="1" value="3"></div>
+    <div><div class="lab"><span>Kemiringan lereng</span><b id="sout"></b></div><input type="range" id="s" min="5" max="35" step="5" value="25"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Akar tumbuhan mengikat tanah dan daun menahan pukulan air hujan. Terasering memotong lereng menjadi bertingkat sehingga aliran air melambat dan lebih banyak meresap. Model perkiraan sederhana.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let cv = 0, ph = 0;
+const C = [['tanah gundul', 1, .2], ['rumput', .35, .55], ['hutan', .1, .8], ['terasering + tanaman', .15, .7]];
+$('cover').onclick = e => { const b = e.target.closest('button'); if(!b) return; cv = +b.dataset.c; document.querySelectorAll('#cover button').forEach(x => x.classList.toggle('on', x === b)); };
+function loop(){
+  ph += .02; const r = +$('r').value, sl = +$('s').value, [n, kc, inf] = C[cv];
+  const runoff = r * (1 - inf) * (0.6 + sl / 50), erosion = kc * r * r * (sl / 20) * 2;
+  const ang = sl * Math.PI / 180, x0 = 30, y0 = 280, L = 380, x1 = x0 + L * Math.cos(ang) * .95, y1 = y0 - L * Math.sin(ang);
+  let s = '';
+  // lereng
+  if(cv === 3){ const st = 6; let d = `M${x0} ${y0}`; for(let k = 0; k < st; k++){ const xa = x0 + (x1 - x0) * k / st, ya = y0 - (y0 - y1) * k / st, xb = x0 + (x1 - x0) * (k + 1) / st, yb = y0 - (y0 - y1) * (k + 1) / st; d += ` L${xa} ${yb} L${xb} ${yb}`; } d += ` L${x1} ${y0} Z`; s += `<path d="${d}" fill="#9b6b3d"/>`; }
+  else s += `<polygon points="${x0},${y0} ${x1},${y1} ${x1},${y0}" fill="#9b6b3d"/>`;
+  // tutupan
+  if(cv === 1) for(let k = 0; k < 30; k++){ const u = k / 30, x = x0 + (x1 - x0) * u, y = y0 - (y0 - y1) * u; s += `<path d="M${x} ${y} l-3 -8 M${x} ${y} l0 -10 M${x} ${y} l3 -8" stroke="${'#2f9e44'}" stroke-width="2"/>`; }
+  if(cv === 2 || cv === 3) for(let k = 0; k < (cv === 2 ? 9 : 6); k++){ const u = (k + .5) / (cv === 2 ? 9 : 6), x = x0 + (x1 - x0) * u, y = y0 - (y0 - y1) * (cv === 3 ? (Math.floor(u * 6) + 1) / 6 : u); s += `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 26}" stroke="#8a5a2b" stroke-width="4"/><circle cx="${x}" cy="${y - 34}" r="${cv === 2 ? 16 : 10}" fill="#2f9e44"/>`; }
+  // hujan
+  for(let k = 0; k < r * 12; k++){ const x = 20 + (k * 53) % 420, y = ((k * 31 + ph * 300) % 200); s += `<line x1="${x}" y1="${y}" x2="${x - 3}" y2="${y + 10}" style="stroke:var(--a)" stroke-width="1.5" stroke-opacity=".6"/>`; }
+  // aliran permukaan membawa lumpur
+  const nP = Math.round(runoff * 6); for(let k = 0; k < nP; k++){ const u = ((k / nP) + ph * .5) % 1, x = x1 - (x1 - x0) * u, y = y1 + (y0 - y1) * u; s += `<circle cx="${x}" cy="${y - 3}" r="${2 + erosion * .25}" fill="${erosion > 3 ? '#7a4a20' : '#4b8fe2'}" fill-opacity=".85"/>`; }
+  // sungai keruh
+  s += `<rect x="0" y="${y0}" width="460" height="40" fill="${erosion > 4 ? '#8a6a40' : erosion > 1.5 ? '#6a9ab0' : '#4b8fe2'}" fill-opacity=".6"/><text class="c" x="20" y="${y0 + 26}" style="fill:#fff">sungai</text>`;
+  svg.innerHTML = s;
+  $('rout').textContent = ['', 'gerimis', 'ringan', 'sedang', 'lebat', 'sangat lebat'][r]; $('sout').textContent = sl + '°';
+  const lvl = v => v < 1.5 ? 'rendah' : v < 4 ? 'sedang' : 'tinggi';
+  $('read').innerHTML = `<div><span>Air yang meresap</span><b>${Math.round(inf * 100)}%</b></div><div><span>Aliran permukaan</span><b>${lvl(runoff)}</b></div><div><span>Tanah yang terkikis (erosi)</span><b>${lvl(erosion)} (indeks ${fmt(erosion, 1)})</b></div><div><span>Risiko longsor dan banjir lumpur</span><b>${erosion > 4 ? 'tinggi' : erosion > 1.5 ? 'sedang' : 'rendah'}</b></div>`;
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

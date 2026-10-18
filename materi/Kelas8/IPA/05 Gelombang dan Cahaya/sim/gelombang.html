@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gelombang Transversal dan Longitudinal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Animasi gelombang"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="t" class="on">Transversal</button><button data-m="l">Longitudinal</button></div>
+    <div><div class="lab"><span>Amplitudo</span><b id="aout"></b></div><input type="range" id="a" min="5" max="50" step="5" value="30"></div>
+    <div><div class="lab"><span>Frekuensi (Hz)</span><b id="fout"></b></div><input type="range" id="f" min="0.25" max="2" step="0.25" value="0.5"></div>
+    <div><div class="lab"><span>Panjang gelombang (m)</span><b id="lout"></b></div><input type="range" id="l" min="1" max="4" step="0.5" value="2"></div>
+    <div class="row"><button class="btn" id="pause">Jeda</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Satu partikel ditandai merah: perhatikan bahwa partikel hanya bergetar di tempatnya, sedangkan yang merambat adalah energi gelombang. 1 kotak grid = 0,5 m.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 't', t = 0, last = performance.now(), paused = false;
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); };
+$('pause').onclick = () => { paused = !paused; $('pause').textContent = paused ? 'Lanjut' : 'Jeda'; };
+const PX = 50; // piksel per meter
+function loop(now){
+  if(!paused) t += (now - last) / 1000; last = now;
+  const A = +$('a').value, f = +$('f').value, lam = +$('l').value, k = 2 * Math.PI / (lam * PX), w = 2 * Math.PI * f, y0 = 150;
+  let s = '<g style="stroke:var(--line)">';
+  for(let x = 20; x <= 440; x += 25) s += `<line x1="${x}" y1="40" x2="${x}" y2="260"/>`;
+  s += `</g><line x1="20" y1="${y0}" x2="440" y2="${y0}" style="stroke:var(--line-2)" stroke-dasharray="4 4"/>`;
+  if(mode === 't'){
+    let d = ''; for(let x = 20; x <= 440; x += 3) d += (x === 20 ? 'M' : 'L') + x + ',' + (y0 - A * Math.sin(w * t - k * (x - 20))).toFixed(1);
+    s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+    for(let x = 20; x <= 440; x += 20) s += `<circle cx="${x}" cy="${y0 - A * Math.sin(w * t - k * (x - 20))}" r="${x === 120 ? 7 : 4}" style="fill:${x === 120 ? 'var(--b)' : 'var(--a)'}"/>`;
+    // tanda lambda dan amplitudo
+    s += `<line x1="20" y1="${y0 + A + 30}" x2="${20 + lam * PX}" y2="${y0 + A + 30}" style="stroke:var(--comp)" stroke-width="2"/><text class="c" x="${20 + lam * PX / 2}" y="${y0 + A + 46}" text-anchor="middle" style="fill:var(--comp)">λ = ${fmt(lam, 1)} m</text>`;
+    s += `<line x1="440" y1="${y0}" x2="440" y2="${y0 - A}" style="stroke:var(--k)" stroke-width="3"/><text class="c" x="436" y="${y0 - A - 6}" text-anchor="end" style="fill:var(--k)">amplitudo</text>`;
+  } else {
+    for(let i = 0; i < 70; i++){ const x0 = 20 + i * 6, x = x0 + A * .4 * Math.sin(w * t - k * (x0 - 20)); s += `<line x1="${x}" y1="${y0 - 50}" x2="${x}" y2="${y0 + 50}" style="stroke:${i === 17 ? 'var(--b)' : 'var(--a)'}" stroke-width="${i === 17 ? 4 : 2}"/>`; }
+    s += `<line x1="20" y1="${y0 + 80}" x2="${20 + lam * PX}" y2="${y0 + 80}" style="stroke:var(--comp)" stroke-width="2"/><text class="c" x="${20 + lam * PX / 2}" y="${y0 + 96}" text-anchor="middle" style="fill:var(--comp)">λ = 1 rapatan + 1 regangan</text>`;
+  }
+  s += `<text class="c" x="20" y="28" style="fill:var(--muted)">arah rambat →</text><text class="c" x="440" y="28" text-anchor="end" style="fill:var(--muted)">arah getar: ${mode === 't' ? 'naik-turun (tegak lurus rambat)' : 'maju-mundur (searah rambat)'}</text>`;
+  svg.innerHTML = s;
+  $('aout').textContent = A; $('fout').textContent = fmt(f, 2); $('lout').textContent = fmt(lam, 1);
+  $('read').innerHTML = `<div><span>Periode T = 1/f</span><b>${fmt(1 / f, 2)} s</b></div><div><span>Cepat rambat v = λ × f</span><b>${fmt(lam, 1)} × ${fmt(f, 2)} = ${fmt(lam * f, 2)} m/s</b></div><div><span>Contoh</span><b>${mode === 't' ? 'gelombang tali, air, cahaya' : 'bunyi, pegas slinki'}</b></div>`;
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

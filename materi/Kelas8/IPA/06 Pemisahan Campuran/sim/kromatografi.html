@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kromatografi Kertas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 360" role="img" aria-label="Kertas kromatografi dalam gelas berisi pelarut"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Waktu (menit)</span><b id="tout"></b></div><input type="range" id="t" min="0" max="20" step="0.5" value="0"></div>
+    <div class="row"><button class="btn primary" id="play">Mulai ▶</button></div>
+    <label class="chk"><input type="checkbox" id="c-rf"> Tampilkan nilai Rf</label>
+    <div class="read" id="read"></div>
+    <p class="note">Pelarut (air) merambat naik melalui kertas. Zat warna yang mudah larut dan kurang diserap kertas ikut terbawa lebih jauh. Rf = jarak tempuh zat warna ÷ jarak tempuh pelarut.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// tinta: daftar komponen [warna, Rf]
+const INK = [['tinta hitam', [['#1f4fd1', .82], ['#d9b200', .55], ['#c2185b', .3]]], ['tinta ungu', [['#1f4fd1', .82], ['#c2185b', .3]]], ['tinta hijau', [['#1f4fd1', .82], ['#d9b200', .55]]], ['tinta merah', [['#c2185b', .3], ['#e65100', .62]]]];
+let timer = null;
+$('t').oninput = draw; $('c-rf').onchange = draw;
+$('play').onclick = () => { if(timer){ clearInterval(timer); timer = null; $('play').textContent = 'Mulai ▶'; return; } if(+$('t').value >= 20) $('t').value = 0; $('play').textContent = 'Jeda'; timer = setInterval(() => { const v = Math.min(20, +$('t').value + .25); $('t').value = v; draw(); if(v >= 20){ clearInterval(timer); timer = null; $('play').textContent = 'Mulai ▶'; } }, 60); };
+Sim.onTheme(draw);
+const X0 = 60, W = 300, Y0 = 300, start = 270, maxFront = 70;
+function draw(){
+  const t = +$('t').value, front = start - (start - maxFront) * (1 - Math.exp(-t / 7)) / (1 - Math.exp(-20 / 7));
+  let s = `<rect x="40" y="290" width="340" height="50" rx="6" style="fill:var(--a)" fill-opacity=".18"/><path d="M40 40 V340 H380 V40" fill="none" style="stroke:var(--ink)" stroke-width="2.5"/>`;
+  s += `<rect x="${X0}" y="40" width="${W}" height="${Y0 - 30}" style="fill:var(--surface);stroke:var(--line-2)"/>`;
+  s += `<rect x="${X0}" y="${front}" width="${W}" height="${Y0 - 30 + 40 - front}" style="fill:var(--a)" fill-opacity=".08"/><line x1="${X0}" y1="${front}" x2="${X0 + W}" y2="${front}" style="stroke:var(--a)" stroke-dasharray="5 4"/><text class="c" x="${X0 + W + 6}" y="${front + 4}" style="fill:var(--a)">batas pelarut</text>`;
+  s += `<line x1="${X0}" y1="${start}" x2="${X0 + W}" y2="${start}" style="stroke:var(--muted)" stroke-width="1"/><text class="c" x="${X0 + W + 6}" y="${start + 4}" style="fill:var(--muted)">garis awal</text>`;
+  const dist = start - front;
+  INK.forEach(([n, comps], k) => { const x = X0 + 38 + k * 75;
+    comps.forEach(([col, rf]) => { const y = start - rf * dist; s += `<ellipse cx="${x}" cy="${y}" rx="11" ry="${7 + rf * 3}" fill="${col}" fill-opacity=".8"/>` + ($('c-rf').checked && t > 2 ? `<text class="c" x="${x + 14}" y="${y + 4}" style="fill:var(--ink)">${fmt(rf, 2)}</text>` : ''); });
+    s += `<text class="c" x="${x}" y="${start + 18}" text-anchor="middle" style="fill:var(--muted)">${n.split(' ')[1]}</text>`; });
+  svg.innerHTML = s;
+  $('tout').textContent = fmt(t, 1);
+  $('read').innerHTML = `<div><span>Jarak tempuh pelarut</span><b>${fmt(dist / 20, 1)} cm</b></div><div><span>Tinta hitam terdiri atas</span><b>${t > 3 ? 'biru, kuning, dan merah muda' : 'belum terpisah'}</b></div><div><span>Tinta yang sama-sama mengandung zat biru (Rf 0,82)</span><b>${t > 3 ? 'hitam, ungu, hijau' : '–'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Energi Potensial dan Kinetik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 340" role="img" aria-label="Bola meluncur pada lintasan dengan grafik energi"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Massa bola (kg)</span><b id="mout"></b></div><input type="range" id="m" min="0.5" max="5" step="0.5" value="1"></div>
+    <div><div class="lab"><span>Tinggi awal (m)</span><b id="hout"></b></div><input type="range" id="h" min="2" max="10" step="1" value="8"></div>
+    <label class="chk"><input type="checkbox" id="c-f"> Ada gesekan</label>
+    <div class="row"><button class="btn primary" id="go">Lepaskan ▶</button><button class="btn" id="reset">Ulang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Ep = m·g·h, Ek = ½·m·v², g = 10 m/s². Tanpa gesekan, energi mekanik Em = Ep + Ek tetap (hukum kekekalan energi). Dengan gesekan, sebagian energi berubah menjadi panas.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const X0 = 20, W = 300, base = 290, sc = 22;
+const track = x => { const u = x / W; return (0.55 + 0.45 * Math.cos(3 * Math.PI * u)) * (1 - 0.35 * u); }; // relatif 0..1
+let pos = 2, vel = 0, run = false, lost = 0, last = 0;
+const H = () => +$('h').value;
+const height = x => H() * track(x);
+['m', 'h', 'c-f'].forEach(id => $(id).oninput = $(id).onchange = () => { pos = 2; vel = 0; lost = 0; run = false; draw(); });
+$('go').onclick = () => { if(!run){ run = true; last = performance.now(); requestAnimationFrame(step); } };
+$('reset').onclick = () => { pos = 2; vel = 0; lost = 0; run = false; draw(); };
+Sim.onTheme(draw);
+function step(now){
+  if(!run) return; let dt = Math.min(.03, (now - last) / 1000); last = now;
+  for(let k = 0; k < 10; k++){ const d = dt / 10, eps = .5, slope = (height(pos + eps) - height(pos - eps)) / (2 * eps) * sc / 1; // m per px * ...
+    const ds = Math.sqrt(1 + slope * slope); const a = -10 * slope / ds * 22; let v = vel + a * d;
+    if($('c-f').checked){ const fr = 0.6 * 22 * Math.sign(v); if(Math.abs(fr * d) > Math.abs(v)) v = 0; else v -= fr * d; }
+    vel = v; pos += vel * d / ds; if(pos < 0){ pos = 0; vel = Math.abs(vel); } if(pos > W){ pos = W; vel = -Math.abs(vel); } }
+  const m = +$('m').value, E0 = m * 10 * H(), ep = m * 10 * height(pos), ek = .5 * m * (vel / 22) ** 2;
+  if($('c-f').checked) lost = Math.max(0, E0 - ep - ek); else { const v2 = Math.max(0, 2 * 10 * (H() - height(pos))); vel = Math.sign(vel || 1) * Math.sqrt(v2) * 22; }
+  draw(); requestAnimationFrame(step);
+}
+function draw(){
+  const m = +$('m').value, h = height(pos), E0 = m * 10 * H(), ep = m * 10 * h, ek = $('c-f').checked ? .5 * m * (vel / 22) ** 2 : E0 - ep, em = ep + ek;
+  let s = '', d = '';
+  for(let x = 0; x <= W; x += 3) d += (x ? 'L' : 'M') + (X0 + x) + ',' + (base - height(x) * sc).toFixed(1);
+  s += `<path d="${d} L${X0 + W},${base + 10} L${X0},${base + 10} Z" style="fill:var(--surface-2)"/><path d="${d}" fill="none" style="stroke:var(--ink)" stroke-width="3"/>`;
+  for(let v = 0; v <= 10; v += 2) s += `<text class="c" x="${X0 + W + 6}" y="${base - v * sc + 4}" style="fill:var(--muted)">${v} m</text>`;
+  s += `<circle cx="${X0 + pos}" cy="${base - h * sc - 9}" r="9" style="fill:var(--a)"/>`;
+  // diagram batang energi
+  const bx = 380, top = 40, hb = 240, mx = Math.max(E0, 1);
+  const bar = (i, v, col, lab) => { const hh = v / mx * hb; return `<rect x="${bx + i * 26}" y="${top + hb - hh}" width="20" height="${hh}" style="fill:${col}"/><text class="c" x="${bx + i * 26 + 10}" y="${top + hb + 14}" text-anchor="middle">${lab}</text>`; };
+  s += bar(0, ep, 'var(--a)', 'Ep') + bar(1, ek, 'var(--b)', 'Ek') + bar(2, lost, 'var(--comp)', 'panas') + `<line x1="${bx - 4}" y1="${top}" x2="${bx + 76}" y2="${top}" style="stroke:var(--ink)" stroke-dasharray="4 3"/><text class="c" x="${bx + 36}" y="${top - 6}" text-anchor="middle">Em awal</text>`;
+  svg.innerHTML = s;
+  $('mout').textContent = m; $('hout').textContent = H();
+  $('read').innerHTML = `<div><span>Ketinggian</span><b>${fmt(h, 2)} m</b></div><div><span>Ep = mgh</span><b>${fmt(ep, 1)} J</b></div><div><span>Ek = ½mv²</span><b>${fmt(Math.max(0, ek), 1)} J</b></div><div><span>Kelajuan</span><b>${fmt(Math.sqrt(Math.max(0, 2 * ek / m)), 2)} m/s</b></div><div><span>Em = Ep + Ek</span><b>${fmt(em, 1)} J</b></div>` + ($('c-f').checked ? `<div><span>Menjadi panas</span><b>${fmt(lost, 1)} J</b></div>` : '');
+}
+draw();
+</script>
+</body>
+</html>

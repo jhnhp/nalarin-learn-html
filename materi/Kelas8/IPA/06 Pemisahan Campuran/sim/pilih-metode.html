@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tantangan Memilih Metode Pemisahan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.wrap{padding:14px 16px;display:grid;gap:12px}
+.card{border:2px solid var(--line-2);border-radius:14px;padding:12px 14px;background:var(--surface-2)}.card h3{margin:0 0 4px;font-family:var(--display)}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.opts button{padding:10px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit;font-weight:700;font-size:13.5px;overflow-wrap:anywhere;cursor:pointer}
+.opts button.ok{background:var(--ok-soft);border-color:var(--ok)}.opts button.no{background:var(--bad-soft);border-color:var(--bad)}
+.msg{font-weight:600;padding:10px 12px;border-radius:10px;line-height:1.5}.msg.ok{background:var(--ok-soft)}.msg.no{background:var(--bad-soft)}</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row" style="justify-content:space-between"><b>Soal <span id="no"></span> dari <span id="tot"></span></b><b>Skor: <span id="sc">0</span></b></div>
+  <div class="card"><h3 id="mix"></h3><div id="info" class="note"></div></div>
+  <div class="opts" id="opts"></div>
+  <div class="msg" id="msg" hidden></div>
+  <div class="row"><button class="btn primary" id="next" hidden>Soal berikutnya ▶</button></div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const M = ['Penyaringan', 'Dekantasi', 'Pemisahan magnetis', 'Evaporasi/kristalisasi', 'Distilasi', 'Kromatografi', 'Sentrifugasi', 'Corong pisah'];
+const Q = [
+  ['Pasir dan serbuk besi', 'Keduanya padat, tetapi besi tertarik magnet.', 'Pemisahan magnetis', 'Besi bersifat magnetis, pasir tidak.'],
+  ['Garam yang larut dalam air (ingin mendapatkan garamnya)', 'Garam larut sempurna; air mudah menguap, garam tidak.', 'Evaporasi/kristalisasi', 'Air diuapkan sehingga kristal garam tertinggal (seperti petani garam).'],
+  ['Air keruh berisi pasir halus', 'Partikel pasir tidak larut dan tertahan kertas saring.', 'Penyaringan', 'Ukuran partikel pasir lebih besar daripada pori kertas saring.'],
+  ['Campuran alkohol dan air', 'Keduanya cair dan larut sempurna, tetapi titik didih alkohol (78 °C) lebih rendah daripada air (100 °C).', 'Distilasi', 'Alkohol menguap lebih dahulu, lalu diembunkan kembali di kondensor.'],
+  ['Zat warna penyusun tinta hitam', 'Setiap zat warna terbawa pelarut dengan kecepatan berbeda.', 'Kromatografi', 'Perbedaan daya serap dan kelarutan zat warna memisahkannya pada kertas.'],
+  ['Sel darah dan plasma darah', 'Partikel sel darah lebih berat, tetapi sangat lama mengendap sendiri.', 'Sentrifugasi', 'Putaran cepat memaksa sel darah yang lebih berat terkumpul di dasar tabung.'],
+  ['Minyak dan air', 'Tidak bercampur, membentuk dua lapisan dengan massa jenis berbeda.', 'Corong pisah', 'Lapisan air (bawah) dikeluarkan lewat keran, minyak tertinggal.'],
+  ['Air dan kerikil yang sudah mengendap', 'Kerikil berat dan sudah mengendap di dasar wadah.', 'Dekantasi', 'Cukup tuangkan cairan bagian atas secara perlahan.'],
+  ['Air laut menjadi air tawar', 'Garam larut dalam air; yang ingin diambil adalah airnya.', 'Distilasi', 'Air diuapkan lalu diembunkan; garam tertinggal. Evaporasi saja akan kehilangan airnya.'],
+];
+let i = 0, score = 0, done = false;
+$('tot').textContent = Q.length;
+function show(){ const [mix, info] = Q[i]; done = false; $('no').textContent = i + 1; $('mix').textContent = mix; $('info').textContent = info; $('msg').hidden = true; $('next').hidden = true;
+  $('opts').innerHTML = M.map(m => `<button>${m}</button>`).join(''); }
+$('opts').onclick = e => { const b = e.target.closest('button'); if(!b || done) return; done = true; const [, , ans, why] = Q[i], ok = b.textContent === ans;
+  if(ok) score++; $('sc').textContent = score; b.classList.add(ok ? 'ok' : 'no');
+  [...$('opts').children].forEach(x => { if(x.textContent === ans) x.classList.add('ok'); });
+  const m = $('msg'); m.hidden = false; m.className = 'msg ' + (ok ? 'ok' : 'no'); m.innerHTML = (ok ? '✓ Tepat! ' : `Kurang tepat. Jawaban: <b>${ans}</b>. `) + why; $('next').hidden = false; $('next').textContent = i === Q.length - 1 ? 'Ulangi dari awal' : 'Soal berikutnya ▶'; };
+$('next').onclick = () => { if(i === Q.length - 1){ i = 0; score = 0; $('sc').textContent = 0; } else i++; show(); };
+show();
+</script>
+</body>
+</html>
