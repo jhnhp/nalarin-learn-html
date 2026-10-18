@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kurva Pemanasan Es</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 330" role="img" aria-label="Grafik suhu terhadap kalor yang diberikan"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Massa es (g)</span><b id="mout"></b></div><input type="range" id="m" min="100" max="1000" step="100" value="500"></div>
+    <div><div class="lab"><span>Kalor yang sudah diberikan</span><b id="qout"></b></div><input type="range" id="q" min="0" max="1" step="0.005" value="0.3"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Es dimulai dari −20 °C. Kalor jenis: es 2.090 J/kg°C, air 4.186 J/kg°C. Kalor untuk mencairkan es 336.000 J/kg dan menguapkan air 2.260.000 J/kg. Pada bagian datar, kalor dipakai untuk berubah wujud sehingga suhu tetap.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['m', 'q'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+const kj = v => fmt(v / 1000, v < 1e5 ? 1 : 0) + ' kJ';
+function draw(){
+  const m = +$('m').value / 1000;
+  const seg = [['es dipanaskan', m * 2090 * 20, -20, 0, 'var(--a)'], ['es mencair', m * 336000, 0, 0, 'var(--k)'], ['air dipanaskan', m * 4186 * 100, 0, 100, 'var(--comp)'], ['air mendidih', m * 2260000, 100, 100, 'var(--r)'], ['uap dipanaskan', m * 2010 * 20, 100, 120, 'var(--b)']];
+  const Qt = seg.reduce((a, s) => a + s[1], 0), Q = +$('q').value * Qt;
+  const L = 50, B = 280, W = 390, X = q => L + q / Qt * W, Y = t => B - (t + 30) / 160 * 250;
+  let s = '';
+  [-20, 0, 50, 100].forEach(t => s += `<line x1="${L}" y1="${Y(t)}" x2="${L + W}" y2="${Y(t)}" style="stroke:var(--line)"/><text class="c" x="${L - 6}" y="${Y(t) + 4}" text-anchor="end" style="fill:var(--muted)">${t}</text>`);
+  s += `<line x1="${L}" y1="${B}" x2="${L + W}" y2="${B}" style="stroke:var(--ink)" stroke-width="1.5"/><line x1="${L}" y1="${B}" x2="${L}" y2="20" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  s += `<text class="c" x="${L + W}" y="${B + 20}" text-anchor="end" style="fill:var(--muted)">kalor yang diberikan</text><text class="c" x="${L + 4}" y="16" style="fill:var(--muted)">suhu (°C)</text>`;
+  let q0 = 0, cur = null, T = -20;
+  seg.forEach(([n, dq, t1, t2, col]) => {
+    s += `<line x1="${X(q0)}" y1="${Y(t1)}" x2="${X(q0 + dq)}" y2="${Y(t2)}" style="stroke:${col}" stroke-width="2" class="dash"/>`;
+    if(Q > q0){ const f = Math.min(1, (Q - q0) / dq); s += `<line x1="${X(q0)}" y1="${Y(t1)}" x2="${X(q0 + dq * f)}" y2="${Y(t1 + (t2 - t1) * f)}" style="stroke:${col}" stroke-width="4"/>`; if(f < 1 || !cur){ cur = [n, col]; T = t1 + (t2 - t1) * f; } }
+    if(dq / Qt > .08) s += `<text class="c" x="${X(q0 + dq / 2)}" y="${Y((t1 + t2) / 2) - 10}" text-anchor="middle" style="fill:${col}">${n}</text>`;
+    q0 += dq;
+  });
+  s += `<circle cx="${X(Q)}" cy="${Y(T)}" r="7" style="fill:var(--ink)"/>`;
+  svg.innerHTML = s;
+  $('mout').textContent = m * 1000 + ' g'; $('qout').textContent = kj(Q);
+  $('read').innerHTML = `<div><span>Tahap saat ini</span><b style="color:${cur ? cur[1] : 'inherit'}">${cur ? cur[0] : 'es dipanaskan'}</b></div><div><span>Suhu</span><b>${fmt(T, 1)} °C</b></div>` +
+    seg.slice(0, 3).map(([n, dq]) => `<div><span>${n}</span><b>${kj(dq)}</b></div>`).join('') +
+    `<div><span>Contoh: Q = m·c·ΔT air 0→100 °C</span><b>${fmt(m, 1)} × 4.186 × 100 = ${kj(m * 418600)}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membandingkan Takson</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.wrap{padding:14px 16px;display:grid;gap:12px}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:6px 8px;border-bottom:1px solid var(--line)}th{text-align:left;color:var(--muted);font-size:12.5px}
+tr.same td{background:color-mix(in srgb,var(--ok) 12%,transparent)}tr.diff td{color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.msg{font-weight:700;padding:10px 12px;border-radius:10px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid2"><div><div class="lab"><span>Makhluk hidup 1</span></div><select id="a"></select></div><div><div class="lab"><span>Makhluk hidup 2</span></div><select id="b"></select></div></div>
+  <table id="tab"></table>
+  <div class="msg" id="msg"></div>
+  <p class="note">Nama ilmiah (binomial nomenklatur, Carolus Linnaeus) terdiri atas nama genus (huruf awal kapital) dan penunjuk spesies (huruf kecil), dicetak miring atau digaris bawah terpisah.</p>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const R = ['Kingdom', 'Filum/Divisi', 'Kelas', 'Ordo', 'Famili', 'Genus', 'Spesies'];
+const O = {
+  'kucing rumah': ['Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Felidae', 'Felis', 'Felis catus'],
+  'harimau sumatra': ['Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Felidae', 'Panthera', 'Panthera tigris'],
+  'singa': ['Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Felidae', 'Panthera', 'Panthera leo'],
+  'anjing': ['Animalia', 'Chordata', 'Mammalia', 'Carnivora', 'Canidae', 'Canis', 'Canis familiaris'],
+  'manusia': ['Animalia', 'Chordata', 'Mammalia', 'Primates', 'Hominidae', 'Homo', 'Homo sapiens'],
+  'ayam': ['Animalia', 'Chordata', 'Aves', 'Galliformes', 'Phasianidae', 'Gallus', 'Gallus gallus'],
+  'padi': ['Plantae', 'Spermatophyta', 'Liliopsida', 'Poales', 'Poaceae', 'Oryza', 'Oryza sativa'],
+  'jagung': ['Plantae', 'Spermatophyta', 'Liliopsida', 'Poales', 'Poaceae', 'Zea', 'Zea mays'],
+  'mangga': ['Plantae', 'Spermatophyta', 'Magnoliopsida', 'Sapindales', 'Anacardiaceae', 'Mangifera', 'Mangifera indica'],
+};
+['a', 'b'].forEach((id, k) => { $(id).innerHTML = Object.keys(O).map((n, i) => `<option${i === [0, 1][k] ? ' selected' : ''}>${n}</option>`).join(''); $(id).onchange = draw; });
+function draw(){
+  const a = $('a').value, b = $('b').value, A = O[a], B = O[b];
+  let last = -1; R.forEach((r, i) => { if(A[i] === B[i] && last === i - 1) last = i; });
+  $('tab').innerHTML = `<tr><th>Takson</th><th>${a}</th><th>${b}</th></tr>` + R.map((r, i) => `<tr class="${i <= last ? 'same' : 'diff'}"><td><b>${r}</b></td><td>${i >= 5 ? '<i>' + A[i] + '</i>' : A[i]}</td><td>${i >= 5 ? '<i>' + B[i] + '</i>' : B[i]}</td></tr>`).join('');
+  $('msg').innerHTML = a === b ? 'Pilih dua makhluk hidup yang berbeda.' : last < 0 ? 'Berbeda sejak tingkat kingdom: kekerabatannya sangat jauh.' :
+    `Sama sampai tingkat <b>${R[last]}</b> (${A[last]}). ${last >= 4 ? 'Kekerabatannya dekat: banyak persamaan ciri.' : last >= 2 ? 'Kekerabatannya sedang.' : 'Kekerabatannya jauh.'} Makin rendah takson yang sama, makin dekat kekerabatannya.`;
+}
+draw();
+</script>
+</body>
+</html>

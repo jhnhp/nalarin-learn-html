@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gaya, Gesekan, dan Hukum Newton</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Kotak didorong di atas lantai dengan gaya dorong dan gaya gesek"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Gaya dorong (N)</span><b id="fout"></b></div><input type="range" id="f" min="0" max="200" step="5" value="60"></div>
+    <div><div class="lab"><span>Massa kotak (kg)</span><b id="mout"></b></div><input type="range" id="m" min="5" max="40" step="5" value="20"></div>
+    <div class="seg" id="surf"><button data-s="0">Es</button><button data-s="1" class="on">Lantai kayu</button><button data-s="2">Karpet</button></div>
+    <div class="row"><button class="btn" id="reset">Ulang posisi</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Gaya gesek statis menahan kotak sampai gaya dorong melebihi batasnya. Setelah bergerak, gaya gesek kinetis sedikit lebih kecil. Percepatan a = ΣF/m (Hukum II Newton). Berat w = m × g, dengan g = 10 m/s².</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SURF = [['es', .05, .03], ['lantai kayu', .4, .3], ['karpet', .7, .55]];
+let si = 1, x = 0, v = 0, last = performance.now();
+$('surf').onclick = e => { const b = e.target.closest('button'); if(!b) return; si = +b.dataset.s; document.querySelectorAll('#surf button').forEach(q => q.classList.toggle('on', q === b)); };
+$('reset').onclick = () => { x = 0; v = 0; };
+Sim.onTheme(() => {});
+function forces(){ const F = +$('f').value, m = +$('m').value, [, us, uk] = SURF[si], N = m * 10;
+  if(v < 1e-6){ if(F <= us * N) return {fr: F, net: 0, type: 'statis', max: us * N}; return {fr: uk * N, net: F - uk * N, type: 'kinetis', max: us * N}; }
+  return {fr: uk * N, net: F - uk * N, type: 'kinetis', max: us * N}; }
+function loop(now){
+  const dt = Math.min(.05, (now - last) / 1000); last = now;
+  const m = +$('m').value, fo = forces();
+  let a = fo.net / m; v += a * dt; if(v < 0){ v = 0; a = 0; } x += v * dt * 30; if(x > 300){ x = 0; }
+  const F = +$('f').value, bx = 120 + x, s = 50 + m * 1.2, cy = 210 - s / 2, k = .5;
+  let g = `<rect x="0" y="210" width="460" height="16" style="fill:${si === 0 ? 'var(--a)' : si === 1 ? '#b5651d' : 'var(--r)'}" fill-opacity=".35"/>`;
+  g += `<rect x="${bx}" y="${210 - s}" width="${s}" height="${s}" rx="4" style="fill:var(--k);stroke:var(--ink)" stroke-width="2"/><text class="c" x="${bx + s - 6}" y="${210 - s + 18}" text-anchor="end">${m} kg</text>`;
+  const ar = (x1, y1, x2, y2, col, lab, lx, ly) => { const L = Math.hypot(x2 - x1, y2 - y1); if(L < 2) return ''; const ux = (x2 - x1) / L, uy = (y2 - y1) / L;
+    return `<line x1="${x1}" y1="${y1}" x2="${x2 - ux * 10}" y2="${y2 - uy * 10}" style="stroke:${col}" stroke-width="5"/><path d="M${x2} ${y2} L${x2 - ux * 14 - uy * 8} ${y2 - uy * 14 + ux * 8} L${x2 - ux * 14 + uy * 8} ${y2 - uy * 14 - ux * 8}Z" style="fill:${col}"/><text class="c" x="${lx}" y="${ly}" text-anchor="middle" style="fill:${col}">${lab}</text>`; };
+  g += ar(bx - F * k - 2, cy, bx - 2, cy, 'var(--a)', `dorong ${F} N`, bx - F * k / 2 - 2, cy - 12);
+  g += ar(bx + s / 2, 212, bx + s / 2 - fo.fr * k, 212, 'var(--b)', `gesek ${fmt(fo.fr, 0)} N`, bx + s / 2 - fo.fr * k / 2, 246);
+  g += ar(bx + s / 2 + 14, 210 - s, bx + s / 2 + 14, 210 - s - m * 10 * .15, 'var(--ok)', `N = ${m * 10} N`, bx + s / 2 + 60, 210 - s - 10);
+  g += ar(bx + s / 2 - 14, cy, bx + s / 2 - 14, cy + m * 10 * .15, 'var(--comp)', `w = ${m * 10} N`, bx + s + 40, cy + 30);
+  svg.innerHTML = g;
+  $('fout').textContent = F; $('mout').textContent = m;
+  $('read').innerHTML = `<div><span>Berat w = m·g</span><b>${m * 10} N</b></div><div><span>Batas gesek statis</span><b>${fmt(fo.max, 0)} N</b></div><div><span>Jenis gesekan</span><b>${fo.type}</b></div>` +
+    `<div><span>Resultan gaya ΣF</span><b>${fmt(Math.max(0, fo.net), 1)} N</b></div><div><span>Percepatan a = ΣF/m</span><b>${fmt(Math.max(0, fo.net) / m, 2)} m/s²</b></div><div><span>Kelajuan</span><b>${fmt(v, 2)} m/s</b></div>`;
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

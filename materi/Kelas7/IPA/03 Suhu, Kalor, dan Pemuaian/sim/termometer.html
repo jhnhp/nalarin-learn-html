@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skala Termometer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 360" role="img" aria-label="Empat termometer berskala Celsius, Reamur, Fahrenheit, dan Kelvin"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Suhu benda (°C)</span><b id="tout"></b></div><input type="range" id="t" min="-20" max="120" step="1" value="37"></div>
+    <div class="seg" id="pre"><button data-v="0">Es mencair</button><button data-v="37">Tubuh</button><button data-v="60">60 °C</button><button data-v="100">Air mendidih</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Titik tetap bawah (es mencair) dan atas (air mendidih): Celsius 0–100, Reamur 0–80, Fahrenheit 32–212, Kelvin 273–373. Perbandingan rentangnya C : R : (F − 32) : (K − 273) = 5 : 4 : 9 : 5.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const S = [['Celsius', '°C', c => c, 0, 100], ['Reamur', '°R', c => .8 * c, 0, 80], ['Fahrenheit', '°F', c => 1.8 * c + 32, 32, 212], ['Kelvin', 'K', c => c + 273, 273, 373]];
+$('t').oninput = draw;
+$('pre').onclick = e => { const b = e.target.closest('button'); if(!b) return; $('t').value = b.dataset.v; draw(); };
+Sim.onTheme(draw);
+const TOP = 40, bot = 300, Y = c => bot - (c + 20) / 140 * (bot - TOP);
+function draw(){
+  const c = +$('t').value; let s = '';
+  S.forEach(([n, u, f, lo, hi], i) => {
+    const x = 60 + i * 105;
+    s += `<rect x="${x - 9}" y="${TOP - 10}" width="18" height="${bot - TOP + 10}" rx="9" style="fill:var(--surface-2);stroke:var(--ink)" stroke-width="2"/><circle cx="${x}" cy="${bot + 14}" r="16" style="fill:var(--b);stroke:var(--ink)" stroke-width="2"/>`;
+    s += `<rect x="${x - 5}" y="${Y(c)}" width="10" height="${bot + 4 - Y(c)}" style="fill:var(--b)"/>`;
+    [[0, lo], [100, hi]].forEach(([cc, v]) => s += `<line x1="${x + 9}" y1="${Y(cc)}" x2="${x + 20}" y2="${Y(cc)}" style="stroke:var(--ink)" stroke-width="2"/><text class="c" x="${x + 23}" y="${Y(cc) + 4}" style="fill:var(--muted)">${v}</text>`);
+    s += `<line x1="${x - 18}" y1="${Y(c)}" x2="${x + 9}" y2="${Y(c)}" style="stroke:var(--a)" stroke-width="2"/><text class="c" x="${x}" y="22" text-anchor="middle">${n}</text><text class="c" x="${x}" y="350" text-anchor="middle" style="fill:var(--a)" font-size="14">${fmt(f(c), 1)} ${u}</text>`;
+  });
+  s += `<line x1="30" y1="${Y(c)}" x2="440" y2="${Y(c)}" style="stroke:var(--a)" stroke-width="1" class="dash"/>`;
+  svg.innerHTML = s;
+  $('tout').textContent = c + ' °C';
+  $('read').innerHTML = `<div><span>Reamur: R = 4/5 × C</span><b>4/5 × ${c} = ${fmt(.8 * c, 1)} °R</b></div><div><span>Fahrenheit: F = 9/5 × C + 32</span><b>9/5 × ${c} + 32 = ${fmt(1.8 * c + 32, 1)} °F</b></div><div><span>Kelvin: K = C + 273</span><b>${c} + 273 = ${c + 273} K</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

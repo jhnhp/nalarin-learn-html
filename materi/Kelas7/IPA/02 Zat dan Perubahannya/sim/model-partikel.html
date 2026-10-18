@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Partikel Zat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.big{font-family:var(--display);font-weight:800;font-size:20px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 420 340" role="img" aria-label="Partikel zat dalam wadah"></svg></div>
+  <div class="panel">
+    <div class="seg" id="zat"><button data-z="0" class="on">Air</button><button data-z="1">Lilin</button><button data-z="2">Iodin</button></div>
+    <div><div class="lab"><span>Suhu</span><b id="tout"></b></div><input type="range" id="t" min="-30" max="200" step="1" value="20"></div>
+    <div class="big" id="wujud"></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// titik lebur dan titik didih (perkiraan); iodin menyublim pada tekanan udara biasa jika dipanaskan
+const Z = [{n: 'air', mp: 0, bp: 100, col: 'var(--a)'}, {n: 'lilin (parafin)', mp: 55, bp: 190, col: 'var(--comp)'}, {n: 'iodin', mp: 114, bp: 184, col: 'var(--r)', sub: true}];
+let zi = 0, P = [], last = 0;
+const N = 42;
+function init(){ P = []; for(let i = 0; i < N; i++){ const c = i % 7, r = Math.floor(i / 7); P.push({hx: 120 + c * 30, hy: 300 - r * 30, x: 120 + c * 30, y: 300 - r * 30, vx: Math.random() - .5, vy: Math.random() - .5}); } }
+$('zat').onclick = e => { const b = e.target.closest('button'); if(!b) return; zi = +b.dataset.z; document.querySelectorAll('#zat button').forEach(x => x.classList.toggle('on', x === b)); init(); };
+$('t').oninput = () => {};
+function state(T){ const z = Z[zi]; if(z.sub) return T < 60 ? 'padat' : 'gas'; return T < z.mp ? 'padat' : T < z.bp ? 'cair' : 'gas'; }
+function step(ts){
+  const dt = Math.min(40, ts - last) / 16; last = ts;
+  const T = +$('t').value, z = Z[zi], st = state(T), speed = .4 + (T + 40) / 60;
+  P.forEach((p, i) => {
+    if(st === 'padat'){ const a = .6 + (T + 40) / 120; p.x = p.hx + (Math.random() - .5) * a * 2; p.y = p.hy + (Math.random() - .5) * a * 2; }
+    else {
+      p.vx += (Math.random() - .5) * .4 * speed; p.vy += (Math.random() - .5) * .4 * speed + (st === 'cair' ? .1 : 0);
+      const vm = st === 'cair' ? speed * 1.2 : speed * 3; const v = Math.hypot(p.vx, p.vy); if(v > vm){ p.vx *= vm / v; p.vy *= vm / v; }
+      p.x += p.vx * dt; p.y += p.vy * dt;
+      const yTop = st === 'cair' ? 175 : 40;
+      if(p.x < 50){ p.x = 50; p.vx = Math.abs(p.vx); } if(p.x > 370){ p.x = 370; p.vx = -Math.abs(p.vx); }
+      if(p.y > 312){ p.y = 312; p.vy = -Math.abs(p.vy); } if(p.y < yTop){ p.y = yTop; p.vy = Math.abs(p.vy); }
+      for(let j = i + 1; j < N; j++){ const q = P[j], dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy) || 1; if(d < 23){ const k = (23 - d) / d * .5; p.x -= dx * k; p.y -= dy * k; q.x += dx * k; q.y += dy * k; } }
+    }
+  });
+  let s = `<rect x="38" y="28" width="344" height="298" rx="10" fill="none" style="stroke:var(--ink)" stroke-width="3"/>`;
+  P.forEach(p => s += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="11" style="fill:${z.col}" fill-opacity=".85"/>`);
+  svg.innerHTML = s;
+  $('tout').textContent = T + ' °C';
+  $('wujud').textContent = `${z.n}: ${st}`;
+  $('read').innerHTML = (z.sub ? `<div><span>Perilaku saat dipanaskan</span><b>menyublim (padat → gas)</b></div>` : `<div><span>Titik lebur</span><b>${z.mp} °C</b></div><div><span>Titik didih</span><b>${z.bp} °C</b></div>`) +
+    `<div><span>Susunan partikel</span><b>${st === 'padat' ? 'teratur, sangat rapat' : st === 'cair' ? 'rapat, tidak teratur' : 'sangat renggang'}</b></div>` +
+    `<div><span>Gerak partikel</span><b>${st === 'padat' ? 'bergetar di tempat' : st === 'cair' ? 'bergeser, berpindah tempat' : 'bebas ke segala arah, cepat'}</b></div>` +
+    `<div><span>Bentuk dan volume</span><b>${st === 'padat' ? 'tetap, tetap' : st === 'cair' ? 'mengikuti wadah, tetap' : 'mengikuti wadah, mengisi seluruh wadah'}</b></div>`;
+  $('note').innerHTML = 'Makin tinggi suhu, makin cepat partikel bergerak. Partikel zat itu sendiri tidak memuai atau mencair; yang berubah adalah jarak dan geraknya.';
+  requestAnimationFrame(step);
+}
+init(); requestAnimationFrame(step);
+</script>
+</body>
+</html>

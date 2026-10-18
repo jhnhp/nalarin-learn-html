@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jaring-Jaring Makanan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px;cursor:pointer}.lv{font-family:var(--display);font-weight:800;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 380" role="img" aria-label="Jaring-jaring makanan sawah"></svg></div>
+  <div class="panel">
+    <p class="note">Klik sebuah makhluk hidup untuk <b>menghilangkannya</b> dari ekosistem (misalnya karena diburu atau terkena pestisida). Klik lagi untuk mengembalikannya. Panah menunjukkan arah aliran energi: dari yang dimakan ke yang memakan.</p>
+    <div class="read" id="read"></div>
+    <div class="row"><button class="btn" id="reset">Kembalikan semua</button></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const N = {
+  padi: {x: 180, y: 330, lv: 1, t: 'produsen'}, rumput: {x: 370, y: 330, lv: 1, t: 'produsen'},
+  belalang: {x: 130, y: 240, lv: 2, t: 'konsumen I'}, tikus: {x: 270, y: 240, lv: 2, t: 'konsumen I'}, ulat: {x: 410, y: 240, lv: 2, t: 'konsumen I'},
+  katak: {x: 130, y: 150, lv: 3, t: 'konsumen II'}, 'burung pipit': {x: 410, y: 150, lv: 3, t: 'konsumen II'},
+  ular: {x: 240, y: 70, lv: 4, t: 'konsumen III'}, elang: {x: 370, y: 40, lv: 4, t: 'konsumen puncak'},
+};
+const E = [['padi', 'belalang'], ['padi', 'tikus'], ['rumput', 'tikus'], ['rumput', 'ulat'], ['rumput', 'belalang'], ['belalang', 'katak'], ['ulat', 'burung pipit'], ['belalang', 'burung pipit'], ['katak', 'ular'], ['tikus', 'ular'], ['tikus', 'elang'], ['ular', 'elang'], ['burung pipit', 'elang']];
+let gone = new Set();
+svg.addEventListener('click', e => { const g = e.target.closest('[data-n]'); if(!g) return; const n = g.dataset.n; gone.has(n) ? gone.delete(n) : gone.add(n); draw(); });
+$('reset').onclick = () => { gone.clear(); draw(); };
+Sim.onTheme(draw);
+function effects(){
+  const eff = {};
+  Object.keys(N).forEach(n => { if(gone.has(n)) return;
+    const food = E.filter(e => e[1] === n).map(e => e[0]), pred = E.filter(e => e[0] === n).map(e => e[1]);
+    const foodLeft = food.filter(f => !gone.has(f)), predLeft = pred.filter(p => !gone.has(p));
+    if(food.length && !foodLeft.length) eff[n] = ['punah/pindah: kehilangan semua makanan', 'var(--b)'];
+    else if(food.length && foodLeft.length < food.length) eff[n] = ['menurun: sebagian makanannya hilang', 'var(--comp)'];
+    else if(pred.length && predLeft.length < pred.length) eff[n] = ['meningkat: pemangsanya berkurang', 'var(--ok)'];
+  });
+  return eff;
+}
+function draw(){
+  const eff = effects(); let s = '';
+  [[1, 330, 'produsen'], [2, 240, 'konsumen I'], [3, 150, 'konsumen II'], [4, 55, 'konsumen III']].forEach(([l, y, t]) => s += `<text class="lv" x="6" y="${y + 4}" style="fill:var(--muted)">${t}</text>`);
+  E.forEach(([a, b]) => { const A = N[a], B = N[b], off = gone.has(a) || gone.has(b); const dx = B.x - A.x, dy = B.y - A.y, d = Math.hypot(dx, dy), ux = dx / d, uy = dy / d;
+    s += `<line x1="${A.x + ux * 26}" y1="${A.y + uy * 18}" x2="${B.x - ux * 30}" y2="${B.y - uy * 20}" style="stroke:${off ? 'var(--line-2)' : 'var(--ink)'}" stroke-width="1.6" ${off ? 'class="dash"' : 'marker-end="url(#ah)"'}/>`; });
+  Object.entries(N).forEach(([n, o]) => { const g = gone.has(n), e = eff[n];
+    s += `<g data-n="${n}" style="cursor:pointer"><rect x="${o.x - 48}" y="${o.y - 16}" width="96" height="32" rx="16" style="fill:${g ? 'var(--surface-2)' : o.lv === 1 ? 'var(--ok)' : 'var(--surface)'};stroke:${e ? e[1] : g ? 'var(--line-2)' : 'var(--ink)'}" fill-opacity="${o.lv === 1 && !g ? .25 : 1}" stroke-width="${e ? 3 : 1.5}"/><text class="c" x="${o.x}" y="${o.y + 4}" text-anchor="middle" style="fill:${g ? 'var(--muted)' : 'var(--ink)'};${g ? 'text-decoration:line-through' : ''}">${n}</text></g>`; });
+  svg.innerHTML = `<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--ink)"/></marker></defs>` + s;
+  const list = Object.entries(eff);
+  $('read').innerHTML = gone.size ? `<div><span>Dihilangkan</span><b>${[...gone].join(', ')}</b></div>` + (list.length ? list.map(([n, [t, c]]) => `<div><span style="color:${c}">${n}</span><b>${t}</b></div>`).join('') : '<div><span>Dampak langsung</span><b>tidak ada</b></div>') :
+    `<div><span>Rantai contoh</span><b>padi → tikus → ular → elang</b></div><div><span>Banyak rantai makanan</span><b>${countChains()}</b></div>`;
+}
+function countChains(){ let c = 0; const go = n => { const nx = E.filter(e => e[0] === n).map(e => e[1]); if(!nx.length){ c++; return; } nx.forEach(go); }; ['padi', 'rumput'].forEach(go); return c; }
+draw();
+</script>
+</body>
+</html>
