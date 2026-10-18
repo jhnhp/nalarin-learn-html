@@ -1,56 +1,169 @@
 {
   "title": "Bilangan",
-  "summary": "Ringkasan bab Bilangan akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA SMA: bilangan real dan irasional, bentuk akar dan rasionalisasi, eksponen, logaritma, notasi ilmiah, serta penalaran bilangan.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Bilangan",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Bilangan</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi bilangan",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Selain hitungan, TKA SMA menguji <b>penalaran</b>: menilai benar tidaknya pernyataan tentang bilangan dan menentukan apakah informasi cukup untuk menjawab.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Bilangan real</td><td>rasional dan irasional, letak pada garis bilangan</td><td>SMP, Kelas 10</td></tr><tr><td>Bentuk akar</td><td>menyederhanakan, merasionalkan penyebut</td><td>Kelas 10 Bab 1</td></tr><tr><td>Eksponen</td><td>sifat pangkat bulat dan pecahan, notasi ilmiah</td><td>Kelas 10 Bab 1</td></tr><tr><td>Logaritma</td><td>definisi dan sifat-sifat</td><td>Kelas 10 Bab 1</td></tr><tr><td>Penalaran</td><td>pola angka satuan, keterbagian, pernyataan benar/salah</td><td>SMP</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>a^(m/n) = ⁿ√(aᵐ); a⁻ⁿ = 1/aⁿ.</li><li>c/(√a − √b) = c(√a + √b)/(a − b).</li><li>ᵃlog b = c ⇔ aᶜ = b; log(xy) = log x + log y; log(x/y) = log x − log y; log xⁿ = n log x.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "akar-eksponen",
+      "title": "Bentuk akar dan eksponen",
+      "kind": "simulasi",
+      "duration": "20 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/01 Eksponen dan Logaritma/sim/fungsi-eksponen.html",
+          "title": "Fungsi eksponensial",
+          "height": 520,
+          "caption": "Ubah bilangan pokok dan nilai awal; perhatikan pertumbuhan dan peluruhan."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung 27^(2/3) + 16^(−1/2) × 8.</p>",
+          "steps": [
+            "27^(2/3) = (∛27)² = 9.",
+            "16^(−1/2) = 1/4, sehingga 1/4 × 8 = 2.",
+            "Hasil = 11."
+          ],
+          "answer": "11"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Rasionalkan 6/(√5 − √2).</p>",
+          "steps": [
+            "Kalikan dengan (√5 + √2)/(√5 + √2).",
+            "6(√5 + √2)/(5 − 2) = 2(√5 + √2)."
+          ],
+          "answer": "2√5 + 2√2"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Tentukan angka satuan 7²⁰²⁶.</p>",
+          "steps": [
+            "Angka satuan pangkat 7 berulang: 7, 9, 3, 1 (periode 4).",
+            "2026 = 4 × 506 + 2, sehingga sama dengan 7² → 9."
+          ],
+          "answer": "9"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/01 Bilangan Berpangkat/sim/pola-pangkat.html",
+          "title": "Pola bilangan berpangkat",
+          "height": 520,
+          "caption": "Amati pola angka satuan dan pola pangkat negatif."
+        },
+        {
+          "type": "check",
+          "question": "Hasil kali dua bilangan irasional ....",
+          "options": {
+            "A": "selalu irasional",
+            "B": "selalu rasional",
+            "C": "bisa rasional, misalnya √2 × √2",
+            "D": "selalu bilangan bulat"
+          },
+          "answer": "C",
+          "hint": "Cari contoh penyangkal.",
+          "explanation": "√2 × √2 = 2 rasional, tetapi √2 × √3 = √6 irasional. Jadi bisa keduanya."
+        }
+      ]
+    },
+    {
+      "id": "logaritma",
+      "title": "Logaritma dan notasi ilmiah",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/01 Eksponen dan Logaritma/sim/logaritma.html",
+          "title": "Eksponen dan logaritma",
+          "height": 520,
+          "caption": "Lihat logaritma sebagai pertanyaan “dipangkatkan berapa?”."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung ²log 8 + ³log 9 − log 100.</p>",
+          "steps": [
+            "²log 8 = 3, ³log 9 = 2, log 100 = 2.",
+            "3 + 2 − 2 = 3."
+          ],
+          "answer": "3"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Cahaya merambat 3 × 10⁸ m/s. Jarak Bumi–Matahari sekitar 1,5 × 10¹¹ m. Berapa lama cahaya Matahari sampai ke Bumi?</p>",
+          "steps": [
+            "t = 1,5 × 10¹¹ / (3 × 10⁸) = 0,5 × 10³ = 500 s.",
+            "≈ 8 menit 20 detik."
+          ],
+          "answer": "500 detik"
+        },
+        {
+          "type": "check",
+          "question": "Nilai ²log 32 − ²log 4 adalah ....",
+          "options": {
+            "A": "3",
+            "B": "5",
+            "C": "8",
+            "D": "28"
+          },
+          "answer": "A",
+          "hint": "Gunakan log(x/y).",
+          "explanation": "²log(32/4) = ²log 8 = 3."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk pernyataan “selalu benar”, cukup satu contoh penyangkal untuk menunjukkan salah.</li><li>Samakan bilangan pokok sebelum membandingkan pangkat (misalnya 2^(1/2) dan 3^(1/3): pangkatkan keduanya dengan 6).</li><li>Pada soal kecukupan data, periksa setiap pernyataan sendiri-sendiri, lalu gabungan keduanya.</li><li>Ubah ke notasi ilmiah sebelum mengalikan atau membagi bilangan sangat besar/kecil.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal penalaran",
+          "question": "<p>Urutkan p = 2^(1/2), q = 3^(1/3), r = 6^(1/6) dari yang terkecil.</p>",
+          "steps": [
+            "Pangkatkan ketiganya dengan 6: p⁶ = 8, q⁶ = 9, r⁶ = 6.",
+            "Urutan: r &lt; p &lt; q."
+          ],
+          "answer": "r, p, q"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMA topik Bilangan. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

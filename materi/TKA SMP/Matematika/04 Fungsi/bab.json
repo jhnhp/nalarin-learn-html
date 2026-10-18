@@ -1,56 +1,162 @@
 {
   "title": "Fungsi",
-  "summary": "Ringkasan bab Fungsi akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA: relasi dan fungsi, notasi dan nilai fungsi, fungsi linear, gradien, dan persamaan garis lurus dalam konteks.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Fungsi",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Fungsi</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi fungsi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Soal TKA fungsi sering berupa tarif (air, parkir, taksi) atau perubahan yang konstan (air dikuras, lilin terbakar). Laju tetap berarti fungsi linear.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Relasi dan fungsi</td><td>diagram panah, pasangan berurutan, domain, kodomain, range</td><td>Kelas 8 Bab 4</td></tr><tr><td>Nilai fungsi</td><td>f(a), mencari a jika f(a) diketahui</td><td>Kelas 8 Bab 4</td></tr><tr><td>Fungsi linear</td><td>f(x) = mx + c dari tabel, grafik, atau dua titik</td><td>Kelas 8 Bab 5</td></tr><tr><td>Gradien dan garis</td><td>m = Δy/Δx, garis sejajar dan tegak lurus</td><td>Kelas 8 Bab 5</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi: setiap anggota domain dipasangkan dengan <b>tepat satu</b> anggota kodomain.</li><li>m = (y₂ − y₁)/(x₂ − x₁); y − y₁ = m(x − x₁).</li><li>Sejajar: m₁ = m₂. Tegak lurus: m₁ × m₂ = −1.</li><li>Dalam konteks: m = laju perubahan, c = nilai awal.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "relasi-fungsi",
+      "title": "Relasi, fungsi, dan nilai fungsi",
+      "kind": "simulasi",
+      "duration": "20 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/04 Relasi dan Fungsi/sim/diagram-panah.html",
+          "title": "Diagram panah: relasi atau fungsi?",
+          "height": 520,
+          "caption": "Periksa setiap anggota domain: apakah tepat satu panah keluar?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>f(x) = 4x − 5 dan f(a) = 11. Tentukan a.</p>",
+          "steps": [
+            "4a − 5 = 11.",
+            "a = 4."
+          ],
+          "answer": "a = 4"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>f(x + 1) = 3x − 2. Tentukan f(4).</p>",
+          "steps": [
+            "x + 1 = 4 saat x = 3.",
+            "f(4) = 3(3) − 2 = 7."
+          ],
+          "answer": "7"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/04 Relasi dan Fungsi/sim/mesin-fungsi.html",
+          "title": "Mesin fungsi",
+          "height": 520,
+          "caption": "Masukkan beberapa nilai x dan tebak aturan mesinnya."
+        },
+        {
+          "type": "check",
+          "question": "f(x) = px + q dengan f(2) = 7 dan f(−1) = −2. Nilai f(5) adalah ....",
+          "options": {
+            "A": "13",
+            "B": "16",
+            "C": "17",
+            "D": "19"
+          },
+          "answer": "B",
+          "hint": "Cari p dari selisih dua nilai.",
+          "explanation": "3p = 9, p = 3, q = 1. f(5) = 16."
+        }
+      ]
+    },
+    {
+      "id": "fungsi-linear",
+      "title": "Fungsi linear dan persamaan garis",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/05 Persamaan Garis Lurus/sim/garis-mc.html",
+          "title": "Grafik y = mx + c",
+          "height": 520,
+          "caption": "Ubah m dan c. Mana yang mengubah kemiringan, mana yang menggeser garis?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tagihan air f(x) = 4.500x + 25.000 dengan x pemakaian (m³). Jika tagihan Rp124.000,00, berapa pemakaiannya?</p>",
+          "steps": [
+            "4.500x + 25.000 = 124.000.",
+            "4.500x = 99.000, x = 22 m³."
+          ],
+          "answer": "22 m³"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Air dalam bak 400 liter dikuras dengan laju tetap; setelah 5 menit tersisa 300 liter. Nyatakan volume V(t) dan kapan bak kosong.</p>",
+          "steps": [
+            "Laju = (400 − 300)/5 = 20 liter/menit.",
+            "V(t) = 400 − 20t.",
+            "Kosong saat 400 − 20t = 0, t = 20 menit."
+          ],
+          "answer": "V(t) = 400 − 20t; 20 menit"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/05 Persamaan Garis Lurus/sim/dua-titik.html",
+          "title": "Kemiringan dari dua titik",
+          "height": 520,
+          "caption": "Geser kedua titik dan perhatikan Δy/Δx."
+        },
+        {
+          "type": "check",
+          "question": "Gradien garis yang melalui (1, 5) dan (3, 11) adalah ....",
+          "options": {
+            "A": "2",
+            "B": "3",
+            "C": "6",
+            "D": "1/3"
+          },
+          "answer": "B",
+          "hint": "m = Δy/Δx.",
+          "explanation": "(11 − 5)/(3 − 1) = 3."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Dari tabel, periksa apakah selisih y selalu sama untuk selisih x yang sama: jika ya, fungsinya linear.</li><li>Pada tarif bertingkat (misalnya parkir 2 jam pertama), bagi kasusnya dan perhatikan pembulatan waktu.</li><li>Domain dalam konteks biasanya terbatas: waktu tidak negatif, volume tidak negatif.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Tertukar gradien Δy/Δx menjadi Δx/Δy.</li><li>Menganggap relasi dengan satu anggota domain yang tidak berpasangan sebagai fungsi.</li><li>Lupa bahwa “jam berikutnya atau bagiannya” berarti dibulatkan ke atas.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMP topik Fungsi. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

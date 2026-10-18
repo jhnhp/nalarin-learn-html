@@ -1,56 +1,162 @@
 {
   "title": "Data dan Peluang",
-  "summary": "Ringkasan bab Data dan Peluang akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA SMA: penyajian data, ukuran pemusatan dan penyebaran data tunggal dan kelompok, kaidah pencacahan, serta peluang kejadian majemuk.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Data dan Peluang",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Data dan Peluang</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi data dan peluang",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>Median kelompok: T<sub>b</sub> + (n/2 − F)/f × p.</li><li>σ² = Σ(x − x̄)²/n; σ = √σ².</li><li>P(n, r) = n!/(n − r)!; C(n, r) = n!/(r!(n − r)!).</li><li>P(A ∪ B) = P(A) + P(B) − P(A ∩ B); saling bebas: P(A ∩ B) = P(A)P(B); bersyarat: P(A ∩ B) = P(A)P(B | A).</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "statistika",
+      "title": "Statistika data tunggal dan kelompok",
+      "kind": "simulasi",
+      "duration": "25 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/histogram.html",
+          "title": "Histogram dan data kelompok",
+          "height": 640,
+          "caption": "Bandingkan rata-rata dan median data kelompok dengan nilai sebenarnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rata-rata 5 siswa 78. Setelah nilai Budi ditambahkan, rata-ratanya 80. Berapa nilai Budi?</p>",
+          "steps": [
+            "Jumlah 5 nilai = 390. Jumlah 6 nilai = 480.",
+            "Nilai Budi = 90."
+          ],
+          "answer": "90"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan simpangan baku data 4, 6, 8, 10, 12.</p>",
+          "steps": [
+            "Mean 8. Kuadrat simpangan: 16, 4, 0, 4, 16, jumlah 40.",
+            "σ² = 8, σ = 2√2."
+          ],
+          "answer": "2√2"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/boxplot.html",
+          "title": "Box plot dan pencilan",
+          "height": 520,
+          "caption": "Periksa batas pencilan Q1 − 1,5 IQR dan Q3 + 1,5 IQR."
+        },
+        {
+          "type": "check",
+          "question": "Nilai 50, 60, 70 dengan frekuensi 3, 5, 2. Rata-ratanya adalah ....",
+          "options": {
+            "A": "58",
+            "B": "59",
+            "C": "60",
+            "D": "61"
+          },
+          "answer": "B",
+          "hint": "Σfx/Σf.",
+          "explanation": "(150 + 300 + 140)/10 = 590/10 = 59."
+        }
+      ]
+    },
+    {
+      "id": "pencacahan-peluang",
+      "title": "Pencacahan dan peluang",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Matematika/03 Kaidah Pencacahan/sim/susunan.html",
+          "title": "Daftar semua susunan",
+          "height": 520,
+          "caption": "Bandingkan banyak susunan pada mode permutasi dan kombinasi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Enam siswa termasuk Andi dan Budi berfoto berjajar. Berapa susunan jika Andi dan Budi selalu berdampingan?</p>",
+          "steps": [
+            "Gabungkan Andi–Budi: 5 objek, 5! = 120.",
+            "Andi dan Budi bertukar: × 2. Total 240."
+          ],
+          "answer": "240"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Dari 10 lampu, 3 rusak. Diambil 3 lampu sekaligus. Berapa peluang tepat 1 rusak?</p>",
+          "steps": [
+            "n(S) = C(10, 3) = 120.",
+            "n(A) = C(3, 1) × C(7, 2) = 3 × 21 = 63.",
+            "P = 63/120 = 21/40."
+          ],
+          "answer": "21/40"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Matematika/04 Peluang/sim/kantong.html",
+          "title": "Pengambilan bola dari kantong",
+          "height": 520,
+          "caption": "Bandingkan pengambilan dengan dan tanpa pengembalian."
+        },
+        {
+          "type": "check",
+          "question": "Tim debat 5 orang dipilih dari 6 putra dan 4 putri dengan tepat 2 putri. Banyak cara memilih adalah ....",
+          "options": {
+            "A": "60",
+            "B": "120",
+            "C": "210",
+            "D": "252"
+          },
+          "answer": "B",
+          "hint": "Pilih putri dan putra secara terpisah lalu kalikan.",
+          "explanation": "C(4, 2) × C(6, 3) = 6 × 20 = 120. 252 = C(10, 5) tanpa syarat."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Menjumlahkan peluang kejadian yang tidak saling lepas tanpa mengurangkan irisan.</li><li>Memakai permutasi untuk memilih anggota tim tanpa jabatan.</li><li>Membagi dengan n − 1 pada simpangan baku populasi (buku memakai n).</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMA topik Data dan Peluang. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

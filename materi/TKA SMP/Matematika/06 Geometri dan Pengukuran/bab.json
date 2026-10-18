@@ -1,56 +1,215 @@
 {
   "title": "Geometri dan Pengukuran",
-  "summary": "Ringkasan bab Geometri dan Pengukuran akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA: sudut dan garis sejajar, segitiga, Teorema Pythagoras, kesebangunan, transformasi, lingkaran, serta luas dan volume bangun ruang.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Geometri dan Pengukuran",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Geometri dan Pengukuran</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi geometri",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Geometri adalah topik dengan soal terbanyak dan paling sering bergambar. Biasakan menandai informasi pada gambar sebelum menghitung.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Sudut</td><td>garis sejajar, jumlah sudut segitiga 180°</td><td>Kelas 7 Bab 5</td></tr><tr><td>Pythagoras</td><td>a² + b² = c², tripel, jarak dua titik</td><td>Kelas 8 Bab 2</td></tr><tr><td>Kesebangunan</td><td>perbandingan sisi seletak, kongruen</td><td>Kelas 7 Bab 5, Kelas 9</td></tr><tr><td>Transformasi</td><td>translasi, refleksi, rotasi, dilatasi</td><td>Kelas 9 Bab 3</td></tr><tr><td>Lingkaran</td><td>keliling, luas, busur, juring</td><td>Kelas 8–9</td></tr><tr><td>Bangun ruang</td><td>luas permukaan dan volume prisma, limas, tabung, kerucut, bola</td><td>Kelas 9 Bab 2</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>Sudut sehadap/dalam berseberangan sama; sudut dalam sepihak berjumlah 180°.</li><li>Tripel: 3-4-5, 5-12-13, 8-15-17, 7-24-25.</li><li>Rotasi 90° berlawanan jarum jam: (x, y) → (−y, x); 180°: (x, y) → (−x, −y).</li><li>Refleksi sumbu x: (x, −y); sumbu y: (−x, y); y = x: (y, x).</li><li>Volume prisma/tabung = luas alas × t; limas/kerucut = ⅓ × luas alas × t; bola = 4/3 πr³.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "sudut-pythagoras",
+      "title": "Sudut, Pythagoras, dan kesebangunan",
+      "kind": "simulasi",
+      "duration": "25 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas7/Matematika/05 Kesebangunan/sim/sudut-sejajar.html",
+          "title": "Sudut pada garis sejajar",
+          "height": 520,
+          "caption": "Geser garis transversal dan cari pasangan sudut yang sama besar."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sudut segitiga 2x°, (3x + 10)°, dan (x + 20)°. Tentukan sudut terbesar.</p>",
+          "steps": [
+            "6x + 30 = 180, x = 25.",
+            "Sudut-sudutnya 50°, 85°, 45°. Terbesar 85°."
+          ],
+          "answer": "85°"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/02 Teorema Pythagoras/sim/persegi-sisi.html",
+          "title": "Persegi pada sisi segitiga",
+          "height": 520,
+          "caption": "Lihat mengapa luas dua persegi kecil sama dengan luas persegi pada sisi miring."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tangga 5 m bersandar pada dinding dengan kaki tangga 1,4 m dari dinding. Berapa tinggi ujung tangga?</p>",
+          "steps": [
+            "t = √(5² − 1,4²) = √(25 − 1,96) = √23,04 = 4,8 m."
+          ],
+          "answer": "4,8 m"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/Matematika/05 Kesebangunan/sim/segitiga-sebangun.html",
+          "title": "Segitiga sebangun",
+          "height": 520,
+          "caption": "Cocokkan sisi-sisi yang seletak sebelum membuat perbandingan."
+        },
+        {
+          "type": "check",
+          "question": "Pada segitiga ABC, DE ∥ BC dengan AD = 4 cm, DB = 6 cm, dan DE = 6 cm. Panjang BC adalah ....",
+          "options": {
+            "A": "9 cm",
+            "B": "12 cm",
+            "C": "15 cm",
+            "D": "10 cm"
+          },
+          "answer": "C",
+          "hint": "Bandingkan AD/AB dengan DE/BC.",
+          "explanation": "AB = 10. 4/10 = 6/BC, BC = 15 cm. 9 cm keliru memakai AD/DB."
+        }
+      ]
+    },
+    {
+      "id": "transformasi",
+      "title": "Transformasi geometri",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/misi-transformasi.html",
+          "title": "Misi transformasi",
+          "height": 560,
+          "caption": "Tentukan transformasi tunggal yang memetakan bangun ke posisi target."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Titik A(4, −2) dirotasi 90° berlawanan arah jarum jam dengan pusat O. Tentukan bayangannya.</p>",
+          "steps": [
+            "(x, y) → (−y, x).",
+            "A′(2, 4)."
+          ],
+          "answer": "(2, 4)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Segitiga dengan luas 12 cm² didilatasi dengan faktor skala 3. Berapa luas bayangannya?</p>",
+          "steps": [
+            "Panjang dikali 3, luas dikali 3² = 9.",
+            "12 × 9 = 108 cm²."
+          ],
+          "answer": "108 cm²"
+        },
+        {
+          "type": "check",
+          "question": "Titik P(−3, 5) ditranslasi oleh (4, −2). Bayangannya adalah ....",
+          "options": {
+            "A": "(1, 3)",
+            "B": "(−7, 7)",
+            "C": "(1, 7)",
+            "D": "(−1, 3)"
+          },
+          "answer": "A",
+          "hint": "Jumlahkan komponennya.",
+          "explanation": "(−3 + 4, 5 − 2) = (1, 3)."
+        }
+      ]
+    },
+    {
+      "id": "bangun-ruang",
+      "title": "Lingkaran dan bangun ruang",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/02 Bangun Ruang/sim/bangun-3d.html",
+          "title": "Penjelajah bangun ruang",
+          "height": 560,
+          "caption": "Putar bangun, buka jaring-jaringnya, dan bandingkan rumus luas permukaan dan volumenya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Roda berdiameter 70 cm berputar 100 kali. Berapa jarak yang ditempuh? (π = 22/7)</p>",
+          "steps": [
+            "Keliling = 22/7 × 70 = 220 cm.",
+            "Jarak = 100 × 220 = 22.000 cm = 220 m."
+          ],
+          "answer": "220 m"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Bola dimasukkan ke tabung sehingga menyinggung alas, tutup, dan selimut. Berapa perbandingan volume bola dan tabung?</p>",
+          "steps": [
+            "Tinggi tabung = 2r. V tabung = πr² × 2r = 2πr³.",
+            "V bola = 4/3 πr³. Perbandingan = 4/3 : 2 = 2 : 3."
+          ],
+          "answer": "2 : 3"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/02 Bangun Ruang/sim/juring.html",
+          "title": "Busur dan juring lingkaran",
+          "height": 520,
+          "caption": "Ubah sudut pusat dan lihat bagian lingkaran yang diwakilinya."
+        },
+        {
+          "type": "check",
+          "question": "Limas persegi dengan sisi alas 12 cm dan tinggi segitiga sisi 10 cm mempunyai luas permukaan ....",
+          "options": {
+            "A": "384 cm²",
+            "B": "264 cm²",
+            "C": "624 cm²",
+            "D": "480 cm²"
+          },
+          "answer": "A",
+          "hint": "Luas alas + 4 segitiga.",
+          "explanation": "144 + 4 × ½ × 12 × 10 = 144 + 240 = 384 cm²."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tandai sudut atau panjang yang diketahui langsung pada gambar.</li><li>Cari tripel Pythagoras untuk menghemat waktu.</li><li>Pada dilatasi, panjang dikali k, luas dikali k², volume dikali k³.</li><li>Satuan volume: 1 liter = 1 dm³ = 1.000 cm³.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai jari-jari padahal yang diketahui diameter.</li><li>Lupa ⅓ pada volume limas atau kerucut.</li><li>Tertukar arah rotasi (searah atau berlawanan jarum jam).</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMP topik Geometri dan Pengukuran. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

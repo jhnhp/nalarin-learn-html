@@ -1,56 +1,167 @@
 {
   "title": "Bentuk Aljabar",
-  "summary": "Ringkasan bab Bentuk Aljabar akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA: unsur bentuk aljabar, operasi, perkalian dan pemfaktoran, identitas aljabar, serta pemodelan pola.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Bentuk Aljabar",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Bentuk Aljabar</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi bentuk aljabar",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Soal TKA aljabar sering memakai gambar (kebun, ubin, susunan korek) dan meminta <b>bentuk aljabar yang tepat</b> atau nilainya untuk variabel tertentu.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Unsur</td><td>variabel, koefisien, konstanta, suku sejenis</td><td>Kelas 7 Bab 4</td></tr><tr><td>Operasi</td><td>penjumlahan, pengurangan, sifat distributif</td><td>Kelas 7 Bab 4</td></tr><tr><td>Perkalian dan faktor</td><td>(a + b)(c + d), x² + bx + c, selisih kuadrat</td><td>Kelas 7 Bab 4, Kelas 9</td></tr><tr><td>Pemodelan</td><td>menyatakan pola atau keliling/luas dalam variabel</td><td>Kelas 7 Bab 4</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Identitas penting",
+          "html": "<ul><li>(a + b)² = a² + 2ab + b²; (a − b)² = a² − 2ab + b².</li><li>a² − b² = (a + b)(a − b).</li><li>x² + y² = (x + y)² − 2xy.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "operasi",
+      "title": "Operasi dan perkalian bentuk aljabar",
+      "kind": "simulasi",
+      "duration": "20 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas7/Matematika/04 Bentuk Aljabar/sim/ubin-aljabar.html",
+          "title": "Ubin aljabar: sifat distributif",
+          "height": 520,
+          "caption": "Bentuk persegi panjang dari ubin untuk melihat mengapa a(b + c) = ab + ac."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sederhanakan 3(2x − 5) − 2(x − 4).</p>",
+          "steps": [
+            "6x − 15 − 2x + 8.",
+            "= 4x − 7."
+          ],
+          "answer": "4x − 7"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Hitung 253² − 247² tanpa kalkulator.</p>",
+          "steps": [
+            "Selisih kuadrat: (253 + 247)(253 − 247).",
+            "= 500 × 6 = 3.000."
+          ],
+          "answer": "3.000"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>−2(x − 4) = −2x + 8, bukan −2x − 8.</li><li>“Kurangkan A dari B” berarti B − A.</li><li>(2x)² = 4x², bukan 2x².</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Hasil dari (2x − 3)(x + 4) adalah ....",
+          "options": {
+            "A": "2x² + 5x − 12",
+            "B": "2x² − 5x − 12",
+            "C": "2x² + 11x − 12",
+            "D": "2x² + 5x + 12"
+          },
+          "answer": "A",
+          "hint": "Kalikan setiap suku.",
+          "explanation": "2x² + 8x − 3x − 12 = 2x² + 5x − 12."
+        }
+      ]
+    },
+    {
+      "id": "faktor",
+      "title": "Pemfaktoran dan identitas",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Faktorkan x² − 2x − 15.</p>",
+          "steps": [
+            "Cari dua bilangan dengan hasil kali −15 dan jumlah −2: −5 dan 3.",
+            "(x − 5)(x + 3)."
+          ],
+          "answer": "(x − 5)(x + 3)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sederhanakan (x² − 9)/(2x + 6), x ≠ −3.</p>",
+          "steps": [
+            "(x + 3)(x − 3)/(2(x + 3)).",
+            "= (x − 3)/2."
+          ],
+          "answer": "(x − 3)/2"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Jika x + y = 7 dan xy = 10, tentukan x² + y².</p>",
+          "steps": [
+            "x² + y² = (x + y)² − 2xy.",
+            "= 49 − 20 = 29."
+          ],
+          "answer": "29"
+        },
+        {
+          "type": "check",
+          "question": "Bentuk faktor dari 4x² − 25 adalah ....",
+          "options": {
+            "A": "(2x − 5)²",
+            "B": "(2x + 5)(2x − 5)",
+            "C": "(4x + 5)(x − 5)",
+            "D": "4(x − 5)(x + 5)"
+          },
+          "answer": "B",
+          "hint": "Selisih dua kuadrat.",
+          "explanation": "4x² − 25 = (2x)² − 5² = (2x + 5)(2x − 5)."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Pemodelan, strategi, dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/Matematika/04 Bentuk Aljabar/sim/pola-korek.html",
+          "title": "Pola korek api",
+          "height": 520,
+          "caption": "Tuliskan rumus banyak korek untuk pola ke-n, lalu uji dengan pola ke-4 dan ke-5."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Petak rumput n × n dikelilingi satu lapis ubin persegi seukuran petak satuan. Tentukan banyak ubin.</p>",
+          "steps": [
+            "Persegi luar (n + 2) × (n + 2), dikurangi petak n × n.",
+            "(n + 2)² − n² = 4n + 4 = 4(n + 1)."
+          ],
+          "answer": "4n + 4"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Uji rumus pilihan jawaban dengan nilai kecil (n = 1, 2) yang bisa kamu hitung langsung dari gambar.</li><li>Sederhanakan dahulu sebelum menyubstitusi nilai variabel.</li><li>Perhatikan tanda negatif ketika membuka kurung.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMP topik Bentuk Aljabar. Setiap soal dilengkapi pembahasan."
         }
       ]
     }
