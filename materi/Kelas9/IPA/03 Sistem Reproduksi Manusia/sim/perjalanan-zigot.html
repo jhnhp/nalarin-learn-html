@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perjalanan Zigot</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Perjalanan zigot dari tuba falopi ke rahim"></svg></div>
+  <div class="panel">
+    <div class="lab">Hari setelah ovulasi <b id="dv">0</b></div>
+    <input type="range" id="d" min="0" max="7" step="1" value="0">
+    <div class="row"><button class="btn primary" id="play">▶ Jalankan</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Fertilisasi terjadi di <b>tuba falopi</b>. Sambil bergerak ke rahim, zigot membelah berkali-kali secara mitosis. Sekitar hari ke-6 sampai ke-7, blastokista menanamkan diri di dinding rahim (<b>implantasi</b>).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const ST = [
+  ['fertilisasi', 'sperma membuahi sel telur di tuba falopi', 1],
+  ['zigot 2 sel', 'pembelahan mitosis pertama', 2],
+  ['4 sel', 'sel terus membelah, ukuran total hampir tetap', 4],
+  ['8 sel', 'sel makin kecil', 8],
+  ['morula (16–32 sel)', 'bola sel padat seperti buah murbei', 16],
+  ['blastokista', 'bola sel berongga berisi cairan', 0],
+  ['implantasi dimulai', 'blastokista menempel pada dinding rahim', 0],
+  ['implantasi', 'blastokista tertanam; menghasilkan hormon HCG', 0]
+];
+// lintasan dari ujung tuba (kanan atas) ke rahim
+const P = [[400, 92], [362, 96], [326, 106], [296, 124], [270, 146], [244, 168], [204, 188], [186, 194]];
+let D = 0, timer = null;
+$('d').oninput = e => { D = +e.target.value; draw(); };
+$('play').onclick = () => {
+  if(timer){ clearInterval(timer); timer = null; $('play').textContent = '▶ Jalankan'; return; }
+  $('play').textContent = '⏸ Berhenti';
+  timer = setInterval(() => { D = D >= 7 ? 0 : D + 1; $('d').value = D; draw(); }, 900);
+};
+function cluster(cx, cy, R, n, stage){
+  let s = `<circle cx="${cx}" cy="${cy}" r="${R}" style="fill:none;stroke:var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/>`;
+  if(stage >= 5){
+    s += `<circle cx="${cx}" cy="${cy}" r="${R - 3}" style="fill:var(--a)" fill-opacity=".08"/>`;
+    for(let i = 0; i < 26; i++){ const a = i / 26 * 2 * Math.PI; s += `<circle cx="${cx + (R - 8) * Math.cos(a)}" cy="${cy + (R - 8) * Math.sin(a)}" r="${R * .13}" style="fill:var(--a);stroke:var(--surface)" fill-opacity=".55"/>`; }
+    for(let i = 0; i < 7; i++){ const a = Math.PI * (.8 + i * .07); s += `<circle cx="${cx + (R - 22) * Math.cos(a)}" cy="${cy + (R - 22) * Math.sin(a)}" r="${R * .13}" style="fill:var(--r);stroke:var(--surface)" fill-opacity=".6"/>`; }
+    s += `<text class="s" x="${cx + 12}" y="${cy + 4}" text-anchor="middle" style="fill:var(--muted)">rongga</text>`;
+    return s;
+  }
+  if(n === 1){
+    s += `<circle cx="${cx}" cy="${cy}" r="${R - 4}" style="fill:var(--b)" fill-opacity=".25"/><circle cx="${cx}" cy="${cy}" r="${R * .22}" style="fill:var(--b)" fill-opacity=".6"/>`;
+    for(let i = 0; i < 3; i++){ const a = -2.4 + i * .7, c = Math.cos(a), n = Math.sin(a), x = cx + (R + 4) * c, y = cy + (R + 4) * n; s += `<ellipse cx="${x}" cy="${y}" rx="4" ry="2.6" transform="rotate(${a * 180 / Math.PI} ${x} ${y})" style="fill:var(--k)"/><line x1="${x + 4 * c}" y1="${y + 4 * n}" x2="${x + 17 * c}" y2="${y + 17 * n}" style="stroke:var(--k)" stroke-width="1.5"/>`; }
+    return s;
+  }
+  const pts = [];
+  if(n === 2) pts.push([-.5, 0], [.5, 0]);
+  else if(n === 4) pts.push([-.45, -.45], [.45, -.45], [-.45, .45], [.45, .45]);
+  else if(n === 8) for(let i = 0; i < 8; i++){ const a = i / 8 * 2 * Math.PI; pts.push([.55 * Math.cos(a), .55 * Math.sin(a)]); }
+  else { for(let i = 0; i < 11; i++){ const a = i / 11 * 2 * Math.PI; pts.push([.66 * Math.cos(a), .66 * Math.sin(a)]); } for(let i = 0; i < 5; i++){ const a = i / 5 * 2 * Math.PI; pts.push([.25 * Math.cos(a), .25 * Math.sin(a)]); } }
+  const r = R * (n === 2 ? .46 : n === 4 ? .42 : n === 8 ? .36 : .27);
+  pts.forEach(([u, v]) => s += `<circle cx="${cx + u * R}" cy="${cy + v * R}" r="${r}" style="fill:var(--b);stroke:var(--surface)" fill-opacity=".45" stroke-width="1.5"/>`);
+  return s;
+}
+function draw(){
+  let s = '';
+  // rahim dan tuba (skema)
+  s += `<path d="M150,120 Q150,90 180,92 L290,92 Q320,90 320,120 L300,230 Q290,262 255,266 L215,266 Q180,262 170,230 Z" style="fill:var(--b);stroke:var(--b)" fill-opacity=".08" stroke-width="2"/>`;
+  s += `<path d="M168,128 Q168,108 188,108 L282,108 Q302,108 302,128 L286,224 Q278,248 252,250 L218,250 Q192,248 184,224 Z" style="fill:var(--surface);stroke:var(--b)" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  s += `<path d="M215,266 L215,300 M255,266 L255,300" style="stroke:var(--b)" stroke-width="2" stroke-opacity=".6"/>`;
+  s += `<path d="M310,100 Q350,88 400,92 Q420,94 428,82" style="fill:none;stroke:var(--b)" stroke-width="10" stroke-opacity=".18" stroke-linecap="round"/><path d="M160,100 Q120,88 70,92 Q50,94 42,82" style="fill:none;stroke:var(--b)" stroke-width="10" stroke-opacity=".18" stroke-linecap="round"/>`;
+  s += `<ellipse cx="432" cy="118" rx="22" ry="14" style="fill:var(--comp);stroke:var(--comp)" fill-opacity=".2" stroke-width="2"/><ellipse cx="38" cy="118" rx="22" ry="14" style="fill:var(--comp);stroke:var(--comp)" fill-opacity=".2" stroke-width="2"/>`;
+  s += `<text class="s" x="432" y="146" text-anchor="middle" style="fill:var(--comp)">ovarium</text><text class="s" x="370" y="78" text-anchor="middle" style="fill:var(--b)">tuba falopi</text><text class="s" x="96" y="186" text-anchor="middle" style="fill:var(--b)">rahim (uterus)</text><text class="s" x="96" y="200" text-anchor="middle" style="fill:var(--muted)">dinding rahim</text><text class="s" x="235" y="318" text-anchor="middle" style="fill:var(--b)">serviks</text>`;
+  // lintasan
+  s += `<path d="M${P.map(p => p.join(',')).join(' L')}" style="fill:none;stroke:var(--muted)" stroke-width="1.5" stroke-dasharray="2 4"/>`;
+  P.forEach((p, i) => s += `<circle cx="${p[0]}" cy="${p[1]}" r="${i === D ? 7 : 3}" style="fill:${i === D ? 'var(--b)' : 'var(--line-2)'}"/>`);
+  // perbesaran
+  const [x, y] = P[D], cx = 400, cy = 246, R = 38;
+  s += `<line x1="${x}" y1="${y}" x2="${cx - R * .7}" y2="${cy - R * .7}" style="stroke:var(--muted)" stroke-dasharray="3 3"/>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${R + 22}" style="fill:var(--surface-2);stroke:var(--line-2)"/>` + cluster(cx, cy, R, ST[D][2], D);
+  s += `<text class="s" x="${cx}" y="${cy + R + 38}" text-anchor="middle" style="fill:var(--muted)">diperbesar (±0,1 mm)</text>`;
+  svg.innerHTML = s;
+  $('dv').textContent = D;
+  $('read').innerHTML = `<div><span>Tahap</span><b>${ST[D][0]}</b></div><div><span>Keterangan</span><b>${ST[D][1]}</b></div><div><span>Lokasi</span><b>${D < 4 ? 'tuba falopi' : D < 6 ? 'memasuki rahim' : 'dinding rahim'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

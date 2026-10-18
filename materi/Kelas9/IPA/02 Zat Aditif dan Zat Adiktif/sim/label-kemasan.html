@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membaca Komposisi Kemasan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.wrap{padding:14px 16px;display:grid;gap:12px}
+.label{border:2px dashed var(--line-2);border-radius:14px;padding:12px 14px;background:var(--surface-2);font-size:14.5px;line-height:1.7}
+.zat{display:grid;gap:8px}.row2{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line-2);border-radius:10px}
+.row2.ok{border-color:var(--ok);background:var(--ok-soft)}.row2.no{border-color:var(--bad);background:var(--bad-soft)}
+select{font:inherit;font-size:13.5px;padding:5px 6px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+.msg{font-weight:700;padding:10px 12px;border-radius:10px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row" style="justify-content:space-between"><b id="prod"></b><button class="btn" id="next">Produk lain</button></div>
+  <div class="label" id="label"></div>
+  <div class="zat" id="zat"></div>
+  <div class="row"><button class="btn primary" id="cek">Periksa</button></div>
+  <div class="msg" id="msg">Golongkan setiap bahan tambahan pada komposisi di atas.</div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const K = ['pemanis', 'pewarna', 'pengawet', 'penyedap', 'pengental', 'pengemulsi', 'DILARANG'];
+const PR = [
+  ['Minuman jeruk kemasan', 'Air, gula, sari jeruk, natrium benzoat, kalium sorbat, aspartam, tartrazin (CI 19140), perisa jeruk', [['natrium benzoat', 'pengawet'], ['aspartam', 'pemanis'], ['tartrazin', 'pewarna'], ['kalium sorbat', 'pengawet']]],
+  ['Mi instan', 'Tepung terigu, minyak sawit, garam, mononatrium glutamat (MSG), natrium polifosfat, guar gum, tartrazin, lesitin kedelai', [['MSG', 'penyedap'], ['guar gum', 'pengental'], ['tartrazin', 'pewarna'], ['lesitin', 'pengemulsi']]],
+  ['Es krim cokelat', 'Susu, gula, kakao, karagenan, mono- dan digliserida, vanilin, pewarna karamel', [['karagenan', 'pengental'], ['mono- dan digliserida', 'pengemulsi'], ['pewarna karamel', 'pewarna'], ['gula', 'pemanis']]],
+  ['Kerupuk merah (pasar)', 'Tapioka, garam, boraks, rhodamin B, penyedap', [['boraks', 'DILARANG'], ['rhodamin B', 'DILARANG'], ['penyedap', 'penyedap']]],
+];
+let pi = 0;
+function show(){ const [n, comp, zs] = PR[pi]; $('prod').textContent = n; $('label').innerHTML = '<b>Komposisi:</b> ' + comp;
+  $('zat').innerHTML = zs.map(([z], i) => `<div class="row2" id="r${i}"><span>${z}</span><select data-i="${i}"><option value="">pilih golongan</option>${K.map(k => `<option>${k}</option>`).join('')}</select></div>`).join('');
+  $('msg').textContent = 'Golongkan setiap bahan tambahan pada komposisi di atas.'; }
+$('cek').onclick = () => { const zs = PR[pi][2]; let ok = 0;
+  zs.forEach(([z, g], i) => { const v = document.querySelector(`select[data-i="${i}"]`).value, r = $('r' + i); r.className = 'row2 ' + (v === g ? 'ok' : 'no'); if(v === g) ok++; else if(v) r.title = 'Jawaban: ' + g; });
+  const danger = zs.some(z => z[1] === 'DILARANG');
+  $('msg').innerHTML = `${ok} dari ${zs.length} benar. ` + (ok < zs.length ? 'Baris merah belum tepat; coba lagi. ' : '') + (danger ? '⚠️ Produk ini mengandung bahan yang <b>dilarang</b> untuk makanan (boraks dan rhodamin B adalah bahan industri). Jangan dikonsumsi!' : 'Semua bahan tambahan ini diizinkan BPOM selama tidak melebihi batas.'); };
+$('next').onclick = () => { pi = (pi + 1) % PR.length; show(); };
+show();
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homeostasis Gula Darah</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Grafik kadar gula darah terhadap waktu"></svg></div>
+  <div class="panel">
+    <div class="row"><button class="btn primary" id="eat">Makan nasi 🍚</button><button class="btn" id="run">Berolahraga 🏃</button><button class="btn" id="reset">Ulang</button></div>
+    <label class="chk"><input type="checkbox" id="c-dm"> Pankreas kurang menghasilkan insulin (diabetes)</label>
+    <div class="read" id="read"></div>
+    <p class="note">Kadar gula darah normal sekitar 70–140 mg/dL. Jika naik, pankreas melepas <b>insulin</b> sehingga glukosa masuk ke sel dan disimpan sebagai glikogen di hati. Jika turun, pankreas melepas <b>glukagon</b> sehingga glikogen diubah kembali menjadi glukosa. Ini contoh umpan balik negatif.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let G = 90, t = 0, hist = [], gut = 0, burn = 0, ins = 0, glu = 0;
+$('eat').onclick = () => { gut += 90; }; $('run').onclick = () => { burn += 40; };
+$('reset').onclick = () => { G = 90; t = 0; hist = []; gut = 0; burn = 0; };
+setInterval(step, 50);
+function step(){
+  const dm = $('c-dm').checked;
+  const absorb = gut * .04; gut -= absorb; const use = burn * .05; burn -= use;
+  ins = Math.max(0, G - 95) * .03 * (dm ? .08 : 1); glu = Math.max(0, 80 - G) * .05;
+  G += absorb - use - ins + glu;
+  G = Math.max(40, Math.min(320, G)); t += 1; hist.push(G); if(hist.length > 400) hist.shift(); draw();
+}
+function draw(){
+  const L = 46, B = 290, W = 400, H = 260, Y = v => B - (v - 40) / 280 * H;
+  let s = `<rect x="${L}" y="${Y(140)}" width="${W}" height="${Y(70) - Y(140)}" style="fill:var(--ok)" fill-opacity=".1"/><text class="c" x="${L + W - 4}" y="${Y(140) + 14}" text-anchor="end" style="fill:var(--ok)">batas normal</text>`;
+  [50, 100, 150, 200, 250, 300].forEach(v => s += `<line x1="${L}" y1="${Y(v)}" x2="${L + W}" y2="${Y(v)}" style="stroke:var(--line)"/><text class="c" x="${L - 6}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--muted)">${v}</text>`);
+  s += `<path d="${hist.map((v, i) => (i ? 'L' : 'M') + (L + i).toFixed(1) + ',' + Y(v).toFixed(1)).join('')}" fill="none" style="stroke:var(--b)" stroke-width="3"/>`;
+  s += `<line x1="${L}" y1="${B}" x2="${L + W}" y2="${B}" style="stroke:var(--ink)" stroke-width="1.5"/><text class="c" x="${L + W}" y="${B + 18}" text-anchor="end" style="fill:var(--muted)">waktu →</text><text class="c" x="${L + 4}" y="14" style="fill:var(--muted)">gula darah (mg/dL)</text>`;
+  svg.innerHTML = s;
+  const st = G > 140 ? 'tinggi (hiperglikemia)' : G < 70 ? 'rendah (hipoglikemia)' : 'normal';
+  $('read').innerHTML = `<div><span>Kadar gula darah</span><b>${fmt(G, 0)} mg/dL: ${st}</b></div><div><span>Hormon yang bekerja</span><b>${ins > .1 ? 'insulin ↑' : glu > .05 ? 'glukagon ↑' : G > 110 && $('c-dm').checked ? 'insulin kurang' : 'seimbang'}</b></div>` + ($('c-dm').checked && G > 140 ? `<div><span>Akibat</span><b>gula darah lama tinggi; dapat keluar bersama urine</b></div>` : '');
+}
+</script>
+</body>
+</html>
