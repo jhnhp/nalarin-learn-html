@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persilangan dan Pewarisan Sifat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 360" role="img" aria-label="Diagram Punnett dan perbandingan fenotip"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="mendel" class="on">Hukum Mendel</button><button data-m="inter">Interaksi gen (F2 dihibrid)</button><button data-m="x">Terpaut kromosom X</button></div>
+    <div id="pm">
+      <div class="lab">Induk 1 (gen A: bunga merah > putih; gen B: biji bulat > keriput)</div>
+      <div class="row"><select id="a1" style="width:48%"><option value="AA">AA</option><option value="Aa" selected>Aa</option><option value="aa">aa</option></select><select id="b1" style="width:48%"><option value="BB">BB</option><option value="Bb" selected>Bb</option><option value="bb">bb</option><option value="-">(abaikan gen B)</option></select></div>
+      <div class="lab">Induk 2</div>
+      <div class="row"><select id="a2" style="width:48%"><option value="AA">AA</option><option value="Aa">Aa</option><option value="aa" selected>aa</option></select><select id="b2" style="width:48%"><option value="BB">BB</option><option value="Bb" selected>Bb</option><option value="bb">bb</option><option value="-">(abaikan gen B)</option></select></div>
+    </div>
+    <div id="pi" hidden>
+      <div class="lab">Jenis interaksi</div>
+      <select id="it"><option value="epis">Epistasis dominan (12 : 3 : 1)</option><option value="resesif">Epistasis resesif (9 : 3 : 4)</option><option value="komp">Komplementer (9 : 7)</option><option value="poli">Polimeri (15 : 1)</option><option value="ata">Atavisme (9 : 3 : 3 : 1, fenotip baru)</option></select>
+    </div>
+    <div id="px" hidden>
+      <div class="lab">Ibu</div><select id="ib"><option value="NN">Xᴴ Xᴴ (normal)</option><option value="Nh" selected>Xᴴ Xʰ (pembawa)</option><option value="hh">Xʰ Xʰ (hemofilia)</option></select>
+      <div class="lab">Ayah</div><select id="ay"><option value="N">Xᴴ Y (normal)</option><option value="h" selected>Xʰ Y (hemofilia)</option></select>
+    </div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'mendel';
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; $('pm').hidden = M !== 'mendel'; $('pi').hidden = M !== 'inter'; $('px').hidden = M !== 'x'; draw(); });
+['a1', 'b1', 'a2', 'b2', 'it', 'ib', 'ay'].forEach(i => $(i).oninput = draw);
+const gam = (a, b) => { const ga = [...new Set([a[0], a[1]])], gb = b === '-' ? [''] : [...new Set([b[0], b[1]])]; const out = []; ga.forEach(x => gb.forEach(y => out.push(x + y))); return out; };
+const sortG = g => g.split('').sort((p, q) => p.toLowerCase() === q.toLowerCase() ? (p < q ? -1 : 1) : (p.toLowerCase() < q.toLowerCase() ? -1 : 1)).join('');
+const gcd = (a, b) => b ? gcd(b, a % b) : a;
+function grid(rows, cols, cell, x0, y0, cw, ch){
+  let s = '';
+  cols.forEach((g, j) => s += `<rect x="${x0 + (j + 1) * cw}" y="${y0}" width="${cw}" height="${ch}" fill="#e3f2fd" stroke="#90a4ae"/><text class="c" x="${x0 + (j + 1.5) * cw}" y="${y0 + ch / 2 + 4}" text-anchor="middle" fill="#1565c0">${g}</text>`);
+  rows.forEach((g, i) => { s += `<rect x="${x0}" y="${y0 + (i + 1) * ch}" width="${cw}" height="${ch}" fill="#fce4ec" stroke="#90a4ae"/><text class="c" x="${x0 + cw / 2}" y="${y0 + (i + 1.5) * ch + 4}" text-anchor="middle" fill="#c2185b">${g}</text>`; cols.forEach((h, j) => { const [txt, col] = cell(g, h); s += `<rect x="${x0 + (j + 1) * cw}" y="${y0 + (i + 1) * ch}" width="${cw}" height="${ch}" fill="${col}" stroke="#90a4ae"/><text class="s" x="${x0 + (j + 1.5) * cw}" y="${y0 + (i + 1.5) * ch + 4}" text-anchor="middle" fill="#333">${txt}</text>`; }); });
+  return s;
+}
+function ratioText(obj){ const v = Object.values(obj); const g = v.reduce(gcd); return Object.entries(obj).map(([k, n]) => `${k} ${n / g}`).join(' : '); }
+function draw(){
+  let s = '', html = '';
+  if(M === 'mendel'){
+    const a1 = $('a1').value, b1 = $('b1').value, a2 = $('a2').value, b2 = $('b2').value;
+    const one = b1 === '-' || b2 === '-';
+    const g1 = gam(a1, one ? '-' : b1), g2 = gam(a2, one ? '-' : b2);
+    const fen = {}, gen = {};
+    const cw = Math.min(70, 330 / (g2.length + 1)), ch = Math.min(46, 260 / (g1.length + 1));
+    s += grid(g1, g2, (x, y) => { const g = sortG(x + y); const A = /A/.test(g) ? 'merah' : 'putih', B = one ? '' : (/B/.test(g) ? ' bulat' : ' keriput'); const f = A + B; fen[f] = (fen[f] || 0) + 1; gen[g] = (gen[g] || 0) + 1; return [g, A === 'merah' ? '#ffcdd2' : '#fafafa']; }, 20, 30, cw, ch);
+    s += `<text class="c" x="20" y="20" style="fill:var(--ink)">${a1}${one ? '' : b1} × ${a2}${one ? '' : b2}</text>`;
+    const tot = g1.length * g2.length;
+    html = `<div><span>Macam gamet</span><b>${g1.join(', ')} | ${g2.join(', ')}</b></div><div><span>Perbandingan fenotip</span><b>${ratioText(fen)}</b></div><div><span>Perbandingan genotip</span><b>${ratioText(gen)}</b></div><div><span>Peluang tiap kotak</span><b>1/${tot}</b></div>`;
+  } else if(M === 'inter'){
+    const it = $('it').value;
+    const g = ['AB', 'Ab', 'aB', 'ab'];
+    const F = {
+      epis: c => /A/.test(c) ? ['hitam', '#424242'] : /B/.test(c) ? ['kuning', '#fdd835'] : ['hijau', '#81c784'],
+      resesif: c => /A/.test(c) && /B/.test(c) ? ['ungu', '#9575cd'] : /A/.test(c) ? ['merah', '#ef5350'] : ['putih', '#fafafa'],
+      komp: c => /A/.test(c) && /B/.test(c) ? ['ungu', '#9575cd'] : ['putih', '#fafafa'],
+      poli: c => /A|B/.test(c) ? [`merah (${(c.match(/[AB]/g) || []).length} dominan)`, ['#fafafa', '#ffcdd2', '#ef9a9a', '#e57373', '#c62828'][(c.match(/[AB]/g) || []).length]] : ['putih', '#fafafa'],
+      ata: c => /A/.test(c) && /B/.test(c) ? ['walnut', '#ffb74d'] : /A/.test(c) ? ['rose', '#f48fb1'] : /B/.test(c) ? ['pea', '#aed581'] : ['single', '#e0e0e0'],
+    }[it];
+    const fen = {};
+    s += grid(g, g, (x, y) => { const c = sortG(x + y); const [n, col] = F(c); const key = n.replace(/ \(\d dominan\)/, it === 'poli' ? '' : ''); fen[it === 'poli' ? (n.startsWith('merah') ? 'merah (semua tingkat)' : 'putih') : n] = (fen[it === 'poli' ? (n.startsWith('merah') ? 'merah (semua tingkat)' : 'putih') : n] || 0) + 1; return [c, col]; }, 20, 30, 64, 52);
+    s += `<text class="c" x="20" y="20" style="fill:var(--ink)">F1 AaBb × AaBb</text>`;
+    const info = {epis: 'gen A (dominan) menutupi pengaruh gen B', resesif: 'aa menutupi pengaruh gen B (pada contoh buku disebut kriptomeri)', komp: 'sifat muncul hanya bila A dan B hadir bersama', poli: 'banyak gen menambah intensitas sifat yang sama', ata: 'interaksi dua gen memunculkan fenotip baru (walnut, single)'}[it];
+    html = `<div><span>Perbandingan fenotip</span><b>${ratioText(fen)}</b></div><div><span>Keterangan</span><b style="font-weight:600">${info}</b></div><div><span>Mengapa disebut penyimpangan semu?</span><b style="font-weight:600">16 kombinasi gamet tetap mengikuti hukum Mendel; hanya pengelompokan fenotipnya yang berbeda dari 9 : 3 : 3 : 1.</b></div>`;
+  } else {
+    const ib = $('ib').value, ay = $('ay').value;
+    const gi = [...new Set(['X' + (ib[0] === 'N' ? 'ᴴ' : 'ʰ'), 'X' + (ib[1] === 'N' ? 'ᴴ' : 'ʰ')])], ga = ['X' + (ay === 'N' ? 'ᴴ' : 'ʰ'), 'Y'];
+    const res = {};
+    s += grid(gi, ga, (x, y) => { const anak = y === 'Y' ? 'laki-laki' : 'perempuan'; let st; if(y === 'Y') st = x.includes('ʰ') ? 'hemofilia' : 'normal'; else { const n = (x + y).split('ʰ').length - 1; st = n === 2 ? 'hemofilia' : n === 1 ? 'pembawa' : 'normal'; } const k = `${anak} ${st}`; res[k] = (res[k] || 0) + 1; return [`${x}${y}`, st === 'hemofilia' ? '#ffcdd2' : st === 'pembawa' ? '#fff9c4' : '#e8f5e9']; }, 60, 40, 90, 60);
+    s += `<text class="c" x="20" y="24" style="fill:var(--ink)">Ibu (kiri) × Ayah (atas)</text>`;
+    const tot = gi.length * ga.length;
+    html = Object.entries(res).map(([k, n]) => `<div><span>${k}</span><b>${fmt(n / tot * 100, 1)}%</b></div>`).join('') + `<div><span>Catatan</span><b style="font-weight:600">Laki-laki hanya punya satu X, sehingga satu alel resesif sudah menimbulkan penyakit. Perempuan memerlukan dua alel resesif.</b></div>`;
+  }
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+draw();
+</script>
+</body>
+</html>

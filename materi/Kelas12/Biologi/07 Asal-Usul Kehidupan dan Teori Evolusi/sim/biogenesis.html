@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Percobaan Abiogenesis dan Biogenesis</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 310" role="img" aria-label="Wadah percobaan Redi, Spallanzani, dan Pasteur"></svg></div>
+  <div class="panel">
+    <div class="seg" id="e"><button data-e="redi" class="on">Redi (1668)</button><button data-e="spal">Needham vs Spallanzani</button><button data-e="pas">Pasteur (± 1860)</button></div>
+    <div class="lab">Hari ke- <b id="dv"></b></div><input type="range" id="d" min="0" max="10" step="1" value="0">
+    <div id="pp" hidden><label class="chk"><input type="checkbox" id="miring"> Miringkan labu leher angsa sampai kaldu menyentuh leher</label></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let E = 'redi';
+$('e').querySelectorAll('button').forEach(b => b.onclick = () => { $('e').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); E = b.dataset.e; $('pp').hidden = E !== 'pas'; draw(); });
+['d', 'miring'].forEach(i => $(i).oninput = draw);
+function jar(x, lab, cover, maggots, flies){
+  let s = `<path d="M${x},90 v140 q0,10 10,10 h100 q10,0 10,-10 v-140" fill="#fff" fill-opacity=".5" stroke="#90a4ae" stroke-width="2.5"/><rect x="${x + 20}" y="200" width="80" height="34" rx="8" fill="#e57373"/>`;
+  if(cover === 'tutup') s += `<rect x="${x - 4}" y="82" width="128" height="10" rx="3" fill="#78909c"/>`;
+  if(cover === 'kasa') s += `<line x1="${x - 4}" y1="88" x2="${x + 124}" y2="88" stroke="#90a4ae" stroke-width="3" stroke-dasharray="3 2"/>${flies ? `<text class="s" x="${x + 60}" y="78" text-anchor="middle" fill="#555">lalat bertelur di atas kasa</text>` : ''}`;
+  for(let i = 0; i < maggots; i++) s += `<ellipse cx="${x + 28 + (i * 13) % 64}" cy="${206 + (i % 3) * 8}" rx="5" ry="2.5" fill="#fff8e1" stroke="#8d6e63"/>`;
+  for(let i = 0; i < flies; i++){ const fx = x + 26 + i * 30, fy = cover === 'terbuka' ? 115 + (i % 2) * 20 : 62; s += `<ellipse cx="${fx - 4}" cy="${fy - 4}" rx="5" ry="3" fill="#b3e5fc" opacity=".8"/><ellipse cx="${fx + 4}" cy="${fy - 4}" rx="5" ry="3" fill="#b3e5fc" opacity=".8"/><ellipse cx="${fx}" cy="${fy}" rx="3" ry="5" fill="#37474f"/>`; }
+  return s + `<text class="c" x="${x + 60}" y="262" text-anchor="middle" style="fill:var(--ink)">${lab}</text>`;
+}
+function flask(x, lab, neck, cloudy, broken){
+  let s = `<circle cx="${x + 50}" cy="200" r="45" fill="${cloudy ? '#d7ccc8' : '#fff8e1'}" stroke="#90a4ae" stroke-width="2.5"/>`;
+  if(neck === 'angsa') s += broken ? `<path d="M${x + 44},157 v-30" fill="none" stroke="#90a4ae" stroke-width="10"/>` : `<path d="M${x + 44},157 v-30 q0,-30 30,-30 q25,0 25,30 v20" fill="none" stroke="#90a4ae" stroke-width="10"/><circle cx="${x + 99}" cy="${150}" r="3" fill="#8d6e63"/><circle cx="${x + 75}" cy="${97}" r="2.5" fill="#8d6e63"/>`;
+  else if(neck === 'tegak') s += `<path d="M${x + 50},157 v-50" fill="none" stroke="#90a4ae" stroke-width="10"/>`;
+  else if(neck === 'tutup') s += `<path d="M${x + 50},157 v-40" fill="none" stroke="#90a4ae" stroke-width="10"/><rect x="${x + 40}" y="110" width="20" height="10" fill="#6d4c41"/>`;
+  if(cloudy) for(let i = 0; i < 18; i++) s += `<circle cx="${x + 20 + (i * 17) % 60}" cy="${180 + (i * 11) % 40}" r="1.8" fill="#6d4c41"/>`;
+  return s + `<text class="c" x="${x + 50}" y="270" text-anchor="middle" style="fill:var(--ink)">${lab}</text>`;
+}
+function draw(){
+  const d = +$('d').value; $('dv').textContent = d;
+  let s = '', html = '';
+  if(E === 'redi'){
+    const t = Math.min(1, d / 6);
+    s += jar(20, 'A: terbuka', 'terbuka', Math.round(t * 9), d > 0 ? 3 : 0) + jar(180, 'B: ditutup kain kasa', 'kasa', 0, d > 0 ? 2 : 0) + jar(340, 'C: ditutup rapat', 'tutup', 0, 0);
+    html = `<div><span>Hasil</span><b>${d < 3 ? 'daging mulai membusuk di semua toples' : 'belatung hanya muncul pada toples terbuka (A)'}</b></div><div><span>Kesimpulan</span><b style="font-weight:600">Belatung berasal dari telur lalat, bukan dari daging busuk. Kain kasa membuat udara tetap masuk tetapi lalat tidak dapat bertelur pada daging.</b></div>`;
+  } else if(E === 'spal'){
+    s += flask(30, 'Needham: direbus sebentar, ditutup', 'tutup', d >= 3, false) + flask(190, 'Spallanzani: direbus lama, ditutup rapat', 'tutup', false, false) + flask(350, 'Spallanzani: direbus lama, terbuka', 'tegak', d >= 3, false);
+    html = `<div><span>Hasil</span><b>${d < 3 ? 'semua kaldu masih jernih' : 'kaldu Needham dan kaldu terbuka menjadi keruh; kaldu yang direbus lama dan ditutup rapat tetap jernih'}</b></div><div><span>Kesimpulan</span><b style="font-weight:600">Mikroorganisme pada kaldu Needham berasal dari mikroba yang belum mati karena perebusan terlalu singkat, atau dari udara. Pendukung abiogenesis membantah bahwa perebusan lama dan penutupan rapat merusak \"daya hidup\" di udara.</b></div>`;
+  } else {
+    const m = $('miring').checked;
+    s += flask(30, 'leher tegak terbuka', 'tegak', d >= 2, false) + flask(190, m ? 'leher angsa, dimiringkan' : 'leher angsa utuh', 'angsa', m && d >= 2, false) + flask(350, 'leher angsa dipatahkan', 'angsa', d >= 2, true);
+    if(!m) s += `<text class="s" x="240" y="292" text-anchor="middle" fill="#555">debu dan mikroba tertahan di lengkungan leher angsa (titik cokelat)</text>`;
+    html = `<div><span>Hasil</span><b>${d < 2 ? 'semua kaldu masih jernih' : m ? 'kaldu yang menyentuh leher angsa menjadi keruh' : 'kaldu dalam labu leher angsa utuh tetap jernih'}</b></div><div><span>Kesimpulan</span><b style="font-weight:600">Udara bebas masuk ke labu leher angsa, tetapi mikroba tertahan di lengkungan leher. Kaldu baru membusuk bila terkena mikroba dari luar. Ini menumbangkan abiogenesis: omne vivum ex ovo, omne ovum ex vivo, omne vivum ex vivo.</b></div>`;
+  }
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,56 +1,196 @@
 {
   "title": "Mekanisme dan Bukti Evolusi",
-  "summary": "Ringkasan bab Mekanisme dan Bukti Evolusi akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Seleksi alam dan buatan, jenis-jenis seleksi, genetika populasi dan hukum Hardy–Weinberg, hanyutan genetik dan aliran gen, bukti-bukti evolusi, spesiasi, serta teori sintesis modern dan epigenetik.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Mekanisme dan Bukti Evolusi",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "seleksi",
+      "title": "Seleksi alam dan seleksi buatan",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Seleksi Alam dan Buatan, Hukum Hardy-Weinberg, Hanyutan Genetik, Aliran Gen, Bukti Evolusi, dan Teori Evolusi Modern</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p><b>Seleksi alam</b> bekerja langsung pada <b>fenotip</b>: individu dengan sifat yang paling sesuai lingkungan meninggalkan lebih banyak keturunan, sehingga alel penyusun sifat itu makin sering dalam populasi. Contoh klasik adalah <b>ngengat Biston betularia</b> di Inggris. Sebelum revolusi industri kebanyakan ngengat berwarna terang; setelah pohon menghitam karena jelaga, ngengat gelap menjadi mayoritas (melanisme industri). Setelah udara kembali bersih, ngengat terang kembali banyak.</p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "type": "sim",
+          "src": "sim/seleksi-alam.html",
+          "title": "Seleksi alam pada ngengat",
+          "height": 520,
+          "caption": "Jalankan 10 generasi di hutan berjelaga, lalu pindah ke hutan bersih. Apakah alel c (terang) benar-benar hilang? Mengapa tidak?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Jenis seleksi</th><th>Yang diuntungkan</th><th>Contoh</th></tr><tr><td>Terarah (direksional)</td><td>salah satu fenotip ekstrem</td><td>ngengat gelap di hutan berjelaga; bakteri kebal antibiotik</td></tr><tr><td>Penstabilan</td><td>fenotip rata-rata</td><td>berat lahir bayi: bayi terlalu kecil atau terlalu besar lebih berisiko</td></tr><tr><td>Disruptif (memecah)</td><td>kedua fenotip ekstrem</td><td>burung berparuh sangat kecil dan sangat besar pada lingkungan yang hanya memiliki biji kecil dan biji besar</td></tr></table><p><b>Seleksi buatan</b> dilakukan manusia dengan sengaja memilih individu bersifat diinginkan untuk dikembangbiakkan, misalnya berbagai ras anjing, ayam petelur, dan varietas padi unggul.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Di suatu pegunungan, salju makin jarang turun dari tahun ke tahun. Dalam beberapa puluh generasi, kelinci berbulu gelap menjadi makin banyak, sedangkan yang berbulu putih makin sedikit. Jenis seleksi ini adalah ....",
+          "options": {
+            "A": "seleksi penstabilan",
+            "B": "seleksi terarah",
+            "C": "seleksi disruptif",
+            "D": "seleksi buatan"
+          },
+          "answer": "B",
+          "hint": "Satu fenotip ekstrem yang diuntungkan.",
+          "explanation": "Lingkungan menguntungkan satu ujung variasi (bulu gelap), sehingga rata-rata populasi bergeser ke arah itu: seleksi terarah."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "hardy-weinberg",
+      "title": "Genetika populasi dan hukum Hardy–Weinberg",
+      "kind": "simulasi",
+      "duration": "45 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p><b>Lungkang gen</b> (gene pool) adalah seluruh alel pada semua lokus yang dimiliki seluruh anggota populasi. Evolusi pada tingkat populasi (mikroevolusi) berarti perubahan frekuensi alel dalam lungkang gen.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Hukum Hardy–Weinberg",
+          "html": "<p>Untuk satu gen dengan alel A (frekuensi p) dan a (frekuensi q):</p><p>\\(p + q = 1, \\qquad p^2 + 2pq + q^2 = 1\\)</p><p>p² = frekuensi genotip AA, 2pq = frekuensi genotip Aa, q² = frekuensi genotip aa. Frekuensi alel dan genotip tetap dari generasi ke generasi bila: populasi besar, perkawinan acak, tidak ada mutasi, tidak ada migrasi (aliran gen), dan tidak ada seleksi. Jika salah satu syarat tidak terpenuhi, populasi berevolusi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Di suatu daerah berpenduduk 10.000 orang yang berada dalam kesetimbangan Hardy–Weinberg, 1% penduduk menderita fenilketonuria (resesif autosom). Berapa orang yang normal tetapi pembawa (heterozigot)?</p>",
+          "steps": [
+            "q² = 0,01 → q = 0,1; p = 0,9.",
+            "2pq = 2 × 0,9 × 0,1 = 0,18.",
+            "Pembawa = 0,18 × 10.000."
+          ],
+          "answer": "1.800 orang"
+        },
+        {
+          "type": "sim",
+          "src": "sim/hardy-weinberg.html",
+          "title": "Hardy–Weinberg, hanyutan genetik, seleksi, dan migrasi",
+          "height": 560,
+          "caption": "Bandingkan populasi 10 individu dengan 5.000 individu tanpa seleksi. Lalu beri seleksi melawan aa: apakah alel a cepat hilang? Mengapa?"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Penyebab mikroevolusi",
+          "html": "<ul><li><b>Mutasi</b>: sumber alel baru.</li><li><b>Hanyutan genetik</b> (genetic drift): perubahan frekuensi alel secara acak, terutama pada populasi kecil. <b>Efek leher botol</b>: populasi menyusut drastis karena bencana atau perburuan, sehingga variasi genetik yang tersisa sedikit. <b>Efek pendiri</b>: sekelompok kecil individu membentuk populasi baru di tempat terpencil dengan lungkang gen yang tidak mewakili populasi asal.</li><li><b>Aliran gen</b> (migrasi): perpindahan alel antarpopulasi yang membuat populasi makin mirip.</li><li><b>Seleksi alam</b>: satu-satunya mekanisme yang secara konsisten menghasilkan adaptasi.</li><li><b>Perkawinan tidak acak</b>, misalnya perkawinan sekerabat yang meningkatkan homozigot.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menulis \"p² : frekuensi alel AA\", \"2pq : frekuensi alel Aa\", dan \"q² : frekuensi alel aa\". AA, Aa, dan aa adalah <b>genotip</b>, sehingga p², 2pq, dan q² adalah <b>frekuensi genotip</b>; frekuensi alelnya adalah p dan q. Gambar 3.18 juga mencantumkan \"2pq = 4,2\", padahal nilai 2pq paling besar 0,5.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Di sebuah desa terpencil, perkawinan antarkerabat dekat sangat sering terjadi. Syarat kesetimbangan Hardy–Weinberg yang tidak terpenuhi adalah ....",
+          "options": {
+            "A": "populasi besar",
+            "B": "perkawinan secara acak",
+            "C": "tidak ada mutasi",
+            "D": "tidak ada seleksi"
+          },
+          "answer": "B",
+          "hint": "Pasangan kawin tidak dipilih secara acak.",
+          "explanation": "Perkawinan sekerabat adalah perkawinan tidak acak; frekuensi genotip homozigot meningkat sehingga kelainan resesif lebih sering muncul."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "bukti",
+      "title": "Bukti-bukti evolusi",
+      "kind": "artikel",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<ul><li><b>Fosil</b> (dipelajari dalam paleontologi): urutan lapisan batuan memperlihatkan perubahan organisme dari waktu ke waktu, misalnya seri fosil kuda dan bentuk peralihan seperti Archaeopteryx (ciri reptil dan burung) serta Tiktaalik (ikan berkaki).</li><li><b>Anatomi perbandingan</b>: organ <b>homolog</b> berasal dari bentuk dasar sama tetapi fungsinya berbeda (tangan manusia, sayap kelelawar, sirip paus) dan menunjukkan nenek moyang bersama. Organ <b>analog</b> fungsinya sama tetapi asalnya berbeda (sayap burung dan sayap serangga), akibat lingkungan yang serupa. <b>Organ vestigial</b>: sisa organ yang tidak berfungsi lagi, misalnya tulang ekor dan otot penggerak telinga pada manusia.</li><li><b>Embriologi perbandingan</b>: embrio vertebrata pada tahap awal memiliki celah faring dan ekor.</li><li><b>Biologi molekuler</b>: makin sedikit perbedaan urutan DNA atau asam amino suatu protein (misalnya sitokrom c dan hemoglobin), makin dekat kekerabatannya.</li><li><b>Biogeografi</b>: persebaran organisme, misalnya hewan endemik di pulau yang terisolasi dan perbedaan fauna di garis Wallace.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Protein sitokrom c manusia berbeda 1 asam amino dengan monyet rhesus, 12 dengan kuda, dan 44 dengan ragi. Organisme mana yang paling dekat kekerabatannya dengan manusia, dan mana yang paling jauh?</p>",
+          "steps": [
+            "Makin sedikit perbedaan, makin baru nenek moyang bersama.",
+            "Monyet rhesus 1 perbedaan, ragi 44."
+          ],
+          "answer": "paling dekat monyet rhesus, paling jauh ragi"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut fosil kuda sebagai \"satu-satunya fosil terlengkap yang pernah\" ditemukan. Seri fosil kuda memang salah satu yang paling lengkap, tetapi bukan satu-satunya. Seri fosil paus dan peralihan ikan–tetrapoda juga sangat lengkap. Selain itu, evolusi kuda tidak berupa garis lurus, melainkan percabangan yang sebagian besar cabangnya punah.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pasangan organ berikut yang merupakan organ analog adalah ....",
+          "options": {
+            "A": "kaki depan kucing dan sirip paus",
+            "B": "sayap kupu-kupu dan sayap burung",
+            "C": "tangan manusia dan sayap kelelawar",
+            "D": "lengan manusia dan kaki depan kuda"
+          },
+          "answer": "B",
+          "hint": "Fungsi sama, asal berbeda.",
+          "explanation": "Sayap kupu-kupu (dari kitin, tanpa tulang) dan sayap burung (tulang lengan depan) sama-sama untuk terbang tetapi asal-usulnya berbeda."
+        }
+      ]
+    },
+    {
+      "id": "spesiasi",
+      "title": "Spesiasi dan teori evolusi modern",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Spesiasi</b> adalah terbentuknya spesies baru. Satu spesies adalah kelompok yang dapat kawin dan menghasilkan keturunan subur. Spesiasi memerlukan <b>isolasi reproduksi</b>:</p><ul><li><b>Alopatrik</b>: populasi terpisah secara geografis (sungai, laut, gunung), lalu berkembang berbeda. Contoh: burung finch di pulau-pulau Galapagos.</li><li><b>Simpatrik</b>: spesies baru terbentuk di wilayah yang sama, misalnya karena poliploidi pada tumbuhan.</li></ul><p>Mekanisme isolasi reproduksi: <b>prazigotik</b> (habitat, waktu kawin, perilaku, mekanis, gamet) dan <b>pascazigotik</b> (zigot mati, hibrida mandul seperti bagal dari kuda dan keledai, hibrida generasi berikutnya lemah).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Teori sintesis modern dan perkembangan terkini",
+          "html": "<p><b>Neo-Darwinisme</b> (teori sintesis modern, 1930–1950-an) memadukan seleksi alam Darwin dengan genetika Mendel, mutasi, dan genetika populasi. Variasi berasal dari mutasi dan rekombinasi; evolusi dipahami sebagai perubahan frekuensi alel.</p><p><b>Epigenetik</b>: ekspresi gen dapat diubah lingkungan tanpa mengubah urutan DNA (misalnya metilasi DNA), dan sebagian perubahan itu dapat diwariskan beberapa generasi. Temuan ini memperluas, bukan membatalkan, teori evolusi modern.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kuda dan keledai dapat kawin dan menghasilkan bagal, tetapi bagal mandul. Mekanisme isolasi yang terjadi adalah ....",
+          "options": {
+            "A": "isolasi habitat",
+            "B": "isolasi perilaku",
+            "C": "kemandulan hibrida (pascazigotik)",
+            "D": "isolasi gamet (prazigotik)"
+          },
+          "answer": "C",
+          "hint": "Zigot terbentuk, tetapi keturunannya tidak subur.",
+          "explanation": "Pembuahan terjadi, tetapi hibridanya mandul, sehingga termasuk isolasi pascazigotik. Kuda dan keledai tetap dua spesies berbeda."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menganggap seleksi alam menciptakan sifat baru; seleksi hanya memilih variasi yang ada.</li><li>Memakai q, padahal yang diketahui q² (frekuensi genotip aa), dan lupa menarik akarnya.</li><li>Tertukar homolog dan analog.</li><li>Tertukar efek leher botol dan efek pendiri.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 3 Evolusi (mekanisme evolusi, Hardy–Weinberg, bukti evolusi).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang seleksi alam dan buatan, hukum Hardy–Weinberg, hanyutan genetik, aliran gen, bukti evolusi, dan teori evolusi modern. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

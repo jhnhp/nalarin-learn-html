@@ -1,56 +1,232 @@
 {
   "title": "Pewarisan Sifat",
-  "summary": "Ringkasan bab Pewarisan Sifat akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Hukum Mendel I dan II, uji silang, penyimpangan semu hukum Mendel, golongan darah ABO, penentuan jenis kelamin, pautan seks, mutasi gen dan kromosom, serta penyakit keturunan.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Pewarisan Sifat",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "mendel",
+      "title": "Hukum Mendel",
+      "kind": "simulasi",
+      "duration": "45 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Hukum Mendel, Uji Silang, Penyimpangan Semu Hukum Mendel, Penentuan Jenis Kelamin, Mutasi, dan Penyakit Keturunan</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p><b>Gregor Mendel</b> (1822–1884) meneliti kacang ercis (Pisum sativum) karena mudah ditanam, cepat berbuah, memiliki sifat beda yang jelas, dan dapat diserbuki sendiri maupun silang.</p><ul><li><b>Alel</b>: bentuk alternatif gen pada lokus yang sama (A dan a). Alel dominan ditulis huruf kapital.</li><li><b>Homozigot</b>: alel sama (AA atau aa); <b>heterozigot</b>: alel berbeda (Aa).</li><li><b>Genotip</b>: susunan alel; <b>fenotip</b>: sifat yang tampak.</li></ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Dua hukum Mendel",
+          "html": "<p><b>Hukum I (segregasi)</b>: pada pembentukan gamet, pasangan alel memisah sehingga setiap gamet hanya membawa satu alel. Persilangan monohibrid Aa × Aa menghasilkan F2 dengan genotip 1 AA : 2 Aa : 1 aa dan fenotip 3 : 1.</p><p><b>Hukum II (asortasi bebas)</b>: alel dari gen yang berbeda (terletak pada kromosom berbeda) berpasangan secara bebas. Dihibrid AaBb × AaBb menghasilkan fenotip 9 : 3 : 3 : 1.</p><p>Jumlah macam gamet = 2ⁿ, dengan n = jumlah pasangan alel heterozigot.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/persilangan.html",
+          "title": "Persilangan Mendel",
+          "height": 560,
+          "caption": "Silangkan Aa dengan Aa (abaikan gen B), lalu AaBb dengan AaBb. Kemudian uji silang AaBb dengan aabb."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pada kucing, bulu hitam (H) dominan terhadap putih (h). Kucing hitam heterozigot dikawinkan sesamanya dan menghasilkan 160 anak (dari beberapa kelahiran). Berapa perkiraan anak berbulu hitam dan putih?</p>",
+          "steps": [
+            "Hh × Hh → 3 hitam : 1 putih.",
+            "Hitam = 3/4 × 160; putih = 1/4 × 160."
+          ],
+          "answer": "120 hitam dan 40 putih"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Berapa macam gamet yang dihasilkan individu bergenotip AaBbCc (ketiga gen pada kromosom berbeda)?</p>",
+          "steps": [
+            "Ada 3 pasangan alel heterozigot.",
+            "Macam gamet = 2³."
+          ],
+          "answer": "8 macam"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Uji silang dan silang balik",
+          "html": "<p><b>Uji silang</b> (test cross): menyilangkan individu berfenotip dominan dengan individu homozigot resesif untuk mengetahui genotipnya. Jika semua keturunan dominan, induk homozigot (AA); jika 1 : 1, induk heterozigot (Aa). <b>Silang balik</b> (back cross): menyilangkan keturunan dengan salah satu induknya.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Ayam berbulu hitam diuji silang dengan ayam berbulu putih resesif, dan seluruh 24 anaknya berbulu hitam. Genotip ayam hitam tersebut kemungkinan besar adalah ....",
+          "options": {
+            "A": "homozigot dominan",
+            "B": "heterozigot",
+            "C": "homozigot resesif",
+            "D": "tidak dapat ditentukan"
+          },
+          "answer": "A",
+          "hint": "Jika heterozigot, separuh anak seharusnya putih.",
+          "explanation": "Tidak ada satu pun anak berbulu putih, sehingga induk hitam hanya membentuk gamet dominan: homozigot dominan."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "penyimpangan",
+      "title": "Penyimpangan semu hukum Mendel dan alel ganda",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Interaksi antargen membuat perbandingan fenotip F2 dihibrid berbeda dari 9 : 3 : 3 : 1, tetapi pemisahan gamet tetap mengikuti hukum Mendel. Karena itu disebut <b>penyimpangan semu</b>.</p><table><tr><th>Interaksi</th><th>Ciri</th><th>Rasio F2</th></tr><tr><td>Atavisme</td><td>interaksi dua gen memunculkan fenotip baru (jengger ayam walnut, rose, pea, single)</td><td>9 : 3 : 3 : 1</td></tr><tr><td>Kriptomeri</td><td>gen dominan baru tampak bila bersama gen dominan lain (bunga Linaria maroccana)</td><td>9 : 3 : 4</td></tr><tr><td>Polimeri</td><td>banyak gen bersifat sama dan saling menambah (warna biji gandum)</td><td>15 : 1</td></tr><tr><td>Epistasis dominan</td><td>gen dominan menutupi gen dominan lain (warna sekam gandum)</td><td>12 : 3 : 1</td></tr><tr><td>Komplementer</td><td>dua gen dominan saling melengkapi untuk memunculkan sifat (bunga Lathyrus odoratus)</td><td>9 : 7</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/persilangan.html",
+          "title": "Interaksi gen",
+          "height": 560,
+          "caption": "Bandingkan pewarnaan kotak Punnett pada kelima interaksi. Kotak-kotak mana yang dikelompokkan berbeda dari 9 : 3 : 3 : 1?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pada gandum, gen H (sekam hitam) epistasis terhadap gen K (sekam kuning); hhkk berwarna putih. Dari persilangan HhKk × HhKk diperoleh 240 tanaman. Berapa perkiraan jumlah tanaman bersekam hitam, kuning, dan putih?</p>",
+          "steps": [
+            "Rasio epistasis dominan 12 : 3 : 1, total 16 bagian.",
+            "Hitam = 12/16 × 240; kuning = 3/16 × 240; putih = 1/16 × 240."
+          ],
+          "answer": "180 hitam, 45 kuning, 15 putih"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Alel ganda: golongan darah ABO",
+          "html": "<p>Satu gen memiliki lebih dari dua alel: Iᴬ, Iᴮ, dan Iᴼ (atau i). Iᴬ dan Iᴮ <b>kodominan</b>, keduanya dominan terhadap Iᴼ. Genotip: A = IᴬIᴬ/IᴬIᴼ, B = IᴮIᴮ/IᴮIᴼ, AB = IᴬIᴮ, O = IᴼIᴼ.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Ayah bergolongan darah AB menikah dengan ibu bergolongan darah O. Kemungkinan golongan darah anak-anaknya?</p>",
+          "steps": [
+            "IᴬIᴮ × IᴼIᴼ → gamet ayah Iᴬ atau Iᴮ, gamet ibu Iᴼ.",
+            "Anak: IᴬIᴼ (A) atau IᴮIᴼ (B)."
+          ],
+          "answer": "50% A dan 50% B; tidak mungkin AB atau O"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Pada contoh komplementer (bunga Lathyrus odoratus, CCpp × ccPP), buku menulis hasil F2 \"12 : 7\". Rasio yang benar adalah <b>9 : 7</b> (9 C_P_ ungu : 7 putih), karena jumlah kombinasi F2 dihibrid adalah 16, bukan 19.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Rasio fenotip F2 15 : 1 menunjukkan peristiwa ....",
+          "options": {
+            "A": "kriptomeri",
+            "B": "polimeri",
+            "C": "epistasis dominan",
+            "D": "komplementer"
+          },
+          "answer": "B",
+          "hint": "Hanya satu dari 16 yang tidak memiliki gen dominan sama sekali.",
+          "explanation": "Pada polimeri, satu gen dominan saja sudah memunculkan sifat; hanya aabb (1/16) yang berfenotip resesif."
+        }
+      ]
+    },
+    {
+      "id": "jenis-kelamin",
+      "title": "Penentuan jenis kelamin dan pautan seks",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penentuan jenis kelamin</b>:</p><ul><li>Tipe <b>XY</b> (manusia, lalat buah): perempuan XX, laki-laki XY. Sel telur selalu membawa X; jenis kelamin anak ditentukan oleh sperma (X atau Y).</li><li>Tipe <b>ZW</b> (burung, kupu-kupu): betina ZW, jantan ZZ.</li><li>Tipe <b>XO</b> (belalang): betina XX, jantan XO.</li><li>Tipe <b>haploid–diploid</b> (lebah): jantan haploid dari telur yang tidak dibuahi, betina diploid.</li></ul><p><b>Pautan seks</b>: gen yang terletak pada kromosom kelamin. Contoh pada kromosom X adalah <b>buta warna</b> dan <b>hemofilia</b> (resesif). Laki-laki hanya memiliki satu X, sehingga satu alel resesif sudah menimbulkan kelainan; perempuan memerlukan dua alel resesif dan lebih sering menjadi <b>pembawa</b> (carrier). Contoh gen terpaut Y: hipertrikosis (rambut tumbuh di telinga) yang hanya diwariskan dari ayah ke anak laki-laki.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/persilangan.html",
+          "title": "Pewarisan terpaut kromosom X",
+          "height": 520,
+          "caption": "Pilih ibu normal dan ayah hemofilia. Siapa saja anak yang menjadi pembawa?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Perempuan normal homozigot (XᴴXᴴ) menikah dengan laki-laki hemofilia (XʰY). Bagaimana kemungkinan keadaan anak-anaknya?</p>",
+          "steps": [
+            "Gamet ibu: Xᴴ. Gamet ayah: Xʰ atau Y.",
+            "Anak perempuan: XᴴXʰ (pembawa); anak laki-laki: XᴴY (normal)."
+          ],
+          "answer": "semua anak perempuan pembawa, semua anak laki-laki normal"
+        },
+        {
+          "type": "check",
+          "question": "Seorang laki-laki buta warna mewarisi alel buta warnanya dari ....",
+          "options": {
+            "A": "ayahnya",
+            "B": "ibunya",
+            "C": "ayah atau ibunya dengan peluang sama",
+            "D": "kakeknya dari pihak ayah"
+          },
+          "answer": "B",
+          "hint": "Anak laki-laki menerima Y dari ayah.",
+          "explanation": "Kromosom X anak laki-laki selalu berasal dari ibu, sehingga alel buta warna berasal dari ibunya."
+        }
+      ]
+    },
+    {
+      "id": "mutasi",
+      "title": "Mutasi dan penyakit keturunan",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Mutasi</b> adalah perubahan materi genetik yang dapat diwariskan. Mutasi pada sel kelamin (mutasi germinal) dapat diwariskan, sedangkan mutasi pada sel tubuh (mutasi somatik) tidak. Penyebabnya (mutagen) dapat fisik (sinar UV, sinar-X, radiasi radioaktif), kimia (zat dalam asap rokok, pestisida tertentu, kolkisin), atau biologis (virus).</p><ul><li><b>Mutasi gen</b> (mutasi titik): substitusi (transisi atau transversi), insersi, dan delesi basa. Insersi atau delesi menggeser kerangka baca. Contoh: anemia sel sabit.</li><li><b>Mutasi kromosom</b>: perubahan <b>struktur</b> (delesi, duplikasi, inversi, translokasi) dan perubahan <b>jumlah</b> (euploidi, yaitu perubahan seluruh set seperti poliploid pada tanaman semangka tanpa biji; aneuploidi, yaitu kelebihan atau kekurangan satu atau beberapa kromosom akibat gagal berpisah atau <i>nondisjunction</i>).</li></ul><table><tr><th>Kelainan</th><th>Kariotipe</th><th>Ciri</th></tr><tr><td>Sindrom Down</td><td>47, trisomi 21</td><td>keterbelakangan mental, wajah khas</td></tr><tr><td>Sindrom Turner</td><td>45, X0</td><td>perempuan, tubuh pendek, organ kelamin tidak berkembang</td></tr><tr><td>Sindrom Klinefelter</td><td>47, XXY</td><td>laki-laki, testis kecil, steril</td></tr><tr><td>Sindrom Edwards</td><td>47, trisomi 18</td><td>kelainan berat, umumnya meninggal saat bayi</td></tr></table><p><b>Penyakit menurun autosom</b>: albinisme, fenilketonuria, dan anemia sel sabit (resesif); polidaktili dan brakidaktili (dominan). Gen <b>letal</b> menyebabkan kematian individu homozigot, misalnya thalassemia mayor.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Seseorang memiliki kariotipe 47,XXY. Apa jenis kelaminnya dan bagaimana kelainan ini dapat terjadi?</p>",
+          "steps": [
+            "Adanya kromosom Y menentukan jenis kelamin laki-laki.",
+            "Kelebihan satu X terjadi karena kromosom kelamin gagal berpisah (nondisjunction) saat meiosis salah satu orang tuanya."
+          ],
+          "answer": "laki-laki dengan sindrom Klinefelter"
+        },
+        {
+          "type": "check",
+          "question": "Tanaman semangka tanpa biji dibuat dengan menyilangkan semangka tetraploid dan diploid. Semangka tanpa biji itu tergolong ....",
+          "options": {
+            "A": "haploid",
+            "B": "diploid",
+            "C": "triploid",
+            "D": "tetraploid"
+          },
+          "answer": "C",
+          "hint": "4n × 2n.",
+          "explanation": "Gamet 2n bertemu gamet n menghasilkan triploid (3n) yang steril, sehingga buahnya tidak berbiji."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Tertukar perbandingan fenotip dan perbandingan genotip.</li><li>Lupa bahwa jumlah macam gamet hanya dihitung dari pasangan alel heterozigot.</li><li>Mengira ayah dapat mewariskan alel terpaut X kepada anak laki-lakinya.</li><li>Menganggap penyimpangan semu melanggar hukum Mendel.</li><li>Mengira mutasi somatik dapat diwariskan.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 2 Genetik dan Pewarisan Sifat (D. Pewarisan Sifat; mutasi dan penyakit keturunan).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang hukum Mendel, uji silang, penyimpangan semu hukum Mendel, penentuan jenis kelamin, mutasi, dan penyakit keturunan. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

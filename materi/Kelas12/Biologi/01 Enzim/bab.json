@@ -1,56 +1,179 @@
 {
   "title": "Enzim",
-  "summary": "Ringkasan bab Enzim akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Struktur enzim (apoenzim, koenzim, kofaktor), sifat dan cara kerja enzim (gembok-anak kunci dan induksi pas), faktor yang memengaruhi kerja enzim termasuk inhibitor, serta anabolisme, katabolisme, dan peran ATP.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Enzim",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "struktur",
+      "title": "Struktur dan sifat enzim",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Struktur, Sifat, Cara Kerja, dan Faktor yang Memengaruhi Kerja Enzim serta Anabolisme dan Katabolisme</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Nasi yang dikunyah lama terasa manis karena amilum dipecah menjadi maltosa oleh enzim amilase ludah. <b>Enzim</b> adalah biokatalisator: protein yang mempercepat reaksi kimia di dalam sel tanpa ikut habis bereaksi.</p><ul><li><b>Apoenzim</b>: bagian protein enzim yang memiliki <b>sisi aktif</b>, tempat substrat melekat.</li><li><b>Gugus prostetik</b> (bagian bukan protein) terdiri atas <b>koenzim</b>, yaitu molekul organik seperti vitamin B, NAD⁺, NADP⁺, FAD, dan koenzim A, serta <b>kofaktor</b>, yaitu ion anorganik, umumnya logam seperti Fe, Cu, Zn, Mg, dan Mn.</li><li><b>Holoenzim</b> = apoenzim + gugus prostetik: enzim yang utuh dan aktif.</li></ul>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "title": "Sifat-sifat enzim",
+          "html": "<ol><li>Berupa protein, sehingga peka terhadap suhu dan pH.</li><li>Menurunkan <b>energi aktivasi</b>, yaitu energi minimum agar reaksi dapat dimulai.</li><li>Bekerja <b>spesifik</b>: satu enzim untuk satu jenis substrat atau reaksi.</li><li>Tidak ikut bereaksi, sehingga dapat dipakai berulang kali dan dibutuhkan dalam jumlah sedikit.</li><li>Banyak reaksi enzim bersifat dapat balik (reversibel).</li></ol><p>Nama enzim umumnya diberi akhiran <i>-ase</i> sesuai substratnya: lipase memecah lipid, protease (pepsin, tripsin) memecah protein, selulase memecah selulosa, dan sukrase memecah sukrosa.</p>"
         },
         {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "type": "sim",
+          "src": "sim/kerja-enzim.html",
+          "title": "Energi aktivasi",
+          "height": 520,
+          "caption": "Buka tab energi aktivasi. Apa yang berubah dan apa yang tidak berubah ketika enzim hadir?"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Pada Gambar 1.2 buku, koenzim diberi keterangan \"anorganik\". Koenzim adalah molekul <b>organik</b> (misalnya vitamin, NAD, NADP); yang anorganik adalah kofaktor (ion logam). Buku juga menyebut enzim pada suhu rendah \"mengalami pelipatan atau koagulasi\". Pada suhu rendah enzim hanya <b>tidak aktif sementara</b> karena molekul bergerak lambat, dan akan aktif kembali bila dihangatkan. Kerusakan permanen (denaturasi) terjadi pada suhu tinggi. Denaturasi juga tidak memutus ikatan peptida; yang rusak adalah ikatan lemah (hidrogen, ion) yang menjaga bentuk lipatan protein.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Vitamin B kompleks diperlukan tubuh antara lain karena berperan sebagai ....",
+          "options": {
+            "A": "apoenzim",
+            "B": "koenzim",
+            "C": "kofaktor logam",
+            "D": "substrat"
+          },
+          "answer": "B",
+          "hint": "Koenzim adalah molekul organik bukan protein.",
+          "explanation": "Banyak vitamin B menjadi bagian koenzim (misalnya niasin pada NAD⁺, riboflavin pada FAD) yang membantu kerja enzim."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "cara-kerja",
+      "title": "Cara kerja enzim",
+      "kind": "artikel",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Enzim (E) berikatan dengan substrat (S) pada sisi aktif membentuk <b>kompleks enzim–substrat</b>. Di sana ikatan dalam substrat diregangkan sehingga mudah putus atau terbentuk, lalu produk (P) dilepaskan dan enzim kembali utuh:</p><p style='text-align:center'>E + S → ES → E + P</p><ul><li><b>Teori gembok dan anak kunci</b> (lock and key, Emil Fischer): sisi aktif enzim kaku dan bentuknya sudah tepat sesuai substrat, seperti gembok yang hanya dapat dibuka satu anak kunci.</li><li><b>Teori induksi pas</b> (induced fit, Daniel Koshland): sisi aktif lentur. Ketika substrat mendekat, sisi aktif sedikit berubah bentuk sehingga melingkupi substrat dengan lebih erat. Teori ini menjelaskan mengapa beberapa enzim dapat bekerja pada substrat yang mirip.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Enzim sukrase memecah sukrosa menjadi glukosa dan fruktosa, tetapi tidak dapat memecah laktosa yang sama-sama disakarida. Jelaskan dengan teori gembok dan anak kunci.</p>",
+          "steps": [
+            "Sisi aktif sukrase hanya cocok dengan bentuk molekul sukrosa.",
+            "Laktosa tersusun atas glukosa dan galaktosa, sehingga bentuknya berbeda dan tidak pas dengan sisi aktif sukrase."
+          ],
+          "answer": "Enzim bekerja spesifik karena kecocokan bentuk sisi aktif dan substrat"
+        },
+        {
+          "type": "check",
+          "question": "Menurut teori induksi pas (induced fit), ....",
+          "options": {
+            "A": "sisi aktif enzim kaku dan tidak dapat berubah",
+            "B": "sisi aktif enzim menyesuaikan bentuknya ketika substrat terikat",
+            "C": "substrat berubah bentuk menjadi enzim",
+            "D": "enzim ikut habis bereaksi"
+          },
+          "answer": "B",
+          "hint": "Kata kuncinya lentur.",
+          "explanation": "Sisi aktif bersifat fleksibel dan sedikit berubah bentuk mengikuti substrat."
+        }
+      ]
+    },
+    {
+      "id": "faktor",
+      "title": "Faktor yang memengaruhi kerja enzim",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "sim/kerja-enzim.html",
+          "title": "Faktor yang memengaruhi kerja enzim",
+          "height": 520,
+          "caption": "Pada tab suhu, dinginkan enzim sampai 5 °C lalu hangatkan lagi. Bandingkan dengan enzim yang pernah dipanaskan sampai 70 °C."
+        },
+        {
+          "type": "text",
+          "html": "<ul><li><b>Suhu</b>: kecepatan naik sampai suhu optimum (enzim tubuh manusia ± 35–40 °C). Di atasnya protein enzim terdenaturasi dan rusak permanen. Pada suhu rendah enzim hanya inaktif sementara.</li><li><b>pH</b>: setiap enzim memiliki pH optimum. Pepsin bekerja di lambung yang sangat asam (pH ± 2), amilase ludah pada pH netral, dan tripsin di usus halus yang basa (pH ± 8). pH yang jauh dari optimum mengubah muatan sisi aktif.</li><li><b>Konsentrasi enzim</b>: makin banyak enzim, makin cepat reaksi (bila substrat cukup).</li><li><b>Konsentrasi substrat</b>: kecepatan naik lalu menjadi konstan (V<sub>maks</sub>) ketika semua sisi aktif sudah terisi (jenuh).</li><li><b>Aktivator</b>: zat yang mempercepat kerja enzim, misalnya ion Cl⁻ bagi amilase.</li><li><b>Inhibitor</b>: zat penghambat. <b>Kompetitif</b>: bentuknya mirip substrat dan berebut sisi aktif; pengaruhnya dapat dikurangi dengan menambah substrat. <b>Nonkompetitif</b>: melekat pada sisi lain (sisi alosterik) sehingga bentuk sisi aktif berubah; tidak dapat diatasi dengan menambah substrat. Contoh racun nonkompetitif: sianida dan ion logam berat.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kecepatan reaksi suatu enzim pada 20 °C adalah 5 satuan. Jika setiap kenaikan 10 °C (di bawah suhu optimum) membuat kecepatan menjadi dua kali, berapa perkiraan kecepatannya pada 30 °C dan 40 °C?</p>",
+          "steps": [
+            "30 °C: 5 × 2 = 10 satuan.",
+            "40 °C: 10 × 2 = 20 satuan (selama belum melewati suhu optimum)."
+          ],
+          "answer": "10 satuan dan 20 satuan"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku menulis inhibitor kompetitif \"mempunyai bentuk permukaan dan ukuran sama dengan sisi aktif\". Yang tepat: inhibitor kompetitif berbentuk <b>mirip substrat</b>, sehingga dapat menempati sisi aktif. Bentuknya bukan sama dengan sisi aktif, melainkan pasangannya.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Getah pepaya mengandung enzim papain. Daging yang dibalur getah pepaya menjadi empuk karena papain ....",
+          "options": {
+            "A": "memecah lemak daging",
+            "B": "memecah protein daging",
+            "C": "menambah air dalam daging",
+            "D": "memecah amilum daging"
+          },
+          "answer": "B",
+          "hint": "Papain tergolong protease.",
+          "explanation": "Papain memecah protein serat daging menjadi peptida yang lebih pendek, sehingga daging menjadi empuk."
+        }
+      ]
+    },
+    {
+      "id": "metabolisme",
+      "title": "Metabolisme: anabolisme dan katabolisme",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Metabolisme</b> adalah seluruh reaksi kimia dalam sel yang dikatalisis enzim beserta perubahan energinya.</p><table><tr><th>Aspek</th><th>Anabolisme (asimilasi)</th><th>Katabolisme (disimilasi)</th></tr><tr><td>Proses</td><td>menyusun senyawa kompleks dari senyawa sederhana</td><td>memecah senyawa kompleks menjadi senyawa sederhana</td></tr><tr><td>Energi</td><td>memerlukan energi (endergonik)</td><td>melepaskan energi (eksergonik), disimpan sebagai ATP</td></tr><tr><td>Contoh</td><td>fotosintesis, kemosintesis, sintesis protein, sintesis lemak</td><td>respirasi seluler, fermentasi, pencernaan</td></tr></table><p><b>ATP</b> (adenosin trifosfat) adalah \"mata uang energi\" sel. Pemutusan satu gugus fosfat (ATP → ADP + P) melepaskan energi untuk kontraksi otot, transpor aktif, dan sintesis molekul. Katabolisme menghasilkan ATP; anabolisme memakainya.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Proses berikut yang termasuk katabolisme adalah ....",
+          "options": {
+            "A": "sintesis protein di ribosom",
+            "B": "pembentukan glikogen di hati",
+            "C": "pemecahan glukosa menjadi asam piruvat",
+            "D": "fiksasi CO₂ pada siklus Calvin"
+          },
+          "answer": "C",
+          "hint": "Katabolisme memecah senyawa.",
+          "explanation": "Glikolisis memecah glukosa (C6) menjadi asam piruvat (C3) sambil membebaskan energi."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira enzim ikut habis setelah reaksi.</li><li>Menyamakan suhu rendah dengan denaturasi.</li><li>Tertukar koenzim (organik) dan kofaktor (anorganik).</li><li>Mengira penambahan substrat selalu menambah kecepatan; ada titik jenuh.</li><li>Tertukar inhibitor kompetitif dan nonkompetitif.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 1 Enzim dan Metabolisme (A. Enzim; B.1 Anabolisme dan Katabolisme).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang struktur, sifat, cara kerja, dan faktor yang memengaruhi kerja enzim serta anabolisme dan katabolisme. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

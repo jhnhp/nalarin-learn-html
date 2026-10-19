@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DNA Rekombinan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}.b{font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:13px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Tahapan pembuatan DNA rekombinan dengan plasmid bakteri"></svg></div>
+  <div class="panel">
+    <div class="lab">Enzim restriksi</div>
+    <div class="seg" id="enz"><button data-e="EcoRI" class="on">EcoRI</button><button data-e="BamHI">BamHI</button><button data-e="HindIII">HindIII</button></div>
+    <div class="row"><button class="btn" id="prev">◀</button><button class="btn primary" id="next">Tahap berikutnya ▶</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const ENZ = {EcoRI: ['GAATTC', 1, 'Escherichia coli'], BamHI: ['GGATCC', 1, 'Bacillus amyloliquefaciens'], HindIII: ['AAGCTT', 1, 'Haemophilus influenzae']};
+let E = 'EcoRI', k = 0;
+$('enz').querySelectorAll('button').forEach(b => b.onclick = () => { $('enz').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); E = b.dataset.e; draw(); });
+const STEP = [
+  ['Isolasi DNA', 'Gen yang diinginkan (misalnya gen hormon pertumbuhan manusia) diisolasi dari sel donor; plasmid diisolasi dari bakteri.'],
+  ['Pemotongan dengan enzim restriksi', 'Enzim restriksi endonuklease memotong DNA pada urutan basa pengenal yang khas (palindrom). Potongan miring menghasilkan ujung lengket (sticky end).'],
+  ['Penyambungan dengan ligase', 'Gen donor dan plasmid yang dipotong enzim yang sama memiliki ujung lengket yang saling komplementer. DNA ligase menyambung keduanya menjadi DNA rekombinan.'],
+  ['Transformasi', 'Plasmid rekombinan dimasukkan ke sel bakteri inang (misalnya E. coli).'],
+  ['Seleksi dan kloning', 'Bakteri yang membawa plasmid rekombinan diseleksi (misalnya dengan gen kebal antibiotik pada plasmid), lalu dibiakkan sehingga gen ikut tergandakan.'],
+  ['Ekspresi dan pemanenan', 'Bakteri menerjemahkan gen manusia dan menghasilkan proteinnya dalam jumlah besar di tangki fermentasi; protein dimurnikan sebagai obat.'],
+];
+$('next').onclick = () => { k = Math.min(STEP.length - 1, k + 1); draw(); };
+$('prev').onclick = () => { k = Math.max(0, k - 1); draw(); };
+const COL = {A: '#e53935', T: '#1e88e5', G: '#fb8c00', C: '#43a047'}, CMP = {A: 'T', T: 'A', G: 'C', C: 'G'};
+function seq(x, y, top, cut, gap){
+  let s = ''; const W = 18;
+  [...top].forEach((b, i) => { const xx = x + i * W + (gap && i >= cut ? gap : 0); s += `<rect x="${xx}" y="${y}" width="${W - 2}" height="16" rx="3" fill="${COL[b]}"/><text class="b" x="${xx + 8}" y="${y + 12}" text-anchor="middle" fill="#fff" style="font-size:10px">${b}</text>`; });
+  const bot = [...top].map(b => CMP[b]); const cut2 = top.length - cut;
+  bot.forEach((b, i) => { const xx = x + i * W + (gap && i >= cut2 ? gap : 0); s += `<rect x="${xx}" y="${y + 20}" width="${W - 2}" height="16" rx="3" fill="${COL[b]}"/><text class="b" x="${xx + 8}" y="${y + 32}" text-anchor="middle" fill="#fff" style="font-size:10px">${b}</text>`; });
+  return s;
+}
+function plasmid(cx, cy, r, insert, bact){
+  let s = '';
+  if(bact) s += `<rect x="${cx - r - 34}" y="${cy - r - 22}" width="${2 * r + 68}" height="${2 * r + 44}" rx="${r + 20}" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/><path d="M${cx - r - 10},${cy - 6} q20,-20 40,0 q20,20 40,0" stroke="#9e9e9e" stroke-width="3" fill="none"/>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#1565c0" stroke-width="6"/>`;
+  if(insert) s += `<path d="M${cx + r * Math.cos(-0.5)},${cy + r * Math.sin(-0.5)} A${r},${r} 0 0,1 ${cx + r * Math.cos(0.5)},${cy + r * Math.sin(0.5)}" fill="none" stroke="#e53935" stroke-width="8"/>`;
+  s += `<path d="M${cx - r * Math.cos(.7)},${cy + r * Math.sin(.7)} A${r},${r} 0 0,1 ${cx - r * Math.cos(.2)},${cy + r * Math.sin(.2)}" fill="none" stroke="#fdd835" stroke-width="8"/>`;
+  return s;
+}
+function draw(){
+  const [site, , src] = ENZ[E];
+  const top = 'TC' + site + 'AG';
+  let s = `<text class="c" x="20" y="22" style="fill:var(--ink)">Tahap ${k + 1}: ${STEP[k][0]}</text>`;
+  if(k === 0){ s += `<text class="s" x="20" y="60" fill="#555">DNA donor (gen manusia, merah)</text><rect x="20" y="70" width="200" height="14" fill="#90a4ae"/><rect x="80" y="70" width="80" height="14" fill="#e53935"/>` + plasmid(360, 120, 55, false, false) + `<text class="s" x="360" y="195" text-anchor="middle" fill="#555">plasmid bakteri (kuning: gen kebal antibiotik)</text>`; }
+  if(k === 1){ s += `<text class="s" x="20" y="54" fill="#555">Urutan pengenal ${E}: 5'-${site}-3' (dibaca sama pada kedua untai dari arah 5')</text>` + seq(40, 70, top, 3, 0) + `<text class="s" x="40" y="132" fill="#555">setelah dipotong:</text>` + seq(40, 140, top, 3, 26) + `<text class="s" x="40" y="200" fill="#555">ujung lengket: untai tunggal ${site.slice(1, 5)} yang menonjol</text>`; }
+  if(k === 2){ s += plasmid(240, 150, 75, true, false) + `<text class="s" x="240" y="250" text-anchor="middle" fill="#555">ujung lengket gen (merah) dan plasmid (biru) berpasangan; ligase menyambung tulang punggung DNA</text>`; }
+  if(k === 3){ s += plasmid(240, 150, 45, true, true) + `<text class="s" x="240" y="250" text-anchor="middle" fill="#555">plasmid rekombinan masuk ke sel bakteri (misalnya dengan kejut panas atau listrik)</text>`; }
+  if(k === 4){ for(let i = 0; i < 6; i++){ const x = 80 + (i % 3) * 140, y = 80 + Math.floor(i / 3) * 110; s += i % 3 === 2 ? `<rect x="${x - 52}" y="${y - 40}" width="104" height="80" rx="38" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/><path d="M${x - 28},${y - 6} q20,-20 40,0 q20,20 40,0" stroke="#9e9e9e" stroke-width="3" fill="none"/>` : plasmid(x, y, 18, true, true); if(i % 3 === 2) s += `<line x1="${x - 40}" y1="${y - 30}" x2="${x + 40}" y2="${y + 30}" stroke="#e53935" stroke-width="3"/>`; } s += `<text class="s" x="240" y="290" text-anchor="middle" fill="#555">medium berantibiotik: hanya bakteri berplasmid yang hidup (dicoret = mati)</text>`; }
+  if(k === 5){ s += `<rect x="150" y="50" width="180" height="200" rx="20" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>`; for(let i = 0; i < 30; i++) s += `<ellipse cx="${170 + (i * 37) % 140}" cy="${70 + (i * 23) % 160}" rx="9" ry="5" fill="#a5d6a7"/><circle cx="${176 + (i * 37) % 140}" cy="${66 + (i * 23) % 160}" r="2.5" fill="#e53935"/>`; s += `<text class="s" x="240" y="275" text-anchor="middle" fill="#555">tangki fermentasi: jutaan bakteri menghasilkan protein manusia (titik merah)</text>`; }
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Tahap ${k + 1}/6</span><b style="font-weight:600">${STEP[k][1]}</b></div><div><span>Enzim ${E}</span><b>berasal dari ${src}; memotong G^AATTC (contoh EcoRI)</b></div>`.replace('memotong G^AATTC (contoh EcoRI)', E === 'EcoRI' ? 'memotong G^AATTC' : E === 'BamHI' ? 'memotong G^GATCC' : 'memotong A^AGCTT');
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transkripsi dan Translasi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10px}.b{font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:13px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Rantai DNA, mRNA, tRNA, dan rantai asam amino"></svg></div>
+  <div class="panel">
+    <div class="lab">Gen (rantai cetakan/kodogen, 3' → 5')</div>
+    <select id="g"><option value="TACCTTGGCAATACT">Gen 1: TAC CTT GGC AAT ACT</option><option value="TACGTAAAGCCGATC">Gen 2: TAC GTA AAG CCG ATC</option><option value="TACTGGCGTACTTTA">Gen 3: TAC TGG CGT ACT TTA</option></select>
+    <div class="lab">Mutasi</div>
+    <div class="seg" id="m"><button data-m="0" class="on">Tanpa</button><button data-m="sub">Substitusi basa ke-8</button><button data-m="ins">Insersi setelah basa ke-5</button><button data-m="del">Delesi basa ke-5</button></div>
+    <div class="seg" id="t"><button data-t="1">Transkripsi</button><button data-t="2" class="on">Translasi</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const CODE = {UUU:'Phe',UUC:'Phe',UUA:'Leu',UUG:'Leu',CUU:'Leu',CUC:'Leu',CUA:'Leu',CUG:'Leu',AUU:'Ile',AUC:'Ile',AUA:'Ile',AUG:'Met',GUU:'Val',GUC:'Val',GUA:'Val',GUG:'Val',UCU:'Ser',UCC:'Ser',UCA:'Ser',UCG:'Ser',CCU:'Pro',CCC:'Pro',CCA:'Pro',CCG:'Pro',ACU:'Thr',ACC:'Thr',ACA:'Thr',ACG:'Thr',GCU:'Ala',GCC:'Ala',GCA:'Ala',GCG:'Ala',UAU:'Tyr',UAC:'Tyr',UAA:'STOP',UAG:'STOP',CAU:'His',CAC:'His',CAA:'Gln',CAG:'Gln',AAU:'Asn',AAC:'Asn',AAA:'Lys',AAG:'Lys',GAU:'Asp',GAC:'Asp',GAA:'Glu',GAG:'Glu',UGU:'Cys',UGC:'Cys',UGA:'STOP',UGG:'Trp',CGU:'Arg',CGC:'Arg',CGA:'Arg',CGG:'Arg',AGU:'Ser',AGC:'Ser',AGA:'Arg',AGG:'Arg',GGU:'Gly',GGC:'Gly',GGA:'Gly',GGG:'Gly'};
+const COMP = {A: 'T', T: 'A', G: 'C', C: 'G'}, RNA = {A: 'U', T: 'A', G: 'C', C: 'G'}, AC = {A: 'U', U: 'A', G: 'C', C: 'G'};
+const COL = {A: '#e53935', T: '#1e88e5', U: '#8e24aa', G: '#fb8c00', C: '#43a047'};
+let M = '0', T = '2';
+const seg = (id, key, cb) => $(id).querySelectorAll('button').forEach(b => b.onclick = () => { $(id).querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); cb(b.dataset[key]); draw(); });
+seg('m', 'm', v => M = v); seg('t', 't', v => T = v); $('g').oninput = draw;
+function mutate(s){
+  if(M === 'sub'){ const i = 7, b = s[i], nb = b === 'A' ? 'T' : b === 'T' ? 'A' : b === 'G' ? 'C' : 'G'; return s.slice(0, i) + nb + s.slice(i + 1); }
+  if(M === 'ins') return s.slice(0, 5) + 'G' + s.slice(5);
+  if(M === 'del') return s.slice(0, 4) + s.slice(5);
+  return s;
+}
+function draw(){
+  const orig = $('g').value, tmpl = mutate(orig);
+  const mrna = [...tmpl].map(b => RNA[b]).join('');
+  const sense = [...tmpl].map(b => COMP[b]).join('');
+  const cod = []; for(let i = 0; i + 3 <= mrna.length; i += 3) cod.push(mrna.slice(i, i + 3));
+  const aa = []; for(const c of cod){ const a = CODE[c]; if(a === 'STOP'){ aa.push('STOP'); break; } aa.push(a); }
+  const origAA = (() => { const m = [...orig].map(b => RNA[b]).join(''), r = []; for(let i = 0; i + 3 <= m.length; i += 3){ const a = CODE[m.slice(i, i + 3)]; if(a === 'STOP'){ r.push('STOP'); break; } r.push(a); } return r; })();
+  let s = '';
+  const W = 22, x0 = 40;
+  const strand = (y, seq, lab, hl) => { let t = `<text class="s" x="${x0 - 6}" y="${y + 4}" text-anchor="end" fill="#555">${lab}</text>`; [...seq].forEach((b, i) => { const x = x0 + i * W + Math.floor(i / 3) * 6; t += `<rect x="${x}" y="${y - 10}" width="${W - 2}" height="20" rx="4" fill="${COL[b]}" opacity="${hl && hl(i) ? 1 : .8}" ${hl && hl(i) ? 'stroke="#000" stroke-width="2"' : ''}/><text class="b" x="${x + W / 2 - 1}" y="${y + 5}" text-anchor="middle" fill="#fff">${b}</text>`; }); return t; };
+  const mutPos = i => (M === 'sub' && i === 7) || (M === 'ins' && i === 5);
+  s += `<text class="c" x="20" y="22" style="fill:var(--ink)">DNA (inti sel)</text>`;
+  s += strand(46, sense, "5'", null) + strand(72, tmpl, "3'", mutPos);
+  s += `<text class="s" x="${x0 + tmpl.length * W + 30}" y="50" fill="#555">sense</text><text class="s" x="${x0 + tmpl.length * W + 30}" y="76" fill="#555">kodogen</text>`;
+  if(T >= '1') s += `<text class="c" x="20" y="112" style="fill:var(--ink)">Transkripsi → mRNA (5' → 3')</text>` + strand(134, mrna, "5'", mutPos);
+  if(T === '2'){
+    s += `<text class="c" x="20" y="174" style="fill:var(--ink)">Translasi di ribosom → tRNA (antikodon) dan asam amino</text>`;
+    cod.slice(0, aa.length).forEach((c, i) => { const x = x0 + i * (3 * W + 6); const anti = [...c].map(b => AC[b]).join(''); const a = aa[i]; s += `<rect x="${x}" y="186" width="${3 * W - 2}" height="18" rx="4" fill="#ede7f6" stroke="#7e57c2"/><text class="b" x="${x + 1.5 * W - 1}" y="199" text-anchor="middle" fill="#4527a0" style="font-size:11px">${anti}</text><circle cx="${x + 1.5 * W - 1}" cy="232" r="19" fill="${a === 'STOP' ? '#9e9e9e' : '#ffca28'}" stroke="#f57f17"/><text class="c" x="${x + 1.5 * W - 1}" y="236" text-anchor="middle" fill="#333">${a === 'STOP' ? 'stop' : a}</text>${i && a !== 'STOP' ? `<line x1="${x - 26}" y1="232" x2="${x + 1.5 * W - 20}" y2="232" stroke="#333" stroke-width="2"/>` : ''}`; });
+    s += `<text class="s" x="20" y="280" fill="#555">kotak ungu: antikodon tRNA; lingkaran: asam amino; garis: ikatan peptida</text>`;
+  }
+  svg.innerHTML = s;
+  const chain = aa.filter(a => a !== 'STOP').join('–');
+  const ket = M === '0' ? 'gen normal' : M === 'sub' ? (aa.join() === origAA.join() ? 'substitusi tanpa perubahan asam amino (mutasi diam/silent)' : aa.includes('STOP') && aa.length < origAA.length ? 'substitusi menghasilkan kodon stop lebih awal (nonsense)' : 'substitusi mengubah satu asam amino (missense)') : 'pergeseran kerangka baca (frameshift): semua kodon setelah titik mutasi berubah';
+  $('read').innerHTML = `<div><span>mRNA</span><b>${cod.join(' ')}</b></div><div><span>Polipeptida</span><b>${chain || '—'}</b></div><div><span>Asli (tanpa mutasi)</span><b>${origAA.filter(a => a !== 'STOP').join('–')}</b></div><div><span>Jenis</span><b>${ket}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>
