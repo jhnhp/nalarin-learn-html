@@ -1,56 +1,191 @@
 {
   "title": "Menjelajah Sel",
-  "summary": "Ringkasan bab Menjelajah Sel akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Sitologi dan mikroskop (perbesaran, daya pisah, ukuran sel), keterkaitan struktur dan fungsi sel, serta komposisi sel: membran plasma, sitoplasma, inti sel, organel, dan perbedaan sel prokariot, tumbuhan, dan hewan.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Menjelajah Sel",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "sel-mikroskop",
+      "title": "Sel, sitologi, dan mikroskop",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Pengamatan Struktur Sel, Keterkaitan Struktur dan Fungsi Sel, serta Komposisi Sel</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Semua makhluk hidup tersusun atas <b>sel</b>, baik organisme <b>uniseluler</b> (satu sel, misalnya bakteri) maupun <b>multiseluler</b> (banyak sel, misalnya manusia). Cabang biologi yang mempelajari struktur dan fungsi sel disebut <b>sitologi</b>. Metode yang dipakai peneliti sitologi antara lain mikroskopi, biakan sel, fraksinasi sel, teknik DNA rekombinan, serta pelacakan molekul dengan radioisotop dan antibodi. Pemeriksaan sitologi juga dipakai untuk mendeteksi kanker secara dini, misalnya pada tes pap smear.</p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "type": "image",
+          "src": "gambar/skala-ukuran.svg",
+          "alt": "Skala logaritmik ukuran benda dari atom sampai telur ayam serta jangkauan mata, mikroskop cahaya, dan mikroskop elektron",
+          "width": 680,
+          "caption": "Ukuran sel dan bagian-bagiannya. Kebanyakan sel berukuran 1–100 μm; organel kecil dan virus hanya terlihat dengan mikroskop elektron."
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Satuan dan perbesaran",
+          "html": "<p>1 mm = 1.000 μm (mikrometer); 1 μm = 1.000 nm (nanometer).</p><p>\\[\\text{perbesaran total} = \\text{perbesaran okuler} \\times \\text{perbesaran objektif}\\]</p><p>\\[\\text{ukuran sebenarnya} = \\frac{\\text{ukuran bayangan}}{\\text{perbesaran}}\\]</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/mikroskop.html",
+          "title": "Mikroskop cahaya virtual",
+          "height": 520,
+          "caption": "Amati epidermis bawang pada 4×, 10×, dan 40×, lalu atur fokus. Berapa sel yang berjajar di bidang pandang? Lalu pilih virus: mengapa tetap tidak terlihat walau perbesaran 1000×?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Aspek</th><th>Mikroskop cahaya</th><th>Mikroskop elektron (TEM, SEM)</th></tr><tr><td>Sumber</td><td>cahaya tampak</td><td>berkas elektron</td></tr><tr><td>Perbesaran</td><td>sampai ± 1.000–1.500 kali</td><td>sampai ratusan ribu kali atau lebih</td></tr><tr><td>Daya pisah (resolusi)</td><td>± 0,2 μm</td><td>± 0,1–2 nm</td></tr><tr><td>Spesimen</td><td>dapat hidup, berwarna</td><td>harus mati, dalam ruang hampa</td></tr><tr><td>Yang tampak</td><td>dinding sel, membran, sitoplasma, inti, kloroplas</td><td>ultrastruktur: ribosom, krista mitokondria, RE, virus</td></tr></table><p><b>Daya pisah</b> adalah jarak terkecil antara dua titik yang masih terlihat terpisah. Memperbesar bayangan tanpa menambah daya pisah hanya membuat gambar kabur yang lebih besar.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah foto sel diambil dengan perbesaran 1.000 kali. Panjang sel pada foto 30 mm. Berapa panjang sebenarnya?</p>",
+          "steps": [
+            "30 mm = 30.000 μm.",
+            "Ukuran sebenarnya = 30.000/1.000."
+          ],
+          "answer": "30 μm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sel tumbuhan berdiameter 60 μm dan sebuah bakteri berpanjang 2 μm. Berapa kali sel tumbuhan lebih besar? Alat apa yang cukup untuk melihat bakteri itu?</p>",
+          "steps": [
+            "60/2 = 30 kali.",
+            "2 μm > daya pisah mikroskop cahaya (0,2 μm), jadi bakteri dapat dilihat dengan mikroskop cahaya perbesaran kuat (objektif 100× dengan minyak imersi)."
+          ],
+          "answer": "30 kali; mikroskop cahaya perbesaran kuat"
+        },
+        {
+          "type": "check",
+          "question": "Lensa okuler 15× dan objektif 40×. Perbesaran totalnya adalah ....",
+          "options": {
+            "A": "55×",
+            "B": "400×",
+            "C": "600×",
+            "D": "40×"
+          },
+          "answer": "C",
+          "hint": "Kalikan keduanya.",
+          "explanation": "15 × 40 = 600 kali."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "struktur-fungsi",
+      "title": "Keterkaitan struktur dan fungsi sel",
+      "kind": "artikel",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Pada organisme multiseluler, sel-sel mengalami <b>spesialisasi</b>: bentuk dan isi selnya khas sesuai fungsinya. Sel → jaringan → organ → sistem organ → organisme.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Sel</th><th>Ciri struktur</th><th>Kaitannya dengan fungsi</th></tr><tr><td>Sel otot jantung</td><td>mitokondria sangat banyak</td><td>jantung bekerja terus-menerus dan memerlukan banyak ATP; mitokondria menyediakan lebih dari 90% ATP jaringan jantung</td></tr><tr><td>Sel sperma</td><td>kepala berisi inti; ekor (aksonema) dikelilingi banyak mitokondria</td><td>membawa materi genetik dan bergerak menuju sel telur</td></tr><tr><td>Sel darah merah</td><td>cakram bikonkaf, tanpa inti, berisi hemoglobin</td><td>permukaan luas untuk mengikat O₂ dan lentur melewati kapiler</td></tr><tr><td>Sel saraf</td><td>akson dan dendrit panjang bercabang</td><td>menghantarkan impuls jarak jauh</td></tr><tr><td>Sel rambut akar</td><td>tonjolan panjang dan tipis</td><td>memperluas permukaan penyerapan air</td></tr><tr><td>Sel penjaga stomata</td><td>berpasangan, berdinding tebal di sisi dalam, berkloroplas</td><td>membuka dan menutup stomata</td></tr></table>"
+        },
+        {
+          "type": "h",
+          "text": "Contoh: sel-sel retina mata"
+        },
+        {
+          "type": "text",
+          "html": "<p>Aktivitas membaca melibatkan mata dan otak, dan setiap organ itu disusun oleh beragam sel dengan fungsi berbeda. Retina tersusun atas:</p><ul><li><b>fotoreseptor</b> (sel batang dan sel kerucut) yang menangkap cahaya;</li><li><b>sel bipolar</b> yang meneruskan sinyal dari fotoreseptor ke sel ganglion;</li><li><b>sel ganglion</b> yang aksonnya membentuk saraf optik menuju otak;</li><li><b>sel horizontal</b> dan <b>sel amakrin</b> yang mengatur sinyal antarsel;</li><li><b>epitel pigmen retina</b> yang menyokong fotoreseptor dan membersihkan zat berbahaya.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Gangguan mitokondria",
+          "html": "<p>Jika mitokondria sel otot jantung terganggu, produksi ATP berkurang dan terbentuk <i>reactive oxygen species</i> (ROS) berlebih yang merusak sel, sehingga dapat memicu penyakit kardiovaskular.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Sel kelenjar pankreas yang banyak menghasilkan enzim (protein) diperkirakan memiliki banyak ....",
+          "options": {
+            "A": "kloroplas",
+            "B": "RE kasar dan badan Golgi",
+            "C": "sentriol",
+            "D": "vakuola besar"
+          },
+          "answer": "B",
+          "hint": "Enzim adalah protein yang disekresikan.",
+          "explanation": "Protein dibuat ribosom pada RE kasar, lalu dikemas dan dikirim oleh badan Golgi."
+        }
+      ]
+    },
+    {
+      "id": "komposisi-sel",
+      "title": "Komposisi sel: membran, sitoplasma, inti, dan organel",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Tiga komponen utama sel yang mudah terlihat dengan mikroskop cahaya adalah <b>membran plasma</b>, <b>sitoplasma</b>, dan <b>inti sel</b>.</p><ul><li><b>Membran plasma</b>: menurut model <b>mosaik cair</b> (Singer dan Nicolson, 1972), membran tersusun atas dua lapis fosfolipid (kepala hidrofilik di luar, ekor hidrofobik di dalam) dengan protein tersebar seperti mozaik dan dapat bergeser.</li><li><b>Sitoplasma</b>: seluruh isi sel di antara membran plasma dan inti, terdiri atas <b>sitosol</b> (cairan/matriks yang dapat berubah dari sol ke gel) dan organel.</li><li><b>Inti sel</b>: ditemukan Robert Brown (1831) pada sel tumbuhan; berisi DNA, dibungkus membran inti berpori, dan memiliki nukleolus.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/organel.html",
+          "title": "Peta organel sel hewan, tumbuhan, dan prokariot",
+          "height": 520,
+          "caption": "Bandingkan ketiga jenis sel. Organel apa yang hanya ada di sel tumbuhan? Apa yang hanya ada di sel hewan? Bagian apa yang dimiliki ketiganya?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Ciri</th><th>Sel prokariot</th><th>Sel eukariot</th></tr><tr><td>Membran inti</td><td>tidak ada (DNA di nukleoid)</td><td>ada</td></tr><tr><td>Organel bermembran</td><td>tidak ada</td><td>ada (mitokondria, RE, Golgi, …)</td></tr><tr><td>Ribosom</td><td>ada (lebih kecil)</td><td>ada</td></tr><tr><td>Ukuran</td><td>± 1–5 μm</td><td>± 10–100 μm</td></tr><tr><td>Contoh</td><td>bakteri</td><td>hewan, tumbuhan, jamur, protista</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Ciri</th><th>Sel tumbuhan</th><th>Sel hewan</th></tr><tr><td>Dinding sel</td><td>ada (selulosa)</td><td>tidak ada</td></tr><tr><td>Plastida (kloroplas)</td><td>ada</td><td>tidak ada</td></tr><tr><td>Vakuola</td><td>besar</td><td>kecil atau tidak ada</td></tr><tr><td>Sentriol</td><td>umumnya tidak ada</td><td>ada</td></tr><tr><td>Bentuk</td><td>tetap (kaku)</td><td>bervariasi</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Pada Tabel 1.2 buku, sel prokariot diberi tanda memiliki inti sel/nukleus. Sel prokariot tidak memiliki inti sejati: DNA-nya berada di daerah <b>nukleoid</b> tanpa membran inti (pada tabel yang sama membran inti prokariot sudah ditandai tidak ada). Selain itu, fungsi badan Golgi bukan hanya “mensintesis karbohidrat”: fungsi utamanya memodifikasi, mengemas, dan mengirim protein dan lipid, serta membentuk lisosom. Retikulum endoplasma halus membuat lipid, sedangkan RE kasar (berribosom) membuat protein untuk disekresikan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Tidak semua sel berinti",
+          "html": "<p>Buku menyebut semua sel memiliki membran plasma, sitoplasma, dan inti sel. Ini berlaku umum untuk sel eukariot. Sel prokariot hanya memiliki materi inti tanpa membran, dan sel darah merah dewasa mamalia kehilangan intinya saat pematangan.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Organel yang berfungsi menguraikan bagian sel yang sudah rusak adalah ....",
+          "options": {
+            "A": "ribosom",
+            "B": "lisosom",
+            "C": "badan Golgi",
+            "D": "nukleolus"
+          },
+          "answer": "B",
+          "hint": "Organel berisi enzim pencerna.",
+          "explanation": "Lisosom berisi enzim hidrolitik untuk mencerna organel tua dan benda asing."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyamakan perbesaran dengan daya pisah.</li><li>Lupa mengubah satuan mm ke μm saat menghitung ukuran sebenarnya.</li><li>Menyebut bakteri memiliki inti sel atau mitokondria.</li><li>Menganggap sel tumbuhan tidak memiliki mitokondria (sel tumbuhan memiliki mitokondria dan kloroplas).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 1 Menjelajah Sel.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang pengamatan struktur sel, keterkaitan struktur dan fungsi sel, serta komposisi sel. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

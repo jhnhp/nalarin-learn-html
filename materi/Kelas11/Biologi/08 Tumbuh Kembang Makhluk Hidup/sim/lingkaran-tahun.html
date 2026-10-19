@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lingkaran Tahun</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Penampang melintang batang kayu dengan lingkaran tahun"></svg></div>
+  <div class="panel">
+    <div class="lab">Umur pohon <b id="av"></b></div><input type="range" id="a" min="1" max="25" step="1" value="14">
+    <div class="lab">Curah hujan rata-rata <b id="rv"></b></div><input type="range" id="r" min="0" max="2" step="1" value="1">
+    <label class="chk"><input type="checkbox" id="dry"> Ada beberapa tahun kemarau panjang</label>
+    <div class="read" id="read"></div>
+    <p class="note">Kambium membelah ke dalam membentuk xilem (kayu) dan ke luar membentuk floem. Kayu yang terbentuk saat musim hujan berpori besar dan terang; saat kemarau rapat dan gelap. Pasangan terang-gelap itu satu lingkaran tahun.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+function widths(n){
+  const base = [0.7, 1.2, 1.7][+$('r').value], dry = $('dry').checked;
+  const w = []; for(let i = 0; i < n; i++){ let x = base * (1.25 - 0.4 * i / 25) * (0.85 + 0.3 * ((i * 37 % 11) / 10)); if(dry && (i % 6 === 4)) x *= 0.35; w.push(x); } return w;
+}
+function draw(){
+  const n = +$('a').value; $('av').textContent = n + ' tahun'; $('rv').textContent = ['rendah', 'sedang', 'tinggi'][+$('r').value];
+  const w = widths(n), R = w.reduce((a, b) => a + b, 0), bark = 1.2;
+  const cx = 165, cy = 165, sc = 140 / Math.max(10, R + bark);
+  let s = `<circle cx="${cx}" cy="${cy}" r="${(R + bark) * sc}" fill="#5d4037"/>`;
+  let r = R;
+  for(let i = n - 1; i >= 0; i--){
+    const ro = r * sc, ri = (r - w[i]) * sc;
+    s += `<circle cx="${cx}" cy="${cy}" r="${ro}" fill="#c69c6d"/><circle cx="${cx}" cy="${cy}" r="${ri + (ro - ri) * 0.75}" fill="#e8c999"/><circle cx="${cx}" cy="${cy}" r="${ri + 0.5}" fill="none" stroke="#7a5230" stroke-width="1.2"/>`;
+    r -= w[i];
+  }
+  s += `<circle cx="${cx}" cy="${cy}" r="3" fill="#7a5230"/><text class="s" x="${cx}" y="${cy + (R + bark) * sc + 16}" text-anchor="middle" style="fill:var(--muted)">kulit batang (floem dan gabus) berwarna gelap di tepi</text>`;
+  s += `<line x1="${cx}" y1="${cy}" x2="${cx + R * sc}" y2="${cy}" stroke="#1565c0" stroke-width="2"/><text class="s" x="${cx + R * sc / 2}" y="${cy - 6}" text-anchor="middle" fill="#1565c0">jari-jari kayu ${fmt(R, 1)} cm</text>`;
+  // grafik lebar cincin
+  const gx = 340, gy = 260, gw = 130, gh = 180, mx = Math.max(...w) * 1.1;
+  s += `<text class="s" x="${gx}" y="${gy - gh - 8}" style="fill:var(--muted)">tebal tiap lingkaran (cm)</text><line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" style="stroke:var(--ink)"/>`;
+  w.forEach((v, i) => { const bw = gw / n; s += `<rect x="${gx + i * bw + 1}" y="${gy - gh * v / mx}" width="${Math.max(1, bw - 2)}" height="${gh * v / mx}" fill="${v < 0.6 * (R / n) ? '#ef6c00' : '#8d6e63'}"/>`; });
+  s += `<text class="s" x="${gx}" y="${gy + 14}" style="fill:var(--muted)">tahun ke-1</text><text class="s" x="${gx + gw}" y="${gy + 14}" text-anchor="end" style="fill:var(--muted)">ke-${n}</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Jumlah lingkaran tahun</span><b>${n}</b></div><div><span>Jari-jari kayu</span><b>${fmt(R, 1)} cm</b></div><div><span>Pertambahan rata-rata</span><b>${fmt(R / n, 2)} cm/tahun</b></div><div><span>Lingkaran tersempit</span><b>${fmt(Math.min(...w), 2)} cm</b></div>`;
+}
+['a', 'r', 'dry'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preparat Jaringan Tumbuhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.s{font-family:var(--display);font-weight:700;font-size:11px}
+.o{cursor:pointer}.o:hover{filter:brightness(1.1)}.o.sel *{stroke:#d62828!important;stroke-width:2.5!important}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Penampang melintang organ tumbuhan dengan jaringan yang dapat diklik"></svg></div>
+  <div class="panel">
+    <div class="seg" id="org"><button data-v="akar" class="on">Akar</button><button data-v="batang">Batang</button><button data-v="daun">Daun</button></div>
+    <div class="seg" id="kel"><button data-v="dikotil" class="on">Dikotil</button><button data-v="monokotil">Monokotil</button></div>
+    <p class="note">Klik jaringan pada penampang untuk melihat nama dan fungsinya.</p>
+    <div class="read" id="read"></div>
+    <p class="note" id="fungsi" style="color:var(--ink)"></p>
+    <p class="note" id="ciri"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const INFO = {
+  epidermis: ['Epidermis', 'Lapisan sel terluar yang rapat, melindungi jaringan di dalamnya. Pada batang dan daun dilapisi kutikula untuk mengurangi penguapan.'],
+  epiblem: ['Epidermis akar (epiblem/rizodermis)', 'Lapisan terluar akar, tidak berkutikula. Sebagian selnya menjulur membentuk rambut akar untuk memperluas bidang penyerapan air dan mineral.'],
+  korteks: ['Korteks', 'Tersusun atas sel-sel parenkim berdinding tipis dengan ruang antarsel; menyimpan cadangan makanan dan menjadi jalur air dari epidermis ke pusat.'],
+  endodermis: ['Endodermis', 'Lapisan sel dengan pita Kaspari (penebalan gabus) yang mengatur masuknya air dan mineral ke silinder pusat.'],
+  perisikel: ['Perisikel (perikambium)', 'Lapisan terluar silinder pusat; dapat membelah membentuk cabang akar.'],
+  xilem: ['Xilem (pembuluh kayu)', 'Mengangkut air dan mineral dari akar ke daun. Unsur pembuluhnya berupa sel mati berdinding tebal berlignin yang berongga, sehingga air mengalir lancar.'],
+  floem: ['Floem (pembuluh tapis)', 'Mengangkut hasil fotosintesis dari daun ke seluruh tubuh. Sel-sel tapisnya hidup dan dibantu sel pengiring.'],
+  kambium: ['Kambium', 'Meristem lateral di antara xilem dan floem. Membelah ke dalam membentuk xilem dan ke luar membentuk floem sehingga batang membesar (pertumbuhan sekunder). Tidak ada pada monokotil.'],
+  empulur: ['Empulur', 'Parenkim di pusat batang atau akar monokotil, menyimpan cadangan makanan.'],
+  kolenkim: ['Kolenkim', 'Jaringan penguat dari sel hidup dengan penebalan dinding di sudut-sudut sel; menguatkan organ muda yang masih tumbuh. Umumnya tidak ada pada monokotil.'],
+  sklerenkim: ['Sklerenkim', 'Jaringan penguat dari sel mati berdinding tebal berlignin, berupa serabut atau sel batu (sklereid).'],
+  parenkim: ['Parenkim dasar', 'Sel hidup berdinding tipis yang mengisi batang monokotil; dapat kembali bersifat meristem untuk memperbaiki luka.'],
+  palisade: ['Parenkim palisade (jaringan tiang)', 'Sel-sel memanjang dan rapat berisi banyak kloroplas: tempat utama fotosintesis.'],
+  spons: ['Parenkim spons (bunga karang)', 'Sel tidak beraturan dengan ruang antarsel besar untuk pertukaran gas.'],
+  mesofil: ['Mesofil', 'Pada daun monokotil, mesofil tidak terbagi menjadi palisade dan spons; berisi kloroplas untuk fotosintesis.'],
+  stomata: ['Stomata', 'Celah di epidermis yang diapit dua sel penjaga; tempat keluar-masuk CO₂, O₂, dan uap air (transpirasi).'],
+  kipas: ['Sel kipas (buliform)', 'Sel besar di epidermis atas daun rumput-rumputan; jika kekurangan air sel ini mengempis sehingga daun menggulung dan penguapan berkurang.'],
+  seludang: ['Seludang pembuluh', 'Sel-sel yang mengelilingi berkas pengangkut daun.']
+};
+const CIRI = {
+  'akar-dikotil': 'Akar dikotil: xilem berbentuk bintang di pusat dengan floem di antara lengannya; umumnya tanpa empulur; ada kambium (pertumbuhan sekunder).',
+  'akar-monokotil': 'Akar monokotil: xilem dan floem berselang-seling melingkar dalam jumlah banyak; ada empulur di pusat; tanpa kambium.',
+  'batang-dikotil': 'Batang dikotil: berkas pengangkut tersusun melingkar (kolateral terbuka, ada kambium); korteks dan empulur jelas; dapat membesar.',
+  'batang-monokotil': 'Batang monokotil: berkas pengangkut tersebar (kolateral tertutup, tanpa kambium); batas korteks dan empulur tidak jelas.',
+  'daun-dikotil': 'Daun dikotil: mesofil terdiferensiasi menjadi palisade dan spons; stomata terutama di permukaan bawah; tulang daun menyirip/menjari.',
+  'daun-monokotil': 'Daun monokotil: mesofil tidak terdiferensiasi; stomata di kedua permukaan; ada sel kipas pada rumput; tulang daun sejajar.'
+};
+let O = 'akar', K = 'dikotil', S = 'xilem';
+[['org', v => O = v], ['kel', v => K = v]].forEach(([id, f]) => $(id).querySelectorAll('button').forEach(b => b.onclick = () => { $(id).querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); f(b.dataset.v); S = 'xilem'; draw(); }));
+const g = (id, body) => `<g class="o${S === id ? ' sel' : ''}" data-id="${id}">${body}</g>`;
+const ring = (r1, r2, fill) => `<path d="M${200 - r1},165 a${r1},${r1} 0 1,0 ${2 * r1},0 a${r1},${r1} 0 1,0 ${-2 * r1},0 M${200 - r2},165 a${r2},${r2} 0 1,1 ${2 * r2},0 a${r2},${r2} 0 1,1 ${-2 * r2},0" fill="${fill}" fill-rule="evenodd" stroke="#555" stroke-width=".8"/>`;
+const cells = (cx, cy, r1, r2, n, rr, fill) => { let s = ''; for(let i = 0; i < n; i++){ const a = i / n * 2 * Math.PI, r = r1 + (i % 3) * (r2 - r1) / 3; s += `<circle cx="${cx + r * Math.cos(a)}" cy="${cy + r * Math.sin(a)}" r="${rr}" fill="${fill}" stroke="#8a8a6a" stroke-width=".6"/>`; } return s; };
+function bundle(x, y, sc, open){ return g('floem', `<ellipse cx="${x}" cy="${y - 7 * sc}" rx="${9 * sc}" ry="${6 * sc}" fill="#9ccc65" stroke="#33691e"/>`) + (open ? g('kambium', `<rect x="${x - 9 * sc}" y="${y - 2 * sc}" width="${18 * sc}" height="${3 * sc}" fill="#ffb74d" stroke="#e65100" stroke-width=".6"/>`) : '') + g('xilem', `<circle cx="${x - 4 * sc}" cy="${y + 6 * sc}" r="${3.5 * sc}" fill="#ef9a9a" stroke="#b71c1c"/><circle cx="${x + 4 * sc}" cy="${y + 6 * sc}" r="${3.5 * sc}" fill="#ef9a9a" stroke="#b71c1c"/><circle cx="${x}" cy="${y + 11 * sc}" r="${2.5 * sc}" fill="#ef9a9a" stroke="#b71c1c"/>`) + (!open ? `<circle cx="${x}" cy="${y + 1}" r="${15 * sc}" fill="none" stroke="#795548" stroke-width="${1.6 * sc}"/>` : ''); }
+function draw(){
+  let s = '';
+  const key = O + '-' + K;
+  if(O === 'akar'){
+    s += g('epiblem', ring(150, 140, '#fff3e0') + [20, 70, 130, 200, 260, 320].map(a => { const r = a * Math.PI / 180; return `<path d="M${200 + 150 * Math.cos(r)},${165 + 150 * Math.sin(r)} l${18 * Math.cos(r)},${18 * Math.sin(r)}" stroke="#a1887f" stroke-width="3"/>`; }).join(''));
+    s += g('korteks', ring(140, 70, '#fffde7') + cells(200, 165, 82, 132, 54, 9, '#fff9c4'));
+    s += g('endodermis', ring(70, 63, '#d7ccc8'));
+    s += g('perisikel', ring(63, 57, '#f3e5f5'));
+    if(K === 'dikotil'){
+      s += `<circle cx="200" cy="165" r="57" fill="#f1f8e9"/>`;
+      s += g('xilem', `<path d="M200,112 L212,153 L253,165 L212,177 L200,218 L188,177 L147,165 L188,153 Z" fill="#ef9a9a" stroke="#b71c1c"/>`);
+      s += g('floem', [[225, 140], [225, 190], [175, 190], [175, 140]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="10" fill="#9ccc65" stroke="#33691e"/>`).join(''));
+    } else {
+      s += g('empulur', `<circle cx="200" cy="165" r="57" fill="#fffde7" stroke="#555" stroke-width=".8"/>` + cells(200, 165, 5, 30, 16, 6, '#fff9c4'));
+      for(let i = 0; i < 12; i++){ const a = i / 12 * 2 * Math.PI, x = 200 + 46 * Math.cos(a), y = 165 + 46 * Math.sin(a); s += g(i % 2 ? 'floem' : 'xilem', i % 2 ? `<circle cx="${x}" cy="${y}" r="7" fill="#9ccc65" stroke="#33691e"/>` : `<circle cx="${x}" cy="${y}" r="8" fill="#ef9a9a" stroke="#b71c1c"/>`); }
+    }
+  }
+  if(O === 'batang'){
+    s += g('epidermis', ring(150, 143, '#c8e6c9'));
+    if(K === 'dikotil'){
+      s += g('kolenkim', ring(143, 130, '#a5d6a7'));
+      s += g('korteks', ring(130, 100, '#fffde7') + cells(200, 165, 106, 126, 40, 7, '#fff9c4'));
+      s += g('empulur', `<circle cx="200" cy="165" r="100" fill="#fffde7" stroke="#555" stroke-width=".8"/>` + cells(200, 165, 10, 55, 30, 9, '#fff9c4'));
+      s += g('kambium', ring(84, 81, '#ffb74d'));
+      for(let i = 0; i < 10; i++){ const a = i / 10 * 2 * Math.PI, x = 200 + 82 * Math.cos(a), y = 165 + 82 * Math.sin(a); s += `<g transform="rotate(${a * 180 / Math.PI + 90} ${x} ${y})">${bundle(x, y, 1, true).replace(/<g class="o[^"]*" data-id="kambium">.*?<\/g>/, '')}</g>`; }
+    } else {
+      s += g('sklerenkim', ring(143, 134, '#bcaaa4'));
+      s += g('parenkim', `<circle cx="200" cy="165" r="134" fill="#fffde7" stroke="#555" stroke-width=".8"/>` + cells(200, 165, 10, 120, 90, 6, '#fff9c4'));
+      const pts = [[200, 165], [160, 120], [245, 125], [150, 200], [250, 205], [200, 95], [200, 240], [110, 160], [290, 165], [130, 250], [270, 85], [130, 80], [275, 250], [85, 205], [315, 120], [100, 110], [300, 210], [175, 280], [230, 55], [170, 50], [235, 285]];
+      pts.forEach(([x, y], i) => { const d = Math.hypot(x - 200, y - 165), sc = d > 100 ? .7 : .95; s += bundle(x, y, sc, false); });
+    }
+  }
+  if(O === 'daun'){
+    const y0 = 70;
+    s += g('epidermis', `<rect x="20" y="${y0}" width="360" height="14" fill="#e8f5e9" stroke="#555"/><rect x="20" y="${y0 + 186}" width="360" height="14" fill="#e8f5e9" stroke="#555"/><rect x="20" y="${y0 - 4}" width="360" height="4" fill="#ffe082"/>`);
+    if(K === 'dikotil'){
+      let p = ''; for(let x = 22; x < 378; x += 14) p += `<rect x="${x}" y="${y0 + 16}" width="12" height="60" rx="5" fill="#81c784" stroke="#2e7d32" stroke-width=".7"/>`;
+      s += g('palisade', p);
+      let q = ''; for(let i = 0; i < 40; i++){ const x = 30 + (i * 53) % 340, y = y0 + 95 + (i * 31) % 80; q += `<ellipse cx="${x}" cy="${y}" rx="11" ry="8" fill="#c5e1a5" stroke="#558b2f" stroke-width=".7"/>`; }
+      s += g('spons', q);
+      s += g('xilem', `<circle cx="200" cy="${y0 + 110}" r="8" fill="#ef9a9a" stroke="#b71c1c"/><circle cx="214" cy="${y0 + 110}" r="7" fill="#ef9a9a" stroke="#b71c1c"/><circle cx="186" cy="${y0 + 110}" r="7" fill="#ef9a9a" stroke="#b71c1c"/>`);
+      s += g('floem', `<ellipse cx="200" cy="${y0 + 132}" rx="22" ry="9" fill="#9ccc65" stroke="#33691e"/>`);
+      s += g('stomata', [90, 290].map(x => `<ellipse cx="${x - 6}" cy="${y0 + 193}" rx="6" ry="5" fill="#66bb6a" stroke="#1b5e20"/><ellipse cx="${x + 6}" cy="${y0 + 193}" rx="6" ry="5" fill="#66bb6a" stroke="#1b5e20"/>`).join(''));
+    } else {
+      let q = ''; for(let i = 0; i < 70; i++){ const x = 28 + (i * 47) % 344, y = y0 + 25 + (i * 29) % 150; q += `<ellipse cx="${x}" cy="${y}" rx="9" ry="7" fill="#a5d6a7" stroke="#2e7d32" stroke-width=".7"/>`; }
+      s += g('mesofil', q);
+      s += g('kipas', [120, 260].map(x => `<path d="M${x - 18},${y0 + 14} q18,30 36,0 z" fill="#e1f5fe" stroke="#0277bd"/>`).join(''));
+      [70, 190, 320].forEach(x => { s += g('seludang', `<circle cx="${x}" cy="${y0 + 100}" r="24" fill="#dcedc8" stroke="#558b2f"/>`) + g('xilem', `<circle cx="${x - 6}" cy="${y0 + 94}" r="6" fill="#ef9a9a" stroke="#b71c1c"/><circle cx="${x + 6}" cy="${y0 + 94}" r="6" fill="#ef9a9a" stroke="#b71c1c"/>`) + g('floem', `<ellipse cx="${x}" cy="${y0 + 110}" rx="10" ry="6" fill="#9ccc65" stroke="#33691e"/>`); });
+      s += g('stomata', [40, 240, 360].map(x => `<ellipse cx="${x - 6}" cy="${y0 + 193}" rx="6" ry="5" fill="#66bb6a" stroke="#1b5e20"/><ellipse cx="${x + 6}" cy="${y0 + 193}" rx="6" ry="5" fill="#66bb6a" stroke="#1b5e20"/>`).join('') + [180, 330].map(x => `<ellipse cx="${x - 6}" cy="${y0 + 7}" rx="6" ry="5" fill="#66bb6a" stroke="#1b5e20"/><ellipse cx="${x + 6}" cy="${y0 + 7}" rx="6" ry="5" fill="#66bb6a" stroke="#1b5e20"/>`).join(''));
+    }
+    s += `<text class="s" x="20" y="${y0 - 12}" style="fill:var(--muted)">permukaan atas (kutikula kuning)</text><text class="s" x="20" y="${y0 + 222}" style="fill:var(--muted)">permukaan bawah</text>`;
+  }
+  s += `<text class="s" x="470" y="20" text-anchor="end" style="fill:var(--muted)">penampang melintang ${O} ${K}</text>`;
+  svg.innerHTML = s;
+  svg.querySelectorAll('.o').forEach(el => el.onclick = e => { e.stopPropagation(); S = el.dataset.id; draw(); });
+  const I = INFO[S] || ['—', ''];
+  $('read').innerHTML = `<div><span>Jaringan terpilih</span><b>${I[0]}</b></div>`;
+  $('fungsi').textContent = I[1];
+  $('ciri').textContent = CIRI[key];
+}
+draw();
+</script>
+</body>
+</html>

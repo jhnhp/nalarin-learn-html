@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Osmosis pada Sel</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Sel dalam larutan dengan arah perpindahan air dan grafik perubahan massa"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="rbc" class="on">Sel darah merah</button><button data-m="plant">Sel tumbuhan</button></div>
+    <div class="lab"><span id="cl"></span> <b id="cv"></b></div><input type="range" id="c" min="0" max="100" step="1" value="60">
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+    <p class="note">Osmosis: perpindahan air melalui membran semipermeabel dari larutan yang lebih encer (zat terlarut sedikit) ke larutan yang lebih pekat (zat terlarut banyak). Istilah hipotonik, isotonik, dan hipertonik menyatakan larutan di luar sel dibandingkan dengan cairan di dalam sel.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'rbc', V = 1, t = 0;
+const CFG = {rbc: {lab: 'Konsentrasi NaCl di luar sel', max: 3, iso: 0.9, unit: '%', start: 1.8}, plant: {lab: 'Konsentrasi sukrosa di luar sel', max: 1, iso: 0.4, unit: ' M', start: 0.7}};
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; $('c').value = 100 * CFG[M].start / CFG[M].max; V = 1; });
+const C = () => CFG[M].max * +$('c').value / 100;
+function target(c){
+  const iso = CFG[M].iso, v = 0.4 + 0.6 * iso / Math.max(c, 0.02);
+  return M === 'plant' ? Math.min(1, v) : Math.min(v, 1.8);
+}
+function step(){ const T = target(C()); V += (T - V) * 0.06; t += 1; }
+function bumpy(cx, cy, rx, ry, n, a){ let d = ''; for(let i = 0; i <= 72; i++){ const th = i / 72 * 2 * Math.PI, r = 1 + a * Math.sin(n * th); d += (i ? 'L' : 'M') + (cx + rx * r * Math.cos(th)).toFixed(1) + ',' + (cy + ry * r * Math.sin(th)).toFixed(1); } return d + 'Z'; }
+function draw(){
+  const cfg = CFG[M], c = C(), T = target(c), iso = cfg.iso, flow = T - V;
+  $('cl').textContent = cfg.lab; $('cv').textContent = fmt(c, 2) + cfg.unit;
+  const ton = Math.abs(c - iso) / iso < 0.04 ? 'isotonik' : c < iso ? 'hipotonik' : 'hipertonik';
+  let s = `<rect x="10" y="10" width="290" height="300" rx="14" fill="#3b82f6" fill-opacity="${(0.06 + 0.5 * c / cfg.max).toFixed(2)}" style="stroke:var(--line-2)"/>`;
+  s += `<text class="c" x="20" y="32" style="fill:var(--ink)">larutan ${ton}</text>`;
+  const cx = 155, cy = 165;
+  let state = '';
+  if(M === 'rbc'){
+    const lysed = V > 1.55;
+    const k = Math.sqrt(V);
+    if(lysed){
+      state = 'hemolisis (sel pecah)';
+      for(let i = 0; i < 7; i++){ const a = i / 7 * 2 * Math.PI; s += `<path d="M${cx + 70 * Math.cos(a)},${cy + 50 * Math.sin(a)} q${10 * Math.cos(a + 1)},${10 * Math.sin(a + 1)} ${20 * Math.cos(a + .4)},${20 * Math.sin(a + .4)}" fill="none" stroke="#c0392b" stroke-width="4"/>`; }
+      s += `<circle cx="${cx}" cy="${cy}" r="60" fill="#e57373" fill-opacity=".25"/>`;
+    } else if(V < 0.93){
+      state = 'krenasi (sel mengerut)';
+      s += `<path d="${bumpy(cx, cy, 70 * k, 45 * k, 16, 0.06 * (0.93 - V) / 0.3 + 0.025)}" fill="#e57373" stroke="#b03a2e" stroke-width="2.5"/>`;
+    } else {
+      state = V > 1.12 ? 'membengkak' : 'normal (bikonkaf)';
+      const round = Math.min(1, Math.max(0, (V - 1) / 0.5));
+      s += `<ellipse cx="${cx}" cy="${cy}" rx="${70 * k}" ry="${(45 + 25 * round) * k}" fill="#e57373" stroke="#b03a2e" stroke-width="2.5"/>`;
+      if(round < 0.8) s += `<ellipse cx="${cx}" cy="${cy}" rx="${30 * k * (1 - round)}" ry="${18 * k * (1 - round)}" fill="#f2a5a5"/>`;
+    }
+  } else {
+    const W = 200, H = 140;
+    s += `<rect x="${cx - W / 2}" y="${cy - H / 2}" width="${W}" height="${H}" rx="8" fill="#e8f5e9" stroke="#4e8a3a" stroke-width="6"/>`;
+    const k = Math.sqrt(V), w = (W - 12) * k, hh = (H - 12) * k;
+    s += `<rect x="${cx - w / 2}" y="${cy - hh / 2}" width="${w}" height="${hh}" rx="${V < .99 ? 30 : 6}" fill="#a5d6a7" stroke="#2e6b31" stroke-width="2"/><rect x="${cx - w * .3}" y="${cy - hh * .3}" width="${w * .6}" height="${hh * .6}" rx="14" fill="#cfe8f7" stroke="#5b8fc0"/>`;
+    for(let i = 0; i < 6; i++){ s += `<ellipse cx="${cx - w * .4 + (i % 3) * w * .4}" cy="${cy + (i < 3 ? -hh * .38 : hh * .38)}" rx="9" ry="5" fill="#2e7d32"/>`; }
+    state = V >= 0.99 && c < iso * 0.96 ? 'turgid (tekanan turgor tinggi; dinding sel mencegah pecah)' : V < 0.97 ? 'plasmolisis (membran lepas dari dinding sel)' : 'insipien plasmolisis';
+  }
+  // panah air
+  const n = Math.min(6, Math.round(Math.abs(flow) * 40));
+  for(let i = 0; i < n; i++){
+    const a = i / Math.max(n, 1) * 2 * Math.PI + .3, r1 = 135, r2 = 100, inw = flow > 0;
+    const xa = cx + (inw ? r1 : r2) * Math.cos(a), ya = cy + (inw ? r1 : r2) * .9 * Math.sin(a), xb = cx + (inw ? r2 : r1) * Math.cos(a), yb = cy + (inw ? r2 : r1) * .9 * Math.sin(a);
+    s += `<line x1="${xa}" y1="${ya}" x2="${xb}" y2="${yb}" stroke="#1e63d6" stroke-width="2.5" marker-end="url(#ah)"/>`;
+  }
+  s += `<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#1e63d6"/></marker></defs>`;
+  s += `<text class="s" x="20" y="300" style="fill:var(--ink)">${Math.abs(flow) < 0.01 ? 'air masuk = air keluar (seimbang)' : flow > 0 ? 'panah biru: air masuk ke sel' : 'panah biru: air keluar dari sel'}</text>`;
+  // grafik perubahan massa jaringan vs konsentrasi
+  const gx = 320, gy = 170, gw = 150, gh = 120, pc = x => 100 * (target(x) - 1) * (M === 'rbc' ? .6 : .9);
+  const ymax = 40;
+  let p = ''; for(let i = 0; i <= 60; i++){ const x = cfg.max * i / 60; let y = pc(x); if(M === 'rbc') y = Math.min(y, 35); p += (i ? 'L' : 'M') + (gx + gw * i / 60).toFixed(1) + ',' + (gy - gh / 2 * Math.max(-1, Math.min(1, y / ymax))).toFixed(1); }
+  s += `<text class="s" x="${gx}" y="${gy - gh / 2 - 22}" style="fill:var(--muted)">% perubahan volume/massa sel</text><line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" style="stroke:var(--muted)"/><line x1="${gx}" y1="${gy - gh / 2}" x2="${gx}" y2="${gy + gh / 2}" style="stroke:var(--muted)"/><text class="s" x="${gx - 4}" y="${gy - gh / 2 + 4}" text-anchor="end" style="fill:var(--muted)">+</text><text class="s" x="${gx - 4}" y="${gy + gh / 2}" text-anchor="end" style="fill:var(--muted)">−</text><path d="${p}" fill="none" style="stroke:var(--k)" stroke-width="2.5"/>`;
+  const xi = gx + gw * iso / cfg.max; s += `<line x1="${xi}" y1="${gy - gh / 2}" x2="${xi}" y2="${gy + gh / 2}" style="stroke:var(--line-2)" stroke-dasharray="3 3"/><text class="s" x="${xi}" y="${gy + gh / 2 + 14}" text-anchor="middle" style="fill:var(--muted)">isotonik</text><text class="s" x="${gx + gw}" y="${gy + 14}" text-anchor="end" style="fill:var(--muted)">konsentrasi →</text>`;
+  const yc = pc(c); s += `<circle cx="${gx + gw * c / cfg.max}" cy="${gy - gh / 2 * Math.max(-1, Math.min(1, Math.min(yc, 35) / ymax))}" r="5" style="fill:var(--b)"/>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Larutan di luar sel</span><b>${ton}</b></div><div><span>Keadaan sel</span><b>${state}</b></div><div><span>Volume relatif sel</span><b>${fmt(V * 100, 0)}%</b></div>`;
+  $('ket').textContent = ton === 'isotonik' ? 'Konsentrasi zat terlarut di luar sama dengan di dalam sel: air masuk dan keluar sama banyak.' : ton === 'hipotonik' ? 'Larutan luar lebih encer daripada cairan sel: air masuk ke sel.' : 'Larutan luar lebih pekat daripada cairan sel: air keluar dari sel.';
+}
+setInterval(() => { step(); draw(); }, 50);
+draw();
+</script>
+</body>
+</html>

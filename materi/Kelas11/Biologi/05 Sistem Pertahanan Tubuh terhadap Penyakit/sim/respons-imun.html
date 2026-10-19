@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Respons Imun Primer dan Sekunder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Grafik konsentrasi antibodi terhadap waktu"></svg></div>
+  <div class="panel">
+    <div class="lab">Cara memperoleh kekebalan</div>
+    <div class="seg" id="mode"><button data-m="infeksi" class="on">Infeksi alami</button><button data-m="vaksin">Vaksin</button><button data-m="serum">Serum antibodi</button></div>
+    <div class="lab">Paparan kedua (antigen yang sama) pada hari ke- <b id="tv"></b></div><input type="range" id="t2" min="20" max="90" step="5" value="50">
+    <label class="chk"><input type="checkbox" id="mut"> Patogen pada paparan kedua sudah bermutasi (antigen berbeda)</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'infeksi';
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; draw(); });
+const bump = (t, t0, lag, peak, rise, fall) => { const x = t - t0 - lag; if(x <= 0) return 0; return peak * (1 - Math.exp(-x / rise)) * Math.exp(-x / fall); };
+function curves(t){
+  const t2 = +$('t2').value, mut = $('mut').checked;
+  let igm = 0, igg = 0;
+  if(M === 'serum'){ igg = t >= 0 ? 30 * Math.exp(-t / 18) : 0; if(t >= t2) igm += bump(t, t2, 6, 6, 3, 8), igg += bump(t, t2, 9, 4, 4, 30); return [igm, igg]; }
+  const p1 = M === 'vaksin' ? .8 : 1;
+  igm += bump(t, 0, 5, 7 * p1, 3, 7); igg += bump(t, 0, 8, 4.5 * p1, 4, 25);
+  if(t >= t2){ if(mut){ igm += bump(t, t2, 5, 7, 3, 7); igg += bump(t, t2, 8, 4.5, 4, 25); } else { igm += bump(t, t2, 2, 6, 2, 6); igg += bump(t, t2, 2, 140, 2.5, 40); } }
+  return [igm, igg];
+}
+function draw(){
+  const t2 = +$('t2').value; $('tv').textContent = t2;
+  const gx = 50, gy = 280, gw = 410, gh = 240, tmax = 120, ymax = 150;
+  const X = t => gx + gw * t / tmax, Y = v => gy - gh * Math.log10(1 + v) / Math.log10(1 + ymax);
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" style="stroke:var(--ink)"/><line x1="${gx}" y1="${gy - gh}" x2="${gx}" y2="${gy}" style="stroke:var(--ink)"/>`;
+  for(let t = 0; t <= tmax; t += 20) s += `<text class="s" x="${X(t)}" y="${gy + 14}" text-anchor="middle" style="fill:var(--muted)">${t}</text>`;
+  s += `<text class="s" x="${gx + gw}" y="${gy + 28}" text-anchor="end" style="fill:var(--muted)">hari</text><text class="s" x="${gx - 6}" y="${gy - gh - 8}" style="fill:var(--muted)">konsentrasi antibodi (skala log, satuan relatif)</text>`;
+  for(const v of [1, 10, 100]) s += `<line x1="${gx - 4}" y1="${Y(v)}" x2="${gx + gw}" y2="${Y(v)}" style="stroke:var(--line)"/><text class="s" x="${gx - 8}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--muted)">${v}</text>`;
+  let pm = '', pg = '', pt = '';
+  let peak1 = 0, peak2 = 0;
+  for(let i = 0; i <= 240; i++){ const t = tmax * i / 240, [m, g] = curves(t); pm += (i ? 'L' : 'M') + X(t).toFixed(1) + ',' + Y(m).toFixed(1); pg += (i ? 'L' : 'M') + X(t).toFixed(1) + ',' + Y(g).toFixed(1); pt += (i ? 'L' : 'M') + X(t).toFixed(1) + ',' + Y(m + g).toFixed(1); if(t < t2) peak1 = Math.max(peak1, m + g); else peak2 = Math.max(peak2, m + g); }
+  s += `<path d="${pt}" fill="none" stroke="#444" stroke-width="3"/><path d="${pm}" fill="none" stroke="#ef6c00" stroke-width="2" stroke-dasharray="5 4"/><path d="${pg}" fill="none" stroke="#1565c0" stroke-width="2" stroke-dasharray="5 4"/>`;
+  s += `<line x1="${X(0)}" y1="${gy}" x2="${X(0)}" y2="${gy - gh}" stroke="#c62828" stroke-dasharray="3 3"/><text class="s" x="${X(0) + 4}" y="${gy - gh + 12}" fill="#c62828">${M === 'serum' ? 'serum disuntikkan' : M === 'vaksin' ? 'vaksinasi' : 'paparan 1'}</text>`;
+  s += `<line x1="${X(t2)}" y1="${gy}" x2="${X(t2)}" y2="${gy - gh}" stroke="#c62828" stroke-dasharray="3 3"/><text class="s" x="${X(t2) + 4}" y="${gy - gh + 12}" fill="#c62828">paparan ${M === 'infeksi' ? '2' : 'patogen'}</text>`;
+  s += `<rect x="300" y="200" width="150" height="54" rx="8" style="fill:var(--surface-2)"/><line x1="310" y1="214" x2="330" y2="214" stroke="#444" stroke-width="3"/><text class="s" x="336" y="218" style="fill:var(--ink)">total antibodi</text><line x1="310" y1="230" x2="330" y2="230" stroke="#ef6c00" stroke-width="2" stroke-dasharray="5 4"/><text class="s" x="336" y="234" style="fill:var(--ink)">IgM</text><line x1="310" y1="246" x2="330" y2="246" stroke="#1565c0" stroke-width="2" stroke-dasharray="5 4"/><text class="s" x="336" y="250" style="fill:var(--ink)">IgG</text>`;
+  svg.innerHTML = s;
+  const mut = $('mut').checked;
+  $('read').innerHTML = `<div><span>Puncak sebelum paparan kedua</span><b>${fmt(peak1, 1)}</b></div><div><span>Puncak setelah paparan kedua</span><b>${fmt(peak2, 1)}</b></div><div><span>Jenis kekebalan</span><b>${M === 'infeksi' ? 'aktif alami' : M === 'vaksin' ? 'aktif buatan' : 'pasif buatan'}</b></div>`;
+  let ket;
+  if(M === 'serum') ket = 'Serum berisi antibodi siap pakai sehingga kekebalan langsung ada, tetapi antibodi itu terurai dalam beberapa minggu dan tidak terbentuk sel memori. Saat terpapar patogen kemudian, tubuh merespons seperti paparan pertama.';
+  else if(mut) ket = 'Antigen patogen sudah berubah, sehingga sel B memori tidak mengenalinya. Respons yang terjadi kembali lambat dan kecil seperti respons primer.';
+  else ket = 'Respons primer lambat (beberapa hari) dan kecil, didominasi IgM. Pada paparan kedua, sel B memori segera membelah menjadi sel plasma sehingga antibodi (terutama IgG) terbentuk lebih cepat, jauh lebih banyak, dan bertahan lebih lama: respons sekunder.' + (M === 'vaksin' ? ' Vaksin melatih sistem imun membentuk sel memori tanpa harus sakit.' : '');
+  $('ket').textContent = ket;
+}
+['t2', 'mut'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

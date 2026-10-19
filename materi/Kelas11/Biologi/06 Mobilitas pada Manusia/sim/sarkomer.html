@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontraksi Sarkomer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Sarkomer dengan filamen aktin dan miosin yang saling bergeser"></svg></div>
+  <div class="panel">
+    <div class="lab">Panjang sarkomer <b id="lv"></b></div><input type="range" id="l" min="1.8" max="3.0" step="0.05" value="2.8">
+    <div class="row"><button class="btn primary" id="anim">Kontraksi dan relaksasi</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Model geser filamen: saat kontraksi, kepala miosin menarik aktin ke arah tengah sarkomer. Filamen tidak memendek; yang memendek adalah sarkomer, pita I, dan zona H. Pita A (sepanjang miosin) tetap.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const MY = 1.6, AC = 1.0; // panjang miosin (pita A) dan tiap filamen aktin, μm
+let timer = null;
+function draw(){
+  const Ls = +$('l').value; $('lv').textContent = fmt(Ls, 2) + ' μm';
+  const sc = 140, cx = 240, cy = 120, half = Ls / 2;
+  const zL = cx - half * sc, zR = cx + half * sc;
+  let s = '';
+  // garis Z
+  s += `<line x1="${zL}" y1="40" x2="${zL}" y2="200" stroke="#333" stroke-width="5"/><line x1="${zR}" y1="40" x2="${zR}" y2="200" stroke="#333" stroke-width="5"/><text class="s" x="${zL}" y="32" text-anchor="middle" style="fill:var(--ink)">garis Z</text><text class="s" x="${zR}" y="32" text-anchor="middle" style="fill:var(--ink)">garis Z</text>`;
+  // pita A latar
+  s += `<rect x="${cx - MY / 2 * sc}" y="45" width="${MY * sc}" height="150" fill="#ffccbc" fill-opacity=".5"/>`;
+  const H = Math.max(0, Ls - 2 * AC);
+  s += `<rect x="${cx - H / 2 * sc}" y="45" width="${H * sc}" height="150" fill="#fff" fill-opacity=".6"/>`;
+  for(const y of [70, 120, 170]){
+    // aktin dari kiri dan kanan
+    s += `<line x1="${zL}" y1="${y - 12}" x2="${zL + AC * sc}" y2="${y - 12}" stroke="#43a047" stroke-width="4"/><line x1="${zL}" y1="${y + 12}" x2="${zL + AC * sc}" y2="${y + 12}" stroke="#43a047" stroke-width="4"/>`;
+    s += `<line x1="${zR}" y1="${y - 12}" x2="${zR - AC * sc}" y2="${y - 12}" stroke="#43a047" stroke-width="4"/><line x1="${zR}" y1="${y + 12}" x2="${zR - AC * sc}" y2="${y + 12}" stroke="#43a047" stroke-width="4"/>`;
+    // miosin dengan kepala
+    s += `<line x1="${cx - MY / 2 * sc}" y1="${y}" x2="${cx + MY / 2 * sc}" y2="${y}" stroke="#d84315" stroke-width="9"/>`;
+    for(let i = 0; i < 7; i++){ const off = (0.1 + i * 0.1) * sc; s += `<line x1="${cx - off}" y1="${y}" x2="${cx - off - 6}" y2="${y - 9}" stroke="#d84315" stroke-width="2"/><line x1="${cx + off}" y1="${y}" x2="${cx + off + 6}" y2="${y + 9}" stroke="#d84315" stroke-width="2"/>`; }
+  }
+  // ukuran
+  const dim = (x1, x2, y, lab) => `<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="#555" marker-start="url(#a)" marker-end="url(#a)"/><text class="s" x="${(x1 + x2) / 2}" y="${y - 4}" text-anchor="middle" style="fill:var(--ink)">${lab}</text>`;
+  s += `<defs><marker id="a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs>`;
+  s += dim(zL, zR, 225, 'sarkomer ' + fmt(Ls, 2) + ' μm') + dim(cx - MY / 2 * sc, cx + MY / 2 * sc, 250, 'pita A ' + fmt(MY, 2) + ' μm');
+  const I = Ls - MY; if(I > 0.02) s += dim(zL, cx - MY / 2 * sc, 275, 'pita I ' + fmt(I, 2)) .replace('pita I', '½ pita I');
+  if(H > 0.02) s += dim(cx - H / 2 * sc, cx + H / 2 * sc, 205, 'zona H ' + fmt(H, 2));
+  s += `<text class="s" x="20" y="295" fill="#43a047">hijau: aktin (filamen tipis)</text><text class="s" x="260" y="295" fill="#d84315">merah: miosin (filamen tebal)</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Panjang sarkomer</span><b>${fmt(Ls, 2)} μm</b></div><div><span>Pita A (tetap)</span><b>${fmt(MY, 2)} μm</b></div><div><span>Pita I</span><b>${fmt(Math.max(0, I), 2)} μm</b></div><div><span>Zona H</span><b>${fmt(H, 2)} μm</b></div>`;
+}
+$('l').oninput = draw;
+$('anim').onclick = () => { clearInterval(timer); let k = 0; timer = setInterval(() => { k++; const v = 2.4 + 0.4 * Math.cos(k / 12); $('l').value = v.toFixed(2); draw(); if(k > 150) clearInterval(timer); }, 50); };
+draw();
+</script>
+</body>
+</html>

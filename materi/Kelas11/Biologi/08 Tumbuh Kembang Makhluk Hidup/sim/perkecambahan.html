@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Percobaan Perkecambahan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Kecambah tumbuh di tanah dan grafik tinggi terhadap hari"></svg></div>
+  <div class="panel">
+    <div class="seg" id="biji"><button data-v="kacang" class="on">Kacang hijau</button><button data-v="jagung">Jagung</button></div>
+    <div class="lab">Hari ke- <b id="dv"></b></div><input type="range" id="d" min="0" max="10" step="1" value="6">
+    <div class="lab">Cahaya</div>
+    <div class="seg" id="cahaya"><button data-v="terang" class="on">Terang</button><button data-v="gelap">Gelap</button></div>
+    <div class="lab">Suhu <b id="tv"></b></div><input type="range" id="t" min="5" max="45" step="1" value="25">
+    <label class="chk"><input type="checkbox" id="kering"> Media kering (tidak disiram)</label>
+    <label class="chk"><input type="checkbox" id="kot"> Kotiledon dibuang setelah muncul</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let B = 'kacang', C = 'terang';
+[['biji', v => B = v], ['cahaya', v => C = v]].forEach(([id, f]) => $(id).querySelectorAll('button').forEach(b => b.onclick = () => { $(id).querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); f(b.dataset.v); draw(); }));
+function rate(o){
+  const T = o.t, f = Math.max(0, 1 - ((T - 30) / 13) ** 2); // suhu: terlalu dingin atau panas menghambat
+  let r = 2.2 * f;
+  if(o.kering) r = 0;
+  if(o.gelap) r *= 1.7; // etiolasi: lebih panjang tetapi pucat dan lemah
+  return r;
+}
+function height(day, o){
+  let h = 0;
+  for(let k = 1; k <= day; k++){ let r = rate(o); if(k <= 1) r *= .2; if(o.kot && k > 2) r *= .45; h += r; }
+  return h;
+}
+function draw(){
+  const day = +$('d').value, o = {t: +$('t').value, kering: $('kering').checked, gelap: C === 'gelap', kot: $('kot').checked};
+  $('dv').textContent = day; $('tv').textContent = o.t + ' °C';
+  const hcm = height(day, o), ctrl = height(day, {t: 30, kering: false, gelap: false, kot: false});
+  const epi = B === 'kacang';
+  let s = `<rect x="0" y="0" width="300" height="330" fill="${o.gelap ? '#37474f' : '#e3f2fd'}"/>`;
+  s += `<rect x="0" y="230" width="300" height="100" fill="${o.kering ? '#d7ccc8' : '#8d6e63'}"/>`;
+  const gx = 150, gy = 230, px = 9, H = Math.min(200, hcm * px);
+  const green = o.gelap ? '#e6ee9c' : '#43a047';
+  // akar
+  if(day >= 1 && !o.kering) s += `<path d="M${gx},${gy + 10} q-4,${20 + 4 * day} 2,${30 + 6 * day} M${gx},${gy + 25} q-14,10 -22,24 M${gx},${gy + 25} q14,10 22,24" stroke="#eee" stroke-width="2" fill="none"/>`;
+  // biji/kotiledon
+  if(day < 2 || o.kering){ s += `<ellipse cx="${gx}" cy="${gy + 12}" rx="10" ry="7" fill="${epi ? '#9ccc65' : '#fbc02d'}" stroke="#555"/>`; }
+  else {
+    s += `<path d="M${gx},${gy + 8} C${gx - 4},${gy - H * .5} ${gx + 4},${gy - H * .8} ${gx},${gy - H}" stroke="${green}" stroke-width="4" fill="none"/>`;
+    const cotY = epi ? gy - H * .75 : gy + 12;
+    if(!o.kot) s += `<ellipse cx="${gx - 9}" cy="${cotY}" rx="9" ry="6" fill="${epi ? '#9ccc65' : '#fbc02d'}" stroke="#555"/><ellipse cx="${gx + 9}" cy="${cotY}" rx="9" ry="6" fill="${epi ? '#9ccc65' : '#fbc02d'}" stroke="#555"/>`;
+    if(day >= 4) s += `<ellipse cx="${gx - 12}" cy="${gy - H}" rx="12" ry="6" fill="${green}" transform="rotate(-25 ${gx - 12} ${gy - H})"/><ellipse cx="${gx + 12}" cy="${gy - H}" rx="12" ry="6" fill="${green}" transform="rotate(25 ${gx + 12} ${gy - H})"/>`;
+  }
+  s += `<text class="s" x="10" y="20" fill="${o.gelap ? '#fff' : '#333'}">${epi ? 'kacang hijau: kotiledon terangkat ke atas tanah (epigeal)' : 'jagung: kotiledon tetap di dalam tanah (hipogeal)'}</text>`;
+  s += `<text class="s" x="10" y="248" fill="#fff">permukaan tanah</text>`;
+  // grafik
+  const qx = 320, qy = 260, qw = 150, qh = 200, X = d => qx + qw * d / 10, Y = v => qy - qh * Math.min(1, v / 35);
+  let p = '', pc = ''; for(let d = 0; d <= 10; d++){ p += (d ? 'L' : 'M') + X(d) + ',' + Y(height(d, o)); pc += (d ? 'L' : 'M') + X(d) + ',' + Y(height(d, {t: 30, kering: false, gelap: false, kot: false})); }
+  s += `<text class="s" x="${qx}" y="${qy - qh - 8}" style="fill:var(--muted)">tinggi (cm) terhadap hari</text><line x1="${qx}" y1="${qy}" x2="${qx + qw}" y2="${qy}" style="stroke:var(--ink)"/><line x1="${qx}" y1="${qy - qh}" x2="${qx}" y2="${qy}" style="stroke:var(--ink)"/>`;
+  s += `<path d="${pc}" fill="none" stroke="#9e9e9e" stroke-dasharray="4 3" stroke-width="2"/><path d="${p}" fill="none" stroke="#2e7d32" stroke-width="2.5"/><circle cx="${X(day)}" cy="${Y(hcm)}" r="4" fill="#2e7d32"/>`;
+  s += `<text class="s" x="${qx}" y="${qy + 16}" style="fill:var(--muted)">0</text><text class="s" x="${qx + qw}" y="${qy + 16}" text-anchor="end" style="fill:var(--muted)">10 hari</text><text class="s" x="${qx}" y="${qy + 32}" fill="#9e9e9e">abu-abu: pembanding (terang, lembap, ± 30 °C)</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Tinggi kecambah</span><b>${fmt(hcm, 1)} cm</b></div><div><span>Tipe perkecambahan</span><b>${epi ? 'epigeal' : 'hipogeal'}</b></div><div><span>Warna dan keadaan</span><b>${o.kering ? 'tidak berkecambah' : o.gelap ? 'pucat, kurus, panjang (etiolasi)' : 'hijau, kokoh'}</b></div>`;
+  let ket = epi ? 'Pada perkecambahan epigeal, hipokotil memanjang sehingga kotiledon terangkat ke atas tanah.' : 'Pada perkecambahan hipogeal, epikotil yang memanjang sehingga kotiledon tetap di dalam tanah.';
+  ket += ' Plumula tumbuh menjadi batang dan daun, sedangkan radikula menjadi akar. Kotiledon menyediakan makanan sampai daun dapat berfotosintesis.';
+  if(o.kering) ket = 'Tanpa air, biji tidak menyerap air (imbibisi) sehingga enzim tidak aktif dan perkecambahan tidak terjadi.';
+  else if(o.gelap) ket += ' Di tempat gelap auksin tidak terurai oleh cahaya, sehingga batang memanjang lebih cepat, tetapi pucat karena klorofil tidak terbentuk (etiolasi).';
+  else if(o.t < 15 || o.t > 40) ket += ' Suhu jauh dari suhu optimum memperlambat kerja enzim, sehingga pertumbuhan terhambat.';
+  if(o.kot && !o.kering) ket += ' Tanpa kotiledon, cadangan makanan berkurang sehingga kecambah tumbuh lebih lambat.';
+  $('ket').textContent = ket;
+}
+['d', 't', 'kering', 'kot'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

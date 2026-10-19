@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transpor Zat melalui Membran</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Partikel di luar dan di dalam sel yang melintasi membran"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="o2" class="on">Difusi O₂</button><button data-m="glu">Difusi terfasilitasi glukosa</button><button data-m="pompa">Pompa Na⁺–K⁺</button></div>
+    <div class="lab">Jumlah protein transpor <b id="nv"></b></div><input type="range" id="n" min="1" max="5" step="1" value="3">
+    <label class="chk"><input type="checkbox" id="inh"> Beri penghambat pembentukan ATP</label>
+    <div class="row"><button class="btn primary" id="rs">Mulai ulang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const L0 = 228, L1 = 252, TOP = 30, BOT = 240, XL = 12, XR = 468, R = 4.5;
+let M = 'o2', P = [], hist = [], busy = [], ptimer = [], atp = 0, naOut = 0, kIn = 0, tick = 0, flash = [];
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; reset(); });
+function add(k, side){ const x = side < 0 ? XL + R + Math.random() * (L0 - XL - 2 * R) : L1 + R + Math.random() * (XR - L1 - 2 * R), y = TOP + R + Math.random() * (BOT - TOP - 2 * R), a = Math.random() * 6.283, v = 1.6 + Math.random(); P.push({x, y, vx: v * Math.cos(a), vy: v * Math.sin(a), k}); }
+function reset(){
+  P = []; hist = []; atp = 0; naOut = 0; kIn = 0; tick = 0; flash = [];
+  if(M === 'o2') for(let i = 0; i < 40; i++) add('O', -1);
+  if(M === 'glu') for(let i = 0; i < 40; i++) add('G', -1);
+  if(M === 'pompa'){ for(let i = 0; i < 20; i++){ add('Na', -1); add('Na', 1); add('K', -1); add('K', 1); } }
+}
+const n = () => +$('n').value;
+const sites = () => { const k = n(); return Array.from({length: k}, (_, i) => TOP + (BOT - TOP) * (i + .5) / k); };
+const side = p => p.x < (L0 + L1) / 2 ? -1 : 1;
+function step(){
+  tick++;
+  const S = sites(); while(busy.length < S.length) busy.push(0); while(ptimer.length < S.length) ptimer.push(0);
+  busy = busy.map(b => Math.max(0, b - 1));
+  for(const p of P){
+    const s0 = side(p);
+    p.x += p.vx; p.y += p.vy;
+    if(p.y < TOP + R || p.y > BOT - R){ p.vy *= -1; p.y = Math.max(TOP + R, Math.min(BOT - R, p.y)); }
+    if(p.x < XL + R || p.x > XR - R){ p.vx *= -1; p.x = Math.max(XL + R, Math.min(XR - R, p.x)); }
+    const inMem = p.x > L0 - R && p.x < L1 + R;
+    if(!inMem) continue;
+    let pass = false;
+    if(p.k === 'O') pass = Math.random() < .5;
+    else if(p.k === 'G'){ const i = S.findIndex(y => Math.abs(p.y - y) < 12); if(i >= 0 && !busy[i]){ busy[i] = 12; pass = true; flash.push([i, 6]); } }
+    else pass = Math.random() < .01; // kebocoran ion lewat saluran
+    if(pass){ p.x = s0 < 0 ? L1 + R + 1 : L0 - R - 1; }
+    else { p.x = s0 < 0 ? L0 - R : L1 + R; p.vx = -p.vx; }
+  }
+  if(M === 'pompa' && !$('inh').checked){
+    S.forEach((y, i) => {
+      ptimer[i]++;
+      if(ptimer[i] < 70) return; ptimer[i] = 0;
+      const na = P.filter(p => p.k === 'Na' && side(p) > 0).slice(0, 3), k = P.filter(p => p.k === 'K' && side(p) < 0).slice(0, 2);
+      if(na.length < 3 || k.length < 2) return;
+      na.forEach(p => { p.x = L0 - R - 2 - Math.random() * 10; p.y = y + (Math.random() - .5) * 20; p.vx = -Math.abs(p.vx); });
+      k.forEach(p => { p.x = L1 + R + 2 + Math.random() * 10; p.y = y + (Math.random() - .5) * 20; p.vx = Math.abs(p.vx); });
+      atp++; naOut += 3; kIn += 2; flash.push([i, 8]);
+    });
+  }
+  flash = flash.map(([i, t]) => [i, t - 1]).filter(f => f[1] > 0);
+  if(tick % 10 === 0){ const cnt = k => [P.filter(p => p.k === k && side(p) < 0).length, P.filter(p => p.k === k && side(p) > 0).length]; hist.push(M === 'pompa' ? [cnt('Na'), cnt('K')] : [cnt(M === 'o2' ? 'O' : 'G')]); if(hist.length > 120) hist.shift(); }
+}
+const COL = {O: '#e74c3c', G: '#f5a623', Na: '#ff7f0e', K: '#8e44ad'};
+function draw(){
+  $('nv').textContent = n(); $('n').disabled = M === 'o2';
+  const S = sites();
+  let s = `<rect x="${XL}" y="${TOP}" width="${L0 - XL}" height="${BOT - TOP}" fill="#e3f2fd"/><rect x="${L1}" y="${TOP}" width="${XR - L1}" height="${BOT - TOP}" fill="#fff8e1"/>`;
+  s += `<text class="c" x="${XL + 4}" y="${TOP - 10}" style="fill:var(--ink)">luar sel</text><text class="c" x="${XR}" y="${TOP - 10}" text-anchor="end" style="fill:var(--ink)">dalam sel (sitoplasma)</text>`;
+  // membran fosfolipid
+  for(let y = TOP; y < BOT; y += 9){ s += `<circle cx="${L0 + 3}" cy="${y + 4}" r="3.5" fill="#6d8fd3"/><circle cx="${L1 - 3}" cy="${y + 4}" r="3.5" fill="#6d8fd3"/><line x1="${L0 + 6}" y1="${y + 4}" x2="${L1 - 6}" y2="${y + 4}" stroke="#c8d3ea" stroke-width="1"/>`; }
+  if(M !== 'o2') S.forEach((y, i) => { const f = flash.find(z => z[0] === i); s += `<rect x="${L0 - 4}" y="${y - 13}" width="${L1 - L0 + 8}" height="26" rx="8" fill="${M === 'pompa' ? '#26a69a' : '#9c27b0'}" fill-opacity="${f ? .9 : .55}" stroke="${f ? '#000' : 'none'}"/>${M === 'pompa' ? `<text class="s" x="${(L0 + L1) / 2}" y="${y + 4}" text-anchor="middle" fill="#fff">ATP</text>` : ''}`; });
+  for(const p of P) s += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${R}" fill="${COL[p.k]}"/>`;
+  // grafik jumlah di dalam sel
+  const gx = 40, gy = 318, gw = 420, gh = 58, ymax = 40;
+  s += `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" style="stroke:var(--muted)"/><line x1="${gx}" y1="${gy - gh}" x2="${gx}" y2="${gy}" style="stroke:var(--muted)"/>`;
+  const series = M === 'pompa' ? [[0, 1, COL.Na, 'Na⁺ di dalam'], [1, 1, COL.K, 'K⁺ di dalam']] : [[0, 1, COL[M === 'o2' ? 'O' : 'G'], (M === 'o2' ? 'O₂' : 'glukosa') + ' di dalam'], [0, 0, '#3b82f6', 'di luar']];
+  series.forEach(([a, b, col, lab], j) => { let q = ''; hist.forEach((h, i) => { q += (i ? 'L' : 'M') + (gx + gw * i / 120).toFixed(1) + ',' + (gy - gh * h[a][b] / ymax).toFixed(1); }); s += `<path d="${q}" fill="none" stroke="${col}" stroke-width="2"/><text class="s" x="${gx + 6 + j * 110}" y="${gy - gh - 4}" fill="${col}">${lab}</text>`; });
+  svg.innerHTML = s;
+  const c = k => [P.filter(p => p.k === k && side(p) < 0).length, P.filter(p => p.k === k && side(p) > 0).length];
+  let rd = '', ket = '';
+  if(M === 'o2'){ const [o, i] = c('O'); rd = `<div><span>O₂ luar / dalam</span><b>${o} / ${i}</b></div><div><span>Energi (ATP)</span><b>tidak diperlukan</b></div>`; ket = 'Difusi sederhana: molekul kecil dan nonpolar (O₂, CO₂) langsung menembus lapisan fosfolipid dari konsentrasi tinggi ke rendah, sampai merata. Penghambat ATP tidak berpengaruh.'; }
+  if(M === 'glu'){ const [o, i] = c('G'); rd = `<div><span>Glukosa luar / dalam</span><b>${o} / ${i}</b></div><div><span>Energi (ATP)</span><b>tidak diperlukan</b></div>`; ket = 'Difusi terfasilitasi: glukosa terlalu besar dan polar untuk menembus fosfolipid, sehingga harus lewat protein pembawa (GLUT). Arahnya tetap mengikuti gradien konsentrasi; lajunya bergantung pada jumlah protein pembawa.'; }
+  if(M === 'pompa'){ const [no, ni] = c('Na'), [ko, ki] = c('K'); rd = `<div><span>Na⁺ luar / dalam</span><b>${no} / ${ni}</b></div><div><span>K⁺ luar / dalam</span><b>${ko} / ${ki}</b></div><div><span>ATP terpakai</span><b>${atp}</b></div><div><span>Na⁺ dikeluarkan / K⁺ dimasukkan</span><b>${naOut} / ${kIn}</b></div>`; ket = $('inh').checked ? 'Tanpa ATP pompa berhenti. Ion bocor perlahan mengikuti gradien sehingga perbedaan konsentrasi berkurang.' : 'Transpor aktif primer: setiap siklus pompa memakai 1 ATP untuk mengeluarkan 3 Na⁺ dan memasukkan 2 K⁺, melawan gradien konsentrasi.'; }
+  $('read').innerHTML = rd; $('ket').textContent = ket;
+}
+$('rs').onclick = reset;
+reset();
+setInterval(() => { step(); draw(); }, 40);
+</script>
+</body>
+</html>

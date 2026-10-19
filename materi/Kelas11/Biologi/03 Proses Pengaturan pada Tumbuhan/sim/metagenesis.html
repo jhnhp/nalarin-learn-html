@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metagenesis Lumut dan Paku</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+.st{cursor:pointer}.st:hover rect{filter:brightness(1.05)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Siklus hidup tumbuhan dengan fase sporofit diploid dan gametofit haploid"></svg></div>
+  <div class="panel">
+    <div class="seg" id="sp"><button data-v="lumut" class="on">Lumut</button><button data-v="paku">Paku</button></div>
+    <div class="lab">Jumlah kromosom sporofit 2n = <b id="nv"></b></div><input type="range" id="n" min="8" max="40" step="2" value="16">
+    <div class="row"><button class="btn primary" id="next">Tahap berikutnya →</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [nama, ploidi (1 = n, 2 = 2n), keterangan lumut, keterangan paku]
+const ST = [
+  ['Sporofit', 2, 'Sporofit lumut berupa tangkai dan kapsul (sporangium) yang menumpang pada gametofit dan bergantung padanya.', 'Sporofit paku adalah tumbuhan paku yang kita kenal (akar, batang, daun). Generasi ini dominan dan hidup lama.'],
+  ['Sporangium (meiosis)', 2, 'Di dalam kapsul, sel induk spora membelah secara meiosis.', 'Sporangium di bawah daun (dalam sorus) berisi sel induk spora yang membelah secara meiosis.'],
+  ['Spora', 1, 'Spora haploid tersebar oleh angin.', 'Spora haploid tersebar oleh angin.'],
+  ['Gametofit', 1, 'Spora tumbuh menjadi protonema lalu tumbuhan lumut yang kita kenal. Gametofit ini dominan dan berfotosintesis.', 'Spora tumbuh menjadi protalium kecil berbentuk jantung; gametofit ini hidup singkat.'],
+  ['Gametangium (mitosis)', 1, 'Anteridium menghasilkan sperma dan arkegonium menghasilkan sel telur secara mitosis.', 'Anteridium dan arkegonium pada protalium menghasilkan sperma dan sel telur secara mitosis.'],
+  ['Fertilisasi → zigot', 2, 'Sperma berenang dalam air menuju arkegonium; peleburan menghasilkan zigot diploid. Karena itu lumut memerlukan tempat lembap.', 'Sperma berenang dalam lapisan air menuju sel telur; zigot diploid tumbuh menjadi sporofit muda.']
+];
+let SP = 'lumut', K = 0;
+$('sp').querySelectorAll('button').forEach(b => b.onclick = () => { $('sp').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); SP = b.dataset.v; draw(); });
+$('next').onclick = () => { K = (K + 1) % ST.length; draw(); };
+$('n').oninput = draw;
+function draw(){
+  const n2 = +$('n').value, n = n2 / 2; $('nv').textContent = n2;
+  const cx = 243, cy = 180, R = 125, RX = 160, RY = 112;
+  let s = `<path d="M${cx - RX},${cy} A${RX},${RY} 0 0,1 ${cx + RX},${cy}" fill="none" stroke="#7b1fa2" stroke-width="14" stroke-opacity=".18"/><path d="M${cx + RX},${cy} A${RX},${RY} 0 0,1 ${cx - RX},${cy}" fill="none" stroke="#2e7d32" stroke-width="14" stroke-opacity=".18"/>`;
+  s += `<text class="c" x="${cx}" y="${cy - 6}" text-anchor="middle" style="fill:#7b1fa2">fase diploid (2n)</text><text class="c" x="${cx}" y="${cy + 14}" text-anchor="middle" style="fill:#2e7d32">fase haploid (n)</text>`;
+  ST.forEach((st, i) => {
+    const ang = (-120 + i * 60) * Math.PI / 180;
+    const x = cx + RX * Math.cos(ang), y = cy + RY * Math.sin(ang), on = i === K, col = st[1] === 2 ? '#7b1fa2' : '#2e7d32';
+    const w = 140;
+    s += `<g class="st" data-i="${i}"><rect x="${x - w / 2}" y="${y - 20}" width="${w}" height="40" rx="8" fill="${on ? col : '#fff'}" stroke="${col}" stroke-width="2"/><text class="s" x="${x}" y="${y - 3}" text-anchor="middle" fill="${on ? '#fff' : col}">${st[0]}</text><text class="s" x="${x}" y="${y + 12}" text-anchor="middle" fill="${on ? '#fff' : col}">${st[1] === 2 ? '2n = ' + n2 : 'n = ' + n}</text></g>`;
+  });
+  const dom = SP === 'lumut' ? 'gametofit' : 'sporofit';
+  s += `<text class="c" x="${cx}" y="22" text-anchor="middle" style="fill:var(--ink)">Metagenesis ${SP}: generasi dominan = ${dom}</text>`;
+  svg.innerHTML = s;
+  svg.querySelectorAll('.st').forEach(el => el.onclick = () => { K = +el.dataset.i; draw(); });
+  const st = ST[K];
+  $('read').innerHTML = `<div><span>Tahap</span><b>${st[0]}</b></div><div><span>Ploidi / jumlah kromosom</span><b>${st[1] === 2 ? '2n = ' + n2 : 'n = ' + n}</b></div><div><span>Generasi dominan ${SP}</span><b>${dom}</b></div>`;
+  $('ket').textContent = SP === 'lumut' ? st[2] : st[3];
+}
+draw();
+</script>
+</body>
+</html>

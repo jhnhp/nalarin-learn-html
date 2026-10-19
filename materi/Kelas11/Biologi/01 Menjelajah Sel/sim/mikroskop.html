@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mikroskop Cahaya Virtual</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Bidang pandang mikroskop dengan preparat sel"></svg></div>
+  <div class="panel">
+    <div class="lab">Preparat</div><select id="sp"></select>
+    <div class="lab">Lensa objektif</div>
+    <div class="seg" id="ob"><button data-m="4">4×</button><button data-m="10" class="on">10×</button><button data-m="40">40×</button><button data-m="100">100×</button></div>
+    <div class="lab">Fokus (makrometer/mikrometer) <b id="fv"></b></div><input type="range" id="f" min="0" max="100" step="1" value="72">
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+    <p class="note">Lensa okuler 10×. Perbesaran total = perbesaran okuler × perbesaran objektif. Daya pisah mikroskop cahaya sekitar 0,2 μm: benda yang lebih kecil dari itu tidak dapat dibedakan, berapa pun perbesarannya.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [nama, ukuran khas (μm), jenis gambar, keterangan]
+const SP = [
+  ['Epidermis bawang merah', 220, 'bawang', 'Sel tumbuhan berbentuk balok tersusun rapat; dinding sel dan inti terlihat jelas.'],
+  ['Sel epitel pipi (diwarnai metilen biru)', 60, 'pipi', 'Sel hewan berbentuk pipih tidak beraturan; inti di tengah; tidak ada dinding sel.'],
+  ['Sel darah merah manusia', 7.5, 'darah', 'Berbentuk cakram bikonkaf tanpa inti.'],
+  ['Bakteri basil (Bacillus)', 3, 'bakteri', 'Sel prokariot sangat kecil; baru tampak jelas pada objektif 100× dengan minyak imersi.'],
+  ['Virus influenza', 0.1, 'virus', 'Ukurannya sekitar 100 nm, lebih kecil dari daya pisah mikroskop cahaya.']
+];
+SP.forEach((s, i) => { const o = document.createElement('option'); o.value = i; o.textContent = s[0]; $('sp').appendChild(o); });
+let OB = 10;
+$('ob').querySelectorAll('button').forEach(b => b.onclick = () => { $('ob').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); OB = +b.dataset.m; draw(); });
+['sp', 'f'].forEach(i => $(i).oninput = draw);
+function rng(seed){ let x = seed; return () => (x = (x * 16807) % 2147483647) / 2147483647; }
+function draw(){
+  const sp = SP[+$('sp').value], total = 10 * OB, fov = 18000 / OB; // diameter bidang pandang (μm), nomor medan 18 mm
+  const cx = 170, cy = 170, R = 150, pxum = 2 * R / fov; // piksel per μm
+  const best = {4: 70, 10: 72, 40: 75, 100: 78}[OB], blur = Math.abs(+$('f').value - best) * .35;
+  const r = rng(7);
+  let cells = '';
+  const sz = sp[1] * pxum;
+  if(sp[2] === 'bawang'){ const w = sz, h = sz * .3; for(let y = cy - R - h; y < cy + R + h; y += h) { const off = (Math.round((y - cy) / h) % 2) * w / 2; for(let x = cx - R - w + off; x < cx + R + w; x += w) cells += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#f5e6c8" stroke="#8a6d3b" stroke-width="${Math.max(1, w / 60)}"/><ellipse cx="${x + w * (.3 + .4 * r())}" cy="${y + h / 2}" rx="${h * .18}" ry="${h * .14}" fill="#9c6b3c"/>`; } }
+  if(sp[2] === 'pipi'){ for(let k = 0; k < 40; k++){ const x = cx + (r() - .5) * 2.4 * R, y = cy + (r() - .5) * 2.4 * R, s = sz * (.8 + .4 * r()); cells += `<path d="M${x - s / 2},${y} q${s * .2},${-s * .55} ${s * .55},${-s * .45} q${s * .5},${s * .1} ${s * .45},${s * .5} q${-s * .1},${s * .45} ${-s * .55},${s * .4} q${-s * .45},${-s * .05} ${-s * .45},${-s * .45}z" fill="#c9d7f2" stroke="#3b5ba5" stroke-width="1"/><circle cx="${x}" cy="${y}" r="${s * .09}" fill="#2a3f86"/>`; } }
+  if(sp[2] === 'darah'){ for(let k = 0; k < 400; k++){ const x = cx + (r() - .5) * 2.2 * R, y = cy + (r() - .5) * 2.2 * R; cells += `<circle cx="${x}" cy="${y}" r="${sz / 2}" fill="#e3747a" stroke="#a33" stroke-width="${Math.max(.3, sz / 25)}"/><circle cx="${x}" cy="${y}" r="${sz / 5}" fill="#f1a9ad"/>`; } }
+  if(sp[2] === 'bakteri'){ for(let k = 0; k < 900; k++){ const x = cx + (r() - .5) * 2.2 * R, y = cy + (r() - .5) * 2.2 * R, a = r() * 180; cells += `<rect x="${x - sz / 2}" y="${y - sz / 6}" width="${sz}" height="${sz / 3}" rx="${sz / 6}" fill="#7a4fbf" transform="rotate(${a} ${x} ${y})"/>`; } }
+  if(sp[2] === 'virus') cells = '';
+  let s = `<defs><clipPath id="cp"><circle cx="${cx}" cy="${cy}" r="${R}"/></clipPath><filter id="bl"><feGaussianBlur stdDeviation="${blur.toFixed(2)}"/></filter></defs>`;
+  s += `<rect x="0" y="0" width="480" height="340" style="fill:var(--surface)"/><circle cx="${cx}" cy="${cy}" r="${R + 6}" fill="#111"/><g clip-path="url(#cp)"><rect x="${cx - R}" y="${cy - R}" width="${2 * R}" height="${2 * R}" fill="#fbf8ef"/><g filter="url(#bl)">${cells}</g></g>`;
+  // skala batang
+  const opts = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]; const bar = opts.find(v => v * pxum >= 40) || 1000;
+  s += `<line x1="345" y1="300" x2="${345 + bar * pxum}" y2="300" style="stroke:var(--ink)" stroke-width="4"/><text class="s" x="345" y="290" style="fill:var(--ink)">${bar >= 1000 ? bar / 1000 + ' mm' : bar + ' μm'}</text>`;
+  s += `<text class="c" x="345" y="40" style="fill:var(--ink)">Perbesaran ${total}×</text><text class="s" x="345" y="60" style="fill:var(--muted)">bidang pandang ≈ ${fov >= 1000 ? fmt(fov / 1000, 2) + ' mm' : fmt(fov, 0) + ' μm'}</text>`;
+  const across = fov / sp[1];
+  s += `<text class="s" x="345" y="80" style="fill:var(--muted)">± ${across >= 1 ? fmt(across, 0) : fmt(across, 2)} sel berjajar</text><text class="s" x="345" y="96" style="fill:var(--muted)">sepanjang diameter</text>`;
+  svg.innerHTML = s;
+  $('fv').textContent = blur < 1 ? 'tajam' : blur < 4 ? 'agak kabur' : 'kabur';
+  const visible = sp[1] >= 0.2, imgSize = sp[1] * total / 1000;
+  $('read').innerHTML = `<div><span>Perbesaran total</span><b>10 × ${OB} = ${total}×</b></div><div><span>Ukuran sel sebenarnya</span><b>${sp[1] >= 1 ? fmt(sp[1], 1) + ' μm' : fmt(sp[1] * 1000, 0) + ' nm'}</b></div><div><span>Ukuran bayangan (ukuran × perbesaran)</span><b>${fmt(imgSize, 2)} mm</b></div><div><span>Dapat dibedakan?</span><b>${visible ? (sz < 4 ? 'terlalu kecil pada perbesaran ini' : 'ya') : 'tidak (perlu mikroskop elektron)'}</b></div>`;
+  $('ket').textContent = sp[3];
+}
+draw();
+</script>
+</body>
+</html>

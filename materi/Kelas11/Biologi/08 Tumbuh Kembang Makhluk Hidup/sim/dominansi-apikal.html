@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dominansi Apikal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Tanaman dengan pucuk dan tunas samping"></svg></div>
+  <div class="panel">
+    <div class="seg" id="per"><button data-v="utuh" class="on">Pucuk utuh</button><button data-v="pangkas">Pucuk dipangkas</button><button data-v="auksin">Dipangkas + pasta auksin</button></div>
+    <div class="lab">Minggu ke- <b id="wv"></b></div><input type="range" id="w" min="0" max="8" step="1" value="5">
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let P = 'utuh';
+$('per').querySelectorAll('button').forEach(b => b.onclick = () => { $('per').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); P = b.dataset.v; draw(); });
+function draw(){
+  const w = +$('w').value; $('wv').textContent = w;
+  const apical = P === 'utuh', aux = P !== 'pangkas';
+  const top = apical ? 150 + 18 * w : 150;
+  const side = aux ? 6 + w * 1.5 : 10 + w * 14;
+  const gx = 240, gy = 290;
+  let s = `<rect x="0" y="${gy}" width="480" height="30" fill="#8d6e63"/><rect x="${gx - 40}" y="${gy - 30}" width="80" height="30" fill="#bf6f3a"/>`;
+  s += `<line x1="${gx}" y1="${gy - 30}" x2="${gx}" y2="${gy - 30 - top}" stroke="#2e7d32" stroke-width="7"/>`;
+  const nodes = [0.35, 0.55, 0.75];
+  nodes.forEach((f, i) => {
+    const y = gy - 30 - 150 * f, dir = i % 2 ? 1 : -1;
+    s += `<ellipse cx="${gx + dir * 30}" cy="${y - 4}" rx="26" ry="9" fill="#66bb6a" transform="rotate(${dir * -20} ${gx + dir * 30} ${y - 4})"/>`;
+    const L = side * (1 - .15 * i);
+    s += `<line x1="${gx}" y1="${y}" x2="${gx - dir * L}" y2="${y - L * .9}" stroke="#43a047" stroke-width="4"/><circle cx="${gx - dir * L}" cy="${y - L * .9}" r="5" fill="#9ccc65"/>`;
+    if(L > 40) s += `<ellipse cx="${gx - dir * L - dir * 14}" cy="${y - L * .9 - 4}" rx="16" ry="6" fill="#66bb6a"/>`;
+  });
+  if(apical) s += `<circle cx="${gx}" cy="${gy - 30 - top}" r="7" fill="#c5e1a5" stroke="#2e7d32"/><text class="s" x="${gx + 12}" y="${gy - 30 - top + 4}" style="fill:var(--ink)">pucuk (meristem apikal)</text>`;
+  else s += `<rect x="${gx - 7}" y="${gy - 30 - top - 6}" width="14" height="6" fill="${P === 'auksin' ? '#ffb300' : '#a1887f'}"/><text class="s" x="${gx + 12}" y="${gy - 30 - top}" style="fill:var(--ink)">${P === 'auksin' ? 'bekas potongan + pasta auksin' : 'bekas potongan'}</text>`;
+  if(aux) for(let k = 0; k < 4; k++){ const y = gy - 40 - top + 30 + k * ((top - 40) / 4) + ((w * 9 + k * 13) % 20); s += `<circle cx="${gx + 6}" cy="${y}" r="2.5" fill="#ffb300"/>`; }
+  s += `<text class="s" x="20" y="24" style="fill:var(--muted)">titik kuning: auksin yang mengalir ke bawah dari pucuk</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Tinggi batang utama</span><b>${apical ? 'terus bertambah' : 'tidak bertambah'}</b></div><div><span>Tunas samping (ketiak)</span><b>${aux ? 'tetap kecil (dorman)' : 'tumbuh menjadi cabang'}</b></div>`;
+  $('ket').textContent = P === 'utuh' ? 'Auksin dari pucuk mengalir ke bawah dan menghambat tunas samping (dominansi apikal), sehingga tanaman tumbuh meninggi.' : P === 'pangkas' ? 'Pucuk dibuang sehingga aliran auksin ke bawah berhenti; tunas samping lepas dari hambatan dan tumbuh menjadi cabang. Karena itu tanaman teh dan pagar hidup yang sering dipangkas menjadi rimbun dan tidak tinggi.' : 'Pasta auksin pada bekas potongan menggantikan peran pucuk, sehingga tunas samping tetap terhambat. Ini membuktikan bahwa hambatan berasal dari auksin.';
+}
+$('w').oninput = draw;
+draw();
+</script>
+</body>
+</html>

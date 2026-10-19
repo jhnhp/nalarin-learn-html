@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sumber Energi Otot</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Grafik sumbangan sumber energi otot terhadap lama aktivitas"></svg></div>
+  <div class="panel">
+    <div class="lab">Lama aktivitas berat <b id="tv"></b></div><input type="range" id="t" min="1" max="300" step="1" value="40">
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// sumbangan relatif tiap sumber pada detik ke-x (model sederhana)
+function mix(x){
+  const atp = Math.exp(-x / 2.5), cp = Math.max(0, Math.exp(-(((x - 7) / 6) ** 2))), gly = Math.max(0, Math.exp(-(((x - 45) / 40) ** 2)) * (x > 6 ? 1 : x / 6)), aer = 1 / (1 + Math.exp(-(x - 90) / 30));
+  const s = atp + cp + gly + aer; return [atp / s, cp / s, gly / s, aer / s];
+}
+const COL = ['#e53935', '#fb8c00', '#8e24aa', '#1e88e5'], NM = ['ATP tersimpan di otot', 'kreatin fosfat', 'glikolisis anaerob (glikogen otot → asam laktat)', 'respirasi aerob (glukosa, lemak + O₂)'];
+function draw(){
+  const T = +$('t').value; $('tv').textContent = T < 60 ? T + ' detik' : fmt(T / 60, 1) + ' menit';
+  const gx = 40, gy = 230, gw = 420, gh = 190, tmax = 300, X = x => gx + gw * Math.log10(1 + x) / Math.log10(1 + tmax);
+  let s = '';
+  // area bertumpuk
+  const N = 120; const pts = []; for(let i = 0; i <= N; i++){ const x = tmax * (Math.pow(10, i / N * Math.log10(1 + tmax)) - 1) / tmax; pts.push([x, mix(x)]); }
+  for(let k = 3; k >= 0; k--){
+    let top = '', bot = '';
+    pts.forEach(([x, m]) => { const c1 = m.slice(0, k + 1).reduce((a, b) => a + b, 0), c0 = c1 - m[k]; top += `${X(x).toFixed(1)},${(gy - gh * c1).toFixed(1)} `; });
+    pts.slice().reverse().forEach(([x, m]) => { const c0 = m.slice(0, k).reduce((a, b) => a + b, 0); bot += `${X(x).toFixed(1)},${(gy - gh * c0).toFixed(1)} `; });
+    s += `<polygon points="${top}${bot}" fill="${COL[k]}" fill-opacity=".55"/>`;
+  }
+  s += `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" style="stroke:var(--ink)"/>`;
+  for(const v of [1, 5, 15, 60, 120, 300]) s += `<line x1="${X(v)}" y1="${gy}" x2="${X(v)}" y2="${gy + 5}" style="stroke:var(--ink)"/><text class="s" x="${X(v)}" y="${gy + 17}" text-anchor="middle" style="fill:var(--muted)">${v < 60 ? v + ' s' : v / 60 + ' mnt'}</text>`;
+  s += `<line x1="${X(T)}" y1="${gy - gh}" x2="${X(T)}" y2="${gy}" stroke="#000" stroke-width="2"/>`;
+  NM.forEach((n, i) => { s += `<rect x="${gx}" y="${250 + i * 16}" width="12" height="10" fill="${COL[i]}" fill-opacity=".7"/><text class="s" x="${gx + 16}" y="${259 + i * 16}" style="fill:var(--ink)">${n}</text>`; });
+  s += `<text class="s" x="${gx}" y="${gy - gh - 8}" style="fill:var(--muted)">sumbangan relatif sumber energi (sumbu waktu logaritmik)</text>`;
+  svg.innerHTML = s;
+  const m = mix(T), i = m.indexOf(Math.max(...m));
+  $('read').innerHTML = m.map((v, k) => `<div><span>${NM[k]}</span><b>${fmt(100 * v, 0)}%</b></div>`).join('') + `<div><span>Sumber utama</span><b>${NM[i]}</b></div>`;
+  $('ket').textContent = T <= 5 ? 'Beberapa detik pertama: ATP yang tersimpan di otot langsung dipakai, tetapi hanya cukup untuk ± 5 detik.' : T <= 15 ? 'Kreatin fosfat menyerahkan fosfatnya untuk membentuk kembali ATP. ATP dan kreatin fosfat bersama-sama cukup untuk ± 15 detik (misalnya lari cepat jarak pendek).' : T <= 120 ? 'Setelah kreatin fosfat habis, glikogen otot dan glukosa darah diuraikan. Jika oksigen tidak mencukupi, glikolisis berlangsung anaerob dan menghasilkan asam laktat, sehingga napas terengah-engah setelahnya untuk membayar “utang oksigen”.' : 'Pada aktivitas lama dengan intensitas sedang, respirasi aerob menjadi sumber utama; glukosa dan lemak dioksidasi sempurna dengan oksigen.';
+}
+$('t').oninput = draw;
+draw();
+</script>
+</body>
+</html>
