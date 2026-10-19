@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uji Karbohidrat dan Protein</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:11.5px}.s{font-family:var(--display);font-weight:700;font-size:10px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Tabung reaksi berisi bahan makanan yang diuji"></svg></div>
+  <div class="panel">
+    <div class="lab">Uji</div>
+    <div class="seg" id="r"><button data-r="molisch" class="on">Molisch</button><button data-r="benedict">Benedict</button><button data-r="barfoed">Barfoed</button><button data-r="seliwanoff">Seliwanoff</button><button data-r="iodin">Iodin</button><button data-r="biuret">Biuret</button><button data-r="xanto">Xantoproteat</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Klik tabung untuk melihat penjelasan. Benedict, Barfoed, dan Seliwanoff dilakukan dengan pemanasan.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const S = [['glukosa', 'monosakarida, aldosa'], ['fruktosa', 'monosakarida, ketosa'], ['laktosa', 'disakarida pereduksi'], ['sukrosa', 'disakarida bukan pereduksi'], ['pati', 'polisakarida'], ['putih telur', 'protein (albumin)'], ['minyak', 'lipid']];
+// tiap uji: [warna dasar, fungsi hasil(i) → [warna, endapan?, teks] atau null, teks negatif, tujuan]
+const U = {
+  molisch: ['#eceff1', i => i <= 4 ? ['#eceff1', 'cincin', 'cincin ungu di batas lapisan'] : null, 'tidak ada cincin ungu', 'mendeteksi semua karbohidrat (α-naftol + H₂SO₄ pekat)'],
+  benedict: ['#42a5f5', i => [0, 1, 2].includes(i) ? ['#ef6c00', 'endapan', 'endapan merah bata'] : null, 'tetap biru', 'mendeteksi gula pereduksi (gugus aldehida/keton bebas mereduksi Cu²⁺ menjadi Cu₂O)'],
+  barfoed: ['#64b5f6', i => i <= 1 ? ['#64b5f6', 'endapan', 'endapan merah cepat (± 2–5 menit)'] : i <= 3 ? ['#64b5f6', 'endapan-sedikit', 'endapan merah lambat (> 10 menit)'] : null, 'tidak ada endapan', 'membedakan monosakarida (cepat) dari disakarida (lambat) dalam suasana asam'],
+  seliwanoff: ['#fff8e1', i => i === 1 ? ['#e53935', '', 'merah terang dengan cepat'] : i === 3 ? ['#ef5350', '', 'merah (sukrosa terhidrolisis menghasilkan fruktosa)'] : i <= 2 ? ['#f8bbd0', '', 'merah muda samar, lambat'] : null, 'tidak berubah', 'membedakan ketosa (merah cepat) dari aldosa (lambat, samar)'],
+  iodin: ['#fff59d', i => i === 4 ? ['#1a237e', '', 'biru kehitaman'] : null, 'kuning/cokelat (warna iodin)', 'mendeteksi amilum (pati)'],
+  biuret: ['#90caf9', i => i === 5 ? ['#7e57c2', '', 'ungu'] : null, 'tetap biru muda', 'mendeteksi ikatan peptida (minimal dua ikatan peptida)'],
+  xanto: ['#fafafa', i => i === 5 ? ['#fdd835', '', 'kuning, menjadi jingga setelah ditambah basa'] : null, 'tidak kuning', 'mendeteksi asam amino bercincin benzena (tirosin, fenilalanin, triptofan) dengan HNO₃ pekat'],
+};
+let R = 'molisch', sel = 0;
+$('r').querySelectorAll('button').forEach(b => b.onclick = () => { $('r').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); R = b.dataset.r; draw(); });
+function draw(){
+  const u = U[R];
+  let s = `<rect x="10" y="226" width="460" height="14" rx="3" fill="#8d6e63"/>`;
+  S.forEach((sm, i) => {
+    const x = 28 + i * 64, res = u[1](i), col = res ? res[0] : u[0], on = i === sel;
+    s += `<g data-i="${i}" style="cursor:pointer"><rect x="${x - 6}" y="40" width="54" height="196" fill="transparent"/><path d="M${x},60 v146 a21,21 0 0,0 42,0 v-146" fill="#fff" fill-opacity=".6" stroke="${on ? '#1565c0' : '#90a4ae'}" stroke-width="${on ? 3 : 2}"/>`;
+    s += `<path d="M${x + 2},130 v76 a19,19 0 0,0 38,0 v-76 z" fill="${col}" fill-opacity=".75"/>`;
+    if(i === 6) s += `<rect x="${x + 2}" y="122" width="38" height="10" fill="#fdd835" opacity=".7"/>`;
+    if(res && res[1] === 'cincin') s += `<rect x="${x + 2}" y="160" width="38" height="7" fill="#6a1b9a"/>`;
+    if(res && res[1] === 'endapan') s += `<ellipse cx="${x + 21}" cy="218" rx="16" ry="7" fill="#bf360c"/>`;
+    if(res && res[1] === 'endapan-sedikit') s += `<ellipse cx="${x + 21}" cy="221" rx="9" ry="4" fill="#bf360c"/>`;
+    s += `<text class="c" x="${x + 21}" y="260" text-anchor="middle" style="fill:var(--ink)">${sm[0].split(' ')[0]}</text><text class="c" x="${x + 21}" y="274" text-anchor="middle" style="fill:var(--ink)">${sm[0].split(' ')[1] || ''}</text><text class="s" x="${x + 21}" y="296" text-anchor="middle" fill="${res ? '#2e7d32' : '#9e9e9e'}">${res ? '+' : '−'}</text></g>`;
+  });
+  s += `<text class="c" x="240" y="24" text-anchor="middle" style="fill:var(--ink)">Uji ${R === 'xanto' ? 'xantoproteat' : R}: ${u[3].split(' (')[0]}</text>`;
+  svg.innerHTML = s;
+  svg.querySelectorAll('g[data-i]').forEach(g => g.onclick = () => { sel = +g.dataset.i; draw(); });
+  const res = u[1](sel);
+  $('read').innerHTML = `<div><span>Sampel</span><b>${S[sel][0]} (${S[sel][1]})</b></div><div><span>Hasil</span><b>${res ? res[2] : u[2]}</b></div><div><span>Fungsi uji</span><b style="font-weight:600">${u[3]}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,56 +1,246 @@
 {
   "title": "Sifat Koligatif Larutan",
-  "summary": "Ringkasan bab Sifat Koligatif Larutan akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Molalitas dan fraksi mol, faktor van 't Hoff, penurunan tekanan uap (hukum Raoult), kenaikan titik didih, penurunan titik beku, diagram fasa, tekanan osmosis, dan penerapannya dalam kehidupan.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Sifat Koligatif Larutan",
+      "id": "konsentrasi",
+      "title": "Sifat koligatif, satuan konsentrasi, dan faktor van 't Hoff",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Faktor Van't Hoff, Penurunan Tekanan Uap, Penurunan Titik Beku, Kenaikan Titik Didih, Tekanan Osmosis, dan Diagram Fasa</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Air membeku pada 0 °C dan mendidih pada 100 °C (1 atm). Larutan gula atau garam membeku pada suhu lebih rendah dan mendidih pada suhu lebih tinggi. Sifat larutan yang hanya bergantung pada <b>jumlah partikel</b> zat terlarut, bukan jenisnya, disebut <b>sifat koligatif</b>. Ada empat: penurunan tekanan uap, kenaikan titik didih, penurunan titik beku, dan tekanan osmosis.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Satuan konsentrasi",
+          "html": "<ul><li>Molaritas: \\(M = \\dfrac{n}{V\\,(\\text{L})}\\)</li><li>Molalitas: \\(m = \\dfrac{n}{\\text{massa pelarut (kg)}} = \\dfrac{\\text{massa}}{M_r} \\times \\dfrac{1000}{p\\,(\\text{g})}\\)</li><li>Fraksi mol: \\(X_t = \\dfrac{n_t}{n_t + n_p}\\), dengan \\(X_t + X_p = 1\\)</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Faktor van 't Hoff",
+          "html": "<p>Larutan elektrolit menghasilkan lebih banyak partikel karena zat terlarutnya terurai menjadi ion:</p><p>\\(i = 1 + (n - 1)\\alpha\\)</p><p>n = jumlah ion per satuan rumus, α = derajat ionisasi. Nonelektrolit: i = 1. Elektrolit kuat (α = 1): i = n, misalnya NaCl i = 2, CaCl₂ i = 3, Al₂(SO₄)₃ i = 5.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 6 g urea (Mr = 60) dilarutkan dalam 200 g air. Hitung molalitas dan fraksi mol urea.</p>",
+          "steps": [
+            "n urea = 6/60 = 0,1 mol → m = 0,1 × 1000/200 = 0,5 m.",
+            "n air = 200/18 ≈ 11,1 mol → X urea = 0,1/(0,1 + 11,1)."
+          ],
+          "answer": "0,5 m; X ≈ 0,0089"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Asam lemah biner HA terion 30% dalam air. Berapa faktor van 't Hoff-nya?</p>",
+          "steps": [
+            "HA ⇌ H⁺ + A⁻ → n = 2, α = 0,3.",
+            "i = 1 + (2 − 1) × 0,3."
+          ],
+          "answer": "i = 1,3"
+        },
+        {
+          "type": "check",
+          "question": "Pada molalitas yang sama, larutan yang memiliki jumlah partikel terlarut paling banyak adalah ....",
+          "options": {
+            "A": "sukrosa",
+            "B": "KCl",
+            "C": "MgSO₄",
+            "D": "Na₃PO₄"
+          },
+          "answer": "D",
+          "hint": "Hitung jumlah ion tiap satuan rumus.",
+          "explanation": "Na₃PO₄ → 3Na⁺ + PO₄³⁻, i = 4, terbesar di antara pilihan."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "tekanan-uap",
+      "title": "Penurunan tekanan uap",
+      "kind": "artikel",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Di permukaan larutan, sebagian tempat ditempati partikel zat terlarut yang tidak mudah menguap, dan molekul pelarut tertahan oleh gaya tarik zat terlarut. Akibatnya lebih sedikit molekul pelarut yang menguap, sehingga <b>tekanan uap larutan lebih rendah</b> daripada pelarut murninya. Inilah sebabnya air dalam gelas berisi air murni lama-kelamaan pindah ke gelas berisi larutan gula jika keduanya disimpan dalam kotak tertutup.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Raoult",
+          "html": "<p>\\(P = X_p \\cdot P^\\circ\\)</p><p>\\(\\Delta P = P^\\circ - P = X_t \\cdot P^\\circ\\)</p><p>Untuk elektrolit, mol zat terlarut dikalikan i: \\(X_t = \\dfrac{n_t \\cdot i}{n_t \\cdot i + n_p}\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 0,5 mol urea dilarutkan dalam 9,5 mol air. Tekanan uap air murni pada suhu itu 30 mmHg. Hitung tekanan uap larutan dan penurunannya.</p>",
+          "steps": [
+            "X air = 9,5/(9,5 + 0,5) = 0,95.",
+            "P = 0,95 × 30 = 28,5 mmHg.",
+            "ΔP = 30 − 28,5."
+          ],
+          "answer": "P = 28,5 mmHg; ΔP = 1,5 mmHg"
+        },
+        {
+          "type": "check",
+          "question": "Tekanan uap larutan glukosa dibandingkan dengan tekanan uap larutan NaCl yang molalitasnya sama adalah ....",
+          "options": {
+            "A": "lebih rendah",
+            "B": "sama",
+            "C": "lebih tinggi",
+            "D": "tidak dapat dibandingkan"
+          },
+          "answer": "C",
+          "hint": "NaCl menghasilkan dua kali partikel.",
+          "explanation": "Partikel NaCl dua kali lebih banyak, sehingga penurunan tekanan uapnya lebih besar dan tekanan uapnya lebih rendah. Tekanan uap larutan glukosa lebih tinggi."
+        }
+      ]
+    },
+    {
+      "id": "titik-didih-beku",
+      "title": "Kenaikan titik didih dan penurunan titik beku",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Cairan mendidih saat tekanan uapnya sama dengan tekanan udara luar. Karena tekanan uap larutan lebih rendah, larutan harus dipanaskan lebih tinggi untuk mendidih. Saat membeku, partikel zat terlarut mengganggu penyusunan kristal pelarut, sehingga diperlukan suhu lebih rendah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus",
+          "html": "<p>\\(\\Delta T_b = K_b \\cdot m \\cdot i, \\qquad T_b = 100\\text{ °C} + \\Delta T_b\\)</p><p>\\(\\Delta T_f = K_f \\cdot m \\cdot i, \\qquad T_f = 0\\text{ °C} - \\Delta T_f\\)</p><p>Untuk air: K<sub>b</sub> = 0,52 °C/m dan K<sub>f</sub> = 1,86 °C/m.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/koligatif.html",
+          "title": "Diagram fasa dan sifat koligatif",
+          "height": 560,
+          "caption": "Bandingkan glukosa dan MgCl₂ dengan jumlah mol yang sama. Berapa kali ΔTf MgCl₂ dibanding glukosa?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 18 g glukosa (Mr = 180) dilarutkan dalam 500 g air. Tentukan titik didih larutan.</p>",
+          "steps": [
+            "m = (18/180) × (1000/500) = 0,2 m.",
+            "ΔTb = 0,52 × 0,2 = 0,104 °C."
+          ],
+          "answer": "100,104 °C"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebanyak 2,925 g NaCl (Mr = 58,5) dilarutkan dalam 250 g air. Tentukan titik beku larutan.</p>",
+          "steps": [
+            "m = (2,925/58,5) × (1000/250) = 0,2 m; i = 2.",
+            "ΔTf = 1,86 × 0,2 × 2 = 0,744 °C."
+          ],
+          "answer": "−0,744 °C"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (menentukan Mr)",
+          "question": "<p>Sebanyak 3 g zat nonelektrolit dilarutkan dalam 100 g air. Larutan membeku pada −0,465 °C. Tentukan Mr zat tersebut.</p>",
+          "steps": [
+            "m = ΔTf/Kf = 0,465/1,86 = 0,25 m.",
+            "n = 0,25 × 0,1 kg = 0,025 mol.",
+            "Mr = 3/0,025."
+          ],
+          "answer": "Mr = 120"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Pada soal latihan larutan oralit, buku menulis \"Titik didih ... (Kf = 1,86 °C/m)\" dan \"Titik beku ... (Kb = 0,52 °C/m)\". Tetapannya tertukar. Untuk titik didih gunakan <b>Kb = 0,52 °C/m</b>, dan untuk titik beku gunakan <b>Kf = 1,86 °C/m</b>. Data pada Aktivitas 1.7 juga seharusnya ditulis dalam molal (m), bukan molar (M), karena rumus ΔTb dan ΔTf memakai molalitas.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Air laut dapat tetap cair pada suhu sedikit di bawah 0 °C, sedangkan air danau sudah membeku. Penjelasannya adalah ....",
+          "options": {
+            "A": "air laut memiliki tekanan uap lebih tinggi",
+            "B": "garam terlarut menurunkan titik beku air laut",
+            "C": "air laut selalu bergerak",
+            "D": "garam terlarut menaikkan titik beku air laut"
+          },
+          "answer": "B",
+          "hint": "Air laut adalah larutan.",
+          "explanation": "Zat terlarut (terutama NaCl) menurunkan titik beku, sehingga air laut membeku pada suhu sekitar −2 °C."
+        }
+      ]
+    },
+    {
+      "id": "osmosis",
+      "title": "Tekanan osmosis",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Osmosis</b> adalah perpindahan pelarut melalui membran semipermeabel dari larutan encer ke larutan pekat. <b>Tekanan osmosis</b> (π) adalah tekanan yang harus diberikan pada larutan agar osmosis berhenti.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tekanan osmosis (van 't Hoff)",
+          "html": "<p>\\(\\pi = M \\cdot R \\cdot T \\cdot i\\)</p><p>M = molaritas, R = 0,082 L atm mol⁻¹ K⁻¹, T dalam kelvin.</p><p>Dua larutan dengan π sama disebut <b>isotonik</b>. Larutan dengan π lebih besar disebut <b>hipertonik</b>, dan yang lebih kecil disebut <b>hipotonik</b>.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Cairan infus NaCl 0,15 M diberikan pada suhu tubuh 37 °C. Hitung tekanan osmosisnya.</p>",
+          "steps": [
+            "T = 37 + 273 = 310 K; i = 2.",
+            "π = 0,15 × 0,082 × 310 × 2."
+          ],
+          "answer": "≈ 7,6 atm, kira-kira sama dengan tekanan osmosis darah (isotonik)"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Penerapan sifat koligatif</b>:</p><ul><li><b>Osmosis balik</b> (reverse osmosis): air laut ditekan melebihi tekanan osmosisnya melalui membran, sehingga air murni keluar. Cara ini dipakai untuk desalinasi dan penjernih air minum isi ulang.</li><li>Cairan infus dibuat isotonik dengan darah agar sel darah tidak mengerut atau pecah.</li><li>Pengawetan dengan garam atau gula: mikroba kehilangan air karena lingkungannya hipertonik.</li><li>Garam ditaburkan di jalan bersalju, dan campuran es dan garam dipakai untuk membuat es puter (penurunan titik beku).</li><li>Penentuan massa molekul relatif zat, misalnya protein, dengan pengukuran tekanan osmosis.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Sel darah merah yang dimasukkan ke larutan NaCl 3% (hipertonik) akan ....",
+          "options": {
+            "A": "menggembung lalu pecah",
+            "B": "mengerut karena air keluar dari sel",
+            "C": "tidak berubah",
+            "D": "membelah"
+          },
+          "answer": "B",
+          "hint": "Air bergerak ke larutan yang lebih pekat.",
+          "explanation": "Larutan di luar lebih pekat, sehingga air keluar dari sel dan sel mengerut (krenasi)."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai molaritas untuk ΔTb dan ΔTf; yang benar molalitas. Tekanan osmosis memakai molaritas.</li><li>Lupa faktor i untuk elektrolit.</li><li>Lupa mengubah °C ke kelvin pada rumus tekanan osmosis.</li><li>Menuliskan titik beku sebagai +ΔTf; titik beku larutan = 0 − ΔTf.</li><li>Pada Raoult, memakai mol zat terlarut sebagai X pelarut.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab I Larutan dan Koloid (D. Sifat Koligatif Larutan).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang faktor van 't Hoff, penurunan tekanan uap, kenaikan titik didih, penurunan titik beku, tekanan osmosis, dan diagram fasa. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

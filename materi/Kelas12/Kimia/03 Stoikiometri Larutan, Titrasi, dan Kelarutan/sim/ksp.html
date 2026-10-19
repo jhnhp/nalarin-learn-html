@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelarutan dan Pengendapan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 310" role="img" aria-label="Pencampuran dua larutan dan kemungkinan terbentuknya endapan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="campur" class="on">Campur dua larutan</button><button data-m="senama">Ion senama</button></div>
+    <div class="lab">Garam sukar larut</div>
+    <select id="g">
+      <option value="0">BaSO₄ (Ksp = 1,1 × 10⁻¹⁰)</option>
+      <option value="1">AgBr (Ksp = 5,0 × 10⁻¹³)</option>
+      <option value="2">CaCO₃ (Ksp = 2,8 × 10⁻⁹)</option>
+      <option value="3">Ag₂CrO₄ (Ksp = 1,1 × 10⁻¹²)</option>
+      <option value="4">PbCl₂ (Ksp = 1,7 × 10⁻⁵)</option>
+    </select>
+    <div id="pc">
+      <div class="lab" id="la">Konsentrasi larutan 1 <b id="av"></b></div><input type="range" id="a" min="-6" max="-1" step="0.1" value="-4">
+      <div class="lab" id="lb">Konsentrasi larutan 2 <b id="bv"></b></div><input type="range" id="b" min="-6" max="-1" step="0.1" value="-4">
+      <p class="note">Kedua larutan masing-masing 50 mL, sehingga setelah dicampur volumenya 100 mL dan konsentrasi tiap ion menjadi setengahnya.</p>
+    </div>
+    <div id="ps" hidden>
+      <div class="lab" id="ls">Konsentrasi ion senama <b id="sv"></b></div><input type="range" id="sn" min="-5" max="0" step="0.1" value="-2">
+    </div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [rumus, Ksp, kation, x, anion, y, sumber kation, sumber anion]
+const G = [['BaSO₄', 1.1e-10, 'Ba²⁺', 1, 'SO₄²⁻', 1, 'BaCl₂', 'Na₂SO₄'], ['AgBr', 5e-13, 'Ag⁺', 1, 'Br⁻', 1, 'AgNO₃', 'NaBr'], ['CaCO₃', 2.8e-9, 'Ca²⁺', 1, 'CO₃²⁻', 1, 'CaCl₂', 'Na₂CO₃'], ['Ag₂CrO₄', 1.1e-12, 'Ag⁺', 2, 'CrO₄²⁻', 1, 'AgNO₃', 'K₂CrO₄'], ['PbCl₂', 1.7e-5, 'Pb²⁺', 1, 'Cl⁻', 2, 'Pb(NO₃)₂', 'NaCl']];
+let M = 'campur';
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; $('pc').hidden = M !== 'campur'; $('ps').hidden = M !== 'senama'; draw(); });
+const sup = n => String(n).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+const sci = v => { if(v === 0) return '0'; const e = Math.floor(Math.log10(v) + 1e-9), m = v / 10 ** e; return Math.abs(m - 1) < 0.005 ? `10${sup(e)}` : `${fmt(m, 2)} × 10${sup(e)}`; };
+function solve(f, lo, hi){ for(let i = 0; i < 200; i++){ const m = Math.sqrt(lo * hi); if(f(m) > 0) hi = m; else lo = m; } return Math.sqrt(lo * hi); }
+function beaker(x, y, w, h, col, label, ppt){
+  let t = `<path d="M${x},${y} v${h} q0,10 10,10 h${w - 20} q10,0 10,-10 v${-h}" fill="none" stroke="#90a4ae" stroke-width="2.5"/><rect x="${x + 2}" y="${y + h * .3}" width="${w - 4}" height="${h * .7 + 8}" rx="8" fill="${col}" fill-opacity=".25"/>`;
+  if(ppt > 0) for(let i = 0; i < Math.round(8 + 30 * ppt); i++) t += `<circle cx="${x + 8 + ((i * 37) % (w - 16))}" cy="${y + h + 4 - (i % 3) * 4 - Math.floor(i / 12) * 4}" r="3" fill="#eceff1" stroke="#90a4ae" stroke-width=".8"/>`;
+  return t + `<text class="s" x="${x + w / 2}" y="${y + h + 28}" text-anchor="middle" style="fill:var(--ink)">${label}</text>`;
+}
+function draw(){
+  const g = G[+$('g').value], [f, Ksp, cat, x, an, y, sc, sa] = g;
+  let s = '', html = '';
+  if(M === 'campur'){
+    const c1 = 10 ** +$('a').value, c2 = 10 ** +$('b').value;
+    $('la').firstChild.textContent = `Konsentrasi ${sc} `; $('lb').firstChild.textContent = `Konsentrasi ${sa} `;
+    $('av').textContent = sci(c1) + ' M'; $('bv').textContent = sci(c2) + ' M';
+    // ion per satuan rumus sumber: AgNO3→1 Ag+, K2CrO4→1 CrO4, NaCl→1 Cl-, Pb(NO3)2→1 Pb
+    const ccat = c1 / 2, can = c2 / 2, Q = ccat ** x * can ** y, ppt = Q > Ksp;
+    s += beaker(30, 40, 90, 110, '#90caf9', `50 mL ${sc}`, 0) + beaker(150, 40, 90, 110, '#fff59d', `50 mL ${sa}`, 0);
+    s += `<text class="c" x="260" y="105" style="fill:var(--ink)">→</text>`;
+    s += beaker(290, 20, 160, 150, ppt ? '#cfd8dc' : '#c5e1a5', `campuran 100 mL`, ppt ? Math.min(1, Math.log10(Q / Ksp) / 4) : 0);
+    s += `<text class="c" x="370" y="236" text-anchor="middle" fill="${ppt ? '#c62828' : '#2e7d32'}">${ppt ? `terbentuk endapan ${f}` : Math.abs(Math.log10(Q / Ksp)) < 0.02 ? 'tepat jenuh' : 'tidak ada endapan'}</text>`;
+    s += `<text class="s" x="30" y="236" style="fill:var(--ink)">Qsp = [${cat}]${x > 1 ? '²' : ''} [${an}]${y > 1 ? '²' : ''}</text><text class="s" x="30" y="254" fill="#555">= (${sci(ccat)})${x > 1 ? '²' : ''} × (${sci(can)})${y > 1 ? '²' : ''}</text><text class="s" x="30" y="272" fill="#555">= ${sci(Q)}</text>`;
+    // batang log
+    const bx = 30, bw = 420, by = 290, L = v => bx + (Math.log10(v) + 20) / 20 * bw;
+    s += `<line x1="${bx}" y1="${by}" x2="${bx + bw}" y2="${by}" stroke="#555"/><line x1="${L(Ksp)}" y1="${by - 10}" x2="${L(Ksp)}" y2="${by + 6}" stroke="#2e7d32" stroke-width="3"/><text class="s" x="${L(Ksp)}" y="${by + 16}" text-anchor="middle" fill="#2e7d32">Ksp</text>`;
+    if(Q > 1e-20) s += `<circle cx="${L(Q)}" cy="${by}" r="5" fill="${ppt ? '#c62828' : '#1565c0'}"/><text class="s" x="${L(Q)}" y="${by - 10}" text-anchor="middle" fill="${ppt ? '#c62828' : '#1565c0'}">Qsp</text>`;
+    html = `<div><span>[${cat}] setelah dicampur</span><b>${sci(ccat)} M</b></div><div><span>[${an}] setelah dicampur</span><b>${sci(can)} M</b></div><div><span>Qsp</span><b>${sci(Q)}</b></div><div><span>Ksp</span><b>${sci(Ksp)}</b></div><div><span>Kesimpulan</span><b>${ppt ? 'Qsp > Ksp: mengendap' : 'Qsp ≤ Ksp: tidak mengendap'}</b></div>`;
+  } else {
+    const c = 10 ** +$('sn').value, ion = y === 1 ? an : an; // ion senama: anion
+    $('ls').firstChild.textContent = `Konsentrasi ion senama ${an} `; $('sv').textContent = sci(c) + ' M';
+    const s0 = Math.pow(Ksp / (x ** x * y ** y), 1 / (x + y));
+    const s1 = solve(v => (x * v) ** x * (y * v + c) ** y - Ksp, 1e-30, 1);
+    const B = (cx, val, col, lab) => { const h = Math.max(2, (Math.log10(val) + 14) / 14 * 200); return `<rect x="${cx}" y="${250 - h}" width="80" height="${h}" fill="${col}" rx="4"/><text class="c" x="${cx + 40}" y="${244 - h}" text-anchor="middle" fill="${col}">${sci(val)}</text><text class="s" x="${cx + 40}" y="268" text-anchor="middle" style="fill:var(--ink)">${lab}</text>`; };
+    s += `<text class="c" x="20" y="24" style="fill:var(--ink)">Kelarutan ${f} (mol/L), skala logaritmik</text>`;
+    s += B(90, s0, '#1565c0', 'dalam air murni') + B(290, s1, '#e53935', `dalam ${an} ${sci(c)} M`);
+    s += `<line x1="40" y1="250" x2="440" y2="250" stroke="#555"/><text class="s" x="240" y="295" text-anchor="middle" fill="#555">Ion senama menggeser kesetimbangan ${f}(s) ⇌ ${x > 1 ? x : ''}${cat} + ${y > 1 ? y : ''}${an} ke kiri.</text>`;
+    html = `<div><span>s dalam air</span><b>${sci(s0)} mol/L</b></div><div><span>s dengan ion senama</span><b>${sci(s1)} mol/L</b></div><div><span>Kelarutan turun</span><b>${fmt(s0 / s1, s0 / s1 < 10 ? 2 : 0)} kali</b></div><div><span>Hubungan s dan Ksp</span><b>Ksp = ${x === 1 && y === 1 ? 's²' : '4s³'}</b></div>`;
+  }
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+['g', 'a', 'b', 'sn'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

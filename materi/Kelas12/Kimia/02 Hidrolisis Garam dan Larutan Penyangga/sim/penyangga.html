@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Larutan Penyangga</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Perbandingan perubahan pH larutan penyangga dan air saat ditambah asam atau basa"></svg></div>
+  <div class="panel">
+    <div class="seg" id="tipe"><button data-t="a" class="on">Penyangga asam</button><button data-t="b">Penyangga basa</button></div>
+    <div class="lab" id="l1">mol CH₃COOH <b id="v1"></b></div><input type="range" id="n1" min="0.01" max="0.3" step="0.01" value="0.15">
+    <div class="lab" id="l2">mol CH₃COO⁻ (dari CH₃COONa) <b id="v2"></b></div><input type="range" id="n2" min="0.01" max="0.3" step="0.01" value="0.05">
+    <div class="lab">Tambahan asam/basa kuat <b id="dv"></b></div><input type="range" id="d" min="-0.04" max="0.04" step="0.002" value="0">
+    <div class="read" id="read"></div>
+    <p class="note">Volume total 1 L. Nilai negatif berarti menambah HCl, positif berarti menambah NaOH. Pembandingnya 1 L air murni yang diberi tambahan yang sama.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let T = 'a';
+const SYS = {a: {K: 1.8e-5, l1: 'mol CH₃COOH', l2: 'mol CH₃COO⁻ (dari CH₃COONa)', w: 'CH₃COOH', c: 'CH₃COO⁻'}, b: {K: 1.8e-5, l1: 'mol NH₃', l2: 'mol NH₄⁺ (dari NH₄Cl)', w: 'NH₃', c: 'NH₄⁺'}};
+$('tipe').querySelectorAll('button').forEach(b => b.onclick = () => { $('tipe').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); T = b.dataset.t; $('l1').firstChild.textContent = SYS[T].l1 + ' '; $('l2').firstChild.textContent = SYS[T].l2 + ' '; draw(); });
+const water = d => { if(Math.abs(d) < 1e-9) return 7; return d > 0 ? 14 + Math.log10(d) : -Math.log10(-d); };
+function buf(n1, n2, d){ // d > 0: NaOH, d < 0: HCl; mengembalikan pH
+  const K = SYS[T].K;
+  if(T === 'a'){ // HA + OH- → A- ; A- + H+ → HA
+    let ha = n1 - d, a = n2 + d;
+    if(ha <= 0) return 14 + Math.log10(-ha + 1e-12 > 1e-9 ? -ha : Math.sqrt(1e-14 / K * a));
+    if(a <= 0) return -Math.log10(-a > 1e-9 ? -a : Math.sqrt(K * ha));
+    return -Math.log10(K * ha / a);
+  } else { // B + H+ → BH+ ; BH+ + OH- → B
+    let b = n1 + d, bh = n2 - d;
+    if(b <= 0) return -Math.log10(-b > 1e-9 ? -b : Math.sqrt(1e-14 / K * bh));
+    if(bh <= 0) return 14 + Math.log10(-bh > 1e-9 ? -bh : Math.sqrt(K * b));
+    return 14 + Math.log10(K * b / bh);
+  }
+}
+function draw(){
+  const n1 = +$('n1').value, n2 = +$('n2').value, d = +$('d').value, S = SYS[T];
+  $('v1').textContent = fmt(n1, 2) + ' mol'; $('v2').textContent = fmt(n2, 2) + ' mol';
+  $('dv').textContent = d === 0 ? '0' : (d < 0 ? fmt(-d, 3) + ' mol HCl' : fmt(d, 3) + ' mol NaOH');
+  const p0 = buf(n1, n2, 0), p1 = buf(n1, n2, d), w = water(d);
+  // grafik pH vs tambahan
+  const gx = 50, gy = 290, gw = 400, gh = 250, X = v => gx + (v + 0.04) / 0.08 * gw, Y = p => gy - p / 14 * gh;
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/><line x1="${X(0)}" y1="${gy}" x2="${X(0)}" y2="${gy - gh}" stroke="#cfd8dc" stroke-dasharray="3 3"/>`;
+  for(let p = 0; p <= 14; p += 2) s += `<text class="s" x="${gx - 5}" y="${Y(p) + 4}" text-anchor="end" fill="#555">${p}</text><line x1="${gx}" y1="${Y(p)}" x2="${gx + gw}" y2="${Y(p)}" stroke="#eceff1"/>`;
+  s += `<text class="s" x="${gx}" y="${gy + 16}" fill="#555">← HCl 0,04 mol</text><text class="s" x="${gx + gw}" y="${gy + 16}" text-anchor="end" fill="#555">NaOH 0,04 mol →</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#555">pH</text>`;
+  let dw = '', db = '';
+  for(let i = 0; i <= 200; i++){ const v = -0.04 + 0.08 * i / 200; dw += (i ? 'L' : 'M') + X(v).toFixed(1) + ',' + Y(Math.max(0, Math.min(14, water(v)))).toFixed(1); db += (i ? 'L' : 'M') + X(v).toFixed(1) + ',' + Y(Math.max(0, Math.min(14, buf(n1, n2, v)))).toFixed(1); }
+  s += `<path d="${dw}" fill="none" stroke="#90a4ae" stroke-width="2.5"/><path d="${db}" fill="none" stroke="#1565c0" stroke-width="3"/>`;
+  s += `<circle cx="${X(d)}" cy="${Y(w)}" r="5" fill="#90a4ae"/><circle cx="${X(d)}" cy="${Y(p1)}" r="6" fill="#e53935"/>`;
+  s += `<rect x="${gx + 10}" y="${gy - gh + 4}" width="12" height="4" fill="#1565c0"/><text class="s" x="${gx + 28}" y="${gy - gh + 9}" fill="#1565c0">penyangga ${S.w}/${S.c}</text><rect x="${gx + 10}" y="${gy - gh + 18}" width="12" height="4" fill="#90a4ae"/><text class="s" x="${gx + 28}" y="${gy - gh + 23}" fill="#78909c">air murni</text>`;
+  svg.innerHTML = s;
+  const ratio = T === 'a' ? `[H⁺] = Ka × mol ${S.w}/mol ${S.c}` : `[OH⁻] = Kb × mol ${S.w}/mol ${S.c}`;
+  $('read').innerHTML = `<div><span>Rumus</span><b style="font-weight:600">${ratio}</b></div><div><span>pH penyangga awal</span><b>${fmt(p0, 2)}</b></div><div><span>pH penyangga setelah ditambah</span><b>${fmt(p1, 2)} (berubah ${fmt(p1 - p0, 2)})</b></div><div><span>pH air setelah ditambah</span><b>${fmt(w, 2)} (berubah ${fmt(w - 7, 2)})</b></div>`;
+}
+['n1', 'n2', 'd'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

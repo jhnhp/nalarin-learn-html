@@ -1,56 +1,165 @@
 {
   "title": "Koloid",
-  "summary": "Ringkasan bab Koloid akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Perbedaan larutan, koloid, dan suspensi; jenis koloid berdasarkan fase; koloid liofil dan liofob; efek Tyndall, gerak Brown, adsorpsi, elektroforesis, koagulasi, dialisis; serta pembuatan koloid secara kondensasi dan dispersi.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Koloid",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "perbedaan",
+      "title": "Larutan, koloid, dan suspensi",
+      "kind": "simulasi",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Perbedaan Larutan, Koloid, dan Suspensi; Jenis Koloid; Koloid Liofil dan Liofob; Sifat Koloid; serta Pembuatan Koloid</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Campuran garam dalam air tampak jernih, susu tampak keruh tetapi tidak memisah, sedangkan air berpasir keruh lalu pasirnya mengendap. Ketiganya berbeda pada ukuran partikel zat yang tercampur.</p><table><tr><th>Aspek</th><th>Larutan</th><th>Koloid</th><th>Suspensi</th></tr><tr><td>Ukuran partikel</td><td>&lt; 1 nm</td><td>1–100 nm</td><td>&gt; 100 nm</td></tr><tr><td>Penampakan</td><td>jernih, homogen</td><td>keruh, tampak homogen tetapi heterogen secara mikroskopis</td><td>keruh, heterogen</td></tr><tr><td>Jumlah fase</td><td>1</td><td>2</td><td>2</td></tr><tr><td>Didiamkan</td><td>stabil</td><td>stabil</td><td>memisah (mengendap)</td></tr><tr><td>Disaring kertas saring</td><td>lolos</td><td>lolos (tertahan saringan ultra)</td><td>tertahan</td></tr><tr><td>Berkas cahaya</td><td>tidak tampak</td><td>tampak (efek Tyndall)</td><td>tampak/terhalang</td></tr></table><p>Koloid terdiri atas <b>fase terdispersi</b> (zat yang tersebar) dan <b>medium pendispersi</b> (zat penyebar). Pada susu, tetes lemak tersebar dalam air.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/sifat-koloid.html",
+          "title": "Sifat koloid",
+          "height": 520,
+          "caption": "Pada mode efek Tyndall, coba saring dan diamkan ketiga campuran. Campuran mana yang berubah?"
+        },
+        {
+          "type": "check",
+          "question": "Ukuran partikel suatu campuran 2 × 10⁻⁷ m. Campuran tersebut tergolong ....",
+          "options": {
+            "A": "larutan",
+            "B": "koloid",
+            "C": "suspensi",
+            "D": "larutan jenuh"
+          },
+          "answer": "C",
+          "hint": "Ubah ke nanometer: 1 nm = 10⁻⁹ m.",
+          "explanation": "2 × 10⁻⁷ m = 200 nm, lebih dari 100 nm, sehingga tergolong suspensi."
+        }
+      ]
+    },
+    {
+      "id": "jenis",
+      "title": "Jenis-jenis koloid",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Fase terdispersi</th><th>Medium</th><th>Nama</th><th>Contoh</th></tr><tr><td>padat</td><td>gas</td><td>aerosol padat</td><td>asap, debu di udara</td></tr><tr><td>cair</td><td>gas</td><td>aerosol cair</td><td>kabut, awan, hairspray</td></tr><tr><td>gas</td><td>cair</td><td>buih</td><td>busa sabun, krim kocok</td></tr><tr><td>gas</td><td>padat</td><td>buih padat</td><td>batu apung, styrofoam, roti</td></tr><tr><td>cair</td><td>cair</td><td>emulsi</td><td>santan, mayones, minyak ikan</td></tr><tr><td>cair</td><td>padat</td><td>emulsi padat (gel)</td><td>keju, mentega, jeli</td></tr><tr><td>padat</td><td>cair</td><td>sol</td><td>cat, tinta, sol emas, sol Fe(OH)₃</td></tr><tr><td>padat</td><td>padat</td><td>sol padat</td><td>kaca berwarna, paduan logam</td></tr></table><p>Gas dalam gas tidak membentuk koloid karena semua gas bercampur homogen.</p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "title": "Koloid liofil dan liofob",
+          "html": "<p><b>Liofil</b> (hidrofil bila mediumnya air): partikel terdispersi menarik medium dengan kuat, sehingga koloid stabil dan sukar digumpalkan. Contoh: agar-agar, kanji, gelatin, protein, sabun.</p><p><b>Liofob</b> (hidrofob): partikel kurang menarik medium; kestabilannya bergantung pada muatan listrik partikel, sehingga mudah digumpalkan dengan elektrolit. Contoh: sol logam, sol belerang, sol Fe(OH)₃, sol sulfida.</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "variant": "tips",
+          "title": "Pengemulsi dan cara kerja sabun",
+          "html": "<p>Minyak dan air tidak bercampur. <b>Pengemulsi</b> (emulgator) membuat emulsi stabil; contohnya kuning telur (lesitin) pada mayones dan kasein pada susu. Molekul sabun memiliki kepala hidrofil (–COO⁻Na⁺) dan ekor hidrofob (rantai hidrokarbon panjang). Ekor masuk ke tetes minyak, kepala menghadap air, sehingga minyak terbungkus menjadi misel yang dapat dibilas air.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Tabel 1.5 menyebut intan sebagai contoh sol padat. Intan adalah kristal karbon murni, bukan koloid. Contoh sol padat yang tepat adalah kaca berwarna (misalnya kaca rubi berisi partikel emas) dan paduan logam.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Busa pada kopi susu yang dikocok tergolong koloid jenis ....",
+          "options": {
+            "A": "aerosol cair",
+            "B": "buih",
+            "C": "emulsi",
+            "D": "sol"
+          },
+          "answer": "B",
+          "hint": "Fase terdispersinya udara, mediumnya cair.",
+          "explanation": "Gas terdispersi dalam cairan disebut buih."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "sifat",
+      "title": "Sifat-sifat koloid",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<ul><li><b>Efek Tyndall</b>: penghamburan cahaya oleh partikel koloid, sehingga berkas cahaya tampak. Contohnya sorot lampu mobil di kabut dan berkas cahaya matahari di ruangan berdebu.</li><li><b>Gerak Brown</b>: gerak acak partikel koloid akibat tumbukan molekul medium yang tidak seimbang; gerak ini membuat koloid tidak mudah mengendap.</li><li><b>Adsorpsi</b>: penyerapan ion atau zat lain di permukaan partikel koloid yang sangat luas. Akibatnya partikel bermuatan; contohnya sol Fe(OH)₃ menyerap H⁺ sehingga bermuatan positif, dan sol As₂S₃ menyerap S²⁻ sehingga bermuatan negatif. Adsorpsi dimanfaatkan untuk pemutihan gula dengan arang aktif dan norit untuk menyerap racun dalam pencernaan.</li><li><b>Elektroforesis</b>: pergerakan partikel koloid bermuatan dalam medan listrik. Partikel negatif bergerak ke anode (+), dan partikel positif ke katode (−). Dipakai untuk pemisahan protein dan DNA serta alat pengendap Cottrell di cerobong pabrik.</li><li><b>Koagulasi</b>: penggumpalan partikel koloid, misalnya oleh elektrolit (ion yang muatannya berlawanan menetralkan partikel), pemanasan, atau pencampuran dua koloid yang berbeda muatan. Contohnya penjernihan air dengan tawas, pembentukan delta di muara sungai, dan penggumpalan lateks dengan asam format.</li><li><b>Koloid pelindung</b>: koloid liofil yang membungkus koloid liofob agar tidak menggumpal, misalnya gelatin pada es krim dan pengemulsi pada cat.</li><li><b>Dialisis</b>: pemisahan ion-ion pengganggu dari koloid dengan selaput semipermeabel. Ion dan molekul kecil dapat menembus selaput, sedangkan partikel koloid tidak. Prinsip ini digunakan pada mesin cuci darah.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/sifat-koloid.html",
+          "title": "Gerak Brown, elektroforesis, dan koagulasi",
+          "height": 520,
+          "caption": "Pada mode elektroforesis, alirkan arus lalu ganti muatan partikel. Setelah itu tambahkan elektrolit tiga kali: apa yang terjadi pada ukuran partikel?"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku menjelaskan warna biru langit sebagai efek Tyndall. Warna langit sebenarnya disebabkan <b>hamburan Rayleigh</b> oleh molekul-molekul gas udara yang jauh lebih kecil dari partikel koloid. Hamburan ini lebih kuat untuk cahaya biru. Efek Tyndall yang khas terlihat pada kabut, asap, dan debu.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Penjernihan air sumur dengan tawas memanfaatkan sifat koloid ....",
+          "options": {
+            "A": "efek Tyndall",
+            "B": "gerak Brown",
+            "C": "koagulasi",
+            "D": "dialisis"
+          },
+          "answer": "C",
+          "hint": "Kotoran menggumpal lalu mengendap.",
+          "explanation": "Ion Al³⁺ dari tawas menetralkan muatan partikel koloid lumpur sehingga partikel menggumpal dan mengendap."
+        }
+      ]
+    },
+    {
+      "id": "pembuatan",
+      "title": "Pembuatan koloid",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Cara kondensasi</b> (partikel larutan digabung menjadi partikel koloid):</p><ul><li>Reaksi hidrolisis: larutan FeCl₃ diteteskan ke air mendidih → sol Fe(OH)₃ berwarna merah cokelat.</li><li>Reaksi redoks: gas H₂S dialirkan ke larutan SO₂ → sol belerang; reduksi larutan emas → sol emas.</li><li>Reaksi dekomposisi rangkap: larutan As₂O₃ + H₂S → sol As₂S₃.</li><li>Penggantian pelarut: larutan jenuh kalsium asetat dalam air dituangkan ke alkohol → gel.</li></ul><p><b>Cara dispersi</b> (partikel besar dipecah menjadi ukuran koloid):</p><ul><li>Mekanik: digiling atau digerus halus, misalnya serbuk belerang digerus lalu diaduk dalam air.</li><li>Peptisasi: endapan dipecah oleh zat pemeptisasi, misalnya agar-agar oleh air dan endapan NiS oleh H₂S.</li><li>Busur Bredig: logam diuapkan dengan loncatan listrik di dalam air → sol logam.</li><li>Homogenisasi: lemak susu dipecah menjadi tetes sangat kecil.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Pembuatan sol Fe(OH)₃ dengan meneteskan FeCl₃ ke dalam air mendidih termasuk cara ....",
+          "options": {
+            "A": "dispersi mekanik",
+            "B": "peptisasi",
+            "C": "kondensasi melalui hidrolisis",
+            "D": "busur Bredig"
+          },
+          "answer": "C",
+          "hint": "Ion Fe³⁺ bereaksi dengan air.",
+          "explanation": "FeCl₃ + 3H₂O → Fe(OH)₃ (sol) + 3HCl: partikel larutan digabung menjadi partikel koloid melalui hidrolisis."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Tertukar buih dan aerosol: buih berarti gas di dalam cairan atau padatan; aerosol berarti zat cair atau padat di dalam gas.</li><li>Mengira partikel bermuatan negatif bergerak ke katode. Muatan negatif tertarik ke elektrode positif (anode).</li><li>Tertukar cara dispersi dan kondensasi.</li><li>Menyebut semua koloid dapat dibuktikan memiliki seluruh sifat koloid; tidak selalu.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab I Larutan dan Koloid (E. Koloid).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang perbedaan larutan, koloid, dan suspensi, jenis koloid, koloid liofil dan liofob, sifat koloid, serta pembuatan koloid. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

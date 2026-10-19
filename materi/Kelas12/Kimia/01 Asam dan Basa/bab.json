@@ -1,56 +1,243 @@
 {
   "title": "Asam dan Basa",
-  "summary": "Ringkasan bab Asam dan Basa akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Sifat dan indikator asam basa, teori Arrhenius, Brønsted–Lowry, dan Lewis, pasangan konjugasi, kekuatan asam, tetapan Kw, serta perhitungan pH asam basa kuat dan lemah.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Asam dan Basa",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "sifat-indikator",
+      "title": "Sifat asam basa dan indikator",
+      "kind": "simulasi",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Konsep Asam Basa Arrhenius, Brønsted-Lowry, dan Lewis, Kekuatan Asam Basa, Tetapan Ionisasi Air, serta pH Asam Basa Kuat dan Lemah</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Petani menaburkan dolomit (CaMg(CO₃)₂) di kebun untuk menetralkan tanah yang terlalu asam. Asam dan basa ada di sekitar kita: cuka, jeruk, dan minuman bersoda bersifat asam; sabun, pemutih, dan obat maag (antasida) bersifat basa.</p><table><tr><th>Asam</th><th>Basa</th></tr><tr><td>rasa masam</td><td>rasa pahit, licin di kulit</td></tr><tr><td>korosif terhadap logam</td><td>kaustik (merusak jaringan kulit)</td></tr><tr><td>lakmus biru menjadi merah</td><td>lakmus merah menjadi biru</td></tr><tr><td>pH &lt; 7</td><td>pH &gt; 7</td></tr></table><p>Jangan pernah mencicipi zat di laboratorium. Untuk menguji sifat asam basa digunakan <b>indikator</b>, yaitu zat yang warnanya berbeda pada suasana asam dan basa. Indikator alami antara lain ekstrak kubis ungu, kunyit, dan bunga sepatu. Indikator buatan antara lain lakmus, fenolftalein (PP), metil jingga, dan indikator universal.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/ph-larutan.html",
+          "title": "pH larutan dan warna indikator",
+          "height": 520,
+          "caption": "Pilih HCl lalu NaOH. Bagaimana warna fenolftalein dan metil jingga di kedua larutan? Indikator mana yang dapat membedakan pH 5 dan pH 3?"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Trayek indikator",
+          "html": "<p>Setiap indikator berubah warna pada rentang pH tertentu (trayek). Contohnya metil jingga berubah dari merah ke kuning pada pH 3,1–4,4, brom timol biru dari kuning ke biru pada pH 6,0–7,6, dan fenolftalein dari tak berwarna ke merah muda pada pH 8,3–10. Dengan beberapa indikator sekaligus, pH dapat diperkirakan lebih teliti.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Suatu larutan berwarna kuning dengan metil jingga dan tidak berwarna dengan fenolftalein. Perkiraan pH larutan adalah ....",
+          "options": {
+            "A": "kurang dari 3,1",
+            "B": "antara 4,4 dan 8,3",
+            "C": "lebih dari 10",
+            "D": "tepat 14"
+          },
+          "answer": "B",
+          "hint": "Metil jingga kuning jika pH > 4,4; PP tak berwarna jika pH < 8,3.",
+          "explanation": "Kedua syarat terpenuhi bila 4,4 < pH < 8,3."
+        }
+      ]
+    },
+    {
+      "id": "teori",
+      "title": "Teori asam basa: Arrhenius, Brønsted–Lowry, dan Lewis",
+      "kind": "artikel",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Tiga konsep asam basa",
+          "html": "<ul><li><b>Arrhenius</b> (dalam air): asam menghasilkan ion H⁺ (H₃O⁺), basa menghasilkan ion OH⁻. Contoh: HCl → H⁺ + Cl⁻; NaOH → Na⁺ + OH⁻.</li><li><b>Brønsted–Lowry</b> (1923): asam adalah <b>donor proton</b> (H⁺), basa adalah <b>akseptor proton</b>. Tidak harus dalam air.</li><li><b>Lewis</b>: asam adalah <b>akseptor pasangan elektron bebas</b>, basa adalah <b>donor pasangan elektron bebas</b>. Keduanya membentuk ikatan kovalen koordinasi. Contoh: BF₃ + :NH₃ → F₃B–NH₃.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada konsep Brønsted–Lowry, setelah asam melepas proton ia menjadi <b>basa konjugasi</b>, dan setelah basa menerima proton ia menjadi <b>asam konjugasi</b>. Pasangan asam–basa konjugasi hanya berbeda satu H⁺.</p><p style='text-align:center'>HNO₂ (asam) + H₂O (basa) ⇌ NO₂⁻ (basa konjugasi) + H₃O⁺ (asam konjugasi)</p><p>Zat yang dapat bertindak sebagai asam maupun basa disebut <b>amfiprotik</b> (dalam konsep proton), misalnya H₂O, HCO₃⁻, dan HSO₄⁻. Zat yang dapat bereaksi dengan asam maupun basa, seperti Al(OH)₃ dan Zn(OH)₂, disebut <b>amfoter</b>.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan pasangan asam–basa konjugasi pada reaksi HSO₄⁻ + CO₃²⁻ ⇌ SO₄²⁻ + HCO₃⁻.</p>",
+          "steps": [
+            "HSO₄⁻ melepas H⁺ menjadi SO₄²⁻, jadi HSO₄⁻ asam dan SO₄²⁻ basa konjugasinya.",
+            "CO₃²⁻ menerima H⁺ menjadi HCO₃⁻, jadi CO₃²⁻ basa dan HCO₃⁻ asam konjugasinya."
+          ],
+          "answer": "HSO₄⁻/SO₄²⁻ dan HCO₃⁻/CO₃²⁻"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Oksida asam dan oksida basa",
+          "html": "<p>Oksida nonlogam (CO₂, SO₃, P₂O₅) bereaksi dengan air membentuk asam, sehingga disebut <b>oksida asam</b>. Oksida logam (Na₂O, CaO) membentuk basa, sehingga disebut <b>oksida basa</b>. Pada reaksi CaO + SO₃ → CaSO₄ tanpa air, ion O²⁻ dari CaO memberikan pasangan elektron kepada S, sehingga CaO adalah basa Lewis dan SO₃ asam Lewis.</p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut Brønsted dan Lowry mengusulkan konsepnya pada tahun 1932. Yang benar <b>1923</b>; keduanya mengusulkannya secara terpisah pada tahun yang sama.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada reaksi H₂O + NH₂⁻ ⇌ OH⁻ + NH₃, air bertindak sebagai ....",
+          "options": {
+            "A": "basa Brønsted–Lowry",
+            "B": "asam Brønsted–Lowry",
+            "C": "basa Lewis",
+            "D": "zat amfoter Arrhenius"
+          },
+          "answer": "B",
+          "hint": "Lihat siapa yang melepas H⁺.",
+          "explanation": "H₂O memberikan proton kepada NH₂⁻ dan menjadi OH⁻, sehingga H₂O berperan sebagai asam."
+        },
+        {
+          "type": "check",
+          "question": "Pada reaksi pembentukan ion kompleks Cu²⁺ + 4NH₃ → [Cu(NH₃)₄]²⁺, NH₃ bertindak sebagai ....",
+          "options": {
+            "A": "asam Lewis",
+            "B": "basa Lewis",
+            "C": "asam Arrhenius",
+            "D": "asam konjugasi"
+          },
+          "answer": "B",
+          "hint": "NH₃ memiliki pasangan elektron bebas.",
+          "explanation": "NH₃ memberikan pasangan elektron bebasnya kepada Cu²⁺, sehingga NH₃ basa Lewis dan Cu²⁺ asam Lewis."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "kekuatan-kw",
+      "title": "Kekuatan asam, swaionisasi air, dan pH",
       "kind": "artikel",
-      "duration": "10 menit",
+      "duration": "30 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p><b>Asam kuat</b> terion sempurna dalam air (HCl, HBr, HI, HNO₃, H₂SO₄, HClO₄). <b>Asam lemah</b> hanya terion sebagian (HF, CH₃COOH, HCN, H₂CO₃). Demikian pula <b>basa kuat</b> (NaOH, KOH, Ca(OH)₂, Ba(OH)₂) dan <b>basa lemah</b> (NH₃, amina).</p><p>Faktor struktur: pada <b>asam halida</b>, makin kuat ikatan H–X makin sukar terurai, sehingga HF paling lemah dan HI paling kuat. Pada <b>asam okso</b>, makin banyak atom O yang terikat pada atom pusat dan makin elektronegatif atom pusatnya, makin polar ikatan O–H, sehingga asam makin kuat (HClO₄ &gt; HClO₃; H₂SO₄ &gt; H₃PO₄).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Tetapan kesetimbangan air dan pH",
+          "html": "<p>Air terion sangat sedikit: H₂O ⇌ H⁺ + OH⁻. Pada 25 °C:</p><p>\\(K_w = [\\text{H}^+][\\text{OH}^-] = 10^{-14}\\)</p><p>\\(\\text{pH} = -\\log[\\text{H}^+], \\quad \\text{pOH} = -\\log[\\text{OH}^-], \\quad \\text{pH} + \\text{pOH} = 14\\)</p><p>Netral: [H⁺] = [OH⁻] = 10⁻⁷ M (pH 7). Asam: [H⁺] &gt; 10⁻⁷ M (pH &lt; 7). Basa: [H⁺] &lt; 10⁻⁷ M (pH &gt; 7). Setiap selisih 1 satuan pH berarti [H⁺] berbeda 10 kali.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Konsentrasi OH⁻ dalam larutan pembersih kaca adalah 4 × 10⁻⁴ M. Tentukan [H⁺] dan pH larutan (log 4 = 0,6).</p>",
+          "steps": [
+            "[H⁺] = Kw/[OH⁻] = 10⁻¹⁴ / 4 × 10⁻⁴ = 2,5 × 10⁻¹¹ M.",
+            "pOH = 4 − log 4 = 3,4, sehingga pH = 14 − 3,4."
+          ],
+          "answer": "[H⁺] = 2,5 × 10⁻¹¹ M; pH = 10,6"
+        },
+        {
+          "type": "check",
+          "question": "Urutan kekuatan asam yang benar adalah ....",
+          "options": {
+            "A": "HF > HCl > HBr > HI",
+            "B": "HI > HBr > HCl > HF",
+            "C": "HClO > HClO₂ > HClO₃ > HClO₄",
+            "D": "H₃PO₄ > H₂SO₄ > HClO₄"
+          },
+          "answer": "B",
+          "hint": "Ikatan H–F paling kuat.",
+          "explanation": "Makin lemah ikatan H–X, makin mudah H⁺ lepas: HI paling kuat dan HF paling lemah."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "ph-kuat-lemah",
+      "title": "Menghitung pH asam basa kuat dan lemah",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus pH",
+          "html": "<p><b>Asam kuat</b>: [H⁺] = a × M (a = valensi, jumlah H⁺). <b>Basa kuat</b>: [OH⁻] = b × M.</p><p><b>Asam lemah</b>: \\([\\text{H}^+] = \\sqrt{K_a \\cdot M}\\), dan derajat ionisasi \\(\\alpha = \\sqrt{K_a/M}\\), sehingga [H⁺] = α · M.</p><p><b>Basa lemah</b>: \\([\\text{OH}^-] = \\sqrt{K_b \\cdot M}\\), \\(\\alpha = \\sqrt{K_b/M}\\).</p><p>Rumus akar adalah pendekatan yang baik bila α kecil (kira-kira di bawah 5%).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/ph-larutan.html",
+          "title": "pH asam basa kuat dan lemah",
+          "height": 520,
+          "caption": "Bandingkan HCl dan CH₃COOH pada konsentrasi yang sama. Lalu encerkan CH₃COOH sepuluh kali: berapa perubahan pH-nya, dan bagaimana derajat ionisasinya?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan pH larutan HCl 0,02 M dan KOH 0,04 M (log 2 = 0,3; log 4 = 0,6).</p>",
+          "steps": [
+            "HCl: [H⁺] = 2 × 10⁻² M → pH = 2 − 0,3 = 1,7.",
+            "KOH: [OH⁻] = 4 × 10⁻² M → pOH = 2 − 0,6 = 1,4 → pH = 14 − 1,4."
+          ],
+          "answer": "pH HCl = 1,7; pH KOH = 12,6"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Asam format (HCOOH) 0,1 M memiliki Ka = 1,7 × 10⁻⁴. Hitung [H⁺], pH, dan derajat ionisasinya.</p>",
+          "steps": [
+            "[H⁺] = √(1,7 × 10⁻⁴ × 0,1) = √(1,7 × 10⁻⁵) ≈ 4,1 × 10⁻³ M.",
+            "pH = 3 − log 4,1 ≈ 2,39.",
+            "α = [H⁺]/M = 4,1 × 10⁻³ / 0,1."
+          ],
+          "answer": "pH ≈ 2,39; α ≈ 4,1%"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Hitung pH larutan amonia 0,2 M (Kb = 1,8 × 10⁻⁵).</p>",
+          "steps": [
+            "[OH⁻] = √(1,8 × 10⁻⁵ × 0,2) = √(3,6 × 10⁻⁶) = 1,9 × 10⁻³ M.",
+            "pOH ≈ 2,72, sehingga pH = 14 − 2,72."
+          ],
+          "answer": "pH ≈ 11,28"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Hati-hati",
+          "html": "<p>Untuk larutan asam yang sangat encer (misalnya HCl 10⁻⁸ M), ion H⁺ dari air (10⁻⁷ M) tidak boleh diabaikan. pH-nya sedikit di bawah 7, bukan 8. Larutan asam tidak mungkin ber-pH di atas 7 hanya karena diencerkan.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Larutan asam lemah HA 0,1 M diencerkan menjadi 0,001 M. Derajat ionisasinya ....",
+          "options": {
+            "A": "tetap",
+            "B": "menjadi 10 kali semula",
+            "C": "menjadi 100 kali semula",
+            "D": "menjadi sepersepuluh semula"
+          },
+          "answer": "B",
+          "hint": "α = √(Ka/M).",
+          "explanation": "M turun 100 kali, sehingga α naik √100 = 10 kali."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa mengalikan valensi pada H₂SO₄ atau Ca(OH)₂.</li><li>Memakai rumus asam kuat untuk asam lemah, atau sebaliknya.</li><li>Lupa mengubah pOH menjadi pH pada larutan basa.</li><li>Tertukar asam konjugasi dan basa konjugasi; asam konjugasi selalu memiliki satu H⁺ lebih banyak.</li><li>Mengira asam kuat pasti berkonsentrasi besar. Kuat-lemah menyangkut derajat ionisasi, bukan konsentrasi.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab I Larutan dan Koloid (A. Sifat dan Konsep Asam Basa; B. Kekuatan dan pH Asam Basa).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang konsep asam basa Arrhenius, Brønsted–Lowry, dan Lewis, kekuatan asam basa, tetapan ionisasi air, serta pH asam basa kuat dan lemah. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

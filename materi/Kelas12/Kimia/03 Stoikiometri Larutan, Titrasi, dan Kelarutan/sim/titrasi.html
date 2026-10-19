@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Titrasi Asam Basa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Buret, labu erlenmeyer, dan kurva titrasi"></svg></div>
+  <div class="panel">
+    <div class="lab">Titrat (di erlenmeyer) dan titran (di buret)</div>
+    <select id="j"><option value="sa">HCl dititrasi NaOH (asam kuat–basa kuat)</option><option value="wa">CH₃COOH dititrasi NaOH (asam lemah–basa kuat)</option><option value="wb">NH₃ dititrasi HCl (basa lemah–asam kuat)</option></select>
+    <div class="lab">Volume titrat <b id="vav"></b></div><input type="range" id="va" min="10" max="40" step="5" value="20">
+    <div class="lab">Konsentrasi titrat <b id="cav"></b></div><input type="range" id="ca" min="0.05" max="0.2" step="0.01" value="0.15">
+    <div class="lab">Indikator</div><select id="ind"><option value="pp">Fenolftalein (8,3–10)</option><option value="mm">Metil merah (4,2–6,3)</option><option value="mj">Metil jingga (3,1–4,4)</option><option value="btb">Brom timol biru (6,0–7,6)</option></select>
+    <div class="lab">Volume titran (0,1 M) yang ditambahkan <b id="vbv"></b></div><input type="range" id="vb" min="0" max="60" step="0.1" value="0">
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const K = 1.8e-5, Kw = 1e-14, Cb = 0.1;
+function pH(j, Va, Ca, Vb){
+  const na = Va * Ca, nb = Vb * Cb, V = Va + Vb; // mmol, mL
+  if(j === 'sa'){ const d = na - nb; if(Math.abs(d) < 1e-9) return 7; return d > 0 ? -Math.log10(d / V) : 14 + Math.log10(-d / V); }
+  if(j === 'wa'){
+    const p0 = -Math.log10((-K + Math.sqrt(K * K + 4 * K * Ca)) / 2);
+    if(nb === 0) return p0;
+    if(nb < na - 1e-9) return Math.max(p0, -Math.log10(K * (na - nb) / nb));
+    if(Math.abs(nb - na) < 1e-9) return 14 + Math.log10(Math.sqrt(Kw / K * na / V));
+    return 14 + Math.log10((nb - na) / V);
+  }
+  // basa lemah NH3 dititrasi HCl
+  const p0 = 14 + Math.log10((-K + Math.sqrt(K * K + 4 * K * Ca)) / 2);
+  if(nb === 0) return p0;
+  if(nb < na - 1e-9) return Math.min(p0, 14 + Math.log10(K * (na - nb) / nb));
+  if(Math.abs(nb - na) < 1e-9) return -Math.log10(Math.sqrt(Kw / K * na / V));
+  return -Math.log10((nb - na) / V);
+}
+const IND = {pp: [8.3, 10, '#ffffff', '#ec407a', 'tak berwarna', 'merah muda'], mm: [4.2, 6.3, '#e53935', '#fdd835', 'merah', 'kuning'], mj: [3.1, 4.4, '#e53935', '#fdd835', 'merah', 'kuning'], btb: [6.0, 7.6, '#fdd835', '#1e88e5', 'kuning', 'biru']};
+const mix = (a, b, t) => { const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)); const A = p(a), B = p(b); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(',')})`; };
+function draw(){
+  const j = $('j').value, Va = +$('va').value, Ca = +$('ca').value, Vb = +$('vb').value, ind = IND[$('ind').value];
+  $('vav').textContent = Va + ' mL'; $('cav').textContent = fmt(Ca, 2) + ' M'; $('vbv').textContent = fmt(Vb, 1) + ' mL';
+  const Veq = Va * Ca / Cb, p = pH(j, Va, Ca, Vb);
+  const t = Math.max(0, Math.min(1, (p - ind[0]) / (ind[1] - ind[0])));
+  const col = mix(ind[2], ind[3], t);
+  let s = '';
+  // buret
+  const lvl = Math.min(1, Vb / 60);
+  s += `<rect x="62" y="20" width="16" height="140" fill="#fff" stroke="#607d8b"/><rect x="63" y="${21 + 138 * lvl}" width="14" height="${138 * (1 - lvl)}" fill="#bbdefb"/><path d="M66,160 v14 h8 v-14" fill="#bbdefb" stroke="#607d8b"/><line x1="70" y1="174" x2="70" y2="186" stroke="#607d8b" stroke-width="2"/>`;
+  for(let k = 0; k <= 6; k++) s += `<line x1="78" y1="${21 + 23 * k}" x2="84" y2="${21 + 23 * k}" stroke="#607d8b"/><text class="s" x="88" y="${25 + 23 * k}" fill="#555">${k * 10}</text>`;
+  s += `<text class="s" x="40" y="14" fill="#555">buret: ${j === 'wb' ? 'HCl' : 'NaOH'} 0,1 M</text>`;
+  // erlenmeyer
+  s += `<path d="M58,192 v30 l-36,70 q-4,10 8,10 h80 q12,0 8,-10 l-36,-70 v-30 z" fill="#fff" stroke="#607d8b" stroke-width="2"/><path d="M38,262 l-16,30 q-4,10 8,10 h80 q12,0 8,-10 l-16,-30 z" fill="${col}" stroke="none" opacity=".9"/><text class="s" x="70" y="322" text-anchor="middle" style="fill:var(--ink)">${Va} mL ${j === 'sa' ? 'HCl' : j === 'wa' ? 'CH₃COOH' : 'NH₃'} ${fmt(Ca, 2)} M</text>`;
+  // kurva
+  const gx = 170, gy = 290, gw = 290, gh = 260, Vm = 60;
+  const X = v => gx + v / Vm * gw, Y = q => gy - q / 14 * gh;
+  s += `<rect x="${gx}" y="${Y(ind[1])}" width="${gw}" height="${Y(ind[0]) - Y(ind[1])}" fill="${ind[3]}" fill-opacity=".15"/>`;
+  s += `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/>`;
+  for(let q = 0; q <= 14; q += 2) s += `<text class="s" x="${gx - 5}" y="${Y(q) + 4}" text-anchor="end" fill="#555">${q}</text>`;
+  for(let v = 0; v <= 60; v += 10) s += `<text class="s" x="${X(v)}" y="${gy + 14}" text-anchor="middle" fill="#555">${v}</text>`;
+  s += `<text class="s" x="${gx + gw}" y="${gy + 28}" text-anchor="end" fill="#555">volume titran (mL)</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#555">pH</text>`;
+  let d = ''; for(let i = 0; i <= 600; i++){ const v = Vm * i / 600; d += (i ? 'L' : 'M') + X(v).toFixed(1) + ',' + Y(Math.max(0, Math.min(14, pH(j, Va, Ca, v)))).toFixed(1); }
+  s += `<path d="${d}" fill="none" stroke="#90a4ae" stroke-width="2"/>`;
+  let d2 = ''; for(let i = 0; i <= 300; i++){ const v = Vb * i / 300; d2 += (i ? 'L' : 'M') + X(v).toFixed(1) + ',' + Y(Math.max(0, Math.min(14, pH(j, Va, Ca, v)))).toFixed(1); }
+  s += `<path d="${d2}" fill="none" stroke="#1565c0" stroke-width="3"/><circle cx="${X(Vb)}" cy="${Y(p)}" r="5" fill="#e53935"/>`;
+  const peq = pH(j, Va, Ca, Veq);
+  if(Veq <= Vm) s += `<line x1="${X(Veq)}" y1="${gy}" x2="${X(Veq)}" y2="${Y(peq)}" stroke="#e53935" stroke-dasharray="3 3"/><text class="s" x="${X(Veq) + 4}" y="${Y(peq) + (j === 'wb' ? -8 : 14)}" fill="#e53935">titik ekuivalen (pH ${fmt(peq, 2)})</text>`;
+  svg.innerHTML = s;
+  const ok = peq >= ind[0] - 0.3 && peq <= ind[1] + 0.3 || (j === 'sa');
+  $('read').innerHTML = `<div><span>pH saat ini</span><b>${fmt(p, 2)}</b></div><div><span>Warna indikator</span><b>${t <= 0 ? ind[4] : t >= 1 ? ind[5] : 'peralihan'}</b></div><div><span>Volume titran pada titik ekuivalen</span><b>${fmt(Veq, 1)} mL</b></div><div><span>pH titik ekuivalen</span><b>${fmt(peq, 2)}</b></div><div><span>Kesesuaian indikator</span><b>${ok ? 'cocok' : 'kurang cocok: trayeknya jauh dari pH titik ekuivalen'}</b></div>`;
+}
+['j', 'va', 'ca', 'ind', 'vb'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

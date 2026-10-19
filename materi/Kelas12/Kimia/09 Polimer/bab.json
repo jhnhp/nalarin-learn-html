@@ -1,56 +1,191 @@
 {
   "title": "Polimer",
-  "summary": "Ringkasan bab Polimer akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Monomer, unit ulang, dan derajat polimerisasi, penggolongan polimer, polimerisasi adisi dan kondensasi, hubungan struktur dan sifat (termoplastik dan termoset), vulkanisasi karet, kode plastik, serta dampak dan penanganan sampah plastik.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Polimer",
+      "id": "pengertian",
+      "title": "Monomer, unit ulang, dan polimer",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Monomer dan Unit Ulang, Polimerisasi Adisi dan Kondensasi, Jenis Polimer, Hubungan Struktur dan Sifat, Plastik, Karet, serta Degradasi Plastik</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Rompi antipeluru Kevlar, kain poliester, pipa PVC, dan wajan antilengket teflon terbuat dari bahan sejenis, yaitu <b>polimer</b>: molekul raksasa (makromolekul) yang tersusun atas banyak unit kecil yang berulang. <i>Poli</i> berarti banyak dan <i>mer</i> berarti bagian.</p><ul><li><b>Monomer</b>: molekul kecil penyusun polimer, misalnya etena (CH₂=CH₂).</li><li><b>Unit ulang</b>: bagian struktur yang berulang dalam rantai polimer, ditulis dalam kurung dengan indeks n, misalnya –[CH₂–CH₂]ₙ–. Pada polimer adisi, ikatan rangkap monomer telah berubah menjadi ikatan tunggal.</li><li><b>Derajat polimerisasi (n)</b>: jumlah unit ulang dalam satu molekul polimer, sehingga Mr polimer ≈ n × Mr unit ulang.</li></ul>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "title": "Penggolongan polimer",
+          "html": "<ul><li><b>Asal</b>: polimer alam (pati, selulosa, protein, karet alam, DNA), semisintetik (rayon, seluloid; hasil modifikasi polimer alam), dan sintetik (polietilena, nilon, PVC).</li><li><b>Jenis monomer</b>: homopolimer (satu jenis monomer, misalnya polietilena) dan kopolimer (dua atau lebih jenis monomer, misalnya nilon dan protein).</li><li><b>Rantai utama</b>: polimer organik (rantai C–C) dan polimer anorganik, misalnya polisiloksan (silikon) dengan rantai –Si–O–Si–O–.</li><li><b>Sifat terhadap panas</b>: termoplastik dan termoset (lihat pelajaran 3).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah molekul polimetil metakrilat (PMMA, kaca akrilik) memiliki Mr = 150.000. Mr monomernya, metil metakrilat (C₅H₈O₂), adalah 100. Berapa derajat polimerisasinya?</p>",
+          "steps": [
+            "Pada polimerisasi adisi tidak ada atom yang hilang, sehingga Mr unit ulang = Mr monomer = 100.",
+            "n = 150.000/100."
+          ],
+          "answer": "n = 1.500"
+        },
+        {
+          "type": "check",
+          "question": "Polimer berikut yang tergolong polimer alam adalah ....",
+          "options": {
+            "A": "nilon dan teflon",
+            "B": "selulosa dan karet alam",
+            "C": "PVC dan polistirena",
+            "D": "bakelit dan melamin"
+          },
+          "answer": "B",
+          "hint": "Polimer alam dihasilkan makhluk hidup.",
+          "explanation": "Selulosa (dinding sel tumbuhan) dan karet alam (getah pohon karet) adalah polimer alam."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "polimerisasi",
+      "title": "Polimerisasi adisi dan kondensasi",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "type": "text",
+          "html": "<p><b>Polimerisasi adisi</b>: monomer yang memiliki <b>ikatan rangkap</b> bergabung tanpa melepaskan molekul lain. Tahapannya: <b>inisiasi</b> (inisiator membentuk spesi aktif dari monomer pertama), <b>propagasi</b> (monomer ditambahkan satu per satu ke ujung rantai yang aktif), dan <b>terminasi</b> (ujung aktif dinonaktifkan sehingga rantai berhenti tumbuh). Contoh: polietilena, polipropilena, PVC, polistirena, teflon, PMMA, dan poliakrilonitril.</p><p><b>Polimerisasi kondensasi</b>: monomer yang memiliki <b>dua gugus fungsi</b> (bifungsional) bergabung sambil <b>melepaskan molekul kecil</b> seperti H₂O, HCl, atau CH₃OH. Contoh: poliester (PET), poliamida (nilon, Kevlar), bakelit (fenol + formaldehida), serta polimer alam seperti pati, selulosa, dan protein.</p>"
         },
         {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "type": "sim",
+          "src": "sim/polimerisasi.html",
+          "title": "Polimerisasi adisi dan kondensasi",
+          "height": 540,
+          "caption": "Tambahkan monomer pada polimer adisi lalu pada polimer kondensasi. Apa yang muncul pada kondensasi tetapi tidak pada adisi?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kevlar dibuat dari 1,4-diaminobenzena (H₂N–C₆H₄–NH₂) dan asam tereftalat (HOOC–C₆H₄–COOH). Tentukan jenis polimerisasi, molekul yang dilepaskan, dan ikatan yang terbentuk.</p>",
+          "steps": [
+            "Kedua monomer bifungsional dan tidak memiliki ikatan rangkap C=C yang terbuka, sehingga reaksinya kondensasi.",
+            "–NH₂ bereaksi dengan –COOH melepaskan H₂O dan membentuk –CO–NH–."
+          ],
+          "answer": "kondensasi; melepas H₂O; ikatan amida (poliamida)"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "variant": "tips",
+          "title": "Nama polimer",
+          "html": "<p>Nama polimer adisi: \"poli\" + nama monomer, misalnya polietena (lebih dikenal sebagai polietilena), polikloroetena (polivinil klorida, PVC), dan polipropena (polipropilena). Banyak polimer juga dikenal dengan nama dagang, seperti Teflon, Dakron, Nilon, dan Kevlar.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Monomer berikut yang dapat mengalami polimerisasi adisi adalah ....",
+          "options": {
+            "A": "HO–CH₂–CH₂–OH",
+            "B": "H₂N–CH₂–COOH",
+            "C": "CH₂=CCl₂",
+            "D": "HOOC–(CH₂)₄–COOH"
+          },
+          "answer": "C",
+          "hint": "Polimerisasi adisi memerlukan ikatan rangkap.",
+          "explanation": "CH₂=CCl₂ (1,1-dikloroetena) memiliki ikatan rangkap C=C sehingga dapat berpolimerisasi adisi; pilihan lain bifungsional untuk kondensasi."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "sifat",
+      "title": "Struktur dan sifat polimer",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Sifat polimer ditentukan oleh panjang rantai dan <b>gaya antarrantai</b>:</p><ul><li><b>Rantai lurus</b> (misalnya HDPE) dapat tersusun rapat dan teratur (kristalin), sehingga lebih keras, kuat, dan titik lelehnya tinggi.</li><li><b>Rantai bercabang</b> (LDPE) tidak dapat tersusun rapat, sehingga lebih lunak, lentur, dan titik lelehnya rendah.</li><li><b>Ikatan silang</b> antarrantai membentuk jaringan tiga dimensi yang keras dan kaku.</li></ul><table><tr><th>Termoplastik</th><th>Termoset</th></tr><tr><td>melunak bila dipanaskan dan mengeras bila didinginkan; dapat dicetak ulang dan didaur ulang</td><td>tidak melunak bila dipanaskan (terurai/gosong pada suhu sangat tinggi); tidak dapat dicetak ulang</td></tr><tr><td>rantai lurus atau bercabang, gaya antarrantai lemah</td><td>banyak ikatan silang kovalen</td></tr><tr><td>PE, PP, PVC, PS, PET, nilon</td><td>bakelit, melamin, resin epoksi</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/struktur-sifat.html",
+          "title": "Struktur dan sifat polimer",
+          "height": 500,
+          "caption": "Panaskan ketiga jenis rantai sampai 250 °C. Mengapa gagang panci dibuat dari bakelit, bukan dari polietilena?"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Vulkanisasi karet",
+          "html": "<p>Karet alam (poliisoprena) lengket saat panas dan rapuh saat dingin. Charles Goodyear (1839) memanaskan karet dengan belerang (<b>vulkanisasi</b>). Atom S membentuk jembatan antarrantai (ikatan silang), sehingga karet menjadi elastis, kuat, dan tidak lengket. Karet ban modern juga memakai karet sintetik.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Plastik pembungkus makanan yang lentur dan transparan kemungkinan besar dibuat dari ....",
+          "options": {
+            "A": "polietilena rantai bercabang",
+            "B": "polietilena rantai lurus",
+            "C": "bakelit",
+            "D": "melamin"
+          },
+          "answer": "A",
+          "hint": "Rantai bercabang bersifat lunak dan lentur.",
+          "explanation": "LDPE (polietilena bercabang) lunak, lentur, dan bening, sehingga cocok untuk kantong dan pembungkus."
+        }
+      ]
+    },
+    {
+      "id": "plastik",
+      "title": "Plastik, dampaknya, dan solusinya",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Kode</th><th>Plastik</th><th>Contoh</th></tr><tr><td>1</td><td>PET (polietilen tereftalat)</td><td>botol air mineral, serat poliester</td></tr><tr><td>2</td><td>HDPE</td><td>botol sampo, galon, pipa</td></tr><tr><td>3</td><td>PVC</td><td>pipa, kabel, taplak</td></tr><tr><td>4</td><td>LDPE</td><td>kantong plastik, plastik wrap</td></tr><tr><td>5</td><td>PP</td><td>wadah makanan, sedotan, tutup botol</td></tr><tr><td>6</td><td>PS</td><td>styrofoam, alat makan sekali pakai</td></tr><tr><td>7</td><td>lainnya</td><td>polikarbonat, akrilik, campuran</td></tr></table><p>Plastik sangat stabil: rantainya tidak mudah diputus oleh mikroorganisme, cahaya, atau air, sehingga dapat bertahan ratusan tahun dan pecah menjadi <b>mikroplastik</b> yang mencemari laut dan rantai makanan. Pembakaran PVC menghasilkan HCl dan dioksin yang beracun.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Solusi",
+          "html": "<ul><li><b>3R</b>: reduce (kurangi plastik sekali pakai), reuse (gunakan ulang), recycle (daur ulang sesuai kode).</li><li><b>Plastik biodegradable</b>: dibuat dari atau dicampur dengan pati (singkong, jagung) atau PLA (asam polilaktat), sehingga dapat diuraikan mikroorganisme bila tersedia air dan oksigen.</li><li><b>Plastik fotodegradable</b>: memiliki gugus kromofor yang memutus rantai saat terkena sinar UV, tetapi tidak terurai jika tertimbun.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut botol plastik minum dibuat dari polietena. Kebanyakan botol air minum kemasan dibuat dari <b>PET</b> (kode 1); polietilena (HDPE) lebih banyak dipakai untuk botol sampo dan galon. Ada juga kesalahan ketik \"etilon glikol\" untuk etilen glikol.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Alasan utama plastik biodegradable dari pati singkong lebih cepat terurai adalah ....",
+          "options": {
+            "A": "pati larut sempurna dalam air hujan",
+            "B": "pati dapat diuraikan oleh mikroorganisme",
+            "C": "pati menguap saat terkena panas matahari",
+            "D": "pati memiliki ikatan silang yang lemah"
+          },
+          "answer": "B",
+          "hint": "Pati adalah makanan bagi mikroba.",
+          "explanation": "Mikroorganisme menghasilkan enzim yang menghidrolisis pati, sehingga plastik tersebut hancur."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menganggap unit ulang polimer adisi masih memiliki ikatan rangkap.</li><li>Menyebut semua polimer berasal dari minyak bumi; banyak polimer alam.</li><li>Lupa bahwa pada polimerisasi kondensasi Mr unit ulang lebih kecil daripada jumlah Mr monomernya karena ada molekul yang dilepaskan.</li><li>Tertukar termoplastik dan termoset.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab IV Makromolekul Organik (A–E: polimer, polimerisasi, jenis, struktur dan sifat, plastik).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang monomer dan unit ulang, polimerisasi adisi dan kondensasi, jenis polimer, hubungan struktur dan sifat, plastik, karet, dan degradasi plastik. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

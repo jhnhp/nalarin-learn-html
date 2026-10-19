@@ -1,56 +1,248 @@
 {
   "title": "Sel Elektrokimia",
-  "summary": "Ringkasan bab Sel Elektrokimia akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Sel volta, notasi sel dan jembatan garam, potensial elektrode standar dan kespontanan reaksi, baterai dan korosi, sel elektrolisis, hukum Faraday, serta penerapan elektrolisis seperti penyepuhan dan pemurnian logam.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Sel Elektrokimia",
+      "id": "sel-volta",
+      "title": "Sel volta",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Lempeng seng yang dicelupkan ke larutan CuSO₄ biru akan berlapis tembaga cokelat, larutannya memudar, dan terasa hangat: Zn + Cu²⁺ → Zn²⁺ + Cu. Energi reaksi ini terlepas sebagai panas. Jika kedua setengah reaksinya dipisahkan dalam dua wadah dan dihubungkan dengan kawat serta <b>jembatan garam</b>, elektron terpaksa lewat kawat, sehingga terbentuk arus listrik. Susunan ini disebut <b>sel volta</b> (sel galvani): <b>energi kimia diubah menjadi energi listrik</b> melalui reaksi redoks spontan.</p><ul><li><b>Anode</b>: tempat oksidasi, kutub negatif. Logam anode melarut, sehingga massanya berkurang.</li><li><b>Katode</b>: tempat reduksi, kutub positif. Ion logam mengendap, sehingga massa katode bertambah.</li><li>Elektron mengalir melalui kawat dari anode ke katode.</li><li><b>Jembatan garam</b> (misalnya KNO₃ dalam agar) menetralkan kelebihan muatan: kation bergerak ke katode dan anion ke anode, sehingga arus tetap mengalir.</li></ul><p><b>Notasi sel</b>: anode | ion anode || ion katode | katode, misalnya Zn | Zn²⁺ || Cu²⁺ | Cu.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/sel-volta.html",
+          "title": "Sel volta",
+          "height": 560,
+          "caption": "Lepaskan jembatan garam: apa yang terjadi pada voltmeter? Lalu pilih dua logam yang menghasilkan beda potensial terbesar."
+        },
+        {
+          "type": "check",
+          "question": "Pada sel volta Zn | Zn²⁺ || Ag⁺ | Ag, pernyataan yang benar adalah ....",
+          "options": {
+            "A": "Ag adalah anode",
+            "B": "elektron mengalir dari Ag ke Zn",
+            "C": "massa elektrode Zn berkurang",
+            "D": "ion Zn²⁺ direduksi"
+          },
+          "answer": "C",
+          "hint": "Zn ditulis di kiri (anode).",
+          "explanation": "Zn dioksidasi menjadi Zn²⁺ dan melarut, sehingga massa lempeng Zn berkurang."
+        }
+      ]
+    },
+    {
+      "id": "potensial",
+      "title": "Potensial elektrode standar dan kespontanan",
+      "kind": "artikel",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Potensial satu elektrode tidak dapat diukur sendiri; yang dapat diukur hanya beda potensial dua elektrode. Karena itu dipakai acuan <b>elektrode hidrogen standar</b> (2H⁺ + 2e ⇌ H₂, E° = 0,00 V) pada 25 °C, konsentrasi 1 M, dan tekanan 1 atm. E° yang dicantumkan dalam tabel adalah <b>potensial reduksi standar</b>.</p><table><tr><th>Setengah reaksi reduksi</th><th>E° (V)</th></tr><tr><td>Li⁺ + e ⇌ Li</td><td>−3,04</td></tr><tr><td>Mg²⁺ + 2e ⇌ Mg</td><td>−2,37</td></tr><tr><td>Al³⁺ + 3e ⇌ Al</td><td>−1,66</td></tr><tr><td>Zn²⁺ + 2e ⇌ Zn</td><td>−0,76</td></tr><tr><td>Fe²⁺ + 2e ⇌ Fe</td><td>−0,44</td></tr><tr><td>Ni²⁺ + 2e ⇌ Ni</td><td>−0,25</td></tr><tr><td>Pb²⁺ + 2e ⇌ Pb</td><td>−0,13</td></tr><tr><td>2H⁺ + 2e ⇌ H₂</td><td>0,00</td></tr><tr><td>Cu²⁺ + 2e ⇌ Cu</td><td>+0,34</td></tr><tr><td>Ag⁺ + e ⇌ Ag</td><td>+0,80</td></tr><tr><td>Br₂ + 2e ⇌ 2Br⁻</td><td>+1,07</td></tr><tr><td>Cl₂ + 2e ⇌ 2Cl⁻</td><td>+1,36</td></tr></table><p>Makin <b>negatif</b> E°, makin mudah zat <b>teroksidasi</b> (reduktor kuat). Makin <b>positif</b> E°, makin mudah zat <b>tereduksi</b> (oksidator kuat). Urutan ini sama dengan <b>deret Volta</b>: K Ba Ca Na Mg Al Mn Zn Cr Fe Ni Sn Pb (H) Cu Hg Ag Pt Au. Logam di kiri dapat mendesak ion logam di kanannya dari larutan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Potensial sel",
+          "html": "<p>\\(E^\\circ_\\text{sel} = E^\\circ_\\text{katode} - E^\\circ_\\text{anode} = E^\\circ_\\text{reduksi} - E^\\circ_\\text{oksidasi}\\)</p><p>Reaksi <b>spontan</b> jika E°sel &gt; 0 dan tidak spontan jika E°sel &lt; 0. E° tidak dikalikan dengan koefisien reaksi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah sel volta disusun dari elektrode Zn dan Ag. Tentukan anode, katode, notasi sel, dan E°sel.</p>",
+          "steps": [
+            "E° Zn lebih negatif (−0,76 V), sehingga Zn menjadi anode; Ag (+0,80 V) menjadi katode.",
+            "Notasi: Zn | Zn²⁺ || Ag⁺ | Ag.",
+            "E°sel = 0,80 − (−0,76)."
+          ],
+          "answer": "+1,56 V"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Apakah reaksi Ni(s) + Fe²⁺(aq) → Ni²⁺(aq) + Fe(s) berlangsung spontan?</p>",
+          "steps": [
+            "Ni dioksidasi (anode), Fe²⁺ direduksi (katode).",
+            "E°sel = E° Fe − E° Ni = −0,44 − (−0,25) = −0,19 V."
+          ],
+          "answer": "E°sel negatif, sehingga reaksi tidak spontan; reaksi kebalikannya yang spontan"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Beberapa persamaan di buku memakai fase yang keliru: \"Zn²⁺ + 2e ⇌ Zn(g)\" dan \"Cu²⁺ + 2e ⇌ Cu(g)\" seharusnya Zn(s) dan Cu(s); \"Mg + 2H⁺ → Mg²⁺ + H₂(s)\" seharusnya H₂(g). Pada contoh kespontanan, \"Pb²⁻\" seharusnya Pb²⁺.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Diketahui E° Sn²⁺/Sn = −0,14 V dan E° Cu²⁺/Cu = +0,34 V. Pernyataan yang benar adalah ....",
+          "options": {
+            "A": "Cu dapat mendesak Sn²⁺ dari larutannya",
+            "B": "Sn dapat mendesak Cu²⁺ dari larutannya",
+            "C": "Sn lebih sukar teroksidasi daripada Cu",
+            "D": "E°sel Sn–Cu bernilai −0,48 V"
+          },
+          "answer": "B",
+          "hint": "Logam dengan E° lebih negatif lebih mudah teroksidasi.",
+          "explanation": "Sn + Cu²⁺ → Sn²⁺ + Cu memiliki E°sel = 0,34 − (−0,14) = +0,48 V, sehingga berlangsung spontan."
+        }
+      ]
+    },
+    {
+      "id": "baterai-korosi",
+      "title": "Sel volta dalam kehidupan: baterai dan korosi",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Baterai primer</b> (tidak dapat diisi ulang): sel kering seng–karbon (Leclanché, anode Zn, katode batang C dengan MnO₂) dan baterai alkalin. <b>Baterai sekunder</b> (dapat diisi ulang): aki timbal (anode Pb, katode PbO₂, elektrolit H₂SO₄), baterai Ni–Cd, Ni–MH, dan litium-ion.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Baterai litium-ion",
+          "html": "<p>Saat dipakai (sel volta), anode grafit berisi litium melepas litium: LiC₆ → C₆ + Li⁺ + e (atom Li yang <b>teroksidasi</b> menjadi ion Li⁺). Ion Li⁺ bergerak melalui elektrolit ke katode oksida logam: CoO₂ + Li⁺ + e → LiCoO₂. Elektron mengalir melalui rangkaian luar dari grafit ke oksida logam. Saat diisi ulang, sumber listrik luar memaksa reaksi berbalik: elektron didorong masuk ke elektrode grafit, dan ion Li⁺ kembali ke grafit.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menulis bahwa saat baterai dipakai \"ion-ion litium akan teroksidasi\". Ion Li⁺ tidak dapat teroksidasi lagi; yang teroksidasi adalah <b>atom litium</b> dalam LiC₆. Buku juga menyebut saat pengisian \"elektron mengalir ke katode\". Saat pengisian, elektron justru didorong sumber listrik ke elektrode <b>grafit</b> (elektrode negatif), sehingga Li⁺ kembali tersisip di grafit.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Korosi</b> (perkaratan besi) adalah sel volta kecil di permukaan logam. Di satu bagian besi teroksidasi (Fe → Fe²⁺ + 2e), sedangkan di bagian lain oksigen tereduksi (O₂ + 2H₂O + 4e → 4OH⁻). Hasilnya membentuk karat Fe₂O₃·xH₂O. Korosi dipercepat oleh air, oksigen, garam (elektrolit), dan asam.</p><p>Cara pencegahan: melapisi dengan cat, oli, atau plastik; melapisi dengan logam lain, misalnya seng pada besi galvanis atau timah pada kaleng; paduan antikarat seperti baja tahan karat (stainless steel); serta <b>perlindungan katodik</b> dengan menghubungkan logam yang lebih aktif (Mg atau Zn) sebagai <b>anode korban</b> pada pipa bawah tanah dan lambung kapal.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pipa besi di bawah tanah dihubungkan dengan batangan logam magnesium. Fungsi magnesium adalah ....",
+          "options": {
+            "A": "sebagai katode agar besi teroksidasi",
+            "B": "sebagai anode korban yang teroksidasi menggantikan besi",
+            "C": "mempercepat aliran air dalam pipa",
+            "D": "menambah kekuatan pipa"
+          },
+          "answer": "B",
+          "hint": "E° Mg jauh lebih negatif daripada Fe.",
+          "explanation": "Mg lebih mudah teroksidasi, sehingga Mg yang berkarat sementara besi terlindungi."
+        }
+      ]
+    },
+    {
+      "id": "elektrolisis",
+      "title": "Sel elektrolisis dan hukum Faraday",
+      "kind": "simulasi",
+      "duration": "45 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Sel elektrolisis</b> memakai arus listrik dari luar untuk menjalankan reaksi redoks yang <b>tidak spontan</b>: energi listrik diubah menjadi energi kimia. Berbeda dengan sel volta, pada sel elektrolisis <b>katode bermuatan negatif</b> (dihubungkan ke kutub − sumber) dan <b>anode positif</b>. Namun reduksi tetap terjadi di katode dan oksidasi di anode.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Menentukan hasil elektrolisis",
+          "html": "<p><b>Di katode</b> (reduksi):</p><ul><li>Ion logam aktif (golongan IA, IIA, Al³⁺, Mn²⁺) dalam larutan tidak direduksi; yang direduksi air: 2H₂O + 2e → H₂ + 2OH⁻.</li><li>Ion logam lain (Cu²⁺, Ag⁺, Ni²⁺, Zn²⁺) direduksi menjadi logamnya.</li><li>Ion H⁺ dari asam direduksi: 2H⁺ + 2e → H₂.</li><li>Pada <b>lelehan</b> (tanpa air), ion logam apa pun yang direduksi.</li></ul><p><b>Di anode</b> (oksidasi):</p><ul><li>Anode logam aktif (Cu, Ag, Ni, dan lain-lain) ikut teroksidasi: misalnya Cu → Cu²⁺ + 2e.</li><li>Dengan anode inert (C, Pt, Au): ion halida dioksidasi (2Cl⁻ → Cl₂ + 2e). Ion sisa asam oksi (SO₄²⁻, NO₃⁻) tidak dioksidasi; yang dioksidasi air: 2H₂O → O₂ + 4H⁺ + 4e. Ion OH⁻ dioksidasi: 4OH⁻ → O₂ + 2H₂O + 4e.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/elektrolisis.html",
+          "title": "Sel elektrolisis dan hukum Faraday",
+          "height": 580,
+          "caption": "Bandingkan larutan NaCl dengan lelehan NaCl. Lalu pada CuSO₄, ganti elektrode inert dengan elektrode tembaga: apa yang berubah di anode?"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Faraday",
+          "html": "<p><b>Hukum I</b>: massa zat yang dihasilkan sebanding dengan muatan listrik yang dialirkan.</p><p>\\(\\text{mol elektron} = \\dfrac{Q}{F} = \\dfrac{I \\cdot t}{96.500}, \\qquad m = \\dfrac{e \\cdot I \\cdot t}{96.500}, \\quad e = \\dfrac{A_r}{\\text{biloks (muatan ion)}}\\)</p><p><b>Hukum II</b>: untuk muatan yang sama (sel disusun seri), \\(\\dfrac{m_1}{m_2} = \\dfrac{e_1}{e_2}\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Larutan AgNO₃ dielektrolisis dengan arus 1,93 A selama 1.000 s. Berapa gram perak yang mengendap di katode? (Ar Ag = 108)</p>",
+          "steps": [
+            "Q = 1,93 × 1.000 = 1.930 C → mol e = 1.930/96.500 = 0,02 mol.",
+            "Ag⁺ + e → Ag, sehingga mol Ag = 0,02 mol.",
+            "m = 0,02 × 108."
+          ],
+          "answer": "2,16 g"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sel berisi larutan CuSO₄ dirangkai seri dengan sel AgNO₃ pada contoh 1. Berapa gram tembaga yang mengendap? (Ar Cu = 63,5)</p>",
+          "steps": [
+            "Muatan sama: mol e = 0,02 mol.",
+            "Cu²⁺ + 2e → Cu, sehingga mol Cu = 0,01 mol.",
+            "m = 0,01 × 63,5."
+          ],
+          "answer": "0,635 g"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Tentukan hasil di katode dan anode pada elektrolisis larutan KNO₃ dengan elektrode karbon.</p>",
+          "steps": [
+            "Katode: K⁺ logam aktif, sehingga air yang direduksi: 2H₂O + 2e → H₂ + 2OH⁻.",
+            "Anode: NO₃⁻ ion sisa asam oksi, sehingga air yang dioksidasi: 2H₂O → O₂ + 4H⁺ + 4e."
+          ],
+          "answer": "gas H₂ di katode dan gas O₂ di anode"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Penerapan elektrolisis</b>: penyepuhan (benda yang dilapisi dipasang sebagai katode, logam pelapis sebagai anode, dan elektrolitnya garam logam pelapis), pemurnian tembaga (tembaga kotor sebagai anode, tembaga murni sebagai katode), pembuatan logam aktif seperti Na, Mg, dan Al dari lelehannya (Al dibuat dengan proses Hall–Héroult), pembuatan gas klorin dan NaOH dari larutan NaCl, serta produksi hidrogen hijau dari air.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Tabel 2.1 di buku menyebut sel elektrolisis \"menggunakan logam yang sama sebagai katode dan anode\". Hal ini tidak harus: elektrolisis sering memakai elektrode inert (karbon atau platina), dan pada penyepuhan katodenya adalah benda yang dilapisi (misalnya besi) sementara anodenya logam pelapis.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada elektrolisis lelehan MgCl₂ dengan elektrode karbon, zat yang dihasilkan di katode adalah ....",
+          "options": {
+            "A": "gas H₂",
+            "B": "logam Mg",
+            "C": "gas Cl₂",
+            "D": "gas O₂"
+          },
+          "answer": "B",
+          "hint": "Lelehan tidak mengandung air.",
+          "explanation": "Tanpa air, ion Mg²⁺ yang direduksi: Mg²⁺ + 2e → Mg. Di anode terbentuk Cl₂."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Sel Volta, Notasi Sel, Jembatan Garam, Potensial Elektrode Standar, Kespontanan Reaksi, Sel Elektrolisis, dan Aplikasinya</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Aspek</th><th>Sel volta</th><th>Sel elektrolisis</th></tr><tr><td>Perubahan energi</td><td>kimia → listrik</td><td>listrik → kimia</td></tr><tr><td>Reaksi</td><td>spontan (E°sel &gt; 0)</td><td>tidak spontan, dipaksa arus</td></tr><tr><td>Anode</td><td>oksidasi, kutub −</td><td>oksidasi, kutub +</td></tr><tr><td>Katode</td><td>reduksi, kutub +</td><td>reduksi, kutub −</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira katode selalu positif. Tanda kutub bergantung pada jenis sel; yang tetap adalah katode = reduksi.</li><li>Mengalikan E° dengan koefisien reaksi.</li><li>Menyangka ion Na⁺ atau K⁺ direduksi pada elektrolisis larutan.</li><li>Lupa bahwa anode logam aktif ikut teroksidasi.</li><li>Pada hukum Faraday, lupa membagi Ar dengan muatan ion.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab II Elektrokimia (C. Sel Elektrokimia; D. Potensial Elektrode Standar; E. Aplikasi Elektrokimia).</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang sel volta, notasi sel, jembatan garam, potensial elektrode standar, kespontanan reaksi, sel elektrolisis, dan penerapannya. Setiap soal dilengkapi pembahasan."
         }
       ]
     }
