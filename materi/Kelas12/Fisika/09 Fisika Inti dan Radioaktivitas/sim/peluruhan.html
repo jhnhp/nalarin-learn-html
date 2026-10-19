@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluruhan Alfa, Beta, dan Gamma</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}.big{font-family:var(--display);font-weight:800;font-size:30px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Diagram jumlah neutron terhadap jumlah proton dan perubahan inti akibat peluruhan"></svg></div>
+  <div class="panel">
+    <div class="lab">Inti awal</div><select id="n"><option value="95,241">Amerisium-241</option><option value="90,232">Torium-232</option><option value="55,137">Sesium-137</option><option value="38,90">Stronsium-90</option><option value="27,60">Kobalt-60</option><option value="19,40">Kalium-40</option><option value="11,22">Natrium-22</option></select>
+    <div class="row"><button class="btn" id="a">Peluruhan α</button><button class="btn" id="bm">Peluruhan β⁻</button></div>
+    <div class="row"><button class="btn" id="bp">Peluruhan β⁺</button><button class="btn" id="g">Pancaran γ</button></div>
+    <div class="row"><button class="btn primary" id="rs">Kembali ke inti awal</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SYM = ['n','H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca','Sc','Ti','V','Cr','Mn','Fe','Co','Ni','Cu','Zn','Ga','Ge','As','Se','Br','Kr','Rb','Sr','Y','Zr','Nb','Mo','Tc','Ru','Rh','Pd','Ag','Cd','In','Sn','Sb','Te','I','Xe','Cs','Ba','La','Ce','Pr','Nd','Pm','Sm','Eu','Gd','Tb','Dy','Ho','Er','Tm','Yb','Lu','Hf','Ta','W','Re','Os','Ir','Pt','Au','Hg','Tl','Pb','Bi','Po','At','Rn','Fr','Ra','Ac','Th','Pa','U','Np','Pu','Am'];
+let Z, A, path, last = '', exc = false;
+function reset(){ [Z, A] = $('n').value.split(',').map(Number); path = [[Z, A]]; last = 'Pilih jenis peluruhan.'; exc = false; draw(); }
+$('n').oninput = reset; $('rs').onclick = reset;
+const go = (dZ, dA, txt) => { const z0 = Z, a0 = A; Z += dZ; A += dA; if(Z < 1 || A < Z){ Z = z0; A = a0; return; } path.push([Z, A]); last = txt(z0, a0); exc = dZ !== 0; draw(); };
+const nuc = (z, a) => `<sup>${a}</sup><sub>${z}</sub>${SYM[z] || '?'}`;
+$('a').onclick = () => go(-2, -4, (z, a) => `${nuc(z, a)} → ${nuc(z - 2, a - 4)} + <sup>4</sup><sub>2</sub>α`);
+$('bm').onclick = () => go(1, 0, (z, a) => `${nuc(z, a)} → ${nuc(z + 1, a)} + <sup>0</sup><sub>−1</sub>e + antineutrino (neutron → proton + elektron)`);
+$('bp').onclick = () => go(-1, 0, (z, a) => `${nuc(z, a)} → ${nuc(z - 1, a)} + <sup>0</sup><sub>+1</sub>e + neutrino (proton → neutron + positron)`);
+$('g').onclick = () => { last = `${nuc(Z, A)}* → ${nuc(Z, A)} + γ (nomor massa dan nomor atom tetap; inti hanya melepas kelebihan energi)`; exc = false; draw(); };
+function draw(){
+  const N = A - Z;
+  const zs = path.map(p => p[0]), ns = path.map(p => p[1] - p[0]);
+  const zc = (Math.min(...zs) + Math.max(...zs)) / 2, nc = (Math.min(...ns) + Math.max(...ns)) / 2;
+  const span = Math.max(8, Math.max(...zs) - Math.min(...zs) + 4, Math.max(...ns) - Math.min(...ns) + 4);
+  const gx = 50, gy = 300, gw = 250, gh = 260, sc = Math.min(gw, gh) / span;
+  const X = z => gx + gw / 2 + (z - zc) * sc, Y = n => gy - gh / 2 - (n - nc) * sc;
+  let s = `<rect x="${gx}" y="${gy - gh}" width="${gw}" height="${gh}" fill="none" stroke="#cfd8dc"/>`;
+  // garis N = Z dan perkiraan pita kestabilan
+  const band = z => { let a = 2 * z; for(let i = 0; i < 30; i++) a = z * (1.98 + 0.0155 * a ** (2 / 3)); return a - z; }; // N stabil (rumus semi-empiris)
+  let d1 = '', d2 = '';
+  for(let k = 0; k <= 40; k++){ const z = zc - span / 2 + span * k / 40; const x = X(z); d1 += (k ? 'L' : 'M') + x.toFixed(1) + ',' + Y(z).toFixed(1); d2 += (k ? 'L' : 'M') + x.toFixed(1) + ',' + Y(band(z)).toFixed(1); }
+  s += `<clipPath id="cp"><rect x="${gx}" y="${gy - gh}" width="${gw}" height="${gh}"/></clipPath><g clip-path="url(#cp)"><path d="${d1}" stroke="#90a4ae" stroke-dasharray="4 3" fill="none"/><path d="${d2}" stroke="#a5d6a7" stroke-width="${Math.max(6, sc * 1.2)}" stroke-opacity=".6" fill="none"/>`;
+  path.forEach((p, i) => { if(i) s += `<line x1="${X(path[i - 1][0])}" y1="${Y(path[i - 1][1] - path[i - 1][0])}" x2="${X(p[0])}" y2="${Y(p[1] - p[0])}" stroke="#1565c0" stroke-width="2" marker-end="url(#m)"/>`; });
+  path.forEach((p, i) => s += `<circle cx="${X(p[0])}" cy="${Y(p[1] - p[0])}" r="${i === path.length - 1 ? 6 : 3.5}" fill="${i === path.length - 1 ? '#e53935' : '#1565c0'}"/>`);
+  s += `</g><defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1565c0"/></marker></defs>`;
+  s += `<text class="s" x="${gx + gw}" y="${gy + 14}" text-anchor="end" fill="#555">jumlah proton Z →</text><text class="s" x="${gx - 6}" y="${gy - gh + 10}" text-anchor="end" fill="#555">N</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#2e7d32">pita hijau: perkiraan pita kestabilan · garis putus: N = Z</text>`;
+  // kartu inti
+  s += `<rect x="320" y="40" width="140" height="120" rx="10" fill="#fff3e0" stroke="#fb8c00" stroke-width="2"/><text class="s" x="345" y="78" fill="#555">${A}</text><text class="s" x="345" y="128" fill="#555">${Z}</text><text class="big" x="${exc ? 380 : 385}" y="115" text-anchor="middle" fill="#e65100">${SYM[Z] || '?'}</text>`;
+  s += `<text class="s" x="390" y="182" text-anchor="middle" style="fill:var(--ink)">Z = ${Z}, N = ${N}, A = ${A}</text><text class="s" x="390" y="198" text-anchor="middle" fill="#555">N/Z = ${(N / Z).toFixed(2).replace('.', ',')}</text>`;
+  s += `<text class="s" x="320" y="236" fill="#555">α: Z − 2, A − 4 (ke kiri bawah)</text><text class="s" x="320" y="254" fill="#555">β⁻: Z + 1, N − 1</text><text class="s" x="320" y="272" fill="#555">β⁺: Z − 1, N + 1</text><text class="s" x="320" y="290" fill="#555">γ: tidak berubah</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Reaksi terakhir</span><b style="font-weight:600">${last}</b></div><div><span>Jumlah langkah</span><b>${path.length - 1}</b></div>`;
+}
+reset();
+</script>
+</body>
+</html>

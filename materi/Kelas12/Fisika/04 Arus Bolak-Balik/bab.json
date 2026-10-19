@@ -1,56 +1,255 @@
 {
   "title": "Arus Bolak-Balik",
-  "summary": "Ringkasan bab Arus Bolak-Balik akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Tegangan dan arus bolak-balik, nilai efektif dan osiloskop, resistor, induktor, dan kapasitor dalam rangkaian AC, impedansi dan daya rangkaian RLC seri, serta resonansi.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Arus Bolak-Balik",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "tegangan-ac",
+      "title": "Tegangan dan arus bolak-balik",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Tegangan dan Arus Efektif, Reaktansi, Impedansi Rangkaian RLC, Daya, dan Resonansi</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Generator di pembangkit listrik menghasilkan tegangan yang berubah sinusoidal terhadap waktu, sehingga arus yang mengalir pun bolak-balik (AC). Listrik PLN di Indonesia berfrekuensi 50 Hz.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Persamaan AC dan nilai efektif",
+          "html": "<p>\\[V = V_\\text{maks}\\sin\\omega t \\qquad I = I_\\text{maks}\\sin\\omega t \\qquad \\omega = 2\\pi f\\]</p><p>\\[V_\\text{ef} = \\frac{V_\\text{maks}}{\\sqrt2} \\qquad I_\\text{ef} = \\frac{I_\\text{maks}}{\\sqrt2} \\qquad V_\\text{pp} = 2V_\\text{maks}\\]</p><p><b>Nilai efektif</b> (rms) adalah nilai arus searah yang menghasilkan panas sama pada resistor. Voltmeter dan amperemeter AC menunjukkan nilai efektif, dan label “220 V” pada alat rumah tangga adalah tegangan efektif.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/osiloskop.html",
+          "title": "Membaca osiloskop",
+          "height": 520,
+          "caption": "Atur V/div dan ms/div agar satu gelombang utuh terlihat jelas. Hitung V maks, V efektif, periode, dan frekuensi, lalu centang jawaban untuk memeriksa."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tegangan listrik dinyatakan V = 311 sin(100πt) volt. Tentukan tegangan efektif dan frekuensinya.</p>",
+          "steps": [
+            "V<sub>ef</sub> = 311/√2 ≈ 220 V.",
+            "ω = 100π → f = ω/2π = 50 Hz."
+          ],
+          "answer": "± 220 V; 50 Hz"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pada osiloskop dengan pengaturan 2 V/div dan 2 ms/div, puncak gelombang berada 3 kotak di atas garis tengah dan satu gelombang penuh menempati 8 kotak. Tentukan V<sub>maks</sub>, V<sub>ef</sub>, dan f.</p>",
+          "steps": [
+            "V<sub>maks</sub> = 3 × 2 = 6 V; V<sub>ef</sub> = 6/√2 ≈ 4,24 V.",
+            "T = 8 × 2 ms = 16 ms → f = 1/0,016."
+          ],
+          "answer": "6 V; ≈ 4,24 V; 62,5 Hz"
+        },
+        {
+          "type": "check",
+          "question": "Arus efektif 2 A mengalir pada sebuah resistor. Arus maksimumnya adalah ....",
+          "options": {
+            "A": "1 A",
+            "B": "√2 A",
+            "C": "2√2 A",
+            "D": "4 A"
+          },
+          "answer": "C",
+          "hint": "I maks = I ef × √2.",
+          "explanation": "I maks = 2√2 A ≈ 2,83 A."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "rlc-tunggal",
+      "title": "Resistor, induktor, dan kapasitor dalam rangkaian AC",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<table><tr><th>Komponen</th><th>Hambatan terhadap AC</th><th>Hubungan fase</th></tr><tr><td>Resistor R</td><td>R (tidak bergantung frekuensi)</td><td>V dan I sefase</td></tr><tr><td>Induktor L</td><td>reaktansi induktif \\(X_L = \\omega L\\)</td><td>V mendahului I sebesar 90°</td></tr><tr><td>Kapasitor C</td><td>reaktansi kapasitif \\(X_C = \\dfrac{1}{\\omega C}\\)</td><td>I mendahului V sebesar 90°</td></tr></table><p>Untuk masing-masing komponen berlaku \\(V_\\text{ef} = I_\\text{ef}\\,X\\). Makin tinggi frekuensi, X<sub>L</sub> makin besar dan X<sub>C</sub> makin kecil. Pada arus searah (f = 0) induktor tidak menghambat, sedangkan kapasitor memutus arus.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/rlc.html",
+          "title": "Rangkaian AC",
+          "height": 640,
+          "caption": "Pilih L saja, lalu C saja. Ubah frekuensi dan perhatikan reaktansi serta urutan puncak tegangan dan arus pada grafik."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Induktor murni 0,2 H dihubungkan dengan sumber 220 V, 50 Hz. Tentukan reaktansi induktif dan arus efektifnya.</p>",
+          "steps": [
+            "X<sub>L</sub> = 2π × 50 × 0,2 ≈ 62,8 Ω.",
+            "I = 220/62,8."
+          ],
+          "answer": "≈ 62,8 Ω; ≈ 3,5 A"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kapasitor 50 μF dihubungkan dengan V = 20 sin(400t) volt. Tentukan reaktansi kapasitif dan arus maksimumnya.</p>",
+          "steps": [
+            "X<sub>C</sub> = 1/(400 × 50 × 10⁻⁶) = 50 Ω.",
+            "I<sub>maks</sub> = 20/50."
+          ],
+          "answer": "50 Ω; 0,4 A"
+        },
+        {
+          "type": "check",
+          "question": "Jika frekuensi sumber AC dijadikan dua kali, reaktansi kapasitif kapasitor menjadi ....",
+          "options": {
+            "A": "dua kali",
+            "B": "setengah kali",
+            "C": "empat kali",
+            "D": "tetap"
+          },
+          "answer": "B",
+          "hint": "X_C = 1/(ωC).",
+          "explanation": "X<sub>C</sub> berbanding terbalik dengan frekuensi, jadi menjadi setengahnya."
+        }
+      ]
+    },
+    {
+      "id": "rlc-seri",
+      "title": "Impedansi dan daya rangkaian RLC seri",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rangkaian RLC seri",
+          "html": "<p>Arus sama di semua komponen; tegangan dijumlahkan secara fasor:</p><p>\\[V = \\sqrt{V_R^2 + (V_L - V_C)^2} \\qquad Z = \\sqrt{R^2 + (X_L - X_C)^2} \\qquad I = \\frac{V}{Z}\\]</p><p>Sudut fase: \\(\\tan\\varphi = \\dfrac{X_L - X_C}{R}\\). X<sub>L</sub> > X<sub>C</sub>: bersifat <b>induktif</b> (tegangan mendahului arus); X<sub>C</sub> > X<sub>L</sub>: <b>kapasitif</b>.</p><p>Daya hanya diserap resistor: \\(P = I_\\text{ef}^2R = V_\\text{ef}I_\\text{ef}\\cos\\varphi\\), dengan \\(\\cos\\varphi = R/Z\\) disebut <b>faktor daya</b>.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/rlc.html",
+          "title": "Rangkaian RLC seri",
+          "height": 640,
+          "caption": "Amati diagram fasor saat X_L > X_C dan saat X_C > X_L. Pada frekuensi berapa faktor dayanya 1?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rangkaian RLC seri dengan R = 80 Ω, X<sub>L</sub> = 90 Ω, dan X<sub>C</sub> = 30 Ω dihubungkan dengan sumber 150 V (efektif). Tentukan impedansi, arus, faktor daya, sifat rangkaian, dan daya yang diserap.</p>",
+          "steps": [
+            "Z = √(80² + 60²) = 100 Ω; I = 150/100 = 1,5 A.",
+            "cos φ = 80/100 = 0,8; X<sub>L</sub> > X<sub>C</sub> → induktif.",
+            "P = I²R = 1,5² × 80."
+          ],
+          "answer": "100 Ω; 1,5 A; 0,8 induktif; 180 W"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Voltmeter menunjukkan V<sub>R</sub> = 30 V, V<sub>L</sub> = 70 V, dan V<sub>C</sub> = 30 V. Berapa tegangan sumbernya?</p>",
+          "steps": [
+            "V = √(30² + (70 − 30)²) = √(900 + 1.600)."
+          ],
+          "answer": "50 V (bukan 130 V)"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku memakai lambang Ω untuk sudut fase (“V = V<sub>maks</sub> sin(ωt ± Ω)”). Ω adalah lambang satuan ohm; sudut fase biasanya dilambangkan φ atau θ. Rumus reaktansi induktif dan kapasitif di buku juga terpotong dalam beberapa cetakan; yang benar \\(X_L = \\omega L\\) dan \\(X_C = 1/(\\omega C)\\).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada rangkaian RLC seri, energi listrik yang berubah menjadi kalor hanya terjadi pada ....",
+          "options": {
+            "A": "induktor",
+            "B": "kapasitor",
+            "C": "resistor",
+            "D": "ketiganya"
+          },
+          "answer": "C",
+          "hint": "Induktor dan kapasitor hanya menyimpan lalu mengembalikan energi.",
+          "explanation": "Daya rata-rata pada L dan C murni nol; hanya resistor yang menyerap daya."
+        }
+      ]
+    },
+    {
+      "id": "resonansi",
+      "title": "Resonansi rangkaian RLC",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Resonansi",
+          "html": "<p>Resonansi terjadi bila \\(X_L = X_C\\), sehingga Z = R (minimum), arus maksimum, dan tegangan sefase dengan arus (faktor daya 1).</p><p>\\[\\omega_0 = \\frac{1}{\\sqrt{LC}} \\qquad f_0 = \\frac{1}{2\\pi\\sqrt{LC}}\\]</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/rlc.html",
+          "title": "Kurva resonansi",
+          "height": 640,
+          "caption": "Geser frekuensi sampai titik merah berada di puncak kurva. Lalu perbesar R: apa yang terjadi pada tinggi dan lebar puncak?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rangkaian seri dengan L = 0,4 H dan C = 25 μF. Tentukan frekuensi resonansinya.</p>",
+          "steps": [
+            "LC = 0,4 × 25 × 10⁻⁶ = 10⁻⁵.",
+            "ω₀ = 1/√10⁻⁵ ≈ 316 rad/s → f₀ = 316/(2π)."
+          ],
+          "answer": "≈ 50,3 Hz"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Penerapan</b>: tuner radio memutar kapasitor variabel sehingga frekuensi resonansi rangkaian sama dengan frekuensi stasiun yang diinginkan; hanya sinyal itu yang menghasilkan arus besar. Alat <b>BIA</b> (<i>bioelectrical impedance analysis</i>) mengalirkan arus AC kecil ke tubuh dan mengukur impedansinya untuk memperkirakan kadar air dan lemak tubuh, karena tubuh berperilaku seperti resistor (cairan) dan kapasitor (membran sel).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah radio menerima stasiun pada f saat kapasitornya C. Berapa kapasitasnya agar menerima stasiun berfrekuensi 2f (L tetap)?</p>",
+          "steps": [
+            "f₀ ∝ 1/√C.",
+            "Frekuensi 2 kali → C menjadi 1/4 kali."
+          ],
+          "answer": "C/4"
+        },
+        {
+          "type": "check",
+          "question": "Pada keadaan resonansi rangkaian RLC seri ....",
+          "options": {
+            "A": "impedansi maksimum",
+            "B": "arus minimum",
+            "C": "X_L = X_C dan arus maksimum",
+            "D": "tegangan mendahului arus 90°"
+          },
+          "answer": "C",
+          "hint": "Z = R saat resonansi.",
+          "explanation": "X<sub>L</sub> = X<sub>C</sub> sehingga Z minimum dan arus maksimum."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menjumlahkan V<sub>R</sub>, V<sub>L</sub>, dan V<sub>C</sub> secara aljabar; harus secara fasor.</li><li>Memakai f langsung pada X<sub>L</sub> = ωL tanpa dikali 2π.</li><li>Lupa mengubah μF ke F dan mH ke H.</li><li>Menyangka daya rangkaian = V × I tanpa faktor daya.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 4 Arus Bolak-Balik.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang tegangan dan arus efektif, reaktansi, impedansi rangkaian RLC, daya, dan resonansi. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

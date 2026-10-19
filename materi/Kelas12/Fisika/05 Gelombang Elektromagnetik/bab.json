@@ -1,56 +1,194 @@
 {
   "title": "Gelombang Elektromagnetik",
-  "summary": "Ringkasan bab Gelombang Elektromagnetik akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Teori Maxwell dan sifat gelombang elektromagnetik, laju dan panjang gelombang, spektrum dari gelombang radio sampai sinar gamma beserta pemanfaatan dan bahayanya, serta rapat energi, intensitas, dan aplikasi seperti radar.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Gelombang Elektromagnetik",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "sifat-gem",
+      "title": "Terjadinya dan sifat gelombang elektromagnetik",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Perambatan, Spektrum, Laju, Energi, dan Pemanfaatan Gelombang Elektromagnetik</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>James Clerk Maxwell (1864) menyatukan kelistrikan dan kemagnetan: <b>medan magnet yang berubah menimbulkan medan listrik</b> (Faraday) dan <b>medan listrik yang berubah menimbulkan medan magnet</b> (hipotesis Maxwell). Akibatnya, gangguan medan dapat merambat sendiri tanpa medium sebagai <b>gelombang elektromagnetik (GEM)</b>. Heinrich Hertz (1887) membuktikannya dengan menghasilkan dan mendeteksi gelombang radio.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Sifat GEM",
+          "html": "<ul><li>Gelombang transversal: medan E dan B saling tegak lurus dan tegak lurus arah rambat, berubah sefase: \\(E = E_m\\sin(kx - \\omega t)\\), \\(B = B_m\\sin(kx - \\omega t)\\), dengan \\(E_m = cB_m\\).</li><li>Dapat merambat di vakum dengan laju \\(c = \\dfrac{1}{\\sqrt{\\mu_0\\varepsilon_0}} = 3\\times10^8\\) m/s; di medium berindeks bias n lajunya \\(v = c/n\\).</li><li>Tidak bermuatan sehingga tidak dibelokkan medan listrik maupun magnet.</li><li>Mengalami pemantulan, pembiasan, interferensi, difraksi, dan polarisasi.</li><li>\\(c = \\lambda f\\); frekuensi tidak berubah saat pindah medium, panjang gelombangnya yang berubah.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/gelombang-em.html",
+          "title": "Gelombang elektromagnetik",
+          "height": 500,
+          "caption": "Perhatikan bahwa E dan B mencapai puncak bersamaan. Gandakan E maks: berapa kali intensitasnya?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Stasiun radio FM memancar pada 100 MHz, dan oven microwave bekerja pada 2,45 GHz. Tentukan panjang gelombang masing-masing.</p>",
+          "steps": [
+            "λ = c/f = 3 × 10⁸ / 10⁸ = 3 m.",
+            "λ = 3 × 10⁸ / 2,45 × 10⁹ ≈ 0,122 m."
+          ],
+          "answer": "3 m dan ± 12,2 cm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Cahaya 600 nm di udara masuk ke air (n = 1,33). Tentukan laju dan panjang gelombangnya di air.</p>",
+          "steps": [
+            "v = c/n = 3 × 10⁸ / 1,33 ≈ 2,26 × 10⁸ m/s.",
+            "f tetap, sehingga λ = 600/1,33."
+          ],
+          "answer": "≈ 2,26 × 10⁸ m/s; ≈ 451 nm"
+        },
+        {
+          "type": "check",
+          "question": "Medan listrik suatu GEM bergetar sejajar sumbu z dan gelombang merambat ke arah sumbu x. Medan magnetnya bergetar sejajar sumbu ....",
+          "options": {
+            "A": "x",
+            "B": "y",
+            "C": "z",
+            "D": "tidak bergetar"
+          },
+          "answer": "B",
+          "hint": "E, B, dan arah rambat saling tegak lurus.",
+          "explanation": "B harus tegak lurus E (z) dan arah rambat (x), yaitu sumbu y."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "spektrum",
+      "title": "Spektrum gelombang elektromagnetik dan pemanfaatannya",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Urutan spektrum dari frekuensi tertinggi (panjang gelombang terpendek): <b>sinar gamma – sinar-X – ultraviolet – cahaya tampak – inframerah – gelombang mikro – gelombang radio</b>. Energi tiap foton \\(E = hf\\) (h = 6,63 × 10⁻³⁴ J s), sehingga sinar gamma paling berenergi.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/spektrum-em.html",
+          "title": "Spektrum elektromagnetik",
+          "height": 500,
+          "caption": "Geser dari gelombang radio ke sinar gamma. Mulai dari daerah mana energi fotonnya cukup untuk merusak sel (beberapa eV ke atas)?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Gelombang</th><th>Sumber</th><th>Pemanfaatan</th><th>Bahaya</th></tr><tr><td>Sinar gamma</td><td>inti radioaktif, kosmik</td><td>radioterapi kanker, sterilisasi, pengawetan makanan</td><td>mengionisasi, merusak sel dan DNA</td></tr><tr><td>Sinar-X</td><td>perlambatan elektron cepat</td><td>rontgen, CT scan, pemeriksaan bagasi, kristalografi</td><td>mengionisasi bila berlebihan</td></tr><tr><td>Ultraviolet</td><td>Matahari, lampu UV</td><td>sterilisasi alat dan air, vitamin D, deteksi uang palsu</td><td>UV-B merusak kulit dan mata</td></tr><tr><td>Cahaya tampak</td><td>Matahari, lampu</td><td>penglihatan, fotosintesis, serat optik</td><td>—</td></tr><tr><td>Inframerah</td><td>semua benda bersuhu &gt; 0 K</td><td>termometer tembak, remote, kamera malam, satelit cuaca</td><td>panas berlebih</td></tr><tr><td>Gelombang mikro</td><td>magnetron, osilator</td><td>radar, oven microwave, ponsel, Wi-Fi, satelit</td><td>pemanasan jaringan</td></tr><tr><td>Gelombang radio</td><td>rangkaian osilator, antena</td><td>radio, TV, komunikasi, teleskop radio</td><td>—</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung energi foton ultraviolet 250 nm dalam joule dan eV.</p>",
+          "steps": [
+            "E = hc/λ = 6,63 × 10⁻³⁴ × 3 × 10⁸ / 2,5 × 10⁻⁷ ≈ 7,96 × 10⁻¹⁹ J.",
+            "Dalam eV: 7,96 × 10⁻¹⁹ / 1,6 × 10⁻¹⁹."
+          ],
+          "answer": "≈ 4,97 eV"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku menulis Grote Reber menemukan pancaran radio Matahari pada tahun 1957. Reber membangun teleskop radio pertamanya pada 1937 dan mendeteksi gelombang radio dari Matahari pada awal 1940-an. Nama Maxwell yang benar James <b>Clerk</b> Maxwell. Batas bawah ultraviolet umumnya disebut sekitar 10 nm (buku menulis 40 nm).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa teleskop Hubble di luar atmosfer?",
+          "html": "<p>Atmosfer menyerap sebagian besar ultraviolet dan inframerah serta membuat cahaya bintang berkelip. Di orbit, teleskop dapat menangkap gelombang itu dengan jelas. Sebaliknya, gelombang radio menembus atmosfer sehingga teleskop radio dapat dibangun di Bumi.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Gelombang elektromagnetik yang dipakai termometer tembak untuk mengukur suhu tubuh tanpa menyentuh adalah ....",
+          "options": {
+            "A": "ultraviolet",
+            "B": "inframerah",
+            "C": "gelombang mikro",
+            "D": "sinar-X"
+          },
+          "answer": "B",
+          "hint": "Tubuh hangat memancarkannya.",
+          "explanation": "Tubuh memancarkan inframerah; intensitasnya bergantung pada suhu."
+        }
+      ]
+    },
+    {
+      "id": "energi-gem",
+      "title": "Energi, intensitas, dan aplikasi",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rapat energi dan intensitas",
+          "html": "<p>Rapat energi (energi per volume): \\(u = \\varepsilon_0E^2\\) (separuh dibawa medan listrik, separuh medan magnet). Nilai rata-rata untuk gelombang sinus: \\(\\bar u = \\tfrac12\\varepsilon_0E_m^2\\).</p><p>Intensitas (daya per luas): \\(I = c\\,\\bar u = \\tfrac12 c\\varepsilon_0E_m^2 = \\dfrac{E_mB_m}{2\\mu_0}\\). Untuk sumber titik berdaya P: \\(I = \\dfrac{P}{4\\pi r^2}\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Amplitudo medan listrik GEM di udara 300 N/C. Tentukan amplitudo medan magnet dan intensitas rata-ratanya (ε₀ = 8,85 × 10⁻¹² C²/N m²).</p>",
+          "steps": [
+            "B<sub>m</sub> = E<sub>m</sub>/c = 300/3 × 10⁸ = 10⁻⁶ T.",
+            "I = ½ × 3 × 10⁸ × 8,85 × 10⁻¹² × 300²."
+          ],
+          "answer": "10⁻⁶ T; ≈ 119 W/m²"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2 (radar)",
+          "question": "<p>Pulsa radar dipantulkan pesawat dan diterima kembali 0,2 ms setelah dipancarkan. Berapa jarak pesawat?</p>",
+          "steps": [
+            "Gelombang menempuh jarak pergi-pulang: 2s = ct.",
+            "s = 3 × 10⁸ × 2 × 10⁻⁴ / 2."
+          ],
+          "answer": "30 km"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Telepon seluler</b>: suara diubah menjadi sinyal gelombang mikro yang dipancarkan ke menara BTS terdekat, diteruskan oleh pusat penyambungan (MSC) ke BTS di dekat penerima, lalu ke ponsel penerima. <b>Efek rumah kaca</b>: radiasi Matahari (± 43% cahaya tampak, ± 49% inframerah, sisanya UV) memanaskan permukaan Bumi, yang lalu memancarkan inframerah; gas rumah kaca seperti CO₂ menyerap sebagian inframerah itu sehingga Bumi menghangat.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Jika amplitudo medan listrik GEM dijadikan dua kali, intensitasnya menjadi ....",
+          "options": {
+            "A": "2 kali",
+            "B": "4 kali",
+            "C": "√2 kali",
+            "D": "tetap"
+          },
+          "answer": "B",
+          "hint": "I ∝ E².",
+          "explanation": "Intensitas sebanding dengan kuadrat amplitudo, jadi 4 kali."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira GEM memerlukan medium seperti bunyi.</li><li>Menyangka frekuensi berubah saat GEM masuk medium lain; yang berubah laju dan panjang gelombangnya.</li><li>Lupa membagi dua waktu pantulan pada perhitungan radar.</li><li>Tertukar urutan spektrum: frekuensi tinggi berarti panjang gelombang pendek dan energi besar.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 5 Gelombang Elektromagnetik.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang perambatan, spektrum, laju, energi, dan pemanfaatan gelombang elektromagnetik. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

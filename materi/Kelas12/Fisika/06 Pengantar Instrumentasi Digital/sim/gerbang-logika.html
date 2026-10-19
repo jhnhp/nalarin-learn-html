@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerbang Logika</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}
+table.t{border-collapse:collapse;font-size:14px;margin:8px auto}table.t td,table.t th{padding:4px 12px;border-bottom:1px solid var(--line);text-align:center}table.t th{color:var(--muted)}table.t tr.on td{background:#fff3cd;color:#000;font-weight:700}
+.wrap{padding:10px;box-sizing:border-box}.sw{cursor:pointer}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><div class="wrap"><svg id="svg" viewBox="0 0 440 180" style="width:100%" role="img" aria-label="Rangkaian gerbang logika dengan sakelar masukan dan lampu keluaran"></svg><table class="t" id="tab"></table></div></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="1" class="on">Satu gerbang</button><button data-m="2">Dua tingkat</button></div>
+    <div class="lab">Gerbang pertama (A, B → P)</div><select id="g1"><option value="AND">AND</option><option value="OR">OR</option><option value="NOT">NOT</option><option value="NAND">NAND</option><option value="NOR">NOR</option><option value="XOR">XOR</option></select>
+    <div class="lab" id="g2l">Gerbang kedua (P, C → Y)</div><select id="g2"><option value="AND">AND</option><option value="OR" selected>OR</option><option value="NAND">NAND</option><option value="NOR">NOR</option><option value="XOR">XOR</option></select>
+    <p class="note">Klik sakelar A, B, atau C untuk mengubah masukan (1 = tinggi/ON, 0 = rendah/OFF).</p>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = '1', IN = {A: 1, B: 0, C: 1};
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; draw(); });
+['g1', 'g2'].forEach(i => $(i).oninput = draw);
+const G = {AND: (a, b) => a & b, OR: (a, b) => a | b, NOT: a => 1 - a, NAND: (a, b) => 1 - (a & b), NOR: (a, b) => 1 - (a | b), XOR: (a, b) => a ^ b};
+function gate(x, y, name){
+  const inv = ['NOT', 'NAND', 'NOR'].includes(name);
+  let body;
+  if(name === 'NOT') body = `<path d="M${x},${y - 20} L${x + 40},${y} L${x},${y + 20} Z" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>`;
+  else if(name.includes('AND')) body = `<path d="M${x},${y - 22} H${x + 25} A22,22 0 0,1 ${x + 25},${y + 22} H${x} Z" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>`;
+  else body = `<path d="M${x},${y - 22} Q${x + 30},${y - 22} ${x + 48},${y} Q${x + 30},${y + 22} ${x},${y + 22} Q${x + 12},${y} ${x},${y - 22} Z" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>${name === 'XOR' ? `<path d="M${x - 6},${y - 22} Q${x + 6},${y} ${x - 6},${y + 22}" fill="none" stroke="#1565c0" stroke-width="2"/>` : ''}`;
+  const ox = name === 'NOT' ? x + 40 : x + 47;
+  return body + (inv ? `<circle cx="${ox + 5}" cy="${y}" r="5" fill="#fff" stroke="#1565c0" stroke-width="2"/>` : '') + `<text class="s" x="${x + 18}" y="${y + 38}" text-anchor="middle" fill="#1565c0">${name}</text>`;
+}
+const wire = (pts, v) => `<polyline points="${pts.map(p => p.join(',')).join(' ')}" fill="none" stroke="${v ? '#e53935' : '#90a4ae'}" stroke-width="3"/>`;
+const sw = (x, y, k) => `<g class="sw" data-k="${k}"><rect x="${x - 34}" y="${y - 13}" width="34" height="26" rx="6" fill="${IN[k] ? '#e53935' : '#cfd8dc'}"/><text class="c" x="${x - 17}" y="${y + 5}" text-anchor="middle" fill="${IN[k] ? '#fff' : '#333'}">${k}=${IN[k]}</text></g>`;
+function draw(){
+  const g1 = $('g1').value, g2 = $('g2').value, two = M === '2', not1 = g1 === 'NOT';
+  $('g2').disabled = !two; $('g2l').style.opacity = two ? 1 : .4;
+  const A = IN.A, B = IN.B, C = IN.C, P = not1 ? G.NOT(A) : G[g1](A, B), Y = two ? G[g2](P, C) : P;
+  const x1 = 120, y1 = not1 ? 50 : 75;
+  let s = sw(50, 50, 'A') + (not1 ? '' : sw(50, 100, 'B')) + (two ? sw(50, 150, 'C') : '');
+  s += wire([[50, 50], [100, 50], [100, y1 - (not1 ? 0 : 12)], [x1, y1 - (not1 ? 0 : 12)]], A);
+  if(!not1) s += wire([[50, 100], [100, 100], [100, y1 + 12], [x1, y1 + 12]], B);
+  s += gate(x1, y1, g1);
+  const px = x1 + 58;
+  if(two){
+    const x2 = 280, y2 = 110;
+    s += wire([[px, y1], [250, y1], [250, y2 - 12], [x2, y2 - 12]], P) + wire([[50, 150], [250, 150], [250, y2 + 12], [x2, y2 + 12]], C) + `<text class="s" x="${px + 8}" y="${y1 - 8}" fill="#555">P=${P}</text>`;
+    s += gate(x2, y2, g2) + wire([[x2 + 58, y2], [395, y2]], Y);
+    s += `<circle cx="410" cy="${y2}" r="15" fill="${Y ? '#ffeb3b' : '#eeeeee'}" stroke="#555" stroke-width="2"/><text class="c" x="410" y="${y2 + 34}" text-anchor="middle" style="fill:var(--ink)">Y=${Y}</text>`;
+  } else {
+    s += wire([[px, y1], [395, y1]], Y) + `<circle cx="410" cy="${y1}" r="15" fill="${Y ? '#ffeb3b' : '#eeeeee'}" stroke="#555" stroke-width="2"/><text class="c" x="410" y="${y1 + 34}" text-anchor="middle" style="fill:var(--ink)">Y=${Y}</text>`;
+  }
+  svg.innerHTML = s;
+  svg.querySelectorAll('.sw').forEach(el => el.onclick = () => { IN[el.dataset.k] ^= 1; draw(); });
+  // tabel kebenaran
+  const vars = not1 ? (two ? ['A', 'C'] : ['A']) : (two ? ['A', 'B', 'C'] : ['A', 'B']);
+  let t = '<tr>' + vars.map(v => `<th>${v}</th>`).join('') + (two ? '<th>P</th>' : '') + '<th>Y</th></tr>';
+  const n = vars.length;
+  for(let i = 0; i < 2 ** n; i++){
+    const v = {}; vars.forEach((k, j) => v[k] = (i >> (n - 1 - j)) & 1);
+    const p = not1 ? G.NOT(v.A) : G[g1](v.A, v.B), y = two ? G[g2](p, v.C) : p;
+    const on = vars.every(k => v[k] === IN[k]);
+    t += `<tr class="${on ? 'on' : ''}">` + vars.map(k => `<td>${v[k]}</td>`).join('') + (two ? `<td>${p}</td>` : '') + `<td>${y}</td></tr>`;
+  }
+  $('tab').innerHTML = t;
+  const desc = {AND: 'keluaran 1 hanya jika semua masukan 1 (seperti perkalian)', OR: 'keluaran 1 jika salah satu atau semua masukan 1 (seperti penjumlahan)', NOT: 'keluaran kebalikan masukan', NAND: 'kebalikan AND: keluaran 0 hanya jika semua masukan 1', NOR: 'kebalikan OR: keluaran 1 hanya jika semua masukan 0', XOR: 'keluaran 1 jika kedua masukan berbeda'};
+  $('read').innerHTML = `<div><span>${g1}</span><b>${desc[g1]}</b></div>${two ? `<div><span>${g2}</span><b>${desc[g2]}</b></div>` : ''}<div><span>Keluaran saat ini</span><b>Y = ${Y}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

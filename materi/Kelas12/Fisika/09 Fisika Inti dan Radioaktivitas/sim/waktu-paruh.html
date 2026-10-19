@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waktu Paruh</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Kumpulan inti radioaktif yang meluruh acak dan grafik jumlah inti terhadap waktu"></svg></div>
+  <div class="panel">
+    <div class="lab">Waktu paruh T½ <b id="hv"></b></div><input type="range" id="h" min="2" max="20" step="1" value="8">
+    <div class="row"><button class="btn primary" id="go">Mulai</button><button class="btn" id="rs">Ulangi</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Setiap inti meluruh secara acak; yang dapat diramalkan hanyalah peluangnya. Dalam setiap selang waktu paruh, kira-kira separuh inti yang tersisa meluruh. N = N₀(½)<sup>t/T½</sup>, λ = 0,693/T½, A = λN.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const N0 = 400, COLS = 20;
+let alive, t, run = false, hist;
+function reset(){ alive = Array(N0).fill(true); t = 0; hist = [[0, N0]]; run = false; $('go').textContent = 'Mulai'; draw(); }
+$('go').onclick = () => { run = !run; $('go').textContent = run ? 'Jeda' : 'Lanjut'; };
+$('rs').onclick = reset;
+$('h').oninput = reset;
+function step(){
+  if(!run) return;
+  const T = +$('h').value, dt = 0.25, p = 1 - Math.pow(0.5, dt / T);
+  for(let i = 0; i < N0; i++) if(alive[i] && Math.random() < p) alive[i] = false;
+  t += dt; hist.push([t, alive.filter(Boolean).length]);
+  if(t >= 5 * T){ run = false; $('go').textContent = 'Selesai'; }
+  draw();
+}
+function draw(){
+  const T = +$('h').value; $('hv').textContent = T + ' hari';
+  let s = '';
+  for(let i = 0; i < N0; i++){ const x = 14 + (i % COLS) * 11, y = 20 + Math.floor(i / COLS) * 11; s += `<circle cx="${x}" cy="${y}" r="4.2" fill="${alive[i] ? '#e53935' : '#cfd8dc'}"/>`; }
+  s += `<circle cx="20" cy="258" r="4.5" fill="#e53935"/><text class="s" x="30" y="262" fill="#555">inti induk (belum meluruh)</text><circle cx="20" cy="276" r="4.5" fill="#cfd8dc"/><text class="s" x="30" y="280" fill="#555">sudah meluruh (inti anak)</text>`;
+  // grafik
+  const gx = 260, gy = 290, gw = 205, gh = 250, tm = 5 * T;
+  const X = v => gx + v / tm * gw, Y = n => gy - n / N0 * gh;
+  s += `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/>`;
+  for(let k = 0; k <= 5; k++) s += `<line x1="${X(k * T)}" y1="${gy}" x2="${X(k * T)}" y2="${gy - gh}" stroke="#eceff1"/><text class="s" x="${X(k * T)}" y="${gy + 13}" text-anchor="middle" fill="#555">${k * T}</text>`;
+  [1, .5, .25, .125].forEach(f => s += `<text class="s" x="${gx - 4}" y="${Y(N0 * f) + 4}" text-anchor="end" fill="#555">${N0 * f}</text>`);
+  s += `<text class="s" x="${gx + gw}" y="${gy + 26}" text-anchor="end" fill="#555">t (hari)</text><text class="s" x="${gx + 4}" y="${gy - gh - 4}" fill="#555">N</text>`;
+  let d = ''; for(let k = 0; k <= 100; k++){ const tt = tm * k / 100; d += (k ? 'L' : 'M') + X(tt).toFixed(1) + ',' + Y(N0 * Math.pow(.5, tt / T)).toFixed(1); }
+  s += `<path d="${d}" fill="none" stroke="#90a4ae" stroke-width="2" stroke-dasharray="5 3"/>`;
+  s += `<path d="${hist.map((p, i) => (i ? 'L' : 'M') + X(p[0]).toFixed(1) + ',' + Y(p[1]).toFixed(1)).join('')}" fill="none" stroke="#e53935" stroke-width="2.5"/>`;
+  svg.innerHTML = s;
+  const n = alive.filter(Boolean).length, lam = 0.693 / T;
+  $('read').innerHTML = `<div><span>Waktu</span><b>${fmt(t, 2)} hari = ${fmt(t / T, 2)} T½</b></div><div><span>Inti tersisa (simulasi / teori)</span><b>${n} / ${fmt(N0 * Math.pow(.5, t / T), 0)}</b></div><div><span>Konstanta peluruhan λ</span><b>${fmt(lam, 4)} per hari</b></div><div><span>Aktivitas A = λN</span><b>${fmt(lam * n, 1)} peluruhan/hari</b></div>`;
+}
+setInterval(step, 60);
+reset();
+</script>
+</body>
+</html>

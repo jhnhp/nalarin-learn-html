@@ -1,56 +1,301 @@
 {
   "title": "Pengantar Instrumentasi Digital",
-  "summary": "Ringkasan bab Pengantar Instrumentasi Digital akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Sistem elektronika masukan–proses–keluaran, semikonduktor intrinsik dan ekstrinsik, dioda dan LED, transistor sebagai penguat dan sakelar, IC dan konversi A/D, serta gerbang logika dan tabel kebenaran.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Pengantar Instrumentasi Digital",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "sistem",
+      "title": "Sistem elektronika: masukan, proses, keluaran",
+      "kind": "simulasi",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Sistem Elektronika, Semikonduktor, Dioda, LED, Transistor, IC, dan Gerbang Logika</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Hampir semua alat elektronik, dari penanak nasi sampai ponsel, dapat digambarkan sebagai <b>sistem elektronika</b> dengan tiga bagian:</p><ul><li><b>Masukan (input)</b>: sensor yang mengubah besaran fisis menjadi sinyal listrik. Contohnya mikrofon (bunyi), LDR (cahaya), termistor (suhu), sensor kelembapan, sakelar, dan tombol.</li><li><b>Proses</b>: rangkaian yang mengolah sinyal, misalnya penguat transistor, gerbang logika, atau mikroprosesor.</li><li><b>Keluaran (output)</b>: aktuator yang mengubah sinyal menjadi aksi, misalnya lampu, LED, pengeras suara, motor, relai, atau layar.</li></ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Sensor sebagai pembagi tegangan",
+          "html": "<p>Sensor yang hambatannya berubah (LDR, termistor) biasanya dipasang seri dengan resistor tetap R pada tegangan sumber V. Tegangan pada sensor:</p><p>\\(V_\\text{sensor} = \\dfrac{R_\\text{sensor}}{R_\\text{sensor} + R}\\,V\\)</p><p>Hambatan LDR turun saat terang; hambatan termistor NTC turun saat panas. Perubahan hambatan itu menjadi perubahan tegangan yang dapat diolah.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/lampu-otomatis.html",
+          "title": "Lampu otomatis dengan LDR dan transistor",
+          "height": 520,
+          "caption": "Turunkan intensitas cahaya perlahan. Pada sekitar berapa lux lampu mulai menyala? Bagaimana titik itu bergeser jika R diperbesar?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah termistor dipasang seri dengan resistor 6 kΩ pada sumber 9 V. Pada suhu tertentu hambatan termistor 3 kΩ. Berapa tegangan pada resistor tetap?</p>",
+          "steps": [
+            "Arus: I = 9 / (3 + 6) kΩ = 1 mA.",
+            "V<sub>R</sub> = I × R = 1 mA × 6 kΩ."
+          ],
+          "answer": "6 V"
+        },
+        {
+          "type": "check",
+          "question": "Pada rangkaian pembagi tegangan, LDR dipasang di bagian bawah (antara titik keluaran dan 0 V). Saat hari makin gelap, tegangan keluaran ....",
+          "options": {
+            "A": "naik, karena hambatan LDR membesar",
+            "B": "turun, karena hambatan LDR membesar",
+            "C": "naik, karena hambatan LDR mengecil",
+            "D": "tetap"
+          },
+          "answer": "A",
+          "hint": "Bagian tegangan sebanding dengan bagian hambatan.",
+          "explanation": "Gelap membuat hambatan LDR besar, sehingga bagian tegangan pada LDR (keluaran) membesar."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "semikonduktor",
+      "title": "Semikonduktor intrinsik dan ekstrinsik",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Berdasarkan daya hantar listriknya, bahan dibagi menjadi konduktor, isolator, dan <b>semikonduktor</b>. Hambat jenis semikonduktor berada di antara keduanya. Contohnya silikon (Si) dan germanium (Ge), yang memiliki 4 elektron valensi.</p><p>Menurut teori pita energi, elektron valensi berada di <b>pita valensi</b>, dan elektron yang dapat bergerak bebas berada di <b>pita konduksi</b>. Di antara keduanya ada <b>celah energi</b> (Si ± 1,1 eV). Pada konduktor kedua pita bertumpang tindih. Pada isolator celahnya sangat lebar (lebih dari 5 eV). Pada semikonduktor celahnya cukup sempit sehingga energi panas dapat melontarkan sebagian elektron.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Intrinsik dan ekstrinsik",
+          "html": "<ul><li><b>Intrinsik</b> (murni): elektron yang terlontar ke pita konduksi meninggalkan <b>hole</b> (lubang bermuatan positif). Jumlah elektron bebas sama dengan jumlah hole. Makin tinggi suhu, makin banyak pembawa muatan, sehingga hambatannya turun.</li><li><b>Ekstrinsik tipe-N</b>: Si didoping atom bervalensi 5 (P, As, Sb), yang disebut <b>donor</b>. Pembawa muatan mayoritasnya elektron.</li><li><b>Ekstrinsik tipe-P</b>: Si didoping atom bervalensi 3 (B, Ga, In), yang disebut <b>akseptor</b>. Pembawa muatan mayoritasnya hole.</li></ul><p>Bahan tipe-N tetap netral secara keseluruhan; kata \"negatif\" merujuk pada jenis pembawa muatannya.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/semikonduktor.html",
+          "title": "Kisi kristal silikon",
+          "height": 500,
+          "caption": "Bandingkan jumlah elektron bebas dan hole pada Si murni, tipe-N, dan tipe-P. Nyalakan medan listrik: ke mana elektron dan hole bergerak?"
+        },
+        {
+          "type": "check",
+          "question": "Silikon didoping indium (3 elektron valensi). Pernyataan yang benar adalah ....",
+          "options": {
+            "A": "terbentuk tipe-N dengan elektron sebagai pembawa mayoritas",
+            "B": "terbentuk tipe-P dengan hole sebagai pembawa mayoritas",
+            "C": "bahan menjadi bermuatan positif",
+            "D": "celah energinya hilang"
+          },
+          "answer": "B",
+          "hint": "Indium kekurangan satu elektron untuk berikatan dengan 4 atom Si.",
+          "explanation": "Ikatan yang kekurangan elektron menjadi hole; indium bersifat akseptor, sehingga terbentuk tipe-P. Bahan tetap netral."
+        }
+      ]
+    },
+    {
+      "id": "dioda-led",
+      "title": "Dioda dan LED",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Gabungan semikonduktor tipe-P dan tipe-N membentuk <b>sambungan p-n</b> atau <b>dioda</b>. Kaki pada sisi P disebut <b>anode</b>, pada sisi N disebut <b>katode</b>. Di sekitar sambungan, elektron dari N berdifusi mengisi hole di P sehingga terbentuk <b>daerah deplesi</b> tanpa pembawa muatan bebas.</p><ul><li><b>Panjar maju</b> (anode ke kutub +, katode ke kutub −): daerah deplesi menyempit dan arus mengalir setelah tegangan melebihi sekitar 0,7 V untuk Si (0,3 V untuk Ge).</li><li><b>Panjar mundur</b>: daerah deplesi melebar dan hampir tidak ada arus.</li></ul><p>Karena hanya menghantar satu arah, dioda dipakai sebagai <b>penyearah</b> (mengubah AC menjadi DC) dan pelindung rangkaian dari pemasangan baterai terbalik.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "LED (Light Emitting Diode)",
+          "html": "<p>Pada LED berpanjar maju, elektron dari pita konduksi sisi N menyeberang dan bergabung dengan hole di sisi P. Energi yang dilepas sebesar celah energi E<sub>g</sub> keluar sebagai foton:</p><p>\\(E_g = hf = \\dfrac{hc}{\\lambda}\\)</p><p>Bahan bercelah energi besar (misalnya GaN) memancarkan biru; bahan bercelah kecil (misalnya GaAsP) memancarkan merah. LED harus dipasang dengan resistor pembatas arus agar tidak rusak:</p><p>\\(R = \\dfrac{V_\\text{sumber} - V_\\text{LED}}{I}\\)</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>LED hijau dengan tegangan kerja 2,2 V akan dinyalakan dari baterai 9 V dengan arus 20 mA. Berapa hambatan resistor pembatas yang diperlukan?</p>",
+          "steps": [
+            "Tegangan pada resistor: 9 − 2,2 = 6,8 V.",
+            "R = 6,8 / 0,020."
+          ],
+          "answer": "340 Ω"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah LED memancarkan cahaya hijau 530 nm. Berapa celah energi bahannya dalam eV? (h = 6,63 × 10⁻³⁴ J s)</p>",
+          "steps": [
+            "E = hc/λ = 6,63 × 10⁻³⁴ × 3 × 10⁸ / 5,3 × 10⁻⁷ ≈ 3,75 × 10⁻¹⁹ J.",
+            "Dalam eV: 3,75 × 10⁻¹⁹ / 1,6 × 10⁻¹⁹."
+          ],
+          "answer": "≈ 2,3 eV"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Saat menjelaskan LED, buku menyebut elektron \"pada bagian semikonduktor tipe-P yang berada di pita konduksi\". Yang tepat: elektron bebas berasal dari sisi <b>tipe-N</b> (di pita konduksi). Elektron itu menyeberangi sambungan lalu bergabung dengan hole di sisi tipe-P sambil memancarkan foton. Selain itu, keterangan Gambar 6.17 seharusnya \"Integrated Circuit (IC)\", bukan \"(AC)\".</p>"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah dioda silikon dipasang dengan katode ke kutub positif baterai 3 V. Yang terjadi adalah ....",
+          "options": {
+            "A": "arus besar mengalir",
+            "B": "dioda berpanjar mundur sehingga hampir tidak ada arus",
+            "C": "dioda memancarkan cahaya",
+            "D": "dioda berpanjar maju"
+          },
+          "answer": "B",
+          "hint": "Panjar maju berarti anode ke kutub +.",
+          "explanation": "Katode ke kutub + berarti panjar mundur; daerah deplesi melebar dan arus hampir nol."
+        }
+      ]
+    },
+    {
+      "id": "transistor-ic",
+      "title": "Transistor, IC, dan konversi A/D",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Transistor</b> tersusun atas tiga lapis semikonduktor (NPN atau PNP). Ketiga kakinya pada transistor bipolar (BJT) adalah basis (B), kolektor (C), dan emitor (E). Jenis lain adalah FET dan MOSFET, dengan kaki gate, drain, dan source. Prinsip kerjanya: <b>arus basis yang kecil mengendalikan arus kolektor yang besar</b>, \\(I_C = \\beta I_B\\), dengan β (penguatan arus) puluhan sampai ratusan.</p><ul><li><b>Sebagai penguat</b>: sinyal kecil pada basis menghasilkan sinyal yang serupa tetapi jauh lebih besar pada kolektor, misalnya pada pengeras suara.</li><li><b>Sebagai sakelar</b>: jika \\(V_{BE}\\) &lt; 0,7 V, \\(I_B\\) ≈ 0 dan transistor <i>cut-off</i> (sakelar terbuka). Jika I<sub>B</sub> cukup besar, transistor <i>jenuh</i> (sakelar tertutup). Ibaratnya keran air: putaran kecil pada pegangan (basis) mengatur aliran besar (kolektor–emitor).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Transistor dengan β = 150 diberi arus basis 40 μA. Berapa arus kolektornya?</p>",
+          "steps": [
+            "I<sub>C</sub> = β I<sub>B</sub> = 150 × 40 μA."
+          ],
+          "answer": "6 mA"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Integrated Circuit (IC)</b> berisi ribuan sampai miliaran transistor, dioda, resistor, dan kapasitor dalam satu keping silikon. Jenisnya:</p><ul><li><b>IC digital</b>: gerbang logika, mikroprosesor, memori. Hanya mengenal dua keadaan, 0 dan 1.</li><li><b>IC analog</b>: penguat operasional (op-amp), pengatur tegangan.</li><li><b>IC campuran</b>: konverter A/D dan D/A, pembangkit clock.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Konversi analog ke digital (A/D)",
+          "html": "<p>Sinyal analog berubah secara kontinu, sedangkan sinyal digital hanya terdiri atas tingkat-tingkat diskrit. Konverter A/D n-bit membagi rentang tegangan menjadi \\(2^n\\) tingkat, sehingga resolusinya:</p><p>\\(\\Delta V = \\dfrac{V_\\text{maks}}{2^n}\\)</p><p>Makin banyak bit, makin halus hasil digitalnya. Konverter D/A melakukan kebalikannya, misalnya mengubah data musik digital menjadi sinyal untuk pengeras suara.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah konverter A/D 10-bit membaca sensor bertegangan 0 sampai 5 V. Berapa perubahan tegangan terkecil yang dapat dibedakan?</p>",
+          "steps": [
+            "Jumlah tingkat: 2¹⁰ = 1024.",
+            "ΔV = 5 / 1024 V."
+          ],
+          "answer": "≈ 4,9 mV"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Relai",
+          "html": "<p>Rangkaian elektronik bertegangan rendah tidak boleh langsung dihubungkan ke beban listrik rumah. Transistor dapat menggerakkan <b>relai</b>, yaitu sakelar elektromagnetik: arus kecil pada kumparan relai menarik kontak yang menyambungkan rangkaian bertegangan tinggi. Kedua rangkaian tetap terpisah secara listrik.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Arus basis sebuah transistor dinaikkan dari 20 μA menjadi 60 μA, sementara transistor belum jenuh. Arus kolektornya menjadi ....",
+          "options": {
+            "A": "tetap",
+            "B": "3 kali semula",
+            "C": "9 kali semula",
+            "D": "sepertiga semula"
+          },
+          "answer": "B",
+          "hint": "I<sub>C</sub> = β I<sub>B</sub>.",
+          "explanation": "Arus kolektor sebanding dengan arus basis, jadi naik 3 kali."
+        }
+      ]
+    },
+    {
+      "id": "gerbang",
+      "title": "Gerbang logika",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Rangkaian digital bekerja dengan dua keadaan: <b>1</b> (tinggi, ON, misalnya 5 V) dan <b>0</b> (rendah, OFF, 0 V). <b>Gerbang logika</b> mengolah satu atau beberapa masukan menjadi satu keluaran menurut aturan aljabar Boole. Aturan itu dirangkum dalam <b>tabel kebenaran</b>.</p><table><tr><th>Gerbang</th><th>Notasi</th><th>Keluaran 1 jika ...</th></tr><tr><td>NOT</td><td>\\(Y = \\overline{A}\\)</td><td>masukan 0</td></tr><tr><td>AND</td><td>\\(Y = A\\cdot B\\)</td><td>semua masukan 1</td></tr><tr><td>OR</td><td>\\(Y = A + B\\)</td><td>minimal satu masukan 1</td></tr><tr><td>NAND</td><td>\\(Y = \\overline{A\\cdot B}\\)</td><td>tidak semua masukan 1</td></tr><tr><td>NOR</td><td>\\(Y = \\overline{A + B}\\)</td><td>semua masukan 0</td></tr><tr><td>XOR</td><td>\\(Y = A\\oplus B\\)</td><td>kedua masukan berbeda</td></tr></table><p>Lingkaran kecil pada ujung simbol gerbang berarti pembalik (NOT).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/gerbang-logika.html",
+          "title": "Gerbang logika",
+          "height": 640,
+          "caption": "Pilih mode dua tingkat, lalu susun NAND diikuti NOT (gunakan NAND kedua dengan C = 1). Bandingkan tabel kebenarannya dengan AND."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bel rumah harus berbunyi jika tombol pintu depan <b>atau</b> tombol pintu belakang ditekan. Gerbang apa yang sesuai, dan bagaimana tabel kebenarannya?</p>",
+          "steps": [
+            "Bel (Y) berbunyi jika minimal satu tombol bernilai 1: gerbang OR.",
+            "A B → Y: 0 0 → 0; 0 1 → 1; 1 0 → 1; 1 1 → 1."
+          ],
+          "answer": "Gerbang OR"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Masukan A dan B masuk ke gerbang AND menghasilkan P. Lalu P dan C masuk ke gerbang OR menghasilkan Y. Tentukan Y untuk A = 0, B = 1, C = 0.</p>",
+          "steps": [
+            "P = A · B = 0 · 1 = 0.",
+            "Y = P + C = 0 + 0."
+          ],
+          "answer": "Y = 0"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Gerbang universal",
+          "html": "<p>NAND dan NOR disebut gerbang universal karena semua gerbang lain dapat dibuat dari salah satunya saja. Contohnya, NAND dengan kedua masukan disatukan bekerja sebagai NOT. Itulah sebabnya pabrik IC banyak memproduksi IC berisi gerbang NAND.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Keluaran gerbang XOR bernilai 1 untuk masukan ....",
+          "options": {
+            "A": "A = 0, B = 0",
+            "B": "A = 1, B = 1",
+            "C": "A = 1, B = 0",
+            "D": "semua kombinasi"
+          },
+          "answer": "C",
+          "hint": "XOR: eksklusif, hanya salah satu.",
+          "explanation": "XOR bernilai 1 hanya jika kedua masukannya berbeda."
+        },
+        {
+          "type": "check",
+          "question": "Kedua masukan gerbang NOR dihubungkan menjadi satu masukan A. Gerbang itu kini bekerja sebagai ....",
+          "options": {
+            "A": "AND",
+            "B": "OR",
+            "C": "NOT",
+            "D": "XOR"
+          },
+          "answer": "C",
+          "hint": "Jika A = B, maka A + B = A.",
+          "explanation": "Y = NOT(A + A) = NOT A, sehingga bekerja sebagai gerbang NOT."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira semikonduktor tipe-N bermuatan negatif; bahannya tetap netral.</li><li>Tertukar panjar maju dan panjar mundur. Panjar maju: anode (P) ke kutub +.</li><li>Lupa resistor pembatas arus pada LED.</li><li>Tertukar OR dan XOR: untuk masukan 1 dan 1, OR memberi 1 sedangkan XOR memberi 0.</li><li>Mengira hambatan semikonduktor naik saat dipanaskan seperti logam. Yang terjadi sebaliknya.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 6 Pengantar Instrumentasi Digital.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang sistem elektronika, semikonduktor, dioda dan LED, transistor, IC, serta gerbang logika. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

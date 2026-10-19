@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Efek Fotolistrik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 360" role="img" aria-label="Tabung fotolistrik dengan grafik arus terhadap tegangan"></svg></div>
+  <div class="panel">
+    <div class="lab">Logam katode</div><select id="m"><option value="2.1">Sesium (W₀ = 2,1 eV)</option><option value="2.28" selected>Natrium (W₀ = 2,28 eV)</option><option value="2.9">Kalsium (W₀ = 2,9 eV)</option><option value="4.7">Tembaga (W₀ = 4,7 eV)</option><option value="5.6">Platina (W₀ = 5,6 eV)</option></select>
+    <div class="lab">Panjang gelombang cahaya <b id="lv"></b></div><input type="range" id="l" min="150" max="750" step="5" value="300">
+    <div class="lab">Intensitas cahaya <b id="iv"></b></div><input type="range" id="i" min="0" max="100" step="5" value="60">
+    <div class="lab">Tegangan anode terhadap katode <b id="vv"></b></div><input type="range" id="v" min="-4" max="4" step="0.05" value="1">
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let parts = [];
+function wl2rgb(l){ if(l < 380) return '#9c27b0'; if(l > 700) return '#b71c1c'; const st = [[380, '#7b1fa2'], [450, '#1e88e5'], [495, '#00acc1'], [530, '#43a047'], [580, '#fdd835'], [620, '#fb8c00'], [700, '#e53935']]; let c = st[0][1]; st.forEach(([w, col]) => { if(l >= w) c = col; }); return c; }
+function state(){
+  const W0 = +$('m').value, lam = +$('l').value, I = +$('i').value, V = +$('v').value;
+  const E = 1240 / lam, K = E - W0, emit = K > 0;
+  const Vs = emit ? K : 0;
+  // arus: jenuh = sebanding intensitas; turun linear sampai nol di −Vs (penyederhanaan)
+  const cur = (v) => !emit ? 0 : v >= 0 ? I : v <= -Vs ? 0 : I * (1 + v / Vs);
+  return {W0, lam, I, V, E, K, emit, Vs, cur};
+}
+function draw(){
+  const S = state();
+  $('lv').textContent = S.lam + ' nm'; $('iv').textContent = S.I + '%'; $('vv').textContent = fmt(S.V, 2) + ' V';
+  let s = '';
+  // tabung
+  s += `<rect x="30" y="20" width="250" height="140" rx="40" fill="#e3f2fd" fill-opacity=".5" stroke="#90a4ae" stroke-width="2"/>`;
+  s += `<rect x="50" y="50" width="10" height="80" fill="#78909c"/><text class="s" x="55" y="146" text-anchor="middle" fill="#555">katode</text><rect x="250" y="50" width="10" height="80" fill="#b0bec5"/><text class="s" x="255" y="146" text-anchor="middle" fill="#555">anode</text>`;
+  // cahaya
+  const col = wl2rgb(S.lam);
+  if(S.I > 0) for(let k = 0; k < 4; k++) s += `<line x1="${120 + k * 18}" y1="0" x2="${62}" y2="${60 + k * 18}" stroke="${col}" stroke-width="${1 + S.I / 40}" stroke-opacity=".8"/>`;
+  parts.forEach(p => s += `<circle cx="${p.x}" cy="${p.y}" r="3.5" fill="#1e88e5"/>`);
+  // rangkaian
+  s += `<line x1="55" y1="130" x2="55" y2="190" stroke="#555" stroke-width="2"/><line x1="255" y1="130" x2="255" y2="190" stroke="#555" stroke-width="2"/><line x1="55" y1="190" x2="125" y2="190" stroke="#555" stroke-width="2"/><line x1="185" y1="190" x2="255" y2="190" stroke="#555" stroke-width="2"/>`;
+  s += `<circle cx="155" cy="190" r="16" fill="#fff" stroke="#333" stroke-width="2"/><text class="c" x="155" y="194" text-anchor="middle" fill="#333">A</text><text class="s" x="155" y="222" text-anchor="middle" style="fill:var(--ink)">i = ${fmt(S.cur(S.V) / 100 * 5, 2)} μA</text>`;
+  // grafik i–V
+  const gx = 300, gy = 150, gw = 170, gh = 120, Vmax = 4;
+  const X = v => gx + gw / 2 + v / Vmax * gw / 2, Y = i => gy - i / 100 * gh;
+  s += `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${X(0)}" y1="${gy}" x2="${X(0)}" y2="${gy - gh - 8}" stroke="#555"/><text class="s" x="${gx + gw}" y="${gy - 6}" text-anchor="end" fill="#555">V (volt)</text><text class="s" x="${X(0) + 4}" y="${gy - gh - 10}" fill="#555">i</text>`;
+  for(let v = -4; v <= 4; v += 2) s += `<text class="s" x="${X(v)}" y="${gy + 14}" text-anchor="middle" fill="#888">${v}</text>`;
+  let d = ''; for(let k = 0; k <= 160; k++){ const v = -Vmax + 2 * Vmax * k / 160; d += (k ? 'L' : 'M') + X(v).toFixed(1) + ',' + Y(S.cur(v)).toFixed(1); }
+  s += `<path d="${d}" fill="none" stroke="#1565c0" stroke-width="2.5"/><circle cx="${X(S.V)}" cy="${Y(S.cur(S.V))}" r="5" fill="#e53935"/>`;
+  if(S.emit && S.Vs < Vmax) s += `<text class="s" x="${X(-S.Vs)}" y="${gy + 28}" text-anchor="middle" fill="#e53935">−V₀</text>`;
+  // grafik Kmaks–f
+  const fx = 40, fy = 340, fw = 240, fh = 90, fmax = 2e15;
+  const FX = f => fx + f / fmax * fw, FY = e => fy - e / 6 * fh;
+  s += `<line x1="${fx}" y1="${fy}" x2="${fx + fw}" y2="${fy}" stroke="#555"/><line x1="${fx}" y1="${fy}" x2="${fx}" y2="${fy - fh}" stroke="#555"/><text class="s" x="${fx + fw}" y="${fy - 4}" text-anchor="end" fill="#555">f</text><text class="s" x="${fx + 4}" y="${fy - fh + 2}" fill="#555">K maks</text>`;
+  const f0 = S.W0 * 1.602e-19 / 6.626e-34, f = 3e8 / (S.lam * 1e-9);
+  s += `<line x1="${FX(f0)}" y1="${fy}" x2="${FX(fmax)}" y2="${FY((fmax - f0) * 6.626e-34 / 1.602e-19)}" stroke="#1565c0" stroke-width="2"/><text class="s" x="${FX(f0)}" y="${fy + 13}" text-anchor="middle" fill="#1565c0">f₀</text>`;
+  s += `<circle cx="${FX(Math.min(f, fmax))}" cy="${FY(Math.max(0, S.K))}" r="5" fill="#e53935"/>`;
+  s += `<text class="s" x="300" y="${fy - 60}" style="fill:var(--ink)">Kmaks = hf − W₀</text><text class="s" x="300" y="${fy - 44}" fill="#555">kemiringan = h</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Energi foton hf</span><b>${fmt(S.E, 2)} eV</b></div><div><span>Fungsi kerja W₀</span><b>${fmt(S.W0, 2)} eV</b></div><div><span>Energi kinetik maks</span><b>${S.emit ? fmt(S.K, 2) + ' eV' : 'tidak ada elektron lepas'}</b></div><div><span>Potensial henti V₀</span><b>${S.emit ? fmt(S.Vs, 2) + ' V' : '—'}</b></div><div><span>Panjang gelombang ambang</span><b>${fmt(1240 / S.W0, 0)} nm</b></div>`;
+}
+function step(){
+  const S = state();
+  if(S.emit && Math.random() < S.I / 100) parts.push({x: 62, y: 60 + Math.random() * 60, vx: Math.sqrt(S.K) * (0.6 + 0.4 * Math.random()) * 3, vy: (Math.random() - .5) * 0.6});
+  // medan: V > 0 mempercepat ke anode, V < 0 memperlambat
+  parts.forEach(p => { p.vx += S.V * 0.02; p.x += p.vx; p.y += p.vy; });
+  parts = parts.filter(p => p.x > 58 && p.x < 250).slice(-120);
+}
+['m', 'l', 'i', 'v'].forEach(i => $(i).oninput = () => { parts = []; draw(); });
+setInterval(() => { step(); draw(); }, 50);
+draw();
+</script>
+</body>
+</html>
