@@ -1,56 +1,191 @@
 {
   "title": "Bab 4: Tekanan Zat Padat, Cair, dan Gas",
-  "summary": "Ringkasan bab Bab 4: Tekanan Zat Padat, Cair, dan Gas akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan contoh soal tekanan zat padat, tekanan hidrostatis, hukum Archimedes, hukum Pascal, dan hukum Boyle.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Bab 4: Tekanan Zat Padat, Cair, dan Gas",
+      "id": "padat",
+      "title": "Tekanan zat padat",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tekanan",
+          "html": "<p>\\[P = \\frac{F}{A}\\]</p><p>P tekanan (pascal, Pa = N/m²), F gaya tekan (N), A luas bidang tekan (m²). Gaya tetap, luas diperbesar → tekanan mengecil.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Balok berat 80 N dengan luas alas 0,02 m². Berapa tekanannya pada lantai?</p>",
+          "steps": [
+            "\\(P = \\dfrac{80}{0{,}02}\\)."
+          ],
+          "answer": "4.000 Pa"
+        },
+        {
+          "type": "text",
+          "html": "<p>Penerapan: pisau tajam (luas kecil → tekanan besar), sepatu salju dan roda traktor yang lebar (luas besar → tekanan kecil sehingga tidak terbenam).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Gaya 250 N bekerja pada permukaan 0,05 m². Tekanannya adalah ....",
+          "options": {
+            "A": "12,5 Pa",
+            "B": "500 Pa",
+            "C": "5.000 Pa",
+            "D": "12.500 Pa"
+          },
+          "answer": "C",
+          "hint": "P = F/A.",
+          "explanation": "250 ÷ 0,05 = 5.000 Pa."
+        }
+      ]
+    },
+    {
+      "id": "cair",
+      "title": "Tekanan hidrostatis dan hukum Archimedes",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tekanan hidrostatis",
+          "html": "<p>\\[P_h = \\rho\\,g\\,h\\]</p><p>ρ massa jenis cairan (kg/m³), g percepatan gravitasi (m/s²), h kedalaman dari permukaan (m). Tidak bergantung pada bentuk wadah.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/tekanan-cair.html",
+          "title": "Tekanan hidrostatis",
+          "height": 480,
+          "caption": "Ubah kedalaman dan jenis cairan."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tekanan hidrostatis air 20.000 Pa (ρ = 1.000 kg/m³, g = 10 m/s²). Berapa kedalamannya?</p>",
+          "steps": [
+            "\\(h = \\dfrac{P}{\\rho g} = \\dfrac{20.000}{1.000\\times10}\\)."
+          ],
+          "answer": "2 m"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Archimedes",
+          "html": "<p>Gaya apung = berat zat cair yang dipindahkan: \\(F_A = \\rho_{cair}\\,g\\,V_{tercelup}\\). Benda <b>terapung</b> jika ρ benda &lt; ρ cair, <b>melayang</b> jika sama, <b>tenggelam</b> jika lebih besar.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Benda bervolume 0,01 m³ terapung dengan 60% volumenya tercelup di air. Berapa massa jenis benda?</p>",
+          "steps": [
+            "Saat terapung, berat benda = gaya apung: \\(\\rho_b V g = \\rho_a (0{,}6V) g\\).",
+            "\\(\\rho_b = 0{,}6 \\times 1.000\\)."
+          ],
+          "answer": "600 kg/m³"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Benda beratnya 75 N di udara dan mengalami gaya apung 25 N di air. Berapa berat semunya?</p>",
+          "steps": [
+            "Berat semu = 75 − 25."
+          ],
+          "answer": "50 N"
+        },
+        {
+          "type": "check",
+          "question": "Benda memindahkan 0,004 m³ air (ρ = 1.000 kg/m³, g = 10 m/s²). Gaya apungnya ....",
+          "options": {
+            "A": "4 N",
+            "B": "40 N",
+            "C": "400 N",
+            "D": "4.000 N"
+          },
+          "answer": "B",
+          "hint": "F = ρgV.",
+          "explanation": "1.000 × 10 × 0,004 = 40 N."
+        }
+      ]
+    },
+    {
+      "id": "pascal-boyle",
+      "title": "Hukum Pascal dan hukum Boyle",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Pascal",
+          "html": "<p>Tekanan pada zat cair dalam ruang tertutup diteruskan <b>ke segala arah sama besar</b>. Pada dongkrak hidrolik: \\(\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2}\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/hidrolik.html",
+          "title": "Dongkrak hidrolik",
+          "height": 480,
+          "caption": "Ubah luas piston dan gaya tekan."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Piston kecil 4 cm² diberi gaya 15 N. Berapa gaya pada piston besar 40 cm²?</p>",
+          "steps": [
+            "\\(F_2 = F_1 \\dfrac{A_2}{A_1} = 15 \\times \\dfrac{40}{4}\\)."
+          ],
+          "answer": "150 N"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Boyle",
+          "html": "<p>Pada suhu tetap, tekanan gas berbanding <b>terbalik</b> dengan volumenya: \\(P_1V_1 = P_2V_2\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gas 120 kPa bervolume 5 L dimampatkan menjadi 3 L pada suhu tetap. Berapa tekanannya?</p>",
+          "steps": [
+            "\\(P_2 = \\dfrac{P_1V_1}{V_2} = \\dfrac{120\\times5}{3}\\)."
+          ],
+          "answer": "200 kPa"
+        },
+        {
+          "type": "check",
+          "question": "Gas 2,4 L bertekanan 100 kPa. Agar tekanannya 160 kPa pada suhu tetap, volumenya menjadi ....",
+          "options": {
+            "A": "1,5 L",
+            "B": "3,84 L",
+            "C": "2,4 L",
+            "D": "0,67 L"
+          },
+          "answer": "A",
+          "hint": "P₁V₁ = P₂V₂.",
+          "explanation": "100 × 2,4 / 160 = 1,5 L."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Bab 4: Tekanan Zat Padat, Cair, dan Gas</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Tekanan zat padat</td><td>\\(P = F/A\\)</td></tr><tr><td>Tekanan hidrostatis</td><td>\\(P_h = \\rho g h\\)</td></tr><tr><td>Archimedes</td><td>\\(F_A = \\rho_{cair} g V_{tercelup}\\)</td></tr><tr><td>Pascal</td><td>\\(F_1/A_1 = F_2/A_2\\)</td></tr><tr><td>Boyle</td><td>\\(P_1V_1 = P_2V_2\\)</td></tr></table>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Materi lengkap ada di bab <i>Tekanan pada Zat</i> IPA Kelas 8.</p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal latihan tekanan zat padat, cair, dan gas, lengkap dengan pembahasan."
         }
       ]
     }

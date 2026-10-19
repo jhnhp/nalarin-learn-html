@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalkulator Jejak Karbon</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Grafik batang jejak karbon mingguan per kegiatan"></svg></div>
+  <div class="panel">
+    <div class="lab">Menonton video/streaming <b id="v-vid"></b></div><input type="range" id="vid" min="0" max="8" step=".5" value="3">
+    <div class="lab">Media sosial dan gim daring <b id="v-sos"></b></div><input type="range" id="sos" min="0" max="8" step=".5" value="3">
+    <div class="lab">Perjalanan harian <b id="v-km"></b></div><input type="range" id="km" min="0" max="30" step="1" value="8">
+    <div class="seg" id="mode"><button class="on" data-v="motor">Motor</button><button data-v="mobil">Mobil</button><button data-v="bus">Angkutan umum</button><button data-v="sepeda">Sepeda/jalan</button></div>
+    <div class="lab">Porsi daging sapi per minggu <b id="v-sapi"></b></div><input type="range" id="sapi" min="0" max="10" step="1" value="3">
+    <div class="lab">Makanan terbuang per minggu <b id="v-sisa"></b></div><input type="range" id="sisa" min="0" max="3" step=".25" value="1">
+    <div class="read" id="read"></div>
+    <p class="note">Faktor emisi adalah perkiraan kasar dari berbagai sumber (listrik Indonesia ±0,8 kg CO₂ per kWh; daging sapi ±27 kg CO₂-ekuivalen per kg). Gunakan untuk membandingkan, bukan sebagai angka pasti.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const KM = {motor: .1, mobil: .19, bus: .05, sepeda: 0};
+let mode = 'motor';
+document.querySelectorAll('#mode button').forEach(b => b.onclick = () => { document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); mode = b.dataset.v; draw(); });
+['vid', 'sos', 'km', 'sapi', 'sisa'].forEach(i => $(i).oninput = draw);
+function draw(){
+  const vid = +$('vid').value, sos = +$('sos').value, km = +$('km').value, sapi = +$('sapi').value, sisa = +$('sisa').value;
+  // kg CO2e per minggu
+  const items = [
+    ['Video/streaming', vid * 7 * .05, 'var(--a)'],
+    ['Media sosial/gim', sos * 7 * .03, 'var(--r)'],
+    ['Transportasi', km * 7 * KM[mode], 'var(--comp)'],
+    ['Daging sapi', sapi * 2.7, 'var(--b)'],
+    ['Makanan terbuang', sisa * 2.5, 'var(--k)']
+  ];
+  const tot = items.reduce((a, b) => a + b[1], 0), mx = Math.max(5, ...items.map(i => i[1]));
+  let s = '';
+  const L = 130, R = 440, T = 30, bh = 36;
+  s += `<text class="c" x="10" y="16" style="fill:var(--muted)">Jejak karbon per minggu (kg CO₂-ekuivalen)</text>`;
+  items.forEach(([n, v, c], i) => {
+    const y = T + i * (bh + 14), w = v / mx * (R - L);
+    s += `<text class="s" x="${L - 8}" y="${y + bh / 2 + 4}" text-anchor="end" style="fill:var(--ink)">${n}</text>`;
+    s += `<rect x="${L}" y="${y}" width="${R - L}" height="${bh}" rx="6" style="fill:var(--surface-2)"/><rect x="${L}" y="${y}" width="${Math.max(0, w)}" height="${bh}" rx="6" style="fill:${c}" fill-opacity=".8"/>`;
+    s += `<text class="c" x="${Math.min(L + w + 6, R - 4)}" y="${y + bh / 2 + 4}" text-anchor="${L + w + 40 > R ? 'end' : 'start'}" style="fill:var(--ink)">${fmt(v, 1)}</text>`;
+  });
+  const yr = tot * 52, trees = yr / 22;
+  s += `<text class="c" x="10" y="${T + 5 * (bh + 14) + 12}" style="fill:var(--ink)">Setahun ≈ ${fmt(yr, 0)} kg CO₂ ≈ serapan ${fmt(trees, 0)} pohon dewasa</text>`;
+  svg.innerHTML = s;
+  $('v-vid').textContent = fmt(vid, 1) + ' jam/hari'; $('v-sos').textContent = fmt(sos, 1) + ' jam/hari'; $('v-km').textContent = km + ' km/hari';
+  $('v-sapi').textContent = sapi + ' porsi (100 g)'; $('v-sisa').textContent = fmt(sisa, 2) + ' kg';
+  const big = items.slice().sort((a, b) => b[1] - a[1])[0];
+  $('read').innerHTML = `<div><span>Total per minggu</span><b>${fmt(tot, 1)} kg CO₂e</b></div><div><span>Penyumbang terbesar</span><b>${big[1] > 0 ? big[0] : '—'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

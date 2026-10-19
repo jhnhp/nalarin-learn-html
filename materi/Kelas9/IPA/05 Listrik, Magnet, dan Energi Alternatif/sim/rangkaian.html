@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rangkaian Seri dan Paralel</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}.lamp{cursor:pointer}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Rangkaian tiga lampu seri atau paralel dengan baterai"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button class="on" data-v="seri">Seri</button><button data-v="paralel">Paralel</button></div>
+    <div class="lab">Tegangan baterai <b id="vv"></b></div>
+    <input type="range" id="V" min="1.5" max="12" step="1.5" value="6">
+    <div class="lab">R₁ <b id="v1"></b></div><input type="range" id="R1" min="2" max="20" step="1" value="4">
+    <div class="lab">R₂ <b id="v2"></b></div><input type="range" id="R2" min="2" max="20" step="1" value="4">
+    <div class="lab">R₃ <b id="v3"></b></div><input type="range" id="R3" min="2" max="20" step="1" value="4">
+    <div class="read" id="read"></div>
+    <p class="note">Klik sebuah lampu untuk memutusnya. Titik-titik bergerak menunjukkan arah arus konvensional (dari kutub + ke kutub −). Terang lampu sebanding dengan dayanya, P = V × I.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'seri', broken = [false, false, false], phase = 0;
+document.querySelectorAll('#mode button').forEach(b => b.onclick = () => { document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); mode = b.dataset.v; draw(); });
+['V', 'R1', 'R2', 'R3'].forEach(i => $(i).oninput = draw);
+svg.addEventListener('pointerdown', e => { const g = e.target.closest('.lamp'); if(g){ const k = +g.dataset.k; broken[k] = !broken[k]; draw(); } });
+function solve(){
+  const V = +$('V').value, R = [1, 2, 3].map(i => +$('R' + i).value);
+  let I = [0, 0, 0], Vl = [0, 0, 0], It = 0, Rt = Infinity;
+  if(mode === 'seri'){
+    if(!broken.some(b => b)){ Rt = R[0] + R[1] + R[2]; It = V / Rt; I = [It, It, It]; Vl = R.map(r => It * r); }
+  } else {
+    let g = 0; R.forEach((r, k) => { if(!broken[k]){ I[k] = V / r; Vl[k] = V; g += 1 / r; } });
+    It = I[0] + I[1] + I[2]; Rt = g ? 1 / g : Infinity;
+  }
+  return {V, R, I, Vl, It, Rt, P: I.map((i, k) => i * Vl[k])};
+}
+function lamp(x, y, k, P, side){
+  const glow = Math.min(1, Math.sqrt(P / 9));
+  let s = `<g class="lamp" data-k="${k}">`;
+  if(!broken[k] && glow > .02) s += `<circle cx="${x}" cy="${y}" r="${18 + 16 * glow}" fill="#facc15" fill-opacity="${.15 + .35 * glow}"/>`;
+  s += `<circle cx="${x}" cy="${y}" r="15" fill="${broken[k] ? 'none' : `rgba(250,204,21,${.15 + .85 * glow})`}" style="stroke:var(--ink)" stroke-width="2"/>`;
+  s += broken[k] ? `<path d="M${x - 8},${y - 3} L${x - 2},${y + 3} M${x + 2},${y - 3} L${x + 8},${y + 3}" style="stroke:var(--bad)" stroke-width="2.5"/>` : `<path d="M${x - 8},${y + 4} Q${x - 4},${y - 8} ${x},${y + 4} Q${x + 4},${y - 8} ${x + 8},${y + 4}" fill="none" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  s += `<rect x="${x - 22}" y="${y - 22}" width="44" height="44" fill="transparent"/></g>`;
+  s += side ? `<text class="s" x="${x + 24}" y="${y + 4}" style="fill:var(--ink)">L${k + 1}${broken[k] ? ' (putus)' : ''}</text>` : `<text class="s" x="${x}" y="${y + 32}" text-anchor="middle" style="fill:var(--ink)">L${k + 1}${broken[k] ? ' (putus)' : ''}</text>`;
+  return s;
+}
+let paths = [];
+function draw(){
+  const r = solve();
+  $('vv').textContent = fmt(r.V, 1) + ' V'; [1, 2, 3].forEach(i => $('v' + i).textContent = $('R' + i).value + ' Ω');
+  let s = '';
+  // baterai di kiri: kutub + di atas
+  const bx = 60, top = 50, bot = 280;
+  s += `<line x1="${bx - 14}" y1="160" x2="${bx + 14}" y2="160" style="stroke:var(--ink)" stroke-width="3"/><line x1="${bx - 8}" y1="172" x2="${bx + 8}" y2="172" style="stroke:var(--ink)" stroke-width="5"/>`;
+  s += `<text class="c" x="${bx + 22}" y="164" style="fill:var(--b)">+</text><text class="c" x="${bx + 22}" y="182" style="fill:var(--a)">−</text><text class="s" x="${bx - 20}" y="170" text-anchor="end" style="fill:var(--ink)">${fmt(r.V, 1)} V</text>`;
+  const W = 'style="stroke:var(--ink)" stroke-width="2.5" fill="none"';
+  const segs = [], lamps = [];
+  const P = (pts, I) => { for(let i = 1; i < pts.length; i++) segs.push([...pts[i - 1], ...pts[i], I]); };
+  if(mode === 'seri'){
+    s += `<path d="M${bx},160 L${bx},${top} L420,${top} L420,${bot} L${bx},${bot} L${bx},172" ${W}/>`;
+    P([[bx, 160], [bx, top], [420, top], [420, bot], [bx, bot], [bx, 172]], r.It);
+    [[180, top, 0], [300, top, 0], [420, 165, 1]].forEach(([x, y, sd], k) => lamps.push([x, y, k, sd]));
+  } else {
+    const xs = [200, 300, 400], I = r.I;
+    s += `<path d="M${bx},160 L${bx},${top} L${xs[2]},${top} M${bx},172 L${bx},${bot} L${xs[2]},${bot}" ${W}/>`;
+    xs.forEach(x => s += `<line x1="${x}" y1="${top}" x2="${x}" y2="${bot}" style="stroke:var(--ink)" stroke-width="2.5"/>`);
+    P([[bx, 160], [bx, top], [xs[0], top]], r.It); P([[xs[0], top], [xs[1], top]], I[1] + I[2]); P([[xs[1], top], [xs[2], top]], I[2]);
+    xs.forEach((x, k) => { P([[x, top], [x, bot]], I[k]); lamps.push([x, 165, k, 1]); });
+    P([[xs[2], bot], [xs[1], bot]], I[2]); P([[xs[1], bot], [xs[0], bot]], I[1] + I[2]); P([[xs[0], bot], [bx, bot], [bx, 172]], r.It);
+  }
+  // titik arus (kecepatan sebanding kuat arus)
+  segs.forEach(([a, b, c, d, I]) => {
+    if(I <= 1e-9) return;
+    const l = Math.hypot(c - a, d - b), gap = 24, off = (phase * Math.min(5, I * 2)) % gap;
+    for(let u = off; u < l; u += gap){ const t = u / l; s += `<circle cx="${a + (c - a) * t}" cy="${b + (d - b) * t}" r="3" style="fill:var(--b)"/>`; }
+  });
+  lamps.forEach(([x, y, k, sd]) => s += lamp(x, y, k, r.P[k], sd));
+  svg.innerHTML = s;
+  let rd = `<div><span>Hambatan total</span><b>${r.Rt === Infinity ? '∞ (rangkaian terbuka)' : fmt(r.Rt, 2) + ' Ω'}</b></div><div><span>Arus total</span><b>${fmt(r.It, 2)} A</b></div>`;
+  rd += [0, 1, 2].map(k => `<div><span>L${k + 1}</span><b>${broken[k] ? 'putus' : `V = ${fmt(r.Vl[k], 2)} V, I = ${fmt(r.I[k], 2)} A, P = ${fmt(r.P[k], 2)} W`}</b></div>`).join('');
+  $('read').innerHTML = rd;
+}
+setInterval(() => { phase += 1; draw(); }, 60);
+draw();
+</script>
+</body>
+</html>
