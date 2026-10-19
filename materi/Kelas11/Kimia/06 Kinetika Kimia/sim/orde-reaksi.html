@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menentukan Orde Reaksi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+table.t{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}table.t td,table.t th{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right}table.t th{color:var(--muted);font-weight:600}
+.wrap{padding:12px;box-sizing:border-box;width:100%}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><div class="wrap"><svg id="svg" viewBox="0 0 440 180" style="width:100%" role="img" aria-label="Grafik laju reaksi terhadap konsentrasi A"></svg><table class="t" id="tab"></table></div></div>
+  <div class="panel">
+    <div class="lab">Reaksi A + B → produk dengan r = k[A]ˣ[B]ʸ (x dan y dirahasiakan)</div>
+    <div class="lab">[A] awal <b id="av"></b></div><input type="range" id="a" min="0.05" max="0.40" step="0.05" value="0.10">
+    <div class="lab">[B] awal <b id="bv"></b></div><input type="range" id="b" min="0.05" max="0.40" step="0.05" value="0.10">
+    <div class="row"><button class="btn primary" id="ukur">Ukur laju awal</button><button class="btn" id="baru">Reaksi baru</button></div>
+    <div class="lab">Tebakan orde x dan y</div>
+    <div class="row"><select id="gx"><option>x = 0</option><option>x = 1</option><option>x = 2</option></select><select id="gy"><option>y = 0</option><option>y = 1</option><option>y = 2</option></select></div>
+    <div class="row"><button class="btn" id="cek">Periksa</button></div>
+    <p class="note" id="hasil" style="color:var(--ink)"></p>
+    <p class="note">Strategi: ubah [A] dengan [B] tetap untuk mencari x (laju naik 2ˣ kali jika [A] dua kali). Lalu ubah [B] dengan [A] tetap untuk mencari y.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+let X, Y, K, rows;
+function baru(){ X = Math.floor(Math.random() * 3); Y = Math.floor(Math.random() * 3); if(X + Y === 0) Y = 1; K = [0.5, 1.2, 2.5, 4, 6.4][Math.floor(Math.random() * 5)] * 10 ** (X + Y - 1); rows = []; $('hasil').textContent = ''; draw(); }
+const sci = v => { const e = Math.floor(Math.log10(v)), m = v / 10 ** e; return e >= -2 && e <= 2 ? fmt(v, 4) : `${fmt(m, 3)} × 10${String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`; };
+function draw(){
+  const a = +$('a').value, b = +$('b').value;
+  $('av').textContent = fmt(a, 2) + ' M'; $('bv').textContent = fmt(b, 2) + ' M';
+  let t = '<tr><th>Percobaan</th><th>[A] (M)</th><th>[B] (M)</th><th>laju awal (M/s)</th></tr>';
+  rows.forEach((r, i) => t += `<tr><td>${i + 1}</td><td>${fmt(r[0], 2)}</td><td>${fmt(r[1], 2)}</td><td>${sci(r[2])}</td></tr>`);
+  $('tab').innerHTML = rows.length ? t : '<tr><td style="text-align:left;color:var(--muted)">Belum ada data. Atur [A] dan [B], lalu tekan “Ukur laju awal”.</td></tr>';
+  // grafik laju vs [A] untuk data dengan [B] sama dengan pengaturan sekarang
+  const pts = rows.filter(r => Math.abs(r[1] - b) < 1e-9);
+  const gx = 40, gy = 160, gw = 380, gh = 135, rmax = Math.max(...pts.map(r => r[2]), 1e-12) * 1.15;
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" style="stroke:var(--ink)"/><line x1="${gx}" y1="${gy - gh}" x2="${gx}" y2="${gy}" style="stroke:var(--ink)"/><text class="s" x="${gx + gw}" y="${gy - 6}" text-anchor="end" style="fill:var(--muted)">[A] (M)</text><text class="s" x="${gx + 4}" y="${gy - gh + 4}" style="fill:var(--muted)">laju</text><text class="s" x="${gx + gw}" y="${gy - gh + 4}" text-anchor="end" style="fill:var(--muted)">titik dengan [B] = ${fmt(b, 2)} M</text>`;
+  for(let v = .1; v <= .41; v += .1) s += `<text class="s" x="${gx + gw * v / .4}" y="${gy + 14}" text-anchor="middle" style="fill:var(--muted)">${fmt(v, 1)}</text>`;
+  pts.forEach(r => s += `<circle cx="${gx + gw * r[0] / .4}" cy="${gy - gh * r[2] / rmax}" r="5" style="fill:var(--a)"/>`);
+  $('svg').innerHTML = s;
+}
+$('ukur').onclick = () => { const a = +$('a').value, b = +$('b').value; rows.push([a, b, K * a ** X * b ** Y]); draw(); };
+$('baru').onclick = baru;
+$('cek').onclick = () => {
+  const gx = $('gx').selectedIndex, gy = $('gy').selectedIndex;
+  if(rows.length < 3){ $('hasil').textContent = 'Kumpulkan sedikitnya tiga data percobaan terlebih dahulu.'; return; }
+  if(gx === X && gy === Y){ const r = rows[0]; $('hasil').innerHTML = `Benar! r = k[A]${X === 1 ? '' : X === 2 ? '²' : '⁰'}[B]${Y === 1 ? '' : Y === 2 ? '²' : '⁰'}, orde total ${X + Y}. Dari percobaan 1: k = ${sci(r[2])} ÷ (${fmt(r[0], 2)}${X === 2 ? '²' : X === 0 ? '⁰' : ''} × ${fmt(r[1], 2)}${Y === 2 ? '²' : Y === 0 ? '⁰' : ''}) = ${sci(K)}.`; }
+  else $('hasil').textContent = `Belum tepat${gx === X ? ' (x sudah benar)' : gy === Y ? ' (y sudah benar)' : ''}. Bandingkan dua percobaan yang hanya berbeda pada satu konsentrasi.`;
+};
+['a', 'b'].forEach(i => $(i).oninput = draw);
+baru();
+</script>
+</body>
+</html>

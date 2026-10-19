@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reaksi Hidrokarbon</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:15px}.s{font-family:var(--display);font-weight:700;font-size:11px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Persamaan reaksi hidrokarbon dengan struktur pereaksi dan produk"></svg></div>
+  <div class="panel">
+    <div class="lab">Hidrokarbon</div><select id="A"></select>
+    <div class="lab">Pereaksi</div><select id="R"></select>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+    <p class="note">Adisi: ikatan rangkap terbuka dan dua atom/gugus masuk. Kaidah Markovnikov: pada adisi HX atau H₂O, atom H masuk ke atom C rangkap yang sudah mengikat H lebih banyak. Dengan HBr dan peroksida berlaku kebalikannya (anti-Markovnikov). Alkana tidak dapat diadisi; dengan halogen dan cahaya alkana mengalami substitusi.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// rantai: tiap atom C = [jumlah H, cabang]; db = indeks ikatan rangkap (antara db dan db+1), -1 untuk alkana
+const HC = [
+  ['etana', [[3, ''], [3, '']], -1], ['propana', [[3, ''], [2, ''], [3, '']], -1],
+  ['etena', [[2, ''], [2, '']], 0], ['propena', [[2, ''], [1, ''], [3, '']], 0], ['1-butena', [[2, ''], [1, ''], [2, ''], [3, '']], 0],
+  ['2-butena', [[3, ''], [1, ''], [1, ''], [3, '']], 1], ['2-metilpropena', [[2, ''], [0, '(CH₃)'], [3, '']], 0], ['1-pentena', [[2, ''], [1, ''], [2, ''], [2, ''], [3, '']], 0]
+];
+const RG = [['H₂ (katalis Ni)', 'H', 'H'], ['Cl₂', 'Cl', 'Cl'], ['Br₂', 'Br', 'Br'], ['HCl', 'H', 'Cl'], ['HBr', 'H', 'Br'], ['HBr + peroksida', 'H', 'Br', 'anti'], ['H₂O (katalis asam)', 'H', 'OH']];
+HC.forEach((h, i) => { const o = document.createElement('option'); o.value = i; o.textContent = h[0]; $('A').appendChild(o); });
+RG.forEach((r, i) => { const o = document.createElement('option'); o.value = i; o.textContent = r[0]; $('R').appendChild(o); });
+$('A').value = 4; $('R').value = 3;
+const sub = k => k <= 1 ? (k ? '' : '') : String(k).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d]);
+const ROOT = ['', 'met', 'et', 'prop', 'but', 'pent'];
+const XN = {Cl: 'kloro', Br: 'bromo'};
+function cond(ch, db, extra){
+  return ch.map((c, i) => { const h = c[0] + (extra[i] && extra[i].H ? 1 : 0), x = extra[i] && extra[i].X || ''; return 'C' + (h ? 'H' + sub(h) : '') + c[1] + (x ? (x === 'OH' ? 'OH' : x) : ''); }).reduce((s, t, i) => i ? s + (i - 1 === db ? ' = ' : ' – ') + t : t, '');
+}
+function draw(){
+  const [nm, ch, db] = HC[+$('A').value], r = RG[+$('R').value], n = ch.length;
+  let prod, pname, ket, jenis;
+  const branched = nm === '2-metilpropena';
+  if(db < 0){
+    if(r[1] === r[2] && r[1] !== 'H'){
+      jenis = 'substitusi (perlu cahaya/UV)';
+      const ex = [{X: r[1]}]; const c2 = ch.map((c, i) => i === 0 ? [c[0] - 1, c[1]] : c);
+      prod = cond(c2, -1, ex) + ' + H' + r[1];
+      pname = (n > 2 ? '1-' : '') + (r[1] === 'Cl' ? 'kloro' : 'bromo') + ROOT[n] + 'ana';
+      ket = `Satu atom H pada ${nm} diganti oleh atom ${r[1]}. Jika halogen berlebih, substitusi dapat berlanjut.`;
+    } else { jenis = 'tidak bereaksi'; prod = '—'; pname = '—'; ket = `${nm} jenuh (tidak ada ikatan rangkap), sehingga tidak dapat mengalami adisi.`; }
+  } else {
+    jenis = 'adisi';
+    const a = db, b = db + 1;
+    let hTo = ch[a][0] >= ch[b][0] ? a : b;
+    if(r[3] === 'anti') hTo = hTo === a ? b : a;
+    const xTo = hTo === a ? b : a, ex = {};
+    if(r[1] === 'H' && r[2] === 'H'){ ex[a] = {H: 1}; ex[b] = {H: 1}; }
+    else if(r[1] === 'H'){ ex[hTo] = {H: 1}; ex[xTo] = {X: r[2]}; }
+    else { ex[a] = {X: r[1]}; ex[b] = {X: r[2]}; }
+    prod = cond(ch, -1, ex);
+    const base = (branched ? '2-metil' : '') + ROOT[n];
+    // penomoran produk dari ujung yang memberi nomor terkecil
+    const L = branched ? 3 : n;
+    const num = i => { const p = i + 1; return Math.min(p, L + 1 - p); };
+    const sym = (i, j) => { const p = [i + 1, j + 1], q = [L - i, L - j]; return (p[0] + p[1] <= q[0] + q[1] ? p : q).sort((x, y) => x - y).join(','); };
+    if(r[1] === 'H' && r[2] === 'H') pname = (branched ? '2-metilpropana' : base + 'ana');
+    else if(r[1] === 'H' && r[2] === 'OH'){ const loc = num(xTo); pname = branched ? (xTo === 1 ? '2-metil-2-propanol' : '2-metil-1-propanol') : (n === 2 ? 'etanol' : loc + '-' + ROOT[n] + 'anol'); }
+    else if(r[1] === 'H'){ const loc = num(xTo); pname = branched ? (xTo === 1 ? '2-' + XN[r[2]] + '-2-metilpropana' : '1-' + XN[r[2]] + '-2-metilpropana') : (n === 2 ? XN[r[2]] + 'etana' : loc + '-' + XN[r[2]] + ROOT[n] + 'ana'); }
+    else pname = branched ? '1,2-di' + XN[r[1]] + '-2-metilpropana' : sym(a, b) + '-di' + XN[r[1]] + ROOT[n] + 'ana';
+    if(r[1] === 'H' && r[2] !== 'H'){
+      const same = ch[a][0] === ch[b][0];
+      ket = same ? `Kedua atom C rangkap mengikat jumlah H yang sama, sehingga hanya ada satu produk.` : r[3] ? `Dengan peroksida, atom H masuk ke C yang mengikat H lebih sedikit (anti-Markovnikov), sehingga ${r[2]} terikat di ujung rantai.` : `Atom C${a + 1} mengikat ${ch[a][0]} H dan C${b + 1} mengikat ${ch[b][0]} H. Menurut Markovnikov, H masuk ke C${hTo + 1} dan ${r[2]} ke C${xTo + 1}.`;
+    } else ket = `Ikatan rangkap terbuka; masing-masing atom C rangkap menerima satu atom ${r[1]}.`;
+  }
+  const re = cond(ch, db, {});
+  let s = `<text class="s" x="20" y="34" style="fill:var(--muted)">PEREAKSI</text><text class="c" x="20" y="64" style="fill:var(--ink)">${re}</text><text class="s" x="20" y="84" style="fill:var(--muted)">${nm}</text>`;
+  s += `<text class="c" x="20" y="124" style="fill:var(--b)">+ ${r[0].replace(' (katalis Ni)', '').replace(' (katalis asam)', '')}</text>`;
+  s += `<line x1="20" y1="150" x2="200" y2="150" style="stroke:var(--ink)" stroke-width="2"/><path d="M200,150 l-10,-6 v12z" style="fill:var(--ink)"/>`;
+  s += `<text class="s" x="20" y="190" style="fill:var(--muted)">PRODUK</text><text class="c" x="20" y="220" style="fill:var(--k)">${prod}</text><text class="s" x="20" y="240" style="fill:var(--muted)">${pname}</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Jenis reaksi</span><b>${jenis}</b></div><div><span>Produk utama</span><b>${pname}</b></div>`;
+  $('ket').innerHTML = ket;
+}
+['A', 'R'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

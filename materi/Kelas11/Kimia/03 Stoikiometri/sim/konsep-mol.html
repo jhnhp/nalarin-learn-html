@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peta Konsep Mol</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}.big{font-family:var(--display);font-weight:800;font-size:15px}
+select,input[type=number]{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit;box-sizing:border-box}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Peta konsep mol yang menghubungkan massa, jumlah partikel, dan volume gas STP"></svg></div>
+  <div class="panel">
+    <div class="lab">Zat</div><select id="z"></select>
+    <div class="lab">Besaran yang diketahui</div>
+    <div class="seg" id="seg"><button data-k="m" class="on">massa</button><button data-k="n">mol</button><button data-k="N">partikel</button><button data-k="V">volume STP</button></div>
+    <div class="lab">Nilai <span id="unit"></span></div><input type="number" id="v" value="8.5" step="any" min="0">
+    <div class="read" id="read"></div>
+    <p class="note">n = m / Mr · N = n × 6,02 × 10²³ · V (STP, 0 °C dan 1 atm) = n × 22,4 L. Volume molar 22,4 L hanya berlaku untuk gas.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [nama, rumus, Mr, gas?]
+const Z = [['amonia', 'NH₃', 17, 1], ['metana', 'CH₄', 16, 1], ['nitrogen', 'N₂', 28, 1], ['klorin', 'Cl₂', 71, 1], ['sulfur dioksida', 'SO₂', 64, 1], ['air', 'H₂O', 18, 0], ['glukosa', 'C₆H₁₂O₆', 180, 0], ['natrium klorida', 'NaCl', 58.5, 0], ['besi', 'Fe', 56, 0], ['kalsium karbonat', 'CaCO₃', 100, 0]];
+Z.forEach((z, i) => { const o = document.createElement('option'); o.value = i; o.textContent = `${z[1]} (${z[0]}), Mr = ${String(z[2]).replace('.', ',')}`; $('z').appendChild(o); });
+let K = 'm';
+const UNIT = {m: '(gram)', n: '(mol)', N: '(× 10²³ partikel)', V: '(liter)'};
+$('seg').querySelectorAll('button').forEach(b => b.onclick = () => { $('seg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); K = b.dataset.k; draw(); });
+['z', 'v'].forEach(i => $(i).oninput = draw);
+const sci = x => { if(x === 0) return '0'; const e = Math.floor(Math.log10(x)), m = x / 10 ** e; return `${fmt(m, 3)} × 10${String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`; };
+function box(x, y, w, t, v, col, on){
+  return `<rect x="${x - w / 2}" y="${y - 30}" width="${w}" height="60" rx="10" fill="${col}" fill-opacity="${on ? .28 : .1}" stroke="${col}" stroke-width="${on ? 3 : 1.5}"/><text class="s" x="${x}" y="${y - 10}" text-anchor="middle" style="fill:var(--muted)">${t}</text><text class="big" x="${x}" y="${y + 14}" text-anchor="middle" style="fill:var(--ink)">${v}</text>`;
+}
+function arr(x1, y1, x2, y2, t1, t2, tx, ty){
+  return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:var(--muted)" stroke-width="1.5"/><text class="s" x="${tx}" y="${ty}" text-anchor="middle" style="fill:var(--b)">${t1}</text><text class="s" x="${tx}" y="${ty + 14}" text-anchor="middle" style="fill:var(--a)">${t2}</text>`;
+}
+function draw(){
+  const z = Z[+$('z').value], v = Math.max(0, +$('v').value || 0);
+  $('unit').textContent = UNIT[K];
+  $('seg').querySelector('[data-k=V]').disabled = !z[3];
+  if(!z[3] && K === 'V'){ K = 'm'; $('seg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x.dataset.k === 'm')); }
+  let n = K === 'm' ? v / z[2] : K === 'n' ? v : K === 'N' ? v * 1e23 / 6.02e23 : v / 22.4;
+  const m = n * z[2], N = n * 6.02e23, V = n * 22.4;
+  let s = '';
+  s += box(240, 160, 130, 'MOL (n)', fmt(n, 4) + ' mol', 'var(--r)', K === 'n');
+  s += box(80, 60, 140, 'MASSA (m)', fmt(m, 3) + ' g', 'var(--comp)', K === 'm');
+  s += box(400, 60, 140, 'JUMLAH PARTIKEL (N)', sci(N), 'var(--k)', K === 'N');
+  s += box(240, 285, 150, 'VOLUME GAS STP (V)', z[3] ? fmt(V, 3) + ' L' : 'bukan gas', 'var(--a)', K === 'V');
+  s += arr(140, 90, 180, 135, '÷ Mr (' + String(z[2]).replace('.', ',') + ')', '× Mr', 135, 125);
+  s += arr(340, 90, 300, 135, '× 6,02 × 10²³', '÷ 6,02 × 10²³', 355, 125);
+  s += arr(240, 190, 240, 255, '× 22,4', '÷ 22,4', 290, 220);
+  s += `<text class="s" x="20" y="312" style="fill:var(--muted)">merah: menuju mol · biru: dari mol</text>`;
+  svg.innerHTML = s;
+  const sub = K === 'm' ? `n = ${fmt(v, 3)} g ÷ ${String(z[2]).replace('.', ',')} g/mol` : K === 'N' ? `n = ${fmt(v, 3)} × 10²³ ÷ 6,02 × 10²³` : K === 'V' ? `n = ${fmt(v, 3)} L ÷ 22,4 L/mol` : 'mol diketahui';
+  $('read').innerHTML = `<div><span>Langkah 1 (ke mol)</span><b>${sub} = ${fmt(n, 4)} mol</b></div><div><span>Massa</span><b>${fmt(m, 3)} g</b></div><div><span>Jumlah ${z[1] === 'Fe' || z[1] === 'NaCl' ? 'satuan rumus/atom' : 'molekul'}</span><b>${sci(N)}</b></div><div><span>Volume STP</span><b>${z[3] ? fmt(V, 3) + ' L' : '— (bukan gas)'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

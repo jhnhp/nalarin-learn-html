@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kesetimbangan Dinamis dan Le Chatelier</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+.row .btn{padding:7px 10px;font-size:13px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Wadah gas N2O4 dan NO2 serta grafik konsentrasi dan laju reaksi terhadap waktu"></svg></div>
+  <div class="panel">
+    <div class="read"><div><span>Reaksi</span><b>N₂O₄(g) ⇌ 2NO₂(g), ΔH = +57 kJ</b></div></div><p class="note">N₂O₄ tidak berwarna, NO₂ berwarna cokelat.</p>
+    <div class="row"><button class="btn" id="aN">+ N₂O₄</button><button class="btn" id="aD">+ NO₂</button><button class="btn" id="rD">ambil ½ NO₂</button></div>
+    <div class="row"><button class="btn" id="vh">volume ½ (tekanan naik)</button><button class="btn" id="v2">volume × 2</button></div>
+    <div class="lab">Suhu <b id="tv"></b></div><input type="range" id="T" min="280" max="380" step="5" value="300">
+    <label class="chk"><input type="checkbox" id="kat"> Katalis (laju maju dan balik sama-sama 4 kali)</label>
+    <div class="row"><button class="btn primary" id="rs">Mulai ulang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let nA, nB, V, t, H, msg;
+const Kc = T => 0.0046 * Math.exp(-57000 / 8.314 * (1 / T - 1 / 298));
+function reset(){ nA = 0.10; nB = 0; V = 1; t = 0; H = []; msg = 'Mula-mula hanya ada N₂O₄. Perhatikan laju maju turun dan laju balik naik sampai keduanya sama.'; }
+function Q(){ const a = nA / V, b = nB / V; return a > 0 ? b * b / a : Infinity; }
+function note(what){
+  const q = Q(), k = Kc(+$('T').value);
+  const dir = Math.abs(q - k) / k < 0.02 ? 'tidak bergeser' : q < k ? 'bergeser ke kanan (membentuk NO₂)' : 'bergeser ke kiri (membentuk N₂O₄)';
+  msg = `${what} Sesaat setelah gangguan: Qc = ${fmt(q, 4)}, Kc = ${fmt(k, 4)} → kesetimbangan ${dir}.`;
+}
+function step(dt){
+  const T = +$('T').value, k = Kc(T), kf = 0.3 * ($('kat').checked ? 4 : 1), kr = kf / k;
+  for(let i = 0; i < 20; i++){
+    const a = nA / V, b = nB / V, rf = kf * a, rr = kr * b * b;
+    const d = (rf - rr) * dt / 20 * V; nA -= d; nB += 2 * d; if(nA < 0) nA = 0;
+  }
+  t += dt;
+  const a = nA / V, b = nB / V; H.push([t, a, b, kf * a, kr * b * b]);
+  if(H.length > 400) H.shift();
+}
+function plot(x, y, w, h, idx, cols, ymax, title){
+  const t0 = Math.max(0, t - 20), sx = tt => x + w * (tt - t0) / 20;
+  let s = `<text class="s" x="${x}" y="${y - h - 6}" style="fill:var(--muted)">${title}</text><line x1="${x}" y1="${y}" x2="${x + w}" y2="${y}" style="stroke:var(--muted)"/><line x1="${x}" y1="${y - h}" x2="${x}" y2="${y}" style="stroke:var(--muted)"/>`;
+  idx.forEach((k, j) => { let p = ''; H.filter(r => r[0] >= t0).forEach((r, i) => { p += (i ? 'L' : 'M') + sx(r[0]).toFixed(1) + ',' + (y - h * Math.min(1, r[k] / ymax)).toFixed(1); }); s += `<path d="${p}" fill="none" style="stroke:${cols[j]}" stroke-width="2.2"/>`; });
+  return s;
+}
+function draw(){
+  const T = +$('T').value; $('tv').textContent = T + ' K';
+  const a = nA / V, b = nB / V, k = Kc(T);
+  // wadah: lebar sebanding volume
+  const bw = 60 + 50 * Math.min(V, 4), bx = 14, by = 30, bh = 110;
+  const col = Math.min(1, b / 0.12);
+  let s = `<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="8" style="fill:#8a3b0b" fill-opacity="${(0.05 + 0.85 * col).toFixed(2)}" stroke="var(--ink)" stroke-width="2"/><text class="s" x="${bx + bw / 2}" y="${by + bh + 16}" text-anchor="middle" style="fill:var(--muted)">V = ${fmt(V, 2)} L, T = ${T} K</text>`;
+  s += `<text class="c" x="${bx}" y="20" style="fill:var(--ink)">warna makin cokelat = [NO₂] makin besar</text>`;
+  const cmax = Math.max(0.12, ...H.map(r => Math.max(r[1], r[2]))) * 1.1, rmax = Math.max(0.02, ...H.map(r => Math.max(r[3], r[4]))) * 1.1;
+  s += plot(270, 140, 200, 100, [1, 2], ['var(--a)', 'var(--comp)'], cmax, 'konsentrasi (M): biru N₂O₄, oranye NO₂');
+  s += plot(30, 320, 440, 120, [3, 4], ['var(--k)', 'var(--b)'], rmax, 'laju (M/s): hijau = laju maju, merah = laju balik; sama besar saat setimbang');
+  svg.innerHTML = s;
+  const q = Q();
+  $('read').innerHTML = `<div><span>[N₂O₄] / [NO₂]</span><b>${fmt(a, 4)} / ${fmt(b, 4)} M</b></div><div><span>Qc = [NO₂]²/[N₂O₄]</span><b>${isFinite(q) ? fmt(q, 4) : '∞'}</b></div><div><span>Kc pada ${T} K</span><b>${fmt(k, 4)}</b></div>`;
+  $('ket').innerHTML = msg;
+}
+$('aN').onclick = () => { nA += 0.05 * V; note('N₂O₄ ditambahkan.'); };
+$('aD').onclick = () => { nB += 0.05 * V; note('NO₂ ditambahkan.'); };
+$('rD').onclick = () => { nB /= 2; note('Separuh NO₂ diambil.'); };
+$('vh').onclick = () => { if(V > .26){ V /= 2; note('Volume diperkecil (tekanan diperbesar); semua konsentrasi menjadi dua kali.'); } };
+$('v2').onclick = () => { if(V < 3.9){ V *= 2; note('Volume diperbesar (tekanan diperkecil).'); } };
+$('T').oninput = () => { note(`Suhu diubah menjadi ${$('T').value} K; nilai Kc ikut berubah karena reaksi ke kanan endoterm.`); };
+$('kat').oninput = () => { msg = 'Katalis mempercepat laju maju dan laju balik sama besar, sehingga kesetimbangan lebih cepat tercapai tetapi posisinya tidak bergeser.'; };
+$('rs').onclick = reset;
+reset(); draw();
+setInterval(() => { step(0.05); draw(); }, 50);
+</script>
+</body>
+</html>

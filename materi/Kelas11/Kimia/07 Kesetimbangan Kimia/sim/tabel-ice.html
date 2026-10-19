@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menghitung Kc dan Kp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>table.t{width:100%;border-collapse:collapse;font-size:14px}table.t td,table.t th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}table.t th{color:var(--muted);font-weight:600}table.t td:first-child,table.t th:first-child{text-align:left}
+.wrap{padding:16px;box-sizing:border-box;width:100%}.eq{font-family:var(--display);font-weight:800;font-size:18px;margin:0 0 12px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><div class="wrap"><p class="eq" id="eq"></p><table class="t" id="tab"></table><p class="note" id="rumus" style="margin-top:12px;color:var(--ink)"></p></div></div>
+  <div class="panel">
+    <div class="lab">Reaksi kesetimbangan</div><select id="rx"></select>
+    <div class="lab">Mol awal <span id="l1"></span> <b id="v1"></b></div><input type="range" id="n1" min="0.5" max="6" step="0.5" value="4">
+    <div class="lab">Mol awal <span id="l2"></span> <b id="v2"></b></div><input type="range" id="n2" min="0" max="6" step="0.5" value="0">
+    <div class="lab">Volume wadah <b id="vv"></b></div><input type="range" id="V" min="1" max="10" step="1" value="2">
+    <div class="lab">Bagian pereaksi pertama yang bereaksi (derajat disosiasi α) <b id="av"></b></div><input type="range" id="a" min="0.05" max="0.95" step="0.05" value="0.4">
+    <div class="lab">Suhu <b id="tv"></b></div><input type="range" id="T" min="300" max="800" step="10" value="500">
+    <div class="read" id="read"></div>
+    <p class="note">Langkah: tulis mol awal (M), mol bereaksi sesuai perbandingan koefisien (B), dan mol setimbang (S). Konsentrasi = mol/volume. Zat padat dan cair tidak dimasukkan ke rumus K. Kp = Kc(RT)^Δn dengan R = 0,082 L·atm/(mol·K).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+// zat: [lambang, koefisien, sisi (-1 pereaksi, +1 produk)]
+const RX = [
+  ['PCl₅(g) ⇌ PCl₃(g) + Cl₂(g)', [['PCl₅', 1, -1], ['PCl₃', 1, 1], ['Cl₂', 1, 1]]],
+  ['N₂(g) + 3H₂(g) ⇌ 2NH₃(g)', [['N₂', 1, -1], ['H₂', 3, -1], ['NH₃', 2, 1]]],
+  ['2SO₃(g) ⇌ 2SO₂(g) + O₂(g)', [['SO₃', 2, -1], ['SO₂', 2, 1], ['O₂', 1, 1]]],
+  ['2NH₃(g) ⇌ N₂(g) + 3H₂(g)', [['NH₃', 2, -1], ['N₂', 1, 1], ['H₂', 3, 1]]],
+  ['CO(g) + H₂O(g) ⇌ CO₂(g) + H₂(g)', [['CO', 1, -1], ['H₂O', 1, -1], ['CO₂', 1, 1], ['H₂', 1, 1]]]
+];
+RX.forEach((r, i) => { const o = document.createElement('option'); o.value = i; o.textContent = r[0]; $('rx').appendChild(o); });
+const sup = n => String(n).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+function sci(v){ if(!isFinite(v)) return '—'; if(v === 0) return '0'; const e = Math.floor(Math.log10(Math.abs(v))); return e >= -3 && e <= 4 ? fmt(v, 4) : `${fmt(v / 10 ** e, 3)} × 10${sup(e)}`; }
+function setup(){
+  const r = RX[+$('rx').value][1], re = r.filter(z => z[2] < 0);
+  $('l1').textContent = re[0][0]; $('l2').textContent = re[1] ? re[1][0] : '(tidak ada pereaksi kedua)';
+  $('n2').disabled = !re[1]; if(re[1] && +$('n2').value === 0) $('n2').value = re[1][1] * +$('n1').value / re[0][1];
+  draw();
+}
+function draw(){
+  const [eq, Z] = RX[+$('rx').value], V = +$('V').value, al = +$('a').value, T = +$('T').value;
+  const re = Z.filter(z => z[2] < 0);
+  const n0 = {}; Z.forEach(z => n0[z[0]] = 0); n0[re[0][0]] = +$('n1').value; if(re[1]) n0[re[1][0]] = +$('n2').value;
+  $('v1').textContent = fmt(n0[re[0][0]], 1) + ' mol'; $('v2').textContent = re[1] ? fmt(n0[re[1][0]], 1) + ' mol' : '—';
+  $('vv').textContent = V + ' L'; $('av').textContent = fmt(al, 2); $('tv').textContent = T + ' K';
+  // jumlah "satuan reaksi" x dari α pereaksi pertama, dibatasi pereaksi kedua
+  let x = al * n0[re[0][0]] / re[0][1];
+  let warn = '';
+  if(re[1] && x * re[1][1] > n0[re[1][0]] * .999){ x = n0[re[1][0]] / re[1][1] * .95; warn = ' (dibatasi oleh ' + re[1][0] + ')'; }
+  const nb = {}, ne = {}; Z.forEach(z => { nb[z[0]] = z[2] * z[1] * x; ne[z[0]] = n0[z[0]] + nb[z[0]]; });
+  let t = '<tr><th></th>' + Z.map(z => `<th>${z[0]}</th>`).join('') + '</tr>';
+  t += '<tr><td>Mula-mula (mol)</td>' + Z.map(z => `<td>${fmt(n0[z[0]], 3)}</td>`).join('') + '</tr>';
+  t += '<tr><td>Bereaksi (mol)</td>' + Z.map(z => `<td>${nb[z[0]] > 0 ? '+' : ''}${fmt(nb[z[0]], 3)}</td>`).join('') + '</tr>';
+  t += '<tr><td><b>Setimbang (mol)</b></td>' + Z.map(z => `<td><b>${fmt(ne[z[0]], 3)}</b></td>`).join('') + '</tr>';
+  t += '<tr><td>Konsentrasi (M)</td>' + Z.map(z => `<td>${fmt(ne[z[0]] / V, 4)}</td>`).join('') + '</tr>';
+  const nt = Z.reduce((s, z) => s + ne[z[0]], 0), Pt = nt * 0.082 * T / V;
+  t += '<tr><td>Tekanan parsial (atm)</td>' + Z.map(z => `<td>${fmt(ne[z[0]] / nt * Pt, 3)}</td>`).join('') + '</tr>';
+  $('eq').textContent = eq; $('tab').innerHTML = t;
+  const conc = z => ne[z[0]] / V, part = z => ne[z[0]] / nt * Pt;
+  const prod = (f, side) => Z.filter(z => z[2] === side).reduce((s, z) => s * f(z) ** z[1], 1);
+  const kc = prod(conc, 1) / prod(conc, -1), kp = prod(part, 1) / prod(part, -1), dn = Z.reduce((s, z) => s + z[2] * z[1], 0);
+  const term = side => Z.filter(z => z[2] === side).map(z => `[${z[0]}]${z[1] > 1 ? sup(z[1]) : ''}`).join('');
+  $('rumus').innerHTML = `Kc = ${term(1)} / ${term(-1)} &nbsp;·&nbsp; Δn (gas) = ${dn}`;
+  $('read').innerHTML = `<div><span>α${warn}</span><b>${fmt(x * re[0][1] / n0[re[0][0]], 2)}</b></div><div><span>Kc</span><b>${sci(kc)}</b></div><div><span>Tekanan total</span><b>${fmt(Pt, 2)} atm</b></div><div><span>Kp (dari tekanan parsial)</span><b>${sci(kp)}</b></div><div><span>Kc(RT)^Δn</span><b>${sci(kc * (0.082 * T) ** dn)}</b></div>`;
+}
+$('rx').onchange = () => { $('n2').value = 0; setup(); };
+['n1', 'n2', 'V', 'a', 'T'].forEach(i => $(i).oninput = draw);
+setup();
+</script>
+</body>
+</html>

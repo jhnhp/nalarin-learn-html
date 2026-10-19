@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bentuk Molekul VSEPR</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Bentuk molekul tiga dimensi dengan atom pusat, atom terikat, dan pasangan elektron bebas"></svg></div>
+  <div class="panel">
+    <div class="lab">Atom pusat</div><select id="A"></select>
+    <div class="lab">Atom terikat</div><select id="X"><option value="F">F (fluorin)</option><option value="Cl">Cl (klorin)</option><option value="H">H (hidrogen)</option></select>
+    <div class="lab">Jumlah atom terikat <b id="nv"></b></div><input type="range" id="n" min="1" max="6" step="1" value="4">
+    <div class="lab">Putar molekul</div><input type="range" id="rot" min="0" max="360" step="5" value="70">
+    <div class="read" id="read"></div>
+    <p class="note" id="hit" style="color:var(--ink)"></p>
+    <p class="note">Teori VSEPR: pasangan elektron di sekitar atom pusat saling tolak sejauh mungkin. Pasangan elektron bebas (PEB) menolak lebih kuat daripada pasangan elektron ikatan (PEI), sehingga sudut ikatan menyempit. Pada geometri trigonal bipiramida, PEB menempati posisi ekuatorial.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [lambang, elektron valensi]
+const CEN = [['Be', 2], ['B', 3], ['C', 4], ['Si', 4], ['N', 5], ['P', 5], ['O', 6], ['S', 6], ['Se', 6], ['Br', 7], ['I', 7], ['Xe', 8]];
+CEN.forEach((c, i) => { const o = document.createElement('option'); o.value = i; o.textContent = `${c[0]} (${c[1]} elektron valensi)`; $('A').appendChild(o); });
+$('A').value = 7;
+const SHAPE = {
+  '2,0': ['linear', '180°', 'BeCl₂'], '3,0': ['segitiga datar', '120°', 'SO₃'], '2,1': ['bengkok (huruf V)', '< 120°', 'SO₂'],
+  '4,0': ['tetrahedral', '109,5°', 'CH₄, CCl₄'], '3,1': ['piramida segitiga', '< 109,5°', 'NF₃'], '2,2': ['bengkok (huruf V)', '< 109,5° (H₂O 104,5°)', 'H₂O'],
+  '5,0': ['trigonal bipiramida', '90° dan 120°', 'PCl₅'], '4,1': ['jungkat-jungkit (tetrahedral terdistorsi)', '< 90° dan < 120°', 'SF₄'], '3,2': ['bentuk T', '< 90°', 'BrF₃'], '2,3': ['linear', '180°', 'XeF₂'],
+  '6,0': ['oktahedral', '90°', 'SF₆'], '5,1': ['piramida segiempat', '< 90°', 'BrF₅'], '4,2': ['segiempat datar', '90°', 'XeF₄']
+};
+const HIB = {2: 'sp', 3: 'sp²', 4: 'sp³', 5: 'sp³d', 6: 'sp³d²'};
+const NONPOLAR = ['2,0', '3,0', '4,0', '5,0', '2,3', '6,0', '4,2'];
+const s3 = Math.sqrt(3);
+// arah domain elektron; urutan = urutan diisi PEB lebih dulu
+function dirs(t){
+  if(t === 2) return [[1, 0, 0], [-1, 0, 0]];
+  if(t === 3) return [[0, 1, 0], [-s3 / 2, -.5, 0], [s3 / 2, -.5, 0]];
+  if(t === 4){ const r = Math.sqrt(8) / 3; return [[0, 1, 0], [r, -1 / 3, 0], [-r / 2, -1 / 3, r * s3 / 2], [-r / 2, -1 / 3, -r * s3 / 2]]; }
+  if(t === 5) return [[1, 0, 0], [-.5, 0, s3 / 2], [-.5, 0, -s3 / 2], [0, 1, 0], [0, -1, 0]];
+  return [[0, 1, 0], [0, -1, 0], [1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1]];
+}
+function draw(){
+  const c = CEN[+$('A').value], lig = $('X').value, n = +$('n').value, ph = +$('rot').value * Math.PI / 180;
+  $('nv').textContent = n;
+  const sisa = c[1] - n, E = sisa / 2, t = n + E, key = n + ',' + E;
+  const sub = k => k === 1 ? '' : String(k).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d]);
+  const rumus = c[0] + lig + sub(n);
+  $('hit').innerHTML = `${rumus}: elektron valensi ${c[0]} = ${c[1]}; dipakai untuk ${n} ikatan tunggal = ${n}; sisa ${c[1]} − ${n} = ${sisa} elektron` + (sisa >= 0 && sisa % 2 === 0 ? ` → ${E} PEB.` : '.');
+  if(sisa < 0 || sisa % 2 || !SHAPE[key] || n < 2){
+    svg.innerHTML = `<text class="c" x="240" y="160" text-anchor="middle" style="fill:var(--muted)">Kombinasi ini tidak membentuk molekul netral yang wajar.</text><text class="s" x="240" y="182" text-anchor="middle" style="fill:var(--muted)">Coba ubah jumlah atom terikat.</text>`;
+    $('read').innerHTML = `<div><span>Rumus</span><b>${rumus}</b></div><div><span>Status</span><b>tidak stabil/tidak umum</b></div>`;
+    return;
+  }
+  const D = dirs(t), tilt = .5, R = 105, cx = 240, cy = 160;
+  const pr = ([x, y, z]) => { const x1 = x * Math.cos(ph) + z * Math.sin(ph), z1 = -x * Math.sin(ph) + z * Math.cos(ph); const y1 = y * Math.cos(tilt) - z1 * Math.sin(tilt), z2 = y * Math.sin(tilt) + z1 * Math.cos(tilt); return [cx + R * x1, cy - R * y1, z2]; };
+  // PEB mengisi domain awal; untuk oktahedral PEB kedua di seberang PEB pertama
+  const items = D.map((d, i) => ({p: pr(d), lp: i < E}));
+  items.sort((a, b) => a.p[2] - b.p[2]);
+  let s = `<text class="s" x="14" y="22" style="fill:var(--muted)">geometri pasangan elektron: ${['', '', 'linear', 'segitiga datar', 'tetrahedral', 'trigonal bipiramida', 'oktahedral'][t]}</text>`;
+  const back = items.filter(it => it.p[2] < 0), front = items.filter(it => it.p[2] >= 0);
+  const one = it => {
+    const [x, y, z] = it.p, op = .55 + .45 * (z + 1) / 2;
+    if(it.lp){
+      const mx = cx + (x - cx) * .62, my = cy + (y - cy) * .62, ang = Math.atan2(y - cy, x - cx) * 180 / Math.PI;
+      return `<g opacity="${op}"><ellipse cx="${mx}" cy="${my}" rx="34" ry="17" transform="rotate(${ang} ${mx} ${my})" style="fill:var(--comp)" fill-opacity=".25" stroke="var(--comp)" stroke-dasharray="4 3"/><circle cx="${mx + 6 * Math.cos((ang + 90) * Math.PI / 180)}" cy="${my + 6 * Math.sin((ang + 90) * Math.PI / 180)}" r="3.5" style="fill:var(--comp)"/><circle cx="${mx - 6 * Math.cos((ang + 90) * Math.PI / 180)}" cy="${my - 6 * Math.sin((ang + 90) * Math.PI / 180)}" r="3.5" style="fill:var(--comp)"/></g>`;
+    }
+    const dl = Math.hypot(x - cx, y - cy) || 1, x0 = z >= 0 ? cx + 24 * (x - cx) / dl : cx, y0 = z >= 0 ? cy + 24 * (y - cy) / dl : cy;
+    return `<g opacity="${op}"><line x1="${x0}" y1="${y0}" x2="${x}" y2="${y}" style="stroke:var(--ink)" stroke-width="${3 + 2 * z}"/><circle cx="${x}" cy="${y}" r="${17 + 4 * z}" style="fill:var(--k)" fill-opacity=".85" stroke="var(--ink)"/><text class="c" x="${x}" y="${y + 5}" text-anchor="middle" style="fill:#fff">${lig}</text></g>`;
+  };
+  back.forEach(it => s += one(it));
+  s += `<circle cx="${cx}" cy="${cy}" r="24" style="fill:var(--a)" stroke="var(--ink)"/>`;
+  front.forEach(it => s += one(it));
+  s += `<text class="c" x="${cx}" y="${cy + 5}" text-anchor="middle" style="fill:#fff">${c[0]}</text>`;
+  s += `<circle cx="22" cy="312" r="6" style="fill:var(--comp)"/><text class="s" x="32" y="316" style="fill:var(--ink)">pasangan elektron bebas (PEB)</text><circle cx="232" cy="312" r="6" style="fill:var(--k)"/><text class="s" x="242" y="316" style="fill:var(--ink)">atom terikat (PEI)</text>`;
+  svg.innerHTML = s;
+  const sh = SHAPE[key], np = NONPOLAR.includes(key);
+  $('read').innerHTML = `<div><span>Rumus / tipe VSEPR</span><b>${rumus} · AX${sub(n)}${E ? 'E' + sub(E) : ''}</b></div><div><span>Bentuk molekul</span><b>${sh[0]}</b></div><div><span>Sudut ikatan (ideal)</span><b>${sh[1]}</b></div><div><span>Hibridisasi atom pusat</span><b>${HIB[t]}</b></div><div><span>Kepolaran</span><b>${np ? 'nonpolar (simetris)' : 'polar (tidak simetris)'}</b></div><div><span>Contoh lain bentuk ini</span><b>${sh[2]}</b></div>`;
+}
+['A', 'X', 'n', 'rot'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

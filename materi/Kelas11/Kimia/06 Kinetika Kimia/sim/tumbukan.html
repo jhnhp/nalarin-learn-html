@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teori Tumbukan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Partikel pereaksi bergerak dan bertumbukan; grafik sebaran energi dan konsentrasi terhadap waktu"></svg></div>
+  <div class="panel">
+    <div class="lab">Jumlah partikel A dan B (konsentrasi) <b id="nv"></b></div><input type="range" id="n" min="5" max="30" step="1" value="18">
+    <div class="lab">Suhu <b id="tv"></b></div><input type="range" id="T" min="250" max="450" step="10" value="300">
+    <div class="lab">Energi aktivasi (satuan relatif) <b id="ev"></b></div><input type="range" id="E" min="1" max="6" step="0.5" value="3">
+    <label class="chk"><input type="checkbox" id="kat"> Tambahkan katalis (energi aktivasi turun setengahnya)</label>
+    <div class="row"><button class="btn primary" id="go">Mulai ulang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Hanya tumbukan dengan energi ≥ energi aktivasi dan arah yang tepat yang menghasilkan zat baru (tumbukan efektif). Tumbukan lainnya hanya memantul.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const BX = 10, BY = 10, BW = 290, BH = 300, R = 7, DT = 0.03;
+let P = [], t = 0, hits = 0, eff = 0, hist = [], log = [];
+function rnd(){ return Math.sqrt(-2 * Math.log(1 - Math.random())); }
+function vel(T){ const s = 70 * Math.sqrt(T / 300), sp = s * rnd(), a = Math.random() * 2 * Math.PI; return [sp * Math.cos(a), sp * Math.sin(a)]; }
+function reset(){
+  const n = +$('n').value, T = +$('T').value; P = []; t = 0; hits = 0; eff = 0; hist = [[0, n]]; log = [];
+  for(let i = 0; i < 2 * n; i++){
+    let x, y, ok; do { x = BX + R + Math.random() * (BW - 2 * R); y = BY + R + Math.random() * (BH - 2 * R); ok = P.every(p => (p.x - x) ** 2 + (p.y - y) ** 2 > (2.2 * R) ** 2); } while(!ok);
+    const [vx, vy] = vel(T); P.push({x, y, vx, vy, k: i < n ? 'A' : 'B'});
+  }
+}
+function Ea(){ return +$('E').value * ($('kat').checked ? .5 : 1); }
+function step(){
+  const T = +$('T').value, kT = T / 300, ea = Ea();
+  for(const p of P){ p.x += p.vx * DT; p.y += p.vy * DT;
+    if(p.x < BX + R){ p.x = BX + R; p.vx = Math.abs(p.vx); } if(p.x > BX + BW - R){ p.x = BX + BW - R; p.vx = -Math.abs(p.vx); }
+    if(p.y < BY + R){ p.y = BY + R; p.vy = Math.abs(p.vy); } if(p.y > BY + BH - R){ p.y = BY + BH - R; p.vy = -Math.abs(p.vy); } }
+  for(let i = 0; i < P.length; i++) for(let j = i + 1; j < P.length; j++){
+    const a = P[i], b = P[j]; if(a.dead || b.dead) continue;
+    const dx = b.x - a.x, dy = b.y - a.y, d2 = dx * dx + dy * dy, rr = (a.k === 'C' || b.k === 'C') ? 2.5 * R : 2 * R;
+    if(d2 > rr * rr) continue;
+    const d = Math.sqrt(d2) || 1, nx = dx / d, ny = dy / d, rv = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny;
+    if(rv <= 0) continue;
+    if((a.k === 'A' && b.k === 'B') || (a.k === 'B' && b.k === 'A')){
+      hits++;
+      const E = (rv * rv) / (2 * 70 * 70) ; // energi tumbukan sepanjang garis pusat, dalam satuan kT₃₀₀
+      if(E >= ea){ eff++; a.k = 'C'; a.vx = (a.vx + b.vx) / 2; a.vy = (a.vy + b.vy) / 2; b.dead = true; log.push(t); continue; }
+    }
+    a.vx -= rv * nx; a.vy -= rv * ny; b.vx += rv * nx; b.vy += rv * ny;
+  }
+  P = P.filter(p => !p.dead);
+  t += DT;
+  if(t - hist[hist.length - 1][0] >= .5) hist.push([t, P.filter(p => p.k === 'A').length]);
+}
+function erfc(x){ const z = Math.abs(x), tt = 1 / (1 + .5 * z), r = tt * Math.exp(-z * z - 1.26551223 + tt * (1.00002368 + tt * (.37409196 + tt * (.09678418 + tt * (-.18628806 + tt * (.27886807 + tt * (-1.13520398 + tt * (1.48851587 + tt * (-.82215223 + tt * .17087277))))))))); return x >= 0 ? r : 2 - r; }
+function frac(ea, kT){ const x = ea / kT; return erfc(Math.sqrt(x)) + 2 * Math.sqrt(x / Math.PI) * Math.exp(-x); }
+function draw(){
+  const T = +$('T').value, kT = T / 300, ea = Ea(), n = +$('n').value;
+  let s = `<rect x="${BX}" y="${BY}" width="${BW}" height="${BH}" rx="6" fill="none" style="stroke:var(--line-2)"/>`;
+  for(const p of P){
+    if(p.k === 'C') s += `<circle cx="${p.x - 4}" cy="${p.y}" r="${R}" style="fill:var(--a)"/><circle cx="${p.x + 4}" cy="${p.y}" r="${R}" style="fill:var(--b)"/>`;
+    else s += `<circle cx="${p.x}" cy="${p.y}" r="${R}" style="fill:${p.k === 'A' ? 'var(--a)' : 'var(--b)'}"/>`;
+  }
+  // sebaran energi Maxwell–Boltzmann
+  const gx = 318, gy = 140, gw = 150, gh = 100, Emax = 6;
+  const f = (E, k) => Math.sqrt(E) * Math.exp(-E / k) / k ** 1.5;
+  const fm = f(.5 * (250 / 300), 250 / 300) * 1.05;
+  let pth = '', fill = '';
+  for(let i = 0; i <= 80; i++){ const E = Emax * i / 80, x = gx + gw * i / 80, y = gy - gh * f(E, kT) / fm; pth += (i ? 'L' : 'M') + x.toFixed(1) + ',' + y.toFixed(1); if(E >= ea) fill += (fill ? 'L' : 'M' + x.toFixed(1) + ',' + gy + 'L') + x.toFixed(1) + ',' + y.toFixed(1); }
+  fill += `L${gx + gw},${gy}Z`;
+  const xe = gx + gw * Math.min(ea, Emax) / Emax;
+  s += `<text class="s" x="${gx}" y="${gy - gh - 12}" style="fill:var(--muted)">sebaran energi partikel</text><path d="${fill}" style="fill:var(--comp)" fill-opacity=".45"/><path d="${pth}" fill="none" style="stroke:var(--ink)" stroke-width="2"/><line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" style="stroke:var(--muted)"/><line x1="${xe}" y1="${gy - gh}" x2="${xe}" y2="${gy}" style="stroke:var(--b)" stroke-dasharray="4 3" stroke-width="1.5"/><text class="s" x="${xe + 3}" y="${gy - gh + 8}" style="fill:var(--b)">Eₐ</text><text class="s" x="${gx + gw}" y="${gy + 13}" text-anchor="end" style="fill:var(--muted)">energi →</text>`;
+  // grafik jumlah A terhadap waktu
+  const hx = 318, hy = 300, hw = 150, hh = 110, tmax = Math.max(20, t);
+  let q = ''; hist.forEach(([tt, a], i) => { q += (i ? 'L' : 'M') + (hx + hw * tt / tmax).toFixed(1) + ',' + (hy - hh * a / Math.max(1, n)).toFixed(1); });
+  s += `<text class="s" x="${hx}" y="${hy - hh - 8}" style="fill:var(--muted)">jumlah A terhadap waktu</text><line x1="${hx}" y1="${hy}" x2="${hx + hw}" y2="${hy}" style="stroke:var(--muted)"/><line x1="${hx}" y1="${hy - hh}" x2="${hx}" y2="${hy}" style="stroke:var(--muted)"/><path d="${q}" fill="none" style="stroke:var(--a)" stroke-width="2"/>`;
+  svg.innerHTML = s;
+  const recent = log.filter(x => x > t - 5).length / Math.min(5, Math.max(t, .001));
+  $('nv').textContent = n + ' + ' + n; $('tv').textContent = T + ' K (' + (T - 273) + ' °C)'; $('ev').textContent = fmt(+$('E').value, 1);
+  $('read').innerHTML = `<div><span>Fraksi partikel dengan E ≥ Eₐ</span><b>${fmt(100 * frac(ea, kT), 1)}%</b></div><div><span>Tumbukan A–B / tumbukan efektif</span><b>${hits} / ${eff}</b></div><div><span>Laju (tumbukan efektif per detik, 5 detik terakhir)</span><b>${fmt(recent, 2)}</b></div><div><span>Sisa A</span><b>${P.filter(p => p.k === 'A').length}</b></div>`;
+}
+$('go').onclick = () => { reset(); draw(); };
+['n', 'T'].forEach(i => $(i).oninput = () => { reset(); draw(); });
+['E', 'kat'].forEach(i => $(i).oninput = draw);
+reset(); draw();
+setInterval(() => { for(let k = 0; k < 2; k++) step(); draw(); }, 40);
+</script>
+</body>
+</html>

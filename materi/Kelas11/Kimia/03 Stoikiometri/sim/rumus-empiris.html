@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rumus Empiris dan Rumus Molekul</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}
+table.t{width:100%;border-collapse:collapse;font-size:14px}table.t td,table.t th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right}table.t th{color:var(--muted);font-weight:600}table.t td:first-child,table.t th:first-child{text-align:left}
+.wrap{padding:16px;width:100%;box-sizing:border-box}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><div class="wrap"><table class="t" id="tab"></table><svg id="svg" viewBox="0 0 440 120" style="width:100%;margin-top:10px" role="img" aria-label="Diagram batang perbandingan mol unsur"></svg></div></div>
+  <div class="panel">
+    <div class="lab">Karbon (C, Ar 12) <b id="cv"></b></div><input type="range" id="C" min="0" max="95" step="0.1" value="52.2">
+    <div class="lab">Hidrogen (H, Ar 1) <b id="hv"></b></div><input type="range" id="H" min="0" max="30" step="0.1" value="13">
+    <div class="lab">Nitrogen (N, Ar 14) <b id="nv"></b></div><input type="range" id="N" min="0" max="60" step="0.1" value="0">
+    <div class="lab">Oksigen (O, Ar 16) = sisa <b id="ov"></b></div>
+    <div class="lab">Mr senyawa <b id="mv"></b></div><input type="range" id="M" min="10" max="400" step="1" value="46">
+    <div class="read" id="read"></div>
+    <p class="note">Anggap sampel 100 g sehingga persen = gram. Bagi massa tiap unsur dengan Ar-nya, lalu bagi semua mol dengan mol terkecil. Jika hasilnya x,5 atau x,33, kalikan dengan 2 atau 3 agar bulat.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const AR = {C: 12, H: 1, N: 14, O: 16};
+const sub = k => k === 1 ? '' : String(k).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d]);
+function draw(){
+  const p = {C: +$('C').value, H: +$('H').value, N: +$('N').value}; p.O = Math.max(0, 100 - p.C - p.H - p.N);
+  const Mr = +$('M').value;
+  $('cv').textContent = fmt(p.C, 1) + '%'; $('hv').textContent = fmt(p.H, 1) + '%'; $('nv').textContent = fmt(p.N, 1) + '%'; $('ov').textContent = fmt(p.O, 1) + '%'; $('mv').textContent = Mr;
+  const els = Object.keys(AR).filter(e => p[e] > 0.05);
+  const mol = {}; els.forEach(e => mol[e] = p[e] / AR[e]);
+  const mn = Math.min(...els.map(e => mol[e]));
+  const r = {}; els.forEach(e => r[e] = mol[e] / mn);
+  let f = 1;
+  for(const k of [1, 2, 3, 4, 5, 6]){ if(els.every(e => Math.abs(r[e] * k - Math.round(r[e] * k)) < .08)){ f = k; break; } f = 0; }
+  let rows = '<tr><th>Unsur</th><th>massa (g)</th><th>mol = m/Ar</th><th>÷ terkecil</th><th>bulat</th></tr>';
+  els.forEach(e => rows += `<tr><td>${e}</td><td>${fmt(p[e], 1)}</td><td>${fmt(mol[e], 3)}</td><td>${fmt(r[e], 2)}</td><td>${f ? Math.round(r[e] * f) : '?'}</td></tr>`);
+  $('tab').innerHTML = rows;
+  let s = '', mx = Math.max(...els.map(e => r[e]));
+  els.forEach((e, i) => { const w = 330 * r[e] / mx, y = 10 + i * 26; s += `<text class="c" x="20" y="${y + 15}" style="fill:var(--ink)">${e}</text><rect x="44" y="${y}" width="${w}" height="20" rx="4" style="fill:${['var(--comp)', 'var(--a)', 'var(--k)', 'var(--b)'][i]}" fill-opacity=".7"/><text class="s" x="${50 + w}" y="${y + 14}" style="fill:var(--ink)">${fmt(r[e], 2)}</text>`; });
+  $('svg').innerHTML = s;
+  if(!f){ $('read').innerHTML = `<div><span>Rumus empiris</span><b>perbandingan belum bulat sederhana</b></div>`; return; }
+  const n = {}; els.forEach(e => n[e] = Math.round(r[e] * f));
+  const RE = els.map(e => e + sub(n[e])).join(''), MRE = els.reduce((a, e) => a + n[e] * AR[e], 0), N = Mr / MRE, Nr = Math.round(N);
+  const ok = Math.abs(N - Nr) < .05 && Nr >= 1;
+  const RM = ok ? els.map(e => e + sub(n[e] * Nr)).join('') : '—';
+  $('read').innerHTML = `<div><span>Rumus empiris (RE)</span><b>${RE}</b></div><div><span>Mr rumus empiris</span><b>${MRE}</b></div><div><span>N = Mr senyawa ÷ Mr RE</span><b>${fmt(N, 2)}${ok ? '' : ' (tidak bulat: cek data)'}</b></div><div><span>Rumus molekul = (RE)ₙ</span><b>${RM}</b></div>`;
+}
+['C', 'H', 'N', 'M'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

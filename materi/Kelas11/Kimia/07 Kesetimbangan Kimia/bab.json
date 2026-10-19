@@ -1,56 +1,363 @@
 {
   "title": "Kesetimbangan Kimia",
-  "summary": "Ringkasan bab Kesetimbangan Kimia akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Reaksi bolak-balik dan kesetimbangan dinamis, hukum aksi massa dan tetapan Kc, perhitungan dengan tabel M-B-S dan derajat disosiasi, tetapan Kp, pergeseran kesetimbangan (asas Le Chatelier), serta kesetimbangan dalam industri.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Kesetimbangan Kimia",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "kesetimbangan-dinamis",
+      "title": "Reaksi bolak-balik dan kesetimbangan dinamis",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Kesetimbangan Dinamis, Kesetimbangan Homogen dan Heterogen, Tetapan Kesetimbangan Kc dan Kp, Pergeseran Kesetimbangan, serta Kesetimbangan dalam Industri</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Perkaratan besi adalah reaksi <b>satu arah</b> (irreversibel): karat tidak kembali menjadi besi. Sebaliknya, kristal biru CuSO₄·5H₂O yang dipanaskan menjadi CuSO₄ putih, dan jika ditetesi air kembali menjadi biru. Reaksi seperti ini <b>bolak-balik</b> (reversibel) dan ditulis dengan tanda ⇌:</p><p style='text-align:center'>CuSO₄·5H₂O(s) ⇌ CuSO₄(s) + 5H₂O(l)</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Dalam wadah tertutup, reaksi maju mula-mula cepat, lalu melambat karena pereaksi berkurang; reaksi balik makin cepat karena produk bertambah. Akhirnya <b>laju reaksi maju = laju reaksi balik</b>. Pada keadaan ini konsentrasi semua zat tetap (tidak harus sama besar), tetapi reaksi tetap berlangsung ke dua arah: <b>kesetimbangan dinamis</b>.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/le-chatelier.html",
+          "title": "Kesetimbangan dinamis N₂O₄ ⇌ 2NO₂",
+          "height": 600,
+          "caption": "Mulai ulang lalu amati grafik laju. Kapan laju maju dan laju balik menjadi sama? Apakah konsentrasi N₂O₄ dan NO₂ sama besar saat setimbang?"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Kesetimbangan homogen</b>: semua zat berwujud sama, misalnya N₂(g) + 3H₂(g) ⇌ 2NH₃(g). <b>Kesetimbangan heterogen</b>: ada zat berbeda wujud, misalnya CaCO₃(s) ⇌ CaO(s) + CO₂(g).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menuliskan contoh kesetimbangan homogen sebagai “H₂(g) + 2NH₂(g) ⇌ 2NH₃(g)”; yang dimaksud adalah N₂(g) + 3H₂(g) ⇌ 2NH₃(g). Contoh kesetimbangan heterogen tertulis “CaCO₃(s) ⇌ 2CaO(s) + CO₂(g)”; koefisien CaO seharusnya 1: CaCO₃(s) ⇌ CaO(s) + CO₂(g).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada saat kesetimbangan dinamis tercapai ....",
+          "options": {
+            "A": "reaksi berhenti",
+            "B": "konsentrasi pereaksi sama dengan konsentrasi produk",
+            "C": "laju reaksi maju sama dengan laju reaksi balik",
+            "D": "semua pereaksi habis"
+          },
+          "answer": "C",
+          "hint": "Lihat grafik laju.",
+          "explanation": "Reaksi tetap berlangsung dua arah dengan laju yang sama, sehingga konsentrasi tidak berubah."
+        }
+      ]
+    },
+    {
+      "id": "tetapan-kc",
+      "title": "Hukum aksi massa dan tetapan Kc",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum aksi massa (Guldberg dan Waage, 1864)",
+          "html": "<p>Untuk pA + qB ⇌ rC + sD pada suhu tetap:</p><p>\\[K_c = \\frac{[C]^r[D]^s}{[A]^p[B]^q}\\]</p><p>Konsentrasi yang dipakai adalah konsentrasi saat setimbang. <b>Zat padat (s) dan cair murni (l) tidak dimasukkan</b>, karena konsentrasinya tetap; yang dimasukkan hanya gas (g) dan larutan (aq).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tuliskan rumus Kc untuk (a) 2SO₂(g) + O₂(g) ⇌ 2SO₃(g); (b) CaCO₃(s) ⇌ CaO(s) + CO₂(g); (c) Fe₂O₃(s) + 3CO(g) ⇌ 2Fe(s) + 3CO₂(g).</p>",
+          "steps": [
+            "(a) semua gas: \\(K_c = \\dfrac{[\\text{SO}_3]^2}{[\\text{SO}_2]^2[\\text{O}_2]}\\).",
+            "(b) padatan diabaikan: \\(K_c = [\\text{CO}_2]\\).",
+            "(c) \\(K_c = \\dfrac{[\\text{CO}_2]^3}{[\\text{CO}]^3}\\)."
+          ],
+          "answer": "lihat langkah"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Jika persamaan reaksi ...</th><th>maka K baru</th></tr><tr><td>dibalik</td><td>1/K</td></tr><tr><td>dikalikan n</td><td>Kⁿ</td></tr><tr><td>dijumlahkan dengan reaksi lain</td><td>K₁ × K₂</td></tr></table><p>Nilai K besar (≫ 1) berarti saat setimbang produk jauh lebih banyak; K kecil (≪ 1) berarti pereaksi lebih banyak. Nilai K hanya berubah jika suhu berubah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Untuk 2SO₂ + O₂ ⇌ 2SO₃, Kc = 400 pada suhu tertentu. Tentukan Kc untuk SO₃ ⇌ SO₂ + ½O₂.</p>",
+          "steps": [
+            "Reaksi dibalik: 1/400.",
+            "Koefisien dikali ½: (1/400)^½."
+          ],
+          "answer": "Kc = 1/20 = 0,05"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "title": "Catatan soal latihan buku",
+          "html": "<p>Pada latihan rumus Kc, reaksi pertama tertulis “Sb₂S₃(s) + 3H₂(g) ⇌ 2Sb(s) + 3H₂(g)”. Produk gasnya seharusnya H₂S: Sb₂S₃(s) + 3H₂(g) ⇌ 2Sb(s) + 3H₂S(g), sehingga \\(K_c = [\\text{H}_2\\text{S}]^3/[\\text{H}_2]^3\\).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Rumus Kc untuk reaksi 2NO(g) + O₂(g) ⇌ 2NO₂(g) adalah ....",
+          "options": {
+            "A": "[NO₂]/([NO][O₂])",
+            "B": "[NO₂]²/([NO]²[O₂])",
+            "C": "[NO]²[O₂]/[NO₂]²",
+            "D": "2[NO₂]/(2[NO][O₂])"
+          },
+          "answer": "B",
+          "hint": "Pangkatkan dengan koefisien.",
+          "explanation": "Produk di pembilang, pereaksi di penyebut, masing-masing berpangkat koefisiennya."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "hitung-kc",
+      "title": "Menghitung Kc dengan tabel M-B-S",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
-        },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Tabel mula-mula, bereaksi, setimbang (M-B-S)",
+          "html": "<ol><li>Tulis mol mula-mula.</li><li>Mol bereaksi sebanding dengan koefisien (pereaksi berkurang, produk bertambah).</li><li>Mol setimbang = mula-mula ± bereaksi.</li><li>Konsentrasi = mol setimbang ÷ volume, lalu masukkan ke rumus Kc.</li></ol><p><b>Derajat disosiasi</b> \\(\\alpha = \\dfrac{\\text{mol zat yang terurai}}{\\text{mol zat mula-mula}}\\), dengan 0 < α < 1.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/tabel-ice.html",
+          "title": "Kalkulator tabel M-B-S, Kc, dan Kp",
+          "height": 640,
+          "caption": "Pilih penguraian PCl₅. Ubah volume tanpa mengubah α: apakah Kc berubah? Lalu ubah α. Mengapa Kc berubah sedangkan rumusnya tetap?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 1 mol H₂ dan 1 mol I₂ dimasukkan ke wadah 1 L: H₂(g) + I₂(g) ⇌ 2HI(g). Saat setimbang terdapat 1,6 mol HI. Hitung Kc.</p>",
+          "steps": [
+            "HI terbentuk 1,6 mol → H₂ dan I₂ bereaksi masing-masing 0,8 mol.",
+            "Setimbang: H₂ 0,2; I₂ 0,2; HI 1,6 (mol, V = 1 L).",
+            "Kc = 1,6²/(0,2 × 0,2)."
+          ],
+          "answer": "Kc = 64"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebanyak 4 mol SO₃ dalam wadah 2 L terurai: 2SO₃(g) ⇌ 2SO₂(g) + O₂(g). Derajat disosiasinya 0,25. Hitung Kc.</p>",
+          "steps": [
+            "SO₃ terurai = 0,25 × 4 = 1 mol → SO₂ +1 mol, O₂ +0,5 mol.",
+            "Setimbang: SO₃ 3 mol, SO₂ 1 mol, O₂ 0,5 mol → 1,5 M; 0,5 M; 0,25 M.",
+            "Kc = (0,5² × 0,25)/1,5²."
+          ],
+          "answer": "Kc ≈ 0,028"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (data buku)",
+          "question": "<p>Dalam ketel 5 L, 5 mol Fe₂O₃ dan 15 mol CO bereaksi: Fe₂O₃(s) + 3CO(g) ⇌ 2Fe(s) + 3CO₂(g). Saat setimbang terdapat 5 mol CO₂. Hitung Kc.</p>",
+          "steps": [
+            "CO bereaksi 5 mol → CO sisa 10 mol (2 M); CO₂ 5 mol (1 M).",
+            "Kc = [CO₂]³/[CO]³ = 1³/2³."
+          ],
+          "answer": "Kc = 0,125"
+        },
+        {
+          "type": "check",
+          "question": "Sebanyak 2 mol PCl₅ dalam wadah 1 L terurai 50%: PCl₅ ⇌ PCl₃ + Cl₂. Nilai Kc adalah ....",
+          "options": {
+            "A": "0,5",
+            "B": "1",
+            "C": "2",
+            "D": "4"
+          },
+          "answer": "B",
+          "hint": "Setimbang: PCl₅ 1, PCl₃ 1, Cl₂ 1.",
+          "explanation": "Kc = (1 × 1)/1 = 1."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "tetapan-kp",
+      "title": "Tetapan Kp dan hubungannya dengan Kc",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tetapan kesetimbangan tekanan",
+          "html": "<p>Untuk reaksi gas aW + bX ⇌ cY + dZ:</p><p>\\[K_p = \\frac{P_Y^{\\,c}\\,P_Z^{\\,d}}{P_W^{\\,a}\\,P_X^{\\,b}} \\qquad P_i = \\frac{n_i}{n_{\\text{total}}} \\times P_{\\text{total}}\\]</p><p>\\[K_p = K_c\\,(RT)^{\\Delta n}\\]</p><p>R = 0,082 L·atm mol⁻¹ K⁻¹, T dalam kelvin, Δn = jumlah koefisien gas produk − jumlah koefisien gas pereaksi. Jika Δn = 0, Kp = Kc.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1 (data buku)",
+          "question": "<p>Sebanyak 5 mol PCl₅ dipanaskan: PCl₅(g) ⇌ PCl₃(g) + Cl₂(g). Saat setimbang tersisa 2 mol PCl₅ dan tekanan total 3 atm. Hitung Kp.</p>",
+          "steps": [
+            "Bereaksi 3 mol → PCl₃ 3 mol, Cl₂ 3 mol; n total = 2 + 3 + 3 = 8 mol.",
+            "P PCl₅ = 2/8 × 3 = 0,75 atm; P PCl₃ = P Cl₂ = 3/8 × 3 = 1,125 atm.",
+            "Kp = (1,125 × 1,125)/0,75."
+          ],
+          "answer": "Kp ≈ 1,69"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Pada contoh di atas, buku menulis “mol awal PCl₅ = 3 mol” padahal soal menyebut 5 mol (tabelnya memakai 5 mol), dan satuan Kp tertulis “mol”. Kp dihitung dari tekanan; jika diberi satuan, satuannya atm (di sini atm¹), bukan mol.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Untuk N₂(g) + 3H₂(g) ⇌ 2NH₃(g), Kc = 0,50 pada 400 K. Hitung Kp.</p>",
+          "steps": [
+            "Δn = 2 − (1 + 3) = −2.",
+            "RT = 0,082 × 400 = 32,8.",
+            "Kp = 0,50 × 32,8⁻² = 0,50/1.075,8."
+          ],
+          "answer": "Kp ≈ 4,6 × 10⁻⁴"
+        },
+        {
+          "type": "text",
+          "html": "<p>Untuk kesetimbangan heterogen, Kp juga hanya memuat gas. Contoh: CaCO₃(s) ⇌ CaO(s) + CO₂(g) memiliki Kp = P(CO₂).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Untuk reaksi H₂(g) + Cl₂(g) ⇌ 2HCl(g), hubungan Kp dan Kc adalah ....",
+          "options": {
+            "A": "Kp = Kc(RT)",
+            "B": "Kp = Kc",
+            "C": "Kp = Kc(RT)²",
+            "D": "Kp = Kc/(RT)"
+          },
+          "answer": "B",
+          "hint": "Hitung Δn.",
+          "explanation": "Δn = 2 − 2 = 0, sehingga (RT)⁰ = 1 dan Kp = Kc."
+        }
+      ]
+    },
+    {
+      "id": "pergeseran",
+      "title": "Pergeseran kesetimbangan (asas Le Chatelier)",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p><b>Asas Le Chatelier</b>: jika sistem kesetimbangan diberi gangguan (aksi), sistem bergeser untuk mengurangi pengaruh gangguan itu (reaksi), lalu mencapai kesetimbangan baru.</p><table><tr><th>Gangguan</th><th>Arah pergeseran</th><th>Nilai K</th></tr><tr><td>Konsentrasi pereaksi ditambah / produk diambil</td><td>ke kanan (produk)</td><td>tetap</td></tr><tr><td>Konsentrasi produk ditambah / pereaksi diambil</td><td>ke kiri (pereaksi)</td><td>tetap</td></tr><tr><td>Tekanan diperbesar (volume diperkecil)</td><td>ke jumlah koefisien gas lebih kecil</td><td>tetap</td></tr><tr><td>Tekanan diperkecil (volume diperbesar)</td><td>ke jumlah koefisien gas lebih besar</td><td>tetap</td></tr><tr><td>Suhu dinaikkan</td><td>ke arah reaksi endoterm</td><td>berubah</td></tr><tr><td>Suhu diturunkan</td><td>ke arah reaksi eksoterm</td><td>berubah</td></tr><tr><td>Katalis</td><td>tidak bergeser (kesetimbangan lebih cepat tercapai)</td><td>tetap</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/le-chatelier.html",
+          "title": "Asas Le Chatelier pada N₂O₄ ⇌ 2NO₂",
+          "height": 600,
+          "caption": "Tunggu sampai setimbang, lalu beri satu gangguan setiap kali: tambah NO₂, perkecil volume, naikkan suhu, atau tambahkan katalis. Bandingkan Qc dengan Kc sesaat setelah gangguan."
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Memakai Qc",
+          "html": "<p>Hitung <b>kuosien reaksi Qc</b> (rumus seperti Kc, tetapi memakai konsentrasi saat itu). Qc < Kc → bergeser ke kanan; Qc > Kc → bergeser ke kiri; Qc = Kc → setimbang.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>2NO₂(g) ⇌ N₂O₄(g) ΔH = −57,2 kJ. Ke mana kesetimbangan bergeser jika (a) suhu dinaikkan; (b) tekanan diturunkan; (c) NO₂ ditambahkan; (d) N₂O₄ diambil?</p>",
+          "steps": [
+            "(a) Reaksi ke kanan eksoterm, jadi suhu naik → ke kiri (endoterm).",
+            "(b) Koefisien gas: kiri 2, kanan 1. Tekanan turun → ke kiri.",
+            "(c) Pereaksi ditambah → ke kanan.",
+            "(d) Produk diambil → ke kanan."
+          ],
+          "answer": "(a) kiri, (b) kiri, (c) kanan, (d) kanan"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Larutan Fe³⁺ (kuning) dan SCN⁻ (tidak berwarna) membentuk Fe(SCN)²⁺ (merah darah). Apa yang terjadi pada warna jika ditambahkan sedikit kristal KSCN?</p>",
+          "steps": [
+            "[SCN⁻] bertambah → kesetimbangan bergeser ke kanan.",
+            "Fe(SCN)²⁺ bertambah."
+          ],
+          "answer": "warna merah makin pekat"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Penambahan gas inert",
+          "html": "<p>Menambahkan gas yang tidak bereaksi (misalnya argon) pada volume tetap menaikkan tekanan total, tetapi tidak mengubah konsentrasi atau tekanan parsial zat yang bereaksi, sehingga kesetimbangan tidak bergeser.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada kesetimbangan N₂(g) + O₂(g) ⇌ 2NO(g), jika volume diperkecil maka kesetimbangan ....",
+          "options": {
+            "A": "bergeser ke kanan",
+            "B": "bergeser ke kiri",
+            "C": "tidak bergeser",
+            "D": "berhenti"
+          },
+          "answer": "C",
+          "hint": "Bandingkan jumlah koefisien gas kiri dan kanan.",
+          "explanation": "Kiri 2 dan kanan 2, sehingga perubahan volume tidak menggeser kesetimbangan."
+        }
+      ]
+    },
+    {
+      "id": "industri",
+      "title": "Kesetimbangan dalam industri",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Proses Haber-Bosch</b> (pembuatan amonia untuk pupuk):</p><p style='text-align:center'>N₂(g) + 3H₂(g) ⇌ 2NH₃(g) &nbsp; ΔH = −92 kJ</p><ul><li><b>Tekanan tinggi</b> (± 200 atm): jumlah koefisien gas kanan (2) lebih kecil daripada kiri (4), sehingga tekanan tinggi menggeser ke kanan.</li><li><b>Suhu sedang</b> (400–500 °C): suhu rendah sebenarnya menggeser ke kanan (reaksi eksoterm), tetapi reaksinya terlalu lambat. Dipilih suhu kompromi agar laju cukup cepat dengan hasil yang masih memadai.</li><li><b>Katalis besi</b>: mempercepat tercapainya kesetimbangan.</li><li><b>NH₃ diembunkan dan dipisahkan</b> terus-menerus, sedangkan N₂ dan H₂ sisa didaur ulang, sehingga kesetimbangan terus bergeser ke kanan.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menulis reaksi Haber-Bosch sebagai “N₂(g) + H₂(g) ⇌ NH₃(g) ΔH = −92 kJ”. Persamaan itu belum setara. Persamaan setaranya N₂(g) + 3H₂(g) ⇌ 2NH₃(g) dengan ΔH = −92 kJ (untuk 2 mol NH₃).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Proses kontak</b> (pembuatan asam sulfat): tahap kuncinya 2SO₂(g) + O₂(g) ⇌ 2SO₃(g) yang eksoterm. Kondisinya: suhu sekitar 450 °C, tekanan 1–2 atm (konversi sudah tinggi tanpa tekanan besar), dan katalis V₂O₅. SO₃ lalu diserap dalam H₂SO₄ pekat membentuk oleum, kemudian diencerkan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Indonesia dan amonia",
+          "html": "<p>Indonesia termasuk lima produsen amonia terbesar dunia (sekitar 5,9 juta ton pada 2021), terutama untuk pupuk urea yang menopang pertanian.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada proses Haber-Bosch, amonia terus dipisahkan dari campuran. Tujuannya adalah ....",
+          "options": {
+            "A": "menaikkan suhu reaktor",
+            "B": "menggeser kesetimbangan ke kanan",
+            "C": "menurunkan energi aktivasi",
+            "D": "mengubah nilai Kc"
+          },
+          "answer": "B",
+          "hint": "Produk diambil.",
+          "explanation": "Mengurangi produk membuat kesetimbangan bergeser ke kanan sehingga lebih banyak NH₃ terbentuk."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memasukkan zat padat atau cair murni ke rumus Kc.</li><li>Memakai mol, bukan konsentrasi (mol/L), saat menghitung Kc.</li><li>Menganggap katalis atau perubahan konsentrasi mengubah nilai K; hanya suhu yang mengubah K.</li><li>Menghitung Δn dengan memasukkan zat padat atau cair.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab VII Kesetimbangan Kimia.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang kesetimbangan dinamis, kesetimbangan homogen dan heterogen, tetapan Kc dan Kp, pergeseran kesetimbangan, serta kesetimbangan dalam industri. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

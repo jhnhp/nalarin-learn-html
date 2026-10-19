@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tata Nama Alkana</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}.n{font-family:var(--display);font-weight:800;font-size:11px}
+.hit{cursor:pointer}.hit:hover rect{stroke:var(--a);stroke-width:2}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Struktur alkana dengan rantai utama yang ditandai dan nomor atom karbon"></svg></div>
+  <div class="panel">
+    <div class="lab">Panjang rantai yang digambar <b id="nv"></b></div><input type="range" id="n" min="3" max="8" step="1" value="6">
+    <p class="note">Klik atom C di rantai horizontal (selain ujung) untuk menambah cabang: metil → etil → 2 metil → metil + etil → 2 etil → kosong.</p>
+    <div class="row"><button class="btn" id="clr">Hapus semua cabang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const CYC = [[], ['m'], ['e'], ['m', 'm'], ['m', 'e'], ['e', 'e']];
+let st = {1: 1, 3: 2}; // indeks rantai → indeks CYC (bawaan: 2-metil dan 4-etil pada heksana)
+const ROOT = ['', 'met', 'et', 'prop', 'but', 'pent', 'heks', 'hept', 'okt', 'non', 'dek', 'undek', 'dodek', 'tridek', 'tetradek'];
+const MUL = ['', '', 'di', 'tri', 'tetra', 'penta', 'heksa'];
+function build(n){
+  const adj = [], pos = [];
+  const add = (x, y) => { adj.push([]); pos.push([x, y]); return adj.length - 1; };
+  const link = (a, b) => { adj[a].push(b); adj[b].push(a); };
+  const dx = 380 / (n - 1);
+  for(let i = 0; i < n; i++){ add(50 + i * dx, 160); if(i) link(i - 1, i); }
+  for(let i = 1; i < n - 1; i++){
+    const g = CYC[st[i] || 0];
+    g.forEach((t, k) => {
+      const dir = k === 0 ? -1 : 1, x = pos[i][0];
+      const a = add(x, 160 + dir * 62); link(i, a);
+      if(t === 'e'){ const b = add(x, 160 + dir * 118); link(a, b); }
+    });
+  }
+  return {adj, pos};
+}
+function path(adj, u, v){
+  const par = Array(adj.length).fill(-1), seen = Array(adj.length).fill(false), q = [u]; seen[u] = true;
+  while(q.length){ const x = q.shift(); for(const y of adj[x]) if(!seen[y]){ seen[y] = true; par[y] = x; q.push(y); } }
+  const p = []; for(let x = v; x !== -1; x = par[x]) p.push(x); return p.reverse();
+}
+function subName(adj, start, from){
+  // nama gugus alkil yang dimulai dari atom 'start' (terikat ke rantai utama di 'from')
+  const seen = new Set([from, start]), q = [start]; let size = 1;
+  while(q.length){ const x = q.shift(); for(const y of adj[x]) if(!seen.has(y)){ seen.add(y); size++; q.push(y); } }
+  const deg = adj[start].length - 1;
+  if(size === 1) return 'metil';
+  if(size === 2) return 'etil';
+  if(size === 3) return deg === 2 ? 'isopropil' : 'propil';
+  return ROOT[size] + 'il';
+}
+function analyze(G){
+  const {adj} = G, leaves = adj.map((a, i) => a.length === 1 ? i : -1).filter(i => i >= 0);
+  let best = null;
+  for(const u of leaves) for(const v of leaves){
+    if(u === v) continue;
+    const p = path(adj, u, v), on = new Set(p), subs = [];
+    p.forEach((x, k) => adj[x].forEach(y => { if(!on.has(y)) subs.push([k + 1, subName(adj, y, x)]); }));
+    const loc = subs.map(s => s[0]).sort((a, b) => a - b);
+    const alpha = subs.slice().sort((a, b) => a[1].localeCompare(b[1]) || a[0] - b[0]).map(s => s[0]);
+    const cand = {p, subs, loc, alpha};
+    const better = (A, B) => {
+      if(A.p.length !== B.p.length) return A.p.length > B.p.length;
+      if(A.subs.length !== B.subs.length) return A.subs.length > B.subs.length;
+      for(let i = 0; i < A.loc.length; i++) if(A.loc[i] !== B.loc[i]) return A.loc[i] < B.loc[i];
+      for(let i = 0; i < A.alpha.length; i++) if(A.alpha[i] !== B.alpha[i]) return A.alpha[i] < B.alpha[i];
+      return false;
+    };
+    if(!best || better(cand, best)) best = cand;
+  }
+  const groups = {};
+  best.subs.forEach(([k, nm]) => (groups[nm] = groups[nm] || []).push(k));
+  const parts = Object.keys(groups).sort((a, b) => a.localeCompare(b)).map(nm => groups[nm].sort((a, b) => a - b).join(',') + '-' + MUL[groups[nm].length] + nm);
+  let name = parts.join('-') + ROOT[best.p.length] + 'ana';
+  if(parts.length) name = name.replace(/il(?=[a-z]+ana$)/, 'il');
+  return {best, name};
+}
+const sub = k => k === 1 ? '' : String(k).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d]);
+function draw(){
+  const n = +$('n').value; $('nv').textContent = n + ' atom C';
+  Object.keys(st).forEach(k => { if(+k < 1 || +k > n - 2) delete st[k]; });
+  const G = build(n), {adj, pos} = G, {best, name} = analyze(G);
+  const on = new Set(best.p);
+  let s = '';
+  // rantai utama ditandai
+  for(let i = 1; i < best.p.length; i++){ const [x1, y1] = pos[best.p[i - 1]], [x2, y2] = pos[best.p[i]]; s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:var(--k)" stroke-opacity=".35" stroke-width="16" stroke-linecap="round"/>`; }
+  adj.forEach((a, i) => a.forEach(j => { if(j > i){ s += `<line x1="${pos[i][0]}" y1="${pos[i][1]}" x2="${pos[j][0]}" y2="${pos[j][1]}" style="stroke:var(--ink)" stroke-width="2"/>`; } }));
+  const cnt = [0, 0, 0, 0, 0];
+  adj.forEach((a, i) => {
+    const d = a.length, h = 4 - d, lab = 'C' + (h ? 'H' + sub(h) : ''), [x, y] = pos[i], w = 14 + lab.length * 6;
+    cnt[d]++;
+    const click = i > 0 && i < n - 1;
+    s += `<g ${click ? `id="c${i}" class="hit" data-i="${i}"` : ''}><rect x="${x - w / 2}" y="${y - 12}" width="${w}" height="24" rx="6" style="fill:var(--surface);stroke:${on.has(i) ? 'var(--k)' : 'var(--line-2)'}"/><text class="c" x="${x}" y="${y + 5}" text-anchor="middle" style="fill:var(--ink)">${lab}</text></g>`;
+  });
+  best.p.forEach((x, k) => { const [px, py] = pos[x]; const below = py >= 160; s += `<text class="n" x="${px + 14}" y="${py + (below && py > 160 ? 26 : -16)}" style="fill:var(--k)">${k + 1}</text>`; });
+  s += `<text class="s" x="14" y="22" style="fill:var(--muted)">rantai utama (hijau) dan penomorannya</text>`;
+  svg.innerHTML = s;
+  svg.querySelectorAll('.hit').forEach(g => g.onclick = () => { const i = +g.dataset.i; st[i] = ((st[i] || 0) + 1) % CYC.length; draw(); });
+  const C = adj.length, drawnMain = best.p.length === n && best.p.every(x => x < n);
+  $('read').innerHTML = `<div><span>Nama IUPAC</span><b>${name}</b></div><div><span>Rumus molekul</span><b>C${sub(C)}H${sub(2 * C + 2)}</b></div><div><span>Atom C primer / sekunder / tersier / kuartener</span><b>${cnt[1]} / ${cnt[2]} / ${cnt[3]} / ${cnt[4]}</b></div>`;
+  $('ket').innerHTML = drawnMain ? 'Rantai horizontal sudah merupakan rantai terpanjang. Penomoran dimulai dari ujung yang membuat nomor cabang sekecil mungkin.' : '<b>Perhatikan:</b> rantai terpanjang tidak sama dengan rantai horizontal yang digambar. Rantai utama selalu rantai karbon terpanjang, walaupun berbelok.';
+}
+$('n').oninput = draw;
+$('clr').onclick = () => { st = {}; draw(); };
+draw();
+</script>
+</body>
+</html>

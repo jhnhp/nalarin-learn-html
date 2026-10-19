@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Konfigurasi Elektron dan Diagram Orbital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}.big{font-family:var(--display);font-weight:800;font-size:13px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 360" role="img" aria-label="Diagram tingkat energi orbital dan pengisian elektron"></svg></div>
+  <div class="panel">
+    <div class="lab">Nomor atom Z <b id="zv"></b></div><input type="range" id="Z" min="1" max="54" step="1" value="26">
+    <div class="lab">Muatan ion <b id="qv"></b></div><input type="range" id="q" min="-3" max="3" step="1" value="0">
+    <div class="read" id="read"></div>
+    <p class="note">Aturan Aufbau: elektron mengisi orbital dari energi terendah (1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p). Asas Pauli: satu orbital paling banyak 2 elektron dengan spin berlawanan. Kaidah Hund: pada subkulit p dan d, elektron mengisi orbital kosong satu per satu dengan spin sejajar terlebih dahulu. Ion positif melepas elektron dari kulit terluar (4s sebelum 3d).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SYM = 'H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe'.split(' ');
+const ORD = [[1, 0], [2, 0], [2, 1], [3, 0], [3, 1], [4, 0], [3, 2], [4, 1], [5, 0], [4, 2], [5, 1]];
+const L = 'spdf', CAP = l => 2 * (2 * l + 1);
+const EXC = {24: {'4s': 1, '3d': 5}, 29: {'4s': 1, '3d': 10}, 42: {'5s': 1, '4d': 5}, 47: {'5s': 1, '4d': 10}};
+const NOBLE = {2: 'He', 10: 'Ne', 18: 'Ar', 36: 'Kr'};
+function config(Z){
+  const c = {}; let e = Z;
+  ORD.forEach(([n, l]) => { const k = n + L[l], put = Math.min(e, CAP(l)); if(put > 0) c[k] = put; e -= put; });
+  if(EXC[Z]) Object.assign(c, EXC[Z]);
+  return c;
+}
+function ion(c, q){
+  c = Object.assign({}, c);
+  if(q > 0){ let r = q; const keys = Object.keys(c).sort((a, b) => (+b[0] - +a[0]) || ('spdf'.indexOf(b[1]) - 'spdf'.indexOf(a[1]))); for(const k of keys){ while(r > 0 && c[k] > 0){ c[k]--; r--; } if(c[k] === 0) delete c[k]; if(!r) break; } }
+  if(q < 0){ let r = -q; for(const [n, l] of ORD){ const k = n + L[l]; const have = c[k] || 0, room = CAP(l) - have; const add = Math.min(room, r); if(add > 0){ c[k] = have + add; r -= add; } if(!r) break; } }
+  return c;
+}
+function boxes(ne, l){ const m = 2 * l + 1, a = Array(m).fill(0); for(let i = 0; i < ne; i++){ a[i % m]++; } return a; } // Hund: isi satu-satu dulu
+function draw(){
+  const Z = +$('Z').value, q = +$('q').value, c0 = config(Z), c = ion(c0, q);
+  let s = '';
+  // diagram energi: kolom per subkulit sesuai urutan
+  ORD.forEach(([n, l], i) => {
+    const k = n + L[l], x = 30 + (l * 100), y = 340 - i * 30, m = 2 * l + 1, ne = c[k] || 0;
+    const b = boxes(ne, l);
+    s += `<text class="c" x="${x - 4}" y="${y + 5}" text-anchor="end" style="fill:${ne ? 'var(--ink)' : 'var(--muted)'}">${k}</text>`;
+    for(let j = 0; j < m; j++){
+      const bx = x + j * 23;
+      s += `<rect x="${bx}" y="${y - 10}" width="21" height="20" rx="2" fill="none" style="stroke:${ne ? 'var(--ink)' : 'var(--line-2)'}"/>`;
+      if(b[j] >= 1) s += `<text class="big" x="${bx + (b[j] === 2 ? 6 : 10.5)}" y="${y + 6}" text-anchor="middle" style="fill:var(--a)">↑</text>`;
+      if(b[j] === 2) s += `<text class="big" x="${bx + 15}" y="${y + 5}" text-anchor="middle" style="fill:var(--b)">↓</text>`;
+    }
+  });
+  s += `<text class="s" x="460" y="20" text-anchor="end" style="fill:var(--muted)">energi naik ke atas ↑</text>`;
+  svg.innerHTML = s;
+  $('zv').textContent = Z + ' (' + SYM[Z - 1] + ')'; $('qv').textContent = q === 0 ? '0' : (q > 0 ? '+' + q : '−' + (-q));
+  const order = ORD.map(([n, l]) => n + L[l]).filter(k => c[k]);
+  const sorted = order.slice().sort((a, b) => (+a[0] - +b[0]) || ('spdf'.indexOf(a[1]) - 'spdf'.indexOf(b[1])));
+  const sup = x => String(x).replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+  const full = sorted.map(k => k + sup(c[k])).join(' ');
+  // notasi gas mulia
+  const e = Z - q; let core = 0; Object.keys(NOBLE).forEach(k => { if(+k < e && +k <= Z) core = Math.max(core, +k); });
+  const coreCfg = core ? config(core) : {};
+  const rest = sorted.filter(k => !(coreCfg[k] && coreCfg[k] === c[k])).map(k => k + sup(c[k])).join(' ');
+  const short = core ? `[${NOBLE[core]}] ${rest}` : full;
+  // letak (atom netral)
+  const n0 = Math.max(...Object.keys(c0).map(k => +k[0]));
+  const lastK = ORD.map(([nn, l]) => nn + L[l]).filter(k => c0[k]).pop();
+  let gol, blok = lastK[1];
+  const ns = c0[n0 + 's'] || 0, np = c0[n0 + 'p'] || 0, dk = (n0 - 1) + 'd', nd = c0[dk] || 0;
+  if(blok === 's') gol = Z === 2 ? 'VIIIA' : ['', 'IA', 'IIA'][ns];
+  else if(blok === 'p') gol = ['', 'IIIA', 'IVA', 'VA', 'VIA', 'VIIA', 'VIIIA'][np];
+  else { const t = ns + nd; gol = t <= 7 ? ['', '', '', 'IIIB', 'IVB', 'VB', 'VIB', 'VIIB'][t] : t <= 10 ? 'VIIIB' : t === 11 ? 'IB' : 'IIB'; }
+  // bilangan kuantum elektron terakhir (Aufbau, atom netral)
+  const lk = lastK, nn = +lk[0], ll = 'spdf'.indexOf(lk[1]), cnt = c0[lk], mm = 2 * ll + 1;
+  const idx = (cnt - 1) % mm, mval = -ll + idx, spin = cnt <= mm ? '+½' : '−½';
+  $('read').innerHTML = `<div><span>Konfigurasi</span><b>${full}</b></div><div><span>Notasi gas mulia</span><b>${short}</b></div><div><span>Letak (atom netral)</span><b>periode ${n0}, golongan ${gol}, blok ${blok}</b></div><div><span>Elektron terakhir (${lk}${sup(cnt)})</span><b>n = ${nn}, l = ${ll}, m = ${mval > 0 ? '+' + mval : mval}, s = ${spin}</b></div>`;
+}
+['Z', 'q'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

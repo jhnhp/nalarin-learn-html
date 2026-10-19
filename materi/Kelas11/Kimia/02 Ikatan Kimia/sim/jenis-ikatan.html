@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jenis Ikatan Kimia</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}.big{font-family:var(--display);font-weight:800;font-size:20px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 290" role="img" aria-label="Dua atom dengan elektron valensi dan jenis ikatannya"></svg></div>
+  <div class="panel">
+    <div class="lab">Unsur A</div><select id="A"></select>
+    <div class="lab">Unsur B</div><select id="B"></select>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+    <p class="note">Atom cenderung mencapai konfigurasi gas mulia (oktet, atau duplet untuk H). Logam melepas elektron membentuk kation; nonlogam menerima elektron membentuk anion atau memakai pasangan elektron bersama. Sebagai patokan kasar: selisih keelektronegatifan &gt; 1,7 → ion; 0,5–1,7 → kovalen polar; &lt; 0,5 → kovalen nonpolar.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [lambang, nama, elektron valensi, keelektronegatifan, logam?]
+const EL = [['H', 'hidrogen', 1, 2.20, 0], ['Li', 'litium', 1, 0.98, 1], ['Na', 'natrium', 1, 0.93, 1], ['K', 'kalium', 1, 0.82, 1], ['Mg', 'magnesium', 2, 1.31, 1], ['Ca', 'kalsium', 2, 1.00, 1], ['Al', 'aluminium', 3, 1.61, 1], ['Cu', 'tembaga', 1, 1.90, 1],
+  ['B', 'boron', 3, 2.04, 0], ['C', 'karbon', 4, 2.55, 0], ['Si', 'silikon', 4, 1.90, 0], ['N', 'nitrogen', 5, 3.04, 0], ['P', 'fosfor', 5, 2.19, 0], ['O', 'oksigen', 6, 3.44, 0], ['S', 'belerang', 6, 2.58, 0], ['F', 'fluorin', 7, 3.98, 0], ['Cl', 'klorin', 7, 3.16, 0], ['Br', 'bromin', 7, 2.96, 0], ['I', 'iodin', 7, 2.66, 0]];
+EL.forEach((e, i) => { ['A', 'B'].forEach(k => { const o = document.createElement('option'); o.value = i; o.textContent = `${e[0]} (${e[1]}), valensi ${e[2]}, EN ${String(e[3]).replace('.', ',')}`; $(k).appendChild(o); }); });
+$('A').value = 6; $('B').value = 13;
+['A', 'B'].forEach(k => $(k).onchange = draw);
+const gcd = (a, b) => b ? gcd(b, a % b) : a;
+const sup = n => n === 1 ? '' : String(n).replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]);
+const sub = n => n === 1 ? '' : String(n).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d]);
+function atom(x, y, sym, ve, col, charge){
+  let s = `<circle cx="${x}" cy="${y}" r="28" style="fill:${col}" fill-opacity=".2" stroke="${col}" stroke-width="2"/><text class="big" x="${x}" y="${y + 7}" text-anchor="middle" style="fill:var(--ink)">${sym}</text>`;
+  for(let i = 0; i < ve; i++){ const a = -Math.PI / 2 + Math.floor(i / 2) * Math.PI / 2 + (i % 2 ? .25 : -.25); s += `<circle cx="${x + 38 * Math.cos(a)}" cy="${y + 38 * Math.sin(a)}" r="4" style="fill:var(--a)"/>`; }
+  if(charge) s += `<text class="c" x="${x + 34}" y="${y - 30}" style="fill:var(--b)">${charge}</text>`;
+  return s;
+}
+function draw(){
+  const a = EL[+$('A').value], b = EL[+$('B').value], dEN = Math.abs(a[3] - b[3]);
+  let s = '', jenis, rumus, ket;
+  if(a[4] && b[4]){
+    jenis = 'ikatan logam (paduan)'; rumus = '—'; ket = 'Elektron valensi atom logam bergerak bebas seperti lautan elektron di antara ion-ion positif.';
+    for(let i = 0; i < 4; i++) for(let j = 0; j < 2; j++){ const x = 110 + i * 80, y = 100 + j * 80, e = (i + j) % 2 ? a : b; s += `<circle cx="${x}" cy="${y}" r="24" style="fill:var(--comp)" fill-opacity=".3" stroke="var(--comp)"/><text class="c" x="${x}" y="${y + 5}" text-anchor="middle" style="fill:var(--ink)">${e[0]}⁺</text>`; }
+    for(let k = 0; k < 24; k++) s += `<circle cx="${90 + (k * 53) % 300}" cy="${80 + (k * 37) % 130}" r="3" style="fill:var(--a)"/>`;
+  } else if(a[4] || b[4]){
+    const m = a[4] ? a : b, nm = a[4] ? b : a, qc = m[2], qa = nm[0] === 'H' ? 1 : 8 - nm[2], g = gcd(qc, qa), nM = qa / g, nN = qc / g;
+    jenis = 'ikatan ion'; rumus = m[0] + sub(nM) + nm[0] + sub(nN);
+    ket = `${m[0]} melepas ${qc} elektron menjadi ${m[0]}${sup(qc)}⁺; ${nm[0]} menerima ${qa} elektron menjadi ${nm[0]}${sup(qa)}⁻. Agar muatan total nol: ${nM} ${m[0]} dan ${nN} ${nm[0]}.`;
+    s += atom(120, 120, m[0], m[2], 'var(--comp)') + atom(360, 120, nm[0], nm[2], 'var(--k)');
+    s += `<path d="M168,100 Q240,50 312,100" fill="none" style="stroke:var(--b)" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M312,100 l-12,-2 l6,10z" style="fill:var(--b)"/><text class="s" x="240" y="62" text-anchor="middle" style="fill:var(--b)">${qc} elektron berpindah</text>`;
+    s += `<text class="c" x="120" y="200" text-anchor="middle" style="fill:var(--ink)">${m[0]}${sup(qc)}⁺ (kation)</text><text class="c" x="360" y="200" text-anchor="middle" style="fill:var(--ink)">${nm[0]}${sup(qa)}⁻ (anion)</text>`;
+  } else {
+    const va = a[0] === 'H' ? 1 : 8 - a[2], vb = b[0] === 'H' ? 1 : 8 - b[2];
+    if(a[0] === b[0]){ rumus = a[0] + '₂'; jenis = 'kovalen nonpolar'; ket = `Dua atom ${a[0]} memakai bersama ${va} pasang elektron (ikatan ${['', 'tunggal', 'rangkap dua', 'rangkap tiga'][Math.min(3, va)]}).`; }
+    else { const g = gcd(va, vb), nA = vb / g, nB = va / g; let firstA = a[3] <= b[3]; if(a[0] === 'H') firstA = ['O', 'S', 'F', 'Cl', 'Br', 'I'].includes(b[0]); if(b[0] === 'H') firstA = !['O', 'S', 'F', 'Cl', 'Br', 'I'].includes(a[0]); rumus = firstA ? a[0] + sub(nA) + b[0] + sub(nB) : b[0] + sub(nB) + a[0] + sub(nA); jenis = dEN < .5 ? 'kovalen (hampir nonpolar)' : dEN <= 1.7 ? 'kovalen polar' : 'kovalen sangat polar (mendekati ion)'; ket = `${a[0]} memerlukan ${va} elektron, ${b[0]} memerlukan ${vb} elektron untuk oktet/duplet; pasangan elektron dipakai bersama. Elektron lebih tertarik ke ${a[3] > b[3] ? a[0] : b[0]} (lebih elektronegatif).`; }
+    s += atom(180, 120, a[0], a[2], 'var(--k)') + atom(300, 120, b[0], b[2], 'var(--a)');
+    s += `<ellipse cx="240" cy="120" rx="50" ry="22" fill="none" style="stroke:var(--b)" stroke-width="2" stroke-dasharray="4 3"/><text class="s" x="240" y="170" text-anchor="middle" style="fill:var(--b)">pasangan elektron bersama</text>`;
+  }
+  s += `<text class="c" x="240" y="250" text-anchor="middle" style="fill:var(--ink)">ΔEN = |${fmt(a[3], 2)} − ${fmt(b[3], 2)}| = ${fmt(dEN, 2)}</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Jenis ikatan</span><b>${jenis}</b></div><div><span>Rumus senyawa sederhana</span><b>${rumus}</b></div>`;
+  $('ket').innerHTML = ket;
+}
+draw();
+</script>
+</body>
+</html>
