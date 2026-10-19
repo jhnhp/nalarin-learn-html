@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teori Kinetik Gas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Molekul gas dalam wadah dengan penghisap"></svg></div>
+  <div class="panel">
+    <div class="lab">Suhu T <b id="Tv"></b></div><input type="range" id="T" min="100" max="900" step="10" value="300">
+    <div class="lab">Volume (posisi penghisap) <b id="Vv"></b></div><input type="range" id="V" min="0.3" max="1" step="0.05" value="1">
+    <div class="lab">Jumlah molekul <b id="Nv"></b></div><input type="range" id="N" min="10" max="120" step="10" value="60">
+    <div class="read" id="read"></div>
+    <p class="note">Tekanan gas berasal dari tumbukan molekul dengan dinding. Gas ideal: PV = NkT = nRT. Energi kinetik rata-rata molekul Ek = (3/2)kT hanya bergantung pada suhu mutlak. P₀ = tekanan pada 300 K, volume V₀, dan 60 molekul. Tekanan terukur dihitung dari tumbukan sehingga sedikit berfluktuasi.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mol = [], hits = [], P_avg = 0;
+const BX = 30, BY = 30, BW = 300, BH = 240;
+function sync(){
+  const N = +$('N').value;
+  while(mol.length < N) mol.push({x: BX + 20 + Math.random() * 100, y: BY + 20 + Math.random() * (BH - 40), a: Math.random() * 6.283});
+  mol.length = N;
+}
+['N'].forEach(i => $(i).oninput = sync);
+function frame(){
+  const T = +$('T').value, V = +$('V').value, wall = BX + BW * V;
+  const sp = 2.2 * Math.sqrt(T / 300);
+  let imp = 0;
+  mol.forEach(m => {
+    m.x += Math.cos(m.a) * sp; m.y += Math.sin(m.a) * sp;
+    if(m.x < BX + 4){ m.x = BX + 4; m.a = Math.PI - m.a; imp += Math.abs(Math.cos(m.a)) * sp; }
+    if(m.x > wall - 4){ m.x = wall - 4; m.a = Math.PI - m.a; imp += Math.abs(Math.cos(m.a)) * sp; }
+    if(m.y < BY + 4){ m.y = BY + 4; m.a = -m.a; imp += Math.abs(Math.sin(m.a)) * sp; }
+    if(m.y > BY + BH - 4){ m.y = BY + BH - 4; m.a = -m.a; imp += Math.abs(Math.sin(m.a)) * sp; }
+  });
+  const perim = 2 * (BW * V + BH);
+  hits.push(imp / perim); if(hits.length > 120) hits.shift();
+  P_avg = hits.reduce((a, b) => a + b, 0) / hits.length;
+  let s = `<rect x="${BX}" y="${BY}" width="${BW}" height="${BH}" fill="none" style="stroke:var(--line-2)" stroke-dasharray="4 4"/><path d="M${wall},${BY} L${BX},${BY} L${BX},${BY + BH} L${wall},${BY + BH}" fill="none" style="stroke:var(--ink)" stroke-width="3"/>`;
+  s += `<rect x="${wall}" y="${BY - 6}" width="12" height="${BH + 12}" style="fill:var(--muted)"/><rect x="${wall + 12}" y="${BY + BH / 2 - 6}" width="${470 - wall - 12}" height="12" style="fill:var(--line-2)"/>`;
+  const hue = Math.max(0, Math.min(240, 240 - (T - 100) / 800 * 240));
+  mol.forEach(m => s += `<circle cx="${m.x}" cy="${m.y}" r="4" fill="hsl(${hue},80%,50%)"/>`);
+  // pengukur tekanan
+  const Prel = P_avg / 0.001035;
+  s += `<rect x="350" y="250" width="110" height="14" rx="7" style="fill:var(--surface-2)"/><rect x="350" y="250" width="${Math.min(110, Prel * 18)}" height="14" rx="7" style="fill:var(--b)"/><text class="s" x="350" y="244" style="fill:var(--ink)">tekanan ≈ ${fmt(Prel, 2)} P₀</text>`;
+  svg.innerHTML = s;
+  $('Tv').textContent = T + ' K'; $('Vv').textContent = fmt(V, 2) + ' × V₀'; $('Nv').textContent = mol.length;
+  const k = 1.38e-23, Ek = 1.5 * k * T, vrms = Math.sqrt(3 * 1.38e-23 * T / (4.65e-26));
+  $('read').innerHTML = `<div><span>Ek rata-rata = (3/2)kT</span><b>${fmt(Ek * 1e21, 3)} × 10⁻²¹ J</b></div><div><span>v rms molekul N₂</span><b>${fmt(vrms, 0)} m/s</b></div><div><span>Tekanan terukur / ramalan NT/V</span><b>${fmt(Prel, 2)} P₀ / ${fmt(mol.length / 60 * T / 300 / V, 2)} P₀</b></div>`;
+}
+sync();
+setInterval(frame, 30);
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Momen Gaya dan Keseimbangan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 280" role="img" aria-label="Batang dengan dua beban dan titik tumpu"></svg></div>
+  <div class="panel">
+    <div class="lab">Beban kiri m₁ <b id="v1"></b></div><input type="range" id="m1" min="1" max="30" step="1" value="8">
+    <div class="lab">Beban kanan m₂ <b id="v2"></b></div><input type="range" id="m2" min="1" max="30" step="1" value="20">
+    <div class="lab">Posisi titik tumpu dari ujung kiri <b id="vx"></b></div><input type="range" id="x" min="0.1" max="1.4" step="0.01" value="0.75">
+    <div class="read" id="read"></div>
+    <p class="note">Batang ringan sepanjang 1,5 m. Momen gaya τ = F × d (d = lengan, jarak tegak lurus dari titik tumpu). Batang setimbang rotasi jika Στ = 0, yaitu m₁g·d₁ = m₂g·d₂. Titik tumpu harus lebih dekat ke beban yang lebih berat.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let ang = 0;
+['m1', 'm2', 'x'].forEach(i => $(i).oninput = () => {});
+function frame(){
+  const m1 = +$('m1').value, m2 = +$('m2').value, x = +$('x').value, Lb = 1.5, g = 10;
+  const d1 = x, d2 = Lb - x, t1 = m1 * g * d1, t2 = m2 * g * d2, net = t2 - t1; // positif: kanan turun
+  const target = Math.max(-.35, Math.min(.35, net / 200));
+  ang += (target - ang) * .1;
+  const S = 270, px = 38 + x * S, py = 120;
+  const end = d => [px + (d - x) * S * Math.cos(ang), py + (d - x) * S * Math.sin(ang)];
+  const [lx, ly] = end(0), [rx, ry] = end(Lb);
+  let s = `<line x1="${lx}" y1="${ly}" x2="${rx}" y2="${ry}" stroke="#92400e" stroke-width="8" stroke-linecap="round"/>`;
+  s += `<path d="M${px},${py + 4} l-16,40 l32,0 z" style="fill:var(--line-2);stroke:var(--ink)"/><text class="s" x="${px}" y="${py + 58}" text-anchor="middle" style="fill:var(--ink)">titik tumpu</text><line x1="${px}" y1="${py + 112}" x2="${px}" y2="${py + 128}" style="stroke:var(--ink)"/>`;
+  const load = (cx, cy, m, col) => { const h = 18 + m * 1.2; return `<line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy + 26}" style="stroke:var(--ink)"/><rect x="${cx - 22}" y="${cy + 26}" width="44" height="${h}" rx="6" style="fill:${col}" fill-opacity=".8"/><text class="c" x="${cx}" y="${cy + 26 + h / 2 + 4}" text-anchor="middle" fill="#fff">${m} kg</text>`; };
+  s += load(lx, ly, m1, 'var(--a)') + load(rx, ry, m2, 'var(--b)');
+  // lengan
+  s += `<line x1="${px}" y1="${py + 120}" x2="${px - x * S}" y2="${py + 120}" style="stroke:var(--a)" stroke-width="1.5"/><text class="s" x="${px - x * S / 2}" y="${py + 136}" text-anchor="middle" style="fill:var(--a)">d₁ = ${fmt(d1, 2)} m</text>`;
+  s += `<line x1="${px}" y1="${py + 120}" x2="${px + (Lb - x) * S}" y2="${py + 120}" style="stroke:var(--b)" stroke-width="1.5"/><text class="s" x="${px + (Lb - x) * S / 2}" y="${py + 136}" text-anchor="middle" style="fill:var(--b)">d₂ = ${fmt(d2, 2)} m</text>`;
+  const bal = Math.abs(net) < .5;
+  s += `<text class="c" x="240" y="24" text-anchor="middle" style="fill:${bal ? 'var(--ok)' : 'var(--bad)'}">${bal ? 'SETIMBANG' : net > 0 ? 'berputar searah jarum jam (kanan turun)' : 'berputar berlawanan arah jarum jam (kiri turun)'}</text>`;
+  svg.innerHTML = s;
+  $('v1').textContent = m1 + ' kg'; $('v2').textContent = m2 + ' kg'; $('vx').textContent = fmt(x, 2) + ' m';
+  const xs = Lb * m2 / (m1 + m2);
+  $('read').innerHTML = `<div><span>τ₁ = m₁g·d₁</span><b>${fmt(t1, 1)} N·m</b></div><div><span>τ₂ = m₂g·d₂</span><b>${fmt(t2, 1)} N·m</b></div><div><span>Posisi setimbang</span><b>${fmt(xs, 3)} m dari ujung kiri</b></div><div><span>Gaya tumpu (bahu)</span><b>${fmt((m1 + m2) * g, 0)} N</b></div>`;
+}
+setInterval(frame, 30);
+</script>
+</body>
+</html>

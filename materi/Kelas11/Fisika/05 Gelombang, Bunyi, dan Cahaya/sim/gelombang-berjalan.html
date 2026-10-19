@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gelombang Berjalan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Gelombang berjalan pada tali dengan titik P dan Q"></svg></div>
+  <div class="panel">
+    <div class="lab">Amplitudo A <b id="Av"></b></div><input type="range" id="A" min="0.1" max="0.5" step="0.05" value="0.3">
+    <div class="lab">Frekuensi f <b id="fv"></b></div><input type="range" id="f" min="0.2" max="2" step="0.1" value="0.5">
+    <div class="lab">Panjang gelombang λ <b id="lv"></b></div><input type="range" id="l" min="1" max="6" step="0.5" value="4">
+    <div class="lab">Jarak P–Q <b id="dv"></b></div><input type="range" id="d" min="0" max="8" step="0.25" value="2">
+    <div class="row"><button class="btn primary" id="go">⏸ Berhenti</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">y = A sin(ωt − kx) dengan ω = 2πf dan k = 2π/λ; cepat rambat v = λf = ω/k. Partikel tali hanya naik-turun; yang merambat adalah energinya. Beda fase Δφ = Δx/λ: sefase jika Δφ bilangan bulat, berlawanan fase jika Δφ = ½, 1½, ….</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let t = 0, run = true;
+$('go').onclick = () => { run = !run; $('go').textContent = run ? '⏸ Berhenti' : '▶ Jalankan'; };
+function frame(){
+  if(run) t += .03;
+  const A = +$('A').value, f = +$('f').value, lam = +$('l').value, d = +$('d').value;
+  const w = 2 * Math.PI * f, k = 2 * Math.PI / lam, v = lam * f;
+  const X = x => 30 + x * 42, Y = y => 140 - y * 160, xmax = 10;
+  const yv = x => A * Math.sin(w * t - k * x);
+  let s = `<line x1="${X(0)}" y1="${Y(0)}" x2="${X(xmax)}" y2="${Y(0)}" style="stroke:var(--line-2)" stroke-dasharray="3 3"/>`;
+  for(let x = 0; x <= xmax; x++) s += `<text class="s" x="${X(x)}" y="${Y(-.5) + 12}" text-anchor="middle" style="fill:var(--muted)">${x}</text>`;
+  s += `<text class="s" x="${X(xmax)}" y="${Y(-.5) + 26}" text-anchor="end" style="fill:var(--muted)">x (m)</text>`;
+  let p = ''; for(let i = 0; i <= 200; i++){ const x = xmax * i / 200; p += (i ? 'L' : 'M') + X(x).toFixed(1) + ',' + Y(yv(x)).toFixed(1); }
+  s += `<path d="${p}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+  // satu panjang gelombang
+  s += `<line x1="${X(1)}" y1="${Y(.55)}" x2="${X(1 + lam)}" y2="${Y(.55)}" style="stroke:var(--comp)" stroke-width="1.5"/><text class="s" x="${X(1 + lam / 2)}" y="${Y(.55) - 6}" text-anchor="middle" style="fill:var(--comp)">λ = ${fmt(lam, 2)} m</text>`;
+  // titik P dan Q
+  const xp = 2, xq = 2 + d;
+  [[xp, 'P', 'var(--b)'], [xq, 'Q', 'var(--k)']].forEach(([x, n, c]) => { if(x <= xmax) s += `<line x1="${X(x)}" y1="${Y(A)}" x2="${X(x)}" y2="${Y(-A)}" style="stroke:${c}" stroke-opacity=".4"/><circle cx="${X(x)}" cy="${Y(yv(x))}" r="7" style="fill:${c}"/><text class="c" x="${X(x) + 9}" y="${Y(yv(x)) - 8}" style="fill:${c}">${n}</text>`; });
+  // panah arah rambat
+  s += `<line x1="380" y1="30" x2="440" y2="30" style="stroke:var(--ink)" stroke-width="2"/><path d="M448,30 l-10,-5 l0,10z" style="fill:var(--ink)"/><text class="s" x="410" y="22" text-anchor="middle" style="fill:var(--ink)">arah rambat</text>`;
+  svg.innerHTML = s;
+  $('Av').textContent = fmt(A, 2) + ' m'; $('fv').textContent = fmt(f, 1) + ' Hz'; $('lv').textContent = fmt(lam, 1) + ' m'; $('dv').textContent = fmt(d, 2) + ' m';
+  const ph = d / lam, frac = ph - Math.floor(ph);
+  const st = Math.abs(frac) < 1e-6 ? 'sefase' : Math.abs(frac - .5) < 1e-6 ? 'berlawanan fase' : 'tidak sefase';
+  $('read').innerHTML = `<div><span>v = λf / T = 1/f</span><b>${fmt(v, 2)} m/s / ${fmt(1 / f, 2)} s</b></div><div><span>Persamaan</span><b>y = ${fmt(A, 2)} sin(${fmt(w, 2)}t − ${fmt(k, 2)}x)</b></div><div><span>Beda fase P–Q</span><b>Δφ = ${fmt(ph, 3)} (${st})</b></div>`;
+}
+setInterval(frame, 30);
+</script>
+</body>
+</html>

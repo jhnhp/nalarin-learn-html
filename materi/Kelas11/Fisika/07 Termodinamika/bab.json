@@ -1,56 +1,272 @@
 {
   "title": "Termodinamika",
-  "summary": "Ringkasan bab Termodinamika akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Gas ideal dan teori kinetik, sistem dan hukum ke-0, hukum I dan proses-proses termodinamika, hukum II dan entropi, serta mesin kalor, mesin Carnot, dan pompa kalor.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Termodinamika",
+      "id": "gas-ideal",
+      "title": "Gas ideal dan teori kinetik",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan gas ideal",
+          "html": "<p>\\[PV = nRT = NkT\\]</p><p>R = 8,31 J/mol·K, k = 1,38 × 10⁻²³ J/K, N = n·Nₐ (Nₐ = 6,02 × 10²³). Untuk n tetap: \\(\\dfrac{P_1V_1}{T_1} = \\dfrac{P_2V_2}{T_2}\\) (Boyle: T tetap; Charles: P tetap; Gay-Lussac: V tetap). Suhu harus dalam kelvin.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Teori kinetik gas</b>: gas terdiri atas banyak molekul yang bergerak acak dan bertumbukan lenting sempurna. Tekanan berasal dari tumbukan molekul dengan dinding. Energi kinetik rata-rata per molekul \\(\\bar E_k = \\tfrac32 kT\\), dan energi dalam gas monoatomik \\(U = \\tfrac32 nRT\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/gas-kinetik.html",
+          "title": "Teori kinetik gas",
+          "height": 480,
+          "caption": "Naikkan suhu, lalu perkecil volume. Bandingkan tekanan terukur dengan ramalan NT/V."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Balon berisi 3 L udara 27 °C dipanaskan pada tekanan tetap hingga 127 °C. Berapa volumenya?</p>",
+          "steps": [
+            "\\(V_2 = V_1 \\dfrac{T_2}{T_1} = 3 \\times \\dfrac{400}{300}\\)."
+          ],
+          "answer": "4 L"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tabung 20 L berisi gas 2,07 × 10⁵ Pa pada 27 °C. Berapa jumlah molekulnya?</p>",
+          "steps": [
+            "\\(N = \\dfrac{PV}{kT} = \\dfrac{2{,}07\\times10^5 \\times 0{,}02}{1{,}38\\times10^{-23}\\times300}\\)."
+          ],
+          "answer": "1 × 10²⁴ molekul"
+        },
+        {
+          "type": "check",
+          "question": "Menurut teori kinetik gas, tekanan gas disebabkan oleh ....",
+          "options": {
+            "A": "berat molekul gas",
+            "B": "tumbukan molekul dengan dinding wadah",
+            "C": "tarik-menarik antarmolekul",
+            "D": "panas wadah"
+          },
+          "answer": "B",
+          "hint": "Impuls tumbukan.",
+          "explanation": "Setiap tumbukan memberi impuls pada dinding; rata-ratanya menghasilkan gaya per luas."
+        }
+      ]
+    },
+    {
+      "id": "hukum-i",
+      "title": "Sistem, hukum ke-0, dan hukum I termodinamika",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Sistem</th><th>Pertukaran</th><th>Contoh</th></tr><tr><td>Terbuka</td><td>energi dan materi</td><td>panci tanpa tutup</td></tr><tr><td>Tertutup</td><td>hanya energi</td><td>panci presto tertutup rapat</td></tr><tr><td>Terisolasi</td><td>tidak ada</td><td>termos ideal</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Hukum ke-0</b>: jika A setimbang termal dengan C, dan B setimbang termal dengan C, maka A setimbang termal dengan B. Inilah dasar kerja termometer.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum I termodinamika",
+          "html": "<p>\\[Q = \\Delta U + W\\]</p><p>Q positif jika sistem menyerap kalor; W positif jika gas melakukan usaha (memuai); \\(W = P\\Delta V\\) untuk tekanan tetap, secara umum W = luas di bawah kurva P–V.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Proses</th><th>Ciri</th><th>Usaha W</th><th>Hukum I</th></tr><tr><td>Isobarik</td><td>P tetap</td><td>\\(P\\Delta V\\)</td><td>\\(Q = \\Delta U + P\\Delta V\\)</td></tr><tr><td>Isokhorik</td><td>V tetap</td><td>0</td><td>\\(Q = \\Delta U\\)</td></tr><tr><td>Isotermal</td><td>T tetap (ΔU = 0)</td><td>\\(nRT\\ln\\dfrac{V_2}{V_1}\\)</td><td>\\(Q = W\\)</td></tr><tr><td>Adiabatik</td><td>Q = 0, \\(PV^\\gamma\\) tetap</td><td>\\(-\\Delta U\\)</td><td>\\(\\Delta U = -W\\)</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/proses-pv.html",
+          "title": "Proses termodinamika pada diagram P–V",
+          "height": 560,
+          "caption": "Bandingkan keempat proses dengan volume akhir sama. Proses mana yang usahanya terbesar? Mengapa ΔU isotermal nol?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Gas dimampatkan pada tekanan tetap 1,5 × 10⁵ Pa dari 8 L menjadi 5 L dan melepas kalor 800 J. Berapa perubahan energi dalamnya?</p>",
+          "steps": [
+            "W = PΔV = 1,5 × 10⁵ × (−3 × 10⁻³) = −450 J.",
+            "ΔU = Q − W = −800 − (−450)."
+          ],
+          "answer": "ΔU = −350 J (berkurang 350 J)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gas 3 × 10⁵ Pa, 5 L memuai isotermal sampai 10 L (ln 2 = 0,7). Hitung usahanya.</p>",
+          "steps": [
+            "\\(W = nRT\\ln(V_2/V_1) = P_1V_1\\ln 2 = 3\\times10^5 \\times 5\\times10^{-3} \\times 0{,}7\\)."
+          ],
+          "answer": "1.050 J"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kapasitas kalor gas monoatomik",
+          "html": "<p>\\(C_V = \\tfrac32 nR\\), \\(C_P = \\tfrac52 nR\\), \\(\\gamma = C_P/C_V = 5/3\\). Untuk kenaikan suhu sama, kalor pada tekanan tetap lebih besar karena sebagian dipakai untuk usaha: \\(Q_P : Q_V = 5 : 3\\).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Gas dalam tabung baja kaku diberi kalor 500 J. Usaha dan perubahan energi dalamnya adalah ....",
+          "options": {
+            "A": "500 J dan 0",
+            "B": "0 dan 500 J",
+            "C": "250 J dan 250 J",
+            "D": "0 dan 0"
+          },
+          "answer": "B",
+          "hint": "Volume tetap.",
+          "explanation": "Isokhorik: W = 0, sehingga ΔU = Q = 500 J."
+        }
+      ]
+    },
+    {
+      "id": "hukum-ii",
+      "title": "Hukum II termodinamika dan entropi",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hukum II</b> menyatakan arah proses alami:</p><ul><li><b>Kelvin–Planck</b>: tidak mungkin membuat mesin siklik yang menyerap kalor dari satu reservoir dan mengubah seluruhnya menjadi usaha.</li><li><b>Clausius</b>: kalor tidak mengalir dengan sendirinya dari benda dingin ke benda panas; diperlukan usaha (pompa kalor).</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Entropi",
+          "html": "<p>Entropi S mengukur ketidakteraturan. Untuk proses pada suhu tetap: \\(\\Delta S = \\dfrac{Q}{T}\\) (J/K). Pada proses alami (ireversibel), entropi total alam semesta selalu bertambah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>500 g air 100 °C menguap seluruhnya (L = 2,26 × 10⁶ J/kg). Berapa perubahan entropinya?</p>",
+          "steps": [
+            "Q = 0,5 × 2,26 × 10⁶ = 1,13 × 10⁶ J; T = 373 K.",
+            "ΔS = Q/T."
+          ],
+          "answer": "≈ 3.030 J/K"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kalor 1.800 J mengalir spontan dari reservoir 600 K ke reservoir 300 K. Berapa perubahan entropi total?</p>",
+          "steps": [
+            "ΔS panas = −1.800/600 = −3 J/K; ΔS dingin = +1.800/300 = +6 J/K."
+          ],
+          "answer": "+3 J/K (bertambah)"
+        },
+        {
+          "type": "check",
+          "question": "Tinta yang diteteskan ke air menyebar merata dan tidak pernah berkumpul kembali dengan sendirinya. Hal ini karena ....",
+          "options": {
+            "A": "massa tinta berkurang",
+            "B": "prosesnya ireversibel dan entropi total bertambah",
+            "C": "energi tinta hilang",
+            "D": "air menyerap tinta"
+          },
+          "answer": "B",
+          "hint": "Arah proses alami.",
+          "explanation": "Penyebaran adalah keadaan yang jauh lebih mungkin (lebih tidak teratur)."
+        }
+      ]
+    },
+    {
+      "id": "mesin-kalor",
+      "title": "Mesin kalor, Carnot, dan pompa kalor",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Mesin kalor dan pompa kalor",
+          "html": "<p>Mesin kalor: \\(W = Q_1 - Q_2\\), \\(\\eta = \\dfrac{W}{Q_1} = 1 - \\dfrac{Q_2}{Q_1}\\). Mesin Carnot (ideal): \\(\\eta_C = 1 - \\dfrac{T_2}{T_1}\\).</p><p>Pompa kalor/pendingin: \\(Q_1 = Q_2 + W\\); koefisien performansi pendingin \\(K = Q_2/W\\), pemanas \\(K = Q_1/W\\); Carnot \\(K_C = \\dfrac{T_2}{T_1 - T_2}\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/mesin-kalor.html",
+          "title": "Mesin kalor dan pompa kalor",
+          "height": 560,
+          "caption": "Bagaimana efisiensi Carnot berubah jika T₁ dinaikkan atau T₂ diturunkan? Pada mode pompa kalor, kapan KP besar?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Mesin menghasilkan usaha 900 J tiap siklus dengan efisiensi 36%. Berapa kalor yang dibuang?</p>",
+          "steps": [
+            "Q₁ = W/η = 900/0,36 = 2.500 J.",
+            "Q₂ = Q₁ − W."
+          ],
+          "answer": "1.600 J"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pompa kalor memindahkan 2.000 J tiap detik dari luar rumah dan memakai daya listrik 800 W. Berapa kalor yang masuk ke rumah dan KP pemanasnya?</p>",
+          "steps": [
+            "Q₁ = Q₂ + W = 2.000 + 800 = 2.800 J tiap detik.",
+            "KP = Q₁/W = 2.800/800."
+          ],
+          "answer": "2.800 J/s; KP = 3,5"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (siklus)",
+          "question": "<p>Gas menjalani siklus persegi panjang pada diagram P–V: tekanan 4 × 10⁵ Pa dan 1 × 10⁵ Pa, volume 2 L dan 5 L. Berapa usaha total per siklus?</p>",
+          "steps": [
+            "Usaha total = luas daerah tertutup siklus.",
+            "W = (4 − 1) × 10⁵ × (5 − 2) × 10⁻³."
+          ],
+          "answer": "900 J"
+        },
+        {
+          "type": "check",
+          "question": "Mesin Carnot bekerja antara 800 K dan 400 K. Efisiensi maksimumnya adalah ....",
+          "options": {
+            "A": "25%",
+            "B": "50%",
+            "C": "75%",
+            "D": "100%"
+          },
+          "answer": "B",
+          "hint": "1 − T₂/T₁.",
+          "explanation": "1 − 400/800 = 0,5."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Gas Ideal, Proses dan Hukum-Hukum Termodinamika, Mesin Kalor, dan Pompa Kalor</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Gas ideal</td><td>\\(PV = nRT = NkT\\); \\(\\bar E_k = \\tfrac32kT\\)</td></tr><tr><td>Hukum I</td><td>\\(Q = \\Delta U + W\\); \\(\\Delta U = \\tfrac32nR\\Delta T\\) (monoatomik)</td></tr><tr><td>Proses</td><td>isobarik W = PΔV; isokhorik W = 0; isotermal ΔU = 0; adiabatik Q = 0</td></tr><tr><td>Entropi</td><td>\\(\\Delta S = Q/T\\), alam semesta: ΔS ≥ 0</td></tr><tr><td>Mesin</td><td>\\(\\eta = W/Q_1\\), \\(\\eta_C = 1 - T_2/T_1\\); KP = Q₂/W</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai °C pada PV = nRT atau rumus Carnot.</li><li>Salah tanda: kalor dilepas bernilai negatif, usaha saat dimampatkan negatif.</li><li>Menganggap isotermal berarti tidak ada kalor (yang benar: ΔU = 0, Q = W).</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 7 Termodinamika.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang gas ideal, proses dan hukum termodinamika, entropi, mesin kalor, dan pompa kalor. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

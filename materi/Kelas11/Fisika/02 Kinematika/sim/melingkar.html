@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerak Melingkar Beraturan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Benda bergerak melingkar dengan vektor kecepatan dan percepatan sentripetal"></svg></div>
+  <div class="panel">
+    <div class="lab">Jari-jari r <b id="rv"></b></div><input type="range" id="r" min="1" max="30" step="1" value="20">
+    <div class="lab">Kelajuan linear v <b id="vv"></b></div><input type="range" id="v" min="1" max="30" step="1" value="8">
+    <div class="row"><button class="btn primary" id="go">⏸ Berhenti</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Pada GMB kelajuan tetap, tetapi arah kecepatan selalu berubah (menyinggung lingkaran). Karena itu ada percepatan sentripetal yang selalu mengarah ke pusat: a<sub>s</sub> = v²/r = ω²r. Hubungan: v = ωr, ω = 2π/T = 2πf.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let th = 0, run = true, total = 0, last = performance.now();
+$('go').onclick = () => { run = !run; $('go').textContent = run ? '⏸ Berhenti' : '▶ Jalankan'; };
+['r', 'v'].forEach(i => $(i).oninput = () => { total = 0; th = 0; });
+function frame(){
+  const r = +$('r').value, v = +$('v').value, w = v / r;
+  if(run){ const dt = .03 * .4; th += w * dt; total += w * dt; }
+  const cx = 170, cy = 160, R = 40 + r * 3.6;
+  const px = cx + R * Math.cos(th), py = cy - R * Math.sin(th);
+  let s = `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" style="stroke:var(--line-2)" stroke-width="2" stroke-dasharray="4 4"/><circle cx="${cx}" cy="${cy}" r="3" style="fill:var(--ink)"/>`;
+  // sudut tempuh
+  const turns = total / (2 * Math.PI);
+  s += `<line x1="${cx}" y1="${cy}" x2="${cx + R}" y2="${cy}" style="stroke:var(--muted)"/><line x1="${cx}" y1="${cy}" x2="${px}" y2="${py}" style="stroke:var(--muted)"/>`;
+  const a0 = th % (2 * Math.PI), large = a0 > Math.PI ? 1 : 0;
+  s += `<path d="M${cx + 26},${cy} A26,26 0 ${large},0 ${cx + 26 * Math.cos(a0)},${cy - 26 * Math.sin(a0)}" fill="none" style="stroke:var(--comp)" stroke-width="2"/><text class="s" x="${cx + 30}" y="${cy + 16}" style="fill:var(--comp)">θ</text>`;
+  // vektor
+  const L = 30 + v * 2.2, tx = -Math.sin(th), ty = -Math.cos(th);
+  const ar = (x1, y1, x2, y2, col, lab) => { const a = Math.atan2(y2 - y1, x2 - x1); return `<line x1="${x1}" y1="${y1}" x2="${x2 - 7 * Math.cos(a)}" y2="${y2 - 7 * Math.sin(a)}" style="stroke:${col}" stroke-width="3"/><path d="M${x2},${y2} l${-10 * Math.cos(a - .4)},${-10 * Math.sin(a - .4)} l${10 * Math.cos(a - .4) - 10 * Math.cos(a + .4)},${10 * Math.sin(a - .4) - 10 * Math.sin(a + .4)}z" style="fill:${col}"/><text class="c" x="${x2 + 6}" y="${y2 - 4}" style="fill:${col}">${lab}</text>`; };
+  const as = v * v / r, La = Math.min(R - 10, 20 + as * 3);
+  s += ar(px, py, px + tx * L, py + ty * L, 'var(--b)', 'v') + ar(px, py, px + (cx - px) / R * La, py + (cy - py) / R * La, 'var(--k)', 'aₛ');
+  s += `<circle cx="${px}" cy="${py}" r="9" style="fill:var(--a)"/>`;
+  s += `<text class="s" x="${cx}" y="${cy + R + 22}" text-anchor="middle" style="fill:var(--muted)">r = ${r} m</text>`;
+  s += `<text class="c" x="350" y="40" style="fill:var(--ink)">putaran: ${fmt(turns, 2)}</text><text class="c" x="350" y="60" style="fill:var(--ink)">sudut: ${fmt(total, 2)} rad</text><text class="s" x="350" y="78" style="fill:var(--muted)">(1 putaran = 2π rad)</text>`;
+  svg.innerHTML = s;
+  $('rv').textContent = r + ' m'; $('vv').textContent = v + ' m/s';
+  $('read').innerHTML = `<div><span>Kecepatan sudut ω = v/r</span><b>${fmt(w, 3)} rad/s</b></div><div><span>Periode T = 2π/ω / frekuensi f</span><b>${fmt(2 * Math.PI / w, 2)} s / ${fmt(w / (2 * Math.PI), 3)} Hz</b></div><div><span>Percepatan sentripetal v²/r</span><b>${fmt(as, 2)} m/s²</b></div>`;
+}
+setInterval(frame, 30);
+</script>
+</body>
+</html>

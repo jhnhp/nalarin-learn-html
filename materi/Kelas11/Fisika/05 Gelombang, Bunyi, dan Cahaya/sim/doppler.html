@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Efek Doppler</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 280" role="img" aria-label="Muka gelombang dari sumber bunyi yang bergerak dan pendengar"></svg></div>
+  <div class="panel">
+    <div class="lab">Frekuensi sumber fₛ <b id="fv"></b></div><input type="range" id="fs" min="300" max="1000" step="10" value="700">
+    <div class="lab">Kecepatan sumber vₛ (+ ke kanan) <b id="sv"></b></div><input type="range" id="vs" min="-60" max="60" step="5" value="30">
+    <div class="lab">Kecepatan pendengar vₚ (+ ke kanan) <b id="pv"></b></div><input type="range" id="vp" min="-40" max="40" step="5" value="0">
+    <div class="read" id="read"></div>
+    <p class="note">f<sub>p</sub> = f<sub>s</sub> (v ± v<sub>p</sub>)/(v ∓ v<sub>s</sub>), v = 340 m/s. Tanda atas dipakai jika pendengar/sumber <b>saling mendekat</b>; tanda bawah jika menjauh. Muka gelombang di depan sumber yang bergerak menjadi rapat (frekuensi tinggi), di belakangnya renggang.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const v = 340, SC = .9; // piksel per meter (gambar diperlambat)
+let t = 0, waves = [], xs = 140, xp = 400, last = 0;
+['fs', 'vs', 'vp'].forEach(i => $(i).oninput = () => { waves = []; xs = 140; xp = 400; t = 0; last = 0; });
+function frame(){
+  const fs = +$('fs').value, vs = +$('vs').value, vp = +$('vp').value;
+  const dt = .012; t += dt;
+  xs += vs * dt; xp += vp * dt;
+  if(xs > 470 || xs < 10 || xp > 470 || xp < 10){ waves = []; xs = 140; xp = 400; t = 0; last = 0; }
+  // muka gelombang (gambar diperlambat): jarak antarmuka sebanding 1/fₛ
+  const period = 30 * 700 / fs / v;
+  if(t - last >= period){ waves.push({x: xs, t0: t}); last = t; }
+  waves = waves.filter(w => (t - w.t0) * v < 520);
+  let s = '';
+  waves.forEach(w => { const r = (t - w.t0) * v; s += `<circle cx="${w.x}" cy="140" r="${r}" fill="none" style="stroke:var(--a)" stroke-opacity="${Math.max(.15, 1 - r / 500)}" stroke-width="1.5"/>`; });
+  s += `<circle cx="${xs}" cy="140" r="10" style="fill:var(--b)"/><text class="s" x="${xs}" y="165" text-anchor="middle" style="fill:var(--b)">sumber</text>`;
+  s += `<circle cx="${xp}" cy="140" r="8" style="fill:var(--k)"/><text class="s" x="${xp}" y="120" text-anchor="middle" style="fill:var(--k)">pendengar</text>`;
+  svg.innerHTML = s;
+  // frekuensi terdengar (umum, sumbu x)
+  const dir = Math.sign(xp - xs) || 1; // arah dari sumber ke pendengar
+  const vpTo = -vp * dir, vsTo = vs * dir; // komponen mendekat
+  const fp = fs * (v + vpTo) / (v - vsTo);
+  $('fv').textContent = fs + ' Hz'; $('sv').textContent = vs + ' m/s'; $('pv').textContent = vp + ' m/s';
+  const rel = vpTo + vsTo > 0 ? 'saling mendekat' : vpTo + vsTo < 0 ? 'saling menjauh' : 'jarak tetap';
+  $('read').innerHTML = `<div><span>Keadaan</span><b>${rel}</b></div><div><span>Frekuensi terdengar</span><b>${fmt(fp, 1)} Hz</b></div><div><span>Rumus</span><b>${fs} × (340 ${vpTo >= 0 ? '+' : '−'} ${Math.abs(vpTo)}) / (340 ${vsTo >= 0 ? '−' : '+'} ${Math.abs(vsTo)})</b></div>`;
+}
+setInterval(frame, 30);
+</script>
+</body>
+</html>

@@ -1,56 +1,306 @@
 {
   "title": "Fluida",
-  "summary": "Ringkasan bab Fluida akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Tekanan dan tekanan hidrostatis, hukum Pascal, hukum Archimedes, tegangan permukaan dan kapilaritas, viskositas, serta fluida dinamis: kontinuitas, Bernoulli, dan Torricelli.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Fluida",
+      "id": "tekanan",
+      "title": "Tekanan dan tekanan hidrostatis",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Fluida</b> adalah zat yang dapat mengalir: zat cair dan gas. <b>Tekanan</b> adalah gaya per satuan luas, \\(P = F/A\\) (Pa = N/m²). Bata yang diletakkan pada sisi tersempitnya memberi tekanan terbesar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tekanan hidrostatis",
+          "html": "<p>\\[P_h = \\rho g h,\\qquad P_{total} = P_0 + \\rho g h\\]</p><p>Tekanan pada kedalaman h hanya bergantung pada ρ, g, dan h, tidak pada bentuk wadah (hukum pokok hidrostatika). Tekanan udara di permukaan laut \\(P_0 \\approx 1{,}01\\times10^5\\) Pa = 1 atm = 76 cmHg.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/tekanan-cair.html",
+          "title": "Tekanan hidrostatis",
+          "height": 480,
+          "caption": "Ubah kedalaman dan jenis cairan; perhatikan bahwa tekanan tidak bergantung pada bentuk wadah."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tekanan udara 1,0 × 10⁵ Pa. Pada kedalaman berapa tekanan total di danau menjadi 3 kali tekanan udara?</p>",
+          "steps": [
+            "\\(P_0 + \\rho g h = 3P_0 \\Rightarrow \\rho g h = 2P_0\\).",
+            "\\(h = \\dfrac{2\\times10^5}{1.000\\times10}\\)."
+          ],
+          "answer": "20 m"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Barometer di permukaan laut menunjukkan 76 cmHg. Di sebuah gunung tingginya 57 cmHg. Berapa tekanan udara di gunung dalam atm?</p>",
+          "steps": [
+            "P = 57/76 atm."
+          ],
+          "answer": "0,75 atm"
+        },
+        {
+          "type": "image",
+          "src": "gambar/pipa-u.svg",
+          "alt": "Pipa U berisi air dan minyak: tekanan pada garis batas sama",
+          "width": 520,
+          "caption": "Pipa U dengan dua cairan yang tidak bercampur."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Pipa U berisi air (1.000 kg/m³). Minyak (800 kg/m³) setinggi 15 cm dituang di kaki kiri. Berapa selisih tinggi permukaan minyak dan air?</p>",
+          "steps": [
+            "Pada garis batas: \\(800 \\times 15 = 1.000 \\times h_{air} \\Rightarrow h_{air} = 12\\) cm.",
+            "Selisih = 15 − 12."
+          ],
+          "answer": "3 cm"
+        },
+        {
+          "type": "check",
+          "question": "Gelembung udara dari penyelam makin besar saat naik ke permukaan karena ....",
+          "options": {
+            "A": "suhu air naik",
+            "B": "tekanan hidrostatis makin kecil",
+            "C": "gelembung menyerap air",
+            "D": "massa gelembung bertambah"
+          },
+          "answer": "B",
+          "hint": "P = ρgh.",
+          "explanation": "Makin dangkal, tekanan makin kecil sehingga volume gas mengembang (hukum Boyle)."
+        }
+      ]
+    },
+    {
+      "id": "pascal-archimedes",
+      "title": "Hukum Pascal dan hukum Archimedes",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Pascal",
+          "html": "<p>Tekanan yang diberikan pada fluida dalam ruang tertutup diteruskan ke segala arah sama besar: \\(\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2}\\) (dongkrak hidrolik, rem hidrolik).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/hidrolik.html",
+          "title": "Dongkrak hidrolik",
+          "height": 480,
+          "caption": "Bandingkan gaya kecil di piston kecil dengan gaya besar di piston besar."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Archimedes",
+          "html": "<p>Benda yang tercelup sebagian atau seluruhnya mengalami gaya ke atas sebesar berat fluida yang dipindahkan:</p><p>\\[F_A = \\rho_f\\, g\\, V_{tercelup}\\]</p><p>Gaya apung muncul karena tekanan di permukaan bawah benda lebih besar daripada di permukaan atasnya.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/archimedes.html",
+          "title": "Hukum Archimedes",
+          "height": 520,
+          "caption": "Ubah massa jenis benda dan jenis fluida. Kapan benda terapung, melayang, atau tenggelam? Berapa bagian yang tercelup?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tiga bola bervolume sama: P terapung, Q melayang, R tenggelam di air. Bandingkan gaya apungnya.</p>",
+          "steps": [
+            "Q dan R tercelup seluruhnya → V tercelup sama → F_A sama.",
+            "P hanya tercelup sebagian → F_A paling kecil."
+          ],
+          "answer": "F_P &lt; F_Q = F_R"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Es batu terapung di gelas berisi air sampai garis 300 mL. Setelah es mencair seluruhnya, berapa skala air?</p>",
+          "steps": [
+            "Es terapung: massa air yang dipindahkan = massa es.",
+            "Setelah mencair, es menjadi air dengan massa yang sama, sehingga volumenya tepat mengisi volume yang tadinya dipindahkan."
+          ],
+          "answer": "tetap 300 mL"
+        },
+        {
+          "type": "check",
+          "question": "Benda bermassa jenis 800 kg/m³ terapung di air (1.000 kg/m³). Bagian benda yang tercelup adalah ....",
+          "options": {
+            "A": "20%",
+            "B": "50%",
+            "C": "80%",
+            "D": "100%"
+          },
+          "answer": "C",
+          "hint": "ρ_benda/ρ_fluida.",
+          "explanation": "800/1.000 = 0,8 = 80%."
+        }
+      ]
+    },
+    {
+      "id": "tegangan-viskositas",
+      "title": "Tegangan permukaan, kapilaritas, dan viskositas",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Tegangan permukaan</b> muncul karena molekul di permukaan zat cair ditarik ke dalam oleh molekul di sekitarnya, sehingga permukaan berperilaku seperti selaput tegang. Inilah yang menopang klip kertas dan serangga air (bukan gaya Archimedes). \\(\\gamma = F/L\\) (N/m).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kapilaritas",
+          "html": "<p>\\[h = \\frac{2\\gamma\\cos\\theta}{\\rho g r}\\]</p><p>Air naik di pipa kapiler kaca (adhesi &gt; kohesi, θ &lt; 90°), raksa turun (θ &gt; 90°). Contoh: naiknya air pada sumbu kompor, tisu, dan pembuluh tumbuhan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Pada penurunan rumus kapilaritas, buku menulis berat air yang naik sebagai \\(\\rho(\\pi 2Rh)g\\). Volume air dalam pipa adalah \\(\\pi R^2 h\\), sehingga \\(\\rho\\pi R^2 h g = \\gamma 2\\pi R\\cos\\theta\\) dan diperoleh \\(h = 2\\gamma\\cos\\theta/(\\rho g R)\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pipa kapiler berjari-jari 0,4 mm dicelupkan ke air (γ = 0,072 N/m, θ = 0°). Berapa kenaikan air?</p>",
+          "steps": [
+            "\\(h = \\dfrac{2(0{,}072)(1)}{1.000(10)(4\\times10^{-4})} = 0{,}036\\) m."
+          ],
+          "answer": "3,6 cm"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Viskositas dan hukum Stokes",
+          "html": "<p>Gaya antarlapisan fluida: \\(F = \\eta\\dfrac{Av}{d}\\). Gaya hambat pada bola: \\(F_s = 6\\pi\\eta r v\\). Kelajuan terminal bola yang jatuh dalam fluida kental:</p><p>\\[v_T = \\frac{2r^2 g(\\rho_b - \\rho_f)}{9\\eta}\\]</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pelat 0,2 m² ditarik 0,5 m/s di atas lapisan oli setebal 1 mm (η = 0,1 Pa·s). Berapa gayanya?</p>",
+          "steps": [
+            "\\(F = 0{,}1 \\times 0{,}2 \\times 0{,}5 / 0{,}001\\)."
+          ],
+          "answer": "10 N"
+        },
+        {
+          "type": "check",
+          "question": "Klip kertas baja dapat diletakkan mendatar di permukaan air tanpa tenggelam karena ....",
+          "options": {
+            "A": "gaya Archimedes",
+            "B": "tegangan permukaan",
+            "C": "viskositas",
+            "D": "tekanan udara"
+          },
+          "answer": "B",
+          "hint": "Selaput permukaan.",
+          "explanation": "Tegangan permukaan menahan klip selama permukaan tidak tertembus."
+        }
+      ]
+    },
+    {
+      "id": "fluida-dinamis",
+      "title": "Fluida dinamis: kontinuitas dan Bernoulli",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Fluida ideal</b>: tidak termampatkan (massa jenis tetap), tidak kental (viskositas nol), alirannya tunak (laminar), dan tidak berpusar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan kontinuitas dan Bernoulli",
+          "html": "<p>Debit \\(Q = V/t = Av\\); kontinuitas: \\(A_1v_1 = A_2v_2\\).</p><p>Bernoulli: \\(P + \\tfrac12\\rho v^2 + \\rho g h = \\text{tetap}\\). Di tempat kelajuannya besar, tekanannya kecil.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/bernoulli.html",
+          "title": "Kontinuitas dan Bernoulli",
+          "height": 520,
+          "caption": "Persempit pipa dan perhatikan kelajuan serta tinggi kolom air. Lalu coba mode tangki bocor: di ketinggian berapa lubang memancarkan air paling jauh?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Saluran irigasi selebar 3 m dengan kedalaman 0,4 m mengalir 0,5 m/s, lalu menyempit menjadi lebar 1 m dan kedalaman 0,3 m. Berapa kelajuan air di bagian sempit?</p>",
+          "steps": [
+            "\\(A_1 = 1{,}2\\) m², \\(A_2 = 0{,}3\\) m².",
+            "\\(v_2 = 1{,}2 \\times 0{,}5 / 0{,}3\\)."
+          ],
+          "answer": "2 m/s"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2 (Torricelli)",
+          "question": "<p>Permukaan air dalam tangki terbuka 1,8 m di atas keran. Luas lubang keran 2 cm². Berapa kelajuan air keluar dan debitnya?</p>",
+          "steps": [
+            "\\(v = \\sqrt{2gh} = \\sqrt{36} = 6\\) m/s.",
+            "\\(Q = Av = 2\\times10^{-4} \\times 6 = 1{,}2\\times10^{-3}\\) m³/s."
+          ],
+          "answer": "6 m/s; 1,2 L/s"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Gaya angkat sayap pesawat",
+          "html": "<p>Udara di atas sayap mengalir lebih cepat daripada di bawahnya, sehingga tekanan di atas lebih kecil. Gaya angkat \\(F = \\tfrac12\\rho(v_{atas}^2 - v_{bawah}^2)A\\). Prinsip yang sama menjelaskan dua balon yang saling mendekat ketika udara ditiup di antaranya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Sayap seluas 20 m²; udara di atas sayap 60 m/s dan di bawah 50 m/s; ρ udara = 1,2 kg/m³. Berapa gaya angkatnya?</p>",
+          "steps": [
+            "\\(F = \\tfrac12(1{,}2)(3.600 - 2.500)(20)\\)."
+          ],
+          "answer": "13.200 N"
+        },
+        {
+          "type": "check",
+          "question": "Air yang dituang dari ceret tampak makin ramping saat makin ke bawah karena ....",
+          "options": {
+            "A": "air menguap",
+            "B": "kelajuan air bertambah sementara debitnya tetap",
+            "C": "tekanan udara menekan air",
+            "D": "viskositas air bertambah"
+          },
+          "answer": "B",
+          "hint": "Q = Av tetap.",
+          "explanation": "Kelajuan bertambah karena gravitasi, sehingga luas penampang aliran mengecil."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Fluida Statis dan Fluida Dinamis</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Tekanan</td><td>\\(P = F/A\\); \\(P = P_0 + \\rho gh\\)</td></tr><tr><td>Pascal</td><td>\\(F_1/A_1 = F_2/A_2\\)</td></tr><tr><td>Archimedes</td><td>\\(F_A = \\rho_f g V_{tercelup}\\)</td></tr><tr><td>Kapilaritas</td><td>\\(h = 2\\gamma\\cos\\theta/(\\rho g r)\\)</td></tr><tr><td>Viskositas</td><td>\\(F = \\eta Av/d\\); \\(v_T = 2r^2g(\\rho_b-\\rho_f)/9\\eta\\)</td></tr><tr><td>Kontinuitas</td><td>\\(A_1v_1 = A_2v_2\\)</td></tr><tr><td>Bernoulli</td><td>\\(P + \\tfrac12\\rho v^2 + \\rho gh\\) tetap; Torricelli \\(v = \\sqrt{2gh}\\)</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa menambahkan tekanan udara ketika ditanya tekanan total.</li><li>Memakai volume seluruh benda untuk benda yang terapung.</li><li>Lupa mengubah cm² menjadi m² atau mm menjadi m.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 4 Fluida.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang tekanan, hukum Pascal dan Archimedes, tegangan permukaan, viskositas, kontinuitas, dan Bernoulli. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

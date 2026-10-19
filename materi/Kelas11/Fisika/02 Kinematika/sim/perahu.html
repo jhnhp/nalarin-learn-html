@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perahu Menyeberangi Sungai</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Perahu menyeberangi sungai berarus dengan vektor kecepatan"></svg></div>
+  <div class="panel">
+    <div class="lab">Kelajuan perahu terhadap air <b id="vbv"></b></div><input type="range" id="vb" min="1" max="8" step="0.5" value="3">
+    <div class="lab">Arah perahu (0° = tegak lurus tepi, + = melawan arus) <b id="thv"></b></div><input type="range" id="th" min="-60" max="80" step="1" value="0">
+    <div class="lab">Kelajuan arus sungai <b id="vav"></b></div><input type="range" id="va" min="0" max="5" step="0.5" value="2">
+    <div class="lab">Lebar sungai <b id="dv"></b></div><input type="range" id="d" min="20" max="200" step="10" value="60">
+    <div class="row"><button class="btn primary" id="go">▶ Seberangkan</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Kecepatan perahu terhadap tanah = kecepatan perahu terhadap air + kecepatan air terhadap tanah (penjumlahan vektor). Waktu menyeberang hanya ditentukan oleh komponen kecepatan yang tegak lurus tepi sungai.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt, rad} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let p = 0, timer = null;
+['vb', 'th', 'va', 'd'].forEach(i => $(i).oninput = () => { p = 0; draw(); });
+$('go').onclick = () => { if(timer) return; p = 0; timer = setInterval(() => { p = Math.min(1, p + .015); if(p >= 1){ clearInterval(timer); timer = null; } draw(); }, 30); };
+function arrow(x1, y1, x2, y2, col, lab, lx, ly){
+  const a = Math.atan2(y2 - y1, x2 - x1), L = Math.hypot(x2 - x1, y2 - y1);
+  if(L < 2) return '';
+  return `<line x1="${x1}" y1="${y1}" x2="${x2 - 8 * Math.cos(a)}" y2="${y2 - 8 * Math.sin(a)}" style="stroke:${col}" stroke-width="3"/><path d="M${x2},${y2} L${x2 - 11 * Math.cos(a - .4)},${y2 - 11 * Math.sin(a - .4)} L${x2 - 11 * Math.cos(a + .4)},${y2 - 11 * Math.sin(a + .4)}Z" style="fill:${col}"/><text class="c" x="${lx}" y="${ly}" style="fill:${col}">${lab}</text>`;
+}
+function draw(){
+  const vb = +$('vb').value, th = +$('th').value, va = +$('va').value, d = +$('d').value;
+  const vy = vb * Math.cos(rad(th)), vx = va - vb * Math.sin(rad(th)), vr = Math.hypot(vx, vy);
+  const T = d / vy, drift = vx * T;
+  // skala gambar
+  const bot = 250, sc = Math.min(200 / d, 320 / Math.max(1e-6, Math.abs(drift))), H = d * sc, top = bot - H;
+  const x0 = drift < 0 ? 140 + Math.min(300, -drift * sc) : 120;
+  let s = `<rect x="0" y="${top}" width="480" height="${H}" fill="#3b82f6" fill-opacity=".18"/><rect x="0" y="0" width="480" height="${top}" fill="#65a30d" fill-opacity=".25"/><rect x="0" y="${bot}" width="480" height="80" fill="#65a30d" fill-opacity=".25"/>`;
+  for(let i = 0; i < Math.floor(H / 24); i++){ const y = top + 14 + i * 24, ox = (Date.now() / 30 * va % 60); s += `<path d="M${(i * 53 + ox) % 480},${y} q10,-5 20,0" fill="none" stroke="#3b82f6" stroke-opacity=".5"/>`; }
+  s += `<text class="s" x="8" y="${bot + 16}" style="fill:var(--ink)">tepi awal</text><text class="s" x="8" y="${top - 6}" style="fill:var(--ink)">tepi seberang</text>`;
+  // lintasan
+  const ex = x0 + drift * sc, ey = top;
+  s += `<line x1="${x0}" y1="${bot}" x2="${ex}" y2="${ey}" style="stroke:var(--ink)" stroke-dasharray="5 4"/><line x1="${x0}" y1="${bot}" x2="${x0}" y2="${top}" style="stroke:var(--muted)" stroke-dasharray="2 4"/>`;
+  if(Math.abs(drift) > .01) s += `<line x1="${x0}" y1="${top + 10}" x2="${ex}" y2="${top + 10}" style="stroke:var(--comp)" stroke-width="2"/><text class="s" x="${(x0 + ex) / 2}" y="${top + 24}" text-anchor="middle" style="fill:var(--comp)">hanyut ${fmt(Math.abs(drift), 1)} m</text>`;
+  // perahu
+  const bx = x0 + (ex - x0) * p, by = bot + (ey - bot) * p, ang = Math.atan2(-vy, -vb * Math.sin(rad(th))) * 180 / Math.PI + 90;
+  s += `<g transform="translate(${bx},${by}) rotate(${ang})"><path d="M0,-14 L7,6 L-7,6 Z" style="fill:var(--comp);stroke:var(--ink)"/></g>`;
+  // diagram vektor di titik berangkat
+  const ox = x0, oy = bot, k = 18, tx = ox - vb * Math.sin(rad(th)) * k, ty = oy - vy * k;
+  s += arrow(ox, oy, tx, ty, 'var(--a)', 'v perahu–air', tx - 92, (oy + ty) / 2);
+  s += arrow(tx, ty, ox + vx * k, ty, 'var(--k)', 'v air', ox + vx * k + 6, ty + 4);
+  s += arrow(ox, oy, ox + vx * k, ty, 'var(--b)', 'v perahu–tanah', ox + vx * k / 2 + 8, (oy + ty) / 2 + 14);
+  svg.innerHTML = s;
+  $('vbv').textContent = fmt(vb, 1) + ' m/s'; $('thv').textContent = th + '°'; $('vav').textContent = fmt(va, 1) + ' m/s'; $('dv').textContent = d + ' m';
+  const ok = vy > 0;
+  $('read').innerHTML = `<div><span>v perahu terhadap tanah</span><b>${fmt(vr, 2)} m/s</b></div><div><span>Waktu menyeberang</span><b>t = d / v⊥ = ${d} / ${fmt(vy, 2)} = ${fmt(T, 2)} s</b></div><div><span>Pergeseran sepanjang tepi</span><b>${fmt(Math.abs(drift), 2)} m ${Math.abs(drift) < .05 ? '(tiba tepat di seberang)' : drift > 0 ? 'searah arus' : 'melawan arus'}</b></div>`;
+}
+draw();
+setInterval(() => { if(!timer) draw(); }, 120);
+</script>
+</body>
+</html>

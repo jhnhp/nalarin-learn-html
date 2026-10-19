@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hukum Archimedes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Benda di dalam fluida dengan gaya berat dan gaya apung"></svg></div>
+  <div class="panel">
+    <div class="seg" id="fl"><button data-v="800">Minyak</button><button class="on" data-v="1000">Air</button><button data-v="1030">Air laut</button><button data-v="13600">Raksa</button></div>
+    <div class="lab">Massa jenis benda <b id="rv"></b></div><input type="range" id="rho" min="100" max="12000" step="50" value="600">
+    <div class="lab">Volume benda <b id="vv"></b></div><input type="range" id="V" min="100" max="2000" step="100" value="1000">
+    <div class="read" id="read"></div>
+    <p class="note">Gaya apung F<sub>A</sub> = ρ<sub>fluida</sub> · g · V<sub>tercelup</sub> = berat fluida yang dipindahkan. Terapung jika ρ<sub>benda</sub> &lt; ρ<sub>fluida</sub> (bagian tercelup = ρ<sub>benda</sub>/ρ<sub>fluida</sub>), melayang jika sama, tenggelam jika lebih besar. g = 10 m/s².</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let rf = 1000, y = 0;
+document.querySelectorAll('#fl button').forEach(b => b.onclick = () => { document.querySelectorAll('#fl button').forEach(x => x.classList.toggle('on', x === b)); rf = +b.dataset.v; });
+function frame(){
+  const rb = +$('rho').value, Vc = +$('V').value, V = Vc * 1e-6, g = 10;
+  const w = rb * V * g, frac = Math.min(1, rb / rf), FA = rf * g * V * frac, sink = rb > rf * 1.0001;
+  const side = 34 + Math.cbrt(Vc) * 4.2;
+  const top = 110, bot = 290, L = 50, R = 290;
+  // posisi target
+  let ty;
+  if(sink) ty = bot - side; else ty = top - side * (1 - frac);
+  y += ((ty) - y) * .12;
+  let s = `<rect x="${L}" y="${top}" width="${R - L}" height="${bot - top}" style="fill:${rf > 2000 ? '#94a3b8' : rf < 900 ? '#facc15' : '#3b82f6'}" fill-opacity="${rf > 2000 ? .5 : .25}"/>`;
+  s += `<path d="M${L},60 L${L},${bot} L${R},${bot} L${R},60" fill="none" style="stroke:var(--ink)" stroke-width="2.5"/>`;
+  const bx = (L + R) / 2 - side / 2;
+  s += `<rect x="${bx}" y="${y}" width="${side}" height="${side}" rx="3" style="fill:${rb < 1000 ? '#b45309' : rb < 3000 ? '#94a3b8' : '#475569'}" fill-opacity=".85"/>`;
+  // bagian tercelup
+  const subTop = Math.max(y, top), subH = Math.max(0, y + side - subTop);
+  if(subH > 0) s += `<rect x="${bx}" y="${subTop}" width="${side}" height="${subH}" fill="none" style="stroke:var(--a)" stroke-width="2" stroke-dasharray="4 3"/>`;
+  // diagram gaya terpisah
+  const k = 100 / Math.max(w, rf * g * V, 1), ox = 330, oy = 190;
+  const ar = (x1, y1, dy, col, lab) => { const y2 = y1 + dy, d = Math.sign(dy); if(Math.abs(dy) < 3) return ''; return `<line x1="${x1}" y1="${y1}" x2="${x1}" y2="${y2 - d * 8}" style="stroke:${col}" stroke-width="3"/><path d="M${x1},${y2} l-6,${-d * 10} l12,0z" style="fill:${col}"/><text class="s" x="${x1}" y="${y2 + (d > 0 ? 14 : -6)}" text-anchor="middle" style="fill:${col}">${lab}</text>`; };
+  s += `<text class="s" x="${ox + 55}" y="40" text-anchor="middle" style="fill:var(--muted)">diagram gaya</text><rect x="${ox + 40}" y="${oy - 10}" width="30" height="20" rx="3" style="fill:var(--line-2)"/>`;
+  s += ar(ox + 46, oy, w * k, 'var(--ink)', 'w') + ar(ox + 64, oy, -(sink ? rf * g * V : FA) * k, 'var(--a)', 'F_A');
+  if(sink){ const Nf = w - rf * g * V; s += ar(ox + 100, oy, -Nf * k, 'var(--k)', 'N'); }
+  svg.innerHTML = s;
+  $('rv').textContent = rb.toLocaleString('id-ID') + ' kg/m³'; $('vv').textContent = Vc + ' cm³';
+  const st = sink ? 'tenggelam' : Math.abs(rb - rf) < rf * 0.01 ? 'melayang' : 'terapung';
+  $('read').innerHTML = `<div><span>Keadaan</span><b>${st}</b></div><div><span>Berat w</span><b>${fmt(w, 2)} N</b></div><div><span>Gaya apung F_A</span><b>${fmt(sink ? rf * g * V : FA, 2)} N (${fmt(frac * 100, 1)}% volume tercelup)</b></div>` + (sink ? `<div><span>Berat semu (w − F_A)</span><b>${fmt(w - rf * g * V, 2)} N</b></div>` : '');
+}
+setInterval(frame, 30);
+</script>
+</body>
+</html>

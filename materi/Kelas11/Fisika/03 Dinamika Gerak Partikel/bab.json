@@ -1,56 +1,351 @@
 {
   "title": "Dinamika Gerak Partikel",
-  "summary": "Ringkasan bab Dinamika Gerak Partikel akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Hukum-hukum Newton, gaya berat, normal, gesek, dan sentripetal, momentum dan impuls, jenis-jenis tumbukan, serta momen gaya, momen inersia, dan keseimbangan benda tegar.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Dinamika Gerak Partikel",
+      "id": "hukum-newton",
+      "title": "Hukum-hukum Newton",
+      "kind": "artikel",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Hukum</th><th>Pernyataan</th><th>Contoh</th></tr><tr><td>I (kelembaman)</td><td>Jika \\(\\Sigma F = 0\\), benda diam tetap diam dan benda bergerak tetap bergerak lurus beraturan.</td><td>taplak ditarik cepat, piring tetap di tempat; penumpang terdorong ke depan saat bus mengerem</td></tr><tr><td>II</td><td>\\(\\Sigma \\vec F = m\\vec a\\): percepatan sebanding resultan gaya dan berbanding terbalik dengan massa; arahnya sama dengan resultan gaya.</td><td>troli bermuatan lebih sulit dipercepat</td></tr><tr><td>III (aksi–reaksi)</td><td>Jika A memberi gaya pada B, B memberi gaya sama besar dan berlawanan arah pada A. Pasangan aksi–reaksi bekerja pada <b>dua benda berbeda</b>.</td><td>anak bersepatu roda mendorong dinding, dinding mendorong balik sehingga anak meluncur</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Massa dan berat",
+          "html": "<p>Massa (kg) adalah ukuran kelembaman dan tidak bergantung tempat. Berat \\(w = mg\\) (newton) adalah gaya gravitasi pada benda, arahnya ke pusat bumi, dan bergantung pada g.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Troli kosong ditarik gaya F dan mendapat percepatan 8 m/s². Jika massanya dijadikan 4 kali dengan gaya sama, berapa percepatannya?</p>",
+          "steps": [
+            "\\(a = F/m\\), jadi a berbanding terbalik dengan m.",
+            "\\(a' = 8/4\\)."
+          ],
+          "answer": "2 m/s²"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Mobil mainan 0,4 kg dilepas dari diam dan menempuh 2 m dalam 1 s dengan percepatan tetap. Berapa resultan gayanya?</p>",
+          "steps": [
+            "\\(x = \\tfrac12at^2 \\Rightarrow 2 = \\tfrac12a(1)^2 \\Rightarrow a = 4\\) m/s².",
+            "\\(\\Sigma F = ma = 0{,}4 \\times 4\\)."
+          ],
+          "answer": "1,6 N"
+        },
+        {
+          "type": "check",
+          "question": "Pada lomba tarik tambang, tali menarik kedua regu dengan gaya sama besar. Regu yang menang adalah regu yang ....",
+          "options": {
+            "A": "menarik tali lebih kuat",
+            "B": "kakinya didorong tanah dengan gaya gesek lebih besar",
+            "C": "tali lebih panjang",
+            "D": "massa tali lebih besar"
+          },
+          "answer": "B",
+          "hint": "Gaya luar pada sistem regu.",
+          "explanation": "Tegangan tali sama untuk kedua regu; yang menentukan adalah gaya gesek tanah pada kaki masing-masing regu."
+        }
+      ]
+    },
+    {
+      "id": "jenis-gaya",
+      "title": "Gaya berat, normal, dan gesek",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Gaya normal</b> (N) adalah gaya kontak yang tegak lurus permukaan. N tidak selalu sama dengan mg: pada bidang miring \\(N = mg\\cos\\theta\\); jika benda ditarik dengan gaya bersudut ke atas, N berkurang; jika didorong miring ke bawah, N bertambah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Gaya gesek",
+          "html": "<p>Gesek statis: \\(f_s \\le \\mu_s N\\) (benda diam; besarnya menyesuaikan sampai maksimum \\(\\mu_s N\\)). Gesek kinetis: \\(f_k = \\mu_k N\\) (benda bergerak). Umumnya \\(\\mu_k &lt; \\mu_s\\).</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/diagram-gaya.svg",
+          "alt": "Diagram gaya balok ditarik dengan gaya bersudut: berat, normal, gaya tarik dan komponennya, serta gaya gesek",
+          "width": 600,
+          "caption": "Diagram gaya (diagram benda bebas)."
+        },
+        {
+          "type": "sim",
+          "src": "sim/bidang-miring.html",
+          "title": "Balok pada bidang miring",
+          "height": 560,
+          "caption": "Naikkan sudut perlahan. Pada sudut berapa balok mulai meluncur? Bandingkan tan θ dengan μₛ."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Balok 4 kg tepat mulai bergerak ketika papan dimiringkan 30°. Tentukan μₛ dan gaya gesek statis maksimumnya.</p>",
+          "steps": [
+            "Saat tepat akan bergerak: \\(mg\\sin\\theta = \\mu_s mg\\cos\\theta \\Rightarrow \\mu_s = \\tan30° \\approx 0{,}58\\).",
+            "\\(f_{s,maks} = mg\\sin30° = 40 \\times 0{,}5\\)."
+          ],
+          "answer": "μₛ ≈ 0,58; 20 N"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Peti 20 kg didorong 120 N dengan arah 37° di bawah horizontal (sin 37° = 0,6). Jika μₖ = 0,2, berapa percepatannya?</p>",
+          "steps": [
+            "N = mg + F sin 37° = 200 + 72 = 272 N.",
+            "f = 0,2 × 272 = 54,4 N.",
+            "\\(a = \\dfrac{F\\cos37° - f}{m} = \\dfrac{96 - 54{,}4}{20}\\)."
+          ],
+          "answer": "2,08 m/s²"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Keping hoki meluncur 8 m/s dan berhenti setelah 32 m. Berapa μₖ?</p>",
+          "steps": [
+            "\\(0 = v_0^2 - 2a s \\Rightarrow a = 64/64 = 1\\) m/s².",
+            "\\(a = \\mu_k g \\Rightarrow \\mu_k = 1/10\\)."
+          ],
+          "answer": "0,1"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Gaya hambat fluida</b> bertambah besar ketika kelajuan bertambah. Tetes hujan yang jatuh akhirnya mencapai <b>kelajuan terminal</b> ketika gaya hambat sama dengan beratnya, sehingga percepatannya nol.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Balok diam di bidang miring. Jika sudut diperbesar tetapi balok tetap diam, gaya gesek statisnya ....",
+          "options": {
+            "A": "berkurang",
+            "B": "bertambah",
+            "C": "tetap",
+            "D": "nol"
+          },
+          "answer": "B",
+          "hint": "fₛ = mg sin θ selama diam.",
+          "explanation": "Gaya gesek statis menyesuaikan dengan komponen berat sejajar bidang, yang membesar ketika θ membesar."
+        }
+      ]
+    },
+    {
+      "id": "sentripetal",
+      "title": "Gaya sentripetal",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Gaya sentripetal",
+          "html": "<p>\\[F_s = m\\frac{v^2}{r} = m\\,\\omega^2 r\\]</p><p>Gaya sentripetal bukan gaya jenis baru, melainkan resultan gaya yang mengarah ke pusat: bisa berupa gaya gesek (mobil di tikungan datar), tegangan tali, atau gaya gravitasi (satelit).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Mobil 1.000 kg membelok di tikungan datar berjari-jari 40 m dengan kelajuan 12 m/s. Berapa gaya gesek yang diperlukan?</p>",
+          "steps": [
+            "\\(f = mv^2/r = 1.000 \\times 144/40\\)."
+          ],
+          "answer": "3.600 N"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Koin berada 20 cm dari poros piringan yang berputar. Jika μₛ = 0,8, berapa kecepatan sudut maksimum agar koin tidak tergelincir?</p>",
+          "steps": [
+            "\\(\\mu_s mg = m\\omega^2 r \\Rightarrow \\omega = \\sqrt{\\mu_s g/r} = \\sqrt{0{,}8\\times10/0{,}2}\\)."
+          ],
+          "answer": "\\(\\sqrt{40} \\approx 6{,}3\\) rad/s"
+        },
+        {
+          "type": "check",
+          "question": "Ketika mobil membelok di tikungan datar, gaya yang berperan sebagai gaya sentripetal adalah ....",
+          "options": {
+            "A": "gaya berat",
+            "B": "gaya normal",
+            "C": "gaya gesek ban dengan jalan",
+            "D": "gaya mesin"
+          },
+          "answer": "C",
+          "hint": "Gaya yang mengarah ke pusat tikungan.",
+          "explanation": "Gesekan statis antara ban dan jalan mengarah ke pusat tikungan."
+        }
+      ]
+    },
+    {
+      "id": "momentum",
+      "title": "Momentum, impuls, dan tumbukan",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Momentum dan impuls",
+          "html": "<p>\\(\\vec p = m\\vec v\\) (kg·m/s), impuls \\(\\vec I = \\vec F\\Delta t = \\Delta\\vec p\\) (N·s).</p><p>Jika tidak ada gaya luar, momentum total sistem kekal: \\(m_1v_1 + m_2v_2 = m_1v_1' + m_2v_2'\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bola 0,5 kg datang 20 m/s dan ditangkap hingga diam dalam 0,1 s. Berapa impuls dan gaya rata-ratanya?</p>",
+          "steps": [
+            "\\(I = \\Delta p = 0 - 0{,}5(20) = -10\\) N·s (besarnya 10 N·s).",
+            "\\(F = I/\\Delta t = 10/0{,}1\\)."
+          ],
+          "answer": "10 N·s; 100 N"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Jenis tumbukan</th><th>Momentum</th><th>Energi kinetik</th><th>e</th></tr><tr><td>Lenting sempurna</td><td>kekal</td><td>kekal</td><td>1</td></tr><tr><td>Lenting sebagian</td><td>kekal</td><td>berkurang</td><td>0 &lt; e &lt; 1</td></tr><tr><td>Tidak lenting sama sekali (menyatu)</td><td>kekal</td><td>berkurang paling banyak</td><td>0</td></tr></table><p>\\(e = -\\dfrac{v_1' - v_2'}{v_1 - v_2}\\)</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/tumbukan.html",
+          "title": "Tumbukan satu dimensi",
+          "height": 640,
+          "caption": "Bandingkan ketiga jenis tumbukan dengan massa dan kecepatan yang sama. Apakah momentum total berubah? Bagaimana energi kinetiknya?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gerbong 30 ton melaju 2 m/s menumbuk gerbong 10 ton yang diam, lalu tersambung. Tentukan kelajuan bersama dan Ek yang hilang.</p>",
+          "steps": [
+            "\\(30.000(2) = 40.000\\,v' \\Rightarrow v' = 1{,}5\\) m/s.",
+            "Ek awal = ½(30.000)(4) = 60.000 J; Ek akhir = ½(40.000)(2,25) = 45.000 J."
+          ],
+          "answer": "1,5 m/s; 15 kJ hilang"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (dua dimensi)",
+          "question": "<p>Keping A (1 kg) bergerak 6 m/s ke timur menumbuk keping B (2 kg) yang bergerak 2 m/s ke utara; keduanya menyatu. Tentukan kecepatan akhirnya.</p>",
+          "steps": [
+            "Momentum timur = 6; momentum utara = 4 (kg·m/s).",
+            "Momentum total = \\(\\sqrt{6^2 + 4^2} = \\sqrt{52} \\approx 7{,}2\\) kg·m/s.",
+            "v = 7,2/3 ≈ 2,4 m/s, arah tan α = 4/6 → α ≈ 34° dari timur ke utara."
+          ],
+          "answer": "≈ 2,4 m/s, 34° dari timur ke utara"
+        },
+        {
+          "type": "check",
+          "question": "Pada tumbukan lenting sebagian, ....",
+          "options": {
+            "A": "momentum dan energi kinetik kekal",
+            "B": "momentum kekal, energi kinetik berkurang",
+            "C": "momentum berkurang, energi kinetik kekal",
+            "D": "keduanya berkurang"
+          },
+          "answer": "B",
+          "hint": "Momentum selalu kekal tanpa gaya luar.",
+          "explanation": "Sebagian energi kinetik berubah menjadi panas, bunyi, dan deformasi."
+        }
+      ]
+    },
+    {
+      "id": "rotasi",
+      "title": "Momen gaya, momen inersia, dan keseimbangan",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Dinamika rotasi",
+          "html": "<p>Momen gaya: \\(\\tau = F\\,d\\) (d = lengan, jarak tegak lurus garis gaya ke poros). Momen inersia partikel: \\(I = \\Sigma m r^2\\). Hukum II rotasi: \\(\\Sigma\\tau = I\\alpha\\).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Benda</th><th>Momen inersia (poros melalui pusat)</th></tr><tr><td>Silinder pejal / piringan</td><td>\\(\\tfrac12 mR^2\\)</td></tr><tr><td>Silinder berongga tipis / cincin</td><td>\\(mR^2\\)</td></tr><tr><td>Bola pejal</td><td>\\(\\tfrac25 mR^2\\)</td></tr><tr><td>Bola berongga tipis</td><td>\\(\\tfrac23 mR^2\\)</td></tr><tr><td>Batang (poros di tengah)</td><td>\\(\\tfrac1{12} mL^2\\)</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Partikel 2 kg, 1 kg, dan 3 kg berada pada batang ringan berjarak 0 m, 0,5 m, dan 1 m dari poros. Hitung momen inersianya.</p>",
+          "steps": [
+            "\\(I = 2(0)^2 + 1(0{,}5)^2 + 3(1)^2 = 0 + 0{,}25 + 3\\)."
+          ],
+          "answer": "3,25 kg·m²"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Piringan pejal 4 kg berjari-jari 0,5 m mula-mula diam, diberi momen gaya 2 N·m selama 3 s. Berapa kecepatan sudut akhirnya?</p>",
+          "steps": [
+            "\\(I = \\tfrac12(4)(0{,}25) = 0{,}5\\) kg·m².",
+            "\\(\\alpha = \\tau/I = 4\\) rad/s²; \\(\\omega = \\alpha t = 12\\) rad/s."
+          ],
+          "answer": "12 rad/s"
+        },
+        {
+          "type": "h",
+          "text": "Keseimbangan benda tegar"
+        },
+        {
+          "type": "text",
+          "html": "<p>Benda tegar setimbang jika \\(\\Sigma F = 0\\) (tidak bergeser) dan \\(\\Sigma\\tau = 0\\) (tidak berputar).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/torsi.html",
+          "title": "Momen gaya dan keseimbangan",
+          "height": 520,
+          "caption": "Atur posisi titik tumpu sampai batang setimbang. Mengapa titik tumpu harus lebih dekat ke beban yang lebih berat?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Pikulan ringan 1,2 m membawa 10 kg di ujung kiri dan 20 kg di ujung kanan. Di mana bahu harus diletakkan?</p>",
+          "steps": [
+            "\\(10\\,g\\,d_1 = 20\\,g\\,(1{,}2 - d_1)\\).",
+            "\\(10 d_1 = 24 - 20 d_1 \\Rightarrow d_1 = 0{,}8\\) m."
+          ],
+          "answer": "0,8 m dari ujung kiri (0,4 m dari ujung kanan)"
+        },
+        {
+          "type": "check",
+          "question": "Besaran rotasi yang berperan seperti massa pada gerak lurus adalah ....",
+          "options": {
+            "A": "momen gaya",
+            "B": "momen inersia",
+            "C": "kecepatan sudut",
+            "D": "momentum sudut"
+          },
+          "answer": "B",
+          "hint": "Ukuran kelembaman rotasi.",
+          "explanation": "Momen inersia menyatakan seberapa sulit benda diubah gerak rotasinya."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Dinamika Gerak Partikel: Hukum Newton, Jenis-Jenis Gaya, Momentum dan Impuls, serta Gerak Rotasi</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Konsep</th><th>Rumus / inti</th></tr><tr><td>Hukum Newton</td><td>kelembaman; \\(\\Sigma F = ma\\); aksi–reaksi pada dua benda</td></tr><tr><td>Gesek</td><td>\\(f_s \\le \\mu_sN\\), \\(f_k = \\mu_kN\\); bidang miring \\(N = mg\\cos\\theta\\)</td></tr><tr><td>Sentripetal</td><td>\\(F_s = mv^2/r\\)</td></tr><tr><td>Momentum</td><td>\\(p = mv\\), \\(I = F\\Delta t = \\Delta p\\), momentum kekal; e menentukan jenis tumbukan</td></tr><tr><td>Rotasi</td><td>\\(\\tau = Fd\\), \\(I = \\Sigma mr^2\\), \\(\\Sigma\\tau = I\\alpha\\); setimbang: \\(\\Sigma F = 0\\), \\(\\Sigma\\tau = 0\\)</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menganggap aksi dan reaksi saling meniadakan (keduanya bekerja pada benda berbeda).</li><li>Selalu menulis N = mg.</li><li>Memakai μₖ ketika benda masih diam.</li><li>Lupa tanda arah kecepatan dalam hukum kekekalan momentum.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 3 Dinamika Gerak Partikel.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang hukum Newton, jenis-jenis gaya, momentum dan impuls, serta gerak rotasi. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

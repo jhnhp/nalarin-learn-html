@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontinuitas dan Bernoulli</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Aliran fluida dalam pipa atau dari lubang tangki"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button class="on" data-v="pipa">Pipa venturi</button><button data-v="tangki">Tangki bocor</button></div>
+    <div id="ctl"></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'pipa', ph = 0;
+const P = {A1: 8, A2: 2, v1: 1, H: 1.8, h: 0.8};
+const CTL = {pipa: [['A1', 'Luas penampang besar A₁', 'cm²', 2, 20, 1], ['A2', 'Luas penampang kecil A₂', 'cm²', 1, 20, 1], ['v1', 'Kelajuan di penampang besar v₁', 'm/s', .2, 3, .1]],
+  tangki: [['H', 'Tinggi permukaan air dari tanah', 'm', .5, 3, .05], ['h', 'Tinggi lubang dari tanah', 'm', 0, 2.5, .05]]};
+function controls(){
+  $('ctl').innerHTML = CTL[mode].map(([k, n, u, a, b, s]) => `<div class="lab">${n} <b id="v-${k}">${fmt(P[k], 2)} ${u}</b></div><input type="range" id="i-${k}" min="${a}" max="${b}" step="${s}" value="${P[k]}">`).join('');
+  CTL[mode].forEach(([k, , u]) => $('i-' + k).oninput = e => { P[k] = +e.target.value; if(mode === 'tangki' && P.h > P.H - .05){ P.h = P.H - .05; } $('v-' + k).textContent = fmt(P[k], 2) + ' ' + u; });
+  $('note').innerHTML = mode === 'pipa' ? 'Kontinuitas: A₁v₁ = A₂v₂ (debit Q = Av tetap). Bernoulli pada pipa mendatar: P₁ − P₂ = ½ρ(v₂² − v₁²). Di bagian sempit kelajuan besar sehingga tekanan kecil, terlihat dari kolom air yang lebih rendah. ρ air = 1.000 kg/m³.' : 'Teorema Torricelli: air keluar dari lubang dengan kelajuan v = √(2g·Δh), Δh = kedalaman lubang dari permukaan. Air lalu bergerak parabola: waktu jatuh t = √(2h/g), jarak pancaran x = v·t = 2√(Δh·h).';
+}
+document.querySelectorAll('#mode button').forEach(b => b.onclick = () => { document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); mode = b.dataset.v; controls(); });
+function frame(){
+  ph += .04;
+  let s = '', r = '';
+  if(mode === 'pipa'){
+    const v2 = P.v1 * P.A1 / P.A2, dP = .5 * 1000 * (v2 * v2 - P.v1 * P.v1), Q = P.A1 * 1e-4 * P.v1;
+    const r1 = 10 + Math.sqrt(P.A1) * 9, r2 = 10 + Math.sqrt(P.A2) * 9, cy = 200;
+    const xs = [20, 150, 210, 270, 330, 460];
+    const top = [cy - r1, cy - r1, cy - r2, cy - r2, cy - r1, cy - r1], bot = top.map(y => 2 * cy - y);
+    s += `<path d="M${xs.map((x, i) => x + ',' + top[i]).join(' L')} L${xs.slice().reverse().map((x, i) => x + ',' + bot[5 - i]).join(' L')} Z" fill="#3b82f6" fill-opacity=".25" style="stroke:var(--ink)" stroke-width="2"/>`;
+    // partikel aliran: kelajuan sebanding 1/A
+    const rad = x => x < 150 || x > 330 ? r1 : x > 210 && x < 270 ? r2 : x < 210 ? r1 + (r2 - r1) * (x - 150) / 60 : r2 + (r1 - r2) * (x - 270) / 60;
+    if(!window.PT){ window.PT = []; for(let i = 0; i < 70; i++) PT.push({x: 20 + Math.random() * 440, f: Math.random() * 1.6 - .8}); }
+    PT.forEach(q => { const rr = rad(q.x), A = ((rr - 10) / 9) ** 2; q.x += 1.6 * P.v1 * P.A1 / Math.max(A, .3); if(q.x > 460) q.x = 20 + (q.x - 460); s += `<circle cx="${q.x}" cy="${cy + q.f * (rr - 6)}" r="2.5" fill="#1d4ed8"/>`; });
+    // kolom manometer
+    const h1 = 100, h2 = Math.max(4, h1 - dP / 10000 * 100);
+    [[85, r1, h1, 'P₁'], [240, r2, h2, 'P₂']].forEach(([x, rr, hh, lab]) => { s += `<rect x="${x - 6}" y="${cy - rr - 110}" width="12" height="110" fill="none" style="stroke:var(--ink)"/><rect x="${x - 5}" y="${cy - rr - hh}" width="10" height="${hh}" fill="#3b82f6" fill-opacity=".5"/><text class="s" x="${x + 12}" y="${cy - rr - hh + 4}" style="fill:var(--ink)">${lab}</text>`; });
+    s += `<text class="c" x="85" y="${cy + r1 + 22}" text-anchor="middle" style="fill:var(--ink)">v₁ = ${fmt(P.v1, 2)} m/s</text><text class="c" x="240" y="${cy + r1 + 22}" text-anchor="middle" style="fill:var(--b)">v₂ = ${fmt(v2, 2)} m/s</text>`;
+    r = `<div><span>Debit Q</span><b>${fmt(Q * 1000, 3)} L/s</b></div><div><span>v₂ = v₁A₁/A₂</span><b>${fmt(v2, 2)} m/s</b></div><div><span>P₁ − P₂</span><b>${fmt(dP, 0)} Pa</b></div>`;
+  } else {
+    const g = 10, dh = P.H - P.h, v = Math.sqrt(2 * g * dh), t = Math.sqrt(2 * P.h / g), x = v * t;
+    const sc = 74, G = 262, X0 = 60;
+    s += `<line x1="0" y1="${G}" x2="480" y2="${G}" style="stroke:var(--ink)" stroke-width="2"/>`;
+    s += `<rect x="${X0}" y="${G - 3.2 * sc}" width="90" height="${3.2 * sc}" fill="none" style="stroke:var(--ink)" stroke-width="2.5"/><rect x="${X0 + 1}" y="${G - P.H * sc}" width="88" height="${P.H * sc}" fill="#3b82f6" fill-opacity=".25"/>`;
+    const hx = X0 + 90, hy = G - P.h * sc;
+    let path = `M${hx},${hy}`; for(let i = 1; i <= 30; i++){ const tt = t * i / 30; path += ` L${hx + v * tt * sc},${hy + 5 * tt * tt * sc}`; }
+    s += `<path d="${path}" fill="none" stroke="#3b82f6" stroke-width="4" stroke-opacity=".7"/>`;
+    s += `<line x1="${X0 + 100}" y1="${G - P.H * sc}" x2="${X0 + 100}" y2="${hy}" style="stroke:var(--comp)" stroke-width="1.5"/><text class="s" x="${X0 + 104}" y="${(G - P.H * sc + hy) / 2}" style="fill:var(--comp)">Δh = ${fmt(dh, 2)} m</text>`;
+    s += `<line x1="${X0 - 10}" y1="${hy}" x2="${X0 - 10}" y2="${G}" style="stroke:var(--a)" stroke-width="1.5"/><text class="s" x="${X0 - 14}" y="${(hy + G) / 2}" text-anchor="end" style="fill:var(--a)">h = ${fmt(P.h, 2)} m</text>`;
+    s += `<line x1="${hx}" y1="${G + 10}" x2="${hx + x * sc}" y2="${G + 10}" style="stroke:var(--b)" stroke-width="1.5"/><text class="s" x="${hx + x * sc / 2}" y="${G + 22}" text-anchor="middle" style="fill:var(--b)">x = ${fmt(x, 2)} m</text>`;
+    r = `<div><span>v = √(2gΔh)</span><b>${fmt(v, 2)} m/s</b></div><div><span>Waktu jatuh</span><b>${fmt(t, 3)} s</b></div><div><span>Jarak pancaran x</span><b>${fmt(x, 2)} m</b></div>`;
+  }
+  svg.innerHTML = s;
+  $('read').innerHTML = r;
+}
+controls();
+setInterval(frame, 40);
+</script>
+</body>
+</html>

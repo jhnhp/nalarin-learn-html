@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pemuaian Zat Padat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Batang logam memuai dan keping bimetal melengkung"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mat"><button class="on" data-v="12">Baja</button><button data-v="17">Tembaga</button><button data-v="19">Kuningan</button><button data-v="24">Aluminium</button></div>
+    <div class="lab">Panjang awal L₀ <b id="Lv"></b></div><input type="range" id="L" min="0.5" max="30" step="0.5" value="10">
+    <div class="lab">Kenaikan suhu ΔT <b id="Tv"></b></div><input type="range" id="T" min="-50" max="400" step="5" value="100">
+    <div class="read" id="read"></div>
+    <p class="note">ΔL = α·L₀·ΔT, ΔA = β·A₀·ΔT dengan β = 2α, ΔV = γ·V₀·ΔT dengan γ = 3α. Pemuaian pada gambar diperbesar agar terlihat. Keping bimetal melengkung ke arah logam yang koefisien muainya lebih kecil saat dipanaskan.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let a = 12;
+const NAMA = {12: 'baja', 17: 'tembaga', 19: 'kuningan', 24: 'aluminium'};
+document.querySelectorAll('#mat button').forEach(b => b.onclick = () => { document.querySelectorAll('#mat button').forEach(x => x.classList.toggle('on', x === b)); a = +b.dataset.v; draw(); });
+['L', 'T'].forEach(i => $(i).oninput = draw);
+function draw(){
+  const L0 = +$('L').value, dT = +$('T').value, al = a * 1e-6, dL = al * L0 * dT;
+  const ex = 60; // faktor pembesaran tampilan
+  let s = `<text class="s" x="20" y="22" style="fill:var(--muted)">batang ${NAMA[a]} (pertambahan panjang diperbesar ${ex}×)</text>`;
+  const W0 = 300, Wn = W0 * (1 + al * dT * ex);
+  s += `<rect x="40" y="40" width="${W0}" height="22" fill="none" style="stroke:var(--muted)" stroke-dasharray="4 3"/><rect x="40" y="70" width="${Wn}" height="22" style="fill:${dT > 0 ? '#ef4444' : '#3b82f6'}" fill-opacity="${.25 + Math.min(.5, Math.abs(dT) / 600)}" stroke="var(--ink)"/>`;
+  s += `<text class="s" x="${40 + W0 + 6}" y="55" style="fill:var(--muted)">L₀</text><text class="s" x="${Math.min(40 + Wn + 6, 440)}" y="86" style="fill:var(--ink)">L</text>`;
+  // bimetal: logam terpilih (atas) + baja/aluminium pasangan
+  const a2 = a === 24 ? 12 : 24, curv = (a - a2) * dT * 0.0045; // kelengkungan relatif
+  const len = 260, x0 = 60, y0 = 210;
+  // gambar sebagai busur sederhana
+  const bend = Math.max(-45, Math.min(45, curv * 30));
+  const path = off => `M${x0},${y0 + off} Q${x0 + len / 2},${y0 + off} ${x0 + len},${y0 + off + bend * 2}`;
+  s += `<path d="${path(-5)}" fill="none" stroke="${a > a2 ? '#ef4444' : '#f59e0b'}" stroke-width="10"/><path d="${path(5)}" fill="none" stroke="${a > a2 ? '#f59e0b' : '#ef4444'}" stroke-width="10"/>`;
+  s += `<rect x="${x0 - 20}" y="${y0 - 25}" width="20" height="50" style="fill:var(--line-2)"/>`;
+  s += `<text class="s" x="20" y="262" style="fill:var(--muted)">keping bimetal (ujung kiri dijepit):</text><rect x="20" y="270" width="12" height="8" fill="${a > a2 ? '#ef4444' : '#f59e0b'}"/><text class="s" x="36" y="278" style="fill:var(--ink)">atas: ${NAMA[a]}, α = ${a} × 10⁻⁶/°C</text><rect x="240" y="270" width="12" height="8" fill="${a > a2 ? '#f59e0b' : '#ef4444'}"/><text class="s" x="256" y="278" style="fill:var(--ink)">bawah: ${NAMA[a2]}, α = ${a2} × 10⁻⁶/°C</text>`;
+  svg.innerHTML = s;
+  $('Lv').textContent = fmt(L0, 1) + ' m'; $('Tv').textContent = dT + ' °C';
+  $('read').innerHTML = `<div><span>ΔL = αL₀ΔT</span><b>${a} × 10⁻⁶ × ${fmt(L0, 1)} × ${dT} = ${fmt(dL * 1000, 3)} mm</b></div><div><span>Panjang akhir</span><b>${fmt(L0 + dL, 5)} m</b></div><div><span>Bimetal</span><b>${dT === 0 ? 'lurus' : (a > a2) === (dT > 0) ? 'melengkung ke bawah (ke arah ' + NAMA[a2] + ')' : 'melengkung ke atas (ke arah ' + NAMA[a] + ')'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>
