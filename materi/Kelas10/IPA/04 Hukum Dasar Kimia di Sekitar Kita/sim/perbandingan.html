@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perbandingan Tetap dan Perbandingan Volume</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 280" role="img" aria-label="Diagram batang pereaksi, hasil reaksi, dan sisa"></svg></div>
+  <div class="panel">
+    <div class="lab">Reaksi</div>
+    <select id="rx" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit"></select>
+    <div class="lab" id="la"></div><input type="range" id="a" min="0" max="60" step="1" value="9">
+    <div class="lab" id="lb"></div><input type="range" id="b" min="0" max="60" step="1" value="8">
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [nama, A, B, produk(list nama), rasio A:B, rasio produk (relatif terhadap A=1 untuk massa: massa produk per massa A; untuk volume: koef), jenis, satuan, max]
+const RX = [
+  {n: 'Mg + O₂ → MgO (massa Mg : O = 3 : 2)', A: 'Mg', B: 'O₂', P: ['MgO'], ra: 3, rb: 2, rp: [5], t: 'm', u: 'g', a: 9, b: 8},
+  {n: 'Fe + S → FeS (massa Fe : S = 7 : 4)', A: 'Fe', B: 'S', P: ['FeS'], ra: 7, rb: 4, rp: [11], t: 'm', u: 'g', a: 14, b: 10},
+  {n: 'C + O₂ → CO₂ (massa C : O = 3 : 8)', A: 'C', B: 'O₂', P: ['CO₂'], ra: 3, rb: 8, rp: [11], t: 'm', u: 'g', a: 6, b: 20},
+  {n: 'N₂ + 3H₂ → 2NH₃ (volume, Gay-Lussac)', A: 'N₂', B: 'H₂', P: ['NH₃'], ra: 1, rb: 3, rp: [2], t: 'v', u: 'L', a: 10, b: 30},
+  {n: 'CH₄ + 2O₂ → CO₂ + 2H₂O(g) (volume)', A: 'CH₄', B: 'O₂', P: ['CO₂', 'H₂O'], ra: 1, rb: 2, rp: [1, 2], t: 'v', u: 'mL', a: 20, b: 50},
+  {n: 'H₂ + Cl₂ → 2HCl (volume)', A: 'H₂', B: 'Cl₂', P: ['HCl'], ra: 1, rb: 1, rp: [2], t: 'v', u: 'L', a: 10, b: 15}
+];
+RX.forEach((r, i) => { const o = document.createElement('option'); o.value = i; o.textContent = r.n; $('rx').appendChild(o); });
+let R = RX[0];
+$('rx').onchange = () => { R = RX[+$('rx').value]; $('a').value = R.a; $('b').value = R.b; draw(); };
+['a', 'b'].forEach(i => $(i).oninput = draw);
+function draw(){
+  const a = +$('a').value, b = +$('b').value;
+  // jumlah "satuan reaksi"
+  const k = Math.min(a / R.ra, b / R.rb), ua = k * R.ra, ub = k * R.rb;
+  const prods = R.rp.map(x => k * x);
+  const items = [[R.A, a, ua, 'var(--a)'], [R.B, b, ub, 'var(--b)'], ...R.P.map((p, i) => [p, null, prods[i], 'var(--k)'])];
+  const max = Math.max(a, b, ...prods, 1);
+  let s = '';
+  const L = 90, W = 280, bh = 30;
+  items.forEach(([n, have, use, c], i) => {
+    const y = 20 + i * (bh + 22), sc = W / max;
+    s += `<text class="c" x="${L - 10}" y="${y + bh / 2 + 4}" text-anchor="end" style="fill:var(--ink)">${n}</text>`;
+    if(have !== null){
+      s += `<rect x="${L}" y="${y}" width="${have * sc}" height="${bh}" rx="5" style="fill:${c}" fill-opacity=".18" stroke="${c}" stroke-dasharray="4 3"/>`;
+      s += `<rect x="${L}" y="${y}" width="${use * sc}" height="${bh}" rx="5" style="fill:${c}" fill-opacity=".75"/>`;
+      s += `<text class="s" x="${L + 6}" y="${y + bh / 2 + 4}" fill="#fff">bereaksi ${fmt(use, 2)} ${R.u}</text>`;
+      if(have - use > 1e-9) s += `<text class="s" x="${L + have * sc + 6}" y="${y + bh / 2 + 4}" style="fill:${c}">sisa ${fmt(have - use, 2)} ${R.u}</text>`;
+    } else {
+      s += `<rect x="${L}" y="${y}" width="${use * sc}" height="${bh}" rx="5" style="fill:${c}" fill-opacity=".75"/><text class="s" x="${L + use * sc + 6}" y="${y + bh / 2 + 4}" style="fill:var(--ink)">terbentuk ${fmt(use, 2)} ${R.u}</text>`;
+    }
+  });
+  s += `<line x1="${L}" y1="14" x2="${L}" y2="${20 + items.length * (bh + 22) - 16}" style="stroke:var(--ink)"/>`;
+  svg.setAttribute('viewBox', `0 0 480 ${items.length * (bh + 22) + 20}`);
+  svg.innerHTML = s;
+  $('la').innerHTML = `${R.t === 'm' ? 'Massa' : 'Volume'} ${R.A} tersedia <b>${a} ${R.u}</b>`;
+  $('lb').innerHTML = `${R.t === 'm' ? 'Massa' : 'Volume'} ${R.B} tersedia <b>${b} ${R.u}</b>`;
+  const lim = a / R.ra < b / R.rb - 1e-9 ? R.A : b / R.rb < a / R.ra - 1e-9 ? R.B : 'tidak ada (tepat habis)';
+  let rd = `<div><span>Pereaksi pembatas</span><b>${lim}</b></div>`;
+  if(R.t === 'm') rd += `<div><span>Kekekalan massa</span><b>${fmt(ua, 2)} + ${fmt(ub, 2)} = ${fmt(prods[0], 2)} g</b></div>`;
+  else { const tot = a + b - ua - ub + prods.reduce((x, y) => x + y, 0); rd += `<div><span>Volume gas setelah reaksi</span><b>${fmt(tot, 2)} ${R.u}</b></div>`; }
+  $('read').innerHTML = rd;
+  $('note').innerHTML = R.t === 'm'
+    ? '<b>Hukum Proust</b>: perbandingan massa unsur-unsur dalam suatu senyawa selalu tetap. Zat yang berlebih tidak ikut bereaksi dan tersisa.'
+    : '<b>Hukum Gay-Lussac</b>: pada suhu dan tekanan yang sama, perbandingan volume gas-gas yang bereaksi dan hasil reaksi sama dengan perbandingan koefisiennya. Volume gas tidak selalu kekal, tetapi massanya kekal.';
+}
+draw();
+</script>
+</body>
+</html>

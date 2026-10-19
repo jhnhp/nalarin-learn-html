@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kunci Lima Kingdom</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}
+.card{background:var(--surface-2);border-radius:14px;padding:14px 16px;color:var(--ink)}.card h3{margin:0 0 6px;font-size:17px}.card p{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
+.qs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.qs button{flex:1;min-width:120px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);border-radius:10px;padding:10px;font:inherit;font-weight:700;cursor:pointer}
+.q{font-weight:700;margin-top:14px;color:var(--ink);font-size:15px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage" style="padding:14px">
+    <div class="card" id="card"></div>
+    <div class="q" id="q"></div>
+    <div class="qs" id="qs"></div>
+    <svg id="svg" viewBox="0 0 480 110" role="img" aria-label="Jalur kunci identifikasi lima kingdom" style="margin-top:12px"></svg>
+  </div>
+  <div class="panel">
+    <div class="row"><button class="btn primary" id="next">Organisme berikutnya ▶</button><button class="btn" id="back">Ulang kunci</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Sistem lima kingdom (Whittaker, 1969): Monera, Protista, Fungi, Plantae, dan Animalia. Gunakan ciri pada kartu untuk menjawab setiap pertanyaan kunci.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// ciri: pro (prokariotik), multi (multiseluler dengan jaringan), kitin (dinding kitin & menyerap makanan), foto (fotosintesis)
+const ORG = [
+  ['Escherichia coli', 'Sel tanpa membran inti, uniseluler, dinding sel mengandung peptidoglikan. Hidup di usus.', 'Monera', {pro: 1}],
+  ['Lactobacillus bulgaricus', 'Sel prokariotik berbentuk batang; dipakai membuat yogurt.', 'Monera', {pro: 1}],
+  ['Amoeba', 'Sel eukariotik, uniseluler, bergerak dengan kaki semu, memakan partikel makanan.', 'Protista', {}],
+  ['Chlorella', 'Sel eukariotik uniseluler berkloroplas, hidup di air; bahan protein sel tunggal.', 'Protista', {foto: 1}],
+  ['Plasmodium', 'Eukariotik uniseluler, parasit penyebab malaria.', 'Protista', {}],
+  ['Rhizopus (jamur tempe)', 'Eukariotik, tubuh berupa benang hifa membentuk miselium, dinding sel kitin, menyerap makanan, berkembang biak dengan spora.', 'Fungi', {kitin: 1}],
+  ['Saccharomyces cerevisiae (ragi)', 'Eukariotik uniseluler, dinding sel kitin, menyerap gula dari lingkungan; dipakai membuat tapai dan roti.', 'Fungi', {kitin: 1}],
+  ['Lumut daun', 'Eukariotik multiseluler, berklorofil, berfotosintesis, dinding sel selulosa.', 'Plantae', {multi: 1, foto: 1}],
+  ['Paku sayur', 'Eukariotik multiseluler, berpembuluh, berfotosintesis, berkembang biak dengan spora.', 'Plantae', {multi: 1, foto: 1}],
+  ['Semut', 'Eukariotik multiseluler, tidak berdinding sel, memakan organisme lain (heterotrof), bergerak aktif.', 'Animalia', {multi: 1}],
+  ['Spons (Porifera)', 'Eukariotik multiseluler, tidak berdinding sel, menyaring makanan dari air.', 'Animalia', {multi: 1}]
+];
+const KEY = [
+  {q: 'Apakah selnya prokariotik (tidak bermembran inti)?', f: 'pro', yes: 'Monera', no: 1},
+  {q: 'Apakah dinding selnya mengandung kitin dan ia menyerap makanan dari lingkungan (hifa/ragi)?', f: 'kitin', yes: 'Fungi', no: 2},
+  {q: 'Apakah tubuhnya uniseluler atau sederhana tanpa jaringan yang jelas?', f: 'multi', yes: 'Protista', no: 3},
+  {q: 'Apakah ia berfotosintesis (berklorofil)?', f: 'foto', yes: 'Plantae', no: 'Animalia'}
+];
+let order = ORG.map((_, i) => i).sort(() => Math.random() - .5), k = 0, step = 0, path = [], res = null, score = [0, 0];
+function show(){
+  const [n, d] = ORG[order[k]];
+  $('card').innerHTML = `<h3><i>${n}</i></h3><p>${d}</p>`;
+  if(res){
+    const ok = res === ORG[order[k]][2];
+    $('q').innerHTML = `Hasil kunci: <b style="color:var(${ok ? '--ok' : '--bad'})">${res}</b> ${ok ? '✓' : '— cek lagi jawabanmu; seharusnya ' + ORG[order[k]][2]}`;
+    $('qs').innerHTML = '';
+  } else {
+    $('q').textContent = (step + 1) + '. ' + KEY[step].q;
+    $('qs').innerHTML = '<button data-v="1">Ya</button><button data-v="0">Tidak</button>';
+    $('qs').querySelectorAll('button').forEach(b => b.onclick = () => answer(+b.dataset.v));
+  }
+  draw();
+  $('read').innerHTML = `<div><span>Skor</span><b>${score[0]} dari ${score[1]}</b></div>`;
+}
+function answer(v){
+  const node = KEY[step]; path.push([step, v]);
+  const nx = v ? node.yes : node.no;
+  if(typeof nx === 'string'){ res = nx; score[1]++; if(res === ORG[order[k]][2]) score[0]++; }
+  else step = nx;
+  show();
+}
+function draw(){
+  const nodes = [[40, 34], [150, 34], [260, 34], [370, 34]];
+  const leaves = {Monera: [40, 96], Fungi: [150, 96], Protista: [260, 96], Plantae: [370, 96], Animalia: [448, 38]};
+  let s = '';
+  KEY.forEach((n, i) => {
+    const [x, y] = nodes[i], on = path.some(p => p[0] === i);
+    s += `<circle cx="${x}" cy="${y}" r="10" style="fill:${on ? 'var(--a)' : 'var(--line-2)'}"/><text class="s" x="${x}" y="${y + 4}" text-anchor="middle" fill="#fff">${i + 1}</text>`;
+    const yes = typeof n.yes === 'string' ? leaves[n.yes] : nodes[n.yes], no = typeof n.no === 'string' ? leaves[n.no] : nodes[n.no];
+    const pv = path.find(p => p[0] === i);
+    s += `<line x1="${x}" y1="${y + 10}" x2="${yes[0]}" y2="${yes[1] - 14}" style="stroke:${pv && pv[1] === 1 ? 'var(--a)' : 'var(--line-2)'}" stroke-width="2"/><line x1="${x + 10}" y1="${y}" x2="${no[0] - (typeof n.no === 'string' ? 30 : 10)}" y2="${no[1] - (typeof n.no === 'string' ? 4 : 0)}" style="stroke:${pv && pv[1] === 0 ? 'var(--a)' : 'var(--line-2)'}" stroke-width="2"/>`;
+  });
+  Object.entries(leaves).forEach(([n, [x, y]]) => s += `<text class="c" x="${x}" y="${y + 2}" text-anchor="middle" style="fill:${res === n ? 'var(--a)' : 'var(--muted)'}">${n}</text>`);
+  s += `<text class="s" x="4" y="12" style="fill:var(--muted)">garis ke bawah = ya, ke kanan = tidak</text>`;
+  svg.innerHTML = s;
+}
+$('next').onclick = () => { k = (k + 1) % ORG.length; step = 0; path = []; res = null; show(); };
+$('back').onclick = () => { step = 0; path = []; res = null; show(); };
+show();
+</script>
+</body>
+</html>

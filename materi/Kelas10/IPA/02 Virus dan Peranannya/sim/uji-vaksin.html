@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uji Klinis Vaksin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Hasil uji vaksin: kelompok vaksin dan kelompok plasebo"></svg></div>
+  <div class="panel">
+    <div class="lab">Peserta per kelompok <b id="nv"></b></div>
+    <input type="range" id="N" min="100" max="2000" step="100" value="800">
+    <div class="lab">Peluang terinfeksi tanpa vaksin <b id="pv"></b></div>
+    <input type="range" id="p" min="2" max="20" step="1" value="9">
+    <div class="lab">Efikasi sebenarnya (tidak diketahui peneliti) <b id="ev"></b></div>
+    <input type="range" id="e" min="0" max="95" step="5" value="65">
+    <div class="row"><button class="btn primary" id="run">Jalankan uji klinis</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Efikasi = (persentase sakit kelompok plasebo − persentase sakit kelompok vaksin) ÷ persentase sakit kelompok plasebo × 100%. Peserta dibagi <b>acak</b> ke dua kelompok yang sama besar; kelompok plasebo menjadi kontrol.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let res = null, hist = [];
+['N', 'p', 'e'].forEach(i => $(i).oninput = () => { hist = []; label(); });
+function label(){ $('nv').textContent = $('N').value + ' orang'; $('pv').textContent = $('p').value + '%'; $('ev').textContent = $('e').value + '%'; }
+$('run').onclick = () => {
+  const N = +$('N').value, p = +$('p').value / 100, e = +$('e').value / 100;
+  let a = 0, b = 0; const va = [], pl = [];
+  for(let i = 0; i < N; i++){ const x = Math.random() < p * (1 - e); va.push(x); a += x; }
+  for(let i = 0; i < N; i++){ const x = Math.random() < p; pl.push(x); b += x; }
+  const pa = a / N, pb = b / N, ef = pb ? (pb - pa) / pb * 100 : 0;
+  res = {N, a, b, pa, pb, ef, va, pl}; hist.push(ef); if(hist.length > 12) hist.shift();
+  draw();
+};
+function grid(x0, y0, arr, col){
+  // tampilkan maksimum 400 orang (setiap titik = N/400 orang jika lebih)
+  const n = arr.length, step = Math.max(1, n / 400), cols = 20; let s = '', k = 0;
+  for(let i = 0; i < Math.min(400, n); i++){
+    const idx = Math.floor(i * step); let sick = false; for(let j = idx; j < Math.min(n, Math.floor((i + 1) * step)); j++) if(arr[j]) sick = true;
+    const x = x0 + (i % cols) * 10, y = y0 + Math.floor(i / cols) * 10;
+    s += `<circle cx="${x}" cy="${y}" r="3.6" style="fill:${sick ? 'var(--b)' : col}" fill-opacity="${sick ? 1 : .35}"/>`;
+  }
+  return s;
+}
+function draw(){
+  label();
+  let s = '';
+  if(!res){ s += `<text class="c" x="240" y="150" text-anchor="middle" style="fill:var(--muted)">Tekan “Jalankan uji klinis”</text>`; svg.innerHTML = s; return; }
+  s += `<text class="c" x="20" y="18" style="fill:var(--a)">Kelompok vaksin</text><text class="c" x="250" y="18" style="fill:var(--muted)">Kelompok plasebo</text>`;
+  s += grid(25, 32, res.va, 'var(--a)') + grid(255, 32, res.pl, 'var(--muted)');
+  s += `<text class="s" x="20" y="${236}" style="fill:var(--ink)">sakit: ${res.a} (${fmt(res.pa * 100, 2)}%)</text><text class="s" x="250" y="236" style="fill:var(--ink)">sakit: ${res.b} (${fmt(res.pb * 100, 2)}%)</text>`;
+  if(res.N > 400) s += `<text class="s" x="240" y="252" text-anchor="middle" style="fill:var(--muted)">(1 titik mewakili ${fmt(res.N / 400, 1)} orang; titik merah = ada yang sakit)</text>`;
+  // riwayat efikasi
+  const e = +$('e').value;
+  s += `<line x1="20" y1="284" x2="460" y2="284" style="stroke:var(--line-2)"/>`;
+  [0, 25, 50, 75, 100].forEach(v => s += `<text class="s" x="${20 + v * 4.4}" y="298" text-anchor="middle" style="fill:var(--muted)">${v}%</text>`);
+  s += `<line x1="${20 + e * 4.4}" y1="266" x2="${20 + e * 4.4}" y2="290" style="stroke:var(--ok)" stroke-width="2"/>`;
+  hist.forEach((h, i) => s += `<circle cx="${20 + Math.max(0, Math.min(100, h)) * 4.4}" cy="${284 - 6 - (i % 3) * 5}" r="4" style="fill:var(--comp)" fill-opacity="${i === hist.length - 1 ? 1 : .45}"/>`);
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Efikasi hasil uji</span><b>(${fmt(res.pb * 100, 2)}% − ${fmt(res.pa * 100, 2)}%) ÷ ${fmt(res.pb * 100, 2)}% = ${fmt(res.ef, 1)}%</b></div><div><span>Efikasi sebenarnya</span><b>${e}% (garis hijau)</b></div>`;
+}
+label(); draw();
+</script>
+</body>
+</html>

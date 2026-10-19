@@ -1,56 +1,317 @@
 {
   "title": "Hukum Dasar Kimia di Sekitar Kita",
-  "summary": "Ringkasan bab Hukum Dasar Kimia di Sekitar Kita akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ciri reaksi kimia, persamaan reaksi setara, mol, Ar dan Mr, serta hukum kekekalan massa, perbandingan tetap, perbandingan berganda, dan perbandingan volume.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Hukum Dasar Kimia di Sekitar Kita",
+      "id": "reaksi-kimia",
+      "title": "Ciri reaksi kimia dan persamaan reaksi",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Reaksi kimia</b> adalah perubahan yang menghasilkan zat baru dengan sifat berbeda dari zat asalnya. Atom-atom tidak hilang atau berubah jenis; atom hanya disusun ulang (teori atom Dalton).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Ciri</th><th>Contoh</th></tr><tr><td>Perubahan suhu, panas, atau cahaya</td><td>pembakaran fosfor pada kembang api, pembakaran gas elpiji</td></tr><tr><td>Perubahan warna</td><td>besi berkarat menjadi cokelat kemerahan (Fe₂O₃·xH₂O)</td></tr><tr><td>Terbentuk endapan</td><td>air kapur menjadi keruh putih (CaCO₃) saat ditiup</td></tr><tr><td>Terbentuk gas</td><td>cuka + soda kue menghasilkan gelembung CO₂; fermentasi</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/persamaan-reaksi.svg",
+          "alt": "Bagian-bagian persamaan reaksi: koefisien, indeks, wujud zat, pereaksi, dan hasil reaksi",
+          "width": 600,
+          "caption": "Bagian-bagian persamaan reaksi."
+        },
+        {
+          "type": "text",
+          "html": "<p>Persamaan reaksi <b>setara</b> jika jumlah setiap jenis atom di ruas kiri sama dengan ruas kanan. Yang boleh diubah hanya <b>koefisien</b>. Koefisien menyatakan perbandingan jumlah partikel atau mol: pada N₂ + 3H₂ → 2NH₃, 1 mol N₂ bereaksi dengan 3 mol H₂ menghasilkan 2 mol NH₃.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Setarakan C₃H₈ + O₂ → CO₂ + H₂O.</p>",
+          "steps": [
+            "Atom C: 3 di kiri → beri koefisien 3 pada CO₂.",
+            "Atom H: 8 di kiri → beri koefisien 4 pada H₂O.",
+            "Atom O di kanan: 3(2) + 4(1) = 10 → koefisien O₂ = 5."
+          ],
+          "answer": "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O"
+        },
+        {
+          "type": "sim",
+          "src": "sim/setarakan.html",
+          "title": "Menyetarakan persamaan reaksi",
+          "height": 470,
+          "caption": "Pilih reaksi dan atur koefisiennya sampai semua baris berwarna hijau."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Mol dan bilangan Avogadro",
+          "html": "<p>1 mol zat mengandung \\(6{,}022\\times10^{23}\\) partikel (bilangan Avogadro), sebanyak atom dalam tepat 12 g karbon-12. Massa 1 mol zat dalam gram sama dengan Ar atau Mr-nya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<ul><li>Persamaan fermentasi glukosa di buku tertulis C₆H₁₂O₆ → C₂H₅OH + 2CO₂, yang belum setara. Yang benar: <b>C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂</b>.</li><li>P₂O₅ hasil pembakaran fosfor berwujud padat (s), bukan gas.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Pada persamaan setara N₂(g) + 3H₂(g) → 2NH₃(g), angka 3 di depan H₂ menyatakan ....",
+          "options": {
+            "A": "jumlah atom H dalam satu molekul",
+            "B": "jumlah mol (molekul) H₂ yang bereaksi",
+            "C": "massa H₂ dalam gram",
+            "D": "wujud zat"
+          },
+          "answer": "B",
+          "hint": "Itu koefisien, bukan indeks.",
+          "explanation": "Koefisien menyatakan perbandingan jumlah molekul atau mol zat."
+        }
+      ]
+    },
+    {
+      "id": "lavoisier",
+      "title": "Hukum kekekalan massa (Lavoisier)",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sebelum abad ke-18, ilmuwan memercayai <b>teori flogiston</b> (Becher, Stahl): zat yang terbakar melepaskan \"flogiston\" sehingga sisa pembakarannya lebih ringan. Teori ini runtuh karena <b>logam yang dibakar justru bertambah massanya</b>. Priestley (1774) memanaskan merkuri oksida dan memperoleh gas yang kemudian dinamai <b>oksigen</b> oleh Lavoisier.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum kekekalan massa",
+          "html": "<p>Dalam sistem tertutup, massa zat sebelum reaksi sama dengan massa zat sesudah reaksi.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kekekalan-massa.html",
+          "title": "Neraca dan reaksi kimia",
+          "height": 520,
+          "caption": "Bandingkan empat percobaan. Mengapa massa terbaca bisa berkurang atau bertambah, padahal hukum kekekalan massa selalu berlaku?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>2,4 g pita magnesium dibakar sempurna menghasilkan 4,0 g magnesium oksida. Berapa massa oksigen yang bereaksi?</p>",
+          "steps": [
+            "Massa Mg + massa O₂ = massa MgO.",
+            "Massa O₂ = 4,0 − 2,4."
+          ],
+          "answer": "1,6 g"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>10 g serbuk Zn dipanaskan dengan 2 g serbuk S, terbentuk 6,08 g ZnS dan sisa Zn 5,92 g. Buktikan hukum kekekalan massa.</p>",
+          "steps": [
+            "Zn yang bereaksi = 10 − 5,92 = 4,08 g.",
+            "Massa sebelum (yang bereaksi) = 4,08 + 2 = 6,08 g = massa ZnS."
+          ],
+          "answer": "terbukti"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut Boyle meminta rekannya, Lomonosov, mengulangi percobaannya. Ini tidak mungkin: Boyle wafat tahun 1691, sedangkan Lomonosov lahir tahun 1711. Lomonosov (1756) memanaskan logam dalam wadah tertutup dan menunjukkan massanya tetap, sejalan dengan temuan Lavoisier kemudian.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Teori flogiston dipatahkan karena ternyata ....",
+          "options": {
+            "A": "massa logam berkurang setelah dibakar",
+            "B": "massa logam bertambah setelah dibakar karena bergabung dengan oksigen",
+            "C": "pembakaran tidak memerlukan udara",
+            "D": "abu kayu lebih ringan dari kayu"
+          },
+          "answer": "B",
+          "hint": "Lavoisier menimbang dengan teliti.",
+          "explanation": "Logam bergabung dengan oksigen dari udara sehingga massanya bertambah."
+        }
+      ]
+    },
+    {
+      "id": "ar-mr-proust",
+      "title": "Ar, Mr, dan hukum perbandingan tetap (Proust)",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Massa atom relatif (Ar)</b> adalah massa satu atom dibandingkan dengan 1/12 massa atom C-12. <b>Massa molekul relatif (Mr)</b> adalah jumlah Ar semua atom dalam rumus.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung Mr CaCO₃ dan C₆H₁₂O₆ (Ar Ca = 40, C = 12, H = 1, O = 16).</p>",
+          "steps": [
+            "Mr CaCO₃ = 40 + 12 + 3(16) = 100.",
+            "Mr C₆H₁₂O₆ = 6(12) + 12(1) + 6(16) = 180."
+          ],
+          "answer": "100 dan 180"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum perbandingan tetap (Proust, 1797)",
+          "html": "<p>Perbandingan massa unsur-unsur penyusun suatu senyawa selalu tetap, dari mana pun asal senyawa itu. Contoh: dalam air, massa H : O = 1 : 8. Perbandingan massa dapat dihitung dari Ar: dalam senyawa \\(\\text{A}_x\\text{B}_y\\), massa A : massa B = \\(x\\,A_r(\\text{A}) : y\\,A_r(\\text{B})\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan perbandingan massa S : O dalam SO₃ (Ar S = 32, O = 16).</p>",
+          "steps": [
+            "S : O = 32 : 3(16) = 32 : 48."
+          ],
+          "answer": "2 : 3"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Perbandingan massa Mg : O dalam MgO adalah 3 : 2. Jika 9 g Mg direaksikan dengan 8 g O₂, berapa MgO yang terbentuk dan zat apa yang bersisa?</p>",
+          "steps": [
+            "9 g Mg memerlukan O = 9 × 2/3 = 6 g (tersedia 8 g, cukup).",
+            "MgO = 9 + 6 = 15 g; sisa O₂ = 8 − 6 = 2 g."
+          ],
+          "answer": "15 g MgO, sisa 2 g oksigen"
+        },
+        {
+          "type": "sim",
+          "src": "sim/perbandingan.html",
+          "title": "Perbandingan tetap dan pereaksi pembatas",
+          "height": 500,
+          "caption": "Ubah massa pereaksi. Pereaksi mana yang habis lebih dulu? Coba pilih juga reaksi gas (Gay-Lussac)."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 4",
+          "question": "<p>Batu kapur 50 g mengandung 80% CaCO₃. Berapa massa kalsium di dalamnya?</p>",
+          "steps": [
+            "Massa CaCO₃ = 0,80 × 50 = 40 g.",
+            "Kadar Ca dalam CaCO₃ = 40/100.",
+            "Massa Ca = 40/100 × 40 g."
+          ],
+          "answer": "16 g"
+        },
+        {
+          "type": "check",
+          "question": "Massa 0,5 mol glukosa (Mr = 180) adalah ....",
+          "options": {
+            "A": "45 g",
+            "B": "90 g",
+            "C": "180 g",
+            "D": "360 g"
+          },
+          "answer": "B",
+          "hint": "massa = mol × Mr.",
+          "explanation": "0,5 × 180 = 90 g."
+        }
+      ]
+    },
+    {
+      "id": "dalton-gay-lussac",
+      "title": "Hukum perbandingan berganda dan perbandingan volume",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum perbandingan berganda (Dalton)",
+          "html": "<p>Jika dua unsur dapat membentuk lebih dari satu senyawa, dan massa salah satu unsur dibuat tetap, maka perbandingan massa unsur yang lain dalam senyawa-senyawa itu merupakan bilangan bulat sederhana.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hidrogen dan oksigen membentuk H₂O dan H₂O₂. Dengan 2 g hidrogen, H₂O mengandung 16 g O dan H₂O₂ mengandung 32 g O. Buktikan hukum Dalton.</p>",
+          "steps": [
+            "Massa H dibuat sama (2 g).",
+            "Perbandingan massa O = 16 : 32."
+          ],
+          "answer": "1 : 2 (bilangan bulat sederhana)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Senyawa I: 12,7 g tembaga + 1,6 g oksigen. Senyawa II: 6,35 g tembaga + 1,6 g oksigen. Tentukan perbandingan massa tembaga pada kedua senyawa untuk massa oksigen yang sama.</p>",
+          "steps": [
+            "Massa O sama (1,6 g).",
+            "Cu I : Cu II = 12,7 : 6,35 = 2 : 1."
+          ],
+          "answer": "2 : 1 (senyawa Cu₂O dan CuO)"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum perbandingan volume (Gay-Lussac) dan hipotesis Avogadro",
+          "html": "<p>Pada suhu dan tekanan yang sama, volume gas-gas yang bereaksi dan hasil reaksi berbanding sebagai bilangan bulat sederhana, yaitu <b>sama dengan perbandingan koefisiennya</b>. Hukum ini hanya berlaku untuk zat berwujud <b>gas</b>. Avogadro menjelaskannya: pada suhu dan tekanan sama, volume gas yang sama mengandung jumlah partikel yang sama.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>N₂ + 3H₂ → 2NH₃. Berapa liter N₂ yang diperlukan untuk mereaksikan 30 L H₂, dan berapa NH₃ yang terbentuk (P, T sama)?</p>",
+          "steps": [
+            "V N₂ = 1/3 × 30 = 10 L.",
+            "V NH₃ = 2/3 × 30 = 20 L."
+          ],
+          "answer": "10 L N₂ dan 20 L NH₃"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 4",
+          "question": "<p>20 mL CH₄ direaksikan dengan 50 mL O₂: CH₄ + 2O₂ → CO₂ + 2H₂O(g). Berapa volume gas setelah reaksi?</p>",
+          "steps": [
+            "20 mL CH₄ memerlukan 40 mL O₂ → O₂ bersisa 10 mL.",
+            "Terbentuk 20 mL CO₂ dan 40 mL H₂O(g).",
+            "Total = 10 + 20 + 40 = 70 mL."
+          ],
+          "answer": "70 mL"
+        },
+        {
+          "type": "check",
+          "question": "Hukum Gay-Lussac hanya berlaku untuk zat ....",
+          "options": {
+            "A": "padat pada suhu tetap",
+            "B": "cair pada tekanan tetap",
+            "C": "gas yang diukur pada suhu dan tekanan yang sama",
+            "D": "semua wujud zat"
+          },
+          "answer": "C",
+          "hint": "Perbandingan volume.",
+          "explanation": "Hanya volume gas yang sebanding dengan jumlah partikel pada P dan T yang sama."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Ciri dan Persamaan Reaksi Kimia, Hukum Lavoisier, Proust, Dalton, dan Gay-Lussac</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Hukum</th><th>Isi</th><th>Contoh</th></tr><tr><td>Lavoisier</td><td>massa sebelum = massa sesudah (sistem tertutup)</td><td>2,4 g Mg + 1,6 g O₂ = 4,0 g MgO</td></tr><tr><td>Proust</td><td>perbandingan massa unsur dalam senyawa tetap</td><td>H : O dalam air = 1 : 8</td></tr><tr><td>Dalton</td><td>perbandingan massa unsur pada senyawa berbeda = bilangan bulat sederhana</td><td>O dalam H₂O : H₂O₂ = 1 : 2</td></tr><tr><td>Gay-Lussac</td><td>perbandingan volume gas = perbandingan koefisien</td><td>N₂ : H₂ : NH₃ = 1 : 3 : 2</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengubah indeks rumus kimia saat menyetarakan reaksi.</li><li>Menganggap massa berkurang pada reaksi yang melepaskan gas di wadah terbuka sebagai pelanggaran hukum kekekalan massa.</li><li>Menerapkan hukum Gay-Lussac pada zat cair atau padat.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMA Kelas X</i> (Kemendikbudristek), Bab 4 Hukum Dasar Kimia di Sekitar Kita.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang ciri dan persamaan reaksi kimia, serta hukum Lavoisier, Proust, Dalton, dan Gay-Lussac. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

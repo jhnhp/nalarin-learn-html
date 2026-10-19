@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perencana Energi Desa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Energi harian dari sumber terbarukan dan jumlah rumah yang terpenuhi"></svg></div>
+  <div class="panel">
+    <div class="seg" id="src"><button class="on" data-v="hidro">Mikrohidro</button><button data-v="surya">Surya</button><button data-v="angin">Angin</button><button data-v="biogas">Biogas</button></div>
+    <div id="ctl"></div>
+    <div class="lab">Kebutuhan listrik per rumah per hari <b id="nv"></b></div>
+    <input type="range" id="need" min="0.5" max="5" step="0.1" value="2">
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SRC = {
+  hidro: {ctl: [['Q', 'Debit air', 'L/s', 10, 300, 10, 100], ['h', 'Tinggi jatuh air', 'm', 2, 50, 1, 10], ['eta', 'Efisiensi turbin + generator', '%', 40, 90, 5, 70]],
+    calc: v => { const P = 1000 * 10 * (v.Q / 1000) * v.h * v.eta / 100; return {P, E: P * 24 / 1000, chain: 'energi potensial air → energi kinetik air → energi gerak turbin → energi listrik', f: `P = ρ·g·Q·h·η = 1.000 × 10 × ${fmt(v.Q / 1000, 3)} × ${v.h} × ${fmt(v.eta / 100, 2)} = ${fmt(P, 0)} W, menyala 24 jam`}; },
+    note: 'Mikrohidro (PLTMH) cocok untuk desa berbukit dengan sungai atau air terjun. Mengalir 24 jam sehingga tidak memerlukan baterai besar.'},
+  surya: {ctl: [['W', 'Daya puncak panel', 'W', 100, 3000, 100, 1000], ['jam', 'Jam matahari efektif', 'jam', 2, 7, 0.5, 4.5], ['bat', 'Efisiensi baterai', '%', 60, 95, 5, 80]],
+    calc: v => { const E = v.W * v.jam / 1000 * v.bat / 100; return {P: v.W, E, chain: 'energi cahaya → energi listrik → energi kimia baterai → energi listrik', f: `E = ${v.W} W × ${v.jam} jam × ${fmt(v.bat / 100, 2)} = ${fmt(E * 1000, 0)} Wh`}; },
+    note: 'Sel surya (bahan semikonduktor silikon) mengubah cahaya langsung menjadi listrik. Listrik siang hari disimpan di baterai untuk malam.'},
+  angin: {ctl: [['W', 'Daya kincir saat angin kencang', 'W', 100, 2000, 50, 500], ['jam', 'Lama angin kencang per hari', 'jam', 1, 12, 0.5, 6], ['bat', 'Efisiensi baterai', '%', 60, 95, 5, 80]],
+    calc: v => { const E = v.W * v.jam / 1000 * v.bat / 100; return {P: v.W, E, chain: 'energi kinetik angin → energi gerak baling-baling → energi listrik', f: `E = ${v.W} W × ${v.jam} jam × ${fmt(v.bat / 100, 2)} = ${fmt(E * 1000, 0)} Wh`}; },
+    note: 'Angin tidak selalu bertiup, sehingga listrik disimpan di baterai. Sebagian energi hilang sebagai kalor saat penyimpanan.'},
+  biogas: {ctl: [['sapi', 'Jumlah sapi', 'ekor', 1, 40, 1, 10], ['kg', 'Kotoran per sapi per hari', 'kg', 10, 30, 1, 25], ['m3', 'Biogas per kg kotoran', 'm³', 0.02, 0.06, 0.005, 0.04]],
+    calc: v => { const V = v.sapi * v.kg * v.m3; return {P: 0, E: null, V, chain: 'energi kimia kotoran → energi kimia metana → kalor (kompor) / listrik (generator)', f: `biogas = ${v.sapi} × ${v.kg} kg × ${fmt(v.m3, 3)} m³/kg = ${fmt(V, 2)} m³ per hari`}; },
+    note: 'Bakteri menguraikan kotoran dalam tangki tertutup tanpa oksigen (anaerob) menghasilkan metana. Ampasnya menjadi pupuk. Satu kompor biogas memerlukan ± 0,3 m³ per jam.'}
+};
+let src = 'hidro', val = {};
+function controls(){
+  const S = SRC[src]; val = {};
+  $('ctl').innerHTML = S.ctl.map(([k, n, u, a, b, st, d]) => { val[k] = d; return `<div class="lab">${n} <b id="v-${k}">${fmt(d, 3)} ${u}</b></div><input type="range" id="i-${k}" min="${a}" max="${b}" step="${st}" value="${d}">`; }).join('');
+  S.ctl.forEach(([k, , u]) => $('i-' + k).oninput = e => { val[k] = +e.target.value; $('v-' + k).textContent = fmt(val[k], 3) + ' ' + u; draw(); });
+  $('note').textContent = S.note;
+}
+document.querySelectorAll('#src button').forEach(b => b.onclick = () => { document.querySelectorAll('#src button').forEach(x => x.classList.toggle('on', x === b)); src = b.dataset.v; controls(); draw(); });
+$('need').oninput = draw;
+function house(x, y, on){ return `<path d="M${x - 11},${y} L${x},${y - 11} L${x + 11},${y} L${x + 11},${y + 12} L${x - 11},${y + 12} Z" style="fill:${on ? '#facc15' : 'var(--surface-2)'};stroke:var(--ink)" stroke-width="1.2"/><rect x="${x - 3}" y="${y + 4}" width="6" height="8" style="fill:var(--ink)" fill-opacity=".5"/>`; }
+function draw(){
+  const r = SRC[src].calc(val), need = +$('need').value;
+  $('nv').textContent = fmt(need, 1) + ' kWh';
+  let s = `<text class="c" x="240" y="22" text-anchor="middle" style="fill:var(--muted)">${r.chain}</text>`;
+  let n, rd;
+  if(src === 'biogas'){
+    const hrs = r.V / .3, fam = Math.floor(hrs / 2 + 1e-9);
+    n = Math.min(60, fam);
+    s += `<text class="c" x="240" y="56" text-anchor="middle" style="fill:var(--ink)">${r.f}</text><text class="c" x="240" y="78" text-anchor="middle" style="fill:var(--ink)">→ kompor menyala ${fmt(hrs, 1)} jam per hari</text><text class="c" x="240" y="98" text-anchor="middle" style="fill:var(--ink)">→ cukup untuk ${fam} keluarga (masing-masing memasak 2 jam/hari)</text>`;
+    rd = `<div><span>Biogas per hari</span><b>${fmt(r.V, 2)} m³</b></div><div><span>Keluarga terlayani</span><b>${fam} keluarga</b></div>`;
+  } else {
+    n = Math.floor(r.E / need + 1e-9);
+    s += `<text class="c" x="240" y="56" text-anchor="middle" style="fill:var(--ink)">${r.f}</text><text class="c" x="240" y="78" text-anchor="middle" style="fill:var(--ink)">→ energi tersedia ${fmt(r.E, 2)} kWh/hari ÷ ${fmt(need, 1)} kWh = ${fmt(r.E / need, 2)} rumah</text>`;
+    rd = `<div><span>Energi per hari</span><b>${fmt(r.E, 2)} kWh = ${fmt(r.E * 3.6, 2)} MJ</b></div><div><span>Rumah yang terpenuhi seluruhnya</span><b>${n} rumah</b></div>`;
+  }
+  const shown = Math.min(60, Math.max(n, 0) + 6);
+  for(let i = 0; i < shown; i++){ const x = 40 + (i % 15) * 28, y = 126 + Math.floor(i / 15) * 40; s += house(x, y, i < n); }
+  if(n > 60) s += `<text class="s" x="240" y="290" text-anchor="middle" style="fill:var(--muted)">(hanya 60 rumah pertama yang digambar)</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = rd;
+}
+controls(); draw();
+</script>
+</body>
+</html>

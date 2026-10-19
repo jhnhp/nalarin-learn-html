@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piramida Energi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Piramida energi tingkat trofik"></svg></div>
+  <div class="panel">
+    <div class="seg" id="ch"><button class="on" data-v="0">Sawah</button><button data-v="1">Laut</button><button data-v="2">Hutan</button></div>
+    <div class="lab">Energi pada produsen <b id="ev"></b></div>
+    <input type="range" id="E" min="10000" max="1000000" step="10000" value="200000">
+    <div class="lab">Efisiensi perpindahan energi <b id="fv"></b></div>
+    <input type="range" id="f" min="5" max="20" step="1" value="10">
+    <label class="chk"><input type="checkbox" id="c-log" checked> Skala logaritmik (agar puncak terlihat)</label>
+    <div class="read" id="read"></div>
+    <p class="note">Hanya sekitar 10% energi yang berpindah ke tingkat trofik berikutnya; sisanya dipakai untuk hidup dan dilepas sebagai panas lewat respirasi. Karena itu rantai makanan jarang lebih dari 4–5 tingkat.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const CH = [['padi', 'tikus', 'ular', 'elang'], ['fitoplankton', 'zooplankton', 'ikan teri', 'ikan tongkol', 'hiu'], ['rumput', 'rusa', 'harimau']];
+const ROLE = ['produsen', 'konsumen I', 'konsumen II', 'konsumen III', 'konsumen IV'];
+const COL = ['var(--ok)', 'var(--a)', 'var(--comp)', 'var(--b)', 'var(--r)'];
+let ch = 0;
+document.querySelectorAll('#ch button').forEach(b => b.onclick = () => { document.querySelectorAll('#ch button').forEach(x => x.classList.toggle('on', x === b)); ch = +b.dataset.v; draw(); });
+['E', 'f', 'c-log'].forEach(i => $(i).oninput = draw);
+const ID = n => n.toLocaleString('id-ID', {maximumFractionDigits: 2});
+function draw(){
+  const E = +$('E').value, f = +$('f').value / 100, log = $('c-log').checked, c = CH[ch], n = c.length;
+  const en = c.map((_, i) => E * Math.pow(f, i));
+  const W = v => log ? 30 + 270 * Math.log10(v / en[n - 1] * 10) / Math.log10(en[0] / en[n - 1] * 10) : Math.max(4, 300 * v / en[0]);
+  let s = '';
+  const h = Math.min(56, 260 / n), CX = 165;
+  for(let i = 0; i < n; i++){
+    const y = 280 - (i + 1) * h, w = W(en[i]);
+    s += `<rect x="${CX - w / 2}" y="${y}" width="${w}" height="${h - 4}" rx="4" style="fill:${COL[i]}" fill-opacity=".75"/>`;
+    const lab = `${c[i]} (${ROLE[i]}): ${ID(en[i])} kJ`;
+    s += w > 195 ? `<text class="c" x="${CX}" y="${y + h / 2 + 2}" text-anchor="middle" fill="#fff">${lab}</text>` : `<text class="c" x="${CX + w / 2 + 6}" y="${y + h / 2 + 2}" style="fill:var(--ink)">${lab}</text>`;
+    if(i) s += `<text class="s" x="${CX - w / 2 - 8}" y="${y + h - 2}" text-anchor="end" style="fill:var(--muted)">×${fmt(f, 2)}</text>`;
+  }
+  svg.innerHTML = s;
+  $('ev').textContent = ID(E) + ' kJ'; $('fv').textContent = fmt(f * 100, 0) + '%';
+  $('read').innerHTML = `<div><span>Energi di puncak (${c[n - 1]})</span><b>${ID(en[n - 1])} kJ</b></div><div><span>Hilang sebagai panas</span><b>${ID(en[0] - en[n - 1])} kJ (${fmt((1 - en[n - 1] / en[0]) * 100, 2)}%)</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

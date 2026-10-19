@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penipisan Ozon oleh CFC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Siklus reaksi atom klorin yang menguraikan ozon"></svg></div>
+  <div class="panel">
+    <div class="row"><button class="btn" id="prev">◀ Mundur</button><button class="btn primary" id="next">Maju ▶</button><button class="btn" id="fast">⏩ 100 siklus</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Satu atom Cl dapat menguraikan ribuan hingga sekitar 100.000 molekul ozon sebelum akhirnya terikat menjadi senyawa yang stabil. Cl berperan seperti <b>katalis</b>: ikut bereaksi lalu terbentuk kembali.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const ST = [
+  ['CFC naik ke stratosfer', 'CCl₂F₂ (freon-12) yang sangat stabil naik perlahan sampai lapisan stratosfer (15–30 km).'],
+  ['UV menguraikan CFC', 'Sinar UV berenergi tinggi memutus ikatan: CCl₂F₂ → CClF₂ + Cl. Atom Cl bebas sangat reaktif.'],
+  ['Cl + O₃ → ClO + O₂', 'Atom Cl merebut satu atom O dari ozon. Satu molekul ozon terurai.'],
+  ['ClO + O → Cl + O₂', 'ClO bertemu atom O bebas, membentuk O₂ dan melepaskan kembali atom Cl.'],
+  ['Cl terbentuk kembali', 'Atom Cl yang sama siap menguraikan ozon berikutnya. Siklus berulang terus.']
+];
+let k = 0, cycles = 0;
+$('next').onclick = () => { if(k === 4){ k = 2; cycles++; } else k++; draw(); };
+$('prev').onclick = () => { k = Math.max(0, k - 1); draw(); };
+$('fast').onclick = () => { cycles += 100; k = 4; draw(); };
+const atom = (x, y, el, col, r) => `<circle cx="${x}" cy="${y}" r="${r || 13}" style="fill:${col}"/><text class="s" x="${x}" y="${y + 4}" text-anchor="middle" fill="#fff">${el}</text>`;
+const O = (x, y) => atom(x, y, 'O', 'var(--b)');
+const CL = (x, y) => atom(x, y, 'Cl', 'var(--ok)', 15);
+function draw(){
+  let s = `<rect x="0" y="0" width="480" height="90" style="fill:var(--r)" fill-opacity=".06"/><text class="s" x="8" y="16" style="fill:var(--r)">stratosfer (lapisan ozon)</text>`;
+  s += `<text class="c" x="240" y="44" text-anchor="middle" style="fill:var(--ink)">${k + 1}. ${ST[k][0]}</text>`;
+  if(k === 0){ s += atom(200, 170, 'C', 'var(--muted)') + CL(176, 150) + CL(224, 150) + atom(176, 192, 'F', 'var(--comp)', 11) + atom(224, 192, 'F', 'var(--comp)', 11) + `<line x1="300" y1="220" x2="300" y2="110" style="stroke:var(--muted)" stroke-width="2" stroke-dasharray="4 3"/><text class="s" x="308" y="170" style="fill:var(--muted)">naik perlahan</text>`; }
+  if(k === 1){ s += atom(200, 170, 'C', 'var(--muted)') + CL(176, 150) + atom(176, 192, 'F', 'var(--comp)', 11) + atom(224, 192, 'F', 'var(--comp)', 11) + CL(280, 130); for(let i = 0; i < 4; i++) s += `<path d="M${330 + i * 14},70 l-10,20 l8,0 l-10,20" fill="none" stroke="#a855f7" stroke-width="2"/>`; s += `<text class="s" x="370" y="66" style="fill:#a855f7">UV</text>`; }
+  if(k === 2){ s += CL(130, 170) + `<text class="c" x="160" y="175" style="fill:var(--ink)">+</text>` + O(200, 170) + O(222, 158) + O(222, 182) + `<text class="c" x="260" y="175" style="fill:var(--ink)">→</text>` + CL(305, 170) + O(330, 170) + `<text class="c" x="356" y="175" style="fill:var(--ink)">+</text>` + O(385, 170) + O(408, 170); }
+  if(k === 3){ s += CL(120, 170) + O(145, 170) + `<text class="c" x="170" y="175" style="fill:var(--ink)">+</text>` + O(200, 170) + `<text class="c" x="235" y="175" style="fill:var(--ink)">→</text>` + CL(280, 170) + `<text class="c" x="310" y="175" style="fill:var(--ink)">+</text>` + O(345, 170) + O(368, 170); }
+  if(k === 4){ s += CL(240, 170) + `<path d="M${270},150 a40,40 0 1,1 -10,-25" fill="none" style="stroke:var(--ok)" stroke-width="2.5"/><path d="M256,126 l6,-10 l6,10z" style="fill:var(--ok)"/>`; }
+  // penghitung ozon
+  const n = cycles + (k >= 2 ? 1 : 0);
+  s += `<rect x="20" y="240" width="440" height="44" rx="10" style="fill:var(--surface-2)"/><text class="c" x="34" y="267" style="fill:var(--ink)">Molekul ozon yang diuraikan oleh satu atom Cl: ${n.toLocaleString('id-ID')}</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Tahap ${k + 1}</span><b>${ST[k][1]}</b></div><div><span>Reaksi total satu siklus</span><b>O₃ + O → 2O₂ (Cl tidak habis)</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

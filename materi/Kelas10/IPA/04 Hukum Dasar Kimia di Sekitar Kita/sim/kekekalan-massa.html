@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hukum Kekekalan Massa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}.lcd{font-family:ui-monospace,monospace;font-weight:700;font-size:26px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Neraca digital menimbang wadah reaksi"></svg></div>
+  <div class="panel">
+    <div class="seg" id="sc"><button class="on" data-v="0">Cuka + soda kue, tertutup</button><button data-v="1">Cuka + soda kue, terbuka</button><button data-v="2">Pita Mg dibakar</button><button data-v="3">Lilin dalam stoples tertutup</button></div>
+    <div class="row"><button class="btn primary" id="go">▶ Reaksikan</button><button class="btn" id="reset">Ulang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SC = [
+  {m0: 250.0, d: 0, eq: 'NaHCO₃ + CH₃COOH → CH₃COONa + H₂O + CO₂', why: 'Gas CO₂ tertampung di dalam balon, sehingga tidak ada zat yang keluar. Massa sebelum = massa sesudah.'},
+  {m0: 250.0, d: -2.2, eq: 'NaHCO₃ + CH₃COOH → CH₃COONa + H₂O + CO₂', why: 'Gas CO₂ (2,2 g) keluar ke udara, sehingga yang tertimbang berkurang. Massa total tetap kekal jika CO₂ ikut dihitung.'},
+  {m0: 52.4, d: 1.6, eq: '2Mg + O₂ → 2MgO', why: 'Magnesium (2,4 g) bergabung dengan oksigen dari udara (1,6 g) menjadi 4,0 g MgO. Massa bertambah karena oksigen dari luar ikut tertimbang. Inilah yang mematahkan teori flogiston.'},
+  {m0: 480.0, d: 0, eq: 'lilin + O₂ → CO₂ + H₂O', why: 'Semua zat (lilin, oksigen, CO₂, uap air) tetap di dalam stoples tertutup, sehingga massanya tetap. Ini percobaan Lavoisier.'}
+];
+let k = 0, p = 0, timer = null, hist = [];
+document.querySelectorAll('#sc button').forEach(b => b.onclick = () => { document.querySelectorAll('#sc button').forEach(x => x.classList.toggle('on', x === b)); k = +b.dataset.v; reset(); });
+$('go').onclick = () => { if(timer || p >= 1) return; timer = setInterval(() => { p = Math.min(1, p + .02); hist.push(mass()); if(p >= 1){ clearInterval(timer); timer = null; } draw(); }, 60); };
+$('reset').onclick = reset;
+function reset(){ if(timer){ clearInterval(timer); timer = null; } p = 0; hist = [mass()]; draw(); }
+const ease = t => 1 - Math.pow(1 - t, 2);
+function mass(){ const c = SC[k]; return c.m0 + c.d * ease(p); }
+function draw(){
+  const c = SC[k], m = mass();
+  let s = '';
+  // neraca
+  s += `<rect x="40" y="220" width="220" height="40" rx="8" style="fill:var(--surface-2);stroke:var(--line-2)"/><rect x="60" y="210" width="180" height="10" rx="3" style="fill:var(--line-2)"/>`;
+  s += `<rect x="100" y="232" width="100" height="22" rx="4" fill="#0f172a"/><text class="lcd" x="196" y="252" text-anchor="end" fill="#4ade80" style="font-size:17px">${m.toFixed(1)} g</text>`;
+  const cx = 150;
+  if(k <= 1){
+    // botol
+    s += `<path d="M${cx - 30},208 L${cx - 30},140 Q${cx - 30},120 ${cx - 10},112 L${cx - 10},92 L${cx + 10},92 L${cx + 10},112 Q${cx + 30},120 ${cx + 30},140 L${cx + 30},208 Z" style="fill:var(--a);stroke:var(--a)" fill-opacity=".1" stroke-width="2"/>`;
+    s += `<rect x="${cx - 28}" y="${170}" width="56" height="37" style="fill:var(--a)" fill-opacity=".25"/>`;
+    for(let i = 0; i < Math.round(12 * Math.sin(Math.PI * Math.min(1, p * 1.2))); i++) s += `<circle cx="${cx - 22 + (i * 37) % 44}" cy="${200 - (i * 23 + p * 300) % 30}" r="3" fill="none" style="stroke:var(--a)"/>`;
+    if(k === 0){ const r = 8 + 26 * ease(p); s += `<ellipse cx="${cx}" cy="${92 - r}" rx="${r * .85}" ry="${r}" style="fill:var(--b);stroke:var(--b)" fill-opacity=".3" stroke-width="2"/><text class="s" x="${cx + r + 6}" y="${92 - r}" style="fill:var(--b)">balon berisi CO₂</text>`; }
+    else for(let i = 0; i < Math.round(10 * p); i++) s += `<text class="s" x="${cx - 20 + (i * 17) % 50}" y="${80 - (i * 13 + p * 200) % 70}" style="fill:var(--muted)">CO₂</text>`;
+  } else if(k === 2){
+    s += `<path d="M${cx - 45},200 Q${cx},222 ${cx + 45},200 Z" style="fill:var(--surface-2);stroke:var(--ink)" stroke-width="2"/>`;
+    const L = 70 * (1 - ease(p));
+    s += `<line x1="${cx - 35}" y1="196" x2="${cx - 35 + L}" y2="190" style="stroke:var(--muted)" stroke-width="4"/>`;
+    s += `<ellipse cx="${cx + 5}" cy="200" rx="${4 + 26 * ease(p)}" ry="${2 + 6 * ease(p)}" fill="#f8fafc" stroke="#cbd5e1"/>`;
+    if(p > 0 && p < 1) s += `<circle cx="${cx - 35 + L}" cy="188" r="10" fill="#fff" stroke="#fde68a" stroke-width="4"/>`;
+    for(let i = 0; i < 6; i++) s += `<text class="s" x="${cx - 70 + i * 26}" y="${120 + (i % 2) * 18}" style="fill:var(--b)">O₂</text>`;
+    s += `<text class="s" x="${cx + 60}" y="186" style="fill:var(--muted)">${p >= 1 ? 'abu putih MgO' : 'pita Mg'}</text>`;
+  } else {
+    s += `<rect x="${cx - 50}" y="90" width="100" height="118" rx="10" style="fill:var(--a);stroke:var(--a)" fill-opacity=".08" stroke-width="2"/><rect x="${cx - 54}" y="82" width="108" height="10" rx="3" style="fill:var(--ink)"/>`;
+    const h = 50 - 14 * ease(p);
+    s += `<rect x="${cx - 8}" y="${206 - h}" width="16" height="${h}" fill="#fde68a" stroke="#d97706"/>`;
+    if(p < 1) s += `<path d="M${cx},${190 - h} q-7,12 0,16 q7,-4 0,-16" fill="#f97316" opacity="${p > 0 ? .9 * (1 - p) : .9}"/>`;
+  }
+  // grafik massa
+  const L0 = 300, R0 = 465, T0 = 40, B0 = 200, c0 = SC[k].m0, lo = c0 - 3, hi = c0 + 3, Y = v => B0 - (v - lo) / (hi - lo) * (B0 - T0);
+  s += `<rect x="${L0}" y="${T0}" width="${R0 - L0}" height="${B0 - T0}" style="fill:none;stroke:var(--line)"/>`;
+  s += `<line x1="${L0}" y1="${Y(c0)}" x2="${R0}" y2="${Y(c0)}" style="stroke:var(--muted)" stroke-dasharray="3 3"/><text class="s" x="${L0 - 4}" y="${Y(c0) + 4}" text-anchor="end" style="fill:var(--muted)">${fmt(c0, 1)}</text>`;
+  s += `<path d="${hist.map((v, i) => (i ? 'L' : 'M') + (L0 + i / 50 * (R0 - L0)).toFixed(1) + ',' + Y(v).toFixed(1)).join('')}" fill="none" style="stroke:var(--b)" stroke-width="2.5"/>`;
+  s += `<text class="s" x="${L0}" y="${T0 - 8}" style="fill:var(--muted)">massa terbaca (g) terhadap waktu</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Reaksi</span><b>${c.eq}</b></div><div><span>Massa awal → sekarang</span><b>${c.m0.toFixed(1).replace(".", ",")} g → ${m.toFixed(1).replace(".", ",")} g</b></div>`;
+  $('note').innerHTML = p >= 1 ? c.why : 'Tekan <b>Reaksikan</b> dan perhatikan angka neraca.';
+}
+reset();
+</script>
+</body>
+</html>

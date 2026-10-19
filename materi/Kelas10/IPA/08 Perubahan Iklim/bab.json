@@ -1,56 +1,257 @@
 {
   "title": "Perubahan Iklim",
-  "summary": "Ringkasan bab Perubahan Iklim akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Gejala dan dampak perubahan iklim, El Nino dan La Nina, peningkatan CO₂ dan efek rumah kaca, penyebab dari aktivitas manusia, penipisan ozon, serta mitigasi, adaptasi, dan kerja sama global.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Perubahan Iklim",
+      "id": "gejala",
+      "title": "Iklim dan gejala perubahan iklim",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Cuaca</b> adalah keadaan atmosfer di suatu tempat dalam waktu singkat (jam, hari). <b>Iklim</b> adalah pola rata-rata cuaca (suhu, curah hujan, angin, tekanan udara) di suatu daerah dalam jangka panjang (umumnya ≥ 30 tahun). Menurut PBB, <b>perubahan iklim</b> adalah perubahan suhu dan pola cuaca dalam jangka panjang.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Gejala</th><th>Data</th></tr><tr><td>Suhu rata-rata permukaan bumi naik</td><td>lebih dari 1 °C sejak 1880 (NASA GISS)</td></tr><tr><td>Suhu permukaan laut naik</td><td>± 0,14 °C per dekade sejak 1901 (NOAA)</td></tr><tr><td>Es mencair</td><td>es laut Arktik musim panas menyusut ± 12,2% per dekade; es Puncak Jaya di Papua tinggal sekitar 1% dari luas semula</td></tr><tr><td>Muka air laut naik</td><td>rata-rata global ± 3,3 mm per tahun</td></tr><tr><td>Cuaca ekstrem</td><td>kemarau panjang (El Nino) dan hujan ekstrem (La Nina) lebih sering dan kuat</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/enso.html",
+          "title": "El Nino dan La Nina",
+          "height": 480,
+          "caption": "Bandingkan tiga fase. Di mana kolam air hangat dan awan hujan berada pada saat El Nino?"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Mengapa hilangnya es mempercepat pemanasan?",
+          "html": "<p>Es yang putih memantulkan sebagian besar cahaya matahari kembali ke angkasa. Jika es mencair, permukaan yang lebih gelap (laut, batuan) menyerap lebih banyak panas sehingga suhu makin naik. Ini disebut umpan balik positif.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Peristiwa berikut yang bukan gejala perubahan iklim adalah ....",
+          "options": {
+            "A": "mencairnya es di kutub",
+            "B": "naiknya muka air laut",
+            "C": "gempa bumi tektonik",
+            "D": "meningkatnya cuaca ekstrem"
+          },
+          "answer": "C",
+          "hint": "Gempa disebabkan pergerakan lempeng.",
+          "explanation": "Gempa tektonik disebabkan pergerakan lempeng bumi, bukan perubahan iklim."
+        }
+      ]
+    },
+    {
+      "id": "dampak",
+      "title": "Dampak perubahan iklim",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Bidang</th><th>Dampak</th></tr><tr><td>Bencana</td><td>El Nino: kekeringan, kebakaran hutan dan lahan gambut (asap → ISPA). La Nina: banjir, longsor, rob.</td></tr><tr><td>Pertanian dan pangan</td><td>pola tanam bergeser; kekeringan atau tanaman terendam dan membusuk; hama meledak; harga pangan naik</td></tr><tr><td>Kesehatan</td><td>siklus hidup nyamuk lebih pendek dan daerah sebarannya meluas → kasus DBD dan malaria naik; dehidrasi; penyakit pascabanjir (diare, kolera)</td></tr><tr><td>Laut</td><td>terumbu karang memutih (<i>bleaching</i>) lalu mati sehingga biota yang bergantung padanya kehilangan habitat; krill berkurang; anakan penyu didominasi betina pada suhu hangat</td></tr><tr><td>Daratan dan kutub</td><td>beruang kutub kehilangan tempat berburu; spesies yang tidak mampu beradaptasi terancam punah</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Pada bagian dampak pertanian, buku menyebut El Nino menyebabkan tanaman membusuk karena terendam air. Yang menyebabkan tanaman terendam adalah <b>La Nina</b> (hujan berlebih); El Nino menyebabkan kekeringan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Muka air laut di sebuah kota pesisir naik 1,5 cm per tahun, sedangkan tanahnya turun 6 cm per tahun. Berapa kenaikan muka laut relatif terhadap daratan dalam 10 tahun?</p>",
+          "steps": [
+            "Kenaikan relatif per tahun = 1,5 + 6 = 7,5 cm.",
+            "Dalam 10 tahun = 75 cm."
+          ],
+          "answer": "75 cm"
+        },
+        {
+          "type": "check",
+          "question": "Kenaikan suhu air laut menyebabkan terumbu karang memutih. Dampak lanjutannya adalah ....",
+          "options": {
+            "A": "karang tumbuh lebih cepat",
+            "B": "karang rentan penyakit dan mati, biota laut kehilangan habitat",
+            "C": "jumlah ikan bertambah",
+            "D": "air laut menjadi tawar"
+          },
+          "answer": "B",
+          "hint": "Karang adalah habitat banyak biota.",
+          "explanation": "Karang yang memutih kehilangan alga simbionnya, sulit tumbuh, dan dapat mati massal."
+        }
+      ]
+    },
+    {
+      "id": "penyebab",
+      "title": "Penyebab perubahan iklim",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "gambar/keeling.svg",
+          "alt": "Kurva Keeling: kenaikan konsentrasi CO2 dari sekitar 317 ppm pada 1960 menjadi sekitar 420 ppm pada 2023",
+          "width": 560,
+          "caption": "Kurva Keeling (data tahunan, dibulatkan)."
+        },
+        {
+          "type": "text",
+          "html": "<p>Charles David Keeling mulai mengukur CO₂ di Mauna Loa, Hawaii, pada 1958. Konsentrasinya terus naik dari ± 315 ppm (1960) menjadi ± 419 ppm (2023). <b>ppm</b> (<i>parts per million</i>) untuk gas di udara berarti banyaknya molekul CO₂ dalam sejuta molekul udara.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/IPA/06 Isu-Isu Lingkungan/sim/efek-rumah-kaca.html",
+          "title": "Efek rumah kaca",
+          "height": 520,
+          "caption": "Bandingkan suhu bumi tanpa gas rumah kaca, tahun 1750, dan sekarang."
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Efek rumah kaca</b> alami menjaga suhu rata-rata bumi sekitar 15 °C (tanpanya ±−18 °C). Gas rumah kaca utama: CO₂, CH₄ (metana), N₂O, uap air, dan CFC. Aktivitas manusia menambah gas-gas ini sehingga efeknya berlebihan:</p><ul><li><b>Alih fungsi lahan</b>: pembakaran hutan melepas CO₂ dan CO, serta mengurangi pohon penyerap CO₂.</li><li><b>Kendaraan bermotor dan pembangkit fosil</b>: pembakaran hidrokarbon menghasilkan CO₂.</li><li><b>Plastik</b>: bahan bakunya minyak bumi, gas alam, dan batu bara; ekstraksi dan pengolahannya padat karbon.</li><li><b>Sampah organik di TPA</b>: penguraian anaerob menghasilkan metana (CH₄).</li><li><b>Freon (CFC)</b>: menipiskan ozon sekaligus gas rumah kaca kuat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pembakaran sempurna hidrokarbon",
+          "html": "<p>\\[\\text{C}_x\\text{H}_y + \\left(x + \\tfrac{y}{4}\\right)\\text{O}_2 \\rightarrow x\\,\\text{CO}_2 + \\tfrac{y}{2}\\,\\text{H}_2\\text{O}\\]</p><p>Jika oksigen kurang, terjadi pembakaran tidak sempurna yang menghasilkan CO (beracun) dan jelaga. <b>Katalitik konverter</b> mengubah CO dan NOₓ menjadi CO₂, N₂, dan O₂, tetapi CO₂ tetap dihasilkan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Heptana terbakar sempurna: C₇H₁₆ + 11O₂ → 7CO₂ + 8H₂O. Berapa gram CO₂ dari 50 g heptana? (Ar C = 12, H = 1, O = 16)</p>",
+          "steps": [
+            "Mr C₇H₁₆ = 100 → mol = 50/100 = 0,5 mol.",
+            "mol CO₂ = 7 × 0,5 = 3,5 mol.",
+            "Massa CO₂ = 3,5 × 44."
+          ],
+          "answer": "154 g"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<ul><li>Buku menyebut belerang dioksida dan nitrogen oksida sebagai gas rumah kaca. Gas rumah kaca yang penting adalah CO₂, CH₄, <b>N₂O</b>, uap air, dan CFC/HFC; SO₂ justru membentuk aerosol yang sedikit mendinginkan.</li><li>Gas rumah kaca tidak \"memantulkan\" inframerah, tetapi <b>menyerap lalu memancarkannya kembali</b> ke segala arah.</li><li>Freon-22 adalah CHClF₂ (klorodifluorometana), bukan CHClF₃.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Membuka lahan dengan membakar hutan meningkatkan suhu bumi karena ....",
+          "options": {
+            "A": "menghasilkan oksigen",
+            "B": "melepaskan CO₂ dan mengurangi pohon penyerap CO₂",
+            "C": "membuat awan lebih banyak",
+            "D": "menurunkan kadar CO₂"
+          },
+          "answer": "B",
+          "hint": "Dua efek sekaligus.",
+          "explanation": "Pembakaran melepas CO₂, dan hilangnya pohon mengurangi penyerapan CO₂ melalui fotosintesis."
+        }
+      ]
+    },
+    {
+      "id": "ozon",
+      "title": "Penipisan lapisan ozon",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sekitar 90% ozon (O₃) berada di <b>stratosfer</b> (15–30 km). Ozon ini disebut \"ozon baik\" karena menyaring sebagian besar sinar <b>ultraviolet tipe-B (UV-B)</b> yang dapat menyebabkan kanker kulit, katarak, dan gangguan sistem imun. Ozon di permukaan tanah (troposfer) justru polutan.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/ozon.html",
+          "title": "Penipisan ozon oleh CFC",
+          "height": 460,
+          "caption": "Ikuti tahap reaksinya, lalu jalankan 100 siklus. Mengapa satu atom Cl dapat menguraikan banyak ozon?"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>CFC</b> (freon) dahulu dipakai pada AC, kulkas, dan aerosol. Penggunaannya dibatasi melalui <b>Protokol Montreal</b> (1987). Penggantinya, HFC, tidak merusak ozon tetapi merupakan gas rumah kaca yang sangat kuat, sehingga dibatasi pula melalui <b>Amandemen Kigali</b> (berlaku 2019). Lapisan ozon kini perlahan pulih.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut HFC meningkatkan gas CO₂. Lebih tepat: HFC sendiri adalah <b>gas rumah kaca</b> yang daya pemanasannya ratusan hingga ribuan kali CO₂.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Atom Cl dapat menguraikan banyak molekul ozon karena ....",
+          "options": {
+            "A": "Cl sangat berat",
+            "B": "Cl terbentuk kembali pada akhir siklus sehingga dapat bereaksi lagi",
+            "C": "Cl adalah gas mulia",
+            "D": "Cl berubah menjadi ozon"
+          },
+          "answer": "B",
+          "hint": "Perhatikan tahap 3 dan 4.",
+          "explanation": "Cl + O₃ → ClO + O₂ lalu ClO + O → Cl + O₂; Cl kembali bebas seperti katalis."
+        }
+      ]
+    },
+    {
+      "id": "mitigasi-adaptasi",
+      "title": "Mitigasi, adaptasi, dan kerja sama global",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th></th><th>Mitigasi</th><th>Adaptasi</th></tr><tr><td>Tujuan</td><td>mengurangi dan menstabilkan gas rumah kaca (mengatasi penyebab)</td><td>menyesuaikan diri untuk mengurangi dampak yang sudah atau akan terjadi</td></tr><tr><td>Contoh</td><td>menanam pohon beragam jenis; beralih ke energi terbarukan; hemat listrik; transportasi umum; mengolah sampah organik; ecobrick dan daur ulang plastik</td><td>varietas tanaman tahan kering atau tahan rendaman; tanggul dan rumah panggung di pesisir; sistem peringatan dini; mengatur pola tanam</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut daun anggur dipotong untuk mengurangi kebutuhan air dengan <i>meningkatkan</i> laju transpirasi. Yang benar, pemangkasan daun <b>mengurangi</b> transpirasi sehingga tanaman lebih hemat air.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Kerja sama global</th><th>Isi</th></tr><tr><td>UNFCCC (1992)</td><td>konvensi kerangka PBB tentang perubahan iklim; forum negosiasi tahunan (COP)</td></tr><tr><td>Protokol Kyoto (1997)</td><td>target pengurangan emisi negara maju</td></tr><tr><td>Perjanjian Paris (2015)</td><td>menahan kenaikan suhu rata-rata global di bawah 2 °C dan mengupayakan 1,5 °C di atas era pra-industri; Indonesia ikut menandatangani</td></tr><tr><td>IPCC</td><td>panel ilmuwan yang menilai pengetahuan ilmiah tentang perubahan iklim</td></tr></table>"
+        },
+        {
+          "type": "check",
+          "question": "Menanam pohon di lahan gundul dan mengembangkan varietas padi tahan kering berturut-turut termasuk ....",
+          "options": {
+            "A": "adaptasi dan mitigasi",
+            "B": "mitigasi dan adaptasi",
+            "C": "keduanya mitigasi",
+            "D": "keduanya adaptasi"
+          },
+          "answer": "B",
+          "hint": "Mitigasi = kurangi penyebab.",
+          "explanation": "Pohon menyerap CO₂ (mitigasi); varietas tahan kering membantu bertahan dari dampak (adaptasi)."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Gejala, Dampak, dan Penyebab Perubahan Iklim, Efek Rumah Kaca, Penipisan Ozon, serta Upaya Mitigasi dan Adaptasi</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Perubahan iklim</td><td>perubahan suhu dan pola cuaca jangka panjang</td></tr><tr><td>Gejala</td><td>suhu darat dan laut naik, es mencair, muka laut naik, cuaca ekstrem (El Nino/La Nina)</td></tr><tr><td>Penyebab</td><td>gas rumah kaca dari bahan bakar fosil, alih fungsi lahan, plastik, sampah organik, CFC</td></tr><tr><td>Ozon</td><td>menyaring UV-B; dirusak CFC (Cl sebagai katalis); Protokol Montreal</td></tr><tr><td>Respons</td><td>mitigasi dan adaptasi; Perjanjian Paris (&lt; 2 °C, upaya 1,5 °C)</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyamakan cuaca dengan iklim.</li><li>Menganggap lubang ozon sebagai penyebab utama pemanasan global.</li><li>Mengira katalitik konverter menghilangkan CO₂.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMA Kelas X</i> (Kemendikbudristek), Bab 8 Perubahan Iklim.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang gejala, dampak, dan penyebab perubahan iklim, efek rumah kaca, penipisan ozon, serta mitigasi dan adaptasi. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

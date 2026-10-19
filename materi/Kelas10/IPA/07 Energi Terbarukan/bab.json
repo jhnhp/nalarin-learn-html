@@ -1,56 +1,283 @@
 {
   "title": "Energi Terbarukan",
-  "summary": "Ringkasan bab Energi Terbarukan akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Urgensi kebutuhan listrik, bentuk-bentuk energi, daya dan kWh, konversi dan kekekalan energi, sumber energi terbarukan dan tak terbarukan, serta perancangan pemanfaatan energi lokal.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Energi Terbarukan",
+      "id": "kebutuhan-energi",
+      "title": "Urgensi kebutuhan energi listrik",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Konsumsi listrik Indonesia terus meningkat seiring pertumbuhan penduduk dan teknologi. Namun, masih ada desa yang belum teraliri listrik (pada 2019 tercatat 433 desa, sebagian besar di Papua dan Maluku) karena letaknya terpencil dan infrastruktur terbatas. Tanpa listrik, layanan kesehatan pada malam hari sulit, anak-anak sulit belajar, dan usaha warga sulit berkembang.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Salah satu jawabannya adalah memanfaatkan <b>sumber energi lokal</b>. Warga Desa Plaosan (Probolinggo), misalnya, membangun <b>pembangkit listrik tenaga mikrohidro (PLTMH)</b> berkapasitas 7 kW dari air terjun di desanya. Hal ini sejalan dengan <b>SDG 7</b>: energi bersih dan terjangkau untuk semua.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Tujuan SDG 7 adalah ....",
+          "options": {
+            "A": "air bersih dan sanitasi",
+            "B": "energi bersih dan terjangkau",
+            "C": "kota berkelanjutan",
+            "D": "penanganan perubahan iklim"
+          },
+          "answer": "B",
+          "hint": "Nomor 7.",
+          "explanation": "SDG 7: affordable and clean energy."
+        }
+      ]
+    },
+    {
+      "id": "bentuk-energi",
+      "title": "Bentuk-bentuk energi",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Bentuk energi</th><th>Rumus</th><th>Keterangan</th></tr><tr><td>Kinetik</td><td>\\(E_k = \\tfrac12 m v^2\\)</td><td>energi benda bergerak</td></tr><tr><td>Potensial gravitasi</td><td>\\(E_p = m g h\\)</td><td>energi karena kedudukan; g = 10 m/s²</td></tr><tr><td>Kalor</td><td>\\(Q = m c \\Delta T\\)</td><td>energi yang diserap/dilepas saat suhu berubah; c kalor jenis (air 4.200 J/kg·K)</td></tr><tr><td>Listrik</td><td>\\(W = V I t\\)</td><td>V tegangan, I arus, t waktu (s)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Daya dan kWh",
+          "html": "<p>\\[P = \\frac{W}{t}\\quad(\\text{watt} = \\text{J/s}),\\qquad 1\\ \\text{kWh} = 1.000\\ \\text{W}\\times3.600\\ \\text{s} = 3{,}6\\times10^{6}\\ \\text{J}\\]</p><p>Dimensi energi \\([M][L]^2[T]^{-2}\\); dimensi daya \\([M][L]^2[T]^{-3}\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Troli 20 kg bergerak 3 m/s. Hitung energi kinetiknya.</p>",
+          "steps": [
+            "\\(E_k = \\tfrac12(20)(3)^2\\)."
+          ],
+          "answer": "90 J"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>1,5 kg air dipanaskan dari 30 °C menjadi 90 °C. Hitung kalor yang diserap.</p>",
+          "steps": [
+            "\\(Q = 1{,}5 \\times 4.200 \\times 60\\)."
+          ],
+          "answer": "378.000 J = 378 kJ"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Mesin cuci 220 V, 1,5 A dipakai 40 menit. Hitung energinya dalam kWh.</p>",
+          "steps": [
+            "P = VI = 330 W = 0,33 kW.",
+            "t = 40 menit = 2/3 jam.",
+            "W = 0,33 × 2/3 = 0,22 kWh."
+          ],
+          "answer": "0,22 kWh"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kelapa-jatuh.html",
+          "title": "Energi kelapa jatuh",
+          "height": 520,
+          "caption": "Jatuhkan kelapa dan perhatikan diagram batang serta grafik Ek terhadap ketinggian. Apakah Em berubah?"
+        },
+        {
+          "type": "check",
+          "question": "Benda A (2 kg, ketinggian 6 m) dan benda B (3 kg, ketinggian 3 m). Perbandingan Ep A : Ep B adalah ....",
+          "options": {
+            "A": "1 : 1",
+            "B": "2 : 3",
+            "C": "4 : 3",
+            "D": "3 : 2"
+          },
+          "answer": "C",
+          "hint": "Ep = mgh.",
+          "explanation": "Ep A : Ep B = (2 × 6) : (3 × 3) = 12 : 9 = 4 : 3."
+        }
+      ]
+    },
+    {
+      "id": "konversi",
+      "title": "Konversi energi dan hukum kekekalan energi",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum kekekalan energi",
+          "html": "<p>Energi tidak dapat diciptakan dan tidak dapat dimusnahkan; energi hanya dapat berubah bentuk. Energi awal = energi akhir.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Alat/peristiwa</th><th>Perubahan energi</th></tr><tr><td>Baterai senter</td><td>kimia → listrik → cahaya + kalor</td></tr><tr><td>PLTA/PLTMH</td><td>potensial air → kinetik air → gerak turbin → listrik</td></tr><tr><td>Kincir angin</td><td>kinetik angin → gerak baling-baling → listrik</td></tr><tr><td>Sel surya</td><td>cahaya → listrik</td></tr><tr><td>Kompor biogas</td><td>kimia → kalor</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/pltmh.svg",
+          "alt": "Skema pembangkit listrik tenaga mikrohidro: bak penampung, pipa pesat, turbin, generator",
+          "width": 620,
+          "caption": "Skema sederhana PLTMH."
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/IPA/03 Usaha, Energi, dan Pesawat Sederhana/sim/energi-lintasan.html",
+          "title": "Energi pada lintasan",
+          "height": 500,
+          "caption": "Ubah gesekan. Ke mana \"hilangnya\" energi mekanik ketika ada gesekan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pompa listrik 500 W menaikkan 1.000 kg air ke tandon setinggi 20 m. Jika seluruh energi listrik menjadi energi potensial air, berapa lama pompa bekerja?</p>",
+          "steps": [
+            "Ep = mgh = 1.000 × 10 × 20 = 200.000 J.",
+            "t = W/P = 200.000/500."
+          ],
+          "answer": "400 s"
+        },
+        {
+          "type": "check",
+          "question": "Energi baterai senter yang sudah habis ....",
+          "options": {
+            "A": "musnah",
+            "B": "telah berubah menjadi cahaya dan kalor",
+            "C": "kembali ke pabrik",
+            "D": "berubah menjadi massa"
+          },
+          "answer": "B",
+          "hint": "Hukum kekekalan energi.",
+          "explanation": "Energi kimia diubah menjadi energi listrik, lalu cahaya dan kalor; energinya tidak musnah."
+        }
+      ]
+    },
+    {
+      "id": "sumber-energi",
+      "title": "Sumber energi terbarukan dan tak terbarukan",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Sumber</th><th>Jenis</th><th>Prinsip</th></tr><tr><td>Batu bara, minyak bumi, gas alam</td><td>tak terbarukan (fosil)</td><td>sisa organisme purba yang terbentuk jutaan tahun; dibakar → CO₂</td></tr><tr><td>Air</td><td>terbarukan</td><td>air dibendung lalu dijatuhkan memutar turbin</td></tr><tr><td>Angin</td><td>terbarukan</td><td>angin memutar kincir dan generator</td></tr><tr><td>Matahari</td><td>terbarukan</td><td>sel surya dari bahan semikonduktor (silikon) mengubah cahaya menjadi listrik</td></tr><tr><td>Panas bumi</td><td>terbarukan</td><td>uap panas dari perut bumi memutar turbin</td></tr><tr><td>Gelombang dan pasang surut laut</td><td>terbarukan</td><td>gerak air laut atau beda tinggi pasang–surut memutar turbin</td></tr><tr><td>Biogas</td><td>terbarukan</td><td>bakteri menguraikan limbah organik tanpa oksigen menghasilkan metana</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Sumber energi terbarukan</b> dapat digantikan oleh proses alam dalam waktu sebanding dengan pemakaiannya. <b>Sumber tak terbarukan</b> memerlukan waktu sangat lama untuk terbentuk sehingga dapat habis. Pembakaran bahan bakar fosil melepaskan CO₂ (gas rumah kaca) dan polutan, serta penambangannya dapat merusak bentang alam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Panas bumi Indonesia",
+          "html": "<p>Indonesia terletak di pertemuan tiga lempeng tektonik (Eurasia, Indo-Australia, Pasifik) dan dilalui cincin api Pasifik, sehingga memiliki banyak gunung api dan potensi panas bumi yang sangat besar di Sumatra, Jawa, Bali, Nusa Tenggara, Sulawesi, hingga Maluku.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut sel surya berupa \"lempengan logam\". Sel surya terbuat dari bahan <b>semikonduktor</b>, umumnya silikon. Data potensi panas bumi di buku juga kurang konsisten (disebut \"terbesar di dunia\" sekaligus \"urutan keempat\"); yang jelas, potensinya termasuk yang terbesar di dunia.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kelompok berikut yang seluruhnya sumber energi terbarukan adalah ....",
+          "options": {
+            "A": "batu bara, angin, matahari",
+            "B": "angin, panas bumi, pasang surut",
+            "C": "minyak bumi, gas alam, air",
+            "D": "gas alam, biogas, angin"
+          },
+          "answer": "B",
+          "hint": "Tidak ada bahan bakar fosil.",
+          "explanation": "Batu bara, minyak bumi, dan gas alam adalah bahan bakar fosil yang tak terbarukan."
+        }
+      ]
+    },
+    {
+      "id": "energi-lokal",
+      "title": "Merancang pemanfaatan energi lokal",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Setiap daerah punya potensi energi berbeda: desa berbukit dengan air terjun cocok untuk mikrohidro, daerah cerah untuk panel surya, pesisir berangin untuk kincir angin, dan peternakan untuk biogas. Untuk merancangnya, hitung energi yang dihasilkan per hari dan bandingkan dengan kebutuhan.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/rencana-energi.html",
+          "title": "Perencana energi desa",
+          "height": 560,
+          "caption": "Pilih sumber energi dan ubah parameternya. Berapa rumah yang dapat dipenuhi listriknya?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kincir angin menghasilkan 500 W selama 6 jam sehari. Baterai hanya dapat menyalurkan kembali 80% energi. Jika tiap rumah memerlukan 0,8 kWh per malam, berapa rumah yang dapat dipenuhi?</p>",
+          "steps": [
+            "Energi = 500 W × 6 h = 3.000 Wh = 3 kWh.",
+            "Yang dapat dipakai = 80% × 3 = 2,4 kWh.",
+            "2,4 ÷ 0,8 = 3."
+          ],
+          "answer": "3 rumah"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>10 ekor sapi masing-masing menghasilkan 25 kg kotoran per hari; 1 kg kotoran menghasilkan 0,04 m³ biogas. Kompor memerlukan 0,3 m³ per jam. Berapa keluarga yang dapat memasak 2 jam per hari?</p>",
+          "steps": [
+            "Biogas = 10 × 25 × 0,04 = 10 m³.",
+            "Lama kompor menyala = 10 ÷ 0,3 ≈ 33,3 jam.",
+            "Keluarga = 33,3 ÷ 2 ≈ 16,6 → 16 keluarga (dibulatkan ke bawah)."
+          ],
+          "answer": "16 keluarga"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Hemat energi",
+          "html": "<ul><li>Matikan lampu dan perangkat yang tidak dipakai.</li><li>Pilih peralatan berlabel hemat energi dan lampu LED.</li><li>Jalan kaki, bersepeda, atau naik angkutan umum.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Biogas tergolong sumber energi terbarukan karena ....",
+          "options": {
+            "A": "berasal dari minyak bumi",
+            "B": "bahan bakunya (limbah organik) terus dihasilkan oleh makhluk hidup",
+            "C": "tidak menghasilkan energi",
+            "D": "hanya ada di laut"
+          },
+          "answer": "B",
+          "hint": "Bahan baku terus tersedia.",
+          "explanation": "Kotoran ternak dan sampah organik terus dihasilkan sehingga biogas dapat terus dibuat."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Bentuk Energi, Konversi Energi dan Hukum Kekekalan Energi, Daya dan kWh, serta Sumber Energi Terbarukan dan Tak Terbarukan</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Konsep</th><th>Rumus / inti</th></tr><tr><td>Energi kinetik</td><td>\\(E_k = \\tfrac12mv^2\\)</td></tr><tr><td>Energi potensial</td><td>\\(E_p = mgh\\)</td></tr><tr><td>Kalor</td><td>\\(Q = mc\\Delta T\\)</td></tr><tr><td>Energi listrik dan daya</td><td>\\(W = VIt\\), \\(P = W/t\\), 1 kWh = 3,6 × 10⁶ J</td></tr><tr><td>Kekekalan energi</td><td>energi hanya berubah bentuk</td></tr><tr><td>Sumber energi</td><td>terbarukan (air, angin, matahari, panas bumi, laut, biogas) dan tak terbarukan (fosil)</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa mengubah menit ke jam (kWh) atau ke sekon (joule).</li><li>Menganggap energi \"habis\" atau \"hilang\".</li><li>Memakai suhu dalam °C sebagai T pada Q = mcΔT: yang dipakai selisih suhunya, dan selisih dalam °C sama dengan selisih dalam K.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMA Kelas X</i> (Kemendikbudristek), Bab 7 Energi Terbarukan.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang bentuk energi, konversi dan kekekalan energi, daya dan kWh, serta sumber energi terbarukan dan tak terbarukan. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

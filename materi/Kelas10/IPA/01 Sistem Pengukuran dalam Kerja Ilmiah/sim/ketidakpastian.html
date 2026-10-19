@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ketidakpastian Pengukuran Berulang</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}
+.vals{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.vals input{width:100%;min-width:0;padding:7px 4px;text-align:center;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:14px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 250" role="img" aria-label="Sebaran data pengukuran berulang dengan nilai rata-rata dan ketidakpastiannya"></svg></div>
+  <div class="panel">
+    <div class="seg" id="set"><button class="on" data-v="0">Bandul (s)</button><button data-v="1">Panjang (cm)</button><button data-v="2">Acak</button></div>
+    <div class="lab">Data pengukuran (ubah angkanya)</div>
+    <div class="vals" id="vals"></div>
+    <div class="row"><button class="btn" id="add">+ data</button><button class="btn" id="rem">− data</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Ketidakpastian pengukuran berulang dihitung dengan simpangan baku rata-rata: Δx = (1/N)·√[(NΣx² − (Σx)²)/(N − 1)]. Ketidakpastian relatif (KR = Δx/x̄ × 100%) menentukan banyaknya angka penting: KR ≈ 10% → 2 angka penting, ≈ 1% → 3, ≈ 0,1% → 4.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SETS = [[15.9, 15.3, 15.7, 15.5, 15.6], [12.31, 12.35, 12.28, 12.33, 12.30], null];
+let data = SETS[0].slice(), unit = 's';
+function inputs(){
+  $('vals').innerHTML = data.map((v, i) => `<input data-i="${i}" value="${String(v).replace('.', ',')}" inputmode="decimal">`).join('');
+  $('vals').querySelectorAll('input').forEach(el => el.oninput = () => { const v = parseFloat(el.value.replace(',', '.')); if(!isNaN(v)){ data[+el.dataset.i] = v; draw(); } });
+}
+document.querySelectorAll('#set button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('#set button').forEach(x => x.classList.toggle('on', x === b));
+  const k = +b.dataset.v;
+  if(k === 2){ const base = 5 + Math.random() * 20, sd = base * (.002 + Math.random() * .03); data = Array.from({length: 6}, () => Math.round((base + (Math.random() - .5) * 2 * sd) * 100) / 100); unit = 'cm'; }
+  else { data = SETS[k].slice(); unit = k === 0 ? 's' : 'cm'; }
+  inputs(); draw();
+});
+$('add').onclick = () => { if(data.length < 10){ const m = data.reduce((a, b) => a + b, 0) / data.length; data.push(Math.round(m * 100) / 100); inputs(); draw(); } };
+$('rem').onclick = () => { if(data.length > 3){ data.pop(); inputs(); draw(); } };
+// pembulatan sesuai banyak angka penting
+function roundSig(x, n){ if(!x) return 0; const p = Math.floor(Math.log10(Math.abs(x))); return Math.round(x / 10 ** (p - n + 1)) * 10 ** (p - n + 1); }
+function decOf(x, n){ const p = Math.floor(Math.log10(Math.abs(x))); return Math.max(0, n - 1 - p); }
+function draw(){
+  const N = data.length, S = data.reduce((a, b) => a + b, 0), S2 = data.reduce((a, b) => a + b * b, 0), m = S / N;
+  const dx = Math.sqrt(Math.max(0, N * S2 - S * S) / (N - 1)) / N, KR = dx / m * 100;
+  const ap = KR >= 5 ? 2 : KR >= .5 ? 3 : KR >= .05 ? 4 : 5;
+  const d = decOf(m, ap), mR = Math.round(m * 10 ** d) / 10 ** d, dxR = Math.max(Math.round(dx * 10 ** d) / 10 ** d, 10 ** -d * (dx > 0 ? 1 : 0));
+  // grafik
+  const lo = Math.min(...data, m - dx) , hi = Math.max(...data, m + dx), pad = (hi - lo) * .25 || 1, a = lo - pad, b = hi + pad;
+  const L = 30, R = 450, X = v => L + (v - a) / (b - a) * (R - L), y = 120;
+  let s = `<line x1="${L}" y1="${y}" x2="${R}" y2="${y}" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  for(let i = 0; i <= 4; i++){ const v = a + (b - a) * i / 4; s += `<line x1="${X(v)}" y1="${y}" x2="${X(v)}" y2="${y + 6}" style="stroke:var(--ink)"/><text class="s" x="${X(v)}" y="${y + 20}" text-anchor="middle" style="fill:var(--muted)">${fmt(v, 2)}</text>`; }
+  s += `<rect x="${X(m - dx)}" y="${y - 46}" width="${Math.max(2, X(m + dx) - X(m - dx))}" height="46" style="fill:var(--a)" fill-opacity=".15"/>`;
+  s += `<line x1="${X(m)}" y1="${y - 56}" x2="${X(m)}" y2="${y}" style="stroke:var(--a)" stroke-width="2.5"/><text class="c" x="${X(m)}" y="${y - 62}" text-anchor="middle" style="fill:var(--a)">x̄ = ${fmt(m, 3)}</text>`;
+  const cnt = {};
+  data.forEach(v => { const k = v.toFixed(3); cnt[k] = (cnt[k] || 0) + 1; s += `<circle cx="${X(v)}" cy="${y - 8 - (cnt[k] - 1) * 12}" r="5" style="fill:var(--b)"/>`; });
+  s += `<text class="s" x="${(X(m - dx) + X(m + dx)) / 2}" y="${y + 40}" text-anchor="middle" style="fill:var(--a)">daerah x̄ ± Δx</text>`;
+  s += `<rect x="20" y="186" width="440" height="52" rx="8" style="fill:var(--surface-2)"/><text class="c" x="34" y="206" style="fill:var(--ink)">N = ${N}, Σx = ${(+S.toFixed(3)).toString().replace(".", ",")}, Σx² = ${(+S2.toFixed(4)).toString().replace(".", ",")}</text><text class="c" x="34" y="226" style="fill:var(--b)">Hasil: (${mR.toFixed(d).replace(".", ",")} ± ${dxR.toFixed(d).replace(".", ",")}) ${unit}</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Rata-rata x̄</span><b>${fmt(m, 4)} ${unit}</b></div><div><span>Ketidakpastian Δx</span><b>${fmt(dx, 4)} ${unit}</b></div><div><span>Ketidakpastian relatif</span><b>${fmt(KR, 2)}% → ${ap} angka penting</b></div>`;
+}
+inputs(); draw();
+</script>
+</body>
+</html>

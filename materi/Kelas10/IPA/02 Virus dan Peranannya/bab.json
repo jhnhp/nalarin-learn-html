@@ -1,56 +1,223 @@
 {
   "title": "Virus dan Peranannya",
-  "summary": "Ringkasan bab Virus dan Peranannya akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Struktur dan bentuk virus, replikasi melalui siklus litik dan lisogenik, peranan virus yang merugikan dan menguntungkan, serta cara mencegah penyebarannya termasuk vaksin dan efikasinya.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Virus dan Peranannya",
+      "id": "struktur",
+      "title": "Apa itu virus?",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Virus berukuran sangat kecil, sekitar <b>20–400 nm</b>, sehingga hanya dapat diamati dengan <b>mikroskop elektron</b>, yang memakai berkas elektron (bukan cahaya) untuk menghasilkan gambar beresolusi tinggi. Partikel virus lengkap disebut <b>virion</b>.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Bagian</th><th>Keterangan</th></tr><tr><td>Asam nukleat</td><td>DNA <i>atau</i> RNA (tidak keduanya); berisi informasi untuk membuat virus baru. Dasar penggolongan virus DNA dan virus RNA.</td></tr><tr><td>Kapsid</td><td>selubung protein pelindung, tersusun atas subunit identik yang disebut <b>kapsomer</b></td></tr><tr><td>Amplop (pada sebagian virus)</td><td>membran lipoprotein yang berasal dari membran sel inang; pada koronavirus terdapat tonjolan protein seperti paku (spike)</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/bentuk-virus.svg",
+          "alt": "Empat bentuk virus: heliks, polihedral, berselubung, dan kompleks",
+          "width": 600,
+          "caption": "Bentuk-bentuk virus beserta contohnya."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Apakah virus makhluk hidup?",
+          "html": "<p>Sel minimal memiliki membran sel, sitoplasma, asam nukleat, dan ribosom. Virus hanya memiliki asam nukleat dan kapsid, sehingga <b>bukan sel</b>. Satu-satunya ciri makhluk hidup yang dimilikinya adalah dapat <b>bereproduksi</b>, itu pun hanya di dalam sel inang. Di luar sel inang, virus tidak melakukan metabolisme.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Lapisan protein yang membungkus asam nukleat virus disebut ....",
+          "options": {
+            "A": "amplop",
+            "B": "kapsid",
+            "C": "membran sel",
+            "D": "dinding sel"
+          },
+          "answer": "B",
+          "hint": "Tersusun atas kapsomer.",
+          "explanation": "Kapsid adalah selubung protein; amplop adalah lapisan lipid tambahan pada sebagian virus."
+        },
+        {
+          "type": "check",
+          "question": "Virus tidak dapat diamati dengan mikroskop cahaya di sekolah karena ....",
+          "options": {
+            "A": "virus tembus cahaya",
+            "B": "ukurannya sangat kecil, sekitar 20–400 nm",
+            "C": "virus selalu bergerak",
+            "D": "virus hanya ada di dalam sel"
+          },
+          "answer": "B",
+          "hint": "Bandingkan dengan batas mikroskop cahaya (±200 nm).",
+          "explanation": "Sebagian besar virus lebih kecil dari batas daya pisah mikroskop cahaya."
+        }
+      ]
+    },
+    {
+      "id": "replikasi",
+      "title": "Replikasi virus: siklus litik dan lisogenik",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Virus menginfeksi sel jika protein di permukaannya <b>cocok dengan reseptor</b> pada membran sel inang. Karena itu setiap virus punya inang tertentu: virus mosaik tembakau menginfeksi tembakau tetapi tidak menginfeksi manusia.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/replikasi.html",
+          "title": "Siklus litik dan lisogenik",
+          "height": 480,
+          "caption": "Ikuti kelima tahap siklus litik, lalu bandingkan dengan siklus lisogenik."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th></th><th>Siklus litik</th><th>Siklus lisogenik</th></tr><tr><td>Tahap</td><td>pelekatan → penetrasi → sintesis → perakitan → lisis</td><td>pelekatan → penetrasi → penggabungan (profag) → pembelahan sel inang → dapat beralih ke litik</td></tr><tr><td>Nasib sel inang</td><td>pecah (lisis) dan mati</td><td>tetap hidup dan membelah sambil membawa DNA virus</td></tr><tr><td>Kecepatan</td><td>cepat menghasilkan banyak virus</td><td>virus \"tidur\" dalam waktu lama</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut virus memilih siklus litik jika sel inang lemah dan lisogenik jika sel inang kuat. Sebenarnya, kemampuan menjalani siklus lisogenik bergantung pada <b>jenis virusnya</b> (hanya virus tertentu, misalnya fag lambda, yang dapat menjadi profag) dan pada kondisi sel inang serta lingkungannya.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Urutan tahap siklus litik yang benar adalah ....",
+          "options": {
+            "A": "penetrasi – pelekatan – perakitan – sintesis – lisis",
+            "B": "pelekatan – penetrasi – sintesis – perakitan – lisis",
+            "C": "pelekatan – sintesis – penetrasi – lisis – perakitan",
+            "D": "sintesis – pelekatan – penetrasi – perakitan – lisis"
+          },
+          "answer": "B",
+          "hint": "Virus harus melekat dulu.",
+          "explanation": "Melekat, menyuntikkan asam nukleat, membuat komponen, merakit, lalu sel pecah."
+        }
+      ]
+    },
+    {
+      "id": "peranan",
+      "title": "Peranan virus",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Inang</th><th>Penyakit</th><th>Virus</th></tr><tr><td rowspan=\"5\">Manusia</td><td>demam berdarah dengue (DBD)</td><td>virus dengue, ditularkan nyamuk <i>Aedes aegypti</i></td></tr><tr><td>AIDS</td><td>HIV</td></tr><tr><td>polio</td><td>poliovirus</td></tr><tr><td>Covid-19</td><td>SARS-CoV-2 (koronavirus)</td></tr><tr><td>herpes, hepatitis, cacar, influenza</td><td>berbagai virus</td></tr><tr><td rowspan=\"2\">Hewan</td><td>rabies</td><td>rhabdovirus</td></tr><tr><td>tetelo (ND) pada unggas</td><td>Newcastle disease virus</td></tr><tr><td rowspan=\"2\">Tumbuhan</td><td>mosaik tembakau</td><td>TMV</td></tr><tr><td>tungro pada padi</td><td>virus tungro, ditularkan wereng hijau</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Virus juga <b>bermanfaat</b>:</p><ul><li><b>Vaksin</b>: virus yang dilemahkan atau diinaktifkan memicu kekebalan.</li><li><b>Terapi gen</b>: virus yang tidak berbahaya dipakai sebagai vektor untuk mengantarkan gen sehat ke sel.</li><li><b>Virus onkolitik</b>: menginfeksi dan menghancurkan sel kanker tanpa merusak sel sehat.</li><li><b>Biopestisida</b>: baculovirus menyerang serangga hama.</li><li><b>Terapi fag</b>: bakteriofag untuk membunuh bakteri patogen.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menyebut insulin dibuat dengan mencangkokkan virus penyebab kanker ke bakteri. Yang sebenarnya dilakukan: <b>gen insulin manusia</b> disisipkan ke <b>plasmid</b> bakteri <i>E. coli</i> (DNA rekombinan), lalu bakteri memproduksi insulin. Virus dapat menjadi vektor pada rekayasa genetika lain, tetapi bukan virus penyebab kanker.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pemanfaatan virus berikut yang tepat adalah ....",
+          "options": {
+            "A": "baculovirus sebagai biopestisida",
+            "B": "HIV sebagai vaksin influenza",
+            "C": "TMV untuk membuat tempe",
+            "D": "virus dengue untuk pupuk"
+          },
+          "answer": "A",
+          "hint": "Baculovirus menyerang serangga.",
+          "explanation": "Baculovirus menginfeksi serangga hama sehingga dipakai sebagai pengendali hayati."
+        }
+      ]
+    },
+    {
+      "id": "pencegahan",
+      "title": "Mencegah penyebaran virus",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Cara</th><th>Contoh</th><th>Prinsip</th></tr><tr><td>Fisik</td><td>masker, menjaga jarak, tidak menyentuh wajah</td><td>menghalangi droplet yang membawa virus</td></tr><tr><td>Kimia</td><td>mencuci tangan dengan sabun, hand sanitizer beralkohol ±70%</td><td>molekul sabun (amfifilik) mirip lipid sehingga merusak amplop virus dan melepaskannya dari kulit</td></tr><tr><td>Biologis</td><td>vaksinasi, gizi seimbang, istirahat cukup</td><td>membentuk dan memperkuat kekebalan tubuh</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Vaksin</b> merangsang sistem imun membentuk antibodi dan sel memori. Saat terpapar virus yang sama, tubuh segera membentuk antibodi sehingga infeksi cepat diatasi.</p><ul><li><i>Attenuated whole-agent vaccine</i>: patogen hidup yang dilemahkan.</li><li><i>Inactivated whole-agent vaccine</i>: patogen yang dimatikan/dihancurkan kemampuan infeksinya tetapi masih merangsang antibodi.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Efikasi vaksin",
+          "html": "<p>\\[\\text{efikasi} = \\frac{p_{\\text{plasebo}} - p_{\\text{vaksin}}}{p_{\\text{plasebo}}}\\times100\\%\\]</p><p>p adalah persentase peserta yang sakit pada masing-masing kelompok.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/uji-vaksin.html",
+          "title": "Uji klinis vaksin",
+          "height": 560,
+          "caption": "Jalankan uji beberapa kali. Mengapa hasilnya berbeda-beda? Bandingkan uji dengan 100 orang dan 2.000 orang per kelompok."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>1.000 orang menerima vaksin dan 1.000 orang menerima plasebo. Yang sakit: 12 orang (vaksin) dan 60 orang (plasebo). Hitung efikasinya.</p>",
+          "steps": [
+            "\\(p_v = 1{,}2\\%\\), \\(p_p = 6{,}0\\%\\).",
+            "Efikasi \\(= \\dfrac{6{,}0 - 1{,}2}{6{,}0}\\times100\\%\\)."
+          ],
+          "answer": "80%"
+        },
+        {
+          "type": "h",
+          "text": "Pengobatan"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Antivirus</b> menghambat perbanyakan virus; misalnya <b>acyclovir</b> menghambat sintesis DNA virus herpes simpleks di dalam sel inang. Antibiotik <b>tidak</b> mempan untuk virus. Pada <b>terapi plasma</b>, pasien diberi plasma darah dari penyintas yang mengandung antibodi siap pakai (kekebalan pasif), berbeda dengan vaksin yang merangsang tubuh membuat antibodi sendiri (kekebalan aktif).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Seseorang yang sudah divaksin dapat mengatasi infeksi virus yang sama lebih cepat karena ....",
+          "options": {
+            "A": "vaksin membunuh semua virus di udara",
+            "B": "sistem imun telah mengingat virus tersebut sehingga antibodi cepat dibentuk",
+            "C": "vaksin berisi antibiotik",
+            "D": "virus tidak dapat masuk ke tubuh sama sekali"
+          },
+          "answer": "B",
+          "hint": "Sel memori.",
+          "explanation": "Vaksin membentuk sel memori yang mempercepat respons imun saat infeksi sungguhan."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Struktur dan Bentuk Virus, Replikasi Virus, Peranan Virus, dan Pencegahan Penyebaran Virus</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Struktur</td><td>asam nukleat (DNA/RNA) + kapsid (kapsomer), sebagian beramplop; 20–400 nm</td></tr><tr><td>Bentuk</td><td>heliks (TMV), polihedral (adenovirus), berselubung (influenza), kompleks (bakteriofag)</td></tr><tr><td>Replikasi</td><td>litik (sel pecah) dan lisogenik (profag ikut membelah)</td></tr><tr><td>Peranan</td><td>penyakit pada manusia, hewan, tumbuhan; vaksin, terapi gen, onkolitik, biopestisida</td></tr><tr><td>Pencegahan</td><td>fisik, kimia, biologis; efikasi vaksin</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyebut virus sebagai sel kecil.</li><li>Mengobati infeksi virus dengan antibiotik.</li><li>Menyamakan kapsid dengan amplop.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMA Kelas X</i> (Kemendikbudristek), Bab 2 Virus dan Peranannya.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang struktur dan bentuk virus, replikasi, peranan virus, serta pencegahan penyebarannya. Setiap soal dilengkapi pembahasan."
         }
       ]
     }
