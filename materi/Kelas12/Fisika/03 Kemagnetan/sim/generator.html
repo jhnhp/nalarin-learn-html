@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generator AC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Kumparan berputar di antara kutub magnet dan grafik GGL terhadap waktu"></svg></div>
+  <div class="panel">
+    <div class="lab">Jumlah lilitan N <b id="nv"></b></div><input type="range" id="n" min="10" max="300" step="10" value="80">
+    <div class="lab">Luas kumparan A <b id="av"></b></div><input type="range" id="a" min="0.005" max="0.05" step="0.005" value="0.02">
+    <div class="lab">Medan magnet B <b id="bv"></b></div><input type="range" id="b" min="0.05" max="0.5" step="0.05" value="0.2">
+    <div class="lab">Kecepatan putar <b id="fv"></b></div><input type="range" id="f" min="60" max="3000" step="60" value="900">
+    <div class="read" id="read"></div>
+    <p class="note">Fluks Φ = BA cos ωt berubah terus saat kumparan berputar, sehingga timbul GGL ε = NBAω sin ωt (hukum Faraday). GGL maksimum saat bidang kumparan sejajar garis medan (fluks nol, perubahannya paling cepat).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let ph = 0;
+function draw(){
+  const N = +$('n').value, A = +$('a').value, B = +$('b').value, rpm = +$('f').value;
+  $('nv').textContent = N; $('av').textContent = fmt(A, 3) + ' m²'; $('bv').textContent = fmt(B, 2) + ' T'; $('fv').textContent = rpm + ' rpm';
+  const f = rpm / 60, w = 2 * Math.PI * f, em = N * B * A * w;
+  let s = `<rect x="20" y="40" width="50" height="120" rx="6" fill="#e53935"/><text class="c" x="45" y="105" text-anchor="middle" fill="#fff">U</text><rect x="250" y="40" width="50" height="120" rx="6" fill="#1e88e5"/><text class="c" x="275" y="105" text-anchor="middle" fill="#fff">S</text>`;
+  for(let y = 55; y <= 145; y += 18) s += `<line x1="72" y1="${y}" x2="248" y2="${y}" stroke="#bdbdbd" stroke-dasharray="4 4"/>`;
+  const cx = 160, cy = 100, wdt = 70 * Math.abs(Math.cos(ph)), hgt = 55;
+  s += `<rect x="${cx - wdt}" y="${cy - hgt}" width="${2 * wdt}" height="${2 * hgt}" fill="#ffb74d" fill-opacity=".25" stroke="#e65100" stroke-width="4"/><line x1="${cx}" y1="${cy - hgt - 15}" x2="${cx}" y2="${cy + hgt + 15}" stroke="#555" stroke-dasharray="3 3"/>`;
+  s += `<text class="s" x="160" y="190" text-anchor="middle" style="fill:var(--muted)">sudut kumparan ${fmt(((ph * 180 / Math.PI) % 360 + 360) % 360, 0)}°</text>`;
+  // grafik GGL dan fluks terhadap fase
+  const gx = 30, gy = 260, gw = 430, gh = 45;
+  s += `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" style="stroke:var(--ink)"/><text class="s" x="${gx}" y="${gy - gh - 8}" style="fill:var(--muted)">merah: GGL ε (maks ${fmt(em, 1)} V); biru: fluks Φ (dua putaran)</text>`;
+  let pe = '', pf = '';
+  for(let i = 0; i <= 200; i++){ const t = 4 * Math.PI * i / 200, x = gx + gw * i / 200; pe += (i ? 'L' : 'M') + x.toFixed(1) + ',' + (gy - gh * Math.sin(t)).toFixed(1); pf += (i ? 'L' : 'M') + x.toFixed(1) + ',' + (gy - gh * .7 * Math.cos(t)).toFixed(1); }
+  s += `<path d="${pf}" fill="none" stroke="#1e88e5" stroke-width="2" stroke-dasharray="5 4"/><path d="${pe}" fill="none" stroke="#e53935" stroke-width="2.5"/>`;
+  const xc = gx + gw * ((ph % (4 * Math.PI)) + 4 * Math.PI) % (4 * Math.PI) / (4 * Math.PI);
+  s += `<line x1="${xc}" y1="${gy - gh - 4}" x2="${xc}" y2="${gy + gh + 4}" stroke="#000"/>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Frekuensi f / laju sudut ω</span><b>${fmt(f, 1)} Hz / ${fmt(w, 1)} rad/s</b></div><div><span>GGL maksimum ε<sub>m</sub> = NBAω</span><b>${fmt(em, 2)} V</b></div><div><span>GGL sesaat</span><b>${fmt(em * Math.sin(ph), 2)} V</b></div><div><span>GGL efektif ε<sub>m</sub>/√2</span><b>${fmt(em / Math.SQRT2, 2)} V</b></div>`;
+}
+['n', 'a', 'b', 'f'].forEach(i => $(i).oninput = draw);
+setInterval(() => { ph += 0.05 + 0.08 * (+$('f').value / 3000); draw(); }, 50);
+draw();
+</script>
+</body>
+</html>

@@ -1,56 +1,340 @@
 {
   "title": "Listrik Arus Searah",
-  "summary": "Ringkasan bab Listrik Arus Searah akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Arus listrik dan alat ukur, hukum Ohm (komponen ohmik dan non-ohmik), hambatan jenis dan pengaruh suhu, rangkaian seri-paralel, hukum Kirchhoff pada rangkaian dua loop, serta energi dan daya listrik.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Listrik Arus Searah",
+      "id": "arus",
+      "title": "Arus listrik dan alat ukur",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Arus Listrik, Hukum Ohm, Hambatan Jenis, Hukum Kirchhoff, dan Daya Listrik</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Beda potensial baterai membuat elektron bebas dalam kawat bergerak dari kutub negatif ke kutub positif (di luar baterai). Menurut kesepakatan, <b>arah arus listrik (arus konvensional)</b> berlawanan dengan arah elektron: dari kutub positif ke kutub negatif melalui rangkaian luar. Arus hanya mengalir dalam rangkaian tertutup.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Kuat arus",
+          "html": "<p>\\[I = \\frac{Q}{t} = \\frac{n e}{t}\\]</p><p>Satuan ampere (A) = coulomb per sekon; \\(e = 1{,}6\\times10^{-19}\\) C. Kapasitas baterai sering ditulis dalam mAh: 1 mAh = 10⁻³ A × 3.600 s = 3,6 C.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Arus 0,5 A mengalir selama 2 menit. Berapa muatan dan berapa elektron yang lewat?</p>",
+          "steps": [
+            "Q = It = 0,5 × 120 = 60 C.",
+            "n = Q/e = 60 / 1,6 × 10⁻¹⁹."
+          ],
+          "answer": "60 C; 3,75 × 10²⁰ elektron"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Amperemeter</b> dipasang <b>seri</b> dengan komponen (hambatan dalamnya sangat kecil); <b>voltmeter</b> dipasang <b>paralel</b> (hambatan dalamnya sangat besar). Pada alat ukur analog:</p><p style='text-align:center'>nilai terukur = (skala yang ditunjuk jarum ÷ skala maksimum) × batas ukur</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Jarum amperemeter menunjuk angka 36 pada skala 0–50, dengan batas ukur 5 A. Berapa arus yang terukur?</p>",
+          "steps": [
+            "36/50 × 5 A."
+          ],
+          "answer": "3,6 A"
+        },
+        {
+          "type": "check",
+          "question": "Arah arus listrik konvensional pada kabel di luar baterai adalah ....",
+          "options": {
+            "A": "dari kutub negatif ke kutub positif",
+            "B": "dari kutub positif ke kutub negatif",
+            "C": "searah gerak elektron",
+            "D": "bolak-balik"
+          },
+          "answer": "B",
+          "hint": "Berlawanan dengan arah elektron.",
+          "explanation": "Elektron bergerak dari − ke +, arus konvensional dari + ke −."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "hukum-ohm",
+      "title": "Hukum Ohm: hambatan ohmik dan non-ohmik",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Ohm",
+          "html": "<p>\\[V = IR\\]</p><p>Komponen <b>ohmik</b> (resistor, kawat logam pada suhu tetap) memiliki grafik V–I lurus melalui titik asal: R tetap. Komponen <b>non-ohmik</b> (lampu filamen, dioda/LED, termistor) grafiknya tidak lurus.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/karakteristik-iv.html",
+          "title": "Karakteristik tegangan–arus",
+          "height": 520,
+          "caption": "Bandingkan bentuk grafik keempat komponen. Pada LED, berapa kira-kira tegangan ambangnya? Pada termistor, bagaimana grafik berubah bila suhu dinaikkan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>LED menyala normal pada 2,0 V dan 20 mA. LED akan dipasang pada sumber 5 V. Berapa hambatan resistor seri yang diperlukan?</p>",
+          "steps": [
+            "Tegangan pada resistor = 5 − 2,0 = 3,0 V.",
+            "Arusnya sama dengan arus LED: 0,020 A.",
+            "R = 3,0 / 0,020."
+          ],
+          "answer": "150 Ω"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Mengapa LED perlu resistor?",
+          "html": "<p>Di atas tegangan ambang, arus LED naik sangat tajam walau tegangan bertambah sedikit. Tanpa resistor pembatas, arus akan terlalu besar dan LED rusak.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Grafik V–I sebuah komponen berupa garis lurus melalui titik asal. Artinya ....",
+          "options": {
+            "A": "hambatannya naik bila arus naik",
+            "B": "hambatannya tetap (ohmik)",
+            "C": "komponen itu dioda",
+            "D": "hambatannya nol"
+          },
+          "answer": "B",
+          "hint": "Kemiringan tetap.",
+          "explanation": "Garis lurus melalui titik asal berarti V/I konstan: komponen ohmik."
+        }
+      ]
+    },
+    {
+      "id": "hambatan-jenis",
+      "title": "Hambatan jenis dan pengaruh suhu",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hambatan kawat",
+          "html": "<p>\\[R = \\rho\\frac{L}{A} \\qquad R_T = R_0(1 + \\alpha\\,\\Delta T)\\]</p><p>ρ = hambatan jenis (Ω m), L = panjang (m), A = luas penampang (m²), α = koefisien suhu (/°C). Logam: hambatan naik bila suhu naik. Semikonduktor (termistor NTC): hambatan turun bila suhu naik.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/hambatan-kawat.html",
+          "title": "Hambatan kawat",
+          "height": 500,
+          "caption": "Gandakan panjang kawat, lalu gandakan diameternya. Mana yang lebih besar pengaruhnya? Bandingkan tembaga dan nikrom untuk kabel dan pemanas."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kawat aluminium (ρ = 2,8 × 10⁻⁸ Ω m) panjang 100 m dan diameter 2 mm. Hitung hambatannya.</p>",
+          "steps": [
+            "A = π(1 × 10⁻³)² ≈ 3,14 × 10⁻⁶ m².",
+            "R = 2,8 × 10⁻⁸ × 100 / 3,14 × 10⁻⁶."
+          ],
+          "answer": "≈ 0,89 Ω"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Filamen tungsten berhambatan 20 Ω pada 20 °C (α = 0,0045 /°C). Berapa hambatannya pada 220 °C?</p>",
+          "steps": [
+            "ΔT = 200 °C.",
+            "R = 20(1 + 0,0045 × 200) = 20 × 1,9."
+          ],
+          "answer": "38 Ω"
+        },
+        {
+          "type": "text",
+          "html": "<p>Kabel listrik memakai tembaga atau aluminium (ρ kecil) yang tebal agar hambatan dan panas yang timbul kecil. Elemen pemanas memakai nikrom (ρ besar, tahan panas). Sekring memakai kawat tipis bertitik lebur rendah yang putus bila arus berlebih. Konsep hambatan jenis juga dipakai pada alat medis seperti pletismograf yang mengukur perubahan volume darah di betis.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Seutas kawat dipotong menjadi dua sama panjang. Hambatan tiap potongan menjadi ....",
+          "options": {
+            "A": "dua kali",
+            "B": "setengah kali",
+            "C": "sama",
+            "D": "seperempat kali"
+          },
+          "answer": "B",
+          "hint": "R sebanding L.",
+          "explanation": "Panjang menjadi setengah, A dan ρ tetap, jadi R menjadi setengah."
+        }
+      ]
+    },
+    {
+      "id": "seri-paralel",
+      "title": "Rangkaian resistor seri dan paralel",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<table><tr><th></th><th>Seri</th><th>Paralel</th></tr><tr><td>Arus</td><td>sama di semua resistor</td><td>terbagi: \\(I = I_1 + I_2 + \\dots\\)</td></tr><tr><td>Tegangan</td><td>terbagi: \\(V = V_1 + V_2 + \\dots\\)</td><td>sama di semua cabang</td></tr><tr><td>Hambatan pengganti</td><td>\\(R_s = R_1 + R_2 + \\dots\\)</td><td>\\(\\dfrac{1}{R_p} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2} + \\dots\\)</td></tr><tr><td>Jika satu putus</td><td>semua padam</td><td>yang lain tetap menyala</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/IPA/05 Listrik, Magnet, dan Energi Alternatif/sim/rangkaian.html",
+          "title": "Rangkaian seri dan paralel",
+          "height": 520,
+          "caption": "Bandingkan arus total dan nyala lampu pada susunan seri dan paralel dengan resistor yang sama."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Resistor 3 Ω dan 6 Ω disusun paralel, lalu diseri dengan 4 Ω dan dihubungkan ke baterai ideal 12 V. Tentukan arus total dan arus pada resistor 3 Ω.</p>",
+          "steps": [
+            "Rp = (3 × 6)/(3 + 6) = 2 Ω; R total = 6 Ω.",
+            "I = 12/6 = 2 A; tegangan paralel = 2 × 2 = 4 V.",
+            "I(3 Ω) = 4/3 A."
+          ],
+          "answer": "2 A; ≈ 1,33 A"
+        },
+        {
+          "type": "text",
+          "html": "<p>Lampu, radio, dan AC pada mobil dirangkai <b>paralel</b> terhadap aki sehingga masing-masing mendapat tegangan penuh 12 V dan tetap menyala bila komponen lain mati. Rangka badan mobil dipakai sebagai salah satu penghantar (sistem pentanahan) untuk menghemat kabel.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Hambatan pengganti dua resistor 10 Ω yang disusun paralel adalah ....",
+          "options": {
+            "A": "20 Ω",
+            "B": "10 Ω",
+            "C": "5 Ω",
+            "D": "2,5 Ω"
+          },
+          "answer": "C",
+          "hint": "Dua resistor sama besar paralel.",
+          "explanation": "1/Rp = 1/10 + 1/10 = 2/10, Rp = 5 Ω."
+        }
+      ]
+    },
+    {
+      "id": "kirchhoff",
+      "title": "Hukum Kirchhoff",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Dua hukum Kirchhoff",
+          "html": "<ul><li><b>Hukum I</b> (kekekalan muatan): pada titik cabang, \\(\\Sigma I_\\text{masuk} = \\Sigma I_\\text{keluar}\\).</li><li><b>Hukum II</b> (kekekalan energi): dalam satu loop tertutup, \\(\\Sigma \\varepsilon + \\Sigma IR = 0\\).</li></ul><p>Perjanjian tanda: tentukan arah loop. Arus yang searah loop bernilai positif (IR positif). Bila loop lebih dulu bertemu kutub positif sumber, ε bertanda positif; bila bertemu kutub negatif, ε negatif. Arus yang hasilnya negatif berarti arah sebenarnya berlawanan dengan yang dimisalkan.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kirchhoff.html",
+          "title": "Rangkaian dua loop",
+          "height": 560,
+          "caption": "Atur ε₂ lebih besar dari ε₁: arah arus mana yang berbalik? Cari nilai ε₂ yang membuat arus di cabang ε₂ nol."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pada rangkaian seperti simulasi, ε₁ = 12 V, R₁ = 2 Ω, ε₂ = 3 V, R₂ = 2 Ω, dan R₃ = 2 Ω (kutub positif kedua baterai di atas). Tentukan arus pada tiap cabang.</p>",
+          "steps": [
+            "Misalkan potensial titik atas V (titik bawah 0 V). Hukum I: (12 − V)/2 + (3 − V)/2 = V/2.",
+            "15 − 2V = V → V = 5 V.",
+            "I₁ = (12 − 5)/2 = 3,5 A ke atas; I₂ = (3 − 5)/2 = −1 A (berarti 1 A ke bawah: baterai ε₂ diisi); I₃ = 5/2 = 2,5 A.",
+            "Cek: 3,5 + (−1) = 2,5 ✓."
+          ],
+          "answer": "I₁ = 3,5 A; I₂ = 1 A (mengisi ε₂); I₃ = 2,5 A"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Pada contoh kelistrikan mobil, buku menghitung I<sub>A</sub> = 19,1 A lalu menyebutnya “arus yang mengalir melalui akumulator”. I<sub>A</sub> adalah arus pada <b>alternator</b> (dinamo). Arus pada aki adalah I<sub>B</sub> ≈ −9 A, artinya aki sedang diisi oleh alternator, dan arus lampu I<sub>C</sub> = I<sub>A</sub> + I<sub>B</sub> ≈ 10,1 A.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada suatu titik cabang, arus masuk 5 A dan 3 A, sedangkan arus keluar 6 A dan I. Besar I adalah ....",
+          "options": {
+            "A": "1 A",
+            "B": "2 A",
+            "C": "8 A",
+            "D": "14 A"
+          },
+          "answer": "B",
+          "hint": "Masuk = keluar.",
+          "explanation": "5 + 3 = 6 + I, jadi I = 2 A."
+        }
+      ]
+    },
+    {
+      "id": "daya",
+      "title": "Energi dan daya listrik",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Daya dan energi",
+          "html": "<p>\\[P = VI = I^2R = \\frac{V^2}{R} \\qquad W = Pt\\]</p><p>Daya dalam watt (W), energi dalam joule; di rumah energi dihitung dalam <b>kWh</b> (1 kWh = 3,6 × 10⁶ J). Alat bertuliskan 220 V/P watt yang dipakai pada tegangan lain V′ (hambatannya dianggap tetap) berdaya \\(P' = (V'/V)^2P\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Ketel listrik bertuliskan 220 V/1.100 W. Tentukan arus dan hambatannya saat dipakai normal, serta dayanya bila dipasang pada 110 V.</p>",
+          "steps": [
+            "I = P/V = 1.100/220 = 5 A; R = V/I = 44 Ω.",
+            "P′ = (110/220)² × 1.100 = ¼ × 1.100."
+          ],
+          "answer": "5 A; 44 Ω; 275 W"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah rumah menyalakan 5 lampu 15 W selama 10 jam setiap hari. Berapa energi selama 30 hari dan biayanya jika tarif Rp1.444 per kWh?</p>",
+          "steps": [
+            "P = 75 W = 0,075 kW; W = 0,075 × 10 × 30 = 22,5 kWh.",
+            "Biaya = 22,5 × 1.444."
+          ],
+          "answer": "22,5 kWh; Rp32.490"
+        },
+        {
+          "type": "text",
+          "html": "<p>Sekring dan MCB memutus arus bila arus melebihi batas aman, misalnya karena terlalu banyak alat dipasang paralel atau terjadi korsleting, sehingga mencegah kabel terlalu panas dan kebakaran. Banyaknya alat yang boleh dipasang: \\(n \\le \\dfrac{I_\\text{sekring}\\cdot V}{P_\\text{alat}}\\).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Energi yang dipakai alat 500 W selama 2 jam adalah ....",
+          "options": {
+            "A": "0,25 kWh",
+            "B": "1 kWh",
+            "C": "250 kWh",
+            "D": "1.000 kWh"
+          },
+          "answer": "B",
+          "hint": "kW × jam.",
+          "explanation": "0,5 kW × 2 jam = 1 kWh."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memasang amperemeter paralel atau voltmeter seri.</li><li>Lupa mengubah mm² ke m² (1 mm² = 10⁻⁶ m²) saat menghitung hambatan kawat.</li><li>Tanda ε dan IR tertukar pada hukum II Kirchhoff; tetapkan arah loop dan konsisten.</li><li>Mengira daya alat selalu sama dengan yang tertulis walau tegangannya berbeda.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 2 Listrik Arus Searah.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang arus listrik, hukum Ohm, hambatan jenis, hukum Kirchhoff, dan daya listrik. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

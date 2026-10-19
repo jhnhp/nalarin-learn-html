@@ -1,56 +1,358 @@
 {
   "title": "Listrik Statis",
-  "summary": "Ringkasan bab Listrik Statis akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Muatan dan hukum Coulomb, medan listrik, energi potensial dan potensial listrik, gerak muatan dalam medan (printer inkjet, Millikan), kapasitor keping sejajar, serta rangkaian kapasitor.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Listrik Statis",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "gaya-coulomb",
+      "title": "Muatan listrik dan hukum Coulomb",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Gaya Listrik, Medan Listrik, Potensial Listrik, dan Kapasitor</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Benda menjadi bermuatan karena perpindahan <b>elektron</b>. Penggaris plastik yang digosok kain wol menerima elektron sehingga bermuatan negatif; kaca yang digosok kain sutra melepas elektron sehingga bermuatan positif (kesepakatan Benjamin Franklin). Muatan selalu kelipatan bulat muatan elementer \\(e = 1{,}6\\times10^{-19}\\) C. Muatan sejenis tolak-menolak; muatan berlainan jenis tarik-menarik.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Hukum Coulomb",
+          "html": "<p>\\[F = k\\frac{q_1 q_2}{r^2} \\qquad k = \\frac{1}{4\\pi\\varepsilon} \\qquad \\varepsilon = \\varepsilon_r\\varepsilon_0\\]</p><p>Di udara/vakum \\(k = 9\\times10^9\\) N m²/C² dan \\(\\varepsilon_0 = 8{,}85\\times10^{-12}\\) C²/(N m²). Di medium berkonstanta dielektrik \\(\\varepsilon_r\\), gayanya menjadi \\(1/\\varepsilon_r\\) kali gaya di udara.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/IPA/05 Listrik, Magnet, dan Energi Alternatif/sim/coulomb.html",
+          "title": "Gaya Coulomb antara dua muatan",
+          "height": 480,
+          "caption": "Jadikan jarak dua kali semula: gaya menjadi berapa kali? Lalu jadikan salah satu muatan negatif."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Muatan +3 μC dan −2 μC terpisah 30 cm di udara. Tentukan besar dan jenis gayanya. Berapa gayanya jika keduanya berada dalam zat cair dengan εr = 4?</p>",
+          "steps": [
+            "\\(F = 9\\times10^9 \\cdot \\dfrac{3\\times10^{-6}\\cdot 2\\times10^{-6}}{0{,}3^2} = 0{,}6\\) N, tarik-menarik.",
+            "Dalam zat cair: 0,6/4 = 0,15 N."
+          ],
+          "answer": "0,6 N tarik-menarik; 0,15 N"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Resultan gaya",
+          "html": "<p>Gaya adalah vektor. Jika dua gaya membentuk sudut α: \\(F_R = \\sqrt{F_1^2 + F_2^2 + 2F_1F_2\\cos\\alpha}\\). Untuk gaya segaris cukup dijumlahkan dengan memperhatikan arah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Muatan A (+4 μC) di x = 0, B (+1 μC) di x = 20 cm, dan C (−2 μC) di x = 50 cm. Tentukan gaya total pada B.</p>",
+          "steps": [
+            "Dari A: \\(F = 9\\times10^9\\cdot\\dfrac{4\\times10^{-6}\\cdot10^{-6}}{0{,}2^2} = 0{,}9\\) N ke kanan (tolak).",
+            "Dari C: \\(F = 9\\times10^9\\cdot\\dfrac{10^{-6}\\cdot 2\\times10^{-6}}{0{,}3^2} = 0{,}2\\) N ke kanan (tarik menuju C).",
+            "Searah: 0,9 + 0,2."
+          ],
+          "answer": "1,1 N ke kanan"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Rangkuman buku menulis “gaya listrik antarmuatan sejenis tarik-menarik, antarmuatan tidak sejenis tolak-menolak”. Yang benar sebaliknya: muatan <b>sejenis tolak-menolak</b>, muatan <b>berlainan jenis tarik-menarik</b>. Rangkuman juga menulis e = 1,6 × 10¹⁹ C; seharusnya \\(1{,}6\\times10^{-19}\\) C. Selain itu, tahun hidup Jean-Antoine Nollet tertulis “19700–1977”; Nollet hidup 1700–1770 dan meneliti efek listrik pada aliran zat cair sekitar tahun 1749.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Jarak dua muatan dijadikan 3 kali semula. Gaya Coulomb antara keduanya menjadi ....",
+          "options": {
+            "A": "3 kali",
+            "B": "1/3 kali",
+            "C": "9 kali",
+            "D": "1/9 kali"
+          },
+          "answer": "D",
+          "hint": "F sebanding 1/r².",
+          "explanation": "F ∝ 1/r², sehingga jarak 3 kali membuat gaya 1/9 kali."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "medan-listrik",
+      "title": "Medan listrik",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p><b>Medan listrik</b> adalah daerah di sekitar muatan tempat muatan lain mengalami gaya listrik. Kuat medan didefinisikan sebagai gaya per satuan muatan uji positif. Medan digambarkan dengan <b>garis gaya</b>: keluar dari muatan positif, masuk ke muatan negatif, dan makin rapat berarti makin kuat. Muatan positif mendapat gaya searah medan; muatan negatif berlawanan arah medan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kuat medan listrik",
+          "html": "<p>\\[E = \\frac{F}{q} \\qquad E = k\\frac{Q}{r^2}\\]</p><p>Satuan N/C (= V/m). Medan adalah vektor; resultan medan dari beberapa muatan dijumlahkan secara vektor.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/medan-listrik.html",
+          "title": "Medan dan potensial di sekitar dua muatan",
+          "height": 520,
+          "caption": "Buat q₁ = q₂ = +3 μC, lalu cari titik di antara keduanya yang medannya nol. Kemudian buat q₂ negatif: apakah masih ada titik bermedan nol di antara keduanya?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Muatan uji +5 μC di suatu titik mengalami gaya 2 N ke utara. Tentukan kuat dan arah medan di titik itu. Berapa gaya pada muatan −2 μC di titik yang sama?</p>",
+          "steps": [
+            "E = F/q = 2/(5 × 10⁻⁶) = 4 × 10⁵ N/C ke utara.",
+            "F = qE = 2 × 10⁻⁶ × 4 × 10⁵ = 0,8 N, arahnya ke selatan (muatan negatif)."
+          ],
+          "answer": "4 × 10⁵ N/C ke utara; 0,8 N ke selatan"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Muatan +9 μC di x = 0 dan +1 μC di x = 40 cm. Di mana kuat medannya nol?</p>",
+          "steps": [
+            "Untuk muatan sejenis, titik nol berada di antara keduanya, lebih dekat ke muatan yang kecil.",
+            "\\(\\dfrac{9}{x^2} = \\dfrac{1}{(40 - x)^2} \\Rightarrow \\dfrac{3}{x} = \\dfrac{1}{40 - x} \\Rightarrow x = 30\\) cm."
+          ],
+          "answer": "x = 30 cm (10 cm dari muatan +1 μC)"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Medan di antara pelat sejajar",
+          "html": "<p>Dua pelat bermuatan sama besar berlawanan jenis menghasilkan medan <b>homogen</b> dari pelat positif ke negatif: \\(E = \\dfrac{\\sigma}{\\varepsilon} = \\dfrac{V}{d}\\), dengan σ = muatan per luas, V = beda potensial, d = jarak pelat. Di luar pelat medannya (hampir) nol.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Arah gaya listrik pada elektron yang berada dalam medan listrik ke arah barat adalah ....",
+          "options": {
+            "A": "ke barat",
+            "B": "ke timur",
+            "C": "ke utara",
+            "D": "tidak ada gaya"
+          },
+          "answer": "B",
+          "hint": "Muatan negatif.",
+          "explanation": "Gaya pada muatan negatif berlawanan dengan arah medan, jadi ke timur."
+        }
+      ]
+    },
+    {
+      "id": "potensial",
+      "title": "Energi potensial, potensial listrik, dan gerak muatan",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Energi potensial dan potensial",
+          "html": "<p>\\[E_p = k\\frac{Qq}{r} \\qquad V = \\frac{E_p}{q} = k\\frac{Q}{r} \\qquad W_{A\\to B} = E_{pB} - E_{pA} = q(V_B - V_A)\\]</p><p>Potensial adalah besaran <b>skalar</b>: potensial akibat beberapa muatan dijumlahkan biasa (tanda muatan ikut dihitung). 1 volt = 1 J/C; \\(1\\ \\text{eV} = 1{,}6\\times10^{-19}\\) J. Pada pelat sejajar: \\(V = Ed\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Berapa usaha untuk membawa muatan +3 μC dari tempat yang sangat jauh ke titik berjarak 50 cm dari muatan +4 μC?</p>",
+          "steps": [
+            "Di tempat jauh Ep = 0.",
+            "\\(W = k\\dfrac{Qq}{r} = 9\\times10^9\\cdot\\dfrac{4\\times10^{-6}\\cdot3\\times10^{-6}}{0{,}5}\\)."
+          ],
+          "answer": "0,216 J"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Muatan +6 μC dan −2 μC terpisah 40 cm. Tentukan potensial di titik tengahnya.</p>",
+          "steps": [
+            "Jarak tiap muatan 0,2 m.",
+            "\\(V = 9\\times10^9\\left(\\dfrac{6\\times10^{-6}}{0{,}2} + \\dfrac{-2\\times10^{-6}}{0{,}2}\\right)\\)."
+          ],
+          "answer": "1,8 × 10⁵ V"
+        },
+        {
+          "type": "h",
+          "text": "Muatan bergerak dalam medan listrik"
+        },
+        {
+          "type": "text",
+          "html": "<p>Di antara pelat sejajar, muatan mengalami gaya konstan \\(F = qE\\) sehingga percepatannya \\(a = qE/m\\). Jika masuk tegak lurus medan dengan kelajuan v, lintasannya <b>parabola</b>: waktu di antara pelat \\(t = L/v\\) dan simpangannya \\(y = \\tfrac12 a t^2\\). Prinsip ini dipakai pada <b>printer inkjet</b> (tetes tinta bermuatan dibelokkan pelat defleksi) dan tabung sinar katode.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/defleksi.html",
+          "title": "Defleksi muatan di antara pelat",
+          "height": 500,
+          "caption": "Atur tegangan sampai tetes tinta tepat keluar di tepi pelat. Lalu gandakan kelajuan awal: simpangannya menjadi berapa kali?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (percobaan Millikan)",
+          "question": "<p>Setetes minyak bermassa 6,4 × 10⁻¹⁵ kg melayang diam di antara dua pelat mendatar berjarak 2 cm yang diberi beda potensial 400 V (g = 10 m/s²). Tentukan muatannya dan banyaknya elektron berlebih.</p>",
+          "steps": [
+            "Melayang: qE = mg dengan E = 400/0,02 = 2 × 10⁴ N/C.",
+            "q = mg/E = 6,4 × 10⁻¹⁴ / 2 × 10⁴ = 3,2 × 10⁻¹⁸ C.",
+            "n = q/e = 3,2 × 10⁻¹⁸ / 1,6 × 10⁻¹⁹."
+          ],
+          "answer": "3,2 × 10⁻¹⁸ C; 20 elektron"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah elektron dipercepat oleh beda potensial 200 V dari keadaan diam. Energi kinetiknya adalah ....",
+          "options": {
+            "A": "200 eV",
+            "B": "200 J",
+            "C": "1,6 × 10⁻¹⁹ J",
+            "D": "0,2 eV"
+          },
+          "answer": "A",
+          "hint": "W = qV.",
+          "explanation": "Ek = eV = 200 eV = 3,2 × 10⁻¹⁷ J."
+        }
+      ]
+    },
+    {
+      "id": "kapasitor",
+      "title": "Kapasitor keping sejajar",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Kapasitor</b> menyimpan muatan dan energi listrik. Kapasitor keping sejajar terdiri atas dua keping konduktor yang dipisahkan bahan <b>dielektrik</b> (isolator). Layar sentuh kapasitif bekerja dengan prinsip ini: jari yang menyentuh mengubah kapasitansi di titik itu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kapasitansi dan energi",
+          "html": "<p>\\[C = \\frac{Q}{V} \\qquad C = \\varepsilon_r\\varepsilon_0\\frac{A}{d} \\qquad W = \\tfrac12 CV^2 = \\frac{Q^2}{2C} = \\tfrac12 QV\\]</p><p>Satuan farad (F); di praktik dipakai μF, nF, pF. C hanya bergantung pada A, d, dan bahan dielektrik, <b>tidak</b> pada tegangan.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kapasitor.html",
+          "title": "Kapasitor keping sejajar",
+          "height": 560,
+          "caption": "Dengan baterai terhubung, jauhkan keping: apa yang terjadi pada Q? Lalu lepas baterai dan jauhkan keping lagi: apa yang terjadi pada V dan energi?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kapasitor keping sejajar memiliki luas keping 50 cm², jarak 0,5 mm, dan berisi kertas (εr = 3,5). Hitung kapasitansinya dan muatannya jika dihubungkan ke 10 V.</p>",
+          "steps": [
+            "\\(C = 3{,}5 \\cdot 8{,}85\\times10^{-12}\\cdot\\dfrac{5\\times10^{-3}}{5\\times10^{-4}} \\approx 3{,}1\\times10^{-10}\\) F = 310 pF.",
+            "Q = CV ≈ 3,1 × 10⁻⁹ C."
+          ],
+          "answer": "≈ 310 pF; ≈ 3,1 nC"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kapasitor lampu kilat kamera 200 μF diisi sampai 300 V. Berapa energi yang tersimpan?</p>",
+          "steps": [
+            "W = ½CV² = ½ × 2 × 10⁻⁴ × 300²."
+          ],
+          "answer": "9 J"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Terhubung atau dilepas?",
+          "html": "<ul><li>Masih terhubung baterai: <b>V tetap</b>; Q = CV dan W ikut berubah bila C berubah.</li><li>Dilepas setelah diisi: <b>Q tetap</b>; V = Q/C dan W = Q²/2C berubah bila C berubah.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Jarak keping kapasitor yang terhubung baterai dijadikan dua kali semula. Muatan yang tersimpan menjadi ....",
+          "options": {
+            "A": "2 kali",
+            "B": "tetap",
+            "C": "½ kali",
+            "D": "4 kali"
+          },
+          "answer": "C",
+          "hint": "V tetap, C berubah.",
+          "explanation": "C menjadi ½ kali sedangkan V tetap, sehingga Q = CV menjadi ½ kali."
+        }
+      ]
+    },
+    {
+      "id": "rangkaian",
+      "title": "Rangkaian kapasitor",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th></th><th>Seri</th><th>Paralel</th></tr><tr><td>Muatan</td><td>sama: \\(Q_1 = Q_2 = Q_\\text{total}\\)</td><td>terbagi: \\(Q_\\text{total} = Q_1 + Q_2 + \\dots\\)</td></tr><tr><td>Tegangan</td><td>terbagi: \\(V = V_1 + V_2 + \\dots\\)</td><td>sama: \\(V = V_1 = V_2\\)</td></tr><tr><td>Kapasitansi pengganti</td><td>\\(\\dfrac{1}{C_s} = \\dfrac{1}{C_1} + \\dfrac{1}{C_2} + \\dots\\) (lebih kecil dari yang terkecil)</td><td>\\(C_p = C_1 + C_2 + \\dots\\)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Pada penurunan rumus rangkaian paralel, buku menulis “sesuai prinsip rangkaian seri, Q<sub>total</sub> = Q₁ = Q₂ = Q₃”. Pada rangkaian <b>paralel</b> yang sama adalah tegangannya, sedangkan muatan totalnya adalah jumlah: Q<sub>total</sub> = Q₁ + Q₂ + Q₃. Dari sinilah diperoleh C<sub>p</sub> = C₁ + C₂ + C₃.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/rangkaian-kapasitor.html",
+          "title": "Rangkaian kapasitor",
+          "height": 600,
+          "caption": "Bandingkan keempat susunan dengan nilai kapasitor yang sama. Susunan mana yang menyimpan energi paling besar?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kapasitor 2 μF dan 3 μF disusun seri lalu dihubungkan ke 10 V. Tentukan muatan dan tegangan masing-masing.</p>",
+          "steps": [
+            "Cs = (2 × 3)/(2 + 3) = 1,2 μF.",
+            "Q = CsV = 12 μC (sama pada keduanya).",
+            "V(2 μF) = 12/2 = 6 V; V(3 μF) = 12/3 = 4 V."
+          ],
+          "answer": "12 μC; 6 V dan 4 V"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>C₁ = 4 μF diseri dengan gabungan paralel C₂ = 3 μF dan C₃ = 1 μF, dihubungkan ke 12 V. Tentukan muatan pada C₂.</p>",
+          "steps": [
+            "C₂ ∥ C₃ = 4 μF; diseri dengan 4 μF → Ct = 2 μF.",
+            "Q total = 24 μC; tegangan bagian paralel = 24/4 = 6 V.",
+            "Q₂ = 3 × 6."
+          ],
+          "answer": "18 μC"
+        },
+        {
+          "type": "check",
+          "question": "Tiga kapasitor identik masing-masing C disusun paralel. Kapasitansi penggantinya adalah ....",
+          "options": {
+            "A": "C/3",
+            "B": "C",
+            "C": "3C",
+            "D": "9C"
+          },
+          "answer": "C",
+          "hint": "Paralel dijumlahkan.",
+          "explanation": "Cp = C + C + C = 3C."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa mengubah μC ke C dan cm ke m.</li><li>Menjumlahkan gaya atau medan tanpa memperhatikan arah (keduanya vektor), atau sebaliknya memperlakukan potensial sebagai vektor.</li><li>Menganggap kapasitansi bergantung pada tegangan baterai.</li><li>Menukar aturan seri dan paralel kapasitor dengan aturan resistor (justru terbalik).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 1 Listrik Statis.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang gaya listrik, medan listrik, potensial listrik, dan kapasitor. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

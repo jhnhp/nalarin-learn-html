@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kapasitor Keping Sejajar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Kapasitor keping sejajar dengan muatan, medan listrik, dan bahan dielektrik"></svg></div>
+  <div class="panel">
+    <div class="lab">Luas tiap keping A <b id="av"></b></div><input type="range" id="a" min="50" max="400" step="10" value="200">
+    <div class="lab">Jarak antarkeping d <b id="dv"></b></div><input type="range" id="d" min="0.5" max="5" step="0.1" value="2">
+    <div class="lab">Bahan di antara keping</div><select id="mat"><option value="1">udara (εr ≈ 1)</option><option value="2.1">teflon (εr ≈ 2,1)</option><option value="3.5">kertas (εr ≈ 3,5)</option><option value="5">kaca (εr ≈ 5)</option><option value="80">air murni (εr ≈ 80)</option></select>
+    <div class="lab">Tegangan baterai <b id="vv"></b></div><input type="range" id="v" min="1" max="24" step="1" value="9">
+    <label class="chk"><input type="checkbox" id="lepas"> Lepaskan baterai (muatan tetap)</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const e0 = 8.85e-12;
+let Qlock = null;
+const sci = v => { if(v === 0) return '0'; const e = Math.floor(Math.log10(Math.abs(v))); if(e >= -2 && e <= 3) return fmt(v, 3); return `${fmt(v / 10 ** e, 3)} × 10${String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`; };
+function calc(){
+  const A = +$('a').value * 1e-4, d = +$('d').value * 1e-3, er = +$('mat').value, C = er * e0 * A / d;
+  let V = +$('v').value, Q = C * V;
+  if($('lepas').checked){ if(Qlock === null) Qlock = Q; Q = Qlock; V = Q / C; } else Qlock = null;
+  return {A, d, er, C, V, Q, E: V / d, U: 0.5 * C * V * V};
+}
+function draw(){
+  const c = calc();
+  $('av').textContent = $('a').value + ' cm²'; $('dv').textContent = fmt(+$('d').value, 1) + ' mm'; $('vv').textContent = $('v').value + ' V';
+  const h = 60 + 140 * Math.sqrt(+$('a').value / 400), gap = 25 + 30 * +$('d').value, cx = 200, cy = 140;
+  const xl = cx - gap / 2, xr = cx + gap / 2;
+  let s = '';
+  if(c.er > 1) s += `<rect x="${xl}" y="${cy - h / 2}" width="${gap}" height="${h}" fill="#ffe082" fill-opacity="${Math.min(.8, .25 + c.er / 100)}"/>`;
+  s += `<rect x="${xl - 8}" y="${cy - h / 2}" width="8" height="${h}" fill="#e53935"/><rect x="${xr}" y="${cy - h / 2}" width="8" height="${h}" fill="#1e88e5"/>`;
+  const nq = Math.min(14, Math.max(1, Math.round(c.Q / 2e-10)));
+  for(let i = 0; i < nq; i++){ const y = cy - h / 2 + (i + .5) * h / nq; s += `<text class="c" x="${xl - 16}" y="${y + 4}" text-anchor="middle" fill="#e53935">+</text><text class="c" x="${xr + 16}" y="${y + 4}" text-anchor="middle" fill="#1e88e5">−</text>`; }
+  const ne = Math.min(10, Math.max(1, Math.round(c.E / 1500)));
+  for(let i = 0; i < ne; i++){ const y = cy - h / 2 + (i + .5) * h / ne; s += `<line x1="${xl + 4}" y1="${y}" x2="${xr - 6}" y2="${y}" stroke="#333" stroke-width="1.3" marker-end="url(#a)"/>`; }
+  s += `<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#333"/></marker></defs>`;
+  // baterai
+  const conn = !$('lepas').checked;
+  s += `<path d="M${xl - 4},${cy - h / 2} V30 H120 M${xr + 4},${cy - h / 2} V30 H280" fill="none" stroke="#555" stroke-width="2"/>`;
+  s += conn ? `<line x1="120" y1="30" x2="185" y2="30" stroke="#555" stroke-width="2"/><line x1="215" y1="30" x2="280" y2="30" stroke="#555" stroke-width="2"/><line x1="190" y1="16" x2="190" y2="44" stroke="#e53935" stroke-width="3"/><line x1="200" y1="22" x2="200" y2="38" stroke="#1e88e5" stroke-width="5"/>` : `<line x1="120" y1="30" x2="160" y2="30" stroke="#555" stroke-width="2"/><line x1="240" y1="30" x2="280" y2="30" stroke="#555" stroke-width="2"/><text class="s" x="200" y="34" text-anchor="middle" fill="#c62828">baterai dilepas</text>`;
+  s += `<text class="s" x="${cx}" y="${cy + h / 2 + 18}" text-anchor="middle" style="fill:var(--muted)">d = ${fmt(+$('d').value, 1)} mm</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Kapasitansi C = εr ε₀ A/d</span><b>${sci(c.C * 1e12)} pF</b></div><div><span>Tegangan V</span><b>${fmt(c.V, 2)} V</b></div><div><span>Muatan Q = CV</span><b>${sci(c.Q * 1e9)} nC</b></div><div><span>Kuat medan E = V/d</span><b>${sci(c.E)} V/m</b></div><div><span>Energi W = ½CV²</span><b>${sci(c.U * 1e9)} nJ</b></div>`;
+  $('ket').textContent = conn ? 'Baterai terhubung: tegangan tetap sama dengan baterai. Mengubah A, d, atau bahan mengubah C sehingga muatan yang tersimpan ikut berubah.' : 'Baterai dilepas: muatan tidak dapat bertambah atau berkurang. Jika C berubah (misalnya keping dijauhkan), tegangan V = Q/C yang berubah.';
+}
+['a', 'd', 'mat', 'v', 'lepas'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

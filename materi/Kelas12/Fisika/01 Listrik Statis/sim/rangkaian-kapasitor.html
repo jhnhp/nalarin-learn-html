@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rangkaian Kapasitor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+table.t{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}table.t td,table.t th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:right}table.t th{color:var(--muted);font-weight:600}table.t td:first-child,table.t th:first-child{text-align:left}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}.wrap{padding:10px;box-sizing:border-box}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><div class="wrap"><svg id="svg" viewBox="0 0 440 190" style="width:100%" role="img" aria-label="Skema rangkaian kapasitor"></svg><table class="t" id="tab"></table></div></div>
+  <div class="panel">
+    <div class="lab">Susunan</div><select id="cfg"><option value="seri">C₁, C₂, C₃ seri</option><option value="paralel">C₁, C₂, C₃ paralel</option><option value="sp">C₁ seri dengan (C₂ ∥ C₃)</option><option value="ps">C₁ ∥ (C₂ seri C₃)</option></select>
+    <div class="lab">C₁ <b id="c1v"></b></div><input type="range" id="c1" min="1" max="20" step="1" value="4">
+    <div class="lab">C₂ <b id="c2v"></b></div><input type="range" id="c2" min="1" max="20" step="1" value="10">
+    <div class="lab">C₃ <b id="c3v"></b></div><input type="range" id="c3" min="1" max="20" step="1" value="5">
+    <div class="lab">Tegangan sumber <b id="vv"></b></div><input type="range" id="v" min="1" max="24" step="1" value="18">
+    <div class="read" id="read"></div>
+    <p class="note">Seri: muatan tiap kapasitor sama, 1/Cs = 1/C₁ + 1/C₂ + …; tegangan terbagi. Paralel: tegangan tiap kapasitor sama, Cp = C₁ + C₂ + …; muatan terbagi.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const ser = (...c) => 1 / c.reduce((a, b) => a + 1 / b, 0);
+function solve(){
+  const C = [+$('c1').value, +$('c2').value, +$('c3').value], V = +$('v').value, cfg = $('cfg').value;
+  let Ct, q = [0, 0, 0], v = [0, 0, 0];
+  if(cfg === 'seri'){ Ct = ser(...C); const Q = Ct * V; q = [Q, Q, Q]; v = C.map(c => Q / c); }
+  if(cfg === 'paralel'){ Ct = C[0] + C[1] + C[2]; v = [V, V, V]; q = C.map(c => c * V); }
+  if(cfg === 'sp'){ const Cp = C[1] + C[2]; Ct = ser(C[0], Cp); const Q = Ct * V; q[0] = Q; v[0] = Q / C[0]; const Vp = Q / Cp; v[1] = v[2] = Vp; q[1] = C[1] * Vp; q[2] = C[2] * Vp; }
+  if(cfg === 'ps'){ const Cs = ser(C[1], C[2]); Ct = C[0] + Cs; v[0] = V; q[0] = C[0] * V; const Q2 = Cs * V; q[1] = q[2] = Q2; v[1] = Q2 / C[1]; v[2] = Q2 / C[2]; }
+  return {C, V, Ct, q, v, cfg};
+}
+function cap(x, y, lab, vert){ return vert ? `<line x1="${x - 14}" y1="${y - 4}" x2="${x + 14}" y2="${y - 4}" stroke="#333" stroke-width="3"/><line x1="${x - 14}" y1="${y + 4}" x2="${x + 14}" y2="${y + 4}" stroke="#333" stroke-width="3"/><text class="c" x="${x + 20}" y="${y + 4}" fill="#1565c0">${lab}</text>` : `<line x1="${x - 4}" y1="${y - 14}" x2="${x - 4}" y2="${y + 14}" stroke="#333" stroke-width="3"/><line x1="${x + 4}" y1="${y - 14}" x2="${x + 4}" y2="${y + 14}" stroke="#333" stroke-width="3"/><text class="c" x="${x}" y="${y - 20}" text-anchor="middle" fill="#1565c0">${lab}</text>`; }
+const W = (pts) => `<polyline points="${pts.map(p => p.join(',')).join(' ')}" fill="none" stroke="#555" stroke-width="2"/>`;
+function draw(){
+  const r = solve();
+  ['c1', 'c2', 'c3'].forEach((k, i) => $(k + 'v').textContent = r.C[i] + ' μF'); $('vv').textContent = r.V + ' V';
+  let s = `<line x1="30" y1="80" x2="30" y2="110" stroke="#555" stroke-width="2"/><line x1="18" y1="92" x2="42" y2="92" stroke="#e53935" stroke-width="3"/><line x1="24" y1="100" x2="36" y2="100" stroke="#1e88e5" stroke-width="5"/><text class="s" x="50" y="100" fill="#333">${r.V} V</text>`;
+  s += W([[30, 80], [30, 30], [80, 30]]) + W([[30, 110], [30, 170], [410, 170], [410, 30]]);
+  if(r.cfg === 'seri'){ s += W([[80, 30], [146, 30]]) + cap(150, 30, 'C₁') + W([[154, 30], [236, 30]]) + cap(240, 30, 'C₂') + W([[244, 30], [326, 30]]) + cap(330, 30, 'C₃') + W([[334, 30], [410, 30]]); }
+  if(r.cfg === 'paralel'){ s += W([[80, 30], [340, 30]]); [140, 230, 320].forEach((x, i) => { s += W([[x, 30], [x, 96]]) + cap(x, 100, ['C₁', 'C₂', 'C₃'][i], true) + W([[x, 104], [x, 170]]); }); s += W([[340, 30], [410, 30]]); }
+  if(r.cfg === 'sp'){ s += W([[80, 30], [126, 30]]) + cap(130, 30, 'C₁') + W([[134, 30], [260, 30]]); [230, 320].forEach((x, i) => { s += W([[x, 30], [x, 96]]) + cap(x, 100, ['C₂', 'C₃'][i], true) + W([[x, 104], [x, 140], [410, 140]]); }); s += W([[260, 30], [320, 30]]); }
+  if(r.cfg === 'ps'){ s += W([[80, 30], [80, 70]]) + W([[80, 30], [80, 30]]); s += W([[80, 30], [196, 30]]) + cap(200, 30, 'C₁') + W([[204, 30], [410, 30]]); s += W([[80, 30], [80, 110], [146, 110]]) + cap(150, 110, 'C₂') + W([[154, 110], [256, 110]]) + cap(260, 110, 'C₃') + W([[264, 110], [410, 110]]); }
+  $('svg').innerHTML = s;
+  let t = '<tr><th></th><th>C (μF)</th><th>V (V)</th><th>Q (μC)</th><th>W (μJ)</th></tr>';
+  r.C.forEach((c, i) => t += `<tr><td>C${'₁₂₃'[i]}</td><td>${c}</td><td>${fmt(r.v[i], 2)}</td><td>${fmt(r.q[i], 2)}</td><td>${fmt(.5 * c * r.v[i] ** 2, 2)}</td></tr>`);
+  $('tab').innerHTML = t;
+  const Qt = r.Ct * r.V;
+  $('read').innerHTML = `<div><span>Kapasitansi pengganti</span><b>${fmt(r.Ct, 3)} μF</b></div><div><span>Muatan total dari sumber</span><b>${fmt(Qt, 2)} μC</b></div><div><span>Energi total ½CV²</span><b>${fmt(.5 * r.Ct * r.V ** 2, 2)} μJ</b></div>`;
+}
+['cfg', 'c1', 'c2', 'c3', 'v'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

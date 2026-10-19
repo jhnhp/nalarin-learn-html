@@ -1,56 +1,345 @@
 {
   "title": "Kemagnetan",
-  "summary": "Ringkasan bab Kemagnetan akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Medan magnet dan magnet Bumi, gaya magnet pada muatan dan kawat berarus, medan magnet di sekitar arus listrik, induksi elektromagnetik dan generator, induktansi, serta transformator dan transmisi daya.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Kemagnetan",
+      "id": "medan-magnet",
+      "title": "Magnet dan medan magnet Bumi",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "20 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Medan Magnet, Gaya Magnet, Medan Magnet Induksi, GGL Induksi, Generator, Induktansi, dan Transformator</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Setiap magnet memiliki kutub utara (U) dan kutub selatan (S); kutub sejenis tolak-menolak, berlainan jenis tarik-menarik. Daerah di sekitar magnet tempat benda magnetik mengalami gaya disebut <b>medan magnet</b>, digambarkan dengan garis gaya yang keluar dari kutub utara dan masuk ke kutub selatan. Satuan kuat medan magnet adalah tesla (T).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Bumi</b> berperilaku seperti magnet batang raksasa. Kutub <b>selatan</b> magnet Bumi berada di dekat kutub utara geografis, sehingga kutub utara jarum kompas tertarik ke arah utara geografis. Sumbu magnet Bumi sedikit miring terhadap sumbu rotasinya (deklinasi). Medan magnet Bumi diduga berasal dari aliran logam cair bermuatan di inti luar Bumi, dan melindungi Bumi dari partikel bermuatan angin Matahari.</p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "title": "Sumber medan magnet",
+          "html": "<p>Hans Christian Oersted (1820) menemukan bahwa jarum kompas menyimpang di dekat kawat berarus. Jadi <b>arus listrik (muatan bergerak) menghasilkan medan magnet</b>, dan sebaliknya medan magnet memberi gaya pada muatan yang bergerak.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kutub utara jarum kompas menunjuk ke utara geografis karena di sana terdapat ....",
+          "options": {
+            "A": "kutub utara magnet Bumi",
+            "B": "kutub selatan magnet Bumi",
+            "C": "garis khatulistiwa magnet",
+            "D": "medan listrik Bumi"
+          },
+          "answer": "B",
+          "hint": "Kutub berlainan jenis tarik-menarik.",
+          "explanation": "Kutub utara jarum ditarik oleh kutub selatan magnet Bumi yang letaknya dekat kutub utara geografis."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "gaya-magnet",
+      "title": "Gaya magnet pada muatan dan kawat berarus",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Gaya magnet (gaya Lorentz)",
+          "html": "<p>\\[F = qvB\\sin\\theta \\qquad F = BIL\\sin\\theta\\]</p><p>θ = sudut antara kecepatan (atau arus) dan medan magnet. Gaya nol jika muatan diam atau bergerak sejajar medan. Arahnya dengan <b>kaidah tangan kanan</b>: ibu jari = arah v (atau I), empat jari = arah B, telapak tangan mendorong = arah F untuk muatan positif (untuk muatan negatif, arahnya berlawanan).</p>"
         },
         {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "type": "sim",
+          "src": "sim/gaya-lorentz.html",
+          "title": "Muatan dalam medan magnet",
+          "height": 560,
+          "caption": "Bandingkan jari-jari lintasan proton, deuteron, dan partikel alfa pada kelajuan yang sama. Lalu nyalakan medan listrik dan cari E yang membuat proton lurus."
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Gerak melingkar dan pemilih kecepatan",
+          "html": "<p>Jika v tegak lurus B, gaya magnet menjadi gaya sentripetal: \\(qvB = \\dfrac{mv^2}{r} \\Rightarrow r = \\dfrac{mv}{qB}\\). Pada <b>pemilih kecepatan</b>, medan listrik dan medan magnet saling tegak lurus; partikel lolos lurus jika \\(qE = qvB\\), yaitu \\(v = E/B\\). Prinsip ini dipakai pada spektrometer massa.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Elektron (m = 9,1 × 10⁻³¹ kg) bergerak 3 × 10⁶ m/s tegak lurus medan magnet 0,2 T. Tentukan gaya magnet dan jari-jari lintasannya.</p>",
+          "steps": [
+            "F = qvB = 1,6 × 10⁻¹⁹ × 3 × 10⁶ × 0,2 = 9,6 × 10⁻¹⁴ N.",
+            "r = mv/(qB) = 9,1 × 10⁻³¹ × 3 × 10⁶ / (1,6 × 10⁻¹⁹ × 0,2)."
+          ],
+          "answer": "9,6 × 10⁻¹⁴ N; ≈ 8,5 × 10⁻⁵ m"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kawat 0,5 m berarus 3 A berada tegak lurus medan magnet 0,4 T. Berapa gaya magnetnya? Berapa jika kawat membentuk sudut 30° dengan medan?</p>",
+          "steps": [
+            "Tegak lurus: F = BIL = 0,4 × 3 × 0,5 = 0,6 N.",
+            "Sudut 30°: F = 0,6 × sin 30°."
+          ],
+          "answer": "0,6 N; 0,3 N"
+        },
+        {
+          "type": "text",
+          "html": "<p>Kumparan berarus di dalam medan magnet mengalami momen gaya \\(\\tau = NBIA\\sin\\phi\\) yang memutarnya. Inilah prinsip <b>motor listrik</b>: energi listrik diubah menjadi energi gerak. Komutator membalik arah arus setiap setengah putaran agar kumparan terus berputar searah.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Partikel bermuatan bergerak sejajar arah medan magnet. Gaya magnet yang dialaminya ....",
+          "options": {
+            "A": "maksimum",
+            "B": "nol",
+            "C": "sama dengan qvB",
+            "D": "tegak lurus medan"
+          },
+          "answer": "B",
+          "hint": "sin 0° = 0.",
+          "explanation": "Karena θ = 0°, F = qvB sin 0° = 0."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "medan-induksi",
+      "title": "Medan magnet di sekitar arus listrik",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<table><tr><th>Sumber</th><th>Kuat medan magnet</th></tr><tr><td>Kawat lurus panjang, jarak a</td><td>\\(B = \\dfrac{\\mu_0 I}{2\\pi a}\\)</td></tr><tr><td>Kawat melingkar N lilitan, di pusat (jari-jari R)</td><td>\\(B = \\dfrac{\\mu_0 N I}{2R}\\)</td></tr><tr><td>Solenoida, di tengah (n = N/ℓ lilitan per meter)</td><td>\\(B = \\mu_0 n I\\); di ujungnya setengahnya</td></tr><tr><td>Toroida, jari-jari efektif r</td><td>\\(B = \\dfrac{\\mu_0 N I}{2\\pi r}\\)</td></tr></table><p>\\(\\mu_0 = 4\\pi\\times10^{-7}\\) T m/A. Arah medan di sekitar kawat lurus: kaidah tangan kanan menggenggam (ibu jari = arus, lipatan jari = arah garis medan melingkar).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/medan-kawat.html",
+          "title": "Medan magnet dua kawat sejajar",
+          "height": 560,
+          "caption": "Untuk arus searah, cari titik di antara kedua kawat yang medannya nol. Lalu balik arah arus kawat 2: apakah titik nol itu masih ada di antara kawat? Perhatikan pula gaya antarkawat."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kawat lurus panjang dialiri arus 5 A. Berapa kuat medan magnet di titik berjarak 2 cm darinya?</p>",
+          "steps": [
+            "\\(B = \\dfrac{4\\pi\\times10^{-7}\\cdot5}{2\\pi\\cdot0{,}02}\\)."
+          ],
+          "answer": "5 × 10⁻⁵ T"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Solenoida 500 lilitan panjang 25 cm dialiri arus 2 A. Tentukan medan magnet di tengahnya.</p>",
+          "steps": [
+            "n = 500/0,25 = 2.000 lilitan/m.",
+            "B = μ₀nI = 4π × 10⁻⁷ × 2.000 × 2."
+          ],
+          "answer": "≈ 5,0 × 10⁻³ T"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Gaya antara dua kawat sejajar",
+          "html": "<p>\\[\\frac{F}{L} = \\frac{\\mu_0 I_1 I_2}{2\\pi d}\\]</p><p>Arus searah tarik-menarik, arus berlawanan tolak-menolak.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Inti besi di dalam solenoida memperkuat medan magnet berkali-kali karena besi mudah termagnetisasi. Elektromagnet dipakai pada bel listrik, relai, derek pengangkat besi tua, dan kereta <b>maglev</b> yang melayang di atas jalur pemandu sehingga hampir tanpa gesekan.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Arus pada kawat melingkar dijadikan dua kali dan jari-jarinya juga dua kali. Medan di pusatnya menjadi ....",
+          "options": {
+            "A": "4 kali",
+            "B": "2 kali",
+            "C": "tetap",
+            "D": "setengah"
+          },
+          "answer": "C",
+          "hint": "B ∝ I/R.",
+          "explanation": "B ∝ I/R; keduanya dua kali, sehingga B tetap."
+        }
+      ]
+    },
+    {
+      "id": "induksi",
+      "title": "Induksi elektromagnetik dan generator",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Fluks dan hukum Faraday",
+          "html": "<p>\\[\\Phi = BA\\cos\\theta \\qquad \\varepsilon = -N\\frac{\\Delta\\Phi}{\\Delta t}\\]</p><p>Φ dalam weber (Wb), θ = sudut antara B dan garis normal bidang kumparan. GGL induksi timbul bila fluks yang menembus kumparan <b>berubah</b>. Tanda minus adalah <b>hukum Lenz</b>: arus induksi menimbulkan medan yang melawan perubahan fluks penyebabnya.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/IPA/05 Listrik, Magnet, dan Energi Alternatif/sim/induksi.html",
+          "title": "Induksi elektromagnetik",
+          "height": 500,
+          "caption": "Gerakkan magnet mendekat dan menjauh dengan cepat dan lambat. Kapan jarum galvanometer menyimpang paling jauh, dan kapan arahnya berbalik?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Fluks yang menembus kumparan 100 lilitan bertambah dari 2 × 10⁻³ Wb menjadi 8 × 10⁻³ Wb dalam 0,05 s. Berapa GGL induksinya?</p>",
+          "steps": [
+            "ΔΦ = 6 × 10⁻³ Wb.",
+            "|ε| = 100 × 6 × 10⁻³ / 0,05."
+          ],
+          "answer": "12 V"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Batang konduktor bergerak",
+          "html": "<p>Batang sepanjang L yang bergerak dengan kelajuan v tegak lurus medan B: \\(\\varepsilon = BLv\\). Jika rangkaiannya tertutup dengan hambatan R, \\(I = \\varepsilon/R\\), dan batang mengalami gaya hambat \\(F = BIL\\) (hukum Lenz), sehingga perlu gaya luar agar kelajuannya tetap.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Batang 0,5 m digerakkan 4 m/s tegak lurus medan 0,3 T pada rel yang ujungnya dihubungkan resistor 3 Ω. Tentukan GGL dan arusnya.</p>",
+          "steps": [
+            "ε = BLv = 0,3 × 0,5 × 4 = 0,6 V.",
+            "I = 0,6/3."
+          ],
+          "answer": "0,6 V; 0,2 A"
+        },
+        {
+          "type": "sim",
+          "src": "sim/generator.html",
+          "title": "Generator AC",
+          "height": 520,
+          "caption": "Gandakan kecepatan putar: berapa kali GGL maksimumnya? Pada sudut berapa GGL maksimum dan pada sudut berapa nol?"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Generator",
+          "html": "<p>Kumparan N lilitan berluas A diputar dengan laju sudut ω dalam medan B: \\(\\varepsilon = NBA\\omega\\sin\\omega t\\), dengan \\(\\varepsilon_\\text{maks} = NBA\\omega\\) dan \\(\\omega = 2\\pi f\\). Generator mengubah energi gerak (dari air, uap, angin, panas bumi) menjadi energi listrik; motor sebaliknya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Generator memiliki 50 lilitan berluas 0,04 m², berputar 1.500 putaran per menit di dalam medan 0,25 T. Tentukan GGL maksimumnya.</p>",
+          "steps": [
+            "f = 1.500/60 = 25 Hz; ω = 2π × 25 ≈ 157,1 rad/s.",
+            "εmaks = 50 × 0,25 × 0,04 × 157,1."
+          ],
+          "answer": "≈ 78,5 V"
+        },
+        {
+          "type": "check",
+          "question": "Kutub utara magnet didekatkan ke ujung kumparan. Menurut hukum Lenz, ujung kumparan itu menjadi ....",
+          "options": {
+            "A": "kutub selatan sehingga menarik magnet",
+            "B": "kutub utara sehingga menolak magnet",
+            "C": "tidak bermagnet",
+            "D": "kutub utara sehingga menarik magnet"
+          },
+          "answer": "B",
+          "hint": "Arus induksi melawan perubahan.",
+          "explanation": "Fluks bertambah, sehingga kumparan membentuk kutub utara di ujung itu untuk menolak magnet yang mendekat."
+        }
+      ]
+    },
+    {
+      "id": "induktansi-trafo",
+      "title": "Induktansi dan transformator",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Induktansi",
+          "html": "<p>Induktansi diri: \\(\\varepsilon = -L\\dfrac{\\Delta I}{\\Delta t}\\), dengan \\(L = \\dfrac{N\\Phi}{I}\\) (henry, H). Untuk solenoida \\(L = \\dfrac{\\mu_0 N^2 A}{\\ell}\\). Induktansi bersama antara dua kumparan: \\(\\varepsilon_2 = -M\\dfrac{\\Delta I_1}{\\Delta t}\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Arus pada kumparan 0,25 H turun dari 4 A menjadi nol dalam 0,05 s. Berapa GGL induksi dirinya?</p>",
+          "steps": [
+            "|ε| = L ΔI/Δt = 0,25 × 4 / 0,05."
+          ],
+          "answer": "20 V"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Transformator",
+          "html": "<p>\\[\\frac{V_s}{V_p} = \\frac{N_s}{N_p} = \\frac{I_p}{I_s}\\ \\text{(ideal)} \\qquad \\eta = \\frac{P_s}{P_p}\\times100\\%\\]</p><p>Step-up: N<sub>s</sub> > N<sub>p</sub> (tegangan naik, arus turun). Step-down: N<sub>s</sub> < N<sub>p</sub>. Trafo bekerja dengan arus bolak-balik karena memerlukan fluks yang berubah-ubah.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/trafo.html",
+          "title": "Transformator",
+          "height": 580,
+          "caption": "Buat trafo step-up dan step-down. Turunkan efisiensi: daya mana yang berubah, daya primer atau daya sekunder?"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menulis efisiensi sebagai “perbandingan daya primer atau daya input dengan daya sekunder atau daya output”. Urutannya terbalik: efisiensi adalah daya <b>keluaran (sekunder)</b> dibagi daya <b>masukan (primer)</b>, \\(\\eta = P_s/P_p\\times100\\%\\), sehingga nilainya selalu ≤ 100%. Kerugian daya pada trafo berasal dari panas pada lilitan, arus pusar (Foucault) pada inti, dan histeresis.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Trafo dengan N<sub>p</sub> = 1.000 dan N<sub>s</sub> = 150 dihubungkan ke 220 V. Daya primernya 50 W dan daya sekundernya 40 W. Tentukan tegangan sekunder dan efisiensinya.</p>",
+          "steps": [
+            "V<sub>s</sub> = 220 × 150/1.000 = 33 V.",
+            "η = 40/50 × 100%."
+          ],
+          "answer": "33 V; 80%"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Daya 100 kW dikirim lewat kabel berhambatan total 5 Ω. Bandingkan daya yang hilang jika dikirim pada 10 kV dan pada 100 kV.</p>",
+          "steps": [
+            "10 kV: I = 100.000/10.000 = 10 A → P<sub>hilang</sub> = I²R = 500 W.",
+            "100 kV: I = 1 A → P<sub>hilang</sub> = 5 W."
+          ],
+          "answer": "500 W dan 5 W: tegangan tinggi mengurangi kerugian"
+        },
+        {
+          "type": "check",
+          "question": "Trafo memiliki 400 lilitan primer dan 2.000 lilitan sekunder. Trafo ini ....",
+          "options": {
+            "A": "step-down, tegangan turun 5 kali",
+            "B": "step-up, tegangan naik 5 kali",
+            "C": "step-up, arus naik 5 kali",
+            "D": "tidak mengubah tegangan"
+          },
+          "answer": "B",
+          "hint": "Bandingkan Ns dan Np.",
+          "explanation": "Ns/Np = 5, tegangan sekunder 5 kali tegangan primer, sedangkan arusnya menjadi 1/5."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa membalik arah gaya untuk muatan negatif pada kaidah tangan kanan.</li><li>Memakai sin θ pada rumus fluks; fluks memakai cos θ terhadap garis normal bidang.</li><li>Menganggap GGL induksi muncul karena ada medan magnet; yang diperlukan adalah perubahan fluks.</li><li>Menukar rumus kawat lurus (2πa) dan kawat melingkar (2R).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 3 Kemagnetan.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang medan magnet, gaya magnet, medan magnet induksi, GGL induksi, generator, induktansi, dan transformator. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

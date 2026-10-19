@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformator dan Transmisi Daya</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Transformator dengan kumparan primer dan sekunder serta diagram kehilangan daya transmisi"></svg></div>
+  <div class="panel">
+    <div class="lab">Tegangan primer Vₚ <b id="vpv"></b></div><input type="range" id="vp" min="10" max="500" step="10" value="220">
+    <div class="lab">Lilitan primer Nₚ <b id="npv"></b></div><input type="range" id="np" min="50" max="2000" step="50" value="1000">
+    <div class="lab">Lilitan sekunder Nₛ <b id="nsv"></b></div><input type="range" id="ns" min="10" max="4000" step="10" value="40">
+    <div class="lab">Daya beban (sekunder) <b id="pv"></b></div><input type="range" id="p" min="1" max="200" step="1" value="30">
+    <div class="lab">Efisiensi trafo <b id="ev"></b></div><input type="range" id="e" min="50" max="100" step="1" value="90">
+    <div class="read" id="read"></div>
+    <p class="note">Trafo ideal: V<sub>s</sub>/V<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub> = I<sub>p</sub>/I<sub>s</sub>. Efisiensi η = P<sub>s</sub>/P<sub>p</sub> × 100%. Trafo hanya bekerja dengan arus bolak-balik karena memerlukan fluks yang berubah.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+function coil(x, n, col){ let s = ''; const k = Math.max(3, Math.min(14, Math.round(n / 150) + 3)); for(let i = 0; i < k; i++){ const y = 60 + i * (120 / k); s += `<ellipse cx="${x}" cy="${y + 120 / k / 2}" rx="22" ry="${120 / k / 2 - 1}" fill="none" stroke="${col}" stroke-width="3"/>`; } return s; }
+function draw(){
+  const Vp = +$('vp').value, Np = +$('np').value, Ns = +$('ns').value, Ps = +$('p').value, eta = +$('e').value / 100;
+  $('vpv').textContent = Vp + ' V'; $('npv').textContent = Np; $('nsv').textContent = Ns; $('pv').textContent = Ps + ' W'; $('ev').textContent = Math.round(eta * 100) + '%';
+  const Vs = Vp * Ns / Np, Is = Ps / Vs, Pp = Ps / eta, Ip = Pp / Vp;
+  let s = `<rect x="120" y="40" width="240" height="180" rx="10" fill="none" stroke="#78909c" stroke-width="18"/>`;
+  s += coil(120, Np, '#e53935') + coil(360, Ns, '#1e88e5');
+  s += `<text class="c" x="80" y="140" text-anchor="end" fill="#e53935">primer</text><text class="s" x="80" y="156" text-anchor="end" fill="#e53935">${Np} lilitan</text><text class="c" x="400" y="140" fill="#1e88e5">sekunder</text><text class="s" x="400" y="156" fill="#1e88e5">${Ns} lilitan</text>`;
+  s += `<text class="c" x="240" y="255" text-anchor="middle" style="fill:var(--ink)">${Ns > Np ? 'trafo step-up (menaikkan tegangan)' : Ns < Np ? 'trafo step-down (menurunkan tegangan)' : 'Np = Ns (tegangan tetap)'}</text>`;
+  s += `<text class="s" x="240" y="275" text-anchor="middle" style="fill:var(--muted)">inti besi berlapis menyalurkan fluks bolak-balik dari primer ke sekunder</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Tegangan sekunder V<sub>s</sub></span><b>${fmt(Vs, 2)} V</b></div><div><span>Arus sekunder I<sub>s</sub></span><b>${fmt(Is, 3)} A</b></div><div><span>Daya primer P<sub>p</sub> = P<sub>s</sub>/η</span><b>${fmt(Pp, 2)} W</b></div><div><span>Arus primer I<sub>p</sub></span><b>${fmt(Ip, 4)} A</b></div><div><span>Daya hilang (panas, arus pusar)</span><b>${fmt(Pp - Ps, 2)} W</b></div>`;
+}
+['vp', 'np', 'ns', 'p', 'e'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>
