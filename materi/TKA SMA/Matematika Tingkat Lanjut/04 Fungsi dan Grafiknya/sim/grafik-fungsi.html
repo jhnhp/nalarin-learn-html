@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafik, Domain, dan Daerah Hasil Fungsi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik fungsi beserta asimtot, domain, dan daerah hasil"></svg></div>
+  <div class="panel">
+    <div class="seg" id="fam"></div>
+    <div class="formula" id="rumus"></div>
+    <div id="sl"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const NE = '<span style="font-family:Arial,sans-serif">≠</span>';
+const sg = v => v < 0 ? ' − ' + fmt(-v) : ' + ' + fmt(v);
+const inner = (h) => h === 0 ? 'x' : `x${sg(-h)}`;
+// setiap keluarga: parameter [nama, min, max, langkah, awal], fungsi, rumus, info
+const FAM = {
+  polinom: {name: 'Polinom', p: [['a', -2, 2, .25, .5], ['akar p', -4, 4, 1, -2], ['akar q', -4, 4, 1, 1], ['akar r', -4, 4, 1, 3]],
+    f: ([a, p, q, r]) => x => a * (x - p) * (x - q) * (x - r),
+    s: ([a, p, q, r]) => `f(x) = ${fmt(a)}(${inner(p)})(${inner(q)})(${inner(r)})`,
+    info: ([a, p, q, r]) => [['Domain', 'semua x ∈ R'], ['Daerah hasil', a === 0 ? '{0}' : 'semua y ∈ R (polinom derajat ganjil)'], ['Pembuat nol', [...new Set([p, q, r])].sort((u, v) => u - v).map(fmt).join(', ')]]},
+  rasional: {name: 'Rasional', p: [['a', -3, 3, 1, 2], ['b', -4, 4, 1, 1], ['c', -3, 3, 1, 1]],
+    f: ([a, b, c]) => x => (a * x + b) / (x - c),
+    s: ([a, b, c]) => `f(x) = (${fmt(a)}x${sg(b)}) / (${inner(c)})`,
+    info: ([a, b, c]) => { const rem = Math.abs(a * c + b) < 1e-9;
+      return [['Domain', `x ${NE} ${fmt(c)}`], ['Asimtot tegak', rem ? 'tidak ada (lubang di x = ' + fmt(c) + ')' : `x = ${fmt(c)}`], ['Asimtot datar', `y = ${fmt(a)}`], ['Daerah hasil', rem ? `y = ${fmt(a)} saja` : `y ${NE} ${fmt(a)}`]]; },
+    asym: ([a, b, c]) => ({v: Math.abs(a * c + b) < 1e-9 ? null : c, h: a})},
+  akar: {name: 'Akar', p: [['a', -3, 3, .5, 2], ['h', -4, 4, 1, -2], ['k', -4, 4, 1, -1]],
+    f: ([a, h, k]) => x => x < h ? NaN : a * Math.sqrt(x - h) + k,
+    s: ([a, h, k]) => `f(x) = ${fmt(a)}√(${inner(h)})${sg(k)}`,
+    info: ([a, h, k]) => [['Domain', `x ≥ ${fmt(h)}`], ['Daerah hasil', a > 0 ? `y ≥ ${fmt(k)}` : a < 0 ? `y ≤ ${fmt(k)}` : `{${fmt(k)}}`], ['Titik ujung', `(${fmt(h)}, ${fmt(k)})`]]},
+  eksponen: {name: 'Eksponen', p: [['a', -3, 3, .5, 1], ['bilangan pokok b', 2, 4, 1, 2], ['k', -4, 4, 1, -2]],
+    f: ([a, b, k]) => x => a * Math.pow(b, x) + k,
+    s: ([a, b, k]) => `f(x) = ${fmt(a)} · ${b}ˣ${sg(k)}`,
+    info: ([a, b, k]) => [['Domain', 'semua x ∈ R'], ['Asimtot datar', `y = ${fmt(k)}`], ['Daerah hasil', a > 0 ? `y > ${fmt(k)}` : a < 0 ? `y < ${fmt(k)}` : `{${fmt(k)}}`]],
+    asym: ([a, b, k]) => ({h: k})},
+  log: {name: 'Logaritma', p: [['bilangan pokok b', 2, 4, 1, 2], ['h', -4, 4, 1, -1], ['k', -4, 4, 1, 1]],
+    f: ([b, h, k]) => x => x <= h ? NaN : Math.log(x - h) / Math.log(b) + k,
+    s: ([b, h, k]) => `f(x) = ${b}log(${inner(h)})${sg(k)}`,
+    info: ([b, h, k]) => [['Domain', `x > ${fmt(h)}`], ['Asimtot tegak', `x = ${fmt(h)}`], ['Daerah hasil', 'semua y ∈ R'], ['Titik khusus', `(${fmt(h + 1)}, ${fmt(k)}) dan (${fmt(h + b)}, ${fmt(k + 1)})`]],
+    asym: ([b, h]) => ({v: h})},
+  mutlak: {name: 'Mutlak', p: [['a', -3, 3, .5, 1], ['h', -4, 4, 1, 2], ['k', -4, 4, 1, -3]],
+    f: ([a, h, k]) => x => a * Math.abs(x - h) + k,
+    s: ([a, h, k]) => `f(x) = ${fmt(a)}|${inner(h)}|${sg(k)}`,
+    info: ([a, h, k]) => [['Domain', 'semua x ∈ R'], ['Titik puncak', `(${fmt(h)}, ${fmt(k)})`], ['Daerah hasil', a > 0 ? `y ≥ ${fmt(k)}` : a < 0 ? `y ≤ ${fmt(k)}` : `{${fmt(k)}}`]]},
+  trig: {name: 'Trigonometri', p: [['a (amplitudo)', -4, 4, .5, 2], ['b', 1, 4, 1, 2], ['d (geser vertikal)', -3, 3, .5, 1], ['0 = sin, 1 = cos', 0, 1, 1, 0]],
+    f: ([a, b, d, c]) => x => a * (c ? Math.cos : Math.sin)(b * x * Math.PI / 180) + d,
+    s: ([a, b, d, c]) => `f(x) = ${fmt(a)} ${c ? 'cos' : 'sin'} ${b === 1 ? '' : b}x${sg(d)}`,
+    info: ([a, b, d]) => [['Periode', `360°/${b} = ${fmt(360 / b)}°`], ['Nilai maksimum', fmt(d + Math.abs(a))], ['Nilai minimum', fmt(d - Math.abs(a))], ['Daerah hasil', `${fmt(d - Math.abs(a))} ≤ y ≤ ${fmt(d + Math.abs(a))}`]]},
+};
+let cur = 'rasional';
+$('fam').innerHTML = Object.entries(FAM).map(([k, v]) => `<button data-f="${k}" class="${k === cur ? 'on' : ''}">${v.name}</button>`).join('');
+$('fam').onclick = e => { const b = e.target.closest('button'); if(!b) return; cur = b.dataset.f; $('fam').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); build(); };
+Sim.onTheme(draw);
+function build(){
+  $('sl').innerHTML = FAM[cur].p.map(([n, lo, hi, st, v], i) => `<div><div class="lab"><span>${n}</span><b id="v${i}"></b></div><input type="range" id="s${i}" min="${lo}" max="${hi}" step="${st}" value="${v}"></div>`).join('');
+  FAM[cur].p.forEach((_, i) => $('s' + i).oninput = draw);
+  draw();
+}
+function draw(){
+  const F = FAM[cur], par = F.p.map((_, i) => +$('s' + i).value);
+  par.forEach((v, i) => $('v' + i).textContent = fmt(v));
+  const f = F.f(par), trig = cur === 'trig';
+  const W = 480, H = 400; svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const xr = trig ? [-30, 390] : [-6, 6], yr = trig ? [-6, 6] : [-6, 6];
+  const X = x => (x - xr[0]) / (xr[1] - xr[0]) * W, Y = y => (yr[1] - y) / (yr[1] - yr[0]) * H;
+  let s = '';
+  const xs = trig ? 30 : 1;
+  for(let x = Math.ceil(xr[0] / xs) * xs; x <= xr[1]; x += xs) s += `<line x1="${X(x)}" y1="0" x2="${X(x)}" y2="${H}" style="stroke:var(--grid)"/>` + (x && (!trig || x % 90 === 0) ? `<text class="ar" x="${X(x)}" y="${Y(0) + 16}" text-anchor="middle" style="fill:var(--muted);font-size:11px">${x}${trig ? '°' : ''}</text>` : '');
+  for(let y = yr[0]; y <= yr[1]; y++) s += `<line x1="0" y1="${Y(y)}" x2="${W}" y2="${Y(y)}" style="stroke:var(--grid)"/>` + (y && y % 2 === 0 ? `<text class="ar" x="${X(0) - 6}" y="${Y(y) + 4}" text-anchor="end" style="fill:var(--muted);font-size:11px">${y}</text>` : '');
+  s += `<line x1="0" y1="${Y(0)}" x2="${W}" y2="${Y(0)}" style="stroke:var(--axis)" stroke-width="1.6"/><line x1="${X(0)}" y1="0" x2="${X(0)}" y2="${H}" style="stroke:var(--axis)" stroke-width="1.6"/>`;
+  const A = F.asym ? F.asym(par) : {};
+  if(A.v != null) s += `<line x1="${X(A.v)}" y1="0" x2="${X(A.v)}" y2="${H}" class="dash" style="stroke:var(--b)" stroke-width="2"/>`;
+  if(A.h != null) s += `<line x1="0" y1="${Y(A.h)}" x2="${W}" y2="${Y(A.h)}" class="dash" style="stroke:var(--b)" stroke-width="2"/>`;
+  let d = '', pen = false, prev = null;
+  const N = 1200;
+  for(let i = 0; i <= N; i++){
+    const x = xr[0] + (xr[1] - xr[0]) * i / N, v = f(x);
+    if(!isFinite(v) || Math.abs(v) > 40 || (prev !== null && Math.abs(v - prev) > 20)){ pen = false; prev = isFinite(v) ? v : null; continue; }
+    d += (pen ? 'L' : 'M') + X(x).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; prev = v;
+  }
+  s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+  if(cur === 'rasional' && A.v == null){ const c = par[2]; s += `<circle cx="${X(c)}" cy="${Y(par[0])}" r="5.5" style="fill:var(--bg);stroke:var(--a)" stroke-width="2.5"/>`; }
+  if(cur === 'akar') s += `<circle cx="${X(par[1])}" cy="${Y(par[2])}" r="5" style="fill:var(--a)"/>`;
+  svg.innerHTML = s;
+  $('rumus').textContent = F.s(par);
+  $('read').innerHTML = F.info(par).map(([k, v]) => `<div><span>${k}</span><b>${v}</b></div>`).join('') + (A.v != null || A.h != null ? '<p class="note">Garis merah putus-putus adalah asimtot.</p>' : '');
+}
+build();
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matriks, Determinan, dan Invers</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.mx{display:inline-grid;width:max-content;gap:4px;align-items:center;justify-content:start;padding:4px 10px;border-left:2px solid var(--ink);border-right:2px solid var(--ink);border-radius:6px}
+.mx input{width:52px;padding:5px;border:1px solid var(--line-2);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit;text-align:center}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Transformasi persegi satuan oleh matriks 2x2 atau aturan Sarrus untuk determinan 3x3"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="2" class="on">Matriks 2 × 2</button><button data-m="3">Determinan 3 × 3</button></div>
+    <div id="p2">
+      <p class="note">Matriks A memetakan persegi satuan (abu-abu) menjadi jajargenjang (biru). Kolom pertama = bayangan (1, 0), kolom kedua = bayangan (0, 1).</p>
+      <div class="lab"><span>Matriks A</span></div>
+      <div class="mx" style="grid-template-columns:auto auto"><input id="a" type="number" step="0.5" value="2"><input id="b" type="number" step="0.5" value="1"><input id="c" type="number" step="0.5" value="1"><input id="d" type="number" step="0.5" value="3"></div>
+    </div>
+    <div id="p3" hidden>
+      <p class="note">Aturan Sarrus: salin dua kolom pertama ke kanan. Jumlah hasil kali diagonal turun (hijau) dikurangi jumlah hasil kali diagonal naik (merah).</p>
+      <div class="mx" style="grid-template-columns:auto auto auto" id="m3"></div>
+    </div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = '2';
+const D3 = [2, -1, 3, 0, 4, 1, 1, 2, -2];
+D3.forEach((v, i) => $('m3').insertAdjacentHTML('beforeend', `<input type="number" id="e${i}" value="${v}">`));
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); $('p2').hidden = mode !== '2'; $('p3').hidden = mode !== '3'; draw(); };
+document.querySelectorAll('input').forEach(i => i.oninput = draw);
+Sim.onTheme(draw);
+const num = id => { const v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+const fr = v => { // tampilkan pecahan sederhana jika perlu
+  if(Math.abs(v - Math.round(v)) < 1e-9) return fmt(Math.round(v));
+  for(let q = 2; q <= 40; q++){ const p = v * q; if(Math.abs(p - Math.round(p)) < 1e-9) return (p < 0 ? '−' : '') + Math.abs(Math.round(p)) + '/' + q; }
+  return fmt(v, 3);
+};
+function draw(){
+  if(mode === '2') return draw2();
+  draw3();
+}
+function draw2(){
+  const a = num('a'), b = num('b'), c = num('c'), d = num('d'), D = a * d - b * c;
+  const P = Sim.plane(svg, {xmin: -6, xmax: 6, ymin: -6, ymax: 6, scale: 34});
+  const poly = (pts, fill, stroke, op) => `<polygon points="${pts.map(p => P.X(p[0]) + ',' + P.Y(p[1])).join(' ')}" style="fill:${fill};stroke:${stroke}" fill-opacity="${op}" stroke-width="2.5"/>`;
+  let s = P.grid({labelStep: 2});
+  s += poly([[0, 0], [1, 0], [1, 1], [0, 1]], 'var(--muted)', 'var(--muted)', .25);
+  s += poly([[0, 0], [a, c], [a + b, c + d], [b, d]], D >= 0 ? 'var(--a)' : 'var(--b)', D >= 0 ? 'var(--a)' : 'var(--b)', .22);
+  s += P.arrow(0, 0, a, c, 'var(--k)', {label: '(a, c)'}) + P.arrow(0, 0, b, d, 'var(--comp)', {label: '(b, d)', side: -1});
+  svg.innerHTML = s;
+  let inv = '<b>tidak ada (matriks singular)</b>';
+  if(Math.abs(D) > 1e-9) inv = `<b>(1/${fr(D)}) · [${fr(d)}  ${fr(-b)} ; ${fr(-c)}  ${fr(a)}]</b>`;
+  $('read').innerHTML = `<div><span>det A = ad − bc</span><b>${fr(a)}·${fr(d)} − ${fr(b)}·${fr(c)} = ${fr(D)}</b></div>` +
+    `<div><span>Luas jajargenjang</span><b>|det A| × 1 = ${fr(Math.abs(D))}</b></div>` +
+    `<div><span>Orientasi</span><b>${Math.abs(D) < 1e-9 ? 'gepeng menjadi garis' : D > 0 ? 'tetap (det positif)' : 'terbalik (det negatif)'}</b></div>` +
+    `<div><span>A<sup>−1</sup></span>${inv}</div>`;
+}
+function draw3(){
+  const m = D3.map((_, i) => num('e' + i)), g = (r, k) => m[r * 3 + (k % 3)];
+  const W = 520, H = 300; svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const cx = k => 70 + k * 80, cy = r => 70 + r * 70;
+  let s = '';
+  for(let k = 0; k < 3; k++){ // diagonal turun dan naik
+    s += `<line x1="${cx(k)}" y1="${cy(0)}" x2="${cx(k + 2)}" y2="${cy(2)}" style="stroke:var(--ok)" stroke-width="3" opacity=".55"/>`;
+    s += `<line x1="${cx(k)}" y1="${cy(2)}" x2="${cx(k + 2)}" y2="${cy(0)}" style="stroke:var(--bad)" stroke-width="3" opacity=".55"/>`;
+  }
+  for(let r = 0; r < 3; r++) for(let k = 0; k < 5; k++)
+    s += `<circle cx="${cx(k)}" cy="${cy(r)}" r="19" style="fill:var(--bg);stroke:${k > 2 ? 'var(--line-2)' : 'var(--ink)'}" stroke-width="1.5"/><text class="ar" x="${cx(k)}" y="${cy(r) + 5}" text-anchor="middle" style="fill:${k > 2 ? 'var(--muted)' : 'var(--ink)'}">${fr(g(r, k))}</text>`;
+  s += `<path d="M${cx(0) - 30},${cy(0) - 28} h-8 v${cy(2) - cy(0) + 56} h8 M${cx(2) + 30},${cy(0) - 28} h8 v${cy(2) - cy(0) + 56} h-8" fill="none" style="stroke:var(--ink)" stroke-width="2"/>`;
+  svg.innerHTML = s;
+  const down = [0, 1, 2].map(k => g(0, k) * g(1, k + 1) * g(2, k + 2)), up = [0, 1, 2].map(k => g(2, k) * g(1, k + 1) * g(0, k + 2));
+  const Dv = down.reduce((p, q) => p + q, 0) - up.reduce((p, q) => p + q, 0);
+  $('read').innerHTML = `<div><span style="color:var(--ok)">Diagonal turun</span><b>${down.map(v => v < 0 ? '(' + fr(v) + ')' : fr(v)).join(' + ')} = ${fr(down.reduce((p, q) => p + q, 0))}</b></div>` +
+    `<div><span style="color:var(--bad)">Diagonal naik</span><b>${up.map(v => v < 0 ? '(' + fr(v) + ')' : fr(v)).join(' + ')} = ${fr(up.reduce((p, q) => p + q, 0))}</b></div>` +
+    `<div><span>det</span><b>${fr(Dv)}</b></div><div><span>Invers</span><b>${Math.abs(Dv) < 1e-9 ? 'tidak ada (det = 0)' : 'ada, karena det tidak nol'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

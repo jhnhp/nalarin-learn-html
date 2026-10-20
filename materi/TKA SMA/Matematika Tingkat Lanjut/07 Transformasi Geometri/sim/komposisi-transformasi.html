@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Komposisi Transformasi dan Matriksnya</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.ar{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+select{width:100%;padding:7px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit}
+.st{display:grid;gap:6px;padding:10px;border:1px solid var(--line);border-radius:10px}
+.pp{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+.pp input{width:54px;padding:4px;border:1px solid var(--line-2);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit;text-align:center}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Segitiga, bayangan setelah transformasi pertama, dan bayangan akhir"></svg></div>
+  <div class="panel">
+    <div class="st"><b style="color:var(--comp)">Transformasi 1</b><select id="t1"></select><div class="pp" id="pp1"></div></div>
+    <div class="st"><b style="color:var(--r)">Transformasi 2</b><select id="t2"></select><div class="pp" id="pp2"></div></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const TYPES = [
+  ['none', 'Tidak ada', []],
+  ['tr', 'Translasi T = (a, b)', [['a', 2], ['b', -3]]],
+  ['rx', 'Refleksi terhadap sumbu-x', []], ['ry', 'Refleksi terhadap sumbu-y', []],
+  ['ryx', 'Refleksi terhadap y = x', []], ['rymx', 'Refleksi terhadap y = −x', []],
+  ['rxh', 'Refleksi terhadap garis x = h', [['h', 2]]],
+  ['rot', 'Rotasi pusat O sebesar θ (berlawanan jarum jam)', [['θ', 90]]],
+  ['rotp', 'Rotasi pusat P(a, b) sebesar θ', [['a', 1], ['b', 1], ['θ', 180]]],
+  ['dil', 'Dilatasi pusat O, faktor k', [['k', 2]]],
+];
+['t1', 't2'].forEach((id, j) => { $(id).innerHTML = TYPES.map(t => `<option value="${t[0]}">${t[1]}</option>`).join(''); $(id).value = j ? 'dil' : 'rot'; $(id).onchange = () => { params(j + 1); draw(); }; });
+function params(j){
+  const t = TYPES.find(x => x[0] === $('t' + j).value);
+  const defaults = j === 2 && t[0] === 'dil' ? [['k', -1]] : t[2];
+  $('pp' + j).innerHTML = defaults.map(([n, v], i) => `${n} <input id="p${j}${i}" type="number" step="${n === 'θ' ? 90 : 1}" value="${v}">`).join('');
+  $('pp' + j).querySelectorAll('input').forEach(i => i.oninput = draw);
+}
+params(1); params(2);
+Sim.onTheme(draw);
+const num = id => { const e = $(id); const v = e ? parseFloat(e.value) : 0; return isFinite(v) ? v : 0; };
+const r6 = v => Math.round(v * 1e6) / 1e6;
+// setiap transformasi: {M: matriks 2x2, c: vektor} sehingga P' = M·P + c
+function make(j){
+  const k = $('t' + j).value, q = i => num(`p${j}${i}`);
+  const R = th => { const a = th * Math.PI / 180; return [[r6(Math.cos(a)), r6(-Math.sin(a))], [r6(Math.sin(a)), r6(Math.cos(a))]]; };
+  switch(k){
+    case 'tr': return {M: [[1, 0], [0, 1]], c: [q(0), q(1)], lin: false};
+    case 'rx': return {M: [[1, 0], [0, -1]], c: [0, 0], lin: true};
+    case 'ry': return {M: [[-1, 0], [0, 1]], c: [0, 0], lin: true};
+    case 'ryx': return {M: [[0, 1], [1, 0]], c: [0, 0], lin: true};
+    case 'rymx': return {M: [[0, -1], [-1, 0]], c: [0, 0], lin: true};
+    case 'rxh': return {M: [[-1, 0], [0, 1]], c: [2 * q(0), 0], lin: false};
+    case 'rot': return {M: R(q(0)), c: [0, 0], lin: true};
+    case 'rotp': { const M = R(q(2)), a = q(0), b = q(1); return {M, c: [r6(a - M[0][0] * a - M[0][1] * b), r6(b - M[1][0] * a - M[1][1] * b)], lin: false}; }
+    case 'dil': return {M: [[q(0), 0], [0, q(0)]], c: [0, 0], lin: true};
+    default: return {M: [[1, 0], [0, 1]], c: [0, 0], lin: true, id: true};
+  }
+}
+const ap = (t, p) => [r6(t.M[0][0] * p[0] + t.M[0][1] * p[1] + t.c[0]), r6(t.M[1][0] * p[0] + t.M[1][1] * p[1] + t.c[1])];
+const mm = (A, B) => [[A[0][0] * B[0][0] + A[0][1] * B[1][0], A[0][0] * B[0][1] + A[0][1] * B[1][1]], [A[1][0] * B[0][0] + A[1][1] * B[1][0], A[1][0] * B[0][1] + A[1][1] * B[1][1]]];
+const ms = M => `[${fmt(M[0][0])}  ${fmt(M[0][1])} ; ${fmt(M[1][0])}  ${fmt(M[1][1])}]`;
+function draw(){
+  const T1 = make(1), T2 = make(2);
+  const A = [[1, 1], [4, 2], [2, 4]], B = A.map(p => ap(T1, p)), C = B.map(p => ap(T2, p));
+  const all = A.concat(B, C).flat(), m = Math.max(8, ...all.map(Math.abs)) + 1;
+  const P = Sim.plane(svg, {xmin: -m, xmax: m, ymin: -m, ymax: m, scale: 400 / (2 * m)});
+  const tri = (pts, col, op, lab) => `<polygon points="${pts.map(p => P.X(p[0]) + ',' + P.Y(p[1])).join(' ')}" style="fill:${col};stroke:${col}" fill-opacity="${op}" stroke-width="2.5"/>` +
+    pts.map((p, i) => `<text class="ar" x="${P.X(p[0]) + 6}" y="${P.Y(p[1]) - 6}" style="fill:${col}">${'ABC'[i]}${lab}</text>`).join('');
+  let s = P.grid({labelStep: m > 12 ? 4 : 2}) + tri(A, 'var(--a)', .25, '');
+  if(!T1.id) s += tri(B, 'var(--comp)', .15, '′');
+  if(!T2.id) s += tri(C, 'var(--r)', .25, T1.id ? '′' : '″');
+  svg.innerHTML = s;
+  const comp = mm(T2.M, T1.M), detc = comp[0][0] * comp[1][1] - comp[0][1] * comp[1][0];
+  const both = T1.lin && T2.lin;
+  $('read').innerHTML = `<div><span>Titik awal</span><b>${A.map(p => `(${p.map(fmt).join(', ')})`).join(' ')}</b></div>` +
+    `<div><span style="color:var(--comp)">Setelah T1</span><b>${B.map(p => `(${p.map(fmt).join(', ')})`).join(' ')}</b></div>` +
+    `<div><span style="color:var(--r)">Setelah T2</span><b>${C.map(p => `(${p.map(fmt).join(', ')})`).join(' ')}</b></div>` +
+    `<div><span>Matriks T1, T2</span><b>${ms(T1.M)}, ${ms(T2.M)}</b></div>` +
+    (both ? `<div><span>Matriks komposisi M = M₂ · M₁</span><b>${ms(comp)}</b></div>` : `<div><span>Komposisi</span><b>memuat translasi/pusat bukan O: P″ = M₂(M₁P + c₁) + c₂</b></div>`) +
+    `<div><span>Luas bayangan / luas awal = |det M₂M₁|</span><b>${fmt(Math.abs(detc))}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

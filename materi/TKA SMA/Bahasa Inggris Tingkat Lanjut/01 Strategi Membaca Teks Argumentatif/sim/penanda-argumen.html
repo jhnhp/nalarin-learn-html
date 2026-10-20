@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penanda Argumen</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.wrap{padding:14px 16px;display:grid;gap:12px}
+.intro{font-size:14px;color:var(--muted)}
+.psg{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);font-size:14.5px;line-height:1.6}
+.psg b{font-family:var(--display)}
+.psg table{border-collapse:collapse;margin:8px 0}.psg td,.psg th{border:1px solid var(--line-2);padding:4px 12px;text-align:center}
+.items{display:grid;gap:8px;padding:0;list-style:none}
+.it{border:1px solid var(--line-2);border-radius:12px;padding:10px 12px;display:grid;gap:8px;background:var(--surface)}
+.it.ok{border-color:var(--ok);background:var(--ok-soft)}
+.it.no{border-color:var(--bad);background:var(--bad-soft)}
+.it .tx{font-size:14.5px}
+.it .why{font-size:13px;color:var(--muted)}
+.it .seg button{font-size:12.5px;padding:6px 6px;white-space:normal;flex:1 1 30%;min-width:0}
+.it .tx{overflow-wrap:anywhere}
+.ord{display:flex;gap:10px;align-items:center}
+.ord .n{font-family:var(--display);font-weight:800;min-width:22px;text-align:center}
+.ord .tx{flex:1}
+.ord .mv{display:flex;flex-direction:column;gap:4px}
+.ord .mv button{width:32px;height:28px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);font-weight:800}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="seg" id="sets"><button>Fungsi penanda</button><button>Sikap penulis</button></div>
+  <p class="intro" id="intro"></p>
+  <div class="psg" id="psg" hidden></div>
+  <ul class="items" id="items"></ul>
+  <div class="bar"><button class="btn primary" id="cek">Check</button><button class="btn" id="ulang">Reset</button></div>
+  <div class="box" id="res" hidden></div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const SETS = [{"name": "Fungsi penanda", "cats": ["Addition", "Contrast", "Cause / effect", "Conclusion"], "intro": "Argumentative texts use signal words to connect ideas. Decide the function of the <b>bold</b> signal in each sentence.", "items": [["Solar panels reduce electricity bills. <b>Moreover</b>, they need little maintenance.", 0, "'Moreover' adds another point in the same direction."], ["The plan is expensive. <b>Nevertheless</b>, it may save money in the long run.", 1, "'Nevertheless' introduces a contrasting idea."], ["Many workers lack digital skills; <b>consequently</b>, some lose their jobs to automation.", 2, "'Consequently' shows a result."], ["<b>In short</b>, the benefits of the policy outweigh its costs.", 3, "'In short' sums up the argument."], ["<b>Due to</b> heavy rain, the solar panels produced less power.", 2, "'Due to' introduces a cause."], ["Some people prefer cash, <b>whereas</b> young people often pay digitally.", 1, "'Whereas' contrasts two groups."], ["<b>Furthermore</b>, online courses allow students to learn at their own pace.", 0, "'Furthermore' adds a point."], ["<b>All things considered</b>, a gradual approach seems wisest.", 3, "Signals the final judgement."]]}, {"name": "Sikap penulis", "cats": ["Cautious (hedging)", "Certain (boosting)"], "intro": "Writers show how sure they are. Decide whether each sentence sounds <b>cautious</b> (hedging) or <b>certain</b> (boosting).", "items": [["Microplastics <b>may</b> cause inflammation in human cells.", 0, "'May' shows possibility, not certainty."], ["It is <b>clear</b> that the policy has failed.", 1, "'It is clear' shows strong certainty."], ["The results <b>suggest</b> that sleep improves memory.", 0, "'Suggest' is a careful verb."], ["This is <b>undoubtedly</b> the most important issue of our time.", 1, "'Undoubtedly' is a strong booster."], ["Electric buses <b>could possibly</b> reduce pollution in some cities.", 0, "Double hedge: 'could possibly'."], ["The evidence <b>proves</b> that the drug is unsafe.", 1, "'Proves' claims certainty."]]}];
+const MODE = 'classify';
+const T = {"pick": "Choose a category for every item first.", "of": "of", "correct": "correct", "done": "Well done!", "retry": "Read the notes under each item, then try again.", "pos": "Correct position:", "ans": "Answer:", "up": "Move up", "down": "Move down", "cek": "Check", "ulang": "Reset"};
+const $ = id => document.getElementById(id);
+const esc = s => s;
+let cur = 0, ans = [], order = [], checked = false;
+function pick(i){
+  cur = i; checked = false;
+  const S = SETS[i];
+  if($('sets')) $('sets').querySelectorAll('button').forEach((b, j) => b.classList.toggle('on', j === i));
+  $('intro').innerHTML = S.intro;
+  $('psg').hidden = !S.passage; $('psg').innerHTML = S.passage || '';
+  if(MODE === 'order'){
+    // urutan awal teracak tetap (bukan urutan benar)
+    const n = S.items.length; order = S.start.slice();
+  } else ans = S.items.map(() => null);
+  $('res').hidden = true;
+  draw();
+}
+function draw(){
+  const S = SETS[cur], ul = $('items'); ul.innerHTML = '';
+  if(MODE === 'order'){
+    order.forEach((k, pos) => {
+      const it = S.items[k], li = document.createElement('li');
+      li.className = 'it' + (checked ? (k === pos ? ' ok' : ' no') : '');
+      li.innerHTML = `<div class="ord"><span class="n">${pos + 1}</span><span class="tx">${it[0]}</span><span class="mv"><button aria-label="${T.up}">↑</button><button aria-label="${T.down}">↓</button></span></div>` + (checked ? `<div class="why">${k === pos ? '✓ ' : '✗ ' + T.pos + ' ' + (k + 1) + '. '}${it[1]}</div>` : '');
+      const [up, dn] = li.querySelectorAll('.mv button');
+      up.disabled = pos === 0; dn.disabled = pos === order.length - 1;
+      up.onclick = () => { [order[pos - 1], order[pos]] = [order[pos], order[pos - 1]]; checked = false; $('res').hidden = true; draw(); };
+      dn.onclick = () => { [order[pos + 1], order[pos]] = [order[pos], order[pos + 1]]; checked = false; $('res').hidden = true; draw(); };
+      ul.appendChild(li);
+    });
+  } else {
+    S.items.forEach((it, i) => {
+      const li = document.createElement('li');
+      const ok = ans[i] === it[1];
+      li.className = 'it' + (checked ? (ok ? ' ok' : ' no') : '');
+      li.innerHTML = `<div class="tx">${it[0]}</div><div class="seg">${S.cats.map((c, j) => `<button data-j="${j}" class="${ans[i] === j ? 'on' : ''}">${c}</button>`).join('')}</div>` + (checked ? `<div class="why">${ok ? '✓ ' : '✗ ' + T.ans + ' <b>' + S.cats[it[1]] + '</b>. '}${it[2]}</div>` : '');
+      li.querySelectorAll('.seg button').forEach(b => b.onclick = () => { ans[i] = +b.dataset.j; if(checked){ checked = false; $('res').hidden = true; } draw(); });
+      ul.appendChild(li);
+    });
+  }
+}
+$('cek').onclick = () => {
+  const S = SETS[cur];
+  let ok = 0, n = S.items.length;
+  if(MODE === 'order') order.forEach((k, pos) => ok += k === pos);
+  else { if(ans.some(a => a === null)){ $('res').hidden = false; $('res').className = 'box info'; $('res').innerHTML = T.pick; return; } ans.forEach((a, i) => ok += a === S.items[i][1]); }
+  checked = true; draw();
+  $('res').hidden = false; $('res').className = 'box ' + (ok === n ? 'ok' : 'no');
+  $('res').innerHTML = `<b>${ok} ${T.of} ${n} ${T.correct}.</b> ` + (ok === n ? (S.done || T.done) : T.retry);
+};
+$('ulang').onclick = () => pick(cur);
+if($('sets')) $('sets').querySelectorAll('button').forEach((b, j) => b.onclick = () => pick(j));
+pick(0);
+</script>
+</body>
+</html>

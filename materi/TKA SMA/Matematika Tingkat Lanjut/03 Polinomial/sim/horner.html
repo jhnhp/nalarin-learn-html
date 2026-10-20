@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pembagian Horner dan Teorema Sisa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.co{display:flex;gap:4px;flex-wrap:wrap;align-items:center;font-size:14px}
+.co input{width:46px;padding:4px;border:1px solid var(--line-2);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit;text-align:center}
+table.h{border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px}
+table.h td{padding:5px 9px;text-align:center;min-width:36px}
+table.h tr:nth-child(2) td{color:var(--muted)}
+table.h tr:nth-child(3) td{border-top:2px solid var(--ink);font-weight:700}
+table.h td.k{border-right:2px solid var(--ink);font-weight:800;color:var(--r)}
+table.h td.s{background:var(--warn-soft);color:var(--warn)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik polinomial dan titik (k, f(k)) yang menunjukkan sisa pembagian"></svg></div>
+  <div class="panel">
+    <div class="lab"><span>f(x) = a₄x⁴ + a₃x³ + a₂x² + a₁x + a₀</span></div>
+    <div class="co">a₄<input id="c4" type="number" value="0">a₃<input id="c3" type="number" value="1">a₂<input id="c2" type="number" value="-2">a₁<input id="c1" type="number" value="-5">a₀<input id="c0" type="number" value="6"></div>
+    <div><div class="lab"><span>Pembagi (x − k), k =</span><b id="kv"></b></div><input type="range" id="k" min="-4" max="4" step="0.5" value="2"></div>
+    <div id="tab"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['c4', 'c3', 'c2', 'c1', 'c0', 'k'].forEach(i => $(i).oninput = draw);
+Sim.onTheme(draw);
+const num = id => { const v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+const sup = ['', '', '²', '³', '⁴'];
+function polyStr(c){ // c: koefisien dari pangkat tertinggi
+  const d = c.length - 1; let s = '';
+  c.forEach((a, i) => { const p = d - i; if(Math.abs(a) < 1e-12) return;
+    const sg = a < 0 ? ' − ' : (s ? ' + ' : ''), m = Math.abs(a), coef = (m === 1 && p > 0) ? '' : fmt(m);
+    s += (s ? sg : (a < 0 ? '−' : '')) + coef + (p > 0 ? 'x' + sup[p] : ''); });
+  return s || '0';
+}
+function draw(){
+  let c = ['c4', 'c3', 'c2', 'c1', 'c0'].map(num);
+  while(c.length > 1 && Math.abs(c[0]) < 1e-12) c.shift();
+  const k = +$('k').value; $('kv').textContent = fmt(k);
+  const row2 = [''], row3 = [c[0]];
+  for(let i = 1; i < c.length; i++){ const t = row3[i - 1] * k; row2.push(t); row3.push(c[i] + t); }
+  const rem = row3[row3.length - 1], quo = row3.slice(0, -1);
+  $('tab').innerHTML = `<table class="h"><tr><td class="k">${fmt(k)}</td>${c.map(a => `<td>${fmt(a)}</td>`).join('')}</tr><tr><td class="k"></td>${row2.map(a => `<td>${a === '' ? '' : fmt(a)}</td>`).join('')}</tr><tr><td class="k"></td>${row3.map((a, i) => `<td class="${i === row3.length - 1 ? 's' : ''}">${fmt(a)}</td>`).join('')}</tr></table>`;
+  const f = x => c.reduce((t, a) => t * x + a, 0);
+  let lo = Infinity, hi = -Infinity;
+  for(let x = -5; x <= 5; x += .05){ const v = f(x); if(Math.abs(v) < 60){ lo = Math.min(lo, v); hi = Math.max(hi, v); } }
+  lo = Math.min(lo, rem, -2); hi = Math.max(hi, rem, 2);
+  const span = Math.max(hi - lo, 4), ymin = lo - span * .1, ymax = hi + span * .1;
+  const W = 480, H = 380; svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const X = x => (x + 5) / 10 * W, Y = y => (ymax - y) / (ymax - ymin) * H;
+  let s = '';
+  for(let x = -5; x <= 5; x++) s += `<line x1="${X(x)}" y1="0" x2="${X(x)}" y2="${H}" style="stroke:var(--grid)"/>${x ? `<text class="ar" x="${X(x)}" y="${Math.min(H - 4, Math.max(14, Y(0) + 16))}" text-anchor="middle" style="fill:var(--muted);font-size:11px">${x}</text>` : ''}`;
+  const ys = Math.pow(10, Math.floor(Math.log10(span / 4))) * ([1, 2, 5].find(m => span / (Math.pow(10, Math.floor(Math.log10(span / 4))) * m) <= 8) || 10);
+  for(let y = Math.ceil(ymin / ys) * ys; y <= ymax; y += ys) s += `<line x1="0" y1="${Y(y)}" x2="${W}" y2="${Y(y)}" style="stroke:var(--grid)"/>${Math.abs(y) > 1e-9 ? `<text class="ar" x="${X(0) - 6}" y="${Y(y) + 4}" text-anchor="end" style="fill:var(--muted);font-size:11px">${fmt(y)}</text>` : ''}`;
+  s += `<line x1="0" y1="${Y(0)}" x2="${W}" y2="${Y(0)}" style="stroke:var(--axis)" stroke-width="1.6"/><line x1="${X(0)}" y1="0" x2="${X(0)}" y2="${H}" style="stroke:var(--axis)" stroke-width="1.6"/>`;
+  let d = ''; for(let x = -5; x <= 5.001; x += .02){ const v = f(x); d += (d ? 'L' : 'M') + X(x).toFixed(1) + ',' + Math.max(-50, Math.min(H + 50, Y(v))).toFixed(1); }
+  s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+  s += `<line x1="${X(k)}" y1="${Y(0)}" x2="${X(k)}" y2="${Y(rem)}" class="dash" style="stroke:var(--warn)" stroke-width="2"/><circle cx="${X(k)}" cy="${Y(rem)}" r="6" style="fill:var(--warn)"/><text class="ar" x="${X(k) + 9}" y="${Y(rem) - 8}" style="fill:var(--warn)">(${fmt(k)}, ${fmt(rem)})</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>f(x)</span><b>${polyStr(c)}</b></div><div><span>Hasil bagi H(x)</span><b>${polyStr(quo)}</b></div><div><span>Sisa = f(${fmt(k)})</span><b style="color:var(--warn)">${fmt(rem)}</b></div><div><span>(x − ${fmt(k)}) faktor f(x)?</span><b>${Math.abs(rem) < 1e-9 ? 'ya, sisa 0' : 'bukan'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mendekati Nilai Limit</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.ar{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+select{width:100%;padding:7px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit}
+table.t{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+table.t th,table.t td{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}
+table.t th{color:var(--muted);font-weight:700}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Grafik fungsi dan titik-titik yang mendekati nilai limit"></svg></div>
+  <div class="panel">
+    <select id="fn"></select>
+    <div><div class="lab"><span id="hl"></span><b id="hv"></b></div><input type="range" id="h" min="1" max="5" step="1" value="1"></div>
+    <div id="tab"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const FN = [
+  {s: 'lim x→2 (x² − 4)/(x − 2)', a: 2, f: x => (x * x - 4) / (x - 2), L: '4', how: 'Faktorkan: (x − 2)(x + 2)/(x − 2) = x + 2 → 4. Di x = 2 fungsi tidak terdefinisi (ada lubang), tetapi limitnya ada.', box: [-1, 5, -1, 7]},
+  {s: 'lim x→0 (√(x + 4) − 2)/x', a: 0, f: x => (Math.sqrt(x + 4) - 2) / x, L: '1/4', how: 'Kalikan sekawan: 1/(√(x + 4) + 2) → 1/4.', box: [-3, 3, -0.2, 0.6]},
+  {s: 'lim x→0 sin x / x  (x dalam radian)', a: 0, f: x => Math.sin(x) / x, L: '1', how: 'Limit dasar trigonometri. Akibatnya lim sin ax/(bx) = a/b.', box: [-6, 6, -0.5, 1.5]},
+  {s: 'lim x→0 (1 − cos x)/x²', a: 0, f: x => (1 - Math.cos(x)) / (x * x), L: '1/2', how: '1 − cos x = 2 sin²(x/2), sehingga limitnya 2 · (1/2)² = 1/2.', box: [-6, 6, -0.2, 0.7]},
+  {s: 'f(x) = x + 1 (x < 1), f(x) = x + 2 (x ≥ 1); lim x→1', a: 1, f: x => x < 1 ? x + 1 : x + 2, L: 'tidak ada', how: 'Limit kiri 2, limit kanan 3. Karena berbeda, limit di x = 1 tidak ada.', box: [-2, 4, -1, 6], jump: true},
+  {s: 'lim x→∞ (2x² + 3x)/(x² + 1)', inf: true, f: x => (2 * x * x + 3 * x) / (x * x + 1), L: '2', how: 'Pangkat tertinggi sama: perbandingan koefisien 2/1 = 2.', box: [0, 40, 0, 4]},
+  {s: 'lim x→∞ (√(x² + 4x) − x)', inf: true, f: x => Math.sqrt(x * x + 4 * x) - x, L: '2', how: 'Kalikan sekawan: 4x/(√(x² + 4x) + x) → 4/2 = 2.', box: [0, 40, 0, 3]},
+  {s: 'lim x→∞ (3x + 1)/(x² + 2)', inf: true, f: x => (3 * x + 1) / (x * x + 2), L: '0', how: 'Pangkat penyebut lebih tinggi, sehingga limitnya 0.', box: [0, 40, -0.2, 1.5]},
+];
+$('fn').innerHTML = FN.map((f, i) => `<option value="${i}">${f.s}</option>`).join('');
+$('fn').onchange = draw; $('h').oninput = draw;
+Sim.onTheme(draw);
+const v6 = v => isFinite(v) ? (Math.abs(v) < 1e-12 ? '0' : fmt(v, 6)) : 'tak terdefinisi';
+function draw(){
+  const F = FN[+$('fn').value], n = +$('h').value;
+  const W = 480, H = 380; svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const [x0, x1, y0, y1] = F.box, X = x => (x - x0) / (x1 - x0) * W, Y = y => (y1 - y) / (y1 - y0) * H;
+  let s = '';
+  const xs = F.inf ? 5 : 1, ys = (y1 - y0) > 4 ? 1 : (y1 - y0) > 1 ? .5 : .1;
+  for(let x = Math.ceil(x0 / xs) * xs; x <= x1; x += xs) s += `<line x1="${X(x)}" y1="0" x2="${X(x)}" y2="${H}" style="stroke:var(--grid)"/><text class="ar" x="${X(x)}" y="${H - 6}" text-anchor="middle" style="fill:var(--muted);font-size:11px">${fmt(x)}</text>`;
+  for(let y = Math.ceil(y0 / ys) * ys; y <= y1 + 1e-9; y += ys) s += `<line x1="0" y1="${Y(y)}" x2="${W}" y2="${Y(y)}" style="stroke:var(--grid)"/><text class="ar" x="6" y="${Y(y) - 3}" style="fill:var(--muted);font-size:11px">${fmt(y, 1)}</text>`;
+  if(y0 < 0) s += `<line x1="0" y1="${Y(0)}" x2="${W}" y2="${Y(0)}" style="stroke:var(--axis)" stroke-width="1.5"/>`;
+  if(x0 < 0) s += `<line x1="${X(0)}" y1="0" x2="${X(0)}" y2="${H}" style="stroke:var(--axis)" stroke-width="1.5"/>`;
+  let d = '', pen = false;
+  for(let i = 0; i <= 800; i++){ const x = x0 + (x1 - x0) * i / 800, v = F.f(x);
+    if(!isFinite(v) || (F.jump && Math.abs(x - F.a) < (x1 - x0) / 800)){ pen = false; continue; }
+    d += (pen ? 'L' : 'M') + X(x).toFixed(1) + ',' + Y(v).toFixed(1); pen = true; }
+  s += `<path d="${d}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+  let rows = '';
+  if(F.inf){
+    const xsv = [1, 2, 3, 4, 5].slice(0, n).map(k => Math.pow(10, k));
+    $('hl').textContent = 'x dibuat makin besar sampai'; $('hv').textContent = fmt(xsv[xsv.length - 1]);
+    const Lv = parseFloat(F.L); s += `<line x1="0" y1="${Y(Lv)}" x2="${W}" y2="${Y(Lv)}" class="dash" style="stroke:var(--r)" stroke-width="2"/>`;
+    rows = xsv.map(x => `<tr><td>${fmt(x)}</td><td>${v6(F.f(x))}</td></tr>`).join('');
+    $('tab').innerHTML = `<table class="t"><tr><th>x</th><th>f(x)</th></tr>${rows}</table>`;
+    const last = xsv[xsv.length - 1]; if(last <= x1) s += `<circle cx="${X(last)}" cy="${Y(F.f(last))}" r="6" style="fill:var(--r)"/>`;
+  } else {
+    const hs = [1, 2, 3, 4, 5].slice(0, n).map(k => Math.pow(10, -k + 0.0));
+    $('hl').textContent = 'Jarak terdekat ke a: h ='; $('hv').textContent = fmt(hs[hs.length - 1], 5);
+    rows = hs.map(h => `<tr><td>${fmt(h, 5)}</td><td>${v6(F.f(F.a - h))}</td><td>${v6(F.f(F.a + h))}</td></tr>`).join('');
+    $('tab').innerHTML = `<table class="t"><tr><th>h</th><th>f(a − h)</th><th>f(a + h)</th></tr>${rows}</table>`;
+    const h = hs[hs.length - 1];
+    s += `<line x1="${X(F.a)}" y1="0" x2="${X(F.a)}" y2="${H}" class="dash" style="stroke:var(--muted)" stroke-width="1.5"/>`;
+    s += `<circle cx="${X(F.a - Math.max(h, .05))}" cy="${Y(F.f(F.a - h))}" r="6" style="fill:var(--k)"/><circle cx="${X(F.a + Math.max(h, .05))}" cy="${Y(F.f(F.a + h))}" r="6" style="fill:var(--r)"/>`;
+    const fa = F.f(F.a);
+    if(!isFinite(fa)){ const Lv = parseFloat(F.L.replace('1/4', '0.25').replace('1/2', '0.5')); s += `<circle cx="${X(F.a)}" cy="${Y(Lv)}" r="6" style="fill:var(--bg);stroke:var(--a)" stroke-width="2.5"/>`; }
+    if(F.jump) s += `<circle cx="${X(F.a)}" cy="${Y(F.a + 1)}" r="6" style="fill:var(--bg);stroke:var(--a)" stroke-width="2.5"/><circle cx="${X(F.a)}" cy="${Y(F.a + 2)}" r="6" style="fill:var(--a)"/>`;
+  }
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Nilai limit</span><b>${F.L}</b></div><p class="note">${F.how}</p>`;
+}
+draw();
+</script>
+</body>
+</html>

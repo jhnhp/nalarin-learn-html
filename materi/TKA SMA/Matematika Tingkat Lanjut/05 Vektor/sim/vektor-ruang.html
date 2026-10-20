@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vektor di Ruang</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.vin{display:flex;gap:4px;align-items:center;font-size:14px;font-weight:700}
+.vin input{width:50px;padding:4px;border:1px solid var(--line-2);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit;text-align:center}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Dua vektor di ruang tiga dimensi beserta jumlah dan sudutnya"></svg></div>
+  <div class="panel">
+    <div class="vin" style="color:var(--a)">u = (<input id="u0" type="number" value="2">,<input id="u1" type="number" value="1">,<input id="u2" type="number" value="2">)</div>
+    <div class="vin" style="color:var(--comp)">v = (<input id="v0" type="number" value="0">,<input id="v1" type="number" value="3">,<input id="v2" type="number" value="1">)</div>
+    <div class="seg" id="show"><button data-s="sum" class="on">u + v</button><button data-s="dif">u − v</button><button data-s="proj">Proyeksi u pada v</button></div>
+    <div><div class="lab"><span>Putar sudut pandang</span><b id="av"></b></div><input type="range" id="ang" min="0" max="90" step="5" value="35"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let show = 'sum';
+['u0', 'u1', 'u2', 'v0', 'v1', 'v2', 'ang'].forEach(i => $(i).oninput = draw);
+$('show').onclick = e => { const b = e.target.closest('button'); if(!b) return; show = b.dataset.s; $('show').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+Sim.onTheme(draw);
+const num = id => { const v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2], nrm = a => Math.sqrt(dot(a, a));
+const T = v => '(' + v.map(c => fmt(c, 2)).join(', ') + ')';
+function draw(){
+  const u = [0, 1, 2].map(i => num('u' + i)), v = [0, 1, 2].map(i => num('v' + i));
+  const th = +$('ang').value * Math.PI / 180; $('av').textContent = $('ang').value + '°';
+  const W = 480, H = 400, S = 30, O = [W / 2, H / 2 + 40];
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  // proyeksi miring: x ke kanan-bawah (diputar), y ke kanan, z ke atas
+  const pr = p => [O[0] + S * (p[1] * Math.cos(th) - p[0] * Math.sin(th)), O[1] - S * (p[2] - .5 * (p[0] * Math.cos(th) + p[1] * Math.sin(th)) * .6)];
+  const line = (a, b, col, w = 3, cls = '') => { const A = pr(a), B = pr(b); return `<line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" style="stroke:${col}" stroke-width="${w}" stroke-linecap="round" ${cls}/>`; };
+  const arrow = (a, b, col, lab) => { const A = pr(a), B = pr(b), dx = B[0] - A[0], dy = B[1] - A[1], L = Math.hypot(dx, dy); if(L < 2) return '';
+    const ux = dx / L, uy = dy / L, h = 13; return `<line x1="${A[0]}" y1="${A[1]}" x2="${B[0] - ux * h * .8}" y2="${B[1] - uy * h * .8}" style="stroke:${col}" stroke-width="3.5" stroke-linecap="round"/><polygon points="${B[0]},${B[1]} ${B[0] - ux * h - uy * 6},${B[1] - uy * h + ux * 6} ${B[0] - ux * h + uy * 6},${B[1] - uy * h - ux * 6}" style="fill:${col}"/><text class="ar" x="${B[0] + 8}" y="${B[1] - 6}" style="fill:${col}">${lab}</text>`; };
+  let s = '';
+  // bidang xy berpetak
+  for(let i = -5; i <= 5; i++){ s += line([i, -5, 0], [i, 5, 0], 'var(--grid)', 1) + line([-5, i, 0], [5, i, 0], 'var(--grid)', 1); }
+  s += line([0, 0, 0], [6, 0, 0], 'var(--axis)', 1.6) + line([0, 0, 0], [0, 6, 0], 'var(--axis)', 1.6) + line([0, 0, 0], [0, 0, 6], 'var(--axis)', 1.6);
+  [['x', [6.4, 0, 0]], ['y', [0, 6.4, 0]], ['z', [0, 0, 6.4]]].forEach(([n, p]) => { const P = pr(p); s += `<text class="ar" x="${P[0]}" y="${P[1]}" text-anchor="middle" style="fill:var(--muted)">${n}</text>`; });
+  // garis bantu ke bidang xy
+  [u, v].forEach((w, i) => { s += line([w[0], w[1], 0], w, i ? 'var(--comp)' : 'var(--a)', 1.2, 'class="dash"') + line([0, 0, 0], [w[0], w[1], 0], i ? 'var(--comp)' : 'var(--a)', 1, 'class="dash" opacity=".5"'); });
+  const sum = u.map((c, i) => c + v[i]), dif = u.map((c, i) => c - v[i]), dv = dot(u, v), nu = nrm(u), nv = nrm(v);
+  const pj = nv ? v.map(c => c * dv / (nv * nv)) : [0, 0, 0];
+  if(show === 'sum'){ s += line(u, sum, 'var(--comp)', 1.5, 'class="dash"') + line(v, sum, 'var(--a)', 1.5, 'class="dash"') + arrow([0, 0, 0], sum, 'var(--r)', 'u + v'); }
+  if(show === 'dif') s += arrow(v, u, 'var(--r)', 'u − v');
+  if(show === 'proj') s += line(u, pj, 'var(--muted)', 1.5, 'class="dash"') + arrow([0, 0, 0], pj, 'var(--r)', 'proj');
+  s += arrow([0, 0, 0], u, 'var(--a)', 'u') + arrow([0, 0, 0], v, 'var(--comp)', 'v');
+  svg.innerHTML = s;
+  const cos = nu && nv ? dv / (nu * nv) : NaN, ang = Math.acos(Math.max(-1, Math.min(1, cos))) * 180 / Math.PI;
+  const extra = show === 'sum' ? `<div><span>u + v</span><b>${T(sum)}, panjang ${fmt(nrm(sum), 3)}</b></div>` : show === 'dif' ? `<div><span>u − v</span><b>${T(dif)}, panjang ${fmt(nrm(dif), 3)}</b></div>` :
+    `<div><span>Proyeksi skalar u·v/|v|</span><b>${nv ? fmt(dv / nv, 3) : '–'}</b></div><div><span>Proyeksi vektor (u·v/|v|²)v</span><b>${T(pj)}</b></div>`;
+  $('read').innerHTML = `<div><span>|u|, |v|</span><b>${fmt(nu, 3)}, ${fmt(nv, 3)}</b></div><div><span>u · v</span><b>${fmt(dv)}</b></div>` + extra +
+    `<div><span>Sudut antara u dan v</span><b>${isFinite(ang) ? fmt(ang, 1) + '°' : '–'}${Math.abs(dv) < 1e-9 && nu && nv ? ' (tegak lurus)' : ''}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

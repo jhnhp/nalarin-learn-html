@@ -1,0 +1,157 @@
+{
+  "title": "Vektor",
+  "summary": "Vektor di bidang dan ruang untuk TKA Matematika Tingkat Lanjut: komponen, panjang, operasi penjumlahan dan perkalian skalar, perkalian titik, sudut antarvektor, proyeksi, serta penerapan pada masalah gerak.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "konsep",
+      "title": "Komponen, panjang, dan operasi vektor",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Vektor</b>: vektor pada bidang dan ruang, panjang vektor, dan operasi vektor.</p><p><i>Batasan</i>: komponen vektor maksimum tiga.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Dasar vektor",
+          "html": "<ul><li>Vektor dari A ke B: \\(\\vec{AB} = B - A\\).</li><li>Panjang: \\(|\\vec u| = \\sqrt{u_1^2 + u_2^2 + u_3^2}\\).</li><li>Penjumlahan dan perkalian skalar dilakukan per komponen.</li><li>Vektor satuan: \\(\\hat u = \\dfrac{\\vec u}{|\\vec u|}\\).</li><li>Titik P membagi AB dengan AP : PB = m : n: \\(P = \\dfrac{nA + mB}{m + n}\\).</li><li>A, B, C segaris jika \\(\\vec{AC} = k\\vec{AB}\\).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/01 Vektor/sim/penjumlahan.html",
+          "title": "Penjumlahan vektor",
+          "height": 520,
+          "caption": "Ulangi aturan segitiga dan jajargenjang untuk vektor di bidang."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: panjang di ruang",
+          "question": "<p>Tentukan panjang \\(\\vec{PQ}\\) untuk P(2, −1, 3) dan Q(4, 3, −1).</p>",
+          "steps": [
+            "\\(\\vec{PQ} = (2, 4, -4)\\).",
+            "\\(|\\vec{PQ}| = \\sqrt{4 + 16 + 16} = 6\\)."
+          ],
+          "answer": "6"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: pembagian ruas garis",
+          "question": "<p>A(2, 0, 5), B(8, 6, −1). Tentukan P pada AB dengan AP : PB = 1 : 2.</p>",
+          "steps": [
+            "\\(P = \\dfrac{2A + 1B}{3} = \\dfrac{(4 + 8, 0 + 6, 10 - 1)}{3}\\).",
+            "P = (4, 2, 3)."
+          ],
+          "answer": "(4, 2, 3)"
+        },
+        {
+          "type": "check",
+          "question": "Panjang vektor (1, 2, −2) adalah ....",
+          "options": {
+            "A": "3",
+            "B": "√5",
+            "C": "9",
+            "D": "5"
+          },
+          "answer": "A",
+          "hint": "Akar jumlah kuadrat.",
+          "explanation": "√(1 + 4 + 4) = 3."
+        }
+      ]
+    },
+    {
+      "id": "titik",
+      "title": "Perkalian titik, sudut, dan proyeksi",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Perkalian titik (skalar)",
+          "html": "<ul><li>\\(\\vec u\\cdot\\vec v = u_1v_1 + u_2v_2 + u_3v_3 = |\\vec u||\\vec v|\\cos\\theta\\).</li><li>\\(\\vec u \\perp \\vec v \\Leftrightarrow \\vec u\\cdot\\vec v = 0\\).</li><li>Proyeksi skalar \\(\\vec u\\) pada \\(\\vec v\\): \\(\\dfrac{\\vec u\\cdot\\vec v}{|\\vec v|}\\); proyeksi vektor: \\(\\dfrac{\\vec u\\cdot\\vec v}{|\\vec v|^2}\\vec v\\).</li><li>\\(|\\vec u + \\vec v|^2 = |\\vec u|^2 + |\\vec v|^2 + 2\\,\\vec u\\cdot\\vec v\\).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/vektor-ruang.html",
+          "title": "Vektor di ruang",
+          "height": 560,
+          "caption": "Masukkan komponen u dan v, lalu putar sudut pandang. Cari pasangan vektor yang tegak lurus (u · v = 0) dan lihat proyeksinya."
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/01 Vektor/sim/perkalian.html",
+          "title": "Perkalian titik di bidang",
+          "height": 520,
+          "caption": "Geser vektor dan amati hubungan u · v dengan sudutnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: sudut",
+          "question": "<p>Tentukan sudut antara \\(\\vec a = (1, 0, 1)\\) dan \\(\\vec b = (0, 1, 1)\\).</p>",
+          "steps": [
+            "a·b = 0 + 0 + 1 = 1; |a| = |b| = √2.",
+            "cos θ = 1/2 → θ = 60°."
+          ],
+          "answer": "60°"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: gerak perahu",
+          "question": "<p>Perahu bergerak tegak lurus tepi sungai 4 m/s menyeberangi sungai selebar 80 m, arus 3 m/s. Berapa jauh perahu hanyut dan berapa kecepatan resultannya?</p>",
+          "steps": [
+            "Waktu = 80/4 = 20 s (hanya komponen tegak lurus).",
+            "Hanyut = 3 × 20 = 60 m.",
+            "Kecepatan resultan √(16 + 9) = 5 m/s."
+          ],
+          "answer": "Hanyut 60 m, kecepatan 5 m/s"
+        },
+        {
+          "type": "check",
+          "question": "Vektor (2, k, 1) tegak lurus (1, 3, −5) jika k = ....",
+          "options": {
+            "A": "1",
+            "B": "−1",
+            "C": "3",
+            "D": "5"
+          },
+          "answer": "A",
+          "hint": "Hasil kali titik nol.",
+          "explanation": "2 + 3k − 5 = 0 → k = 1."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk vektor AB, selalu hitung B − A (ujung dikurangi pangkal).</li><li>Hasil kali titik negatif berarti sudut tumpul.</li><li>Pada soal gerak menyeberang, waktu hanya ditentukan komponen yang tegak lurus tepi.</li><li>Untuk |u + v| tanpa komponen, gunakan rumus kuadrat panjang dengan cos θ.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Tertukar proyeksi u pada v dengan proyeksi v pada u.</li><li>Menganggap |u + v| = |u| + |v|.</li><li>Memakai bobot terbalik pada rumus pembagian ruas garis.</li><li>Lupa akar saat menghitung panjang.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Vektor. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

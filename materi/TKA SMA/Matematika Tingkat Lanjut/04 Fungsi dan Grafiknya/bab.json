@@ -1,0 +1,138 @@
+{
+  "title": "Fungsi dan Grafiknya",
+  "summary": "Fungsi untuk TKA Matematika Tingkat Lanjut: domain, kodomain, dan daerah hasil, serta grafik fungsi polinom, rasional, akar, eksponensial, logaritma, nilai mutlak, dan trigonometri.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "domain",
+      "title": "Domain dan daerah hasil",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Domain</b> adalah himpunan x yang membuat fungsi terdefinisi. <b>Kodomain</b> adalah himpunan tujuan. <b>Daerah hasil</b> (range) adalah himpunan nilai f(x) yang benar-benar dicapai.</p><table><tr><th>Fungsi</th><th>Syarat domain</th><th>Daerah hasil umum</th></tr><tr><td>Polinom</td><td>semua x</td><td>derajat ganjil: semua y; derajat genap: dibatasi puncak</td></tr><tr><td>Rasional \\(\\frac{p(x)}{q(x)}\\)</td><td>\\(q(x) \\ne 0\\)</td><td>lihat asimtot datar</td></tr><tr><td>Akar \\(\\sqrt{g(x)}\\)</td><td>\\(g(x) \\ge 0\\)</td><td>\\(y \\ge 0\\) (sebelum digeser)</td></tr><tr><td>Eksponen \\(a\\cdot b^x + k\\)</td><td>semua x</td><td>\\(y &gt; k\\) jika \\(a &gt; 0\\)</td></tr><tr><td>Logaritma \\({}^b\\log g(x)\\)</td><td>\\(g(x) &gt; 0\\)</td><td>semua y</td></tr><tr><td>Mutlak \\(a|x - h| + k\\)</td><td>semua x</td><td>\\(y \\ge k\\) jika \\(a &gt; 0\\)</td></tr><tr><td>Trigonometri \\(a\\sin bx + d\\)</td><td>semua x</td><td>\\(d - |a| \\le y \\le d + |a|\\), periode \\(\\frac{360^\\circ}{|b|}\\)</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: domain gabungan",
+          "question": "<p>Tentukan domain \\(f(x) = \\dfrac{\\sqrt{x + 3}}{x - 2}\\).</p>",
+          "steps": [
+            "Akar: x + 3 ≥ 0 → x ≥ −3.",
+            "Penyebut: x ≠ 2."
+          ],
+          "answer": "{x | x ≥ −3, x ≠ 2}"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: daerah hasil dengan domain terbatas",
+          "question": "<p>Tentukan daerah hasil \\(f(x) = |x - 1| - 2\\) untuk \\(-2 \\le x \\le 3\\).</p>",
+          "steps": [
+            "Nilai terkecil di x = 1: f(1) = −2.",
+            "Ujung: f(−2) = 3 − 2 = 1; f(3) = 2 − 2 = 0.",
+            "Nilai terbesar 1."
+          ],
+          "answer": "{y | −2 ≤ y ≤ 1}"
+        },
+        {
+          "type": "check",
+          "question": "Domain \\(f(x) = \\log(4 - x)\\) adalah ....",
+          "options": {
+            "A": "x &lt; 4",
+            "B": "x ≤ 4",
+            "C": "x &gt; 4",
+            "D": "x &gt; 0"
+          },
+          "answer": "A",
+          "hint": "Numerus harus positif.",
+          "explanation": "4 − x &gt; 0 → x &lt; 4."
+        }
+      ]
+    },
+    {
+      "id": "grafik",
+      "title": "Grafik berbagai fungsi",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "sim/grafik-fungsi.html",
+          "title": "Grafik, asimtot, domain, dan daerah hasil",
+          "height": 620,
+          "caption": "Pilih jenis fungsi dan ubah parameternya. Perhatikan bagaimana asimtot, domain, dan daerah hasil ikut berubah. Pada fungsi rasional, coba b = −ac agar muncul lubang, bukan asimtot."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Ciri grafik",
+          "html": "<ul><li>Rasional \\(\\frac{ax + b}{x - c}\\): asimtot tegak \\(x = c\\), asimtot datar \\(y = a\\).</li><li>Eksponen \\(a\\cdot b^x + k\\): asimtot datar \\(y = k\\), melalui \\((0, a + k)\\).</li><li>Logaritma \\({}^b\\log(x - h) + k\\): asimtot tegak \\(x = h\\), melalui \\((h + 1, k)\\).</li><li>Trigonometri: amplitudo \\(|a|\\), periode \\(360^\\circ/|b|\\); grafik sin dimulai dari tengah, cos dari puncak (untuk \\(a &gt; 0\\)).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Matematika/03 Transformasi Fungsi/sim/transformasi-fungsi.html",
+          "title": "Transformasi fungsi",
+          "height": 520,
+          "caption": "Ulangi pengaruh pergeseran dan pencerminan terhadap grafik dasar."
+        },
+        {
+          "type": "example",
+          "title": "Contoh: membaca model eksponen",
+          "question": "<p>Jumlah pengguna sebuah aplikasi dimodelkan \\(N(t) = 3\\cdot 2^t\\) ribu, t dalam bulan. Kapan penggunanya mencapai 96 ribu?</p>",
+          "steps": [
+            "\\(3\\cdot 2^t = 96 \\Rightarrow 2^t = 32 = 2^5\\).",
+            "t = 5."
+          ],
+          "answer": "Bulan ke-5"
+        },
+        {
+          "type": "check",
+          "question": "Periode \\(f(x) = 3\\cos\\left(\\frac{x}{2}\\right)\\) adalah ....",
+          "options": {
+            "A": "720°",
+            "B": "180°",
+            "C": "360°",
+            "D": "120°"
+          },
+          "answer": "A",
+          "hint": "Periode = 360°/|b|.",
+          "explanation": "b = 1/2 → periode 720°."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tulis semua syarat (penyebut, akar, numerus) lalu iriskan.</li><li>Untuk daerah hasil pada domain terbatas, cek titik puncak/lembah dan kedua ujung.</li><li>Mencocokkan grafik: cek titik potong sumbu, asimtot, nilai maksimum/minimum, dan periode.</li><li>Model eksponen di dunia nyata biasanya hanya cocok untuk jangka pendek.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memasukkan batas ke domain logaritma (padahal harus &gt;).</li><li>Menganggap faktor di dalam sin mengubah amplitudo.</li><li>Lupa bahwa \\(b^x\\) tidak pernah nol, sehingga asimtotnya tidak pernah dicapai.</li><li>Membaca daerah hasil pada sumbu-x.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Fungsi dan Grafiknya. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

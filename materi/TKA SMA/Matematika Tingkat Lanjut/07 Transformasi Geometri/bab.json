@@ -1,0 +1,154 @@
+{
+  "title": "Transformasi Geometri",
+  "summary": "Transformasi geometri untuk TKA Matematika Tingkat Lanjut: translasi, refleksi, rotasi, dilatasi, matriks transformasi, komposisi transformasi, bayangan titik, garis, kurva, dan bangun datar, serta perubahan luas.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "dasar",
+      "title": "Transformasi dan matriksnya",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Transformasi geometri</b>: translasi, refleksi, rotasi, dilatasi, serta komposisinya dari bentuk geometris dan matriks transformasinya.</p><p><i>Batasan</i>: bentuk yang ditransformasi meliputi titik, garis, dan bangun datar.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Transformasi</th><th>Aturan</th><th>Matriks</th></tr><tr><td>Translasi (a, b)</td><td>(x + a, y + b)</td><td>tidak berupa matriks 2 × 2 (penjumlahan vektor)</td></tr><tr><td>Refleksi sumbu-x</td><td>(x, −y)</td><td>\\(\\begin{pmatrix}1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi sumbu-y</td><td>(−x, y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & 1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = x</td><td>(y, x)</td><td>\\(\\begin{pmatrix}0 & 1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = −x</td><td>(−y, −x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi x = h</td><td>(2h − x, y)</td><td>—</td></tr><tr><td>Rotasi θ pusat O</td><td></td><td>\\(\\begin{pmatrix}\\cos\\theta & -\\sin\\theta\\\\\\sin\\theta & \\cos\\theta\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 90° pusat O</td><td>(−y, x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 180° pusat O</td><td>(−x, −y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Dilatasi [O, k]</td><td>(kx, ky)</td><td>\\(\\begin{pmatrix}k & 0\\\\0 & k\\end{pmatrix}\\)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Pusat bukan O",
+          "html": "<p>Untuk rotasi atau dilatasi dengan pusat P(a, b): geser dulu sehingga P ke O, transformasikan, lalu geser kembali: \\(\\begin{pmatrix}x'\\\\y'\\end{pmatrix} = M\\begin{pmatrix}x - a\\\\y - b\\end{pmatrix} + \\begin{pmatrix}a\\\\b\\end{pmatrix}\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/rotasi.html",
+          "title": "Rotasi bangun datar",
+          "height": 520,
+          "caption": "Ulangi rotasi 90°, 180°, dan 270° serta pengaruh pusat rotasi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: rotasi pusat P",
+          "question": "<p>Tentukan bayangan A(5, 3) oleh rotasi 90° berlawanan jarum jam dengan pusat P(2, 1).</p>",
+          "steps": [
+            "Geser: A − P = (3, 2).",
+            "Rotasi 90°: (−2, 3).",
+            "Geser kembali: (−2 + 2, 3 + 1) = (0, 4)."
+          ],
+          "answer": "(0, 4)"
+        },
+        {
+          "type": "check",
+          "question": "Bayangan (−2, 5) oleh refleksi terhadap garis x = 3 adalah ....",
+          "options": {
+            "A": "(8, 5)",
+            "B": "(−8, 5)",
+            "C": "(2, 5)",
+            "D": "(−2, 1)"
+          },
+          "answer": "A",
+          "hint": "(2h − x, y).",
+          "explanation": "(6 + 2, 5) = (8, 5)."
+        }
+      ]
+    },
+    {
+      "id": "komposisi",
+      "title": "Komposisi, bayangan kurva, dan luas",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Komposisi dan luas",
+          "html": "<ul><li>T₁ dilanjutkan T₂ (keduanya linear): matriks komposisi \\(M = M_2\\,M_1\\) (urutan dibalik!).</li><li>Komposisi umumnya tidak komutatif.</li><li>Luas bayangan = \\(|\\det M|\\) × luas awal. Dilatasi faktor k → luas dikali \\(k^2\\).</li><li>Bayangan kurva: nyatakan x dan y dalam x′ dan y′ (gunakan invers transformasi), lalu substitusi ke persamaan kurva.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/komposisi-transformasi.html",
+          "title": "Komposisi transformasi",
+          "height": 640,
+          "caption": "Pilih dua transformasi. Bandingkan hasilnya bila urutan ditukar, dan perhatikan matriks komposisi serta perbandingan luasnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: matriks komposisi",
+          "question": "<p>Tentukan matriks refleksi terhadap sumbu-y dilanjutkan rotasi 90° pusat O.</p>",
+          "steps": [
+            "\\(M = R_{90}\\cdot M_y = \\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\begin{pmatrix}-1 & 0\\\\0 & 1\\end{pmatrix} = \\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\).",
+            "Hasilnya refleksi terhadap y = −x."
+          ],
+          "answer": "\\(\\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: bayangan garis",
+          "question": "<p>Tentukan bayangan garis \\(x - 2y + 4 = 0\\) oleh dilatasi [O, 3].</p>",
+          "steps": [
+            "x = x′/3, y = y′/3.",
+            "x′/3 − 2y′/3 + 4 = 0 → x′ − 2y′ + 12 = 0."
+          ],
+          "answer": "x − 2y + 12 = 0"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 3: bayangan kurva",
+          "question": "<p>Tentukan bayangan \\(y = x^2 + 1\\) oleh refleksi terhadap garis y = x.</p>",
+          "steps": [
+            "(x, y) → (y, x), jadi x = y′ dan y = x′.",
+            "x′ = (y′)² + 1."
+          ],
+          "answer": "x = y² + 1"
+        },
+        {
+          "type": "check",
+          "question": "Persegi berluas 5 ditransformasikan oleh \\(\\begin{pmatrix}2 & 1\\\\1 & 3\\end{pmatrix}\\). Luas bayangannya ....",
+          "options": {
+            "A": "25",
+            "B": "5",
+            "C": "35",
+            "D": "10"
+          },
+          "answer": "A",
+          "hint": "|det M| × luas.",
+          "explanation": "det = 6 − 1 = 5 → 25."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Hafalkan matriks dengan menguji titik (1, 0) dan (0, 1): kolom matriks adalah bayangan keduanya.</li><li>Untuk komposisi, kalikan matriks dari kanan ke kiri sesuai urutan.</li><li>Dua refleksi terhadap sumbu yang saling tegak lurus = rotasi 180°.</li><li>Jika vektor translasi searah garis, bayangan garis berimpit dengan garis semula.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Tertukar rotasi +90° (berlawanan jarum jam) dan −90°.</li><li>Mengalikan matriks komposisi dengan urutan terbalik.</li><li>Mensubstitusi x′ langsung ke persamaan kurva tanpa membalik transformasi.</li><li>Lupa pusat rotasi bukan O.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Transformasi Geometri. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

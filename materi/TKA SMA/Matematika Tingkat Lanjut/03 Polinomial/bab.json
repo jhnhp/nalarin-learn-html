@@ -1,0 +1,147 @@
+{
+  "title": "Polinomial",
+  "summary": "Polinomial untuk TKA Matematika Tingkat Lanjut: derajat dan operasi polinomial, pembagian bersusun dan Horner, teorema sisa, teorema faktor, pemfaktoran, serta sisa pembagian oleh bentuk kuadrat.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "konsep",
+      "title": "Derajat dan operasi polinomial",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Polinomial</b>: operasi polinomial, pemfaktoran polinomial, dan suku sisa.</p><p><i>Batasan</i>: derajat polinomial maksimum 4 dan semua koefisiennya bilangan real.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Polinomial (suku banyak) berderajat n: \\(P(x) = a_nx^n + a_{n-1}x^{n-1} + \\dots + a_1x + a_0\\) dengan \\(a_n \\ne 0\\). Derajat hasil kali = jumlah derajat; derajat hasil jumlah ≤ derajat tertinggi.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pembagian",
+          "html": "<p>\\(P(x) = \\text{pembagi}\\cdot H(x) + S(x)\\), dengan derajat sisa S(x) <b>kurang dari</b> derajat pembagi.</p><ul><li>Pembagi berderajat 1 → sisa konstanta.</li><li>Pembagi berderajat 2 → sisa berbentuk \\(px + q\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh: operasi",
+          "question": "<p>Tentukan derajat dan koefisien \\(x^2\\) dari \\((x^2 + 3)(2x^2 - x + 1)\\).</p>",
+          "steps": [
+            "Derajat 2 + 2 = 4.",
+            "Suku \\(x^2\\): \\(x^2\\cdot 1 + 3\\cdot 2x^2 = 7x^2\\)."
+          ],
+          "answer": "Derajat 4, koefisien x² adalah 7"
+        },
+        {
+          "type": "check",
+          "question": "Derajat hasil kali \\((x^3 - 1)(x + 2)\\) adalah ....",
+          "options": {
+            "A": "4",
+            "B": "3",
+            "C": "6",
+            "D": "1"
+          },
+          "answer": "A",
+          "hint": "Jumlahkan derajat.",
+          "explanation": "3 + 1 = 4."
+        }
+      ]
+    },
+    {
+      "id": "horner",
+      "title": "Horner, teorema sisa, dan teorema faktor",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Teorema penting",
+          "html": "<ul><li><b>Teorema sisa</b>: sisa pembagian P(x) oleh \\((x - k)\\) adalah \\(P(k)\\); oleh \\((ax - b)\\) adalah \\(P\\left(\\frac{b}{a}\\right)\\).</li><li><b>Teorema faktor</b>: \\((x - k)\\) faktor P(x) ⇔ \\(P(k) = 0\\).</li><li>Akar bulat polinomial berkoefisien bulat adalah pembagi konstanta \\(a_0\\) (dibagi pembagi \\(a_n\\)).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/horner.html",
+          "title": "Pembagian Horner dan teorema sisa",
+          "height": 600,
+          "caption": "Ubah k dan perhatikan: angka terakhir pada tabel Horner selalu sama dengan f(k), yaitu tinggi titik oranye pada grafik. Jika titik tepat di sumbu-x, (x − k) adalah faktor."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: Horner",
+          "question": "<p>Bagi \\(x^3 + 4x^2 - 3x - 10\\) oleh \\((x + 2)\\).</p>",
+          "steps": [
+            "k = −2. Koefisien 1, 4, −3, −10.",
+            "1 → 1·(−2) + 4 = 2 → 2·(−2) − 3 = −7 → (−7)(−2) − 10 = 4.",
+            "Hasil bagi \\(x^2 + 2x - 7\\), sisa 4."
+          ],
+          "answer": "H(x) = x² + 2x − 7, sisa 4"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: pemfaktoran",
+          "question": "<p>Faktorkan \\(x^3 - 2x^2 - 5x + 6\\).</p>",
+          "steps": [
+            "Coba pembagi 6: P(1) = 1 − 2 − 5 + 6 = 0 → (x − 1) faktor.",
+            "Horner: hasil bagi \\(x^2 - x - 6 = (x - 3)(x + 2)\\)."
+          ],
+          "answer": "(x − 1)(x − 3)(x + 2)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 3: sisa oleh bentuk kuadrat",
+          "question": "<p>P(x) dibagi (x − 2) bersisa 3 dan dibagi (x − 3) bersisa 7. Tentukan sisa pembagian oleh \\((x - 2)(x - 3)\\).</p>",
+          "steps": [
+            "Sisa S(x) = px + q. P(2) = 2p + q = 3; P(3) = 3p + q = 7.",
+            "p = 4, q = −5."
+          ],
+          "answer": "4x − 5"
+        },
+        {
+          "type": "check",
+          "question": "Sisa pembagian \\(x^3 - 3x + 4\\) oleh \\((x - 1)\\) adalah ....",
+          "options": {
+            "A": "2",
+            "B": "0",
+            "C": "6",
+            "D": "−2"
+          },
+          "answer": "A",
+          "hint": "Hitung P(1).",
+          "explanation": "1 − 3 + 4 = 2."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Pembagi (x + a) berarti k = −a. Tuliskan tandanya dengan teliti.</li><li>Tulis koefisien 0 untuk suku yang hilang sebelum memakai Horner.</li><li>Dua informasi sisa → dua persamaan untuk mencari dua koefisien yang belum diketahui.</li><li>Jika sisa oleh \\(x^2 - a^2\\) diketahui, sisa oleh \\((x - a)\\) dan \\((x + a)\\) diperoleh dengan substitusi.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Melewatkan suku bernilai nol di tabel Horner.</li><li>Salah tanda pangkat ganjil bilangan negatif.</li><li>Menganggap sisa pembagian oleh bentuk kuadrat berupa konstanta.</li><li>Lupa membagi dengan a saat pembagi berbentuk (ax − b) dan yang dicari hasil baginya.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Polinomial. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}
