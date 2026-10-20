@@ -105,7 +105,7 @@ function renderCourse(bab){
   const cr = $('crumbs');
   const crumb = (t, href) => { if(cr.children.length) cr.appendChild(mk('span', '', '›')); const e = mk(href ? 'a' : 'span', '', t); if(href) e.href = href; cr.appendChild(e); };
   crumb('Beranda', 'index.html'); crumb(KELAS, MAPEL ? courseUrl(KELAS) : null); if(MAPEL) crumb(MAPEL);
-  document.title = (MAPEL ? MAPEL + ' ' : '') + KELAS + ' · Nalarin Belajar';
+  document.title = (MAPEL ? MAPEL + ' ' : '') + KELAS + ' · Nalarin Learn';
 
   const lessons = list.reduce((n, b) => n + b.lessons.length, 0);
   const sims = list.reduce((n, b) => n + simCount(b), 0);

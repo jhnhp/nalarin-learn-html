@@ -1,4 +1,4 @@
-# Nalarin Belajar
+# Nalarin Learn
 
 Situs belajar Matematika dan IPA Kurikulum Merdeka, bergaya Khan Academy. Cukup HTML, CSS, JS, dan JSON: tanpa database, tanpa akun, tanpa pelacakan. Kuis latihan memakai **Nalarin Kuis** di folder `Kuis/`.
 
