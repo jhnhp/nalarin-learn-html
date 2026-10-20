@@ -1,56 +1,154 @@
 {
   "title": "Listrik Statis",
-  "summary": "Ringkasan bab Listrik Statis akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Fisika: muatan listrik dan elektroskop, hukum Coulomb, medan listrik, potensial dan energi potensial listrik, gerak muatan dalam medan, serta penerapan listrik statis.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Listrik Statis",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Gejala Listrik Statis, Hukum Coulomb, Medan Listrik, dan Potensial Listrik</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Gaya dan medan listrik adalah vektor; potensial listrik adalah skalar yang dijumlahkan biasa (dengan tanda muatan).</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Muatan</td><td>menggosok, induksi, elektroskop</td><td>IPA Kelas 9 Bab 5</td></tr><tr><td>Gaya dan medan</td><td>F = kq₁q₂/r², E = kq/r², resultan vektor</td><td>Fisika Kelas 12 Bab 1</td></tr><tr><td>Potensial</td><td>V = kq/r (skalar), W = qΔV, Ek = qV</td><td>Fisika Kelas 12 Bab 1</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(F = k\\dfrac{q_1q_2}{r^2}\\), k = 9 × 10⁹ N m²/C².</li><li>\\(E = F/q = kq/r^2\\): menjauhi muatan positif, menuju muatan negatif.</li><li>\\(V = kq/r\\); \\(W_{A\\to B} = q(V_B - V_A)\\); \\(E_p = kq_1q_2/r\\).</li><li>Muatan dipercepat beda potensial: \\(\\tfrac12 mv^2 = qV\\).</li><li>Medan nol di antara dua muatan sejenis: lebih dekat ke muatan yang lebih kecil.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "coulomb",
+      "title": "Gaya Coulomb dan medan listrik",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas9/IPA/05 Listrik, Magnet, dan Energi Alternatif/sim/coulomb.html",
+          "title": "Hukum Coulomb",
+          "height": 480,
+          "caption": "Gandakan jarak kedua muatan. Berapa kali gaya berubah?"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Fisika/01 Listrik Statis/sim/medan-listrik.html",
+          "title": "Medan listrik",
+          "height": 520,
+          "caption": "Letakkan dua muatan sejenis. Di mana medannya nol?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Muatan +5 μC dan −2 μC terpisah 30 cm. Berapa besar gaya Coulomb di antara keduanya?</p>",
+          "steps": [
+            "F = 9 × 10⁹ × 5 × 10⁻⁶ × 2 × 10⁻⁶ / 0,09.",
+            "F = 0,09/0,09."
+          ],
+          "answer": "1 N (tarik-menarik)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Muatan A = +9 μC dan B = +1 μC terpisah 40 cm. Di mana titik di antara keduanya yang kuat medannya nol?</p>",
+          "steps": [
+            "k·9/x² = k·1/(0,4 − x)² → 3/x = 1/(0,4 − x).",
+            "1,2 − 3x = x → x = 0,3 m."
+          ],
+          "answer": "30 cm dari A (10 cm dari B)"
+        },
+        {
+          "type": "check",
+          "question": "Jika jarak dua muatan dijadikan 3 kali semula, gaya Coulomb menjadi ....",
+          "options": {
+            "A": "3 kali",
+            "B": "1/3 kali",
+            "C": "9 kali",
+            "D": "1/9 kali"
+          },
+          "answer": "D",
+          "hint": "F ∝ 1/r².",
+          "explanation": "Gaya berbanding terbalik dengan kuadrat jarak: 1/9 kali."
+        }
+      ]
+    },
+    {
+      "id": "potensial",
+      "title": "Potensial dan energi listrik",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Fisika/01 Listrik Statis/sim/defleksi.html",
+          "title": "Muatan dalam medan listrik",
+          "height": 520,
+          "caption": "Ubah tegangan pemercepat. Bagaimana kelajuan elektron dan defleksinya berubah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua muatan +4 nC dan −6 nC berada di ujung-ujung garis sepanjang 50 cm. Titik P berada di tengah garis. Berapa potensial listrik di P?</p>",
+          "steps": [
+            "Jarak masing-masing 0,25 m.",
+            "V = 9 × 10⁹(4 − 6) × 10⁻⁹/0,25 = −18/0,25."
+          ],
+          "answer": "−72 V"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Proton (q = 1,6 × 10⁻¹⁹ C) dipercepat dari diam oleh beda potensial 2.000 V. Berapa energi kinetiknya dalam joule dan eV?</p>",
+          "steps": [
+            "Ek = qV = 1,6 × 10⁻¹⁹ × 2.000 = 3,2 × 10⁻¹⁶ J.",
+            "Dalam eV: 2.000 eV."
+          ],
+          "answer": "3,2 × 10⁻¹⁶ J = 2 keV"
+        },
+        {
+          "type": "check",
+          "question": "Bola konduktor bermuatan. Kuat medan listrik di dalam bola konduktor adalah ....",
+          "options": {
+            "A": "paling besar di pusat",
+            "B": "nol",
+            "C": "sama dengan di permukaan",
+            "D": "bergantung jari-jari"
+          },
+          "answer": "B",
+          "hint": "Muatan konduktor tersebar di permukaan.",
+          "explanation": "Di dalam konduktor dalam keadaan setimbang, kuat medan listrik nol; potensialnya sama dengan di permukaan."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Gambar arah gaya atau medan setiap muatan sebelum menjumlahkan; gunakan teorema Pythagoras bila tegak lurus.</li><li>Untuk potensial, jumlahkan dengan tanda muatan; jangan menggambar vektor.</li><li>Pakai perbandingan untuk soal 'menjadi berapa kali'.</li><li>Ubah μC (10⁻⁶), nC (10⁻⁹), dan cm (10⁻²) sebelum menghitung.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Menjumlahkan besar medan dari dua muatan yang arahnya berlawanan.</li><li>Lupa mengkuadratkan jarak.</li><li>Menganggap potensial nol berarti medan nol (atau sebaliknya).</li><li>Pada elektroskop, menyebut muatan positif yang berpindah; yang berpindah elektron.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Fisika SMA topik Listrik Statis. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menghitung Pendapatan Nasional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.grid label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:2px}.grid input{padding:5px 6px;border:1px solid var(--line-2);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit;width:100%}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 360" role="img" aria-label="Tangga perhitungan PDB sampai pendapatan disposabel"></svg></div>
+  <div class="panel">
+    <div class="lab">Data perekonomian (triliun rupiah)</div>
+    <div class="grid" id="g"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const rp = v => Math.round(v).toLocaleString('id-ID');
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const F = [['C', 'Konsumsi rumah tangga (C)', 6100], ['I', 'Investasi (I)', 2400], ['G', 'Belanja pemerintah (G)', 1300], ['X', 'Ekspor (X)', 2200], ['M', 'Impor (M)', 2000], ['NFI', 'Pendapatan faktor neto dari LN', -350], ['D', 'Penyusutan', 900], ['Ti', 'Pajak tidak langsung', 700], ['Sub', 'Subsidi', 150], ['LD', 'Laba ditahan', 250], ['IJ', 'Iuran jaminan sosial', 150], ['PP', 'Pajak perseroan', 300], ['TR', 'Transfer payment', 400], ['PL', 'Pajak langsung (pajak penghasilan)', 450], ['Pend', 'Jumlah penduduk (juta jiwa)', 280]];
+F.forEach(([k, l, v]) => $('g').insertAdjacentHTML('beforeend', `<label>${l}<input type="number" id="${k}" value="${v}"></label>`));
+F.forEach(([k]) => $(k).oninput = draw);
+function draw(){
+  const v = Object.fromEntries(F.map(([k]) => [k, +$(k).value || 0]));
+  const GDP = v.C + v.I + v.G + (v.X - v.M), GNP = GDP + v.NFI, NNP = GNP - v.D, NNI = NNP - v.Ti + v.Sub, PI = NNI - v.LD - v.IJ - v.PP + v.TR, DI = PI - v.PL;
+  const rows = [['PDB (GDP) = C + I + G + (X − M)', GDP, '#1565c0'], ['PNB (GNP) = PDB + pendapatan faktor neto LN', GNP, '#1e88e5'], ['NNP = PNB − penyusutan', NNP, '#42a5f5'], ['NNI = NNP − pajak tidak langsung + subsidi', NNI, '#26a69a'], ['PI = NNI − laba ditahan − iuran − pajak perseroan + transfer', PI, '#66bb6a'], ['DI = PI − pajak langsung', DI, '#9ccc65']];
+  const mx = Math.max(...rows.map(r => r[1]), 1);
+  let s = '';
+  rows.forEach(([l, val, col], i) => { const y = 20 + i * 56, w = Math.max(4, val / mx * 420); s += `<rect x="30" y="${y + 16}" width="${w}" height="24" rx="5" fill="${col}"/><text class="s" x="30" y="${y + 10}" style="fill:var(--ink)">${l}</text><text class="c" x="${w > 380 ? 24 + w : 36 + w}" y="${y + 33}" text-anchor="${w > 380 ? 'end' : 'start'}" fill="${w > 380 ? '#fff' : col}">${rp(val)}</text>`; });
+  svg.innerHTML = s;
+  const kap = GDP * 1e12 / (v.Pend * 1e6);
+  $('read').innerHTML = `<div><span>PDB</span><b>Rp${rp(GDP)} triliun</b></div><div><span>Pendapatan disposabel</span><b>Rp${rp(DI)} triliun</b></div><div><span>PDB per kapita</span><b>Rp${fmt(kap / 1e6, 2)} juta per tahun</b></div><div><span>Catatan</span><b style="font-weight:600">${v.NFI < 0 ? 'PNB < PDB: pendapatan faktor produksi asing di dalam negeri lebih besar daripada pendapatan warga di luar negeri.' : 'PNB ≥ PDB: pendapatan warga di luar negeri lebih besar.'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

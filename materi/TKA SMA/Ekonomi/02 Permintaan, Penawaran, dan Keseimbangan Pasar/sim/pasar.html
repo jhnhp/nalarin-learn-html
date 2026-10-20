@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Permintaan, Penawaran, dan Keseimbangan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 350" role="img" aria-label="Kurva permintaan dan penawaran"></svg></div>
+  <div class="panel">
+    <div class="lab">Pergeseran permintaan <b id="dv"></b></div><input type="range" id="d" min="-60" max="60" step="5" value="0">
+    <div class="lab">Pergeseran penawaran <b id="sv"></b></div><input type="range" id="s" min="-60" max="60" step="5" value="0">
+    <div class="lab">Kebijakan pemerintah</div>
+    <div class="seg" id="k"><button data-k="0" class="on">Tidak ada</button><button data-k="pajak">Pajak per unit</button><button data-k="subsidi">Subsidi per unit</button><button data-k="het">Harga maksimum (HET)</button><button data-k="hpp">Harga minimum</button></div>
+    <div class="lab" id="lv">Besaran kebijakan</div><input type="range" id="v" min="0" max="20" step="1" value="6">
+    <div class="read" id="read"></div>
+    <p class="note">Awal: Qd = 200 − 4P dan Qs = −40 + 2P (P dalam ribu rupiah, Q dalam unit). Geser ke kanan = positif.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let K = '0';
+$('k').querySelectorAll('button').forEach(b => b.onclick = () => { $('k').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); K = b.dataset.k; draw(); });
+['d', 's', 'v'].forEach(i => $(i).oninput = draw);
+function draw(){
+  const dD = +$('d').value, dS = +$('s').value, v = +$('v').value;
+  $('dv').textContent = (dD > 0 ? '+' : '') + dD + ' unit'; $('sv').textContent = (dS > 0 ? '+' : '') + dS + ' unit';
+  const a = 200 + dD, b = 4, c = -40 + dS, d = 2; // Qd = a − bP, Qs = c + dP
+  const Qd = P => a - b * P, Qs = P => c + d * P;
+  const Pe = (a - c) / (b + d), Qe = Qd(Pe);
+  $('lv').innerHTML = K === 'het' || K === 'hpp' ? `Harga yang ditetapkan <b>Rp${fmt(K === 'het' ? Pe - v : Pe + v, 1)} ribu</b>` : K === '0' ? 'Besaran kebijakan <b>—</b>' : `Besar ${K} per unit <b>Rp${v} ribu</b>`;
+  const gx = 50, gy = 310, gw = 400, gh = 280, Pm = 60, Qm = 240, X = q => gx + q / Qm * gw, Y = p => gy - p / Pm * gh;
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/><text class="s" x="${gx + gw}" y="${gy + 28}" text-anchor="end" fill="#555">jumlah (Q)</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#555">harga P (ribu Rp)</text>`;
+  for(let q = 0; q <= Qm; q += 40) s += `<text class="s" x="${X(q)}" y="${gy + 14}" text-anchor="middle" fill="#555">${q}</text>`;
+  for(let p = 0; p <= Pm; p += 10) s += `<text class="s" x="${gx - 5}" y="${Y(p) + 4}" text-anchor="end" fill="#555">${p}</text>`;
+  const line = (f, col, dash, lab) => { const pts = []; for(let p = 0; p <= Pm; p += 1){ const q = f(p); if(q >= 0 && q <= Qm) pts.push([X(q), Y(p)]); } if(!pts.length) return ''; const e = pts[pts.length - 1]; return `<polyline points="${pts.map(p => p.join(',')).join(' ')}" fill="none" stroke="${col}" stroke-width="2.5" ${dash ? 'stroke-dasharray="6 4"' : ''}/><text class="c" x="${e[0] + 4}" y="${e[1] + 4}" fill="${col}">${lab}</text>`; };
+  s += line(Qd, '#1565c0', false, 'D') + line(Qs, '#e53935', false, 'S');
+  s += `<circle cx="${X(Qe)}" cy="${Y(Pe)}" r="6" fill="#333"/><line x1="${gx}" y1="${Y(Pe)}" x2="${X(Qe)}" y2="${Y(Pe)}" stroke="#999" stroke-dasharray="3 3"/><line x1="${X(Qe)}" y1="${gy}" x2="${X(Qe)}" y2="${Y(Pe)}" stroke="#999" stroke-dasharray="3 3"/>`;
+  let html = `<div><span>Keseimbangan</span><b>P = Rp${fmt(Pe, 2)} ribu; Q = ${fmt(Qe, 1)} unit</b></div>`;
+  if(K === 'pajak' || K === 'subsidi'){
+    const t = K === 'pajak' ? v : -v, Qs2 = P => c + d * (P - t), P2 = (a - c + d * t) / (b + d), Q2 = Qd(P2);
+    s += line(Qs2, '#e53935', true, K === 'pajak' ? 'S + pajak' : 'S + subsidi') + `<circle cx="${X(Q2)}" cy="${Y(P2)}" r="6" fill="#fb8c00"/>`;
+    const tk = Math.abs(P2 - Pe), tp = Math.abs(t) - tk;
+    html += `<div><span>Setelah ${K}</span><b>P = Rp${fmt(P2, 2)} ribu; Q = ${fmt(Q2, 1)} unit</b></div><div><span>${K === 'pajak' ? 'Pajak' : 'Subsidi'} dinikmati/ditanggung konsumen</span><b>Rp${fmt(tk, 2)} ribu per unit</b></div><div><span>... oleh produsen</span><b>Rp${fmt(tp, 2)} ribu per unit</b></div><div><span>${K === 'pajak' ? 'Penerimaan pajak' : 'Biaya subsidi'} pemerintah</span><b>Rp${fmt(Math.abs(t) * Q2, 1)} ribu</b></div>`;
+  } else if(K === 'het' || K === 'hpp'){
+    const Pg = K === 'het' ? Pe - v : Pe + v, qd = Qd(Pg), qs = Qs(Pg);
+    s += `<line x1="${gx}" y1="${Y(Pg)}" x2="${gx + gw}" y2="${Y(Pg)}" stroke="#fb8c00" stroke-width="2"/><text class="s" x="${gx + gw}" y="${Y(Pg) - 4}" text-anchor="end" fill="#fb8c00">${K === 'het' ? 'harga maksimum' : 'harga minimum'}</text><line x1="${X(Math.min(qd, qs))}" y1="${Y(Pg)}" x2="${X(Math.max(qd, qs))}" y2="${Y(Pg)}" stroke="#fb8c00" stroke-width="6" opacity=".5"/>`;
+    html += `<div><span>Pada harga Rp${fmt(Pg, 1)} ribu</span><b>Qd = ${fmt(qd, 1)}; Qs = ${fmt(qs, 1)}</b></div><div><span>Akibat</span><b>${K === 'het' ? `kelebihan permintaan (kekurangan barang) ${fmt(qd - qs, 1)} unit` : `kelebihan penawaran (surplus) ${fmt(qs - qd, 1)} unit`}</b></div>`;
+  }
+  const ed = Math.abs(-b * Pe / Qe), es = d * Pe / (c + d * Pe);
+  html += `<div><span>Elastisitas titik di keseimbangan (Ed / Es)</span><b>${fmt(ed, 2)} / ${fmt(es, 2)}</b></div>`;
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,56 +1,161 @@
 {
   "title": "Kalor dan Pemanasan Global",
-  "summary": "Ringkasan bab Kalor dan Pemanasan Global akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Fisika: suhu dan pemuaian, kalor jenis dan kalor laten, asas Black, perpindahan kalor secara konduksi, konveksi, dan radiasi, serta efek rumah kaca dan pemanasan global.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Kalor dan Pemanasan Global",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Kalor, Perubahan Wujud, Pemuaian, Perpindahan Kalor, dan Pemanasan Global</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "kalor",
+      "title": "Kalor, perubahan wujud, dan asas Black",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/06 Kalor/sim/asas-black.html",
+          "title": "Asas Black",
+          "height": 520,
+          "caption": "Campurkan dua cairan bersuhu berbeda. Mengapa suhu akhir lebih dekat ke suhu cairan yang massanya lebih besar?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Berapa kalor untuk mengubah 200 g es bersuhu 0 °C menjadi air 30 °C? (L es = 336.000 J/kg; c air = 4.200 J/kg°C)</p>",
+          "steps": [
+            "Melebur: 0,2 × 336.000 = 67.200 J.",
+            "Memanaskan: 0,2 × 4.200 × 30 = 25.200 J."
+          ],
+          "answer": "92.400 J"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebanyak 300 g air 90 °C dicampur dengan 200 g air 20 °C. Berapa suhu akhir campuran (tanpa kalor hilang)?</p>",
+          "steps": [
+            "0,3 c (90 − T) = 0,2 c (T − 20).",
+            "27 − 0,3T = 0,2T − 4 → T = 31/0,5."
+          ],
+          "answer": "62 °C"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Rel baja sepanjang 20 m dipasang pada 25 °C (α = 1,2 × 10⁻⁵ /°C). Berapa celah minimum agar rel tidak melengkung pada 55 °C?</p>",
+          "steps": [
+            "ΔL = 20 × 1,2 × 10⁻⁵ × 30 = 7,2 × 10⁻³ m."
+          ],
+          "answer": "7,2 mm"
+        },
+        {
+          "type": "check",
+          "question": "Saat air mendidih pada 100 °C dan terus dipanaskan, suhunya tetap karena kalor digunakan untuk ....",
+          "options": {
+            "A": "menaikkan energi kinetik molekul",
+            "B": "mengubah wujud air menjadi uap",
+            "C": "memanaskan panci",
+            "D": "dipancarkan ke udara"
+          },
+          "answer": "B",
+          "hint": "Kalor laten.",
+          "explanation": "Kalor uap dipakai memutus ikatan antarmolekul, bukan menaikkan suhu."
+        }
+      ]
+    },
+    {
+      "id": "perpindahan",
+      "title": "Perpindahan kalor dan pemanasan global",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/06 Kalor/sim/perpindahan-kalor.html",
+          "title": "Perpindahan kalor",
+          "height": 520,
+          "caption": "Bandingkan bahan konduktor dan isolator. Bagaimana laju kalor berubah jika ketebalan dilipatduakan?"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/IPA/06 Isu-Isu Lingkungan/sim/efek-rumah-kaca.html",
+          "title": "Efek rumah kaca",
+          "height": 480,
+          "caption": "Naikkan kadar gas rumah kaca dan amati suhu Bumi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dinding bata (k = 0,6 W/m°C) seluas 10 m² dan tebal 20 cm memisahkan ruangan 26 °C dari luar 32 °C. Berapa laju kalor yang masuk?</p>",
+          "steps": [
+            "H = kAΔT/L = 0,6 × 10 × 6/0,2."
+          ],
+          "answer": "180 W"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Suhu mutlak suatu permukaan dinaikkan dari 300 K menjadi 450 K. Berapa kali daya radiasinya?</p>",
+          "steps": [
+            "P ∝ T⁴ → (450/300)⁴ = 1,5⁴."
+          ],
+          "answer": "± 5,06 kali"
+        },
+        {
+          "type": "check",
+          "question": "Gas berikut yang menyerap radiasi inframerah dari permukaan Bumi sehingga memperkuat efek rumah kaca adalah ....",
+          "options": {
+            "A": "nitrogen",
+            "B": "oksigen",
+            "C": "metana",
+            "D": "argon"
+          },
+          "answer": "C",
+          "hint": "Gas rumah kaca: CO₂, CH₄, N₂O, uap air.",
+          "explanation": "Metana menyerap inframerah dengan sangat kuat; N₂, O₂, dan Ar tidak."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Buat diagram tahap pemanasan: naik suhu → berubah wujud → naik suhu, lalu jumlahkan kalor tiap tahap.</li><li>Pada asas Black yang melibatkan es, periksa dulu apakah kalor cukup untuk melebur seluruh es.</li><li>Ubah °C ke kelvin untuk radiasi; perubahan suhu (ΔT) dalam °C dan K sama.</li><li>Untuk sambungan dua batang, laju konduksi pada kedua batang sama.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai suhu Celsius dalam rumus radiasi T⁴.</li><li>Lupa kalor laten saat zat berubah wujud.</li><li>Menganggap bimetal melengkung ke arah logam yang muai panjangnya besar; ia melengkung ke arah logam yang muainya kecil.</li><li>Menyamakan efek rumah kaca dengan penipisan lapisan ozon.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Fisika SMA topik Kalor dan Pemanasan Global. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

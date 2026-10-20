@@ -1,56 +1,141 @@
 {
   "title": "Pendapatan Nasional dan Pembangunan Ekonomi",
-  "summary": "Ringkasan bab Pendapatan Nasional dan Pembangunan Ekonomi akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Ekonomi: konsep PDB, PNB, NNP, NNI, PI, dan DI; pendekatan produksi, pendapatan, dan pengeluaran; pendapatan per kapita; PDB nominal dan riil; pertumbuhan dan pembangunan ekonomi, IPM, serta ketimpangan.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Pendapatan Nasional dan Pembangunan Ekonomi",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Pendapatan Nasional dan Pembangunan Ekonomi</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Hal yang paling sering diuji: membedakan PDB (wilayah) dan PNB (kewarganegaraan), menghitung urutan PNB → DI, serta menafsirkan pertumbuhan dibandingkan kesejahteraan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Konsep pendapatan nasional</td><td>PDB, PNB, NNP, NNI, PI, DI dan hubungannya</td></tr><tr><td>Pendekatan perhitungan</td><td>produksi (nilai tambah), pendapatan (sewa + upah + bunga + laba), pengeluaran (C + I + G + X − M)</td></tr><tr><td>Pertumbuhan</td><td>PDB riil, deflator, pendapatan per kapita</td></tr><tr><td>Pembangunan</td><td>IPM, rasio Gini, kemiskinan, kualitas SDM</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>PDB pengeluaran: Y = C + I + G + (X − M). PDB pendapatan: Y = r + w + i + π. PDB produksi: Σ nilai tambah.</li><li>PNB = PDB + pendapatan faktor neto dari luar negeri.</li><li>NNP = PNB − penyusutan; NNI = NNP − pajak tidak langsung (+ subsidi).</li><li>PI = NNI − laba ditahan − iuran jaminan sosial − pajak perseroan + transfer payment; DI = PI − pajak langsung.</li><li>PDB riil = PDB nominal/deflator × 100. Pertumbuhan = (PDB riilₜ − PDB riilₜ₋₁)/PDB riilₜ₋₁ × 100%.</li><li>Pendapatan per kapita = pendapatan nasional/jumlah penduduk.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "hitung",
+      "title": "Menghitung pendapatan nasional",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "sim/pendapatan-nasional.html",
+          "title": "Tangga pendapatan nasional",
+          "height": 620,
+          "caption": "Ubah pendapatan faktor neto dari luar negeri menjadi positif. Bagaimana hubungan PNB dan PDB berubah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dengan data pada simulasi (C 6.100, I 2.400, G 1.300, X 2.200, M 2.000, pendapatan faktor neto −350, penyusutan 900), hitung PDB, PNB, dan NNP (triliun rupiah).</p>",
+          "steps": [
+            "PDB = 6.100 + 2.400 + 1.300 + (2.200 − 2.000) = 10.000.",
+            "PNB = 10.000 − 350 = 9.650.",
+            "NNP = 9.650 − 900 = 8.750."
+          ],
+          "answer": "PDB 10.000; PNB 9.650; NNP 8.750"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>PDB nominal suatu negara tahun 2024 (tahun dasar) Rp8.000 triliun. Tahun 2025 PDB nominalnya Rp9.196 triliun dengan deflator 110. Berapa pertumbuhan ekonomi riilnya?</p>",
+          "steps": [
+            "PDB riil 2025 = 9.196/110 × 100 = 8.360.",
+            "Pertumbuhan = (8.360 − 8.000)/8.000 × 100%."
+          ],
+          "answer": "4,5%"
+        },
+        {
+          "type": "check",
+          "question": "Gaji seorang dokter Indonesia yang bekerja di rumah sakit di Singapura dihitung dalam ....",
+          "options": {
+            "A": "PDB Indonesia",
+            "B": "PNB Indonesia",
+            "C": "PDB dan PNB Indonesia",
+            "D": "tidak dihitung di Indonesia"
+          },
+          "answer": "B",
+          "hint": "PNB berdasarkan kewarganegaraan.",
+          "explanation": "Pendapatan warga negara Indonesia di luar negeri masuk PNB Indonesia (dan PDB Singapura)."
+        }
+      ]
+    },
+    {
+      "id": "pembangunan",
+      "title": "Pertumbuhan dan pembangunan ekonomi",
+      "kind": "artikel",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p><b>Pertumbuhan ekonomi</b> adalah kenaikan PDB riil. <b>Pembangunan ekonomi</b> lebih luas: kenaikan pendapatan per kapita disertai perubahan struktur ekonomi, pengurangan kemiskinan dan ketimpangan, serta peningkatan kualitas hidup.</p><ul><li><b>IPM</b> (Indeks Pembangunan Manusia) disusun dari tiga dimensi: umur panjang dan hidup sehat, pengetahuan, serta standar hidup layak.</li><li><b>Rasio Gini</b> mengukur ketimpangan pendapatan, dari 0 (merata sempurna) sampai 1 (timpang sempurna). Kurva Lorenz yang makin jauh dari garis pemerataan menunjukkan ketimpangan makin besar.</li><li>Pendapatan per kapita riil turun bila pertumbuhan penduduk lebih cepat daripada pertumbuhan PDB riil.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>PDB riil suatu provinsi tumbuh 3%, sedangkan penduduknya bertambah 2%. Bagaimana perkiraan perubahan pendapatan per kapita riilnya?</p>",
+          "steps": [
+            "Pendapatan per kapita = PDB/penduduk.",
+            "Kira-kira 3% − 2% (tepatnya 1,03/1,02 − 1)."
+          ],
+          "answer": "naik sekitar 1%"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Keterbatasan PDB sebagai ukuran kesejahteraan",
+          "html": "<p>PDB tidak menghitung kegiatan nonpasar (pekerjaan rumah tangga tanpa upah), tidak memperhitungkan kerusakan lingkungan dan waktu luang, serta tidak menunjukkan pemerataan. Karena itu dibutuhkan ukuran lain seperti IPM dan rasio Gini.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Rasio Gini suatu daerah naik dari 0,33 menjadi 0,40. Artinya ....",
+          "options": {
+            "A": "pendapatan makin merata",
+            "B": "ketimpangan pendapatan makin besar",
+            "C": "pertumbuhan ekonomi turun",
+            "D": "jumlah penduduk miskin pasti turun"
+          },
+          "answer": "B",
+          "hint": "Makin mendekati 1 makin timpang.",
+          "explanation": "Kenaikan rasio Gini menunjukkan distribusi pendapatan makin tidak merata."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tulis urutan PDB → PNB → NNP → NNI → PI → DI dan cek komponen yang ditambah atau dikurangi di setiap langkah.</li><li>Pada pendekatan produksi, jumlahkan nilai tambah setiap tahap, bukan nilai produk akhir setiap tahap.</li><li>Untuk pertumbuhan riil, ubah semua PDB nominal menjadi riil terlebih dahulu.</li><li>Bandingkan per kapita, bukan total, saat menilai kesejahteraan antardaerah.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Menghitung barang setengah jadi berkali-kali (penghitungan ganda).</li><li>Memasukkan transfer payment ke dalam PDB.</li><li>Menyamakan pertumbuhan ekonomi dengan pembangunan ekonomi.</li><li>Tertukar PDB (wilayah) dan PNB (warga negara).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Ekonomi SMA topik Pendapatan Nasional dan Pembangunan Ekonomi. Setiap soal dilengkapi pembahasan."
         }
       ]
     }
