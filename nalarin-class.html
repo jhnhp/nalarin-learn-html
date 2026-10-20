@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2447F9">
+<meta name="description" content="Belajar bareng Nalarin Class. Pilih kelas kelompok, semi-private, atau private sesuai kebutuhan dan anggaranmu.">
+<title>Nalarin Class · Nalarin Belajar</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/learn.css">
+<style>
+.class-hero{position:relative;overflow:hidden;margin:28px 0 34px;padding:clamp(26px,5vw,56px);border-radius:24px;background:linear-gradient(125deg,#2447f9 0%,#5145e8 60%,#7958f5 100%);color:#fff}
+.class-hero:after{content:"";position:absolute;width:320px;height:320px;border:42px solid rgba(255,255,255,.11);border-radius:50%;right:-90px;top:-110px;pointer-events:none}
+.class-kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border:1px solid rgba(255,255,255,.28);border-radius:999px;font-size:13px;font-weight:700;background:rgba(255,255,255,.1)}
+.class-hero h1{font-family:var(--display);font-size:clamp(34px,7vw,58px);font-weight:800;line-height:1.03;letter-spacing:-.04em;max-width:720px;margin:20px 0 14px}
+.class-hero h1 em{font-style:normal;color:#dbe3ff}
+.class-hero p{max-width:610px;font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.88)}
+.class-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:1}
+.class-hero .btn{border-color:#fff;background:#fff;color:#2039c8}
+.class-hero .btn.secondary{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);color:#fff}
+.class-note{font-size:13px!important;margin-top:14px;opacity:.8}
+.class-section{margin-top:40px}
+.class-lead{max-width:650px;color:var(--muted);margin-top:-5px;margin-bottom:18px}
+.class-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.class-feature{padding:20px}
+.class-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:var(--brand-soft);color:var(--accent);font-size:21px;margin-bottom:14px}
+.class-feature h3,.price-card h3{font-family:var(--display);font-size:19px;font-weight:800;line-height:1.2;margin-bottom:7px}
+.class-feature p{font-size:14px;color:var(--muted)}
+.class-prices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.price-card{padding:22px;display:flex;flex-direction:column;align-items:flex-start}
+.price-card.featured{border:2px solid var(--brand);position:relative}
+.price-tag{font-size:13px;font-weight:700;color:var(--accent);background:var(--brand-soft);border-radius:999px;padding:5px 9px;margin-bottom:14px}
+.price{font-family:var(--display);font-size:clamp(27px,3vw,36px);font-weight:800;letter-spacing:-.04em;line-height:1.1;margin:7px 0}
+.price small{font-family:var(--font);font-size:13px;letter-spacing:0;color:var(--muted);font-weight:600}
+.price-card p{font-size:14px;color:var(--muted);margin-bottom:16px}
+.price-card ul{padding-left:18px;margin:0 0 22px;color:var(--muted);font-size:14px}
+.price-card li{margin:5px 0}
+.price-card .btn{margin-top:auto;width:100%}
+.class-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;counter-reset:classstep}
+.class-step{padding:20px;counter-increment:classstep}
+.class-step:before{content:counter(classstep);display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--brand-soft);color:var(--accent);font-weight:800;margin-bottom:12px}
+.class-step h3{font-size:16px;font-weight:800;margin-bottom:5px}
+.class-step p{font-size:14px;color:var(--muted)}
+.class-faq{display:grid;gap:10px}
+.class-faq details{padding:16px 18px}
+.class-faq summary{font-weight:700;cursor:pointer}
+.class-faq p{margin-top:9px;color:var(--muted);font-size:14px}
+.class-bottom{margin-top:40px;padding:26px;background:var(--brand-soft);border:1px solid var(--brand-soft-2);border-radius:20px;display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.class-bottom h2{font-family:var(--display);font-size:clamp(22px,4vw,30px);font-weight:800;line-height:1.15;max-width:560px}
+.class-bottom p{color:var(--muted);margin-top:6px;max-width:560px}
+.class-bottom .btn{flex:none}
+:root[data-theme="dark"] .class-bottom{background:var(--surface);border-color:var(--line)}
+@media(max-width:760px){.class-features,.class-prices,.class-process{grid-template-columns:1fr}.price-card{padding:20px}.class-hero:after{right:-210px}.class-bottom{align-items:flex-start}.class-bottom .btn{width:100%}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="hbar">
+    <a class="brand" href="index.html" aria-label="Nalarin Belajar, beranda">
+      <img class="ic" src="assets/icon.png" alt="">
+      <img class="wm wm-b" src="assets/wordmark-blue.png" alt="">
+      <img class="wm wm-w" src="assets/wordmark-white.png" alt="">
+      <span class="tag">Class</span>
+    </a>
+    <span class="grow"></span>
+    <nav class="nav" aria-label="Navigasi utama">
+      <a href="index.html"><svg class="i"><use href="#i-book"/></svg><span>Belajar</span></a>
+      <a href="Kuis/index.html"><svg class="i"><use href="#i-quiz"/></svg><span>Kuis</span></a>
+      <a href="nalarin-class.html" class="on"><svg class="i"><use href="#i-users"/></svg><span>Kelas</span></a>
+      <a href="dukung.html" class="dukung"><svg class="i"><use href="#i-heart"/></svg><span>Dukung</span></a>
+    </nav>
+    <button class="icon-btn" id="theme" aria-label="Ganti tema terang/gelap">
+      <svg class="i sun"><use href="#i-sun"/></svg><svg class="i moon"><use href="#i-moon"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="class-hero">
+    <span class="class-kicker">Nalarin Class · Belajar bareng tutor</span>
+    <h1>Bukan cuma tahu jawabannya. <em>Pahami cara berpikirnya.</em></h1>
+    <p>Kelas belajar untuk kamu yang ingin memahami konsep, membahas soal, dan mempersiapkan ujian dengan pendampingan tutor—dengan pilihan format sesuai kebutuhan dan anggaran.</p>
+    <div class="class-actions">
+      <a class="btn" href="#pilih-kelas">Lihat pilihan kelas <svg class="i"><use href="#i-arrow"/></svg></a>
+      <a class="btn secondary" href="https://wa.me/?text=Halo%20Nalarin%2C%20saya%20ingin%20bertanya%20tentang%20Nalarin%20Class." target="_blank" rel="noopener">Tanyakan kelas via WhatsApp <svg class="i"><use href="#i-ext"/></svg></a>
+    </div>
+    <p class="class-note">Jadwal, ketersediaan tutor, dan kecocokan kelas dikonfirmasi saat menghubungi admin.</p>
+  </section>
+
+  <section class="class-section">
+    <h2 class="sec-h">Belajar dengan cara yang lebih terarah</h2>
+    <p class="class-lead">Nalarin Class melengkapi materi gratis di Nalarin Learn dengan sesi belajar bersama tutor.</p>
+    <div class="class-features">
+      <article class="card class-feature"><div class="class-icon" aria-hidden="true">◎</div><h3>Fokus pada penalaran</h3><p>Bukan sekadar menghafal rumus atau mengejar jawaban. Bangun pemahaman konsep dan alasan di balik penyelesaian soal.</p></article>
+      <article class="card class-feature"><div class="class-icon" aria-hidden="true">↗</div><h3>Bahas soal bersama</h3><p>Gunakan waktu belajar untuk membedah soal, memahami langkah penyelesaian, dan mengenali bagian yang masih membingungkan.</p></article>
+      <article class="card class-feature"><div class="class-icon" aria-hidden="true">▦</div><h3>Pilih format yang cocok</h3><p>Belajar bersama kelompok, kelompok kecil semi-private, atau sesi private sesuai kebutuhan dan anggaranmu.</p></article>
+    </div>
+  </section>
+
+  <section class="class-section" id="pilih-kelas">
+    <h2 class="sec-h">Pilih format kelas</h2>
+    <p class="class-lead">Harga mulai per jam. Detail materi, jadwal, durasi sesi, dan ketersediaan kelas dikonfirmasi sebelum pendaftaran.</p>
+    <div class="class-prices">
+      <article class="card price-card">
+        <span class="price-tag">Belajar bareng</span>
+        <h3>Kelas Kelompok</h3>
+        <div class="price">Rp20.000 <small>/ jam</small></div>
+        <p>Pilihan lebih hemat untuk belajar bersama peserta lain.</p>
+        <ul><li>Belajar dalam kelompok</li><li>Diskusi konsep dan latihan soal</li><li>Cocok untuk belajar terstruktur</li></ul>
+        <a class="btn" href="https://wa.me/?text=Halo%20Nalarin%2C%20saya%20tertarik%20dengan%20Kelas%20Kelompok." target="_blank" rel="noopener">Tanyakan kelas</a>
+      </article>
+      <article class="card price-card featured">
+        <span class="price-tag">Kelompok kecil</span>
+        <h3>Semi-private</h3>
+        <div class="price">Rp49.000 <small>/ jam</small></div>
+        <p>Lebih banyak ruang untuk bertanya dan berdiskusi.</p>
+        <ul><li>Kelompok lebih kecil</li><li>Interaksi lebih intensif dengan tutor</li><li>Belajar sesuai kebutuhan kelompok</li></ul>
+        <a class="btn primary" href="https://wa.me/?text=Halo%20Nalarin%2C%20saya%20tertarik%20dengan%20kelas%20semi-private." target="_blank" rel="noopener">Tanyakan kelas</a>
+      </article>
+      <article class="card price-card">
+        <span class="price-tag">Pendampingan personal</span>
+        <h3>Private</h3>
+        <div class="price">Rp79.000 <small>/ jam</small></div>
+        <p>Sesi yang berfokus pada kebutuhan belajarmu sendiri.</p>
+        <ul><li>Fokus pada kebutuhan individu</li><li>Lebih leluasa membahas kesulitan</li><li>Materi dan target dibicarakan di awal</li></ul>
+        <a class="btn" href="https://wa.me/?text=Halo%20Nalarin%2C%20saya%20tertarik%20dengan%20kelas%20private." target="_blank" rel="noopener">Tanyakan kelas</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="class-section">
+    <h2 class="sec-h">Cara mulai belajar</h2>
+    <div class="class-process">
+      <article class="card class-step"><h3>Ceritakan kebutuhanmu</h3><p>Sampaikan mata pelajaran, jenjang, target belajar, dan topik yang ingin dipelajari.</p></article>
+      <article class="card class-step"><h3>Cocokkan format dan jadwal</h3><p>Admin membantu menjelaskan pilihan kelas, harga, jadwal, serta ketersediaan tutor.</p></article>
+      <article class="card class-step"><h3>Mulai sesi belajar</h3><p>Setelah detail dan jadwal disepakati, kamu bisa mulai belajar bersama tutor.</p></article>
+    </div>
+  </section>
+
+  <section class="class-section">
+    <h2 class="sec-h">Pertanyaan yang sering ditanyakan</h2>
+    <div class="class-faq">
+      <details class="card"><summary>Apakah Nalarin Class sama dengan Nalarin Learn?</summary><p>Berbeda fungsi, tetapi saling melengkapi. Nalarin Learn menyediakan materi dan latihan mandiri, sedangkan Nalarin Class adalah layanan belajar bersama tutor.</p></details>
+      <details class="card"><summary>Apakah harga sudah termasuk semua kebutuhan belajar?</summary><p>Harga yang ditampilkan adalah tarif awal per jam. Detail durasi, materi, jadwal, dan biaya akhir akan dikonfirmasi admin sebelum kamu mendaftar.</p></details>
+      <details class="card"><summary>Bagaimana cara mengetahui jadwal kelas yang tersedia?</summary><p>Hubungi admin dan sampaikan mata pelajaran serta format kelas yang diminati. Jadwal dan ketersediaan tutor perlu dikonfirmasi terlebih dahulu.</p></details>
+      <details class="card"><summary>Apakah saya tetap bisa belajar gratis?</summary><p>Bisa. Nalarin Learn dan Nalarin Kuis tetap bisa digunakan secara gratis untuk belajar mandiri tanpa membuat akun.</p></details>
+    </div>
+  </section>
+
+  <section class="class-bottom">
+    <div><h2>Temukan cara belajar yang cocok buatmu.</h2><p>Ceritakan target belajarmu kepada admin Nalarin untuk mengetahui pilihan kelas yang tersedia.</p></div>
+    <a class="btn primary" href="https://wa.me/?text=Halo%20Nalarin%2C%20saya%20ingin%20bertanya%20tentang%20Nalarin%20Class." target="_blank" rel="noopener">Hubungi admin <svg class="i"><use href="#i-arrow"/></svg></a>
+  </section>
+</main>
+
+<footer class="foot">Nalarin · Bukan cuma hafalin. Nalarin. · <a href="index.html">Belajar</a> · <a href="Kuis/index.html">Kuis</a> · <a href="dukung.html">Dukung Nalarin</a></footer>
+<script src="js/umum.js"></script>
+</body>
+</html>
