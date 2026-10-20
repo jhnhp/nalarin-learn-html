@@ -27,7 +27,7 @@ function render(b){
   const idx = Math.max(0, lessons.findIndex(l => l.id === P.get('p')));
   const L = lessons[idx];
   document.body.dataset.mapel = b.mapel || '';
-  document.title = (L ? L.title + ' · ' : '') + b.title + ' · Nalarin Belajar';
+  document.title = (L ? L.title + ' · ' : '') + b.title + ' · Nalarin Learn';
   if(b.kuis[0]) $('nav-kuis').href = quizUrl(b.kuis[0].path);
 
   /* samping */

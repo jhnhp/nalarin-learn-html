@@ -13,7 +13,7 @@ const tileOf = s => {
   return s.replace(/[^A-Za-z]/g, '').slice(0, 2) || '?';
 };
 
-// "Kelas 11" → jenjang untuk pengelompokan di beranda (sama dengan Nalarin Belajar)
+// "Kelas 11" → jenjang untuk pengelompokan di beranda (sama dengan Nalarin Learn)
 const JENJANG_ORDER = ['SMP', 'SMA', 'Persiapan TKA', 'Lainnya'];
 function jenjang(kelas){
   if(/^TKA/i.test(kelas)) return 'Persiapan TKA';
@@ -23,7 +23,7 @@ function jenjang(kelas){
   return 'Lainnya';
 }
 
-// Kuis bisa berdiri sendiri atau berada di dalam Nalarin Belajar (folder Kuis/).
+// Kuis bisa berdiri sendiri atau berada di dalam Nalarin Learn (folder Kuis/).
 // Jika ada ../katalog.json, tampilkan tautan Belajar dan arahkan "Dukung" ke halaman dukung.html.
 fetch('../katalog.json', {method: 'HEAD'}).then(r => {
   if(!r.ok) return;
