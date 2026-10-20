@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persamaan Lingkaran, Garis, dan Juring</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.ar{font-family:var(--display);font-weight:800;font-size:13px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Lingkaran pada bidang koordinat"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="umum" class="on">Persamaan umum</button><button data-m="garis">Garis dan lingkaran</button><button data-m="juring">Juring dan tembereng</button></div>
+    <div class="formula" id="rumus"></div>
+    <div id="sl"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SL = {
+  umum: [['A', -8, 8, 1, -4], ['B', -8, 8, 1, 2], ['C', -20, 10, 1, -4]],
+  garis: [['jari-jari r', 1, 6, .5, 4], ['gradien m', -3, 3, .5, 1], ['konstanta c', -10, 10, .5, 2]],
+  juring: [['jari-jari r', 1, 6, .5, 5], ['sudut pusat θ (derajat)', 10, 350, 5, 120]],
+};
+let mode = 'umum';
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); build(); };
+Sim.onTheme(draw);
+function build(){
+  $('sl').innerHTML = SL[mode].map(([n, lo, hi, st, v], i) => `<div><div class="lab"><span>${n}</span><b id="v${i}"></b></div><input type="range" id="s${i}" min="${lo}" max="${hi}" step="${st}" value="${v}"></div>`).join('');
+  SL[mode].forEach((_, i) => $('s' + i).oninput = draw);
+  draw();
+}
+const sg = v => v < 0 ? ' − ' + fmt(-v) : ' + ' + fmt(v);
+function draw(){
+  const p = SL[mode].map((_, i) => +$('s' + i).value);
+  p.forEach((v, i) => $('v' + i).textContent = fmt(v));
+  const P = Sim.plane(svg, {xmin: -9, xmax: 9, ymin: -8, ymax: 8, scale: 26});
+  let s = P.grid({labelStep: 2});
+  const circ = (a, b, r, col = 'var(--a)') => `<circle cx="${P.X(a)}" cy="${P.Y(b)}" r="${r * P.S}" style="fill:${col};stroke:${col}" fill-opacity=".08" stroke-width="3"/><circle cx="${P.X(a)}" cy="${P.Y(b)}" r="4" style="fill:${col}"/>`;
+  const dot = (x, y, col, t) => `<circle cx="${P.X(x)}" cy="${P.Y(y)}" r="5.5" style="fill:${col}"/>` + (t ? `<text class="ar" x="${P.X(x) + 8}" y="${P.Y(y) - 8}" style="fill:${col}">${t}</text>` : '');
+  if(mode === 'umum'){
+    const [A, B, C] = p, a = -A / 2, b = -B / 2, r2 = a * a + b * b - C;
+    $('rumus').textContent = `x² + y²${sg(A)}x${sg(B)}y${sg(C)} = 0`;
+    if(r2 <= 0){ svg.innerHTML = s + dot(a, b, 'var(--b)'); $('read').innerHTML = `<div><span>Pusat (−A/2, −B/2)</span><b>(${fmt(a)}, ${fmt(b)})</b></div><div><span>r² = A²/4 + B²/4 − C</span><b>${fmt(r2)}</b></div><p class="note">${r2 === 0 ? 'r = 0: hanya sebuah titik.' : 'r² negatif: tidak ada lingkaran nyata.'}</p>`; return; }
+    const r = Math.sqrt(r2);
+    s += circ(a, b, r) + `<line x1="${P.X(a)}" y1="${P.Y(b)}" x2="${P.X(a + r)}" y2="${P.Y(b)}" style="stroke:var(--comp)" stroke-width="2.5"/><text class="ar" x="${P.X(a + r / 2)}" y="${P.Y(b) - 8}" text-anchor="middle" style="fill:var(--comp)">r</text>`;
+    svg.innerHTML = s + dot(a, b, 'var(--a)', `(${fmt(a)}, ${fmt(b)})`);
+    const ax = Math.abs(b) < r ? 'memotong sumbu-x di 2 titik' : Math.abs(Math.abs(b) - r) < 1e-9 ? 'menyinggung sumbu-x' : 'tidak memotong sumbu-x';
+    $('read').innerHTML = `<div><span>Pusat (−A/2, −B/2)</span><b>(${fmt(a)}, ${fmt(b)})</b></div><div><span>r = √(A²/4 + B²/4 − C)</span><b>√${fmt(r2)} ≈ ${fmt(r, 3)}</b></div><div><span>Bentuk baku</span><b>(x${sg(-a)})² + (y${sg(-b)})² = ${fmt(r2)}</b></div><div><span>Terhadap sumbu-x</span><b>${ax}</b></div>`;
+  } else if(mode === 'garis'){
+    const [r, m, c] = p;
+    $('rumus').textContent = `x² + y² = ${fmt(r * r)} dan y = ${fmt(m)}x${sg(c)}`;
+    s += circ(0, 0, r);
+    s += `<line x1="${P.X(-9)}" y1="${P.Y(m * -9 + c)}" x2="${P.X(9)}" y2="${P.Y(m * 9 + c)}" style="stroke:var(--r)" stroke-width="3"/>`;
+    // x² + (mx + c)² = r² → (1 + m²)x² + 2mcx + c² − r² = 0
+    const a2 = 1 + m * m, b2 = 2 * m * c, c2 = c * c - r * r, D = b2 * b2 - 4 * a2 * c2, dist = Math.abs(c) / Math.sqrt(1 + m * m);
+    let pts = [];
+    if(D >= -1e-9){ const sq = Math.sqrt(Math.max(0, D)); pts = [(-b2 - sq) / (2 * a2), (-b2 + sq) / (2 * a2)]; if(D < 1e-9) pts = [pts[0]]; }
+    pts.forEach(x => s += dot(x, m * x + c, 'var(--r)', `(${fmt(x, 2)}, ${fmt(m * x + c, 2)})`));
+    // jarak pusat ke garis
+    const fx = -m * c / (1 + m * m), fy = c / (1 + m * m);
+    s += `<line x1="${P.X(0)}" y1="${P.Y(0)}" x2="${P.X(fx)}" y2="${P.Y(fy)}" class="dash" style="stroke:var(--comp)" stroke-width="2"/>`;
+    svg.innerHTML = s;
+    const kind = D > 1e-9 ? 'memotong di dua titik' : D > -1e-9 ? 'menyinggung (satu titik)' : 'tidak memotong';
+    $('read').innerHTML = `<div><span>Substitusi</span><b>${fmt(a2)}x²${sg(b2)}x${sg(c2)} = 0</b></div><div><span>Diskriminan D</span><b>${fmt(D, 2)}</b></div><div><span>Jarak pusat ke garis |c|/√(1 + m²)</span><b>${fmt(dist, 3)} vs r = ${fmt(r)}</b></div><div><span>Kedudukan</span><b>${kind}</b></div><p class="note">Garis menyinggung jika D = 0, setara dengan jarak pusat ke garis sama dengan r. Syaratnya c = ±r√(1 + m²).</p>`;
+  } else {
+    const [r, t] = p, tr = t * Math.PI / 180;
+    $('rumus').textContent = `r = ${fmt(r)}, θ = ${fmt(t)}°`;
+    s += `<circle cx="${P.X(0)}" cy="${P.Y(0)}" r="${r * P.S}" fill="none" style="stroke:var(--ink)" stroke-width="2"/>`;
+    const A = [r, 0], B = [r * Math.cos(tr), r * Math.sin(tr)], large = t > 180 ? 1 : 0;
+    s += `<path d="M${P.X(0)},${P.Y(0)} L${P.X(A[0])},${P.Y(A[1])} A${r * P.S},${r * P.S} 0 ${large} 0 ${P.X(B[0])},${P.Y(B[1])} Z" style="fill:var(--a)" fill-opacity=".18"/>`;
+    s += `<path d="M${P.X(A[0])},${P.Y(A[1])} A${r * P.S},${r * P.S} 0 ${large} 0 ${P.X(B[0])},${P.Y(B[1])} Z" style="fill:var(--comp);stroke:var(--comp)" fill-opacity=".45" stroke-width="2"/>`;
+    s += `<path d="M${P.X(A[0])},${P.Y(A[1])} A${r * P.S},${r * P.S} 0 ${large} 0 ${P.X(B[0])},${P.Y(B[1])}" fill="none" style="stroke:var(--r)" stroke-width="4"/>`;
+    s += P.arc(0, 0, Math.min(1.2, r * .4), 0, t, 'var(--ink)', fmt(t) + '°');
+    svg.innerHTML = s;
+    const arc = t / 360 * 2 * Math.PI * r, jur = t / 360 * Math.PI * r * r, seg = jur - .5 * r * r * Math.sin(tr);
+    $('read').innerHTML = `<div><span style="color:var(--r)">Panjang busur = θ/360° × 2πr</span><b>${fmt(arc, 3)}</b></div><div><span>Luas juring = θ/360° × πr²</span><b>${fmt(jur, 3)}</b></div><div><span>Luas segitiga = ½ r² sin θ</span><b>${fmt(.5 * r * r * Math.sin(tr), 3)}</b></div><div><span style="color:var(--comp)">Luas tembereng = juring − segitiga</span><b>${fmt(seg, 3)}</b></div>`;
+  }
+}
+build();
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+{
+  "title": "Program Linear",
+  "summary": "Program linear untuk TKA Matematika Tingkat Lanjut: memodelkan masalah menjadi sistem pertidaksamaan, menggambar daerah penyelesaian, menentukan titik pojok, dan mencari nilai optimum dengan uji titik pojok atau garis selidik.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "konsep",
+      "title": "Model matematika dan daerah penyelesaian",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Program linear</b>: bagian dari elemen aljabar bersama matriks.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Langkah menyelesaikan masalah program linear:</p><ol><li>Tentukan <b>variabel</b> (misalnya x = banyak produk A, y = banyak produk B).</li><li>Tulis <b>kendala</b> sebagai pertidaksamaan, termasuk x ≥ 0 dan y ≥ 0. Samakan satuan dulu.</li><li>Tulis <b>fungsi tujuan</b> f(x, y) = px + qy yang dimaksimumkan atau diminimumkan.</li><li>Gambar <b>daerah penyelesaian</b> dan tentukan titik pojoknya.</li><li>Bandingkan nilai fungsi tujuan di titik pojok, atau gunakan <b>garis selidik</b>.</li></ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Garis dan daerah",
+          "html": "<ul><li>Garis melalui \\((0, a)\\) dan \\((b, 0)\\): \\(ax + by = ab\\).</li><li>Tentukan sisi daerah dengan <b>uji titik</b> (biasanya (0, 0)).</li><li>Garis selidik \\(px + qy = k\\) digeser sejajar; titik pojok terakhir yang disentuh adalah titik maksimum (untuk masalah maksimum).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/04 Sistem Persamaan dan Pertidaksamaan Linear/sim/daerah-penyelesaian.html",
+          "title": "Daerah penyelesaian pertidaksamaan linear",
+          "height": 520,
+          "caption": "Ulangi cara menentukan sisi yang diarsir dengan uji titik."
+        },
+        {
+          "type": "check",
+          "question": "Garis yang melalui (0, 6) dan (4, 0) memiliki persamaan ....",
+          "options": {
+            "A": "3x + 2y = 12",
+            "B": "2x + 3y = 12",
+            "C": "6x + 4y = 12",
+            "D": "4x + 6y = 24"
+          },
+          "answer": "A",
+          "hint": "Gunakan ax + by = ab dengan a = 6, b = 4.",
+          "explanation": "6x + 4y = 24 → 3x + 2y = 12."
+        }
+      ]
+    },
+    {
+      "id": "optimum",
+      "title": "Nilai optimum dan garis selidik",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "sim/program-linear.html",
+          "title": "Titik pojok dan garis selidik",
+          "height": 640,
+          "caption": "Ubah kendala dan fungsi tujuan. Geser garis selidik ke luar: titik pojok terakhir yang disentuhnya adalah titik maksimum. Coba fungsi tujuan yang sejajar salah satu kendala (misalnya p = 3, q = 1): maksimumnya terjadi di sepanjang ruas garis."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: maksimum",
+          "question": "<p>Seorang pengrajin membuat meja (x) dan kursi (y). Meja memerlukan 4 jam kerja dan kursi 2 jam; tersedia 40 jam. Paling banyak 15 barang dibuat. Untung meja Rp150.000 dan kursi Rp80.000. Tentukan untung maksimum.</p>",
+          "steps": [
+            "Kendala: 4x + 2y ≤ 40 → 2x + y ≤ 20; x + y ≤ 15; x, y ≥ 0.",
+            "Titik pojok: (0, 0), (10, 0), perpotongan → x = 5, y = 10, dan (0, 15).",
+            "f (ribu) = 150x + 80y: (10, 0) = 1.500; (5, 10) = 750 + 800 = 1.550; (0, 15) = 1.200."
+          ],
+          "answer": "Rp1.550.000 (5 meja dan 10 kursi)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: minimum pada daerah tak terbatas",
+          "question": "<p>Tentukan nilai minimum f = 4x + 5y dengan kendala x + y ≥ 6, x + 3y ≥ 10, x, y ≥ 0.</p>",
+          "steps": [
+            "Titik pojok: (0, 6), (4, 2), (10, 0). Perpotongan: dari x + y = 6 dan x + 3y = 10 → 2y = 4, y = 2, x = 4.",
+            "f(0, 6) = 30; f(4, 2) = 26; f(10, 0) = 40."
+          ],
+          "answer": "26 di (4, 2)"
+        },
+        {
+          "type": "check",
+          "question": "Titik pojok suatu daerah layak adalah (0, 0), (8, 0), (6, 3), (0, 5). Nilai maksimum f = x + 2y adalah ....",
+          "options": {
+            "A": "12",
+            "B": "10",
+            "C": "8",
+            "D": "15"
+          },
+          "answer": "A",
+          "hint": "Hitung di setiap titik pojok.",
+          "explanation": "f = 0, 8, 12, 10. Maksimum 12 di (6, 3)."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Samakan satuan (kg ke gram, jam ke menit) sebelum menulis kendala.</li><li>Sederhanakan pertidaksamaan dengan membagi faktor persekutuan.</li><li>Untuk minimum biaya, daerahnya biasanya di atas garis (≥) dan tidak terbatas.</li><li>Jika fungsi tujuan sejajar salah satu garis kendala, optimum bisa terjadi di banyak titik.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Lupa kendala x ≥ 0, y ≥ 0.</li><li>Memakai titik potong dengan sumbu yang tidak termasuk daerah layak.</li><li>Hanya menghitung titik potong dua garis tanpa memeriksa titik pojok lain.</li><li>Tertukar tanda ≤ dan ≥ pada kata 'paling sedikit' dan 'paling banyak'.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Program Linear. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

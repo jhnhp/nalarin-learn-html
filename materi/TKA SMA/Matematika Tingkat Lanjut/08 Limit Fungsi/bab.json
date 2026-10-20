@@ -1,0 +1,182 @@
+{
+  "title": "Limit Fungsi",
+  "summary": "Limit fungsi untuk TKA Matematika Tingkat Lanjut: pengertian limit kiri dan kanan, limit fungsi aljabar di suatu titik dan di tak hingga, serta limit fungsi trigonometri, tanpa aturan L'Hôpital.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "konsep",
+      "title": "Pengertian limit dan limit sepihak",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Limit</b>: limit fungsi aljabar dan limit fungsi trigonometri.</p><p><i>Batasan</i>: limit yang dapat diselesaikan tanpa teorema L'Hôpital.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>\\(\\lim_{x\\to a} f(x) = L\\) berarti nilai f(x) makin dekat ke L ketika x makin dekat ke a (dari kiri dan kanan), <b>tanpa</b> memedulikan nilai f(a) sendiri. Limit ada jika limit kiri = limit kanan.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/limit.html",
+          "title": "Mendekati nilai limit",
+          "height": 600,
+          "caption": "Pilih fungsi lalu perkecil h. Lihat tabel nilai dari kiri dan kanan. Pada fungsi bertangga, kedua sisi menuju nilai berbeda sehingga limit tidak ada."
+        },
+        {
+          "type": "check",
+          "question": "Jika \\(\\lim_{x\\to 3^-} f(x) = 5\\) dan \\(\\lim_{x\\to 3^+} f(x) = 5\\), sedangkan f(3) = 2, maka \\(\\lim_{x\\to 3} f(x)\\) ....",
+          "options": {
+            "A": "5",
+            "B": "2",
+            "C": "tidak ada",
+            "D": "7/2"
+          },
+          "answer": "A",
+          "hint": "Nilai f(3) tidak memengaruhi limit.",
+          "explanation": "Limit kiri = limit kanan = 5."
+        }
+      ]
+    },
+    {
+      "id": "aljabar",
+      "title": "Limit fungsi aljabar",
+      "kind": "artikel",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Teknik limit di titik",
+          "html": "<ol><li>Substitusi langsung. Jika hasilnya bilangan, selesai.</li><li>Jika \\(\\frac00\\): <b>faktorkan</b> lalu coret faktor yang sama.</li><li>Jika ada akar: <b>kalikan sekawan</b>.</li></ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Limit di tak hingga",
+          "html": "<ul><li>\\(\\lim_{x\\to\\infty}\\dfrac{a x^m + \\dots}{b x^n + \\dots}\\): m &lt; n → 0; m = n → \\(\\frac{a}{b}\\); m &gt; n → ±∞.</li><li>\\(\\lim_{x\\to\\infty}\\left(\\sqrt{ax^2 + bx + c} - \\sqrt{ax^2 + qx + r}\\right) = \\dfrac{b - q}{2\\sqrt a}\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: faktorkan",
+          "question": "<p>\\(\\lim_{x\\to -1}\\dfrac{x^2 - 2x - 3}{x + 1}\\)</p>",
+          "steps": [
+            "Substitusi: 0/0.",
+            "(x − 3)(x + 1)/(x + 1) = x − 3 → −4."
+          ],
+          "answer": "−4"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: sekawan",
+          "question": "<p>\\(\\lim_{x\\to 1}\\dfrac{\\sqrt{x + 3} - 2}{x - 1}\\)</p>",
+          "steps": [
+            "Kalikan \\(\\frac{\\sqrt{x + 3} + 2}{\\sqrt{x + 3} + 2}\\): pembilang menjadi x − 1.",
+            "Sisa \\(\\frac{1}{\\sqrt{x + 3} + 2} \\to \\frac14\\)."
+          ],
+          "answer": "1/4"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 3: tak hingga",
+          "question": "<p>\\(\\lim_{x\\to\\infty}\\left(\\sqrt{4x^2 + 8x} - 2x\\right)\\)</p>",
+          "steps": [
+            "Tulis 2x = √(4x²).",
+            "(8 − 0)/(2·2) = 2."
+          ],
+          "answer": "2"
+        },
+        {
+          "type": "check",
+          "question": "\\(\\lim_{x\\to\\infty}\\dfrac{5x^2 - 1}{2x^2 + 3x}\\) = ....",
+          "options": {
+            "A": "5/2",
+            "B": "0",
+            "C": "−1/3",
+            "D": "∞"
+          },
+          "answer": "A",
+          "hint": "Pangkat sama.",
+          "explanation": "5/2."
+        }
+      ]
+    },
+    {
+      "id": "trig",
+      "title": "Limit fungsi trigonometri",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Limit trigonometri dasar (x dalam radian)",
+          "html": "<ul><li>\\(\\lim_{x\\to 0}\\dfrac{\\sin ax}{bx} = \\lim_{x\\to 0}\\dfrac{\\tan ax}{bx} = \\dfrac ab\\).</li><li>\\(\\lim_{x\\to 0}\\dfrac{\\sin ax}{\\sin bx} = \\lim_{x\\to 0}\\dfrac{\\tan ax}{\\tan bx} = \\dfrac ab\\).</li><li>Identitas pembantu: \\(1 - \\cos 2x = 2\\sin^2 x\\), \\(1 - \\cos ax = 2\\sin^2\\frac{ax}{2}\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1",
+          "question": "<p>\\(\\lim_{x\\to 0}\\dfrac{\\sin 6x}{\\tan 2x}\\)</p>",
+          "steps": [
+            "Bentuk sin ax/tan bx → a/b."
+          ],
+          "answer": "3"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2",
+          "question": "<p>\\(\\lim_{x\\to 0}\\dfrac{1 - \\cos 6x}{x\\tan 3x}\\)</p>",
+          "steps": [
+            "\\(1 - \\cos 6x = 2\\sin^2 3x\\).",
+            "\\(\\dfrac{2\\sin 3x\\sin 3x}{x\\tan 3x} \\to 2\\cdot 3\\cdot 1 = 6\\)."
+          ],
+          "answer": "6"
+        },
+        {
+          "type": "check",
+          "question": "\\(\\lim_{x\\to 0}\\dfrac{\\tan 4x}{3x}\\) = ....",
+          "options": {
+            "A": "4/3",
+            "B": "3/4",
+            "C": "12",
+            "D": "1"
+          },
+          "answer": "A",
+          "hint": "a/b.",
+          "explanation": "4/3."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Selalu coba substitusi dulu; teknik lain hanya untuk bentuk tak tentu.</li><li>Jika limit berhingga tetapi penyebut → 0, pembilang juga harus → 0. Ini kunci soal mencari konstanta.</li><li>Pisahkan bentuk (√... − px) + c menjadi limit selisih akar ditambah konstanta.</li><li>Ubah 1 − cos menjadi 2 sin² sebelum memakai limit dasar.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Menganggap 0/0 berarti limitnya 0 atau tidak ada.</li><li>Memakai derajat, bukan radian, pada limit trigonometri.</li><li>Lupa membandingkan limit kiri dan kanan pada fungsi sepotong-sepotong.</li><li>Mengira nilai f(a) harus sama dengan limitnya.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Limit Fungsi. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

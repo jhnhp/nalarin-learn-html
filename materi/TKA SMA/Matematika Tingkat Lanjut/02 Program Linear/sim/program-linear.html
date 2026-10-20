@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Program Linear dan Garis Selidik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.ar{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.cons{display:flex;align-items:center;gap:4px;flex-wrap:wrap;font-size:14px}
+.cons input{width:48px;padding:4px;border:1px solid var(--line-2);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit;text-align:center}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" role="img" aria-label="Daerah penyelesaian program linear, titik pojok, dan garis selidik"></svg></div>
+  <div class="panel">
+    <div class="lab"><span>Kendala (selain x ≥ 0, y ≥ 0)</span></div>
+    <div class="cons"><input id="a1" type="number" value="1">x + <input id="b1" type="number" value="2">y ≤ <input id="c1" type="number" value="10"></div>
+    <div class="cons"><input id="a2" type="number" value="3">x + <input id="b2" type="number" value="1">y ≤ <input id="c2" type="number" value="15"></div>
+    <div class="lab"><span>Fungsi tujuan f = px + qy</span></div>
+    <div><div class="lab"><span>p</span><b id="pv"></b></div><input type="range" id="p" min="0" max="6" step="1" value="2"></div>
+    <div><div class="lab"><span>q</span><b id="qv"></b></div><input type="range" id="q" min="0" max="6" step="1" value="3"></div>
+    <div><div class="lab"><span>Geser garis selidik f = k</span><b id="kv"></b></div><input type="range" id="k" min="0" max="100" step="1" value="40"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['a1', 'b1', 'c1', 'a2', 'b2', 'c2', 'p', 'q', 'k'].forEach(i => $(i).oninput = draw);
+let kTouched = false; $('k').addEventListener('input', () => kTouched = true);
+Sim.onTheme(draw);
+const num = id => { const v = parseFloat($(id).value); return isFinite(v) ? v : 0; };
+function draw(){
+  const C = [[num('a1'), num('b1'), num('c1')], [num('a2'), num('b2'), num('c2')]], p = +$('p').value, q = +$('q').value;
+  $('pv').textContent = p; $('qv').textContent = q;
+  const lines = C.concat([[1, 0, 0], [0, 1, 0]]), ok = (x, y) => x >= -1e-9 && y >= -1e-9 && C.every(([a, b, c]) => a * x + b * y <= c + 1e-9);
+  let V = [];
+  for(let i = 0; i < 4; i++) for(let j = i + 1; j < 4; j++){
+    const [a1, b1, c1] = lines[i], [a2, b2, c2] = lines[j], d = a1 * b2 - a2 * b1;
+    if(Math.abs(d) < 1e-12) continue;
+    const x = (c1 * b2 - c2 * b1) / d, y = (a1 * c2 - a2 * c1) / d;
+    if(ok(x, y) && !V.some(v => Math.hypot(v[0] - x, v[1] - y) < 1e-9)) V.push([x, y]);
+  }
+  const mx = Math.max(6, ...V.map(v => Math.max(v[0], v[1]))) * 1.25;
+  const P = Sim.plane(svg, {xmin: -mx * .08, xmax: mx, ymin: -mx * .08, ymax: mx, scale: 380 / mx});
+  let s = P.grid({labelStep: mx > 24 ? 10 : mx > 12 ? 4 : 2, xname: 'x', yname: 'y'});
+  // urutkan titik pojok mengelilingi pusat
+  const cx = V.reduce((t, v) => t + v[0], 0) / V.length, cy = V.reduce((t, v) => t + v[1], 0) / V.length;
+  V.sort((u, v) => Math.atan2(u[1] - cy, u[0] - cx) - Math.atan2(v[1] - cy, v[0] - cx));
+  if(V.length > 2) s += `<polygon points="${V.map(v => P.X(v[0]) + ',' + P.Y(v[1])).join(' ')}" style="fill:var(--a)" fill-opacity=".22"/>`;
+  const seg = (a, b, c, col) => { // garis ax + by = c di dalam kotak
+    const pts = [];
+    if(Math.abs(b) > 1e-12){ pts.push([0, c / b]); pts.push([mx, (c - a * mx) / b]); } else pts.push([c / a, 0], [c / a, mx]);
+    return `<line x1="${P.X(pts[0][0])}" y1="${P.Y(pts[0][1])}" x2="${P.X(pts[1][0])}" y2="${P.Y(pts[1][1])}" style="stroke:${col}" stroke-width="2"/>`;
+  };
+  s += seg(...C[0], 'var(--comp)') + seg(...C[1], 'var(--k)');
+  const fv = V.map(v => p * v[0] + q * v[1]), best = Math.max(...fv);
+  const kmax = Math.max(1, best * 1.6); $('k').max = Math.ceil(kmax);
+  if(!kTouched) $('k').value = Math.round(best * .6);
+  const k = Math.min(+$('k').value, kmax); $('kv').textContent = fmt(k);
+  if(p || q) s += `<g class="dash">${seg(p, q, k, 'var(--r)').replace('stroke-width="2"', 'stroke-width="2.5" class="dash"')}</g>`;
+  V.forEach((v, i) => { const isB = Math.abs(fv[i] - best) < 1e-9 && (p || q);
+    s += `<circle cx="${P.X(v[0])}" cy="${P.Y(v[1])}" r="${isB ? 7 : 5}" style="fill:${isB ? 'var(--r)' : 'var(--ink)'}"/><text class="ar" x="${P.X(v[0]) + 8}" y="${P.Y(v[1]) - 8}" style="fill:var(--ink)">(${fmt(v[0])}, ${fmt(v[1])})</text>`; });
+  svg.innerHTML = s;
+  const rows = V.map((v, i) => `<div><span>f(${fmt(v[0])}, ${fmt(v[1])})</span><b${Math.abs(fv[i] - best) < 1e-9 ? ' style="color:var(--r)"' : ''}>${fmt(fv[i])}</b></div>`).join('');
+  const many = fv.filter(f => Math.abs(f - best) < 1e-9).length > 1;
+  $('read').innerHTML = rows + `<div><span>Nilai maksimum</span><b>${fmt(best)}${many ? ' (di sepanjang ruas garis)' : ''}</b></div><p class="note">Geser garis selidik (ungu putus-putus) menjauhi titik asal. Titik pojok terakhir yang disentuhnya adalah titik maksimum.</p>`;
+}
+draw();
+</script>
+</body>
+</html>

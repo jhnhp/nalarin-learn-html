@@ -1,0 +1,177 @@
+{
+  "title": "Lingkaran",
+  "summary": "Lingkaran untuk TKA Matematika Tingkat Lanjut: persamaan lingkaran bentuk baku dan umum, kedudukan titik dan garis, persamaan garis singgung, serta panjang busur, luas juring, dan luas tembereng.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "persamaan",
+      "title": "Persamaan lingkaran",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Lingkaran</b>: persamaan lingkaran dan persamaan garis singgung; luas dan keliling daerah lingkaran atau bagian daerah lingkaran.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bentuk persamaan",
+          "html": "<ul><li>Pusat \\((a, b)\\), jari-jari r: \\((x - a)^2 + (y - b)^2 = r^2\\).</li><li>Bentuk umum \\(x^2 + y^2 + Ax + By + C = 0\\): pusat \\(\\left(-\\frac{A}{2}, -\\frac{B}{2}\\right)\\), \\(r = \\sqrt{\\frac{A^2}{4} + \\frac{B^2}{4} - C}\\).</li><li>Kedudukan titik: substitusi ke ruas kiri bentuk baku lalu bandingkan dengan \\(r^2\\) (&lt; di dalam, = pada, &gt; di luar).</li><li>Kedudukan garis: substitusi ke persamaan lingkaran, lihat diskriminan (D &gt; 0 memotong, D = 0 menyinggung, D &lt; 0 tidak memotong), atau bandingkan jarak pusat ke garis dengan r.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/lingkaran.html",
+          "title": "Persamaan lingkaran, garis, juring",
+          "height": 620,
+          "caption": "Mode 1: ubah A, B, C dan amati pusat serta jari-jari. Mode 2: geser garis sampai menyinggung (D = 0). Mode 3: ubah sudut juring."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: dari bentuk umum",
+          "question": "<p>Tentukan pusat dan jari-jari \\(x^2 + y^2 + 10x - 4y + 4 = 0\\).</p>",
+          "steps": [
+            "Pusat (−5, 2).",
+            "r = √(25 + 4 − 4) = 5."
+          ],
+          "answer": "Pusat (−5, 2), r = 5"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: menyinggung sumbu",
+          "question": "<p>Tentukan persamaan lingkaran berpusat di (3, −4) yang menyinggung sumbu-y.</p>",
+          "steps": [
+            "Jarak pusat ke sumbu-y = |3| = 3 = r.",
+            "(x − 3)² + (y + 4)² = 9."
+          ],
+          "answer": "(x − 3)² + (y + 4)² = 9"
+        },
+        {
+          "type": "check",
+          "question": "Titik (1, 2) terhadap lingkaran \\(x^2 + y^2 = 4\\) terletak ....",
+          "options": {
+            "A": "di luar",
+            "B": "di dalam",
+            "C": "pada lingkaran",
+            "D": "di pusat"
+          },
+          "answer": "A",
+          "hint": "1 + 4 dibandingkan dengan 4.",
+          "explanation": "1 + 4 = 5 &gt; 4, di luar."
+        }
+      ]
+    },
+    {
+      "id": "singgung",
+      "title": "Garis singgung lingkaran",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Garis singgung",
+          "html": "<ul><li>Di titik \\((x_1, y_1)\\) pada \\(x^2 + y^2 = r^2\\): \\(x_1x + y_1y = r^2\\).</li><li>Di titik \\((x_1, y_1)\\) pada \\((x - a)^2 + (y - b)^2 = r^2\\): \\((x_1 - a)(x - a) + (y_1 - b)(y - b) = r^2\\).</li><li>Bergradien m pada \\(x^2 + y^2 = r^2\\): \\(y = mx \\pm r\\sqrt{1 + m^2}\\); pada lingkaran berpusat (a, b): \\(y - b = m(x - a) \\pm r\\sqrt{1 + m^2}\\).</li><li>Jari-jari ke titik singgung selalu tegak lurus garis singgung.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Matematika/04 Lingkaran/sim/garis-singgung.html",
+          "title": "Garis singgung dari titik di luar",
+          "height": 520,
+          "caption": "Panjang garis singgung dari titik luar memakai teorema Pythagoras."
+        },
+        {
+          "type": "example",
+          "title": "Contoh: garis singgung bergradien",
+          "question": "<p>Tentukan garis singgung \\(x^2 + y^2 = 9\\) yang sejajar garis \\(y = 2x + 1\\).</p>",
+          "steps": [
+            "Sejajar → m = 2.",
+            "y = 2x ± 3√(1 + 4) = 2x ± 3√5."
+          ],
+          "answer": "y = 2x + 3√5 dan y = 2x − 3√5"
+        },
+        {
+          "type": "check",
+          "question": "Garis singgung \\(x^2 + y^2 = 13\\) di titik (2, −3) adalah ....",
+          "options": {
+            "A": "2x − 3y = 13",
+            "B": "2x + 3y = 13",
+            "C": "3x − 2y = 13",
+            "D": "2x − 3y = −13"
+          },
+          "answer": "A",
+          "hint": "x₁x + y₁y = r².",
+          "explanation": "2x + (−3)y = 13."
+        }
+      ]
+    },
+    {
+      "id": "busur",
+      "title": "Busur, juring, dan tembereng",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bagian lingkaran",
+          "html": "<ul><li>Panjang busur = \\(\\frac{\\theta}{360^\\circ}\\times 2\\pi r\\).</li><li>Luas juring = \\(\\frac{\\theta}{360^\\circ}\\times \\pi r^2\\).</li><li>Luas tembereng = luas juring − luas segitiga = \\(\\frac{\\theta}{360^\\circ}\\pi r^2 - \\frac12 r^2\\sin\\theta\\).</li><li>Luas cincin = \\(\\pi(R^2 - r^2)\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh: tembereng 60°",
+          "question": "<p>Hitung luas tembereng pada lingkaran berjari-jari 6 cm dengan sudut pusat 60°.</p>",
+          "steps": [
+            "Juring = 60/360 × π × 36 = 6π.",
+            "Segitiga sama sisi: ½ × 36 × sin 60° = 9√3.",
+            "Tembereng = 6π − 9√3 ≈ 3,26 cm²."
+          ],
+          "answer": "(6π − 9√3) cm²"
+        },
+        {
+          "type": "check",
+          "question": "Panjang busur dengan r = 7 cm dan sudut pusat 60° adalah .... (π = 22/7)",
+          "options": {
+            "A": "22/3 cm",
+            "B": "44/3 cm",
+            "C": "77/3 cm",
+            "D": "22 cm"
+          },
+          "answer": "A",
+          "hint": "60/360 × 2πr.",
+          "explanation": "1/6 × 2 × 22/7 × 7 = 44/6 = 22/3 cm."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Ubah bentuk umum ke bentuk baku dengan melengkapkan kuadrat bila ragu.</li><li>Sebelum memakai rumus garis singgung di titik, cek dulu titiknya memang pada lingkaran.</li><li>Menyinggung sumbu-x berarti r = |b|; menyinggung sumbu-y berarti r = |a|.</li><li>Garis yang melalui pusat memotong lingkaran sepanjang diameter.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Salah tanda pusat dari bentuk umum (pusatnya −A/2, −B/2).</li><li>Lupa ± pada garis singgung bergradien.</li><li>Tertukar panjang busur (cm) dan luas juring (cm²).</li><li>Menambahkan lebar jalan dua kali pada soal cincin.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Lingkaran. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}
