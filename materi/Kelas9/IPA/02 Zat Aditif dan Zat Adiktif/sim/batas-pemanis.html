@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Batas Aman Pemanis Buatan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Asupan pemanis dibanding batas konsumsi harian"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Pemanis</span></div><select id="p"></select></div>
+    <div><div class="lab"><span>Berat badan (kg)</span><b id="mout"></b></div><input type="range" id="m" min="20" max="80" step="5" value="45"></div>
+    <div><div class="lab"><span>Minuman berpemanis per hari (kaleng)</span><b id="nout"></b></div><input type="range" id="n" min="0" max="12" step="1" value="3"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Batas konsumsi per hari (ADI) dan tingkat kemanisan mengikuti tabel buku siswa. Setiap kaleng diasumsikan diberi pemanis setara 30 g gula pasir. Contoh perkiraan untuk latihan berhitung, bukan anjuran diet.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [nama, kemanisan rata-rata (× gula), ADI mg/kg]
+const P = [['aspartam', 170, 50], ['siklamat', 30, 11], ['sakarin', 450, 5], ['asesulfam-K', 165, 15], ['sukralosa', 600, 5]];
+$('p').innerHTML = P.map((x, i) => `<option value="${i}">${x[0]} (${x[1]}× lebih manis, ADI ${x[2]} mg/kg)</option>`).join('');
+['p', 'm', 'n'].forEach(id => $(id).oninput = $(id).onchange = draw);
+Sim.onTheme(draw);
+function draw(){
+  const [n, k, adi] = P[+$('p').value], m = +$('m').value, cans = +$('n').value;
+  const perCan = 30000 / k, intake = perCan * cans, limit = adi * m, pct = intake / limit * 100;
+  const W = 380, L = 40, mx = Math.max(limit * 1.5, intake * 1.1);
+  let s = `<text class="c" x="${L}" y="40">asupan ${n} per hari</text><rect x="${L}" y="50" width="${W}" height="40" rx="8" style="fill:var(--surface-2)"/>`;
+  s += `<rect x="${L}" y="50" width="${Math.min(W, intake / mx * W)}" height="40" rx="8" style="fill:${pct > 100 ? 'var(--b)' : pct > 70 ? 'var(--comp)' : 'var(--ok)'}"/>`;
+  s += `<line x1="${L + limit / mx * W}" y1="40" x2="${L + limit / mx * W}" y2="100" style="stroke:var(--ink)" stroke-width="3"/><text class="c" x="${Math.max(L + 60, Math.min(L + W - 60, L + limit / mx * W))}" y="116" text-anchor="middle">batas aman ${fmt(limit, 0)} mg</text>`;
+  s += `<text class="c" x="${L}" y="160">setara kemanisan per kaleng</text>`;
+  s += `<rect x="${L}" y="172" width="180" height="70" rx="10" style="fill:var(--surface-2)"/><text class="c" x="${L + 90}" y="200" text-anchor="middle">gula pasir</text><text class="c" x="${L + 90}" y="226" text-anchor="middle" font-size="18">30 g</text>`;
+  s += `<rect x="${L + 200}" y="172" width="180" height="70" rx="10" style="fill:var(--surface-2)"/><text class="c" x="${L + 290}" y="200" text-anchor="middle">${n}</text><text class="c" x="${L + 290}" y="226" text-anchor="middle" font-size="18">${fmt(perCan, 0)} mg</text>`;
+  svg.innerHTML = s;
+  $('mout').textContent = m; $('nout').textContent = cans;
+  $('read').innerHTML = `<div><span>Pemanis per kaleng = 30.000 mg ÷ ${k}</span><b>${fmt(perCan, 0)} mg</b></div><div><span>Asupan harian</span><b>${fmt(intake, 0)} mg</b></div><div><span>Batas aman = ${adi} mg × ${m} kg</span><b>${fmt(limit, 0)} mg</b></div>` +
+    `<div><span>Persentase dari batas</span><b>${fmt(pct, 0)}% ${pct > 100 ? '(melebihi batas!)' : ''}</b></div><div><span>Kaleng maksimum per hari</span><b>${fmt(Math.floor(limit / perCan), 0)}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

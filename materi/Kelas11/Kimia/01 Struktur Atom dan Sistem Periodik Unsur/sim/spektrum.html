@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spektrum Atom Hidrogen</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Diagram tingkat energi atom hidrogen dan garis spektrum"></svg></div>
+  <div class="panel">
+    <div class="lab">Elektron turun dari n = <b id="av"></b></div><input type="range" id="a" min="2" max="6" step="1" value="3">
+    <div class="lab">ke n = <b id="bv"></b></div><input type="range" id="b" min="1" max="5" step="1" value="2">
+    <div class="read" id="read"></div>
+    <p class="note">Model Bohr untuk hidrogen: Eₙ = −13,6/n² eV (1 eV = 1,6 × 10⁻¹⁹ J). Elektron yang turun ke tingkat lebih rendah memancarkan foton dengan energi ΔE = hf = hc/λ (h = 6,63 × 10⁻³⁴ J·s, c = 3 × 10⁸ m/s). Transisi ke n = 2 (deret Balmer) menghasilkan cahaya tampak.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const E = n => -13.6 / (n * n);
+function rgb(nm){ if(nm < 380 || nm > 750) return null; let r = 0, g = 0, b = 0; if(nm < 440){ r = (440 - nm) / 60; b = 1; } else if(nm < 490){ g = (nm - 440) / 50; b = 1; } else if(nm < 510){ g = 1; b = (510 - nm) / 20; } else if(nm < 580){ r = (nm - 510) / 70; g = 1; } else if(nm < 645){ r = 1; g = (645 - nm) / 65; } else r = 1; return `rgb(${Math.round(255 * r)},${Math.round(255 * g)},${Math.round(255 * b)})`; }
+function draw(){
+  let a = +$('a').value, b = +$('b').value; if(b >= a){ b = a - 1; $('b').value = b; }
+  const yE = e => { const n = Math.sqrt(-13.6 / e); return 245 - 195 * (1 - 1 / n) / (1 - 1 / 6); }; // skala tidak linear agar tingkat atas terlihat
+  let s = '';
+  for(let n = 1; n <= 6; n++){ const y = yE(E(n)); s += `<line x1="40" y1="${y}" x2="250" y2="${y}" style="stroke:var(--ink)" stroke-width="${n === a || n === b ? 2.5 : 1.2}"/><text class="s" x="34" y="${y + 4}" text-anchor="end" style="fill:var(--ink)">n=${n}</text><text class="s" x="256" y="${y + 4}" style="fill:var(--muted)">${fmt(E(n), 2)} eV</text>`; }
+  const dE = E(a) - E(b), J = dE * 1.6e-19, lam = 6.63e-34 * 3e8 / J * 1e9, col = rgb(lam) || 'var(--muted)';
+  const y1 = yE(E(a)), y2 = yE(E(b));
+  s += `<line x1="140" y1="${y1}" x2="140" y2="${y2 - 8}" stroke="${col}" stroke-width="3"/><path d="M140,${y2} l-6,-10 l12,0z" fill="${col}"/>`;
+  s += `<path d="M150,${(y1 + y2) / 2} q10,-6 20,0 q10,6 20,0 q10,-6 20,0" fill="none" stroke="${col}" stroke-width="2.5"/><text class="s" x="214" y="${(y1 + y2) / 2 + 4}" style="fill:var(--ink)">foton</text>`;
+  // spektrum garis tampak (Balmer)
+  const sx = nm => 330 + (nm - 380) / 370 * 140;
+  s += `<rect x="330" y="40" width="140" height="40" fill="#111827"/><text class="s" x="400" y="32" text-anchor="middle" style="fill:var(--muted)">spektrum tampak (380–750 nm)</text>`;
+  for(let u = 3; u <= 6; u++){ const l2 = 6.63e-34 * 3e8 / ((E(u) - E(2)) * 1.6e-19) * 1e9; s += `<line x1="${sx(l2)}" y1="40" x2="${sx(l2)}" y2="80" stroke="${rgb(l2)}" stroke-width="${u === a && b === 2 ? 4 : 2}"/>${u === a && b === 2 ? `<text class="s" x="${sx(l2)}" y="94" text-anchor="middle" style="fill:var(--ink)">${Math.round(l2)} nm</text>` : ""}`; }
+  s += `<text class="s" x="400" y="110" text-anchor="middle" style="fill:var(--muted)">garis Balmer (transisi ke n = 2)</text>`;
+  svg.innerHTML = s;
+  $('av').textContent = a; $('bv').textContent = b;
+  const ser = b === 1 ? 'Lyman (ultraungu)' : b === 2 ? 'Balmer (cahaya tampak)' : b === 3 ? 'Paschen (inframerah)' : b === 4 ? 'Brackett (inframerah)' : 'Pfund (inframerah)';
+  $('read').innerHTML = `<div><span>ΔE</span><b>${fmt(dE, 3)} eV = ${fmt(J * 1e19, 3)} × 10⁻¹⁹ J</b></div><div><span>Panjang gelombang λ = hc/ΔE</span><b>${fmt(lam, 0)} nm</b></div><div><span>Deret</span><b>${ser}</b></div>`;
+}
+['a', 'b'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

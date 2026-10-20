@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umpan Balik Hormon Reproduksi Laki-laki</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Diagram hipotalamus, hipofisis, dan testis dengan hormon dan umpan baliknya"></svg></div>
+  <div class="panel">
+    <label class="chk"><input type="checkbox" id="nognrh"> Hipotalamus tidak menghasilkan GnRH</label>
+    <label class="chk"><input type="checkbox" id="inh"> Sel Sertoli melepas inhibin berlebih</label>
+    <label class="chk"><input type="checkbox" id="ster"> Rutin menyuntikkan testosteron/steroid dari luar</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+function model(){
+  const nog = $('nognrh').checked, inh = $('inh').checked, ster = $('ster').checked;
+  const exT = ster ? 1.6 : 0;
+  // iterasi keadaan tunak sederhana
+  let T = 1, I = 1, G = 1, LH = 1, FSH = 1;
+  for(let k = 0; k < 60; k++){
+    const Ttot = T + exT;
+    G = nog ? 0 : 1 / (0.3 + 0.7 * Ttot);
+    LH = G * 1 / (0.5 + 0.5 * Ttot);
+    FSH = G * 1 / (0.3 + 0.7 * (I * (inh ? 3 : 1)));
+    T = 0.5 * T + 0.5 * LH; I = 0.5 * I + 0.5 * FSH;
+  }
+  const sperm = Math.min(1.5, FSH * Math.min(T + (ster ? .2 : 0), 1.2));
+  return {G, LH, FSH, T, Ttot: T + exT, I: inh ? 3 * FSH : FSH, sperm, nog, inh, ster};
+}
+const lvl = v => v < .25 ? 'sangat rendah' : v < .75 ? 'rendah' : v < 1.3 ? 'normal' : 'tinggi';
+function box(x, y, w, h, t, col){ return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${col}" fill-opacity=".18" stroke="${col}" stroke-width="2"/><text class="c" x="${x + w / 2}" y="${y + h / 2 + 4}" text-anchor="middle" style="fill:var(--ink)">${t}</text>`; }
+function arrow(x1, y1, x2, y2, v, lab, col, neg){ const w = 1.5 + 3 * Math.min(1.3, v); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="${w.toFixed(1)}" ${neg ? 'stroke-dasharray="6 4"' : ''} marker-end="url(#${neg ? 'n' : 'p'})" opacity="${v < .05 ? .15 : 1}"/><text class="s" x="${(x1 + x2) / 2 + 6}" y="${(y1 + y2) / 2}" fill="${col}">${lab}</text>`; }
+function draw(){
+  const m = model();
+  let s = `<defs><marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2e7d32"/></marker><marker id="n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#c62828"/></marker></defs>`;
+  s += box(170, 15, 140, 40, 'hipotalamus', '#6a1b9a') + box(170, 105, 140, 40, 'hipofisis anterior', '#1565c0');
+  s += box(60, 215, 150, 40, 'sel Leydig (testis)', '#ef6c00') + box(270, 215, 150, 40, 'sel Sertoli (tubulus)', '#00897b');
+  s += arrow(240, 57, 240, 102, m.G, 'GnRH', '#2e7d32');
+  s += arrow(200, 147, 140, 212, m.LH, 'LH', '#2e7d32') + arrow(280, 147, 340, 212, m.FSH, 'FSH', '#2e7d32');
+  s += arrow(150, 258, 300, 258, m.T, '', '#2e7d32') + `<text class="s" x="200" y="275" fill="#2e7d32">testosteron</text>`;
+  s += arrow(70, 212, 175, 40, m.Ttot, 'testosteron (−)', '#c62828', true);
+  s += arrow(430, 212, 312, 140, m.I, 'inhibin (−)', '#c62828', true);
+  if(m.ster) s += `<text class="c" x="20" y="200" fill="#c62828">+ testosteron dari luar</text>`;
+  s += `<rect x="270" y="285" width="150" height="30" rx="8" fill="#e0f2f1"/><text class="s" x="345" y="304" text-anchor="middle" fill="#004d40">spermatogenesis: ${lvl(m.sperm)}</text>`;
+  s += `<text class="s" x="20" y="320" style="fill:var(--muted)">panah hijau = merangsang; panah merah putus-putus = umpan balik negatif (menghambat)</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>GnRH</span><b>${lvl(m.G)}</b></div><div><span>LH / FSH</span><b>${lvl(m.LH)} / ${lvl(m.FSH)}</b></div><div><span>Testosteron dari testis</span><b>${lvl(m.T)}</b></div><div><span>Pembentukan sperma</span><b>${lvl(m.sperm)}</b></div>`;
+  let ket = 'Hipotalamus melepas GnRH yang merangsang hipofisis anterior melepas LH dan FSH. LH merangsang sel Leydig menghasilkan testosteron; FSH bersama testosteron merangsang sel Sertoli mendukung pembentukan sperma. Testosteron menghambat GnRH dan LH, sedangkan inhibin dari sel Sertoli menghambat FSH, sehingga kadar hormon tetap seimbang.';
+  if(m.nog) ket = 'Tanpa GnRH, hipofisis tidak melepas LH dan FSH, sehingga testis tidak dirangsang: testosteron rendah, ciri kelamin sekunder tidak berkembang, dan sperma tidak terbentuk.';
+  else if(m.ster) ket = 'Testosteron dari luar menekan GnRH dan LH (umpan balik negatif). Akibatnya testis sendiri hampir berhenti menghasilkan testosteron dan pembentukan sperma menurun; testis dapat mengecil. Inilah salah satu bahaya penyalahgunaan steroid.';
+  else if(m.inh) ket = 'Inhibin yang tinggi menekan pelepasan FSH, sehingga pembentukan sperma berkurang, sedangkan LH dan testosteron relatif tidak terpengaruh.';
+  $('ket').textContent = ket;
+}
+['nognrh', 'inh', 'ster'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

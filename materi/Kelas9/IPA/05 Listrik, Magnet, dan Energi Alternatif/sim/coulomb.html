@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gaya Coulomb</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:14px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Dua muatan listrik dengan gaya Coulomb dan garis medan"></svg></div>
+  <div class="panel">
+    <div class="lab">Muatan q₁ <b id="v1"></b></div>
+    <input type="range" id="q1" min="-5" max="5" step="1" value="3">
+    <div class="lab">Muatan q₂ <b id="v2"></b></div>
+    <input type="range" id="q2" min="-5" max="5" step="1" value="-2">
+    <div class="lab">Jarak r <b id="vr"></b></div>
+    <input type="range" id="r" min="10" max="60" step="5" value="30">
+    <label class="chk"><input type="checkbox" id="c-f" checked> Tampilkan garis medan listrik</label>
+    <div class="read" id="read"></div>
+    <p class="note">Hukum Coulomb: <b>F = k·q₁·q₂/r²</b> dengan k = 9 × 10⁹ N·m²/C². Muatan sejenis tolak-menolak, muatan berbeda jenis tarik-menarik. Garis medan keluar dari muatan positif dan masuk ke muatan negatif.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['q1', 'q2', 'r', 'c-f'].forEach(i => $(i).oninput = draw);
+const sgn = v => v > 0 ? '+' + v : v < 0 ? '−' + (-v) : '0';
+function draw(){
+  const q1 = +$('q1').value, q2 = +$('q2').value, rc = +$('r').value; // µC, cm
+  const PX = 5, cx = 240, cy = 150, x1 = cx - rc * PX / 2 * .9 - 20, x2 = cx + rc * PX / 2 * .9 + 20;
+  const F = 9e9 * Math.abs(q1 * q2) * 1e-12 / (rc / 100) ** 2;
+  let s = '';
+  // garis medan
+  if($('c-f').checked){
+    const Q = [[x1, cy, q1], [x2, cy, q2]];
+    const E = (x, y) => { let ex = 0, ey = 0; Q.forEach(([a, b, q]) => { const dx = x - a, dy = y - b, d2 = dx * dx + dy * dy, d = Math.sqrt(d2); ex += q * dx / (d2 * d); ey += q * dy / (d2 * d); }); return [ex, ey]; };
+    Q.forEach(([a, b, q], k) => {
+      if(!q) return;
+      const n = Math.abs(q) * 4, dir = q > 0 ? 1 : -1;
+      for(let i = 0; i < n; i++){
+        const ang = (i + .5) / n * 2 * Math.PI;
+        let x = a + 20 * Math.cos(ang), y = b + 20 * Math.sin(ang), p = `M${x.toFixed(1)},${y.toFixed(1)}`, mid = null, ok = true;
+        for(let st = 0; st < 260; st++){
+          const [ex, ey] = E(x, y), m = Math.hypot(ex, ey); if(!m) break;
+          x += dir * 3 * ex / m; y += dir * 3 * ey / m;
+          if(x < -10 || x > 490 || y < -10 || y > 310) break;
+          const hit = Q.some(([c, d], j) => j !== k && Math.hypot(x - c, y - d) < 18);
+          p += `L${x.toFixed(1)},${y.toFixed(1)}`;
+          if(st === 22) mid = [x, y, ex * dir, ey * dir];
+          if(hit) break;
+        }
+        // garis dari muatan negatif hanya digambar jika tidak ada muatan positif (agar tidak dobel)
+        if(q < 0 && Q.some(([, , qq]) => qq > 0)) continue;
+        s += `<path d="${p}" fill="none" style="stroke:var(--muted)" stroke-opacity=".55" stroke-width="1.2"/>`;
+        if(mid){ const [mx, my, sx, sy] = mid, t = q > 0 ? Math.atan2(sy, sx) : Math.atan2(-sy, -sx); s += `<path d="M${mx + 5 * Math.cos(t)},${my + 5 * Math.sin(t)} L${mx + 5 * Math.cos(t + 2.5)},${my + 5 * Math.sin(t + 2.5)} L${mx + 5 * Math.cos(t - 2.5)},${my + 5 * Math.sin(t - 2.5)}Z" style="fill:var(--muted)" fill-opacity=".8"/>`; }
+      }
+    });
+  }
+  // gaya
+  if(q1 && q2){
+    const rep = q1 * q2 > 0, L = Math.min(110, 18 + 26 * Math.log10(1 + F)), d1 = rep ? -1 : 1;
+    const arrow = (x, d, col) => `<line x1="${x}" y1="${cy}" x2="${x + d * L}" y2="${cy}" style="stroke:${col}" stroke-width="4"/><path d="M${x + d * (L + 10)},${cy} L${x + d * L},${cy - 7} L${x + d * L},${cy + 7}Z" style="fill:${col}"/>`;
+    s += arrow(x1 + d1 * 20, d1, 'var(--comp)') + arrow(x2 - d1 * 20, -d1, 'var(--comp)');
+    s += `<text class="s" x="${x1 + d1 * (32 + L / 2)}" y="${cy - 14}" text-anchor="middle" style="fill:var(--comp)">F</text><text class="s" x="${x2 - d1 * (32 + L / 2)}" y="${cy - 14}" text-anchor="middle" style="fill:var(--comp)">F</text>`;
+  }
+  const ball = (x, q, lab) => `<circle cx="${x}" cy="${cy}" r="18" style="fill:${q > 0 ? 'var(--b)' : q < 0 ? 'var(--a)' : 'var(--line-2)'}"/><text class="c" x="${x}" y="${cy + 5}" text-anchor="middle" fill="#fff">${q > 0 ? '+' : q < 0 ? '−' : '0'}</text><text class="s" x="${x}" y="${cy + 36}" text-anchor="middle" style="fill:var(--ink)">${lab} = ${sgn(q)} µC</text>`;
+  s += ball(x1, q1, 'q₁') + ball(x2, q2, 'q₂');
+  s += `<line x1="${x1}" y1="${cy + 54}" x2="${x2}" y2="${cy + 54}" style="stroke:var(--ink)" stroke-width="1.2"/><line x1="${x1}" y1="${cy + 48}" x2="${x1}" y2="${cy + 60}" style="stroke:var(--ink)"/><line x1="${x2}" y1="${cy + 48}" x2="${x2}" y2="${cy + 60}" style="stroke:var(--ink)"/><text class="s" x="${cx}" y="${cy + 70}" text-anchor="middle" style="fill:var(--ink)">r = ${rc} cm</text>`;
+  svg.innerHTML = s;
+  $('v1').textContent = sgn(q1) + ' µC'; $('v2').textContent = sgn(q2) + ' µC'; $('vr').textContent = rc + ' cm';
+  const jenis = !q1 || !q2 ? 'tidak ada gaya (salah satu muatan nol)' : q1 * q2 > 0 ? 'tolak-menolak' : 'tarik-menarik';
+  $('read').innerHTML = `<div><span>Interaksi</span><b>${jenis}</b></div><div><span>Besar gaya</span><b>F = ${fmt(F, F < 10 ? 2 : 1)} N</b></div><div><span>Jika r dijadikan 2×</span><b>F menjadi ${fmt(F / 4, 2)} N (¼ kali)</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+{
+  "title": "Listrik, Magnet, dan Energi Alternatif",
+  "summary": "Listrik statis, gaya Coulomb, medan dan potensial listrik, arus dan hambatan, hukum Ohm dan rangkaian, daya listrik, magnet dan elektromagnet, gaya Lorentz, induksi elektromagnetik, serta energi alternatif.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "listrik-statis",
+      "title": "Listrik statis",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Setiap atom terdiri atas inti bermuatan positif (proton) dan elektron bermuatan negatif. Benda netral memiliki jumlah proton dan elektron yang sama. Ketika dua benda tertentu digosokkan, <b>elektron berpindah</b> dari satu benda ke benda lain: benda yang menerima elektron menjadi bermuatan negatif, benda yang kehilangan elektron menjadi bermuatan positif. Inilah <b>listrik statis</b>.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Benda digosok</th><th>Penggosok</th><th>Muatan benda</th></tr><tr><td>sisir/penggaris plastik</td><td>rambut kering, kain wol</td><td>negatif (menerima elektron)</td></tr><tr><td>balon karet</td><td>rambut kering</td><td>negatif</td></tr><tr><td>batang kaca</td><td>kain sutra</td><td>positif (melepas elektron)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan interaksi muatan",
+          "html": "<p>Muatan <b>sejenis tolak-menolak</b>; muatan <b>berbeda jenis tarik-menarik</b>. Benda bermuatan juga dapat menarik benda netral yang ringan (misalnya potongan kertas) karena muatan di dalam kertas tertata ulang (induksi).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Elektroskop</b> adalah alat pendeteksi muatan. Jika kepala elektroskop disentuh atau didekati benda bermuatan, kedua daun logamnya mendapat muatan sejenis sehingga saling tolak dan membuka. Contoh listrik statis lain: rambut berdiri saat disisir, sengatan kecil saat memegang gagang pintu, dan <b>petir</b> (pelepasan muatan antara awan dan bumi).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Penggaris plastik digosok dengan rambut kering lalu menjadi bermuatan negatif karena ....",
+          "options": {
+            "A": "penggaris kehilangan proton",
+            "B": "penggaris menerima elektron dari rambut",
+            "C": "rambut menerima elektron dari penggaris",
+            "D": "penggaris menerima proton"
+          },
+          "answer": "B",
+          "hint": "Yang berpindah selalu elektron.",
+          "explanation": "Proton terikat di inti dan tidak berpindah. Penggaris menerima elektron sehingga kelebihan muatan negatif."
+        },
+        {
+          "type": "check",
+          "question": "Daun elektroskop membuka karena ....",
+          "options": {
+            "A": "kedua daun bermuatan berbeda jenis",
+            "B": "kedua daun bermuatan sejenis sehingga tolak-menolak",
+            "C": "daun menjadi netral",
+            "D": "daun ditarik gravitasi"
+          },
+          "answer": "B",
+          "hint": "Muatan sejenis tolak-menolak.",
+          "explanation": "Muatan menyebar ke kedua daun dengan jenis yang sama sehingga keduanya saling menolak."
+        }
+      ]
+    },
+    {
+      "id": "gaya-coulomb",
+      "title": "Gaya Coulomb, medan listrik, dan potensial listrik",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Coulomb",
+          "html": "<p>\\[F = k\\,\\frac{q_1\\,q_2}{r^2},\\qquad k = 9\\times10^9\\ \\text{N·m}^2/\\text{C}^2\\]</p><p>Gaya listrik sebanding dengan hasil kali kedua muatan dan berbanding terbalik dengan <b>kuadrat</b> jaraknya. Satuan muatan adalah coulomb (C); 1 µC = 10⁻⁶ C.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/coulomb.html",
+          "title": "Gaya Coulomb dan garis medan",
+          "height": 560,
+          "caption": "Ubah tanda muatan dan jaraknya. Apa yang terjadi pada gaya jika jarak dijadikan dua kali?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua muatan masing-masing +2 µC dan +3 µC terpisah 30 cm. Tentukan gaya Coulomb di antara keduanya.</p>",
+          "steps": [
+            "\\(q_1 = 2\\times10^{-6}\\) C, \\(q_2 = 3\\times10^{-6}\\) C, \\(r = 0{,}3\\) m.",
+            "\\(F = 9\\times10^9 \\cdot \\dfrac{(2\\times10^{-6})(3\\times10^{-6})}{0{,}3^2} = 9\\times10^9 \\cdot \\dfrac{6\\times10^{-12}}{0{,}09}\\)",
+            "\\(F = 0{,}6\\) N, tolak-menolak karena muatannya sejenis."
+          ],
+          "answer": "0,6 N (tolak-menolak)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gaya antara dua muatan adalah F. Jika jaraknya dijadikan 3 kali semula, berapa gayanya?</p>",
+          "steps": [
+            "\\(F \\propto \\dfrac{1}{r^2}\\), jadi \\(F' = \\dfrac{F}{3^2}\\)."
+          ],
+          "answer": "\\(\\tfrac{1}{9}F\\)"
+        },
+        {
+          "type": "h",
+          "text": "Medan listrik"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Medan listrik</b> adalah daerah di sekitar muatan yang masih dipengaruhi gaya listrik. Garis medan keluar dari muatan positif dan masuk ke muatan negatif; makin rapat garisnya, makin kuat medannya. Kuat medan pada jarak r dari muatan Q:</p><p>\\[E = \\frac{F}{q_0} = k\\,\\frac{Q}{r^2}\\quad(\\text{N/C})\\]</p>"
+        },
+        {
+          "type": "h",
+          "text": "Potensial listrik"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Beda potensial</b> (tegangan) adalah energi yang diperlukan untuk memindahkan setiap coulomb muatan: \\(\\Delta V = \\dfrac{W}{Q}\\) (volt = joule/coulomb). Beda potensial inilah yang mendorong muatan mengalir. Sel saraf juga bekerja dengan beda potensial kecil akibat pergerakan ion Na⁺ dan K⁺ (biolistrik).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Untuk memindahkan muatan 5 C diperlukan energi 60 J. Berapa beda potensialnya?</p>",
+          "steps": [
+            "\\(\\Delta V = \\dfrac{W}{Q} = \\dfrac{60}{5}\\)."
+          ],
+          "answer": "12 V"
+        },
+        {
+          "type": "check",
+          "question": "Dua muatan tarik-menarik dengan gaya 36 N. Jika jaraknya dijadikan 2 kali semula, gayanya menjadi ....",
+          "options": {
+            "A": "72 N",
+            "B": "18 N",
+            "C": "9 N",
+            "D": "144 N"
+          },
+          "answer": "C",
+          "hint": "Gaya berbanding terbalik dengan kuadrat jarak.",
+          "explanation": "36 ÷ 2² = 9 N."
+        }
+      ]
+    },
+    {
+      "id": "arus-hambatan",
+      "title": "Konduktor, hambatan, dan arus listrik",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Berdasarkan kemampuan menghantarkan listrik, bahan dibagi menjadi <b>konduktor</b> (tembaga, perak, aluminium, emas), <b>isolator</b> (karet, plastik, kayu kering, kaca), dan <b>semikonduktor</b> (silikon, germanium) yang daya hantarnya di antara keduanya dan dapat diatur. Kabel listrik dibuat dari tembaga yang dibungkus plastik.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menyebut karbon biasa dipakai untuk membuat transistor. Transistor dan rangkaian terpadu (chip) modern umumnya dibuat dari <b>silikon</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hambatan kawat",
+          "html": "<p>\\[R = \\rho\\,\\frac{L}{A}\\]</p><p>R hambatan (Ω), ρ hambatan jenis (Ω·m), L panjang (m), A luas penampang (m²). Kawat makin panjang → hambatan makin besar; kawat makin tebal → hambatan makin kecil.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Bahan</th><th>Hambatan jenis (Ω·m, 20 °C)</th></tr><tr><td>Perak</td><td>1,59 × 10⁻⁸</td></tr><tr><td>Tembaga</td><td>1,72 × 10⁻⁸</td></tr><tr><td>Aluminium</td><td>2,82 × 10⁻⁸</td></tr><tr><td>Nikrom</td><td>100 × 10⁻⁸</td></tr><tr><td>Silikon murni</td><td>6,4 × 10²</td></tr><tr><td>Kaca</td><td>10¹⁰–10¹⁴</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kawat tembaga panjang 100 m, luas penampang 2 mm². Hitung hambatannya.</p>",
+          "steps": [
+            "\\(A = 2\\ \\text{mm}^2 = 2\\times10^{-6}\\ \\text{m}^2\\).",
+            "\\(R = 1{,}72\\times10^{-8}\\cdot\\dfrac{100}{2\\times10^{-6}} = 0{,}86\\ \\Omega\\)."
+          ],
+          "answer": "0,86 Ω"
+        },
+        {
+          "type": "h",
+          "text": "Arus listrik"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Arus listrik</b> adalah aliran muatan dalam penghantar. Arus hanya mengalir pada rangkaian <b>tertutup</b> yang memiliki sumber beda potensial. Elektron bergerak dari kutub negatif ke positif, tetapi <b>arah arus konvensional</b> disepakati dari kutub positif ke kutub negatif.</p><p>\\[I = \\frac{q}{t},\\qquad q = N\\,e,\\quad e = 1{,}6\\times10^{-19}\\ \\text{C}\\]</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Muatan 120 C mengalir melalui lampu selama 1 menit. Berapa kuat arusnya, dan berapa elektron yang lewat setiap detik?</p>",
+          "steps": [
+            "\\(I = \\dfrac{120}{60} = 2\\) A.",
+            "Setiap detik lewat 2 C, jadi \\(N = \\dfrac{2}{1{,}6\\times10^{-19}} = 1{,}25\\times10^{19}\\) elektron."
+          ],
+          "answer": "2 A; 1,25 × 10¹⁹ elektron per detik"
+        },
+        {
+          "type": "check",
+          "question": "Jika panjang kawat dijadikan 2 kali dan luas penampangnya juga 2 kali, hambatannya menjadi ....",
+          "options": {
+            "A": "4 kali",
+            "B": "2 kali",
+            "C": "tetap",
+            "D": "½ kali"
+          },
+          "answer": "C",
+          "hint": "R sebanding L dan berbanding terbalik A.",
+          "explanation": "R' = ρ(2L)/(2A) = R."
+        }
+      ]
+    },
+    {
+      "id": "rangkaian",
+      "title": "Hukum Ohm dan rangkaian listrik",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Ohm",
+          "html": "<p>\\[V = I\\,R\\]</p><p>Pada suhu tetap, kuat arus sebanding dengan tegangan dan berbanding terbalik dengan hambatan. V dalam volt, I dalam ampere, R dalam ohm.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Resistor 200 Ω diberi tegangan 6 V. Berapa arusnya?</p>",
+          "steps": [
+            "\\(I = \\dfrac{V}{R} = \\dfrac{6}{200}\\)."
+          ],
+          "answer": "0,03 A = 30 mA"
+        },
+        {
+          "type": "image",
+          "src": "gambar/seri-paralel.svg",
+          "alt": "Rangkaian seri dua resistor dan rangkaian paralel dua resistor, masing-masing dengan baterai 12 volt",
+          "width": 640,
+          "caption": "Rangkaian seri (kiri) dan paralel (kanan)."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th></th><th>Seri</th><th>Paralel</th></tr><tr><td>Jalur arus</td><td>satu jalur</td><td>bercabang</td></tr><tr><td>Arus</td><td>sama di setiap hambatan</td><td>\\(I = I_1 + I_2 + \\dots\\)</td></tr><tr><td>Tegangan</td><td>\\(V = V_1 + V_2 + \\dots\\)</td><td>sama di setiap cabang</td></tr><tr><td>Hambatan pengganti</td><td>\\(R_s = R_1 + R_2 + \\dots\\)</td><td>\\(\\dfrac{1}{R_p} = \\dfrac{1}{R_1} + \\dfrac{1}{R_2} + \\dots\\)</td></tr><tr><td>Satu lampu putus</td><td>semua padam</td><td>lampu lain tetap menyala</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/rangkaian.html",
+          "title": "Rangkaian seri dan paralel",
+          "height": 620,
+          "caption": "Bandingkan terang lampu pada rangkaian seri dan paralel dengan baterai yang sama. Klik satu lampu untuk memutusnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2 (seri)",
+          "question": "<p>Pada gambar kiri, R₁ = 4 Ω dan R₂ = 2 Ω dirangkai seri dengan baterai 12 V. Tentukan arus dan tegangan pada R₁.</p>",
+          "steps": [
+            "\\(R_s = 4 + 2 = 6\\ \\Omega\\).",
+            "\\(I = \\dfrac{12}{6} = 2\\) A (sama di semua hambatan).",
+            "\\(V_1 = I R_1 = 2\\times4 = 8\\) V (dan \\(V_2 = 4\\) V)."
+          ],
+          "answer": "I = 2 A; V₁ = 8 V"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (paralel)",
+          "question": "<p>Pada gambar kanan, R₃ = 6 Ω dan R₄ = 3 Ω dirangkai paralel dengan baterai 12 V. Tentukan hambatan pengganti dan arus total.</p>",
+          "steps": [
+            "\\(\\dfrac{1}{R_p} = \\dfrac16 + \\dfrac13 = \\dfrac36\\), jadi \\(R_p = 2\\ \\Omega\\).",
+            "\\(I_3 = \\dfrac{12}{6} = 2\\) A, \\(I_4 = \\dfrac{12}{3} = 4\\) A.",
+            "\\(I = 2 + 4 = 6\\) A (sama dengan \\(12/2\\))."
+          ],
+          "answer": "R_p = 2 Ω; I = 6 A"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Mengapa instalasi rumah dipasang paralel?",
+          "html": "<p>Setiap alat mendapat tegangan penuh 220 V dan dapat dinyalakan atau dimatikan sendiri. Jika satu lampu rusak, alat lain tetap bekerja.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Tiga resistor masing-masing 6 Ω dirangkai paralel. Hambatan penggantinya adalah ....",
+          "options": {
+            "A": "18 Ω",
+            "B": "6 Ω",
+            "C": "3 Ω",
+            "D": "2 Ω"
+          },
+          "answer": "D",
+          "hint": "1/R = 1/6 + 1/6 + 1/6.",
+          "explanation": "1/R = 3/6 sehingga R = 2 Ω. Hambatan paralel selalu lebih kecil dari hambatan terkecil."
+        }
+      ]
+    },
+    {
+      "id": "sumber-daya",
+      "title": "Sumber arus, daya, dan energi listrik",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Jenis</th><th>Sumber</th><th>Perubahan energi</th></tr><tr><td rowspan=\"4\">DC (searah)</td><td>elemen volta, baterai kering</td><td>kimia → listrik (elemen primer, tidak dapat diisi ulang)</td></tr><tr><td>aki, baterai Li-ion</td><td>kimia → listrik (elemen sekunder, dapat diisi ulang)</td></tr><tr><td>sel surya</td><td>cahaya → listrik</td></tr><tr><td>dinamo DC</td><td>gerak → listrik</td></tr><tr><td>AC (bolak-balik)</td><td>generator, dinamo AC (listrik PLN)</td><td>gerak → listrik</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Tabel buku menulis sel surya mengubah kalor menjadi listrik. Yang benar, sel surya mengubah energi <b>cahaya</b> menjadi listrik (efek fotovoltaik).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Daya dan energi listrik",
+          "html": "<p>\\[P = \\frac{W}{t} = V\\,I = I^2R = \\frac{V^2}{R},\\qquad W = P\\,t\\]</p><p>P dalam watt (W = J/s). Untuk tagihan listrik dipakai satuan <b>kilowatt jam</b>: 1 kWh = 1.000 W × 3.600 s = 3,6 × 10⁶ J.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Lampu 12 W dipasang pada baterai 12 V dan menyala 3 jam. Hitung arus dan energinya.</p>",
+          "steps": [
+            "\\(I = \\dfrac{P}{V} = \\dfrac{12}{12} = 1\\) A.",
+            "\\(W = Pt = 12 \\times 3\\times3.600 = 129.600\\) J."
+          ],
+          "answer": "1 A; 129.600 J"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah rumah menyalakan 5 lampu 10 W selama 10 jam sehari dan kulkas 100 W selama 24 jam. Jika tarif Rp1.500/kWh, berapa biaya sebulan (30 hari)?</p>",
+          "steps": [
+            "Lampu: 5 × 10 × 10 = 500 Wh = 0,5 kWh per hari.",
+            "Kulkas: 100 × 24 = 2.400 Wh = 2,4 kWh per hari.",
+            "Sebulan: (0,5 + 2,4) × 30 = 87 kWh.",
+            "Biaya: 87 × Rp1.500 = Rp130.500."
+          ],
+          "answer": "Rp130.500"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Hemat energi listrik",
+          "html": "<ul><li>Matikan lampu dan alat saat tidak dipakai; cabut pengisi daya setelah penuh.</li><li>Pilih lampu LED yang dayanya kecil tetapi terang.</li><li>Hindari menumpuk banyak alat berdaya besar pada satu stopkontak (risiko korsleting).</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Alat listrik bertuliskan 220 V/440 W dipasang pada tegangan 220 V. Arus yang mengalir adalah ....",
+          "options": {
+            "A": "0,5 A",
+            "B": "2 A",
+            "C": "220 A",
+            "D": "96.800 A"
+          },
+          "answer": "B",
+          "hint": "I = P/V.",
+          "explanation": "440 ÷ 220 = 2 A."
+        }
+      ]
+    },
+    {
+      "id": "magnet",
+      "title": "Magnet dan elektromagnet",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Magnet selalu memiliki dua kutub: <b>utara</b> dan <b>selatan</b>. Kutub sejenis tolak-menolak, kutub tidak sejenis tarik-menarik. Jika magnet dipotong, setiap potongan tetap memiliki dua kutub. Bahan yang ditarik kuat oleh magnet (besi, baja, nikel, kobalt) disebut bahan <b>feromagnetik</b>.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Di dalam bahan magnetik terdapat \"magnet-magnet elementer\" akibat gerak elektron. Pada besi biasa, arahnya acak sehingga tidak bersifat magnet; pada magnet, arahnya teratur. Besi dapat dijadikan magnet dengan cara <b>menggosok</b> dengan magnet searah, <b>induksi</b> (didekatkan magnet), atau <b>elektromagnet</b> (dililit kawat berarus). Pemanasan dan pemukulan dapat menghilangkan sifat magnet.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/medan-magnet.svg",
+          "alt": "Garis-garis gaya magnet di sekitar magnet batang, keluar dari kutub utara dan masuk ke kutub selatan",
+          "width": 600,
+          "caption": "Pola garis gaya magnet batang, seperti yang tampak dari taburan serbuk besi."
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Medan magnet</b> adalah daerah di sekitar magnet yang masih dipengaruhi gaya magnet. Garis gaya paling rapat di dekat kutub, sehingga gaya magnet paling kuat di sana. Bumi juga merupakan magnet raksasa; jarum <b>kompas</b> menunjuk ke arah utara-selatan bumi.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Elektromagnet"
+        },
+        {
+          "type": "text",
+          "html": "<p>Tahun 1820, <b>Oersted</b> menemukan bahwa jarum kompas menyimpang di dekat kawat berarus: di sekitar arus listrik timbul medan magnet yang melingkari kawat. Jika kawat dililitkan menjadi kumparan (solenoid) dan diberi inti besi, terbentuk <b>elektromagnet</b> yang kutubnya seperti magnet batang.</p><p>Kekuatan elektromagnet dapat diperbesar dengan: memperbanyak lilitan, memperbesar arus, dan memakai inti besi lunak. Kelebihannya, kekuatannya dapat diatur dan dapat dimatikan. Contoh penggunaan: bel listrik, relai, derek pengangkat besi tua, kereta maglev, dan pemilah sampah logam.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Cara yang <b>tidak</b> memperkuat elektromagnet adalah ....",
+          "options": {
+            "A": "menambah jumlah lilitan",
+            "B": "memperbesar arus",
+            "C": "memakai inti besi lunak",
+            "D": "mengganti inti besi dengan kayu"
+          },
+          "answer": "D",
+          "hint": "Inti kayu tidak dapat dimagnetkan.",
+          "explanation": "Kayu bukan bahan magnetik, sehingga medan magnet justru lebih lemah daripada inti besi."
+        },
+        {
+          "type": "check",
+          "question": "Jika magnet batang dipotong menjadi dua, maka ....",
+          "options": {
+            "A": "satu potongan hanya berkutub utara",
+            "B": "setiap potongan memiliki kutub utara dan selatan",
+            "C": "kedua potongan kehilangan sifat magnet",
+            "D": "kedua potongan menjadi kutub selatan"
+          },
+          "answer": "B",
+          "hint": "Kutub magnet selalu berpasangan.",
+          "explanation": "Setiap potongan menjadi magnet baru dengan dua kutub."
+        }
+      ]
+    },
+    {
+      "id": "lorentz-induksi",
+      "title": "Gaya Lorentz, induksi elektromagnetik, dan generator",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Gaya Lorentz",
+          "html": "<p>Kawat berarus di dalam medan magnet mengalami gaya:</p><p>\\[F = B\\,I\\,L\\,\\sin\\theta\\]</p><p>B kuat medan magnet (tesla), I arus (A), L panjang kawat di dalam medan (m), θ sudut antara arus dan medan. Gaya terbesar jika arus tegak lurus medan (sin 90° = 1). Arahnya ditentukan dengan <b>kaidah tangan kanan</b>: ibu jari = arus, empat jari = medan magnet, telapak tangan mendorong = arah gaya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kawat sepanjang 50 cm dialiri arus 4 A dan berada tegak lurus medan magnet 0,2 T. Berapa gaya Lorentz-nya?</p>",
+          "steps": [
+            "\\(F = BIL = 0{,}2 \\times 4 \\times 0{,}5\\)."
+          ],
+          "answer": "0,4 N"
+        },
+        {
+          "type": "text",
+          "html": "<p>Gaya Lorentz membuat kumparan berarus di antara magnet berputar: inilah prinsip <b>motor listrik</b> pada kipas angin, blender, dan mobil listrik (energi listrik → gerak).</p>"
+        },
+        {
+          "type": "h",
+          "text": "Induksi elektromagnetik"
+        },
+        {
+          "type": "text",
+          "html": "<p>Tahun 1831, <b>Faraday</b> menemukan kebalikannya: jika magnet digerakkan keluar-masuk kumparan, timbul arus listrik. Arus induksi muncul hanya ketika <b>fluks magnet</b> (banyaknya garis gaya yang menembus kumparan) <b>berubah</b>.</p><p>\\[\\varepsilon = -N\\,\\frac{\\Delta\\Phi}{\\Delta t}\\]</p><p>Tanda negatif (hukum Lenz) berarti arus induksi melawan perubahan yang menyebabkannya.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/induksi.html",
+          "title": "Induksi elektromagnetik",
+          "height": 560,
+          "caption": "Seret magnet masuk dan keluar kumparan. Kapan jarum galvanometer diam? Coba ubah kecepatan dan jumlah lilitan."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>GGL induksi makin besar jika</th><th>Tidak ada arus induksi jika</th></tr><tr><td>magnet digerakkan makin cepat; lilitan makin banyak; magnet makin kuat</td><td>magnet diam di dalam kumparan (fluks tidak berubah)</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Generator</b> mengubah energi gerak menjadi energi listrik dengan memutar kumparan di antara magnet (atau sebaliknya). Bagian utamanya: <b>stator</b> (bagian diam), <b>rotor</b> (bagian berputar), dan <b>cincin geser</b> yang menyalurkan arus. Generator tidak menciptakan energi, hanya mengubah bentuknya. Contoh: dinamo sepeda, generator PLTA, PLTB, dan PLTU.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Jarum galvanometer tidak menyimpang ketika ....",
+          "options": {
+            "A": "magnet didorong masuk kumparan",
+            "B": "magnet ditarik keluar kumparan",
+            "C": "magnet diam di dalam kumparan",
+            "D": "kumparan digerakkan mendekati magnet"
+          },
+          "answer": "C",
+          "hint": "Arus induksi butuh perubahan fluks.",
+          "explanation": "Saat magnet diam, fluks yang menembus kumparan tetap sehingga tidak ada GGL induksi."
+        },
+        {
+          "type": "check",
+          "question": "Alat yang mengubah energi listrik menjadi energi gerak berdasarkan gaya Lorentz adalah ....",
+          "options": {
+            "A": "generator",
+            "B": "dinamo sepeda",
+            "C": "motor listrik",
+            "D": "sel surya"
+          },
+          "answer": "C",
+          "hint": "Kebalikan dari generator.",
+          "explanation": "Motor listrik memanfaatkan gaya Lorentz pada kumparan berarus di dalam medan magnet."
+        }
+      ]
+    },
+    {
+      "id": "energi-alternatif",
+      "title": "Energi alternatif",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Bahan bakar fosil (minyak bumi, batu bara, gas alam) terbatas dan menghasilkan gas rumah kaca. <b>Energi alternatif/terbarukan</b> berasal dari sumber yang terus tersedia dan lebih ramah lingkungan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Pembangkit</th><th>Perubahan energi</th><th>Kelebihan</th><th>Kekurangan</th></tr><tr><td>PLTB (bayu/angin)</td><td>gerak angin → gerak turbin → listrik</td><td>tanpa emisi saat beroperasi</td><td>bergantung pada angin yang konstan</td></tr><tr><td>Sel surya (PLTS)</td><td>cahaya → listrik (efek fotovoltaik pada semikonduktor tipe-p dan tipe-n)</td><td>cocok untuk daerah terpencil; sinar matahari melimpah di Indonesia</td><td>tidak bekerja malam hari; perlu baterai</td></tr><tr><td>PLTA (air)</td><td>potensial air → gerak turbin → listrik</td><td>stabil, kapasitas besar</td><td>bendungan mengubah ekosistem sungai</td></tr><tr><td>PLTP (panas bumi)</td><td>panas bumi → uap → turbin → listrik</td><td>potensi besar di Indonesia (jalur gunung api)</td><td>lokasi terbatas</td></tr><tr><td>PLTN (nuklir)</td><td>energi inti (fisi) → panas → uap → turbin → listrik</td><td>energi sangat besar dari bahan sedikit, tanpa emisi CO₂</td><td>limbah radioaktif dan risiko kecelakaan</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Satu sel surya silikon menghasilkan sekitar 0,5 V. Sel-sel dirangkai seri untuk menaikkan tegangan dan paralel untuk menaikkan arus, membentuk panel surya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Panel surya 100 W menerima sinar matahari efektif 5 jam per hari. Berapa energi listrik sehari? Cukupkah untuk lampu LED 10 W selama 12 jam?</p>",
+          "steps": [
+            "Energi panel: 100 W × 5 h = 500 Wh.",
+            "Kebutuhan lampu: 10 W × 12 h = 120 Wh.",
+            "500 Wh &gt; 120 Wh."
+          ],
+          "answer": "500 Wh; cukup (masih tersisa 380 Wh)"
+        },
+        {
+          "type": "check",
+          "question": "Pembangkit listrik yang sumber energinya paling banyak tersedia di daerah jalur gunung api adalah ....",
+          "options": {
+            "A": "PLTB",
+            "B": "PLTP (panas bumi)",
+            "C": "PLTN",
+            "D": "PLTD"
+          },
+          "answer": "B",
+          "hint": "Panas dari dalam bumi.",
+          "explanation": "Indonesia berada di jalur gunung api sehingga potensi panas buminya besar."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Rumus / inti</th></tr><tr><td>Listrik statis</td><td>elektron berpindah; sejenis tolak, berbeda tarik</td></tr><tr><td>Gaya Coulomb</td><td>\\(F = kq_1q_2/r^2\\); medan \\(E = kQ/r^2\\); \\(\\Delta V = W/Q\\)</td></tr><tr><td>Arus dan hambatan</td><td>\\(I = q/t\\); \\(R = \\rho L/A\\); \\(V = IR\\)</td></tr><tr><td>Rangkaian</td><td>seri: \\(R_s = R_1 + R_2\\); paralel: \\(1/R_p = 1/R_1 + 1/R_2\\)</td></tr><tr><td>Daya</td><td>\\(P = VI\\); \\(W = Pt\\); 1 kWh = 3,6 × 10⁶ J</td></tr><tr><td>Magnet</td><td>kutub U-S; elektromagnet (Oersted); gaya Lorentz \\(F = BIL\\)</td></tr><tr><td>Induksi</td><td>fluks berubah → GGL (Faraday); generator</td></tr><tr><td>Energi alternatif</td><td>angin, surya, air, panas bumi, nuklir</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira proton yang berpindah saat benda digosok.</li><li>Menjumlahkan langsung hambatan paralel (seharusnya kebalikannya yang dijumlahkan).</li><li>Mengira magnet diam di dalam kumparan menghasilkan arus.</li><li>Lupa mengubah cm ke m atau µC ke C.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMP Kelas IX</i> (Kemendikbudristek), Bab 5 Listrik, Magnet, dan Energi Alternatif.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang listrik statis, gaya Coulomb, arus, hukum Ohm, rangkaian, daya listrik, magnet, induksi, dan energi alternatif. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dilatasi Waktu dan Pengerutan Panjang</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 350" role="img" aria-label="Jam cahaya diam dan bergerak serta pesawat yang mengerut"></svg></div>
+  <div class="panel">
+    <div class="lab">Kelajuan pesawat v <b id="vv"></b></div><input type="range" id="v" min="0" max="0.99" step="0.01" value="0.7">
+    <div class="lab">Selang waktu diam Δt₀ (di pesawat) <b id="tv"></b></div><input type="range" id="t0" min="1" max="20" step="1" value="3">
+    <div class="lab">Panjang diam L₀ pesawat <b id="lv"></b></div><input type="range" id="l0" min="10" max="200" step="10" value="50">
+    <div class="row"><button class="btn primary" id="reset">Ulangi animasi</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let t = 0, trail = [];
+const H = 80, C = 90; // tinggi jam (px), laju cahaya animasi (px/s)
+$('reset').onclick = () => { t = 0; trail = []; };
+['v', 't0', 'l0'].forEach(i => $(i).oninput = () => { t = 0; trail = []; draw(); });
+const tri = (s, P) => { const u = (s % P) / P; return u < .5 ? 2 * u : 2 - 2 * u; };
+function draw(){
+  const b = +$('v').value, g = 1 / Math.sqrt(1 - b * b), t0 = +$('t0').value, L0 = +$('l0').value;
+  $('vv').textContent = fmt(b, 2) + 'c'; $('tv').textContent = t0 + ' s'; $('lv').textContent = L0 + ' m';
+  let s = `<text class="c" x="20" y="20" fill="#333" style="fill:var(--ink)">Jam cahaya</text>`;
+  // jam diam
+  const P0 = 2 * H / C, y0 = 40, bx = 60;
+  const yr = y0 + H - H * tri(t, P0);
+  s += `<line x1="${bx - 20}" y1="${y0}" x2="${bx + 20}" y2="${y0}" stroke="#555" stroke-width="4"/><line x1="${bx - 20}" y1="${y0 + H}" x2="${bx + 20}" y2="${y0 + H}" stroke="#555" stroke-width="4"/><line x1="${bx}" y1="${y0 + H}" x2="${bx}" y2="${y0}" stroke="#fdd835" stroke-opacity=".5" stroke-width="2"/><circle cx="${bx}" cy="${yr}" r="5" fill="#f9a825"/><text class="s" x="${bx}" y="${y0 + H + 18}" text-anchor="middle" fill="#555">diam: ${Math.floor(t / P0)} detak</text>`;
+  // jam bergerak
+  const P1 = g * P0, x0 = 140, W = 320, vx = b * C, xm = x0 + (vx * t) % W;
+  const ym = y0 + H - H * tri(t, P1);
+  if(trail.length && xm < trail[trail.length - 1][0] - 50) trail = [];
+  trail.push([xm, ym]); if(trail.length > 400) trail.shift();
+  let d = ''; trail.forEach((p, i) => { const jump = i && Math.abs(p[0] - trail[i - 1][0]) > 50; d += (i && !jump ? 'L' : 'M') + p[0].toFixed(1) + ',' + p[1].toFixed(1); });
+  s += `<path d="${d}" fill="none" stroke="#fdd835" stroke-width="2"/><line x1="${xm - 20}" y1="${y0}" x2="${xm + 20}" y2="${y0}" stroke="#1565c0" stroke-width="4"/><line x1="${xm - 20}" y1="${y0 + H}" x2="${xm + 20}" y2="${y0 + H}" stroke="#1565c0" stroke-width="4"/><circle cx="${xm}" cy="${ym}" r="5" fill="#f9a825"/><text class="s" x="${x0 + W / 2}" y="${y0 + H + 18}" text-anchor="middle" fill="#1565c0">bergerak (dilihat dari Bumi): ${Math.floor(t / P1)} detak</text>`;
+  // pesawat
+  const sy = 205, sc = 1.5;
+  s += `<text class="c" x="20" y="${sy - 20}" style="fill:var(--ink)">Pengerutan panjang (menurut pengamat di Bumi)</text>`;
+  const ship = (x, y, len, col, lab) => `<path d="M${x},${y} h${len - 18} l18,15 l-18,15 h${-(len - 18)} z" fill="${col}" fill-opacity=".25" stroke="${col}" stroke-width="2"/><text class="s" x="${x}" y="${y + 46}" fill="${col}">${lab}</text>`;
+  const L = L0 / g;
+  s += ship(30, sy, Math.max(20, L0 * sc), '#555', `diam: L₀ = ${L0} m`);
+  s += ship(30, sy + 75, Math.max(20, L * sc), '#1565c0', `bergerak ${fmt(b, 2)}c: L = ${fmt(L, 1)} m`);
+  s += `<line x1="${30 + Math.max(20, L * sc) + 10}" y1="${sy + 90}" x2="${30 + Math.max(20, L * sc) + 40}" y2="${sy + 90}" stroke="#1565c0" stroke-width="2" marker-end="url(#a)"/><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1565c0"/></marker></defs>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Faktor Lorentz γ = 1/√(1 − v²/c²)</span><b>${fmt(g, 3)}</b></div><div><span>Δt = γ Δt₀ (menurut Bumi)</span><b>${fmt(g * t0, 2)} s</b></div><div><span>L = L₀/γ (menurut Bumi)</span><b>${fmt(L, 2)} m</b></div>`;
+}
+setInterval(() => { t += 0.05; draw(); }, 50);
+draw();
+</script>
+</body>
+</html>

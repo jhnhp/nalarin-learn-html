@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gelombang Elektromagnetik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Medan listrik dan medan magnet yang saling tegak lurus merambat sebagai gelombang"></svg></div>
+  <div class="panel">
+    <div class="lab">Amplitudo medan listrik E maks <b id="ev"></b></div><input type="range" id="e" min="10" max="1000" step="10" value="150">
+    <div class="lab">Frekuensi <b id="fv"></b></div><input type="range" id="f" min="1" max="12" step="0.5" value="3">
+    <label class="chk"><input type="checkbox" id="run" checked> Jalankan animasi</label>
+    <div class="read" id="read"></div>
+    <p class="note">Maxwell: medan magnet yang berubah menimbulkan medan listrik dan sebaliknya, sehingga keduanya merambat bersama sebagai gelombang transversal. E dan B saling tegak lurus dan tegak lurus arah rambat, sefase, dengan E = cB.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const c = 3e8, e0 = 8.85e-12, mu0 = 4 * Math.PI * 1e-7;
+let t = 0;
+const sci = v => { if(v === 0) return '0'; const e = Math.floor(Math.log10(Math.abs(v))); if(e >= -2 && e <= 3) return fmt(v, 3); return `${fmt(v / 10 ** e, 3)} × 10${String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`; };
+function draw(){
+  const E = +$('e').value, fk = +$('f').value, f = fk * 1e8; // ratusan MHz
+  $('ev').textContent = E + ' N/C'; $('fv').textContent = fmt(f / 1e6, 0) + ' MHz';
+  const lam = c / f, B = E / c, u = e0 * E * E / 2, S = c * u; // rata-rata
+  const ox = 40, oy = 150, L = 400, k = 2 * Math.PI * fk / 400 * 1.2, amp = 30 + 70 * Math.min(1, E / 1000);
+  let s = `<line x1="${ox}" y1="${oy}" x2="${ox + L + 20}" y2="${oy}" stroke="#555" stroke-width="1.5" marker-end="url(#a)"/><text class="s" x="${ox + L + 20}" y="${oy + 16}" text-anchor="end" fill="#555">arah rambat (x)</text>`;
+  s += `<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs>`;
+  let pe = '', pb = '';
+  for(let i = 0; i <= 200; i++){ const x = L * i / 200, ph = k * x - t, v = Math.sin(ph); pe += (i ? 'L' : 'M') + (ox + x).toFixed(1) + ',' + (oy - amp * v).toFixed(1); pb += (i ? 'L' : 'M') + (ox + x + 0.45 * amp * .6 * v).toFixed(1) + ',' + (oy + 0.45 * amp * .6 * v).toFixed(1); }
+  for(let i = 0; i <= 40; i++){ const x = L * i / 40, v = Math.sin(k * x - t); s += `<line x1="${ox + x}" y1="${oy}" x2="${ox + x}" y2="${oy - amp * v}" stroke="#e53935" stroke-opacity=".35"/><line x1="${ox + x}" y1="${oy}" x2="${ox + x + 0.27 * amp * v}" y2="${oy + 0.27 * amp * v}" stroke="#1e88e5" stroke-opacity=".35"/>`; }
+  s += `<path d="${pe}" fill="none" stroke="#e53935" stroke-width="2.5"/><path d="${pb}" fill="none" stroke="#1e88e5" stroke-width="2.5"/>`;
+  s += `<text class="c" x="${ox}" y="30" fill="#e53935">E (medan listrik, sumbu y)</text><text class="c" x="${ox}" y="290" fill="#1e88e5">B (medan magnet, sumbu z, digambar miring)</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Panjang gelombang λ = c/f</span><b>${sci(lam)} m</b></div><div><span>Amplitudo medan magnet B = E/c</span><b>${sci(B)} T</b></div><div><span>Rapat energi rata-rata ½ε₀E²<sub>maks</sub></span><b>${sci(u)} J/m³</b></div><div><span>Intensitas rata-rata S = cε₀E²<sub>maks</sub>/2</span><b>${sci(S)} W/m²</b></div>`;
+}
+['e', 'f'].forEach(i => $(i).oninput = draw);
+setInterval(() => { if($('run').checked){ t += 0.12; draw(); } }, 50);
+draw();
+</script>
+</body>
+</html>

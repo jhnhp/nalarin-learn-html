@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perjalanan Zat Makanan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Saluran pencernaan dengan tahap pemecahan zat makanan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="zat"><button data-v="amilum" class="on">Amilum</button><button data-v="protein">Protein</button><button data-v="lemak">Lemak</button></div>
+    <div class="row"><button class="btn" id="prev">← Sebelumnya</button><button class="btn primary" id="next">Berikutnya →</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [lokasi, enzim/proses, hasil, keterangan]
+const ROUTE = {
+  amilum: [['mulut', 'ptialin (amilase ludah), pH ± 7', 'sebagian menjadi maltosa', 'Makanan dikunyah (pencernaan mekanik) dan bercampur ludah. Ptialin memecah sebagian amilum menjadi maltosa; karena itu nasi yang lama dikunyah terasa manis.'], ['lambung', 'tidak ada enzim pemecah amilum; ptialin tidak aktif oleh asam', 'amilum sisa tetap', 'Asam lambung (HCl) menghentikan kerja ptialin.'], ['usus halus (duodenum)', 'amilase pankreas', 'maltosa', 'Getah pankreas yang basa menetralkan asam dan mengandung amilase yang memecah amilum menjadi maltosa.'], ['usus halus (dinding)', 'maltase', 'glukosa', 'Enzim pada dinding usus memecah maltosa (dan sukrosa, laktosa) menjadi monosakarida.'], ['penyerapan di vili', 'transpor aktif sekunder dan difusi terfasilitasi', 'glukosa → kapiler darah → vena porta → hati', 'Glukosa larut air sehingga masuk ke kapiler darah.']],
+  protein: [['mulut', 'pencernaan mekanik', 'potongan kecil', 'Ludah tidak mengandung enzim pemecah protein.'], ['lambung', 'pepsin (dari pepsinogen yang diaktifkan HCl), renin pada bayi', 'pepton (polipeptida)', 'HCl membuat suasana asam (pH ± 2), mengaktifkan pepsin, dan membunuh kuman.'], ['usus halus (duodenum)', 'tripsin dan kimotripsin dari pankreas', 'peptida pendek', 'Tripsin memecah pepton menjadi rantai peptida yang lebih pendek.'], ['usus halus (dinding)', 'peptidase (erepsin)', 'asam amino', 'Peptida dipecah menjadi asam amino.'], ['penyerapan di vili', 'transpor aktif', 'asam amino → kapiler darah → hati', 'Asam amino larut air sehingga masuk ke kapiler darah.']],
+  lemak: [['mulut', 'pencernaan mekanik', 'lemak belum tercerna', 'Ludah tidak mencerna lemak secara berarti.'], ['lambung', 'lipase lambung (sedikit)', 'sebagian kecil terurai', 'Sebagian besar lemak belum tercerna.'], ['usus halus (duodenum)', 'empedu (emulsi) lalu lipase pankreas', 'asam lemak + gliserol', 'Garam empedu dari hati mengemulsikan lemak menjadi butiran kecil sehingga mudah dicerna lipase.'], ['sel epitel usus', 'disusun kembali menjadi trigliserida, dibungkus protein (kilomikron)', 'kilomikron', 'Asam lemak dan gliserol mudah masuk sel epitel karena larut dalam lapisan fosfolipid membran.'], ['penyerapan di vili', 'masuk ke pembuluh kil (limfa)', 'lemak → pembuluh limfa → darah', 'Kilomikron terlalu besar untuk kapiler darah sehingga masuk ke pembuluh kil (limfa), baru kemudian ke peredaran darah.']]
+};
+const POS = {'mulut': [120, 40], 'lambung': [170, 120], 'usus halus (duodenum)': [150, 175], 'usus halus (dinding)': [150, 230], 'sel epitel usus': [150, 230], 'penyerapan di vili': [150, 285]};
+let Z = 'amilum', K = 0;
+$('zat').querySelectorAll('button').forEach(b => b.onclick = () => { $('zat').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); Z = b.dataset.v; K = 0; draw(); });
+$('next').onclick = () => { K = Math.min(ROUTE[Z].length - 1, K + 1); draw(); };
+$('prev').onclick = () => { K = Math.max(0, K - 1); draw(); };
+function draw(){
+  const R = ROUTE[Z], st = R[K];
+  let s = '';
+  s += `<path d="M120,30 L120,70 Q120,90 140,95 L190,100 Q215,110 200,140 Q185,160 150,160 Q100,165 100,190 Q100,210 150,210 Q200,210 200,235 Q200,260 150,260 Q100,260 100,285 Q100,310 150,310" fill="none" stroke="#f4a261" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>`;
+  s += `<ellipse cx="175" cy="120" rx="34" ry="24" fill="#f4a261" opacity=".35"/>`;
+  s += `<text class="s" x="64" y="44" style="fill:var(--muted)">mulut</text><text class="s" x="215" y="118" style="fill:var(--muted)">lambung</text><text class="s" x="40" y="190" style="fill:var(--muted)">usus halus</text><text class="s" x="230" y="160" style="fill:var(--muted)">pankreas, empedu →</text>`;
+  R.forEach((r, i) => { const [x, y] = POS[r[0]]; s += `<circle cx="${x}" cy="${y}" r="${i === K ? 11 : 6}" fill="${i === K ? '#d62828' : i < K ? '#2a9d8f' : '#bbb'}" stroke="#fff" stroke-width="2"/>`; });
+  // kotak keterangan
+  const bx = 250, by = 190;
+  s += `<rect x="${bx}" y="${by}" width="220" height="130" rx="10" style="fill:var(--surface-2)"/><text class="c" x="${bx + 12}" y="${by + 22}" style="fill:var(--ink)">${K + 1}. ${st[0]}</text>`;
+  const wrap = (t, n) => { const w = t.split(' '), L = []; let l = ''; w.forEach(x => { if((l + ' ' + x).length > n){ L.push(l); l = x; } else l = l ? l + ' ' + x : x; }); L.push(l); return L; };
+  wrap('Proses: ' + st[1], 36).forEach((l, i) => s += `<text class="s" x="${bx + 12}" y="${by + 44 + i * 14}" style="fill:var(--ink)">${l}</text>`);
+  wrap('Hasil: ' + st[2], 36).forEach((l, i) => s += `<text class="s" x="${bx + 12}" y="${by + 90 + i * 14}" fill="#2a9d8f">${l}</text>`);
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Zat makanan</span><b>${Z}</b></div><div><span>Hasil akhir yang diserap</span><b>${{amilum: 'glukosa', protein: 'asam amino', lemak: 'asam lemak + gliserol (lalu kilomikron)'}[Z]}</b></div><div><span>Diangkut melalui</span><b>${Z === 'lemak' ? 'pembuluh limfa (kil)' : 'kapiler darah'}</b></div>`;
+  $('ket').textContent = st[3];
+}
+draw();
+</script>
+</body>
+</html>

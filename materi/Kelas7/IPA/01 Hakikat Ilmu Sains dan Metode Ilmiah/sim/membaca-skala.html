@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membaca Skala Gelas Ukur</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px}
+input[type=number]{font:inherit;width:90px;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+.msg{font-weight:700;padding:8px 10px;border-radius:10px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 360" role="img" aria-label="Gelas ukur dengan meniskus dan posisi mata pengamat"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Posisi mata (geser)</span><b id="eout"></b></div><input type="range" id="eye" min="-40" max="40" step="1" value="-30"></div>
+    <label class="chk"><input type="checkbox" id="c-zoom"> Perbesar bagian meniskus</label>
+    <div class="row"><span>Bacaanmu:</span><input type="number" id="ans" step="1"> <span>mL</span><button class="btn primary" id="cek">Periksa</button><button class="btn" id="new">Gelas lain</button></div>
+    <div class="msg" id="msg">Geser mata sampai sejajar dengan dasar meniskus, lalu baca skalanya.</div>
+    <p class="note">Air membentuk permukaan cekung (meniskus). Baca skala pada bagian <b>terbawah</b> meniskus dengan mata sejajar permukaan. Jika mata terlalu tinggi, bacaan terlalu besar; terlalu rendah, bacaan terlalu kecil (kesalahan paralaks).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let vol = 37;
+const X0 = 210, W = 90, TOP = 40, bot = 330, Y = v => bot - v / 50 * (bot - TOP), V = y => (bot - y) / (bot - TOP) * 50;
+let apparent = vol;
+function draw(){
+  const e = +$('eye').value, z = $('c-zoom').checked, sc = z ? 3.2 : 1, cy = Y(vol), cx = X0 + W / 2;
+  $('eout').textContent = Math.abs(e) <= 3 ? 'sejajar' : e < 0 ? 'terlalu tinggi' : 'terlalu rendah';
+  const T = (x, y) => [(x - cx) * sc + cx, (y - cy) * sc + cy], pt = (x, y) => T(x, y).join(',');
+  let s = `<defs><clipPath id="cl"><rect x="0" y="0" width="460" height="360"/></clipPath></defs><g clip-path="url(#cl)">`;
+  s += `<path d="M${pt(X0, cy - 4)} Q${pt(cx, cy + 4)} ${pt(X0 + W, cy - 4)} L${pt(X0 + W, bot)} L${pt(X0, bot)} Z" style="fill:var(--a)" fill-opacity=".22"/>`;
+  s += `<path d="M${pt(X0, cy - 4)} Q${pt(cx, cy + 4)} ${pt(X0 + W, cy - 4)}" fill="none" style="stroke:var(--a)" stroke-width="2.5"/>`;
+  s += `<line x1="${T(X0, TOP)[0]}" y1="${T(X0, TOP)[1]}" x2="${T(X0, bot)[0]}" y2="${T(X0, bot)[1]}" style="stroke:var(--ink)" stroke-width="2.5"/><line x1="${T(X0 + W, TOP)[0]}" y1="${T(X0 + W, TOP)[1]}" x2="${T(X0 + W, bot)[0]}" y2="${T(X0 + W, bot)[1]}" style="stroke:var(--ink)" stroke-width="2.5"/>`;
+  if(!z) s += `<line x1="${X0 - 6}" y1="${bot}" x2="${X0 + W + 6}" y2="${bot}" style="stroke:var(--ink)" stroke-width="3"/>`;
+  for(let v = 0; v <= 50; v++){ const [x1, y1] = T(X0, Y(v)), big = v % 5 === 0, x2 = x1 + (big ? 22 : 12) * sc / (z ? 2 : 1);
+    if(y1 < -10 || y1 > 370) continue;
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y1}" style="stroke:var(--ink)" stroke-width="${big ? 1.8 : 1}"/>`;
+    if(v % 10 === 0 || (z && big)) s += `<text class="c" x="${x2 + 4}" y="${y1 + 4}">${v}</text>`; }
+  // mata di depan skala (kiri); garis pandang ke dasar meniskus memotong dinding berskala
+  const ex = z ? 26 : 70, ey = cy + e * 1.6, wx = T(X0, cy)[0];
+  const cyW = ey + (cy - ey) * (wx - ex) / (cx - ex);           // titik potong di dinding (koordinat layar)
+  apparent = vol + (cy - cyW) / sc / (bot - TOP) * 50;
+  s += `<line x1="${ex}" y1="${ey}" x2="${cx}" y2="${cy}" style="stroke:var(--comp)" stroke-width="1.6" class="dash"/>`;
+  s += `<circle cx="${wx}" cy="${cyW}" r="4" style="fill:var(--comp)"/>`;
+  s += `<ellipse cx="${ex}" cy="${ey}" rx="16" ry="10" style="fill:var(--surface);stroke:var(--ink)" stroke-width="2"/><circle cx="${ex + 4}" cy="${ey}" r="5" style="fill:var(--ink)"/>`;
+  s += `</g>`;
+  if(!z) s += `<text class="c" x="${X0 + 30}" y="${TOP - 10}">mL</text>`;
+  svg.innerHTML = s;
+}
+$('cek').onclick = () => { const a = +$('ans').value, m = $('msg'), e = +$('eye').value;
+  if(Math.abs(a - vol) < .5) m.innerHTML = Math.abs(e) <= 3 ? `✓ Tepat, ${vol} mL.` : `Angkanya tepat (${vol} mL), tetapi posisi matamu belum sejajar. Biasakan sejajar agar tidak terjadi paralaks.`;
+  else m.innerHTML = `Belum tepat. ${Math.abs(e) > 3 ? `Dari posisi matamu, permukaan tampak sejajar skala ${Sim.fmt(apparent, 1)} mL (${e < 0 ? 'terlalu tinggi' : 'terlalu rendah'}). ` : ''}Baca pada dasar meniskus; satu garis skala = 1 mL.`; };
+$('new').onclick = () => { vol = 12 + Math.floor(Math.random() * 34); $('ans').value = ''; $('msg').textContent = 'Geser mata sampai sejajar dengan dasar meniskus, lalu baca skalanya.'; draw(); };
+['eye', 'c-zoom'].forEach(id => $(id).oninput = $(id).onchange = draw);
+Sim.onTheme(draw);
+draw();
+</script>
+</body>
+</html>

@@ -1,56 +1,195 @@
 {
   "title": "Elektrolit dan Reaksi Redoks",
-  "summary": "Ringkasan bab Elektrolit dan Reaksi Redoks akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Larutan elektrolit kuat, lemah, dan nonelektrolit, perkembangan konsep redoks, aturan bilangan oksidasi, oksidator dan reduktor, disproporsionasi, serta penyetaraan reaksi redoks dengan metode setengah reaksi dan perubahan bilangan oksidasi.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Elektrolit dan Reaksi Redoks",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "elektrolit",
+      "title": "Larutan elektrolit dan nonelektrolit",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Elektrolit Kuat, Elektrolit Lemah, Nonelektrolit, Bilangan Oksidasi, Oksidasi-Reduksi, Oksidator-Reduktor, dan Penyetaraan Reaksi Redoks</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Natrium, kalium, kalsium, dan magnesium dalam cairan tubuh disebut <b>elektrolit</b> karena berupa ion yang menghantarkan sinyal listrik pada saraf dan otot. Secara umum, elektrolit adalah zat yang dalam lelehan atau larutannya menghasilkan <b>ion-ion yang bebas bergerak</b>, sehingga dapat menghantarkan listrik.</p><ul><li><b>Elektrolit kuat</b>: terion sempurna (α ≈ 1). Lampu alat uji menyala terang dan banyak gelembung gas. Contoh: asam kuat (HCl, H₂SO₄), basa kuat (NaOH, KOH), dan hampir semua garam (NaCl, KNO₃).</li><li><b>Elektrolit lemah</b>: terion sebagian (0 &lt; α &lt; 1). Lampu redup atau padam, tetapi tetap ada gelembung. Contoh: asam lemah (CH₃COOH, HF), basa lemah (NH₃).</li><li><b>Nonelektrolit</b>: tidak terion (α = 0). Tidak ada nyala maupun gelembung. Contoh: gula, urea, etanol, glukosa.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/daya-hantar.html",
+          "title": "Uji daya hantar listrik",
+          "height": 520,
+          "caption": "Bandingkan padatan KCl, lelehan KCl, dan HCl cair murni. Mana yang menghantar listrik, dan mengapa?"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "title": "Senyawa ion dan kovalen polar",
+          "html": "<p><b>Senyawa ion</b> (NaCl, KCl) tidak menghantar dalam bentuk padat karena ion-ionnya terikat di kisi kristal. Lelehan dan larutannya menghantar karena ion-ionnya bebas bergerak. <b>Senyawa kovalen polar</b> (HCl, CH₃COOH) dalam keadaan murni berupa molekul, sehingga tidak menghantar. Setelah bereaksi dengan air, terbentuk ion (HCl + H₂O → H₃O⁺ + Cl⁻) sehingga larutannya menghantar.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Larutan X menyalakan lampu dengan terang, sedangkan lelehan X juga menghantarkan listrik. Zat X kemungkinan besar adalah ....",
+          "options": {
+            "A": "gula",
+            "B": "HCl",
+            "C": "KBr",
+            "D": "CH₃COOH"
+          },
+          "answer": "C",
+          "hint": "Lelehannya pun menghantar.",
+          "explanation": "Hanya senyawa ion yang lelehannya menghantar listrik. KBr adalah senyawa ion yang terion sempurna."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "biloks",
+      "title": "Bilangan oksidasi dan konsep redoks",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Konsep reaksi redoks berkembang tiga tahap:</p><table><tr><th>Konsep</th><th>Oksidasi</th><th>Reduksi</th></tr><tr><td>Oksigen</td><td>pengikatan oksigen</td><td>pelepasan oksigen</td></tr><tr><td>Elektron</td><td>pelepasan elektron</td><td>penerimaan elektron</td></tr><tr><td>Bilangan oksidasi</td><td>kenaikan biloks</td><td>penurunan biloks</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Aturan bilangan oksidasi",
+          "html": "<ol><li>Unsur bebas (Fe, O₂, P₄) = 0.</li><li>Ion monoatom = muatannya (Na⁺ = +1, S²⁻ = −2).</li><li>Logam golongan IA = +1, IIA = +2, Al = +3.</li><li>F selalu −1.</li><li>H = +1, kecuali pada hidrida logam (NaH, CaH₂) = −1.</li><li>O = −2, kecuali pada peroksida (H₂O₂, Na₂O₂) = −1 dan pada OF₂ = +2.</li><li>Jumlah biloks dalam senyawa netral = 0, dalam ion poliatom = muatan ion.</li></ol>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/setara-redoks.html",
+          "title": "Bilangan oksidasi dan penyetaraan redoks",
+          "height": 560,
+          "caption": "Pada mode bilangan oksidasi, cari spesi yang melanggar aturan umum O = −2 dan H = +1. Mengapa biloks S dalam Na₂S₄O₆ boleh pecahan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan bilangan oksidasi Mn dalam K₂MnO₄ dan N dalam N₂O.</p>",
+          "steps": [
+            "K₂MnO₄: 2(+1) + Mn + 4(−2) = 0 → Mn = +6.",
+            "N₂O: 2N + (−2) = 0 → N = +1."
+          ],
+          "answer": "Mn = +6; N = +1"
+        },
+        {
+          "type": "text",
+          "html": "<p>Dalam reaksi redoks, zat yang mengalami <b>oksidasi</b> disebut <b>reduktor</b> (pereduksi), karena ia menyebabkan zat lain tereduksi. Zat yang mengalami <b>reduksi</b> disebut <b>oksidator</b> (pengoksidasi). Hasil oksidasi dan hasil reduksi adalah zat hasil dari kedua proses itu. Jika satu zat mengalami oksidasi sekaligus reduksi, reaksinya disebut <b>disproporsionasi</b> (autoredoks); sebaliknya jika hasil oksidasi dan reduksinya zat yang sama, disebut <b>konproporsionasi</b>.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pada tanur tinggi terjadi reaksi Fe₂O₃ + 3CO → 2Fe + 3CO₂. Tentukan oksidator, reduktor, hasil oksidasi, dan hasil reduksi.</p>",
+          "steps": [
+            "Fe: +3 → 0 (reduksi), sehingga Fe₂O₃ oksidator dan Fe hasil reduksi.",
+            "C: +2 (CO) → +4 (CO₂) (oksidasi), sehingga CO reduktor dan CO₂ hasil oksidasi."
+          ],
+          "answer": "oksidator Fe₂O₃, reduktor CO, hasil oksidasi CO₂, hasil reduksi Fe"
+        },
+        {
+          "type": "check",
+          "question": "Reaksi berikut yang bukan reaksi redoks adalah ....",
+          "options": {
+            "A": "Zn + 2HCl → ZnCl₂ + H₂",
+            "B": "2H₂ + O₂ → 2H₂O",
+            "C": "AgNO₃ + NaCl → AgCl + NaNO₃",
+            "D": "Cl₂ + 2NaOH → NaCl + NaClO + H₂O"
+          },
+          "answer": "C",
+          "hint": "Periksa apakah ada biloks yang berubah.",
+          "explanation": "Pada reaksi pengendapan AgCl tidak ada biloks yang berubah (Ag +1, N +5, O −2, Na +1, Cl −1 tetap)."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "penyetaraan",
+      "title": "Menyetarakan persamaan redoks",
+      "kind": "simulasi",
+      "duration": "45 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Metode setengah reaksi (ion-elektron)",
+          "html": "<ol><li>Pisahkan menjadi setengah reaksi oksidasi dan reduksi.</li><li>Setarakan atom selain O dan H.</li><li>Setarakan O dengan menambah H₂O di ruas yang kekurangan O.</li><li>Setarakan H dengan menambah H⁺ (suasana asam). Untuk suasana basa, tambahkan OH⁻ sebanyak H⁺ di kedua ruas sehingga H⁺ + OH⁻ menjadi H₂O.</li><li>Setarakan muatan dengan menambah elektron.</li><li>Samakan jumlah elektron kedua setengah reaksi, lalu jumlahkan.</li></ol>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/setara-redoks.html",
+          "title": "Langkah penyetaraan redoks",
+          "height": 560,
+          "caption": "Ikuti langkah untuk reaksi suasana basa. Apa yang berbeda dibanding suasana asam?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1 (suasana asam)",
+          "question": "<p>Setarakan ClO₃⁻ + I⁻ → Cl⁻ + I₂ (suasana asam).</p>",
+          "steps": [
+            "Reduksi: ClO₃⁻ + 6H⁺ + 6e → Cl⁻ + 3H₂O.",
+            "Oksidasi: 2I⁻ → I₂ + 2e, dikali 3: 6I⁻ → 3I₂ + 6e.",
+            "Jumlahkan."
+          ],
+          "answer": "ClO₃⁻ + 6I⁻ + 6H⁺ → Cl⁻ + 3I₂ + 3H₂O"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Metode perubahan bilangan oksidasi (PBO)",
+          "html": "<ol><li>Tentukan unsur yang biloksnya berubah dan setarakan jumlah atomnya.</li><li>Hitung kenaikan dan penurunan biloks (dikali jumlah atom).</li><li>Samakan kenaikan dan penurunan dengan mengalikan koefisien.</li><li>Setarakan muatan dengan H⁺ atau OH⁻ (untuk reaksi ion), lalu setarakan H dengan H₂O.</li></ol>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2 (metode PBO)",
+          "question": "<p>Setarakan reaksi pembuatan klorin di laboratorium: MnO₂ + HCl → MnCl₂ + Cl₂ + H₂O.</p>",
+          "steps": [
+            "Mn: +4 → +2, turun 2. Cl: −1 → 0 pada Cl₂; untuk 2 atom Cl, naik 2.",
+            "Kenaikan = penurunan = 2, sehingga koefisien MnO₂ = 1 dan Cl₂ = 1.",
+            "Cl total di kanan: 2 (MnCl₂) + 2 (Cl₂) = 4, jadi HCl = 4; H: 4 → 2H₂O."
+          ],
+          "answer": "MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Pada contoh penyetaraan Cr₂O₇²⁻ + H₂S → Cr³⁺ + S, buku menyebut \"Langkah 1: tuliskan setengah reaksi <i>oksidasi</i>: Cr₂O₇²⁻ → Cr³⁺\" dan \"Langkah 4: ... setengah reaksi <i>reduksi</i>: S²⁻ → S + 2e\". Keduanya tertukar. Cr turun dari +6 ke +3, sehingga Cr₂O₇²⁻ → Cr³⁺ adalah <b>reduksi</b>. S naik dari −2 ke 0, sehingga S²⁻ → S adalah <b>oksidasi</b>. Persamaan akhirnya juga lebih tepat ditulis dengan H₂S seperti soal: Cr₂O₇²⁻ + 3H₂S + 8H⁺ → 2Cr³⁺ + 3S + 7H₂O.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pada setengah reaksi NO₃⁻ → NO (suasana asam) yang telah setara, jumlah elektron yang terlibat adalah ....",
+          "options": {
+            "A": "1",
+            "B": "2",
+            "C": "3",
+            "D": "5"
+          },
+          "answer": "C",
+          "hint": "Biloks N berubah dari berapa ke berapa?",
+          "explanation": "N turun dari +5 ke +2, sehingga diperlukan 3 elektron: NO₃⁻ + 4H⁺ + 3e → NO + 2H₂O."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira padatan senyawa ion menghantar listrik.</li><li>Menyebut zat yang teroksidasi sebagai oksidator; yang benar zat yang teroksidasi adalah reduktor.</li><li>Lupa pengecualian biloks pada peroksida, hidrida logam, dan OF₂.</li><li>Lupa mengalikan perubahan biloks dengan jumlah atom (misalnya Cr₂O₇²⁻ melibatkan 2 atom Cr, total 6 elektron).</li><li>Memakai H⁺ pada reaksi suasana basa.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab II Elektrokimia (A. Elektrolit; B. Reaksi Redoks; D.3.b Menyetarakan reaksi redoks).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang elektrolit kuat, elektrolit lemah, dan nonelektrolit, bilangan oksidasi, oksidasi dan reduksi, oksidator dan reduktor, serta penyetaraan reaksi redoks. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

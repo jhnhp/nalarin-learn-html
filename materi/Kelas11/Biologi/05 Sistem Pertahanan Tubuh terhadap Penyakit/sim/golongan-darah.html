@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uji Golongan Darah dan Transfusi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Kartu uji golongan darah dan diagram transfusi"></svg></div>
+  <div class="panel">
+    <div class="lab">Golongan darah penerima</div><select id="r"></select>
+    <div class="lab">Golongan darah pendonor</div><select id="d"></select>
+    <label class="chk"><input type="checkbox" id="sens"> Penerima Rh− pernah terpapar darah Rh+ (sudah punya anti-Rh)</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const T = ['A+', 'A−', 'B+', 'B−', 'AB+', 'AB−', 'O+', 'O−'];
+T.forEach(t => ['r', 'd'].forEach(k => { const o = document.createElement('option'); o.value = t; o.textContent = t; $(k).appendChild(o); }));
+$('r').value = 'B+'; $('d').value = 'O+';
+const ag = t => ({A: t.startsWith('A') && !t.startsWith('AB') || t.startsWith('AB'), B: t.startsWith('B') || t.startsWith('AB'), D: t.endsWith('+')});
+const ab = t => { const a = ag(t); return {A: !a.A, B: !a.B}; };
+function well(x, y, lab, clump){
+  let s = `<circle cx="${x}" cy="${y}" r="34" fill="#fff" stroke="#999" stroke-width="2"/><text class="s" x="${x}" y="${y + 50}" text-anchor="middle" style="fill:var(--ink)">${lab}</text>`;
+  if(clump){ for(let i = 0; i < 9; i++){ const a = i * 2.4, r = 6 + (i * 7) % 18; s += `<circle cx="${x + r * Math.cos(a)}" cy="${y + r * Math.sin(a)}" r="${4 + (i % 3) * 2}" fill="#8b0000"/>`; } }
+  else s += `<circle cx="${x}" cy="${y}" r="26" fill="#d32f2f" fill-opacity=".75"/>`;
+  return s;
+}
+function draw(){
+  const R = $('r').value, D = $('d').value, sens = $('sens').checked;
+  const a = ag(R);
+  let s = `<text class="c" x="20" y="24" style="fill:var(--ink)">Kartu uji darah penerima (${R})</text>`;
+  s += well(70, 75, 'anti-A', a.A) + well(170, 75, 'anti-B', a.B) + well(270, 75, 'anti-Rh (anti-D)', a.D);
+  s += `<text class="s" x="330" y="60" style="fill:var(--muted)">menggumpal = antigen ada</text><text class="s" x="330" y="76" style="fill:var(--muted)">tidak menggumpal = tidak ada</text>`;
+  // transfusi
+  const da = ag(D), rab = ab(R);
+  const clashA = da.A && rab.A, clashB = da.B && rab.B, clashD = da.D && !a.D;
+  const fatal = clashA || clashB, rh = clashD && sens;
+  const ok = !fatal && !clashD;
+  s += `<text class="c" x="20" y="170" style="fill:var(--ink)">Transfusi: sel darah merah pendonor ${D} → plasma penerima ${R}</text>`;
+  const cell = (x, y, t) => { const g = ag(t); let c = `<circle cx="${x}" cy="${y}" r="28" fill="#ef5350" stroke="#b71c1c" stroke-width="2"/>`; const tags = []; if(g.A) tags.push('A'); if(g.B) tags.push('B'); if(g.D) tags.push('Rh'); tags.forEach((tg, i) => { const an = -Math.PI / 2 + i * 1.2 - (tags.length - 1) * .6; c += `<rect x="${x + 34 * Math.cos(an) - 11}" y="${y + 34 * Math.sin(an) - 7}" width="22" height="14" rx="4" fill="#ffd54f" stroke="#8d6e63"/><text class="s" x="${x + 34 * Math.cos(an)}" y="${y + 34 * Math.sin(an) + 4}" text-anchor="middle" fill="#333">${tg}</text>`; }); return c; };
+  s += cell(90, 245, D) + `<text class="s" x="90" y="305" text-anchor="middle" style="fill:var(--ink)">sel darah merah pendonor</text>`;
+  s += `<line x1="140" y1="245" x2="230" y2="245" stroke="#555" stroke-width="3" marker-end="url(#m)"/><defs><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs>`;
+  const abs = []; if(rab.A) abs.push('anti-A'); if(rab.B) abs.push('anti-B'); if(!a.D && sens) abs.push('anti-Rh');
+  s += `<rect x="240" y="200" width="220" height="90" rx="12" fill="#fff8e1" stroke="#ffb300"/><text class="s" x="350" y="220" text-anchor="middle" style="fill:var(--ink)">plasma penerima berisi:</text><text class="c" x="350" y="242" text-anchor="middle" style="fill:var(--ink)">${abs.length ? abs.join(', ') : 'tidak ada antibodi A/B'}</text>`;
+  s += `<text class="c" x="350" y="274" text-anchor="middle" fill="${ok ? '#2e7d32' : fatal || rh ? '#c62828' : '#ef6c00'}">${ok ? 'COCOK: tidak menggumpal' : fatal ? 'TIDAK COCOK: aglutinasi!' : rh ? 'TIDAK COCOK: aglutinasi (Rh)' : 'berisiko: memicu anti-Rh'}</text>`;
+  svg.innerHTML = s;
+  const golAB0 = R.replace(/[+−]/, '');
+  $('read').innerHTML = `<div><span>Antigen sel darah merah penerima</span><b>${[a.A ? 'A' : '', a.B ? 'B' : '', a.D ? 'Rh' : ''].filter(Boolean).join(', ') || 'tidak ada'}</b></div><div><span>Antibodi plasma penerima</span><b>${abs.join(', ') || 'tidak ada'}</b></div><div><span>Hasil transfusi</span><b>${ok ? 'aman' : fatal || rh ? 'terjadi penggumpalan' : 'hindari'}</b></div>`;
+  let ket = `Golongan ${golAB0}: antigen (aglutinogen) ditentukan dari sumur yang menggumpal. Plasma secara alami sudah mengandung antibodi (aglutinin) terhadap antigen A atau B yang tidak dimilikinya. `;
+  if(fatal) ket += `Antibodi penerima mengenali antigen ${clashA ? 'A' : 'B'} pada sel pendonor sehingga sel darah merah pendonor menggumpal dan rusak.`;
+  else if(clashD) ket += sens ? 'Penerima Rh− yang sudah tersensitisasi memiliki anti-Rh, sehingga darah Rh+ langsung menggumpal.' : 'Penerima Rh− belum memiliki anti-Rh, sehingga transfusi pertama darah Rh+ tidak langsung menggumpal, tetapi memicu pembentukan anti-Rh. Transfusi Rh+ berikutnya akan menggumpal. Karena itu penerima Rh− harus diberi darah Rh−.';
+  else ket += 'Tidak ada antigen pendonor yang dikenali antibodi penerima.';
+  $('ket').textContent = ket;
+}
+['r', 'd', 'sens'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

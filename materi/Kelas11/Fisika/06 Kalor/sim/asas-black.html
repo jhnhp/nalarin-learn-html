@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asas Black</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Pencampuran dua zat dan grafik suhu menuju kesetimbangan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button class="on" data-v="logam">Logam panas + air</button><button data-v="es">Es + air hangat</button></div>
+    <div id="ctl"></div>
+    <div class="row"><button class="btn primary" id="go">▶ Campurkan</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Asas Black: kalor yang dilepas zat bersuhu tinggi = kalor yang diserap zat bersuhu rendah (wadah dan lingkungan diabaikan). Q = mcΔT untuk perubahan suhu, Q = mL untuk perubahan wujud. c air = 4.200 J/kg°C, c es = 2.100 J/kg°C, kalor lebur es L = 336.000 J/kg.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'logam', p = 0, timer = null;
+const P = {m1: 0.4, c1: 450, T1: 100, m2: 0.2, T2: 20, mi: 0.05, Ti: -10, mw: 0.3, Tw: 60};
+const CTL = {logam: [['m1', 'Massa logam', 'kg', .1, 1, .05], ['c1', 'Kalor jenis logam', 'J/kg°C', 100, 900, 10], ['T1', 'Suhu logam', '°C', 40, 300, 5], ['m2', 'Massa air', 'kg', .05, 1, .05], ['T2', 'Suhu air', '°C', 0, 50, 1]],
+  es: [['mi', 'Massa es', 'kg', .01, .3, .01], ['Ti', 'Suhu es', '°C', -30, 0, 1], ['mw', 'Massa air', 'kg', .05, 1, .05], ['Tw', 'Suhu air', '°C', 10, 100, 1]]};
+function controls(){
+  $('ctl').innerHTML = CTL[mode].map(([k, n, u, a, b, st]) => `<div class="lab">${n} <b id="v-${k}">${fmt(P[k], 2)} ${u}</b></div><input type="range" id="i-${k}" min="${a}" max="${b}" step="${st}" value="${P[k]}">`).join('');
+  CTL[mode].forEach(([k, , u]) => $('i-' + k).oninput = e => { P[k] = +e.target.value; $('v-' + k).textContent = fmt(P[k], 2) + ' ' + u; p = 0; draw(); });
+}
+document.querySelectorAll('#mode button').forEach(b => b.onclick = () => { document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); mode = b.dataset.v; controls(); p = 0; draw(); });
+$('go').onclick = () => { if(timer) return; p = 0; timer = setInterval(() => { p = Math.min(1, p + .015); if(p >= 1){ clearInterval(timer); timer = null; } draw(); }, 30); };
+function solve(){
+  if(mode === 'logam'){ const a = P.m1 * P.c1, b = P.m2 * 4200, T = (a * P.T1 + b * P.T2) / (a + b); return {T, hot: P.T1, cold: P.T2, Qlep: a * (P.T1 - T), Qser: b * (T - P.T2), note: ''}; }
+  const ci = 2100, cw = 4200, L = 336000;
+  const Qwarm = P.mi * ci * (0 - P.Ti), Qmelt = P.mi * L, Qwater0 = P.mw * cw * P.Tw; // kalor yang dapat dilepas air hingga 0 °C
+  if(Qwater0 < Qwarm){ const T = (P.mi * ci * P.Ti + P.mw * cw * P.Tw) / (P.mi * ci + P.mw * cw); return {T, hot: P.Tw, cold: P.Ti, Qlep: Qwater0, Qser: Qwater0, note: 'kalor air tidak cukup untuk menaikkan suhu es sampai 0 °C (pembekuan air diabaikan)'}; }
+  if(Qwater0 < Qwarm + Qmelt){ const melted = (Qwater0 - Qwarm) / L; return {T: 0, hot: P.Tw, cold: P.Ti, Qlep: Qwater0, Qser: Qwater0, note: `es melebur sebagian: ${fmt(melted * 1000, 1)} g melebur, sisa ${fmt((P.mi - melted) * 1000, 1)} g es`}; }
+  const T = (P.mw * cw * P.Tw - Qwarm - Qmelt) / ((P.mi + P.mw) * cw);
+  return {T, hot: P.Tw, cold: P.Ti, Qlep: P.mw * cw * (P.Tw - T), Qser: Qwarm + Qmelt + P.mi * cw * T, note: 'semua es melebur'};
+}
+function temps(q, r){
+  // q = kalor yang sudah berpindah (J)
+  if(mode === 'logam') return [P.T1 - q / (P.m1 * P.c1), P.T2 + q / (P.m2 * 4200)];
+  const ci = 2100, cw = 4200, L = 336000, Qw = P.mi * ci * (0 - P.Ti), hot = P.Tw - q / (P.mw * cw);
+  let cold;
+  if(q < Qw) cold = P.Ti + q / (P.mi * ci); else if(q < Qw + P.mi * L) cold = 0; else cold = (q - Qw - P.mi * L) / (P.mi * cw);
+  return [hot, Math.min(cold, hot)];
+}
+function draw(){
+  const r = solve(), frac = q => (1 - Math.exp(-5 * q)) / (1 - Math.exp(-5)), [Th, Tc] = temps(r.Qlep * frac(p), r);
+  let s = '';
+  // wadah
+  s += `<path d="M40,80 L40,240 L200,240 L200,80" fill="none" style="stroke:var(--ink)" stroke-width="2.5"/><rect x="42" y="130" width="156" height="108" fill="#3b82f6" fill-opacity=".25"/>`;
+  if(mode === 'logam') s += `<rect x="${100}" y="${p > 0 ? 190 : 40}" width="40" height="30" rx="4" style="fill:var(--comp)" fill-opacity=".9"/><text class="s" x="120" y="${p > 0 ? 209 : 59}" text-anchor="middle" fill="#fff">logam</text>`;
+  else { const size = 30 * Math.cbrt(Math.max(.05, 1 - (r.note.startsWith('semua') ? p : r.note.includes('sebagian') ? p * .5 : 0))); s += `<rect x="${120 - size / 2}" y="${p > 0 ? 131 : 40}" width="${size}" height="${size}" rx="3" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="2"/><text class="s" x="120" y="${p > 0 ? 125 : 34}" text-anchor="middle" style="fill:var(--muted)">es</text>`; }
+  // grafik suhu
+  const L = 250, R = 460, T0 = 40, B = 240, lo = Math.min(r.cold, r.T) - 5, hi = Math.max(r.hot, r.T) + 5, Y = v => B - (v - lo) / (hi - lo) * (B - T0), X = q => L + q * (R - L);
+  s += `<rect x="${L}" y="${T0}" width="${R - L}" height="${B - T0}" style="fill:none;stroke:var(--line)"/>`;
+  const curve = (idx, col) => { let d = ''; for(let i = 0; i <= 120; i++){ const q = i / 120; if(q > p) break; const v = temps(r.Qlep * frac(q), r)[idx]; d += (i ? 'L' : 'M') + X(q).toFixed(1) + ',' + Y(v).toFixed(1); } return `<path d="${d}" fill="none" style="stroke:${col}" stroke-width="2.5"/>`; };
+  s += curve(0, 'var(--b)') + curve(1, 'var(--a)');
+  s += `<line x1="${L}" y1="${Y(r.T)}" x2="${R}" y2="${Y(r.T)}" style="stroke:var(--muted)" stroke-dasharray="3 3"/><text class="s" x="${R - 2}" y="${Y(r.T) - 4}" text-anchor="end" style="fill:var(--muted)">T campuran ${fmt(r.T, 1)} °C</text>`;
+  s += `<text class="s" x="${L - 4}" y="${Y(r.hot) + 4}" text-anchor="end" style="fill:var(--b)">${fmt(r.hot, 0)}</text><text class="s" x="${L - 4}" y="${Y(r.cold) + 4}" text-anchor="end" style="fill:var(--a)">${fmt(r.cold, 0)}</text><text class="s" x="${L}" y="${T0 - 8}" style="fill:var(--muted)">suhu (°C) terhadap waktu</text>`;
+  s += `<text class="c" x="120" y="270" text-anchor="middle" style="fill:var(--ink)">${fmt(Th, 1)} °C → ${fmt(Tc, 1)} °C</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Suhu akhir</span><b>${fmt(r.T, 2)} °C</b></div><div><span>Q dilepas = Q diserap</span><b>${fmt(r.Qlep, 0)} J = ${fmt(r.Qser, 0)} J</b></div>` + (r.note ? `<div><span>Keterangan</span><b>${r.note}</b></div>` : '');
+}
+controls(); draw();
+</script>
+</body>
+</html>

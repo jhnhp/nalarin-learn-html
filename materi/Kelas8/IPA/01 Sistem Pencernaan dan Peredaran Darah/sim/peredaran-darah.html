@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perjalanan Darah</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.stp{font-size:15px;line-height:1.55;padding:10px 12px;border-radius:12px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 420 440" role="img" aria-label="Skema jantung, paru-paru, dan peredaran darah ke seluruh tubuh"></svg></div>
+  <div class="panel">
+    <div class="row"><button class="btn" id="prev">◀ Mundur</button><button class="btn primary" id="next">Maju ▶</button><button class="btn" id="play">Putar</button></div>
+    <div class="stp" id="step"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Merah: darah kaya oksigen. Biru: darah kaya karbon dioksida. Peredaran darah manusia disebut <b>peredaran darah ganda</b> karena darah melewati jantung dua kali dalam satu kali beredar.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// node koordinat skema (jantung di tengah: SKa kiri gambar = sisi kanan tubuh)
+const N = {paru: [210, 50], SKa: [160, 190], BKa: [160, 260], SKi: [260, 190], BKi: [260, 260], tubuh: [210, 400]};
+const S = [
+  ['tubuh', 'SKa', 'b', 'Darah dari seluruh tubuh yang kaya CO₂ masuk ke <b>serambi kanan</b> melalui <b>vena kava</b> (pembuluh balik besar).', 'besar'],
+  ['SKa', 'BKa', 'b', 'Serambi kanan berkontraksi; darah mengalir melalui katup ke <b>bilik kanan</b>.', 'kecil'],
+  ['BKa', 'paru', 'b', 'Bilik kanan memompa darah ke paru-paru melalui <b>arteri pulmonalis</b> (satu-satunya arteri yang membawa darah kaya CO₂).', 'kecil'],
+  ['paru', 'SKi', 'r', 'Di kapiler alveolus, CO₂ dilepas dan O₂ diikat oleh hemoglobin. Darah kaya O₂ kembali ke <b>serambi kiri</b> melalui <b>vena pulmonalis</b>.', 'kecil'],
+  ['SKi', 'BKi', 'r', 'Darah mengalir dari serambi kiri ke <b>bilik kiri</b>.', 'besar'],
+  ['BKi', 'tubuh', 'r', 'Bilik kiri, yang dindingnya paling tebal, memompa darah ke seluruh tubuh melalui <b>aorta</b>. Di kapiler jaringan, O₂ dan sari makanan diberikan ke sel; CO₂ diambil.', 'besar'],
+];
+let i = 0, timer = null;
+$('next').onclick = () => { i = (i + 1) % S.length; draw(); }; $('prev').onclick = () => { i = (i + S.length - 1) % S.length; draw(); };
+$('play').onclick = () => { if(timer){ clearInterval(timer); timer = null; $('play').textContent = 'Putar'; return; } $('play').textContent = 'Jeda'; timer = setInterval(() => { i = (i + 1) % S.length; draw(); }, 2200); };
+Sim.onTheme(draw);
+const col = c => c === 'r' ? 'var(--b)' : 'var(--a)';
+function pathD(a, b){ const [x1, y1] = N[a], [x2, y2] = N[b];
+  if(a === 'BKa' && b === 'paru') return `M${x1 - 20} ${y1} C 70 ${y1}, 70 70, ${x2 - 40} ${y2 + 10}`;
+  if(a === 'paru' && b === 'SKi') return `M${x2 + 40 + 0} ${y2 + 10 - 140} C 350 70, 350 ${y1 + 140}, ${x2 + 20} ${y2 - 0}`.replace(`M${x2 + 40} ${y2 + 10 - 140}`, `M${x1 + 40} ${y1 + 10}`);
+  if(a === 'BKi' && b === 'tubuh') return `M${x1 + 20} ${y1 + 10} C 380 ${y1 + 60}, 380 ${y2}, ${x2 + 50} ${y2}`;
+  if(a === 'tubuh' && b === 'SKa') return `M${x1 - 50} ${y1} C 40 ${y1}, 40 ${y2 + 40}, ${x2 - 20} ${y2}`;
+  return `M${x1} ${y1 + 22} L${x2} ${y2 - 22}`; }
+function draw(){
+  let s = `<defs><marker id="ma" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--ink)"/></marker></defs>`;
+  const arrows = k0 => S.forEach(([a, b, c], k) => { if((a.length === 3 && b.length === 3) !== k0) return; s += `<path d="${pathD(a, b)}" fill="none" style="stroke:${col(c)}" stroke-width="${k === i ? 7 : 3}" stroke-opacity="${k === i ? 1 : .35}" marker-end="url(#ma)"/>`; });
+  arrows(false);
+  s += `<rect x="130" y="160" width="160" height="130" rx="40" style="fill:var(--surface);stroke:var(--ink)" stroke-width="2.5"/><line x1="210" y1="165" x2="210" y2="285" style="stroke:var(--ink)" stroke-width="2"/><line x1="135" y1="225" x2="285" y2="225" style="stroke:var(--ink)" stroke-width="1.5" stroke-dasharray="4 4"/>`;
+  arrows(true);
+  [['SKa', 'serambi kanan'], ['BKa', 'bilik kanan'], ['SKi', 'serambi kiri'], ['BKi', 'bilik kiri']].forEach(([k, t]) => { const [x, y] = N[k]; const on = S[i][0] === k || S[i][1] === k; s += `<text class="c" x="${x}" y="${y + 4}" text-anchor="middle" style="fill:${on ? 'var(--ink)' : 'var(--muted)'}">${t}</text>`; });
+  s += `<ellipse cx="170" cy="50" rx="42" ry="30" style="fill:var(--r)" fill-opacity=".18"/><ellipse cx="250" cy="50" rx="42" ry="30" style="fill:var(--r)" fill-opacity=".18"/><text class="c" x="210" y="54" text-anchor="middle">paru-paru</text>`;
+  s += `<rect x="150" y="380" width="120" height="40" rx="12" style="fill:var(--k)" fill-opacity=".18"/><text class="c" x="210" y="405" text-anchor="middle">seluruh tubuh</text>`;
+  s += `<text class="c" x="140" y="308" style="fill:var(--muted)">kanan</text><text class="c" x="280" y="308" text-anchor="end" style="fill:var(--muted)">kiri</text>`;
+  svg.innerHTML = s;
+  $('step').innerHTML = `<b>Langkah ${i + 1} dari ${S.length}.</b> ${S[i][3]}`;
+  $('read').innerHTML = `<div><span>Bagian dari</span><b>peredaran darah ${S[i][4]} (${S[i][4] === 'kecil' ? 'jantung → paru-paru → jantung' : 'jantung → seluruh tubuh → jantung'})</b></div><div><span>Darah</span><b style="color:${col(S[i][2])}">${S[i][2] === 'r' ? 'kaya O₂' : 'kaya CO₂'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

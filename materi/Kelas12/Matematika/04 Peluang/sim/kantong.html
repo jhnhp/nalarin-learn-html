@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pengambilan Bola dari Kantong</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 330" role="img" aria-label="Diagram pohon dua kali pengambilan bola"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Bola merah</span><b id="mout"></b></div><input type="range" id="m" min="1" max="8" step="1" value="5"></div>
+    <div><div class="lab"><span>Bola biru</span><b id="bout"></b></div><input type="range" id="b" min="1" max="8" step="1" value="3"></div>
+    <div class="seg" id="mode"><button data-m="tanpa" class="on">Tanpa pengembalian</button><button data-m="dengan">Dengan pengembalian</button></div>
+    <div class="read" id="read"></div>
+    <div class="row"><button class="btn primary" id="run">Ambil 1.000 kali</button><button class="btn" id="reset">Ulang</button></div>
+    <div class="read" id="emp"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const gcd = (a, b) => b ? gcd(b, a % b) : a, fr = (p, q) => { const g = gcd(p, q); return `${p / g}/${q / g}`; };
+let mode = 'tanpa', cnt = null;
+$('mode').onclick = e => { const t = e.target.closest('button'); if(!t) return; mode = t.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === t)); cnt = null; draw(); };
+['m', 'b'].forEach(id => $(id).oninput = () => { cnt = null; draw(); });
+$('reset').onclick = () => { cnt = null; draw(); };
+$('run').onclick = () => { const m = +$('m').value, b = +$('b').value; cnt = cnt || {MM: 0, MB: 0, BM: 0, BB: 0, n: 0};
+  for(let k = 0; k < 1000; k++){ let bag = [...Array(m).fill('M'), ...Array(b).fill('B')]; const i = Math.floor(Math.random() * bag.length), x = bag[i]; if(mode === 'tanpa') bag.splice(i, 1); const y = bag[Math.floor(Math.random() * bag.length)]; cnt[x + y]++; cnt.n++; } draw(); };
+Sim.onTheme(draw);
+function draw(){
+  const m = +$('m').value, b = +$('b').value, n = m + b, d2 = mode === 'tanpa' ? n - 1 : n;
+  $('mout').textContent = m; $('bout').textContent = b;
+  const P = {M: [m, n], B: [b, n]};
+  const second = x => ({M: [mode === 'tanpa' && x === 'M' ? m - 1 : m, d2], B: [mode === 'tanpa' && x === 'B' ? b - 1 : b, d2]});
+  const col = {M: 'var(--b)', B: 'var(--a)'};
+  let s = '';
+  // kantong
+  for(let i = 0; i < n; i++) s += `<circle cx="${30 + (i % 4) * 16}" cy="${150 + Math.floor(i / 4) * 16}" r="7" style="fill:${i < m ? 'var(--b)' : 'var(--a)'}"/>`;
+  s += `<text class="c" x="54" y="135" text-anchor="middle">kantong</text>`;
+  const ln = (x1, y1, x2, y2, t) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:var(--line-2)" stroke-width="2"/><text x="${(x1 + x2) / 2}" y="${(y1 + y2) / 2 - 6}" font-size="12" text-anchor="middle" style="fill:var(--muted)">${t}</text>`;
+  const ys = {M: 95, B: 235}, leaves = [];
+  ['M', 'B'].forEach(x => {
+    s += ln(110, 165, 200, ys[x], fr(...P[x])) + `<circle cx="210" cy="${ys[x]}" r="9" style="fill:${col[x]}"/>`;
+    const S2 = second(x);
+    ['M', 'B'].forEach((y, j) => { const yy = ys[x] - 40 + j * 80; s += ln(220, ys[x], 300, yy, S2[y][0] + '/' + S2[y][1]) + `<circle cx="310" cy="${yy}" r="9" style="fill:${col[y]}"/>`;
+      const pr = [P[x][0] * S2[y][0], P[x][1] * S2[y][1]]; leaves.push([x + y, pr]); s += `<text class="c" x="328" y="${yy + 5}">${x}${y}: ${pr[0] ? fr(...pr) : '0'}</text>`; });
+  });
+  s += `<text class="c" x="210" y="22" text-anchor="middle">ambil ke-1</text><text class="c" x="310" y="22" text-anchor="middle">ambil ke-2</text>`;
+  svg.innerHTML = s;
+  const L = Object.fromEntries(leaves), v = k => L[k][0] / L[k][1];
+  const pB2M = (L.MM[0] / L.MM[1]) / (m / n);
+  $('read').innerHTML = `<div><span>P(M, M) = P(M₁) × P(M₂ | M₁)</span><b>${fr(m, n)} × ${second('M').M[0]}/${d2} = ${L.MM[0] ? fr(...L.MM) : 0}</b></div>` +
+    `<div><span>P(M₂ | M₁) vs P(M₂ | B₁)</span><b>${second('M').M[0]}/${d2} vs ${second('B').M[0]}/${d2}</b></div>` +
+    `<div><span>Kedua pengambilan</span><b>${mode === 'tanpa' ? 'tidak saling bebas' : 'saling bebas'}</b></div>` +
+    `<div><span>P(warna sama) = P(MM) + P(BB)</span><b>${Sim.fmt(v('MM') + v('BB'), 4)}</b></div>`;
+  $('emp').innerHTML = cnt ? ['MM', 'MB', 'BM', 'BB'].map(k => `<div><span>${k}: frekuensi relatif</span><b>${Sim.fmt(cnt[k] / cnt.n, 3)} (teori ${Sim.fmt(v(k), 3)})</b></div>`).join('') : '<div><span>Tekan “Ambil 1.000 kali” untuk percobaan</span><b></b></div>';
+}
+draw();
+</script>
+</body>
+</html>

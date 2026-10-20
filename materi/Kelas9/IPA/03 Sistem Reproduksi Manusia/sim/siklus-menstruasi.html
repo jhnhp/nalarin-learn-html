@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siklus Menstruasi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 380" role="img" aria-label="Grafik hormon, ovarium, dan dinding rahim selama siklus menstruasi"></svg></div>
+  <div class="panel">
+    <div class="lab">Hari ke-<b id="dv">1</b></div>
+    <input type="range" id="d" min="1" max="28" step="1" value="1">
+    <div class="row"><button class="btn primary" id="play">▶ Jalankan</button></div>
+    <label class="chk"><input type="checkbox" id="c-f"> Sel telur dibuahi (fertilisasi)</label>
+    <div class="read" id="read"></div>
+    <p class="note">FSH dan LH dari kelenjar hipofisis mengatur ovarium. Folikel menghasilkan <b>estrogen</b> yang menebalkan dinding rahim. Lonjakan LH memicu <b>ovulasi</b>. Korpus luteum menghasilkan <b>progesteron</b> yang mempertahankan dinding rahim.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const g = (x, m, s) => Math.exp(-((x - m) ** 2) / (2 * s * s));
+// kadar relatif 0..1
+const FSH = d => .35 + .25 * g(d, 3, 3) + .35 * g(d, 14, 1.1) - .15 * g(d, 21, 4);
+const LH = d => .15 + .85 * g(d, 14, 1);
+function EST(d, f){ return .12 + .78 * g(d, 12.5, 2.4) + .38 * g(d, 21, 3.5) + (f && d > 21 ? .4 * (1 - g(d, 21, 3.5)) : 0); }
+function PRO(d, f){ return f && d > 21 ? 1 : .05 + .95 * g(d, 21, 3.6) * (d > 14 ? 1 : g(d, 14, 1.2)); }
+function END(d, f){ // mm
+  if(f && d > 24) return 11;
+  if(d <= 5) return 4 - 2.6 * (d - 1) / 4;
+  if(d <= 14) return 1.4 + 6.6 * (d - 5) / 9;
+  if(d <= 24) return 8 + 3 * (d - 14) / 10;
+  return 11 - 6 * (d - 24) / 4;
+}
+let D = 1, timer = null;
+$('d').oninput = e => { D = +e.target.value; draw(); };
+$('c-f').onchange = draw;
+$('play').onclick = () => {
+  if(timer){ clearInterval(timer); timer = null; $('play').textContent = '▶ Jalankan'; return; }
+  $('play').textContent = '⏸ Berhenti';
+  timer = setInterval(() => { D = D >= 28 ? 1 : D + 1; $('d').value = D; draw(); }, 450);
+};
+function draw(){
+  const f = $('c-f').checked;
+  const L = 76, R = 465, X = d => L + (d - 1) / 27 * (R - L);
+  let s = '';
+  // panel hormon
+  const T1 = 20, B1 = 160, Y1 = v => B1 - v * (B1 - T1);
+  s += `<text class="c" x="6" y="${T1 + 4}" style="fill:var(--muted)">Hormon</text>`;
+  const curve = (fn, col, lab, w) => {
+    let p = ''; for(let d = 1; d <= 28; d += .25) p += (d === 1 ? 'M' : 'L') + X(d).toFixed(1) + ',' + Y1(Math.min(1.05, fn(d))).toFixed(1);
+    return `<path d="${p}" fill="none" style="stroke:${col}" stroke-width="${w || 2.5}"/>`;
+  };
+  s += `<line x1="${L}" y1="${B1}" x2="${R}" y2="${B1}" style="stroke:var(--line-2)"/>`;
+  s += curve(FSH, 'var(--k)') + curve(LH, 'var(--r)') + curve(d => EST(d, f), 'var(--a)') + curve(d => PRO(d, f), 'var(--comp)');
+  const legend = [['FSH', 'var(--k)'], ['LH', 'var(--r)'], ['estrogen', 'var(--a)'], ['progesteron', 'var(--comp)']];
+  legend.forEach(([t, c], i) => s += `<rect x="${L + 6 + i * 96}" y="${T1 - 14}" width="12" height="4" style="fill:${c}"/><text class="s" x="${L + 22 + i * 96}" y="${T1 - 9}" style="fill:${c}">${t}</text>`);
+  // panel ovarium
+  const yo = 196;
+  s += `<text class="c" x="6" y="${yo + 4}" style="fill:var(--muted)">Ovarium</text>`;
+  for(let d = 1; d <= 28; d += 3){
+    const x = X(d); let r, st, fill = 'none', col = 'var(--a)';
+    if(d < 14){ r = 4 + d * .9; st = d < 7 ? 'primer' : 'de Graaf'; }
+    else if(d < 16){ r = 16; }
+    else if(d < 26 || f){ r = 13; fill = 'var(--comp)'; col = 'var(--comp)'; }
+    else { r = 7; fill = 'var(--line-2)'; col = 'var(--muted)'; }
+    s += `<circle cx="${x}" cy="${yo}" r="${Math.min(r, 13)}" style="fill:${fill};stroke:${col}" fill-opacity=".35" stroke-width="2"/>`;
+    if(d < 16) s += `<circle cx="${x}" cy="${yo}" r="3" style="fill:var(--b)"/>`;
+  }
+  s += `<text class="s" x="${X(14)}" y="${yo + 30}" text-anchor="middle" style="fill:var(--r)">ovulasi</text><text class="s" x="${X(6)}" y="${yo + 30}" text-anchor="middle" style="fill:var(--a)">folikel tumbuh</text><text class="s" x="${X(21)}" y="${yo + 30}" text-anchor="middle" style="fill:var(--comp)">korpus luteum</text>`;
+  if(!f) s += `<text class="s" x="${X(27)}" y="${yo + 30}" text-anchor="middle" style="fill:var(--muted)">albikans</text>`;
+  // panel endometrium
+  const T3 = 250, B3 = 340, Y3 = v => B3 - v / 12 * (B3 - T3);
+  s += `<text class="c" x="6" y="${T3 + 4}" style="fill:var(--muted)">Dinding</text><text class="c" x="6" y="${T3 + 18}" style="fill:var(--muted)">rahim</text>`;
+  let p = `M${X(1)},${B3}`; for(let d = 1; d <= 28; d += .25) p += `L${X(d).toFixed(1)},${Y3(END(d, f)).toFixed(1)}`; p += `L${X(28)},${B3}Z`;
+  s += `<path d="${p}" style="fill:var(--b);stroke:var(--b)" fill-opacity=".25" stroke-width="2"/>`;
+  if(!f) s += `<rect x="${X(1)}" y="${B3 + 2}" width="${X(5) - X(1)}" height="6" rx="3" style="fill:var(--b)"/>`;
+  // sumbu hari
+  [1, 7, 14, 21, 28].forEach(d => s += `<text class="s" x="${X(d)}" y="${B3 + 24}" text-anchor="middle" style="fill:var(--muted)">${d}</text>`);
+  s += `<text class="s" x="${R}" y="${B3 + 38}" text-anchor="end" style="fill:var(--muted)">hari siklus</text>`;
+  // penanda hari
+  s += `<line x1="${X(D)}" y1="${T1 - 4}" x2="${X(D)}" y2="${B3}" style="stroke:var(--ink)" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  svg.innerHTML = s;
+  $('dv').textContent = D;
+  let fase, rahim, ov;
+  if(D <= 5){ fase = 'menstruasi'; rahim = 'dinding rahim meluruh dan keluar sebagai darah'; ov = 'folikel baru mulai tumbuh (FSH)'; }
+  else if(D < 14){ fase = 'praovulasi (folikuler)'; rahim = 'dinding rahim menebal (estrogen)'; ov = 'folikel membesar dan menghasilkan estrogen'; }
+  else if(D === 14){ fase = 'ovulasi'; rahim = 'dinding rahim tebal'; ov = 'lonjakan LH: sel telur lepas ke tuba falopi'; }
+  else { fase = 'pascaovulasi (luteal)'; rahim = f ? 'dinding rahim dipertahankan untuk implantasi' : D > 24 ? 'progesteron turun; dinding rahim mulai meluruh' : 'dinding rahim makin tebal dan kaya pembuluh darah'; ov = f && D > 21 ? 'korpus luteum dipertahankan oleh hormon HCG' : D > 25 ? 'korpus luteum mengecil menjadi korpus albikans' : 'korpus luteum menghasilkan progesteron'; }
+  $('read').innerHTML = `<div><span>Fase</span><b>${fase}</b></div><div><span>Ovarium</span><b>${ov}</b></div><div><span>Dinding rahim</span><b>${rahim} (±${END(D, f).toFixed(0)} mm)</b></div>` + (f && D > 21 ? `<div><span>Akibat</span><b>tidak terjadi menstruasi (hamil)</b></div>` : '');
+}
+draw();
+</script>
+</body>
+</html>

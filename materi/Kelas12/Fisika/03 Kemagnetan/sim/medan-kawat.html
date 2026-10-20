@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medan Magnet Dua Kawat Sejajar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Dua kawat sejajar berarus dan grafik medan magnet di sekitarnya"></svg></div>
+  <div class="panel">
+    <div class="lab">Arus kawat 1 (+ = ke atas) <b id="i1v"></b></div><input type="range" id="i1" min="-10" max="10" step="1" value="6">
+    <div class="lab">Arus kawat 2 (+ = ke atas) <b id="i2v"></b></div><input type="range" id="i2" min="-10" max="10" step="1" value="3">
+    <div class="lab">Jarak kedua kawat <b id="dv"></b></div><input type="range" id="d" min="4" max="20" step="1" value="10">
+    <div class="lab">Posisi titik P dari kawat 1 <b id="xv"></b></div><input type="range" id="x" min="-5" max="25" step="0.5" value="4">
+    <div class="read" id="read"></div>
+    <p class="note">B = μ₀I/(2πa), μ₀ = 4π × 10⁻⁷ T m/A. Arah dengan kaidah tangan kanan: ibu jari menunjuk arus, lipatan jari menunjuk arah medan. ⊙ keluar bidang, ⊗ masuk bidang.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const sci = v => { if(v === 0) return '0'; const e = Math.floor(Math.log10(Math.abs(v))); if(e >= -2 && e <= 3) return fmt(v, 3); return `${fmt(v / 10 ** e, 2)} × 10${String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`; };
+// Bz positif = keluar bidang. Kawat vertikal berarus ke atas: di kanan kawat medan masuk bidang, di kiri keluar.
+function Bz(xcm, I, xw){ const a = (xcm - xw) / 100; if(Math.abs(a) < 0.002) return NaN; return -2e-7 * I / a; }
+function draw(){
+  const I1 = +$('i1').value, I2 = +$('i2').value, d = +$('d').value, xp = +$('x').value;
+  $('i1v').textContent = I1 + ' A'; $('i2v').textContent = I2 + ' A'; $('dv').textContent = d + ' cm'; $('xv').textContent = fmt(xp, 1) + ' cm';
+  const X = x => 70 + x * 13, W1 = X(0), W2 = X(d);
+  let s = '';
+  const wire = (x, I, lab) => `<line x1="${x}" y1="20" x2="${x}" y2="150" stroke="#e07b39" stroke-width="5"/>${I ? `<path d="M${x},${I > 0 ? 70 : 100} l-7,${I > 0 ? 12 : -12} h14z" fill="#333"/>` : ''}<text class="c" x="${x}" y="168" text-anchor="middle" style="fill:var(--ink)">${lab}</text>`;
+  s += wire(W1, I1, 'kawat 1') + wire(W2, I2, 'kawat 2');
+  const B = Bz(xp, I1, 0) + Bz(xp, I2, d);
+  s += `<circle cx="${X(xp)}" cy="120" r="7" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2"/><text class="c" x="${X(xp)}" y="140" text-anchor="middle" fill="#2e7d32">P ${isFinite(B) ? (B > 1e-12 ? '⊙' : B < -1e-12 ? '⊗' : '') : ''}</text>`;
+  const gy = 250, hh = 55;
+  let mx = 1e-9; for(let x = -5; x <= 25; x += .1){ const b = Bz(x, I1, 0) + Bz(x, I2, d); if(isFinite(b)) mx = Math.max(mx, Math.min(Math.abs(b), 2e-4)); }
+  let p = '', on = false;
+  for(let x = -5; x <= 25.01; x += .1){ const b = Bz(x, I1, 0) + Bz(x, I2, d); if(!isFinite(b) || Math.abs(b) > mx * 1.01){ on = false; continue; } p += (on ? 'L' : 'M') + X(x).toFixed(1) + ',' + (gy - hh * b / mx).toFixed(1); on = true; }
+  s += `<line x1="${X(-5)}" y1="${gy}" x2="${X(25)}" y2="${gy}" style="stroke:var(--ink)"/><path d="${p}" fill="none" stroke="#6a1b9a" stroke-width="2.5"/><text class="s" x="${X(-5)}" y="${gy - hh - 8}" style="fill:var(--muted)">B sepanjang garis mendatar (atas = keluar ⊙, bawah = masuk ⊗)</text>`;
+  s += `<line x1="${W1}" y1="${gy - hh}" x2="${W1}" y2="${gy + hh}" stroke="#e07b39" stroke-dasharray="3 3"/><line x1="${W2}" y1="${gy - hh}" x2="${W2}" y2="${gy + hh}" stroke="#e07b39" stroke-dasharray="3 3"/><line x1="${X(xp)}" y1="${gy - hh}" x2="${X(xp)}" y2="${gy + hh}" stroke="#2e7d32"/>`;
+  svg.innerHTML = s;
+  const F = 2e-7 * Math.abs(I1 * I2) / (d / 100);
+  $('read').innerHTML = `<div><span>B dari kawat 1 di P</span><b>${isFinite(Bz(xp, I1, 0)) ? sci(Math.abs(Bz(xp, I1, 0))) + ' T' : '—'}</b></div><div><span>B dari kawat 2 di P</span><b>${isFinite(Bz(xp, I2, d)) ? sci(Math.abs(Bz(xp, I2, d))) + ' T' : '—'}</b></div><div><span>B total di P</span><b>${isFinite(B) ? sci(Math.abs(B)) + ' T ' + (B > 1e-12 ? 'keluar bidang' : B < -1e-12 ? 'masuk bidang' : '') : 'P berimpit dengan kawat'}</b></div><div><span>Gaya per meter antarkawat</span><b>${sci(F)} N/m, ${I1 * I2 > 0 ? 'tarik-menarik' : I1 * I2 < 0 ? 'tolak-menolak' : '—'}</b></div>`;
+}
+['i1', 'i2', 'd', 'x'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

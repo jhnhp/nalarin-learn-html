@@ -1,56 +1,156 @@
 {
   "title": "Baris dan Deret",
-  "summary": "Ringkasan bab Baris dan Deret akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA: pola bilangan, barisan aritmetika dan geometri, serta deret aritmetika dalam konteks.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Baris dan Deret",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Baris dan Deret</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi pola dan barisan",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Kenali jenis barisannya dahulu: selisih tetap → aritmetika; perbandingan tetap → geometri; selisihnya membentuk barisan lain → pola bertingkat.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Pola bilangan</td><td>pola gambar, bilangan persegi, persegi panjang, segitiga</td><td>Kelas 7–8</td></tr><tr><td>Barisan aritmetika</td><td>Uₙ = a + (n − 1)b</td><td>Kelas 8–9, Kelas 10 Bab 2</td></tr><tr><td>Barisan geometri</td><td>Uₙ = arⁿ⁻¹</td><td>Kelas 10 Bab 2</td></tr><tr><td>Deret aritmetika</td><td>Sₙ = ½n(a + Uₙ)</td><td>Kelas 10 Bab 2</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>Aritmetika: Uₙ = a + (n − 1)b; Sₙ = ½n(a + Uₙ); banyak suku n = (Uₙ − a)/b + 1.</li><li>Geometri: Uₙ = arⁿ⁻¹.</li><li>Pola n(n + 1): 2, 6, 12, 20, 30, …; pola n² + 1: 2, 5, 10, 17, 26, ….</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "barisan",
+      "title": "Barisan aritmetika dan geometri",
+      "kind": "simulasi",
+      "duration": "20 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/barisan.html",
+          "title": "Barisan aritmetika dan geometri",
+          "height": 520,
+          "caption": "Atur a dan beda/rasio, lalu tebak suku ke-10 sebelum melihat hasilnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>U₃ = 11 dan U₇ = 27 pada barisan aritmetika. Tentukan U₁₅.</p>",
+          "steps": [
+            "4b = 16, b = 4; a = 11 − 8 = 3.",
+            "U₁₅ = 3 + 14 × 4 = 59."
+          ],
+          "answer": "59"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Banyak suku barisan 7, 11, 15, …, 87.</p>",
+          "steps": [
+            "n = (87 − 7)/4 + 1 = 21."
+          ],
+          "answer": "21 suku"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Suku ke-15 barisan 2, 6, 12, 20, 30, ….</p>",
+          "steps": [
+            "Polanya n(n + 1).",
+            "U₁₅ = 15 × 16 = 240."
+          ],
+          "answer": "240"
+        },
+        {
+          "type": "check",
+          "question": "Suku ke-6 barisan geometri 3, 6, 12, 24, … adalah ....",
+          "options": {
+            "A": "48",
+            "B": "96",
+            "C": "192",
+            "D": "36"
+          },
+          "answer": "B",
+          "hint": "a = 3, r = 2.",
+          "explanation": "U₆ = 3 × 2⁵ = 96."
+        }
+      ]
+    },
+    {
+      "id": "deret",
+      "title": "Deret dan soal cerita",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/Matematika/04 Bentuk Aljabar/sim/pola-korek.html",
+          "title": "Pola korek api",
+          "height": 520,
+          "caption": "Hitung banyak korek untuk pola ke-n dan perhatikan bedanya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Jumlah semua bilangan kelipatan 3 di antara 10 dan 100.</p>",
+          "steps": [
+            "Barisan 12, 15, …, 99: n = (99 − 12)/3 + 1 = 30.",
+            "S = 30/2 × (12 + 99) = 15 × 111 = 1.665."
+          ],
+          "answer": "1.665"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Nadia menabung Rp10.000,00 pada minggu pertama dan setiap minggu bertambah Rp2.000,00. Berapa total tabungannya setelah 10 minggu?</p>",
+          "steps": [
+            "U₁₀ = 10.000 + 9 × 2.000 = 28.000.",
+            "S₁₀ = 5 × (10.000 + 28.000) = 190.000."
+          ],
+          "answer": "Rp190.000,00"
+        },
+        {
+          "type": "check",
+          "question": "Jumlah 10 suku pertama deret 2 + 5 + 8 + 11 + … adalah ....",
+          "options": {
+            "A": "145",
+            "B": "155",
+            "C": "160",
+            "D": "290"
+          },
+          "answer": "B",
+          "hint": "Hitung U₁₀ dahulu.",
+          "explanation": "U₁₀ = 2 + 27 = 29. S₁₀ = 5 × 31 = 155."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tulis 3–4 suku pertama dari gambar, lalu cari selisih atau perbandingannya.</li><li>Bedakan “banyak kursi di baris ke-n” (Uₙ) dengan “banyak kursi seluruhnya” (Sₙ).</li><li>Pada pesan berantai/pembelahan, banyak yang baru menerima (Uₙ) berbeda dengan total yang sudah menerima (Sₙ).</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai n, bukan n − 1, pada rumus Uₙ.</li><li>Salah menghitung banyak suku di antara dua batas.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMP topik Baris dan Deret. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

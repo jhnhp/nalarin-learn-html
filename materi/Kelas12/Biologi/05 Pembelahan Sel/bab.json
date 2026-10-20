@@ -1,56 +1,159 @@
 {
   "title": "Pembelahan Sel",
-  "summary": "Ringkasan bab Pembelahan Sel akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Siklus sel dan pengendaliannya, tahapan mitosis dan sitokinesis, meiosis I dan II beserta pindah silang, perbandingan mitosis dan meiosis, serta spermatogenesis dan oogenesis.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Pembelahan Sel",
+      "id": "siklus-mitosis",
+      "title": "Siklus sel dan mitosis",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Siklus sel</b> terdiri atas <b>interfase</b> dan <b>fase M</b> (mitosis dan sitokinesis). Interfase adalah tahap terpanjang dan bukan masa istirahat:</p><ul><li><b>G1</b>: sel tumbuh, membuat protein dan organel.</li><li><b>S</b> (sintesis): DNA bereplikasi, sehingga setiap kromosom kini memiliki dua kromatid.</li><li><b>G2</b>: persiapan akhir pembelahan; pada sel hewan sentriol telah berduplikasi.</li></ul><p>Sel yang tidak lagi membelah (misalnya sel saraf) keluar dari siklus ke fase G0. Sistem <b>pengendali siklus sel</b> memeriksa kerusakan DNA; sel yang rusak memusnahkan dirinya (apoptosis). Jika pengendali ini gagal, sel dapat terus membelah tak terkendali dan membentuk kanker.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pembelahan.html",
+          "title": "Mitosis",
+          "height": 540,
+          "caption": "Hitung jumlah kromosom dan kromatid pada setiap tahap mitosis. Pada tahap apa jumlah kromosom dalam satu sel menjadi dua kali lipat?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Tahap</th><th>Peristiwa utama</th></tr><tr><td>Profase</td><td>kromatin memadat menjadi kromosom; membran inti dan nukleolus hilang; benang spindel terbentuk</td></tr><tr><td>Metafase</td><td>kromosom berjajar di bidang ekuator</td></tr><tr><td>Anafase</td><td>sentromer membelah; kromatid saudara ditarik ke kutub berlawanan</td></tr><tr><td>Telofase</td><td>membran inti terbentuk kembali, kromosom kembali menjadi kromatin; diikuti sitokinesis</td></tr></table><p><b>Sitokinesis</b> pada sel hewan terjadi dengan pelekukan membran (oleh cincin mikrofilamen), sedangkan pada sel tumbuhan dengan pembentukan <b>sekat sel</b> (lempeng sel) di tengah. Hasil mitosis adalah 2 sel anak diploid yang identik secara genetik dengan induknya. Mitosis berfungsi untuk pertumbuhan, mengganti sel yang rusak, dan reproduksi aseksual.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sel tubuh kucing memiliki 2n = 38. Berapa jumlah kromosom dalam satu sel pada metafase dan pada anafase mitosis (sebelum sitokinesis)?</p>",
+          "steps": [
+            "Metafase: 38 kromosom, masing-masing dua kromatid.",
+            "Anafase: kromatid berpisah dan masing-masing dihitung sebagai kromosom, sehingga dalam satu sel ada 76."
+          ],
+          "answer": "38 dan 76"
+        },
+        {
+          "type": "check",
+          "question": "Pada sel tumbuhan, sitokinesis berlangsung dengan cara ....",
+          "options": {
+            "A": "pelekukan membran sel ke dalam",
+            "B": "pembentukan sekat (lempeng) sel di bidang ekuator",
+            "C": "pembentukan badan polar",
+            "D": "penggandaan sentriol"
+          },
+          "answer": "B",
+          "hint": "Sel tumbuhan berdinding kaku.",
+          "explanation": "Dinding sel yang kaku tidak dapat melekuk, sehingga dibentuk lempeng sel di tengah yang berkembang menjadi dinding sel baru."
+        }
+      ]
+    },
+    {
+      "id": "meiosis",
+      "title": "Meiosis",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Meiosis</b> adalah pembelahan reduksi yang menghasilkan 4 sel anak <b>haploid</b> (n) yang berbeda secara genetik. Meiosis terjadi pada pembentukan gamet di hewan dan pembentukan spora di tumbuhan. Meiosis terdiri atas dua pembelahan berturut-turut tanpa replikasi DNA di antaranya (interkinesis).</p><ul><li><b>Meiosis I</b> memisahkan <b>kromosom homolog</b>. Pada profase I terjadi sinapsis (pasangan homolog membentuk <b>tetrad</b>) dan <b>pindah silang</b> (crossing over) pada kiasma. Profase I terdiri atas leptoten, zigoten, pakiten, diploten, dan diakinesis.</li><li><b>Meiosis II</b> memisahkan <b>kromatid saudara</b>, mirip mitosis.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pembelahan.html",
+          "title": "Meiosis",
+          "height": 540,
+          "caption": "Aktifkan pindah silang lalu ikuti sampai telofase II. Mengapa keempat sel hasil meiosis berbeda satu sama lain?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Aspek</th><th>Mitosis</th><th>Meiosis</th></tr><tr><td>Jumlah pembelahan</td><td>1</td><td>2</td></tr><tr><td>Sel anak</td><td>2, diploid (2n)</td><td>4, haploid (n)</td></tr><tr><td>Sifat genetik sel anak</td><td>identik dengan induk</td><td>berbeda-beda</td></tr><tr><td>Sinapsis dan pindah silang</td><td>tidak ada</td><td>ada (profase I)</td></tr><tr><td>Tempat</td><td>sel tubuh</td><td>organ kelamin (testis, ovarium, kepala sari, bakal biji)</td></tr></table><p>Variasi genetik dari meiosis berasal dari <b>pindah silang</b> dan <b>pemilihan bebas</b> kromosom homolog pada metafase I. Bersama fertilisasi acak, keduanya membuat setiap anak (kecuali kembar identik) unik.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sel tumbuhan padi memiliki 2n = 24. Tentukan jumlah kromosom pada telofase I dan pada setiap sel hasil meiosis II.</p>",
+          "steps": [
+            "Telofase I: kromosom homolog sudah berpisah, sehingga setiap sel memiliki 12 kromosom (masing-masing dua kromatid).",
+            "Hasil meiosis II: 12 kromosom (masing-masing satu kromatid)."
+          ],
+          "answer": "12 dan 12"
+        },
+        {
+          "type": "check",
+          "question": "Peristiwa yang menyebabkan jumlah kromosom berkurang setengahnya pada meiosis adalah ....",
+          "options": {
+            "A": "replikasi DNA pada fase S",
+            "B": "berpisahnya kromatid saudara pada anafase II",
+            "C": "berpisahnya kromosom homolog pada anafase I",
+            "D": "pembelahan sitoplasma pada telofase II"
+          },
+          "answer": "C",
+          "hint": "Pengurangan terjadi di meiosis I.",
+          "explanation": "Pada anafase I kromosom homolog berpisah, sehingga setiap sel anak hanya mendapat satu dari setiap pasangan (n)."
+        }
+      ]
+    },
+    {
+      "id": "gametogenesis",
+      "title": "Gametogenesis",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Spermatogenesis (testis)</th><th>Oogenesis (ovarium)</th></tr><tr><td>spermatogonium (2n) bermitosis → spermatosit primer (2n)</td><td>oogonium (2n) bermitosis → oosit primer (2n), terbentuk sejak masa janin</td></tr><tr><td>meiosis I → 2 spermatosit sekunder (n)</td><td>meiosis I → 1 oosit sekunder (n) + 1 badan polar pertama</td></tr><tr><td>meiosis II → 4 spermatid (n)</td><td>meiosis II (setelah dibuahi sperma) → 1 ovum (n) + badan polar kedua; badan polar pertama dapat membelah lagi</td></tr><tr><td>spermiogenesis → 4 sperma fungsional</td><td>1 ovum fungsional + 3 badan polar yang akhirnya mati</td></tr><tr><td>berlangsung terus sejak pubertas</td><td>siklik, tiap bulan sejak pubertas sampai menopause</td></tr></table><p>Pada oogenesis, sitoplasma dibagi tidak sama: hampir semua sitoplasma diberikan kepada ovum sebagai cadangan makanan bagi embrio awal.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 15 oosit primer menyelesaikan oogenesis. Berapa ovum dan badan polar yang terbentuk (dengan badan polar pertama ikut membelah)?</p>",
+          "steps": [
+            "Setiap oosit primer menghasilkan 1 ovum dan 3 badan polar."
+          ],
+          "answer": "15 ovum dan 45 badan polar"
+        },
+        {
+          "type": "check",
+          "question": "Oogenesis hanya menghasilkan satu ovum fungsional dari satu oosit primer karena ....",
+          "options": {
+            "A": "tiga sel lainnya dihancurkan sel sperma",
+            "B": "pembagian sitoplasma tidak sama sehingga satu sel mendapat cadangan makanan terbanyak",
+            "C": "meiosis pada oogenesis hanya terjadi satu kali",
+            "D": "oosit primer tidak mengalami meiosis"
+          },
+          "answer": "B",
+          "hint": "Bandingkan ukuran ovum dan badan polar.",
+          "explanation": "Hampir seluruh sitoplasma diberikan kepada ovum sebagai bekal embrio; badan polar yang kecil akhirnya mati."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Mitosis, Siklus Sel, Meiosis, dan Gametogenesis</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyebut interfase sebagai masa istirahat.</li><li>Tertukar anafase I (homolog berpisah) dan anafase II (kromatid berpisah).</li><li>Menghitung kromatid sebagai kromosom pada metafase.</li><li>Mengira oogenesis menghasilkan 4 ovum.</li><li>Lupa bahwa pindah silang hanya terjadi pada meiosis (profase I).</li></ul>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut meiosis \"terjadi saat pembentukan gamet-gamet saja\". Pada tumbuhan, meiosis juga terjadi pada pembentukan <b>spora</b> (misalnya spora lumut dan paku, serta mikrospora dan megaspora tumbuhan berbiji). Buku juga menyebut sel darah sebagai contoh sel yang bermitosis; yang membelah adalah sel induk di sumsum tulang, sedangkan sel darah merah dewasa tidak berinti dan tidak membelah.</p>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 2 Genetik dan Pewarisan Sifat (C. Pembelahan Sel).</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang mitosis, siklus sel, meiosis, dan gametogenesis. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

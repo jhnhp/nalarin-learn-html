@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Populasi Mangsa dan Pemangsa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Grafik jumlah tikus dan ular terhadap waktu"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Tikus awal</span><b id="r0out"></b></div><input type="range" id="r0" min="20" max="200" step="10" value="80"></div>
+    <div><div class="lab"><span>Ular awal</span><b id="s0out"></b></div><input type="range" id="s0" min="2" max="40" step="1" value="10"></div>
+    <div><div class="lab"><span>Ular diburu manusia mulai bulan ke-60 (% per bulan)</span><b id="hout"></b></div><input type="range" id="h" min="0" max="10" step="1" value="0"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Saat tikus melimpah, ular mendapat banyak makanan sehingga bertambah. Ular yang banyak memangsa tikus sehingga tikus berkurang, lalu ular kekurangan makanan dan ikut berkurang. Populasi naik-turun bergantian dan tetap seimbang selama tidak diganggu.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['r0', 's0', 'h'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function run(){ let R = +$('r0').value, Sn = +$('s0').value; const h = +$('h').value / 100, out = [];
+  for(let t = 0; t <= 120; t++){ out.push([R, Sn]); for(let k = 0; k < 10; k++){ const dt = .1;
+    const dR = .12 * R * (1 - R / 400) - .006 * R * Sn, dS = .0012 * R * Sn - .09 * Sn - (t >= 60 ? h * Sn : 0);
+    R = Math.max(0, R + dR * dt); Sn = Math.max(0, Sn + dS * dt); } }
+  return out; }
+function draw(){
+  const d = run(), mx = Math.max(100, ...d.map(p => p[0])) * 1.1, L = 46, B = 280, W = 400, H = 250, X = t => L + t / 120 * W, Y = v => B - v / mx * H;
+  let s = '';
+  for(let k = 0; k <= 4; k++){ const v = mx * k / 4; s += `<line x1="${L}" y1="${Y(v)}" x2="${L + W}" y2="${Y(v)}" style="stroke:var(--line)"/><text class="c" x="${L - 6}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--muted)">${fmt(v, 0)}</text>`; }
+  for(let t = 0; t <= 120; t += 20) s += `<text class="c" x="${X(t)}" y="${B + 15}" text-anchor="middle" style="fill:var(--muted)">${t}</text>`;
+  if(+$('h').value) s += `<rect x="${X(60)}" y="${B - H}" width="${X(120) - X(60)}" height="${H}" style="fill:var(--b)" fill-opacity=".06"/><text class="c" x="${X(62)}" y="${B - H + 14}" style="fill:var(--b)">perburuan ular</text>`;
+  const line = (i, col, k) => `<path d="${d.map((p, t) => (t ? 'L' : 'M') + X(t).toFixed(1) + ',' + Y(p[i] * k).toFixed(1)).join('')}" fill="none" style="stroke:${col}" stroke-width="3"/>`;
+  s += line(0, 'var(--comp)', 1) + line(1, 'var(--ok)', 5);
+  s += `<line x1="${L}" y1="${B}" x2="${L + W}" y2="${B}" style="stroke:var(--ink)" stroke-width="1.5"/><text class="c" x="${L + W}" y="${B + 30}" text-anchor="end" style="fill:var(--muted)">waktu (bulan)</text>`;
+  s += `<rect x="${L + 10}" y="10" width="11" height="11" rx="3" style="fill:var(--comp)"/><text class="c" x="${L + 26}" y="20">tikus</text><rect x="${L + 80}" y="10" width="11" height="11" rx="3" style="fill:var(--ok)"/><text class="c" x="${L + 96}" y="20">ular (× 5 agar terlihat)</text>`;
+  svg.innerHTML = s;
+  ['r0', 's0'].forEach(id => $(id + 'out').textContent = $(id).value); $('hout').textContent = $('h').value + '%';
+  const end = d[120];
+  $('read').innerHTML = `<div><span>Tikus pada bulan ke-120</span><b>${fmt(end[0], 0)}</b></div><div><span>Ular pada bulan ke-120</span><b>${fmt(end[1], 0)}</b></div>` +
+    (+$('h').value ? `<div><span>Dampak perburuan ular</span><b>${end[1] < 1 ? 'ular hampir punah, tikus meledak' : 'ular berkurang, tikus bertambah'}</b></div>` : '');
+}
+draw();
+</script>
+</body>
+</html>

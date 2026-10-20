@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafik Pertumbuhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 360" role="img" aria-label="Grafik tinggi badan dan laju pertumbuhan terhadap usia"></svg></div>
+  <div class="panel">
+    <div class="seg" id="sex"><button class="on" data-v="L">Laki-laki</button><button data-v="P">Perempuan</button></div>
+    <div class="lab">Usia <b id="av">0</b> tahun</div>
+    <input type="range" id="a" min="0" max="18" step="1" value="0">
+    <label class="chk"><input type="checkbox" id="c-r" checked> Tampilkan laju pertumbuhan (cm/tahun)</label>
+    <div class="read" id="read"></div>
+    <p class="note">Data rata-rata tinggi badan anak (pendekatan dari kurva pertumbuhan WHO). Perhatikan dua masa pertumbuhan cepat: <b>bayi</b> dan <b>pubertas</b>. Pertumbuhan dapat diukur, sedangkan perkembangan (misalnya kemampuan berbicara) tidak diukur dengan angka.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const H = {
+  L: [50, 76, 88, 96, 103, 110, 116, 122, 128, 133, 138, 143, 149, 156, 163, 169, 173, 175, 176],
+  P: [49, 74, 86, 95, 102, 109, 115, 121, 127, 133, 138, 144, 151, 156, 159, 161, 162, 163, 163]
+};
+let sex = 'L', A = 0;
+document.querySelectorAll('#sex button').forEach(b => b.onclick = () => { document.querySelectorAll('#sex button').forEach(x => x.classList.toggle('on', x === b)); sex = b.dataset.v; draw(); });
+$('a').oninput = e => { A = +e.target.value; draw(); };
+$('c-r').onchange = draw;
+function stage(a){ return a < 2 ? 'bayi' : a < (sex === 'L' ? 11 : 10) ? 'anak-anak' : a < 18 ? 'remaja (pubertas)' : 'dewasa'; }
+function draw(){
+  const h = H[sex], other = H[sex === 'L' ? 'P' : 'L'];
+  const L = 50, R = 460, T = 20, B = 300, X = a => L + a / 18 * (R - L), Y = v => B - (v - 40) / 150 * (B - T);
+  let s = '';
+  // pita tahap
+  [[0, 2, 'bayi'], [2, sex === 'L' ? 11 : 10, 'anak-anak'], [sex === 'L' ? 11 : 10, 18, 'remaja']].forEach(([a, b, t], i) => s += `<rect x="${X(a)}" y="${T}" width="${X(b) - X(a)}" height="${B - T}" style="fill:${['var(--b)', 'var(--a)', 'var(--r)'][i]}" fill-opacity=".05"/><text class="s" x="${(X(a) + X(b)) / 2}" y="${T + 14}" text-anchor="middle" style="fill:var(--muted)">${t}</text>`);
+  for(let v = 40; v <= 190; v += 30) s += `<line x1="${L}" y1="${Y(v)}" x2="${R}" y2="${Y(v)}" style="stroke:var(--line)"/><text class="s" x="${L - 6}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--muted)">${v}</text>`;
+  for(let a = 0; a <= 18; a += 2) s += `<text class="s" x="${X(a)}" y="${B + 16}" text-anchor="middle" style="fill:var(--muted)">${a}</text>`;
+  s += `<text class="s" x="${R}" y="${B + 32}" text-anchor="end" style="fill:var(--muted)">usia (tahun)</text><text class="s" x="${L}" y="${T - 6}" style="fill:var(--muted)">tinggi (cm)</text>`;
+  // laju
+  if($('c-r').checked){
+    const Yr = v => B - v / 30 * 90;
+    for(let a = 1; a <= 18; a++){ const r = h[a] - h[a - 1]; s += `<rect x="${X(a - 1) + 3}" y="${Yr(r)}" width="${X(1) - X(0) - 6}" height="${B - Yr(r)}" style="fill:var(--comp)" fill-opacity="${a === A ? .7 : .3}"/>`; }
+    s += `<text class="s" x="${R}" y="${B - 96}" text-anchor="end" style="fill:var(--comp)">laju (cm/tahun)</text>`;
+  }
+  s += `<path d="${other.map((v, i) => (i ? 'L' : 'M') + X(i) + ',' + Y(v)).join('')}" fill="none" style="stroke:var(--muted)" stroke-width="1.5" stroke-dasharray="4 4"/>`;
+  s += `<path d="${h.map((v, i) => (i ? 'L' : 'M') + X(i) + ',' + Y(v)).join('')}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+  h.forEach((v, i) => s += `<circle cx="${X(i)}" cy="${Y(v)}" r="${i === A ? 6 : 2.5}" style="fill:var(--a)"/>`);
+  s += `<text class="s" x="${X(17)}" y="${Y(other[17]) + (sex === 'L' ? 16 : -8)}" text-anchor="middle" style="fill:var(--muted)">${sex === 'L' ? 'perempuan' : 'laki-laki'}</text>`;
+  s += `<line x1="${L}" y1="${B}" x2="${R}" y2="${B}" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  svg.innerHTML = s;
+  $('av').textContent = A;
+  const r = A ? h[A] - h[A - 1] : null;
+  $('read').innerHTML = `<div><span>Tinggi rata-rata</span><b>${h[A]} cm</b></div><div><span>Pertambahan dalam setahun terakhir</span><b>${r === null ? '—' : r + ' cm'}</b></div><div><span>Tahap</span><b>${stage(A)}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

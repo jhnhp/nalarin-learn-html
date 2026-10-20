@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seleksi Alam pada Ngengat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Ngengat di batang pohon dan grafik frekuensi warna dari generasi ke generasi"></svg></div>
+  <div class="panel">
+    <div class="lab">Lingkungan</div>
+    <div class="seg" id="env"><button data-e="bersih" class="on">Hutan bersih (kulit pohon terang)</button><button data-e="jelaga">Hutan berjelaga (kulit pohon gelap)</button></div>
+    <div class="row"><button class="btn primary" id="gen">Jalankan 1 generasi</button><button class="btn" id="go10">10 generasi</button><button class="btn" id="rs">Ulangi</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Burung memangsa ngengat yang paling mudah terlihat. Ngengat yang lolos berkembang biak; warna diwariskan. Dua alel: C (gelap, dominan) dan c (terang).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let ENV = 'bersih', N = 60, pop, hist, g;
+function rnd(){ return Math.random(); }
+function reset(){ g = 0; pop = []; const q0 = Math.sqrt(0.9); for(let i = 0; i < N; i++){ const a = rnd() < q0 ? 'c' : 'C', b = rnd() < q0 ? 'c' : 'C'; pop.push({g: a + b, x: 20 + rnd() * 250, y: 40 + rnd() * 230, dead: false}); } hist = [frac()]; draw(); }
+const dark = m => m.g.includes('C');
+function frac(){ return pop.filter(dark).length / pop.length; }
+function generation(){
+  // predasi: peluang dimakan bergantung kontras dengan pohon
+  pop.forEach(m => { const visible = ENV === 'bersih' ? dark(m) : !dark(m); m.dead = rnd() < (visible ? 0.55 : 0.12); });
+  const surv = pop.filter(m => !m.dead);
+  if(surv.length < 2){ reset(); return; }
+  const next = [];
+  for(let i = 0; i < N; i++){ const p1 = surv[Math.floor(rnd() * surv.length)], p2 = surv[Math.floor(rnd() * surv.length)]; const al = p1.g[Math.floor(rnd() * 2)] + p2.g[Math.floor(rnd() * 2)]; next.push({g: al, x: 20 + rnd() * 250, y: 40 + rnd() * 230, dead: false}); }
+  pop = next; g++; hist.push(frac());
+}
+$('env').querySelectorAll('button').forEach(b => b.onclick = () => { $('env').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); ENV = b.dataset.e; draw(); });
+$('gen').onclick = () => { generation(); draw(); };
+$('go10').onclick = () => { for(let i = 0; i < 10; i++) generation(); draw(); };
+$('rs').onclick = reset;
+function draw(){
+  let s = `<rect x="10" y="20" width="270" height="270" rx="10" fill="${ENV === 'bersih' ? '#d7ccc8' : '#4e342e'}"/>`;
+  for(let i = 0; i < 12; i++) s += `<path d="M${20 + i * 22},20 q${(i % 2 ? 6 : -6)},135 0,270" stroke="${ENV === 'bersih' ? '#bcaaa4' : '#3e2723'}" stroke-width="3" fill="none"/>`;
+  pop.forEach(m => { const c = dark(m) ? '#212121' : '#f5f5f5'; s += `<path d="M${m.x},${m.y} l-9,-6 l-3,9 z M${m.x},${m.y} l9,-6 l3,9 z" fill="${c}" stroke="${ENV === 'bersih' ? '#8d6e63' : '#6d4c41'}" stroke-width=".6"/>`; });
+  // grafik
+  const gx = 300, gy = 280, gw = 165, gh = 220, n = Math.max(10, hist.length - 1);
+  const X = i => gx + i / n * gw, Y = f => gy - f * gh;
+  s += `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/><text class="s" x="${gx + gw}" y="${gy + 16}" text-anchor="end" fill="#555">generasi</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#555">% ngengat gelap</text><text class="s" x="${gx - 4}" y="${Y(1) + 4}" text-anchor="end" fill="#555">100</text><text class="s" x="${gx - 4}" y="${Y(.5) + 4}" text-anchor="end" fill="#555">50</text>`;
+  s += `<path d="${hist.map((f, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(f).toFixed(1)).join('')}" fill="none" stroke="#212121" stroke-width="2.5"/>`;
+  svg.innerHTML = s;
+  const nC = pop.reduce((t, m) => t + (m.g.match(/C/g) || []).length, 0), pC = nC / (2 * N);
+  $('read').innerHTML = `<div><span>Generasi</span><b>${g}</b></div><div><span>Ngengat gelap</span><b>${fmt(frac() * 100, 0)}%</b></div><div><span>Frekuensi alel C / c</span><b>${fmt(pC, 2)} / ${fmt(1 - pC, 2)}</b></div><div><span>Jenis seleksi</span><b>${ENV === 'bersih' ? 'terarah: menguntungkan warna terang' : 'terarah: menguntungkan warna gelap (melanisme industri)'}</b></div>`;
+}
+reset();
+</script>
+</body>
+</html>

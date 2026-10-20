@@ -1,56 +1,321 @@
 {
   "title": "Kalor",
-  "summary": "Ringkasan bab Kalor akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Suhu dan skala termometer, kalor dan kalor laten, asas Black, pemuaian zat padat, cair, dan gas, serta perpindahan kalor secara konduksi, konveksi, dan radiasi.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Kalor",
+      "id": "suhu",
+      "title": "Suhu dan termometer",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Suhu</b> menyatakan derajat panas atau dingin benda. Secara mikroskopis, suhu sebanding dengan <b>energi kinetik rata-rata partikel</b>: makin panas, partikel bergerak makin cepat. Satuan SI suhu adalah kelvin (K).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Konversi skala suhu",
+          "html": "<p>Titik tetap bawah–atas: Celsius 0–100, Reamur 0–80, Fahrenheit 32–212, Kelvin 273–373.</p><p>\\[\\frac{C}{100} = \\frac{R}{80} = \\frac{F - 32}{180} = \\frac{K - 273}{100}\\]</p><p>Termometer X dengan titik beku \\(X_b\\) dan titik didih \\(X_d\\): \\(\\dfrac{X - X_b}{X_d - X_b} = \\dfrac{C}{100}\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/IPA/03 Suhu, Kalor, dan Pemuaian/sim/termometer.html",
+          "title": "Membandingkan skala suhu",
+          "height": 480,
+          "caption": "Geser suhu dan bandingkan pembacaan keempat skala."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Suhu 86 °F dinyatakan dalam °C dan K.</p>",
+          "steps": [
+            "\\(C = \\tfrac{100}{180}(86 - 32) = 30\\) °C.",
+            "K = 30 + 273 = 303 K."
+          ],
+          "answer": "30 °C = 303 K"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Termometer X: titik beku air −20 °X, titik didih 180 °X. Berapa °X untuk 35 °C?</p>",
+          "steps": [
+            "\\(\\dfrac{X + 20}{200} = \\dfrac{35}{100}\\).",
+            "X + 20 = 70."
+          ],
+          "answer": "50 °X"
+        },
+        {
+          "type": "check",
+          "question": "Ketika gas dalam wadah tertutup dipanaskan, ....",
+          "options": {
+            "A": "partikel gas membesar",
+            "B": "energi kinetik rata-rata partikel bertambah",
+            "C": "jumlah partikel bertambah",
+            "D": "massa gas bertambah"
+          },
+          "answer": "B",
+          "hint": "Suhu ↔ gerak partikel.",
+          "explanation": "Kenaikan suhu berarti partikel bergerak lebih cepat."
+        }
+      ]
+    },
+    {
+      "id": "kalor",
+      "title": "Kalor, kalor jenis, dan perubahan wujud",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kalor",
+          "html": "<p>\\(Q = mc\\Delta T = C\\Delta T\\) dengan c kalor jenis (J/kg°C) dan \\(C = mc\\) kapasitas kalor (J/°C).</p><p>Perubahan wujud pada suhu tetap: \\(Q = mL\\) (kalor laten: kalor lebur es 336.000 J/kg, kalor uap air 2,26 × 10⁶ J/kg). Kalor yang diserap saat melebur sama dengan kalor yang dilepas saat membeku.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/IPA/03 Suhu, Kalor, dan Pemuaian/sim/kurva-pemanasan.html",
+          "title": "Kurva pemanasan es",
+          "height": 480,
+          "caption": "Panaskan es dan perhatikan bagian datar grafik: ke mana kalor digunakan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Benda 0,4 kg memerlukan 4.800 J untuk naik dari 25 °C ke 55 °C. Tentukan kapasitas kalor dan kalor jenisnya.</p>",
+          "steps": [
+            "C = Q/ΔT = 4.800/30 = 160 J/°C.",
+            "c = C/m = 160/0,4."
+          ],
+          "answer": "160 J/°C dan 400 J/kg°C"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Mengapa uap 100 °C lebih berbahaya daripada air 100 °C? Bandingkan kalor yang dilepas 5 g uap dan 5 g air hingga menjadi air 40 °C (L uap = 2,26 × 10⁶ J/kg, c = 4.200 J/kg°C).</p>",
+          "steps": [
+            "Air: Q = 0,005 × 4.200 × 60 = 1.260 J.",
+            "Uap: mengembun dulu (0,005 × 2,26 × 10⁶ = 11.300 J) lalu mendingin (1.260 J) = 12.560 J."
+          ],
+          "answer": "uap melepas ± 10 kali lebih banyak kalor"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Percobaan Joule",
+          "html": "<p>Joule menunjukkan bahwa energi mekanik (beban yang turun memutar pengaduk) dapat diubah menjadi kalor yang menaikkan suhu air: \\(mgh = m_a c\\Delta T\\). Kalor adalah bentuk energi; 1 kalori = 4,2 J.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Grafik pemanasan es menunjukkan bagian mendatar pada 0 °C karena ....",
+          "options": {
+            "A": "kalor tidak diserap",
+            "B": "kalor dipakai untuk mengubah wujud, bukan menaikkan suhu",
+            "C": "termometer rusak",
+            "D": "es memancarkan kalor"
+          },
+          "answer": "B",
+          "hint": "Kalor laten.",
+          "explanation": "Selama melebur, kalor digunakan untuk memutus ikatan antarpartikel sehingga suhu tetap."
+        }
+      ]
+    },
+    {
+      "id": "asas-black",
+      "title": "Asas Black",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Asas Black",
+          "html": "<p>Pada pencampuran (tanpa kalor hilang ke lingkungan): \\(Q_{lepas} = Q_{terima}\\).</p><p>\\[m_1c_1(T_1 - T_c) = m_2c_2(T_c - T_2)\\]</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/asas-black.html",
+          "title": "Asas Black",
+          "height": 560,
+          "caption": "Campurkan logam panas ke air, lalu es ke air hangat. Perhatikan bagian datar grafik suhu es saat melebur."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Logam 0,4 kg (c = 400 J/kg°C) bersuhu 120 °C dimasukkan ke 200 g air 30 °C. Berapa suhu campuran?</p>",
+          "steps": [
+            "\\(0{,}4(400)(120 - T) = 0{,}2(4.200)(T - 30)\\).",
+            "\\(160(120 - T) = 840(T - 30) \\Rightarrow 19.200 + 25.200 = 1.000T\\)."
+          ],
+          "answer": "T = 44,4 °C"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>50 g es 0 °C dicampur 200 g air 50 °C. Berapa suhu akhir (L = 336.000 J/kg)?</p>",
+          "steps": [
+            "Kalor untuk melebur es: 0,05 × 336.000 = 16.800 J.",
+            "Kalor air bila turun ke 0 °C: 0,2 × 4.200 × 50 = 42.000 J &gt; 16.800 J, jadi semua es melebur.",
+            "\\(0{,}2(4.200)(50 - T) = 16.800 + 0{,}05(4.200)(T - 0) \\Rightarrow 42.000 - 840T = 16.800 + 210T\\)."
+          ],
+          "answer": "T = 24 °C"
+        },
+        {
+          "type": "check",
+          "question": "Pada asas Black, pernyataan yang benar adalah ....",
+          "options": {
+            "A": "kalor mengalir dari benda dingin ke panas",
+            "B": "kalor yang dilepas zat bersuhu tinggi sama dengan kalor yang diterima zat bersuhu rendah",
+            "C": "suhu akhir selalu rata-rata kedua suhu",
+            "D": "massa memengaruhi suhu akhir hanya jika zatnya sama"
+          },
+          "answer": "B",
+          "hint": "Kekekalan energi.",
+          "explanation": "Suhu akhir hanya rata-rata biasa bila mc kedua zat sama."
+        }
+      ]
+    },
+    {
+      "id": "pemuaian",
+      "title": "Pemuaian",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pemuaian",
+          "html": "<p>Panjang: \\(\\Delta L = \\alpha L_0\\Delta T\\); luas: \\(\\Delta A = \\beta A_0\\Delta T\\), \\(\\beta = 2\\alpha\\); volume: \\(\\Delta V = \\gamma V_0\\Delta T\\), \\(\\gamma = 3\\alpha\\). Zat cair hanya punya muai volume; gas memuai jauh lebih besar.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pemuaian.html",
+          "title": "Pemuaian dan bimetal",
+          "height": 460,
+          "caption": "Bandingkan pemuaian baja dan aluminium. Ke arah mana bimetal melengkung ketika dipanaskan dan didinginkan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rel baja 20 m dipasang pada 25 °C. Suhu terpanas 55 °C, α = 12 × 10⁻⁶ /°C. Berapa celah minimum?</p>",
+          "steps": [
+            "ΔL = 12 × 10⁻⁶ × 20 × 30 = 7,2 × 10⁻³ m."
+          ],
+          "answer": "7,2 mm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pelat persegi sisi 50 cm (α = 2 × 10⁻⁵ /°C) dipanaskan 100 °C. Berapa pertambahan luasnya?</p>",
+          "steps": [
+            "A₀ = 2.500 cm², β = 4 × 10⁻⁵ /°C.",
+            "ΔA = 4 × 10⁻⁵ × 2.500 × 100."
+          ],
+          "answer": "10 cm²"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Penerapan",
+          "html": "<p>Celah sambungan rel dan jembatan, pemasangan kawat listrik yang kendur, keping bimetal pada termostat setrika dan alarm kebakaran, serta lubang ring baut yang ikut membesar saat dipanaskan (seluruh bagian ring memuai). Air memiliki <b>anomali</b>: antara 0–4 °C volumenya justru menyusut saat dipanaskan, sehingga es terapung dan dasar danau tetap ±4 °C.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Ring baja dipanaskan merata. Diameter lubangnya ....",
+          "options": {
+            "A": "mengecil",
+            "B": "membesar",
+            "C": "tetap",
+            "D": "mula-mula mengecil lalu membesar"
+          },
+          "answer": "B",
+          "hint": "Seluruh bagian memuai.",
+          "explanation": "Pemuaian seperti pembesaran foto: lubang ikut membesar."
+        }
+      ]
+    },
+    {
+      "id": "perpindahan",
+      "title": "Perpindahan kalor",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Cara</th><th>Rumus</th><th>Contoh</th></tr><tr><td>Konduksi (tanpa perpindahan partikel)</td><td>\\(H = \\dfrac{kA\\Delta T}{L}\\)</td><td>sendok logam panas, lantai keramik terasa dingin</td></tr><tr><td>Konveksi (bersama aliran fluida)</td><td>\\(H = hA\\Delta T\\)</td><td>angin darat dan laut, air mendidih, radiator mobil (paksa)</td></tr><tr><td>Radiasi (gelombang elektromagnetik, tanpa medium)</td><td>\\(P = e\\sigma AT^4\\)</td><td>panas matahari, api unggun</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut σ pada rumus radiasi sebagai konstanta Boltzmann. Nama yang benar adalah <b>konstanta Stefan–Boltzmann</b>, σ = 5,67 × 10⁻⁸ W/m²K⁴ (konstanta Boltzmann k = 1,38 × 10⁻²³ J/K adalah besaran lain).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/perpindahan-kalor.html",
+          "title": "Perpindahan kalor",
+          "height": 560,
+          "caption": "Bandingkan laju konduksi melalui tembaga dan styrofoam. Pada mode radiasi, apa yang terjadi jika suhu (K) dijadikan dua kali?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kotak styrofoam (k = 0,03 W/m·K) luas permukaan total 0,8 m², tebal 2 cm. Suhu luar 30 °C, dalam 0 °C. Berapa laju kalor masuk? Berapa es yang mencair dalam 1 jam?</p>",
+          "steps": [
+            "H = 0,03 × 0,8 × 30 / 0,02 = 36 W.",
+            "Q = 36 × 3.600 = 129.600 J; m = Q/L = 129.600/336.000."
+          ],
+          "answer": "36 W; ≈ 0,39 kg es"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Bola A dan B sama bahan, jari-jari B dua kali A, suhu mutlak B setengah A. Bandingkan daya radiasinya.</p>",
+          "steps": [
+            "P ∝ r²T⁴.",
+            "P_A : P_B = (1)²(2)⁴ : (2)²(1)⁴ = 16 : 4."
+          ],
+          "answer": "4 : 1"
+        },
+        {
+          "type": "check",
+          "question": "Konveksi paksa terjadi pada ....",
+          "options": {
+            "A": "angin laut",
+            "B": "air pendingin mesin yang dialirkan pompa",
+            "C": "panas matahari sampai ke bumi",
+            "D": "sendok yang dicelup ke teh panas"
+          },
+          "answer": "B",
+          "hint": "Aliran digerakkan alat.",
+          "explanation": "Pompa atau kipas membuat aliran fluida secara paksa."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Suhu, Kalor, Perubahan Wujud, Pemuaian, dan Perpindahan Kalor</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Skala suhu</td><td>C : R : (F − 32) : (K − 273) = 5 : 4 : 9 : 5</td></tr><tr><td>Kalor</td><td>\\(Q = mc\\Delta T\\), \\(Q = mL\\), \\(C = mc\\)</td></tr><tr><td>Asas Black</td><td>\\(Q_{lepas} = Q_{terima}\\)</td></tr><tr><td>Pemuaian</td><td>\\(\\Delta L = \\alpha L_0\\Delta T\\), β = 2α, γ = 3α</td></tr><tr><td>Perpindahan</td><td>\\(H = kA\\Delta T/L\\), \\(H = hA\\Delta T\\), \\(P = e\\sigma AT^4\\)</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa kalor laten ketika ada perubahan wujud.</li><li>Memakai °C pada rumus radiasi (harus kelvin).</li><li>Lupa mengubah tebal dari cm ke m pada rumus konduksi.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 6 Kalor.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang suhu, kalor, perubahan wujud, asas Black, pemuaian, dan perpindahan kalor. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

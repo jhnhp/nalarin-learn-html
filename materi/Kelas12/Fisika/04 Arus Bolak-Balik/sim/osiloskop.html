@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membaca Osiloskop</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 345" role="img" aria-label="Layar osiloskop dengan gelombang sinus tegangan bolak-balik"></svg></div>
+  <div class="panel">
+    <div class="lab">Tegangan efektif sumber <b id="vv"></b></div><input type="range" id="v" min="1" max="15" step="0.5" value="4.5">
+    <div class="lab">Frekuensi sumber <b id="fv"></b></div><input type="range" id="f" min="10" max="200" step="5" value="40">
+    <div class="lab">Sensitivitas vertikal</div><select id="vd"><option value="1">1 V/div</option><option value="2" selected>2 V/div</option><option value="5">5 V/div</option><option value="10">10 V/div</option></select>
+    <div class="lab">Basis waktu (horizontal)</div><select id="td"><option value="1">1 ms/div</option><option value="2">2 ms/div</option><option value="5" selected>5 ms/div</option><option value="10">10 ms/div</option><option value="20">20 ms/div</option></select>
+    <label class="chk"><input type="checkbox" id="show"> Tampilkan jawaban</label>
+    <div class="read" id="read"></div>
+    <p class="note">V<sub>pp</sub> = jumlah kotak puncak ke puncak × V/div; V<sub>maks</sub> = ½V<sub>pp</sub>; V<sub>ef</sub> = V<sub>maks</sub>/√2. Periode T = jumlah kotak satu gelombang × ms/div; f = 1/T.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+function draw(){
+  const Vef = +$('v').value, f = +$('f').value, vd = +$('vd').value, td = +$('td').value;
+  $('vv').textContent = fmt(Vef, 1) + ' V'; $('fv').textContent = f + ' Hz';
+  const Vm = Vef * Math.SQRT2, D = 36, ox = 60, oy = 165, nx = 10, ny = 8;
+  let s = `<rect x="${ox - 8}" y="${oy - ny / 2 * D - 8}" width="${nx * D + 16}" height="${ny * D + 16}" rx="10" fill="#102a1c"/>`;
+  for(let i = 0; i <= nx; i++) s += `<line x1="${ox + i * D}" y1="${oy - ny / 2 * D}" x2="${ox + i * D}" y2="${oy + ny / 2 * D}" stroke="#2e6b47" stroke-width="${i === nx / 2 ? 1.6 : .8}"/>`;
+  for(let j = 0; j <= ny; j++) s += `<line x1="${ox}" y1="${oy - ny / 2 * D + j * D}" x2="${ox + nx * D}" y2="${oy - ny / 2 * D + j * D}" stroke="#2e6b47" stroke-width="${j === ny / 2 ? 1.6 : .8}"/>`;
+  let p = '';
+  for(let i = 0; i <= 400; i++){ const t = (i / 400) * nx * td / 1000, v = Vm * Math.sin(2 * Math.PI * f * t); const y = oy - v / vd * D; p += (i ? 'L' : 'M') + (ox + nx * D * i / 400).toFixed(1) + ',' + Math.max(oy - ny / 2 * D - 4, Math.min(oy + ny / 2 * D + 4, y)).toFixed(1); }
+  s += `<path d="${p}" fill="none" stroke="#69f0ae" stroke-width="2.2"/>`;
+  s += `<text class="s" x="${ox}" y="${oy + ny / 2 * D + 24}" style="fill:var(--muted)">${vd} V/div · ${td} ms/div · layar 10 × 8 kotak</text>`;
+  svg.innerHTML = s;
+  const T = 1000 / f, clip = Vm / vd > ny / 2;
+  $('read').innerHTML = $('show').checked ? `<div><span>V<sub>pp</sub> (kotak)</span><b>${fmt(2 * Vm, 2)} V (${fmt(2 * Vm / vd, 2)} kotak)</b></div><div><span>V<sub>maks</sub> / V<sub>ef</sub></span><b>${fmt(Vm, 2)} V / ${fmt(Vef, 2)} V</b></div><div><span>Periode (kotak)</span><b>${fmt(T, 2)} ms (${fmt(T / td, 2)} kotak)</b></div><div><span>Frekuensi</span><b>${f} Hz</b></div>` : `<div><span>Tugas</span><b>baca V<sub>maks</sub>, V<sub>ef</sub>, T, dan f dari layar</b></div>${clip ? '<div><span>Peringatan</span><b>gelombang terpotong: besarkan V/div</b></div>' : ''}`;
+}
+['v', 'f', 'vd', 'td', 'show'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

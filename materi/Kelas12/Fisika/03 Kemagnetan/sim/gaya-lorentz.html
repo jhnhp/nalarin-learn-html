@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muatan dalam Medan Magnet</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Lintasan partikel bermuatan di dalam medan magnet yang masuk bidang gambar"></svg></div>
+  <div class="panel">
+    <div class="lab">Partikel</div><select id="p"><option value="p">proton (m = 1,67 × 10⁻²⁷ kg, q = +e)</option><option value="e">elektron (m = 9,1 × 10⁻³¹ kg, q = −e)</option><option value="a">partikel alfa (m = 6,64 × 10⁻²⁷ kg, q = +2e)</option><option value="d">deuteron (m = 3,34 × 10⁻²⁷ kg, q = +e)</option></select>
+    <div class="lab">Kelajuan v <b id="vv"></b></div><input type="range" id="v" min="1" max="10" step="0.5" value="4">
+    <div class="lab">Medan magnet B (masuk bidang) <b id="bv"></b></div><input type="range" id="b" min="0.05" max="1" step="0.05" value="0.3">
+    <label class="chk"><input type="checkbox" id="sel"> Tambahkan medan listrik E (pemilih kecepatan)</label>
+    <div class="lab">Kuat medan listrik E <b id="ev"></b></div><input type="range" id="e" min="0" max="10" step="0.1" value="1.2">
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P = {p: [1.67e-27, 1.6e-19], e: [9.1e-31, -1.6e-19], a: [6.64e-27, 3.2e-19], d: [3.34e-27, 1.6e-19]};
+const sci = v => { if(v === 0) return '0'; const e = Math.floor(Math.log10(Math.abs(v))); if(e >= -2 && e <= 3) return fmt(v, 3); return `${fmt(v / 10 ** e, 3)} × 10${String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`; };
+function draw(){
+  const [m, q] = P[$('p').value], el = $('p').value === 'e';
+  const v = +$('v').value * (el ? 1e7 : 1e5), B = +$('b').value, sel = $('sel').checked, E = +$('e').value * (el ? 3e6 : 3e4);
+  $('vv').textContent = (el ? fmt(v / 1e7, 1) + ' × 10⁷' : fmt(v / 1e5, 1) + ' × 10⁵') + ' m/s'; $('bv').textContent = fmt(B, 2) + ' T'; $('ev').textContent = sci(E) + ' N/C';
+  $('e').disabled = !sel;
+  const r = m * v / (Math.abs(q) * B), FB = Math.abs(q) * v * B, FE = Math.abs(q) * E;
+  let s = '';
+  for(let x = 20; x < 470; x += 30) for(let y = 20; y < 310; y += 30) s += `<text class="s" x="${x}" y="${y}" text-anchor="middle" fill="#90a4ae">×</text>`;
+  if(sel) s += `<rect x="20" y="16" width="440" height="8" fill="#e53935"/><rect x="20" y="300" width="440" height="8" fill="#1e88e5"/>`;
+  const x0 = sel ? 30 : 240, y0 = sel ? 165 : (q > 0 ? 275 : 45), scale = (sel ? 110 : 105) / r; // jari-jari digambar 110 px
+  let x = 0, y = 0, vx = v, vy = 0, path = `M${x0},${y0}`;
+  const dt = (r / v) / 80;
+  for(let i = 0; i < 3000; i++){
+    // B masuk bidang (−z), sumbu y ke atas: v × B = (−vy·B, vx·B); E dari pelat atas (+) ke bawah (−)
+    const ax = -q * vy * B / m, ay = q * vx * B / m + (sel ? -q * E / m : 0);
+    vx += ax * dt; vy += ay * dt; x += vx * dt; y += vy * dt;
+    const px = x0 + x * scale, py = y0 - y * scale;
+    path += ` L${px.toFixed(1)},${py.toFixed(1)}`;
+    if(px < 0 || px > 480 || py < 0 || py > 320) break;
+    if(i > 300 && !sel && Math.hypot(px - x0, py - y0) < 3) break;
+  }
+  if(!sel){ const R = 105, cy = y0 - Math.sign(q) * R; path = `M${x0},${y0} A${R},${R} 0 1,${q > 0 ? 0 : 1} ${x0 - 0.01},${y0}`; }
+  const col = q > 0 ? '#e53935' : '#1e88e5';
+  s += `<path d="${path}" fill="none" stroke="${col}" stroke-width="2.5"/><circle cx="${x0}" cy="${y0}" r="6" fill="${col}"/><line x1="${x0}" y1="${y0}" x2="${x0 + 40}" y2="${y0}" stroke="#333" stroke-width="2" marker-end="url(#a)"/><text class="s" x="${x0 + 44}" y="${y0 + 4}" fill="#333">v</text>`;
+  s += `<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#333"/></marker></defs>`;
+  s += `<rect x="300" y="282" width="164" height="16" rx="4" style="fill:var(--surface)"/><text class="s" x="460" y="294" text-anchor="end" fill="#607d8b">× = medan magnet masuk bidang</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Gaya magnet F = qvB</span><b>${sci(FB)} N</b></div><div><span>Jari-jari r = mv/(qB)</span><b>${sci(r * 100)} cm</b></div><div><span>Periode T = 2πm/(qB)</span><b>${sci(2 * Math.PI * m / (Math.abs(q) * B))} s</b></div>${sel ? `<div><span>Gaya listrik qE</span><b>${sci(FE)} N</b></div><div><span>Kelajuan yang lolos lurus v = E/B</span><b>${sci(E / B)} m/s</b></div>` : ''}`;
+  $('ket').textContent = sel ? (Math.abs(FE - FB) / FB < 0.03 ? 'Gaya listrik dan gaya magnet sama besar dan berlawanan arah: partikel bergerak lurus. Hanya partikel dengan v = E/B yang lolos.' : FE > FB ? 'Gaya listrik lebih besar daripada gaya magnet: partikel dibelokkan ke arah gaya listrik.' : 'Gaya magnet lebih besar daripada gaya listrik: partikel dibelokkan ke arah gaya magnet.') : 'Gaya magnet selalu tegak lurus kecepatan sehingga hanya mengubah arah gerak, bukan kelajuan: lintasannya lingkaran. Muatan positif dan negatif berbelok berlawanan (kaidah tangan kanan). Lingkaran digambar dengan ukuran tetap; lihat nilai r sebenarnya di tabel.';
+}
+['p', 'v', 'b', 'sel', 'e'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

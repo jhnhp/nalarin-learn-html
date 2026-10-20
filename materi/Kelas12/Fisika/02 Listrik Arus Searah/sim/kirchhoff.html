@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rangkaian Dua Loop (Kirchhoff)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Rangkaian dua loop dengan dua sumber tegangan dan tiga resistor"></svg></div>
+  <div class="panel">
+    <div class="lab">ε₁ <b id="e1v"></b></div><input type="range" id="e1" min="0" max="24" step="1" value="10">
+    <div class="lab">R₁ <b id="r1v"></b></div><input type="range" id="r1" min="1" max="12" step="1" value="2">
+    <div class="lab">R₃ (cabang tengah) <b id="r3v"></b></div><input type="range" id="r3" min="1" max="12" step="1" value="5">
+    <div class="lab">ε₂ <b id="e2v"></b></div><input type="range" id="e2" min="0" max="24" step="1" value="4">
+    <div class="lab">R₂ <b id="r2v"></b></div><input type="range" id="r2" min="1" max="12" step="1" value="1">
+    <div class="read" id="read"></div>
+    <p class="note">Hukum I Kirchhoff: arus masuk titik cabang = arus keluar. Hukum II: dalam satu loop tertutup ΣE + ΣIR = 0. Kutub positif kedua baterai berada di atas.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+function bat(x, y, lab){ return `<line x1="${x - 16}" y1="${y - 5}" x2="${x + 16}" y2="${y - 5}" stroke="#e53935" stroke-width="3"/><line x1="${x - 9}" y1="${y + 5}" x2="${x + 9}" y2="${y + 5}" stroke="#1e88e5" stroke-width="5"/><text class="c" x="${x + 22}" y="${y + 4}" style="fill:var(--ink)">${lab}</text>`; }
+function res(x, y, lab){ let p = `M${x},${y - 22}`; for(let i = 0; i < 6; i++) p += ` L${x + (i % 2 ? -7 : 7)},${y - 22 + (i + .5) * 44 / 6}`; p += ` L${x},${y + 22}`; return `<path d="${p}" fill="none" stroke="#333" stroke-width="2.5"/><text class="c" x="${x + 14}" y="${y + 4}" style="fill:var(--ink)">${lab}</text>`; }
+function cur(x, y, I, lab){ const up = I > 0; const col = '#2e7d32'; return `<path d="M${x - 26},${y + (up ? 10 : -10)} l0,${up ? -20 : 20}" stroke="${col}" stroke-width="2.5" marker-end="url(#a)"/><text class="s" x="${x - 30}" y="${y + 4}" text-anchor="end" fill="${col}">${lab} = ${fmt(Math.abs(I), 2)} A ${up ? '↑' : '↓'}</text>`; }
+function draw(){
+  const e1 = +$('e1').value, e2 = +$('e2').value, R1 = +$('r1').value, R2 = +$('r2').value, R3 = +$('r3').value;
+  ['e1', 'e2'].forEach(k => $(k + 'v').textContent = $(k).value + ' V'); ['r1', 'r2', 'r3'].forEach(k => $(k + 'v').textContent = $(k).value + ' Ω');
+  // potensial titik atas terhadap bawah (metode titik simpul)
+  const V = (e1 / R1 + e2 / R2) / (1 / R1 + 1 / R2 + 1 / R3);
+  const I1 = (e1 - V) / R1, I2 = (e2 - V) / R2, I3 = V / R3; // I1, I2 ke atas lewat sumber; I3 ke bawah lewat R3
+  const L = 70, M = 240, Rr = 410, T = 50, B = 260;
+  let s = `<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2e7d32"/></marker></defs>`;
+  s += `<polyline points="${L},${T} ${Rr},${T}" fill="none" stroke="#555" stroke-width="2"/><polyline points="${L},${B} ${Rr},${B}" fill="none" stroke="#555" stroke-width="2"/>`;
+  for(const x of [L, Rr]) s += `<line x1="${x}" y1="${T}" x2="${x}" y2="${110}" stroke="#555" stroke-width="2"/><line x1="${x}" y1="${130}" x2="${x}" y2="${168}" stroke="#555" stroke-width="2"/><line x1="${x}" y1="${212}" x2="${x}" y2="${B}" stroke="#555" stroke-width="2"/>`;
+  s += bat(L, 120, 'ε₁') + res(L, 190, 'R₁') + bat(Rr, 120, 'ε₂') + res(Rr, 190, 'R₂');
+  s += `<line x1="${M}" y1="${T}" x2="${M}" y2="${128}" stroke="#555" stroke-width="2"/>` + res(M, 150, 'R₃') + `<line x1="${M}" y1="172" x2="${M}" y2="${B}" stroke="#555" stroke-width="2"/>`;
+  s += `<circle cx="${M}" cy="${T}" r="4" fill="#333"/><circle cx="${M}" cy="${B}" r="4" fill="#333"/><text class="s" x="${M}" y="${T - 8}" text-anchor="middle" style="fill:var(--ink)">A (V = ${fmt(V, 2)} V)</text><text class="s" x="${M}" y="${B + 16}" text-anchor="middle" style="fill:var(--ink)">B (0 V)</text>`;
+  s += cur(L + 60, 230, I1, 'I₁') + cur(Rr + 2, 70, I2, 'I₂').replace(`x="${Rr + 2 - 30}"`, `x="${Rr - 30}"`) + cur(M + 70, 230, -I3, 'I₃');
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Arus I₁ (cabang ε₁)</span><b>${fmt(I1, 3)} A ${I1 >= 0 ? '(ε₁ melepas energi)' : '(ε₁ diisi)'}</b></div><div><span>Arus I₂ (cabang ε₂)</span><b>${fmt(I2, 3)} A ${I2 >= 0 ? '(ε₂ melepas energi)' : '(ε₂ diisi)'}</b></div><div><span>Arus I₃ melalui R₃</span><b>${fmt(I3, 3)} A</b></div><div><span>Cek hukum I: I₁ + I₂ = I₃</span><b>${fmt(I1 + I2, 3)} = ${fmt(I3, 3)}</b></div><div><span>Tegangan V<sub>AB</sub></span><b>${fmt(V, 3)} V</b></div>`;
+}
+['e1', 'e2', 'r1', 'r2', 'r3'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

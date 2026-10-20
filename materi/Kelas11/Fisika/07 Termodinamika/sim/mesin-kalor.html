@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesin Kalor dan Pompa Kalor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Diagram aliran energi mesin kalor atau pompa kalor"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button class="on" data-v="mesin">Mesin kalor</button><button data-v="pompa">Pompa kalor / pendingin</button></div>
+    <div class="lab">Suhu reservoir panas T₁ <b id="T1v"></b></div><input type="range" id="T1" min="300" max="1000" step="10" value="600">
+    <div class="lab">Suhu reservoir dingin T₂ <b id="T2v"></b></div><input type="range" id="T2" min="200" max="400" step="5" value="300">
+    <div class="lab" id="ql">Kalor dari reservoir panas Q₁ <b id="qv"></b></div><input type="range" id="q" min="100" max="5000" step="100" value="2500">
+    <div class="lab">Efisiensi relatif terhadap Carnot <b id="ev"></b></div><input type="range" id="e" min="0.1" max="1" step="0.05" value="0.5">
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'mesin';
+document.querySelectorAll('#mode button').forEach(b => b.onclick = () => { document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); mode = b.dataset.v; draw(); });
+['T1', 'T2', 'q', 'e'].forEach(i => $(i).oninput = draw);
+function arrowV(x, y1, y2, w, col, lab, side){
+  const d = Math.sign(y2 - y1);
+  return `<line x1="${x}" y1="${y1}" x2="${x}" y2="${y2 - d * 10}" style="stroke:${col}" stroke-width="${w}"/><path d="M${x},${y2} l${-w / 2 - 6},${-d * 14} l${w + 12},0z" style="fill:${col}"/><text class="c" x="${x + (side || 1) * (w / 2 + 10)}" y="${(y1 + y2) / 2 + 4}" text-anchor="${(side || 1) > 0 ? 'start' : 'end'}" style="fill:${col}">${lab}</text>`;
+}
+function draw(){
+  let T1 = +$('T1').value, T2 = +$('T2').value; if(T2 >= T1){ T2 = T1 - 10; $('T2').value = T2; }
+  const q = +$('q').value, e = +$('e').value, carnot = 1 - T2 / T1;
+  let s = `<rect x="140" y="10" width="200" height="40" rx="8" fill="#ef4444" fill-opacity=".2" stroke="#ef4444"/><text class="c" x="240" y="35" text-anchor="middle" fill="#ef4444">reservoir panas T₁ = ${T1} K</text>`;
+  s += `<rect x="140" y="250" width="200" height="40" rx="8" fill="#3b82f6" fill-opacity=".2" stroke="#3b82f6"/><text class="c" x="240" y="275" text-anchor="middle" fill="#3b82f6">reservoir dingin T₂ = ${T2} K</text>`;
+  s += `<circle cx="240" cy="150" r="42" style="fill:var(--surface-2);stroke:var(--ink)" stroke-width="2"/><text class="c" x="240" y="155" text-anchor="middle" style="fill:var(--ink)">${mode === 'mesin' ? 'mesin' : 'pompa'}</text>`;
+  const sc = 26 / 5000;
+  let rd;
+  if(mode === 'mesin'){
+    const eta = carnot * e, W = eta * q, Q2 = q - W;
+    s += arrowV(240, 50, 108, 6 + q * sc, '#ef4444', `Q₁ = ${fmt(q, 0)} J`) + arrowV(240, 192, 250, 6 + Q2 * sc, '#3b82f6', `Q₂ = ${fmt(Q2, 0)} J`);
+    s += `<line x1="282" y1="150" x2="${400}" y2="150" style="stroke:var(--ok)" stroke-width="${6 + W * sc}"/><path d="M410,150 l-14,-${8 + W * sc / 2} l0,${16 + W * sc}z" style="fill:var(--ok)"/><text class="c" x="345" y="${140 - W * sc / 2}" text-anchor="middle" style="fill:var(--ok)">W = ${fmt(W, 0)} J</text>`;
+    rd = `<div><span>Efisiensi Carnot 1 − T₂/T₁</span><b>${fmt(carnot * 100, 1)}%</b></div><div><span>Efisiensi mesin η = W/Q₁</span><b>${fmt(eta * 100, 1)}%</b></div><div><span>Q₁ = W + Q₂</span><b>${fmt(q, 0)} = ${fmt(W, 0)} + ${fmt(Q2, 0)} J</b></div>`;
+    $('ql').firstChild.textContent = 'Kalor dari reservoir panas Q₁ ';
+    $('note').innerHTML = 'Mesin kalor menyerap Q₁, melakukan usaha W, dan membuang Q₂. Hukum II (Kelvin–Planck): tidak ada mesin yang mengubah seluruh kalor menjadi usaha (Q₂ selalu &gt; 0). Mesin Carnot memiliki efisiensi tertinggi 1 − T₂/T₁.';
+  } else {
+    const copC = T2 / (T1 - T2), cop = copC * e, Q2 = q, W = Q2 / cop, Q1 = Q2 + W;
+    s += arrowV(240, 108, 50, 6 + Q1 * sc / 2, '#ef4444', `Q₁ = ${fmt(Q1, 0)} J`) + arrowV(240, 250, 192, 6 + Q2 * sc / 2, '#3b82f6', `Q₂ = ${fmt(Q2, 0)} J`);
+    s += `<line x1="400" y1="150" x2="296" y2="150" style="stroke:var(--ok)" stroke-width="${6 + W * sc / 2}"/><path d="M284,150 l14,-${8 + W * sc / 4} l0,${16 + W * sc / 2}z" style="fill:var(--ok)"/><text class="c" x="345" y="${136 - W * sc / 4}" text-anchor="middle" style="fill:var(--ok)">W = ${fmt(W, 0)} J</text>`;
+    rd = `<div><span>KP pendingin = Q₂/W</span><b>${fmt(cop, 2)} (Carnot ${fmt(copC, 2)})</b></div><div><span>KP pemanas = Q₁/W</span><b>${fmt(Q1 / W, 2)}</b></div><div><span>Q₁ = Q₂ + W</span><b>${fmt(Q1, 0)} = ${fmt(Q2, 0)} + ${fmt(W, 0)} J</b></div>`;
+    $('ql').firstChild.textContent = 'Kalor yang diambil dari reservoir dingin Q₂ ';
+    $('note').innerHTML = 'Pompa kalor (kulkas, AC) memakai usaha W untuk memindahkan kalor Q₂ dari tempat dingin ke tempat panas (Q₁ = Q₂ + W). Hukum II (Clausius): kalor tidak mengalir sendiri dari benda dingin ke benda panas tanpa usaha. Koefisien performansi pendingin KP = Q₂/W, pemanas KP = Q₁/W.';
+  }
+  svg.innerHTML = s;
+  $('T1v').textContent = T1 + ' K'; $('T2v').textContent = T2 + ' K'; $('qv').textContent = q + ' J'; $('ev').textContent = Math.round(e * 100) + '%';
+  $('read').innerHTML = rd;
+}
+draw();
+</script>
+</body>
+</html>

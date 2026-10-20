@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menyetarakan Persamaan Reaksi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}
+.eq{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:17px;color:var(--ink)}
+.sp{display:flex;flex-direction:column;align-items:center;gap:2px}.sp .k{display:flex;align-items:center;gap:2px}.sp button{width:26px;height:26px;border-radius:7px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font-weight:800;cursor:pointer}
+.sp .n{min-width:20px;text-align:center;color:var(--a)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage" style="padding:12px">
+    <div class="eq" id="eq"></div>
+    <svg id="svg" viewBox="0 0 480 220" role="img" aria-label="Tabel jumlah atom di ruas kiri dan kanan" style="margin-top:10px"></svg>
+  </div>
+  <div class="panel">
+    <div class="lab">Pilih reaksi</div>
+    <select id="rx" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit"></select>
+    <div class="row"><button class="btn" id="reset">Ulang</button><button class="btn" id="hint">Petunjuk</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Ubah hanya <b>koefisien</b> (angka di depan rumus), jangan mengubah rumus kimia. Persamaan setara jika jumlah setiap jenis atom di kiri sama dengan di kanan, dengan koefisien bilangan bulat terkecil.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [nama, reaktan, produk, jawaban]
+const RX = [
+  ['Pembentukan air', ['H2', 'O2'], ['H2O'], [2, 1, 2]],
+  ['Sintesis amonia', ['N2', 'H2'], ['NH3'], [1, 3, 2]],
+  ['Pembakaran magnesium', ['Mg', 'O2'], ['MgO'], [2, 1, 2]],
+  ['Pembakaran metana', ['CH4', 'O2'], ['CO2', 'H2O'], [1, 2, 1, 2]],
+  ['Pembakaran propana (elpiji)', ['C3H8', 'O2'], ['CO2', 'H2O'], [1, 5, 3, 4]],
+  ['Pembakaran fosfor', ['P4', 'O2'], ['P2O5'], [1, 5, 2]],
+  ['Perkaratan besi (Fe2O3)', ['Fe', 'O2'], ['Fe2O3'], [4, 3, 2]],
+  ['Penguraian natrium azida (kantong udara)', ['NaN3'], ['Na', 'N2'], [2, 2, 3]],
+  ['Fermentasi glukosa', ['C6H12O6'], ['C2H5OH', 'CO2'], [1, 2, 2]],
+  ['Penguraian batu kapur', ['CaCO3'], ['CaO', 'CO2'], [1, 1, 1]],
+  ['Fotosintesis', ['CO2', 'H2O'], ['C6H12O6', 'O2'], [6, 6, 1, 6]],
+  ['Pembakaran etanol', ['C2H5OH', 'O2'], ['CO2', 'H2O'], [1, 3, 2, 3]]
+];
+RX.forEach((r, i) => { const o = document.createElement('option'); o.value = i; o.textContent = r[0]; $('rx').appendChild(o); });
+let R = 0, C = [];
+function parse(f){ const m = {}; f.replace(/([A-Z][a-z]?)(\d*)/g, (_, e, n) => { m[e] = (m[e] || 0) + (+n || 1); }); return m; }
+function sub(f){ return f.replace(/(\d+)/g, '<sub>$1</sub>'); }
+function load(){ R = +$('rx').value; C = RX[R][3].map(() => 1); render(); }
+$('rx').onchange = load; $('reset').onclick = load;
+$('hint').onclick = () => {
+  const [, re, pr] = RX[R], ans = RX[R][3];
+  const els = [...new Set([...re, ...pr].flatMap(f => Object.keys(parse(f))))];
+  const bad = els.find(e => count(re, 0, e) !== count(pr, re.length, e));
+  $('read').innerHTML = bad ? `<div><span>Petunjuk</span><b>Samakan dulu jumlah atom ${bad}. Biasanya mulai dari atom yang hanya muncul di satu zat tiap ruas; setarakan O dan H paling akhir.</b></div>` : `<div><span>Petunjuk</span><b>Sudah setara!</b></div>`;
+};
+function count(list, off, e){ return list.reduce((a, f, i) => a + C[off + i] * (parse(f)[e] || 0), 0); }
+function render(){
+  const [, re, pr] = RX[R];
+  const term = (f, i) => `<div class="sp"><div class="k"><button data-i="${i}" data-d="-1">−</button><span class="n">${C[i]}</span><button data-i="${i}" data-d="1">+</button></div><div>${sub(f)}</div></div>`;
+  let h = re.map((f, i) => term(f, i)).join('<span>+</span>') + '<span>→</span>' + pr.map((f, i) => term(f, re.length + i)).join('<span>+</span>');
+  $('eq').innerHTML = h;
+  $('eq').querySelectorAll('button').forEach(b => b.onclick = () => { const i = +b.dataset.i; C[i] = Math.max(1, Math.min(12, C[i] + +b.dataset.d)); render(); });
+  const els = [...new Set([...re, ...pr].flatMap(f => Object.keys(parse(f))))];
+  let s = `<text class="c" x="90" y="22" text-anchor="middle" style="fill:var(--muted)">Atom</text><text class="c" x="230" y="22" text-anchor="middle" style="fill:var(--muted)">Kiri (pereaksi)</text><text class="c" x="390" y="22" text-anchor="middle" style="fill:var(--muted)">Kanan (hasil)</text>`;
+  let ok = true;
+  els.forEach((e, k) => {
+    const a = count(re, 0, e), b = count(pr, re.length, e), eq = a === b; ok = ok && eq;
+    const y = 36 + k * 40;
+    s += `<rect x="20" y="${y}" width="440" height="34" rx="8" style="fill:${eq ? 'var(--ok)' : 'var(--bad)'}" fill-opacity=".1"/>`;
+    s += `<text class="c" x="90" y="${y + 22}" text-anchor="middle" style="fill:var(--ink)">${e}</text><text class="c" x="230" y="${y + 22}" text-anchor="middle" style="fill:var(--ink)">${a}</text><text class="c" x="390" y="${y + 22}" text-anchor="middle" style="fill:var(--ink)">${b}</text><text class="c" x="310" y="${y + 22}" text-anchor="middle" style="fill:${eq ? 'var(--ok)' : 'var(--bad)'}">${eq ? '=' : '≠'}</text>`;
+  });
+  svg.setAttribute('viewBox', `0 0 480 ${44 + els.length * 40}`);
+  svg.innerHTML = s;
+  const g = C.reduce((a, b) => { while(b){ [a, b] = [b, a % b]; } return a; });
+  $('read').innerHTML = ok ? (g > 1 ? `<div><span>Status</span><b style="color:var(--comp)">Setara, tetapi koefisien masih bisa dibagi ${g}</b></div>` : `<div><span>Status</span><b style="color:var(--ok)">Setara! Koefisien: ${C.join(', ')}</b></div>`) : `<div><span>Status</span><b style="color:var(--bad)">Belum setara</b></div>`;
+}
+load();
+</script>
+</body>
+</html>

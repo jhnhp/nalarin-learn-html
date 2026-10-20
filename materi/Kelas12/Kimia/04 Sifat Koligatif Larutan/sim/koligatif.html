@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sifat Koligatif Larutan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Diagram fasa pelarut murni dan larutan beserta nilai sifat koligatif"></svg></div>
+  <div class="panel">
+    <div class="lab">Zat terlarut</div>
+    <select id="z">
+      <option value="Glukosa,180,1">Glukosa C₆H₁₂O₆ (Mr 180, nonelektrolit)</option>
+      <option value="Sukrosa,342,1">Sukrosa C₁₂H₂₂O₁₁ (Mr 342, nonelektrolit)</option>
+      <option value="NaCl,58.5,2" selected>NaCl (Mr 58,5, i = 2)</option>
+      <option value="MgCl₂,95,3">MgCl₂ (Mr 95, i = 3)</option>
+      <option value="Al₂(SO₄)₃,342,5">Al₂(SO₄)₃ (Mr 342, i = 5)</option>
+    </select>
+    <div class="lab">Massa zat terlarut <b id="mv"></b></div><input type="range" id="m" min="0" max="60" step="0.5" value="5.85">
+    <div class="lab">Massa air <b id="wv"></b></div><input type="range" id="w" min="100" max="1000" step="50" value="500">
+    <div class="read" id="read"></div>
+    <p class="note">Kb air = 0,52 °C/m, Kf air = 1,86 °C/m, P° air (25 °C) = 23,76 mmHg. Tekanan osmosis dihitung pada 25 °C dengan menganggap volume larutan ≈ volume air.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+function draw(){
+  const [nm, Mr, i] = $('z').value.split(',').map((v, k) => k ? +v : v), g = +$('m').value, w = +$('w').value;
+  $('mv').textContent = fmt(g, 2) + ' g'; $('wv').textContent = w + ' g';
+  const n = g / Mr, m = n / (w / 1000), dTb = 0.52 * m * i, dTf = 1.86 * m * i;
+  const nw = w / 18, X = n * i / (nw + n * i), dP = X * 23.76, pi = m * 0.082 * 298 * i;
+  // diagram fasa skematis (diperbesar)
+  const gx = 50, gy = 280, gw = 400, gh = 240;
+  const sc = 8; // pembesaran pergeseran agar terlihat
+  const TX = T => gx + (T + 20) / 140 * gw, PY = P => gy - P / 1000 * gh;
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/>`;
+  s += `<line x1="${gx}" y1="${PY(760)}" x2="${gx + gw}" y2="${PY(760)}" stroke="#cfd8dc" stroke-dasharray="4 3"/><text class="s" x="${gx - 4}" y="${PY(760) + 4}" text-anchor="end" fill="#555">760</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#555">P (mmHg)</text><text class="s" x="${gx + gw}" y="${gy + 28}" text-anchor="end" fill="#555">T (°C)</text>`;
+  // kurva uap: P = 760 * exp(a (T-100)), titik tripel ~ (0, 4.6)
+  const vap = (T, sh) => 760 * Math.exp(0.0402 * (T - 100 - sh));
+  const melt = (P, sh) => 0 - sh - (P - 4.6) * 0.012; // garis leleh hampir tegak, sedikit miring ke kiri
+  const curves = (sh1, sh2, col, dash) => {
+    let d = ''; const T0 = -sh2; for(let k = 0; k <= 60; k++){ const T = T0 + (120 - T0) * k / 60; const P = vap(T, sh1) * (vap(T0, 0) / vap(T0, sh1)) ** 0; if(P > 1000) break; d += (k ? 'L' : 'M') + TX(T).toFixed(1) + ',' + PY(P).toFixed(1); }
+    const Pt = vap(T0, sh1);
+    let d2 = `M${TX(T0)},${PY(Pt)} L${TX(melt(1000, sh2))},${PY(1000)}`;
+    let d3 = ''; for(let k = 0; k <= 20; k++){ const T = -20 + (T0 + 20) * k / 20; d3 += (k ? 'L' : 'M') + TX(T).toFixed(1) + ',' + PY(Pt * Math.exp(0.06 * (T - T0))).toFixed(1); }
+    return `<path d="${d}" fill="none" stroke="${col}" stroke-width="2.5" ${dash ? 'stroke-dasharray="6 4"' : ''}/><path d="${d2}" fill="none" stroke="${col}" stroke-width="2.5" ${dash ? 'stroke-dasharray="6 4"' : ''}/><path d="${d3}" fill="none" stroke="${col}" stroke-width="2" ${dash ? 'stroke-dasharray="6 4"' : ''}/>`;
+  };
+  const sb = Math.min(25, dTb * sc), sf = Math.min(25, dTf * sc);
+  s += curves(0, 0, '#1565c0', false);
+  if(n > 0) s += curves(sb, sf, '#e53935', true);
+  // penanda titik didih dan titik beku
+  const mark = (T, col, lab, up) => `<line x1="${TX(T)}" y1="${PY(760)}" x2="${TX(T)}" y2="${gy}" stroke="${col}" stroke-dasharray="2 3"/><text class="s" x="${TX(T)}" y="${gy + (up ? 14 : 26)}" text-anchor="middle" fill="${col}">${lab}</text>`;
+  s += mark(100, '#1565c0', '100', true) + mark(0, '#1565c0', '0', true);
+  if(n > 0) s += mark(100 + sb, '#e53935', fmt(100 + dTb, 3), false) + mark(-sf, '#e53935', fmt(-dTf, 3), false);
+  s += `<text class="c" x="${TX(-12)}" y="${PY(600)}" fill="#555">PADAT</text><text class="c" x="${TX(40)}" y="${PY(500)}" fill="#555">CAIR</text><text class="c" x="${TX(80)}" y="${PY(120)}" fill="#555">GAS</text>`;
+  s += `<rect x="250" y="40" width="12" height="4" fill="#1565c0"/><text class="s" x="268" y="45" fill="#1565c0">air murni</text><rect x="250" y="54" width="12" height="4" fill="#e53935"/><text class="s" x="268" y="59" fill="#e53935">larutan (pergeseran diperbesar ${sc}×)</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Molalitas m</span><b>${fmt(m, 3)} m</b></div><div><span>Faktor van 't Hoff i</span><b>${i}</b></div><div><span>ΔTb = Kb·m·i</span><b>${fmt(dTb, 3)} °C → Tb = ${fmt(100 + dTb, 3)} °C</b></div><div><span>ΔTf = Kf·m·i</span><b>${fmt(dTf, 3)} °C → Tf = ${fmt(-dTf, 3)} °C</b></div><div><span>ΔP = X<sub>terlarut</sub>·P°</span><b>${fmt(dP, 3)} mmHg</b></div><div><span>π = M·R·T·i</span><b>${fmt(pi, 2)} atm</b></div>`;
+}
+['z', 'm', 'w'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

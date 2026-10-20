@@ -1,56 +1,137 @@
 {
   "title": "Respirasi Seluler dan Fermentasi",
-  "summary": "Ringkasan bab Respirasi Seluler dan Fermentasi akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Glikolisis, dekarboksilasi oksidatif, siklus Krebs, transpor elektron dan kemiosmosis, perhitungan ATP, serta fermentasi alkohol dan asam laktat beserta penerapannya.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Respirasi Seluler dan Fermentasi",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "aerob",
+      "title": "Tahapan respirasi aerob",
+      "kind": "simulasi",
+      "duration": "45 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Tahapan Respirasi Aerob, Fosforilasi Oksidatif, serta Fermentasi Alkohol dan Asam Laktat</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Respirasi seluler aerob memecah glukosa dengan bantuan oksigen untuk menghasilkan ATP:</p><p style='text-align:center'>C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energi (ATP)</p><p>Prosesnya berlangsung bertahap agar energi dilepas sedikit demi sedikit dan dapat ditangkap dalam ATP.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/respirasi.html",
+          "title": "Tahapan respirasi seluler",
+          "height": 560,
+          "caption": "Jalankan tahap demi tahap. Di tahap mana CO₂ dilepaskan? Di tahap mana ATP paling banyak dihasilkan?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Tahap</th><th>Tempat</th><th>Hasil per glukosa</th></tr><tr><td>Glikolisis</td><td>sitosol</td><td>2 asam piruvat, 2 ATP (bersih), 2 NADH</td></tr><tr><td>Dekarboksilasi oksidatif</td><td>matriks mitokondria</td><td>2 asetil KoA, 2 NADH, 2 CO₂</td></tr><tr><td>Siklus Krebs (2 putaran)</td><td>matriks mitokondria</td><td>2 ATP, 6 NADH, 2 FADH₂, 4 CO₂</td></tr><tr><td>Transpor elektron</td><td>membran dalam (krista) mitokondria</td><td>± 34 ATP, H₂O</td></tr></table><p><b>Transpor elektron dan kemiosmosis</b>: NADH dan FADH₂ menyerahkan elektron kepada rantai protein (kompleks I–IV) di membran dalam mitokondria. Energi elektron dipakai memompa H⁺ ke ruang antarmembran. Ion H⁺ kemudian mengalir kembali ke matriks melalui <b>ATP sintase</b> yang membentuk ATP (fosforilasi oksidatif). Oksigen adalah <b>penerima elektron terakhir</b> yang bergabung dengan H⁺ membentuk air.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dari total ATP respirasi aerob satu glukosa (perhitungan klasik 38 ATP), berapa ATP yang dibentuk langsung pada tahap glikolisis dan siklus Krebs (fosforilasi tingkat substrat), dan berapa yang dibentuk lewat transpor elektron?</p>",
+          "steps": [
+            "Langsung: 2 (glikolisis) + 2 (Krebs) = 4 ATP.",
+            "Transpor elektron: 10 NADH × 3 + 2 FADH₂ × 2 = 34 ATP."
+          ],
+          "answer": "4 ATP langsung dan 34 ATP dari transpor elektron"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "title": "Berapa ATP sebenarnya?",
+          "html": "<p>Buku memakai perhitungan klasik (1 NADH = 3 ATP, 1 FADH₂ = 2 ATP), sehingga totalnya 38 ATP. Pengukuran modern menunjukkan 1 NADH ≈ 2,5 ATP dan 1 FADH₂ ≈ 1,5 ATP, dan sebagian energi terpakai untuk mengangkut NADH glikolisis masuk ke mitokondria. Hasil nyatanya sekitar <b>30–32 ATP</b> per glukosa. Untuk soal ujian, ikuti angka yang diberikan soal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menyimpulkan siklus Krebs berlangsung \"dalam suasana anaerob\". Siklus Krebs memang tidak memakai O₂ secara langsung, tetapi hanya dapat berjalan bila ada O₂, karena NAD⁺ dan FAD harus dibentuk kembali oleh transpor elektron yang memerlukan O₂. Jadi siklus Krebs termasuk tahap <b>aerob</b>. Buku juga menyebut perubahan malat menjadi oksaloasetat sebagai \"reaksi isomerase\"; yang benar oksidasi (dehidrogenasi) yang menghasilkan NADH. Keterangan FADH₂ yang \"mengikat elektron (H₂⁺) dan satu proton (e⁻)\" juga tertukar.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Jika oksigen tidak tersedia, tahap respirasi aerob yang pertama kali terhenti adalah ....",
+          "options": {
+            "A": "glikolisis",
+            "B": "transpor elektron",
+            "C": "pembentukan asam piruvat",
+            "D": "pemecahan glukosa menjadi PGAL"
+          },
+          "answer": "B",
+          "hint": "Oksigen dipakai di mana?",
+          "explanation": "O₂ adalah penerima elektron terakhir di transpor elektron. Tanpa O₂ rantai transpor elektron berhenti, lalu NAD⁺ dan FAD tidak terbentuk kembali sehingga siklus Krebs ikut berhenti."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "fermentasi",
+      "title": "Respirasi anaerob dan fermentasi",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jika oksigen tidak tersedia, sel tetap dapat memperoleh ATP dari <b>glikolisis</b>. Masalahnya, glikolisis memerlukan NAD⁺. Fermentasi berfungsi <b>membentuk kembali NAD⁺</b> dengan memakai NADH untuk mereduksi piruvat atau turunannya, sehingga glikolisis dapat terus berjalan. Hasilnya hanya <b>2 ATP per glukosa</b>.</p><ul><li><b>Fermentasi alkohol</b> (khamir Saccharomyces, sel tumbuhan yang tergenang): piruvat → asetaldehida + CO₂, lalu asetaldehida + NADH → etanol + NAD⁺. C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂ + 2 ATP. Dimanfaatkan pada roti (CO₂ mengembangkan adonan), tape, dan minuman beralkohol.</li><li><b>Fermentasi asam laktat</b> (sel otot yang kekurangan O₂, bakteri Lactobacillus): piruvat + NADH → asam laktat + NAD⁺, tanpa CO₂. C₆H₁₂O₆ → 2C₃H₆O₃ + 2 ATP. Dimanfaatkan pada yoghurt, keju, dan acar.</li></ul><p>Istilah <b>respirasi anaerob</b> dalam arti sempit adalah respirasi yang memakai penerima elektron terakhir selain oksigen, misalnya nitrat atau sulfat pada bakteri tertentu.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/respirasi.html",
+          "title": "Fermentasi alkohol dan asam laktat",
+          "height": 560,
+          "caption": "Bandingkan jumlah ATP dan CO₂ pada fermentasi khamir dan sel otot. Mengapa NADH akhirnya kembali menjadi nol?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Khamir dalam adonan memfermentasi 3 molekul glukosa tanpa oksigen. Berapa ATP, etanol, dan CO₂ yang dihasilkan?</p>",
+          "steps": [
+            "Setiap glukosa: 2 ATP, 2 etanol, 2 CO₂.",
+            "Untuk 3 glukosa dikali 3."
+          ],
+          "answer": "6 ATP, 6 etanol, 6 CO₂"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Bagan fermentasi alkohol di buku menuliskan piruvat → \"asetil KoA\" → etanol. Yang benar, piruvat diubah menjadi <b>asetaldehida</b> (dengan melepas CO₂), bukan asetil KoA. Asetil KoA hanya terbentuk pada respirasi aerob di mitokondria. Selain itu, yang direduksi oleh NADH adalah asetaldehida, bukan asam piruvat.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pembuatan yoghurt dari susu memanfaatkan proses ....",
+          "options": {
+            "A": "fermentasi alkohol oleh khamir",
+            "B": "fermentasi asam laktat oleh bakteri",
+            "C": "respirasi aerob oleh jamur",
+            "D": "fotosintesis oleh bakteri"
+          },
+          "answer": "B",
+          "hint": "Yoghurt terasa asam.",
+          "explanation": "Bakteri seperti Lactobacillus bulgaricus dan Streptococcus thermophilus mengubah laktosa menjadi asam laktat."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Perbandingan dan ringkasan",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<table><tr><th>Aspek</th><th>Respirasi aerob</th><th>Fermentasi</th></tr><tr><td>Oksigen</td><td>diperlukan</td><td>tidak diperlukan</td></tr><tr><td>Tempat</td><td>sitosol dan mitokondria</td><td>sitosol</td></tr><tr><td>Hasil akhir</td><td>CO₂ dan H₂O</td><td>etanol + CO₂ atau asam laktat</td></tr><tr><td>ATP per glukosa</td><td>38 (klasik) atau ± 30–32</td><td>2</td></tr><tr><td>Pembongkaran glukosa</td><td>sempurna</td><td>tidak sempurna (energi masih tersimpan dalam etanol atau laktat)</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira glikolisis memerlukan oksigen.</li><li>Menyebut fermentasi asam laktat menghasilkan CO₂.</li><li>Lupa bahwa siklus Krebs berputar dua kali untuk satu glukosa.</li><li>Tertukar letak siklus Krebs (matriks) dan transpor elektron (membran dalam/krista).</li></ul>"
+        },
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 1 Enzim dan Metabolisme (B.2 Respirasi Seluler).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang tahapan respirasi aerob, fosforilasi oksidatif, serta fermentasi alkohol dan asam laktat. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

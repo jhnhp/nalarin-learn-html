@@ -1,56 +1,227 @@
 {
   "title": "Stoikiometri Larutan, Titrasi, dan Kelarutan",
-  "summary": "Ringkasan bab Stoikiometri Larutan, Titrasi, dan Kelarutan akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Reaksi pengendapan, pembentukan gas, dan netralisasi; stoikiometri larutan; titrasi asam basa, kurva titrasi, dan pemilihan indikator; kelarutan, hasil kali kelarutan, ion senama, dan prediksi pengendapan.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Stoikiometri Larutan, Titrasi, dan Kelarutan",
+      "id": "stoikiometri",
+      "title": "Reaksi dalam larutan dan stoikiometri larutan",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Reaksi dalam Larutan, Stoikiometri Larutan, Titrasi Asam Basa, Kelarutan, Hasil Kali Kelarutan, Pengaruh Ion Senama, dan Prediksi Pengendapan</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Reaksi yang umum terjadi dalam larutan:</p><ul><li><b>Pengendapan</b>: salah satu hasil sukar larut, misalnya Ca(OH)₂(aq) + CO₂(g) → CaCO₃(s) + H₂O(l). Inilah sebabnya air kapur menjadi keruh bila ditiup.</li><li><b>Pembentukan gas</b>: logam aktif + asam encer → garam + H₂ (misalnya Zn + 2HCl → ZnCl₂ + H₂); karbonat + asam → CO₂ (soda kue + cuka); sulfida + asam → H₂S; sulfit + asam → SO₂.</li><li><b>Netralisasi</b>: asam + basa → garam + air.</li></ul><p><b>Deret kereaktifan logam</b>: Li K Ba Sr Ca Na Mg Al Mn Zn Cr Fe Cd Co Ni Sn Pb (H) Sb Bi Cu Hg Ag Pt Au. Logam di sebelah kiri H dapat mendesak H₂ dari asam encer; logam di sebelah kanan (Cu, Ag, Au) tidak.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Langkah stoikiometri larutan",
+          "html": "<ol><li>Tulis persamaan reaksi setara.</li><li>Ubah data ke mol: n = M × V (V dalam liter), n = massa/Mr, n = V gas/22,4 L (STP).</li><li>Tentukan pereaksi pembatas, lalu gunakan perbandingan koefisien.</li><li>Ubah mol ke besaran yang ditanyakan. Jika ada sisa asam atau basa kuat, hitung pH dari sisa tersebut dibagi volume total.</li></ol>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 1,3 g seng (Ar Zn = 65) direaksikan dengan HCl berlebih. Berapa liter gas H₂ yang dihasilkan pada STP?</p>",
+          "steps": [
+            "Zn + 2HCl → ZnCl₂ + H₂.",
+            "n Zn = 1,3/65 = 0,02 mol, sehingga n H₂ = 0,02 mol.",
+            "V = 0,02 × 22,4 L."
+          ],
+          "answer": "0,448 L"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebanyak 50 mL HCl 0,1 M dicampur dengan 30 mL NaOH 0,1 M. Tentukan pH campuran (log 2,5 = 0,4).</p>",
+          "steps": [
+            "mol HCl = 5 mmol, mol NaOH = 3 mmol; tersisa HCl 2 mmol.",
+            "[H⁺] = 2 mmol / 80 mL = 0,025 M = 2,5 × 10⁻² M.",
+            "pH = 2 − 0,4."
+          ],
+          "answer": "pH = 1,6"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Pada contoh reaksi seng dengan asam klorida, buku menulis HCl berfasa gas, \"2HCl(g) + Zn(s)\". Yang benar larutan, HCl(aq). Hasilnya (28 mL H₂ dari 2,5 mmol HCl) sudah benar. Soal latihan \"Ca(NO₃)₂ + HCl\" juga perlu dicermati: kedua zat dan hasilnya mudah larut serta tidak membentuk gas atau air, sehingga sebenarnya <b>tidak terjadi reaksi</b> dan tidak terbentuk CaCl₂ sebagai zat terpisah.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Batu kapur (CaCO₃) ditetesi larutan HCl dan timbul gelembung gas. Gas tersebut adalah ....",
+          "options": {
+            "A": "H₂",
+            "B": "CO₂",
+            "C": "Cl₂",
+            "D": "O₂"
+          },
+          "answer": "B",
+          "hint": "Karbonat + asam.",
+          "explanation": "CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂; gelembungnya gas karbon dioksida."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "titrasi",
+      "title": "Titrasi asam basa",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p><b>Titrasi</b> adalah cara menentukan konsentrasi suatu larutan dengan mereaksikannya dengan larutan lain yang konsentrasinya sudah diketahui. <b>Titran</b> (di buret) diteteskan sedikit demi sedikit ke <b>titrat</b> (di labu erlenmeyer) sampai <b>titik ekuivalen</b>, yaitu saat asam dan basa tepat habis bereaksi. Saat indikator berubah warna disebut <b>titik akhir titrasi</b>; indikator dipilih agar titik akhir sedekat mungkin dengan titik ekuivalen.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus titrasi",
+          "html": "<p>Pada titik ekuivalen, mol H⁺ = mol OH⁻:</p><p>\\(a \\cdot M_a \\cdot V_a = b \\cdot M_b \\cdot V_b\\)</p><p>a dan b adalah valensi asam dan basa (misalnya H₂SO₄: a = 2; NaOH: b = 1).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/titrasi.html",
+          "title": "Titrasi dan kurva titrasi",
+          "height": 600,
+          "caption": "Bandingkan pH titik ekuivalen ketiga jenis titrasi. Mengapa fenolftalein cocok untuk asam lemah–basa kuat, tetapi metil merah lebih cocok untuk basa lemah–asam kuat?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Jenis titrasi</th><th>pH titik ekuivalen</th><th>Indikator yang cocok</th></tr><tr><td>asam kuat – basa kuat</td><td>7</td><td>fenolftalein, BTB, atau metil merah (lonjakan pH sangat curam)</td></tr><tr><td>asam lemah – basa kuat</td><td>&gt; 7 (garamnya bersifat basa)</td><td>fenolftalein</td></tr><tr><td>basa lemah – asam kuat</td><td>&lt; 7 (garamnya bersifat asam)</td><td>metil merah atau metil jingga</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 20 mL larutan CH₃COOH dititrasi dengan NaOH 0,1 M. Dari tiga kali percobaan, volume NaOH yang diperlukan 18,1 mL, 17,9 mL, dan 18,0 mL. Tentukan konsentrasi CH₃COOH.</p>",
+          "steps": [
+            "Volume rata-rata NaOH = 18,0 mL.",
+            "1 × M × 20 = 1 × 0,1 × 18,0.",
+            "M = 1,8/20."
+          ],
+          "answer": "0,09 M"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebanyak 25 mL H₂SO₄ tepat dinetralkan oleh 30 mL NaOH 0,1 M. Berapa konsentrasi H₂SO₄?</p>",
+          "steps": [
+            "2 × M × 25 = 1 × 0,1 × 30.",
+            "M = 3/50."
+          ],
+          "answer": "0,06 M"
+        },
+        {
+          "type": "check",
+          "question": "Pada titrasi NH₃ dengan HCl, pH titik ekuivalennya ....",
+          "options": {
+            "A": "tepat 7",
+            "B": "lebih dari 7",
+            "C": "kurang dari 7",
+            "D": "selalu 14"
+          },
+          "answer": "C",
+          "hint": "Garam yang terbentuk adalah NH₄Cl.",
+          "explanation": "NH₄Cl berasal dari basa lemah dan asam kuat; ion NH₄⁺ terhidrolisis sehingga larutan bersifat asam."
+        }
+      ]
+    },
+    {
+      "id": "ksp",
+      "title": "Kelarutan dan hasil kali kelarutan",
+      "kind": "simulasi",
+      "duration": "45 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Kelarutan</b> (s) adalah jumlah maksimum zat yang dapat larut dalam pelarut tertentu pada suhu tertentu (mol/L). Dalam larutan jenuh garam sukar larut terdapat kesetimbangan antara padatan dan ion-ionnya:</p><p style='text-align:center'>BaSO₄(s) ⇌ Ba²⁺(aq) + SO₄²⁻(aq)</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hasil kali kelarutan",
+          "html": "<p>Untuk \\(\\text{A}_x\\text{B}_y(s) \\rightleftharpoons x\\text{A}^{y+} + y\\text{B}^{x-}\\):</p><p>\\(K_{sp} = [\\text{A}^{y+}]^x[\\text{B}^{x-}]^y = (xs)^x(ys)^y\\)</p><p>Contoh: AgCl: Ksp = s²; Ag₂CrO₄ dan PbI₂: Ksp = 4s³; Ca₃(PO₄)₂: Ksp = 108s⁵. Nilai Ksp hanya berubah bila suhu berubah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kelarutan Ag₂CrO₄ dalam air pada 25 °C adalah 6,5 × 10⁻⁵ mol/L. Hitung Ksp-nya.</p>",
+          "steps": [
+            "Ag₂CrO₄ ⇌ 2Ag⁺ + CrO₄²⁻: [Ag⁺] = 2s, [CrO₄²⁻] = s.",
+            "Ksp = (2s)² × s = 4s³ = 4 × (6,5 × 10⁻⁵)³."
+          ],
+          "answer": "≈ 1,1 × 10⁻¹²"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Pengaruh ion senama</b>: kelarutan garam sukar larut <b>berkurang</b> dalam larutan yang sudah mengandung salah satu ionnya, karena kesetimbangan bergeser ke kiri (asas Le Chatelier).</p><p><b>Meramalkan pengendapan</b>: hitung hasil kali konsentrasi ion setelah dicampur, Qsp. Jika Qsp &lt; Ksp, tidak mengendap (belum jenuh). Jika Qsp = Ksp, tepat jenuh. Jika Qsp &gt; Ksp, terbentuk endapan.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/ksp.html",
+          "title": "Pengendapan dan ion senama",
+          "height": 540,
+          "caption": "Pada mode campur, cari konsentrasi terbesar BaCl₂ dan Na₂SO₄ yang masih tidak menghasilkan endapan. Pada mode ion senama, berapa kali kelarutan AgBr turun dalam NaBr 0,01 M?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Hitung kelarutan AgBr dalam larutan NaBr 0,01 M (Ksp AgBr = 5 × 10⁻¹³).</p>",
+          "steps": [
+            "[Br⁻] ≈ 0,01 M (dari NaBr; tambahan dari AgBr dapat diabaikan).",
+            "Ksp = [Ag⁺][Br⁻] → s = 5 × 10⁻¹³ / 10⁻²."
+          ],
+          "answer": "5 × 10⁻¹¹ mol/L (dalam air murni ≈ 7 × 10⁻⁷ mol/L)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Sebanyak 100 mL CaCl₂ 4 × 10⁻⁴ M dicampur dengan 100 mL Na₂CO₃ 8 × 10⁻⁴ M. Apakah terbentuk endapan CaCO₃ (Ksp = 2,8 × 10⁻⁹)?</p>",
+          "steps": [
+            "Volume menjadi 200 mL: [Ca²⁺] = 2 × 10⁻⁴ M, [CO₃²⁻] = 4 × 10⁻⁴ M.",
+            "Qsp = 2 × 10⁻⁴ × 4 × 10⁻⁴ = 8 × 10⁻⁸."
+          ],
+          "answer": "Qsp > Ksp, sehingga terbentuk endapan CaCO₃"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Pada Tabel 1.3, reaksi barium sulfat tertulis \"BaCO₄(s)\"; seharusnya BaSO₄(s). Rumus Qsp tertulis [Py+] × [Qx–]<sup>y</sup>; seharusnya \\(Q_{sp} = [\\text{P}^{y+}]^x[\\text{Q}^{x-}]^y\\). Pada soal latihan nomor 4, Ksp BaSO₄ ditulis 1,5 × 10⁻⁹, berbeda dengan Tabel 1.3 (1,1 × 10⁻¹⁰); gunakan nilai yang diberikan soal.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kelarutan AgCl paling kecil terdapat dalam ....",
+          "options": {
+            "A": "air murni",
+            "B": "larutan NaNO₃ 0,1 M",
+            "C": "larutan NaCl 0,1 M",
+            "D": "larutan NaCl 0,01 M"
+          },
+          "answer": "C",
+          "hint": "Ion senama terbanyak.",
+          "explanation": "Ion Cl⁻ dari NaCl 0,1 M paling banyak, sehingga kesetimbangan AgCl paling kuat bergeser ke kiri."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa membagi dengan volume total setelah dua larutan dicampur.</li><li>Lupa valensi pada rumus titrasi (H₂SO₄, Ba(OH)₂).</li><li>Menulis Ksp Ag₂CrO₄ = s² padahal 4s³.</li><li>Menyamakan titik ekuivalen dengan pH 7 untuk semua titrasi.</li><li>Membandingkan kelarutan dua garam yang rumusnya berbeda tipe hanya dari nilai Ksp-nya.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab I Larutan dan Koloid (C. Kesetimbangan dalam Larutan: stoikiometri larutan, titrasi, kelarutan).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang reaksi dalam larutan, stoikiometri larutan, titrasi asam basa, kelarutan dan Ksp, pengaruh ion senama, serta prediksi pengendapan. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penjumlahan Kecepatan Relativistik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Perbandingan penjumlahan kecepatan Galileo dan Einstein"></svg></div>
+  <div class="panel">
+    <div class="lab">v₁: pesawat terhadap Bumi <b id="av"></b></div><input type="range" id="a" min="0" max="0.99" step="0.01" value="0.4">
+    <div class="lab">v₂: benda terhadap pesawat <b id="bv"></b></div><input type="range" id="b" min="-0.99" max="0.99" step="0.01" value="0.7">
+    <label class="chk"><input type="checkbox" id="light"> Benda berupa cahaya (v₂ = c)</label>
+    <div class="read" id="read"></div>
+    <p class="note">Nilai v₂ negatif berarti benda ditembakkan ke belakang. Galileo: V = v₁ + v₂. Einstein: V = (v₁ + v₂)/(1 + v₁v₂/c²).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+function draw(){
+  const v1 = +$('a').value, lt = $('light').checked, v2 = lt ? 1 : +$('b').value;
+  $('b').disabled = lt;
+  $('av').textContent = fmt(v1, 2) + 'c'; $('bv').textContent = lt ? 'c' : fmt(v2, 2) + 'c';
+  const G = v1 + v2, E = (v1 + v2) / (1 + v1 * v2);
+  // skala batang
+  const x0 = 240, sc = 105;
+  const bar = (y, val, col, lab) => { const w = val * sc, ins = Math.abs(w) > 150; const tx = ins ? x0 + w + (w >= 0 ? -6 : 6) : x0 + w + (w >= 0 ? 6 : -6); return `<text class="s" x="20" y="${y - 4}" style="fill:var(--ink)">${lab}</text><rect x="${Math.min(x0, x0 + w)}" y="${y}" width="${Math.abs(w)}" height="20" fill="${col}" rx="3"/><text class="c" x="${tx}" y="${y + 14}" text-anchor="${(w >= 0) !== ins ? 'start' : 'end'}" fill="${ins ? '#fff' : col}">${fmt(val, 3)}c</text>`; };
+  let s = `<line x1="${x0}" y1="20" x2="${x0}" y2="210" stroke="#555"/><line x1="${x0 + sc}" y1="20" x2="${x0 + sc}" y2="210" stroke="#e53935" stroke-dasharray="4 3"/><text class="s" x="${x0 + sc}" y="14" text-anchor="middle" fill="#e53935">c</text><line x1="${x0 - sc}" y1="20" x2="${x0 - sc}" y2="210" stroke="#e53935" stroke-dasharray="4 3"/><text class="s" x="${x0 - sc}" y="14" text-anchor="middle" fill="#e53935">−c</text>`;
+  s += bar(38, v1, '#78909c', 'v₁ (pesawat–Bumi)') + bar(83, v2, '#90a4ae', 'v₂ (benda–pesawat)') + bar(133, G, '#fb8c00', 'Galileo v₁ + v₂') + bar(178, E, '#1565c0', 'Einstein');
+  // animasi sederhana: pesawat dan benda
+  const yy = 255;
+  s += `<line x1="20" y1="${yy + 30}" x2="460" y2="${yy + 30}" stroke="#8d6e63" stroke-width="3"/><text class="s" x="20" y="${yy + 46}" fill="#8d6e63">Bumi (pengamat)</text>`;
+  s += `<path d="M150,${yy - 10} h50 l14,10 l-14,10 h-50 z" fill="#78909c" fill-opacity=".3" stroke="#546e7a" stroke-width="2"/><line x1="150" y1="${yy + 18}" x2="${150 + 80 * v1}" y2="${yy + 18}" stroke="#546e7a" stroke-width="2" marker-end="url(#m)"/>`;
+  s += `<circle cx="${v2 >= 0 ? 235 : 135}" cy="${yy}" r="6" fill="${lt ? '#fdd835' : '#1565c0'}"/><line x1="${v2 >= 0 ? 245 : 125}" y1="${yy}" x2="${(v2 >= 0 ? 245 : 125) + 80 * v2}" y2="${yy}" stroke="${lt ? '#f9a825' : '#1565c0'}" stroke-width="2" marker-end="url(#m)"/>`;
+  s += `<defs><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Galileo</span><b>${fmt(G, 3)}c ${Math.abs(G) > 1 ? '(melebihi c: mustahil)' : ''}</b></div><div><span>Einstein (relativistik)</span><b>${fmt(E, 3)}c</b></div><div><span>Selisih</span><b>${fmt(Math.abs(G - E), 3)}c</b></div>`;
+}
+['a', 'b', 'light'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

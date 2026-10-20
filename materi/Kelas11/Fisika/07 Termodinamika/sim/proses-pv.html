@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proses Termodinamika pada Diagram P–V</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Diagram tekanan terhadap volume dengan luas di bawah kurva"></svg></div>
+  <div class="panel">
+    <div class="seg" id="pr"><button class="on" data-v="isobarik">Isobarik</button><button data-v="isokhorik">Isokhorik</button><button data-v="isotermal">Isotermal</button><button data-v="adiabatik">Adiabatik</button></div>
+    <div class="lab" id="xl">Volume akhir <b id="xv"></b></div><input type="range" id="x" min="5" max="40" step="1" value="30">
+    <div class="read" id="read"></div>
+    <p class="note">Gas ideal monoatomik 1 mol, keadaan awal P₁ = 2 × 10⁵ Pa, V₁ = 10 L. Hukum I: Q = ΔU + W dengan ΔU = (3/2)nRΔT dan W = luas di bawah kurva P–V (positif saat gas memuai). Adiabatik: Q = 0, PV<sup>γ</sup> tetap, γ = 5/3.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const R = 8.31, n = 1, P1 = 2e5, V1 = 10e-3, T1 = P1 * V1 / (n * R), g = 5 / 3;
+let pr = 'isobarik';
+document.querySelectorAll('#pr button').forEach(b => b.onclick = () => { document.querySelectorAll('#pr button').forEach(x => x.classList.toggle('on', x === b)); pr = b.dataset.v; setup(); draw(); });
+$('x').oninput = draw;
+function setup(){
+  const x = $('x');
+  if(pr === 'isokhorik'){ x.min = 100; x.max = 500; x.step = 10; x.value = 300; $('xl').firstChild.textContent = 'Tekanan akhir '; }
+  else { x.min = 5; x.max = 40; x.step = 1; x.value = 20; $('xl').firstChild.textContent = 'Volume akhir '; }
+}
+function curve(){
+  const x = +$('x').value, pts = [];
+  if(pr === 'isokhorik'){ const P2 = x * 1e3; for(let i = 0; i <= 40; i++) pts.push([V1, P1 + (P2 - P1) * i / 40]); return pts; }
+  const V2 = x * 1e-3;
+  for(let i = 0; i <= 80; i++){ const V = V1 + (V2 - V1) * i / 80; let P;
+    if(pr === 'isobarik') P = P1; else if(pr === 'isotermal') P = P1 * V1 / V; else P = P1 * Math.pow(V1 / V, g);
+    pts.push([V, P]); }
+  return pts;
+}
+function draw(){
+  const pts = curve(), [V2, P2] = pts[pts.length - 1], T2 = P2 * V2 / (n * R);
+  let W = 0; for(let i = 1; i < pts.length; i++) W += (pts[i][0] - pts[i - 1][0]) * (pts[i][1] + pts[i - 1][1]) / 2;
+  const dU = 1.5 * n * R * (T2 - T1), Q = pr === 'adiabatik' ? 0 : dU + W;
+  const L = 60, Rr = 460, T = 20, B = 280, X = V => L + V / 0.042 * (Rr - L), Y = P => B - P / 5.2e5 * (B - T);
+  let s = '';
+  for(let v = 0; v <= 40; v += 10) s += `<line x1="${X(v * 1e-3)}" y1="${T}" x2="${X(v * 1e-3)}" y2="${B}" style="stroke:var(--line)"/><text class="s" x="${X(v * 1e-3)}" y="${B + 14}" text-anchor="middle" style="fill:var(--muted)">${v}</text>`;
+  for(let p = 0; p <= 5; p++) s += `<line x1="${L}" y1="${Y(p * 1e5)}" x2="${Rr}" y2="${Y(p * 1e5)}" style="stroke:var(--line)"/><text class="s" x="${L - 6}" y="${Y(p * 1e5) + 4}" text-anchor="end" style="fill:var(--muted)">${p}</text>`;
+  s += `<text class="s" x="${Rr}" y="${B + 28}" text-anchor="end" style="fill:var(--muted)">V (L)</text><text class="s" x="${L}" y="${T - 6}" style="fill:var(--muted)">P (× 10⁵ Pa)</text>`;
+  // isoterm referensi
+  [T1, T2].forEach((Tt, i) => { let p = ''; for(let v = 2; v <= 42; v += .5){ const P = n * R * Tt / (v * 1e-3); if(P > 5.2e5) continue; p += (p ? 'L' : 'M') + X(v * 1e-3).toFixed(1) + ',' + Y(P).toFixed(1); } s += `<path d="${p}" fill="none" style="stroke:var(--muted)" stroke-dasharray="3 4" stroke-opacity=".6"/>`; });
+  // luas
+  if(pr !== 'isokhorik') s += `<path d="M${X(pts[0][0])},${Y(0)} ${pts.map(([v, p]) => 'L' + X(v).toFixed(1) + ',' + Y(p).toFixed(1)).join(' ')} L${X(V2)},${Y(0)} Z" style="fill:${W >= 0 ? 'var(--a)' : 'var(--b)'}" fill-opacity=".18"/>`;
+  s += `<path d="M${pts.map(([v, p]) => X(v).toFixed(1) + ',' + Y(p).toFixed(1)).join(' L')}" fill="none" style="stroke:var(--a)" stroke-width="3"/>`;
+  s += `<circle cx="${X(V1)}" cy="${Y(P1)}" r="5" style="fill:var(--ink)"/><text class="s" x="${X(V1) - 8}" y="${Y(P1) - 8}" text-anchor="end" style="fill:var(--ink)">1</text><circle cx="${X(V2)}" cy="${Y(P2)}" r="5" style="fill:var(--b)"/><text class="s" x="${X(V2) + 8}" y="${Y(P2) - 8}" style="fill:var(--b)">2</text>`;
+  svg.innerHTML = s;
+  $('xv').textContent = pr === 'isokhorik' ? fmt(P2 / 1e5, 2) + ' × 10⁵ Pa' : fmt(V2 * 1e3, 0) + ' L';
+  $('read').innerHTML = `<div><span>T₁ → T₂</span><b>${fmt(T1, 1)} K → ${fmt(T2, 1)} K</b></div><div><span>Usaha W (luas)</span><b>${fmt(W, 0)} J</b></div><div><span>ΔU = (3/2)nRΔT</span><b>${fmt(dU, 0)} J</b></div><div><span>Kalor Q = ΔU + W</span><b>${fmt(Q, 0)} J ${Q > 0 ? '(diserap)' : Q < 0 ? '(dilepas)' : ''}</b></div>`;
+}
+setup(); draw();
+</script>
+</body>
+</html>

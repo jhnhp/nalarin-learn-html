@@ -1,56 +1,204 @@
 {
   "title": "Evaluasi Akhir",
-  "summary": "Ringkasan bab Evaluasi Akhir akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Rangkuman dan contoh soal seluruh bab Kimia Kelas XII: asam basa, hidrolisis, penyangga, titrasi, Ksp, sifat koligatif, koloid, redoks dan elektrokimia, gugus fungsi senyawa karbon, polimer, dan biomolekul.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Evaluasi Akhir",
+      "id": "larutan",
+      "title": "Asam basa, hidrolisis, penyangga, titrasi, dan Ksp",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Inti materi",
+          "html": "<ul><li>Arrhenius: H⁺/OH⁻ dalam air. Brønsted–Lowry: donor/akseptor proton (pasangan konjugasi berbeda satu H⁺). Lewis: akseptor/donor pasangan elektron.</li><li>Asam kuat: [H⁺] = a·M. Asam lemah: [H⁺] = √(Ka·M). Basa analog dengan [OH⁻]. pH + pOH = 14.</li><li>Garam: dari asam lemah → basa; dari basa lemah → asam; hidrolisis total ditentukan oleh perbandingan Ka dan Kb.</li><li>Penyangga: [H⁺] = Ka × mol asam/mol basa konjugasi; [OH⁻] = Kb × mol basa/mol asam konjugasi.</li><li>Titrasi: a·Ma·Va = b·Mb·Vb; pH titik ekuivalen bergantung pada garam yang terbentuk.</li><li>Ksp = (xs)ˣ(ys)ʸ; ion senama menurunkan kelarutan; Qsp &gt; Ksp berarti mengendap.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../02 Hidrolisis Garam dan Larutan Penyangga/sim/penyangga.html",
+          "title": "Larutan penyangga",
+          "height": 520,
+          "caption": "Bandingkan perubahan pH penyangga basa dan air murni ketika ditambah HCl."
+        },
+        {
+          "type": "sim",
+          "src": "../03 Stoikiometri Larutan, Titrasi, dan Kelarutan/sim/titrasi.html",
+          "title": "Kurva titrasi",
+          "height": 600,
+          "caption": "Pilih indikator yang cocok untuk ketiga jenis titrasi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 100 mL NH₃ 0,2 M (Kb = 1,8 × 10⁻⁵) dicampur dengan 100 mL HCl 0,1 M. Tentukan pH campuran.</p>",
+          "steps": [
+            "NH₃ 20 mmol + HCl 10 mmol → tersisa NH₃ 10 mmol dan terbentuk NH₄⁺ 10 mmol (penyangga basa).",
+            "[OH⁻] = 1,8 × 10⁻⁵ × 10/10 → pOH = 5 − log 1,8 ≈ 4,74."
+          ],
+          "answer": "pH ≈ 9,26"
+        }
+      ]
+    },
+    {
+      "id": "koligatif-koloid",
+      "title": "Sifat koligatif dan koloid",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Inti materi",
+          "html": "<ul><li>ΔP = Xt·P°; ΔTb = Kb·m·i; ΔTf = Kf·m·i; π = M·R·T·i; i = 1 + (n − 1)α.</li><li>Molalitas untuk ΔTb dan ΔTf, molaritas untuk π, suhu dalam kelvin untuk π.</li><li>Koloid: partikel 1–100 nm; delapan jenis berdasarkan fase (sol, emulsi, buih, aerosol, gel, dan sebagainya).</li><li>Sifat koloid: efek Tyndall, gerak Brown, adsorpsi, elektroforesis, koagulasi, koloid pelindung, dialisis. Liofil stabil; liofob mudah digumpalkan elektrolit.</li><li>Pembuatan: kondensasi (hidrolisis, redoks, dekomposisi rangkap) dan dispersi (mekanik, peptisasi, busur Bredig).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../04 Sifat Koligatif Larutan/sim/koligatif.html",
+          "title": "Sifat koligatif",
+          "height": 560,
+          "caption": "Berapa gram NaCl dalam 500 g air yang memberi ΔTf sama dengan 18 g glukosa dalam 500 g air?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 3,42 g sukrosa (Mr = 342) dilarutkan dalam 100 g air. Tentukan titik beku dan titik didih larutan.</p>",
+          "steps": [
+            "m = (3,42/342) × (1000/100) = 0,1 m; i = 1.",
+            "ΔTf = 1,86 × 0,1 = 0,186 °C; ΔTb = 0,52 × 0,1 = 0,052 °C."
+          ],
+          "answer": "−0,186 °C dan 100,052 °C"
+        }
+      ]
+    },
+    {
+      "id": "elektrokimia",
+      "title": "Redoks dan elektrokimia",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Inti materi",
+          "html": "<ul><li>Oksidasi: biloks naik, melepas elektron (reduktor). Reduksi: biloks turun, menerima elektron (oksidator).</li><li>Penyetaraan setengah reaksi: atom selain O dan H → O dengan H₂O → H dengan H⁺ (basa: + OH⁻) → muatan dengan e.</li><li>Sel volta: anode (−) oksidasi, katode (+) reduksi; E°sel = E°katode − E°anode; spontan jika E°sel &gt; 0.</li><li>Elektrolisis: katode (−) reduksi, anode (+) oksidasi. Ion logam aktif dalam larutan tidak direduksi (air yang direduksi); ion sisa asam oksi tidak dioksidasi (air yang dioksidasi); anode logam aktif ikut teroksidasi.</li><li>Faraday: m = (Ar/muatan) × I·t/96.500.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../07 Sel Elektrokimia/sim/sel-volta.html",
+          "title": "Sel volta",
+          "height": 560,
+          "caption": "Susun sel yang menghasilkan beda potensial antara 1 dan 2 volt."
+        },
+        {
+          "type": "sim",
+          "src": "../07 Sel Elektrokimia/sim/elektrolisis.html",
+          "title": "Elektrolisis dan hukum Faraday",
+          "height": 580,
+          "caption": "Mengapa elektrolisis larutan NaCl tidak menghasilkan logam natrium?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Larutan NiSO₄ dielektrolisis dengan arus 2 A selama 9.650 s. Berapa gram nikel yang mengendap? (Ar Ni = 58,7)</p>",
+          "steps": [
+            "Q = 2 × 9.650 = 19.300 C → 0,2 mol elektron.",
+            "Ni²⁺ + 2e → Ni: mol Ni = 0,1 mol.",
+            "m = 0,1 × 58,7."
+          ],
+          "answer": "5,87 g"
+        }
+      ]
+    },
+    {
+      "id": "organik",
+      "title": "Gugus fungsi senyawa karbon",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Inti materi",
+          "html": "<ul><li>Isomer fungsi: alkohol–eter (CₙH₂ₙ₊₂O), aldehida–keton (CₙH₂ₙO), asam karboksilat–ester (CₙH₂ₙO₂).</li><li>Titik didih: alkana &lt; eter &lt; aldehida/keton &lt; alkohol &lt; asam karboksilat (C setara).</li><li>Oksidasi: alkohol primer → aldehida → asam karboksilat; sekunder → keton; tersier tidak teroksidasi. Aldehida positif Tollens (cermin perak) dan Fehling (merah bata).</li><li>Reaksi: substitusi, eliminasi (aturan Zaytsev), adisi (aturan Markovnikov), esterifikasi, transesterifikasi, penyabunan.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../08 Gugus Fungsi Senyawa Karbon/sim/peta-reaksi.html",
+          "title": "Peta reaksi senyawa karbon",
+          "height": 560,
+          "caption": "Tuliskan dua tahap reaksi untuk mengubah kloroetana menjadi etanal."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Senyawa X (C₄H₈O₂) dipanaskan dengan larutan NaOH dan menghasilkan natrium etanoat serta etanol. Tentukan nama X dan jenis reaksinya.</p>",
+          "steps": [
+            "Hasil berupa garam karboksilat dan alkohol menunjukkan hidrolisis ester dalam basa.",
+            "Bagian asam: etanoat (2 C); bagian alkohol: etil (2 C); jumlah C = 4."
+          ],
+          "answer": "X = etil etanoat; reaksi penyabunan (saponifikasi)"
+        }
+      ]
+    },
+    {
+      "id": "makromolekul",
+      "title": "Polimer dan biomolekul",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Inti materi",
+          "html": "<ul><li>Adisi: monomer berikatan rangkap, tanpa hasil samping (PE, PP, PVC, PS, teflon). Kondensasi: monomer bifungsional, melepas molekul kecil (PET, nilon, bakelit, pati, protein).</li><li>Termoplastik dapat dilelehkan dan didaur ulang; termoset memiliki ikatan silang dan tidak meleleh.</li><li>Karbohidrat: mono-, di-, polisakarida; ikatan glikosidik. Protein: asam amino, ikatan peptida; Mr = ΣMr − 18(n − 1). DNA (A, T, G, C, deoksiribosa) dan RNA (A, U, G, C, ribosa).</li><li>Uji: Benedict/Fehling (gula pereduksi), Seliwanoff (ketosa), Barfoed (monosakarida), iodin (pati), biuret (protein), xantoproteat (cincin benzena).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../09 Polimer/sim/polimerisasi.html",
+          "title": "Polimerisasi",
+          "height": 540,
+          "caption": "Hitung Mr polistirena dengan derajat polimerisasi 500."
+        },
+        {
+          "type": "sim",
+          "src": "../10 Polimer Alam dan Biomolekul/sim/uji-biomolekul.html",
+          "title": "Uji karbohidrat dan protein",
+          "height": 520,
+          "caption": "Susun urutan uji untuk mengenali sampel yang mungkin berisi glukosa, sukrosa, pati, atau putih telur."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah molekul polistirena memiliki derajat polimerisasi 500. Mr stirena (C₈H₈) adalah 104. Tentukan Mr polistirena.</p>",
+          "steps": [
+            "Polistirena dibuat dengan polimerisasi adisi, sehingga Mr unit ulang = Mr monomer.",
+            "Mr = 500 × 104."
+          ],
+          "answer": "52.000"
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Strategi mengerjakan evaluasi",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Evaluasi Akhir Kimia Kelas XII (Larutan dan Koloid, Elektrokimia, Gugus Fungsi Senyawa Karbon, dan Makromolekul)</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "tips",
+          "title": "Sebelum mengerjakan",
+          "html": "<ul><li>Pada soal campuran asam–basa, buat dulu tabel mula-mula, bereaksi, dan sisa, lalu tentukan jenis larutan sisanya (asam/basa kuat, penyangga, atau garam).</li><li>Periksa satuan: molal atau molar, °C atau K, mL atau L.</li><li>Pada soal redoks, tulis biloks setiap unsur yang berubah sebelum menentukan oksidator dan reduktor.</li><li>Pada soal senyawa karbon, gambar struktur lengkapnya sebelum memberi nama.</li><li>Pada soal wacana, garis bawahi data numerik dan pertanyaan inti.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab I–IV.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "40 soal evaluasi akhir Kimia Kelas XII yang mencakup larutan dan koloid, elektrokimia, gugus fungsi senyawa karbon, serta makromolekul. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

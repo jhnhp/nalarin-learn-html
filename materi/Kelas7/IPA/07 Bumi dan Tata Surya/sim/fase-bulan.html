@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fase Bulan dan Gerhana</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.big{font-family:var(--display);font-weight:800;font-size:18px;text-align:center;padding:8px;border-radius:12px;background:var(--surface-2)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 380" role="img" aria-label="Posisi Matahari, Bumi, dan Bulan serta tampak Bulan dari Bumi"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Hari sejak bulan baru</span><b id="dout"></b></div><input type="range" id="d" min="0" max="29.5" step="0.5" value="7.5"></div>
+    <label class="chk"><input type="checkbox" id="c-tilt"> Orbit Bulan miring 5° (gerhana tidak terjadi setiap bulan)</label>
+    <div class="row"><button class="btn primary" id="play">Putar ▶</button></div>
+    <div class="big" id="name"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let timer = null;
+$('d').oninput = draw; $('c-tilt').onchange = draw;
+$('play').onclick = () => { if(timer){ clearInterval(timer); timer = null; $('play').textContent = 'Putar ▶'; return; } $('play').textContent = 'Jeda'; timer = setInterval(() => { let v = +$('d').value + .25; if(v > 29.5) v = 0; $('d').value = v; draw(); }, 60); };
+Sim.onTheme(draw);
+const names = [[0, 'Bulan baru'], [3.7, 'Sabit muda'], [7.4, 'Kuartal pertama'], [11.1, 'Cembung awal'], [14.8, 'Purnama'], [18.5, 'Cembung akhir'], [22.1, 'Kuartal ketiga'], [25.8, 'Sabit tua'], [29.5, 'Bulan baru']];
+function draw(){
+  const d = +$('d').value, th = d / 29.53 * 2 * Math.PI, ex = 300, ey = 170, R = 100;
+  const mx = ex - R * Math.cos(th), my = ey + R * Math.sin(th); // berlawanan arah jarum jam dilihat dari utara // matahari di kiri: bulan baru di antara
+  let s = `<circle cx="20" cy="${ey}" r="60" fill="#f7b500"/><text class="c" x="30" y="${ey + 80}" style="fill:var(--muted)">Matahari</text>`;
+  for(let k = 0; k < 5; k++) s += `<line x1="90" y1="${ey - 80 + k * 40}" x2="160" y2="${ey - 80 + k * 40}" stroke="#f7b500" stroke-width="2" stroke-dasharray="6 6"/>`;
+  s += `<circle cx="${ex}" cy="${ey}" r="${R}" fill="none" style="stroke:var(--line-2)" stroke-dasharray="4 4"/>`;
+  // bayangan bumi
+  s += `<polygon points="${ex},${ey - 22} ${ex + 160},${ey - 10} ${ex + 160},${ey + 10} ${ex},${ey + 22}" style="fill:var(--ink)" fill-opacity=".12"/>`;
+  s += `<circle cx="${ex}" cy="${ey}" r="22" fill="#2b7de9"/><path d="M${ex} ${ey - 22} A22 22 0 0 1 ${ex} ${ey + 22}Z" style="fill:var(--ink)" fill-opacity=".45"/><text class="c" x="${ex}" y="${ey + 40}" text-anchor="middle" style="fill:var(--muted)">Bumi</text>`;
+  s += `<circle cx="${mx}" cy="${my}" r="10" fill="#cfcfcf"/><path d="M${mx} ${my - 10} A10 10 0 0 1 ${mx} ${my + 10}Z" style="fill:var(--ink)" fill-opacity=".55"/>`;
+  // tampak dari bumi
+  const ill = (1 - Math.cos(th)) / 2, cx = 90, cy = 315, r = 42, waxing = d <= 14.76;
+  const k = Math.cos(th); // -1 purnama ... 1 baru
+  const term = Math.abs(k) * r, lit = waxing ? 1 : -1;
+  s += `<circle cx="${cx}" cy="${cy}" r="${r}" style="fill:var(--ink)" fill-opacity=".8"/>`;
+  const sweepOuter = waxing ? 1 : 0, termSweep = (k > 0) === waxing ? 0 : 1;
+  s += `<path d="M${cx} ${cy - r} A${r} ${r} 0 0 ${sweepOuter} ${cx} ${cy + r} A${term} ${r} 0 0 ${termSweep} ${cx} ${cy - r}Z" fill="#e8e8e8"/>`;
+  s += `<text class="c" x="${cx + 60}" y="${cy - 20}" style="fill:var(--muted)">tampak dari Bumi</text><text class="c" x="${cx + 60}" y="${cy}" style="fill:var(--muted)">(belahan bumi selatan/utara</text><text class="c" x="${cx + 60}" y="${cy + 16}" style="fill:var(--muted)">dapat terbalik kiri-kanan)</text>`;
+  svg.innerHTML = s;
+  let nm = names.reduce((a, b) => Math.abs(b[0] - d) < Math.abs(a[0] - d) ? b : a)[1];
+  const tilt = $('c-tilt').checked, nearNew = d < 1 || d > 28.5, nearFull = Math.abs(d - 14.76) < 1;
+  let ecl = '';
+  if(nearNew) ecl = tilt ? 'Bulan di antara Matahari dan Bumi, tetapi biasanya sedikit di atas/bawah garis: tidak ada gerhana' : 'Bulan di antara Matahari dan Bumi: dapat terjadi <b>gerhana Matahari</b>';
+  if(nearFull) ecl = tilt ? 'Bumi di antara Matahari dan Bulan, tetapi Bulan biasanya lolos dari bayangan Bumi: tidak ada gerhana' : 'Bulan masuk bayangan Bumi: dapat terjadi <b>gerhana Bulan</b>';
+  $('dout').textContent = fmt(d, 1); $('name').textContent = nm;
+  $('read').innerHTML = `<div><span>Bagian Bulan yang tampak terang</span><b>${fmt(ill * 100, 0)}%</b></div><div><span>Arah</span><b>${d < 0.5 || d > 29 ? '–' : waxing ? 'membesar' : 'mengecil'}</b></div>` +
+    (ecl ? `<div><span>Gerhana?</span><b>${ecl}</b></div>` : '') + `<div><span>Pasang laut</span><b>${nearNew || nearFull ? 'pasang purnama (tertinggi)' : Math.abs(d - 7.4) < 1.5 || Math.abs(d - 22.1) < 1.5 ? 'pasang perbani (terendah)' : 'sedang'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

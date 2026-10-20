@@ -1,56 +1,189 @@
 {
   "title": "Persamaan dan Pertidaksamaan",
-  "summary": "Ringkasan bab Persamaan dan Pertidaksamaan akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA SMA: sistem persamaan linear dua dan tiga variabel, sistem pertidaksamaan linear dan nilai optimum, serta persamaan kuadrat.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Persamaan dan Pertidaksamaan",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Persamaan dan Pertidaksamaan</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi persamaan",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Soal TKA sering menggabungkan pemodelan dan penyelesaian: dari teks ke sistem persamaan atau pertidaksamaan, lalu menafsirkan jawabannya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>SPLDV, SPLTV</td><td>eliminasi, substitusi, soal cerita, banyak penyelesaian</td><td>Kelas 9, Kelas 10 Bab 4</td></tr><tr><td>SPtLDV</td><td>daerah penyelesaian, titik pojok, nilai optimum</td><td>Kelas 10 Bab 4</td></tr><tr><td>Persamaan kuadrat</td><td>faktorisasi, rumus abc, diskriminan</td><td>Kelas 10 Bab 5</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>a₁x + b₁y = c₁ dan a₂x + b₂y = c₂: jika a₁/a₂ = b₁/b₂ ≠ c₁/c₂, tidak ada penyelesaian (garis sejajar).</li><li>Nilai optimum fungsi tujuan linear pada daerah penyelesaian tercapai di <b>titik pojok</b>.</li><li>ax² + bx + c = 0: x = (−b ± √D)/(2a), D = b² − 4ac.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "spltv",
+      "title": "Sistem persamaan linear",
+      "kind": "simulasi",
+      "duration": "20 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/04 Sistem Persamaan dan Pertidaksamaan Linear/sim/spltv.html",
+          "title": "Langkah menyelesaikan SPLTV",
+          "height": 560,
+          "caption": "Ikuti langkah eliminasi; tekan Soal baru untuk berlatih."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tim basket mencetak 66 poin dari 31 tembakan masuk yang terdiri atas tembakan 1, 2, dan 3 poin. Tembakan 1 poin ada 7. Berapa tembakan 3 poin?</p>",
+          "steps": [
+            "Misalkan x, y, z banyak tembakan 1, 2, 3 poin: x + y + z = 31 dan x + 2y + 3z = 66, dengan x = 7.",
+            "y + z = 24 dan 2y + 3z = 59.",
+            "Kurangkan 2 × (y + z = 24): z = 11, lalu y = 13.",
+            "Periksa: 7 + 26 + 33 = 66 ✓."
+          ],
+          "answer": "11 tembakan 3 poin"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sistem 2x + 3y = 6 dan 4x + 6y = 15. Berapa banyak penyelesaiannya?</p>",
+          "steps": [
+            "Persamaan pertama × 2: 4x + 6y = 12.",
+            "12 ≠ 15: kedua garis sejajar."
+          ],
+          "answer": "tidak ada penyelesaian"
+        },
+        {
+          "type": "check",
+          "question": "Harga 2 kg apel dan 3 kg jeruk Rp85.000,00, sedangkan 3 kg apel dan 2 kg jeruk Rp90.000,00. Harga 1 kg apel adalah ....",
+          "options": {
+            "A": "Rp15.000,00",
+            "B": "Rp20.000,00",
+            "C": "Rp22.000,00",
+            "D": "Rp25.000,00"
+          },
+          "answer": "B",
+          "hint": "Jumlahkan kedua persamaan untuk mendapatkan a + j.",
+          "explanation": "5a + 5j = 175, a + j = 35. Kurangkan: a − j = 5, sehingga a = 20, j = 15."
+        }
+      ]
+    },
+    {
+      "id": "program-linear",
+      "title": "Pertidaksamaan linear dan nilai optimum",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/04 Sistem Persamaan dan Pertidaksamaan Linear/sim/daerah-penyelesaian.html",
+          "title": "Daerah penyelesaian",
+          "height": 520,
+          "caption": "Masukkan kendala dari soal, lalu baca titik-titik pojok daerah biru."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Toko kue membuat paling banyak 40 kotak per hari. Kue A memerlukan 2 kg tepung, kue B 1 kg; tepung tersedia 60 kg. Untung kue A Rp3.000,00 dan kue B Rp2.000,00 per kotak. Tentukan keuntungan maksimum.</p>",
+          "steps": [
+            "Kendala: x + y ≤ 40, 2x + y ≤ 60, x ≥ 0, y ≥ 0.",
+            "Titik pojok: (0, 0), (30, 0), (20, 20), (0, 40).",
+            "Untung: 0; 90.000; 100.000; 80.000.",
+            "Maksimum Rp100.000,00 di (20, 20)."
+          ],
+          "answer": "Rp100.000,00"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Hitung fungsi tujuan di setiap titik pojok; jangan menebak dari gambar.</li><li>Titik pojok yang merupakan perpotongan dua garis dicari dengan eliminasi.</li><li>Jika banyak barang harus bulat, periksa titik bulat di sekitar titik pojok.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Titik yang memenuhi x + y ≤ 5, 2x − y ≥ 1, x ≥ 0, y ≥ 0 adalah ....",
+          "options": {
+            "A": "(0, 3)",
+            "B": "(2, 2)",
+            "C": "(4, 2)",
+            "D": "(1, 3)"
+          },
+          "answer": "B",
+          "hint": "Uji setiap titik ke semua pertidaksamaan.",
+          "explanation": "(2, 2): 4 ≤ 5 dan 2 ≥ 1. (0, 3) dan (1, 3) gagal 2x − y ≥ 1; (4, 2) gagal x + y ≤ 5."
+        }
+      ]
+    },
+    {
+      "id": "kuadrat",
+      "title": "Persamaan kuadrat",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/05 Persamaan dan Fungsi Kuadrat/sim/parabola.html",
+          "title": "Penjelajah fungsi kuadrat",
+          "height": 520,
+          "caption": "Akar persamaan kuadrat adalah titik potong parabola dengan sumbu x."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Mobil menempuh 320 km. Jika 24 km/jam lebih cepat, waktunya berkurang 3 jam. Berapa kelajuan awalnya?</p>",
+          "steps": [
+            "320/v − 320/(v + 24) = 3 ⇔ v² + 24v − 2.560 = 0.",
+            "(v − 40)(v + 64) = 0, v = 40 km/jam."
+          ],
+          "answer": "40 km/jam"
+        },
+        {
+          "type": "check",
+          "question": "Agar x² + kx + 9 = 0 mempunyai akar kembar, nilai k adalah ....",
+          "options": {
+            "A": "±3",
+            "B": "±6",
+            "C": "9",
+            "D": "±9"
+          },
+          "answer": "B",
+          "hint": "D = 0.",
+          "explanation": "k² − 36 = 0, k = ±6."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tulis variabel beserta satuannya sebelum menyusun model.</li><li>Untuk soal campuran larutan, buat persamaan untuk total volume dan total zat terlarut.</li><li>Pilih jawaban lalu substitusikan kembali ke soal untuk memeriksa.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal literasi",
+          "question": "<p>Larutan gula 10% dan 30% dicampur menjadi 200 mL larutan 25%. Berapa mL larutan 10% yang dipakai?</p>",
+          "steps": [
+            "x + y = 200 dan 0,1x + 0,3y = 0,25 × 200 = 50.",
+            "0,1x + 0,3(200 − x) = 50 ⇔ 60 − 0,2x = 50 ⇔ x = 50."
+          ],
+          "answer": "50 mL"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMA topik Persamaan dan Pertidaksamaan. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

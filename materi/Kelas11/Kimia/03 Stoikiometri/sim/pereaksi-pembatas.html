@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pereaksi Pembatas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}.big{font-family:var(--display);font-weight:800;font-size:15px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Diagram batang mol pereaksi sebelum dan sesudah reaksi serta produk yang terbentuk"></svg></div>
+  <div class="panel">
+    <div class="lab">Reaksi</div><select id="rx"></select>
+    <div class="lab"><span id="la"></span> <b id="av"></b></div><input type="range" id="a" min="0" max="1" step="0.01" value="0.5">
+    <div class="lab"><span id="lb"></span> <b id="bv"></b></div><input type="range" id="b" min="0" max="1" step="0.01" value="0.5">
+    <div class="lab">Persen hasil <b id="yv"></b></div><input type="range" id="y" min="50" max="100" step="1" value="100">
+    <div class="read" id="read"></div>
+    <p class="note">Bagi mol tiap pereaksi dengan koefisiennya. Hasil bagi terkecil menunjukkan pereaksi pembatas: zat itu habis lebih dulu dan menentukan jumlah produk. Persen hasil = hasil aktual ÷ hasil teoretis × 100%.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [judul, [A, koef, Mr, massa maks, awal], [B, ...], [produk, koef, Mr]]
+const RX = [
+  ['2Al + 3Cl₂ → 2AlCl₃', ['Al', 2, 27, 20, 4], ['Cl₂', 3, 71, 40, 14.2], ['AlCl₃', 2, 133.5]],
+  ['Zn + 2HCl → ZnCl₂ + H₂', ['Zn', 1, 65, 30, 13], ['HCl', 2, 36.5, 30, 10.95], ['ZnCl₂', 1, 136]],
+  ['CaCO₃ + 2HCl → CaCl₂ + CO₂ + H₂O', ['CaCO₃', 1, 100, 50, 25], ['HCl', 2, 36.5, 40, 14.6], ['CO₂', 1, 44]],
+  ['2H₂ + O₂ → 2H₂O', ['H₂', 2, 2, 10, 3], ['O₂', 1, 32, 40, 16], ['H₂O', 2, 18]],
+  ['C₃H₈ + 5O₂ → 3CO₂ + 4H₂O', ['C₃H₈', 1, 44, 30, 8.8], ['O₂', 5, 32, 80, 40], ['CO₂', 3, 44]]
+];
+RX.forEach((r, i) => { const o = document.createElement('option'); o.value = i; o.textContent = r[0]; $('rx').appendChild(o); });
+function setup(){
+  const r = RX[+$('rx').value];
+  ['a', 'b'].forEach((k, i) => { const z = r[i + 1]; $(k).max = z[3]; $(k).step = 0.05; $(k).value = z[4]; $('l' + k).textContent = `Massa ${z[0]} (Mr ${String(z[2]).replace('.', ',')})`; });
+  draw();
+}
+function draw(){
+  const r = RX[+$('rx').value], A = r[1], B = r[2], P = r[3], Y = +$('y').value / 100;
+  const ma = +$('a').value, mb = +$('b').value, na = ma / A[2], nb = mb / B[2];
+  $('av').textContent = fmt(ma, 2) + ' g'; $('bv').textContent = fmt(mb, 2) + ' g'; $('yv').textContent = Math.round(Y * 100) + '%';
+  const qa = na / A[1], qb = nb / B[1], x = Math.min(qa, qb), lim = qa < qb ? A : qb < qa ? B : null;
+  const sa = na - x * A[1], sb = nb - x * B[1], np = x * P[1];
+  const mx = Math.max(na, nb, np, 1e-9);
+  const W = 170, bx = 110;
+  let s = '';
+  const bar = (y, lab, v, col, sub) => `<text class="c" x="${bx - 10}" y="${y + 17}" text-anchor="end" style="fill:var(--ink)">${lab}</text><rect x="${bx}" y="${y}" width="${Math.max(1, W * v / mx)}" height="24" rx="4" style="fill:${col}" fill-opacity=".75"/><text class="s" x="${bx + W * v / mx + 6}" y="${y + 16}" style="fill:var(--ink)">${fmt(v, 3)} mol${sub || ''}</text>`;
+  s += `<text class="s" x="20" y="22" style="fill:var(--muted)">SEBELUM REAKSI</text>`;
+  s += bar(32, A[0], na, 'var(--comp)', `  (÷${A[1]} = ${fmt(qa, 3)})`) + bar(62, B[0], nb, 'var(--a)', `  (÷${B[1]} = ${fmt(qb, 3)})`);
+  s += `<text class="s" x="20" y="122" style="fill:var(--muted)">BEREAKSI (perbandingan koefisien ${A[1]} : ${B[1]} : ${P[1]})</text>`;
+  s += bar(132, A[0], x * A[1], 'var(--comp)') + bar(162, B[0], x * B[1], 'var(--a)');
+  s += `<text class="s" x="20" y="222" style="fill:var(--muted)">SESUDAH REAKSI</text>`;
+  s += bar(232, 'sisa ' + A[0], sa, 'var(--comp)', sa < 1e-9 ? '  habis' : '') + bar(262, 'sisa ' + B[0], sb, 'var(--a)', sb < 1e-9 ? '  habis' : '') + bar(292, P[0], np, 'var(--k)', '  (teoretis)');
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Pereaksi pembatas</span><b>${lim ? lim[0] : 'keduanya habis tepat'}</b></div><div><span>Sisa pereaksi</span><b>${sa > 1e-9 ? fmt(sa * A[2], 2) + ' g ' + A[0] : sb > 1e-9 ? fmt(sb * B[2], 2) + ' g ' + B[0] : 'tidak ada'}</b></div><div><span>${P[0]} teoretis</span><b>${fmt(np, 3)} mol = ${fmt(np * P[2], 2)} g</b></div><div><span>${P[0]} aktual (${Math.round(Y * 100)}%)</span><b>${fmt(np * P[2] * Y, 2)} g</b></div>`;
+}
+$('rx').onchange = setup;
+['a', 'b', 'y'].forEach(i => $(i).oninput = draw);
+setup();
+</script>
+</body>
+</html>

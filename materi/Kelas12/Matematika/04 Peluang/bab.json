@@ -1,0 +1,376 @@
+{
+  "title": "Peluang",
+  "summary": "Ruang sampel, peluang dengan kaidah pencacahan, kejadian majemuk dan frekuensi harapan, kejadian saling lepas, saling bebas, dan peluang bersyarat.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "ruang-sampel",
+      "title": "Ruang sampel dan peluang suatu kejadian",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Pelatih sepak bola memperkirakan peluang timnya mencetak gol dari tendangan penalti untuk menyusun strategi. Peluang mengukur seberapa mungkin suatu kejadian terjadi, dari 0 (mustahil) sampai 1 (pasti).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Istilah dasar",
+          "html": "<ul><li><b>Ruang sampel</b> S: himpunan semua hasil yang mungkin. Anggotanya disebut <b>titik sampel</b>.</li><li><b>Kejadian</b> A: himpunan bagian dari S.</li><li>Jika semua titik sampel sama kemungkinannya: \\(P(A) = \\dfrac{n(A)}{n(S)}\\), 0 ≤ P(A) ≤ 1, dan P(A<sup>c</sup>) = 1 − P(A).</li></ul>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/pohon-koin.svg",
+          "alt": "Diagram pohon tiga koin dengan 8 hasil dari AAA sampai GGG",
+          "width": 500,
+          "caption": "Diagram pohon membantu mendaftar ruang sampel."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tiga koin dilempar. Tentukan peluang muncul minimal satu angka.</p>",
+          "steps": [
+            "n(S) = 8. Komplemennya “tidak ada angka”: hanya GGG.",
+            "P = 1 − 1/8 = 7/8."
+          ],
+          "answer": "7/8"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/07 Peluang/sim/dua-dadu.html",
+          "title": "Ruang sampel dua dadu",
+          "height": 640,
+          "caption": "Pilih kejadian A, hitung n(A) dari sel berwarna, lalu bandingkan dengan frekuensi relatif hasil 100 lemparan."
+        },
+        {
+          "type": "check",
+          "question": "Satu kartu diambil dari 52 kartu remi. Peluang terambil kartu hati adalah ....",
+          "options": {
+            "A": "1/52",
+            "B": "1/13",
+            "C": "1/4",
+            "D": "1/2"
+          },
+          "answer": "C",
+          "hint": "Ada 13 kartu hati.",
+          "explanation": "13/52 = 1/4."
+        }
+      ]
+    },
+    {
+      "id": "peluang-pencacahan",
+      "title": "Menghitung peluang dengan kaidah pencacahan",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jika ruang sampelnya terlalu besar untuk didaftar, gunakan permutasi atau kombinasi dari Bab 3 untuk menghitung n(S) dan n(A).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kantong berisi 5 bola merah dan 3 bola biru. Dua bola diambil sekaligus. Tentukan peluang keduanya merah.</p>",
+          "steps": [
+            "Diambil sekaligus: urutan tidak penting, gunakan kombinasi.",
+            "n(S) = C(8, 2) = 28; n(A) = C(5, 2) = 10.",
+            "P = 10/28 = 5/14."
+          ],
+          "answer": "5/14"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kantong berisi 4 bola merah dan 6 bola putih. Tiga bola diambil sekaligus. Tentukan peluang tepat 2 merah.</p>",
+          "steps": [
+            "n(S) = C(10, 3) = 120.",
+            "Tepat 2 merah dan 1 putih: C(4, 2) × C(6, 1) = 6 × 6 = 36.",
+            "P = 36/120 = 3/10."
+          ],
+          "answer": "3/10"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Huruf-huruf kata BUKU disusun acak. Berapa peluang kedua huruf U berdampingan?</p>",
+          "steps": [
+            "n(S) = 4!/2! = 12.",
+            "Gabungkan UU menjadi satu: susunan B, K, (UU) = 3! = 6.",
+            "P = 6/12 = 1/2."
+          ],
+          "answer": "1/2"
+        },
+        {
+          "type": "check",
+          "question": "Dari 6 putra dan 4 putri dipilih 2 orang secara acak. Peluang terpilih 1 putra dan 1 putri adalah ....",
+          "options": {
+            "A": "8/15",
+            "B": "24/45",
+            "C": "2/5",
+            "D": "1/2"
+          },
+          "answer": "A",
+          "hint": "Gunakan C(10, 2) sebagai n(S).",
+          "explanation": "n(A) = 6 × 4 = 24, n(S) = 45. P = 24/45 = 8/15."
+        }
+      ]
+    },
+    {
+      "id": "kejadian-majemuk",
+      "title": "Kejadian majemuk dan frekuensi harapan",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kejadian majemuk",
+          "html": "<p>Kejadian majemuk dibentuk dari kejadian-kejadian lain dengan operasi himpunan:</p><ul><li>A ∪ B: A <b>atau</b> B terjadi.</li><li>A ∩ B: A <b>dan</b> B terjadi.</li><li>A<sup>c</sup>: A <b>tidak</b> terjadi.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Frekuensi harapan",
+          "html": "\\[F_h = P(K) \\times n\\]<p>K kejadian (tunggal maupun majemuk), n banyak percobaan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua dadu dilempar 360 kali. Berapa frekuensi harapan muncul mata 3 pada dadu pertama dan mata 5 pada dadu kedua?</p>",
+          "steps": [
+            "P = 1/6 × 1/6 = 1/36.",
+            "F<sub>h</sub> = 1/36 × 360 = 10 kali."
+          ],
+          "answer": "10 kali"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sekeping koin dan sebuah dadu dilempar. Tentukan peluang muncul angka pada koin dan mata dadu lebih dari dua.</p>",
+          "steps": [
+            "P(angka) = 1/2, P(mata &gt; 2) = 4/6 = 2/3.",
+            "P = 1/2 × 2/3 = 1/3."
+          ],
+          "answer": "1/3"
+        },
+        {
+          "type": "check",
+          "question": "Tiga koin dilempar 240 kali. Frekuensi harapan muncul tepat dua angka adalah ....",
+          "options": {
+            "A": "60",
+            "B": "80",
+            "C": "90",
+            "D": "120"
+          },
+          "answer": "C",
+          "hint": "Hitung dahulu P(tepat dua angka) dari 8 titik sampel.",
+          "explanation": "AAG, AGA, GAA: P = 3/8. F<sub>h</sub> = 3/8 × 240 = 90."
+        }
+      ]
+    },
+    {
+      "id": "saling-lepas",
+      "title": "Kejadian saling lepas",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan penjumlahan",
+          "html": "\\[P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\]<p>A dan B <b>saling lepas</b> jika A ∩ B = ∅ (tidak dapat terjadi bersamaan). Untuk kejadian saling lepas, P(A ∪ B) = P(A) + P(B).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Satu kartu diambil dari 52 kartu. Tentukan peluang terambil As atau King.</p>",
+          "steps": [
+            "As dan King tidak mungkin sekaligus: saling lepas.",
+            "P = 4/52 + 4/52 = 8/52 = 2/13."
+          ],
+          "answer": "2/13"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Satu kartu diambil. Tentukan peluang terambil As atau kartu hati.</p>",
+          "steps": [
+            "Ada As hati: tidak saling lepas.",
+            "P = 4/52 + 13/52 − 1/52 = 16/52 = 4/13."
+          ],
+          "answer": "4/13"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/07 Peluang/sim/dua-dadu.html",
+          "title": "Kejadian saling lepas pada dua dadu",
+          "height": 640,
+          "caption": "Pilih pasangan kejadian A dan B. Kapan keduanya saling lepas? Periksa apakah P(A ∪ B) = P(A) + P(B)."
+        },
+        {
+          "type": "check",
+          "question": "Kejadian A dan B saling lepas jika ....",
+          "options": {
+            "A": "A ∩ B = ∅",
+            "B": "P(A ∩ B) = P(A) × P(B)",
+            "C": "A ∪ B = S",
+            "D": "P(A) = P(B)"
+          },
+          "answer": "A",
+          "hint": "Saling lepas berarti tidak dapat terjadi bersamaan.",
+          "explanation": "Irisannya kosong. P(A ∩ B) = P(A) × P(B) adalah syarat saling bebas."
+        }
+      ]
+    },
+    {
+      "id": "saling-bebas",
+      "title": "Kejadian saling bebas",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan perkalian",
+          "html": "\\[P(A \\cap B) = P(A) \\times P(B)\\]<p>A dan B <b>saling bebas</b> jika terjadinya A tidak memengaruhi peluang B, misalnya dua lemparan dadu, atau dua penembak yang menembak sendiri-sendiri.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/07 Peluang/sim/model-luas.html",
+          "title": "Model luas dan diagram pohon",
+          "height": 600,
+          "caption": "Pilih contoh lalu ubah peluangnya. Luas persegi panjang A∩B selalu sama dengan hasil kali kedua peluang."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Peluang penembak A mengenai sasaran 0,8 dan penembak B 0,7. Keduanya menembak sekali secara terpisah. Tentukan peluang keduanya mengenai sasaran dan peluang minimal satu mengenai sasaran.</p>",
+          "steps": [
+            "Keduanya: 0,8 × 0,7 = 0,56.",
+            "Keduanya meleset: 0,2 × 0,3 = 0,06.",
+            "Minimal satu: 1 − 0,06 = 0,94."
+          ],
+          "answer": "0,56 dan 0,94"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Saling lepas ≠ saling bebas",
+          "html": "<p>Dua kejadian saling lepas yang peluangnya positif justru <b>tidak</b> saling bebas: jika A terjadi, B pasti tidak terjadi, sehingga terjadinya A memengaruhi B.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Peluang tim A menang 0,6 dan tim B (pertandingan lain) menang 0,5. Peluang keduanya menang adalah ....",
+          "options": {
+            "A": "0,3",
+            "B": "0,5",
+            "C": "0,55",
+            "D": "1,1"
+          },
+          "answer": "A",
+          "hint": "Pertandingan terpisah dianggap saling bebas.",
+          "explanation": "0,6 × 0,5 = 0,3. 1,1 tidak mungkin karena peluang paling besar 1."
+        }
+      ]
+    },
+    {
+      "id": "bersyarat",
+      "title": "Peluang bersyarat",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Jika kita sudah mempunyai informasi sebagian, ruang sampelnya menyempit dan peluang berubah. Peluang B dengan syarat A sudah terjadi ditulis <b>P(B | A)</b>. Buku siswa menyebut situasi berurutan ini “kejadian majemuk saling bebas bersyarat”; secara umum dikenal sebagai <b>peluang bersyarat</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Peluang bersyarat",
+          "html": "\\[P(B \\mid A) = \\frac{P(A \\cap B)}{P(A)} \\qquad P(A \\cap B) = P(A) \\times P(B \\mid A)\\]<p>Jika A dan B saling bebas, P(B | A) = P(B).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua kartu diambil berturut-turut tanpa pengembalian. Tentukan peluang keduanya hati.</p>",
+          "steps": [
+            "P(hati pertama) = 13/52.",
+            "Tersisa 12 hati dari 51 kartu: P(hati kedua | hati pertama) = 12/51.",
+            "P = 13/52 × 12/51 = 1/17."
+          ],
+          "answer": "1/17"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kantong.html",
+          "title": "Pengambilan bola dari kantong",
+          "height": 560,
+          "caption": "Bandingkan pohon tanpa pengembalian dan dengan pengembalian. Lakukan 1.000 pengambilan dan cocokkan frekuensi relatif dengan peluang teoretis."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Dari 30 siswa, 18 ikut basket, 12 ikut voli, dan 5 ikut keduanya. Seorang siswa anggota basket dipilih acak. Berapa peluang ia juga ikut voli?</p>",
+          "steps": [
+            "Ruang sampel menyempit menjadi 18 anggota basket.",
+            "P(voli | basket) = 5/18."
+          ],
+          "answer": "5/18"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pintu-rahasia.html",
+          "title": "Permainan pintu rahasia",
+          "height": 560,
+          "caption": "Mainkan beberapa kali, lalu simulasikan ratusan permainan. Strategi mana yang lebih sering menang: tetap atau pindah?"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa pindah lebih baik?",
+          "html": "<p>Peluang pilihan pertamamu benar 1/3. Pembawa acara selalu membuka pintu kosong, sehingga informasi itu “memindahkan” peluang 2/3 ke satu-satunya pintu lain yang tertutup.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kantong berisi 5 merah dan 3 biru. Dua bola diambil berturut-turut tanpa pengembalian. P(merah kedua | merah pertama) adalah ....",
+          "options": {
+            "A": "5/8",
+            "B": "4/7",
+            "C": "5/7",
+            "D": "4/8"
+          },
+          "answer": "B",
+          "hint": "Setelah satu merah diambil, berapa bola tersisa?",
+          "explanation": "Tersisa 4 merah dari 7 bola: 4/7."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Peluang</td><td>P(A) = n(A)/n(S); P(A<sup>c</sup>) = 1 − P(A)</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = P × n</td></tr><tr><td>“atau”</td><td>P(A) + P(B) − P(A ∩ B); saling lepas: tanpa irisan</td></tr><tr><td>“dan”, saling bebas</td><td>P(A) × P(B)</td></tr><tr><td>“dan”, bersyarat</td><td>P(A) × P(B | A)</td></tr><tr><td>Diambil sekaligus</td><td>gunakan kombinasi untuk n(S) dan n(A)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menjumlahkan peluang kejadian yang tidak saling lepas tanpa mengurangkan irisan.</li><li>Mengalikan peluang pengambilan tanpa pengembalian seolah-olah saling bebas.</li><li>Tertukar antara saling lepas dan saling bebas.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 4 Peluang.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang ruang sampel, peluang dengan kaidah pencacahan, kejadian majemuk, saling lepas, saling bebas, dan peluang bersyarat. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

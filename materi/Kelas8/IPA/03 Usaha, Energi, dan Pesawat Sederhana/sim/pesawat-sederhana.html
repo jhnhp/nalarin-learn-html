@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pesawat Sederhana</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Pesawat sederhana: tuas, katrol, atau bidang miring"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="tuas" class="on">Tuas</button><button data-m="katrol">Katrol</button><button data-m="miring">Bidang miring</button></div>
+    <div><div class="lab"><span>Berat beban (N)</span><b id="wout"></b></div><input type="range" id="w" min="100" max="1000" step="50" value="600"></div>
+    <div id="p1"><div class="lab"><span id="l1"></span><b id="o1"></b></div><input type="range" id="s1" min="0" max="1" step="0.01"></div>
+    <div id="p2"><div class="lab"><span id="l2"></span><b id="o2"></b></div><input type="range" id="s2" min="0" max="1" step="0.01"></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'tuas';
+const CFG = {
+  tuas: [['Lengan beban (m)', .2, 2, .1, .5], ['Lengan kuasa (m)', .2, 3, .1, 1.5]],
+  katrol: [['Jenis katrol (1 tetap, 2 bebas, 3–4 majemuk: banyak tali penopang)', 1, 4, 1, 1], null],
+  miring: [['Tinggi bidang miring (m)', .5, 3, .1, 1], ['Panjang bidang miring (m)', 1, 6, .5, 4]],
+};
+function setup(){ const c = CFG[mode]; [['1', c[0]], ['2', c[1]]].forEach(([k, p]) => { $('p' + k).hidden = !p; if(!p) return; const el = $('s' + k); el.min = p[1]; el.max = p[2]; el.step = p[3]; el.value = p[4]; $('l' + k).textContent = p[0]; }); draw(); }
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); setup(); };
+['w', 's1', 's2'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+const arrow = (x1, y1, x2, y2, col, lab, lx, ly) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:${col}" stroke-width="4" marker-end="url(#m${col === 'var(--a)' ? 'a' : 'b'})"/><text class="c" x="${lx}" y="${ly}" text-anchor="middle" style="fill:${col}">${lab}</text>`;
+function draw(){
+  const w = +$('w').value, a = +$('s1').value, b = +$('s2').value; $('wout').textContent = w; $('o1').textContent = fmt(a, 1); $('o2').textContent = fmt(b, 1);
+  let s = `<defs>${['a', 'b'].map(k => `<marker id="m${k}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--${k})"/></marker>`).join('')}</defs>`;
+  let F, KM, note;
+  if(mode === 'tuas'){
+    const sc = 80, fx = 200, y = 180; F = w * a / b; KM = b / a;
+    s += `<line x1="${fx - a * sc}" y1="${y}" x2="${fx + b * sc}" y2="${y}" style="stroke:#8a5a2b" stroke-width="10" stroke-linecap="round"/><polygon points="${fx},${y + 5} ${fx - 18},${y + 40} ${fx + 18},${y + 40}" style="fill:var(--ink)"/><text class="c" x="${fx}" y="${y + 58}" text-anchor="middle">titik tumpu</text>`;
+    s += `<rect x="${fx - a * sc - 25}" y="${y - 55}" width="50" height="50" rx="6" style="fill:var(--k)" fill-opacity=".8"/><text class="c" x="${fx - a * sc}" y="${y - 26}" text-anchor="middle" style="fill:#fff;stroke:none">${w} N</text>`;
+    s += arrow(fx + b * sc, y - 80, fx + b * sc, y - 10, 'var(--a)', `kuasa ${fmt(F, 0)} N`, fx + b * sc, y - 88);
+    s += `<line x1="${fx - a * sc}" y1="${y + 20}" x2="${fx}" y2="${y + 20}" style="stroke:var(--b)" stroke-width="2"/><text class="c" x="${fx - a * sc / 2}" y="${y + 36}" text-anchor="middle" style="fill:var(--b)">lb ${fmt(a, 1)} m</text>`;
+    s += `<line x1="${fx}" y1="${y + 76}" x2="${fx + b * sc}" y2="${y + 76}" style="stroke:var(--a)" stroke-width="2"/><text class="c" x="${fx + b * sc / 2}" y="${y + 92}" text-anchor="middle" style="fill:var(--a)">lk ${fmt(b, 1)} m</text>`;
+    note = 'Tuas jenis pertama: titik tumpu di antara beban dan kuasa (gunting, linggis, jungkat-jungkit). Jenis kedua: beban di antara titik tumpu dan kuasa (gerobak satu roda). Jenis ketiga: kuasa di antara titik tumpu dan beban (sekop, pinset). Hukum tuas: w × lb = F × lk.';
+  } else if(mode === 'katrol'){
+    const n = Math.round(a); F = w / n; KM = n;
+    s += `<line x1="100" y1="30" x2="360" y2="30" style="stroke:var(--ink)" stroke-width="5"/>`;
+    const cx = 230;
+    if(n === 1){ s += `<line x1="${cx}" y1="30" x2="${cx}" y2="60" style="stroke:var(--ink)" stroke-width="3"/><circle cx="${cx}" cy="80" r="22" fill="none" style="stroke:var(--ink)" stroke-width="4"/><line x1="${cx - 22}" y1="80" x2="${cx - 22}" y2="220" style="stroke:var(--muted)" stroke-width="3"/><line x1="${cx + 22}" y1="80" x2="${cx + 22}" y2="200" style="stroke:var(--muted)" stroke-width="3"/>`;
+      s += `<rect x="${cx - 47}" y="220" width="50" height="50" rx="6" style="fill:var(--k)" fill-opacity=".8"/><text class="c" x="${cx - 22}" y="250" text-anchor="middle" style="fill:#fff;stroke:none">${w} N</text>` + arrow(cx + 22, 200, cx + 22, 280, 'var(--a)', `kuasa ${fmt(F, 0)} N`, cx + 70, 270); note = 'Katrol tetap hanya mengubah arah gaya: KM = 1.'; }
+    else { const xs = []; for(let i = 0; i < n; i++) xs.push(cx - (n - 1) * 18 + i * 36);
+      s += `<circle cx="${cx}" cy="70" r="${n * 14}" fill="none" style="stroke:var(--ink)" stroke-width="3"/><circle cx="${cx}" cy="200" r="${n * 14}" fill="none" style="stroke:var(--ink)" stroke-width="3"/>`;
+      xs.forEach(x => s += `<line x1="${x}" y1="70" x2="${x}" y2="200" style="stroke:var(--muted)" stroke-width="3"/>`);
+      s += `<rect x="${cx - 30}" y="${200 + n * 14 + 5}" width="60" height="45" rx="6" style="fill:var(--k)" fill-opacity=".8"/><text class="c" x="${cx}" y="${200 + n * 14 + 32}" text-anchor="middle" style="fill:#fff;stroke:none">${w} N</text>`;
+      s += arrow(cx + n * 14 + 30, 70, cx + n * 14 + 30, 150, 'var(--a)', `kuasa ${fmt(F, 0)} N`, cx + n * 14 + 60, 170) + `<text class="c" x="80" y="140">${n} tali menopang beban</text>`;
+      note = n === 2 ? 'Katrol bebas: beban ditopang 2 tali, KM = 2, tetapi tali harus ditarik 2 kali lebih panjang.' : `Katrol majemuk: KM = banyak tali yang menopang beban = ${n}. Buku menyebutnya “jumlah tali atau jumlah katrol”; yang dihitung sebenarnya tali penopang beban.`; }
+  } else {
+    const hh = a, l = Math.max(b, a + .1), sc = 60, x0 = 60, y0 = 270, base = Math.sqrt(l * l - hh * hh); F = w * hh / l; KM = l / hh;
+    s += `<polygon points="${x0},${y0} ${x0 + base * sc},${y0} ${x0 + base * sc},${y0 - hh * sc}" style="fill:var(--surface-2);stroke:var(--ink)" stroke-width="2"/>`;
+    const t = .5, bx = x0 + base * sc * t, by = y0 - hh * sc * t, ang = Math.atan2(hh, base) * 180 / Math.PI;
+    s += `<g transform="translate(${bx},${by}) rotate(${-ang})"><rect x="-24" y="-44" width="48" height="44" rx="5" style="fill:var(--k)" fill-opacity=".85"/><text class="c" x="0" y="-18" text-anchor="middle" style="fill:#fff;stroke:none">${w} N</text><line x1="30" y1="-22" x2="100" y2="-22" style="stroke:var(--a)" stroke-width="4" marker-end="url(#ma)"/><text class="c" x="70" y="-32" text-anchor="middle" style="fill:var(--a)">${fmt(F, 0)} N</text></g>`;
+    s += `<text class="c" x="${x0 + base * sc + 8}" y="${y0 - hh * sc / 2}" style="fill:var(--b)">h = ${fmt(hh, 1)} m</text><text class="c" x="${x0 + base * sc * .72}" y="${y0 - hh * sc * .72 + 30}" style="fill:var(--a)">s = ${fmt(l, 1)} m</text>`;
+    note = 'Makin landai (s panjang, h tetap), gaya makin kecil tetapi jarak tempuh makin jauh. F × s = w × h. Contoh: tangga, jalan berkelok di pegunungan, sekrup.';
+  }
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Gaya kuasa yang diperlukan</span><b>${fmt(F, 1)} N</b></div><div><span>Keuntungan mekanis KM = w/F</span><b>${fmt(KM, 2)}</b></div>`;
+  $('note').textContent = note;
+}
+setup();
+</script>
+</body>
+</html>

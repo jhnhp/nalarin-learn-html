@@ -1,56 +1,167 @@
 {
   "title": "Persamaan dan Pertidaksamaan",
-  "summary": "Ringkasan bab Persamaan dan Pertidaksamaan akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA: persamaan dan pertidaksamaan linear satu variabel serta sistem persamaan linear dua variabel dalam konteks sehari-hari.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Persamaan dan Pertidaksamaan",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Persamaan dan Pertidaksamaan</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi persamaan",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Soal TKA biasanya berupa cerita: tarif taksi, umur, harga paket, atau muatan maksimum. Kunci utamanya adalah <b>menerjemahkan kalimat menjadi persamaan</b>.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>PLSV</td><td>menyelesaikan dengan operasi yang sama di kedua ruas</td><td>Kelas 8 Bab 3</td></tr><tr><td>PtLSV</td><td>membalik tanda saat dikali/dibagi bilangan negatif, garis bilangan</td><td>Kelas 8 Bab 3</td></tr><tr><td>SPLDV</td><td>substitusi, eliminasi, grafik, soal cerita</td><td>Kelas 9 Bab 1</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Prinsip kunci",
+          "html": "<ul><li>Lakukan operasi yang sama pada kedua ruas agar tetap seimbang.</li><li>Pada pertidaksamaan, mengalikan atau membagi dengan bilangan negatif <b>membalik tanda</b>.</li><li>“Paling banyak” → ≤; “paling sedikit” atau “minimal” → ≥; “lebih dari” → &gt;.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "plsv",
+      "title": "Persamaan dan pertidaksamaan linear satu variabel",
+      "kind": "simulasi",
+      "duration": "20 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/03 Persamaan dan Pertidaksamaan Linear/sim/timbangan.html",
+          "title": "Timbangan persamaan",
+          "height": 520,
+          "caption": "Selesaikan persamaan dengan mengambil benda yang sama dari kedua sisi timbangan."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan x jika 3(x − 2) + 5 = 2x + 7.</p>",
+          "steps": [
+            "3x − 6 + 5 = 2x + 7 ⇔ 3x − 1 = 2x + 7.",
+            "x = 8."
+          ],
+          "answer": "x = 8"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Perahu memuat paling banyak 450 kg. Tiga penumpang berbobot total 180 kg membawa karung beras masing-masing 25 kg. Berapa karung paling banyak?</p>",
+          "steps": [
+            "180 + 25n ≤ 450 ⇔ 25n ≤ 270 ⇔ n ≤ 10,8.",
+            "n bilangan bulat: paling banyak 10 karung."
+          ],
+          "answer": "10 karung"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/03 Persamaan dan Pertidaksamaan Linear/sim/pertidaksamaan.html",
+          "title": "Pertidaksamaan pada garis bilangan",
+          "height": 520,
+          "caption": "Perhatikan bulatan penuh (≤, ≥) dan bulatan kosong (&lt;, &gt;)."
+        },
+        {
+          "type": "check",
+          "question": "Himpunan penyelesaian −2x + 7 &gt; 15 untuk x bilangan bulat adalah ....",
+          "options": {
+            "A": "{…, −6, −5}",
+            "B": "{…, −5, −4}",
+            "C": "{−4, −3, …}",
+            "D": "{4, 5, …}"
+          },
+          "answer": "B",
+          "hint": "Bagi dengan −2 dan balik tandanya.",
+          "explanation": "−2x &gt; 8 ⇔ x &lt; −4. Bilangan bulatnya …, −6, −5."
+        }
+      ]
+    },
+    {
+      "id": "spldv",
+      "title": "Sistem persamaan linear dua variabel",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/01 Sistem Persamaan Linear Dua Variabel/sim/eliminasi.html",
+          "title": "Langkah eliminasi dan substitusi",
+          "height": 520,
+          "caption": "Ikuti langkah-langkahnya, lalu coba soal baru di kertas."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>3 kg beras dan 2 kg gula Rp68.000,00; 2 kg beras dan 3 kg gula Rp67.000,00. Berapa harga 1 kg beras?</p>",
+          "steps": [
+            "3b + 2g = 68 dan 2b + 3g = 67 (ribu).",
+            "Kalikan: 9b + 6g = 204 dan 4b + 6g = 134. Kurangkan: 5b = 70, b = 14.",
+            "g = (68 − 42)/2 = 13."
+          ],
+          "answer": "Rp14.000,00"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Ada 30 kepala dan 84 kaki di kandang kambing dan ayam. Berapa kambingnya?</p>",
+          "steps": [
+            "k + a = 30, 4k + 2a = 84.",
+            "Kurangkan 2 × persamaan pertama: 2k = 24, k = 12."
+          ],
+          "answer": "12 kambing"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/01 Sistem Persamaan Linear Dua Variabel/sim/dua-garis.html",
+          "title": "SPLDV dengan metode grafik",
+          "height": 520,
+          "caption": "Titik potong kedua garis adalah penyelesaiannya. Bagaimana jika kedua garis sejajar?"
+        },
+        {
+          "type": "check",
+          "question": "Jika x + y = 7 dan x − y = 3, nilai 2x + y adalah ....",
+          "options": {
+            "A": "9",
+            "B": "10",
+            "C": "12",
+            "D": "13"
+          },
+          "answer": "C",
+          "hint": "Jumlahkan kedua persamaan untuk mendapatkan x.",
+          "explanation": "2x = 10, x = 5, y = 2. 2x + y = 12."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tuliskan variabel beserta artinya (misalnya b = harga 1 kg beras dalam ribuan).</li><li>Masukkan kembali jawaban ke soal untuk memeriksa, terutama pada soal pilihan ganda.</li><li>Pada soal “paket mana yang lebih hemat”, tulis biaya setiap paket sebagai fungsi banyak pemakaian lalu bandingkan.</li><li>Periksa apakah jawaban harus bilangan bulat (banyak orang, karung, kunjungan).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal literasi",
+          "question": "<p>Kartu member kolam renang Rp60.000,00 per bulan dengan tiket Rp10.000,00 per kunjungan; tanpa member tiketnya Rp25.000,00. Paling sedikit berapa kunjungan per bulan agar member lebih hemat?</p>",
+          "steps": [
+            "Member lebih hemat jika 60.000 + 10.000n &lt; 25.000n.",
+            "60.000 &lt; 15.000n ⇔ n &gt; 4.",
+            "Paling sedikit 5 kunjungan."
+          ],
+          "answer": "5 kunjungan"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMP topik Persamaan dan Pertidaksamaan. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

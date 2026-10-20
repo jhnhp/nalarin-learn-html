@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tekanan Hidrostatis dan Gaya Apung</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 360" role="img" aria-label="Bak berisi zat cair dengan alat ukur tekanan dan benda yang digantung pada neraca pegas"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Zat cair</span></div><select id="f"><option value="1000">air (1.000 kg/m³)</option><option value="800">minyak (800 kg/m³)</option><option value="1240">air Laut Mati (1.240 kg/m³)</option></select></div>
+    <div><div class="lab"><span>Kedalaman alat ukur tekanan (m)</span><b id="hout"></b></div><input type="range" id="h" min="0" max="3" step="0.1" value="1.5"></div>
+    <div><div class="lab"><span>Benda diturunkan (volume 0,002 m³, berat 50 N)</span><b id="dout"></b></div><input type="range" id="d" min="0" max="1" step="0.01" value="0"></div>
+    <div class="read" id="read"></div>
+    <p class="note">P = ρ × g × h (g = 10 m/s²). Gaya apung Fa = ρ × g × V<sub>tercelup</sub> (hukum Archimedes): benda di dalam zat cair tampak lebih ringan sebesar berat zat cair yang dipindahkannya.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['f', 'h', 'd'].forEach(id => $(id).oninput = $(id).onchange = draw);
+Sim.onTheme(draw);
+const T0 = 60, Hpx = 270, sc = Hpx / 3, X1 = 40, X2 = 300;
+function draw(){
+  const rho = +$('f').value, h = +$('h').value, d = +$('d').value, V = .002, W = 50;
+  let s = `<rect x="${X1}" y="${T0}" width="${X2 - X1}" height="${Hpx}" style="fill:${rho === 800 ? 'var(--comp)' : 'var(--a)'}" fill-opacity="${.12 + (rho - 800) / 3000}"/>`;
+  s += `<path d="M${X1} 30 V${T0 + Hpx} H${X2} V30" fill="none" style="stroke:var(--ink)" stroke-width="3"/>`;
+  for(let k = 0; k <= 3; k++) s += `<text class="c" x="${X1 - 6}" y="${T0 + k * sc + 4}" text-anchor="end" style="fill:var(--muted)">${k} m</text>`;
+  // alat ukur tekanan
+  const py = T0 + h * sc, P = rho * 10 * h;
+  s += `<line x1="100" y1="20" x2="100" y2="${py}" style="stroke:var(--ink)" stroke-width="2"/><circle cx="100" cy="${py}" r="9" style="fill:var(--b)"/>`;
+  s += `<text class="c" x="114" y="${py + 4}" style="fill:var(--b)">P = ${fmt(P / 1000, 1)} kPa</text>`;
+  // benda dan neraca pegas
+  const bh = 50, by = 40 + d * 260, sub = Math.max(0, Math.min(1, (by + bh - T0) / bh)), Fa = rho * 10 * V * sub, Wsemu = W - Fa;
+  s += `<line x1="230" y1="0" x2="230" y2="${by}" style="stroke:var(--ink)" stroke-width="2"/><rect x="215" y="${Math.max(2, by - 70)}" width="30" height="46" rx="6" style="fill:var(--surface);stroke:var(--ink)" stroke-width="2"/><text class="c" x="250" y="${Math.max(2, by - 70) + 28}">${fmt(Wsemu, 1)} N</text>`;
+  s += `<rect x="205" y="${by}" width="50" height="${bh}" rx="4" style="fill:var(--k);stroke:var(--ink)" fill-opacity=".85" stroke-width="2"/>`;
+  if(sub > 0) s += `<line x1="230" y1="${by + bh + 6}" x2="230" y2="${by + bh + 6 + Fa * 1.2}" style="stroke:var(--ok)" stroke-width="0"/><path d="M262 ${by + bh} v${-Fa * 1.4} l-6 10 h12 l-6 -10" style="stroke:var(--ok);fill:var(--ok)" stroke-width="3"/><text class="c" x="270" y="${by + bh - Fa * .7}" style="fill:var(--ok)">Fa</text>`;
+  svg.innerHTML = s;
+  $('hout').textContent = fmt(h, 1); $('dout').textContent = Math.round(sub * 100) + '% tercelup';
+  $('read').innerHTML = `<div><span>Tekanan hidrostatis P = ρgh</span><b>${fmt(rho)} × 10 × ${fmt(h, 1)} = ${fmt(P, 0)} Pa</b></div>` +
+    `<div><span>Gaya apung Fa = ρ g V</span><b>${fmt(Fa, 1)} N</b></div><div><span>Berat di udara</span><b>${W} N</b></div><div><span>Berat semu di zat cair</span><b>${fmt(Wsemu, 1)} N</b></div>` +
+    `<div><span>Jika dilepas (tercelup penuh)</span><b>${rho * 10 * V > W ? 'terapung' : 'tenggelam'} (Fa maks ${fmt(rho * 10 * V, 1)} N ${rho * 10 * V > W ? '&gt;' : '&lt;'} ${W} N)</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

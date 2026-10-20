@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kunci Dikotomi Hewan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.wrap{padding:14px 16px;display:grid;gap:12px}
+.cards{display:flex;flex-wrap:wrap;gap:8px}.card{border:1px solid var(--line-2);border-radius:12px;padding:8px 10px;cursor:pointer;font-weight:700;background:var(--surface);color:var(--ink)}
+.card.on{border-color:var(--a);background:color-mix(in srgb,var(--a) 12%,transparent)}
+.desc{padding:10px 12px;border-radius:12px;background:var(--surface-2);font-size:14.5px;line-height:1.6}
+.q{border:1px solid var(--line-2);border-radius:12px;padding:10px 12px;display:grid;gap:8px}.q b{font-family:var(--display)}
+.path{display:grid;gap:4px;font-size:13.5px}.path div{padding:4px 8px;border-left:3px solid var(--a)}
+.msg{font-weight:700;padding:10px 12px;border-radius:10px}.ok{background:var(--ok-soft);color:var(--ok)}.bad{background:var(--bad-soft);color:var(--bad)}</style>
+</head>
+<body>
+<div class="wrap">
+  <div><b>1. Pilih hewan yang akan diidentifikasi:</b></div>
+  <div class="cards" id="cards"></div>
+  <div class="desc" id="desc"></div>
+  <div class="q" id="q"></div>
+  <div class="path" id="path"></div>
+  <div class="msg" id="msg" hidden></div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const A = {
+  'ikan mas': {d: 'Bertulang belakang, hidup di air, bernapas dengan insang, bersisik, bersirip.', g: 'Pisces (ikan)'},
+  'katak': {d: 'Bertulang belakang, kulit licin dan lembap, berudu hidup di air dan bernapas dengan insang, dewasa bernapas dengan paru-paru dan kulit.', g: 'Amfibi'},
+  'kadal': {d: 'Bertulang belakang, kulit kering bersisik, bertelur bercangkang lunak, bernapas dengan paru-paru.', g: 'Reptil'},
+  'burung pipit': {d: 'Bertulang belakang, tubuh berbulu, bersayap, bertelur bercangkang keras.', g: 'Aves (burung)'},
+  'kucing': {d: 'Bertulang belakang, tubuh berambut, melahirkan dan menyusui anaknya.', g: 'Mamalia'},
+  'kelelawar': {d: 'Bertulang belakang, dapat terbang dengan sayap selaput, tubuh berambut, melahirkan dan menyusui.', g: 'Mamalia'},
+  'cacing tanah': {d: 'Tidak bertulang belakang, tubuh lunak bersegmen (beruas-ruas), tidak berkaki.', g: 'Annelida'},
+  'kupu-kupu': {d: 'Tidak bertulang belakang, tubuh dan kaki beruas-ruas, memiliki rangka luar, 3 pasang kaki.', g: 'Arthropoda'},
+  'bekicot': {d: 'Tidak bertulang belakang, tubuh lunak tidak bersegmen, memiliki cangkang.', g: 'Mollusca'},
+};
+// kunci: [pertanyaan, [jawaban ya → tujuan], [jawaban tidak → tujuan]]
+const K = {
+  1: ['Memiliki tulang belakang?', 2, 6],
+  2: ['Tubuh berambut dan menyusui anaknya?', 'Mamalia', 3],
+  3: ['Tubuh berbulu dan bersayap?', 'Aves (burung)', 4],
+  4: ['Hidup di air seumur hidup, bernapas dengan insang, dan bersirip?', 'Pisces (ikan)', 5],
+  5: ['Kulit licin dan lembap, mengalami metamorfosis dari berudu?', 'Amfibi', 'Reptil'],
+  6: ['Kaki dan tubuh beruas-ruas dengan rangka luar?', 'Arthropoda', 7],
+  7: ['Tubuh bersegmen seperti cincin, tanpa cangkang?', 'Annelida', 'Mollusca'],
+};
+let cur = null, node = 1, path = [];
+$('cards').innerHTML = Object.keys(A).map(n => `<button class="card" data-n="${n}">${n}</button>`).join('');
+$('cards').onclick = e => { const b = e.target.closest('.card'); if(!b) return; cur = b.dataset.n; node = 1; path = []; document.querySelectorAll('.card').forEach(c => c.classList.toggle('on', c === b)); render(); };
+function render(){
+  $('desc').innerHTML = cur ? `<b>${cur}</b>: ${A[cur].d}` : 'Baca ciri-ciri hewan yang dipilih, lalu jawab setiap pertanyaan kunci.';
+  $('path').innerHTML = path.map((p, i) => `<div>${p[0]}${p[1] ? 'a' : 'b'}. ${K[p[0]][0]} → <b>${p[1] ? 'ya' : 'tidak'}</b></div>`).join('');
+  const m = $('msg');
+  if(!cur){ $('q').innerHTML = ''; m.hidden = true; return; }
+  if(typeof node === 'string'){
+    $('q').innerHTML = `<div>Hasil identifikasi: <b>${node}</b></div><button class="btn" id="again">Ulangi</button>`;
+    m.hidden = false; const ok = node === A[cur].g; m.className = 'msg ' + (ok ? 'ok' : 'bad');
+    m.innerHTML = ok ? `✓ Tepat! ${cur} termasuk ${node}.` : `Belum tepat. Periksa lagi ciri-ciri ${cur} pada deskripsi; jawabanmu pada salah satu pertanyaan tidak sesuai.`;
+    $('again').onclick = () => { node = 1; path = []; render(); };
+    return;
+  }
+  m.hidden = true;
+  $('q').innerHTML = `<div><b>${node}.</b> ${K[node][0]}</div><div class="row"><button class="btn primary" id="ya">Ya</button><button class="btn" id="tidak">Tidak</button></div>`;
+  $('ya').onclick = () => { path.push([node, true]); node = K[node][1]; render(); };
+  $('tidak').onclick = () => { path.push([node, false]); node = K[node][2]; render(); };
+}
+render();
+</script>
+</body>
+</html>

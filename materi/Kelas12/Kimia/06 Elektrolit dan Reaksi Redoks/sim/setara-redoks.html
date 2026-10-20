@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bilangan Oksidasi dan Penyetaraan Redoks</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}
+.box{font-size:14px}.eq{font-family:var(--display);font-weight:700;font-size:15px;line-height:1.9}.ox{color:#c62828}.red{color:#1565c0}
+.steps{display:grid;gap:8px;padding:12px}.st{padding:10px 12px;border-radius:10px;background:var(--surface-2)}.st h4{font-size:13px;color:var(--muted);margin-bottom:4px}
+.bo{display:inline-block;margin:2px 4px;padding:4px 8px;border-radius:8px;background:var(--surface-2);font-family:var(--display);font-weight:700}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><div class="steps" id="out"></div></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="b" class="on">Bilangan oksidasi</button><button data-m="s">Setarakan redoks</button></div>
+    <div id="pb">
+      <div class="lab">Spesi</div>
+      <select id="sp">
+        <option value="0">Fe₂O₃</option><option value="1">H₂O₂</option><option value="2">NaH</option><option value="3">SO₄²⁻</option><option value="4">NH₄⁺</option><option value="5">Cr₂O₇²⁻</option><option value="6">KClO₃</option><option value="7">OF₂</option><option value="8">Na₂S₄O₆</option><option value="9">Fe₃O₄</option>
+      </select>
+    </div>
+    <div id="ps" hidden>
+      <div class="lab">Reaksi</div>
+      <select id="rx"><option value="0">Cr₂O₇²⁻ + Fe²⁺ → Cr³⁺ + Fe³⁺ (asam)</option><option value="1">Zn + NO₃⁻ → Zn²⁺ + NH₄⁺ (asam)</option><option value="2">MnO₄⁻ + SO₃²⁻ → MnO₂ + SO₄²⁻ (basa)</option><option value="3">Cl₂ → Cl⁻ + ClO₃⁻ (basa)</option></select>
+      <div class="row"><button class="btn" id="prev">◀ Sebelumnya</button><button class="btn primary" id="next">Langkah berikutnya ▶</button></div>
+    </div>
+    <p class="note" id="nt"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+let M = 'b', k = 0;
+const B = [
+  ['Fe₂O₃', [['Fe', '+3'], ['O', '−2']], 'O = −2. Jumlah: 2(Fe) + 3(−2) = 0 → Fe = +3.'],
+  ['H₂O₂', [['H', '+1'], ['O', '−1']], 'Peroksida: O = −1 (pengecualian aturan O = −2). 2(+1) + 2(O) = 0.'],
+  ['NaH', [['Na', '+1'], ['H', '−1']], 'Hidrida logam: H = −1 (pengecualian aturan H = +1), karena Na logam golongan IA = +1.'],
+  ['SO₄²⁻', [['S', '+6'], ['O', '−2']], 'Ion poliatom: jumlah biloks = muatan ion. S + 4(−2) = −2 → S = +6.'],
+  ['NH₄⁺', [['N', '−3'], ['H', '+1']], 'N + 4(+1) = +1 → N = −3.'],
+  ['Cr₂O₇²⁻', [['Cr', '+6'], ['O', '−2']], '2Cr + 7(−2) = −2 → 2Cr = +12 → Cr = +6.'],
+  ['KClO₃', [['K', '+1'], ['Cl', '+5'], ['O', '−2']], '+1 + Cl + 3(−2) = 0 → Cl = +5.'],
+  ['OF₂', [['O', '+2'], ['F', '−1']], 'F selalu −1 (paling elektronegatif), sehingga O di sini = +2.'],
+  ['Na₂S₄O₆', [['Na', '+1'], ['S', '+2,5 (rata-rata)'], ['O', '−2']], '2(+1) + 4S + 6(−2) = 0 → 4S = 10 → rata-rata S = +2,5 (biloks rata-rata boleh pecahan).'],
+  ['Fe₃O₄', [['Fe', '+8/3 (rata-rata; campuran Fe²⁺ dan Fe³⁺)'], ['O', '−2']], '3Fe + 4(−2) = 0 → Fe rata-rata +8/3. Sebenarnya FeO·Fe₂O₃: satu Fe +2 dan dua Fe +3.'],
+];
+const R = [
+  {s: [
+    ['Tentukan biloks yang berubah', 'Cr: +6 → +3 (turun, <span class="red">reduksi</span>); Fe: +2 → +3 (naik, <span class="ox">oksidasi</span>).'],
+    ['Tulis dua setengah reaksi', '<span class="red">Cr₂O₇²⁻ → Cr³⁺</span><br><span class="ox">Fe²⁺ → Fe³⁺</span>'],
+    ['Setarakan atom selain O dan H', '<span class="red">Cr₂O₇²⁻ → 2Cr³⁺</span><br><span class="ox">Fe²⁺ → Fe³⁺</span>'],
+    ['Setarakan O dengan H₂O, lalu H dengan H⁺ (suasana asam)', '<span class="red">Cr₂O₇²⁻ + 14H⁺ → 2Cr³⁺ + 7H₂O</span>'],
+    ['Setarakan muatan dengan elektron', '<span class="red">Cr₂O₇²⁻ + 14H⁺ + 6e → 2Cr³⁺ + 7H₂O</span> (kiri +12, kanan +6)<br><span class="ox">Fe²⁺ → Fe³⁺ + e</span>'],
+    ['Samakan jumlah elektron', 'Reaksi oksidasi dikali 6: <span class="ox">6Fe²⁺ → 6Fe³⁺ + 6e</span>'],
+    ['Jumlahkan dan coret yang sama', '<b>Cr₂O₇²⁻ + 6Fe²⁺ + 14H⁺ → 2Cr³⁺ + 6Fe³⁺ + 7H₂O</b><br>Periksa: muatan kiri −2 + 12 + 14 = +24; kanan +6 + 18 = +24. ✓'],
+  ]},
+  {s: [
+    ['Tentukan biloks yang berubah', 'N: +5 (NO₃⁻) → −3 (NH₄⁺), turun 8 (<span class="red">reduksi</span>); Zn: 0 → +2 (<span class="ox">oksidasi</span>).'],
+    ['Tulis dua setengah reaksi', '<span class="red">NO₃⁻ → NH₄⁺</span><br><span class="ox">Zn → Zn²⁺</span>'],
+    ['Setarakan O dengan H₂O, lalu H dengan H⁺', '<span class="red">NO₃⁻ + 10H⁺ → NH₄⁺ + 3H₂O</span> (H kanan: 4 + 6 = 10)'],
+    ['Setarakan muatan dengan elektron', '<span class="red">NO₃⁻ + 10H⁺ + 8e → NH₄⁺ + 3H₂O</span> (kiri +9 → +1)<br><span class="ox">Zn → Zn²⁺ + 2e</span>'],
+    ['Samakan jumlah elektron', 'Oksidasi dikali 4: <span class="ox">4Zn → 4Zn²⁺ + 8e</span>'],
+    ['Jumlahkan', '<b>4Zn + NO₃⁻ + 10H⁺ → 4Zn²⁺ + NH₄⁺ + 3H₂O</b><br>Periksa muatan: kiri −1 + 10 = +9; kanan +8 + 1 = +9. ✓'],
+  ]},
+  {s: [
+    ['Tentukan biloks yang berubah', 'Mn: +7 → +4 (<span class="red">reduksi</span>); S: +4 → +6 (<span class="ox">oksidasi</span>).'],
+    ['Setarakan seperti suasana asam dulu', '<span class="red">MnO₄⁻ + 4H⁺ + 3e → MnO₂ + 2H₂O</span><br><span class="ox">SO₃²⁻ + H₂O → SO₄²⁻ + 2H⁺ + 2e</span>'],
+    ['Suasana basa: tambahkan OH⁻ sebanyak H⁺ di kedua ruas', '<span class="red">MnO₄⁻ + 2H₂O + 3e → MnO₂ + 4OH⁻</span><br><span class="ox">SO₃²⁻ + 2OH⁻ → SO₄²⁻ + H₂O + 2e</span><br>(H⁺ + OH⁻ menjadi H₂O, lalu H₂O yang sama dicoret)'],
+    ['Samakan elektron (KPK 6)', 'Reduksi × 2, oksidasi × 3.'],
+    ['Jumlahkan dan sederhanakan', '2MnO₄⁻ + 4H₂O + 3SO₃²⁻ + 6OH⁻ → 2MnO₂ + 8OH⁻ + 3SO₄²⁻ + 3H₂O<br><b>2MnO₄⁻ + 3SO₃²⁻ + H₂O → 2MnO₂ + 3SO₄²⁻ + 2OH⁻</b> ✓'],
+  ]},
+  {s: [
+    ['Tentukan biloks yang berubah', 'Cl₂ (0) menjadi Cl⁻ (−1, <span class="red">reduksi</span>) sekaligus ClO₃⁻ (+5, <span class="ox">oksidasi</span>). Satu zat mengalami reduksi dan oksidasi sekaligus: <b>disproporsionasi (autoredoks)</b>.'],
+    ['Setengah reaksi', '<span class="red">Cl₂ + 2e → 2Cl⁻</span><br><span class="ox">Cl₂ + 12OH⁻ → 2ClO₃⁻ + 6H₂O + 10e</span>'],
+    ['Samakan elektron (KPK 10)', 'Reduksi × 5: <span class="red">5Cl₂ + 10e → 10Cl⁻</span>'],
+    ['Jumlahkan', '6Cl₂ + 12OH⁻ → 10Cl⁻ + 2ClO₃⁻ + 6H₂O'],
+    ['Sederhanakan (bagi 2)', '<b>3Cl₂ + 6OH⁻ → 5Cl⁻ + ClO₃⁻ + 3H₂O</b> ✓'],
+  ]},
+];
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; $('pb').hidden = M !== 'b'; $('ps').hidden = M !== 's'; k = 0; draw(); });
+$('sp').oninput = draw; $('rx').oninput = () => { k = 0; draw(); };
+$('next').onclick = () => { k = Math.min(R[+$('rx').value].s.length - 1, k + 1); draw(); };
+$('prev').onclick = () => { k = Math.max(0, k - 1); draw(); };
+function draw(){
+  if(M === 'b'){
+    const [f, el, why] = B[+$('sp').value];
+    $('out').innerHTML = `<div class="st"><h4>Spesi</h4><div class="eq" style="font-size:22px">${f}</div></div><div class="st"><h4>Bilangan oksidasi</h4>${el.map(([e, v]) => `<span class="bo">${e}: ${v}</span>`).join('')}</div><div class="st"><h4>Cara menentukan</h4>${why}</div><div class="st"><h4>Aturan pokok</h4>Unsur bebas = 0 · ion monoatom = muatannya · logam IA = +1, IIA = +2 · F = −1 · H = +1 (kecuali hidrida logam −1) · O = −2 (kecuali peroksida −1, OF₂ +2) · jumlah biloks senyawa = 0, ion poliatom = muatannya</div>`;
+    $('nt').textContent = 'Pilih spesi lain, terutama yang memuat pengecualian: H₂O₂, NaH, dan OF₂.';
+  } else {
+    const r = R[+$('rx').value];
+    $('out').innerHTML = r.s.slice(0, k + 1).map(([h, b], i) => `<div class="st"><h4>Langkah ${i + 1}: ${h}</h4><div class="eq">${b}</div></div>`).join('');
+    $('nt').innerHTML = `Langkah ${k + 1} dari ${r.s.length}. <span class="red">Biru: reduksi</span>, <span class="ox">merah: oksidasi</span>.`;
+  }
+}
+draw();
+</script>
+</body>
+</html>

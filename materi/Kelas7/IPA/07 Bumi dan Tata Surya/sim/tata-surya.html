@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tata Surya</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:11px;cursor:pointer}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 440 440" role="img" aria-label="Planet-planet mengelilingi Matahari"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Kecepatan waktu</span><b id="sout"></b></div><input type="range" id="sp" min="1" max="200" step="1" value="40"></div>
+    <div class="row"><button class="btn" id="pause">Jeda</button><span id="day" style="font-weight:700"></span></div>
+    <div class="read" id="read"></div>
+    <p class="note">Klik sebuah planet untuk melihat datanya. Jarak orbit tidak sebanding dengan aslinya (planet luar sangat jauh), tetapi periode revolusi sebanding: planet dekat Matahari beredar paling cepat. Garis putus-putus cokelat: sabuk asteroid, pembatas planet dalam dan planet luar.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// data mengikuti buku siswa; jumlah satelit terus bertambah seiring penemuan
+const P = [
+  ['Merkurius', 88, '59 hari', '0', '#a3a3a3', 4, 'planet terkecil dan terdekat dengan Matahari'],
+  ['Venus', 225, '243 hari (arah berlawanan)', '0', '#e3b04b', 6, 'planet terpanas karena atmosfer CO₂ yang tebal'],
+  ['Bumi', 365, '1 hari', '1 (Bulan)', '#2b7de9', 6, 'satu-satunya planet yang diketahui dihuni makhluk hidup'],
+  ['Mars', 687, '1,03 hari', '2 (Phobos, Deimos)', '#d1502e', 5, 'planet merah karena tanahnya mengandung oksida besi'],
+  ['Jupiter', 4333, '9 jam 55 menit', '79', '#c99a6b', 11, 'planet terbesar; memiliki Bintik Merah Raksasa'],
+  ['Saturnus', 10759, '10 jam 39 menit', '82 dan cincin', '#e1c27c', 10, 'cincinnya tersusun dari es dan batuan'],
+  ['Uranus', 30687, '17 jam 14 menit', '27', '#7fd3d8', 8, 'berotasi dengan sumbu hampir rebah'],
+  ['Neptunus', 60190, '16 jam 6 menit', '14', '#4b6ee8', 8, 'planet terjauh dengan angin paling kencang'],
+];
+let day = 0, last = performance.now(), paused = false, sel = 2;
+$('pause').onclick = () => { paused = !paused; $('pause').textContent = paused ? 'Lanjut' : 'Jeda'; };
+svg.addEventListener('click', e => { const g = e.target.closest('[data-i]'); if(g){ sel = +g.dataset.i; } });
+function loop(now){
+  const dt = (now - last) / 1000; last = now; if(!paused) day += dt * +$('sp').value;
+  const cx = 220, cy = 220; let s = `<circle cx="${cx}" cy="${cy}" r="16" fill="#f7b500"/><text class="c" x="${cx}" y="${cy + 30}" text-anchor="middle" style="fill:var(--muted)">Matahari</text>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${32 + 4 * 24 + 4}" fill="none" stroke="#a0784a" stroke-width="3" stroke-dasharray="2 5"/>`;
+  P.forEach(([n, T, , , col, r], i) => { const R = 32 + i * 24 + (i >= 4 ? 10 : 0), a = day / T * 2 * Math.PI, x = cx + R * Math.cos(a), y = cy - R * Math.sin(a);
+    s += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" style="stroke:var(--line-2)"/>`;
+    s += `<g data-i="${i}" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="${r + 6}" fill="transparent"/><circle cx="${x}" cy="${y}" r="${r}" fill="${col}" ${i === sel ? 'stroke="var(--ink)" stroke-width="2"' : ''}/>` + (i === 5 ? `<ellipse cx="${x}" cy="${y}" rx="${r + 6}" ry="3" fill="none" stroke="${col}" stroke-width="2"/>` : '') + (i === sel ? `<text class="c" x="${x}" y="${y - r - 6}" text-anchor="middle" style="fill:var(--ink)">${n}</text>` : '') + `</g>`; });
+  svg.innerHTML = s;
+  $('sout').textContent = $('sp').value + ' hari/detik'; $('day').textContent = `Hari ke-${fmt(day, 0)} (≈ ${fmt(day / 365, 1)} tahun Bumi)`;
+  const p = P[sel];
+  $('read').innerHTML = `<div><span>Planet</span><b>${p[0]}</b></div><div><span>Periode revolusi</span><b>${p[1] < 1000 ? p[1] + ' hari' : fmt(p[1] / 365, 1) + ' tahun'}</b></div><div><span>Periode rotasi</span><b>${p[2]}</b></div><div><span>Satelit</span><b>${p[3]}</b></div><div><span>Kelompok</span><b>${sel < 4 ? 'planet dalam (kebumian)' : 'planet luar (raksasa gas)'}</b></div><div><span>Ciri</span><b>${p[6]}</b></div>`;
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

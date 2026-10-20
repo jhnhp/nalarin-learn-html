@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replikasi Virus</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Tahapan replikasi bakteriofag pada sel bakteri"></svg></div>
+  <div class="panel">
+    <div class="seg" id="cyc"><button class="on" data-v="litik">Siklus litik</button><button data-v="lisogenik">Siklus lisogenik</button></div>
+    <div class="row"><button class="btn" id="prev">◀ Mundur</button><button class="btn primary" id="next">Maju ▶</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Bakteriofag adalah virus yang menginfeksi bakteri. Virus hanya dapat memperbanyak diri di dalam sel inang yang memiliki reseptor yang cocok dengan protein permukaan virus.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const LIT = [
+  ['Pelekatan (adsorpsi)', 'Serabut ekor virus melekat pada reseptor yang cocok di dinding sel bakteri.'],
+  ['Penetrasi (injeksi)', 'Virus menyuntikkan asam nukleatnya ke dalam sel; kapsid tetap di luar.'],
+  ['Sintesis', 'Asam nukleat virus mengambil alih sel: DNA bakteri dihancurkan, sel membuat salinan DNA dan protein virus.'],
+  ['Perakitan', 'DNA dan protein virus dirakit menjadi ratusan virus baru.'],
+  ['Lisis', 'Sel inang pecah dan melepaskan virus-virus baru yang siap menginfeksi sel lain.']
+];
+const LIS = [
+  ['Pelekatan (adsorpsi)', 'Virus melekat pada reseptor dinding sel bakteri.'],
+  ['Penetrasi (injeksi)', 'Asam nukleat virus masuk ke dalam sel.'],
+  ['Penggabungan (integrasi)', 'DNA virus menyisip ke dalam DNA bakteri menjadi profag. Sel tetap hidup normal.'],
+  ['Pembelahan sel inang', 'Setiap kali bakteri membelah, profag ikut tergandakan dan diwariskan ke sel anak.'],
+  ['Beralih ke siklus litik', 'Jika ada pemicu (misalnya radiasi atau zat kimia), profag lepas dari DNA bakteri dan masuk ke tahap sintesis siklus litik.']
+];
+let cyc = 'litik', k = 0;
+document.querySelectorAll('#cyc button').forEach(b => b.onclick = () => { document.querySelectorAll('#cyc button').forEach(x => x.classList.toggle('on', x === b)); cyc = b.dataset.v; k = 0; draw(); });
+$('prev').onclick = () => { k = Math.max(0, k - 1); draw(); };
+$('next').onclick = () => { k = Math.min(4, k + 1); draw(); };
+function phage(x, y, sc, rot, full){
+  sc = sc || 1;
+  return `<g transform="translate(${x},${y}) rotate(${rot || 0}) scale(${sc})"><path d="M0,-34 L10,-28 L10,-16 L0,-10 L-10,-16 L-10,-28 Z" style="fill:var(--r);stroke:var(--r)" fill-opacity=".25" stroke-width="2"/>${full !== false ? '<path d="M-3,-27 q6,4 0,8 q-6,4 0,8" fill="none" style="stroke:var(--b)" stroke-width="1.6"/>' : ''}<rect x="-2.5" y="-10" width="5" height="16" style="fill:var(--r)"/><path d="M-2,6 L-12,16 M2,6 L12,16 M-1,6 L-5,18 M1,6 L5,18" style="stroke:var(--r)" stroke-width="1.6"/></g>`;
+}
+function bact(x, y, w, h, broken){
+  if(broken) return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${h / 2}" fill="none" style="stroke:var(--k)" stroke-width="3" stroke-dasharray="46 22"/>`;
+  return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${h / 2}" style="fill:var(--k);stroke:var(--k)" fill-opacity=".1" stroke-width="3"/>`;
+}
+function bdna(cx, cy, r, col, gap){
+  return `<ellipse cx="${cx}" cy="${cy}" rx="${r * 1.6}" ry="${r}" fill="none" style="stroke:${col || 'var(--k)'}" stroke-width="2.5" stroke-dasharray="${gap || 'none'}"/>`;
+}
+function draw(){
+  let s = '';
+  const X = 110, Y = 110, W = 260, H = 120, cx = X + W / 2, cy = Y + H / 2;
+  if(cyc === 'litik'){
+    if(k <= 3) s += bact(X, Y, W, H);
+    if(k === 0){ s += phage(cx, Y - 20); s += bdna(cx, cy + 10, 22); }
+    if(k === 1){ s += phage(cx, Y - 20, 1, 0, false); s += `<path d="M${cx},${Y + 4} q10,15 -5,25 q-15,10 5,20" fill="none" style="stroke:var(--b)" stroke-width="2.5"/>` + bdna(cx + 60, cy + 15, 18); }
+    if(k === 2){ s += phage(cx, Y - 20, 1, 0, false); for(let i = 0; i < 6; i++){ const x = X + 40 + i * 35, y = cy + (i % 2 ? 18 : -10); s += `<path d="M${x - 10},${y} q5,-8 10,0 q5,8 10,0" fill="none" style="stroke:var(--b)" stroke-width="2.5"/>`; s += `<path d="M${x - 8},${y + 22} l8,-6 l8,6 l-8,6z" style="fill:var(--r)" fill-opacity=".4"/>`; } s += `<path d="M${X + 30},${cy + 30} l10,4 m10,-6 l8,6 m40,0 l6,-4" style="stroke:var(--k)" stroke-width="2"/>`; }
+    if(k === 3){ s += phage(cx, Y - 20, 1, 0, false); for(let i = 0; i < 8; i++) s += phage(X + 40 + (i % 4) * 58, Y + 55 + Math.floor(i / 4) * 52, .9); }
+    if(k === 4){ s += bact(X, Y, W, H, true); for(let i = 0; i < 10; i++){ const a = i / 10 * 2 * Math.PI; s += phage(cx + Math.cos(a) * (150 + (i % 2) * 10), cy + Math.sin(a) * 95, .8, a * 180 / Math.PI + 90); } }
+  } else {
+    if(k === 0){ s += bact(X, Y, W, H) + phage(cx, Y - 20) + bdna(cx, cy + 10, 22); }
+    if(k === 1){ s += bact(X, Y, W, H) + phage(cx, Y - 20, 1, 0, false) + `<path d="M${cx},${Y + 4} q10,15 -5,25" fill="none" style="stroke:var(--b)" stroke-width="2.5"/>` + bdna(cx + 50, cy + 15, 20); }
+    if(k === 2){ s += bact(X, Y, W, H) + bdna(cx, cy, 30) + `<path d="M${cx + 30},${cy - 26} a48,30 0 0,1 18,14" fill="none" style="stroke:var(--b)" stroke-width="4"/><text class="s" x="${cx + 56}" y="${cy - 26}" style="fill:var(--b)">profag</text>`; }
+    if(k === 3){ [[30, 30], [250, 30], [30, 170], [250, 170]].forEach(([x, y]) => { s += bact(x, y, 190, 100) + bdna(x + 95, y + 50, 22) + `<path d="M${x + 117},${y + 32} a35,22 0 0,1 13,10" fill="none" style="stroke:var(--b)" stroke-width="4"/>`; }); }
+    if(k === 4){ s += bact(X, Y, W, H) + bdna(cx, cy, 30) + `<path d="M${cx + 60},${cy - 30} q20,-10 30,6 q6,14 -12,18" fill="none" style="stroke:var(--b)" stroke-width="4"/><text class="s" x="${cx + 96}" y="${cy - 36}" style="fill:var(--b)">profag lepas → sintesis</text>`; }
+  }
+  // garis tahapan
+  const steps = cyc === 'litik' ? LIT : LIS;
+  steps.forEach((t, i) => { const x = 40 + i * 100; s += `<circle cx="${x}" cy="292" r="9" style="fill:${i === k ? 'var(--a)' : i < k ? 'var(--a)' : 'var(--line-2)'}" fill-opacity="${i === k ? 1 : i < k ? .4 : 1}"/><text class="s" x="${x}" y="296" text-anchor="middle" fill="#fff">${i + 1}</text>`; if(i) s += `<line x1="${x - 89}" y1="292" x2="${x - 11}" y2="292" style="stroke:var(--line-2)" stroke-width="2"/>`; });
+  s += `<text class="c" x="240" y="20" text-anchor="middle" style="fill:var(--ink)">${k + 1}. ${steps[k][0]}</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Tahap ${k + 1}</span><b>${steps[k][0]}</b></div><div><span>Yang terjadi</span><b>${steps[k][1]}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

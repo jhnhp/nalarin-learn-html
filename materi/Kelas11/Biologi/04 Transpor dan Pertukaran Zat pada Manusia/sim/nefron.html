@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pembentukan Urin di Nefron</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+.p{cursor:pointer}.p:hover{filter:brightness(1.1)}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Diagram nefron dengan tahap filtrasi, reabsorpsi, dan augmentasi"></svg></div>
+  <div class="panel">
+    <div class="lab">Kadar glukosa darah <b id="gv"></b></div><input type="range" id="g" min="70" max="400" step="10" value="100">
+    <div class="lab">Asupan air <b id="wv"></b></div><input type="range" id="w" min="0" max="4" step="1" value="2">
+    <label class="chk"><input type="checkbox" id="glo"> Glomerulus rusak (peradangan ginjal/nefritis)</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const WL = ['sangat sedikit (dehidrasi)', 'sedikit', 'cukup', 'banyak', 'sangat banyak'];
+const PART = {
+  glom: ['Glomerulus dan kapsul Bowman', 'Filtrasi: tekanan darah mendorong air dan zat bermolekul kecil (glukosa, asam amino, garam, urea) keluar dari kapiler glomerulus ke kapsul Bowman. Sel darah dan protein terlalu besar sehingga tetap di darah. Hasilnya urin primer (filtrat glomerulus).'],
+  prox: ['Tubulus kontortus proksimal', 'Reabsorpsi: glukosa, asam amino, sebagian besar garam dan air diserap kembali ke kapiler. Hasilnya urin sekunder.'],
+  henle: ['Lengkung Henle', 'Air diserap kembali di bagian menurun dan garam di bagian menaik, membuat cairan di sekitarnya pekat sehingga ginjal dapat memekatkan urin.'],
+  dist: ['Tubulus kontortus distal', 'Augmentasi (sekresi tubulus): zat sisa dan ion berlebih (H⁺, K⁺, obat-obatan) ditambahkan dari darah ke dalam tubulus.'],
+  duct: ['Tubulus/duktus pengumpul', 'Reabsorpsi air diatur hormon ADH: saat kekurangan air, ADH banyak sehingga air banyak diserap kembali dan urin sedikit serta pekat. Urin sesungguhnya lalu dialirkan ke pelvis ginjal.']
+};
+let S = 'glom';
+function draw(){
+  const g = +$('g').value, w = +$('w').value, bad = $('glo').checked;
+  $('gv').textContent = g + ' mg/dL'; $('wv').textContent = WL[w];
+  const thr = 180, glucUrine = g > thr ? (g - thr) * 4 : 0; // mg/dL perkiraan
+  const vol = [0.5, 0.9, 1.5, 2.3, 3.2][w] + (glucUrine > 0 ? 0.4 * (g - thr) / 200 : 0); // L/hari (glukosa menarik air)
+  const adh = ['sangat tinggi', 'tinggi', 'sedang', 'rendah', 'sangat rendah'][w];
+  const conc = vol < 0.8 ? 'sangat pekat' : vol < 1.2 ? 'pekat' : vol < 2.0 ? 'normal' : 'encer';
+  const sel = id => S === id ? '#d62828' : '#555';
+  let s = '';
+  s += `<g class="p" data-id="glom"><circle cx="90" cy="80" r="42" fill="#fff3e0" stroke="${sel('glom')}" stroke-width="3"/><path d="M70,78 q8,-18 16,0 q8,18 16,0 q8,-18 16,0" fill="none" stroke="#c62828" stroke-width="5"/><text class="s" x="90" y="36" text-anchor="middle" style="fill:var(--ink)">glomerulus</text></g>`;
+  s += `<line x1="20" y1="70" x2="68" y2="78" stroke="#c62828" stroke-width="4"/><text class="s" x="14" y="98" fill="#c62828">arteriol</text>`;
+  s += `<g class="p" data-id="prox"><path d="M130,90 C170,110 150,140 190,140 C230,140 210,100 250,100" fill="none" stroke="${sel('prox')}" stroke-width="12" stroke-opacity=".5"/><text class="s" x="190" y="164" text-anchor="middle" style="fill:var(--ink)">tubulus proksimal</text></g>`;
+  s += `<g class="p" data-id="henle"><path d="M250,100 L250,280 Q270,310 290,280 L290,110" fill="none" stroke="${sel('henle')}" stroke-width="12" stroke-opacity=".5"/><text class="s" x="270" y="325" text-anchor="middle" style="fill:var(--ink)">lengkung Henle</text></g>`;
+  s += `<g class="p" data-id="dist"><path d="M290,110 C320,80 340,130 370,100" fill="none" stroke="${sel('dist')}" stroke-width="12" stroke-opacity=".5"/><text class="s" x="335" y="80" text-anchor="middle" style="fill:var(--ink)">tubulus distal</text></g>`;
+  s += `<g class="p" data-id="duct"><path d="M370,100 L410,100 L410,300" fill="none" stroke="${sel('duct')}" stroke-width="16" stroke-opacity=".5"/><text class="s" x="420" y="210" style="fill:var(--ink)">duktus</text><text class="s" x="420" y="223" style="fill:var(--ink)">pengumpul</text></g>`;
+  // panah reabsorpsi glukosa dan air
+  s += `<text class="s" x="140" y="190" fill="#2e7d32">${glucUrine > 0 ? 'glukosa melebihi kemampuan reabsorpsi' : 'glukosa diserap kembali seluruhnya'}</text>`;
+  s += `<text class="s" x="300" y="${150}" fill="#1565c0">↖ air diserap (ADH ${adh})</text>`;
+  s += `<text class="s" x="410" y="320" text-anchor="middle" fill="#f9a825">urin ${fmt(vol, 1)} L/hari</text>`;
+  if(bad) s += `<text class="s" x="90" y="140" text-anchor="middle" fill="#d62828">protein dan sel darah lolos!</text>`;
+  svg.innerHTML = s;
+  svg.querySelectorAll('.p').forEach(el => el.onclick = () => { S = el.dataset.id; draw(); });
+  $('read').innerHTML = `<div><span>Volume urin</span><b>± ${fmt(vol, 1)} L/hari (${conc})</b></div><div><span>Glukosa dalam urin</span><b>${glucUrine > 0 ? 'ada (positif)' : 'tidak ada'}</b></div><div><span>Protein dalam urin</span><b>${bad ? 'ada (positif)' : 'tidak ada'}</b></div>`;
+  let ket = '<b>' + PART[S][0] + '.</b> ' + PART[S][1];
+  if(glucUrine > 0) ket += ' Kadar glukosa darah melebihi ± 180 mg/dL (ambang ginjal), sehingga tubulus proksimal tidak mampu menyerap semuanya; glukosa terbawa urin (glukosuria), seperti pada diabetes melitus.';
+  if(bad) ket += ' Glomerulus yang rusak tidak lagi menahan molekul besar, sehingga protein (albumin) dan sel darah ikut keluar bersama urin.';
+  $('ket').innerHTML = ket;
+}
+['g', 'w', 'glo'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

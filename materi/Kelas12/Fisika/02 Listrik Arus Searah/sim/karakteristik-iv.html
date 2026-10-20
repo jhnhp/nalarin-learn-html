@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karakteristik Tegangan–Arus</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Grafik arus terhadap tegangan untuk berbagai komponen"></svg></div>
+  <div class="panel">
+    <div class="seg" id="kom"><button data-v="res" class="on">Resistor</button><button data-v="lampu">Lampu filamen</button><button data-v="led">LED</button><button data-v="ntc">Termistor</button></div>
+    <div class="lab">Tegangan pada komponen <b id="vv"></b></div><input type="range" id="v" min="-6" max="6" step="0.1" value="3">
+    <div class="lab">Suhu lingkungan (untuk termistor) <b id="tv"></b></div><input type="range" id="t" min="0" max="80" step="5" value="25">
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let K = 'res';
+$('kom').querySelectorAll('button').forEach(b => b.onclick = () => { $('kom').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); K = b.dataset.v; draw(); });
+// arus dalam mA
+function I(v){
+  if(K === 'res') return v / 120 * 1000;
+  if(K === 'lampu'){ const s = Math.sign(v), a = Math.abs(v); return s * 1000 * a / (20 + 18 * a); } // hambatan naik saat panas
+  if(K === 'led'){ return v <= 0 ? -0.000 : Math.max(0, 1000 * 0.004 * (Math.exp((v - 1.9) / 0.09) - Math.exp(-1.9 / 0.09)) ); }
+  const T = +$('t').value, R = 300 * Math.exp(3500 * (1 / (T + 273) - 1 / 298)); return v / R * 1000;
+}
+function draw(){
+  const V = +$('v').value; $('vv').textContent = fmt(V, 1) + ' V'; $('tv').textContent = $('t').value + ' °C';
+  const gx = 240, gy = 170, sx = 36, imax = K === 'res' ? 60 : K === 'lampu' ? 60 : K === 'led' ? 60 : 60, sy = 140 / imax;
+  let s = `<line x1="20" y1="${gy}" x2="460" y2="${gy}" style="stroke:var(--ink)"/><line x1="${gx}" y1="20" x2="${gx}" y2="310" style="stroke:var(--ink)"/>`;
+  for(let v = -6; v <= 6; v += 2) if(v) s += `<text class="s" x="${gx + v * sx}" y="${gy + 14}" text-anchor="middle" style="fill:var(--muted)">${v}</text>`;
+  for(const i of [-40, -20, 20, 40]) s += `<text class="s" x="${gx - 6}" y="${gy - i * sy + 4}" text-anchor="end" style="fill:var(--muted)">${i}</text>`;
+  s += `<text class="s" x="455" y="${gy - 8}" text-anchor="end" style="fill:var(--muted)">V (volt)</text><text class="s" x="${gx + 6}" y="30" style="fill:var(--muted)">I (mA)</text>`;
+  let p = '', started = false;
+  for(let k = 0; k <= 240; k++){ const v = -6 + 12 * k / 240, i = I(v); if(Math.abs(i) > imax * 1.05){ started = false; continue; } p += (started ? 'L' : 'M') + (gx + v * sx).toFixed(1) + ',' + (gy - i * sy).toFixed(1); started = true; }
+  s += `<path d="${p}" fill="none" stroke="#1e88e5" stroke-width="3"/>`;
+  const i0 = I(V); if(Math.abs(i0) <= imax * 1.05) s += `<circle cx="${gx + V * sx}" cy="${gy - i0 * sy}" r="6" fill="#e53935"/>`;
+  svg.innerHTML = s;
+  const R = Math.abs(i0) > 1e-6 ? V / (i0 / 1000) : Infinity;
+  $('read').innerHTML = `<div><span>Arus</span><b>${Math.abs(i0) > imax * 1.05 ? 'di luar grafik' : fmt(i0, 2) + ' mA'}</b></div><div><span>Hambatan V/I</span><b>${Math.abs(i0) > imax * 1.05 ? '— (arus terlalu besar, komponen bisa rusak)' : isFinite(R) ? fmt(R, 1) + ' Ω' : 'sangat besar (tidak menghantar)'}</b></div><div><span>Memenuhi hukum Ohm?</span><b>${K === 'res' ? 'ya (ohmik)' : 'tidak (non-ohmik)'}</b></div>`;
+  $('ket').textContent = {res: 'Resistor ohmik: grafik V–I berupa garis lurus melalui titik asal. Kemiringannya tetap, jadi hambatan R = V/I konstan.', lampu: 'Lampu filamen: makin besar arus, filamen makin panas sehingga hambatannya naik; grafik melengkung (arus tidak naik sebanding tegangan).', led: 'LED (dioda): hampir tidak menghantar pada arah balik dan di bawah tegangan ambang (± 2 V untuk LED merah). Di atas ambang, arus naik sangat cepat; karena itu LED selalu diberi resistor pembatas arus.', ntc: 'Termistor NTC: hambatannya turun bila suhu naik (bahan semikonduktor). Ubah suhu lingkungan dan lihat kemiringan grafiknya berubah. Dipakai sebagai sensor suhu.'}[K];
+}
+['v', 't'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

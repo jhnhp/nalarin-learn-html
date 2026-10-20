@@ -1,56 +1,478 @@
 {
   "title": "Ikatan Kimia",
-  "summary": "Ringkasan bab Ikatan Kimia akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Kestabilan atom dan kaidah oktet, ikatan ion, kovalen, kovalen koordinasi, dan logam beserta sifat zatnya, bentuk molekul (VSEPR dan hibridisasi), kepolaran, serta gaya antarmolekul dan ikatan hidrogen.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Ikatan Kimia",
+      "id": "kestabilan",
+      "title": "Kestabilan atom dan kaidah oktet",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "20 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Ikatan Ion, Kovalen, Kovalen Koordinasi, Logam, Bentuk Molekul (VSEPR dan Hibridisasi), Kepolaran, serta Gaya Antarmolekul</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Gas mulia (golongan VIIIA) ditemukan sebagai atom bebas karena konfigurasi elektronnya stabil: 8 elektron di kulit terluar (<b>oktet</b>), atau 2 elektron untuk helium (<b>duplet</b>). Menurut G. N. Lewis, atom unsur lain membentuk ikatan agar konfigurasi elektronnya menyerupai gas mulia, yaitu dengan:</p><ul><li><b>melepas elektron</b> menjadi kation (atom logam, energi ionisasi kecil);</li><li><b>menerima elektron</b> menjadi anion (atom nonlogam, afinitas elektron besar);</li><li><b>memakai bersama pasangan elektron</b> (antaratom nonlogam).</li></ul>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "type": "text",
+          "html": "<table><tr><th>Atom</th><th>Konfigurasi</th><th>Kecenderungan</th><th>Ion</th><th>Menyerupai</th></tr><tr><td>₁₂Mg</td><td>2 8 2</td><td>melepas 2 e⁻</td><td>Mg²⁺ (2 8)</td><td>Ne</td></tr><tr><td>₁₉K</td><td>2 8 8 1</td><td>melepas 1 e⁻</td><td>K⁺ (2 8 8)</td><td>Ar</td></tr><tr><td>₁₆S</td><td>2 8 6</td><td>menerima 2 e⁻</td><td>S²⁻ (2 8 8)</td><td>Ar</td></tr><tr><td>₇N</td><td>2 5</td><td>menerima 3 e⁻</td><td>N³⁻ (2 8)</td><td>Ne</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Simbol titik Lewis</b> menuliskan elektron valensi sebagai titik di sekitar lambang unsur. Contoh: C mempunyai 4 titik, N 5 titik, O 6 titik, Cl 7 titik.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Unsur ₂₀X dan ₃₅Y. Tentukan ion yang dibentuk masing-masing.</p>",
+          "steps": [
+            "X: 2 8 8 2 → melepas 2 elektron → X²⁺.",
+            "Y: 2 8 18 7 → menerima 1 elektron → Y⁻."
+          ],
+          "answer": "X²⁺ dan Y⁻"
+        },
+        {
+          "type": "check",
+          "question": "Atom ₁₁Na mencapai kestabilan dengan cara ....",
+          "options": {
+            "A": "menerima 7 elektron",
+            "B": "melepas 1 elektron",
+            "C": "memakai bersama 1 pasang elektron",
+            "D": "melepas 2 elektron"
+          },
+          "answer": "B",
+          "hint": "Na: 2 8 1.",
+          "explanation": "Melepas 1 elektron jauh lebih mudah; Na⁺ berkonfigurasi 2 8 seperti Ne."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "ikatan-ion",
+      "title": "Ikatan ion",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "type": "text",
+          "html": "<p><b>Ikatan ion</b> adalah gaya tarik elektrostatik antara kation dan anion yang terbentuk karena serah-terima elektron, umumnya antara atom logam dan nonlogam. Jumlah elektron yang dilepas harus sama dengan jumlah elektron yang diterima, sehingga muatan total senyawa nol.</p>"
         },
         {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "type": "sim",
+          "src": "sim/jenis-ikatan.html",
+          "title": "Jenis ikatan dari dua unsur",
+          "height": 480,
+          "caption": "Pilih logam dan nonlogam. Berapa elektron yang berpindah dan bagaimana rumus senyawanya? Bandingkan selisih keelektronegatifannya dengan pasangan nonlogam-nonlogam."
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Menentukan rumus senyawa ion",
+          "html": "<p>Tulis muatan kation dan anion, lalu silangkan angka muatannya: \\(\\text{M}^{a+} + \\text{N}^{b-} \\rightarrow \\text{M}_b\\text{N}_a\\) (sederhanakan bila bisa).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan rumus senyawa yang terbentuk dari ₁₉K dan ₁₆S.</p>",
+          "steps": [
+            "K: 2 8 8 1 → K⁺.",
+            "S: 2 8 6 → S²⁻.",
+            "Agar netral perlu 2 K⁺ untuk 1 S²⁻."
+          ],
+          "answer": "K₂S"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan rumus senyawa dari ₂₀Ca dan ₇N.</p>",
+          "steps": [
+            "Ca → Ca²⁺; N → N³⁻.",
+            "Silangkan: Ca₃N₂ (muatan 3 × (+2) + 2 × (−3) = 0)."
+          ],
+          "answer": "Ca₃N₂"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Sifat senyawa ion</b>: tersusun atas kisi kristal kation-anion yang teratur, sehingga titik leleh dan titik didihnya tinggi, keras tetapi rapuh (kisi bergeser, ion sejenis bertemu dan saling tolak), umumnya larut dalam air, padatannya tidak menghantarkan listrik, tetapi lelehan dan larutannya menghantarkan listrik karena ionnya bebas bergerak.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Unsur ₃₇Rb dan ₉F membentuk senyawa ....",
+          "options": {
+            "A": "RbF, ikatan ion",
+            "B": "RbF₂, ikatan ion",
+            "C": "Rb₂F, ikatan kovalen",
+            "D": "RbF, ikatan kovalen"
+          },
+          "answer": "A",
+          "hint": "Rb golongan IA, F golongan VIIA.",
+          "explanation": "Rb → Rb⁺, F → F⁻, sehingga terbentuk RbF dengan ikatan ion."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "ikatan-kovalen",
+      "title": "Ikatan kovalen, kovalen koordinasi, dan struktur Lewis",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p><b>Ikatan kovalen</b> terbentuk karena pemakaian bersama pasangan elektron oleh atom-atom nonlogam. Satu pasang elektron bersama = ikatan tunggal (H–Cl), dua pasang = rangkap dua (O=C=O), tiga pasang = rangkap tiga.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/jenis-ikatan.html",
+          "title": "Jenis ikatan dari dua unsur",
+          "height": 480,
+          "caption": "Pilih dua nonlogam, misalnya C dan Cl, lalu N dan H. Berapa elektron yang dibutuhkan masing-masing atom untuk mencapai oktet?"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Langkah menulis struktur Lewis",
+          "html": "<ol><li>Jumlahkan elektron valensi semua atom.</li><li>Pilih atom pusat (biasanya yang paling sedikit jumlahnya dan paling kurang elektronegatif; H tidak pernah menjadi pusat).</li><li>Hubungkan atom dengan ikatan tunggal, lalu lengkapi oktet atom terikat dengan pasangan elektron bebas.</li><li>Sisa elektron diletakkan di atom pusat; jika atom pusat belum oktet, bentuk ikatan rangkap.</li></ol>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Gambarkan struktur Lewis HCN.</p>",
+          "steps": [
+            "Elektron valensi: 1 + 4 + 5 = 10.",
+            "Atom pusat C: H–C–N memakai 4 elektron, sisa 6.",
+            "Agar C dan N oktet, buat ikatan rangkap tiga C≡N dan 1 PEB pada N."
+          ],
+          "answer": "H–C≡N: dengan satu pasangan elektron bebas pada N"
+        },
+        {
+          "type": "h",
+          "text": "Kovalen polar dan nonpolar"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika dua atom yang berikatan berbeda keelektronegatifannya, pasangan elektron tertarik ke atom yang lebih elektronegatif. Atom itu menjadi bermuatan parsial negatif (δ⁻) dan pasangannya δ⁺: <b>ikatan kovalen polar</b> (contoh H–Cl). Ikatan antaratom sejenis (Cl–Cl, O=O) adalah <b>kovalen nonpolar</b>. Makin besar selisih keelektronegatifan, makin polar ikatannya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan nilai keelektronegatifan",
+          "html": "<p>Buku memakai nilai Pauling yang dibulatkan (H 2,1; Cl 3,0), sedangkan simulasi memakai nilai yang lebih baru (H 2,20; Cl 3,16). Urutannya sama, jadi kesimpulan tentang kepolaran tidak berubah.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Ikatan kovalen koordinasi"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada <b>ikatan kovalen koordinasi</b>, pasangan elektron yang dipakai bersama seluruhnya berasal dari satu atom. Atom donor mempunyai pasangan elektron bebas (PEB), sedangkan atom akseptor mempunyai orbital kosong. Contoh: NH₃ + BF₃ → H₃N→BF₃ (PEB atom N mengisi orbital kosong atom B), dan pembentukan ion hidronium H₂O + H⁺ → H₃O⁺.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pada pembentukan H₃O⁺ dari H₂O dan H⁺, atom mana yang menyumbangkan pasangan elektron?</p>",
+          "steps": [
+            "H⁺ tidak memiliki elektron sama sekali.",
+            "O pada H₂O mempunyai 2 PEB; satu PEB dipakai untuk mengikat H⁺."
+          ],
+          "answer": "atom O (ikatan O→H⁺ adalah kovalen koordinasi)"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Penyimpangan kaidah oktet</b>: ada molekul stabil yang atom pusatnya kurang dari 8 elektron (BF₃: B hanya 6 elektron; BeCl₂: 4 elektron) atau lebih dari 8 elektron (PCl₅: 10 elektron; SF₆: 12 elektron). Atom pusat periode 3 ke bawah dapat menampung lebih dari 8 elektron.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menulis bahwa senyawa polar dapat menghantarkan listrik dalam bentuk larutan. Ini hanya berlaku bagi senyawa polar yang terionisasi dalam air, misalnya HCl (menjadi H⁺ dan Cl⁻). Gula dan etanol juga polar, tetapi larutannya tidak menghantarkan listrik karena tidak membentuk ion.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Ikatan antara atom N dan B pada H₃N→BF₃ disebut kovalen koordinasi karena ....",
+          "options": {
+            "A": "N dan B sama-sama menyumbang satu elektron",
+            "B": "pasangan elektron berasal dari N saja",
+            "C": "B melepas elektron kepada N",
+            "D": "selisih keelektronegatifan N dan B besar"
+          },
+          "answer": "B",
+          "hint": "Lihat asal pasangan elektronnya.",
+          "explanation": "PEB atom N mengisi orbital kosong B; B tidak menyumbang elektron."
+        }
+      ]
+    },
+    {
+      "id": "ikatan-logam",
+      "title": "Ikatan logam dan sifat zat",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Pada <b>ikatan logam</b>, elektron valensi atom-atom logam terlepas dan bergerak bebas membentuk <b>lautan elektron</b> di antara ion-ion positif. Tarikan antara ion positif dan lautan elektron inilah ikatan logam. Akibatnya:</p><ul><li>logam menghantarkan listrik dan panas (elektron bebas bergerak), bahkan dalam wujud padat;</li><li>logam dapat ditempa dan ditarik (lapisan ion bergeser tanpa memutus ikatan, karena lautan elektron tetap mengikatnya);</li><li>logam mengilap dan umumnya padat dengan titik leleh tinggi.</li></ul><p>Ikatan logam juga terdapat pada paduan, misalnya kuningan (Cu dan Zn) dan perunggu (Cu dan Sn).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/jenis-ikatan.html",
+          "title": "Jenis ikatan dari dua unsur",
+          "height": 480,
+          "caption": "Pilih dua logam, misalnya Na dan Mg. Perhatikan gambar ion positif dalam lautan elektron."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Sifat</th><th>Senyawa ion</th><th>Senyawa kovalen (molekul)</th><th>Logam</th></tr><tr><td>Titik leleh</td><td>tinggi</td><td>rendah</td><td>umumnya tinggi</td></tr><tr><td>Daya hantar listrik padatan</td><td>tidak</td><td>tidak</td><td>ya</td></tr><tr><td>Daya hantar lelehan</td><td>ya</td><td>tidak</td><td>ya</td></tr><tr><td>Daya hantar larutan</td><td>ya</td><td>hanya yang terionisasi (HCl)</td><td>—</td></tr><tr><td>Kekerasan</td><td>keras, rapuh</td><td>lunak</td><td>dapat ditempa</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Zat X padat, meleleh pada 1.085 °C, menghantarkan listrik dalam wujud padat maupun cair, dan dapat ditarik menjadi kawat. Tentukan jenis ikatannya.</p>",
+          "steps": [
+            "Padatan menghantarkan listrik: ada elektron bebas.",
+            "Dapat ditarik menjadi kawat: sifat logam."
+          ],
+          "answer": "ikatan logam (data ini cocok dengan tembaga)"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Pengayaan: intan",
+          "html": "<p>Intan hanya tersusun atas atom karbon yang masing-masing terikat kovalen ke empat atom karbon lain dalam jaringan raksasa (kovalen jaringan). Karena itu intan sangat keras (skala Mohs 10) dan titik lelehnya sangat tinggi, berbeda dengan senyawa kovalen molekul biasa.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Senyawa yang padatannya tidak menghantarkan listrik, tetapi lelehannya menghantarkan listrik, kemungkinan berikatan ....",
+          "options": {
+            "A": "logam",
+            "B": "ion",
+            "C": "kovalen nonpolar",
+            "D": "kovalen polar"
+          },
+          "answer": "B",
+          "hint": "Ion baru bebas bergerak saat meleleh.",
+          "explanation": "Pada padatan ion terkunci dalam kisi; pada lelehan ion bebas bergerak."
+        }
+      ]
+    },
+    {
+      "id": "vsepr",
+      "title": "Bentuk molekul: teori VSEPR",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Teori <b>VSEPR</b> (<i>valence shell electron pair repulsion</i>): pasangan elektron di sekitar atom pusat saling tolak dan mengatur diri sejauh mungkin. Pasangan elektron bebas (PEB) menolak lebih kuat daripada pasangan elektron ikatan (PEI), sehingga sudut ikatan menyempit. Notasi: <b>AXₙEₘ</b> (A atom pusat, n = jumlah PEI/atom terikat, m = jumlah PEB).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Menentukan tipe molekul",
+          "html": "<p>Untuk atom terikat yang berikatan tunggal (H, F, Cl, Br, I):</p><p>\\[\\text{PEB} = \\dfrac{\\text{elektron valensi atom pusat} - \\text{jumlah atom terikat}}{2}\\]</p><p>Jumlah domain elektron = PEI + PEB menentukan geometri pasangan elektron; posisi atom saja menentukan bentuk molekul.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/vsepr.html",
+          "title": "Bentuk molekul VSEPR",
+          "height": 560,
+          "caption": "Pilih atom pusat S lalu ubah jumlah atom F dari 2 sampai 6. Kapan bentuknya bengkok, jungkat-jungkit, dan oktahedral? Putar molekul untuk melihatnya dari sisi lain."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Domain</th><th>Tipe</th><th>Bentuk molekul</th><th>Contoh</th></tr><tr><td rowspan='1'>2</td><td>AX₂</td><td>linear (180°)</td><td>BeCl₂, CO₂</td></tr><tr><td rowspan='2'>3</td><td>AX₃</td><td>segitiga datar (120°)</td><td>SO₃</td></tr><tr><td>AX₂E</td><td>bengkok</td><td>SO₂</td></tr><tr><td rowspan='3'>4</td><td>AX₄</td><td>tetrahedral (109,5°)</td><td>CCl₄</td></tr><tr><td>AX₃E</td><td>piramida segitiga</td><td>NF₃</td></tr><tr><td>AX₂E₂</td><td>bengkok</td><td>H₂O</td></tr><tr><td rowspan='4'>5</td><td>AX₅</td><td>trigonal bipiramida (90°, 120°)</td><td>PCl₅</td></tr><tr><td>AX₄E</td><td>jungkat-jungkit</td><td>SF₄</td></tr><tr><td>AX₃E₂</td><td>bentuk T</td><td>BrF₃</td></tr><tr><td>AX₂E₃</td><td>linear</td><td>XeF₂</td></tr><tr><td rowspan='3'>6</td><td>AX₆</td><td>oktahedral (90°)</td><td>SF₆</td></tr><tr><td>AX₅E</td><td>piramida segiempat</td><td>BrF₅</td></tr><tr><td>AX₄E₂</td><td>segiempat datar</td><td>XeF₄</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan tipe dan bentuk molekul NF₃ (N: 5 elektron valensi).</p>",
+          "steps": [
+            "PEI = 3 (tiga atom F).",
+            "PEB = (5 − 3)/2 = 1.",
+            "4 domain → geometri pasangan elektron tetrahedral; satu posisi ditempati PEB."
+          ],
+          "answer": "AX₃E, piramida segitiga"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan tipe dan bentuk molekul XeF₄ (Xe: 8 elektron valensi).</p>",
+          "steps": [
+            "PEI = 4, PEB = (8 − 4)/2 = 2.",
+            "6 domain → oktahedral; kedua PEB saling berseberangan agar tolakannya minimum."
+          ],
+          "answer": "AX₄E₂, segiempat datar"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Ikatan rangkap",
+          "html": "<p>Ikatan rangkap dihitung sebagai satu domain. Pada CO₂ (O=C=O), C mempunyai 2 domain dan tidak ada PEB, sehingga bentuknya linear.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Molekul SF₄ (S: 6 elektron valensi) mempunyai tipe ....",
+          "options": {
+            "A": "AX₄",
+            "B": "AX₄E",
+            "C": "AX₄E₂",
+            "D": "AX₂E₂"
+          },
+          "answer": "B",
+          "hint": "PEB = (6 − 4)/2.",
+          "explanation": "Ada 4 PEI dan 1 PEB, sehingga tipenya AX₄E dengan bentuk jungkat-jungkit."
+        }
+      ]
+    },
+    {
+      "id": "hibridisasi",
+      "title": "Hibridisasi dan kepolaran molekul",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hibridisasi</b> adalah penggabungan orbital-orbital atom pusat (s, p, d) menjadi orbital hibrida baru yang setara. Jumlah orbital hibrida = jumlah domain elektron (PEI + PEB):</p><table><tr><th>Domain</th><th>Hibridisasi</th><th>Geometri</th></tr><tr><td>2</td><td>sp</td><td>linear</td></tr><tr><td>3</td><td>sp²</td><td>segitiga datar</td></tr><tr><td>4</td><td>sp³</td><td>tetrahedral</td></tr><tr><td>5</td><td>sp³d</td><td>trigonal bipiramida</td></tr><tr><td>6</td><td>sp³d²</td><td>oktahedral</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Jelaskan hibridisasi C pada CH₄.</p>",
+          "steps": [
+            "C: 2s² 2p² → satu elektron 2s dipromosikan: 2s¹ 2p³ (4 elektron tunggal).",
+            "Satu orbital 2s dan tiga orbital 2p bergabung menjadi empat orbital hibrida sp³ yang setara.",
+            "Tiap orbital sp³ bertumpang tindih dengan orbital 1s atom H."
+          ],
+          "answer": "sp³, tetrahedral, sudut 109,5°"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Koreksi buku",
+          "html": "<p>Buku menulis bahwa orbital p atom N “berhibridisasi bersama orbital s dari ketiga atom H”. Yang berhibridisasi hanyalah orbital atom pusat: orbital 2s dan tiga orbital 2p atom N bergabung menjadi empat orbital sp³ (satu berisi PEB). Orbital 1s atom H tidak ikut berhibridisasi; orbital itu hanya bertumpang tindih dengan orbital sp³ milik N.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Kepolaran molekul"
+        },
+        {
+          "type": "text",
+          "html": "<p>Molekul bersifat <b>polar</b> jika momen dipol ikatan-ikatannya tidak saling meniadakan. Dua syarat yang perlu diperiksa:</p><ol><li>Apakah ada ikatan polar (selisih keelektronegatifan)?</li><li>Apakah bentuk molekulnya simetris? Pada bentuk simetris dengan atom terikat sejenis (linear AX₂, segitiga datar AX₃, tetrahedral AX₄, AX₅, AX₆, AX₂E₃, AX₄E₂), dipol saling meniadakan sehingga molekul <b>nonpolar</b>.</li></ol><p>Molekul dengan PEB pada atom pusat dan bentuk tidak simetris (bengkok, piramida, jungkat-jungkit, bentuk T) bersifat polar.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>CO₂ dan SO₂ sama-sama terdiri atas atom pusat dan dua atom O. Mengapa CO₂ nonpolar, tetapi SO₂ polar?</p>",
+          "steps": [
+            "CO₂: AX₂, linear; kedua dipol C=O berlawanan arah dan saling meniadakan.",
+            "SO₂: S mempunyai 1 PEB, tipe AX₂E, bentuk bengkok; dipol tidak saling meniadakan."
+          ],
+          "answer": "perbedaan bentuk molekul: linear vs bengkok"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Bandingkan kepolaran CF₄ dan CH₂F₂.</p>",
+          "steps": [
+            "Keduanya tetrahedral.",
+            "CF₄: empat atom terikat sama, dipol saling meniadakan → nonpolar.",
+            "CH₂F₂: atom terikatnya tidak sejenis (2 H dan 2 F), dipol tidak saling meniadakan → polar."
+          ],
+          "answer": "CF₄ nonpolar, CH₂F₂ polar"
+        },
+        {
+          "type": "check",
+          "question": "Hibridisasi atom pusat pada PCl₅ adalah ....",
+          "options": {
+            "A": "sp³",
+            "B": "sp³d",
+            "C": "sp³d²",
+            "D": "sp²"
+          },
+          "answer": "B",
+          "hint": "Hitung domain elektron P.",
+          "explanation": "P mempunyai 5 PEI dan 0 PEB: 5 domain → sp³d."
+        }
+      ]
+    },
+    {
+      "id": "antarmolekul",
+      "title": "Gaya antarmolekul dan ikatan hidrogen",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Ikatan di dalam molekul (antaratom) jauh lebih kuat daripada gaya tarik <b>antarmolekul</b>. Gaya antarmolekul menentukan titik didih, titik leleh, dan kelarutan zat kovalen.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Gaya</th><th>Terjadi antara</th><th>Contoh</th></tr><tr><td>Gaya London (dispersi)</td><td>semua molekul, termasuk nonpolar; berasal dari dipol sesaat</td><td>H₂, N₂, I₂</td></tr><tr><td>Dipol-dipol (dipol permanen)</td><td>molekul polar dengan molekul polar</td><td>HBr, CHCl₃</td></tr><tr><td>Dipol terimbas</td><td>molekul polar dengan molekul nonpolar</td><td>O₂ terlarut dalam air</td></tr><tr><td>Ikatan hidrogen</td><td>atom H yang terikat pada N, O, atau F dengan PEB atom N, O, atau F molekul lain</td><td>H₂O, HF, NH₃, alkohol</td></tr></table><p>Gaya London, dipol-dipol, dan dipol terimbas bersama-sama disebut <b>gaya van der Waals</b>. Gaya London makin kuat jika molekul makin besar (massa molekul relatif dan jumlah elektron makin banyak), karena awan elektronnya lebih mudah terdistorsi.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/titik-didih-hidrida.svg",
+          "alt": "Grafik titik didih hidrida golongan IVA sampai VIIA terhadap periode; NH3, H2O, dan HF menyimpang jauh ke atas",
+          "width": 680,
+          "caption": "Titik didih hidrida golongan IVA–VIIA. Hidrida golongan IVA naik teratur; NH₃, H₂O, dan HF menyimpang karena ikatan hidrogen."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Urutkan titik didih F₂, Cl₂, Br₂, dan I₂.</p>",
+          "steps": [
+            "Keempatnya nonpolar; gaya antarmolekulnya hanya gaya London.",
+            "M<sub>r</sub> naik dari F₂ ke I₂, sehingga gaya London makin kuat."
+          ],
+          "answer": "F₂ < Cl₂ < Br₂ < I₂ (pada suhu kamar F₂ dan Cl₂ gas, Br₂ cair, I₂ padat)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Etanol (C₂H₅OH) dan dimetil eter (CH₃OCH₃) mempunyai M<sub>r</sub> sama, yaitu 46. Etanol mendidih pada 78 °C, sedangkan dimetil eter pada −24 °C. Jelaskan.</p>",
+          "steps": [
+            "Etanol mempunyai gugus O–H, sehingga antarmolekulnya terbentuk ikatan hidrogen.",
+            "Pada dimetil eter, atom H terikat pada C, bukan O, sehingga tidak ada ikatan hidrogen antarmolekulnya; yang ada hanya dipol-dipol dan London."
+          ],
+          "answer": "ikatan hidrogen pada etanol"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menulis “semakin kecil kepolaran, semakin kecil gaya van der Waals” dan bahwa dipol permanen selalu paling kuat. Untuk molekul yang ukurannya sangat berbeda, gaya London dapat lebih menentukan. Contohnya, HCl lebih polar daripada HI, tetapi HI mendidih lebih tinggi (−35 °C dibanding −85 °C) karena molekul HI jauh lebih besar sehingga gaya Londonnya lebih kuat. Demikian pula I₂ yang nonpolar berwujud padat pada suhu kamar. Selain itu, kadar oksigen terlarut dalam air terutama ditentukan oleh suhu: air dingin melarutkan lebih banyak oksigen.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Molekul yang antarmolekulnya dapat membentuk ikatan hidrogen adalah ....",
+          "options": {
+            "A": "CH₄",
+            "B": "HCl",
+            "C": "CH₃OH",
+            "D": "CH₃Cl"
+          },
+          "answer": "C",
+          "hint": "Cari H yang terikat langsung pada N, O, atau F.",
+          "explanation": "Pada CH₃OH, atom H terikat pada O, sehingga dapat membentuk ikatan hidrogen."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa menghitung PEB atom pusat sehingga salah menentukan bentuk molekul (misalnya H₂O dikira linear).</li><li>Menganggap molekul yang ikatannya polar pasti polar (CO₂ dan CF₄ nonpolar).</li><li>Menyebut ikatan hidrogen pada molekul yang atom H-nya terikat pada C atau S.</li><li>Memutus ikatan antaratom ketika menjelaskan titik didih; yang diputus saat mendidih adalah gaya antarmolekul.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab II Ikatan Kimia.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang ikatan ion, kovalen, kovalen koordinasi, logam, bentuk molekul (VSEPR dan hibridisasi), kepolaran, dan gaya antarmolekul. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

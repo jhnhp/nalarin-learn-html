@@ -1,56 +1,210 @@
 {
   "title": "Geometri dan Trigonometri",
-  "summary": "Ringkasan bab Geometri dan Trigonometri akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA SMA: perbandingan trigonometri, sudut istimewa dan berelasi, sudut elevasi, kesebangunan, transformasi, lingkaran, serta jarak pada bangun ruang.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Geometri dan Trigonometri",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Geometri, Pengukuran, dan Trigonometri</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi geometri dan trigonometri",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Soal TKA geometri memadukan gambar dan konteks (menara, tiang, logo, kolam). Buat sketsa segitiga siku-siku dari setiap situasi.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Trigonometri</td><td>sin, cos, tan; sudut istimewa; sudut berelasi; kuadran</td><td>Kelas 10 Bab 3</td></tr><tr><td>Elevasi dan depresi</td><td>tinggi dan jarak dengan tan</td><td>Kelas 10 Bab 3</td></tr><tr><td>Transformasi</td><td>translasi, refleksi, rotasi, dilatasi dan komposisinya</td><td>Kelas 9 Bab 3</td></tr><tr><td>Lingkaran</td><td>sudut pusat dan keliling, garis singgung</td><td>Kelas 11 Bab 4</td></tr><tr><td>Bangun ruang</td><td>diagonal kubus dan balok, luas dan volume</td><td>Kelas 9 Bab 2</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>sin = de/mi, cos = sa/mi, tan = de/sa.</li><li>sin 30° = ½, cos 60° = ½, sin 45° = cos 45° = ½√2, tan 60° = √3.</li><li>sin(180° − α) = sin α; cos(180° − α) = −cos α. Di kuadran II hanya sin (dan csc) positif.</li><li>Diagonal sisi kubus s√2, diagonal ruang s√3; diagonal ruang balok √(p² + l² + t²).</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "trigonometri",
+      "title": "Perbandingan trigonometri",
+      "kind": "simulasi",
+      "duration": "25 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/03 Perbandingan Trigonometri/sim/segitiga-trig.html",
+          "title": "Perbandingan trigonometri",
+          "height": 520,
+          "caption": "Ubah sudut dan perhatikan bahwa perbandingan sisi tidak bergantung pada ukuran segitiga."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung sin 150° − cos 120° + tan 45°.</p>",
+          "steps": [
+            "sin 150° = sin 30° = ½; cos 120° = −cos 60° = −½; tan 45° = 1.",
+            "½ − (−½) + 1 = 2."
+          ],
+          "answer": "2"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>sin A = 8/17 dan A sudut tumpul. Tentukan csc A + cot A.</p>",
+          "steps": [
+            "Sisi samping = √(17² − 8²) = 15. Di kuadran II, cos A = −15/17.",
+            "csc A = 17/8, cot A = −15/8.",
+            "Jumlah = 2/8 = ¼."
+          ],
+          "answer": "¼"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/03 Perbandingan Trigonometri/sim/elevasi.html",
+          "title": "Mengukur tinggi dengan sudut elevasi",
+          "height": 520,
+          "caption": "Jangan lupa menambahkan tinggi mata pengamat."
+        },
+        {
+          "type": "check",
+          "question": "Benang layang-layang 50 m membentuk sudut 30° dengan tanah. Tinggi layang-layang (dari tangan) adalah ....",
+          "options": {
+            "A": "25 m",
+            "B": "25√3 m",
+            "C": "50√3 m",
+            "D": "100 m"
+          },
+          "answer": "A",
+          "hint": "Tinggi adalah sisi depan sudut.",
+          "explanation": "t = 50 × sin 30° = 25 m."
+        }
+      ]
+    },
+    {
+      "id": "transformasi-lingkaran",
+      "title": "Transformasi dan lingkaran",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/rotasi.html",
+          "title": "Rotasi bangun datar",
+          "height": 520,
+          "caption": "Rotasikan titik dan perhatikan pola koordinatnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>A(3, −2) dicerminkan terhadap x = 1, lalu dirotasi 180° terhadap O. Tentukan bayangannya.</p>",
+          "steps": [
+            "Cermin x = 1: (2·1 − 3, −2) = (−1, −2).",
+            "Rotasi 180°: (1, 2)."
+          ],
+          "answer": "(1, 2)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Logo 8 cm × 5 cm diperbesar dengan faktor 4. Berapa luas logo pada spanduk?</p>",
+          "steps": [
+            "Luas asal 40 cm². Luas dikali 4² = 16.",
+            "640 cm²."
+          ],
+          "answer": "640 cm²"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Matematika/04 Lingkaran/sim/sudut-keliling.html",
+          "title": "Sudut pusat dan sudut keliling",
+          "height": 520,
+          "caption": "Sudut pusat = 2 × sudut keliling yang menghadap busur yang sama."
+        },
+        {
+          "type": "check",
+          "question": "Titik (x, y) dirotasi 90° berlawanan arah jarum jam terhadap O. Bayangannya adalah ....",
+          "options": {
+            "A": "(−y, x)",
+            "B": "(y, −x)",
+            "C": "(−x, −y)",
+            "D": "(y, x)"
+          },
+          "answer": "A",
+          "hint": "Uji dengan titik (1, 0).",
+          "explanation": "(1, 0) berpindah ke (0, 1) = (−y, x)."
+        }
+      ]
+    },
+    {
+      "id": "bangun-ruang",
+      "title": "Jarak dan ukuran pada bangun ruang",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/02 Bangun Ruang/sim/bangun-3d.html",
+          "title": "Penjelajah bangun ruang",
+          "height": 560,
+          "caption": "Putar kubus dan bayangkan diagonal sisi dan diagonal ruangnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kubus ABCD.EFGH berusuk 6 cm. Tentukan panjang AG dan jarak A ke garis CG.</p>",
+          "steps": [
+            "AG diagonal ruang = 6√3 cm.",
+            "Jarak A ke CG = AC (AC ⊥ CG) = 6√2 cm."
+          ],
+          "answer": "6√3 cm dan 6√2 cm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gudang balok 12 m × 4 m × 3 m. Berapa panjang tali terpendek yang ditarik lurus dari satu sudut lantai ke sudut langit-langit yang berseberangan?</p>",
+          "steps": [
+            "Diagonal ruang = √(144 + 16 + 9) = √169.",
+            "= 13 m."
+          ],
+          "answer": "13 m"
+        },
+        {
+          "type": "check",
+          "question": "Panjang diagonal ruang kubus dengan rusuk 4 cm adalah ....",
+          "options": {
+            "A": "4√2 cm",
+            "B": "4√3 cm",
+            "C": "8 cm",
+            "D": "12 cm"
+          },
+          "answer": "B",
+          "hint": "s√3.",
+          "explanation": "4√3 cm. 4√2 adalah diagonal sisi."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Gambar segitiga siku-siku bantu dan tandai sisi depan, samping, miring terhadap sudut yang diketahui.</li><li>Tentukan kuadran sudut sebelum menentukan tanda nilai trigonometri.</li><li>Pada soal jarak dalam ruang, cari bidang yang memuat kedua titik dan bentuk segitiga siku-siku.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Lupa menambahkan tinggi pengamat pada soal elevasi.</li><li>Salah tanda cos dan tan di kuadran II.</li><li>Tertukar diagonal sisi dan diagonal ruang.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMA topik Geometri dan Trigonometri. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

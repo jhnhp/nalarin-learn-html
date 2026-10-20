@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membaca Jangka Sorong dan Mikrometer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10px}
+.ans{display:flex;gap:8px;align-items:center}.ans input{flex:1;min-width:0;width:0;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:15px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Skala alat ukur yang harus dibaca"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button class="on" data-v="js">Jangka sorong</button><button data-v="mk">Mikrometer</button></div>
+    <div class="row"><button class="btn primary" id="new">Benda baru</button><button class="btn" id="show">Tampilkan cara membaca</button></div>
+    <div class="lab" id="lab">Jawabanmu (mm)</div>
+    <div class="ans"><input id="in" inputmode="decimal" placeholder="misalnya 12,4"><button class="btn" id="cek">Periksa</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'js', R = 12.4, show = false, score = [0, 0];
+const rnd = () => mode === 'js' ? Math.round((5 + Math.random() * 20) * 10) / 10 : Math.round((1 + Math.random() * 11) * 100) / 100;
+document.querySelectorAll('#mode button').forEach(b => b.onclick = () => { document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); mode = b.dataset.v; R = rnd(); show = false; $('in').value = ''; $('read').innerHTML = ''; draw(); });
+$('new').onclick = () => { R = rnd(); show = false; $('in').value = ''; $('read').innerHTML = ''; draw(); };
+$('show').onclick = () => { show = !show; draw(); };
+$('cek').onclick = () => {
+  const v = parseFloat($('in').value.replace(',', '.'));
+  if(isNaN(v)){ $('read').innerHTML = `<div><span>Hasil</span><b>tulis angka dulu</b></div>`; return; }
+  const ok = Math.abs(v - R) < (mode === 'js' ? .05 : .005);
+  score[1]++; if(ok) score[0]++;
+  $('read').innerHTML = `<div><span>Hasil</span><b style="color:var(${ok ? '--ok' : '--bad'})">${ok ? 'Benar!' : 'Belum tepat'}</b></div>` + (ok ? '' : `<div><span>Jawaban</span><b>${fmt(R, mode === 'js' ? 1 : 2)} mm</b></div>`) + `<div><span>Skor</span><b>${score[0]} dari ${score[1]}</b></div>`;
+  if(!ok){ show = true; draw(); }
+};
+$('in').addEventListener('keydown', e => { if(e.key === 'Enter') $('cek').click(); });
+function drawJS(){
+  const P = 16, X0 = 30, X = mm => X0 + mm * P, yA = 120;
+  let s = '';
+  // batang utama dan rahang tetap
+  s += `<rect x="${X0 - 24}" y="${yA - 46}" width="460" height="46" rx="3" style="fill:var(--surface-2);stroke:var(--line-2)"/>`;
+  s += `<path d="M${X0 - 24},${yA} L${X0},${yA} L${X0},${yA + 110} L${X0 - 24},${yA + 110} Z" style="fill:var(--surface-2);stroke:var(--line-2)"/>`;
+  for(let m = 0; m <= 27; m++){ const h = m % 10 === 0 ? 22 : m % 5 === 0 ? 15 : 10; s += `<line x1="${X(m)}" y1="${yA}" x2="${X(m)}" y2="${yA - h}" style="stroke:var(--ink)" stroke-width="1.2"/>`; if(m % 10 === 0) s += `<text class="c" x="${X(m)}" y="${yA - 26}" text-anchor="middle" style="fill:var(--ink)">${m / 10}</text>`; }
+  s += `<text class="s" x="${X(27) + 4}" y="${yA - 30}" style="fill:var(--muted)">cm</text>`;
+  // benda
+  s += `<rect x="${X0}" y="${yA + 40}" width="${R * P}" height="60" rx="4" style="fill:var(--comp)" fill-opacity=".35"/><text class="s" x="${X0 + R * P / 2}" y="${yA + 74}" text-anchor="middle" style="fill:var(--ink)">benda</text>`;
+  // rahang geser + skala nonius (10 bagian = 9 mm)
+  const xr = X(R);
+  s += `<rect x="${xr - 4}" y="${yA}" width="${9 * P + 30}" height="34" rx="3" style="fill:var(--a)" fill-opacity=".14" stroke="var(--a)"/>`;
+  s += `<path d="M${xr},${yA} L${xr},${yA + 110} L${xr + 24},${yA + 110} L${xr + 24},${yA + 34}" style="fill:var(--a);stroke:var(--a)" fill-opacity=".14"/>`;
+  const k = Math.round((R - Math.floor(R + 1e-9)) * 10);
+  for(let i = 0; i <= 10; i++){ const x = xr + i * .9 * P, hit = i === k; s += `<line x1="${x}" y1="${yA}" x2="${x}" y2="${yA + (i % 5 === 0 ? 16 : 10)}" style="stroke:${show && hit ? 'var(--b)' : 'var(--ink)'}" stroke-width="${show && hit ? 2.5 : 1.2}"/>`; if(i % 5 === 0) s += `<text class="s" x="${x}" y="${yA + 28}" text-anchor="middle" style="fill:var(--ink)">${i}</text>`; }
+  if(show){
+    const main = Math.floor(R + 1e-9);
+    s += `<line x1="${X(main)}" y1="${yA - 30}" x2="${X(main)}" y2="${yA}" style="stroke:var(--b)" stroke-width="2.5"/>`;
+    s += `<rect x="20" y="248" width="440" height="44" rx="8" style="fill:var(--surface-2)"/><text class="c" x="30" y="266" style="fill:var(--ink)">Skala utama (sebelum nol nonius) = ${main} mm; garis nonius yang berimpit = ${k}</text><text class="c" x="30" y="284" style="fill:var(--b)">Hasil = ${main} + ${k} × 0,1 = ${fmt(R, 1)} mm = ${fmt(R / 10, 2)} cm</text>`;
+  }
+  return s;
+}
+function drawMK(){
+  const P = 26, X0 = 40, X = mm => X0 + mm * P, yA = 130;
+  const main = Math.floor(R * 2 + 1e-9) / 2, t = Math.round((R - main) * 100);
+  let s = '';
+  // landasan, benda, poros
+  s += `<rect x="6" y="${yA - 40}" width="18" height="80" rx="3" style="fill:var(--surface-2);stroke:var(--line-2)"/>`;
+  s += `<rect x="24" y="${yA - 14}" width="${Math.min(10, R) * 1.2 + 8}" height="28" style="fill:var(--comp)" fill-opacity=".4"/><text class="s" x="30" y="${yA + 30}" style="fill:var(--muted)">benda</text>`;
+  // selubung (sleeve)
+  const xe = X(R);
+  s += `<rect x="${X0 - 6}" y="${yA - 18}" width="${xe - X0 + 6}" height="36" style="fill:var(--surface-2);stroke:var(--line-2)"/>`;
+  s += `<line x1="${X0 - 6}" y1="${yA}" x2="${xe}" y2="${yA}" style="stroke:var(--ink)" stroke-width="1.2"/>`;
+  for(let m = 0; m <= R + 1e-9; m += .5){ const up = Math.abs(m - Math.round(m)) < 1e-9, x = X(m); if(x > xe) break; s += `<line x1="${x}" y1="${yA}" x2="${x}" y2="${yA + (up ? -12 : 12)}" style="stroke:${show && Math.abs(m - main) < 1e-9 ? 'var(--b)' : 'var(--ink)'}" stroke-width="${show && Math.abs(m - main) < 1e-9 ? 2.5 : 1.2}"/>`; if(up && Math.round(m) % 5 === 0) s += `<text class="s" x="${x}" y="${yA - 16}" text-anchor="middle" style="fill:var(--ink)">${Math.round(m)}</text>`; }
+  // selubung luar (thimble) dengan skala 0–49
+  const W = 110, sp = 9;
+  s += `<rect x="${xe}" y="${yA - 70}" width="${W}" height="140" rx="10" style="fill:var(--a)" fill-opacity=".12" stroke="var(--a)"/>`;
+  for(let n = t - 7; n <= t + 7; n++){
+    const y = yA - (n - t) * sp, v = ((n % 50) + 50) % 50;
+    if(y < yA - 66 || y > yA + 66) continue;
+    s += `<line x1="${xe}" y1="${y}" x2="${xe + (v % 5 === 0 ? 18 : 10)}" y2="${y}" style="stroke:${show && n === t ? 'var(--b)' : 'var(--ink)'}" stroke-width="${show && n === t ? 2.5 : 1.2}"/>`;
+    if(v % 5 === 0) s += `<text class="s" x="${xe + 22}" y="${y + 3}" style="fill:var(--ink)">${v}</text>`;
+  }
+  s += `<rect x="${xe + W}" y="${yA - 30}" width="40" height="60" rx="6" style="fill:var(--surface-2);stroke:var(--line-2)"/><text class="s" x="${xe + W + 20}" y="${yA + 44}" text-anchor="middle" style="fill:var(--muted)">pemutar</text>`;
+  if(show){
+    s += `<rect x="20" y="248" width="440" height="44" rx="8" style="fill:var(--surface-2)"/><text class="c" x="30" y="266" style="fill:var(--ink)">Skala utama (garis atas = 1 mm, garis bawah = 0,5 mm) = ${fmt(main, 1)} mm; skala putar = ${t}</text><text class="c" x="30" y="284" style="fill:var(--b)">Hasil = ${fmt(main, 1)} + ${t} × 0,01 = ${fmt(R, 2)} mm</text>`;
+  }
+  return s;
+}
+function draw(){
+  svg.innerHTML = mode === 'js' ? drawJS() : drawMK();
+  $('lab').textContent = 'Jawabanmu (mm)';
+  $('in').placeholder = mode === 'js' ? 'misalnya 12,4' : 'misalnya 5,37';
+  $('note').innerHTML = mode === 'js'
+    ? 'Jangka sorong: 10 garis nonius sepanjang 9 mm, sehingga ketelitiannya <b>0,1 mm</b> (0,01 cm). Baca skala utama tepat sebelum angka nol nonius, lalu cari garis nonius yang berimpit dengan garis skala utama.'
+    : 'Mikrometer sekrup: skala putar 50 bagian untuk satu putaran 0,5 mm, sehingga ketelitiannya <b>0,01 mm</b>. Baca garis skala utama terakhir yang tampak (termasuk garis setengah mm di bawah), lalu tambahkan skala putar yang segaris dengan garis tengah.';
+  $('show').textContent = show ? 'Sembunyikan cara membaca' : 'Tampilkan cara membaca';
+}
+draw();
+</script>
+</body>
+</html>

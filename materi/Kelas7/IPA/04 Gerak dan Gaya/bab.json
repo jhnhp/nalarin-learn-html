@@ -1,0 +1,254 @@
+{
+  "title": "Gerak dan Gaya",
+  "summary": "Jarak dan perpindahan, kelajuan dan kecepatan, percepatan dan grafik gerak, jenis gaya dan resultannya, gaya gesek, serta Hukum Newton.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "jarak-kelajuan",
+      "title": "Jarak, perpindahan, dan kelajuan",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sebuah benda dikatakan <b>bergerak</b> jika kedudukannya berubah terhadap suatu <b>titik acuan</b>. Penumpang yang duduk di bus bergerak terhadap pohon di pinggir jalan, tetapi diam terhadap sopir.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/jarak-perpindahan.svg",
+          "alt": "Lintasan dari rumah ke sekolah 400 m ke timur lalu 300 m ke utara; perpindahan lurus 500 m",
+          "width": 580,
+          "caption": "Jarak tempuh bergantung lintasan; perpindahan hanya bergantung posisi awal dan akhir."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kelajuan dan kecepatan",
+          "html": "\\[v = \\frac{s}{t} \\qquad \\bar{v} = \\frac{\\text{jarak total}}{\\text{waktu total}}\\]<p><b>Kelajuan</b> = jarak/waktu (besaran skalar, tanpa arah). <b>Kecepatan</b> = perpindahan/waktu (besaran vektor, memiliki arah). Satuan SI m/s; 1 km/jam = 1.000 m / 3.600 s.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kamu berlari 50 m ke utara lalu kembali 50 m ke selatan dalam 25 s. Tentukan kelajuan rata-rata dan kecepatan rata-ratamu.</p>",
+          "steps": [
+            "Jarak total 100 m; kelajuan rata-rata = 100/25 = 4 m/s.",
+            "Perpindahan 0 m (kembali ke titik awal); kecepatan rata-rata = 0 m/s."
+          ],
+          "answer": "kelajuan 4 m/s, kecepatan 0 m/s"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Bus menempuh 60 km dalam 1 jam, lalu 40 km dalam 1,5 jam. Berapa kelajuan rata-ratanya?</p>",
+          "steps": [
+            "Jarak total 100 km, waktu total 2,5 jam.",
+            "v̄ = 100/2,5 = 40 km/jam (bukan rata-rata dari 60 dan 26,7)."
+          ],
+          "answer": "40 km/jam"
+        },
+        {
+          "type": "check",
+          "question": "Mobil menempuh 72 km dalam 1 jam. Kelajuannya dalam m/s adalah ....",
+          "options": {
+            "A": "7,2 m/s",
+            "B": "20 m/s",
+            "C": "72 m/s",
+            "D": "259 m/s"
+          },
+          "answer": "B",
+          "hint": "72 km = 72.000 m dan 1 jam = 3.600 s.",
+          "explanation": "72.000/3.600 = 20 m/s."
+        }
+      ]
+    },
+    {
+      "id": "percepatan",
+      "title": "Percepatan dan grafik gerak",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Percepatan",
+          "html": "\\[a = \\frac{v_t - v_0}{t}\\]<p>Percepatan adalah perubahan kecepatan setiap satuan waktu (m/s²). a positif: dipercepat; a negatif: diperlambat (perlambatan).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/gerak-mobil.html",
+          "title": "Gerak lurus dan grafiknya",
+          "height": 560,
+          "caption": "Bandingkan ketiga jenis gerak. Perhatikan jarak antartitik jejak setiap 1 sekon dan bentuk grafiknya."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Jenis gerak</th><th>Grafik s–t</th><th>Grafik v–t</th></tr><tr><td>Kelajuan tetap</td><td>garis lurus miring</td><td>garis mendatar</td></tr><tr><td>Dipercepat beraturan</td><td>melengkung ke atas</td><td>garis naik</td></tr><tr><td>Diperlambat beraturan</td><td>melengkung lalu mendatar</td><td>garis turun</td></tr><tr><td>Diam</td><td>garis mendatar</td><td>berimpit sumbu t</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Motor yang mula-mula diam mencapai kelajuan 20 m/s dalam 5 s. Berapa percepatannya?</p>",
+          "steps": [
+            "a = (20 − 0)/5.",
+            "a = 4 m/s²."
+          ],
+          "answer": "4 m/s²"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Mobil melaju 15 m/s lalu direm hingga berhenti dalam 3 s. Berapa percepatannya?</p>",
+          "steps": [
+            "a = (0 − 15)/3 = −5 m/s².",
+            "Tanda negatif berarti perlambatan 5 m/s²."
+          ],
+          "answer": "−5 m/s²"
+        },
+        {
+          "type": "check",
+          "question": "Benda jatuh bebas termasuk gerak ....",
+          "options": {
+            "A": "lurus dengan kelajuan tetap",
+            "B": "lurus dipercepat",
+            "C": "lurus diperlambat",
+            "D": "melingkar"
+          },
+          "answer": "B",
+          "hint": "Kelajuannya bertambah karena gravitasi.",
+          "explanation": "Benda jatuh makin cepat dengan percepatan gravitasi sekitar 10 m/s²."
+        }
+      ]
+    },
+    {
+      "id": "gaya",
+      "title": "Gaya dan resultan gaya",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Gaya</b> adalah tarikan atau dorongan. Gaya dapat mengubah gerak benda (dari diam menjadi bergerak, mempercepat, memperlambat, membelokkan) dan mengubah bentuk benda. Satuan gaya adalah newton (N); alat ukurnya dinamometer (neraca pegas).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Jenis gaya",
+          "html": "<ul><li><b>Gaya sentuh</b>: gaya otot, gaya pegas, gaya gesek, gaya mesin.</li><li><b>Gaya tak sentuh</b>: gaya gravitasi (berat), gaya magnet, gaya listrik.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Resultan gaya",
+          "html": "<ul><li>Searah: R = F₁ + F₂.</li><li>Berlawanan arah: R = F₁ − F₂, arahnya mengikuti gaya yang lebih besar.</li><li>R = 0: gaya seimbang, benda diam atau bergerak lurus dengan kelajuan tetap.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Andi mendorong meja ke kanan dengan 50 N dan Budi dengan 30 N, sedangkan Cici menarik ke kiri dengan 60 N. Tentukan resultannya.</p>",
+          "steps": [
+            "Ke kanan: 50 + 30 = 80 N. Ke kiri: 60 N.",
+            "R = 80 − 60 = 20 N ke kanan."
+          ],
+          "answer": "20 N ke kanan"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Massa dan berat",
+          "html": "<p><b>Massa</b> (kg) adalah banyaknya zat, sama di mana pun. <b>Berat</b> (N) adalah gaya gravitasi: w = m × g. Di Bumi g ≈ 10 m/s²; di Bulan sekitar 1/6-nya, sehingga berat di Bulan lebih kecil walaupun massanya sama.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Benda bermassa 60 kg di Bumi (g = 10 m/s²) beratnya ....",
+          "options": {
+            "A": "6 N",
+            "B": "60 N",
+            "C": "600 N",
+            "D": "6.000 N"
+          },
+          "answer": "C",
+          "hint": "w = m × g.",
+          "explanation": "60 × 10 = 600 N."
+        }
+      ]
+    },
+    {
+      "id": "gesekan-newton",
+      "title": "Gaya gesek dan Hukum Newton",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Gaya gesek</b> timbul antara dua permukaan yang bersentuhan dan arahnya berlawanan dengan arah gerak. Besarnya dipengaruhi kekasaran permukaan dan berat benda. Gaya gesek saat benda belum bergerak disebut <b>gesek statis</b>; setelah bergerak, <b>gesek kinetis</b> (biasanya lebih kecil).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Gesekan menguntungkan</th><th>Gesekan merugikan</th></tr><tr><td>alas sepatu dan ban berulir agar tidak tergelincir; rem sepeda</td><td>gir dan rantai aus; mesin panas; menghambat gerak (dikurangi dengan pelumas atau bantalan peluru)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Newton",
+          "html": "<ol><li><b>Hukum I (kelembaman)</b>: jika ΣF = 0, benda diam tetap diam dan benda bergerak tetap bergerak lurus dengan kelajuan tetap. Contoh: penumpang terdorong ke depan saat bus mengerem.</li><li><b>Hukum II</b>: \\(a = \\dfrac{\\Sigma F}{m}\\). Makin besar gaya, makin besar percepatan; makin besar massa, makin kecil percepatan.</li><li><b>Hukum III (aksi–reaksi)</b>: gaya aksi dan reaksi sama besar, berlawanan arah, dan bekerja pada dua benda berbeda. Contoh: dayung mendorong air ke belakang, air mendorong perahu ke depan.</li></ol>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/dorong-kotak.html",
+          "title": "Gaya, gesekan, dan Hukum Newton",
+          "height": 520,
+          "caption": "Naikkan gaya dorong sedikit demi sedikit: pada berapa newton kotak mulai bergerak? Bandingkan es, lantai kayu, dan karpet."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kotak 20 kg didorong 100 N dengan gaya gesek kinetis 60 N. Berapa percepatannya?</p>",
+          "steps": [
+            "ΣF = 100 − 60 = 40 N.",
+            "a = 40/20 = 2 m/s²."
+          ],
+          "answer": "2 m/s²"
+        },
+        {
+          "type": "check",
+          "question": "Ketika bus yang melaju tiba-tiba mengerem, penumpang terdorong ke depan. Peristiwa ini sesuai dengan ....",
+          "options": {
+            "A": "Hukum I Newton",
+            "B": "Hukum II Newton",
+            "C": "Hukum III Newton",
+            "D": "hukum kekekalan massa"
+          },
+          "answer": "A",
+          "hint": "Benda cenderung mempertahankan keadaannya.",
+          "explanation": "Tubuh penumpang cenderung tetap bergerak (kelembaman) saat bus berhenti."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Jarak vs perpindahan</td><td>panjang lintasan vs selisih posisi awal–akhir</td></tr><tr><td>Kelajuan, kecepatan</td><td>v = s/t; kecepatan memiliki arah</td></tr><tr><td>Percepatan</td><td>a = (v − v₀)/t</td></tr><tr><td>Resultan gaya</td><td>searah dijumlah, berlawanan dikurang</td></tr><tr><td>Berat</td><td>w = m·g</td></tr><tr><td>Newton</td><td>I kelembaman; II a = ΣF/m; III aksi = −reaksi</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyamakan massa (kg) dengan berat (N).</li><li>Menghitung kelajuan rata-rata dengan merata-ratakan kelajuan.</li><li>Menganggap aksi–reaksi saling meniadakan (padahal bekerja pada benda berbeda).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMP Kelas VII</i> (Kemendikbudristek), Bab IV Gerak dan Gaya.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang gerak, kelajuan, percepatan, gaya, gesekan, dan Hukum Newton. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

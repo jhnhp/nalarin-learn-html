@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balok pada Bidang Miring</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Balok di bidang miring dengan diagram gaya"></svg></div>
+  <div class="panel">
+    <div class="lab">Sudut kemiringan θ <b id="tv"></b></div><input type="range" id="t" min="0" max="60" step="1" value="30">
+    <div class="lab">Massa balok <b id="mv"></b></div><input type="range" id="m" min="0.5" max="10" step="0.5" value="2">
+    <div class="lab">Koefisien gesek statis μₛ <b id="sv"></b></div><input type="range" id="us" min="0" max="1" step="0.05" value="0.75">
+    <div class="lab">Koefisien gesek kinetis μₖ <b id="kv"></b></div><input type="range" id="uk" min="0" max="1" step="0.05" value="0.4">
+    <div class="read" id="read"></div>
+    <p class="note">Uraikan gaya berat: komponen sejajar bidang w sin θ dan tegak lurus bidang w cos θ. N = w cos θ. Balok mulai bergerak jika w sin θ &gt; μₛN, yaitu tan θ &gt; μₛ. Saat bergerak: a = g(sin θ − μₖ cos θ). g = 10 m/s².</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt, rad} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let pos = 0, vel = 0;
+['t', 'm', 'us', 'uk'].forEach(i => $(i).oninput = () => { if(+$('uk').value > +$('us').value) $('uk').value = $('us').value; pos = 0; vel = 0; });
+function arrow(x, y, dx, dy, col, lab, off){
+  const L = Math.hypot(dx, dy); if(L < 2) return '';
+  const a = Math.atan2(dy, dx), ex = x + dx, ey = y + dy;
+  return `<line x1="${x}" y1="${y}" x2="${ex - 8 * Math.cos(a)}" y2="${ey - 8 * Math.sin(a)}" style="stroke:${col}" stroke-width="3"/><path d="M${ex},${ey} l${-11 * Math.cos(a - .4)},${-11 * Math.sin(a - .4)} l${11 * Math.cos(a - .4) - 11 * Math.cos(a + .4)},${11 * Math.sin(a - .4) - 11 * Math.sin(a + .4)}z" style="fill:${col}"/><text class="c" x="${ex + (off ? off[0] : 6)}" y="${ey + (off ? off[1] : 0)}" style="fill:${col}">${lab}</text>`;
+}
+function step(){
+  const th = rad(+$('t').value), m = +$('m').value, us = +$('us').value, uk = +$('uk').value, g = 10;
+  const w = m * g, N = w * Math.cos(th), Fpar = w * Math.sin(th), fsMax = us * N;
+  let moving = vel > 1e-6 || Fpar > fsMax + 1e-9, a = 0, f;
+  if(moving){ a = g * (Math.sin(th) - uk * Math.cos(th)); f = uk * N; if(vel <= 1e-6 && a <= 0){ moving = false; a = 0; f = Fpar; } }
+  else f = Fpar;
+  if(moving){ vel = Math.max(0, vel + a * .03); pos += vel * .03; if(pos > 3.2){ pos = 0; vel = 0; } }
+  // gambar
+  const x0 = 60, y0 = 280, Lr = 380, tx = Math.cos(th), ty = -Math.sin(th);
+  let s = `<path d="M${x0},${y0} L${x0 + Lr * tx},${y0 + Lr * ty} L${x0 + Lr * tx},${y0} Z" style="fill:var(--surface-2);stroke:var(--ink)" stroke-width="2"/>`;
+  s += `<path d="M${x0 + 40},${y0} A40,40 0 0,0 ${x0 + 40 * tx},${y0 + 40 * ty}" fill="none" style="stroke:var(--comp)" stroke-width="2"/><text class="s" x="${x0 + 46}" y="${y0 - 6}" style="fill:var(--comp)">θ</text>`;
+  // balok (bergerak turun dari atas)
+  const d = Lr * .75 - pos * 60, bx = x0 + d * tx, by = y0 + d * ty, sz = 26 + m * 1.6;
+  s += `<g transform="translate(${bx},${by}) rotate(${-+$('t').value})"><rect x="${-sz / 2}" y="${-sz}" width="${sz}" height="${sz}" style="fill:var(--a)" fill-opacity=".75"/></g>`;
+  // gaya pada pusat balok; normal keluar bidang n = (-sin θ, -cos θ) dalam koordinat layar
+  const sn = Math.sin(th), cs = Math.cos(th), px = bx - sn * sz / 2, py = by - cs * sz / 2;
+  const k = 4 / Math.max(1, m / 2);
+  s += arrow(px, py, 0, w * k, 'var(--ink)', 'w', [6, 4]);
+  s += arrow(px, py, -sn * N * k, -cs * N * k, 'var(--k)', 'N', [-14, -6]);
+  if(f > 1e-6) s += arrow(px, py, tx * f * k, ty * f * k, 'var(--b)', 'f', [6, -4]);
+  s += arrow(px, py, -tx * Fpar * k, -ty * Fpar * k, 'var(--comp)', 'w sin θ', [-60, 14]);
+  svg.innerHTML = s;
+  $('tv').textContent = $('t').value + '°'; $('mv').textContent = fmt(m, 1) + ' kg'; $('sv').textContent = fmt(us, 2); $('kv').textContent = fmt(+$('uk').value, 2);
+  $('read').innerHTML = `<div><span>w / N</span><b>${fmt(w, 1)} N / ${fmt(N, 2)} N</b></div><div><span>w sin θ vs μₛN</span><b>${fmt(Fpar, 2)} N ${Fpar > fsMax ? '&gt;' : '≤'} ${fmt(fsMax, 2)} N</b></div><div><span>Keadaan</span><b>${moving ? 'meluncur, a = ' + fmt(a, 2) + ' m/s²' : 'diam, gaya gesek statis = ' + fmt(f, 2) + ' N'}</b></div>`;
+}
+setInterval(step, 30);
+</script>
+</body>
+</html>

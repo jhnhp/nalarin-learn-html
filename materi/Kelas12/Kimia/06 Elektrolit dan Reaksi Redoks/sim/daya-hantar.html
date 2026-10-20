@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uji Daya Hantar Listrik Larutan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Alat uji elektrolit dengan lampu, elektrode, dan gambaran partikel larutan"></svg></div>
+  <div class="panel">
+    <div class="lab">Zat yang diuji</div>
+    <select id="z">
+      <option value="0">Larutan KNO₃</option>
+      <option value="1">Larutan HNO₃</option>
+      <option value="2">Larutan Ca(OH)₂ encer</option>
+      <option value="3">Larutan HCOOH (asam format)</option>
+      <option value="4">Larutan NH₄OH (amonia)</option>
+      <option value="5">Larutan etanol</option>
+      <option value="6">Larutan gula pasir</option>
+      <option value="7">Air suling</option>
+      <option value="8">Padatan KCl</option>
+      <option value="9">Lelehan KCl</option>
+      <option value="10">HCl cair murni (tanpa air)</option>
+    </select>
+    <div class="read" id="read"></div>
+    <p class="note">Lampu menyala terang dan banyak gelembung: elektrolit kuat. Lampu redup/padam tetapi ada gelembung: elektrolit lemah. Lampu padam dan tidak ada gelembung: nonelektrolit.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [nama, jenis, kekuatan 0..1, ion+, ion-, ikatan, catatan, cair?]
+const D = [
+  ['KNO₃(aq)', 'elektrolit kuat', 1, 'K⁺', 'NO₃⁻', 'senyawa ion', 'KNO₃ → K⁺ + NO₃⁻ (terurai sempurna)'],
+  ['HNO₃(aq)', 'elektrolit kuat', 1, 'H₃O⁺', 'NO₃⁻', 'senyawa kovalen polar', 'HNO₃ + H₂O → H₃O⁺ + NO₃⁻ (terion sempurna)'],
+  ['Ca(OH)₂(aq)', 'elektrolit kuat', .9, 'Ca²⁺', 'OH⁻', 'senyawa ion', 'Ca(OH)₂ → Ca²⁺ + 2OH⁻'],
+  ['HCOOH(aq)', 'elektrolit lemah', .15, 'H₃O⁺', 'HCOO⁻', 'senyawa kovalen polar', 'HCOOH ⇌ H⁺ + HCOO⁻ (terion sebagian)'],
+  ['NH₃(aq)', 'elektrolit lemah', .12, 'NH₄⁺', 'OH⁻', 'senyawa kovalen polar', 'NH₃ + H₂O ⇌ NH₄⁺ + OH⁻ (terion sebagian)'],
+  ['C₂H₅OH(aq)', 'nonelektrolit', 0, '', '', 'senyawa kovalen', 'C₂H₅OH(l) → C₂H₅OH(aq) (tidak terion)'],
+  ['C₁₂H₂₂O₁₁(aq)', 'nonelektrolit', 0, '', '', 'senyawa kovalen', 'molekul gula larut tanpa terion'],
+  ['H₂O murni', 'praktis nonelektrolit', .01, 'H₃O⁺', 'OH⁻', 'senyawa kovalen polar', 'swaionisasi sangat kecil, [H⁺] = 10⁻⁷ M'],
+  ['KCl(s)', 'tidak menghantar', 0, '', '', 'senyawa ion', 'ion terikat kuat di kisi kristal, tidak dapat bergerak'],
+  ['KCl(l)', 'elektrolit kuat', 1, 'K⁺', 'Cl⁻', 'senyawa ion', 'pada lelehan, ion bebas bergerak'],
+  ['HCl(l)', 'tidak menghantar', 0, '', '', 'senyawa kovalen polar', 'HCl murni berupa molekul; baru terion jika dilarutkan dalam air'],
+];
+let t = 0, bub = [];
+function draw(){
+  const d = D[+$('z').value], k = d[2];
+  let s = '';
+  // rangkaian
+  s += `<line x1="140" y1="30" x2="340" y2="30" stroke="#555" stroke-width="2"/><rect x="215" y="20" width="10" height="20" fill="#555"/><rect x="230" y="24" width="4" height="12" fill="#555"/><text class="s" x="225" y="14" text-anchor="middle" fill="#555">baterai</text>`;
+  s += `<line x1="140" y1="30" x2="140" y2="110" stroke="#555" stroke-width="2"/><line x1="340" y1="30" x2="340" y2="60" stroke="#555" stroke-width="2"/><line x1="340" y1="100" x2="340" y2="110" stroke="#555" stroke-width="2"/>`;
+  const glow = k > .5 ? 1 : k > .05 ? .25 : 0;
+  s += `${glow ? `<circle cx="340" cy="80" r="${28 + 10 * glow}" fill="#fff59d" fill-opacity="${.5 * glow}"/>` : ''}<circle cx="340" cy="80" r="18" fill="${glow ? '#ffeb3b' : '#eeeeee'}" fill-opacity="${glow ? .4 + .6 * glow : 1}" stroke="#555" stroke-width="2"/><text class="s" x="372" y="84" fill="#555">lampu</text>`;
+  // gelas
+  const solid = d[0].includes('(s)');
+  s += `<path d="M100,110 v170 q0,14 14,14 h252 q14,0 14,-14 v-170" fill="none" stroke="#90a4ae" stroke-width="3"/>`;
+  s += solid ? `<rect x="104" y="200" width="272" height="92" rx="10" fill="#eceff1"/>` : `<rect x="104" y="140" width="272" height="152" rx="12" fill="#bbdefb" fill-opacity=".45"/>`;
+  s += `<rect x="134" y="110" width="12" height="160" fill="#78909c"/><rect x="334" y="110" width="12" height="160" fill="#78909c"/><text class="s" x="140" y="300" text-anchor="middle" fill="#555">−</text><text class="s" x="340" y="300" text-anchor="middle" fill="#555">+</text>`;
+  // partikel
+  for(let i = 0; i < 24; i++){
+    const x = 165 + (i % 6) * 28, y = solid ? 215 + Math.floor(i / 6) * 18 : 160 + Math.floor(i / 6) * 28;
+    const ion = (i % 10) / 10 < k;
+    const dx = ion && !solid && k > 0 ? Math.sin(t / 8 + i) * 4 : 0;
+    if(ion && d[3]) s += `<circle cx="${x + dx}" cy="${y}" r="7" fill="#e53935"/><text class="s" x="${x + dx}" y="${y + 3}" text-anchor="middle" fill="#fff" style="font-size:7px">${d[3]}</text><circle cx="${x + 13 - dx}" cy="${y + 9}" r="7" fill="#1e88e5"/><text class="s" x="${x + 13 - dx}" y="${y + 12}" text-anchor="middle" fill="#fff" style="font-size:7px">${d[4]}</text>`;
+    else s += `<ellipse cx="${x + 6}" cy="${y + 4}" rx="11" ry="7" fill="${solid ? '#b0bec5' : '#fff'}" stroke="#607d8b"/>`;
+  }
+  bub.forEach(b => s += `<circle cx="${b.x}" cy="${b.y}" r="2.5" fill="none" stroke="#546e7a"/>`);
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Zat</span><b>${d[0]}</b></div><div><span>Golongan</span><b>${d[1]}</b></div><div><span>Jenis ikatan</span><b>${d[5]}</b></div><div><span>Keterangan</span><b style="font-weight:600">${d[6]}</b></div>`;
+}
+$('z').oninput = () => { bub = []; draw(); };
+setInterval(() => { t++; const k = D[+$('z').value][2]; if(k > .05 && Math.random() < k * 1.5) [140, 340].forEach(x => bub.push({x: x + (Math.random() - .5) * 10, y: 265})); bub.forEach(b => b.y -= 2); bub = bub.filter(b => b.y > 145); draw(); }, 60);
+draw();
+</script>
+</body>
+</html>

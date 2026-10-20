@@ -1,56 +1,294 @@
 {
   "title": "Gelombang, Bunyi, dan Cahaya",
-  "summary": "Ringkasan bab Gelombang, Bunyi, dan Cahaya akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Jenis dan persamaan gelombang, gelombang stasioner pada dawai dan pipa organa, intensitas bunyi, pelayangan, efek Doppler, serta interferensi, difraksi, dan polarisasi cahaya.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Gelombang, Bunyi, dan Cahaya",
+      "id": "gelombang",
+      "title": "Gelombang dan persamaannya",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Gelombang</b> adalah getaran yang merambat sambil membawa energi tanpa memindahkan mediumnya: gabus di kolam hanya naik-turun ketika riak lewat. <b>Gelombang mekanik</b> memerlukan medium (tali, bunyi, air), sedangkan <b>gelombang elektromagnetik</b> (cahaya) dapat merambat di ruang hampa.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/jenis-gelombang.svg",
+          "alt": "Gelombang transversal pada tali dan gelombang longitudinal berupa rapatan dan renggangan",
+          "width": 600,
+          "caption": "Gelombang transversal dan longitudinal."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Besaran dan persamaan gelombang berjalan",
+          "html": "<p>\\(v = \\lambda f = \\lambda/T\\), \\(\\omega = 2\\pi f\\), \\(k = 2\\pi/\\lambda\\).</p><p>\\[y = A\\sin(\\omega t - kx)\\quad(\\text{merambat ke } +x)\\]</p><p>Fase \\(\\varphi = t/T - x/\\lambda\\); beda fase dua titik \\(\\Delta\\varphi = \\Delta x/\\lambda\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/gelombang-berjalan.html",
+          "title": "Gelombang berjalan",
+          "height": 560,
+          "caption": "Ubah λ dan jarak P–Q. Pada jarak berapa P dan Q selalu bergerak berlawanan arah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Gelombang \\(y = 0{,}04\\sin 2\\pi(5t - 0{,}25x)\\) (SI). Tentukan f, λ, dan v.</p>",
+          "steps": [
+            "\\(\\omega = 10\\pi \\Rightarrow f = 5\\) Hz; \\(k = 0{,}5\\pi \\Rightarrow \\lambda = 4\\) m.",
+            "v = λf = 20 m/s."
+          ],
+          "answer": "5 Hz, 4 m, 20 m/s"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gelombang 4 Hz merambat 12 m/s. Titik P dan Q berjarak 4,5 m. Tentukan beda fasenya.</p>",
+          "steps": [
+            "λ = 12/4 = 3 m.",
+            "Δφ = 4,5/3 = 1,5 → berlawanan fase."
+          ],
+          "answer": "1,5 (berlawanan fase)"
+        },
+        {
+          "type": "check",
+          "question": "Gelombang yang dapat merambat di ruang hampa dan bersifat transversal adalah ....",
+          "options": {
+            "A": "bunyi",
+            "B": "gelombang tali",
+            "C": "cahaya",
+            "D": "gelombang pegas"
+          },
+          "answer": "C",
+          "hint": "Gelombang elektromagnetik.",
+          "explanation": "Cahaya adalah gelombang elektromagnetik, transversal, dan tidak memerlukan medium."
+        }
+      ]
+    },
+    {
+      "id": "stasioner",
+      "title": "Gelombang stasioner, dawai, dan pipa organa",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Dua gelombang identik yang merambat berlawanan arah membentuk <b>gelombang stasioner</b> dengan titik <b>simpul</b> (amplitudo nol) dan <b>perut</b> (amplitudo maksimum). Jarak dua simpul berdekatan = λ/2. <b>Resonansi</b> terjadi jika suatu benda dipaksa bergetar pada frekuensi alaminya: bandul yang talinya sama panjang dengan bandul yang diayun akan ikut berayun paling besar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Frekuensi nada",
+          "html": "<p>Dawai (kedua ujung terikat) dan pipa organa terbuka: \\(f_n = \\dfrac{(n+1)v}{2L}\\), perbandingan 1 : 2 : 3 : …</p><p>Pipa organa tertutup: \\(f_n = \\dfrac{(2n+1)v}{4L}\\), perbandingan 1 : 3 : 5 : …</p><p>Cepat rambat pada dawai (Melde): \\(v = \\sqrt{F/\\mu}\\), μ = massa per panjang.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/gelombang-stasioner.html",
+          "title": "Dawai dan pipa organa",
+          "height": 560,
+          "caption": "Bandingkan pola nada dasar sampai nada atas kedua pada dawai, pipa terbuka, dan pipa tertutup."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dawai 60 cm bermassa 6 g diberi tegangan 100 N. Tentukan frekuensi nada dasar dan nada atas pertamanya.</p>",
+          "steps": [
+            "μ = 0,006/0,6 = 0,01 kg/m; \\(v = \\sqrt{100/0{,}01} = 100\\) m/s.",
+            "\\(f_0 = v/2L = 100/1{,}2 \\approx 83{,}3\\) Hz; \\(f_1 = 2f_0\\)."
+          ],
+          "answer": "≈ 83,3 Hz dan ≈ 166,7 Hz"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pipa organa tertutup 25 cm, v = 340 m/s. Hitung frekuensi nada dasar dan nada atas pertama.</p>",
+          "steps": [
+            "\\(f_0 = v/4L = 340/1 = 340\\) Hz.",
+            "\\(f_1 = 3f_0 = 1.020\\) Hz."
+          ],
+          "answer": "340 Hz dan 1.020 Hz"
+        },
+        {
+          "type": "check",
+          "question": "Senar gitar dikendurkan tanpa mengubah panjangnya. Nada yang dihasilkan menjadi ....",
+          "options": {
+            "A": "lebih tinggi",
+            "B": "lebih rendah karena v berkurang",
+            "C": "tetap",
+            "D": "lebih keras"
+          },
+          "answer": "B",
+          "hint": "v = √(F/μ), f = v/2L.",
+          "explanation": "Tegangan berkurang → v berkurang → frekuensi turun."
+        }
+      ]
+    },
+    {
+      "id": "bunyi",
+      "title": "Bunyi: intensitas, pelayangan, dan efek Doppler",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Bunyi adalah gelombang mekanik <b>longitudinal</b>. Telinga manusia mendengar 20–20.000 Hz (audiosonik); di bawahnya infrasonik, di atasnya ultrasonik (USG, sonar). Cepat rambat bunyi di udara ± 340 m/s, lebih cepat di zat cair dan padat.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Intensitas dan taraf intensitas",
+          "html": "<p>\\(I = \\dfrac{P}{4\\pi r^2}\\) (W/m²), taraf intensitas \\(TI = 10\\log\\dfrac{I}{I_0}\\) dB, \\(I_0 = 10^{-12}\\) W/m².</p><p>n sumber identik: \\(TI_n = TI_1 + 10\\log n\\). Jarak dikali k: \\(TI_2 = TI_1 - 20\\log k\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Taraf intensitas mesin pada jarak 2 m adalah 80 dB. Berapa taraf intensitasnya pada jarak 20 m?</p>",
+          "steps": [
+            "Jarak 10 kali → \\(TI = 80 - 20\\log 10 = 80 - 20\\)."
+          ],
+          "answer": "60 dB"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pelayangan",
+          "html": "<p>Dua bunyi berfrekuensi hampir sama menghasilkan keras-lemah berulang dengan frekuensi \\(f_{layangan} = |f_1 - f_2|\\). Dipakai untuk menyetem alat musik.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Efek Doppler",
+          "html": "<p>\\[f_p = \\frac{v \\pm v_p}{v \\mp v_s}\\,f_s\\]</p><p>Tanda atas (+ pembilang, − penyebut) jika pendengar dan sumber saling mendekat; tanda bawah jika saling menjauh.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/doppler.html",
+          "title": "Efek Doppler",
+          "height": 500,
+          "caption": "Gerakkan sumber ke arah pendengar, lalu menjauhi. Bagaimana kerapatan muka gelombang di depan dan di belakang sumber?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sirene 680 Hz pada mobil yang melaju 20 m/s mendekati pengendara motor yang melaju 20 m/s ke arah mobil (v = 340 m/s). Berapa frekuensi yang didengar?</p>",
+          "steps": [
+            "\\(f_p = \\dfrac{340 + 20}{340 - 20}\\times680 = \\dfrac{360}{320}\\times680\\)."
+          ],
+          "answer": "765 Hz"
+        },
+        {
+          "type": "check",
+          "question": "Senar dan garpu tala 440 Hz dibunyikan bersamaan, terdengar 3 layangan per detik. Frekuensi senar yang mungkin adalah ....",
+          "options": {
+            "A": "437 atau 443 Hz",
+            "B": "440 Hz",
+            "C": "880 Hz",
+            "D": "146,7 Hz"
+          },
+          "answer": "A",
+          "hint": "Selisih = 3 Hz.",
+          "explanation": "f = 440 ± 3 Hz; perlu pengamatan tambahan (misalnya menegangkan senar) untuk memastikan."
+        }
+      ]
+    },
+    {
+      "id": "cahaya",
+      "title": "Gelombang cahaya: interferensi, difraksi, dan polarisasi",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Interferensi dan difraksi",
+          "html": "<p>Celah ganda (Young) dan kisi: terang jika \\(d\\sin\\theta = n\\lambda\\); untuk sudut kecil \\(d\\,y/L = n\\lambda\\). Kisi N garis/mm: \\(d = 1/N\\).</p><p>Celah tunggal (lebar a): gelap jika \\(a\\sin\\theta = n\\lambda\\), n = 1, 2, 3, …</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/interferensi.html",
+          "title": "Interferensi dan difraksi",
+          "height": 520,
+          "caption": "Ubah λ dan d. Apa yang terjadi pada jarak antarpita terang? Bandingkan pola celah ganda, kisi, dan celah tunggal."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Celah ganda berjarak 0,5 mm disinari cahaya 500 nm; layar 2 m. Berapa jarak terang pusat ke terang ketiga?</p>",
+          "steps": [
+            "\\(y_3 = \\dfrac{3\\lambda L}{d} = \\dfrac{3(5\\times10^{-7})(2)}{5\\times10^{-4}}\\)."
+          ],
+          "answer": "6 mm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kisi 400 garis/mm. Terang orde pertama cahaya merah membentuk sudut 15° (sin 15° ≈ 0,26). Tentukan λ.</p>",
+          "steps": [
+            "d = 1/400 mm = 2,5 × 10⁻⁶ m.",
+            "λ = d sin θ = 2,5 × 10⁻⁶ × 0,26."
+          ],
+          "answer": "650 nm"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Interferensi selaput tipis</b> menyebabkan warna-warni pada gelembung sabun dan lapisan minyak: cahaya yang dipantulkan permukaan atas dan bawah selaput saling memperkuat untuk warna tertentu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Polarisasi (hukum Malus)",
+          "html": "<p>Hanya gelombang transversal yang dapat dipolarisasi (bunyi tidak). Cahaya tak terpolarisasi melalui polarisator menjadi \\(I_1 = \\tfrac12 I_0\\); melalui analisator bersudut θ: \\(I_2 = I_1\\cos^2\\theta\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Cahaya tak terpolarisasi I₀ melewati polarisator lalu analisator bersudut 60°. Berapa intensitas akhirnya?</p>",
+          "steps": [
+            "\\(I_2 = \\tfrac12 I_0\\cos^2 60° = \\tfrac12 I_0 \\times \\tfrac14\\)."
+          ],
+          "answer": "\\(\\tfrac18 I_0\\) (12,5%)"
+        },
+        {
+          "type": "check",
+          "question": "Cahaya dapat dipolarisasi tetapi bunyi tidak, karena ....",
+          "options": {
+            "A": "cahaya lebih cepat",
+            "B": "bunyi gelombang longitudinal",
+            "C": "bunyi memerlukan medium",
+            "D": "cahaya tidak bermassa"
+          },
+          "answer": "B",
+          "hint": "Polarisasi = penyaringan arah getar.",
+          "explanation": "Arah getar gelombang longitudinal searah rambatnya, jadi tidak ada arah getar yang bisa disaring."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
       "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Gelombang, Gelombang Bunyi, dan Gelombang Cahaya</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Gelombang berjalan</td><td>\\(v = \\lambda f\\), \\(y = A\\sin(\\omega t - kx)\\), \\(\\Delta\\varphi = \\Delta x/\\lambda\\)</td></tr><tr><td>Dawai / pipa terbuka</td><td>\\(f_n = (n+1)v/2L\\); \\(v = \\sqrt{F/\\mu}\\)</td></tr><tr><td>Pipa tertutup</td><td>\\(f_n = (2n+1)v/4L\\)</td></tr><tr><td>Bunyi</td><td>\\(TI = 10\\log(I/I_0)\\); pelayangan \\(|f_1-f_2|\\); Doppler</td></tr><tr><td>Cahaya</td><td>\\(d\\sin\\theta = n\\lambda\\); celah tunggal gelap \\(a\\sin\\theta = n\\lambda\\); Malus \\(I = I_1\\cos^2\\theta\\)</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyamakan nada atas pertama dengan harmonik pertama (nada atas pertama = harmonik kedua).</li><li>Salah memilih tanda pada rumus Doppler.</li><li>Lupa faktor ½ ketika cahaya tak terpolarisasi melewati polarisator pertama.</li></ul>"
         },
         {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 5 Gelombang, Bunyi, dan Cahaya.</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "type": "kuis",
+          "text": "20 soal tentang gelombang berjalan dan stasioner, bunyi, efek Doppler, interferensi, difraksi, dan polarisasi cahaya. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

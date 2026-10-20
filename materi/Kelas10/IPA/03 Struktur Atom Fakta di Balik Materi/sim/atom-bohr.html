@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Penyusun Atom</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}.big{font-family:var(--display);font-weight:800;font-size:40px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Model atom Bohr dengan proton, neutron, dan elektron pada kulit-kulitnya"></svg></div>
+  <div class="panel">
+    <div class="lab">Nomor atom (jumlah proton) <b id="zv"></b></div>
+    <input type="range" id="Z" min="1" max="56" step="1" value="11">
+    <div class="lab">Jumlah neutron <b id="nv"></b></div>
+    <input type="range" id="N" min="0" max="90" step="1" value="12">
+    <div class="lab">Muatan <b id="qv"></b></div>
+    <input type="range" id="q" min="-3" max="3" step="1" value="0">
+    <div class="read" id="read"></div>
+    <p class="note">Konfigurasi kulit (K, L, M, N, …) diisi menurut aturan 2n² dan sisa ≤ 8 elektron pada kulit terluar. Untuk unsur transisi (golongan B) ditampilkan susunan yang sebenarnya; aturan pengisiannya dipelajari di kelas XI.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SYM = 'H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba'.split(' ');
+const NAMA = 'hidrogen helium litium berilium boron karbon nitrogen oksigen fluorin neon natrium magnesium aluminium silikon fosfor belerang klorin argon kalium kalsium skandium titanium vanadium kromium mangan besi kobalt nikel tembaga seng galium germanium arsen selenium bromin kripton rubidium stronsium itrium zirkonium niobium molibdenum teknesium rutenium rodium paladium perak kadmium indium timah antimon telurium iodin xenon sesium barium'.split(' ');
+const A0 = [1,4,7,9,11,12,14,16,19,20,23,24,27,28,31,32,35,40,39,40,45,48,51,52,55,56,59,58,63,64,69,74,75,80,79,84,85,88,89,90,93,98,98,102,103,106,107,114,115,120,121,130,127,132,133,138];
+const TRANS = {21:[2,8,9,2],22:[2,8,10,2],23:[2,8,11,2],24:[2,8,13,1],25:[2,8,13,2],26:[2,8,14,2],27:[2,8,15,2],28:[2,8,16,2],29:[2,8,18,1],30:[2,8,18,2],39:[2,8,18,9,2],40:[2,8,18,10,2],41:[2,8,18,12,1],42:[2,8,18,13,1],43:[2,8,18,13,2],44:[2,8,18,15,1],45:[2,8,18,16,1],46:[2,8,18,18],47:[2,8,18,18,1],48:[2,8,18,18,2]};
+const METALOID = [5, 14, 32, 33, 51, 52], NONLOGAM = [1, 6, 7, 8, 9, 15, 16, 17, 34, 35, 53], MULIA = [2, 10, 18, 36, 54];
+const ROMAWI = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+const KULIT = 'KLMNOPQ';
+function shells(e){
+  const r = []; let rem = e;
+  for(let n = 1; rem > 0; n++){
+    const max = 2 * n * n;
+    if(rem <= 8 || (n === 1 && rem <= 2)){ r.push(Math.min(rem, max)); rem -= Math.min(rem, max); continue; }
+    const put = [32, 18, 8, 2].find(v => v <= max && v <= rem);
+    r.push(put); rem -= put;
+  }
+  return r;
+}
+let lastZ = 11;
+['Z', 'N', 'q'].forEach(i => $(i).oninput = () => {
+  if(i === 'Z'){ const Z = +$('Z').value; $('N').value = A0[Z - 1] - Z; }
+  draw();
+});
+function draw(){
+  const Z = +$('Z').value, q = +$('q').value;
+  let N = +$('N').value; const A = Z + N, e = Z - q;
+  const neutral = TRANS[Z] || shells(Z);
+  let conf;
+  if(q === 0) conf = neutral.slice();
+  else if(TRANS[Z]){ conf = neutral.slice(); let d = -q; while(d < 0 && conf.length){ const t = conf.length - 1; const take = Math.min(-d, conf[t]); conf[t] -= take; d += take; if(conf[t] === 0) conf.pop(); } }
+  else conf = e > 0 ? shells(e) : [];
+  let s = '';
+  // model Bohr
+  const cx = 170, cy = 170;
+  const R = k => 46 + k * 23;
+  conf.forEach((ne, k) => {
+    s += `<circle cx="${cx}" cy="${cy}" r="${R(k)}" fill="none" style="stroke:var(--line-2)" stroke-width="1.5"/>`;
+    for(let i = 0; i < ne; i++){ const a = -Math.PI / 2 + i / ne * 2 * Math.PI; s += `<circle cx="${cx + R(k) * Math.cos(a)}" cy="${cy + R(k) * Math.sin(a)}" r="${ne > 18 ? 3 : 4}" style="fill:var(--a)"/>`; }
+    s += `<text class="s" x="${cx + R(k) * .7 + 4}" y="${cy - R(k) * .7 - 4}" style="fill:var(--muted)">${KULIT[k]}</text>`;
+  });
+  s += `<circle cx="${cx}" cy="${cy}" r="30" style="fill:var(--b)" fill-opacity=".18"/><text class="s" x="${cx}" y="${cy - 3}" text-anchor="middle" style="fill:var(--b)">${Z} p⁺</text><text class="s" x="${cx}" y="${cy + 12}" text-anchor="middle" style="fill:var(--muted)">${N} n</text>`;
+  // lambang
+  const sup = q === 0 ? '' : (Math.abs(q) > 1 ? Math.abs(q) : '') + (q > 0 ? '+' : '−');
+  s += `<rect x="350" y="40" width="110" height="110" rx="12" style="fill:var(--surface-2);stroke:var(--line-2)"/>`;
+  s += `<text class="c" x="372" y="70" text-anchor="end" style="fill:var(--ink)">${A}</text><text class="c" x="372" y="128" text-anchor="end" style="fill:var(--ink)">${Z}</text><text class="big" x="376" y="116" style="fill:var(--ink)">${SYM[Z - 1]}</text><text class="c" x="${376 + SYM[Z - 1].length * 26}" y="70" style="fill:var(--b)">${sup}</text>`;
+  s += `<text class="s" x="405" y="168" text-anchor="middle" style="fill:var(--muted)">${NAMA[Z - 1]}</text>`;
+  svg.innerHTML = s;
+  $('zv').textContent = Z + ' (' + SYM[Z - 1] + ')'; $('nv').textContent = N + ' (nomor massa ' + A + ')'; $('qv').textContent = q === 0 ? '0 (atom netral)' : (q > 0 ? '+' + q + ' (kation)' : '−' + (-q) + ' (anion)');
+  // posisi dalam tabel periodik
+  const per = neutral.length, val = neutral[neutral.length - 1];
+  let gol, jenis;
+  if(TRANS[Z]) gol = 'golongan B (transisi)';
+  else if(Z === 2) gol = 'VIIIA (gas mulia)';
+  else gol = ROMAWI[val] + 'A';
+  jenis = MULIA.includes(Z) ? 'gas mulia' : METALOID.includes(Z) ? 'metaloid (semilogam)' : NONLOGAM.includes(Z) ? 'nonlogam' : 'logam';
+  const isoNote = N !== A0[Z - 1] - Z ? ` <span style="color:var(--muted)">(isotop; yang paling umum ${SYM[Z - 1]}-${A0[Z - 1]})</span>` : '';
+  $('read').innerHTML = `<div><span>Proton / neutron / elektron</span><b>${Z} / ${N} / ${e}</b></div>` +
+    `<div><span>Konfigurasi ${q ? 'ion' : 'atom'}</span><b>${conf.join('.') || '—'}</b></div>` +
+    `<div><span>Elektron valensi (atom netral)</span><b>${val}</b></div>` +
+    `<div><span>Letak</span><b>periode ${per}, ${gol}; ${jenis}</b></div>` +
+    `<div><span>Nomor massa</span><b>A = ${Z} + ${N} = ${A}${isoNote}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

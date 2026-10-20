@@ -1,56 +1,211 @@
 {
   "title": "Fungsi",
-  "summary": "Ringkasan bab Fungsi akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA SMA: domain dan daerah hasil, fungsi kuadrat, komposisi dan invers fungsi, fungsi rasional, serta transformasi grafik.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Fungsi",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Fungsi</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi fungsi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Soal fungsi TKA SMA banyak yang kontekstual (tarif listrik, produksi tahu, suhu kopi) dan menuntut membaca grafik atau tabel.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Domain dan range</td><td>syarat akar dan pecahan, range pada domain terbatas</td><td>Kelas 10–11</td></tr><tr><td>Fungsi kuadrat</td><td>puncak, sumbu simetri, nilai maksimum/minimum</td><td>Kelas 10 Bab 5</td></tr><tr><td>Komposisi dan invers</td><td>(f ∘ g)(x), f⁻¹, invers fungsi rasional</td><td>Kelas 11 Bab 2</td></tr><tr><td>Transformasi</td><td>geser, cermin, regang</td><td>Kelas 11 Bab 3</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>√u terdefinisi jika u ≥ 0; p/q terdefinisi jika q ≠ 0.</li><li>Puncak f(x) = ax² + bx + c: x = −b/(2a).</li><li>(f ∘ g)(x) = f(g(x)).</li><li>(ax + b)/(cx + d) → f⁻¹(x) = (−dx + b)/(cx − a).</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "domain-kuadrat",
+      "title": "Domain, daerah hasil, dan fungsi kuadrat",
+      "kind": "simulasi",
+      "duration": "20 menit",
       "blocks": [
         {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan domain f(x) = √(6 − 2x)/(x + 1).</p>",
+          "steps": [
+            "6 − 2x ≥ 0 ⇔ x ≤ 3.",
+            "x + 1 ≠ 0 ⇔ x ≠ −1.",
+            "Domain: {x | x ≤ 3, x ≠ −1}."
+          ],
+          "answer": "x ≤ 3, x ≠ −1"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan daerah hasil f(x) = x² − 4x + 1 pada domain 0 ≤ x ≤ 5.</p>",
+          "steps": [
+            "Puncak di x = 2: f(2) = −3 (minimum, karena a &gt; 0).",
+            "Ujung domain: f(0) = 1, f(5) = 6.",
+            "Daerah hasil: −3 ≤ y ≤ 6."
+          ],
+          "answer": "[−3, 6]"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/05 Persamaan dan Fungsi Kuadrat/sim/parabola.html",
+          "title": "Penjelajah fungsi kuadrat",
+          "height": 520,
+          "caption": "Bandingkan nilai fungsi di puncak dan di ujung domain."
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Daerah hasil pada domain terbatas",
+          "html": "<p>Jangan hanya menghitung f di kedua ujung domain. Jika puncak berada di dalam domain, nilai puncak adalah nilai minimum (atau maksimum).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Ketinggian bola h(t) = −5t² + 20t + 1 meter. Ketinggian maksimumnya adalah ....",
+          "options": {
+            "A": "20 m",
+            "B": "21 m",
+            "C": "25 m",
+            "D": "41 m"
+          },
+          "answer": "B",
+          "hint": "t puncak = −b/(2a).",
+          "explanation": "t = 2, h(2) = −20 + 40 + 1 = 21 m."
+        }
+      ]
+    },
+    {
+      "id": "komposisi-invers",
+      "title": "Komposisi dan invers",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Matematika/02 Komposisi Fungsi dan Fungsi Invers/sim/komposisi.html",
+          "title": "Mesin komposisi fungsi",
+          "height": 520,
+          "caption": "Bandingkan f ∘ g dan g ∘ f."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>f(x) = 2x − 1, g(x) = x² + 3. Tentukan (f ∘ g)(2).</p>",
+          "steps": [
+            "g(2) = 7.",
+            "f(7) = 13."
+          ],
+          "answer": "13"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>f(x) = (3x + 2)/(x − 1). Tentukan f⁻¹(x).</p>",
+          "steps": [
+            "Pola (ax + b)/(cx + d) dengan a = 3, b = 2, c = 1, d = −1.",
+            "f⁻¹(x) = (x + 2)/(x − 3), x ≠ 3."
+          ],
+          "answer": "(x + 2)/(x − 3)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>f(x) = √x dan g(x) = 4 − x². Tentukan domain f ∘ g.</p>",
+          "steps": [
+            "(f ∘ g)(x) = √(4 − x²).",
+            "4 − x² ≥ 0 ⇔ −2 ≤ x ≤ 2."
+          ],
+          "answer": "−2 ≤ x ≤ 2"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Matematika/02 Komposisi Fungsi dan Fungsi Invers/sim/invers.html",
+          "title": "Grafik fungsi invers",
+          "height": 520,
+          "caption": "Grafik invers adalah cerminan terhadap y = x."
+        },
+        {
+          "type": "check",
+          "question": "f(x) = 3x − 5. Nilai f⁻¹(7) adalah ....",
+          "options": {
+            "A": "4",
+            "B": "16",
+            "C": "2/3",
+            "D": "26"
+          },
+          "answer": "A",
+          "hint": "Cari x dengan f(x) = 7.",
+          "explanation": "3x − 5 = 7, x = 4. 16 = f(7)."
+        }
+      ]
+    },
+    {
+      "id": "transformasi",
+      "title": "Transformasi dan membaca grafik",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Matematika/03 Transformasi Fungsi/sim/transformasi-fungsi.html",
+          "title": "Transformasi fungsi",
+          "height": 600,
+          "caption": "Ubah a, b, h, k satu per satu dan baca urutan transformasinya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan fungsi kuadrat dengan puncak (2, −1) yang melalui (0, 3).</p>",
+          "steps": [
+            "f(x) = a(x − 2)² − 1.",
+            "f(0) = 4a − 1 = 3, a = 1.",
+            "f(x) = (x − 2)² − 1 = x² − 4x + 3."
+          ],
+          "answer": "x² − 4x + 3"
+        },
+        {
+          "type": "check",
+          "question": "Grafik y = 2ˣ digeser 3 satuan ke kanan dan 1 satuan ke atas. Fungsinya adalah ....",
+          "options": {
+            "A": "y = 2^(x − 3) + 1",
+            "B": "y = 2^(x + 3) + 1",
+            "C": "y = 2^(x − 1) + 3",
+            "D": "y = 2ˣ − 3 + 1"
+          },
+          "answer": "A",
+          "hint": "Geser kanan h: ganti x dengan x − h.",
+          "explanation": "y = 2^(x − 3) + 1."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk mencocokkan grafik kuadrat, periksa tiga hal: arah buka (tanda a), titik potong sumbu y (c), dan puncak.</li><li>Pada fungsi bertingkat (tarif, kategori suhu), tentukan dahulu interval tempat nilai x berada.</li><li>f⁻¹(k) dapat dicari langsung dengan menyelesaikan f(x) = k tanpa menurunkan rumus invers.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Menganggap f⁻¹(x) sama dengan 1/f(x).</li><li>Menghitung g ∘ f padahal yang diminta f ∘ g.</li><li>Lupa syarat penyebut tidak nol pada domain.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMA topik Fungsi. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

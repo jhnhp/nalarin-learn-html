@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profil Energi Reaksi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Diagram energi potensial terhadap jalannya reaksi dengan dan tanpa katalis"></svg></div>
+  <div class="panel">
+    <div class="lab">Energi aktivasi tanpa katalis <b id="av"></b></div><input type="range" id="a" min="20" max="200" step="5" value="130">
+    <div class="lab">Perubahan entalpi ΔH <b id="hv"></b></div><input type="range" id="h" min="-120" max="120" step="5" value="-55">
+    <div class="lab">Penurunan energi aktivasi oleh katalis <b id="kv"></b></div><input type="range" id="k" min="0" max="90" step="5" value="50">
+    <div class="read" id="read"></div>
+    <p class="note">Katalis menyediakan jalan reaksi lain dengan energi aktivasi lebih rendah, tetapi tidak mengubah energi pereaksi, energi produk, maupun ΔH. Energi aktivasi reaksi balik = Eₐ − ΔH.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+function draw(){
+  let ea = +$('a').value, dh = +$('h').value, dk = +$('k').value;
+  if(ea < dh + 10){ ea = dh + 10; $('a').value = ea; }
+  const eak = Math.max(Math.max(dh, 0) + 5, ea - dk);
+  const top = 300, sc = 230 / 330, Y = e => top - 130 * sc - e * sc;
+  const x0 = 50, x1 = 175, xm = 285, x2 = 385, x3 = 455;
+  const curve = (peak, col, dash) => `<path d="M${x0},${Y(0)} L${x1},${Y(0)} C${x1 + 60},${Y(0)} ${xm - 50},${Y(peak)} ${xm},${Y(peak)} C${xm + 50},${Y(peak)} ${x2 - 60},${Y(dh)} ${x2},${Y(dh)} L${x3},${Y(dh)}" fill="none" style="stroke:${col}" stroke-width="3" ${dash ? 'stroke-dasharray="7 5"' : ''}/>`;
+  let s = `<line x1="40" y1="20" x2="40" y2="${top}" style="stroke:var(--ink)" stroke-width="1.5"/><line x1="40" y1="${top}" x2="465" y2="${top}" style="stroke:var(--ink)" stroke-width="1.5"/>`;
+  s += `<text class="s" x="34" y="30" text-anchor="end" style="fill:var(--muted)" transform="rotate(-90 20 150)" >energi potensial</text><text class="s" x="460" y="${top + 14}" text-anchor="end" style="fill:var(--muted)">jalannya reaksi →</text>`;
+  s += curve(ea, 'var(--ink)') + curve(eak, 'var(--k)', 1);
+  // panah Ea
+  const arr = (x, ya, yb, col, lab, right) => `<line x1="${x}" y1="${ya}" x2="${x}" y2="${yb}" style="stroke:${col}" stroke-width="1.5"/><path d="M${x},${yb} l-4,${yb > ya ? -8 : 8} h8z" style="fill:${col}"/><text class="c" x="${x + (right ? 6 : -6)}" y="${(ya + yb) / 2 + 4}" text-anchor="${right ? 'start' : 'end'}" style="fill:${col}">${lab}</text>`;
+  s += `<line x1="${x1}" y1="${Y(ea)}" x2="${xm}" y2="${Y(ea)}" style="stroke:var(--line-2)" stroke-dasharray="3 3"/><line x1="${x1}" y1="${Y(eak)}" x2="${xm}" y2="${Y(eak)}" style="stroke:var(--line-2)" stroke-dasharray="3 3"/>`;
+  s += arr(x1 - 40, Y(0), Y(ea), 'var(--ink)', '', false) + arr(x1 - 15, Y(0), Y(eak), 'var(--k)', '', true);
+  s += `<text class="c" x="${x1 - 46}" y="${Y(ea) + 14}" text-anchor="end" style="fill:var(--ink)">Eₐ = ${ea}</text><text class="c" x="${x1 - 46}" y="${Math.max(Y(eak) + 14, Y(ea) + 30)}" text-anchor="end" style="fill:var(--k)">Eₐ katalis = ${eak}</text>`;
+  s += `<line x1="${x2}" y1="${Y(0)}" x2="${x3}" y2="${Y(0)}" style="stroke:var(--line-2)" stroke-dasharray="3 3"/>` + arr(x3 - 15, Y(0), Y(dh), 'var(--b)', 'ΔH = ' + dh, false);
+  s += `<text class="c" x="${x0 + 60}" y="${Y(0) + 18}" text-anchor="middle" style="fill:var(--ink)">pereaksi</text><text class="c" x="${x2 + 40}" y="${Y(dh) + 18}" text-anchor="middle" style="fill:var(--ink)">produk</text>`;
+  s += `<text class="s" x="${xm}" y="${Y(ea) - 8}" text-anchor="middle" style="fill:var(--muted)">kompleks teraktivasi</text>`;
+  s += `<line x1="300" y1="22" x2="320" y2="22" style="stroke:var(--ink)" stroke-width="3"/><text class="s" x="325" y="26" style="fill:var(--ink)">tanpa katalis</text><line x1="390" y1="22" x2="410" y2="22" style="stroke:var(--k)" stroke-width="3" stroke-dasharray="5 4"/><text class="s" x="415" y="26" style="fill:var(--ink)">katalis</text>`;
+  svg.innerHTML = s;
+  $('av').textContent = ea + ' kJ'; $('hv').textContent = dh + ' kJ'; $('kv').textContent = dk + ' kJ';
+  $('read').innerHTML = `<div><span>Jenis reaksi</span><b>${dh < 0 ? 'eksoterm (ΔH < 0)' : dh > 0 ? 'endoterm (ΔH > 0)' : 'ΔH = 0'}</b></div><div><span>Eₐ maju (tanpa / dengan katalis)</span><b>${ea} / ${eak} kJ</b></div><div><span>Eₐ balik (tanpa / dengan katalis)</span><b>${ea - dh} / ${eak - dh} kJ</b></div><div><span>ΔH (tetap walau ada katalis)</span><b>${dh} kJ</b></div>`;
+}
+['a', 'h', 'k'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

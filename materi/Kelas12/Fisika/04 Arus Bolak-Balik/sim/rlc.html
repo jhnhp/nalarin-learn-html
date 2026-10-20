@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rangkaian RLC Seri</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Diagram fasor, grafik tegangan dan arus, serta kurva arus terhadap frekuensi rangkaian RLC"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="R">R saja</button><button data-m="L">L saja</button><button data-m="C">C saja</button><button data-m="RLC" class="on">RLC seri</button></div>
+    <div class="lab">Hambatan R <b id="rv"></b></div><input type="range" id="r" min="5" max="200" step="5" value="50">
+    <div class="lab">Induktansi L <b id="lv"></b></div><input type="range" id="l" min="0.02" max="1" step="0.02" value="0.3">
+    <div class="lab">Kapasitas C <b id="cv"></b></div><input type="range" id="c" min="5" max="200" step="5" value="40">
+    <div class="lab">Frekuensi sumber f <b id="fv"></b></div><input type="range" id="f" min="10" max="200" step="1" value="50">
+    <div class="lab">Tegangan efektif sumber <b id="vv"></b></div><input type="range" id="v" min="10" max="240" step="10" value="100">
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'RLC', tt = 0;
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; draw(); });
+function calc(f){
+  const R = M === 'RLC' || M === 'R' ? +$('r').value : 0, L = M === 'RLC' || M === 'L' ? +$('l').value : 0, C = (M === 'RLC' || M === 'C') ? +$('c').value * 1e-6 : null;
+  const w = 2 * Math.PI * f, XL = w * L, XC = C ? 1 / (w * C) : 0, Z = Math.hypot(R, XL - XC);
+  return {R, L, C, w, XL, XC, Z, phi: Math.atan2(XL - XC, R)};
+}
+function draw(){
+  const f = +$('f').value, V = +$('v').value, k = calc(f), I = V / k.Z;
+  $('rv').textContent = $('r').value + ' Ω'; $('lv').textContent = fmt(+$('l').value, 2) + ' H'; $('cv').textContent = $('c').value + ' μF'; $('fv').textContent = f + ' Hz'; $('vv').textContent = V + ' V';
+  ['r', 'l', 'c'].forEach(id => $(id).disabled = !(M === 'RLC' || M === id.toUpperCase()));
+  let s = '';
+  // fasor
+  const cx = 90, cy = 95, sc = 70 / Math.max(V, I * Math.max(k.R, k.XL, k.XC));
+  const VR = I * k.R, VL = I * k.XL, VC = I * k.XC;
+  const arr = (x2, y2, col, lab) => `<line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="3" marker-end="url(#m${col.slice(1)})"/><defs><marker id="m${col.slice(1)}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="${col}"/></marker></defs><text class="s" x="${x2 + 4}" y="${y2 - 4}" fill="${col}">${lab}</text>`;
+  s += `<text class="s" x="10" y="16" style="fill:var(--muted)">fasor (acuan: arus)</text>`;
+  s += `<line x1="${cx - 70}" y1="${cy}" x2="${cx + 80}" y2="${cy}" stroke="#bbb"/>`;
+  if(VR > 0.01) s += arr(cx + VR * sc, cy, '#2e7d32', 'VR');
+  if(VL > 0.01) s += arr(cx, cy - VL * sc, '#e53935', 'VL');
+  if(VC > 0.01) s += arr(cx, cy + VC * sc, '#1e88e5', 'VC');
+  s += arr(cx + VR * sc, cy - (VL - VC) * sc, '#6a1b9a', 'V');
+  // grafik v(t) dan i(t)
+  const gx = 200, gy = 95, gw = 270, gh = 60, Vm = V * Math.SQRT2, Im = I * Math.SQRT2;
+  let pv = '', pi = '';
+  for(let i = 0; i <= 200; i++){ const th = 4 * Math.PI * i / 200, x = gx + gw * i / 200; pv += (i ? 'L' : 'M') + x.toFixed(1) + ',' + (gy - gh * Math.sin(th + k.phi)).toFixed(1); pi += (i ? 'L' : 'M') + x.toFixed(1) + ',' + (gy - gh * .6 * Math.sin(th)).toFixed(1); }
+  s += `<text class="s" x="${gx}" y="16" style="fill:var(--muted)">ungu: tegangan, oranye: arus</text><line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#bbb"/><path d="${pv}" fill="none" stroke="#6a1b9a" stroke-width="2.2"/><path d="${pi}" fill="none" stroke="#ef6c00" stroke-width="2.2"/>`;
+  // kurva resonansi
+  const rx = 40, ry = 320, rw = 420, rh = 120;
+  let imax = 0; const pts = [];
+  for(let ff = 10; ff <= 200; ff += 1){ const kk = calc(ff), ii = V / kk.Z; pts.push([ff, ii]); if(isFinite(ii)) imax = Math.max(imax, ii); }
+  imax = Math.min(imax, V / Math.max(1, k.R || 1) * 1.05) || 1;
+  let pr = ''; pts.forEach(([ff, ii], j) => { pr += (j ? 'L' : 'M') + (rx + rw * (ff - 10) / 190).toFixed(1) + ',' + (ry - rh * Math.min(1, ii / imax)).toFixed(1); });
+  s += `<text class="s" x="${rx}" y="${ry - rh - 8}" style="fill:var(--muted)">arus efektif terhadap frekuensi (10–200 Hz)</text><line x1="${rx}" y1="${ry}" x2="${rx + rw}" y2="${ry}" style="stroke:var(--ink)"/><path d="${pr}" fill="none" stroke="#ef6c00" stroke-width="2.2"/><circle cx="${rx + rw * (f - 10) / 190}" cy="${ry - rh * Math.min(1, I / imax)}" r="5" fill="#e53935"/>`;
+  const f0 = k.L && k.C ? 1 / (2 * Math.PI * Math.sqrt(k.L * k.C)) : null;
+  if(f0 && f0 >= 10 && f0 <= 200) s += `<line x1="${rx + rw * (f0 - 10) / 190}" y1="${ry}" x2="${rx + rw * (f0 - 10) / 190}" y2="${ry - rh}" stroke="#6a1b9a" stroke-dasharray="3 3"/><text class="s" x="${rx + rw * (f0 - 10) / 190 + 4}" y="${ry - rh + 10}" fill="#6a1b9a">f₀</text>`;
+  svg.innerHTML = s;
+  const pf = k.Z ? k.R / k.Z : 0, P = I * I * k.R;
+  $('read').innerHTML = `<div><span>X<sub>L</sub> = ωL / X<sub>C</sub> = 1/(ωC)</span><b>${fmt(k.XL, 1)} Ω / ${M === 'L' || M === 'R' ? '—' : fmt(k.XC, 1) + ' Ω'}</b></div><div><span>Impedansi Z</span><b>${fmt(k.Z, 1)} Ω</b></div><div><span>Arus efektif I = V/Z</span><b>${fmt(I, 3)} A</b></div><div><span>Beda fase (tegangan terhadap arus)</span><b>${fmt(k.phi * 180 / Math.PI, 1)}°</b></div><div><span>Faktor daya cos φ / daya P = I²R</span><b>${fmt(pf, 3)} / ${fmt(P, 1)} W</b></div>${f0 ? `<div><span>Frekuensi resonansi f₀</span><b>${fmt(f0, 1)} Hz</b></div>` : ''}`;
+  $('ket').textContent = M === 'R' ? 'Resistor: tegangan dan arus sefase.' : M === 'L' ? 'Induktor murni: tegangan mendahului arus 90°. Reaktansi induktif naik bila frekuensi naik.' : M === 'C' ? 'Kapasitor murni: arus mendahului tegangan 90°. Reaktansi kapasitif turun bila frekuensi naik.' : Math.abs(k.XL - k.XC) < 0.02 * k.Z ? 'Resonansi: X_L = X_C, impedansi minimum (Z = R), arus maksimum, dan tegangan sefase dengan arus.' : k.XL > k.XC ? 'XL > XC: rangkaian bersifat induktif, tegangan mendahului arus.' : 'XC > XL: rangkaian bersifat kapasitif, arus mendahului tegangan.';
+}
+['r', 'l', 'c', 'f', 'v'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+{
+  "title": "Suhu, Kalor, dan Pemuaian",
+  "summary": "Suhu dan skala termometer, kalor dan kalor jenis, perubahan wujud, perpindahan kalor, serta pemuaian dan penerapannya.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "suhu",
+      "title": "Suhu dan termometer",
+      "kind": "simulasi",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Suhu</b> adalah ukuran derajat panas atau dinginnya suatu benda. Secara partikel, suhu menunjukkan rata-rata energi gerak partikel: makin tinggi suhu, makin cepat partikel bergerak. Perasaan kulit tidak dapat diandalkan untuk mengukur suhu, sehingga kita memakai <b>termometer</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cara kerja termometer zat cair",
+          "html": "<p>Raksa atau alkohol di dalam pipa kapiler memuai saat dipanaskan sehingga naik, dan menyusut saat didinginkan. Raksa dipilih karena pemuaiannya teratur, mudah terlihat, tidak membasahi dinding, dan cepat menyesuaikan suhu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Konversi skala",
+          "html": "\\[C : R : (F - 32) : (K - 273) = 5 : 4 : 9 : 5\\]<p>Jadi R = ⁴⁄₅C, F = ⁹⁄₅C + 32, dan K = C + 273. Kelvin adalah satuan SI suhu; 0 K (−273 °C) disebut nol mutlak.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/termometer.html",
+          "title": "Skala termometer",
+          "height": 480,
+          "caption": "Geser suhu dan bandingkan keempat termometer. Pada suhu berapa skala Celsius dan Fahrenheit menunjukkan angka yang sama?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Daging dimasak sampai 140 °F. Berapa derajat Celsius?</p>",
+          "steps": [
+            "C = ⁵⁄₉ × (F − 32) = ⁵⁄₉ × 108.",
+            "C = 60 °C."
+          ],
+          "answer": "60 °C"
+        },
+        {
+          "type": "check",
+          "question": "Suhu 50 °C sama dengan ....",
+          "options": {
+            "A": "40 °R",
+            "B": "122 °F",
+            "C": "323 K",
+            "D": "semua benar"
+          },
+          "answer": "D",
+          "hint": "Hitung ketiganya.",
+          "explanation": "R = 0,8 × 50 = 40; F = 90 + 32 = 122; K = 50 + 273 = 323."
+        }
+      ]
+    },
+    {
+      "id": "kalor",
+      "title": "Kalor dan kalor jenis",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Kalor</b> adalah energi panas yang berpindah dari benda bersuhu tinggi ke benda bersuhu rendah. Satuan SI kalor adalah joule (J); 1 kalori ≈ 4,2 J. Perpindahan berhenti setelah kedua benda bersuhu sama (kesetimbangan termal).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kalor untuk mengubah suhu",
+          "html": "\\[Q = m \\cdot c \\cdot \\Delta T\\]<p>m massa (kg), c kalor jenis (J/kg°C), ΔT perubahan suhu. Kalor jenis air 4.186 J/kg°C, jauh lebih besar daripada aluminium (900) atau tembaga (386). Zat berkalor jenis besar lambat panas dan lambat dingin.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Berapa kalor untuk memanaskan 0,5 kg air dari 25 °C menjadi 100 °C?</p>",
+          "steps": [
+            "Q = 0,5 × 4.186 × (100 − 25).",
+            "Q = 0,5 × 4.186 × 75 = 156.975 J ≈ 157 kJ."
+          ],
+          "answer": "≈ 157 kJ"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kurva-pemanasan.html",
+          "title": "Kurva pemanasan es",
+          "height": 480,
+          "caption": "Tambahkan kalor sedikit demi sedikit. Mengapa grafik mendatar pada 0 °C dan 100 °C?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kalor 42.000 J diberikan kepada 1 kg air (c = 4.200 J/kg°C) dan kepada 1 kg aluminium (c = 900 J/kg°C). Berapa kenaikan suhu masing-masing?</p>",
+          "steps": [
+            "ΔT = Q/(m·c).",
+            "Air: 42.000/(1 × 4.200) = 10 °C.",
+            "Aluminium: 42.000/(1 × 900) ≈ 46,7 °C."
+          ],
+          "answer": "air naik 10 °C, aluminium sekitar 46,7 °C"
+        },
+        {
+          "type": "check",
+          "question": "Air laut di siang hari lebih lambat panas daripada pasir pantai karena ....",
+          "options": {
+            "A": "massa air lebih kecil",
+            "B": "kalor jenis air lebih besar",
+            "C": "air memantulkan cahaya",
+            "D": "pasir tidak menyerap kalor"
+          },
+          "answer": "B",
+          "hint": "Bandingkan kalor jenisnya.",
+          "explanation": "Kalor jenis air besar sehingga untuk kalor yang sama kenaikan suhunya kecil."
+        }
+      ]
+    },
+    {
+      "id": "perpindahan",
+      "title": "Perpindahan kalor",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "gambar/perpindahan-kalor.svg",
+          "alt": "Tiga cara perpindahan kalor: konduksi pada batang logam, konveksi pada air yang dipanaskan, radiasi dari matahari",
+          "width": 620,
+          "caption": "Konduksi, konveksi, dan radiasi."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Cara</th><th>Ciri</th><th>Contoh</th></tr><tr><td>Konduksi (hantaran)</td><td>melalui zat tanpa disertai perpindahan zat</td><td>sendok logam dalam teh panas menjadi panas</td></tr><tr><td>Konveksi (aliran)</td><td>disertai perpindahan zat (cair/gas)</td><td>air mendidih bergolak, angin darat dan angin laut</td></tr><tr><td>Radiasi (pancaran)</td><td>tanpa zat perantara</td><td>panas matahari sampai ke Bumi, hangat api unggun</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konduktor dan isolator",
+          "html": "<p>Logam adalah <b>konduktor</b> (penghantar kalor yang baik). Kayu, plastik, kain, dan udara adalah <b>isolator</b>. Karena itu pegangan panci dibuat dari plastik atau kayu.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bagaimana termos menjaga air tetap panas?</p>",
+          "steps": [
+            "Ruang hampa udara di antara dinding kaca menghambat konduksi dan konveksi.",
+            "Dinding kaca berlapis perak memantulkan radiasi kembali ke dalam.",
+            "Tutup rapat mencegah konveksi uap keluar."
+          ],
+          "answer": "menghambat ketiga cara perpindahan kalor"
+        },
+        {
+          "type": "check",
+          "question": "Angin laut yang bertiup pada siang hari merupakan contoh perpindahan kalor secara ....",
+          "options": {
+            "A": "konduksi",
+            "B": "konveksi",
+            "C": "radiasi",
+            "D": "isolasi"
+          },
+          "answer": "B",
+          "hint": "Udara ikut berpindah.",
+          "explanation": "Udara di atas daratan yang panas naik dan digantikan udara dari laut: konveksi."
+        }
+      ]
+    },
+    {
+      "id": "pemuaian",
+      "title": "Pemuaian",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Benda yang dipanaskan umumnya <b>memuai</b> (ukurannya bertambah) karena partikelnya bergerak makin cepat dan jaraknya makin renggang. Pemuaian terjadi pada zat padat, cair, dan gas.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pemuaian panjang",
+          "html": "\\[\\Delta L = L_0 \\cdot \\alpha \\cdot \\Delta T\\]<p>α koefisien muai panjang. Contoh α: aluminium 22,5 × 10⁻⁶ /°C, tembaga 16,6 × 10⁻⁶ /°C, baja 12–13 × 10⁻⁶ /°C, kaca Pyrex 3,25 × 10⁻⁶ /°C. Koefisien muai luas ≈ 2α dan muai ruang ≈ 3α.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rel baja sepanjang 10 m (α = 12 × 10⁻⁶ /°C) suhunya naik dari 20 °C menjadi 45 °C. Berapa pertambahan panjangnya?</p>",
+          "steps": [
+            "ΔL = 10 × 12 × 10⁻⁶ × 25.",
+            "ΔL = 0,003 m = 3 mm.",
+            "Karena itu sambungan rel diberi celah."
+          ],
+          "answer": "3 mm"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku siswa menulis koefisien muai luas baja 0,000022/°C dan muai ruang 0,000033/°C, yaitu memakai α = 11 × 10⁻⁶ /°C, padahal tabelnya menulis 12–13 × 10⁻⁶ /°C. Dengan α = 12 × 10⁻⁶ /°C, muai luasnya 24 × 10⁻⁶ /°C dan muai ruangnya 36 × 10⁻⁶ /°C. Prinsipnya tetap: luas ≈ 2α, ruang ≈ 3α.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/bimetal.svg",
+          "alt": "Keping bimetal tembaga dan besi melengkung ke arah besi ketika dipanaskan",
+          "width": 560,
+          "caption": "Bimetal melengkung karena kedua logam memuai berbeda."
+        },
+        {
+          "type": "text",
+          "html": "<p>Penerapan lain: celah pada sambungan jembatan, kabel listrik dipasang kendur, bingkai kaca jendela dibuat agak longgar, tutup botol logam yang sulit dibuka direndam air panas, dan balon udara panas yang naik karena udara di dalamnya memuai.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kabel listrik dipasang kendur pada siang hari agar ....",
+          "options": {
+            "A": "tidak putus ketika menyusut pada malam hari",
+            "B": "listrik mengalir lebih cepat",
+            "C": "tidak tersambar petir",
+            "D": "lebih mudah memuai"
+          },
+          "answer": "A",
+          "hint": "Apa yang terjadi saat suhu turun?",
+          "explanation": "Pada malam hari suhu turun, kabel menyusut; jika dipasang tegang bisa putus."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Suhu</td><td>derajat panas; C : R : (F − 32) : (K − 273) = 5 : 4 : 9 : 5</td></tr><tr><td>Kalor</td><td>Q = m·c·ΔT; berpindah dari suhu tinggi ke rendah</td></tr><tr><td>Perubahan wujud</td><td>suhu tetap selama berubah wujud</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td></tr><tr><td>Pemuaian</td><td>ΔL = L₀αΔT; luas 2α, ruang 3α; bimetal</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyamakan suhu dan kalor.</li><li>Lupa menambahkan 32 pada konversi ke Fahrenheit.</li><li>Memakai massa dalam gram pada Q = mcΔT padahal c dalam J/kg°C.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMP Kelas VII</i> (Kemendikbudristek), Bab III Suhu, Kalor, dan Pemuaian.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang suhu, kalor, perpindahan kalor, dan pemuaian. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

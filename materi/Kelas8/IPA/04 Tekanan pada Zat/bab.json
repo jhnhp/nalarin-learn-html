@@ -1,0 +1,245 @@
+{
+  "title": "Tekanan pada Zat",
+  "summary": "Tekanan zat padat, tekanan hidrostatis, hukum Archimedes, tekanan gas dan atmosfer, hukum Pascal, serta penerapan tekanan pada makhluk hidup.",
+  "status": "lengkap",
+  "lessons": [
+    {
+      "id": "tekanan-padat",
+      "title": "Tekanan pada zat padat",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Mengapa pisau yang tajam lebih mudah memotong daripada pisau tumpul, padahal gaya yang kita berikan sama? Jawabannya adalah <b>tekanan</b>: besar gaya yang bekerja pada setiap satuan luas bidang tekan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tekanan",
+          "html": "\\[P = \\frac{F}{A}\\]<p>P tekanan (N/m² = pascal, Pa), F gaya tekan (N), A luas bidang tekan (m²). Gaya sama dengan luas kecil menghasilkan tekanan besar.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/balok-tekanan.svg",
+          "alt": "Balok yang sama diletakkan rebah, miring, dan tegak menghasilkan tekanan 1.500, 3.000, dan 6.000 Pa",
+          "width": 600,
+          "caption": "Tekanan bergantung pada luas bidang tekan."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Memperbesar tekanan (luas kecil)</th><th>Memperkecil tekanan (luas besar)</th></tr><tr><td>mata pisau dan kapak tajam, ujung paku runcing, jarum suntik</td><td>sepatu salju, ban truk lebar, rel kereta di atas bantalan, tali tas yang lebar</td></tr></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Gaya 250 N bekerja pada permukaan seluas 0,05 m². Berapa tekanannya?</p>",
+          "steps": [
+            "P = 250/0,05.",
+            "P = 5.000 Pa."
+          ],
+          "answer": "5.000 Pa"
+        },
+        {
+          "type": "check",
+          "question": "Ujung paku dibuat runcing agar ....",
+          "options": {
+            "A": "gaya yang diperlukan lebih besar",
+            "B": "tekanan yang dihasilkan lebih besar",
+            "C": "paku lebih ringan",
+            "D": "luas bidang tekan lebih besar"
+          },
+          "answer": "B",
+          "hint": "Luas kecil, tekanan besar.",
+          "explanation": "Ujung runcing memperkecil luas bidang tekan sehingga tekanan besar dan paku mudah menancap."
+        }
+      ]
+    },
+    {
+      "id": "zat-cair",
+      "title": "Tekanan hidrostatis dan hukum Archimedes",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tekanan hidrostatis",
+          "html": "\\[P_h = \\rho \\cdot g \\cdot h\\]<p>ρ massa jenis zat cair (kg/m³), g percepatan gravitasi (10 m/s²), h kedalaman (m). Makin dalam, makin besar tekanannya. Karena itu dinding bendungan dibuat makin tebal ke bawah dan penyelam merasa telinganya tertekan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Archimedes",
+          "html": "\\[F_a = \\rho_{\\text{cair}} \\cdot g \\cdot V_{\\text{tercelup}}\\]<p>Benda yang dicelupkan ke dalam zat cair mendapat gaya ke atas (gaya apung) sebesar berat zat cair yang dipindahkannya. Terapung jika Fa maks &gt; W, melayang jika sama, tenggelam jika Fa maks &lt; W.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/tekanan-cair.html",
+          "title": "Tekanan hidrostatis dan gaya apung",
+          "height": 520,
+          "caption": "Geser alat ukur tekanan ke kedalaman berbeda dan ganti zat cairnya. Turunkan benda pelan-pelan: bagaimana angka neraca pegas berubah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Berapa tekanan hidrostatis pada kedalaman 3 m di air (ρ = 1.000 kg/m³)?</p>",
+          "steps": [
+            "P = 1.000 × 10 × 3.",
+            "P = 30.000 Pa = 30 kPa."
+          ],
+          "answer": "30.000 Pa"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Batu bervolume 0,002 m³ beratnya 50 N di udara. Berapa beratnya di dalam air?</p>",
+          "steps": [
+            "Fa = 1.000 × 10 × 0,002 = 20 N.",
+            "Berat semu = 50 − 20 = 30 N."
+          ],
+          "answer": "30 N"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku siswa mengaitkan mudahnya orang terapung di Laut Mati dengan tekanan hidrostatis. Penyebab utamanya adalah <b>massa jenis</b> air Laut Mati yang sangat besar (± 1.240 kg/m³) karena kadar garamnya tinggi, sehingga gaya apungnya lebih besar (hukum Archimedes).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kapal baja yang berat dapat terapung karena ....",
+          "options": {
+            "A": "baja lebih ringan daripada air",
+            "B": "bentuk kapal yang berongga memindahkan banyak air sehingga gaya apungnya besar",
+            "C": "tekanan hidrostatis di permukaan nol",
+            "D": "kapal selalu bergerak"
+          },
+          "answer": "B",
+          "hint": "Pikirkan volume air yang dipindahkan.",
+          "explanation": "Rongga udara membuat volume kapal besar sehingga air yang dipindahkan (dan gaya apung) cukup untuk mengimbangi berat kapal."
+        }
+      ]
+    },
+    {
+      "id": "tekanan-gas",
+      "title": "Tekanan gas dan hukum Pascal",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Udara juga menekan segala sesuatu di sekitarnya: <b>tekanan atmosfer</b> di permukaan laut sekitar 1 atm ≈ 101.300 Pa. Makin tinggi tempat, makin tipis udara dan makin kecil tekanannya. Inilah sebabnya air dalam gelas yang ditutup kertas lalu dibalik tidak tumpah: tekanan udara dari bawah menahan kertas.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Gas yang dipanaskan",
+          "html": "<p>Balon pada mulut botol mengembang jika botol direndam air panas dan menyusut di air dingin: gas memuai saat dipanaskan. Balon udara terbang karena udara panas di dalamnya kurang rapat daripada udara di luar, sehingga gaya apung udara lebih besar daripada beratnya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Pascal",
+          "html": "<p>Tekanan yang diberikan pada zat cair dalam ruang tertutup diteruskan ke segala arah dengan sama besar.</p>\\[\\frac{F_1}{A_1} = \\frac{F_2}{A_2}\\]<p>Dipakai pada dongkrak hidrolik, rem hidrolik, dan kursi pasien dokter gigi.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/hidrolik.html",
+          "title": "Dongkrak hidrolik",
+          "height": 520,
+          "caption": "Perbesar luas penghisap besar: berapa gaya yang dapat diangkat? Perhatikan juga seberapa jauh mobil naik dibanding penghisap kecil ditekan."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dongkrak hidrolik memiliki A₁ = 10 cm² dan A₂ = 500 cm². Berapa gaya F₁ untuk mengangkat mobil 10.000 N?</p>",
+          "steps": [
+            "F₁ = F₂ × A₁/A₂.",
+            "F₁ = 10.000 × 10/500 = 200 N."
+          ],
+          "answer": "200 N"
+        },
+        {
+          "type": "check",
+          "question": "Prinsip kerja rem hidrolik pada sepeda motor berdasarkan ....",
+          "options": {
+            "A": "hukum Archimedes",
+            "B": "hukum Pascal",
+            "C": "tekanan hidrostatis",
+            "D": "hukum Newton I"
+          },
+          "answer": "B",
+          "hint": "Tekanan pada cairan rem diteruskan.",
+          "explanation": "Tekanan pada minyak rem diteruskan sama besar ke penjepit rem."
+        }
+      ]
+    },
+    {
+      "id": "makhluk-hidup",
+      "title": "Tekanan pada makhluk hidup",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "gambar/pengangkutan-tumbuhan.svg",
+          "alt": "Air diserap akar, naik melalui xilem, dan menguap melalui stomata daun",
+          "width": 580,
+          "caption": "Air dapat naik puluhan meter pada pohon tinggi."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Pengangkutan air pada tumbuhan",
+          "html": "<ul><li><b>Tekanan akar</b>: akar menyerap air dari tanah dan mendorongnya ke atas.</li><li><b>Kapilaritas</b>: air merambat naik dalam pembuluh xilem yang sangat sempit.</li><li><b>Transpirasi</b>: penguapan air melalui stomata daun menciptakan daya isap yang menarik air dari bawah.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Tekanan darah",
+          "html": "<p>Jantung memompa darah sehingga menimbulkan tekanan pada dinding pembuluh. Tekanan darah diukur dengan tensimeter dan ditulis dua angka, misalnya 120/80 mmHg: angka atas saat jantung memompa (sistol), angka bawah saat jantung beristirahat (diastol).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Faktor utama yang membuat air dapat naik dari akar sampai ke daun pohon yang tinggi adalah ....",
+          "options": {
+            "A": "gaya gravitasi",
+            "B": "transpirasi, kapilaritas, dan tekanan akar",
+            "C": "fotosintesis saja",
+            "D": "angin"
+          },
+          "answer": "B",
+          "hint": "Tiga faktor bekerja bersama.",
+          "explanation": "Tekanan akar mendorong, kapilaritas merambatkan, dan transpirasi menarik air ke atas."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Rumus / inti</th></tr><tr><td>Tekanan zat padat</td><td>P = F/A</td></tr><tr><td>Tekanan hidrostatis</td><td>P = ρgh</td></tr><tr><td>Archimedes</td><td>Fa = ρgV tercelup</td></tr><tr><td>Pascal</td><td>F₁/A₁ = F₂/A₂</td></tr><tr><td>Tekanan udara</td><td>makin tinggi tempat, makin kecil</td></tr><tr><td>Tumbuhan</td><td>tekanan akar, kapilaritas, transpirasi</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa mengubah cm² menjadi m² (1 cm² = 0,0001 m²).</li><li>Memakai kedalaman diukur dari dasar, bukan dari permukaan zat cair.</li><li>Menganggap benda berat pasti tenggelam.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMP Kelas VIII</i> (Kemendikbudristek), Bab IV Teknologi Penerapan Tekanan pada Zat.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang tekanan zat padat, tekanan hidrostatis, hukum Archimedes, hukum Pascal, tekanan gas, dan tekanan pada makhluk hidup. Setiap soal dilengkapi pembahasan."
+        }
+      ]
+    }
+  ]
+}

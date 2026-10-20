@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pembentukan Bayangan oleh Lensa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 300" role="img" aria-label="Diagram sinar lensa"></svg></div>
+  <div class="panel">
+    <div class="seg" id="type"><button data-t="1" class="on">Lensa cembung</button><button data-t="-1">Lensa cekung</button></div>
+    <div><div class="lab"><span>Jarak benda (cm)</span><b id="sout"></b></div><input type="range" id="s" min="4" max="40" step="1" value="24"></div>
+    <div><div class="lab"><span>Jarak fokus (cm)</span><b id="fout"></b></div><input type="range" id="f" min="5" max="15" step="1" value="10"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Tiga sinar istimewa: sinar sejajar sumbu dibiaskan melalui (atau seolah dari) titik fokus; sinar melalui pusat lensa diteruskan; sinar melalui fokus dibiaskan sejajar sumbu. Pengayaan: 1/f = 1/s + 1/s′, perbesaran M = |s′/s|.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let tp = 1;
+$('type').onclick = e => { const b = e.target.closest('button'); if(!b) return; tp = +b.dataset.t; document.querySelectorAll('#type button').forEach(x => x.classList.toggle('on', x === b)); draw(); };
+['s', 'f'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+const CX = 230, CY = 160, K = 5; // 5 px per cm
+function line(x1, y1, x2, y2, col, dash){ return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:${col}" stroke-width="1.8"${dash ? ' stroke-dasharray="5 4"' : ''}/>`; }
+function draw(){
+  const s = +$('s').value, f = tp * +$('f').value, h = 40;
+  const sp = Math.abs(s - f) < 1e-9 ? Infinity : s * f / (s - f), M = -sp / s, hi = M * h;
+  const ox = CX - s * K, ix = CX + sp * K;
+  let g = line(0, CY, 460, CY, 'var(--line-2)');
+  g += tp > 0 ? `<path d="M${CX} ${CY - 100} Q${CX + 16} ${CY} ${CX} ${CY + 100} Q${CX - 16} ${CY} ${CX} ${CY - 100}" style="fill:var(--a);stroke:var(--a)" fill-opacity=".15"/>` : `<path d="M${CX - 10} ${CY - 100} H${CX + 10} Q${CX} ${CY} ${CX + 10} ${CY + 100} H${CX - 10} Q${CX} ${CY} ${CX - 10} ${CY - 100}Z" style="fill:var(--a);stroke:var(--a)" fill-opacity=".15"/>`;
+  [[-1, 'F'], [1, 'F′']].forEach(([sg, n]) => { const x = CX + sg * Math.abs(f) * K; g += `<circle cx="${x}" cy="${CY}" r="3.5" style="fill:var(--ink)"/><text class="c" x="${x}" y="${CY + 18}" text-anchor="middle">${n}</text>`; });
+  // benda
+  g += `<line x1="${ox}" y1="${CY}" x2="${ox}" y2="${CY - h}" style="stroke:var(--k)" stroke-width="4"/><path d="M${ox} ${CY - h - 8} l-6 10 h12z" style="fill:var(--k)"/><text class="c" x="${ox}" y="${CY + 34}" text-anchor="middle" style="fill:var(--k)">benda</text>`;
+  const top = [ox, CY - h];
+  // sinar 1: sejajar lalu melalui F' (cembung) / seolah dari F (cekung)
+  const F2 = [CX + f * K, CY];
+  g += line(top[0], top[1], CX, top[1], 'var(--b)');
+  // cembung: sinar bias menuju F′; cekung: sinar bias menjauh seolah berasal dari F di depan lensa
+  const dir1 = tp > 0 ? [F2[0] - CX, F2[1] - top[1]] : [CX - F2[0], top[1] - F2[1]], ext = 600 / Math.hypot(...dir1);
+  g += line(CX, top[1], CX + dir1[0] * ext, top[1] + dir1[1] * ext, 'var(--b)');
+  if(tp < 0) g += line(CX, top[1], F2[0], F2[1], 'var(--b)', true);
+  // sinar 2: melalui pusat
+  const d2 = [CX - top[0], CY - top[1]], e2 = 600 / Math.hypot(...d2);
+  g += line(top[0], top[1], CX + d2[0] * e2, CY + d2[1] * e2, 'var(--ok)');
+  // perpanjangan sinar untuk bayangan maya
+  if(isFinite(sp) && sp < 0){ g += line(CX, top[1], ix, CY - hi, 'var(--b)', true) + line(CX, CY, ix, CY - hi, 'var(--ok)', true); }
+  // sinar 1 untuk cembung harus melewati F': garis dari (CX, top) ke arah F2 sudah benar; untuk cekung arah menjauh dari F (kiri), sudah ditangani
+  if(isFinite(sp) && Math.abs(hi) < 200) g += `<line x1="${ix}" y1="${CY}" x2="${ix}" y2="${CY - hi}" style="stroke:var(--r)" stroke-width="4"${sp < 0 ? ' stroke-dasharray="6 4"' : ''}/><text class="c" x="${ix}" y="${CY + (hi > 0 ? 34 : -hi + 16)}" text-anchor="middle" style="fill:var(--r)">bayangan</text>`;
+  svg.innerHTML = g;
+  $('sout').textContent = s; $('fout').textContent = Math.abs(f);
+  const sifat = !isFinite(sp) ? 'tidak terbentuk (sinar bias sejajar)' : `${sp > 0 ? 'nyata' : 'maya'}, ${M < 0 ? 'terbalik' : 'tegak'}, ${Math.abs(M) > 1.01 ? 'diperbesar' : Math.abs(M) < .99 ? 'diperkecil' : 'sama besar'}`;
+  $('read').innerHTML = `<div><span>Sifat bayangan</span><b>${sifat}</b></div><div><span>Jarak bayangan s′</span><b>${isFinite(sp) ? fmt(sp, 1) + ' cm' + (sp < 0 ? ' (di depan lensa)' : '') : '∞'}</b></div><div><span>Perbesaran</span><b>${isFinite(sp) ? fmt(Math.abs(M), 2) + ' kali' : '–'}</b></div>` +
+    `<div><span>Contoh penggunaan</span><b>${tp < 0 ? 'kacamata rabun jauh (miopi)' : s < Math.abs(f) ? 'lup (kaca pembesar)' : s > 2 * Math.abs(f) ? 'kamera, mata' : 'proyektor'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

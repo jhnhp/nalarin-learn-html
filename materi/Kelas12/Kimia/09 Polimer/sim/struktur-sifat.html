@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Struktur dan Sifat Polimer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Rantai polimer linear, bercabang, dan berikatan silang saat dipanaskan"></svg></div>
+  <div class="panel">
+    <div class="seg" id="j"><button data-j="l" class="on">Rantai lurus (HDPE)</button><button data-j="b">Bercabang (LDPE)</button><button data-j="x">Ikatan silang (bakelit)</button></div>
+    <div class="lab">Suhu pemanasan <b id="tv"></b></div><input type="range" id="t" min="20" max="300" step="5" value="20">
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let J = 'l', tick = 0;
+$('j').querySelectorAll('button').forEach(b => b.onclick = () => { $('j').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); J = b.dataset.j; draw(); });
+$('t').oninput = draw;
+const INFO = {
+  l: {nm: 'polietilena rantai lurus (HDPE)', leleh: 130, sifat: 'rantai tersusun rapat dan teratur, gaya antarrantai kuat: lebih keras, kuat, buram, titik leleh lebih tinggi', guna: 'botol sampo, pipa air, galon, ember', gol: 'termoplastik'},
+  b: {nm: 'polietilena bercabang (LDPE)', leleh: 110, sifat: 'cabang menghalangi rantai untuk berdekatan, gaya antarrantai lemah: lunak, lentur, bening, titik leleh lebih rendah', guna: 'kantong plastik, plastik pembungkus', gol: 'termoplastik'},
+  x: {nm: 'bakelit (berikatan silang)', leleh: 9999, sifat: 'rantai saling terhubung ikatan kovalen membentuk jaringan tiga dimensi: keras, kaku, tidak meleleh, terurai (gosong) pada suhu sangat tinggi', guna: 'sakelar, stopkontak, gagang panci', gol: 'termoset'},
+};
+function draw(){
+  const T = +$('t').value, I = INFO[J]; $('tv').textContent = T + ' °C';
+  const melt = T >= I.leleh, burn = J === 'x' && T > 280;
+  const jit = melt ? 6 : 1.5;
+  let s = '';
+  for(let r = 0; r < 6; r++){
+    let d = '';
+    const y0 = 62 + r * 38;
+    for(let i = 0; i <= 20; i++){ const x = 30 + i * 13, wob = Math.sin(tick / 6 + i + r) * jit + (melt ? Math.sin(i * 1.7 + r * 2 + tick / 10) * 10 : 0), yy = y0 + (J === 'l' ? 0 : Math.sin(i * .9 + r) * 6) + wob; d += (i ? 'L' : 'M') + x + ',' + yy.toFixed(1); if(J === 'b' && i % 5 === 2) s += `<line x1="${x}" y1="${yy}" x2="${x + 8}" y2="${yy - 16 + wob}" stroke="${burn ? '#424242' : '#1565c0'}" stroke-width="2.5"/>`; }
+    s += `<path d="${d}" fill="none" stroke="${burn ? '#424242' : '#1565c0'}" stroke-width="3"/>`;
+    if(J === 'x' && r < 5) for(let i = 2; i < 20; i += 5) s += `<line x1="${30 + i * 13}" y1="${y0}" x2="${30 + i * 13}" y2="${y0 + 38}" stroke="${burn ? '#424242' : '#e53935'}" stroke-width="2.5"/>`;
+  }
+  if(J === 'x') s += `<text class="s" x="300" y="90" fill="#e53935">merah: ikatan silang</text>`;
+  s += `<rect x="292" y="110" width="176" height="70" rx="10" fill="${melt ? '#fff3e0' : burn ? '#eceff1' : '#e3f2fd'}" stroke="#90a4ae"/><text class="c" x="380" y="140" text-anchor="middle" style="fill:#333">${burn ? 'gosong/terurai' : melt ? 'meleleh, dapat dicetak ulang' : J === 'x' ? 'tetap keras' : 'padat'}</text><text class="s" x="380" y="160" text-anchor="middle" fill="#555">${J === 'x' ? 'tidak dapat dilelehkan' : 'titik leleh ± ' + I.leleh + ' °C'}</text>`;
+  s += `<rect x="20" y="20" width="${Math.min(440, (T - 20) / 280 * 440)}" height="6" rx="3" fill="#ef5350" opacity=".6"/>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Polimer</span><b>${I.nm}</b></div><div><span>Golongan</span><b>${I.gol}</b></div><div><span>Sifat</span><b style="font-weight:600">${I.sifat}</b></div><div><span>Contoh penggunaan</span><b style="font-weight:600">${I.guna}</b></div><div><span>Daur ulang</span><b>${I.gol === 'termoplastik' ? 'dapat dilelehkan dan dicetak ulang' : 'tidak dapat didaur ulang dengan dilelehkan'}</b></div>`;
+}
+setInterval(() => { tick++; draw(); }, 80);
+draw();
+</script>
+</body>
+</html>

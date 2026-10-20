@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siklus Menstruasi dan Hormon</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Grafik kadar hormon, keadaan ovarium, dan tebal endometrium selama siklus menstruasi"></svg></div>
+  <div class="panel">
+    <div class="lab">Hari ke- <b id="dv"></b></div><input type="range" id="d" min="1" max="35" step="1" value="8">
+    <div class="lab">Panjang siklus <b id="lv"></b></div><input type="range" id="len" min="24" max="35" step="1" value="30">
+    <label class="chk"><input type="checkbox" id="preg"> Terjadi pembuahan dan kehamilan</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const g = (x, m, s) => Math.exp(-(((x - m) / s) ** 2));
+function H(day, len, preg){
+  const ov = len - 14; // ovulasi 14 hari sebelum menstruasi berikutnya
+  const x = day;
+  const after = x - ov;
+  let fsh = 0.35 + 0.35 * g(x, 3, 3) + 0.45 * g(x, ov, 0.9);
+  let lh = 0.2 + 1.0 * g(x, ov, 0.8);
+  let est = 0.15 + 0.75 * g(x, ov - 1.5, 3) + 0.35 * g(x, ov + 7, 3.5);
+  let pro = 0.05 + 0.85 * g(x, ov + 7, 3.5);
+  let hcg = 0;
+  if(preg && after > 7){ pro = Math.max(pro, 0.9); est = Math.max(est, 0.5); hcg = Math.min(1, (after - 7) / 6); fsh = 0.2; }
+  // tebal endometrium
+  let endo;
+  if(x <= 5) endo = 0.4 - 0.25 * (x - 1) / 4; else if(x <= ov) endo = 0.15 + 0.55 * (x - 5) / (ov - 5); else endo = 0.7 + 0.25 * Math.min(1, after / 7);
+  if(!preg && x > len - 1) endo = 0.2;
+  return {fsh, lh, est, pro, hcg, endo, ov};
+}
+function draw(){
+  const len = +$('len').value, preg = $('preg').checked;
+  $('d').max = preg ? 35 : len; let day = Math.min(+$('d').value, +$('d').max); $('d').value = day;
+  $('dv').textContent = day; $('lv').textContent = len + ' hari';
+  const gx = 40, gw = 420, tmax = preg ? 35 : len, X = d => gx + gw * (d - 1) / (tmax - 1);
+  let s = '';
+  // panel hormon hipofisis
+  const plot = (y0, hgt, keys, cols, title) => {
+    let o = `<text class="s" x="${gx}" y="${y0 - hgt - 4}" style="fill:var(--muted)">${title}</text><line x1="${gx}" y1="${y0}" x2="${gx + gw}" y2="${y0}" style="stroke:var(--line-2)"/>`;
+    keys.forEach((k, j) => { let p = ''; for(let i = 0; i <= 140; i++){ const d = 1 + (tmax - 1) * i / 140; p += (i ? 'L' : 'M') + X(d).toFixed(1) + ',' + (y0 - hgt * H(d, len, preg)[k]).toFixed(1); } o += `<path d="${p}" fill="none" stroke="${cols[j]}" stroke-width="2.2"/>`; });
+    return o;
+  };
+  s += plot(85, 60, ['fsh', 'lh'], ['#1e88e5', '#e53935'], 'hipofisis: FSH (biru), LH (merah)');
+  s += plot(175, 60, preg ? ['est', 'pro', 'hcg'] : ['est', 'pro'], ['#8e24aa', '#fb8c00', '#2e7d32'], 'ovarium: estrogen (ungu), progesteron (oranye)' + (preg ? ', hCG (hijau)' : ''));
+  // endometrium
+  let top = '', bot = '';
+  for(let i = 0; i <= 140; i++){ const d = 1 + (tmax - 1) * i / 140, e = H(d, len, preg).endo; top += `${X(d).toFixed(1)},${(270 - 55 * e).toFixed(1)} `; }
+  s += `<text class="s" x="${gx}" y="${205}" style="fill:var(--muted)">tebal endometrium (dinding rahim)</text><polygon points="${top}${X(tmax)},270 ${X(1)},270" fill="#f48fb1" fill-opacity=".7"/>`;
+  // fase
+  const ov = len - 14, phases = [[1, 5, 'menstruasi'], [5, ov, 'proliferasi'], [ov, preg ? tmax : len, preg ? 'kehamilan' : 'sekresi']];
+  phases.forEach(([a, b, n]) => { s += `<rect x="${X(a)}" y="282" width="${X(b) - X(a)}" height="16" fill="${n === 'menstruasi' ? '#e57373' : n === 'proliferasi' ? '#ce93d8' : n === 'kehamilan' ? '#a5d6a7' : '#ffcc80'}"/><text class="s" x="${(X(a) + X(b)) / 2}" y="294" text-anchor="middle" fill="#333">${n}</text>`; });
+  for(let d = 1; d <= tmax; d += (tmax > 30 ? 5 : 3)) s += `<text class="s" x="${X(d)}" y="312" text-anchor="middle" style="fill:var(--muted)">${d}</text>`;
+  s += `<line x1="${X(ov)}" y1="20" x2="${X(ov)}" y2="300" stroke="#e53935" stroke-dasharray="3 3"/><text class="s" x="${X(ov) + 3}" y="328" fill="#e53935">ovulasi (hari ke-${ov})</text>`;
+  s += `<line x1="${X(day)}" y1="20" x2="${X(day)}" y2="300" stroke="#000" stroke-width="2"/>`;
+  svg.innerHTML = s;
+  const h = H(day, len, preg);
+  const ova = day < ov ? 'folikel berkembang (menghasilkan estrogen)' : day === ov ? 'ovulasi: sel telur dilepas' : preg ? 'korpus luteum dipertahankan hCG' : day < len - 2 ? 'korpus luteum (menghasilkan progesteron)' : 'korpus luteum mengalami degenerasi';
+  const phase = day <= 5 ? 'menstruasi' : day < ov ? 'proliferasi (pra-ovulasi)' : day === ov ? 'ovulasi' : preg ? 'kehamilan' : 'sekresi (pasca-ovulasi)';
+  $('read').innerHTML = `<div><span>Fase</span><b>${phase}</b></div><div><span>Ovarium</span><b>${ova}</b></div><div><span>Hormon dominan</span><b>${h.lh > .8 ? 'lonjakan LH' : h.pro > h.est ? 'progesteron' : h.est > .5 ? 'estrogen' : 'FSH mulai naik'}</b></div><div><span>Menstruasi berikutnya</span><b>${preg ? 'tidak terjadi' : 'hari ke-1 siklus berikut (hari ke-' + (len + 1) + ')'}</b></div>`;
+  let ket = '';
+  if(day <= 5) ket = 'Kadar progesteron dan estrogen rendah sehingga endometrium meluruh dan keluar sebagai darah menstruasi. FSH mulai naik dan merangsang folikel baru berkembang.';
+  else if(day < ov) ket = 'Folikel yang berkembang menghasilkan estrogen yang menebalkan endometrium (proliferasi). Estrogen yang makin tinggi akhirnya memicu lonjakan LH.';
+  else if(day <= ov + 1) ket = 'Lonjakan LH memicu ovulasi: sel telur dilepas ke tuba falopi, dan sisa folikel berubah menjadi korpus luteum. Ovulasi terjadi ± 14 hari sebelum menstruasi berikutnya, berapa pun panjang siklusnya.';
+  else ket = preg ? 'Embrio yang tertanam menghasilkan hCG yang mempertahankan korpus luteum, sehingga progesteron tetap tinggi, endometrium tidak meluruh, dan menstruasi tidak terjadi. Kelak plasenta mengambil alih produksi progesteron.' : 'Korpus luteum menghasilkan progesteron yang membuat kelenjar endometrium berkelok dan banyak menyekresi (fase sekresi). Progesteron tinggi menghambat GnRH, FSH, dan LH. Jika tidak terjadi kehamilan, korpus luteum berdegenerasi, progesteron turun, dan endometrium meluruh.';
+  $('ket').textContent = ket;
+}
+['d', 'len', 'preg'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Efek Compton dan Gelombang de Broglie</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Foton sinar-X menumbuk elektron dan terhambur dengan panjang gelombang lebih besar"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="c" class="on">Efek Compton</button><button data-m="d">Gelombang de Broglie</button></div>
+    <div id="pc">
+      <div class="lab">Panjang gelombang foton datang λ <b id="lv"></b></div><input type="range" id="l" min="2" max="100" step="1" value="20">
+      <div class="lab">Sudut hambur θ <b id="av"></b></div><input type="range" id="a" min="0" max="180" step="5" value="60">
+    </div>
+    <div id="pd" hidden>
+      <div class="lab">Partikel</div><div class="seg" id="par"><button data-p="e" class="on">Elektron</button><button data-p="p">Proton</button><button data-p="b">Bola 50 g</button></div>
+      <div class="lab">Kelajuan v <b id="vv"></b></div><input type="range" id="v" min="2" max="7.4" step="0.05" value="6.3">
+    </div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const h = 6.63e-34, me = 9.1e-31, c = 3e8, lc = h / (me * c);
+let M = 'c', P = 'e';
+const segs = (id, key, cb) => $(id).querySelectorAll('button').forEach(b => b.onclick = () => { $(id).querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); cb(b.dataset[key]); draw(); });
+segs('mode', 'm', v => { M = v; $('pc').hidden = M !== 'c'; $('pd').hidden = M !== 'd'; });
+segs('par', 'p', v => P = v);
+['l', 'a', 'v'].forEach(i => $(i).oninput = draw);
+const sci = v => { const e = Math.floor(Math.log10(Math.abs(v))); return `${fmt(v / 10 ** e, 2)} × 10${String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`; };
+function wave(x1, y1, x2, y2, lam, col){
+  const L = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / L, uy = (y2 - y1) / L; let d = '';
+  for(let i = 0; i <= 200; i++){ const s = L * i / 200, a = 9 * Math.sin(2 * Math.PI * s / lam); d += (i ? 'L' : 'M') + (x1 + ux * s - uy * a).toFixed(1) + ',' + (y1 + uy * s + ux * a).toFixed(1); }
+  return `<path d="${d}" fill="none" stroke="${col}" stroke-width="2.2"/>`;
+}
+function draw(){
+  let s = '';
+  if(M === 'c'){
+    const l = +$('l').value * 1e-12, th = +$('a').value * Math.PI / 180, dl = lc * (1 - Math.cos(th)), l2 = l + dl;
+    $('lv').textContent = $('l').value + ' pm'; $('av').textContent = $('a').value + '°';
+    const cx = 230, cy = 150, sc = 1.2;
+    s += wave(20, cy, cx - 12, cy, 10 + l * 1e12 * sc / 4, '#7b1fa2') + `<text class="s" x="20" y="${cy - 18}" fill="#7b1fa2">foton datang λ</text>`;
+    s += `<circle cx="${cx}" cy="${cy}" r="9" fill="#1e88e5"/><text class="s" x="${cx - 14}" y="${cy + 24}" text-anchor="end" fill="#1e88e5">elektron</text>`;
+    const R = 190, ex = cx + R * Math.cos(th), ey = cy - R * Math.sin(th) * 0.75;
+    s += wave(cx + 12 * Math.cos(th), cy - 12 * Math.sin(th) * .75, ex, ey, 10 + l2 * 1e12 * sc / 4, '#e53935') + `<text class="s" x="${Math.min(440, ex)}" y="${ey - 14}" text-anchor="middle" fill="#e53935">foton terhambur λ'</text>`;
+    // arah elektron terpental (kekekalan momentum)
+    const px = 1 / l - Math.cos(th) / l2, py = Math.sin(th) / l2, phi = Math.atan2(py, px);
+    s += `<line x1="${cx}" y1="${cy}" x2="${cx + 90 * Math.cos(phi)}" y2="${cy + 90 * Math.sin(phi) * .75}" stroke="#1e88e5" stroke-width="2.5" stroke-dasharray="6 3" marker-end="url(#m)"/><defs><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1e88e5"/></marker></defs>`;
+    s += `<line x1="${cx}" y1="${cy}" x2="${cx + 120}" y2="${cy}" stroke="#aaa" stroke-dasharray="3 3"/><text class="s" x="${cx + 40}" y="${cy - 6 - 10 * Math.sin(th / 2)}" fill="#555">θ</text>`;
+    svg.innerHTML = s;
+    const E1 = h * c / l / 1.602e-16, E2 = h * c / l2 / 1.602e-16;
+    $('read').innerHTML = `<div><span>Δλ = (h/m<sub>e</sub>c)(1 − cos θ)</span><b>${fmt(dl * 1e12, 3)} pm</b></div><div><span>λ' terhambur</span><b>${fmt(l2 * 1e12, 3)} pm</b></div><div><span>Energi foton datang → terhambur</span><b>${fmt(E1, 2)} → ${fmt(E2, 2)} keV</b></div><div><span>Energi kinetik elektron</span><b>${fmt(E1 - E2, 3)} keV</b></div>`;
+  } else {
+    const ev = +$('v').value, m = P === 'e' ? me : P === 'p' ? 1.67e-27 : 0.05;
+    const vv = P === 'b' ? 10 ** (ev - 5) : 10 ** ev; // bola: 0,001–25 m/s
+    $('vv').textContent = sci(vv) + ' m/s';
+    const p = m * vv, lam = h / p;
+    const lpx = Math.max(6, Math.min(200, Math.log10(lam / 1e-13) * 30));
+    s += wave(30, 150, 450, 150, lpx, P === 'b' ? '#90a4ae' : '#1565c0');
+    s += `<circle cx="30" cy="150" r="${P === 'b' ? 16 : P === 'p' ? 9 : 6}" fill="${P === 'e' ? '#1e88e5' : P === 'p' ? '#e53935' : '#8d6e63'}"/>`;
+    s += `<text class="c" x="30" y="40" style="fill:var(--ink)">λ = h/p = h/(mv) = ${sci(lam)} m</text><text class="s" x="30" y="60" fill="#555">(gelombang digambar secara skematis; makin pendek λ, makin rapat)</text>`;
+    const cmp = lam > 1e-11 ? 'seorde dengan jarak antaratom kristal (~10⁻¹⁰ m): difraksi dapat diamati, seperti percobaan Davisson–Germer' : lam > 1e-15 ? 'jauh lebih kecil dari jarak antaratom; difraksi sulit diamati' : 'sangat kecil dibanding apa pun yang dapat dipakai sebagai celah: sifat gelombangnya tidak teramati';
+    s += `<text class="s" x="30" y="250" fill="#555">${cmp.length > 80 ? cmp.slice(0, cmp.lastIndexOf(' ', 80)) : cmp}</text><text class="s" x="30" y="266" fill="#555">${cmp.length > 80 ? cmp.slice(cmp.lastIndexOf(' ', 80) + 1) : ''}</text>`;
+    svg.innerHTML = s;
+    $('read').innerHTML = `<div><span>Massa</span><b>${sci(m)} kg</b></div><div><span>Momentum p = mv</span><b>${sci(p)} kg m/s</b></div><div><span>Panjang gelombang de Broglie</span><b>${sci(lam)} m</b></div>`;
+  }
+}
+draw();
+</script>
+</body>
+</html>

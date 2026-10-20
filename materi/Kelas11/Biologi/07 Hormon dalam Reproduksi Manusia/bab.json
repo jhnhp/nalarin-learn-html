@@ -1,56 +1,238 @@
 {
   "title": "Hormon dalam Reproduksi Manusia",
-  "summary": "Ringkasan bab Hormon dalam Reproduksi Manusia akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Hormon dan umpan balik, pengaturan hormon reproduksi laki-laki dan perempuan, struktur organ reproduksi, siklus menstruasi, fertilisasi, nidasi, plasenta, serta gangguan sistem reproduksi.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Hormon dalam Reproduksi Manusia",
+      "id": "hormon",
+      "title": "Hormon dan cara kerjanya",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Mekanisme Kerja Hormon, Hormon Reproduksi, Struktur Organ Reproduksi, Menstruasi, Kehamilan, dan Gangguannya</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p><b>Hormon</b> adalah zat kimia yang dihasilkan <b>kelenjar endokrin</b> (kelenjar buntu, tanpa saluran), diangkut darah, dan bekerja pada <b>sel target</b> yang memiliki <b>reseptor</b> khusus untuk hormon itu. Hormon diperlukan dalam jumlah sedikit, tetapi pengaruhnya luas: mengatur pertumbuhan, metabolisme, reproduksi, respons terhadap stres, dan keseimbangan cairan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Kelenjar</th><th>Contoh hormon</th><th>Fungsi</th></tr><tr><td>Hipotalamus</td><td>GnRH</td><td>merangsang hipofisis melepas FSH dan LH</td></tr><tr><td>Hipofisis anterior</td><td>FSH, LH, hormon pertumbuhan, TSH</td><td>mengatur gonad, pertumbuhan, dan kelenjar tiroid</td></tr><tr><td>Tiroid</td><td>tiroksin</td><td>mengatur laju metabolisme</td></tr><tr><td>Pankreas (pulau Langerhans)</td><td>insulin, glukagon</td><td>mengatur kadar gula darah</td></tr><tr><td>Testis</td><td>testosteron</td><td>spermatogenesis, ciri kelamin sekunder laki-laki</td></tr><tr><td>Ovarium</td><td>estrogen, progesteron, relaksin</td><td>siklus menstruasi, kehamilan, ciri kelamin sekunder perempuan</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Kadar hormon dijaga dengan <b>umpan balik</b>. Pada <b>umpan balik negatif</b>, hormon hasil akhir menghambat kelenjar di atasnya sehingga kadarnya tidak berlebihan. Pada <b>umpan balik positif</b>, hormon justru memperkuat pelepasan hormon lain, misalnya estrogen tinggi menjelang ovulasi memicu lonjakan LH.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Pubertas</b> dimulai ketika hipotalamus meningkatkan sekresi <b>GnRH</b>. Pada laki-laki muncul ciri kelamin sekunder akibat testosteron: suara membesar, jakun, kumis dan janggut, rambut kemaluan, otot membesar. Pada perempuan akibat estrogen dan progesteron: payudara membesar, pinggul melebar, rambut kemaluan, dan menstruasi.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Hormon dapat memengaruhi sel tertentu saja karena ....",
+          "options": {
+            "A": "hormon dialirkan lewat saluran khusus ke sel itu",
+            "B": "hanya sel target memiliki reseptor yang cocok",
+            "C": "hormon dihasilkan di dalam sel target",
+            "D": "hormon hanya beredar di jaringan saraf"
+          },
+          "answer": "B",
+          "hint": "Hormon beredar ke seluruh tubuh lewat darah.",
+          "explanation": "Walau beredar ke seluruh tubuh, hormon hanya bekerja pada sel yang mempunyai reseptornya."
+        }
+      ]
+    },
+    {
+      "id": "hormon-reproduksi",
+      "title": "Pengaturan hormon reproduksi",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Laki-laki</b>: hipotalamus melepas GnRH → hipofisis anterior melepas <b>LH</b> dan <b>FSH</b>. LH merangsang <b>sel Leydig</b> di testis menghasilkan <b>testosteron</b>. FSH bersama testosteron merangsang <b>sel Sertoli</b> di tubulus seminiferus mendukung pembentukan sperma (spermatogenesis). Testosteron menghambat GnRH dan LH, sedangkan sel Sertoli melepas <b>inhibin</b> (hormon penghambat) yang menekan FSH.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/umpan-balik.html",
+          "title": "Umpan balik hormon reproduksi laki-laki",
+          "height": 520,
+          "caption": "Aktifkan satu gangguan setiap kali. Mengapa suntikan testosteron dari luar justru menurunkan produksi sperma?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Hormon</th><th>Asal</th><th>Fungsi pada perempuan</th><th>Fungsi pada laki-laki</th></tr><tr><td>FSH</td><td>hipofisis anterior</td><td>pertumbuhan folikel dan sekresi estrogen</td><td>pembentukan sperma</td></tr><tr><td>LH</td><td>hipofisis anterior</td><td>ovulasi dan pembentukan korpus luteum</td><td>sekresi testosteron</td></tr><tr><td>Estrogen</td><td>folikel ovarium</td><td>penebalan endometrium, ciri kelamin sekunder</td><td>—</td></tr><tr><td>Progesteron</td><td>korpus luteum, plasenta</td><td>mempertahankan endometrium dan kehamilan</td><td>—</td></tr><tr><td>Relaksin</td><td>ovarium dan plasenta</td><td>melenturkan tulang rawan panggul, membantu melebarkan leher rahim saat persalinan</td><td>—</td></tr><tr><td>Testosteron</td><td>testis</td><td>—</td><td>pembentukan sperma, ciri kelamin sekunder</td></tr></table>"
+        },
+        {
+          "type": "check",
+          "question": "Pada laki-laki, hormon dari hipofisis anterior yang merangsang sel Leydig menghasilkan testosteron adalah ....",
+          "options": {
+            "A": "FSH",
+            "B": "LH",
+            "C": "GnRH",
+            "D": "inhibin"
+          },
+          "answer": "B",
+          "hint": "Sel Leydig dirangsang hormon yang sama dengan pemicu ovulasi pada perempuan.",
+          "explanation": "LH merangsang sel Leydig; FSH bekerja pada sel Sertoli."
+        }
+      ]
+    },
+    {
+      "id": "organ-reproduksi",
+      "title": "Struktur dan fungsi organ reproduksi",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Organ reproduksi laki-laki</b>:</p><ul><li><b>Skrotum</b>: kantung testis; ototnya mengatur suhu testis sedikit di bawah suhu tubuh.</li><li><b>Testis</b>: berisi tubulus seminiferus tempat spermatogenesis, serta sel Leydig penghasil testosteron.</li><li>Saluran: <b>tubulus seminiferus → epididimis</b> (pematangan dan penyimpanan sperma) <b>→ saluran deferens (vas deferens) → saluran ejakulasi → uretra</b>.</li><li>Kelenjar tambahan: <b>vesikula seminalis</b> (cairan kental, basa, kaya fruktosa sebagai energi sperma), <b>prostat</b> (cairan basa penetral asam), dan <b>bulbouretra/Cowper</b> (lendir pelumas penetral sisa urin).</li></ul><p><b>Sperma</b> terdiri atas kepala (inti dan <b>akrosom</b> berisi enzim hialuronidase dan proteinase untuk menembus sel telur), bagian tengah (<b>mitokondria</b> penghasil energi), dan ekor (alat gerak).</p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "title": "Catatan tentang umur sperma",
+          "html": "<p>Buku menyebut sperma dapat hidup 18 jam di saluran reproduksi perempuan. Penelitian menunjukkan sperma dapat bertahan hidup sampai sekitar 3–5 hari, sedangkan sel telur hanya dapat dibuahi sekitar 12–24 jam setelah ovulasi.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Organ reproduksi perempuan</b>:</p><ul><li><b>Ovarium</b>: menghasilkan sel telur dan hormon estrogen, progesteron, dan relaksin.</li><li><b>Tuba falopi (oviduk)</b>: corong <b>infundibulum</b> menangkap sel telur; bagian <b>ampula</b> adalah tempat pembuahan.</li><li><b>Uterus (rahim)</b>: tempat janin berkembang; dindingnya terdiri atas perimetrium (luar), miometrium (otot, berkontraksi saat persalinan), dan <b>endometrium</b> (lapisan dalam yang menebal setiap siklus).</li><li><b>Serviks</b> (leher rahim) dan <b>vagina</b> (jalan lahir dan keluarnya darah menstruasi).</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Urutan saluran yang dilalui sperma setelah keluar dari testis adalah ....",
+          "options": {
+            "A": "uretra → vas deferens → epididimis",
+            "B": "epididimis → vas deferens → saluran ejakulasi → uretra",
+            "C": "vas deferens → epididimis → uretra",
+            "D": "epididimis → uretra → vas deferens"
+          },
+          "answer": "B",
+          "hint": "Sperma dimatangkan dulu sebelum diangkut.",
+          "explanation": "Dari tubulus seminiferus sperma ke epididimis, lalu vas deferens, saluran ejakulasi, dan uretra."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "menstruasi-kehamilan",
+      "title": "Siklus menstruasi dan kehamilan",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
+          "type": "text",
+          "html": "<p>Siklus menstruasi (rata-rata 28 hari, normal 21–35 hari) melibatkan <b>siklus ovarium</b> (fase folikel → ovulasi → fase luteal) dan <b>siklus uterus</b> (menstruasi → proliferasi → sekresi).</p><table><tr><th>Fase</th><th>Hari (siklus 28 hari)</th><th>Peristiwa</th></tr><tr><td>Menstruasi</td><td>1–5</td><td>progesteron dan estrogen rendah; endometrium meluruh</td></tr><tr><td>Proliferasi</td><td>5–14</td><td>FSH menumbuhkan folikel; <b>estrogen</b> menebalkan endometrium</td></tr><tr><td>Ovulasi</td><td>± 14</td><td>estrogen tinggi memicu <b>lonjakan LH</b>; sel telur dilepas; sisa folikel menjadi korpus luteum</td></tr><tr><td>Sekresi</td><td>14–28</td><td>korpus luteum menghasilkan <b>progesteron</b>; kelenjar endometrium berkelok dan menyekresi</td></tr></table>"
         },
         {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "type": "sim",
+          "src": "sim/siklus-menstruasi.html",
+          "title": "Siklus menstruasi dan hormon",
+          "height": 560,
+          "caption": "Geser hari dari 1 sampai akhir siklus. Lalu ubah panjang siklus: fase mana yang berubah lamanya? Terakhir, centang kehamilan dan lihat progesteron."
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "variant": "tips",
+          "title": "Ovulasi dihitung mundur",
+          "html": "<p>Fase luteal (setelah ovulasi) relatif tetap ± 14 hari. Jadi ovulasi terjadi ± 14 hari <b>sebelum</b> menstruasi berikutnya; perbedaan panjang siklus terutama karena fase folikel.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Siklus menstruasi seorang perempuan teratur 32 hari. Hari pertama menstruasinya 3 Juni. Kapan perkiraan menstruasi berikutnya dan perkiraan ovulasinya?</p>",
+          "steps": [
+            "Menstruasi berikutnya: 3 Juni + 32 hari = 5 Juli.",
+            "Ovulasi ± 14 hari sebelumnya: 5 Juli − 14 hari = 21 Juni (hari ke-19 siklus)."
+          ],
+          "answer": "5 Juli; ± 21 Juni"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku menulis “jika tidak terjadi kehamilan, korpus luteum akan berdegradasi pada hari ke 12”. Maksudnya sekitar 10–12 hari <b>setelah ovulasi</b> (sekitar hari ke-24 sampai ke-26 pada siklus 28 hari), bukan hari ke-12 siklus.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Kehamilan"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Fertilisasi</b> (pembuahan) umumnya terjadi di <b>ampula tuba falopi</b>: satu sperma menembus sel telur dengan bantuan enzim akrosom, membentuk zigot. Zigot membelah sambil bergerak ke rahim, lalu menempel dan tertanam di <b>endometrium</b> (<b>nidasi/implantasi</b>), biasanya di daerah fundus. Embrio menghasilkan <b>hCG</b> yang mempertahankan korpus luteum, sehingga progesteron tetap tinggi dan menstruasi tidak terjadi (hCG inilah yang dideteksi alat tes kehamilan).</p><p><b>Plasenta</b> menyalurkan O₂, glukosa, asam amino, vitamin, mineral, dan antibodi IgG dari ibu ke janin; membuang CO₂ dan sisa metabolisme janin ke darah ibu; menghasilkan hormon (hCG, progesteron, estrogen, relaksin); dan menjadi penghalang sebagian zat berbahaya. Darah ibu dan janin tidak bercampur langsung.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Menstruasi tidak terjadi selama kehamilan karena ....",
+          "options": {
+            "A": "FSH meningkat tajam",
+            "B": "kadar progesteron tetap tinggi",
+            "C": "estrogen tidak dihasilkan",
+            "D": "LH melonjak terus-menerus"
+          },
+          "answer": "B",
+          "hint": "Hormon apa yang mempertahankan endometrium?",
+          "explanation": "hCG mempertahankan korpus luteum, kemudian plasenta, sehingga progesteron tetap tinggi dan endometrium tidak meluruh."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "gangguan",
+      "title": "Gangguan dan penyakit sistem reproduksi",
+      "kind": "artikel",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<table><tr><th>Gangguan</th><th>Keterangan</th></tr><tr><td>Sifilis</td><td>bakteri spiral <i>Treponema pallidum</i>; menular lewat hubungan seksual, luka, transfusi, dan dari ibu ke janin</td></tr><tr><td>Gonore</td><td>bakteri <i>Neisseria gonorrhoeae</i>; radang selaput lendir uretra dan serviks, nyeri saat buang air kecil, keluar nanah; dapat menyumbat tuba falopi sehingga perempuan sulit hamil</td></tr><tr><td>HIV/AIDS</td><td>virus yang menyerang limfosit T (lihat Bab 5)</td></tr><tr><td>Infertilitas</td><td>tidak memperoleh keturunan setelah satu tahun menikah tanpa kontrasepsi; dapat disebabkan pihak laki-laki (sperma sedikit/tidak normal), perempuan (gangguan ovulasi, tuba tersumbat, kelainan rahim), atau keduanya</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Gangguan menstruasi</th><th>Ciri</th></tr><tr><td>Amenorea primer</td><td>belum pernah menstruasi sampai usia 16 tahun</td></tr><tr><td>Amenorea sekunder</td><td>pernah menstruasi, lalu berhenti 3 bulan atau lebih padahal tidak hamil</td></tr><tr><td>Dismenorea</td><td>nyeri saat menstruasi, terutama hari pertama dan kedua</td></tr><tr><td>Menoragia</td><td>darah menstruasi sangat banyak atau berlangsung lama (lebih dari 7 hari)</td></tr><tr><td>Oligomenorea</td><td>jarang menstruasi: siklus lebih dari 35 hari atau kurang dari 8–9 kali setahun</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Kesehatan reproduksi remaja",
+          "html": "<p>Kehamilan pada usia di bawah 20 tahun meningkatkan risiko kelahiran prematur, bayi berat lahir rendah, perdarahan persalinan, dan kematian ibu maupun bayi. Menunda pernikahan, menjaga kebersihan organ reproduksi, dan menghindari perilaku seksual berisiko adalah upaya pencegahan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Kontrasepsi mantap",
+          "html": "<p><b>Vasektomi</b> memotong dan mengikat saluran deferens sehingga sperma tidak ikut keluar; <b>tubektomi</b> memotong dan mengikat tuba falopi sehingga sel telur dan sperma tidak bertemu. Keduanya tidak menghentikan produksi hormon kelamin.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Seorang siswi berusia 17 tahun belum pernah mengalami menstruasi sama sekali. Kondisi ini disebut ....",
+          "options": {
+            "A": "amenorea sekunder",
+            "B": "amenorea primer",
+            "C": "dismenorea",
+            "D": "oligomenorea"
+          },
+          "answer": "B",
+          "hint": "Belum pernah sama sekali.",
+          "explanation": "Amenorea primer: belum pernah menstruasi sampai usia 16 tahun."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menukar fungsi FSH dan LH: lonjakan LH (bukan FSH) memicu ovulasi.</li><li>Menyebut estrogen paling berperan pada fase sekresi; fase sekresi didominasi progesteron.</li><li>Menyebut pembuahan terjadi di rahim; pembuahan terjadi di tuba falopi, rahim tempat nidasi.</li><li>Menganggap darah ibu dan janin bercampur di plasenta.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 7 Hormon dalam Reproduksi Manusia.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang mekanisme kerja hormon, hormon reproduksi, struktur organ reproduksi, menstruasi, kehamilan, dan gangguannya. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

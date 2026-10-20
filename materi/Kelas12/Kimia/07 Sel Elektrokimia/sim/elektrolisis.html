@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sel Elektrolisis dan Hukum Faraday</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Sel elektrolisis dengan hasil di katode dan anode"></svg></div>
+  <div class="panel">
+    <div class="lab">Elektrolit</div>
+    <select id="e">
+      <option value="0">Larutan CuSO₄</option>
+      <option value="1">Larutan NaCl</option>
+      <option value="2">Larutan KI</option>
+      <option value="3">Larutan Na₂SO₄</option>
+      <option value="4">Larutan AgNO₃</option>
+      <option value="5">Lelehan NaCl</option>
+    </select>
+    <div class="lab">Elektrode</div><div class="seg" id="el"><button data-v="inert" class="on">Inert (C/Pt)</button><button data-v="aktif">Logam sejenis (Cu/Ag)</button></div>
+    <div class="lab">Arus listrik <b id="iv"></b></div><input type="range" id="i" min="0.5" max="10" step="0.5" value="2">
+    <div class="lab">Waktu <b id="tv"></b></div><input type="range" id="t" min="1" max="120" step="1" value="30">
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let EL = 'inert', tick = 0;
+$('el').querySelectorAll('button').forEach(b => b.onclick = () => { $('el').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); EL = b.dataset.v; draw(); });
+// katode: [reaksi, produk, jenis (logam/gas), massa molar atau 0, e per mol produk, sifat larutan sekitar]
+const D = [
+  {n: 'CuSO₄(aq)', k: ['Cu²⁺ + 2e → Cu', 'Cu', 'logam', 63.5, 2], a: ['2H₂O → O₂ + 4H⁺ + 4e', 'O₂', 'gas', 32, 4], aAkt: 'Cu', ket: 'SO₄²⁻ tidak dioksidasi; air yang dioksidasi. Larutan di sekitar anode menjadi asam.', col: '#64b5f6'},
+  {n: 'NaCl(aq)', k: ['2H₂O + 2e → H₂ + 2OH⁻', 'H₂', 'gas', 2, 2], a: ['2Cl⁻ → Cl₂ + 2e', 'Cl₂', 'gas', 71, 2], ket: 'Na⁺ (E° sangat negatif) tidak direduksi; air yang direduksi sehingga sekitar katode basa.', col: '#e3f2fd'},
+  {n: 'KI(aq)', k: ['2H₂O + 2e → H₂ + 2OH⁻', 'H₂', 'gas', 2, 2], a: ['2I⁻ → I₂ + 2e', 'I₂', 'larutan cokelat', 254, 2], ket: 'Di anode terbentuk I₂ (larutan menjadi cokelat).', col: '#e3f2fd'},
+  {n: 'Na₂SO₄(aq)', k: ['2H₂O + 2e → H₂ + 2OH⁻', 'H₂', 'gas', 2, 2], a: ['2H₂O → O₂ + 4H⁺ + 4e', 'O₂', 'gas', 32, 4], ket: 'Hanya air yang terelektrolisis: volume H₂ = 2 × volume O₂.', col: '#e3f2fd'},
+  {n: 'AgNO₃(aq)', k: ['Ag⁺ + e → Ag', 'Ag', 'logam', 108, 1], a: ['2H₂O → O₂ + 4H⁺ + 4e', 'O₂', 'gas', 32, 4], aAkt: 'Ag', ket: 'Ion Ag⁺ mudah direduksi; NO₃⁻ tidak dioksidasi.', col: '#f5f5f5'},
+  {n: 'NaCl(l)', k: ['Na⁺ + e → Na', 'Na', 'logam cair', 23, 1], a: ['2Cl⁻ → Cl₂ + 2e', 'Cl₂', 'gas', 71, 2], ket: 'Tanpa air, Na⁺ yang direduksi. Cara ini dipakai untuk membuat logam natrium.', col: '#fff3e0'},
+];
+const F = 96500;
+function draw(){
+  const d = D[+$('e').value], I = +$('i').value, tm = +$('t').value;
+  $('iv').textContent = fmt(I, 1) + ' A'; $('tv').textContent = tm + ' menit';
+  const akt = EL === 'aktif' && d.aAkt;
+  const an = akt ? [`${d.aAkt} → ${d.aAkt}${d.aAkt === 'Cu' ? '²⁺ + 2e' : '⁺ + e'}`, `${d.aAkt} larut`, 'anode menipis', d.aAkt === 'Cu' ? 63.5 : 108, d.aAkt === 'Cu' ? 2 : 1] : d.a;
+  const Q = I * tm * 60, ne = Q / F;
+  const nk = ne / d.k[4], na = ne / an[4];
+  const out = (p, n) => p[2].startsWith('logam') || p[2].startsWith('anode') || p[2].startsWith('larutan') ? `${fmt(n * p[3], 3)} g` : `${fmt(n * 22.4, 3)} L (STP)`;
+  let s = '';
+  s += `<line x1="150" y1="40" x2="215" y2="40" stroke="#555" stroke-width="2"/><line x1="265" y1="40" x2="330" y2="40" stroke="#555" stroke-width="2"/><rect x="215" y="26" width="10" height="28" fill="#555"/><rect x="232" y="32" width="4" height="16" fill="#555"/><rect x="243" y="26" width="10" height="28" fill="#555"/><text class="s" x="240" y="18" text-anchor="middle" fill="#555">sumber arus searah</text><text class="c" x="205" y="64" fill="#1565c0">−</text><text class="c" x="262" y="64" fill="#c62828">+</text>`;
+  s += `<line x1="150" y1="40" x2="150" y2="90" stroke="#555" stroke-width="2"/><line x1="330" y1="40" x2="330" y2="90" stroke="#555" stroke-width="2"/>`;
+  s += `<path d="M90,100 v170 q0,14 14,14 h272 q14,0 14,-14 v-170" fill="none" stroke="#90a4ae" stroke-width="3"/><rect x="94" y="130" width="292" height="150" rx="12" fill="${d.col}" fill-opacity=".55"/>`;
+  if(d.a[1] === 'I₂' && !akt) s += `<rect x="290" y="130" width="96" height="150" fill="#8d6e63" fill-opacity="${Math.min(.5, tm / 200)}"/>`;
+  const thick = d.k[2].startsWith('logam') ? Math.min(8, tm / 15 * I / 2) : 0, thin = akt ? Math.min(6, tm / 20 * I / 2) : 0;
+  s += `<rect x="${142 - thick / 2}" y="90" width="${16 + thick}" height="170" fill="${EL === 'aktif' && d.aAkt ? (d.aAkt === 'Cu' ? '#d84315' : '#e0e0e0') : '#424242'}" stroke="#212121"/>`;
+  if(thick) s += `<rect x="${142 - thick / 2}" y="140" width="${16 + thick}" height="120" fill="${d.k[1] === 'Cu' ? '#d84315' : d.k[1] === 'Ag' ? '#e0e0e0' : '#bdbdbd'}" opacity=".85"/>`;
+  s += `<rect x="${322 + thin / 2}" y="90" width="${16 - thin}" height="170" fill="${akt ? (d.aAkt === 'Cu' ? '#d84315' : '#e0e0e0') : '#424242'}" stroke="#212121"/>`;
+  s += `<text class="c" x="150" y="300" text-anchor="middle" fill="#1565c0">KATODE (−) reduksi</text><text class="c" x="330" y="300" text-anchor="middle" fill="#c62828">ANODE (+) oksidasi</text>`;
+  const gasK = d.k[2] === 'gas', gasA = !akt && an[2] === 'gas';
+  for(let k = 0; k < 8; k++){ const y = 255 - ((tick * 3 + k * 17) % 120); if(gasK) s += `<circle cx="${150 + (k % 3 - 1) * 6}" cy="${y}" r="${an[4] === 4 && d.k[4] === 2 ? 3 : 3}" fill="none" stroke="#1565c0"/>`; if(gasA && k % (an[4] / 2 > 1 ? 2 : 1) === 0) s += `<circle cx="${330 + (k % 3 - 1) * 6}" cy="${y}" r="3" fill="none" stroke="#c62828"/>`; }
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Katode</span><b>${d.k[0]}</b></div><div><span>Anode</span><b>${an[0]}</b></div><div><span>Muatan Q = I·t</span><b>${fmt(Q, 0)} C = ${fmt(ne, 4)} mol e</b></div><div><span>Hasil di katode</span><b>${d.k[1]}: ${out(d.k, nk)}</b></div><div><span>Hasil di anode</span><b>${akt ? `${d.aAkt} larut ${fmt(na * an[3], 3)} g` : `${an[1]}: ${out(an, na)}`}</b></div><div><span>Catatan</span><b style="font-weight:600">${EL === 'aktif' && !d.aAkt ? 'Pilihan elektrode logam sejenis hanya untuk CuSO₄ dan AgNO₃; di sini elektrode dianggap inert. ' + d.ket : akt ? 'Anode logam aktif ikut teroksidasi (bukan air), sehingga konsentrasi ion logam dalam larutan tetap. Inilah prinsip penyepuhan dan pemurnian logam.' : d.ket}</b></div>`;
+}
+['e', 'i', 't'].forEach(i => $(i).oninput = draw);
+setInterval(() => { tick++; draw(); }, 80);
+draw();
+</script>
+</body>
+</html>

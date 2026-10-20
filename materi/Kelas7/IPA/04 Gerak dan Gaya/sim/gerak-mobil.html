@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerak Lurus dan Grafiknya</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:11.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 380" role="img" aria-label="Mobil bergerak dan grafik jarak-waktu serta kelajuan-waktu"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="glb" class="on">Kelajuan tetap</button><button data-m="cepat">Dipercepat</button><button data-m="lambat">Diperlambat</button></div>
+    <div><div class="lab"><span id="vlab">Kelajuan awal (m/s)</span><b id="vout"></b></div><input type="range" id="v" min="0" max="10" step="1" value="5"></div>
+    <div id="abox"><div class="lab"><span>Percepatan (m/s²)</span><b id="aout"></b></div><input type="range" id="a" min="0.5" max="3" step="0.5" value="1"></div>
+    <div class="row"><button class="btn primary" id="go">Jalankan ▶</button><button class="btn" id="reset">Ulang</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'glb', t = 0, run = false, last = 0;
+const TMAX = 10;
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); if(mode === 'lambat' && +$('v').value < 6) $('v').value = 10; t = 0; run = false; draw(); };
+['v', 'a'].forEach(id => $(id).oninput = () => { t = 0; run = false; draw(); });
+$('go').onclick = () => { if(t >= TMAX - 1e-9) t = 0; run = true; last = performance.now(); requestAnimationFrame(tick); };
+$('reset').onclick = () => { t = 0; run = false; draw(); };
+Sim.onTheme(draw);
+function acc(){ return mode === 'glb' ? 0 : mode === 'cepat' ? +$('a').value : -$('a').value; }
+function state(tt){ const v0 = +$('v').value, a = acc(); let ts = a < 0 ? Math.min(tt, v0 / -a) : tt; const v = v0 + a * ts, s = v0 * ts + .5 * a * ts * ts; return {v: Math.max(0, v), s}; }
+function tick(now){ if(!run) return; t = Math.min(TMAX, t + (now - last) / 1000); last = now; draw(); if(t < TMAX) requestAnimationFrame(tick); else run = false; }
+function graph(x0, y0, w, h, f, ymax, lab, col, unit){
+  let s = `<line x1="${x0}" y1="${y0 + h}" x2="${x0 + w}" y2="${y0 + h}" style="stroke:var(--ink)"/><line x1="${x0}" y1="${y0}" x2="${x0}" y2="${y0 + h}" style="stroke:var(--ink)"/>`;
+  s += `<text class="c" x="${x0 + 4}" y="${y0 - 4}" style="fill:var(--muted)">${lab}</text><text class="c" x="${x0 + w}" y="${y0 + h + 14}" text-anchor="end" style="fill:var(--muted)">t (s)</text>`;
+  s += `<text class="c" x="${x0 - 4}" y="${y0 + 8}" text-anchor="end" style="fill:var(--muted)">${fmt(ymax, 0)}</text>`;
+  let d = ''; for(let k = 0; k <= 100; k++){ const tt = k / 100 * TMAX; d += (k ? 'L' : 'M') + (x0 + tt / TMAX * w).toFixed(1) + ',' + (y0 + h - f(tt) / ymax * h).toFixed(1); }
+  s += `<path d="${d}" fill="none" style="stroke:${col}" stroke-width="1.5" class="dash"/>`;
+  d = ''; for(let k = 0; k <= 100; k++){ const tt = k / 100 * t; d += (k ? 'L' : 'M') + (x0 + tt / TMAX * w).toFixed(1) + ',' + (y0 + h - f(tt) / ymax * h).toFixed(1); }
+  return s + `<path d="${d}" fill="none" style="stroke:${col}" stroke-width="3"/>`;
+}
+function draw(){
+  $('abox').hidden = mode === 'glb'; $('vout').textContent = $('v').value; $('aout').textContent = $('a').value;
+  const smax = Math.max(10, state(TMAX).s), vmax = Math.max(4, ...[0, 2, 4, 6, 8, 10].map(k => state(k).v)) * 1.1;
+  const st = state(t), X = 30 + st.s / smax * 380;
+  let s = `<line x1="20" y1="110" x2="440" y2="110" style="stroke:var(--ink)" stroke-width="2"/>`;
+  for(let k = 0; k <= 10; k++){ const x = 30 + k / 10 * 380; s += `<line x1="${x}" y1="106" x2="${x}" y2="114" style="stroke:var(--ink)"/><text class="c" x="${x}" y="128" text-anchor="middle" style="fill:var(--muted)">${fmt(smax * k / 10, 0)}</text>`; }
+  s += `<text class="c" x="440" y="145" text-anchor="end" style="fill:var(--muted)">posisi (m)</text>`;
+  s += `<g transform="translate(${X - 24},76)"><rect x="0" y="6" width="48" height="18" rx="6" style="fill:var(--a)"/><rect x="10" y="0" width="26" height="12" rx="4" style="fill:var(--a)"/><circle cx="12" cy="26" r="6" style="fill:var(--ink)"/><circle cx="36" cy="26" r="6" style="fill:var(--ink)"/></g>`;
+  // jejak titik setiap 1 s
+  for(let k = 0; k <= Math.floor(t); k++){ const xx = 30 + state(k).s / smax * 380; s += `<circle cx="${xx}" cy="60" r="4" style="fill:var(--comp)"/>`; }
+  s += `<text class="c" x="30" y="48" style="fill:var(--comp)">posisi setiap 1 sekon</text>`;
+  s += graph(40, 180, 170, 150, tt => state(tt).s, smax, 'jarak s (m)', 'var(--a)') + graph(270, 180, 170, 150, tt => state(tt).v, vmax, 'kelajuan v (m/s)', 'var(--b)');
+  svg.innerHTML = s;
+  const a = acc();
+  $('read').innerHTML = `<div><span>Waktu</span><b>${fmt(t, 1)} s</b></div><div><span>Jarak tempuh</span><b>${fmt(st.s, 1)} m</b></div><div><span>Kelajuan saat ini</span><b>${fmt(st.v, 1)} m/s</b></div>` +
+    `<div><span>Percepatan</span><b>${fmt(a, 1)} m/s²</b></div><div><span>Kelajuan rata-rata = s/t</span><b>${t > 0 ? fmt(st.s / t, 2) + ' m/s' : '–'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model DNA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}.row .btn{min-width:40px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 360" role="img" aria-label="Model tangga DNA, transkripsi, dan translasi"></svg></div>
+  <div class="panel">
+    <div class="lab">Tambah basa pada untai 1</div>
+    <div class="row"><button class="btn" data-b="A">A</button><button class="btn" data-b="T">T</button><button class="btn" data-b="G">G</button><button class="btn" data-b="C">C</button><button class="btn" id="del">⌫</button><button class="btn" id="rnd">Acak</button></div>
+    <div class="seg" id="step"><button class="on" data-v="0">DNA</button><button data-v="1">Transkripsi</button><button data-v="2">Translasi</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Pasangan basa selalu <b>A–T</b> dan <b>G–C</b>. Pada <b>transkripsi</b> (di inti sel), untai cetakan DNA disalin menjadi mRNA dengan U (urasil) menggantikan T. Pada <b>translasi</b> (di ribosom), setiap 3 basa mRNA (kodon) diterjemahkan menjadi satu asam amino.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const PAIR = {A: 'T', T: 'A', G: 'C', C: 'G'};
+const COL = {A: '#e0344b', T: '#2563eb', G: '#0d9488', C: '#f59e0b', U: '#8b5cf6'};
+// tabel kodon standar: urutan U C A G
+const B4 = 'UCAG', AA = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG';
+const NAMA = {F: 'Phe', L: 'Leu', S: 'Ser', Y: 'Tyr', '*': 'STOP', C: 'Cys', W: 'Trp', P: 'Pro', H: 'His', Q: 'Gln', R: 'Arg', I: 'Ile', M: 'Met', T: 'Thr', N: 'Asn', K: 'Lys', V: 'Val', A: 'Ala', D: 'Asp', E: 'Glu', G: 'Gly'};
+const kodon = c => NAMA[AA[B4.indexOf(c[0]) * 16 + B4.indexOf(c[1]) * 4 + B4.indexOf(c[2])]];
+let seq = 'ATGGCTTGGAAA'.split(''), stp = 0;
+document.querySelectorAll('[data-b]').forEach(b => b.onclick = () => { if(seq.length < 15) seq.push(b.dataset.b); draw(); });
+$('del').onclick = () => { seq.pop(); draw(); };
+$('rnd').onclick = () => { seq = ['A', 'T', 'G']; for(let i = 0; i < 9; i++) seq.push('ATGC'[Math.random() * 4 | 0]); draw(); };
+document.querySelectorAll('#step button').forEach(b => b.onclick = () => { document.querySelectorAll('#step button').forEach(x => x.classList.toggle('on', x === b)); stp = +b.dataset.v; draw(); });
+function base(x, y, b, up){
+  const h = 26;
+  return `<rect x="${x - 11}" y="${up ? y - h : y}" width="22" height="${h}" rx="4" fill="${COL[b]}" fill-opacity=".85"/><text class="c" x="${x}" y="${up ? y - 8 : y + 18}" text-anchor="middle" fill="#fff">${b}</text>`;
+}
+function draw(){
+  const n = seq.length, dx = Math.min(30, 440 / Math.max(n, 1)), x0 = 240 - dx * (n - 1) / 2;
+  let s = '';
+  const yA = 40, yB = 130;
+  s += `<text class="s" x="10" y="${yA - 16}" style="fill:var(--muted)">untai 1 (5'→3')</text><text class="s" x="10" y="${yB + 22}" style="fill:var(--muted)">untai 2 / cetakan (3'→5')</text>`;
+  // tulang punggung gula-fosfat
+  s += `<path d="M${x0 - 14},${yA - 6} L${x0 + dx * (n - 1) + 14},${yA - 6}" style="stroke:var(--ink)" stroke-width="4" stroke-linecap="round"/>`;
+  s += `<path d="M${x0 - 14},${yB + 6} L${x0 + dx * (n - 1) + 14},${yB + 6}" style="stroke:var(--ink)" stroke-width="4" stroke-linecap="round" stroke-opacity="${stp ? .35 : 1}"/>`;
+  seq.forEach((b, i) => {
+    const x = x0 + dx * i;
+    s += base(x, yA - 2, b, false) + base(x, yB + 2, PAIR[b], true);
+    if(!stp) s += `<line x1="${x}" y1="${yA + 26}" x2="${x}" y2="${yB - 26}" style="stroke:var(--muted)" stroke-width="2" stroke-dasharray="3 3"/>`;
+  });
+  if(stp){
+    const yM = 200;
+    s += `<text class="s" x="10" y="${yM - 6}" style="fill:var(--r)">mRNA (5'→3')</text>`;
+    s += `<path d="M${x0 - 14},${yM + 30} L${x0 + dx * (n - 1) + 14},${yM + 30}" style="stroke:var(--r)" stroke-width="4" stroke-linecap="round"/>`;
+    seq.forEach((b, i) => { const x = x0 + dx * i, m = b === 'T' ? 'U' : b; s += base(x, yM + 2, m, false); s += `<line x1="${x}" y1="${yB + 8}" x2="${x}" y2="${yM}" style="stroke:var(--r)" stroke-opacity=".35" stroke-dasharray="2 3"/>`; });
+    if(stp === 2){
+      for(let i = 0; i + 3 <= n; i += 3){
+        const xa = x0 + dx * i - 12, xb = x0 + dx * (i + 2) + 12, c = seq.slice(i, i + 3).join('').replace(/T/g, 'U'), a = kodon(c);
+        s += `<path d="M${xa},${yM + 40} L${xa},${yM + 48} L${xb},${yM + 48} L${xb},${yM + 40}" fill="none" style="stroke:var(--muted)" stroke-width="1.5"/>`;
+        s += `<circle cx="${(xa + xb) / 2}" cy="${yM + 72}" r="17" style="fill:${a === 'STOP' ? 'var(--bad)' : 'var(--ok)'}" fill-opacity=".85"/><text class="s" x="${(xa + xb) / 2}" y="${yM + 76}" text-anchor="middle" fill="#fff">${a}</text>`;
+        if(i) s += `<line x1="${(xa + xb) / 2 - dx * 3 + 17}" y1="${yM + 72}" x2="${(xa + xb) / 2 - 17}" y2="${yM + 72}" style="stroke:var(--ok)" stroke-width="3"/>`;
+      }
+    }
+  }
+  svg.setAttribute('viewBox', `0 0 480 ${stp === 0 ? 170 : stp === 1 ? 250 : 310}`);
+  svg.innerHTML = s;
+  const cnt = b => seq.filter(x => x === b).length + seq.filter(x => PAIR[x] === b).length, tot = 2 * n || 1;
+  const pct = b => Math.round(cnt(b) / tot * 100) + '%';
+  let r = `<div><span>Pasangan basa</span><b>${n}</b></div><div><span>A = T</span><b>${pct('A')} = ${pct('T')}</b></div><div><span>G = C</span><b>${pct('G')} = ${pct('C')}</b></div>`;
+  if(stp === 1) r += `<div><span>mRNA</span><b>${seq.join('').replace(/T/g, 'U')}</b></div>`;
+  if(stp === 2){ const aa = []; for(let i = 0; i + 3 <= n; i += 3) aa.push(kodon(seq.slice(i, i + 3).join('').replace(/T/g, 'U'))); r += `<div><span>Protein (rantai asam amino)</span><b>${aa.join('–') || '—'}</b></div>`; }
+  $('read').innerHTML = r;
+}
+draw();
+</script>
+</body>
+</html>

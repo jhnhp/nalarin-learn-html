@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Massa Jenis: Terapung atau Tenggelam?</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px}
+select{font:inherit;font-size:14px;padding:6px 8px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:100%}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 440 340" role="img" aria-label="Benda dalam gelas ukur berisi cairan"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Benda (volume 20 cm³)</span></div><select id="b"></select></div>
+    <div><div class="lab"><span>Cairan</span></div><select id="f"></select></div>
+    <div class="row"><button class="btn primary" id="drop">Masukkan benda</button><button class="btn" id="out">Angkat</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Benda <b>tenggelam</b> jika massa jenisnya lebih besar daripada cairan, <b>terapung</b> jika lebih kecil, dan <b>melayang</b> jika sama. Bagian benda terapung yang tercelup = ρ benda/ρ cairan.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const B = [['gabus', .24], ['kayu jati', .7], ['es', .92], ['plastik PET', 1.38], ['aluminium', 2.7], ['besi', 7.87], ['telur', 1.03]];
+const Fl = [['air', 1.0], ['minyak goreng', .92], ['air garam encer', 1.03], ['air garam pekat', 1.2]];
+$('b').innerHTML = B.map((x, i) => `<option value="${i}">${x[0]}</option>`).join(''); $('f').innerHTML = Fl.map((x, i) => `<option value="${i}">${x[0]} (ρ = ${fmt(x[1])} g/cm³)</option>`).join('');
+let inside = false;
+['b', 'f'].forEach(id => $(id).onchange = () => { inside = false; draw(); });
+$('drop').onclick = () => { inside = true; draw(); }; $('out').onclick = () => { inside = false; draw(); };
+Sim.onTheme(draw);
+const V = 20, V0 = 60, X0 = 150, W = 140, bot = 320, mlpx = 3.2, Y = v => bot - v * mlpx;
+function draw(){
+  const [bn, rb] = B[+$('b').value], [fn, rf] = Fl[+$('f').value], m = rb * V;
+  const frac = Math.min(1, rb / rf), Vd = inside ? V * frac : 0, lvl = V0 + Vd, ly = Y(lvl);
+  let s = `<rect x="${X0}" y="${ly}" width="${W}" height="${bot - ly}" style="fill:${+$('f').value === 1 ? 'var(--comp)' : 'var(--a)'}" fill-opacity=".22"/>`;
+  s += `<line x1="${X0}" y1="${ly}" x2="${X0 + W}" y2="${ly}" style="stroke:var(--a)" stroke-width="2"/>`;
+  s += `<line x1="${X0}" y1="20" x2="${X0}" y2="${bot}" style="stroke:var(--ink)" stroke-width="2.5"/><line x1="${X0 + W}" y1="20" x2="${X0 + W}" y2="${bot}" style="stroke:var(--ink)" stroke-width="2.5"/><line x1="${X0 - 8}" y1="${bot}" x2="${X0 + W + 8}" y2="${bot}" style="stroke:var(--ink)" stroke-width="3"/>`;
+  for(let v = 0; v <= 90; v += 5) s += `<line x1="${X0}" y1="${Y(v)}" x2="${X0 + (v % 10 ? 10 : 18)}" y2="${Y(v)}" style="stroke:var(--ink)"/>` + (v % 10 === 0 ? `<text class="c" x="${X0 - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>` : '');
+  s += `<text class="c" x="${X0 - 6}" y="14" text-anchor="end">mL</text>`;
+  // benda: kubus sisi ~ 20 cm³ digambar 60 px
+  const sz = 60; let by;
+  if(!inside) by = 40; else if(rb > rf + 1e-9) by = bot - sz; else if(Math.abs(rb - rf) < 1e-9) by = (ly + bot) / 2 - sz / 2; else by = ly - sz * (1 - frac);
+  s += `<rect x="${X0 + W / 2 - sz / 2}" y="${by}" width="${sz}" height="${sz}" rx="6" style="fill:var(--k);stroke:var(--ink)" fill-opacity=".85" stroke-width="2"/><text class="c" x="${X0 + W / 2}" y="${by + sz / 2 + 4}" text-anchor="middle" style="fill:#fff">${bn}</text>`;
+  s += `<rect x="330" y="250" width="90" height="70" rx="10" style="fill:var(--surface-2);stroke:var(--line-2)"/><text class="c" x="375" y="278" text-anchor="middle">neraca</text><text class="c" x="375" y="302" text-anchor="middle" font-size="15">${fmt(m, 1)} g</text>`;
+  svg.innerHTML = s;
+  const nasib = rb > rf + 1e-9 ? 'tenggelam' : Math.abs(rb - rf) < 1e-9 ? 'melayang' : 'terapung';
+  $('read').innerHTML = `<div><span>Massa benda (neraca)</span><b>${fmt(m, 1)} g</b></div><div><span>Volume air naik (benda tercelup)</span><b>${inside ? fmt(Vd, 1) + ' mL' : '–'}</b></div>` +
+    `<div><span>ρ benda = m/V</span><b>${fmt(m, 1)}/${V} = ${fmt(rb, 2)} g/cm³</b></div><div><span>ρ ${fn}</span><b>${fmt(rf, 2)} g/cm³</b></div>` +
+    `<div><span>Hasil</span><b>${inside ? nasib + (nasib === 'terapung' ? ` (${Math.round(frac * 100)}% tercelup)` : '') : 'tekan “Masukkan benda”'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

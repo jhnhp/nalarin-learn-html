@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mitosis dan Meiosis</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Tahapan pembelahan sel dengan kromosom berwarna"></svg></div>
+  <div class="panel">
+    <div class="seg" id="j"><button data-j="mit" class="on">Mitosis</button><button data-j="mei">Meiosis</button></div>
+    <div class="row"><button class="btn" id="prev">◀</button><button class="btn primary" id="next">Tahap berikutnya ▶</button></div>
+    <label class="chk"><input type="checkbox" id="ps" checked> Tampilkan pindah silang (meiosis)</label>
+    <div class="read" id="read"></div>
+    <p class="note">Contoh sel 2n = 4: dua pasang kromosom homolog (merah dari ibu, biru dari ayah; panjang dan pendek).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let J = 'mit', k = 0;
+$('j').querySelectorAll('button').forEach(b => b.onclick = () => { $('j').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); J = b.dataset.j; k = 0; draw(); });
+$('next').onclick = () => { k = Math.min(PH[J].length - 1, k + 1); draw(); };
+$('prev').onclick = () => { k = Math.max(0, k - 1); draw(); };
+$('ps').oninput = draw;
+const PH = {
+  mit: [['Interfase (G1)', 'Kromosom berupa benang kromatin; sel tumbuh.', 4, 1, '2n'], ['Interfase (S, G2)', 'DNA bereplikasi: setiap kromosom kini terdiri atas dua kromatid saudara.', 4, 2, '2n'], ['Profase', 'Kromatin memadat menjadi kromosom; membran inti dan nukleolus menghilang; benang spindel terbentuk.', 4, 2, '2n'], ['Metafase', 'Kromosom berjajar di bidang ekuator; sentromer terikat benang spindel. Tahap terbaik untuk menghitung kromosom.', 4, 2, '2n'], ['Anafase', 'Sentromer membelah; kromatid saudara berpisah ke kutub berlawanan (sementara ada 8 kromosom dalam satu sel).', 8, 1, '4n sementara'], ['Telofase dan sitokinesis', 'Membran inti terbentuk kembali; sitoplasma membelah. Hasilnya 2 sel anak diploid yang identik.', 4, 1, '2n (2 sel)']],
+  mei: [['Interfase', 'DNA bereplikasi: setiap kromosom terdiri atas dua kromatid.', 4, 2, '2n'], ['Profase I', 'Kromosom homolog berpasangan (sinapsis) membentuk tetrad; dapat terjadi pindah silang (crossing over) pada kiasma.', 4, 2, '2n'], ['Metafase I', 'Pasangan homolog (tetrad) berjajar di bidang ekuator.', 4, 2, '2n'], ['Anafase I', 'Kromosom homolog berpisah ke kutub berlawanan; kromatid saudara masih menyatu.', 2, 2, 'n per kutub'], ['Telofase I', 'Terbentuk 2 sel haploid (n = 2), tiap kromosom masih dua kromatid.', 2, 2, 'n (2 sel)'], ['Metafase II', 'Kromosom (dua kromatid) berjajar di ekuator pada masing-masing sel.', 2, 2, 'n'], ['Anafase II', 'Sentromer membelah; kromatid saudara berpisah.', 4, 1, 'n per kutub'], ['Telofase II', 'Terbentuk 4 sel haploid yang berbeda secara genetik.', 2, 1, 'n (4 sel)']],
+};
+function chrom(x, y, len, col, two, xo, ang = 0, part){
+  let s = `<g transform="translate(${x},${y}) rotate(${ang})">`;
+  const w = 6;
+  const one = (dx, c1, c2) => `<rect x="${dx - w / 2}" y="${-len / 2}" width="${w}" height="${len}" rx="3" fill="${c1}"/>${c2 ? `<rect x="${dx - w / 2}" y="${len * .15}" width="${w}" height="${len * .35}" rx="2" fill="${c2}"/>` : ''}`;
+  if(two){ s += one(-4, col, part === 1 ? (col === '#e53935' ? '#1e88e5' : '#e53935') : null) + one(4, col, null); }
+  else s += one(0, col, part === 2 ? (col === '#e53935' ? '#1e88e5' : '#e53935') : null);
+  return s + `<circle cx="0" cy="0" r="3.5" fill="#333"/></g>`;
+}
+function draw(){
+  const p = PH[J][k], ps = $('ps').checked && J === 'mei' && k >= 1;
+  let s = '';
+  const set = [[50, '#e53935'], [50, '#1e88e5'], [30, '#e53935'], [30, '#1e88e5']];
+  const cell = (cx, cy, rx, ry, nuc) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#fff3e0" stroke="#ff8a65" stroke-width="2"/>${nuc ? `<ellipse cx="${cx}" cy="${cy}" rx="${rx * .55}" ry="${ry * .55}" fill="none" stroke="#bcaaa4" stroke-dasharray="4 3"/>` : ''}`;
+  const name = p[0];
+  if(J === 'mit'){
+    if(k <= 1){ s += cell(240, 150, 150, 110, true); set.forEach(([l, c], i) => s += k === 0 ? `<path d="M${180 + i * 35},${120} q20,30 0,60" fill="none" stroke="${c}" stroke-width="3" opacity=".7"/>` : `<path d="M${180 + i * 35},${120} q20,30 0,60 M${186 + i * 35},${120} q20,30 0,60" fill="none" stroke="${c}" stroke-width="3" opacity=".7"/>`); }
+    else if(k === 2){ s += cell(240, 150, 150, 110, false); set.forEach(([l, c], i) => s += chrom(180 + i * 40, 140 + (i % 2) * 25, l, c, true, 0, 20 * (i - 1.5))); }
+    else if(k === 3){ s += cell(240, 150, 150, 110, false) + `<line x1="240" y1="45" x2="240" y2="255" stroke="#bbb" stroke-dasharray="4 4"/>`; set.forEach(([l, c], i) => s += chrom(240, 75 + i * 50, l, c, true, 0, 90)); }
+    else if(k === 4){ s += cell(240, 150, 170, 105, false); set.forEach(([l, c], i) => { s += chrom(120, 75 + i * 50, l, c, false, 0, 90) + chrom(360, 75 + i * 50, l, c, false, 0, 90); }); }
+    else { s += cell(130, 150, 100, 95, true) + cell(350, 150, 100, 95, true); set.forEach(([l, c], i) => { s += chrom(100 + (i % 2) * 30, 110 + Math.floor(i / 2) * 70, l, c, false) + chrom(320 + (i % 2) * 30, 110 + Math.floor(i / 2) * 70, l, c, false); }); }
+  } else {
+    if(k === 0){ s += cell(240, 150, 150, 110, true); set.forEach(([l, c], i) => s += chrom(180 + i * 35, 150, l, c, true)); }
+    else if(k === 1){ s += cell(240, 150, 150, 110, false); [[0, 1], [2, 3]].forEach(([a, b], j) => { s += chrom(205 + j * 70, 150, set[a][0], set[a][1], true, 0, 0, ps ? 1 : 0) + chrom(223 + j * 70, 150, set[b][0], set[b][1], true, 0, 0, ps ? 1 : 0); }); if(ps) s += `<text class="s" x="240" y="230" text-anchor="middle" fill="#555">pindah silang: potongan kromatid bertukar</text>`; }
+    else if(k === 2){ s += cell(240, 150, 150, 110, false) + `<line x1="240" y1="45" x2="240" y2="255" stroke="#bbb" stroke-dasharray="4 4"/>`; [[0, 1], [2, 3]].forEach(([a, b], j) => { s += chrom(226, 100 + j * 100, set[a][0], set[a][1], true, 0, 0, ps ? 1 : 0) + chrom(254, 100 + j * 100, set[b][0], set[b][1], true, 0, 0, ps ? 1 : 0); }); }
+    else if(k === 3){ s += cell(240, 150, 170, 105, false); [[0, 1], [2, 3]].forEach(([a, b], j) => { s += chrom(130, 100 + j * 100, set[a][0], set[a][1], true, 0, 0, ps ? 1 : 0) + chrom(350, 100 + j * 100, set[b][0], set[b][1], true, 0, 0, ps ? 1 : 0); }); }
+    else if(k === 4 || k === 5){ s += cell(130, 150, 100, 95, k === 4) + cell(350, 150, 100, 95, k === 4); s += chrom(k === 5 ? 130 : 110, k === 5 ? 115 : 150, 50, '#e53935', true, 0, k === 5 ? 90 : 0, ps ? 1 : 0) + chrom(k === 5 ? 130 : 150, k === 5 ? 185 : 150, 30, '#1e88e5', true, 0, k === 5 ? 90 : 0, ps ? 1 : 0) + chrom(k === 5 ? 350 : 330, k === 5 ? 115 : 150, 50, '#1e88e5', true, 0, k === 5 ? 90 : 0, ps ? 1 : 0) + chrom(k === 5 ? 350 : 370, k === 5 ? 185 : 150, 30, '#e53935', true, 0, k === 5 ? 90 : 0, ps ? 1 : 0); }
+    else { const cs = [[70, 90], [190, 90], [290, 210], [410, 210]]; if(k === 6){ s += cell(130, 150, 110, 100, false) + cell(350, 150, 110, 100, false); [[60, 200, '#e53935', '#1e88e5'], [280, 400, '#1e88e5', '#e53935']].forEach(([x1, x2, c1, c2]) => { s += chrom(x1, 115, 50, c1, false, 0, 90, ps ? 2 : 0) + chrom(x2, 115, 50, c1, false, 0, 90) + chrom(x1, 185, 30, c2, false, 0, 90, ps ? 2 : 0) + chrom(x2, 185, 30, c2, false, 0, 90); }); }
+      else { [[60, 90, '#e53935', '#1e88e5', 2], [175, 90, '#e53935', '#1e88e5', 0], [300, 210, '#1e88e5', '#e53935', 2], [415, 210, '#1e88e5', '#e53935', 0]].forEach(([x, y, c1, c2, pp]) => { s += cell(x, y, 52, 52, true) + chrom(x - 10, y, 50, c1, false, 0, 0, ps ? pp : 0) + chrom(x + 12, y, 30, c2, false, 0, 0, ps ? pp : 0); }); } }
+  }
+  s += `<text class="c" x="20" y="300" style="fill:var(--ink)">${name}</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Tahap</span><b>${name} (${k + 1}/${PH[J].length})</b></div><div><span>Peristiwa</span><b style="font-weight:600">${p[1]}</b></div><div><span>Jumlah kromosom per sel/kutub</span><b>${p[2]} (${p[4]})</b></div><div><span>Kromatid per kromosom</span><b>${p[3]}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

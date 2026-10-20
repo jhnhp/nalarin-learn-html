@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semikonduktor Intrinsik dan Ekstrinsik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Kisi kristal silikon dengan elektron bebas dan hole"></svg></div>
+  <div class="panel">
+    <div class="seg" id="dop"><button data-d="murni" class="on">Si murni</button><button data-d="N">Si + fosfor (tipe-N)</button><button data-d="P">Si + boron (tipe-P)</button></div>
+    <div class="lab">Suhu <b id="tv"></b></div><input type="range" id="t" min="0" max="500" step="10" value="300">
+    <label class="chk"><input type="checkbox" id="field"> Beri beda potensial (medan listrik ke kanan)</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let D = 'murni', E = [], H = [], tick = 0;
+$('dop').querySelectorAll('button').forEach(b => b.onclick = () => { $('dop').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); D = b.dataset.d; reset(); });
+const COLS = 7, ROWS = 5, SX = 64, SY = 58, X0 = 48, Y0 = 45;
+const dopants = [[2, 1], [5, 3], [3, 4]];
+function reset(){
+  E = []; H = [];
+  const T = +$('t').value, nTherm = Math.round(Math.max(0, (T - 150) / 60));
+  for(let i = 0; i < nTherm; i++){ const c = (i * 3 + 1) % COLS, r = (i * 2 + 2) % ROWS; E.push({x: X0 + c * SX + 20, y: Y0 + r * SY - 12, vx: 0, vy: 0}); H.push({x: X0 + c * SX + 32, y: Y0 + r * SY, vx: 0, vy: 0}); }
+  if(D === 'N') dopants.forEach(([c, r]) => E.push({x: X0 + c * SX + 22, y: Y0 + r * SY + 18, vx: 0, vy: 0}));
+  if(D === 'P') dopants.forEach(([c, r]) => H.push({x: X0 + c * SX + 32, y: Y0 + r * SY, vx: 0, vy: 0}));
+  draw();
+}
+function step(){
+  const f = $('field').checked;
+  const mv = (p, dir) => { p.vx = .7 * p.vx + (Math.random() - .5) * 2 + (f ? dir * .9 : 0); p.vy = .7 * p.vy + (Math.random() - .5) * 2; p.x += p.vx; p.y += p.vy; if(p.x < 20) p.x = 460; if(p.x > 460) p.x = 20; p.y = Math.max(25, Math.min(290, p.y)); };
+  E.forEach(p => mv(p, -1)); H.forEach(p => mv(p, 1)); // elektron melawan medan, hole searah medan
+  tick++;
+}
+function draw(){
+  const T = +$('t').value; $('tv').textContent = T + ' K';
+  let s = '';
+  for(let r = 0; r < ROWS; r++) for(let c = 0; c < COLS; c++){
+    const x = X0 + c * SX, y = Y0 + r * SY;
+    if(c < COLS - 1) s += `<line x1="${x}" y1="${y}" x2="${x + SX}" y2="${y}" stroke="#b0bec5" stroke-width="5"/>`;
+    if(r < ROWS - 1) s += `<line x1="${x}" y1="${y}" x2="${x}" y2="${y + SY}" stroke="#b0bec5" stroke-width="5"/>`;
+  }
+  for(let r = 0; r < ROWS; r++) for(let c = 0; c < COLS; c++){
+    const x = X0 + c * SX, y = Y0 + r * SY, isD = D !== 'murni' && dopants.some(([a, b]) => a === c && b === r);
+    s += `<circle cx="${x}" cy="${y}" r="15" fill="${isD ? (D === 'N' ? '#ffcc80' : '#ce93d8') : '#eceff1'}" stroke="#607d8b" stroke-width="1.5"/><text class="s" x="${x}" y="${y + 4}" text-anchor="middle" fill="#333">${isD ? (D === 'N' ? 'P' : 'B') : 'Si'}</text>`;
+  }
+  E.forEach(p => s += `<circle cx="${p.x}" cy="${p.y}" r="5" fill="#1e88e5"/>`);
+  H.forEach(p => s += `<circle cx="${p.x}" cy="${p.y}" r="5.5" fill="#fff" stroke="#e53935" stroke-width="2"/>`);
+  if($('field').checked) s += `<text class="s" x="460" y="312" text-anchor="end" fill="#555">medan listrik E →</text>`;
+  s += `<circle cx="22" cy="308" r="5" fill="#1e88e5"/><text class="s" x="32" y="312" fill="#555">elektron bebas</text><circle cx="130" cy="308" r="5.5" fill="#fff" stroke="#e53935" stroke-width="2"/><text class="s" x="140" y="312" fill="#555">hole (lubang)</text>`;
+  svg.innerHTML = s;
+  const nE = E.length, nH = H.length;
+  $('read').innerHTML = `<div><span>Elektron bebas / hole</span><b>${nE} / ${nH}</b></div><div><span>Pembawa muatan mayoritas</span><b>${D === 'N' ? 'elektron' : D === 'P' ? 'hole' : 'elektron dan hole sama banyak'}</b></div><div><span>Jenis</span><b>${D === 'murni' ? 'semikonduktor intrinsik' : 'semikonduktor ekstrinsik tipe-' + D}</b></div>`;
+  $('ket').textContent = D === 'murni' ? 'Pada suhu sangat rendah semua elektron valensi terikat dalam ikatan kovalen, sehingga silikon murni hampir tidak menghantar. Makin tinggi suhu, makin banyak elektron yang lepas ke pita konduksi dan meninggalkan hole; daya hantarnya naik (hambatannya turun).' : D === 'N' ? 'Fosfor (atau arsenik) berelektron valensi 5: empat dipakai berikatan dengan Si, satu menjadi elektron bebas. Atom pengotor ini disebut donor; elektron menjadi pembawa muatan mayoritas.' : 'Boron (atau galium, indium) berelektron valensi 3, sehingga satu ikatan kekurangan elektron: terbentuk hole yang dapat diisi elektron tetangga. Atom pengotor ini disebut akseptor; hole menjadi pembawa muatan mayoritas.';
+}
+$('t').oninput = reset;
+setInterval(() => { step(); draw(); }, 60);
+reset();
+</script>
+</body>
+</html>

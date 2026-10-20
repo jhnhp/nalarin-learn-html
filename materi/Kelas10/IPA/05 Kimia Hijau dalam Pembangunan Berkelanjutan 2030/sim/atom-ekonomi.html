@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atom Ekonomi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 250" role="img" aria-label="Diagram massa pereaksi yang menjadi produk utama dan produk samping"></svg></div>
+  <div class="panel">
+    <div class="lab">Reaksi</div>
+    <select id="rx" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit"></select>
+    <div class="read" id="read"></div>
+    <p class="note">Atom ekonomi = (massa produk yang diinginkan ÷ massa seluruh pereaksi) × 100%, dengan massa dihitung dari koefisien × Mr. Makin besar atom ekonomi, makin sedikit atom yang terbuang menjadi limbah. Ar: H = 1, C = 12, N = 14, O = 16, Cl = 35,5, Ca = 40.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const AR = {H: 1, C: 12, N: 14, O: 16, Cl: 35.5, Ca: 40, Na: 23};
+function mr(f){ let m = 0; f.replace(/([A-Z][a-z]?)(\d*)/g, (_, e, n) => { m += AR[e] * (+n || 1); }); return m; }
+const sub = f => f.replace(/([A-Za-z)])(\d+)/g, '$1<tspan baseline-shift="sub" font-size="9">$2</tspan>');
+// [nama, pereaksi [[koef, rumus]], produk [[koef, rumus]], indeks produk utama]
+const RX = [
+  ['Etanol dari fermentasi glukosa', [[1, 'C6H12O6']], [[2, 'C2H5OH'], [2, 'CO2']], 0],
+  ['Etanol dari etena + uap air', [[1, 'C2H4'], [1, 'H2O']], [[1, 'C2H5OH']], 0],
+  ['Amonia (proses Haber)', [[1, 'N2'], [3, 'H2']], [[2, 'NH3']], 0],
+  ['Kapur tohor dari batu kapur', [[1, 'CaCO3']], [[1, 'CaO'], [1, 'CO2']], 0],
+  ['Hidrogen dari elektrolisis air', [[2, 'H2O']], [[2, 'H2'], [1, 'O2']], 0],
+  ['Klorometana (substitusi)', [[1, 'CH4'], [1, 'Cl2']], [[1, 'CH3Cl'], [1, 'HCl']], 0],
+  ['Metanol dari CO2 + H2', [[1, 'CO2'], [3, 'H2']], [[1, 'CH3OH'], [1, 'H2O']], 0]
+];
+RX.forEach((r, i) => { const o = document.createElement('option'); o.value = i; o.textContent = r[0]; $('rx').appendChild(o); });
+$('rx').onchange = draw;
+function draw(){
+  const [n, re, pr, ui] = RX[+$('rx').value];
+  const mre = re.reduce((a, [k, f]) => a + k * mr(f), 0), mu = pr[ui][0] * mr(pr[ui][1]), ae = mu / mre * 100;
+  let s = '';
+  const term = ([k, f]) => (k > 1 ? k : '') + f;
+  const eqTxt = re.map(term).join(' + ') + ' → ' + pr.map(term).join(' + ');
+  s += `<text class="c" x="240" y="30" text-anchor="middle" style="fill:var(--ink)">${sub(eqTxt)}</text>`;
+  // batang pereaksi
+  const L = 40, W = 400;
+  s += `<text class="s" x="${L}" y="64" style="fill:var(--muted)">massa pereaksi = ${fmt(mre, 1)}</text>`;
+  let x = L; re.forEach(([k, f], i) => { const w = k * mr(f) / mre * W; s += `<rect x="${x}" y="70" width="${w - 2}" height="40" rx="5" style="fill:var(--a)" fill-opacity="${.45 + .25 * i}"/><text class="s" x="${x + w / 2}" y="94" text-anchor="middle" fill="#fff">${sub(term([k, f]))} (${fmt(k * mr(f), 1)})</text>`; x += w; });
+  s += `<text class="s" x="${L}" y="140" style="fill:var(--muted)">massa produk (sama, karena hukum kekekalan massa)</text>`;
+  x = L; pr.forEach(([k, f], i) => { const w = k * mr(f) / mre * W, main = i === ui; s += `<rect x="${x}" y="146" width="${w - 2}" height="40" rx="5" style="fill:${main ? 'var(--ok)' : 'var(--bad)'}" fill-opacity="${main ? .8 : .45}"/><text class="s" x="${x + w / 2}" y="170" text-anchor="middle" fill="#fff">${sub(term([k, f]))} (${fmt(k * mr(f), 1)})</text>`; x += w; });
+  s += `<rect x="${L}" y="206" width="12" height="12" style="fill:var(--ok)"/><text class="s" x="${L + 18}" y="216" style="fill:var(--ink)">produk yang diinginkan</text><rect x="${L + 180}" y="206" width="12" height="12" style="fill:var(--bad)" fill-opacity=".45"/><text class="s" x="${L + 198}" y="216" style="fill:var(--ink)">produk samping (limbah/hasil lain)</text>`;
+  svg.innerHTML = s;
+  $('read').innerHTML = `<div><span>Atom ekonomi</span><b>${fmt(mu, 1)} ÷ ${fmt(mre, 1)} × 100% = ${fmt(ae, 1)}%</b></div><div><span>Atom yang tidak menjadi produk utama</span><b>${fmt(100 - ae, 1)}%</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

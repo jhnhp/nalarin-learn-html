@@ -1,56 +1,221 @@
 {
   "title": "Pergerakan Zat melalui Membran Sel",
-  "summary": "Ringkasan bab Pergerakan Zat melalui Membran Sel akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Membran plasma yang selektif permeabel, osmosis pada sel hewan dan tumbuhan (hipotonik, isotonik, hipertonik), difusi sederhana dan terfasilitasi, serta transpor aktif primer dan sekunder.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Pergerakan Zat melalui Membran Sel",
+      "id": "membran-dan-transpor",
+      "title": "Membran plasma dan jenis transpor zat",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "20 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Transpor Pasif (Osmosis, Difusi Sederhana, Difusi Terfasilitasi) dan Transpor Aktif</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Membran plasma bersifat <b>selektif permeabel</b>: hanya zat tertentu yang dapat melintasinya. Lapisan ganda fosfolipid mudah dilewati molekul kecil nonpolar (O₂, CO₂), tetapi sulit dilewati ion dan molekul polar besar (glukosa). Zat-zat itu memerlukan protein membran.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/jenis-transpor.svg",
+          "alt": "Diagram membran dengan lima cara transpor: difusi sederhana, difusi lewat kanal, difusi lewat protein pembawa, pompa natrium-kalium, dan simport natrium-glukosa",
+          "width": 700,
+          "caption": "Cara zat melintasi membran plasma."
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th></th><th>Transpor pasif</th><th>Transpor aktif</th></tr><tr><td>Arah</td><td>mengikuti gradien konsentrasi (tinggi → rendah)</td><td>dapat melawan gradien (rendah → tinggi)</td></tr><tr><td>Energi sel (ATP)</td><td>tidak perlu</td><td>perlu (langsung atau tidak langsung)</td></tr><tr><td>Contoh</td><td>osmosis, difusi sederhana, difusi terfasilitasi</td><td>pompa Na⁺–K⁺, penyerapan mineral oleh rambut akar, penyerapan glukosa di usus</td></tr></table>"
+        },
+        {
+          "type": "check",
+          "question": "Transpor zat yang memerlukan ATP dan dapat melawan gradien konsentrasi disebut ....",
+          "options": {
+            "A": "osmosis",
+            "B": "difusi sederhana",
+            "C": "transpor aktif",
+            "D": "difusi terfasilitasi"
+          },
+          "answer": "C",
+          "hint": "Lihat kebutuhan energi.",
+          "explanation": "Hanya transpor aktif yang memakai energi sel untuk memindahkan zat melawan gradien."
+        }
+      ]
+    },
+    {
+      "id": "osmosis",
+      "title": "Osmosis pada sel hewan dan tumbuhan",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Osmosis</b> adalah perpindahan molekul air melalui membran semipermeabel dari larutan yang lebih encer (konsentrasi zat terlarut rendah, potensial air tinggi) ke larutan yang lebih pekat (konsentrasi zat terlarut tinggi). Zat terlarutnya tidak ikut berpindah.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Larutan di luar sel</th><th>Arah air</th><th>Sel hewan</th><th>Sel tumbuhan</th></tr><tr><td><b>Hipotonik</b> (lebih encer dari cairan sel)</td><td>masuk ke sel</td><td>membengkak, dapat pecah (hemolisis pada sel darah merah)</td><td>turgid (kaku); dinding sel mencegah pecah</td></tr><tr><td><b>Isotonik</b> (sama)</td><td>masuk = keluar</td><td>normal</td><td>lembek (flaksid)</td></tr><tr><td><b>Hipertonik</b> (lebih pekat)</td><td>keluar dari sel</td><td>mengerut (krenasi)</td><td>plasmolisis: membran lepas dari dinding sel</td></tr></table>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/osmosis.html",
+          "title": "Osmosis pada sel darah merah dan sel tumbuhan",
+          "height": 520,
+          "caption": "Geser konsentrasi larutan dari sangat encer ke sangat pekat. Pada konsentrasi berapa sel darah merah pecah? Mengapa sel tumbuhan tidak pecah?"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Definisi hipotonik dan hipertonik di buku ditulis dari sudut pandang isi sel (“hipotonik terjadi jika konsentrasi zat terlarut dalam sel lebih rendah dibandingkan lingkungan luar”), sedangkan Gambar 2.4 dan 2.5 memakai istilah itu untuk larutan di luar sel. Agar tidak tertukar, gunakan kesepakatan umum: istilah tonisitas menyatakan <b>larutan di luar sel dibandingkan cairan di dalam sel</b>. Larutan hipotonik lebih encer daripada cairan sel, sehingga air masuk ke sel; larutan hipertonik lebih pekat, sehingga air keluar dari sel.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Irisan wortel bermassa 20,0 g direndam dalam larutan gula pekat selama 1 jam. Massanya menjadi 18,4 g. Hitung persentase perubahan massa dan jelaskan.</p>",
+          "steps": [
+            "Perubahan = (18,4 − 20,0)/20,0 × 100% = −8%.",
+            "Massa berkurang karena air keluar dari sel-sel wortel ke larutan yang lebih pekat (hipertonik)."
+          ],
+          "answer": "berkurang 8%; larutan hipertonik"
+        },
+        {
+          "type": "text",
+          "html": "<p>Penerapan osmosis: sayuran layu menjadi segar kembali jika direndam air; manisan dan asinan memakai larutan gula atau garam pekat yang menarik air dari sel buah dan mikroba; cairan infus dibuat <b>isotonik</b> terhadap darah agar sel darah tidak mengerut atau pecah; desalinasi air laut memakai <b>osmosis balik</b> (air didorong dengan tekanan dari larutan pekat ke larutan encer).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Sel tumbuhan dimasukkan ke dalam air suling. Keadaan yang terjadi adalah ....",
+          "options": {
+            "A": "plasmolisis",
+            "B": "turgid",
+            "C": "krenasi",
+            "D": "hemolisis"
+          },
+          "answer": "B",
+          "hint": "Air suling sangat encer.",
+          "explanation": "Air masuk ke sel; vakuola membesar menekan dinding sel sehingga sel menjadi turgid, tetapi tidak pecah."
+        }
+      ]
+    },
+    {
+      "id": "difusi",
+      "title": "Difusi sederhana dan difusi terfasilitasi",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Difusi</b> adalah perpindahan zat dari konsentrasi tinggi ke konsentrasi rendah sampai merata, misalnya warna teh yang menyebar di air. Dalam tubuh, O₂ berdifusi dari alveolus ke darah kapiler dan CO₂ sebaliknya.</p><p>Laju difusi makin besar jika <b>perbedaan konsentrasi</b> makin besar, <b>suhu</b> makin tinggi, <b>luas permukaan</b> makin luas, <b>jarak</b> makin pendek, dan ukuran molekul makin kecil.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/transpor.html",
+          "title": "Transpor zat melalui membran",
+          "height": 540,
+          "caption": "Bandingkan difusi O₂ dengan difusi terfasilitasi glukosa. Ubah jumlah protein pembawa: apa pengaruhnya terhadap laju? Apakah penghambat ATP berpengaruh?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Pembeda</th><th>Difusi sederhana</th><th>Difusi terfasilitasi</th></tr><tr><td>Jalur</td><td>langsung menembus lapisan fosfolipid</td><td>melalui protein kanal atau protein pembawa</td></tr><tr><td>Zat</td><td>molekul kecil nonpolar (O₂, CO₂)</td><td>ion dan molekul polar besar (glukosa, asam amino)</td></tr><tr><td>Kekhususan</td><td>tidak spesifik</td><td>spesifik untuk zat tertentu</td></tr><tr><td>Laju</td><td>naik terus sebanding gradien</td><td>terbatas (jenuh) oleh jumlah protein</td></tr><tr><td>Persamaan</td><td colspan='2'>mengikuti gradien konsentrasi dan tidak memerlukan ATP</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "title": "Transporter glukosa (GLUT)",
+          "html": "<p>GLUT adalah protein pembawa yang memasukkan glukosa dari darah ke sel. GLUT-2 terdapat di hati, pankreas, dan ginjal. Jika GLUT tidak berfungsi, glukosa sulit masuk ke sel sehingga sel kekurangan bahan energi, sedangkan kadar glukosa darah tetap tinggi.</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Peta konsep buku memberi contoh transpor melalui protein kanal sebagai “transpor asetilkolin”. Asetilkolin sendiri tidak lewat kanal; asetilkolin adalah neurotransmiter yang menempel pada reseptor dan <b>membuka</b> kanal ion, sehingga ion Na⁺ mengalir masuk ke sel otot atau saraf.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Ion K⁺ keluar dari sel melalui protein kanal mengikuti gradien konsentrasinya tanpa ATP. Proses ini termasuk ....",
+          "options": {
+            "A": "transpor aktif primer",
+            "B": "difusi terfasilitasi",
+            "C": "osmosis",
+            "D": "endositosis"
+          },
+          "answer": "B",
+          "hint": "Ada protein, tetapi tanpa ATP dan searah gradien.",
+          "explanation": "Ion tidak dapat menembus fosfolipid; ia melewati kanal secara pasif."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "transpor-aktif",
+      "title": "Transpor aktif",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p><b>Transpor aktif</b> memindahkan zat melawan gradien konsentrasi dengan memakai energi sel.</p><ul><li><b>Transpor aktif primer</b> memakai ATP secara langsung. Contoh: <b>pompa natrium-kalium</b>; setiap hidrolisis 1 ATP mengeluarkan 3 Na⁺ dan memasukkan 2 K⁺. Akibatnya Na⁺ banyak di luar sel dan K⁺ banyak di dalam sel, penting untuk impuls saraf dan kontraksi otot.</li><li><b>Transpor aktif sekunder</b> (tidak langsung) memanfaatkan gradien Na⁺ yang dibuat pompa. Contoh: sel epitel usus menyerap glukosa bersama Na⁺ melalui protein <b>simport</b>, walaupun glukosa di dalam sel sudah lebih banyak.</li><li>Sel rambut akar menyerap ion mineral dari tanah walaupun kadar ion di dalam sel lebih tinggi.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/transpor.html",
+          "title": "Pompa natrium-kalium",
+          "height": 540,
+          "caption": "Pilih pompa Na⁺–K⁺. Bandingkan jumlah ATP terpakai dengan jumlah ion yang dipindahkan. Lalu beri penghambat ATP dan amati yang terjadi pada gradien ion."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah pompa Na⁺–K⁺ bekerja 20 siklus. Berapa ion Na⁺ dikeluarkan, ion K⁺ dimasukkan, dan ATP yang dipakai?</p>",
+          "steps": [
+            "Tiap siklus: 3 Na⁺ keluar, 2 K⁺ masuk, 1 ATP.",
+            "20 siklus: 60 Na⁺, 40 K⁺, 20 ATP."
+          ],
+          "answer": "60 Na⁺, 40 K⁺, 20 ATP"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Transpor massal",
+          "html": "<p>Partikel yang sangat besar dipindahkan dengan membentuk vesikel, juga memerlukan energi: <b>endositosis</b> (memasukkan; fagositosis untuk padatan, pinositosis untuk cairan) dan <b>eksositosis</b> (mengeluarkan, misalnya sekresi hormon dan enzim).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengenali jenis transpor dari data",
+          "html": "<ul><li>Zat bergerak ke konsentrasi lebih tinggi → transpor aktif.</li><li>Transpor berhenti jika diberi penghambat ATP → transpor aktif primer.</li><li>Transpor tidak terpengaruh penghambat ATP, tetapi lajunya terbatas dan spesifik → difusi terfasilitasi.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Penyerapan glukosa di usus yang digerakkan oleh aliran Na⁺ masuk ke sel termasuk ....",
+          "options": {
+            "A": "difusi sederhana",
+            "B": "transpor aktif primer",
+            "C": "transpor aktif sekunder",
+            "D": "osmosis"
+          },
+          "answer": "C",
+          "hint": "ATP tidak dipakai langsung oleh protein pengangkut glukosa.",
+          "explanation": "Energi berasal dari gradien Na⁺ yang dibuat pompa Na⁺–K⁺, sehingga disebut transpor aktif sekunder."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyebut air bergerak dari larutan pekat ke encer; yang benar dari encer ke pekat.</li><li>Menukar istilah hipotonik dan hipertonik; selalu bandingkan larutan luar dengan cairan sel.</li><li>Menganggap difusi terfasilitasi memerlukan ATP karena memakai protein.</li><li>Lupa bahwa sel tumbuhan tidak pecah dalam larutan hipotonik karena dinding sel.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 2 Pergerakan Zat melalui Membran Sel.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang transpor pasif (osmosis, difusi sederhana, difusi terfasilitasi) dan transpor aktif. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

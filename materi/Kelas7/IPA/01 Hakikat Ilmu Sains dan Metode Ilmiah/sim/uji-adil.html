@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Percobaan Uji Adil</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.wrap{padding:14px 16px;display:grid;gap:12px}
+.pots{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pot{border:1px solid var(--line-2);border-radius:14px;padding:10px;display:grid;gap:8px}
+.pot h4{margin:0;font-family:var(--display);font-size:16px}
+.pot label{display:flex;justify-content:space-between;font-size:13.5px;gap:6px;align-items:center}
+.pot select{font:inherit;font-size:13px;padding:4px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+.msg{font-weight:700;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+.msg.ok{background:var(--ok-soft);color:var(--ok)}.msg.bad{background:var(--bad-soft);color:var(--bad)}</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="msg" id="goal"></div>
+  <div class="pots" id="pots"></div>
+  <div class="row"><button class="btn primary" id="run">Tanam dan amati 14 hari</button><button class="btn" id="new">Tujuan lain</button></div>
+  <svg id="svg" viewBox="0 0 460 210" role="img" aria-label="Tinggi tanaman pada kedua pot"></svg>
+  <div class="msg" id="msg">Atur kedua pot, lalu tekan tombol tanam.</div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const F = {
+  air: {nama: 'Air per hari', opsi: ['50 mL', '100 mL', '200 mL'], efek: [-3, 0, 1.5]},
+  cahaya: {nama: 'Cahaya', opsi: ['gelap', 'teduh', 'terang'], efek: [-6, -1.5, 0]},
+  pupuk: {nama: 'Pupuk', opsi: ['tanpa', '1 sendok', '2 sendok'], efek: [0, 3, 4.5]},
+  tanah: {nama: 'Jenis tanah', opsi: ['pasir', 'humus'], efek: [-2, 0]},
+};
+const GOALS = [['pupuk', 'Selidiki pengaruh banyak pupuk terhadap tinggi tanaman.'], ['cahaya', 'Selidiki pengaruh cahaya terhadap tinggi tanaman.'], ['air', 'Selidiki pengaruh banyak air terhadap tinggi tanaman.']];
+let gi = 0, pot = [{air: 1, cahaya: 2, pupuk: 0, tanah: 1}, {air: 1, cahaya: 2, pupuk: 0, tanah: 1}];
+function build(){
+  $('goal').innerHTML = '🎯 ' + GOALS[gi][1];
+  $('pots').innerHTML = pot.map((p, i) => `<div class="pot"><h4>Pot ${'AB'[i]}</h4>` + Object.keys(F).map(k => `<label>${F[k].nama}<select data-i="${i}" data-k="${k}">${F[k].opsi.map((o, j) => `<option value="${j}"${p[k] === j ? ' selected' : ''}>${o}</option>`).join('')}</select></label>`).join('') + '</div>').join('');
+  $('pots').querySelectorAll('select').forEach(s => s.onchange = () => { pot[+s.dataset.i][s.dataset.k] = +s.value; $('svg').innerHTML = ''; $('msg').className = 'msg'; $('msg').textContent = 'Atur kedua pot, lalu tekan tombol tanam.'; });
+}
+const tinggi = p => Math.max(1, 8 + Object.keys(F).reduce((t, k) => t + F[k].efek[p[k]], 0) + (Math.random() - .5));
+$('run').onclick = () => {
+  const h = pot.map(tinggi), beda = Object.keys(F).filter(k => pot[0][k] !== pot[1][k]), tujuan = GOALS[gi][0];
+  let s = '<line x1="20" y1="190" x2="440" y2="190" style="stroke:var(--ink)" stroke-width="2"/>';
+  h.forEach((v, i) => { const x = 110 + i * 220, y = 190 - v * 9;
+    s += `<path d="M${x - 30} 150 h60 l-8 40 h-44z" fill="#b5651d"/><line x1="${x}" y1="150" x2="${x}" y2="${Math.min(150, y)}" style="stroke:var(--ok)" stroke-width="5"/>`;
+    for(let k = 1; k <= 3; k++){ const yy = 150 - (150 - y) * k / 4; s += `<ellipse cx="${x + (k % 2 ? 12 : -12)}" cy="${yy}" rx="11" ry="5" style="fill:var(--ok)"/>`; }
+    s += `<text x="${x + 40}" y="${y + 4}" font-size="14" font-weight="700" style="fill:var(--ink)">${Sim.fmt(v, 1)} cm</text><text x="${x}" y="206" text-anchor="middle" font-size="13" font-weight="700" style="fill:var(--muted)">Pot ${'AB'[i]}</text>`; });
+  $('svg').innerHTML = s;
+  const m = $('msg');
+  if(beda.length === 0){ m.className = 'msg bad'; m.innerHTML = 'Kedua pot sama persis. Tidak ada <b>variabel bebas</b> yang diubah, sehingga tidak ada yang bisa disimpulkan.'; }
+  else if(beda.length > 1){ m.className = 'msg bad'; m.innerHTML = `Bukan uji adil: kamu mengubah ${beda.length} faktor sekaligus (${beda.map(k => F[k].nama.toLowerCase()).join(', ')}). Perbedaan tinggi tidak dapat dipastikan penyebabnya. Ubah <b>hanya satu</b> faktor.`; }
+  else if(beda[0] !== tujuan){ m.className = 'msg bad'; m.innerHTML = `Uji adil, tetapi yang kamu ubah adalah ${F[beda[0]].nama.toLowerCase()}, bukan faktor yang ingin diselidiki.`; }
+  else { m.className = 'msg ok'; m.innerHTML = `✓ Uji adil! Variabel bebas: <b>${F[tujuan].nama.toLowerCase()}</b>. Variabel terikat: <b>tinggi tanaman</b>. Variabel kontrol: ${Object.keys(F).filter(k => k !== tujuan).map(k => F[k].nama.toLowerCase()).join(', ')}.`; }
+};
+$('new').onclick = () => { gi = (gi + 1) % GOALS.length; pot = [{air: 1, cahaya: 2, pupuk: 0, tanah: 1}, {air: 1, cahaya: 2, pupuk: 0, tanah: 1}]; build(); $('svg').innerHTML = ''; $('msg').className = 'msg'; $('msg').textContent = 'Atur kedua pot, lalu tekan tombol tanam.'; };
+build();
+</script>
+</body>
+</html>

@@ -1,56 +1,178 @@
 {
   "title": "Bioteknologi Modern dan Bioetika",
-  "summary": "Ringkasan bab Bioteknologi Modern dan Bioetika akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Kultur jaringan, rekayasa genetika dan DNA rekombinan, organisme transgenik, kloning, antibodi monoklonal, vaksin, sel punca, PCR, penyuntingan genom CRISPR/Cas9, dampak bioteknologi, serta bioetika.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Bioteknologi Modern dan Bioetika",
+      "id": "kultur-jaringan",
+      "title": "Kultur jaringan",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Kultur Jaringan, Rekayasa Genetika, Transgenik, Kloning, Vaksin, Sel Punca, Penyuntingan Genom, dan Bioetika</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p><b>Kultur jaringan</b> adalah perbanyakan tumbuhan secara vegetatif dari sel atau jaringan (eksplan) pada medium buatan dalam kondisi aseptik (in vitro). Dasarnya adalah teori <b>totipotensi</b> (Haberlandt): setiap sel tumbuhan hidup mampu tumbuh menjadi tumbuhan utuh.</p><ol><li>Sterilisasi alat, medium, dan eksplan.</li><li>Penanaman eksplan (pucuk, daun, kalus) pada medium berisi hara, gula, vitamin, dan hormon (auksin dan sitokinin).</li><li>Multiplikasi: kalus atau tunas diperbanyak dengan subkultur berulang.</li><li>Pengakaran sampai terbentuk planlet.</li><li>Aklimatisasi: planlet dipindahkan bertahap ke lingkungan luar.</li></ol><p>Keunggulan: bibit seragam dan identik dengan induk, jumlah banyak dalam waktu singkat, bebas penyakit, dan tidak bergantung musim. Kekurangannya: perlu biaya dan keterampilan tinggi, serta keragaman genetiknya rendah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Satu eksplan anggrek menghasilkan 4 tunas pada setiap subkultur, dan setiap tunas disubkultur lagi. Berapa planlet setelah 3 kali subkultur? Jika 90% bertahan saat aklimatisasi, berapa bibit siap tanam?</p>",
+          "steps": [
+            "Planlet = 4³ = 64.",
+            "Bibit = 90% × 64 ≈ 57."
+          ],
+          "answer": "64 planlet dan ± 57 bibit"
+        },
+        {
+          "type": "check",
+          "question": "Perbandingan auksin yang lebih tinggi daripada sitokinin dalam medium kultur jaringan cenderung merangsang pembentukan ....",
+          "options": {
+            "A": "tunas",
+            "B": "akar",
+            "C": "bunga",
+            "D": "biji"
+          },
+          "answer": "B",
+          "hint": "Auksin merangsang perakaran.",
+          "explanation": "Auksin tinggi mendorong pembentukan akar; sitokinin tinggi mendorong pembentukan tunas."
+        }
+      ]
+    },
+    {
+      "id": "rekayasa-genetika",
+      "title": "Rekayasa genetika dan organisme transgenik",
+      "kind": "simulasi",
+      "duration": "45 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rekayasa genetika</b> adalah pemindahan gen dari satu organisme ke organisme lain. Alat utamanya: <b>enzim restriksi endonuklease</b> (gunting molekuler pemotong urutan basa tertentu), <b>DNA ligase</b> (lem molekuler), dan <b>vektor</b>, yaitu pembawa gen seperti <b>plasmid</b> (DNA kecil melingkar pada bakteri di luar kromosom) atau virus.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/dna-rekombinan.html",
+          "title": "Pembuatan DNA rekombinan",
+          "height": 540,
+          "caption": "Ganti enzim restriksi lalu bandingkan ujung lengketnya. Mengapa gen donor dan plasmid harus dipotong dengan enzim yang sama?"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Contoh produk</b>:</p><ul><li>Hormon dan protein manusia yang dibuat bakteri E. coli rekombinan: insulin, hormon pertumbuhan, interferon.</li><li><b>Tanaman transgenik</b>, yang gennya sering disisipkan dengan plasmid Ti dari Agrobacterium tumefaciens: kapas dan jagung Bt (gen Bacillus thuringiensis penghasil racun bagi ulat), golden rice (beras berprovitamin A), tomat Flavr Savr (tahan busuk), kedelai tahan herbisida, dan tebu tahan kekeringan.</li><li><b>Hewan transgenik</b>: ikan salmon tumbuh cepat, kambing yang susunya mengandung protein obat.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Mengapa bakteri lebih sering dipakai daripada sel hewan untuk menghasilkan protein manusia seperti hormon pertumbuhan?</p>",
+          "steps": [
+            "Bakteri berkembang biak sangat cepat (membelah tiap ± 20–30 menit) sehingga produksi besar dan murah.",
+            "Bakteri mudah dibiakkan dan memiliki plasmid yang mudah disisipi gen; kode genetiknya sama dengan manusia."
+          ],
+          "answer": "Bakteri cepat berbiak, murah, mudah direkayasa, dan menerjemahkan kode genetik yang sama"
+        },
+        {
+          "type": "check",
+          "question": "Peran DNA ligase dalam rekayasa genetika adalah ....",
+          "options": {
+            "A": "memotong DNA pada urutan tertentu",
+            "B": "menyambung gen donor dengan plasmid",
+            "C": "memperbanyak DNA secara in vitro",
+            "D": "mengenali kodon awal"
+          },
+          "answer": "B",
+          "hint": "Ligase = penyambung.",
+          "explanation": "DNA ligase menyambungkan tulang punggung gula-fosfat antara gen sisipan dan plasmid sehingga terbentuk DNA rekombinan."
+        }
+      ]
+    },
+    {
+      "id": "kloning-kesehatan",
+      "title": "Kloning, antibodi monoklonal, vaksin, dan sel punca",
+      "kind": "artikel",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<ul><li><b>Kloning transfer inti</b>: inti sel tubuh donor dimasukkan ke sel telur yang intinya telah dibuang, lalu embrio ditanam di rahim induk pengganti. Domba Dolly (1996) adalah mamalia pertama hasil kloning dari sel tubuh dewasa. Klon secara genetik identik dengan donor inti. <b>Kloning reproduktif</b> bertujuan menghasilkan individu baru; <b>kloning terapeutik</b> bertujuan memperoleh sel punca untuk pengobatan.</li><li><b>Antibodi monoklonal</b> dibuat dengan teknik hibridoma (peleburan limfosit B dengan sel kanker mieloma), sehingga diperoleh sel yang terus membelah sekaligus menghasilkan satu jenis antibodi. Kegunaannya untuk diagnosis (misalnya alat uji kehamilan) dan terapi kanker.</li><li><b>Vaksin</b>: dari patogen yang dilemahkan atau dimatikan, bagian protein (subunit, rekombinan), atau mRNA. Pengembangannya melalui uji praklinis dan tiga tahap uji klinis sebelum diedarkan.</li><li><b>Sel punca</b> (stem cell): sel yang belum berdiferensiasi dan dapat menjadi berbagai jenis sel. Sel punca embrionik bersifat pluripoten; sel punca dewasa (misalnya di sumsum tulang) bersifat multipoten. Dipakai antara lain untuk transplantasi sumsum tulang pada leukemia.</li><li><b>PCR</b> menggandakan DNA secara in vitro untuk diagnosis penyakit dan tes DNA forensik.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sapi P (sapi perah unggul) disumbangkan sel kulitnya, sel telur diambil dari sapi Q, dan embrio ditanam di rahim sapi R. Anak sapi yang lahir akan memiliki susunan gen inti seperti sapi mana dan berjenis kelamin apa?</p>",
+          "steps": [
+            "Gen inti berasal dari sel kulit P.",
+            "Sapi P betina, sehingga klonnya juga betina."
+          ],
+          "answer": "seperti sapi P, betina"
+        },
+        {
+          "type": "check",
+          "question": "Teknik yang paling tepat untuk mendeteksi materi genetik virus dalam sampel yang jumlahnya sangat sedikit adalah ....",
+          "options": {
+            "A": "kultur jaringan",
+            "B": "PCR",
+            "C": "hibridoma",
+            "D": "transfer inti"
+          },
+          "answer": "B",
+          "hint": "Perlu penggandaan DNA atau RNA.",
+          "explanation": "PCR menggandakan potongan DNA target berjuta-juta kali sehingga jumlah yang sangat sedikit pun dapat terdeteksi."
+        }
+      ]
+    },
+    {
+      "id": "crispr-bioetika",
+      "title": "Penyuntingan genom, dampak, dan bioetika",
+      "kind": "artikel",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>CRISPR/Cas9</b> adalah alat penyuntingan genom yang berasal dari sistem pertahanan bakteri terhadap virus. RNA pemandu (sgRNA) membawa protein Cas9 ke urutan DNA target, lalu Cas9 memotong kedua untai DNA. Sel memperbaiki potongan itu: melalui penyambungan ujung (NHEJ) yang sering menonaktifkan gen, atau melalui perbaikan berdasarkan cetakan (HDR) yang dapat memasukkan urutan yang benar.</p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut CRISPR/Cas9 \"terdiri atas 2 varian, yaitu RuvC dan HNH\". RuvC dan HNH bukan varian, melainkan dua <b>domain pemotong</b> (nuklease) pada satu protein Cas9. Masing-masing memotong satu untai DNA, sehingga bersama-sama menghasilkan potongan untai ganda.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Dampak positif</b>: obat dan vaksin lebih murah dan banyak, produksi pangan meningkat, diagnosis penyakit lebih cepat, serta limbah dapat diolah. <b>Dampak negatif dan kekhawatiran</b>: gangguan keseimbangan ekologi (gen kebal hama berpindah ke gulma, serangga bukan sasaran ikut terpengaruh), berkurangnya keanekaragaman varietas lokal, kemungkinan alergi dari produk transgenik, ketimpangan ekonomi karena paten, serta masalah etika kloning dan penyuntingan embrio manusia.</p><p><b>Bioetika</b> mengatur penerapan bioteknologi agar aman dan menghormati makhluk hidup. Penelitian dengan manusia memerlukan persetujuan setelah penjelasan (<i>informed consent</i>) dan izin komisi etik (<i>ethical clearance</i>). Penelitian hewan mengikuti prinsip <b>3R</b>: replacement (mengganti hewan bila mungkin), reduction (mengurangi jumlah hewan), dan refinement (mengurangi rasa sakit). Produk transgenik di Indonesia harus lulus kajian keamanan hayati sebelum diedarkan.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Kekhawatiran ekologis utama dari penanaman tanaman transgenik tahan hama secara luas adalah ....",
+          "options": {
+            "A": "tanaman menjadi lebih kecil",
+            "B": "gen ketahanan dapat berpindah ke tumbuhan liar sekerabat dan serangga bukan sasaran dapat terdampak",
+            "C": "tanaman tidak dapat berfotosintesis",
+            "D": "tanah menjadi lebih subur"
+          },
+          "answer": "B",
+          "hint": "Pikirkan aliran gen dan rantai makanan.",
+          "explanation": "Serbuk sari dapat membawa gen ke kerabat liarnya, dan racun Bt dapat memengaruhi organisme lain dalam ekosistem."
         }
       ]
     },
     {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
       "kind": "artikel",
-      "duration": "10 menit",
+      "duration": "5 menit",
       "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
-        },
         {
           "type": "callout",
-          "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
-        }
-      ]
-    },
-    {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
-      "blocks": [
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira klon mewarisi sifat induk penyumbang sel telur atau induk pengganti; klon sama dengan donor inti.</li><li>Tertukar fungsi enzim restriksi (memotong) dan ligase (menyambung).</li><li>Menyebut plasmid sebagai bagian kromosom bakteri.</li><li>Tertukar kloning reproduktif dan terapeutik.</li></ul>"
+        },
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Biologi untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 4 Inovasi Bioteknologi (F. Bioteknologi Modern; G. Harapan dan Kenyataan; H. Bioetika).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang kultur jaringan, rekayasa genetika, transgenik, kloning, vaksin, sel punca, penyuntingan genom, dan bioetika. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

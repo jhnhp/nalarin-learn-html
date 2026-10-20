@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tumbukan Satu Dimensi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:11px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Dua troli bertumbukan dengan diagram momentum dan energi kinetik"></svg></div>
+  <div class="panel">
+    <div class="seg" id="e"><button data-v="1">Lenting sempurna</button><button class="on" data-v="0.5">Lenting sebagian</button><button data-v="0">Tidak lenting</button></div>
+    <div class="lab">Massa A <b id="mav"></b></div><input type="range" id="ma" min="1" max="10" step="1" value="2">
+    <div class="lab">Kecepatan A <b id="vav"></b></div><input type="range" id="va" min="-6" max="6" step="1" value="4">
+    <div class="lab">Massa B <b id="mbv"></b></div><input type="range" id="mb" min="1" max="10" step="1" value="3">
+    <div class="lab">Kecepatan B <b id="vbv"></b></div><input type="range" id="vb" min="-6" max="6" step="1" value="-1">
+    <div class="row"><button class="btn primary" id="go">▶ Tumbukkan</button><button class="btn" id="reset">Ulang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Pada semua tumbukan, momentum total kekal: m<sub>A</sub>v<sub>A</sub> + m<sub>B</sub>v<sub>B</sub> = m<sub>A</sub>v'<sub>A</sub> + m<sub>B</sub>v'<sub>B</sub>. Koefisien restitusi e = −(v'<sub>A</sub> − v'<sub>B</sub>)/(v<sub>A</sub> − v<sub>B</sub>): e = 1 lenting sempurna (Ek kekal), 0 &lt; e &lt; 1 lenting sebagian, e = 0 tidak lenting sama sekali (menyatu).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let e = .5, t = 0, timer = null, xa, xb, after = false;
+document.querySelectorAll('#e button').forEach(b => b.onclick = () => { document.querySelectorAll('#e button').forEach(x => x.classList.toggle('on', x === b)); e = +b.dataset.v; reset(); });
+['ma', 'va', 'mb', 'vb'].forEach(i => $(i).oninput = reset);
+$('go').onclick = () => { if(timer) return; reset(); timer = setInterval(stepAnim, 30); };
+$('reset').onclick = reset;
+function vals(){ const ma = +$('ma').value, mb = +$('mb').value, va = +$('va').value, vb = +$('vb').value; const p = ma * va + mb * vb; const va2 = (p - mb * e * (va - vb)) / (ma + mb), vb2 = (p + ma * e * (va - vb)) / (ma + mb); return {ma, mb, va, vb, va2, vb2}; }
+function reset(){ if(timer){ clearInterval(timer); timer = null; } xa = 120; xb = 340; after = false; draw(); }
+function stepAnim(){
+  const v = vals(), wa = 20 + v.ma * 3, wb = 20 + v.mb * 3, k = 12 * .03;
+  if(!after){
+    if(v.va - v.vb <= 0){ clearInterval(timer); timer = null; draw('tidak akan bertumbukan (A tidak mengejar B)'); return; }
+    xa += v.va * k; xb += v.vb * k;
+    if(xb - wb / 2 - (xa + wa / 2) <= 0){ after = true; }
+  } else { xa += v.va2 * k; xb += v.vb2 * k; if(xa < -40 || xb > 520 || xa > 520 || xb < -40 || Math.abs(xa) > 900){ clearInterval(timer); timer = null; } }
+  draw();
+}
+function bars(x, y, items, max, unit, title){
+  let s = `<text class="s" x="${x}" y="${y - 6}" style="fill:var(--muted)">${title}</text>`;
+  items.forEach(([lab, val, col], i) => { const w = Math.abs(val) / max * 45, yy = y + i * 18; s += `<text class="s" x="${x}" y="${yy + 11}" style="fill:var(--ink)">${lab}</text><rect x="${x + 100 + (val < 0 ? -w : 0)}" y="${yy + 2}" width="${w}" height="12" style="fill:${col}"/><text class="s" x="${x + 160}" y="${yy + 12}" style="fill:var(--ink)">${fmt(val, 2)} ${unit}</text>`; });
+  return s;
+}
+function draw(msg){
+  const v = vals(), wa = 20 + v.ma * 3, wb = 20 + v.mb * 3;
+  const fused = e === 0 && after;
+  let s = `<line x1="0" y1="120" x2="480" y2="120" style="stroke:var(--ink)" stroke-width="2"/>`;
+  const cart = (x, w, col, lab, vel) => `<rect x="${x - w / 2}" y="${120 - 34}" width="${w}" height="26" rx="4" style="fill:${col}"/><circle cx="${x - w / 4}" cy="114" r="5" style="fill:var(--ink)"/><circle cx="${x + w / 4}" cy="114" r="5" style="fill:var(--ink)"/><text class="c" x="${x}" y="${120 - 16}" text-anchor="middle" fill="#fff">${lab}</text><text class="s" x="${x}" y="${120 - 42}" text-anchor="middle" style="fill:var(--ink)">${fmt(vel, 2)} m/s</text>`;
+  s += cart(xa, wa, 'var(--a)', 'A', after ? v.va2 : v.va) + cart(xb, wb, 'var(--b)', 'B', after ? v.vb2 : v.vb);
+  const pA = v.ma * v.va, pB = v.mb * v.vb, pA2 = v.ma * v.va2, pB2 = v.mb * v.vb2;
+  const kA = .5 * v.ma * v.va ** 2, kB = .5 * v.mb * v.vb ** 2, kA2 = .5 * v.ma * v.va2 ** 2, kB2 = .5 * v.mb * v.vb2 ** 2;
+  const pm = Math.max(1, Math.abs(pA), Math.abs(pB), Math.abs(pA2), Math.abs(pB2), Math.abs(pA + pB)), km = Math.max(1, kA + kB);
+  s += bars(20, 160, [['p A', pA, 'var(--a)'], ['p B', pB, 'var(--b)'], ['p total', pA + pB, 'var(--ink)']], pm, 'kg m/s', 'momentum sebelum');
+  s += bars(250, 160, [['p A', pA2, 'var(--a)'], ['p B', pB2, 'var(--b)'], ['p total', pA2 + pB2, 'var(--ink)']], pm, 'kg m/s', 'momentum sesudah');
+  s += `<text class="s" x="20" y="240" style="fill:var(--muted)">energi kinetik total: sebelum ${fmt(kA + kB, 2)} J → sesudah ${fmt(kA2 + kB2, 2)} J</text>`;
+  s += `<rect x="20" y="248" width="${(kA + kB) / km * 440}" height="12" style="fill:var(--comp)" fill-opacity=".4"/><rect x="20" y="264" width="${(kA2 + kB2) / km * 440}" height="12" style="fill:var(--comp)"/>`;
+  if(msg) s += `<text class="c" x="240" y="40" text-anchor="middle" style="fill:var(--bad)">${msg}</text>`;
+  svg.innerHTML = s;
+  $('mav').textContent = v.ma + ' kg'; $('mbv').textContent = v.mb + ' kg'; $('vav').textContent = v.va + ' m/s'; $('vbv').textContent = v.vb + ' m/s';
+  $('read').innerHTML = `<div><span>Kecepatan sesudah</span><b>v'A = ${fmt(v.va2, 2)} m/s, v'B = ${fmt(v.vb2, 2)} m/s</b></div><div><span>Ek yang hilang (menjadi panas, bunyi, deformasi)</span><b>${fmt(kA + kB - kA2 - kB2, 2)} J</b></div>`;
+}
+reset();
+</script>
+</body>
+</html>

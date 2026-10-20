@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerak Sadar dan Gerak Refleks</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}.stp{padding:10px 12px;border-radius:12px;background:var(--surface-2);font-size:14.5px;line-height:1.5}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 380" role="img" aria-label="Jalur impuls saraf dari reseptor ke efektor"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="sadar" class="on">Gerak sadar</button><button data-m="refleks">Gerak refleks</button></div>
+    <div class="row"><button class="btn primary" id="go">Kirim impuls ▶</button></div>
+    <div class="stp" id="stp"></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const N = {res: [150, 280, 'reseptor (kulit jari)'], sens: [210, 230, 'neuron sensoris'], sum: [300, 210, 'medula spinalis'], otak: [300, 60, 'otak'], mot: [210, 320, 'neuron motoris'], ef: [150, 360, 'efektor (otot lengan)']};
+const P = {sadar: ['res', 'sens', 'sum', 'otak', 'sum', 'mot', 'ef'], refleks: ['res', 'sens', 'sum', 'mot', 'ef']};
+const TXT = {sadar: 'Contoh: melihat bola lalu menangkapnya. Rangsang diolah di otak sehingga kita memutuskan gerakan dengan sadar.', refleks: 'Contoh: tangan menyentuh setrika panas langsung ditarik. Impuls cukup diolah di sumsum tulang belakang tanpa menunggu otak, sehingga lebih cepat.'};
+let mode = 'sadar', prog = -1, timer = null;
+$('mode').onclick = e => { const b = e.target.closest('button'); if(!b) return; mode = b.dataset.m; document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); prog = -1; draw(); };
+$('go').onclick = () => { prog = 0; if(timer) clearInterval(timer); timer = setInterval(() => { prog += .025; if(prog >= P[mode].length - 1){ prog = P[mode].length - 1; clearInterval(timer); timer = null; } draw(); }, 30); };
+Sim.onTheme(draw);
+function draw(){
+  const path = P[mode];
+  let s = `<path d="M280 40 q40 -30 80 0 q30 30 0 60 q-40 25 -80 0 q-30 -30 0 -60z" style="fill:var(--r)" fill-opacity=".15" stroke="var(--r)"/>`;
+  s += `<rect x="290" y="90" width="20" height="260" rx="10" style="fill:var(--comp)" fill-opacity=".2" stroke="var(--comp)"/>`;
+  // semua jalur samar
+  const segs = [];
+  for(let i = 0; i < path.length - 1; i++) segs.push([path[i], path[i + 1]]);
+  [['res', 'sens'], ['sens', 'sum'], ['sum', 'otak'], ['sum', 'mot'], ['mot', 'ef']].forEach(([a, b]) => { const A = N[a], B = N[b]; s += `<line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" style="stroke:var(--line-2)" stroke-width="4"/>`; });
+  segs.forEach(([a, b], i) => { if(prog < 0) return; const f = Math.max(0, Math.min(1, prog - i)); if(f <= 0) return; const A = N[a], B = N[b]; s += `<line x1="${A[0]}" y1="${A[1]}" x2="${A[0] + (B[0] - A[0]) * f}" y2="${A[1] + (B[1] - A[1]) * f}" style="stroke:var(--a)" stroke-width="6"/>`; });
+  Object.entries(N).forEach(([k, [x, y, t]]) => { const on = path.includes(k); s += `<circle cx="${x}" cy="${y}" r="9" style="fill:${on ? 'var(--a)' : 'var(--line-2)'}"/><text class="c" x="${x + (x > 250 ? 16 : -14)}" y="${y + 4}" text-anchor="${x > 250 ? 'start' : 'end'}" style="fill:${on ? 'var(--ink)' : 'var(--muted)'}">${t}</text>`; });
+  if(prog >= 0){ const i = Math.min(Math.floor(prog), path.length - 2), f = prog - i, A = N[path[i]], B = N[path[i + 1]]; s += `<circle cx="${A[0] + (B[0] - A[0]) * f}" cy="${A[1] + (B[1] - A[1]) * f}" r="8" style="fill:var(--b)"/>`; }
+  svg.innerHTML = s;
+  $('stp').textContent = TXT[mode];
+  const names = path.map(k => N[k][2].split(' (')[0]);
+  $('read').innerHTML = `<div><span>Jalur impuls</span><b>${names.join(' → ')}</b></div><div><span>Pusat pengolah</span><b>${mode === 'sadar' ? 'otak' : 'sumsum tulang belakang (medula spinalis)'}</b></div><div><span>Kecepatan respons</span><b>${mode === 'sadar' ? 'lebih lambat' : 'sangat cepat, tanpa disadari'}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

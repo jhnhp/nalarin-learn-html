@@ -1,56 +1,161 @@
 {
   "title": "Baris dan Deret",
-  "summary": "Ringkasan bab Baris dan Deret akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA SMA: barisan dan deret aritmetika dan geometri, deret tak hingga, bunga tunggal dan majemuk, pertumbuhan, peluruhan, dan anuitas.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Baris dan Deret",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Baris dan Deret</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi barisan dan deret",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Kunci soal TKA barisan adalah mengenali apakah perubahannya <b>ditambah tetap</b> (aritmetika) atau <b>dikali tetap</b> (geometri).</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Aritmetika</td><td>Uₙ, Sₙ, soal cerita kursi dan tabungan</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Geometri</td><td>Uₙ, Sₙ, deret tak hingga</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Bunga</td><td>tunggal (aritmetika), majemuk (geometri)</td><td>Kelas 10 Bab 2, Kelas 12 Bab 2</td></tr><tr><td>Pertumbuhan/peluruhan</td><td>M(1 ± i)ⁿ</td><td>Kelas 10 Bab 2</td></tr><tr><td>Anuitas</td><td>nilai akhir tabungan rutin, angsuran</td><td>Kelas 12 Bab 2</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>Aritmetika: Uₙ = a + (n − 1)b; Sₙ = ½n(a + Uₙ).</li><li>Geometri: Uₙ = arⁿ⁻¹; Sₙ = a(rⁿ − 1)/(r − 1); S∞ = a/(1 − r), |r| &lt; 1.</li><li>Bunga tunggal: M(1 + in). Majemuk: M(1 + i)ⁿ. Penyusutan: M(1 − i)ⁿ.</li><li>Nilai akhir anuitas: A[(1 + i)ⁿ − 1]/i.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "barisan-deret",
+      "title": "Barisan dan deret",
+      "kind": "simulasi",
+      "duration": "20 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/barisan.html",
+          "title": "Barisan aritmetika dan geometri",
+          "height": 520,
+          "caption": "Bandingkan pertumbuhan aritmetika dan geometri untuk n besar."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>U₂ = 6 dan U₅ = 162 pada barisan geometri. Tentukan S₅.</p>",
+          "steps": [
+            "r³ = 27, r = 3, a = 2.",
+            "S₅ = 2(3⁵ − 1)/2 = 242."
+          ],
+          "answer": "242"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Koloni berisi 50 bakteri; setiap 30 menit setiap bakteri membelah dua. Berapa bakteri setelah 3 jam?</p>",
+          "steps": [
+            "3 jam = 6 periode.",
+            "50 × 2⁶ = 3.200."
+          ],
+          "answer": "3.200"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Matematika/01 Barisan dan Deret/sim/deret-tak-hingga.html",
+          "title": "Deret geometri tak hingga",
+          "height": 520,
+          "caption": "Bola memantul: panjang lintasan mendekati batas tertentu."
+        },
+        {
+          "type": "check",
+          "question": "Bola dijatuhkan dari ketinggian 10 m dan memantul 3/5 tinggi sebelumnya. Panjang lintasan sampai berhenti adalah ....",
+          "options": {
+            "A": "25 m",
+            "B": "30 m",
+            "C": "40 m",
+            "D": "50 m"
+          },
+          "answer": "C",
+          "hint": "Total = turun + naik.",
+          "explanation": "Turun: 10/(1 − 3/5) = 25. Naik: 6/(2/5) = 15. Total 40 m."
+        }
+      ]
+    },
+    {
+      "id": "keuangan",
+      "title": "Bunga, pertumbuhan, dan anuitas",
+      "kind": "simulasi",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/bunga.html",
+          "title": "Bunga tunggal dan majemuk",
+          "height": 520,
+          "caption": "Bandingkan saldo setelah 10 dan 20 tahun."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Harga mobil Rp200.000.000,00 turun 10% setiap tahun dari nilai tahun sebelumnya. Berapa nilainya setelah 3 tahun?</p>",
+          "steps": [
+            "200.000.000 × 0,9³ = 200.000.000 × 0,729.",
+            "= Rp145.800.000,00."
+          ],
+          "answer": "Rp145.800.000,00"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Penduduk 500.000 jiwa bertambah 2% per tahun. Berapa penduduk setelah 3 tahun?</p>",
+          "steps": [
+            "500.000 × 1,02³ = 500.000 × 1,061208.",
+            "≈ 530.604 jiwa."
+          ],
+          "answer": "≈ 530.604 jiwa"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Matematika/02 Investasi dan Pinjaman/sim/tabungan-rutin.html",
+          "title": "Tabungan rutin (anuitas)",
+          "height": 520,
+          "caption": "Bandingkan total setoran dengan bunga yang terkumpul."
+        },
+        {
+          "type": "check",
+          "question": "Rp5.000.000,00 ditabung dengan bunga tunggal 6% per tahun. Saldo setelah 3 tahun adalah ....",
+          "options": {
+            "A": "Rp5.300.000,00",
+            "B": "Rp5.900.000,00",
+            "C": "Rp5.955.080,00",
+            "D": "Rp6.800.000,00"
+          },
+          "answer": "B",
+          "hint": "M(1 + in).",
+          "explanation": "5.000.000 × 1,18 = 5.900.000. Rp5.955.080,00 adalah hasil bunga majemuk."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Hitung banyak periode dengan teliti (setiap 30 menit selama 3 jam = 6 periode).</li><li>Bedakan kenaikan “sebesar 5 setiap minggu” (aritmetika) dan “5% setiap tahun” (geometri).</li><li>Pada soal obat atau zat yang meluruh dan ditambah berulang, susun tabel beberapa periode pertama.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai rumus deret tak hingga ketika |r| ≥ 1.</li><li>Lupa mengalikan 2 untuk lintasan naik–turun bola.</li><li>Menghitung bunga majemuk seperti bunga tunggal.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA SMA topik Baris dan Deret. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

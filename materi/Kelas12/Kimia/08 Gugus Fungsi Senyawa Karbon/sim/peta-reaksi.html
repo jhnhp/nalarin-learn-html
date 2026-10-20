@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peta Reaksi Senyawa Karbon</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 360" role="img" aria-label="Peta hubungan reaksi antara golongan senyawa karbon"></svg></div>
+  <div class="panel">
+    <div class="lab">Klik panah atau pilih reaksi</div>
+    <div class="seg" id="j"><button data-j="semua" class="on">Semua</button><button data-j="substitusi">Substitusi</button><button data-j="eliminasi">Eliminasi</button><button data-j="adisi">Adisi</button><button data-j="redoks">Oksidasi/reduksi</button><button data-j="ester">Ester</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const N = {alkena: [70, 60, 'etena', 'CH₂=CH₂'], haloalkana: [240, 40, 'kloroetana', 'CH₃CH₂Cl'], alkohol: [240, 170, 'etanol', 'CH₃CH₂OH'], aldehida: [410, 120, 'etanal', 'CH₃CHO'], asam: [410, 250, 'asam etanoat', 'CH₃COOH'], ester: [240, 300, 'etil etanoat', 'CH₃COOC₂H₅'], eter: [70, 230, 'dietil eter', 'C₂H₅OC₂H₅']};
+// [dari, ke, jenis, label, persamaan, catatan]
+const E = [
+  ['alkena', 'alkohol', 'adisi', '+ H₂O (H⁺)', 'CH₂=CH₂ + H₂O → CH₃CH₂OH', 'Hidrasi alkena. Cara industri membuat etanol.'],
+  ['alkena', 'haloalkana', 'adisi', '+ HCl', 'CH₂=CH₂ + HCl → CH₃CH₂Cl', 'Pada alkena tak simetris berlaku aturan Markovnikov: H masuk ke C rangkap yang mengikat H lebih banyak.'],
+  ['haloalkana', 'alkohol', 'substitusi', '+ OH⁻', 'CH₃CH₂Cl + NaOH(aq) → CH₃CH₂OH + NaCl', 'Gugus –Cl diganti –OH.'],
+  ['alkohol', 'haloalkana', 'substitusi', '+ HCl', 'CH₃CH₂OH + HCl → CH₃CH₂Cl + H₂O', 'Gugus –OH diganti halogen.'],
+  ['haloalkana', 'alkena', 'eliminasi', 'basa kuat, panas', 'CH₃CH₂Cl + KOH(alkohol) → CH₂=CH₂ + KCl + H₂O', 'Pembentukan ikatan rangkap. Bila ada beberapa kemungkinan, produk utamanya alkena yang lebih tersubstitusi (aturan Zaytsev).'],
+  ['alkohol', 'alkena', 'eliminasi', 'H₂SO₄ pekat, 170 °C', 'CH₃CH₂OH → CH₂=CH₂ + H₂O', 'Dehidrasi alkohol.'],
+  ['haloalkana', 'eter', 'substitusi', '+ RO⁻Na⁺', 'CH₃CH₂Cl + CH₃CH₂ONa → C₂H₅OC₂H₅ + NaCl', 'Sintesis eter Williamson.'],
+  ['alkohol', 'aldehida', 'redoks', 'oksidasi (PCC)', 'CH₃CH₂OH → CH₃CHO', 'Alkohol primer dioksidasi menjadi aldehida. Oksidator lemah PCC menghentikan reaksi di aldehida.'],
+  ['aldehida', 'asam', 'redoks', 'oksidasi (KMnO₄, Tollens, Fehling)', 'CH₃CHO + [O] → CH₃COOH', 'Aldehida mudah dioksidasi; inilah dasar uji Tollens dan Fehling.'],
+  ['aldehida', 'alkohol', 'redoks', 'reduksi (NaBH₄/LiAlH₄)', 'CH₃CHO + 2[H] → CH₃CH₂OH', 'Reduksi aldehida menghasilkan alkohol primer; reduksi keton menghasilkan alkohol sekunder.'],
+  ['asam', 'ester', 'ester', '+ etanol (H⁺)', 'CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O', 'Esterifikasi: asam karboksilat + alkohol dengan katalis asam.'],
+  ['ester', 'asam', 'ester', '+ NaOH (saponifikasi)', 'CH₃COOC₂H₅ + NaOH → CH₃COONa + C₂H₅OH', 'Hidrolisis ester dalam basa menghasilkan garam karboksilat dan alkohol. Bila esternya trigliserida, hasilnya sabun dan gliserol.'],
+  ['ester', 'ester', 'ester', '+ metanol (H⁺)', 'CH₃COOC₂H₅ + CH₃OH ⇌ CH₃COOCH₃ + C₂H₅OH', 'Transesterifikasi: gugus alkoksi ester ditukar. Dipakai pada pembuatan biodiesel.'],
+];
+let J = 'semua', sel = 7;
+$('j').querySelectorAll('button').forEach(b => b.onclick = () => { $('j').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); J = b.dataset.j; const f = E.findIndex(e => J === 'semua' || e[2] === J); if(f >= 0) sel = f; draw(); });
+const COL = {substitusi: '#1565c0', eliminasi: '#c62828', adisi: '#2e7d32', redoks: '#ef6c00', ester: '#6a1b9a'};
+function draw(){
+  let s = `<defs>${Object.entries(COL).map(([k, c]) => `<marker id="m${k}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="${c}"/></marker>`).join('')}</defs>`;
+  E.forEach((e, i) => {
+    if(J !== 'semua' && e[2] !== J) return;
+    const [x1, y1] = N[e[0]], [x2, y2] = N[e[1]], on = i === sel, col = COL[e[2]];
+    let d;
+    if(e[0] === e[1]) d = `M${x1 - 30},${y1 + 16} C${x1 - 70},${y1 + 60} ${x1 + 70},${y1 + 60} ${x1 + 30},${y1 + 16}`;
+    else { const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, off = E.some(o => o[0] === e[1] && o[1] === e[0]) ? 7 : 0; const sx = x1 + ux * 42 - uy * off, sy = y1 + uy * 20 + ux * off, ex = x2 - ux * 42 - uy * off, ey = y2 - uy * 20 + ux * off; d = `M${sx},${sy} L${ex},${ey}`; }
+    s += `<path d="${d}" stroke="${col}" stroke-width="${on ? 4 : 2}" fill="none" marker-end="url(#m${e[2]})" opacity="${on ? 1 : .55}"/><path d="${d}" stroke="transparent" stroke-width="14" fill="none" data-i="${i}" style="cursor:pointer"/>`;
+  });
+  Object.entries(N).forEach(([k, [x, y, nm, f]]) => { s += `<rect x="${x - 44}" y="${y - 18}" width="88" height="36" rx="8" fill="#fff" stroke="#607d8b" stroke-width="1.5"/><text class="c" x="${x}" y="${y - 3}" text-anchor="middle" fill="#333">${f}</text><text class="s" x="${x}" y="${y + 11}" text-anchor="middle" fill="#555">${nm}</text>`; });
+  svg.innerHTML = s;
+  svg.querySelectorAll('path[data-i]').forEach(p => p.onclick = () => { sel = +p.dataset.i; draw(); });
+  const e = E[sel];
+  $('read').innerHTML = `<div><span>Jenis reaksi</span><b style="color:${COL[e[2]]}">${e[2] === 'redoks' ? 'oksidasi/reduksi' : e[2] === 'ester' ? 'esterifikasi/penyabunan/transesterifikasi' : e[2]}</b></div><div><span>Pereaksi/kondisi</span><b>${e[3]}</b></div><div><span>Persamaan</span><b style="font-weight:600">${e[4]}</b></div><div><span>Catatan</span><b style="font-weight:600">${e[5]}</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

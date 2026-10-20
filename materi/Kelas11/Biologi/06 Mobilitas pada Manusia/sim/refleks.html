@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lengkung Refleks dan Gerak Sadar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Diagram jalur impuls dari reseptor ke sumsum tulang belakang, otak, dan otot"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button data-m="lutut" class="on">Refleks lutut</button><button data-m="panas">Menyentuh benda panas</button><button data-m="sadar">Gerak sadar</button></div>
+    <label class="chk"><input type="checkbox" id="dors"> Tanduk dorsal (posterior) rusak</label>
+    <label class="chk"><input type="checkbox" id="vent"> Tanduk ventral (anterior) rusak</label>
+    <div class="row"><button class="btn primary" id="go">Beri rangsang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'lutut', t = -1, timer = null;
+$('mode').querySelectorAll('button').forEach(b => b.onclick = () => { $('mode').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; t = -1; draw(); });
+['dors', 'vent'].forEach(i => $(i).oninput = () => { t = -1; draw(); });
+// titik-titik jalur
+const P = {rec: [60, 280], drg: [235, 205], dor: [270, 190], inter: [290, 210], ven: [300, 228], vroot: [270, 250], mus: [120, 300], brain: [290, 40], eye: [400, 60]};
+function path(){
+  if(M === 'lutut') return [['rec', 'reseptor regang (otot paha)'], ['drg', 'neuron sensorik (aferen) lewat akar dorsal'], ['dor', 'tanduk dorsal'], ['ven', 'langsung bersinaps dengan neuron motorik (monosinaptik)'], ['vroot', 'neuron motorik (eferen) lewat akar ventral'], ['mus', 'efektor: otot paha berkontraksi, kaki menyentak']];
+  if(M === 'panas') return [['rec', 'reseptor panas di kulit jari'], ['drg', 'neuron sensorik (aferen) lewat akar dorsal'], ['dor', 'tanduk dorsal'], ['inter', 'interneuron di sumsum tulang belakang (polisinaptik)'], ['ven', 'tanduk ventral'], ['vroot', 'neuron motorik (eferen) lewat akar ventral'], ['mus', 'efektor: otot lengan menarik tangan']];
+  return [['eye', 'reseptor: mata melihat benda'], ['brain', 'saraf sensorik ke otak; otak besar mengolah dan memutuskan'], ['dor', 'perintah turun lewat sumsum tulang belakang'], ['ven', 'tanduk ventral: neuron motorik'], ['vroot', 'neuron motorik (eferen) lewat akar ventral'], ['mus', 'efektor: otot tangan mengambil benda']];
+}
+function blocked(id){ return ($('dors').checked && (id === 'dor' || id === 'inter') && M !== 'sadar') || ($('vent').checked && (id === 'ven' || id === 'vroot')); }
+function draw(){
+  const pth = path();
+  let s = '';
+  // otak dan sumsum
+  s += `<ellipse cx="290" cy="45" rx="70" ry="32" fill="#f8bbd0" stroke="#ad1457" stroke-width="2"/><text class="c" x="290" y="50" text-anchor="middle" style="fill:var(--ink)">otak</text>`;
+  s += `<rect x="275" y="78" width="30" height="100" fill="#fce4ec" stroke="#ad1457"/><text class="s" x="312" y="120" style="fill:var(--muted)">sumsum tulang belakang</text>`;
+  s += `<circle cx="290" cy="215" r="48" fill="#fff" stroke="#ad1457" stroke-width="2"/><path d="M265,185 q25,22 50,0 M265,245 q25,-22 50,0 M290,190 v50" fill="none" stroke="#9e9e9e" stroke-width="10" stroke-linecap="round" opacity=".6"/>`;
+  s += `<text class="s" x="345" y="200" style="fill:var(--ink)">tanduk dorsal</text><text class="s" x="345" y="245" style="fill:var(--ink)">tanduk ventral</text><circle cx="235" cy="205" r="9" fill="#ffe0b2" stroke="#e65100"/><text class="s" x="200" y="190" style="fill:var(--muted)">ganglion akar dorsal</text>`;
+  s += `<rect x="40" y="265" width="40" height="30" rx="6" fill="#ffe082"/><text class="s" x="60" y="312" text-anchor="middle" style="fill:var(--ink)">reseptor</text><ellipse cx="120" cy="300" rx="34" ry="14" fill="#ef9a9a" stroke="#c62828"/><text class="s" x="120" y="330" text-anchor="middle" style="fill:var(--ink)">otot (efektor)</text>`;
+  s += `<circle cx="400" cy="60" r="16" fill="#e3f2fd" stroke="#1565c0"/><circle cx="404" cy="60" r="6" fill="#1565c0"/>`;
+  // jalur
+  let d = ''; pth.forEach(([id], i) => { const [x, y] = P[id]; d += (i ? 'L' : 'M') + x + ',' + y; });
+  s += `<path d="${d}" fill="none" stroke="#bdbdbd" stroke-width="4" stroke-dasharray="6 5"/>`;
+  const stop = pth.findIndex(([id]) => blocked(id));
+  const reach = stop < 0 ? pth.length - 1 : stop - 1;
+  if(t >= 0){
+    const k = Math.min(t, reach);
+    let dd = ''; pth.slice(0, k + 1).forEach(([id], i) => { const [x, y] = P[id]; dd += (i ? 'L' : 'M') + x + ',' + y; });
+    s += `<path d="${dd}" fill="none" stroke="#d81b60" stroke-width="4"/>`;
+    const [x, y] = P[pth[k][0]]; s += `<circle cx="${x}" cy="${y}" r="8" fill="#d81b60"/>`;
+  }
+  if(stop >= 0){ const [x, y] = P[pth[stop][0]]; s += `<text class="c" x="${x}" y="${y + 4}" text-anchor="middle" fill="#b71c1c">✕</text>`; }
+  svg.innerHTML = s;
+  const done = t >= reach;
+  const moved = stop < 0, felt = !$('dors').checked || M === 'sadar';
+  const step = t >= 0 ? pth[Math.min(t, reach)][1] : '—';
+  $('read').innerHTML = `<div><span>Tahap impuls</span><b>${step}</b></div><div><span>Jenis gerak</span><b>${M === 'sadar' ? 'gerak sadar (melalui otak)' : 'gerak refleks (pusat di sumsum tulang belakang)'}</b></div>${done ? `<div><span>Hasil</span><b>${moved ? 'otot bergerak' : 'otot tidak bergerak'}${M !== 'lutut' && M !== 'sadar' ? '' : ''}</b></div>` : ''}`;
+  let ket = M === 'lutut' ? 'Refleks lutut monosinaptik: neuron sensorik langsung bersinaps dengan neuron motorik di sumsum tulang belakang, sehingga jalurnya sangat pendek dan cepat, tanpa menunggu perintah otak.' : M === 'panas' ? 'Refleks menarik tangan polisinaptik: ada interneuron di antara neuron sensorik dan motorik. Impuls juga diteruskan ke otak sehingga rasa panas baru disadari sesaat setelah tangan tertarik.' : 'Gerak sadar: impuls diolah otak besar lebih dulu sehingga lebih lambat, tetapi dapat dikendalikan.';
+  if($('vent').checked) ket += ' Tanduk ventral berisi badan sel neuron motorik; jika rusak, rangsang masih dapat dirasakan (jika jalur sensorik utuh), tetapi otot di segmen itu tidak dapat digerakkan, baik secara refleks maupun sadar.';
+  if($('dors').checked && M !== 'sadar') ket += ' Tanduk dorsal menerima impuls sensorik; jika rusak, rangsang dari segmen itu tidak diteruskan sehingga refleks tidak terjadi dan rangsang tidak dirasakan.';
+  $('ket').textContent = ket;
+}
+$('go').onclick = () => { clearInterval(timer); t = 0; draw(); timer = setInterval(() => { t++; draw(); if(t > 8) clearInterval(timer); }, 450); };
+draw();
+</script>
+</body>
+</html>

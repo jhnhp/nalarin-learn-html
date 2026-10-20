@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laju Fotosintesis dan Faktor Pembatas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Tanaman air dalam gelas dengan gelembung oksigen dan grafik laju fotosintesis"></svg></div>
+  <div class="panel">
+    <div class="lab">Intensitas cahaya <b id="lv"></b></div><input type="range" id="l" min="0" max="100" step="1" value="35">
+    <div class="lab">Kadar CO₂ (NaHCO₃ ditambahkan) <b id="cv"></b></div><input type="range" id="c" min="0" max="100" step="1" value="40">
+    <div class="lab">Suhu air <b id="tv"></b></div><input type="range" id="t" min="5" max="50" step="1" value="25">
+    <div class="lab">Warna cahaya</div><div class="seg" id="w"><button data-w="putih" class="on">Putih</button><button data-w="merah">Merah</button><button data-w="biru">Biru</button><button data-w="hijau">Hijau</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let W = 'putih', bub = [], tick = 0;
+$('w').querySelectorAll('button').forEach(b => b.onclick = () => { $('w').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); W = b.dataset.w; draw(); });
+['l', 'c', 't'].forEach(i => $(i).oninput = draw);
+const WF = {putih: 1, merah: .95, biru: .85, hijau: .25};
+const fT = t => t <= 30 ? Math.pow(2, (t - 30) / 10) : Math.max(0, 1 - (t - 30) / 15);
+function rate(L, C, t, w){ const Lm = L / 100 * WF[w] * 100, Cm = 15 + C * 0.85; return Math.max(0, Math.min(Lm, Cm) * fT(t)); }
+function draw(){
+  const L = +$('l').value, C = +$('c').value, t = +$('t').value, r = rate(L, C, t, W);
+  $('lv').textContent = L + '%'; $('cv').textContent = C + '%'; $('tv').textContent = t + ' °C';
+  let s = '';
+  // lampu dan gelas
+  const lc = {putih: '#fff59d', merah: '#ef9a9a', biru: '#90caf9', hijau: '#a5d6a7'}[W];
+  s += `<circle cx="40" cy="70" r="18" fill="${L ? lc : '#eee'}" stroke="#555"/>${L ? `<path d="M60,70 L100,${70 - L / 4} L100,${70 + L / 4} z" fill="${lc}" opacity="${.2 + L / 160}"/>` : ''}`;
+  s += `<path d="M100,40 v220 q0,12 12,12 h96 q12,0 12,-12 v-220" fill="none" stroke="#90a4ae" stroke-width="2.5"/><rect x="102" y="60" width="116" height="210" rx="8" fill="#b3e5fc" fill-opacity=".45"/>`;
+  s += `<path d="M130,250 L160,180 L190,250 Z" fill="none" stroke="#78909c" stroke-width="2"/><rect x="152" y="80" width="16" height="100" fill="#fff" fill-opacity=".7" stroke="#78909c"/>`;
+  for(let k = 0; k < 8; k++) s += `<path d="M${145 + k * 4},248 q${(k % 2 ? 1 : -1) * 12},-30 ${k * 2 - 7},-60" fill="none" stroke="#2e7d32" stroke-width="3"/>`;
+  bub.forEach(b => s += `<circle cx="${b.x}" cy="${b.y}" r="3" fill="#fff" stroke="#0277bd"/>`);
+  s += `<text class="s" x="160" y="295" text-anchor="middle" fill="#555">Hydrilla dalam corong terbalik</text><text class="s" x="160" y="74" text-anchor="middle" fill="#0277bd">gas O₂</text>`;
+  // grafik laju vs cahaya
+  const gx = 270, gy = 270, gw = 190, gh = 200, X = v => gx + v / 100 * gw, Y = v => gy - v / 100 * gh;
+  s += `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/><text class="s" x="${gx + gw}" y="${gy + 16}" text-anchor="end" fill="#555">intensitas cahaya</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#555">laju fotosintesis</text>`;
+  [[C, '#2e7d32', 'CO₂ saat ini'], [Math.min(100, C + 40), '#90a4ae', 'CO₂ lebih tinggi']].forEach(([cc, col, nm], k) => { if(k && C >= 100) return; let d = ''; for(let v = 0; v <= 100; v++) d += (v ? 'L' : 'M') + X(v) + ',' + Y(rate(v, cc, t, W)).toFixed(1); s += `<path d="${d}" fill="none" stroke="${col}" stroke-width="${k ? 1.5 : 3}" ${k ? 'stroke-dasharray="4 3"' : ''}/>`; });
+  s += `<circle cx="${X(L)}" cy="${Y(r)}" r="6" fill="#e53935"/>`;
+  svg.innerHTML = s;
+  const Lm = L * WF[W], Cm = 15 + C * .85;
+  const pemb = t > 38 ? 'suhu terlalu tinggi (enzim mulai rusak)' : t < 15 ? 'suhu rendah (enzim lambat)' : Lm < Cm ? 'cahaya' : 'kadar CO₂';
+  $('read').innerHTML = `<div><span>Laju (gelembung per menit)</span><b>${fmt(r * .4, 1)}</b></div><div><span>Faktor pembatas</span><b>${pemb}</b></div><div><span>Catatan</span><b style="font-weight:600">${W === 'hijau' ? 'Cahaya hijau sedikit diserap klorofil (banyak dipantulkan), sehingga lajunya rendah.' : 'Faktor yang paling kurang tersedia membatasi laju (hukum faktor pembatas Blackman).'}</b></div>`;
+}
+setInterval(() => { tick++; const r = rate(+$('l').value, +$('c').value, +$('t').value, W); if(Math.random() < r / 60) bub.push({x: 150 + Math.random() * 20, y: 180}); bub.forEach(b => { b.y -= 3; b.x += (Math.random() - .5); }); bub = bub.filter(b => b.y > 82); draw(); }, 70);
+draw();
+</script>
+</body>
+</html>

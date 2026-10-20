@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardy-Weinberg dan Hanyutan Genetik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Grafik frekuensi alel dari generasi ke generasi pada beberapa populasi"></svg></div>
+  <div class="panel">
+    <div class="lab">Frekuensi awal alel A (p) <b id="pv"></b></div><input type="range" id="p" min="0.05" max="0.95" step="0.05" value="0.5">
+    <div class="lab">Ukuran populasi <b id="nv"></b></div><input type="range" id="n" min="1" max="4" step="1" value="4">
+    <div class="lab">Seleksi melawan genotip aa <b id="sv"></b></div><input type="range" id="s" min="0" max="0.5" step="0.05" value="0">
+    <div class="lab">Migrasi masuk (alel A dari populasi lain) <b id="mv"></b></div><input type="range" id="m" min="0" max="0.1" step="0.01" value="0">
+    <div class="row"><button class="btn primary" id="go">Jalankan ulang</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const NS = [0, 10, 50, 250, 5000];
+let runs = [];
+function binom(n, p){ if(n > 500){ const m = n * p, sd = Math.sqrt(n * p * (1 - p)); let z = 0; for(let i = 0; i < 6; i++) z += Math.random(); z = (z - 3) * Math.sqrt(2); return Math.max(0, Math.min(n, Math.round(m + sd * z))); } let k = 0; for(let i = 0; i < n; i++) if(Math.random() < p) k++; return k; }
+function simulate(){
+  const p0 = +$('p').value, N = NS[+$('n').value], sel = +$('s').value, mig = +$('m').value;
+  runs = [];
+  for(let r = 0; r < 6; r++){
+    let p = p0; const h = [p];
+    for(let g = 0; g < 60; g++){
+      const q = 1 - p; const wAA = p * p, wAa = 2 * p * q, waa = q * q * (1 - sel); const W = wAA + wAa + waa;
+      let ps = (wAA + wAa / 2) / W; ps = ps * (1 - mig) + mig * 1;
+      p = binom(2 * N, ps) / (2 * N); h.push(p);
+    }
+    runs.push(h);
+  }
+  draw();
+}
+function draw(){
+  const p0 = +$('p').value, N = NS[+$('n').value], sel = +$('s').value, mig = +$('m').value;
+  $('pv').textContent = fmt(p0, 2); $('nv').textContent = N.toLocaleString('id-ID') + ' individu'; $('sv').textContent = sel ? fmt(sel * 100, 0) + '% lebih sedikit keturunan' : 'tidak ada'; $('mv').textContent = mig ? fmt(mig * 100, 0) + '% per generasi' : 'tidak ada';
+  const gx = 50, gy = 290, gw = 410, gh = 250, X = g => gx + g / 60 * gw, Y = p => gy - p * gh;
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/>`;
+  [0, .25, .5, .75, 1].forEach(v => s += `<text class="s" x="${gx - 5}" y="${Y(v) + 4}" text-anchor="end" fill="#555">${String(v).replace('.', ',')}</text><line x1="${gx}" y1="${Y(v)}" x2="${gx + gw}" y2="${Y(v)}" stroke="#eceff1"/>`);
+  [0, 20, 40, 60].forEach(v => s += `<text class="s" x="${X(v)}" y="${gy + 14}" text-anchor="middle" fill="#555">${v}</text>`);
+  s += `<text class="s" x="${gx + gw}" y="${gy + 28}" text-anchor="end" fill="#555">generasi</text><text class="s" x="${gx + 4}" y="${gy - gh - 8}" fill="#555">frekuensi alel A (p)</text>`;
+  const cols = ['#1565c0', '#e53935', '#2e7d32', '#fb8c00', '#8e24aa', '#00897b'];
+  runs.forEach((h, r) => s += `<path d="${h.map((p, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(p).toFixed(1)).join('')}" fill="none" stroke="${cols[r]}" stroke-width="2" opacity=".85"/>`);
+  svg.innerHTML = s;
+  const q = 1 - p0;
+  const fixed = runs.filter(h => h[h.length - 1] === 0 || h[h.length - 1] === 1).length;
+  $('read').innerHTML = `<div><span>Genotip awal p² : 2pq : q²</span><b>${fmt(p0 * p0, 3)} : ${fmt(2 * p0 * q, 3)} : ${fmt(q * q, 3)}</b></div><div><span>Populasi yang alelnya hilang atau tetap (fiksasi)</span><b>${fixed} dari 6</b></div><div><span>Keadaan</span><b style="font-weight:600">${N >= 5000 && !sel && !mig ? 'mendekati kesetimbangan Hardy–Weinberg: frekuensi alel hampir tidak berubah' : N <= 50 && !sel && !mig ? 'hanyutan genetik: frekuensi alel berubah acak, makin kuat pada populasi kecil' : sel ? 'seleksi alam menurunkan frekuensi alel a secara terarah' : 'aliran gen (migrasi) mengubah frekuensi alel'}</b></div>`;
+}
+['p', 'n', 's', 'm'].forEach(i => $(i).oninput = simulate);
+$('go').onclick = simulate;
+simulate();
+</script>
+</body>
+</html>

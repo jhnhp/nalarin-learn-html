@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medan dan Potensial Listrik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}svg{touch-action:none}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Peta medan listrik dan potensial di sekitar dua muatan titik"></svg></div>
+  <div class="panel">
+    <div class="lab">Muatan q₁ <b id="q1v"></b></div><input type="range" id="q1" min="-5" max="5" step="0.5" value="3">
+    <div class="lab">Muatan q₂ <b id="q2v"></b></div><input type="range" id="q2" min="-5" max="5" step="0.5" value="-1.5">
+    <div class="lab">Jarak q₁–q₂ <b id="dv"></b></div><input type="range" id="d" min="4" max="16" step="1" value="10">
+    <label class="chk"><input type="checkbox" id="pot" checked> Tampilkan warna potensial</label>
+    <p class="note">Seret titik uji P (lingkaran hijau) ke mana saja.</p>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const S = 20, W = 480, H = 320, k = 9e9; // 20 px per cm
+const X = x => W / 2 + x * S, Y = y => H / 2 - y * S;
+let P = {x: 0, y: 4};
+function charges(){ const d = +$('d').value; return [{x: -d / 2, y: 0, q: +$('q1').value * 1e-6}, {x: d / 2, y: 0, q: +$('q2').value * 1e-6}]; }
+function field(x, y, Q){ let ex = 0, ey = 0, v = 0; for(const c of Q){ if(!c.q) continue; const dx = (x - c.x) / 100, dy = (y - c.y) / 100, r = Math.max(Math.hypot(dx, dy), 0.004); const e = k * c.q / (r * r); ex += e * dx / r; ey += e * dy / r; v += k * c.q / r; } return {ex, ey, v}; }
+const sci = v => { if(v === 0) return '0'; const e = Math.floor(Math.log10(Math.abs(v))); if(e >= -2 && e <= 3) return fmt(v, 3); return `${fmt(v / 10 ** e, 2)} × 10${String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`; };
+function draw(){
+  const Q = charges();
+  $('q1v').textContent = fmt(+$('q1').value, 1) + ' μC'; $('q2v').textContent = fmt(+$('q2').value, 1) + ' μC'; $('dv').textContent = $('d').value + ' cm';
+  let s = '';
+  if($('pot').checked){
+    for(let i = 0; i < 24; i++) for(let j = 0; j < 16; j++){
+      const x = (i + .5 - 12), y = (8 - j - .5), v = field(x, y, Q).v, t = Math.max(-1, Math.min(1, v / 6e5));
+      s += `<rect x="${i * 20}" y="${j * 20}" width="20" height="20" fill="${t > 0 ? '#ef5350' : '#42a5f5'}" fill-opacity="${(Math.abs(t) * .45).toFixed(2)}"/>`;
+    }
+  }
+  for(let i = -11; i <= 11; i += 1.5) for(let j = -7; j <= 7; j += 1.5){
+    const f = field(i, j, Q), m = Math.hypot(f.ex, f.ey); if(m < 1) continue;
+    const L = 9, ux = f.ex / m, uy = f.ey / m, op = Math.min(1, .25 + .2 * Math.log10(1 + m / 1e4));
+    const x1 = X(i) - ux * L / 2, y1 = Y(j) + uy * L / 2, x2 = X(i) + ux * L / 2, y2 = Y(j) - uy * L / 2;
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#263238" stroke-opacity="${op.toFixed(2)}" stroke-width="1.5"/><circle cx="${x2}" cy="${y2}" r="1.6" fill="#263238" fill-opacity="${op.toFixed(2)}"/>`;
+  }
+  for(const c of Q){ if(!c.q) continue; s += `<circle cx="${X(c.x)}" cy="${Y(c.y)}" r="${8 + 1.5 * Math.abs(c.q * 1e6)}" fill="${c.q > 0 ? '#e53935' : '#1e88e5'}" stroke="#fff" stroke-width="2"/><text class="c" x="${X(c.x)}" y="${Y(c.y) + 4}" text-anchor="middle" fill="#fff">${c.q > 0 ? '+' : '−'}</text>`; }
+  const f = field(P.x, P.y, Q), m = Math.hypot(f.ex, f.ey), ang = Math.atan2(f.ey, f.ex) * 180 / Math.PI;
+  const al = Math.min(70, 12 + 12 * Math.log10(1 + m / 1e4));
+  if(m > 0) s += `<line x1="${X(P.x)}" y1="${Y(P.y)}" x2="${X(P.x) + al * f.ex / m}" y2="${Y(P.y) - al * f.ey / m}" stroke="#2e7d32" stroke-width="3" marker-end="url(#a)"/>`;
+  s += `<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2e7d32"/></marker></defs>`;
+  s += `<circle id="probe" cx="${X(P.x)}" cy="${Y(P.y)}" r="8" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2.5" style="cursor:grab"/><text class="c" x="${X(P.x) + 10}" y="${Y(P.y) - 10}" fill="#2e7d32">P</text>`;
+  s += `<line x1="16" y1="306" x2="56" y2="306" stroke="#333" stroke-width="2"/><text class="s" x="62" y="310" fill="#333">2 cm</text>`;
+  svg.innerHTML = s;
+  const r1 = Math.hypot(P.x - Q[0].x, P.y - Q[0].y), r2 = Math.hypot(P.x - Q[1].x, P.y - Q[1].y);
+  $('read').innerHTML = `<div><span>Jarak P ke q₁ / q₂</span><b>${fmt(r1, 1)} / ${fmt(r2, 1)} cm</b></div><div><span>Kuat medan resultan E</span><b>${sci(m)} N/C</b></div><div><span>Arah E (dari sumbu +x)</span><b>${fmt((ang + 360) % 360, 0)}°</b></div><div><span>Potensial V (skalar)</span><b>${sci(f.v)} V</b></div><div><span>Gaya pada +1 μC di P</span><b>${sci(m * 1e-6)} N</b></div>`;
+}
+let drag = false;
+function move(e){ const r = svg.getBoundingClientRect(), sx = (e.clientX - r.left) / r.width * W, sy = (e.clientY - r.top) / r.height * H; P = {x: Math.round((sx - W / 2) / S * 2) / 2, y: Math.round((H / 2 - sy) / S * 2) / 2}; draw(); }
+svg.addEventListener('pointerdown', e => { drag = true; svg.setPointerCapture(e.pointerId); move(e); });
+svg.addEventListener('pointermove', e => { if(drag) move(e); });
+svg.addEventListener('pointerup', () => drag = false);
+['q1', 'q2', 'd', 'pot'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

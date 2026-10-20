@@ -1,56 +1,362 @@
 {
   "title": "Fisika Inti dan Radioaktivitas",
-  "summary": "Ringkasan bab Fisika Inti dan Radioaktivitas akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Struktur inti dan lambang nuklida, defek massa dan energi ikat, kestabilan inti, peluruhan alfa, beta, dan gamma, aktivitas dan waktu paruh, reaksi fisi dan fusi, serta pemanfaatan radioisotop dan proteksi radiasi.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Fisika Inti dan Radioaktivitas",
+      "id": "inti",
+      "title": "Inti atom dan nuklida",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "25 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Inti Atom, Defek Massa, Energi Ikat, Radioaktivitas, Peluruhan Alfa-Beta-Gamma, Waktu Paruh, Fisi, dan Fusi</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Pada tahun 1909, Geiger dan Marsden menembakkan partikel alfa ke lempeng emas yang sangat tipis. Hampir semua partikel alfa menembus lurus, sebagian kecil dibelokkan, dan sangat sedikit yang terpantul balik. <b>Rutherford</b> (1911) menyimpulkan bahwa sebagian besar atom adalah ruang kosong, sedangkan hampir seluruh massa dan seluruh muatan positifnya terpusat pada <b>inti</b> yang sangat kecil (berdiameter sekitar 10⁻¹⁵ m, sepuluh ribu kali lebih kecil dari atom).</p><p>Inti tersusun atas <b>proton</b> (bermuatan +e) dan <b>neutron</b> (tidak bermuatan), yang bersama-sama disebut <b>nukleon</b>. Proton-proton saling tolak secara listrik, tetapi nukleon diikat oleh <b>gaya inti kuat</b> yang jauh lebih kuat dan hanya bekerja pada jarak sangat dekat.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Lambang nuklida",
+          "html": "<p>\\({}^{A}_{Z}X\\): Z = nomor atom (jumlah proton), A = nomor massa (jumlah proton + neutron), sehingga jumlah neutron N = A − Z. Pada atom netral, jumlah elektron = Z.</p><ul><li><b>Isotop</b>: Z sama, A berbeda (misalnya ¹H, ²H, ³H).</li><li><b>Isobar</b>: A sama, Z berbeda (misalnya ¹⁴C dan ¹⁴N).</li><li><b>Isoton</b>: N sama (misalnya ¹³C dan ¹⁴N, keduanya 7 neutron).</li></ul><p>Satuan massa atom: 1 sma (u) = 1/12 massa atom ¹²C = 1,66 × 10⁻²⁷ kg, setara dengan 931,5 MeV. Massa proton 1,0073 sma, neutron 1,0087 sma, elektron 0,00055 sma.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan jumlah proton, neutron, dan elektron pada atom netral \\({}^{37}_{17}\\text{Cl}\\).</p>",
+          "steps": [
+            "Proton = Z = 17; elektron (atom netral) = 17.",
+            "Neutron = A − Z = 37 − 17."
+          ],
+          "answer": "17 proton, 20 neutron, 17 elektron"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Tabel 9.1 dan 9.2 di buku menulis massa proton 1,0773 sma; yang benar <b>1,0073 sma</b>. Data massa unsur pada Tabel 9.2 juga tidak cocok dengan nomor massanya. Nilai yang benar: ¹⁴N = 14,003074 sma, ¹⁶O = 15,994915 sma, dan ²⁷Al = 26,981538 sma. Gunakan nilai-nilai ini jika ingin mengerjakan kegiatan Ayo, Cermati! tersebut.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Pasangan ¹⁴₆C dan ¹⁴₇N merupakan ....",
+          "options": {
+            "A": "isotop",
+            "B": "isobar",
+            "C": "isoton",
+            "D": "nuklida yang sama"
+          },
+          "answer": "B",
+          "hint": "Bandingkan A dan Z keduanya.",
+          "explanation": "Nomor massanya sama (14) tetapi nomor atomnya berbeda, sehingga disebut isobar."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "energi-ikat",
+      "title": "Defek massa dan energi ikat",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Jika massa semua proton dan neutron penyusun inti dijumlahkan, hasilnya selalu <b>lebih besar</b> daripada massa inti itu sendiri. Selisihnya disebut <b>defek massa</b>. Menurut Einstein (\\(E = mc^2\\)), massa yang \"hilang\" itu setara dengan energi yang dilepaskan saat nukleon bergabung, yang sama dengan energi yang diperlukan untuk memisahkannya kembali. Energi ini disebut <b>energi ikat inti</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Energi ikat",
+          "html": "<p>\\(\\Delta m = Z\\,m_p + N\\,m_n - m_\\text{inti}\\)</p><p>\\(E_B = \\Delta m\\,c^2 = \\Delta m\\,(\\text{sma}) \\times 931{,}5\\ \\text{MeV}\\)</p><p>Ukuran kestabilan inti adalah <b>energi ikat per nukleon</b> \\(E_B/A\\). Nilainya terbesar (± 8,8 MeV) di sekitar besi dan nikel.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Massa inti deuterium ²H adalah 2,01355 sma. Dengan massa proton 1,00728 sma dan neutron 1,00866 sma, tentukan energi ikat inti deuterium.</p>",
+          "steps": [
+            "Δm = 1,00728 + 1,00866 − 2,01355 = 0,00239 sma.",
+            "E<sub>B</sub> = 0,00239 × 931,5 MeV."
+          ],
+          "answer": "≈ 2,23 MeV (sekitar 1,1 MeV per nukleon)"
+        },
+        {
+          "type": "sim",
+          "src": "sim/energi-ikat.html",
+          "title": "Kurva energi ikat per nukleon",
+          "height": 500,
+          "caption": "Mengapa inti yang sangat ringan dapat melepas energi dengan bergabung, sedangkan inti yang sangat berat melepas energi dengan membelah?"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Kestabilan inti</b>: pada inti ringan, inti stabil memiliki N ≈ Z. Makin berat inti, makin banyak neutron yang diperlukan untuk \"mengencerkan\" tolakan listrik antarproton, sehingga N/Z naik sampai ± 1,5. Inti di luar pita kestabilan bersifat radioaktif. Inti yang kelebihan neutron cenderung meluruh β⁻, inti yang kelebihan proton cenderung meluruh β⁺, dan inti yang sangat berat (Z &gt; 83) cenderung meluruh α.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Inti yang paling stabil di antara pilihan berikut adalah inti dengan ....",
+          "options": {
+            "A": "energi ikat total terbesar",
+            "B": "energi ikat per nukleon terbesar",
+            "C": "nomor massa terbesar",
+            "D": "jumlah proton terbanyak"
+          },
+          "answer": "B",
+          "hint": "Bandingkan per nukleon, bukan totalnya.",
+          "explanation": "Kestabilan ditentukan oleh energi ikat per nukleon; inti berat bisa memiliki energi ikat total besar tetapi kurang stabil."
+        }
+      ]
+    },
+    {
+      "id": "radioaktivitas",
+      "title": "Radioaktivitas: sinar alfa, beta, dan gamma",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Henri Becquerel (1896) menemukan bahwa garam uranium memancarkan radiasi yang menghitamkan pelat foto. Marie dan Pierre Curie kemudian menemukan polonium dan radium. Inti tak stabil meluruh secara spontan sambil memancarkan radiasi.</p><table><tr><th>Sifat</th><th>Alfa (α)</th><th>Beta (β⁻)</th><th>Gamma (γ)</th></tr><tr><td>Hakikat</td><td>inti helium ⁴₂He</td><td>elektron ⁰₋₁e</td><td>gelombang elektromagnetik</td></tr><tr><td>Muatan</td><td>+2e</td><td>−e</td><td>0</td></tr><tr><td>Daya ionisasi</td><td>paling kuat</td><td>sedang</td><td>paling lemah</td></tr><tr><td>Daya tembus</td><td>dihentikan kertas</td><td>dihentikan beberapa mm aluminium</td><td>dilemahkan timbal atau beton tebal</td></tr><tr><td>Dalam medan magnet</td><td>dibelokkan sedikit</td><td>dibelokkan kuat, ke arah berlawanan</td><td>tidak dibelokkan</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum pergeseran pada peluruhan",
+          "html": "<ul><li>Alfa: \\({}^{A}_{Z}X \\to {}^{A-4}_{Z-2}Y + {}^{4}_{2}\\alpha\\)</li><li>Beta negatif: \\({}^{A}_{Z}X \\to {}^{A}_{Z+1}Y + {}^{0}_{-1}e + \\bar\\nu\\) (neutron berubah menjadi proton)</li><li>Beta positif: \\({}^{A}_{Z}X \\to {}^{A}_{Z-1}Y + {}^{0}_{+1}e + \\nu\\) (proton berubah menjadi neutron)</li><li>Gamma: \\({}^{A}_{Z}X^* \\to {}^{A}_{Z}X + \\gamma\\) (inti tereksitasi melepas energi)</li></ul><p>Pada setiap reaksi inti, jumlah nomor massa dan jumlah nomor atom di kedua ruas selalu sama.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/peluruhan.html",
+          "title": "Peluruhan pada diagram N–Z",
+          "height": 520,
+          "caption": "Mulai dari amerisium-241, lakukan peluruhan α lalu β⁻. Ke arah mana titiknya bergeser pada diagram, dan apakah makin mendekati pita kestabilan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Amerisium-241 (\\({}^{241}_{95}\\text{Am}\\)), yang dipakai pada detektor asap, meluruh dengan memancarkan partikel alfa. Tuliskan reaksinya.</p>",
+          "steps": [
+            "A baru = 241 − 4 = 237; Z baru = 95 − 2 = 93 (neptunium)."
+          ],
+          "answer": "²⁴¹₉₅Am → ²³⁷₉₃Np + ⁴₂α"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Deret torium dimulai dari \\({}^{232}_{90}\\text{Th}\\) dan berakhir pada \\({}^{208}_{82}\\text{Pb}\\) yang stabil. Berapa partikel α dan β⁻ yang dipancarkan?</p>",
+          "steps": [
+            "Hanya α yang mengubah A: (232 − 208)/4 = 6 alfa.",
+            "6 alfa menurunkan Z sebanyak 12, menjadi 90 − 12 = 78. Agar menjadi 82, perlu 4 beta negatif (masing-masing Z + 1)."
+          ],
+          "answer": "6 partikel α dan 4 partikel β⁻"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Pada peluruhan alfa amerisium-241 yang mula-mula diam, energi yang dibebaskan Q = 5,64 MeV. Tentukan energi kinetik partikel alfa.</p>",
+          "steps": [
+            "Momentum kekal: inti anak dan alfa bergerak berlawanan dengan momentum sama besar, sehingga energi terbagi berbanding terbalik dengan massa.",
+            "K<sub>α</sub> = (A − 4)/A × Q = 237/241 × 5,64."
+          ],
+          "answer": "≈ 5,55 MeV"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah inti memancarkan partikel β⁻. Perubahan pada inti tersebut adalah ....",
+          "options": {
+            "A": "A turun 4, Z turun 2",
+            "B": "A tetap, Z naik 1",
+            "C": "A tetap, Z turun 1",
+            "D": "A dan Z tetap"
+          },
+          "answer": "B",
+          "hint": "β⁻: neutron → proton + elektron.",
+          "explanation": "Satu neutron berubah menjadi proton, sehingga Z bertambah 1 dan jumlah nukleon (A) tetap."
+        }
+      ]
+    },
+    {
+      "id": "waktu-paruh",
+      "title": "Aktivitas dan waktu paruh",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Peluruhan bersifat <b>acak</b>: kita tidak dapat meramalkan kapan sebuah inti tertentu meluruh. Namun untuk inti yang sangat banyak, laju peluruhannya sebanding dengan jumlah inti yang tersisa.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum peluruhan",
+          "html": "<p>Aktivitas: \\(A = \\lambda N\\), dalam becquerel (1 Bq = 1 peluruhan/s; 1 Ci = 3,7 × 10¹⁰ Bq).</p><p>\\(N = N_0\\,e^{-\\lambda t} = N_0\\left(\\tfrac12\\right)^{t/T_{1/2}}, \\qquad T_{1/2} = \\dfrac{\\ln 2}{\\lambda} = \\dfrac{0{,}693}{\\lambda}\\)</p><p>Rumus yang sama berlaku untuk massa m dan aktivitas A zat radioaktif.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/waktu-paruh.html",
+          "title": "Peluruhan acak dan waktu paruh",
+          "height": 520,
+          "caption": "Jalankan beberapa kali. Apakah hasil simulasi selalu persis sama dengan kurva teori? Mengapa makin sedikit inti, makin besar penyimpangannya?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Iodin-131 untuk terapi tiroid memiliki waktu paruh 8 hari. Sebuah sampel bermassa 64 mg. Berapa massa yang tersisa setelah 24 hari?</p>",
+          "steps": [
+            "t/T½ = 24/8 = 3 kali waktu paruh.",
+            "m = 64 × (½)³ = 64/8."
+          ],
+          "answer": "8 mg"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sampel iodin-131 berisi 10¹⁸ inti. Berapa aktivitasnya dalam Bq?</p>",
+          "steps": [
+            "λ = 0,693 / (8 × 86.400 s) ≈ 1,0 × 10⁻⁶ per sekon.",
+            "A = λN = 1,0 × 10⁻⁶ × 10¹⁸."
+          ],
+          "answer": "≈ 1,0 × 10¹² Bq (± 27 Ci)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (penanggalan karbon)",
+          "question": "<p>Aktivitas karbon-14 pada tulang purba tinggal 25% dari aktivitas pada tulang makhluk hidup. Waktu paruh C-14 adalah 5.730 tahun. Berapa umur tulang tersebut?</p>",
+          "steps": [
+            "25% = (½)², jadi telah berlalu 2 kali waktu paruh.",
+            "t = 2 × 5.730 tahun."
+          ],
+          "answer": "11.460 tahun"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Persamaan (7) di buku tertulis \\(N = N_0e^{-0,639t/t_{1/2}}\\). Angka yang benar adalah ln 2 = <b>0,693</b>, sehingga \\(N = N_0e^{-0,693t/T_{1/2}}\\). Satuan Curie juga seharusnya ditulis 1 Ci = 3,70 × 10¹⁰ Bq.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Setelah 4 kali waktu paruh, bagian zat radioaktif yang masih tersisa adalah ....",
+          "options": {
+            "A": "1/4",
+            "B": "1/8",
+            "C": "1/16",
+            "D": "1/32"
+          },
+          "answer": "C",
+          "hint": "(½)⁴.",
+          "explanation": "(½)⁴ = 1/16."
+        }
+      ]
+    },
+    {
+      "id": "fisi-fusi",
+      "title": "Reaksi inti: fisi dan fusi",
+      "kind": "artikel",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Pada <b>reaksi inti</b>, inti ditumbuk partikel lain dan berubah menjadi inti baru. Contohnya reaksi pertama yang dibuat Rutherford (1919): \\({}^{14}_{7}\\text{N} + {}^{4}_{2}\\alpha \\to {}^{17}_{8}\\text{O} + {}^{1}_{1}\\text{p}\\). Energi reaksi:</p><p>\\(Q = (\\Sigma m_\\text{sebelum} - \\Sigma m_\\text{sesudah}) \\times 931{,}5\\ \\text{MeV}\\)</p><p>Q &gt; 0 berarti reaksi melepas energi (eksoterm); Q &lt; 0 berarti reaksi memerlukan energi (endoterm).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Fisi (pembelahan inti)",
+          "html": "<p>Inti berat seperti U-235 yang menangkap <b>neutron lambat</b> membelah menjadi dua inti sedang, 2–3 neutron baru, dan energi sekitar 200 MeV. Neutron dipakai sebagai peluru karena tidak bermuatan, sehingga tidak ditolak oleh <b>proton-proton di dalam inti</b>. Neutron baru dapat membelah inti lain, sehingga terjadi <b>reaksi berantai</b>.</p><ul><li><b>Reaktor nuklir (PLTN)</b>: reaksi berantai dikendalikan. Moderator (air atau grafit) memperlambat neutron, batang kendali (kadmium atau boron) menyerap kelebihan neutron, dan pendingin membawa panas untuk menghasilkan uap yang memutar turbin.</li><li><b>Bom atom</b>: reaksi berantai tak terkendali.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Salah satu reaksi fisi: ²³⁵U + n → ¹⁴¹Ba + ⁹²Kr + 3n. Massa: ²³⁵U = 235,0439 sma, n = 1,0087 sma, ¹⁴¹Ba = 140,9144 sma, ⁹²Kr = 91,9262 sma. Hitung energi yang dibebaskan.</p>",
+          "steps": [
+            "Massa sebelum: 235,0439 + 1,0087 = 236,0526 sma.",
+            "Massa sesudah: 140,9144 + 91,9262 + 3 × 1,0087 = 235,8667 sma.",
+            "Δm = 0,1859 sma; Q = 0,1859 × 931,5."
+          ],
+          "answer": "≈ 173 MeV"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Fusi (penggabungan inti)",
+          "html": "<p>Inti-inti ringan bergabung menjadi inti yang lebih berat. Reaksi ini memerlukan suhu jutaan kelvin agar inti yang sama-sama positif dapat saling mendekat. Fusi adalah sumber energi Matahari dan bintang: empat proton bergabung menjadi satu inti helium. Para ilmuwan sedang mengembangkan reaktor fusi (misalnya ITER) dengan bahan bakar deuterium dan tritium.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Hitung energi reaksi fusi ²H + ³H → ⁴He + n. Massa: ²H = 2,014102 sma, ³H = 3,016049 sma, ⁴He = 4,002603 sma, n = 1,008665 sma.</p>",
+          "steps": [
+            "Δm = (2,014102 + 3,016049) − (4,002603 + 1,008665) = 0,018883 sma.",
+            "Q = 0,018883 × 931,5."
+          ],
+          "answer": "≈ 17,6 MeV (per nukleon jauh lebih besar daripada fisi)"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku menulis neutron dipilih karena tidak mengalami \"hambatan elektrostatik oleh elektron di luar inti\". Yang sebenarnya menghalangi peluru bermuatan positif adalah gaya tolak dari <b>proton di dalam inti</b>. Paragraf tentang neutron sebagai peluru juga tercetak dua kali.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Fungsi moderator pada reaktor nuklir adalah ....",
+          "options": {
+            "A": "menyerap neutron agar reaksi berhenti",
+            "B": "memperlambat neutron agar mudah ditangkap U-235",
+            "C": "menahan radiasi gamma",
+            "D": "mengubah panas menjadi listrik"
+          },
+          "answer": "B",
+          "hint": "U-235 lebih mudah membelah oleh neutron lambat.",
+          "explanation": "Moderator memperlambat neutron cepat hasil fisi; batang kendalilah yang menyerap neutron."
+        }
+      ]
+    },
+    {
+      "id": "pemanfaatan",
+      "title": "Pemanfaatan radioisotop dan keselamatan radiasi",
+      "kind": "artikel",
+      "duration": "25 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Detektor radiasi</b>: pencacah Geiger-Müller menghitung pulsa ionisasi gas, detektor sintilasi mengubah radiasi menjadi kilatan cahaya, dan <i>film badge</i> atau dosimeter saku dipakai pekerja radiasi untuk mencatat dosis yang diterima.</p><p><b>Pemanfaatan radioisotop</b>:</p><ul><li><b>Kedokteran</b>: Co-60 untuk radioterapi kanker, I-131 untuk diagnosis dan terapi kelenjar tiroid, dan perunut pemancar gamma untuk pencitraan organ. Untuk pencitraan dipilih isotop berwaktu paruh pendek.</li><li><b>Industri</b>: mengukur ketebalan lembaran kertas atau logam, mendeteksi kebocoran pipa bawah tanah, dan radiografi sambungan las.</li><li><b>Pertanian dan pangan</b>: pemuliaan tanaman dengan mutasi (BATAN, kini BRIN, menghasilkan varietas padi unggul), teknik serangga mandul, dan iradiasi makanan untuk membunuh mikroba.</li><li><b>Arkeologi dan geologi</b>: penanggalan C-14 untuk bahan organik hingga ± 50.000 tahun, serta U-238 atau K-40 untuk umur batuan.</li><li><b>Rumah</b>: detektor asap berisi Am-241.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Prinsip proteksi radiasi",
+          "html": "<p>Kurangi <b>waktu</b> paparan, perbesar <b>jarak</b> dari sumber (intensitas turun sebanding 1/r²), dan gunakan <b>perisai</b> yang sesuai (kertas untuk α, aluminium atau plastik untuk β, timbal atau beton untuk γ). Sumber α berbahaya terutama bila masuk ke dalam tubuh lewat napas atau makanan, karena daya ionisasinya sangat besar.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Isotop yang dipakai sebagai perunut untuk pencitraan organ tubuh sebaiknya ....",
+          "options": {
+            "A": "pemancar α dengan waktu paruh panjang",
+            "B": "pemancar γ dengan waktu paruh pendek",
+            "C": "pemancar β dengan waktu paruh ribuan tahun",
+            "D": "isotop stabil"
+          },
+          "answer": "B",
+          "hint": "Radiasinya harus keluar dari tubuh dan cepat habis.",
+          "explanation": "Gamma dapat menembus tubuh untuk dideteksi kamera, dan waktu paruh yang pendek membatasi dosis yang diterima pasien."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa bahwa jumlah neutron N = A − Z, bukan A.</li><li>Mengira peluruhan β⁻ mengurangi nomor atom; yang benar Z bertambah 1.</li><li>Menghitung sisa zat dengan cara linear (misalnya \"setengah waktu paruh berarti tersisa 75%\"); hubungannya eksponensial.</li><li>Memakai massa atom yang tidak konsisten (massa atom dicampur dengan massa inti) saat menghitung defek massa.</li><li>Mengira inti berenergi ikat total terbesar adalah yang paling stabil; yang menentukan energi ikat per nukleon.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 9 Fisika Inti dan Radioaktivitas.</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang inti atom, defek massa dan energi ikat, peluruhan alfa, beta, dan gamma, aktivitas dan waktu paruh, fisi, fusi, serta pemanfaatan radioisotop. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

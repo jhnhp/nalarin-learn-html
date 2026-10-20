@@ -1,56 +1,197 @@
 {
   "title": "Hidrolisis Garam dan Larutan Penyangga",
-  "summary": "Ringkasan bab Hidrolisis Garam dan Larutan Penyangga akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Sifat larutan garam, hidrolisis sebagian dan total, perhitungan pH garam, komponen dan cara kerja larutan penyangga, perhitungan pH penyangga, serta penyangga dalam tubuh dan kehidupan sehari-hari.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Hidrolisis Garam dan Larutan Penyangga",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "hidrolisis",
+      "title": "Sifat larutan garam dan hidrolisis",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Sifat Larutan Garam, Hidrolisis Sebagian dan Total, pH Larutan Garam, Komponen dan pH Larutan Penyangga</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
+          "html": "<p>Garam terbentuk dari reaksi asam dengan basa. Dalam air, garam terurai menjadi ion-ionnya. Ion yang berasal dari <b>asam lemah</b> atau <b>basa lemah</b> bereaksi dengan air (<b>hidrolisis</b>) dan membentuk kembali asam atau basa lemahnya. Ion dari asam kuat atau basa kuat tidak terhidrolisis.</p><table><tr><th>Garam dari</th><th>Contoh</th><th>Hidrolisis</th><th>Sifat</th></tr><tr><td>asam kuat + basa kuat</td><td>NaCl, KNO₃</td><td>tidak terhidrolisis</td><td>netral</td></tr><tr><td>asam lemah + basa kuat</td><td>CH₃COONa, NaCN</td><td>sebagian (anion)</td><td>basa</td></tr><tr><td>asam kuat + basa lemah</td><td>NH₄Cl, (NH₄)₂SO₄</td><td>sebagian (kation)</td><td>asam</td></tr><tr><td>asam lemah + basa lemah</td><td>CH₃COONH₄, NH₄F</td><td>total</td><td>bergantung Ka dan Kb</td></tr></table>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
-          "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "type": "sim",
+          "src": "sim/hidrolisis.html",
+          "title": "Hidrolisis garam",
+          "height": 520,
+          "caption": "Susun NH₄⁺ dengan F⁻, lalu NH₄⁺ dengan CN⁻. Mengapa yang satu asam dan yang lain basa? Apakah pH garam hidrolisis total berubah jika konsentrasinya diubah?"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "pH larutan garam",
+          "html": "<p>Anion terhidrolisis (bersifat basa): \\([\\text{OH}^-] = \\sqrt{\\dfrac{K_w}{K_a} \\times [\\text{anion}]}\\)</p><p>Kation terhidrolisis (bersifat asam): \\([\\text{H}^+] = \\sqrt{\\dfrac{K_w}{K_b} \\times [\\text{kation}]}\\)</p><p>Hidrolisis total: \\([\\text{H}^+] = \\sqrt{\\dfrac{K_w \\cdot K_a}{K_b}}\\), tidak bergantung pada konsentrasi garam.</p><p>Perhatikan: yang dimasukkan adalah konsentrasi <b>ion</b> yang terhidrolisis. Pada (NH₄)₂SO₄ 0,1 M, [NH₄⁺] = 0,2 M.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung pH larutan NaCN 0,049 M (Ka HCN = 4,9 × 10⁻¹⁰).</p>",
+          "steps": [
+            "CN⁻ terhidrolisis: CN⁻ + H₂O ⇌ HCN + OH⁻.",
+            "[OH⁻] = √(10⁻¹⁴/4,9 × 10⁻¹⁰ × 0,049) = √(10⁻⁶) = 10⁻³ M.",
+            "pOH = 3."
+          ],
+          "answer": "pH = 11"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Hitung pH larutan NH₄Cl 0,02 M jika Kb NH₃ = 2 × 10⁻⁵ (log 3,16 = 0,5).</p>",
+          "steps": [
+            "[H⁺] = √(10⁻¹⁴/2 × 10⁻⁵ × 0,02) = √(10⁻¹¹) ≈ 3,16 × 10⁻⁶ M.",
+            "pH = 6 − 0,5."
+          ],
+          "answer": "pH = 5,5"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Tentukan sifat dan pH larutan NH₄F (Ka HF = 6,6 × 10⁻⁴; Kb NH₃ = 1,8 × 10⁻⁵).</p>",
+          "steps": [
+            "Ka > Kb, sehingga larutan bersifat asam.",
+            "[H⁺] = √(10⁻¹⁴ × 6,6 × 10⁻⁴ / 1,8 × 10⁻⁵) = √(3,67 × 10⁻¹³) ≈ 6,1 × 10⁻⁷ M."
+          ],
+          "answer": "asam, pH ≈ 6,2"
+        },
+        {
+          "type": "check",
+          "question": "Larutan garam berikut yang bersifat basa adalah ....",
+          "options": {
+            "A": "NH₄NO₃",
+            "B": "KNO₃",
+            "C": "CH₃COOK",
+            "D": "NH₄Cl"
+          },
+          "answer": "C",
+          "hint": "Cari anion dari asam lemah dengan kation dari basa kuat.",
+          "explanation": "CH₃COO⁻ berasal dari asam lemah dan terhidrolisis menghasilkan OH⁻, sedangkan K⁺ tidak terhidrolisis."
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "penyangga",
+      "title": "Larutan penyangga",
+      "kind": "simulasi",
+      "duration": "40 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p><b>Larutan penyangga</b> (buffer) mampu mempertahankan pH ketika ditambah sedikit asam, sedikit basa, atau diencerkan. Komponennya:</p><ul><li><b>Penyangga asam</b>: asam lemah + basa konjugasinya (garamnya), misalnya CH₃COOH + CH₃COONa. Dapat juga dibuat dari asam lemah <b>berlebih</b> + basa kuat.</li><li><b>Penyangga basa</b>: basa lemah + asam konjugasinya, misalnya NH₃ + NH₄Cl. Dapat juga dibuat dari basa lemah berlebih + asam kuat.</li></ul><p>Cara kerjanya: asam yang ditambahkan diikat oleh basa konjugasi (CH₃COO⁻ + H⁺ → CH₃COOH), sedangkan basa yang ditambahkan dinetralkan oleh asam lemah (CH₃COOH + OH⁻ → CH₃COO⁻ + H₂O).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "pH larutan penyangga",
+          "html": "<p>\\([\\text{H}^+] = K_a \\times \\dfrac{\\text{mol asam lemah}}{\\text{mol basa konjugasi}}\\)</p><p>\\([\\text{OH}^-] = K_b \\times \\dfrac{\\text{mol basa lemah}}{\\text{mol asam konjugasi}}\\)</p><p>Karena yang menentukan perbandingan mol, pengenceran tidak mengubah pH penyangga. Penyangga paling efektif bila perbandingannya mendekati 1 : 1.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/penyangga.html",
+          "title": "Penyangga dibandingkan air murni",
+          "height": 520,
+          "caption": "Tambahkan 0,02 mol NaOH ke penyangga dan ke air. Bandingkan perubahan pH-nya. Lalu kecilkan kedua komponen penyangga: kapan kemampuannya mulai habis?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 0,1 mol CH₃COOH dan 0,2 mol CH₃COONa dilarutkan hingga 500 mL (Ka = 1,8 × 10⁻⁵). Hitung pH-nya.</p>",
+          "steps": [
+            "[H⁺] = 1,8 × 10⁻⁵ × 0,1/0,2 = 9 × 10⁻⁶ M.",
+            "pH = 6 − log 9 = 6 − 0,95."
+          ],
+          "answer": "pH ≈ 5,05"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebanyak 100 mL HCOOH 0,2 M dicampur dengan 50 mL NaOH 0,2 M (Ka HCOOH = 1,7 × 10⁻⁴). Tentukan pH campuran.</p>",
+          "steps": [
+            "mol HCOOH = 20 mmol, mol NaOH = 10 mmol.",
+            "HCOOH + NaOH → HCOONa + H₂O: tersisa HCOOH 10 mmol, terbentuk HCOO⁻ 10 mmol.",
+            "[H⁺] = 1,7 × 10⁻⁴ × 10/10."
+          ],
+          "answer": "pH = 4 − log 1,7 ≈ 3,77"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Satu liter penyangga berisi 0,5 mol HA dan 0,5 mol NaA (Ka = 10⁻⁵). Ke dalamnya ditambahkan 0,05 mol NaOH padat. Berapa pH sebelum dan sesudahnya?</p>",
+          "steps": [
+            "Sebelum: [H⁺] = 10⁻⁵ × 0,5/0,5 → pH = 5.",
+            "NaOH bereaksi dengan HA: HA = 0,45 mol, A⁻ = 0,55 mol.",
+            "[H⁺] = 10⁻⁵ × 0,45/0,55 ≈ 8,2 × 10⁻⁶ M."
+          ],
+          "answer": "dari 5 menjadi ≈ 5,09"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku memasukkan \"NH₃ dengan NH₄Cl\" sebagai contoh \"asam lemah dengan garamnya\". NH₃ adalah <b>basa lemah</b>, sehingga NH₃/NH₄Cl merupakan penyangga basa. Contoh penyangga asam yang tepat: HCN/NaCN atau CH₃COOH/CH₃COONa.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Campuran berikut yang menghasilkan larutan penyangga adalah ....",
+          "options": {
+            "A": "50 mL HCl 0,1 M + 50 mL NaOH 0,1 M",
+            "B": "50 mL CH₃COOH 0,1 M + 100 mL NaOH 0,1 M",
+            "C": "100 mL NH₃ 0,1 M + 50 mL HCl 0,1 M",
+            "D": "50 mL HNO₃ 0,1 M + 50 mL NaNO₃ 0,1 M"
+          },
+          "answer": "C",
+          "hint": "Harus ada sisa basa/asam lemah beserta konjugasinya.",
+          "explanation": "NH₃ 10 mmol + HCl 5 mmol → tersisa NH₃ 5 mmol dan terbentuk NH₄⁺ 5 mmol: penyangga basa."
+        }
+      ]
+    },
+    {
+      "id": "penyangga-tubuh",
+      "title": "Penyangga dalam tubuh dan kehidupan",
+      "kind": "artikel",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>pH darah dijaga sekitar <b>7,35–7,45</b>. Penyimpangan kecil berbahaya: <b>asidosis</b> (pH darah &lt; 7,35), misalnya pada diabetes yang tidak terkontrol atau gangguan pernapasan, dan <b>alkalosis</b> (pH &gt; 7,45), misalnya karena bernapas terlalu cepat (hiperventilasi).</p><ul><li><b>Darah</b> (cairan luar sel): penyangga karbonat H₂CO₃/HCO₃⁻. Kelebihan asam diikat HCO₃⁻ menjadi H₂CO₃, lalu terurai menjadi CO₂ yang dikeluarkan melalui paru-paru. Hemoglobin dan protein plasma juga berperan sebagai penyangga.</li><li><b>Cairan dalam sel</b>: penyangga fosfat H₂PO₄⁻/HPO₄²⁻.</li><li><b>Air laut</b>: sistem karbonat menjaga pH sekitar 8,1. Kenaikan CO₂ di atmosfer menurunkan pH laut (pengasaman laut) dan mengganggu hewan bercangkang.</li><li><b>Industri dan laboratorium</b>: obat tetes mata, sampo, dan larutan infus dibuat ber-pH tertentu; penyangga juga dipakai untuk kalibrasi pH meter dan menjaga pH media biakan mikroba.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Ketika seseorang berolahraga berat, asam laktat masuk ke darah. Komponen penyangga darah yang menetralkan H⁺ dari asam tersebut adalah ....",
+          "options": {
+            "A": "H₂CO₃",
+            "B": "HCO₃⁻",
+            "C": "H₂PO₄⁻",
+            "D": "CO₂"
+          },
+          "answer": "B",
+          "hint": "Cari basa konjugasi yang dapat mengikat H⁺.",
+          "explanation": "HCO₃⁻ + H⁺ → H₂CO₃ → CO₂ + H₂O; CO₂ lalu dikeluarkan lewat napas."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan",
+      "title": "Ringkasan bab",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menghitung pH garam dengan konsentrasi garam, padahal yang dipakai konsentrasi ion yang terhidrolisis.</li><li>Lupa menghitung sisa zat (dengan tabel mula-mula, bereaksi, sisa) sebelum menentukan apakah campuran berupa penyangga, garam, atau sisa asam/basa kuat.</li><li>Menukar posisi asam dan basa konjugasi dalam rumus penyangga.</li><li>Memakai konsentrasi setelah dicampur padahal cukup perbandingan mol (volume saling meniadakan).</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab I Larutan dan Koloid (C. Kesetimbangan dalam Larutan: hidrolisis garam dan larutan penyangga).</small></p>"
+        },
+        {
+          "type": "kuis",
+          "text": "20 soal tentang sifat larutan garam, hidrolisis sebagian dan total, pH larutan garam, serta komponen dan pH larutan penyangga. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dongkrak Hidrolik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12.5px;paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 460 320" role="img" aria-label="Dongkrak hidrolik dengan dua penghisap berbeda luas"></svg></div>
+  <div class="panel">
+    <div><div class="lab"><span>Luas penghisap kecil A₁ (cm²)</span><b id="a1out"></b></div><input type="range" id="a1" min="5" max="50" step="5" value="10"></div>
+    <div><div class="lab"><span>Luas penghisap besar A₂ (cm²)</span><b id="a2out"></b></div><input type="range" id="a2" min="50" max="1000" step="50" value="500"></div>
+    <div><div class="lab"><span>Gaya tekan F₁ (N)</span><b id="f1out"></b></div><input type="range" id="f1" min="0" max="300" step="10" value="200"></div>
+    <div><div class="lab"><span>Penghisap kecil ditekan sejauh (cm)</span><b id="sout"></b></div><input type="range" id="s" min="0" max="20" step="1" value="10"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Hukum Pascal: tekanan pada zat cair dalam ruang tertutup diteruskan ke segala arah sama besar. F₁/A₁ = F₂/A₂. Volume cairan yang berpindah sama, sehingga penghisap besar naik jauh lebih sedikit.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['a1', 'a2', 'f1', 's'].forEach(id => $(id).oninput = draw);
+Sim.onTheme(draw);
+function draw(){
+  const a1 = +$('a1').value, a2 = +$('a2').value, f1 = +$('f1').value, sd = +$('s').value;
+  const P = f1 / (a1 / 1e4), f2 = P * a2 / 1e4, s2 = sd * a1 / a2;
+  const w1 = 16 + Math.sqrt(a1) * 4, w2 = 30 + Math.sqrt(a2) * 4, x1 = 90, x2 = 320, top = 120, bot = 270;
+  const y1 = top + sd * 4, y2 = top - s2 * 4;
+  let s = `<path d="M${x1 - w1 / 2} 60 V${bot} H${x2 + w2 / 2} V40" fill="none" style="stroke:var(--ink)" stroke-width="3"/><path d="M${x1 + w1 / 2} 60 V${bot - 40} H${x2 - w2 / 2} V40" fill="none" style="stroke:var(--ink)" stroke-width="3"/>`;
+  s += `<path d="M${x1 - w1 / 2} ${y1} H${x1 + w1 / 2} V${bot - 40} H${x2 - w2 / 2} V${y2} H${x2 + w2 / 2} V${bot} H${x1 - w1 / 2}Z" style="fill:var(--comp)" fill-opacity=".35"/>`;
+  s += `<rect x="${x1 - w1 / 2}" y="${y1 - 10}" width="${w1}" height="10" style="fill:var(--ink)"/><rect x="${x2 - w2 / 2}" y="${y2 - 12}" width="${w2}" height="12" style="fill:var(--ink)"/>`;
+  s += `<line x1="${x1}" y1="${y1 - 70}" x2="${x1}" y2="${y1 - 14}" style="stroke:var(--a)" stroke-width="5" marker-end="url(#m)"/><text class="c" x="${x1}" y="${y1 - 76}" text-anchor="middle" style="fill:var(--a)">F₁ = ${f1} N</text>`;
+  s += `<g transform="translate(${x2 - 40},${y2 - 46})"><rect x="0" y="10" width="80" height="22" rx="7" style="fill:var(--b)"/><rect x="16" y="0" width="44" height="16" rx="5" style="fill:var(--b)"/><circle cx="18" cy="34" r="7" style="fill:var(--ink)"/><circle cx="62" cy="34" r="7" style="fill:var(--ink)"/></g><text class="c" x="${x2}" y="${y2 - 54}" text-anchor="middle" style="fill:var(--b)">F₂ = ${fmt(f2, 0)} N</text>`;
+  svg.innerHTML = `<defs><marker id="m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10z" style="fill:var(--a)"/></marker></defs>` + s;
+  ['a1', 'a2', 'f1', 's'].forEach(id => $(id + 'out').textContent = $(id).value);
+  $('read').innerHTML = `<div><span>Tekanan P = F₁/A₁</span><b>${fmt(P, 0)} Pa</b></div><div><span>F₂ = P × A₂</span><b>${fmt(f2, 0)} N (${fmt(f2 / 10, 0)} kg dapat diangkat)</b></div>` +
+    `<div><span>Perbandingan A₂/A₁</span><b>${fmt(a2 / a1, 1)} kali</b></div><div><span>Penghisap besar naik</span><b>${fmt(s2, 2)} cm</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

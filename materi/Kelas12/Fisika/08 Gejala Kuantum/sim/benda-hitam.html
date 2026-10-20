@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radiasi Benda Hitam</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Kurva intensitas radiasi benda hitam terhadap panjang gelombang"></svg></div>
+  <div class="panel">
+    <div class="lab">Suhu benda T <b id="tv"></b></div><input type="range" id="t" min="1000" max="12000" step="100" value="5800">
+    <label class="chk"><input type="checkbox" id="ref" checked> Tampilkan kurva pembanding 4.000 K</label>
+    <label class="chk"><input type="checkbox" id="klasik"> Tampilkan ramalan fisika klasik (Rayleigh–Jeans)</label>
+    <div class="read" id="read"></div>
+    <p class="note">Wien: λ<sub>maks</sub>T = 2,9 × 10⁻³ m K. Stefan–Boltzmann: P/A = σT⁴, σ = 5,67 × 10⁻⁸ W m⁻² K⁻⁴. Luas di bawah kurva sebanding dengan T⁴.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const h = 6.626e-34, c = 3e8, k = 1.381e-23, b = 2.898e-3, sig = 5.67e-8;
+const planck = (l, T) => 2 * h * c * c / l ** 5 / (Math.exp(h * c / (l * k * T)) - 1);
+const rj = (l, T) => 2 * c * k * T / l ** 4;
+function rgb(T){ // perkiraan warna benda pijar
+  const t = T / 100; let r, g, bl;
+  r = t <= 66 ? 255 : 329.7 * Math.pow(t - 60, -0.1332);
+  g = t <= 66 ? 99.47 * Math.log(t) - 161.1 : 288.1 * Math.pow(t - 60, -0.0755);
+  bl = t >= 66 ? 255 : t <= 19 ? 0 : 138.5 * Math.log(t - 10) - 305;
+  const cl = v => Math.max(0, Math.min(255, Math.round(v)));
+  return `rgb(${cl(r)},${cl(g)},${cl(bl)})`;
+}
+function draw(){
+  const T = +$('t').value; $('tv').textContent = T.toLocaleString('id-ID') + ' K';
+  const X0 = 50, Y0 = 290, W = 400, Hh = 250, lmax = 3000e-9;
+  const peakT = planck(b / T, T), peak4 = planck(b / 4000, 4000), Ymax = Math.max(peakT, $('ref').checked ? peak4 : 0) * 1.1;
+  const px = l => X0 + W * l / lmax, py = v => Y0 - Hh * Math.min(v / Ymax, 1.15);
+  let s = '';
+  // pita cahaya tampak
+  const vis = [[380, '#7b1fa2'], [450, '#1e88e5'], [495, '#00acc1'], [530, '#43a047'], [580, '#fdd835'], [620, '#fb8c00'], [700, '#e53935']];
+  for(let i = 0; i < vis.length - 1; i++) s += `<rect x="${px(vis[i][0] * 1e-9)}" y="${Y0 - Hh}" width="${px(vis[i + 1][0] * 1e-9) - px(vis[i][0] * 1e-9)}" height="${Hh}" fill="${vis[i][1]}" fill-opacity=".13"/>`;
+  s += `<text class="s" x="${px(540e-9)}" y="${Y0 - Hh - 6}" text-anchor="middle" fill="#555">tampak</text><text class="s" x="${px(1600e-9)}" y="${Y0 - Hh - 6}" text-anchor="middle" fill="#555">inframerah →</text><text class="s" x="${px(200e-9)}" y="${Y0 - Hh - 6}" text-anchor="middle" fill="#555">UV</text>`;
+  s += `<line x1="${X0}" y1="${Y0}" x2="${X0 + W}" y2="${Y0}" stroke="#555"/><line x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y0 - Hh}" stroke="#555"/>`;
+  for(let l = 0; l <= 3000; l += 500) s += `<text class="s" x="${px(l * 1e-9)}" y="${Y0 + 14}" text-anchor="middle" fill="#555">${l}</text>`;
+  s += `<text class="s" x="${X0 + W}" y="${Y0 + 28}" text-anchor="end" fill="#555">panjang gelombang λ (nm)</text><text class="s" x="${X0 - 8}" y="${Y0 - Hh + 4}" text-anchor="end" fill="#555" transform="rotate(-90 ${X0 - 30} ${Y0 - Hh / 2})" >intensitas</text>`;
+  const curve = (T2, fn) => { let d = ''; for(let i = 1; i <= 300; i++){ const l = lmax * i / 300; d += (i > 1 ? 'L' : 'M') + px(l).toFixed(1) + ',' + py(fn(l, T2)).toFixed(1); } return d; };
+  if($('ref').checked) s += `<path d="${curve(4000, planck)}" fill="none" stroke="#90a4ae" stroke-width="2" stroke-dasharray="5 3"/><text class="s" x="${px(b / 4000) + 4}" y="${py(peak4) - 6}" fill="#78909c">4.000 K</text>`;
+  if($('klasik').checked) s += `<path d="${curve(T, rj)}" fill="none" stroke="#8e24aa" stroke-width="2" stroke-dasharray="2 3"/><text class="s" x="${px(1150e-9)}" y="${Y0 - Hh + 14}" fill="#8e24aa">klasik → ∞ (bencana ultraviolet)</text>`;
+  s += `<path d="${curve(T, planck)}" fill="none" stroke="#e53935" stroke-width="3"/>`;
+  const lp = b / T;
+  if(lp < lmax) s += `<line x1="${px(lp)}" y1="${Y0}" x2="${px(lp)}" y2="${py(peakT)}" stroke="#e53935" stroke-dasharray="3 3"/><text class="c" x="${px(lp) + 5}" y="${py(peakT) - 6}" fill="#e53935">λmaks = ${fmt(lp * 1e9, 0)} nm</text>`;
+  s += `<circle cx="440" cy="40" r="20" fill="${rgb(T)}" stroke="#555"/><text class="s" x="440" y="74" text-anchor="middle" fill="#555">warna</text>`;
+  svg.innerHTML = s;
+  const I = sig * T ** 4;
+  $('read').innerHTML = `<div><span>λ<sub>maks</sub> = b/T</span><b>${fmt(lp * 1e9, 0)} nm</b></div><div><span>Daya per luas σT⁴</span><b>${fmt(I / 1e6, 2)} MW/m²</b></div><div><span>Dibanding 4.000 K</span><b>${fmt((T / 4000) ** 4, 2)} kali</b></div>`;
+}
+['t', 'ref', 'klasik'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

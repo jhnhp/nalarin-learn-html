@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transpor Air dan Makanan pada Tumbuhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Tumbuhan dengan aliran air di xilem dan aliran gula di floem"></svg></div>
+  <div class="panel">
+    <div class="lab">Intensitas cahaya <b id="lv"></b></div><input type="range" id="l" min="0" max="100" step="5" value="70">
+    <div class="lab">Kelembapan udara <b id="hv"></b></div><input type="range" id="h" min="10" max="100" step="5" value="60">
+    <div class="lab">Angin <b id="wv"></b></div><input type="range" id="w" min="0" max="100" step="5" value="20">
+    <label class="chk"><input type="checkbox" id="cut"> Kerat kulit batang melingkar (floem terputus, xilem utuh)</label>
+    <div class="read" id="read"></div>
+    <p class="note" id="ket" style="color:var(--ink)"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const SX = 200, TOP = 95, BOT = 262, CUTY = 222;
+let W = [], Sg = [], bulge = 0, tick = 0;
+for(let i = 0; i < 26; i++) W.push(TOP + Math.random() * (BOT - TOP));
+for(let i = 0; i < 18; i++) Sg.push({y: TOP + Math.random() * (BOT - TOP), sink: Math.random() < .35 ? 'buah' : 'akar'});
+function rate(){
+  const L = +$('l').value / 100, H = +$('h').value / 100, Wn = +$('w').value / 100;
+  const stomata = 0.15 + 0.85 * L; // stomata membuka saat terang
+  return stomata * (1.1 - H) * (1 + 0.8 * Wn); // relatif
+}
+function step(){
+  tick++;
+  const r = rate(), cut = $('cut').checked, ph = +$('l').value / 100;
+  W = W.map(y => { y -= 0.4 + 3.2 * r; return y < TOP ? BOT + Math.random() * 10 : y; });
+  Sg = Sg.map(p => {
+    if(p.sink === 'buah' && p.y >= 160){ return {y: TOP + Math.random() * 10, sink: Math.random() < .35 ? 'buah' : 'akar'}; }
+    let y = p.y + 1.6 * (0.2 + ph);
+    if(cut && p.sink === 'akar' && p.y < CUTY - 6 && y >= CUTY - 6){ y = CUTY - 6 - Math.random() * 14; bulge = Math.min(1, bulge + .01); }
+    if(y > BOT) return {y: TOP + Math.random() * 10, sink: Math.random() < .35 ? 'buah' : 'akar'};
+    return {y, sink: p.sink};
+  });
+  if(!cut) bulge = Math.max(0, bulge - .02);
+}
+function draw(){
+  const r = rate(), cut = $('cut').checked;
+  $('lv').textContent = $('l').value + '%'; $('hv').textContent = $('h').value + '%'; $('wv').textContent = $('w').value + '%';
+  let s = `<rect x="0" y="${BOT}" width="480" height="${340 - BOT}" fill="#8d6e63" fill-opacity=".35"/><text class="s" x="10" y="${BOT + 16}" style="fill:var(--ink)">tanah (air dan mineral)</text>`;
+  s += `<circle cx="440" cy="40" r="${10 + 14 * +$('l').value / 100}" fill="#fdd835" fill-opacity="${.3 + .7 * +$('l').value / 100}"/>`;
+  // akar
+  for(const dx of [-50, -20, 20, 55]) s += `<path d="M${SX},${BOT} q${dx * .4},30 ${dx},65" fill="none" stroke="#a1887f" stroke-width="5"/>`;
+  // batang dengan xilem (kiri) dan floem (kanan)
+  const bw = 7 * bulge;
+  s += `<path d="M${SX - 14},${TOP} L${SX - 14},${BOT} L${SX + 14},${BOT} L${SX + 14},${CUTY + 4} ${cut ? `L${SX + 6},${CUTY + 4} L${SX + 6},${CUTY - 4} L${SX + 14 + bw},${CUTY - 4} Q${SX + 18 + bw},${CUTY - 20} ${SX + 14},${CUTY - 36}` : ''} L${SX + 14},${TOP} Z" fill="#c5a880" stroke="#6d4c41" stroke-width="2"/>`;
+  s += `<rect x="${SX - 11}" y="${TOP}" width="9" height="${BOT - TOP}" fill="#bbdefb"/><rect x="${SX + 2}" y="${TOP}" width="9" height="${BOT - TOP}" fill="#ffe0b2"/>`;
+  if(cut) s += `<rect x="${SX + 2}" y="${CUTY - 4}" width="12" height="8" fill="#fff" stroke="#6d4c41"/>`;
+  // daun
+  s += `<path d="M${SX},${TOP + 5} q-90,-60 -150,-10 q70,35 150,10z" fill="#66bb6a" stroke="#2e7d32" stroke-width="2"/><path d="M${SX},${TOP + 5} q90,-60 150,-10 q-70,35 -150,10z" fill="#66bb6a" stroke="#2e7d32" stroke-width="2"/>`;
+  // buah (sink)
+  s += `<line x1="${SX + 14}" y1="160" x2="${SX + 45}" y2="160" stroke="#6d4c41" stroke-width="3"/><circle cx="${SX + 62}" cy="168" r="18" fill="#ef6c00" stroke="#bf360c" stroke-width="2"/><text class="s" x="${SX + 86}" y="172" style="fill:var(--ink)">buah</text>`;
+  // uap air dari daun
+  const nv = Math.round(2 + 10 * r);
+  for(let i = 0; i < nv; i++){ const x = SX - 120 + (i * 37) % 260, y = TOP - 30 - ((tick * (1 + 2 * r) + i * 17) % 40); s += `<text class="s" x="${x}" y="${y}" fill="#1e63d6" fill-opacity=".7">H₂O</text>`; }
+  for(const y of W) s += `<circle cx="${SX - 6.5}" cy="${y}" r="3" fill="#1e63d6"/>`;
+  for(const p of Sg) s += `<rect x="${SX + 4}" y="${p.y - 3}" width="5" height="5" fill="#e65100"/>`;
+  s += `<text class="c" x="${SX - 22}" y="${BOT - 10}" text-anchor="end" fill="#1e63d6">xilem ↑ air</text><text class="c" x="${SX + 22}" y="${TOP + 42}" fill="#e65100">floem ↓ gula</text>`;
+  s += `<text class="s" x="${SX - 190}" y="${TOP + 34}" style="fill:var(--ink)">daun: transpirasi lewat stomata</text>`;
+  if(cut) s += `<text class="s" x="${SX + 26}" y="${CUTY + 4}" style="fill:#b71c1c">keratan</text>`;
+  svg.innerHTML = s;
+  const speed = 2 + 14 * r; // cm/jam (perkiraan laju naik pewarna)
+  $('read').innerHTML = `<div><span>Laju transpirasi (relatif)</span><b>${fmt(r * 100 / 1.6, 0)}%</b></div><div><span>Perkiraan laju naik air di xilem</span><b>${fmt(speed, 1)} cm/jam</b></div><div><span>Waktu air naik 40 cm</span><b>${fmt(40 / speed, 1)} jam</b></div>`;
+  $('ket').innerHTML = cut ? 'Floem terputus: gula dari daun tertahan di atas keratan sehingga bagian itu membengkak; akar tidak mendapat makanan dan lama-kelamaan mati. Air tetap naik karena xilem utuh.' : 'Penguapan air dari daun (transpirasi) menarik kolom air di xilem ke atas (daya isap daun), dibantu tekanan akar dan kapilaritas. Gula hasil fotosintesis diangkut floem dari daun (sumber) ke buah dan akar (tempat pemakaian).';
+}
+['l', 'h', 'w', 'cut'].forEach(i => $(i).oninput = draw);
+setInterval(() => { step(); draw(); }, 50);
+draw();
+</script>
+</body>
+</html>

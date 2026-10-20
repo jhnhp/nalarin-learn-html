@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerak Lurus dan Grafiknya</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 400" role="img" aria-label="Mobil bergerak lurus beserta grafik posisi dan kecepatan terhadap waktu"></svg></div>
+  <div class="panel">
+    <div class="seg" id="mode"><button class="on" data-v="bebas">GLB / GLBB</button><button data-v="rem">Jarak henti</button></div>
+    <div id="ctl"></div>
+    <div class="row"><button class="btn primary" id="play">▶ Jalankan</button><button class="btn" id="reset">Ulang</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="note"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let mode = 'bebas', t = 0, timer = null;
+const P = {v0: 4, a: 1, T: 8, tr: 0.7, d: 6};
+const CTL = {
+  bebas: [['v0', 'Kecepatan awal v₀', 'm/s', -10, 15, 1], ['a', 'Percepatan a', 'm/s²', -4, 4, 0.5]],
+  rem: [['v0', 'Kecepatan awal v₀', 'm/s', 5, 35, 1], ['tr', 'Waktu reaksi', 's', 0, 2, 0.1], ['d', 'Perlambatan saat direm', 'm/s²', 2, 10, 0.5]]
+};
+function controls(){
+  if(mode === 'rem' && P.v0 < 5) P.v0 = 20;
+  $('ctl').innerHTML = CTL[mode].map(([k, n, u, a, b, s]) => `<div class="lab">${n} <b id="v-${k}">${fmt(P[k], 2)} ${u}</b></div><input type="range" id="i-${k}" min="${a}" max="${b}" step="${s}" value="${P[k]}">`).join('');
+  CTL[mode].forEach(([k, , u]) => $('i-' + k).oninput = e => { P[k] = +e.target.value; $('v-' + k).textContent = fmt(P[k], 2) + ' ' + u; reset(); });
+  $('note').innerHTML = mode === 'bebas'
+    ? 'GLB: a = 0, grafik x–t garis lurus miring, v–t mendatar. GLBB: v = v₀ + at dan x = v₀t + ½at². Luas di bawah grafik v–t = perpindahan; kemiringan grafik v–t = percepatan.'
+    : 'Jarak henti = jarak reaksi (v₀ × t<sub>reaksi</sub>, mobil masih melaju) + jarak pengereman (v₀² / 2a). Lihat luas di bawah grafik v–t.';
+}
+document.querySelectorAll('#mode button').forEach(b => b.onclick = () => { document.querySelectorAll('#mode button').forEach(x => x.classList.toggle('on', x === b)); mode = b.dataset.v; controls(); reset(); });
+$('play').onclick = () => { if(timer){ clearInterval(timer); timer = null; $('play').textContent = '▶ Jalankan'; return; } if(t >= tEnd()) t = 0; $('play').textContent = '⏸ Berhenti'; timer = setInterval(() => { t = Math.min(tEnd(), t + .04); if(t >= tEnd()){ clearInterval(timer); timer = null; $('play').textContent = '▶ Jalankan'; } draw(); }, 40); };
+$('reset').onclick = reset;
+function reset(){ if(timer){ clearInterval(timer); timer = null; $('play').textContent = '▶ Jalankan'; } t = 0; draw(); }
+function tEnd(){ return mode === 'bebas' ? P.T : P.tr + P.v0 / P.d; }
+function state(tt){
+  if(mode === 'bebas') return {x: P.v0 * tt + .5 * P.a * tt * tt, v: P.v0 + P.a * tt, a: P.a};
+  if(tt <= P.tr) return {x: P.v0 * tt, v: P.v0, a: 0};
+  const u = tt - P.tr; return {x: P.v0 * P.tr + P.v0 * u - .5 * P.d * u * u, v: P.v0 - P.d * u, a: -P.d};
+}
+function graph(L, T, W, H, f, tmax, lab, unit, col, shade){
+  const N = 120, vals = []; for(let i = 0; i <= N; i++) vals.push(f(tmax * i / N));
+  let lo = Math.min(0, ...vals), hi = Math.max(0, ...vals); if(hi - lo < 1){ hi += .5; lo -= .5; }
+  const pad = (hi - lo) * .1; lo -= pad; hi += pad;
+  const X = tt => L + tt / tmax * W, Y = v => T + H - (v - lo) / (hi - lo) * H;
+  let s = `<rect x="${L}" y="${T}" width="${W}" height="${H}" style="fill:none;stroke:var(--line)"/><line x1="${L}" y1="${Y(0)}" x2="${L + W}" y2="${Y(0)}" style="stroke:var(--ink)"/>`;
+  if(shade){ let p = `M${X(0)},${Y(0)}`; for(let i = 0; i <= N; i++){ const tt = tmax * i / N; if(tt > t) break; p += `L${X(tt).toFixed(1)},${Y(vals[i]).toFixed(1)}`; } p += `L${X(Math.min(t, tmax))},${Y(0)}Z`; s += `<path d="${p}" style="fill:${col}" fill-opacity=".15"/>`; }
+  s += `<path d="${vals.map((v, i) => (i ? 'L' : 'M') + X(tmax * i / N).toFixed(1) + ',' + Y(v).toFixed(1)).join('')}" fill="none" style="stroke:${col}" stroke-width="2.5"/>`;
+  s += `<circle cx="${X(t)}" cy="${Y(f(t))}" r="4.5" style="fill:${col}"/>`;
+  s += `<text class="c" x="${L}" y="${T - 5}" style="fill:${col}">${lab} (${unit})</text><text class="s" x="${L + W}" y="${T + H + 12}" text-anchor="end" style="fill:var(--muted)">t = ${fmt(tmax, 2)} s</text>`;
+  s += `<text class="s" x="${L - 4}" y="${Y(hi - pad) + 4}" text-anchor="end" style="fill:var(--muted)">${fmt(hi - pad, 1)}</text><text class="s" x="${L - 4}" y="${Y(lo + pad) + 4}" text-anchor="end" style="fill:var(--muted)">${fmt(lo + pad, 1)}</text>`;
+  return s;
+}
+function draw(){
+  const te = tEnd(), st = state(t), xs = [];
+  for(let i = 0; i <= 60; i++) xs.push(state(te * i / 60).x);
+  const xmin = Math.min(0, ...xs), xmax = Math.max(1, ...xs), R = v => 30 + (v - xmin) / (xmax - xmin) * 420;
+  let s = `<line x1="20" y1="70" x2="460" y2="70" style="stroke:var(--ink)" stroke-width="2"/>`;
+  for(let i = 0; i <= 5; i++){ const v = xmin + (xmax - xmin) * i / 5; s += `<line x1="${R(v)}" y1="70" x2="${R(v)}" y2="76" style="stroke:var(--muted)"/><text class="s" x="${R(v)}" y="88" text-anchor="middle" style="fill:var(--muted)">${fmt(v, 0)} m</text>`; }
+  const cx = R(st.x), dir = st.v < 0 ? -1 : 1;
+  s += `<rect x="${cx - 18}" y="44" width="36" height="18" rx="5" style="fill:var(--a)"/><rect x="${cx - 10 + dir * 4}" y="36" width="20" height="10" rx="3" style="fill:var(--a)" fill-opacity=".7"/><circle cx="${cx - 10}" cy="64" r="5" style="fill:var(--ink)"/><circle cx="${cx + 10}" cy="64" r="5" style="fill:var(--ink)"/>`;
+  if(Math.abs(st.v) > .05) s += `<line x1="${cx}" y1="26" x2="${cx + st.v * 4}" y2="26" style="stroke:var(--b)" stroke-width="3"/><path d="M${cx + st.v * 4 + dir * 7},26 l${-dir * 7},-5 l0,10z" style="fill:var(--b)"/><text class="s" x="${cx}" y="18" text-anchor="middle" style="fill:var(--b)">v</text>`;
+  if(mode === 'rem'){ const xr = R(P.v0 * P.tr); s += `<line x1="${xr}" y1="40" x2="${xr}" y2="70" style="stroke:var(--comp)" stroke-dasharray="3 3"/><text class="s" x="${xr}" y="104" text-anchor="middle" style="fill:var(--comp)">mulai mengerem</text>`; }
+  s += graph(60, 120, 400, 110, tt => state(tt).x, te, 'posisi x', 'm', 'var(--a)', false);
+  s += graph(60, 262, 400, 110, tt => state(tt).v, te, 'kecepatan v', 'm/s', 'var(--b)', true);
+  svg.innerHTML = s;
+  let r = `<div><span>t</span><b>${fmt(t, 2)} s</b></div><div><span>x / v / a</span><b>${fmt(st.x, 2)} m / ${fmt(st.v, 2)} m/s / ${fmt(st.a, 2)} m/s²</b></div>`;
+  if(mode === 'rem'){ const dr = P.v0 * P.tr, db = P.v0 * P.v0 / (2 * P.d); r += `<div><span>Jarak henti</span><b>${fmt(dr, 2)} + ${fmt(db, 2)} = ${fmt(dr + db, 2)} m</b></div>`; }
+  else r += `<div><span>Gerak</span><b>${P.a === 0 ? 'GLB' : (P.v0 * P.a > 0 || P.v0 === 0) ? 'GLBB dipercepat' : 'GLBB diperlambat (lalu bisa berbalik arah)'}</b></div>`;
+  $('read').innerHTML = r;
+}
+controls(); draw();
+</script>
+</body>
+</html>

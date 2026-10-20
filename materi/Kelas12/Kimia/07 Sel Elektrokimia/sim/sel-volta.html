@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sel Volta</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Sel volta dengan dua setengah sel, jembatan garam, dan voltmeter"></svg></div>
+  <div class="panel">
+    <div class="lab">Logam kiri</div><select id="a"></select>
+    <div class="lab">Logam kanan</div><select id="b"></select>
+    <label class="chk"><input type="checkbox" id="jg" checked> Pasang jembatan garam (KNO₃)</label>
+    <div class="read" id="read"></div>
+    <p class="note">E° adalah potensial reduksi standar (25 °C, 1 M, 1 atm) terhadap elektrode hidrogen standar (0,00 V).</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const M = [['Li', 1, -3.04, '#cfd8dc'], ['K', 1, -2.93, '#cfd8dc'], ['Mg', 2, -2.37, '#e0e0e0'], ['Al', 3, -1.66, '#eceff1'], ['Zn', 2, -0.76, '#b0bec5'], ['Cr', 3, -0.74, '#b0bec5'], ['Fe', 2, -0.44, '#90a4ae'], ['Ni', 2, -0.25, '#a1887f'], ['Sn', 2, -0.14, '#bdbdbd'], ['Pb', 2, -0.13, '#78909c'], ['Cu', 2, 0.34, '#d84315'], ['Ag', 1, 0.80, '#e0e0e0'], ['Au', 3, 1.50, '#fbc02d']];
+const ion = (m) => `${m[0]}${m[1] > 1 ? (m[1] === 2 ? '²' : '³') : ''}⁺`;
+M.forEach((m, i) => { $('a').add(new Option(`${m[0]} | ${ion(m)}   (E° = ${m[2] > 0 ? '+' : ''}${fmt(m[2], 2)} V)`, i)); $('b').add(new Option(`${m[0]} | ${ion(m)}   (E° = ${m[2] > 0 ? '+' : ''}${fmt(m[2], 2)} V)`, i)); });
+$('a').value = 6; $('b').value = 11;
+let t = 0;
+function draw(){
+  const A = M[+$('a').value], B = M[+$('b').value], jg = $('jg').checked;
+  const same = A === B, an = A[2] <= B[2] ? A : B, kat = an === A ? B : A, leftAn = an === A;
+  const E = kat[2] - an[2], run = jg && !same && E > 0;
+  let s = '';
+  const half = (x, m, isAn) => {
+    let t2 = `<path d="M${x},140 v130 q0,12 12,12 h126 q12,0 12,-12 v-130" fill="none" stroke="#90a4ae" stroke-width="2.5"/><rect x="${x + 2}" y="170" width="146" height="110" rx="10" fill="${m[0] === 'Cu' ? '#64b5f6' : m[0] === 'Ni' ? '#a5d6a7' : '#e3f2fd'}" fill-opacity=".5"/>`;
+    const w = 22 + (run ? (isAn ? -1 : 1) * Math.min(8, t / 40) : 0);
+    t2 += `<rect x="${x + 64 - w / 2 + 11}" y="110" width="${w}" height="150" fill="${m[3]}" stroke="#546e7a"/>`;
+    t2 += `<text class="c" x="${x + 75}" y="104" text-anchor="middle" style="fill:var(--ink)">${m[0]}</text><text class="s" x="${x + 75}" y="300" text-anchor="middle" fill="#555">larutan ${ion(m)} 1 M</text>`;
+    if(!same) t2 += `<text class="c" x="${x + 75}" y="318" text-anchor="middle" fill="${isAn ? '#c62828' : '#1565c0'}">${isAn ? 'ANODE (−): oksidasi' : 'KATODE (+): reduksi'}</text>`;
+    return t2;
+  };
+  s += half(20, A, leftAn && !same) + half(310, B, !leftAn && !same);
+  // jembatan garam
+  if(jg) s += `<path d="M120,190 v-55 q0,-20 20,-20 h200 q20,0 20,20 v55" fill="none" stroke="#fff3e0" stroke-width="20"/><path d="M120,190 v-55 q0,-20 20,-20 h200 q20,0 20,20 v55" fill="none" stroke="#ffcc80" stroke-width="2"/><text class="s" x="240" y="108" text-anchor="middle" fill="#e65100">jembatan garam KNO₃</text>`;
+  // kabel dan voltmeter
+  s += `<line x1="95" y1="110" x2="95" y2="40" stroke="#555" stroke-width="2"/><line x1="385" y1="110" x2="385" y2="40" stroke="#555" stroke-width="2"/><line x1="95" y1="40" x2="210" y2="40" stroke="#555" stroke-width="2"/><line x1="270" y1="40" x2="385" y2="40" stroke="#555" stroke-width="2"/>`;
+  s += `<rect x="210" y="22" width="60" height="36" rx="8" fill="#fff" stroke="#333" stroke-width="2"/><text class="c" x="240" y="45" text-anchor="middle" fill="#333">${run ? fmt(E, 2) : '0,00'} V</text>`;
+  if(run){
+    const dir = leftAn ? 1 : -1;
+    for(let k = 0; k < 5; k++){ const p = ((t * 2 + k * 60) % 300) / 300; const x = leftAn ? 95 + p * 290 : 385 - p * 290; const xx = x < 210 || x > 270 ? x : (dir > 0 ? 270 : 210); s += `<circle cx="${xx}" cy="40" r="5" fill="#fdd835" stroke="#f57f17"/><text class="s" x="${xx}" y="43" text-anchor="middle" fill="#333" style="font-size:7px">e⁻</text>`; }
+    s += `<text class="s" x="240" y="78" text-anchor="middle" fill="#f57f17">elektron mengalir ${leftAn ? '→' : '←'} dari anode ke katode</text>`;
+    // ion jembatan garam
+    const pK = ((t * 1.2) % 100) / 100, pN = ((t * 1.2 + 50) % 100) / 100;
+    const toKat = leftAn ? 1 : -1;
+    s += `<circle cx="${240 + toKat * pK * 110}" cy="115" r="5" fill="#e53935"/><text class="s" x="${240 + toKat * pK * 110}" y="118" text-anchor="middle" fill="#fff" style="font-size:7px">K⁺</text><circle cx="${240 - toKat * pN * 110}" cy="115" r="5" fill="#1e88e5"/>`;
+  }
+  svg.innerHTML = s;
+  const notation = `${an[0]} | ${ion(an)} || ${ion(kat)} | ${kat[0]}`;
+  $('read').innerHTML = same ? `<div><span>Keterangan</span><b>kedua elektrode sama: tidak ada beda potensial</b></div>` :
+    `<div><span>Anode (oksidasi)</span><b>${an[0]} → ${ion(an)} + ${an[1] > 1 ? an[1] : ''}e</b></div><div><span>Katode (reduksi)</span><b>${ion(kat)} + ${kat[1] > 1 ? kat[1] : ''}e → ${kat[0]}</b></div><div><span>Notasi sel</span><b>${notation}</b></div><div><span>E°sel = E°katode − E°anode</span><b>${fmt(kat[2], 2)} − (${fmt(an[2], 2)}) = ${fmt(E, 2)} V</b></div><div><span>Arus</span><b>${jg ? 'mengalir; massa anode berkurang, massa katode bertambah' : 'tidak mengalir: rangkaian dalam terputus tanpa jembatan garam'}</b></div>`;
+}
+['a', 'b', 'jg'].forEach(i => $(i).oninput = () => { t = 0; draw(); });
+setInterval(() => { t++; draw(); }, 60);
+draw();
+</script>
+</body>
+</html>

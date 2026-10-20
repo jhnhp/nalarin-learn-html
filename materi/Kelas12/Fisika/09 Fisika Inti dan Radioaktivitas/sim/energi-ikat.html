@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Energi Ikat per Nukleon</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Kurva energi ikat per nukleon terhadap nomor massa"></svg></div>
+  <div class="panel">
+    <div class="lab">Pilih nuklida <b id="nv"></b></div><input type="range" id="k" min="0" max="13" step="1" value="5">
+    <label class="chk"><input type="checkbox" id="ff" checked> Tampilkan arah fisi dan fusi</label>
+    <div class="read" id="read"></div>
+    <p class="note">Energi ikat E<sub>B</sub> = Δm × 931,5 MeV/sma, dengan Δm = Z m<sub>p</sub> + N m<sub>n</sub> − m<sub>inti</sub>. Makin besar energi ikat per nukleon, makin stabil inti. Puncaknya di sekitar besi dan nikel.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+// [nama, Z, A, energi ikat per nukleon (MeV)]
+const D = [['²H (deuterium)', 1, 2, 1.112], ['³He', 2, 3, 2.573], ['⁴He', 2, 4, 7.074], ['⁶Li', 3, 6, 5.332], ['¹²C', 6, 12, 7.680], ['¹⁶O', 8, 16, 7.976], ['⁴⁰Ca', 20, 40, 8.551], ['⁶²Ni', 28, 62, 8.795], ['⁹⁰Zr', 40, 90, 8.710], ['¹²⁰Sn', 50, 120, 8.505], ['¹⁴⁰Ce', 58, 140, 8.376], ['²⁰⁸Pb', 82, 208, 7.868], ['²³⁵U', 92, 235, 7.591], ['²³⁸U', 92, 238, 7.570]];
+const curve = A => { // rumus semi-empiris (Weizsäcker), Z optimal
+  const Z = A / (1.98 + 0.0155 * A ** (2 / 3));
+  const B = 15.75 * A - 17.8 * A ** (2 / 3) - 0.711 * Z * (Z - 1) / A ** (1 / 3) - 23.7 * (A - 2 * Z) ** 2 / A;
+  return Math.max(0, B / A);
+};
+function draw(){
+  const k = +$('k').value, [nm, Z, A, ba] = D[k];
+  $('nv').textContent = nm;
+  const gx = 50, gy = 280, gw = 410, gh = 240, Am = 250, Bm = 9.5;
+  const X = a => gx + a / Am * gw, Y = b => gy - b / Bm * gh;
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/>`;
+  for(let a = 0; a <= 250; a += 50) s += `<text class="s" x="${X(a)}" y="${gy + 14}" text-anchor="middle" fill="#555">${a}</text>`;
+  for(let b = 0; b <= 9; b += 3) s += `<text class="s" x="${gx - 5}" y="${Y(b) + 4}" text-anchor="end" fill="#555">${b}</text><line x1="${gx}" y1="${Y(b)}" x2="${gx + gw}" y2="${Y(b)}" stroke="#eceff1"/>`;
+  s += `<text class="s" x="${gx + gw}" y="${gy + 30}" text-anchor="end" fill="#555">nomor massa A</text><text class="s" x="${gx + 4}" y="${gy - gh - 8}" fill="#555">energi ikat per nukleon (MeV)</text>`;
+  let d = ''; for(let a = 12; a <= 245; a += 2) d += (a > 12 ? 'L' : 'M') + X(a).toFixed(1) + ',' + Y(curve(a)).toFixed(1);
+  s += `<path d="${d}" fill="none" stroke="#90a4ae" stroke-width="2"/>`;
+  D.forEach(([n, z, a, b], i) => s += `<circle cx="${X(a)}" cy="${Y(b)}" r="${i === k ? 7 : 4}" fill="${i === k ? '#e53935' : '#1565c0'}"/>` + (i === k ? `<text class="c" x="${X(a) + (a > 180 ? -10 : 10)}" y="${Y(b) + (b < 4 ? -10 : 22)}" text-anchor="${a > 180 ? 'end' : 'start'}" fill="#e53935">${n}</text>` : ''));
+  if($('ff').checked){
+    s += `<line x1="${X(25)}" y1="${Y(3.2)}" x2="${X(52)}" y2="${Y(6.6)}" stroke="#e65100" stroke-width="3" marker-end="url(#m1)"/><text class="c" x="${X(30)}" y="${Y(2.4)}" fill="#e65100">fusi: inti ringan bergabung</text>`;
+    s += `<line x1="${X(232)}" y1="${Y(6.6)}" x2="${X(150)}" y2="${Y(7.4)}" stroke="#6a1b9a" stroke-width="3" marker-end="url(#m2)"/><text class="c" x="${X(245)}" y="${Y(5.9)}" text-anchor="end" fill="#6a1b9a">fisi: inti berat membelah</text>`;
+    s += `<defs><marker id="m1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#e65100"/></marker><marker id="m2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#6a1b9a"/></marker></defs>`;
+  }
+  svg.innerHTML = s;
+  const EB = ba * A, dm = EB / 931.5;
+  $('read').innerHTML = `<div><span>Proton / neutron</span><b>${Z} / ${A - Z}</b></div><div><span>Energi ikat per nukleon</span><b>${fmt(ba, 3)} MeV</b></div><div><span>Energi ikat total</span><b>${fmt(EB, 1)} MeV</b></div><div><span>Defek massa Δm</span><b>${fmt(dm, 4)} sma</b></div>`;
+}
+['k', 'ff'].forEach(i => $(i).oninput = draw);
+draw();
+</script>
+</body>
+</html>

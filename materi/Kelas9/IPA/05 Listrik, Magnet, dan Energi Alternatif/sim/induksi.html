@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Induksi Elektromagnetik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:13px}.s{font-family:var(--display);font-weight:700;font-size:11px}#svg{touch-action:none}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Magnet batang digerakkan keluar masuk kumparan yang terhubung ke galvanometer"></svg></div>
+  <div class="panel">
+    <div class="lab">Posisi magnet (seret magnet atau geser) <b id="xv"></b></div>
+    <input type="range" id="x" min="20" max="440" step="1" value="60">
+    <div class="row"><button class="btn primary" id="auto">▶ Gerakkan bolak-balik</button><button class="btn" id="flip">Balik kutub magnet</button></div>
+    <div class="lab">Kecepatan gerak <b id="sv"></b></div>
+    <input type="range" id="sp" min="1" max="5" step="1" value="2">
+    <div class="seg" id="N"><button data-v="50">50 lilitan</button><button class="on" data-v="100">100 lilitan</button><button data-v="200">200 lilitan</button></div>
+    <div class="read" id="read"></div>
+    <p class="note">Arus induksi muncul hanya ketika jumlah garis gaya magnet (fluks) yang menembus kumparan <b>berubah</b>. GGL induksi makin besar jika magnet digerakkan makin cepat, lilitan makin banyak, atau magnet makin kuat.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const XC = 300, CW = 110;
+let X = 60, prevX = 60, auto = false, t = 0, pol = 1, N = 100, needle = 0, drag = false, emfShow = 0;
+const flux = x => pol * Math.exp(-((((x + 45) - XC) / 70) ** 2)); // ujung kanan magnet di x+45
+$('x').oninput = e => { auto = false; $('auto').textContent = '▶ Gerakkan bolak-balik'; X = +e.target.value; };
+$('auto').onclick = () => { auto = !auto; $('auto').textContent = auto ? '⏸ Berhenti' : '▶ Gerakkan bolak-balik'; };
+$('flip').onclick = () => { pol = -pol; };
+document.querySelectorAll('#N button').forEach(b => b.onclick = () => { document.querySelectorAll('#N button').forEach(x => x.classList.toggle('on', x === b)); N = +b.dataset.v; });
+const pt = e => { const r = svg.getBoundingClientRect(); return (e.clientX - r.left) / r.width * 480; };
+svg.addEventListener('pointerdown', e => { const x = pt(e); if(Math.abs(x - X) < 60){ drag = true; auto = false; $('auto').textContent = '▶ Gerakkan bolak-balik'; svg.setPointerCapture(e.pointerId); } });
+svg.addEventListener('pointermove', e => { if(drag) X = Math.max(20, Math.min(440, pt(e) - 0)); });
+svg.addEventListener('pointerup', () => drag = false);
+function frame(){
+  const sp = +$('sp').value;
+  if(auto){ t += .02 * sp; X = 230 + 200 * Math.sin(t) * .95; }
+  const emf = -N / 100 * (flux(X) - flux(prevX)) * 60; // satuan relatif
+  prevX = X;
+  emfShow += (emf - emfShow) * .35;
+  needle += (Math.max(-1, Math.min(1, emfShow / 3)) * 60 - needle) * .3;
+  draw();
+}
+function draw(){
+  $('x').value = Math.round(X); $('xv').textContent = Math.round(X) + ''; $('sv').textContent = $('sp').value + '×';
+  let s = '';
+  // kumparan
+  const cy = 110;
+  s += `<rect x="${XC - CW / 2}" y="${cy - 38}" width="${CW}" height="76" rx="6" style="fill:var(--surface-2);stroke:var(--line-2)"/>`;
+  const turns = N / 10;
+  for(let i = 0; i <= turns; i++){ const x = XC - CW / 2 + 6 + i * (CW - 12) / turns; s += `<ellipse cx="${x}" cy="${cy}" rx="4" ry="40" fill="none" style="stroke:var(--comp)" stroke-width="${N > 150 ? 1.2 : 2}"/>`; }
+  s += `<text class="s" x="${XC}" y="${cy - 48}" text-anchor="middle" style="fill:var(--comp)">kumparan ${N} lilitan</text>`;
+  // kabel ke galvanometer
+  const gx = 300, gy = 250;
+  s += `<path d="M${XC - CW / 2 + 6},${cy + 40} L${XC - CW / 2 + 6},${gy} L${gx - 40},${gy} M${XC + CW / 2 - 6},${cy + 40} L${XC + CW / 2 - 6},${gy} L${gx + 40},${gy}" fill="none" style="stroke:var(--ink)" stroke-width="2"/>`;
+  // galvanometer
+  s += `<circle cx="${gx}" cy="${gy}" r="40" style="fill:var(--surface);stroke:var(--ink)" stroke-width="2"/>`;
+  for(let a = -60; a <= 60; a += 15){ const r = a * Math.PI / 180; s += `<line x1="${gx + 30 * Math.sin(r)}" y1="${gy + 8 - 30 * Math.cos(r)}" x2="${gx + 35 * Math.sin(r)}" y2="${gy + 8 - 35 * Math.cos(r)}" style="stroke:var(--muted)"/>`; }
+  const nr = needle * Math.PI / 180;
+  s += `<line x1="${gx}" y1="${gy + 8}" x2="${gx + 32 * Math.sin(nr)}" y2="${gy + 8 - 32 * Math.cos(nr)}" style="stroke:var(--b)" stroke-width="2.5"/><circle cx="${gx}" cy="${gy + 8}" r="3" style="fill:var(--ink)"/><text class="s" x="${gx}" y="${gy + 26}" text-anchor="middle" style="fill:var(--muted)">G</text>`;
+  s += `<text class="s" x="${gx + 50}" y="${gy + 4}" style="fill:var(--muted)">galvanometer</text>`;
+  // magnet (90 px panjang)
+  const L = X - 45, R = X + 45, kanan = pol > 0 ? 'U' : 'S', kiri = pol > 0 ? 'S' : 'U';
+  const colK = k => k === 'U' ? 'var(--b)' : 'var(--a)';
+  s += `<rect x="${L}" y="${cy - 14}" width="45" height="28" style="fill:${colK(kiri)}"/><rect x="${X}" y="${cy - 14}" width="45" height="28" style="fill:${colK(kanan)}"/>`;
+  s += `<text class="c" x="${L + 22}" y="${cy + 5}" text-anchor="middle" fill="#fff">${kiri}</text><text class="c" x="${X + 22}" y="${cy + 5}" text-anchor="middle" fill="#fff">${kanan}</text>`;
+  // garis medan kecil dari kutub utara
+  svg.innerHTML = s;
+  const a = Math.abs(emfShow);
+  const st = a < .05 ? 'tidak ada (fluks tidak berubah)' : (emfShow > 0 ? 'jarum menyimpang ke kanan' : 'jarum menyimpang ke kiri');
+  $('read').innerHTML = `<div><span>GGL induksi (relatif)</span><b>${fmt(a, 2)}</b></div><div><span>Galvanometer</span><b>${st}</b></div>`;
+}
+setInterval(frame, 30);
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Detektif Kimia Hijau</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.card{background:var(--surface-2);border-radius:14px;padding:16px;font-size:16px;line-height:1.5;color:var(--ink);min-height:96px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px;margin-top:12px}
+.grid button{border:1px solid var(--line-2);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 6px;font:inherit;font-size:12.5px;font-weight:600;text-align:left;cursor:pointer;line-height:1.3}
+.grid button.ok{background:color-mix(in srgb,var(--ok) 18%,var(--surface));border-color:var(--ok)}
+.grid button.no{background:color-mix(in srgb,var(--bad) 14%,var(--surface));border-color:var(--bad)}
+.grid b{color:var(--a)}
+</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage" style="padding:14px">
+    <div class="card" id="card"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <div class="panel">
+    <div class="row"><button class="btn primary" id="next">Kasus berikutnya ▶</button></div>
+    <div class="read" id="read"></div>
+    <p class="note" id="fb">Baca kasusnya, lalu pilih prinsip kimia hijau yang <b>paling</b> sesuai.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const P = ['Mencegah limbah', 'Memaksimalkan atom ekonomi', 'Sintesis kimia yang tidak berbahaya', 'Mendesain bahan kimia yang aman', 'Pelarut dan kondisi reaksi yang aman', 'Efisiensi energi', 'Bahan baku terbarukan', 'Mengurangi bahan turunan', 'Menggunakan katalis', 'Produk yang terdegradasi', 'Analisis langsung (real time)', 'Mencegah potensi kecelakaan'];
+const K = [
+  ['Pabrik mengubah prosesnya sehingga limbah tidak terbentuk sejak awal, alih-alih mengolah limbah di instalasi pengolahan.', 0, 'Lebih baik mencegah limbah daripada mengolah atau membersihkannya setelah terbentuk.'],
+  ['Pemerintah menerapkan biodiesel B30 yang sebagian berasal dari minyak kelapa sawit.', 6, 'Minyak sawit berasal dari tanaman yang dapat ditanam ulang, berbeda dengan solar dari minyak bumi.'],
+  ['Siswa membuat kantong dari bioplastik kulit pisang yang terurai di tanah dalam beberapa minggu.', 9, 'Produk dirancang agar terdegradasi dan tidak menumpuk di lingkungan setelah dipakai.'],
+  ['Industri menambahkan enzim sehingga reaksi berjalan cepat dan selektif pada suhu kamar dengan sedikit hasil samping.', 8, 'Katalis mempercepat reaksi, meningkatkan selektivitas, mengurangi limbah dan energi.'],
+  ['Pelarut organik beracun pada proses pencucian diganti dengan air.', 4, 'Memilih pelarut dan kondisi reaksi yang paling aman.'],
+  ['Reaksi yang semula memerlukan pemanasan 300 °C diganti dengan rute yang dapat berlangsung pada suhu kamar.', 5, 'Rute dengan kebutuhan energi paling kecil; hindari pemanasan, pendinginan, dan tekanan tinggi.'],
+  ['Etanol dibuat dari etena + air: semua atom pereaksi menjadi etanol.', 1, 'Atom ekonominya 100%, tidak ada atom yang terbuang.'],
+  ['Sensor memantau suhu dan tekanan reaktor setiap detik untuk mencegah terbentuknya zat berbahaya.', 10, 'Analisis secara real time mencegah pembentukan bahan berbahaya.'],
+  ['Gas klorin cair yang mudah bocor diganti bahan lain yang tidak mudah meledak dan beracun, ditambah prosedur darurat.', 11, 'Memilih bahan dan prosedur yang memperkecil risiko kecelakaan, ledakan, dan kebakaran.'],
+  ['Pestisida baru dirancang agar tetap efektif membunuh hama tetapi tidak beracun bagi manusia dan ikan.', 3, 'Merancang bahan kimia yang fungsinya tetap tetapi toksisitasnya rendah.'],
+  ['Langkah \"melindungi gugus\" yang memerlukan pereaksi tambahan dihilangkan dari rute sintesis obat.', 7, 'Mengurangi bahan turunan berarti lebih sedikit tahap, pereaksi, dan limbah.'],
+  ['Pabrik memilih rute sintesis yang tidak memakai maupun menghasilkan zat beracun.', 2, 'Sintesis yang tidak berbahaya: pereaksi dan produknya sesedikit mungkin bersifat racun.']
+];
+let order = [], idx = 0, done = false, score = 0, tried = 0;
+function shuffle(){ order = K.map((_, i) => i).sort(() => Math.random() - .5); idx = 0; }
+function show(){
+  const [t] = K[order[idx]]; done = false;
+  $('card').innerHTML = `<div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">Kasus ${idx + 1} dari ${K.length}</div>${t}`;
+  $('grid').innerHTML = P.map((p, i) => `<button data-i="${i}"><b>${i + 1}.</b> ${p}</button>`).join('');
+  $('grid').querySelectorAll('button').forEach(b => b.onclick = () => pick(+b.dataset.i, b));
+  $('fb').innerHTML = 'Baca kasusnya, lalu pilih prinsip kimia hijau yang <b>paling</b> sesuai.';
+}
+function pick(i, b){
+  if(done) return;
+  const [, a, why] = K[order[idx]];
+  tried++;
+  if(i === a){ b.classList.add('ok'); done = true; score++; $('fb').innerHTML = `<b style="color:var(--ok)">Tepat!</b> ${why}`; }
+  else { b.classList.add('no'); $('grid').querySelector(`[data-i="${a}"]`).classList.add('ok'); done = true; $('fb').innerHTML = `<b style="color:var(--bad)">Kurang tepat.</b> Jawaban: prinsip ${a + 1}, ${P[a].toLowerCase()}. ${why}`; }
+  $('read').innerHTML = `<div><span>Skor</span><b>${score} dari ${tried}</b></div>`;
+}
+$('next').onclick = () => { idx++; if(idx >= K.length) shuffle(); show(); };
+shuffle(); show();
+$('read').innerHTML = `<div><span>Skor</span><b>0 dari 0</b></div>`;
+</script>
+</body>
+</html>
