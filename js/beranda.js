@@ -53,15 +53,26 @@ function renderHome(bab, d){
   JENJANG_ORDER.filter(j => groups[j]).forEach(j => {
     box.appendChild(mk('h2', 'sec-h', j));
     const grid = mk('div', 'kelas-grid');
+    const cardDefs = [];
     Object.keys(groups[j]).sort(nat).forEach(k => {
+      const subjects = Object.keys(groups[j][k]).sort(nat);
+      if(k === 'TKA SMA'){
+        const wajib = ['Matematika', 'Bahasa Indonesia', 'Bahasa Inggris'];
+        cardDefs.push({label:'TKA SMA Wajib', kelas:k, subjects:subjects.filter(m => wajib.includes(m))});
+        cardDefs.push({label:'TKA SMA Pilihan', kelas:k, subjects:subjects.filter(m => !wajib.includes(m))});
+      } else {
+        cardDefs.push({label:k, kelas:k, subjects});
+      }
+    });
+    cardDefs.forEach(def => {
       const c = mk('section', 'card kelas');
-      const h = mk('h3'); h.innerHTML = `<span class="n"></span>`; h.firstChild.textContent = tileOf(k);
-      const ha = mk('a', '', k); ha.href = courseUrl(k); ha.style.cssText = 'color:inherit;text-decoration:none'; h.appendChild(ha);
+      const h = mk('h3'); h.innerHTML = `<span class="n"></span>`; h.firstChild.textContent = tileOf(def.label);
+      const ha = mk('a', '', def.label); ha.href = courseUrl(def.kelas); ha.style.cssText = 'color:inherit;text-decoration:none'; h.appendChild(ha);
       c.appendChild(h);
       const ul = mk('ul');
-      Object.keys(groups[j][k]).sort(nat).forEach(m => {
-        const list = groups[j][k][m];
-        const li = mk('li'), a = mk('a'); a.href = courseUrl(k, m); a.dataset.mapel = m;
+      def.subjects.forEach(m => {
+        const list = groups[j][def.kelas][m];
+        const li = mk('li'), a = mk('a'); a.href = courseUrl(def.kelas, m); a.dataset.mapel = m;
         a.innerHTML = `<span class="dot"></span><span></span><small>${list.length} bab</small>`;
         a.children[1].textContent = m;
         li.appendChild(a); ul.appendChild(li);
