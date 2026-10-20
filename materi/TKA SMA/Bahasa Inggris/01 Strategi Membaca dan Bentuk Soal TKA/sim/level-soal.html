@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Level Kompetensi Soal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>
+.wrap{padding:14px 16px;display:grid;gap:12px}
+.intro{font-size:14px;color:var(--muted)}
+.psg{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface-2);font-size:14.5px;line-height:1.6}
+.psg b{font-family:var(--display)}
+.psg table{border-collapse:collapse;margin:8px 0}.psg td,.psg th{border:1px solid var(--line-2);padding:4px 12px;text-align:center}
+.items{display:grid;gap:8px;padding:0;list-style:none}
+.it{border:1px solid var(--line-2);border-radius:12px;padding:10px 12px;display:grid;gap:8px;background:var(--surface)}
+.it.ok{border-color:var(--ok);background:var(--ok-soft)}
+.it.no{border-color:var(--bad);background:var(--bad-soft)}
+.it .tx{font-size:14.5px}
+.it .why{font-size:13px;color:var(--muted)}
+.it .seg button{font-size:12.5px;padding:6px 6px;white-space:normal;flex:1 1 30%;min-width:0}
+.it .tx{overflow-wrap:anywhere}
+.ord{display:flex;gap:10px;align-items:center}
+.ord .n{font-family:var(--display);font-weight:800;min-width:22px;text-align:center}
+.ord .tx{flex:1}
+.ord .mv{display:flex;flex-direction:column;gap:4px}
+.ord .mv button{width:32px;height:28px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);font-weight:800}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="seg" id="sets"><button>Level kompetensi</button><button>Fakta atau opini</button></div>
+  <p class="intro" id="intro"></p>
+  <div class="psg" id="psg" hidden></div>
+  <ul class="items" id="items"></ul>
+  <div class="bar"><button class="btn primary" id="cek">Check</button><button class="btn" id="ulang">Reset</button></div>
+  <div class="box" id="res" hidden></div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const SETS = [{"name": "Level kompetensi", "cats": ["Textual", "Inferential", "Evaluation"], "intro": "Read the text, then decide which competency level each question tests: <b>textual</b> (information stated in the text), <b>inferential</b> (implied meaning), or <b>evaluation</b> (judging ideas or responding to the text).", "passage": "<b>School Canteen Goes Plastic-Free</b><br>Starting next month, the canteen at SMA Tunas Muda will stop using plastic straws, cups, and bags. Students must bring their own bottles and lunch boxes. The student council suggested the change after a survey showed that the school produced about 40 kilograms of plastic waste every week. Some sellers worry that they will lose customers, but the principal believes students will adapt quickly.", "items": [["How much plastic waste did the school produce every week?", 0, "The number (40 kg) is stated directly in the text."], ["Who suggested the change?", 0, "The text says the student council suggested it."], ["Why are some sellers worried?", 0, "Stated directly: they think they will lose customers."], ["What is the main purpose of the text?", 1, "The purpose is not written; we infer it (to inform readers about a new canteen rule)."], ["What will students most likely need to buy before next month?", 1, "We infer from 'must bring their own bottles and lunch boxes'."], ["Why did the survey probably surprise the student council?", 1, "The text implies the amount was large; we must infer their reaction."], ["Is the principal's belief supported by evidence in the text?", 2, "This asks you to judge whether an opinion has support. It does not: no evidence is given."], ["Which additional information would make the text more convincing?", 2, "Judging the completeness of information is evaluation."], ["Do you think the new rule is fair to the sellers? Why?", 2, "Responding to the text with your own opinion is evaluation and appreciation."]], "done": "Great! Remember: textual = stated, inferential = implied, evaluation = judged."}, {"name": "Fakta atau opini", "cats": ["Fact", "Opinion"], "intro": "Decide whether each sentence is a <b>fact</b> (can be checked) or an <b>opinion</b> (a belief, feeling, or judgement). Look for words such as <i>best, should, I think, beautiful, boring</i>.", "items": [["The library opens at 7 a.m. on weekdays.", 0, "The opening time can be checked."], ["The library is the most pleasant place in our school.", 1, "'Most pleasant' is a personal judgement."], ["Borobudur was built in the 9th century.", 0, "A historical fact that can be checked in reliable sources."], ["Every student should visit Borobudur at least once.", 1, "'Should' gives the writer's recommendation."], ["The bus ticket costs Rp4,000.", 0, "A price can be checked."], ["Online classes are boring.", 1, "'Boring' is a feeling; others may disagree."], ["About 60 students joined the robotics club this year.", 0, "A number from club records can be checked."], ["I believe the new uniform looks better than the old one.", 1, "'I believe' and 'looks better' express an opinion."]]}];
+const MODE = 'classify';
+const $ = id => document.getElementById(id);
+const esc = s => s;
+let cur = 0, ans = [], order = [], checked = false;
+function pick(i){
+  cur = i; checked = false;
+  const S = SETS[i];
+  if($('sets')) $('sets').querySelectorAll('button').forEach((b, j) => b.classList.toggle('on', j === i));
+  $('intro').innerHTML = S.intro;
+  $('psg').hidden = !S.passage; $('psg').innerHTML = S.passage || '';
+  if(MODE === 'order'){
+    // urutan awal teracak tetap (bukan urutan benar)
+    const n = S.items.length; order = S.start.slice();
+  } else ans = S.items.map(() => null);
+  $('res').hidden = true;
+  draw();
+}
+function draw(){
+  const S = SETS[cur], ul = $('items'); ul.innerHTML = '';
+  if(MODE === 'order'){
+    order.forEach((k, pos) => {
+      const it = S.items[k], li = document.createElement('li');
+      li.className = 'it' + (checked ? (k === pos ? ' ok' : ' no') : '');
+      li.innerHTML = `<div class="ord"><span class="n">${pos + 1}</span><span class="tx">${it[0]}</span><span class="mv"><button aria-label="Move up">↑</button><button aria-label="Move down">↓</button></span></div>` + (checked ? `<div class="why">${k === pos ? '✓ ' : '✗ Correct position: ' + (k + 1) + '. '}${it[1]}</div>` : '');
+      const [up, dn] = li.querySelectorAll('.mv button');
+      up.disabled = pos === 0; dn.disabled = pos === order.length - 1;
+      up.onclick = () => { [order[pos - 1], order[pos]] = [order[pos], order[pos - 1]]; checked = false; $('res').hidden = true; draw(); };
+      dn.onclick = () => { [order[pos + 1], order[pos]] = [order[pos], order[pos + 1]]; checked = false; $('res').hidden = true; draw(); };
+      ul.appendChild(li);
+    });
+  } else {
+    S.items.forEach((it, i) => {
+      const li = document.createElement('li');
+      const ok = ans[i] === it[1];
+      li.className = 'it' + (checked ? (ok ? ' ok' : ' no') : '');
+      li.innerHTML = `<div class="tx">${it[0]}</div><div class="seg">${S.cats.map((c, j) => `<button data-j="${j}" class="${ans[i] === j ? 'on' : ''}">${c}</button>`).join('')}</div>` + (checked ? `<div class="why">${ok ? '✓ ' : '✗ Answer: <b>' + S.cats[it[1]] + '</b>. '}${it[2]}</div>` : '');
+      li.querySelectorAll('.seg button').forEach(b => b.onclick = () => { ans[i] = +b.dataset.j; if(checked){ checked = false; $('res').hidden = true; } draw(); });
+      ul.appendChild(li);
+    });
+  }
+}
+$('cek').onclick = () => {
+  const S = SETS[cur];
+  let ok = 0, n = S.items.length;
+  if(MODE === 'order') order.forEach((k, pos) => ok += k === pos);
+  else { if(ans.some(a => a === null)){ $('res').hidden = false; $('res').className = 'box info'; $('res').innerHTML = 'Choose a category for every item first.'; return; } ans.forEach((a, i) => ok += a === S.items[i][1]); }
+  checked = true; draw();
+  $('res').hidden = false; $('res').className = 'box ' + (ok === n ? 'ok' : 'no');
+  $('res').innerHTML = `<b>${ok} of ${n} correct.</b> ` + (ok === n ? (S.done || 'Well done!') : 'Read the notes under each item, then try again.');
+};
+$('ulang').onclick = () => pick(cur);
+if($('sets')) $('sets').querySelectorAll('button').forEach((b, j) => b.onclick = () => pick(j));
+pick(0);
+</script>
+</body>
+</html>
