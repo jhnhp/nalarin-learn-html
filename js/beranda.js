@@ -66,7 +66,7 @@ function renderHome(bab, d){
     });
     cardDefs.forEach(def => {
       const c = mk('section', 'card kelas');
-      const h = mk('h3'); h.innerHTML = `<span class="n"></span>`; h.firstChild.textContent = tileOf(def.label);
+      const h = mk('h3'); h.innerHTML = `<span class="n"></span>`; h.firstChild.textContent = def.label === 'TKA SMA Wajib' ? 'W' : def.label === 'TKA SMA Pilihan' ? 'P' : tileOf(def.label);
       const ha = mk('a', '', def.label); ha.href = courseUrl(def.kelas); ha.style.cssText = 'color:inherit;text-decoration:none'; h.appendChild(ha);
       c.appendChild(h);
       const ul = mk('ul');
