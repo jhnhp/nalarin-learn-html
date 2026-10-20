@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ketenagakerjaan dan Inflasi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Diagram ketenagakerjaan atau grafik indeks harga"></svg></div>
+  <div class="panel">
+    <div class="seg" id="m"><button data-m="kerja" class="on">Ketenagakerjaan</button><button data-m="ihk">Indeks harga dan inflasi</button></div>
+    <div id="pk">
+      <div class="lab">Penduduk usia kerja (15 tahun ke atas) <b id="av"></b></div><input type="range" id="a" min="100" max="500" step="10" value="320">
+      <div class="lab">Angkatan kerja <b id="bv"></b></div><input type="range" id="b" min="50" max="500" step="5" value="210">
+      <div class="lab">Penduduk yang bekerja <b id="cv"></b></div><input type="range" id="c" min="20" max="500" step="1" value="196">
+    </div>
+    <div id="pi" hidden>
+      <div class="lab">Harga beras (Rp ribu/kg): tahun dasar → tahun ini <b id="p1v"></b></div><input type="range" id="p1" min="10" max="25" step="0.5" value="15">
+      <div class="lab">Harga minyak goreng (Rp ribu/L): tahun dasar → tahun ini <b id="p2v"></b></div><input type="range" id="p2" min="12" max="30" step="0.5" value="20">
+      <div class="lab">Harga telur (Rp ribu/kg): tahun dasar → tahun ini <b id="p3v"></b></div><input type="range" id="p3" min="20" max="40" step="0.5" value="28">
+    </div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'kerja';
+$('m').querySelectorAll('button').forEach(b => b.onclick = () => { $('m').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; $('pk').hidden = M !== 'kerja'; $('pi').hidden = M !== 'ihk'; draw(); });
+['a', 'b', 'c', 'p1', 'p2', 'p3'].forEach(i => $(i).oninput = draw);
+// keranjang: [nama, harga dasar, kuantitas dasar per bulan]
+const BK = [['beras', 13, 30], ['minyak goreng', 18, 5], ['telur', 25, 4]];
+function draw(){
+  let s = '', html = '';
+  if(M === 'kerja'){
+    let a = +$('a').value, b = Math.min(+$('b').value, a), c = Math.min(+$('c').value, b);
+    $('av').textContent = a + ' ribu orang'; $('bv').textContent = b + ' ribu orang'; $('cv').textContent = c + ' ribu orang';
+    const u = b - c, bak = a - b, tpak = b / a * 100, tpt = u / b * 100;
+    const W = 420, x0 = 30, ra = W, rb = b / a * W, rc = c / a * W;
+    s += `<rect x="${x0}" y="40" width="${ra}" height="40" fill="#cfd8dc"/><text class="s" x="${x0 + 6}" y="65" fill="#333">penduduk usia kerja ${a}</text>`;
+    s += `<rect x="${x0}" y="110" width="${rb}" height="40" fill="#90caf9"/><rect x="${x0 + rb}" y="110" width="${ra - rb}" height="40" fill="#ffe0b2"/><text class="s" x="${x0 + 6}" y="135" fill="#0d47a1">angkatan kerja ${b}</text><text class="s" x="${x0 + rb + 4}" y="135" fill="#e65100">${ra - rb > 90 ? 'bukan angkatan kerja ' + bak : bak}</text>`;
+    s += `<rect x="${x0}" y="180" width="${rc}" height="40" fill="#66bb6a"/><rect x="${x0 + rc}" y="180" width="${rb - rc}" height="40" fill="#ef5350"/><text class="s" x="${x0 + 6}" y="205" fill="#fff">bekerja ${c}</text><text class="s" x="${x0 + rb + 6}" y="205" fill="#c62828">penganggur ${u}</text>`;
+    s += `<text class="s" x="${x0}" y="250" fill="#555">Bukan angkatan kerja: sekolah, mengurus rumah tangga, dan lainnya.</text>`;
+    html = `<div><span>TPAK = angkatan kerja / penduduk usia kerja</span><b>${fmt(tpak, 2)}%</b></div><div><span>TPT = penganggur / angkatan kerja</span><b>${fmt(tpt, 2)}%</b></div><div><span>Tingkat kesempatan kerja</span><b>${fmt(100 - tpt, 2)}%</b></div>`;
+  } else {
+    const now = [+$('p1').value, +$('p2').value, +$('p3').value];
+    ['p1v', 'p2v', 'p3v'].forEach((id, i) => $(id).textContent = `${BK[i][1]} → ${now[i]}`);
+    const base = BK.reduce((t, [, p, q]) => t + p * q, 0), cur = BK.reduce((t, [, , q], i) => t + now[i] * q, 0), IL = cur / base * 100;
+    const gx = 60, gy = 280, gh = 220;
+    BK.forEach(([n, p, q], i) => { const x = gx + i * 130, h0 = p * q / 500 * gh, h1 = now[i] * q / 500 * gh; s += `<rect x="${x}" y="${gy - h0}" width="45" height="${h0}" fill="#90a4ae"/><rect x="${x + 50}" y="${gy - h1}" width="45" height="${h1}" fill="#ef5350"/><text class="s" x="${x + 47}" y="${gy + 16}" text-anchor="middle" style="fill:var(--ink)">${n} (${q} unit)</text><text class="s" x="${x + 22}" y="${gy - h0 - 4}" text-anchor="middle" fill="#555">${fmt(p * q, 0)}</text><text class="s" x="${x + 72}" y="${gy - h1 - 4}" text-anchor="middle" fill="#c62828">${fmt(now[i] * q, 0)}</text>`; });
+    s += `<line x1="40" y1="${gy}" x2="460" y2="${gy}" stroke="#555"/><rect x="300" y="20" width="12" height="10" fill="#90a4ae"/><text class="s" x="316" y="29" fill="#555">biaya tahun dasar</text><rect x="300" y="36" width="12" height="10" fill="#ef5350"/><text class="s" x="316" y="45" fill="#555">biaya tahun ini (ribu Rp)</text>`;
+    const inf = IL - 100, kat = inf < 0 ? 'deflasi' : inf < 10 ? 'ringan (< 10%)' : inf < 30 ? 'sedang (10–30%)' : 'berat (30–100%)';
+    html = `<div><span>Indeks Laspeyres = Σ(Pn·Q0)/Σ(P0·Q0) × 100</span><b>${fmt(IL, 1)}</b></div><div><span>Perubahan harga terhadap tahun dasar</span><b>${fmt(inf, 1)}%</b></div><div><span>Kategori inflasi</span><b>${kat}</b></div>`;
+  }
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+draw();
+</script>
+</body>
+</html>

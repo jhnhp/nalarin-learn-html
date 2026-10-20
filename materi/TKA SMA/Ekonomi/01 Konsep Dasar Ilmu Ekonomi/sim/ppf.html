@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kurva Kemungkinan Produksi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 340" role="img" aria-label="Kurva kemungkinan produksi kopi dan teh"></svg></div>
+  <div class="panel">
+    <div class="lab">Produksi kopi yang dipilih <b id="xv"></b></div><input type="range" id="x" min="0" max="60" step="1" value="30">
+    <div class="lab">Produksi teh yang direncanakan <b id="yv"></b></div><input type="range" id="y" min="0" max="110" step="1" value="50">
+    <label class="chk"><input type="checkbox" id="tek"> Teknologi baru di perkebunan kopi</label>
+    <div class="read" id="read"></div>
+    <p class="note">Satuan: ton. Titik A–E adalah kombinasi produksi bila semua sumber daya dipakai secara efisien.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+const P0 = [[0, 80], [15, 76], [30, 66], [45, 48], [60, 20]];
+function teh(k, tek){ const xm = tek ? 75 : 60, k2 = k * 60 / xm; if(k2 > 60) return -1; // interpolasi linier antartitik
+  for(let i = 0; i < 4; i++){ const [x1, y1] = P0[i], [x2, y2] = P0[i + 1]; if(k2 >= x1 && k2 <= x2) return y1 + (y2 - y1) * (k2 - x1) / (x2 - x1); } return -1; }
+['x', 'y', 'tek'].forEach(i => $(i).oninput = draw);
+function draw(){
+  const tek = $('tek').checked, x = +$('x').value, y = +$('y').value;
+  $('x').max = tek ? 75 : 60; $('xv').textContent = x + ' ton'; $('yv').textContent = y + ' ton';
+  const gx = 50, gy = 300, gw = 400, gh = 270, X = v => gx + v / 80 * gw, Y = v => gy - v / 110 * gh;
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/><text class="s" x="${gx + gw}" y="${gy + 28}" text-anchor="end" fill="#555">kopi (ton)</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#555">teh (ton)</text>`;
+  for(let v = 0; v <= 80; v += 20) s += `<text class="s" x="${X(v)}" y="${gy + 14}" text-anchor="middle" fill="#555">${v}</text>`;
+  for(let v = 0; v <= 100; v += 20) s += `<text class="s" x="${gx - 5}" y="${Y(v) + 4}" text-anchor="end" fill="#555">${v}</text>`;
+  const curve = t => { let d = ''; for(let k = 0; k <= (t ? 75 : 60); k += 0.5) d += (k ? 'L' : 'M') + X(k).toFixed(1) + ',' + Y(teh(k, t)).toFixed(1); return d; };
+  s += `<path d="${curve(false)}" fill="none" stroke="#1565c0" stroke-width="3"/>`;
+  if(tek) s += `<path d="${curve(true)}" fill="none" stroke="#2e7d32" stroke-width="3" stroke-dasharray="6 4"/><text class="s" x="${X(70)}" y="${Y(30)}" fill="#2e7d32">PPF baru</text>`;
+  'ABCDE'.split('').forEach((L, i) => s += `<circle cx="${X(P0[i][0])}" cy="${Y(P0[i][1])}" r="4" fill="#1565c0"/><text class="s" x="${X(P0[i][0]) + 6}" y="${Y(P0[i][1]) - 6}" fill="#1565c0">${L}</text>`);
+  const yMax = teh(x, tek), st = y < yMax - 0.5 ? 'dalam' : y > yMax + 0.5 ? 'luar' : 'pada';
+  s += `<circle cx="${X(x)}" cy="${Y(y)}" r="7" fill="${st === 'luar' ? '#e53935' : st === 'dalam' ? '#fb8c00' : '#2e7d32'}" stroke="#fff" stroke-width="2"/>`;
+  svg.innerHTML = s;
+  const oc = []; for(let i = 0; i < 4; i++) oc.push(`${'ABCD'[i]}→${'BCDE'[i]}: ${fmt((P0[i][1] - P0[i + 1][1]) / 15, 2)}`);
+  $('read').innerHTML = `<div><span>Teh maksimum pada ${x} ton kopi</span><b>${fmt(yMax, 1)} ton</b></div><div><span>Titik yang direncanakan</span><b>${st === 'pada' ? 'pada kurva: efisien' : st === 'dalam' ? 'di dalam kurva: sumber daya belum dipakai penuh (tidak efisien)' : 'di luar kurva: tidak dapat dicapai dengan sumber daya sekarang'}</b></div><div><span>Biaya peluang 1 ton kopi (ton teh)</span><b style="font-weight:600">${oc.join('; ')}</b></div><div><span>Mengapa naik?</span><b style="font-weight:600">sumber daya tidak sama cocoknya untuk kedua barang (hukum biaya peluang meningkat)</b></div>`;
+}
+draw();
+</script>
+</body>
+</html>

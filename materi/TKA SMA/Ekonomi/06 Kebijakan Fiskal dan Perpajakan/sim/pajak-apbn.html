@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PPh dan APBN</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}
+select{width:100%;padding:8px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:inherit}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Lapisan tarif PPh atau neraca APBN"></svg></div>
+  <div class="panel">
+    <div class="seg" id="m"><button data-m="pph" class="on">PPh orang pribadi</button><button data-m="apbn">Saldo APBN</button></div>
+    <div id="pp">
+      <div class="lab">Penghasilan neto setahun <b id="nv"></b></div><input type="range" id="n" min="30" max="900" step="5" value="210">
+      <div class="lab">Status</div><select id="st"><option value="TK">Tidak kawin</option><option value="K" selected>Kawin</option></select>
+      <div class="lab">Jumlah tanggungan <b id="tv"></b></div><input type="range" id="t" min="0" max="3" step="1" value="1">
+    </div>
+    <div id="pa" hidden>
+      <div class="lab">Penerimaan perpajakan <b id="av"></b></div><input type="range" id="a" min="1500" max="3000" step="25" value="2350">
+      <div class="lab">PNBP dan hibah <b id="bv"></b></div><input type="range" id="b" min="200" max="800" step="25" value="525">
+      <div class="lab">Belanja pemerintah pusat <b id="cv"></b></div><input type="range" id="c" min="1500" max="3000" step="25" value="2275">
+      <div class="lab">Transfer ke daerah <b id="dv"></b></div><input type="range" id="d" min="500" max="1200" step="25" value="875">
+      <div class="lab">PDB <b id="pv"></b></div><input type="range" id="p" min="15000" max="30000" step="500" value="24000">
+    </div>
+    <div class="read" id="read"></div>
+    <p class="note" id="nt"></p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'pph';
+$('m').querySelectorAll('button').forEach(b => b.onclick = () => { $('m').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; $('pp').hidden = M !== 'pph'; $('pa').hidden = M !== 'apbn'; draw(); });
+['n', 'st', 't', 'a', 'b', 'c', 'd', 'p'].forEach(i => $(i).oninput = draw);
+const L = [[60, .05], [190, .15], [250, .25], [4500, .30], [Infinity, .35]]; // lebar lapisan (juta)
+function draw(){
+  let s = '', html = '';
+  if(M === 'pph'){
+    const n = +$('n').value, k = $('st').value === 'K', t = +$('t').value;
+    $('nv').textContent = `Rp${n} juta`; $('tv').textContent = t;
+    const ptkp = 54 + (k ? 4.5 : 0) + 4.5 * t, pkp = Math.max(0, Math.floor((n - ptkp) * 1000) / 1000);
+    let rest = pkp, tax = 0, parts = [];
+    L.forEach(([w, r]) => { const x = Math.min(rest, w); if(x > 0){ parts.push([x, r]); tax += x * r; rest -= x; } });
+    const sc = 400 / Math.max(pkp, 60);
+    let x = 40;
+    s += `<text class="s" x="40" y="40" style="fill:var(--ink)">PKP Rp${fmt(pkp, 1)} juta dibagi ke lapisan tarif:</text>`;
+    const cols = ['#a5d6a7', '#fff59d', '#ffcc80', '#ef9a9a', '#ce93d8'];
+    parts.forEach(([w, r], i) => { s += `<rect x="${x}" y="60" width="${w * sc}" height="50" fill="${cols[i]}" stroke="#fff"/>${w * sc > 40 ? `<text class="s" x="${x + w * sc / 2}" y="82" text-anchor="middle" fill="#333">${r * 100}%</text><text class="s" x="${x + w * sc / 2}" y="98" text-anchor="middle" fill="#333">${fmt(w * r, 2)} jt</text>` : ''}`; x += w * sc; });
+    s += parts.map(([w, r], i) => `<text class="s" x="40" y="${150 + i * 20}" fill="#555">${r * 100}% × Rp${fmt(w, 1)} juta = Rp${fmt(w * r, 2)} juta</text>`).join('');
+    html = `<div><span>PTKP</span><b>Rp${fmt(ptkp, 1)} juta</b></div><div><span>PKP = penghasilan neto − PTKP</span><b>Rp${fmt(pkp, 1)} juta</b></div><div><span>PPh terutang setahun</span><b>Rp${fmt(tax, 2)} juta</b></div><div><span>Tarif efektif terhadap penghasilan neto</span><b>${fmt(tax / n * 100, 2)}%</b></div>`;
+    $('nt').textContent = 'Tarif progresif Pasal 17 UU HPP: 5% (s.d. Rp60 juta), 15% (> 60–250 juta), 25% (> 250–500 juta), 30% (> 500 juta–5 miliar), 35% (> 5 miliar). PTKP: Rp54 juta diri sendiri, + Rp4,5 juta kawin, + Rp4,5 juta per tanggungan (maksimal 3).';
+  } else {
+    const a = +$('a').value, b = +$('b').value, c = +$('c').value, d = +$('d').value, p = +$('p').value;
+    $('av').textContent = `Rp${a} T`; $('bv').textContent = `Rp${b} T`; $('cv').textContent = `Rp${c} T`; $('dv').textContent = `Rp${d} T`; $('pv').textContent = `Rp${p} T`;
+    const pend = a + b, bel = c + d, saldo = pend - bel, pct = saldo / p * 100, sc = 160 / Math.max(pend, bel);
+    s += `<rect x="80" y="${280 - pend * sc}" width="100" height="${pend * sc}" fill="#66bb6a"/><rect x="80" y="${280 - a * sc}" width="100" height="${a * sc}" fill="#43a047"/><text class="c" x="130" y="${270 - pend * sc}" text-anchor="middle" fill="#2e7d32">Pendapatan ${fmt(pend, 0)}</text>`;
+    s += `<rect x="290" y="${280 - bel * sc}" width="100" height="${bel * sc}" fill="#ef9a9a"/><rect x="290" y="${280 - c * sc}" width="100" height="${c * sc}" fill="#e57373"/><text class="c" x="340" y="${270 - bel * sc}" text-anchor="middle" fill="#c62828">Belanja ${fmt(bel, 0)}</text>`;
+    s += `<line x1="40" y1="280" x2="440" y2="280" stroke="#555"/><text class="s" x="130" y="298" text-anchor="middle" fill="#555">pajak + PNBP/hibah</text><text class="s" x="340" y="298" text-anchor="middle" fill="#555">pusat + transfer daerah</text>`;
+    html = `<div><span>Saldo = pendapatan − belanja</span><b>${saldo >= 0 ? 'surplus' : 'defisit'} Rp${fmt(Math.abs(saldo), 0)} triliun</b></div><div><span>Terhadap PDB</span><b>${fmt(pct, 2)}%</b></div><div><span>Batas UU Keuangan Negara</span><b>${saldo < 0 && -pct > 3 ? 'melampaui batas defisit 3% PDB' : 'dalam batas (defisit maksimal 3% PDB)'}</b></div>`;
+    $('nt').textContent = 'Angka dalam triliun rupiah. Defisit biasanya ditutup dengan pembiayaan, misalnya penerbitan surat berharga negara atau pinjaman.';
+  }
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+draw();
+</script>
+</body>
+</html>

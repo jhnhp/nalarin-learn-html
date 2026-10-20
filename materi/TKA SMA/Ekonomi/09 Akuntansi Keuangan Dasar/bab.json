@@ -1,56 +1,139 @@
 {
   "title": "Akuntansi Keuangan Dasar",
-  "summary": "Ringkasan bab Akuntansi Keuangan Dasar akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Ekonomi: pengertian dan pengguna informasi akuntansi, persamaan dasar akuntansi, pengaruh transaksi, prinsip akrual, serta laporan laba rugi, perubahan modal, posisi keuangan, dan arus kas.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Akuntansi Keuangan Dasar",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Persamaan Dasar Akuntansi dan Laporan Keuangan</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Kunci bab ini: setiap transaksi harus membuat persamaan dasar tetap seimbang.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Akuntansi</td><td>pengertian, pengguna internal dan eksternal, siklus akuntansi</td></tr><tr><td>Persamaan dasar</td><td>Aset = Liabilitas + Ekuitas; pengaruh transaksi</td></tr><tr><td>Laporan keuangan</td><td>laba rugi, perubahan modal, posisi keuangan, arus kas; urutan penyusunan</td></tr><tr><td>Konsep</td><td>basis akrual, prive, aset lancar dan tetap, aktivitas arus kas</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>Aset = Liabilitas + Ekuitas.</li><li>Ekuitas = modal awal + setoran tambahan + pendapatan − beban − prive.</li><li>Laba bersih = pendapatan − beban (perusahaan dagang: penjualan bersih − HPP − beban usaha).</li><li>HPP = persediaan awal + pembelian bersih − persediaan akhir.</li><li>Modal akhir = modal awal + laba bersih − prive (+ setoran tambahan).</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "persamaan",
+      "title": "Persamaan dasar akuntansi",
+      "kind": "simulasi",
+      "duration": "40 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "sim/persamaan-akuntansi.html",
+          "title": "Pengaruh transaksi terhadap persamaan dasar",
+          "height": 620,
+          "caption": "Jalankan transaksi satu per satu. Transaksi mana yang mengubah ekuitas, dan mana yang hanya menukar satu aset dengan aset lain?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pada simulasi, tentukan pengaruh transaksi nomor 2 (membeli mesin Rp25 juta: Rp15 juta tunai, sisanya utang).</p>",
+          "steps": [
+            "Peralatan (aset) bertambah 25 juta, kas (aset) berkurang 15 juta.",
+            "Utang (liabilitas) bertambah 10 juta. Aset neto +10 = liabilitas +10."
+          ],
+          "answer": "aset bertambah Rp10 juta dan liabilitas bertambah Rp10 juta"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Modal awal Toko Laris Rp60 juta. Selama setahun laba bersihnya Rp17,5 juta dan pemilik mengambil prive Rp4 juta. Berapa modal akhirnya?</p>",
+          "steps": [
+            "Modal akhir = 60 + 17,5 − 4."
+          ],
+          "answer": "Rp73,5 juta"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Basis akrual",
+          "html": "<p>Pendapatan dicatat saat jasa diserahkan atau barang dijual, bukan saat uang diterima. Beban dicatat saat terjadi, bukan saat dibayar. Karena itu, pesanan yang diselesaikan pada bulan Juni tetapi dibayar Juli tetap menjadi pendapatan bulan Juni (dicatat sebagai piutang).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Transaksi berikut yang tidak mengubah total aset adalah ....",
+          "options": {
+            "A": "pemilik menyetor modal tunai",
+            "B": "membayar utang usaha",
+            "C": "membeli perlengkapan secara tunai",
+            "D": "menerima pendapatan jasa tunai"
+          },
+          "answer": "C",
+          "hint": "Cari pertukaran antar-aset.",
+          "explanation": "Kas berkurang dan perlengkapan bertambah dengan jumlah sama, sehingga total aset tetap."
+        }
+      ]
+    },
+    {
+      "id": "laporan",
+      "title": "Laporan keuangan",
+      "kind": "artikel",
+      "duration": "30 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p><b>Urutan penyusunan</b>: laporan laba rugi → laporan perubahan modal (memerlukan laba bersih) → laporan posisi keuangan atau neraca (memerlukan modal akhir) → laporan arus kas.</p><ul><li><b>Laporan laba rugi</b>: pendapatan dan beban selama satu periode.</li><li><b>Laporan perubahan modal</b>: modal awal, laba atau rugi, prive, dan modal akhir.</li><li><b>Laporan posisi keuangan</b>: aset, liabilitas, dan ekuitas pada tanggal tertentu.</li><li><b>Laporan arus kas</b>: aktivitas operasi (penerimaan dari pelanggan, pembayaran gaji), investasi (membeli atau menjual aset tetap), dan pendanaan (pinjaman, setoran, dan pengambilan modal).</li></ul><p>Laba besar tidak selalu berarti kas bertambah, misalnya bila penjualan banyak dilakukan secara kredit atau kas dipakai membeli aset tetap dan melunasi pinjaman.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Selama bulan Mei, Bengkel Andalan memperoleh pendapatan jasa Rp32 juta. Bebannya: gaji Rp9 juta, sewa Rp4 juta, dan listrik Rp1,5 juta. Hitung laba bersihnya.</p>",
+          "steps": [
+            "Total beban = 9 + 4 + 1,5 = 14,5 juta.",
+            "Laba = 32 − 14,5."
+          ],
+          "answer": "Rp17,5 juta"
+        },
+        {
+          "type": "check",
+          "question": "Pembayaran tunai untuk melunasi pinjaman bank dicatat dalam laporan arus kas sebagai aktivitas ....",
+          "options": {
+            "A": "operasi",
+            "B": "investasi",
+            "C": "pendanaan",
+            "D": "tidak dicatat"
+          },
+          "answer": "C",
+          "hint": "Berkaitan dengan sumber dana.",
+          "explanation": "Penerimaan dan pelunasan pinjaman termasuk aktivitas pendanaan."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk setiap transaksi, tanyakan: akun apa yang bertambah, akun apa yang berkurang, dan apakah persamaan tetap seimbang.</li><li>Pendapatan menambah ekuitas; beban dan prive mengurangi ekuitas.</li><li>Saat mencari kas dari tabel neraca, gunakan total aset = total liabilitas + ekuitas.</li><li>Untuk perusahaan dagang, hitung HPP sebelum laba kotor.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Mencatat prive sebagai beban usaha.</li><li>Mencatat pendapatan pada saat kas diterima, padahal jasa sudah diserahkan bulan sebelumnya.</li><li>Tertukar aset lancar (perlengkapan, piutang) dan aset tetap (kendaraan, mesin).</li><li>Menyusun neraca sebelum laporan perubahan modal.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Ekonomi SMA topik Akuntansi Keuangan Dasar. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

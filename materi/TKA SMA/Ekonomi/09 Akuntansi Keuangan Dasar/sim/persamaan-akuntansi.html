@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persamaan Dasar Akuntansi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.wrap{padding:12px}table.t{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}table.t td,table.t th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:right}table.t th{color:var(--muted);font-weight:700}table.t td:first-child,table.t th:first-child{text-align:left}tr.hl td{background:#fff3cd;color:#000}
+.tx{display:grid;gap:6px}.tx button{text-align:left;padding:8px 10px;border-radius:9px;border:1px solid var(--line-2);background:var(--surface);font-size:13px}.tx button:disabled{opacity:.45}.eq{font-family:var(--display);font-weight:800;font-size:15px;margin:10px 0}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><div class="wrap"><div class="eq" id="eq"></div><table class="t" id="tab"></table></div></div>
+  <div class="panel">
+    <div class="lab">Transaksi Fotokopi Cepat bulan ini (klik berurutan)</div>
+    <div class="tx" id="tx"></div>
+    <div class="row"><button class="btn" id="rs">Ulangi</button></div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+// [keterangan, kas, piutang, perlengkapan, peralatan, utang, modal, jenis ekuitas]
+const T = [
+  ['Pemilik menyetor uang tunai Rp40 juta sebagai modal', 40, 0, 0, 0, 0, 40, 'setoran modal'],
+  ['Membeli mesin fotokopi Rp25 juta: Rp15 juta tunai, sisanya utang', -15, 0, 0, 25, 10, 0, ''],
+  ['Membeli kertas dan tinta secara kredit Rp3 juta', 0, 0, 3, 0, 3, 0, ''],
+  ['Menerima pendapatan jasa tunai Rp9 juta', 9, 0, 0, 0, 0, 9, 'pendapatan'],
+  ['Menyelesaikan pesanan kantor desa Rp4 juta, dibayar bulan depan', 0, 4, 0, 0, 0, 4, 'pendapatan'],
+  ['Membayar gaji karyawan Rp2,5 juta dan listrik Rp0,8 juta', -3.3, 0, 0, 0, 0, -3.3, 'beban'],
+  ['Membayar sebagian utang mesin Rp5 juta', -5, 0, 0, 0, -5, 0, ''],
+  ['Menerima pelunasan piutang Rp4 juta', 4, -4, 0, 0, 0, 0, ''],
+  ['Pemilik mengambil uang Rp1,5 juta untuk keperluan pribadi', -1.5, 0, 0, 0, 0, -1.5, 'prive'],
+];
+let n = 0;
+T.forEach((t, i) => { const b = document.createElement('button'); b.textContent = `${i + 1}. ${t[0]}`; b.onclick = () => { if(i === n){ n++; draw(); } }; $('tx').appendChild(b); });
+$('rs').onclick = () => { n = 0; draw(); };
+function draw(){
+  const tot = [0, 0, 0, 0, 0, 0];
+  let rows = '<tr><th>No.</th><th>Kas</th><th>Piutang</th><th>Perlengk.</th><th>Peralatan</th><th>Utang</th><th>Modal</th></tr>';
+  let pend = 0, beban = 0, prive = 0;
+  for(let i = 0; i < n; i++){ const t = T[i]; for(let k = 0; k < 6; k++) tot[k] += t[k + 1]; if(t[7] === 'pendapatan') pend += t[6]; if(t[7] === 'beban') beban -= t[6]; if(t[7] === 'prive') prive -= t[6];
+    rows += `<tr class="${i === n - 1 ? 'hl' : ''}"><td>${i + 1}</td>${t.slice(1, 7).map(v => `<td>${v ? (v > 0 ? '+' : '') + fmt(v, 1) : ''}</td>`).join('')}</tr>`; }
+  rows += `<tr><th>Saldo</th>${tot.map(v => `<th>${fmt(v, 1)}</th>`).join('')}</tr>`;
+  $('tab').innerHTML = rows;
+  const A = tot[0] + tot[1] + tot[2] + tot[3], L = tot[4], E = tot[5];
+  $('eq').textContent = `Aset ${fmt(A, 1)} = Liabilitas ${fmt(L, 1)} + Ekuitas ${fmt(E, 1)} (juta rupiah)`;
+  [...$('tx').children].forEach((b, i) => b.disabled = i !== n);
+  const t = n ? T[n - 1] : null;
+  $('read').innerHTML = `<div><span>Transaksi terakhir</span><b style="font-weight:600">${t ? t[0] : '—'}</b></div><div><span>Pengaruh</span><b style="font-weight:600">${t ? describe(t) : '—'}</b></div><div><span>Laba bersih sementara</span><b>Rp${fmt(pend - beban, 1)} juta (pendapatan ${fmt(pend, 1)} − beban ${fmt(beban, 1)})</b></div><div><span>Prive</span><b>Rp${fmt(prive, 1)} juta</b></div>`;
+}
+function describe(t){
+  const names = ['kas', 'piutang', 'perlengkapan', 'peralatan', 'utang', 'modal'], out = [];
+  for(let k = 0; k < 6; k++) if(t[k + 1]) out.push(`${names[k]} ${t[k + 1] > 0 ? 'bertambah' : 'berkurang'} ${fmt(Math.abs(t[k + 1]), 1)}`);
+  return out.join(', ') + (t[7] && t[7] !== 'setoran modal' ? ` (${t[7]})` : '');
+}
+draw();
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keunggulan Absolut dan Komparatif</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 320" role="img" aria-label="Garis kemungkinan produksi dua negara"></svg></div>
+  <div class="panel">
+    <div class="lab">Negara Kirana: produksi kopi per pekerja <b id="av"></b></div><input type="range" id="a" min="1" max="12" step="1" value="6">
+    <div class="lab">Negara Kirana: produksi sepatu per pekerja <b id="bv"></b></div><input type="range" id="b" min="1" max="12" step="1" value="3">
+    <div class="lab">Negara Laksana: produksi kopi per pekerja <b id="cv"></b></div><input type="range" id="c" min="1" max="12" step="1" value="2">
+    <div class="lab">Negara Laksana: produksi sepatu per pekerja <b id="dv"></b></div><input type="range" id="d" min="1" max="12" step="1" value="4">
+    <div class="read" id="read"></div>
+    <p class="note">Setiap negara memiliki 100 pekerja. Satuan: karung kopi atau pasang sepatu per hari.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+['a', 'b', 'c', 'd'].forEach(i => $(i).oninput = draw);
+function draw(){
+  const a = +$('a').value, b = +$('b').value, c = +$('c').value, d = +$('d').value;
+  ['av', 'bv', 'cv', 'dv'].forEach((id, i) => $(id).textContent = [a, b, c, d][i]);
+  const gx = 50, gy = 280, gw = 380, gh = 240, mx = 110 * Math.max(a, b, c, d), X = v => gx + v / mx * gw, Y = v => gy - v / mx * gh;
+  let s = `<line x1="${gx}" y1="${gy}" x2="${gx + gw}" y2="${gy}" stroke="#555"/><line x1="${gx}" y1="${gy}" x2="${gx}" y2="${gy - gh}" stroke="#555"/><text class="s" x="${gx + gw}" y="${gy + 28}" text-anchor="end" fill="#555">kopi</text><text class="s" x="${gx + 4}" y="${gy - gh - 6}" fill="#555">sepatu</text>`;
+  s += `<line x1="${X(100 * a)}" y1="${gy}" x2="${gx}" y2="${Y(100 * b)}" stroke="#1565c0" stroke-width="3"/><text class="c" x="${X(100 * a) - 4}" y="${gy - 6}" text-anchor="end" fill="#1565c0">Kirana</text>`;
+  s += `<line x1="${X(100 * c)}" y1="${gy}" x2="${gx}" y2="${Y(100 * d)}" stroke="#e53935" stroke-width="3"/><text class="c" x="${gx + 6}" y="${Y(100 * d) - 6}" fill="#e53935">Laksana</text>`;
+  svg.innerHTML = s;
+  const ocK = b / a, ocL = d / c; // biaya peluang 1 kopi dalam sepatu
+  const absK = a > c ? 'Kirana' : a < c ? 'Laksana' : 'sama', absS = b > d ? 'Kirana' : b < d ? 'Laksana' : 'sama';
+  const spes = ocK < ocL ? 'Kirana memproduksi kopi, Laksana memproduksi sepatu' : ocK > ocL ? 'Kirana memproduksi sepatu, Laksana memproduksi kopi' : 'biaya peluang sama: tidak ada keuntungan dari spesialisasi';
+  $('read').innerHTML = `<div><span>Keunggulan absolut kopi / sepatu</span><b>${absK} / ${absS}</b></div><div><span>Biaya peluang 1 kopi (dalam sepatu)</span><b>Kirana ${fmt(ocK, 2)}; Laksana ${fmt(ocL, 2)}</b></div><div><span>Biaya peluang 1 sepatu (dalam kopi)</span><b>Kirana ${fmt(1 / ocK, 2)}; Laksana ${fmt(1 / ocL, 2)}</b></div><div><span>Spesialisasi menurut keunggulan komparatif</span><b>${spes}</b></div>${ocK !== ocL ? `<div><span>Nilai tukar yang menguntungkan keduanya</span><b>1 kopi ditukar antara ${fmt(Math.min(ocK, ocL), 2)} dan ${fmt(Math.max(ocK, ocL), 2)} sepatu</b></div>` : ''}`;
+}
+draw();
+</script>
+</body>
+</html>

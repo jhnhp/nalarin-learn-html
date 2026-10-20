@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kebijakan Moneter</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 330" role="img" aria-label="Jalur transmisi kebijakan moneter dan perhitungan GWM"></svg></div>
+  <div class="panel">
+    <div class="seg" id="m"><button data-m="trans" class="on">Transmisi suku bunga</button><button data-m="gwm">Giro wajib minimum</button><button data-m="uang">Uang beredar</button></div>
+    <div id="pt"><div class="lab">Kondisi ekonomi</div><div class="seg" id="kon"><button data-k="panas" class="on">Inflasi tinggi</button><button data-k="lesu">Ekonomi lesu</button></div></div>
+    <div id="pg" hidden>
+      <div class="lab">Dana pihak ketiga (DPK) bank <b id="dv"></b></div><input type="range" id="dpk" min="100" max="1000" step="50" value="600">
+      <div class="lab">Rasio GWM <b id="rv"></b></div><input type="range" id="r" min="2" max="20" step="1" value="6">
+    </div>
+    <div id="pu" hidden>
+      <div class="lab">Uang kartal (kertas dan logam) <b id="kv"></b></div><input type="range" id="k" min="200" max="1500" step="50" value="950">
+      <div class="lab">Uang giral (rekening giro) <b id="gv"></b></div><input type="range" id="g" min="200" max="2500" step="50" value="1450">
+      <div class="lab">Uang kuasi (tabungan dan deposito) <b id="qv"></b></div><input type="range" id="q" min="1000" max="8000" step="100" value="5600">
+    </div>
+    <div class="read" id="read"></div>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'trans', K = 'panas';
+$('m').querySelectorAll('button').forEach(b => b.onclick = () => { $('m').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; $('pt').hidden = M !== 'trans'; $('pg').hidden = M !== 'gwm'; $('pu').hidden = M !== 'uang'; draw(); });
+$('kon').querySelectorAll('button').forEach(b => b.onclick = () => { $('kon').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); K = b.dataset.k; draw(); });
+['dpk', 'r', 'k', 'g', 'q'].forEach(i => $(i).oninput = draw);
+function draw(){
+  let s = '', html = '';
+  if(M === 'trans'){
+    const up = K === 'panas';
+    const steps = up ? ['BI menaikkan suku bunga acuan (BI-Rate)', 'Suku bunga pasar uang antarbank naik', 'Bunga kredit dan deposito bank naik', 'Masyarakat menabung lebih banyak, kredit berkurang', 'Konsumsi dan investasi melambat', 'Permintaan agregat turun → inflasi mereda'] : ['BI menurunkan suku bunga acuan (BI-Rate)', 'Suku bunga pasar uang antarbank turun', 'Bunga kredit dan deposito bank turun', 'Kredit lebih murah, menabung kurang menarik', 'Konsumsi dan investasi meningkat', 'Permintaan agregat naik → ekonomi bergairah'];
+    steps.forEach((t, i) => { const y = 14 + i * 52; s += `<rect x="40" y="${y}" width="400" height="38" rx="9" fill="${up ? '#ffebee' : '#e8f5e9'}" stroke="${up ? '#e53935' : '#43a047'}"/><text class="s" x="240" y="${y + 23}" text-anchor="middle" fill="#333">${t}</text>${i < 5 ? `<path d="M240,${y + 38} v12" stroke="#555" stroke-width="2" marker-end="url(#a)"/>` : ''}`; });
+    s += `<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs>`;
+    html = `<div><span>Jenis kebijakan</span><b>${up ? 'kontraktif (uang ketat)' : 'ekspansif (uang longgar)'}</b></div><div><span>Instrumen lain searah</span><b style="font-weight:600">${up ? 'menjual surat berharga (operasi pasar terbuka), menaikkan GWM, memperketat kredit' : 'membeli surat berharga, menurunkan GWM, melonggarkan kredit'}</b></div><div><span>Catatan</span><b style="font-weight:600">dampak pada inflasi baru terasa setelah beberapa triwulan (ada jeda waktu)</b></div>`;
+  } else if(M === 'gwm'){
+    const dpk = +$('dpk').value, r = +$('r').value / 100;
+    $('dv').textContent = `Rp${dpk} miliar`; $('rv').textContent = fmt(r * 100, 0) + '%';
+    const wajib = dpk * r, salur = dpk - wajib, multi = 1 / r;
+    s += `<rect x="40" y="60" width="400" height="60" fill="#90caf9"/><rect x="40" y="60" width="${400 * r}" height="60" fill="#1565c0"/><text class="s" x="44" y="50" fill="#555">DPK Rp${dpk} miliar</text><text class="s" x="${44 + 400 * r}" y="95" fill="#0d47a1">dapat disalurkan sebagai kredit</text><text class="s" x="44" y="140" fill="#1565c0">disimpan di BI (GWM)</text>`;
+    const bar = h => Math.min(150, h);
+    s += `<text class="s" x="40" y="190" style="fill:var(--ink)">Pengganda uang sederhana 1/GWM:</text><rect x="40" y="200" width="${bar(multi * 6)}" height="24" fill="#66bb6a"/><text class="c" x="${48 + bar(multi * 6)}" y="217" fill="#2e7d32">${fmt(multi, 2)} kali</text>`;
+    html = `<div><span>Dana yang wajib disimpan di BI</span><b>Rp${fmt(wajib, 1)} miliar</b></div><div><span>Dana yang dapat disalurkan</span><b>Rp${fmt(salur, 1)} miliar</b></div><div><span>Uang giral maksimum yang tercipta (teori)</span><b>Rp${fmt(dpk * multi, 0)} miliar</b></div><div><span>GWM dinaikkan</span><b>kredit berkurang → uang beredar turun (kontraktif)</b></div>`;
+  } else {
+    const k = +$('k').value, g = +$('g').value, q = +$('q').value;
+    $('kv').textContent = `Rp${k} triliun`; $('gv').textContent = `Rp${g} triliun`; $('qv').textContent = `Rp${q} triliun`;
+    const M1 = k + g, M2 = M1 + q, sc = 400 / M2;
+    s += `<rect x="40" y="80" width="${k * sc}" height="50" fill="#fdd835"/><rect x="${40 + k * sc}" y="80" width="${g * sc}" height="50" fill="#fb8c00"/><rect x="${40 + M1 * sc}" y="80" width="${q * sc}" height="50" fill="#90a4ae"/>`;
+    s += `<text class="s" x="44" y="72" fill="#555">kartal</text><text class="s" x="${44 + k * sc}" y="148" fill="#e65100">giral</text><text class="s" x="${44 + M1 * sc}" y="72" fill="#546e7a">uang kuasi</text>`;
+    s += `<line x1="40" y1="170" x2="${40 + M1 * sc}" y2="170" stroke="#e65100" stroke-width="3"/><text class="c" x="40" y="190" fill="#e65100">M1 = Rp${fmt(M1, 0)} triliun</text><line x1="40" y1="215" x2="440" y2="215" stroke="#546e7a" stroke-width="3"/><text class="c" x="40" y="235" fill="#546e7a">M2 = Rp${fmt(M2, 0)} triliun</text>`;
+    html = `<div><span>M1 (arti sempit) = kartal + giral</span><b>Rp${fmt(M1, 0)} triliun</b></div><div><span>M2 (arti luas) = M1 + uang kuasi</span><b>Rp${fmt(M2, 0)} triliun</b></div><div><span>Porsi M1 dalam M2</span><b>${fmt(M1 / M2 * 100, 1)}%</b></div>`;
+  }
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+draw();
+</script>
+</body>
+</html>

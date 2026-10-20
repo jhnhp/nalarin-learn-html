@@ -1,56 +1,135 @@
 {
   "title": "Ketenagakerjaan dan Inflasi",
-  "summary": "Ringkasan bab Ketenagakerjaan dan Inflasi akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Ekonomi: penduduk usia kerja, angkatan kerja, TPAK dan TPT, jenis dan dampak pengangguran, indeks harga, jenis dan penyebab inflasi, dampaknya, serta cara mengatasinya.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Ketenagakerjaan dan Inflasi",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Ketenagakerjaan, Indeks Harga, dan Inflasi</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Banyak soal berbasis tabel data ketenagakerjaan atau harga. Teliti mana yang menjadi pembilang dan penyebut.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Ketenagakerjaan</td><td>penduduk usia kerja, angkatan kerja, bukan angkatan kerja; TPAK, TPT</td></tr><tr><td>Pengangguran</td><td>friksional, struktural, musiman, siklis, teknologi; setengah penganggur</td></tr><tr><td>Indeks harga</td><td>IHK, Laspeyres, Paasche</td></tr><tr><td>Inflasi</td><td>penyebab, tingkat keparahan, dampak, cara mengatasi</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>TPAK = angkatan kerja/penduduk usia kerja × 100%.</li><li>TPT = pengangguran terbuka/angkatan kerja × 100%.</li><li>Indeks harga = Pₙ/P₀ × 100. Laspeyres: Σ(Pₙ·Q₀)/Σ(P₀·Q₀) × 100.</li><li>Laju inflasi = (IHKₜ − IHKₜ₋₁)/IHKₜ₋₁ × 100%.</li><li>Bunga riil ≈ bunga nominal − inflasi.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "tenaga-kerja",
+      "title": "Ketenagakerjaan dan pengangguran",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "sim/tenaga-kerja-inflasi.html",
+          "title": "Ketenagakerjaan dan inflasi",
+          "height": 540,
+          "caption": "Jika sebagian penganggur memutuskan kuliah (keluar dari angkatan kerja), bagaimana TPAK dan TPT berubah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Penduduk usia kerja suatu kota 500 ribu orang, angkatan kerja 340 ribu orang, dan 323 ribu di antaranya bekerja. Hitung TPAK dan TPT.</p>",
+          "steps": [
+            "TPAK = 340/500 × 100% = 68%.",
+            "Penganggur = 340 − 323 = 17 ribu → TPT = 17/340 × 100% = 5%."
+          ],
+          "answer": "TPAK 68%; TPT 5%"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<table><tr><th>Jenis pengangguran</th><th>Penyebab</th><th>Contoh</th></tr><tr><td>Friksional</td><td>masa transisi mencari pekerjaan yang cocok</td><td>lulusan baru menunggu panggilan</td></tr><tr><td>Struktural</td><td>keterampilan tidak sesuai kebutuhan industri</td><td>buruh pabrik tekstil saat industri beralih ke digital</td></tr><tr><td>Musiman</td><td>pergantian musim</td><td>petani tembakau di luar musim tanam</td></tr><tr><td>Siklis</td><td>resesi, permintaan agregat turun</td><td>PHK saat ekonomi lesu</td></tr><tr><td>Teknologi</td><td>tenaga manusia diganti mesin</td><td>kasir tol diganti gerbang elektronik</td></tr></table>"
+        },
+        {
+          "type": "check",
+          "question": "Seorang sarjana teknik bekerja sebagai pengemudi ojek daring 50 jam per minggu karena belum mendapat pekerjaan yang sesuai keahliannya. Menurut BPS, ia tergolong ....",
+          "options": {
+            "A": "penganggur terbuka",
+            "B": "setengah penganggur",
+            "C": "bekerja penuh, tetapi tidak sesuai keahlian",
+            "D": "bukan angkatan kerja"
+          },
+          "answer": "C",
+          "hint": "Setengah penganggur dilihat dari jam kerja di bawah 35 jam.",
+          "explanation": "Ia bekerja lebih dari 35 jam, sehingga bukan setengah penganggur menurut BPS; secara konsep ia setengah menganggur tidak kentara (underemployed) karena keahliannya tidak terpakai."
+        }
+      ]
+    },
+    {
+      "id": "inflasi",
+      "title": "Indeks harga dan inflasi",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "sim/tenaga-kerja-inflasi.html",
+          "title": "Indeks harga dan inflasi",
+          "height": 540,
+          "caption": "Pada tab indeks harga, naikkan harga beras saja. Mengapa kenaikan beras berpengaruh besar terhadap indeks?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>IHK suatu kota tahun 2024 adalah 120 dan tahun 2025 adalah 129. Hitung laju inflasi 2025 dan golongkan tingkatnya.</p>",
+          "steps": [
+            "Inflasi = (129 − 120)/120 × 100% = 7,5%.",
+            "Kurang dari 10% per tahun."
+          ],
+          "answer": "7,5%, inflasi ringan"
+        },
+        {
+          "type": "text",
+          "html": "<ul><li><b>Inflasi tarikan permintaan</b> (demand pull): permintaan agregat tumbuh melebihi kemampuan produksi, misalnya menjelang hari raya.</li><li><b>Inflasi dorongan biaya</b> (cost push): biaya produksi naik, misalnya kenaikan harga BBM atau upah.</li><li>Inflasi dari luar negeri (imported inflation) dan inflasi karena distribusi terganggu.</li><li>Tingkatan: ringan &lt; 10%, sedang 10–30%, berat 30–100%, hiperinflasi &gt; 100% per tahun.</li><li>Pihak yang dirugikan: berpenghasilan tetap (pensiunan, PNS) dan penabung bila bunga lebih kecil dari inflasi. Pihak yang diuntungkan: debitur dan pemilik aset riil.</li><li>Cara mengatasi: kebijakan moneter (menaikkan suku bunga), fiskal (mengurangi belanja, menaikkan pajak), dan riil (menambah produksi, memperlancar distribusi, operasi pasar).</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Seseorang menabung dengan bunga 4% per tahun ketika inflasi 6%. Daya beli tabungannya setelah setahun ....",
+          "options": {
+            "A": "naik 4%",
+            "B": "naik 10%",
+            "C": "turun sekitar 2%",
+            "D": "tetap"
+          },
+          "answer": "C",
+          "hint": "Bunga riil ≈ bunga − inflasi.",
+          "explanation": "Bunga riil ≈ 4% − 6% = −2%, sehingga daya beli tabungannya turun."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>TPAK dibagi penduduk usia kerja; TPT dibagi angkatan kerja.</li><li>Pelajar, ibu rumah tangga, dan pensiunan yang tidak mencari kerja termasuk bukan angkatan kerja.</li><li>Laju inflasi dihitung dari IHK tahun sebelumnya, bukan dari 100.</li><li>Cocokkan cara mengatasi inflasi dengan penyebabnya: inflasi karena distribusi diatasi dengan memperbaiki distribusi, bukan dengan suku bunga.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Membagi penganggur dengan penduduk usia kerja.</li><li>Menganggap kenaikan harga satu barang sebagai inflasi.</li><li>Menganggap semua pihak dirugikan inflasi.</li><li>Tertukar inflasi tarikan permintaan dan dorongan biaya.</li></ul>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Ekonomi SMA topik Ketenagakerjaan dan Inflasi. Setiap soal dilengkapi pembahasan."
         }
       ]
     }
