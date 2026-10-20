@@ -1,56 +1,156 @@
 {
   "title": "Rangkaian Arus Searah",
-  "summary": "Ringkasan bab Rangkaian Arus Searah akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Fisika: arus, hukum Ohm, hambatan kawat, rangkaian seri dan paralel, GGL dan hambatan dalam, hukum Kirchhoff, alat ukur listrik, serta energi, daya, dan biaya listrik.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Rangkaian Arus Searah",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Hukum Ohm, Hukum Kirchhoff, Rangkaian Seri-Paralel, Energi, dan Daya Listrik</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Soal rangkaian TKA biasanya menuntut penyederhanaan bertahap, lalu membagi arus dan tegangan kembali ke tiap komponen.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Ohm</td><td>V = IR, R = ρL/A</td><td>IPA Kelas 9, Fisika Kelas 12 Bab 2</td></tr><tr><td>Rangkaian</td><td>seri, paralel, campuran, Kirchhoff</td><td>Fisika Kelas 12 Bab 2</td></tr><tr><td>Energi listrik</td><td>W = VIt, P = VI = I²R = V²/R, kWh</td><td>IPA Kelas 9, Fisika Kelas 12 Bab 2</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(V = IR\\); \\(R = \\rho L/A\\).</li><li>Seri: \\(R_s = R_1 + R_2 + ...\\), arus sama. Paralel: \\(1/R_p = 1/R_1 + 1/R_2 + ...\\), tegangan sama.</li><li>Baterai: \\(I = \\dfrac{\\varepsilon}{R + r}\\); tegangan jepit \\(V = \\varepsilon - Ir\\).</li><li>Kirchhoff I: ΣI masuk = ΣI keluar. Kirchhoff II: \\(\\Sigma\\varepsilon + \\Sigma IR = 0\\) pada setiap loop.</li><li>\\(P = VI = I^2R = V^2/R\\); energi (kWh) = P (kW) × t (jam).</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "rangkaian",
+      "title": "Seri, paralel, dan hukum Kirchhoff",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas9/IPA/05 Listrik, Magnet, dan Energi Alternatif/sim/rangkaian.html",
+          "title": "Rangkaian seri dan paralel",
+          "height": 480,
+          "caption": "Bandingkan nyala lampu pada rangkaian seri dan paralel. Apa yang terjadi bila satu lampu putus?"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Fisika/02 Listrik Arus Searah/sim/kirchhoff.html",
+          "title": "Hukum Kirchhoff",
+          "height": 520,
+          "caption": "Ubah salah satu GGL dan perhatikan arah arus di tiap cabang."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Resistor 4 Ω diseri dengan paralel 6 Ω dan 12 Ω, lalu dihubungkan ke baterai 24 V (ideal). Berapa arus pada resistor 6 Ω?</p>",
+          "steps": [
+            "Paralel: 6 × 12/18 = 4 Ω; total 8 Ω; I = 3 A.",
+            "Tegangan paralel = 3 × 4 = 12 V.",
+            "I₆ = 12/6."
+          ],
+          "answer": "2 A"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Aki dengan GGL 12 V dan hambatan dalam 0,2 Ω mengalirkan arus 5 A ke lampu mobil. Berapa tegangan jepit aki dan hambatan lampu?</p>",
+          "steps": [
+            "V = 12 − 5 × 0,2 = 11 V.",
+            "R = 11/5 = 2,2 Ω."
+          ],
+          "answer": "11 V dan 2,2 Ω"
+        },
+        {
+          "type": "check",
+          "question": "Lampu di rumah dipasang paralel terutama agar ....",
+          "options": {
+            "A": "arus setiap lampu sama",
+            "B": "setiap lampu mendapat tegangan penuh dan dapat dinyalakan sendiri-sendiri",
+            "C": "hambatan total makin besar",
+            "D": "daya total makin kecil"
+          },
+          "answer": "B",
+          "hint": "Paralel: tegangan sama.",
+          "explanation": "Setiap cabang mendapat 220 V dan dapat dimatikan tanpa memengaruhi cabang lain."
+        }
+      ]
+    },
+    {
+      "id": "daya",
+      "title": "Hambatan kawat, alat ukur, energi, dan daya",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Fisika/02 Listrik Arus Searah/sim/hambatan-kawat.html",
+          "title": "Hambatan kawat",
+          "height": 520,
+          "caption": "Gandakan panjang kawat, lalu gandakan diameternya. Bagaimana hambatannya berubah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah pemanas bertuliskan 880 W/220 V. Berapa hambatan dan arusnya saat dipakai normal?</p>",
+          "steps": [
+            "R = V²/P = 48.400/880 = 55 Ω.",
+            "I = P/V = 4 A."
+          ],
+          "answer": "55 Ω dan 4 A"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah rumah menyalakan 5 lampu 20 W selama 10 jam/hari dan sebuah kulkas 150 W selama 24 jam/hari. Tarif Rp1.400/kWh. Berapa biaya listrik selama 30 hari?</p>",
+          "steps": [
+            "Lampu: 5 × 20 × 10 = 1.000 Wh = 1 kWh/hari.",
+            "Kulkas: 150 × 24 = 3.600 Wh = 3,6 kWh/hari.",
+            "Total 4,6 × 30 = 138 kWh → 138 × 1.400."
+          ],
+          "answer": "Rp193.200"
+        },
+        {
+          "type": "check",
+          "question": "Untuk mengukur kuat arus pada sebuah resistor, amperemeter dipasang ....",
+          "options": {
+            "A": "paralel dengan resistor",
+            "B": "seri dengan resistor",
+            "C": "di antara kutub baterai saja",
+            "D": "boleh di mana saja"
+          },
+          "answer": "B",
+          "hint": "Arus yang diukur harus melewati alat.",
+          "explanation": "Amperemeter dipasang seri (hambatannya sangat kecil); voltmeter dipasang paralel (hambatannya sangat besar)."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Sederhanakan rangkaian dari bagian terjauh dari sumber.</li><li>Pada Kirchhoff, tetapkan arah arus dan arah loop sembarang; hasil negatif berarti arah arus sebenarnya terbalik.</li><li>Pada soal lampu dipasang pada tegangan lain, hambatan dianggap tetap: P₂ = (V₂/V₁)² P₁.</li><li>Ubah W ke kW dan menit ke jam untuk biaya listrik.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Menjumlahkan hambatan paralel secara langsung.</li><li>Lupa hambatan dalam baterai.</li><li>Menganggap lampu dengan daya besar selalu paling terang dalam rangkaian seri (dalam seri, yang hambatannya besar lebih terang).</li><li>Hambatan kawat sebanding 1/d², bukan 1/d.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Fisika SMA topik Rangkaian Arus Searah. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

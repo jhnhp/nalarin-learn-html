@@ -1,56 +1,148 @@
 {
   "title": "Gerak Parabola dan Gerak Melingkar",
-  "summary": "Ringkasan bab Gerak Parabola dan Gerak Melingkar akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Fisika: gerak parabola dan gerak horizontal, besaran gerak melingkar beraturan, percepatan sentripetal, dan hubungan roda-roda.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Gerak Parabola dan Gerak Melingkar",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Gerak Parabola dan Gerak Melingkar Beraturan</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Kunci gerak parabola: gerak mendatar beraturan dan gerak vertikal berubah beraturan berlangsung bersamaan dan saling bebas.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gerak parabola</td><td>uraian kecepatan, waktu puncak, tinggi maksimum, jangkauan</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak horizontal</td><td>dilempar mendatar dari ketinggian</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak melingkar</td><td>f, T, ω, v, aₛ; roda seporos dan bersinggungan</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(v_{0x} = v_0\\cos\\alpha\\), \\(v_{0y} = v_0\\sin\\alpha\\).</li><li>\\(t_\\text{puncak} = v_0\\sin\\alpha/g\\); \\(h_\\text{maks} = v_0^2\\sin^2\\alpha/(2g)\\); \\(R = v_0^2\\sin 2\\alpha/g\\).</li><li>Gerak horizontal dari tinggi h: \\(t = \\sqrt{2h/g}\\), \\(x = v_0 t\\).</li><li>\\(\\omega = 2\\pi f = 2\\pi/T\\), \\(v = \\omega R\\), \\(a_s = v^2/R = \\omega^2 R\\).</li><li>Roda seporos: ω sama. Roda bersinggungan atau dihubungkan rantai: v tepi sama.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "parabola",
+      "title": "Gerak parabola",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/02 Kinematika/sim/parabola.html",
+          "title": "Gerak parabola",
+          "height": 520,
+          "caption": "Bandingkan jangkauan pada sudut 30° dan 60° dengan kecepatan awal sama. Sudut berapa yang memberi jangkauan terjauh?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bola ditendang dengan kecepatan awal 25 m/s pada sudut 53° (sin 53° = 0,8; cos 53° = 0,6; g = 10 m/s²). Tentukan tinggi maksimum dan jangkauannya.</p>",
+          "steps": [
+            "v₀y = 20 m/s, v₀x = 15 m/s.",
+            "h = 20²/20 = 20 m; waktu di udara = 2 × 20/10 = 4 s.",
+            "R = 15 × 4 = 60 m."
+          ],
+          "answer": "20 m dan 60 m"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah paket dijatuhkan dari pesawat yang terbang mendatar 50 m/s pada ketinggian 80 m. Berapa jarak mendatar paket dari titik pelepasan saat menyentuh tanah?</p>",
+          "steps": [
+            "t = √(2 × 80/10) = 4 s.",
+            "x = 50 × 4 = 200 m."
+          ],
+          "answer": "200 m"
+        },
+        {
+          "type": "check",
+          "question": "Pada titik tertinggi lintasan parabola (tanpa hambatan udara), percepatan benda ....",
+          "options": {
+            "A": "nol",
+            "B": "sama dengan g ke bawah",
+            "C": "mendatar",
+            "D": "maksimum ke atas"
+          },
+          "answer": "B",
+          "hint": "Gravitasi tetap bekerja.",
+          "explanation": "Percepatan sepanjang lintasan selalu g ke bawah; yang nol hanya kecepatan vertikal."
+        }
+      ]
+    },
+    {
+      "id": "melingkar",
+      "title": "Gerak melingkar beraturan dan roda-roda",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/02 Kinematika/sim/melingkar.html",
+          "title": "Gerak melingkar beraturan",
+          "height": 520,
+          "caption": "Ubah jari-jari dengan frekuensi tetap. Apa yang terjadi pada kelajuan linear dan percepatan sentripetal?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Roda sepeda berjari-jari 35 cm berputar 120 rpm. Tentukan kecepatan sudut dan kelajuan sepeda (π = 22/7).</p>",
+          "steps": [
+            "f = 120/60 = 2 Hz → ω = 4π = 88/7 rad/s.",
+            "v = ωR = (88/7) × 0,35 = 4,4 m/s."
+          ],
+          "answer": "4π rad/s dan 4,4 m/s"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Roda A (R = 15 cm) dihubungkan rantai dengan roda B (R = 5 cm). Roda C (R = 30 cm) seporos dengan B. Jika A berputar 4 rad/s, berapa kelajuan tepi roda C?</p>",
+          "steps": [
+            "Rantai: vA = vB = 4 × 0,15 = 0,6 m/s → ωB = 0,6/0,05 = 12 rad/s.",
+            "Seporos: ωC = 12 rad/s → vC = 12 × 0,3."
+          ],
+          "answer": "3,6 m/s"
+        },
+        {
+          "type": "check",
+          "question": "Sebuah benda bergerak melingkar beraturan. Jika jari-jari lintasan dibuat dua kali dengan kelajuan linear tetap, percepatan sentripetalnya menjadi ....",
+          "options": {
+            "A": "dua kali",
+            "B": "setengah",
+            "C": "empat kali",
+            "D": "tetap"
+          },
+          "answer": "B",
+          "hint": "aₛ = v²/R.",
+          "explanation": "Dengan v tetap, aₛ berbanding terbalik dengan R, jadi setengahnya."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Selalu uraikan kecepatan awal menjadi komponen x dan y sebelum menghitung.</li><li>Waktu adalah penghubung gerak mendatar dan vertikal.</li><li>Sudut-sudut yang berpasangan (misalnya 30° dan 60°) menghasilkan jangkauan yang sama.</li><li>Pada roda-roda, tandai mana yang seporos (ω sama) dan mana yang bersinggungan/berantai (v sama).</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai sin untuk komponen mendatar.</li><li>Lupa mengubah rpm menjadi rad/s (kalikan 2π/60).</li><li>Menganggap kecepatan pada gerak melingkar beraturan tetap; arahnya selalu berubah.</li><li>Menganggap gaya sentripetal adalah gaya jenis baru; ia adalah resultan gaya ke arah pusat (tali, gesekan, gravitasi).</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Fisika SMA topik Gerak Parabola dan Gerak Melingkar. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

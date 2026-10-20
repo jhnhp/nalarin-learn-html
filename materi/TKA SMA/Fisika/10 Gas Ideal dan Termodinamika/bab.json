@@ -1,56 +1,153 @@
 {
   "title": "Gas Ideal dan Termodinamika",
-  "summary": "Ringkasan bab Gas Ideal dan Termodinamika akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Fisika: persamaan gas ideal, hukum Boyle–Gay-Lussac, teori kinetik gas, usaha dan hukum I termodinamika, proses-proses termodinamika, mesin kalor, mesin Carnot, dan mesin pendingin.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Gas Ideal dan Termodinamika",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Hukum Gas Ideal, Proses Termodinamika, Hukum Termodinamika, dan Mesin Kalor</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Suhu dalam semua rumus gas dan termodinamika memakai kelvin.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gas ideal</td><td>PV = nRT, PV/T tetap, energi kinetik molekul</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum I</td><td>Q = ΔU + W, isobarik, isokhorik, isotermal, adiabatik</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum II</td><td>mesin kalor, Carnot, mesin pendingin</td><td>Fisika Kelas 11 Bab 7</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(PV = nRT = NkT\\); \\(\\dfrac{P_1V_1}{T_1} = \\dfrac{P_2V_2}{T_2}\\).</li><li>Energi kinetik rata-rata \\(\\bar E_k = \\tfrac32 kT\\); \\(v_\\text{rms} = \\sqrt{3RT/M}\\).</li><li>Hukum I: \\(Q = \\Delta U + W\\). Gas monoatomik: \\(\\Delta U = \\tfrac32 nR\\Delta T\\).</li><li>Isobarik \\(W = P\\Delta V\\); isokhorik W = 0; isotermal ΔU = 0, \\(W = nRT\\ln(V_2/V_1)\\); adiabatik Q = 0. Usaha = luas di bawah grafik P–V.</li><li>Mesin: \\(\\eta = W/Q_1 = 1 - Q_2/Q_1\\); Carnot \\(\\eta = 1 - T_2/T_1\\). Pendingin \\(K = Q_2/W\\).</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "gas",
+      "title": "Gas ideal dan teori kinetik",
+      "kind": "simulasi",
+      "duration": "30 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/07 Termodinamika/sim/gas-kinetik.html",
+          "title": "Teori kinetik gas",
+          "height": 520,
+          "caption": "Naikkan suhu dengan volume tetap. Apa yang terjadi pada kelajuan partikel dan tekanan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tabung 20 L berisi gas bertekanan 3 atm pada 27 °C. Gas dipanaskan sampai 127 °C dan sebagian gas dibuang sehingga tekanannya tetap 3 atm. Berapa persen massa gas yang dibuang?</p>",
+          "steps": [
+            "P dan V tetap → n ∝ 1/T.",
+            "n₂/n₁ = 300/400 = 0,75."
+          ],
+          "answer": "25% gas dibuang"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Suhu gas dinaikkan dari 27 °C menjadi 327 °C. Berapa kali kelajuan efektif (vrms) molekulnya?</p>",
+          "steps": [
+            "vrms ∝ √T → √(600/300) = √2."
+          ],
+          "answer": "√2 kali (± 1,41 kali)"
+        },
+        {
+          "type": "check",
+          "question": "Jika suhu mutlak gas ideal dijadikan 4 kali, energi kinetik rata-rata molekulnya menjadi ....",
+          "options": {
+            "A": "2 kali",
+            "B": "4 kali",
+            "C": "8 kali",
+            "D": "16 kali"
+          },
+          "answer": "B",
+          "hint": "Ek ∝ T.",
+          "explanation": "Energi kinetik rata-rata sebanding dengan suhu mutlak."
+        }
+      ]
+    },
+    {
+      "id": "termodinamika",
+      "title": "Hukum termodinamika dan mesin kalor",
+      "kind": "simulasi",
+      "duration": "35 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/07 Termodinamika/sim/proses-pv.html",
+          "title": "Proses termodinamika pada grafik P–V",
+          "height": 520,
+          "caption": "Bandingkan usaha pada proses isobarik dan isotermal antara dua volume yang sama."
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/07 Termodinamika/sim/mesin-kalor.html",
+          "title": "Mesin kalor dan mesin Carnot",
+          "height": 520,
+          "caption": "Ubah suhu reservoir. Bagaimana efisiensi Carnot berubah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Gas menerima kalor 1.200 J dan mengalami ekspansi isobarik pada tekanan 1,5 × 10⁵ Pa dari 4 L menjadi 6 L. Berapa perubahan energi dalamnya?</p>",
+          "steps": [
+            "W = PΔV = 1,5 × 10⁵ × 2 × 10⁻³ = 300 J.",
+            "ΔU = Q − W = 1.200 − 300."
+          ],
+          "answer": "900 J"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Mesin Carnot bekerja antara 600 K dan 360 K serta menyerap 3.000 J per siklus. Berapa usaha dan kalor yang dibuang?</p>",
+          "steps": [
+            "η = 1 − 360/600 = 0,4.",
+            "W = 0,4 × 3.000 = 1.200 J; Q₂ = 1.800 J."
+          ],
+          "answer": "1.200 J dan 1.800 J"
+        },
+        {
+          "type": "check",
+          "question": "Pada proses adiabatik, gas yang memuai akan ....",
+          "options": {
+            "A": "menyerap kalor dari lingkungan",
+            "B": "turun suhunya karena usaha diambil dari energi dalam",
+            "C": "tetap suhunya",
+            "D": "tidak melakukan usaha"
+          },
+          "answer": "B",
+          "hint": "Q = 0 → ΔU = −W.",
+          "explanation": "Gas melakukan usaha tanpa menerima kalor, sehingga energi dalamnya berkurang dan suhunya turun."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Ubah liter ke m³ (× 10⁻³) dan atm ke Pa (× 1,013 × 10⁵ atau 10⁵ sesuai soal).</li><li>Gunakan tanda hukum I dengan konsisten: Q positif bila diserap, W positif bila gas melakukan usaha.</li><li>Usaha siklus = luas di dalam siklus; searah jarum jam pada P–V berarti gas melakukan usaha positif.</li><li>Klaim efisiensi mesin lebih besar dari efisiensi Carnot pada suhu yang sama pasti tidak mungkin.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai °C pada PV = nRT atau efisiensi Carnot.</li><li>Menganggap proses isotermal tidak menyerap kalor.</li><li>Tertukar koefisien kinerja pendingin dan efisiensi mesin.</li><li>Lupa bahwa pada isokhorik semua kalor menjadi perubahan energi dalam.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Fisika SMA topik Gas Ideal dan Termodinamika. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

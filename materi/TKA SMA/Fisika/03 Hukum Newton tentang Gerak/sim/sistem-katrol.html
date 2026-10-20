@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistem Benda Terhubung</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Dua balok yang dihubungkan tali melalui katrol"></svg></div>
+  <div class="panel">
+    <div class="seg" id="m"><button data-m="meja" class="on">Balok di meja + balok tergantung</button><button data-m="atwood">Mesin Atwood</button><button data-m="lift">Orang di lift</button></div>
+    <div class="lab" id="l1"></div><input type="range" id="a" min="1" max="10" step="0.5" value="6">
+    <div class="lab" id="l2"></div><input type="range" id="b" min="1" max="10" step="0.5" value="3">
+    <div class="lab" id="l3"></div><input type="range" id="c" min="0" max="0.6" step="0.05" value="0.2">
+    <div class="read" id="read"></div>
+    <p class="note">g = 10 m/s². Tali dan katrol ringan serta licin.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'meja', t = 0;
+const L = {meja: [['Massa balok di meja m₁ (kg)', 1, 10, .5, 6], ['Massa balok tergantung m₂ (kg)', 1, 10, .5, 3], ['Koefisien gesek kinetis meja μₖ', 0, .6, .05, .2]], atwood: [['Massa m₁ (kg)', 1, 10, .5, 5], ['Massa m₂ (kg)', 1, 10, .5, 3], null], lift: [['Massa orang (kg)', 30, 90, 5, 55], ['Besar percepatan lift (m/s²)', 0, 4, .5, 1.5], ['Arah percepatan (0 = ke atas, 1 = ke bawah)', 0, 1, 1, 0]]};
+function setup(){ L[M].forEach((c, i) => { const id = 'abc'[i], lab = 'l' + (i + 1); $(id).hidden = $(lab).hidden = !c; if(c){ const e = $(id); e.min = c[1]; e.max = c[2]; e.step = c[3]; e.value = c[4]; } }); t = 0; draw(); }
+$('m').querySelectorAll('button').forEach(b => b.onclick = () => { $('m').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; setup(); });
+['a', 'b', 'c'].forEach(i => $(i).oninput = () => { t = 0; draw(); });
+function draw(){
+  const a = +$('a').value, b = +$('b').value, c = +$('c').value, g = 10;
+  ['l1', 'l2', 'l3'].forEach((l, i) => { if(L[M][i]) $(l).innerHTML = `${L[M][i][0]} <b>${[a, b, c][i]}</b>`; });
+  let s = '', html = '';
+  if(M === 'meja'){
+    const fk = c * a * g, drive = b * g;
+    const acc = drive > fk ? (drive - fk) / (a + b) : 0, T = b * (g - acc);
+    const dx = Math.min(120, 0.5 * acc * (t / 20) ** 2 * 20);
+    s += `<rect x="30" y="120" width="300" height="12" fill="#8d6e63"/><rect x="330" y="120" width="12" height="170" fill="#8d6e63"/><circle cx="336" cy="114" r="14" fill="#fff" stroke="#555" stroke-width="2"/>`;
+    s += `<rect x="${120 + dx}" y="${80}" width="${40 + a * 3}" height="40" fill="#42a5f5" stroke="#1565c0"/><text class="c" x="${140 + dx + a * 1.5}" y="105" text-anchor="middle" fill="#fff">m₁</text>`;
+    s += `<line x1="${160 + a * 3 + dx}" y1="100" x2="336" y2="100" stroke="#333" stroke-width="2"/><line x1="350" y1="114" x2="350" y2="${170 + dx}" stroke="#333" stroke-width="2"/><rect x="${335}" y="${170 + dx}" width="30" height="${20 + b * 3}" fill="#ef5350" stroke="#c62828"/><text class="c" x="350" y="${188 + dx}" text-anchor="middle" fill="#fff">m₂</text>`;
+    html = `<div><span>Percepatan a = (m₂g − μₖm₁g)/(m₁ + m₂)</span><b>${fmt(acc, 2)} m/s²</b></div><div><span>Tegangan tali T = m₂(g − a)</span><b>${fmt(acc ? T : b * g, 2)} N</b></div><div><span>Keadaan</span><b>${acc ? 'bergerak' : 'diam (gaya gesek statis cukup menahan, dianggap μₛ ≥ μₖ)'}</b></div>`;
+  } else if(M === 'atwood'){
+    const acc = Math.abs(a - b) * g / (a + b), T = 2 * a * b * g / (a + b), dir = a > b ? 1 : -1;
+    const dy = a === b ? 0 : Math.min(80, 0.5 * acc * (t / 20) ** 2 * 20) * dir;
+    s += `<line x1="160" y1="20" x2="320" y2="20" stroke="#555" stroke-width="4"/><line x1="240" y1="20" x2="240" y2="50" stroke="#555" stroke-width="2"/><circle cx="240" cy="70" r="22" fill="#fff" stroke="#555" stroke-width="2"/>`;
+    s += `<line x1="218" y1="70" x2="218" y2="${140 + dy}" stroke="#333" stroke-width="2"/><line x1="262" y1="70" x2="262" y2="${140 - dy}" stroke="#333" stroke-width="2"/><rect x="198" y="${140 + dy}" width="40" height="${25 + a * 3}" fill="#42a5f5"/><text class="c" x="218" y="${160 + dy}" text-anchor="middle" fill="#fff">m₁</text><rect x="242" y="${140 - dy}" width="40" height="${25 + b * 3}" fill="#ef5350"/><text class="c" x="262" y="${160 - dy}" text-anchor="middle" fill="#fff">m₂</text>`;
+    html = `<div><span>Percepatan a = |m₁ − m₂|g/(m₁ + m₂)</span><b>${fmt(acc, 2)} m/s²</b></div><div><span>Tegangan tali T = 2m₁m₂g/(m₁ + m₂)</span><b>${fmt(T, 2)} N</b></div>`;
+  } else {
+    const m = a, acc = b, up = c < 0.5;
+    const aEff = up ? acc : -acc, N = m * (g + aEff);
+    s += `<rect x="170" y="30" width="140" height="240" fill="#eceff1" stroke="#555" stroke-width="3"/><line x1="240" y1="0" x2="240" y2="30" stroke="#555" stroke-width="3"/><rect x="210" y="235" width="60" height="12" fill="#90a4ae"/><text class="s" x="240" y="262" text-anchor="middle" fill="#333">timbangan: ${fmt(N / g, 1)} kg</text>`;
+    s += `<circle cx="240" cy="120" r="14" fill="#ffcc80"/><rect x="226" y="136" width="28" height="60" rx="8" fill="#5c6bc0"/><rect x="228" y="196" width="10" height="38" fill="#37474f"/><rect x="242" y="196" width="10" height="38" fill="#37474f"/>`;
+    s += `<text class="c" x="340" y="80" fill="#e53935">${acc === 0 ? 'kecepatan tetap' : (aEff > 0 ? 'percepatan ke atas' : 'percepatan ke bawah')}</text>`;
+    html = `<div><span>Gaya normal N = m(g ± a)</span><b>${fmt(N, 1)} N</b></div><div><span>Berat sebenarnya mg</span><b>${fmt(m * g, 1)} N</b></div><div><span>Keterangan</span><b style="font-weight:600">${acc === 0 ? 'lift diam atau bergerak dengan kecepatan tetap: N = mg' : aEff > 0 ? 'naik dipercepat atau turun diperlambat: terasa lebih berat' : 'turun dipercepat atau naik diperlambat: terasa lebih ringan'}</b></div>`;
+  }
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+setInterval(() => { if(t < 60){ t++; draw(); } }, 50);
+setup();
+</script>
+</body>
+</html>

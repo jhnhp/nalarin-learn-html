@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alat Optik</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../../../css/sim.css">
+<style>.c{font-family:var(--display);font-weight:800;font-size:12px}.s{font-family:var(--display);font-weight:700;font-size:10.5px}</style>
+</head>
+<body>
+<div class="sim">
+  <div class="stage"><svg id="svg" viewBox="0 0 480 300" role="img" aria-label="Diagram sinar alat optik"></svg></div>
+  <div class="panel">
+    <div class="seg" id="m"><button data-m="lup" class="on">Lup</button><button data-m="mik">Mikroskop</button><button data-m="tel">Teropong bintang</button><button data-m="mata">Kacamata</button></div>
+    <div id="p1"><div class="lab" id="l1">a</div><input type="range" id="a" min="2" max="20" step="0.5" value="8"></div>
+    <div id="p2"><div class="lab" id="l2">b</div><input type="range" id="b" min="2" max="20" step="0.5" value="4"></div>
+    <div id="p3"><div class="lab" id="l3">c</div><input type="range" id="c" min="0" max="1" step="1" value="0"></div>
+    <div class="read" id="read"></div>
+    <p class="note">Mata normal: titik dekat Sn = 25 cm, titik jauh tak hingga. Jarak dalam cm.</p>
+  </div>
+</div>
+<script src="../../../../../js/sim.js"></script>
+<script>
+const {fmt} = Sim;
+const $ = id => document.getElementById(id);
+const svg = $('svg');
+let M = 'lup';
+const CFG = {
+  lup: [['Jarak fokus lup f', 2, 20, 0.5, 8], null, ['Mata berakomodasi (0 = tidak, 1 = maksimum)', 0, 1, 1, 0]],
+  mik: [['Fokus objektif fob', 0.5, 3, 0.1, 1.5], ['Fokus okuler fok', 2, 10, 0.5, 4], ['Jarak preparat ke objektif sob', 0.6, 4, 0.05, 1.8]],
+  tel: [['Fokus objektif fob', 40, 200, 5, 120], ['Fokus okuler fok', 2, 15, 0.5, 6], null],
+  mata: [['Titik dekat penderita (cm)', 25, 150, 5, 75], ['Titik jauh penderita (cm, 500 = tak hingga)', 30, 500, 10, 500], null],
+};
+$('m').querySelectorAll('button').forEach(b => b.onclick = () => { $('m').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); M = b.dataset.m; setup(); });
+function setup(){
+  const cf = CFG[M];
+  [['a', 'p1', 'l1'], ['b', 'p2', 'l2'], ['c', 'p3', 'l3']].forEach(([id, p, l], i) => { const c = cf[i]; $(p).hidden = !c; if(!c) return; const e = $(id); e.min = c[1]; e.max = c[2]; e.step = c[3]; e.value = c[4]; $(l).dataset.t = c[0]; });
+  draw();
+}
+['a', 'b', 'c'].forEach(i => $(i).oninput = draw);
+function lens(x, h, col){ return `<path d="M${x},${150 - h} q10,${h} 0,${2 * h} q-10,-${h} 0,-${2 * h}" fill="${col}" fill-opacity=".25" stroke="${col}" stroke-width="2"/>`; }
+function eye(x){ return `<path d="M${x},135 q22,15 0,30" fill="none" stroke="#555" stroke-width="2"/><circle cx="${x - 4}" cy="150" r="5" fill="#555"/>`; }
+function draw(){
+  const a = +$('a').value, b = +$('b').value, c = +$('c').value;
+  ['l1', 'l2', 'l3'].forEach((l, i) => { if(!$(l).dataset.t) return; $(l).innerHTML = `${$(l).dataset.t} <b>${[a, b, c][i]}</b>`; });
+  let s = `<line x1="10" y1="150" x2="470" y2="150" stroke="#cfd8dc"/>`, html = '';
+  if(M === 'lup'){
+    const f = a, akom = c === 1, Sn = 25;
+    const so = akom ? Sn * f / (Sn + f) : f, Ma = akom ? Sn / f + 1 : Sn / f;
+    const X = 300, sc = Math.min(8, 200 / Math.max(f, Sn));
+    s += lens(X, 70, '#1e88e5') + eye(X + 40) + `<line x1="${X - so * sc}" y1="150" x2="${X - so * sc}" y2="125" stroke="#e53935" stroke-width="3"/><text class="s" x="${X - so * sc}" y="118" text-anchor="middle" fill="#e53935">benda</text>`;
+    s += `<circle cx="${X - f * sc}" cy="150" r="3" fill="#1565c0"/><text class="s" x="${X - f * sc}" y="166" text-anchor="middle" fill="#1565c0">F</text>`;
+    html = `<div><span>Letak benda</span><b>${fmt(so, 2)} cm dari lup</b></div><div><span>Perbesaran anguler</span><b>${fmt(Ma, 2)} kali</b></div><div><span>Rumus</span><b>${akom ? 'M = Sn/f + 1' : 'M = Sn/f (benda di titik fokus)'}</b></div>`;
+  } else if(M === 'mik'){
+    const fob = a, fok = b, sob = Math.max(fob + 0.05, c);
+    const sobi = sob * fob / (sob - fob), Mob = sobi / sob, Mok = 25 / fok, d = sobi + fok;
+    const sc = 360 / Math.max(40, d + sob + 5), X1 = 60 + sob * sc, X2 = X1 + d * sc;
+    s += lens(X1, 40, '#1e88e5') + lens(X2, 60, '#43a047') + eye(Math.min(470, X2 + 30));
+    s += `<line x1="60" y1="150" x2="60" y2="138" stroke="#e53935" stroke-width="3"/><text class="s" x="60" y="132" text-anchor="middle" fill="#e53935">preparat</text><text class="s" x="${X1}" y="210" text-anchor="middle" fill="#1e88e5">objektif</text><text class="s" x="${X2}" y="230" text-anchor="middle" fill="#43a047">okuler</text>`;
+    s += `<line x1="${X1}" y1="250" x2="${X2}" y2="250" stroke="#555" marker-end="url(#a)"/><text class="s" x="${(X1 + X2) / 2}" y="265" text-anchor="middle" fill="#555">d = ${fmt(d, 2)} cm</text>`;
+    html = `<div><span>Bayangan objektif s'ob</span><b>${fmt(sobi, 2)} cm</b></div><div><span>Perbesaran total (mata tak berakomodasi)</span><b>${fmt(Mob, 2)} × ${fmt(Mok, 2)} = ${fmt(Mob * Mok, 1)} kali</b></div><div><span>Panjang mikroskop d = s'ob + fok</span><b>${fmt(d, 2)} cm</b></div>`;
+  } else if(M === 'tel'){
+    const fob = a, fok = b, d = fob + fok, sc = 400 / d;
+    s += lens(40, 70, '#1e88e5') + lens(40 + fob * sc, 40, '#43a047') + eye(Math.min(470, 40 + d * sc + 25));
+    for(let k = -1; k <= 1; k++) s += `<line x1="0" y1="${150 + k * 50 - 20}" x2="40" y2="${150 + k * 50}" stroke="#fdd835" stroke-width="2"/><line x1="40" y1="${150 + k * 50}" x2="${40 + fob * sc}" y2="${150 - 20 * fob * sc / 40 + k * 0}" stroke="#fdd835" stroke-width="1.5" opacity=".8"/>`;
+    html = `<div><span>Perbesaran M = fob/fok</span><b>${fmt(fob / fok, 1)} kali</b></div><div><span>Panjang teropong d = fob + fok</span><b>${fmt(d, 1)} cm</b></div><div><span>Catatan</span><b style="font-weight:600">untuk mata tidak berakomodasi; bayangan objektif tepat di titik fokus okuler</b></div>`;
+  } else {
+    const PP = a, PR = b;
+    const hip = PP > 25, mio = PR < 500;
+    const Ph = hip ? 100 / 25 - 100 / PP : 0, Pm = mio ? -100 / PR : 0;
+    s += eye(240) + `<text class="c" x="240" y="100" text-anchor="middle" style="fill:var(--ink)">${hip && mio ? 'miopi dan hipermetropi (presbiopi)' : hip ? 'hipermetropi / presbiopi' : mio ? 'miopi' : 'mata normal'}</text>`;
+    if(mio) s += lens(150, 50, '#e53935') + `<text class="s" x="150" y="220" text-anchor="middle" fill="#e53935">lensa cekung ${fmt(Pm, 2)} D</text>`;
+    if(hip) s += lens(330, 50, '#1e88e5') + `<text class="s" x="330" y="220" text-anchor="middle" fill="#1e88e5">lensa cembung +${fmt(Ph, 2)} D</text>`;
+    html = `<div><span>Untuk membaca (25 cm)</span><b>${hip ? `P = 100/25 − 100/${PP} = +${fmt(Ph, 2)} dioptri` : 'tidak perlu kacamata baca'}</b></div><div><span>Untuk melihat jauh</span><b>${mio ? `P = −100/${PR} = ${fmt(Pm, 2)} dioptri` : 'tidak perlu kacamata jauh'}</b></div>`;
+  }
+  s += `<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#555"/></marker></defs>`;
+  svg.innerHTML = s; $('read').innerHTML = html;
+}
+setup();
+</script>
+</body>
+</html>

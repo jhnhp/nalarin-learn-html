@@ -1,56 +1,156 @@
 {
   "title": "Dinamika Rotasi dan Kesetimbangan",
-  "summary": "Ringkasan bab Dinamika Rotasi dan Kesetimbangan akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Fisika: momen gaya, momen inersia, hukum II Newton untuk rotasi, menggelinding, energi dan momentum sudut, serta kesetimbangan benda tegar dan titik berat.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Dinamika Rotasi dan Kesetimbangan",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Momen Gaya, Momen Inersia, dan Kesetimbangan Benda Tegar</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Rotasi memiliki padanan untuk setiap besaran translasi: gaya ↔ momen gaya, massa ↔ momen inersia, percepatan ↔ percepatan sudut.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Momen gaya</td><td>τ = F d sin θ, arah putaran</td><td>Fisika Kelas 11 Bab 1 dan 3</td></tr><tr><td>Momen inersia</td><td>I = Σmr², benda tegar standar</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Kesetimbangan</td><td>ΣF = 0, Στ = 0; tuas, jembatan, tangga</td><td>Fisika Kelas 11 Bab 1 dan 3</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\tau = F\\,d\\,\\sin\\theta\\); \\(\\Sigma\\tau = I\\alpha\\).</li><li>Momen inersia: partikel \\(mr^2\\); silinder pejal \\(\\tfrac12 MR^2\\); cincin/silinder tipis \\(MR^2\\); bola pejal \\(\\tfrac25 MR^2\\); batang (pusat) \\(\\tfrac1{12}ML^2\\), (ujung) \\(\\tfrac13 ML^2\\).</li><li>Menggelinding di bidang miring: \\(a = \\dfrac{g\\sin\\theta}{1 + k}\\), dengan \\(I = kMR^2\\).</li><li>Momentum sudut \\(L = I\\omega\\) kekal bila Στ luar = 0.</li><li>Kesetimbangan: \\(\\Sigma F_x = \\Sigma F_y = 0\\) dan \\(\\Sigma\\tau = 0\\) terhadap titik mana pun.</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "rotasi",
+      "title": "Momen gaya, momen inersia, dan menggelinding",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/torsi.html",
+          "title": "Momen gaya dan keseimbangan",
+          "height": 520,
+          "caption": "Geser titik tumpu sampai papan seimbang. Bandingkan hasil kali gaya dan lengan kedua sisi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah katrol berupa silinder pejal (M = 4 kg, R = 0,2 m) diberi gaya tangensial 6 N pada tepinya. Berapa percepatan sudutnya?</p>",
+          "steps": [
+            "I = ½ × 4 × 0,04 = 0,08 kg·m².",
+            "τ = 6 × 0,2 = 1,2 N·m → α = 1,2/0,08."
+          ],
+          "answer": "15 rad/s²"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Bola pejal menggelinding tanpa slip menuruni bidang miring bersudut 30° (g = 10 m/s²). Berapa percepatannya?</p>",
+          "steps": [
+            "Bola pejal: k = 2/5.",
+            "a = 10 × 0,5/(1 + 0,4) = 5/1,4."
+          ],
+          "answer": "≈ 3,6 m/s²"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Penari es berputar 2 putaran/s dengan lengan terentang (I = 4 kg·m²). Ia menarik lengan sehingga I = 1,6 kg·m². Berapa kecepatan putarnya sekarang?</p>",
+          "steps": [
+            "Momentum sudut kekal: I₁ω₁ = I₂ω₂.",
+            "ω₂ = 4 × 2/1,6."
+          ],
+          "answer": "5 putaran/s"
+        },
+        {
+          "type": "check",
+          "question": "Silinder pejal dan cincin bermassa serta berjari-jari sama dilepas bersamaan dari puncak bidang miring dan menggelinding. Yang tiba di dasar lebih dahulu adalah ....",
+          "options": {
+            "A": "cincin",
+            "B": "silinder pejal",
+            "C": "keduanya bersamaan",
+            "D": "bergantung pada massa"
+          },
+          "answer": "B",
+          "hint": "Bandingkan k.",
+          "explanation": "Silinder pejal (k = ½) memiliki percepatan lebih besar daripada cincin (k = 1)."
+        }
+      ]
+    },
+    {
+      "id": "kesetimbangan",
+      "title": "Kesetimbangan benda tegar",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/01 Vektor/sim/keseimbangan.html",
+          "title": "Keseimbangan gaya",
+          "height": 520,
+          "caption": "Susun tiga gaya sehingga resultannya nol."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Papan homogen 6 m bermassa 30 kg ditopang di kedua ujungnya (A dan B). Sebuah kotak 60 kg diletakkan 2 m dari A (g = 10 m/s²). Berapa gaya topang di A dan B?</p>",
+          "steps": [
+            "Στ terhadap A: N_B × 6 = 300 × 3 + 600 × 2 = 2.100 → N_B = 350 N.",
+            "N_A = 900 − 350 = 550 N."
+          ],
+          "answer": "N_A = 550 N, N_B = 350 N"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gerobak dorong: beban 600 N berada 0,4 m dari poros roda, dan pegangan berada 1,2 m dari poros. Berapa gaya angkat minimum pada pegangan?</p>",
+          "steps": [
+            "Στ terhadap poros roda: F × 1,2 = 600 × 0,4."
+          ],
+          "answer": "200 N"
+        },
+        {
+          "type": "check",
+          "question": "Agar sebuah benda tegar tidak bergeser dan tidak berputar, syaratnya adalah ....",
+          "options": {
+            "A": "ΣF = 0 saja",
+            "B": "Στ = 0 saja",
+            "C": "ΣF = 0 dan Στ = 0",
+            "D": "kecepatannya nol"
+          },
+          "answer": "C",
+          "hint": "Dua syarat kesetimbangan.",
+          "explanation": "Resultan gaya nol mencegah translasi, resultan momen gaya nol mencegah rotasi."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Pilih poros di titik yang dikenai gaya yang tidak diketahui agar gaya itu hilang dari persamaan momen.</li><li>Berat benda homogen bekerja di tengahnya.</li><li>Tentukan tanda putaran (searah atau berlawanan jarum jam) secara konsisten.</li><li>Pada katrol bermassa, tegangan tali di kedua sisi tidak sama.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai panjang batang, bukan jarak tegak lurus garis kerja gaya ke poros.</li><li>Lupa sin θ bila gaya tidak tegak lurus lengan.</li><li>Lupa energi kinetik rotasi pada benda menggelinding.</li><li>Menganggap momen inersia hanya bergantung pada massa; sebaran massa terhadap poros menentukan.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Fisika SMA topik Dinamika Rotasi dan Kesetimbangan. Setiap soal dilengkapi pembahasan."
         }
       ]
     }

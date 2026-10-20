@@ -1,56 +1,153 @@
 {
   "title": "Fluida Statis dan Dinamis",
-  "summary": "Ringkasan bab Fluida Statis dan Dinamis akan ditulis di sini.",
-  "status": "draf",
+  "summary": "Ringkasan dan latihan TKA Fisika: tekanan hidrostatis, hukum Pascal, hukum Archimedes (terapung, melayang, tenggelam), debit dan persamaan kontinuitas, serta asas Bernoulli dan penerapannya.",
+  "status": "lengkap",
   "lessons": [
     {
-      "id": "pengantar",
-      "title": "Pengantar Fluida Statis dan Dinamis",
-      "kind": "artikel",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bagian ini akan berisi pengantar tentang <b>Tekanan Fluida, Hukum Pascal, Hukum Archimedes, Kontinuitas, dan Hukum Bernoulli</b>: mengapa topik ini penting dan di mana kita menjumpainya dalam kehidupan sehari-hari.</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tujuan pembelajaran",
-          "html": "<ul><li>Tujuan pertama</li><li>Tujuan kedua</li><li>Tujuan ketiga</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "konsep-utama",
-      "title": "Konsep utama",
+      "id": "peta",
+      "title": "Peta materi",
       "kind": "artikel",
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Subjudul konsep"
-        },
-        {
           "type": "text",
-          "html": "<p>Penjelasan konsep, gambar, video, dan simulasi akan ditambahkan di sini.</p>"
+          "html": "<p>Dalam soal fluida, perhatikan satuan luas (cm² → m²) dan massa jenis (g/cm³ → kg/m³).</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Fluida statis</td><td>Ph = ρgh, Pascal, Archimedes</td><td>IPA Kelas 8, Fisika Kelas 11 Bab 4</td></tr><tr><td>Fluida dinamis</td><td>Q = Av, A₁v₁ = A₂v₂, Bernoulli, Torricelli</td><td>Fisika Kelas 11 Bab 4</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "html": "<p>Rumus penting bab ini akan ditulis di sini.</p>"
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(P_h = \\rho g h\\); tekanan total \\(P = P_0 + \\rho g h\\).</li><li>Pascal: \\(F_1/A_1 = F_2/A_2\\); perpindahan pengisap \\(A_1h_1 = A_2h_2\\).</li><li>Archimedes: \\(F_A = \\rho_\\text{cair} g V_\\text{tercelup}\\). Terapung: ρ benda &lt; ρ cair; melayang: sama; tenggelam: lebih besar.</li><li>Kontinuitas: \\(Q = Av = V/t\\), \\(A_1v_1 = A_2v_2\\).</li><li>Bernoulli: \\(P + \\tfrac12\\rho v^2 + \\rho g h\\) = tetap. Torricelli: \\(v = \\sqrt{2gh}\\).</li></ul>"
         }
       ]
     },
     {
-      "id": "contoh-soal",
-      "title": "Contoh soal dan pembahasan",
-      "kind": "latihan",
-      "duration": "10 menit",
+      "id": "statis",
+      "title": "Tekanan hidrostatis, Pascal, dan Archimedes",
+      "kind": "simulasi",
+      "duration": "35 menit",
       "blocks": [
         {
+          "type": "sim",
+          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/hidrolik.html",
+          "title": "Pompa hidrolik",
+          "height": 520,
+          "caption": "Bandingkan gaya dan jarak gerak kedua pengisap."
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/04 Fluida/sim/archimedes.html",
+          "title": "Hukum Archimedes",
+          "height": 520,
+          "caption": "Ubah massa jenis benda dan zat cair. Kapan benda terapung, melayang, dan tenggelam?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah balok kayu (ρ = 600 kg/m³) mengapung di air. Berapa bagian volume balok yang tercelup?</p>",
+          "steps": [
+            "Terapung: berat = gaya apung → ρ_b V = ρ_air V_c.",
+            "V_c/V = 600/1.000."
+          ],
+          "answer": "60% (3/5 bagian)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah batu ditimbang di udara 30 N dan di dalam air 18 N (ρ air = 1.000 kg/m³; g = 10 m/s²). Tentukan volume batu.</p>",
+          "steps": [
+            "Gaya apung = 30 − 18 = 12 N.",
+            "V = F_A/(ρ g) = 12/10.000 = 1,2 × 10⁻³ m³."
+          ],
+          "answer": "1,2 liter"
+        },
+        {
+          "type": "check",
+          "question": "Tekanan hidrostatis di dasar bejana bergantung pada ....",
+          "options": {
+            "A": "luas dasar bejana",
+            "B": "bentuk bejana",
+            "C": "kedalaman dan massa jenis zat cair",
+            "D": "volume zat cair"
+          },
+          "answer": "C",
+          "hint": "Ph = ρgh.",
+          "explanation": "Tekanan hidrostatis hanya bergantung pada ρ, g, dan kedalaman; tidak pada bentuk atau luas bejana."
+        }
+      ]
+    },
+    {
+      "id": "dinamis",
+      "title": "Kontinuitas dan Bernoulli",
+      "kind": "simulasi",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/04 Fluida/sim/bernoulli.html",
+          "title": "Asas Bernoulli",
+          "height": 520,
+          "caption": "Perkecil penampang pipa. Bagaimana kelajuan dan tekanannya berubah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Air mengalir pada pipa berdiameter 6 cm dengan kelajuan 1 m/s, lalu masuk ke pipa berdiameter 2 cm. Berapa kelajuan air di pipa kecil?</p>",
+          "steps": [
+            "A sebanding d²: A₁/A₂ = (6/2)² = 9.",
+            "v₂ = 9 × 1."
+          ],
+          "answer": "9 m/s"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah tangki terbuka berisi air setinggi 3,2 m. Pada dasar tangki ada keran kecil. Berapa kelajuan air yang keluar (g = 10 m/s²)?</p>",
+          "steps": [
+            "Torricelli: v = √(2gh) = √64."
+          ],
+          "answer": "8 m/s"
+        },
+        {
+          "type": "check",
+          "question": "Gaya angkat pada sayap pesawat terjadi karena ....",
+          "options": {
+            "A": "udara di atas sayap lebih lambat dan tekanannya lebih besar",
+            "B": "udara di atas sayap lebih cepat dan tekanannya lebih kecil",
+            "C": "massa jenis udara di atas sayap lebih besar",
+            "D": "sayap lebih ringan daripada udara"
+          },
+          "answer": "B",
+          "hint": "Bernoulli: kelajuan besar, tekanan kecil.",
+          "explanation": "Perbedaan tekanan (lebih besar di bawah) menghasilkan gaya angkat ke atas."
+        }
+      ]
+    },
+    {
+      "id": "latihan",
+      "title": "Strategi dan latihan",
+      "kind": "latihan",
+      "duration": "30 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Ubah semua satuan ke SI; 1 cm² = 10⁻⁴ m², 1 L = 10⁻³ m³.</li><li>Jika yang diketahui diameter, perbandingan luas = kuadrat perbandingan diameter.</li><li>Untuk dua zat cair tak bercampur, jumlahkan tekanan setiap lapisan.</li><li>Pada soal neraca pegas dalam zat cair, selisih berat = gaya apung.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai volume benda seluruhnya padahal hanya sebagian yang tercelup.</li><li>Menganggap benda melayang berarti gaya apung lebih besar dari berat.</li><li>Lupa tekanan atmosfer saat menghitung tekanan total.</li><li>Tertukar: aliran cepat berarti tekanan kecil, bukan besar.</li></ul>"
+        },
+        {
           "type": "text",
-          "html": "<p>Contoh soal bertahap akan ditambahkan di sini. Sementara itu, kamu sudah bisa berlatih lewat kuis bab ini.</p>"
+          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+        },
+        {
+          "type": "kuis",
+          "text": "Latihan soal TKA Fisika SMA topik Fluida Statis dan Dinamis. Setiap soal dilengkapi pembahasan."
         }
       ]
     }
