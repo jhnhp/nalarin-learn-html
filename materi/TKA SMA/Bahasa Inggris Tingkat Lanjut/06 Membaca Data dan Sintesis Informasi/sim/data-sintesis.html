@@ -41,6 +41,7 @@
 <script>
 const SETS = [{"name": "Membaca data", "cats": ["Supported", "Contradicted", "Not mentioned"], "intro": "Read the table and note, then decide whether each statement is <b>supported</b>, <b>contradicted</b>, or <b>not mentioned</b> by the information.", "passage": "<b>Library Visits at SMA Cendekia (average per week)</b><br><table><tr><th>Year</th><th>Visits</th><th>E-book loans</th></tr><tr><td>2022</td><td>620</td><td>80</td></tr><tr><td>2023</td><td>540</td><td>210</td></tr><tr><td>2024</td><td>500</td><td>390</td></tr><tr><td>2025</td><td>560</td><td>450</td></tr></table>In 2025, the library opened a new study area with charging stations and longer opening hours.", "items": [["Weekly visits fell from 2022 to 2024.", 0, "620 → 540 → 500: a steady fall."], ["E-book loans increased every year.", 0, "80 → 210 → 390 → 450."], ["E-book loans were higher than visits in 2024.", 1, "390 is lower than 500."], ["Visits rose again after the new study area opened.", 0, "560 in 2025, higher than 500 in 2024, after the 2025 opening."], ["Most students prefer e-books to printed books.", 2, "The data show loans, not students' preferences."], ["The new study area cost more than Rp100 million.", 2, "No cost is given."]]}, {"name": "Dua sumber", "cats": ["Only Source A", "Only Source B", "Both sources"], "intro": "Source A is a city report: <i>\"The new bike lanes on Jalan Merdeka, opened in March, have increased cycling on the street by 35% and have not slowed car traffic.\"</i> Source B is an interview with shop owners: <i>\"More cyclists stop at our shops now, but parking spaces in front of the shops were removed for the lanes, and some older customers complain.\"</i> Decide which source gives each piece of information.", "items": [["Cycling on the street has increased.", 2, "A gives a figure (35%); B says more cyclists stop at the shops."], ["Car traffic was not slowed by the lanes.", 0, "Only the city report says this."], ["Parking spaces were removed.", 1, "Only the shop owners mention parking."], ["Some older customers are unhappy.", 1, "Only B reports complaints."], ["The lanes opened in March.", 0, "Only A gives the date."]]}];
 const MODE = 'classify';
+const T = {"pick": "Choose a category for every item first.", "of": "of", "correct": "correct", "done": "Well done!", "retry": "Read the notes under each item, then try again.", "pos": "Correct position:", "ans": "Answer:", "up": "Move up", "down": "Move down", "cek": "Check", "ulang": "Reset"};
 const $ = id => document.getElementById(id);
 const esc = s => s;
 let cur = 0, ans = [], order = [], checked = false;
@@ -63,7 +64,7 @@ function draw(){
     order.forEach((k, pos) => {
       const it = S.items[k], li = document.createElement('li');
       li.className = 'it' + (checked ? (k === pos ? ' ok' : ' no') : '');
-      li.innerHTML = `<div class="ord"><span class="n">${pos + 1}</span><span class="tx">${it[0]}</span><span class="mv"><button aria-label="Move up">↑</button><button aria-label="Move down">↓</button></span></div>` + (checked ? `<div class="why">${k === pos ? '✓ ' : '✗ Correct position: ' + (k + 1) + '. '}${it[1]}</div>` : '');
+      li.innerHTML = `<div class="ord"><span class="n">${pos + 1}</span><span class="tx">${it[0]}</span><span class="mv"><button aria-label="${T.up}">↑</button><button aria-label="${T.down}">↓</button></span></div>` + (checked ? `<div class="why">${k === pos ? '✓ ' : '✗ ' + T.pos + ' ' + (k + 1) + '. '}${it[1]}</div>` : '');
       const [up, dn] = li.querySelectorAll('.mv button');
       up.disabled = pos === 0; dn.disabled = pos === order.length - 1;
       up.onclick = () => { [order[pos - 1], order[pos]] = [order[pos], order[pos - 1]]; checked = false; $('res').hidden = true; draw(); };
@@ -75,7 +76,7 @@ function draw(){
       const li = document.createElement('li');
       const ok = ans[i] === it[1];
       li.className = 'it' + (checked ? (ok ? ' ok' : ' no') : '');
-      li.innerHTML = `<div class="tx">${it[0]}</div><div class="seg">${S.cats.map((c, j) => `<button data-j="${j}" class="${ans[i] === j ? 'on' : ''}">${c}</button>`).join('')}</div>` + (checked ? `<div class="why">${ok ? '✓ ' : '✗ Answer: <b>' + S.cats[it[1]] + '</b>. '}${it[2]}</div>` : '');
+      li.innerHTML = `<div class="tx">${it[0]}</div><div class="seg">${S.cats.map((c, j) => `<button data-j="${j}" class="${ans[i] === j ? 'on' : ''}">${c}</button>`).join('')}</div>` + (checked ? `<div class="why">${ok ? '✓ ' : '✗ ' + T.ans + ' <b>' + S.cats[it[1]] + '</b>. '}${it[2]}</div>` : '');
       li.querySelectorAll('.seg button').forEach(b => b.onclick = () => { ans[i] = +b.dataset.j; if(checked){ checked = false; $('res').hidden = true; } draw(); });
       ul.appendChild(li);
     });
@@ -85,10 +86,10 @@ $('cek').onclick = () => {
   const S = SETS[cur];
   let ok = 0, n = S.items.length;
   if(MODE === 'order') order.forEach((k, pos) => ok += k === pos);
-  else { if(ans.some(a => a === null)){ $('res').hidden = false; $('res').className = 'box info'; $('res').innerHTML = 'Choose a category for every item first.'; return; } ans.forEach((a, i) => ok += a === S.items[i][1]); }
+  else { if(ans.some(a => a === null)){ $('res').hidden = false; $('res').className = 'box info'; $('res').innerHTML = T.pick; return; } ans.forEach((a, i) => ok += a === S.items[i][1]); }
   checked = true; draw();
   $('res').hidden = false; $('res').className = 'box ' + (ok === n ? 'ok' : 'no');
-  $('res').innerHTML = `<b>${ok} of ${n} correct.</b> ` + (ok === n ? (S.done || 'Well done!') : 'Read the notes under each item, then try again.');
+  $('res').innerHTML = `<b>${ok} ${T.of} ${n} ${T.correct}.</b> ` + (ok === n ? (S.done || T.done) : T.retry);
 };
 $('ulang').onclick = () => pick(cur);
 if($('sets')) $('sets').querySelectorAll('button').forEach((b, j) => b.onclick = () => pick(j));

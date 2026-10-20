@@ -41,6 +41,7 @@
 <script>
 const SETS = [{"name": "Struktur cerita", "cats": ["Orientation", "Complication", "Resolution", "Coda"], "intro": "The paragraphs below tell the fable <i>The Ant and the Dove</i>. Decide which part of the narrative structure each one is.", "items": [["One hot day, a thirsty ant went to a river to drink. A dove was sitting on a branch above the water.", 0, "Introduces the characters, place, and time."], ["As the ant drank, a wave suddenly washed it into the river. The little ant struggled and was about to drown.", 1, "The first problem appears."], ["The dove quickly dropped a leaf into the water. The ant climbed onto it and floated safely to the bank.", 2, "The first problem is solved."], ["A few days later, a hunter aimed his arrow at the dove, who did not see the danger.", 1, "A new problem: the dove is in danger."], ["The ant saw the hunter and bit his foot hard. The hunter shouted, and the dove flew away safely.", 2, "The second problem is solved."], ["One good turn deserves another.", 3, "The moral of the story (coda)."]]}, {"name": "Realitas atau fantasi", "cats": ["Could happen in real life", "Fantasy"], "intro": "Decide whether each event <b>could happen in real life</b> or is <b>fantasy</b>.", "items": [["A girl finds a lost wallet and returns it to its owner.", 0, "This is realistic."], ["A crocodile talks to a mouse deer and agrees to a deal.", 1, "Animals cannot talk: fantasy."], ["A prince searches for his missing bride for months.", 0, "Unusual but possible."], ["A princess is turned into a golden snail by a spell.", 1, "Magic is fantasy."], ["A farmer's daughter tricks a greedy merchant with a stone.", 0, "Clever, but realistic."], ["A giant stone ship appears overnight because of a curse.", 1, "Curses and overnight transformations are fantasy."]]}];
 const MODE = 'classify';
+const T = {"pick": "Choose a category for every item first.", "of": "of", "correct": "correct", "done": "Well done!", "retry": "Read the notes under each item, then try again.", "pos": "Correct position:", "ans": "Answer:", "up": "Move up", "down": "Move down", "cek": "Check", "ulang": "Reset"};
 const $ = id => document.getElementById(id);
 const esc = s => s;
 let cur = 0, ans = [], order = [], checked = false;
@@ -63,7 +64,7 @@ function draw(){
     order.forEach((k, pos) => {
       const it = S.items[k], li = document.createElement('li');
       li.className = 'it' + (checked ? (k === pos ? ' ok' : ' no') : '');
-      li.innerHTML = `<div class="ord"><span class="n">${pos + 1}</span><span class="tx">${it[0]}</span><span class="mv"><button aria-label="Move up">↑</button><button aria-label="Move down">↓</button></span></div>` + (checked ? `<div class="why">${k === pos ? '✓ ' : '✗ Correct position: ' + (k + 1) + '. '}${it[1]}</div>` : '');
+      li.innerHTML = `<div class="ord"><span class="n">${pos + 1}</span><span class="tx">${it[0]}</span><span class="mv"><button aria-label="${T.up}">↑</button><button aria-label="${T.down}">↓</button></span></div>` + (checked ? `<div class="why">${k === pos ? '✓ ' : '✗ ' + T.pos + ' ' + (k + 1) + '. '}${it[1]}</div>` : '');
       const [up, dn] = li.querySelectorAll('.mv button');
       up.disabled = pos === 0; dn.disabled = pos === order.length - 1;
       up.onclick = () => { [order[pos - 1], order[pos]] = [order[pos], order[pos - 1]]; checked = false; $('res').hidden = true; draw(); };
@@ -75,7 +76,7 @@ function draw(){
       const li = document.createElement('li');
       const ok = ans[i] === it[1];
       li.className = 'it' + (checked ? (ok ? ' ok' : ' no') : '');
-      li.innerHTML = `<div class="tx">${it[0]}</div><div class="seg">${S.cats.map((c, j) => `<button data-j="${j}" class="${ans[i] === j ? 'on' : ''}">${c}</button>`).join('')}</div>` + (checked ? `<div class="why">${ok ? '✓ ' : '✗ Answer: <b>' + S.cats[it[1]] + '</b>. '}${it[2]}</div>` : '');
+      li.innerHTML = `<div class="tx">${it[0]}</div><div class="seg">${S.cats.map((c, j) => `<button data-j="${j}" class="${ans[i] === j ? 'on' : ''}">${c}</button>`).join('')}</div>` + (checked ? `<div class="why">${ok ? '✓ ' : '✗ ' + T.ans + ' <b>' + S.cats[it[1]] + '</b>. '}${it[2]}</div>` : '');
       li.querySelectorAll('.seg button').forEach(b => b.onclick = () => { ans[i] = +b.dataset.j; if(checked){ checked = false; $('res').hidden = true; } draw(); });
       ul.appendChild(li);
     });
@@ -85,10 +86,10 @@ $('cek').onclick = () => {
   const S = SETS[cur];
   let ok = 0, n = S.items.length;
   if(MODE === 'order') order.forEach((k, pos) => ok += k === pos);
-  else { if(ans.some(a => a === null)){ $('res').hidden = false; $('res').className = 'box info'; $('res').innerHTML = 'Choose a category for every item first.'; return; } ans.forEach((a, i) => ok += a === S.items[i][1]); }
+  else { if(ans.some(a => a === null)){ $('res').hidden = false; $('res').className = 'box info'; $('res').innerHTML = T.pick; return; } ans.forEach((a, i) => ok += a === S.items[i][1]); }
   checked = true; draw();
   $('res').hidden = false; $('res').className = 'box ' + (ok === n ? 'ok' : 'no');
-  $('res').innerHTML = `<b>${ok} of ${n} correct.</b> ` + (ok === n ? (S.done || 'Well done!') : 'Read the notes under each item, then try again.');
+  $('res').innerHTML = `<b>${ok} ${T.of} ${n} ${T.correct}.</b> ` + (ok === n ? (S.done || T.done) : T.retry);
 };
 $('ulang').onclick = () => pick(cur);
 if($('sets')) $('sets').querySelectorAll('button').forEach((b, j) => b.onclick = () => pick(j));
