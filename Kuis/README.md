@@ -14,6 +14,7 @@ Kuis/
 ├── css/style.css       ← tampilan (warna merek ada di bagian :root)
 ├── js/kuis.js          ← mengerjakan kuis, nilai, pembahasan
 ├── js/laporan.js       ← unduh laporan PDF
+├── js/soalpdf.js       ← unduh soal PDF untuk dicetak
 ├── js/daftar.js        ← menu Kelas › Mapel › Kuis (dimuat terakhir, menjalankan aplikasi)
 ├── Assets/Nalarin/     ← logo asli; versi web (transparan, favicon) ada di web/
 ├── daftar.json         ← daftar kuis (dibuat otomatis)
@@ -67,6 +68,8 @@ index.html?kuis=Kelas11/Fisika/Vektor/soal_vektor.json   ← langsung membuka sa
 Setelah selesai mengerjakan, tombol **Kembali ke daftar kuis** membawa siswa ke daftar kelas dan mapel kuis itu.
 
 Di halaman hasil, tombol **Unduh laporan (PDF)** membuat laporan berisi nilai, kunci jawaban, pembahasan, dan tanda benar/salah setiap soal (termasuk gambar dan teks bacaan). PDF dibuat di browser siswa memakai jsPDF dan html2canvas yang dimuat dari cdnjs saat tombol ditekan, jadi perlu koneksi internet.
+
+Di halaman awal kuis (sebelum mulai), tombol **Unduh soal (PDF)** membuat lembar soal untuk dicetak: kop Nalarin Kuis, kolom nama dan tanggal, dua soal per halaman dengan pilihan jawaban dan kotak coretan, tanpa kunci jawaban. Gambar dan teks bacaan ikut. Tampilannya mengikuti PDF Olimpiade Kelas 5.
 
 Browser tidak bisa membaca isi folder sendiri, jadi `daftar.json` perlu dibuat ulang setiap kali ada kuis yang ditambah, dihapus, atau diganti namanya.
 
