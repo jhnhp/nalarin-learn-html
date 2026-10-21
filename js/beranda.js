@@ -1,7 +1,9 @@
 /* Beranda (daftar kelas & mapel) dan halaman kursus (semua bab satu mapel). */
 
 const KELAS = P.get('kelas') || '', MAPEL = P.get('mapel') || '';
-const JENJANG_ORDER = ['SMP', 'SMA', 'Persiapan TKA', 'Lainnya'];
+const JENJANG_ORDER = ['SMP', 'SMA', 'Lainnya'];
+const KELOMPOK = P.get('kelompok') || (MAPEL ? kelompokOf(KELAS, MAPEL) : '');
+const KELAS_LABEL = KELAS + (KELOMPOK ? ' ' + KELOMPOK : '');   // "TKA SMA Wajib"
 
 // ilustrasi bab unggulan
 const FEAT_ART = `<svg viewBox="0 0 300 200" aria-hidden="true">
@@ -34,7 +36,7 @@ function renderHome(bab, d){
   if(f){
     const a = mk('a', 'card feat'); a.href = babUrl(f.id); a.dataset.mapel = f.mapel;
     a.innerHTML = `<div class="art" style="color:var(--ink)">${FEAT_ART}</div>
-      <div class="txt"><span class="eb">Bab unggulan · ${f.kelas} · ${f.mapel}</span><h3></h3><p class="muted"></p>
+      <div class="txt"><span class="eb">Bab unggulan · ${kelasLabel(f.kelas, f.mapel)} · ${f.mapel}</span><h3></h3><p class="muted"></p>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill">${f.lessons.length} pelajaran</span>${simCount(f) ? `<span class="pill">${simCount(f)} simulasi</span>` : ''}</div>
       <span class="btn primary" style="justify-self:start;margin-top:4px">Mulai belajar ${ic('arrow')}</span></div>`;
     a.querySelector('h3').textContent = f.title;
@@ -57,17 +59,15 @@ function renderHome(bab, d){
     Object.keys(groups[j]).sort(nat).forEach(k => {
       const subjects = Object.keys(groups[j][k]).sort(nat);
       if(k === 'TKA SMA'){
-        const wajib = ['Matematika', 'Bahasa Indonesia', 'Bahasa Inggris'];
-        cardDefs.push({label:'TKA SMA Wajib', kelas:k, subjects:subjects.filter(m => wajib.includes(m))});
-        cardDefs.push({label:'TKA SMA Pilihan', kelas:k, subjects:subjects.filter(m => !wajib.includes(m))});
+        ['Wajib', 'Pilihan'].forEach(kp => cardDefs.push({label:k + ' ' + kp, kelas:k, kp, subjects:subjects.filter(m => kelompokOf(k, m) === kp)}));
       } else {
         cardDefs.push({label:k, kelas:k, subjects});
       }
     });
     cardDefs.forEach(def => {
       const c = mk('section', 'card kelas');
-      const h = mk('h3'); h.innerHTML = `<span class="n"></span>`; h.firstChild.textContent = def.label === 'TKA SMA Wajib' ? 'W' : def.label === 'TKA SMA Pilihan' ? 'P' : tileOf(def.label);
-      const ha = mk('a', '', def.label); ha.href = courseUrl(def.kelas); ha.style.cssText = 'color:inherit;text-decoration:none'; h.appendChild(ha);
+      const h = mk('h3'); h.innerHTML = `<span class="n"></span>`; h.firstChild.textContent = def.kp ? def.kp[0] : tileOf(def.label);
+      const ha = mk('a', '', def.label); ha.href = courseUrl(def.kelas, '', def.kp); ha.style.cssText = 'color:inherit;text-decoration:none'; h.appendChild(ha);
       c.appendChild(h);
       const ul = mk('ul');
       def.subjects.forEach(m => {
@@ -92,7 +92,7 @@ function renderHome(bab, d){
     if(!q) return;
     const hits = [];
     bab.forEach(b => {
-      if((b.title + ' ' + b.mapel + ' ' + b.kelas).toLowerCase().includes(q)) hits.push({b});
+      if((b.title + ' ' + b.mapel + ' ' + kelasLabel(b.kelas, b.mapel)).toLowerCase().includes(q)) hits.push({b});
       b.lessons.forEach(l => { if(l.title.toLowerCase().includes(q)) hits.push({b, l}); });
     });
     if(!hits.length){ res.appendChild(mk('p', 'muted', 'Tidak ada materi yang cocok.')); return; }
@@ -100,7 +100,7 @@ function renderHome(bab, d){
       const a = mk('a', 'card'); a.href = babUrl(b.id, l && l.id); a.dataset.mapel = b.mapel;
       a.innerHTML = `<span class="kind">${ic(l ? kindOf(l.kind).icon : 'book')}</span><div><b></b><small></small></div>`;
       a.querySelector('b').textContent = l ? l.title : 'Bab: ' + b.title;
-      a.querySelector('small').textContent = b.kelas + ' · ' + b.mapel + (l ? ' · ' + b.title : '');
+      a.querySelector('small').textContent = kelasLabel(b.kelas, b.mapel) + ' · ' + b.mapel + (l ? ' · ' + b.title : '');
       res.appendChild(a);
     });
   });
@@ -109,21 +109,21 @@ function renderHome(bab, d){
 /* ---------- kursus ---------- */
 function renderCourse(bab){
   $('course').classList.remove('hidden');
-  const inKelas = bab.filter(b => b.kelas === KELAS);
+  const inKelas = bab.filter(b => b.kelas === KELAS && (!KELOMPOK || kelompokOf(b.kelas, b.mapel) === KELOMPOK));
   const list = inKelas.filter(b => !MAPEL || b.mapel === MAPEL);
   const main = $('course'); main.dataset.mapel = MAPEL;
 
   const cr = $('crumbs');
   const crumb = (t, href) => { if(cr.children.length) cr.appendChild(mk('span', '', '›')); const e = mk(href ? 'a' : 'span', '', t); if(href) e.href = href; cr.appendChild(e); };
-  crumb('Beranda', 'index.html'); crumb(KELAS, MAPEL ? courseUrl(KELAS) : null); if(MAPEL) crumb(MAPEL);
-  document.title = (MAPEL ? MAPEL + ' ' : '') + KELAS + ' · Nalarin Learn';
+  crumb('Beranda', 'index.html'); crumb(KELAS_LABEL, MAPEL ? courseUrl(KELAS, '', KELOMPOK) : null); if(MAPEL) crumb(MAPEL);
+  document.title = (MAPEL ? MAPEL + ' ' : '') + KELAS_LABEL + ' · Nalarin Learn';
 
   const lessons = list.reduce((n, b) => n + b.lessons.length, 0);
   const sims = list.reduce((n, b) => n + simCount(b), 0);
   const quizzes = list.reduce((n, b) => n + b.kuis.length, 0);
   const bn = $('banner');
   bn.innerHTML = `<h1></h1><p></p><div class="stats"><span><b>${list.length}</b>bab</span><span><b>${lessons}</b>pelajaran</span><span><b>${sims}</b>simulasi</span><span><b>${quizzes}</b>kuis latihan</span></div>`;
-  bn.querySelector('h1').textContent = MAPEL ? MAPEL + ' · ' + KELAS : KELAS;
+  bn.querySelector('h1').textContent = MAPEL ? MAPEL + ' · ' + KELAS_LABEL : KELAS_LABEL;
   bn.querySelector('p').textContent = MAPEL ? 'Kurikulum Merdeka. Pelajari tiap bab, lalu uji pemahamanmu lewat kuis.' : 'Pilih mata pelajaran.';
 
   const units = $('units'), toc = $('toc');
@@ -138,7 +138,7 @@ function renderCourse(bab){
       const items = list.filter(b => b.mapel === m);
       c.innerHTML = `<h3><span class="n" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"></span><a style="color:inherit;text-decoration:none"></a></h3><ul></ul>`;
       c.querySelector('.n').textContent = m.slice(0, 2);
-      const h = c.querySelector('h3 a'); h.textContent = m; h.href = courseUrl(KELAS, m);
+      const h = c.querySelector('h3 a'); h.textContent = m; h.href = courseUrl(KELAS, m, KELOMPOK);
       items.forEach(b => {
         const li = mk('li'), a = mk('a'); a.href = babUrl(b.id);
         a.innerHTML = `<span class="dot"></span><span></span>`; a.children[1].textContent = b.title;

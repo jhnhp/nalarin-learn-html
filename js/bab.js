@@ -32,8 +32,8 @@ function render(b){
 
   /* samping */
   const side = $('side');
-  const up = mk('a', 'up'); up.href = b.kelas ? courseUrl(b.kelas, b.mapel) : 'index.html';
-  up.innerHTML = ic('left', 'width:15px;height:15px'); up.append((b.mapel || '') + ' ' + (b.kelas || ''));
+  const up = mk('a', 'up'); up.href = b.kelas ? courseUrl(b.kelas, b.mapel, kelompokOf(b.kelas, b.mapel)) : 'index.html';
+  up.innerHTML = ic('left', 'width:15px;height:15px'); up.append((b.mapel || '') + ' ' + (b.kelas ? kelasLabel(b.kelas, b.mapel) : ''));
   side.appendChild(up);
   side.appendChild(mk('div', 'ctx', 'Bab ' + (b.no || '')));
   side.appendChild(mk('h2', '', b.title));

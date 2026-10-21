@@ -10,7 +10,11 @@ const enc = path => path.split('/').map(encodeURIComponent).join('/');
 const KUIS_DIR = 'Kuis/';                       // lokasi aplikasi Nalarin Kuis
 const quizUrl = path => KUIS_DIR + 'index.html?kuis=' + enc(path);
 const babUrl = (id, lesson) => 'bab.html?bab=' + encodeURIComponent(id) + (lesson ? '&p=' + encodeURIComponent(lesson) : '');
-const courseUrl = (kelas, mapel) => 'index.html?kelas=' + encodeURIComponent(kelas) + (mapel ? '&mapel=' + encodeURIComponent(mapel) : '');
+const courseUrl = (kelas, mapel, kel) => 'index.html?kelas=' + encodeURIComponent(kelas) + (kel ? '&kelompok=' + encodeURIComponent(kel) : '') + (mapel ? '&mapel=' + encodeURIComponent(mapel) : '');
+// TKA SMA dibagi: mapel wajib dan mapel pilihan (kelas lain tidak dibagi)
+const TKA_WAJIB = ['Matematika', 'Bahasa Indonesia', 'Bahasa Inggris'];
+const kelompokOf = (kelas, mapel) => kelas === 'TKA SMA' ? (TKA_WAJIB.includes(mapel) ? 'Wajib' : 'Pilihan') : '';
+const kelasLabel = (kelas, mapel) => (kelas + ' ' + kelompokOf(kelas, mapel)).trim();   // "TKA SMA Wajib"
 
 /* ---------- tema (kunci yang sama dengan Nalarin Kuis) ---------- */
 const THEME_COLOR = {light: '#2447F9', dark: '#060a1c'};
@@ -78,7 +82,8 @@ function loadKatalog(){
 }
 // "Kelas 11" → jenjang untuk pengelompokan di beranda
 function jenjang(kelas){
-  if(/^TKA/i.test(kelas)) return 'Persiapan TKA';
+  if(/\bSMP\b/i.test(kelas)) return 'SMP';      // "TKA SMP" ikut grup SMP
+  if(/\bSMA\b/i.test(kelas)) return 'SMA';      // "TKA SMA" ikut grup SMA
   const n = parseInt((kelas.match(/\d+/) || [0])[0], 10);
   if(n >= 10) return 'SMA';
   if(n >= 7) return 'SMP';
