@@ -1,9 +1,9 @@
 {
   "title": "TKA Matematika Tingkat Lanjut - Matriks",
   "topic": "Matriks",
-  "subtitle": "Latihan Mandiri 15 Soal",
-  "difficulty_summary": "13% Mudah | 53% Sedang | 33% Sulit. Kerjakan dengan jujur dan teliti.",
-  "total_questions": 15,
+  "subtitle": "Latihan Mandiri 20 Soal",
+  "difficulty_summary": "25% Mudah | 50% Sedang | 25% Sulit. Kerjakan dengan jujur dan teliti.",
+  "total_questions": 20,
   "questions": [
     {
       "number": 1,
@@ -67,12 +67,12 @@
       "image": "m5.svg",
       "question": "Perhatikan persamaan matriks pada gambar. Nilai x · y adalah ....",
       "options": {
-        "A": "7",
-        "B": "12",
-        "C": "1",
+        "A": "1",
+        "B": "7",
+        "C": "12",
         "D": "16"
       },
-      "answer": "B",
+      "answer": "C",
       "explanation": "Samakan elemen yang seletak: 2x + 1 = 9 → x = 4; (y + 1) + 3 = 7 → y = 3.<br>x · y = 12."
     },
     {
@@ -81,12 +81,12 @@
       "image": "m6.svg",
       "question": "Jika M<sup>−1</sup> adalah invers matriks M pada gambar, elemen baris kedua kolom pertama dari M<sup>−1</sup> adalah ....",
       "options": {
-        "A": "2",
+        "A": "5",
         "B": "3",
-        "C": "−3",
-        "D": "5"
+        "C": "2",
+        "D": "−3"
       },
-      "answer": "C",
+      "answer": "D",
       "explanation": "det M = 10 − 9 = 1.<br>M<sup>−1</sup> = (1/det M)·[[d, −b], [−c, a]] = [[2, −3], [−3, 5]].<br>Elemen baris 2 kolom 1 adalah −3."
     },
     {
@@ -209,6 +209,71 @@
       },
       "answer": "A",
       "explanation": "Hitung beberapa pangkat: A<sup>2</sup> = [[1, 2], [0, 1]], A<sup>3</sup> = [[1, 3], [0, 1]]. Polanya A<sup>n</sup> = [[1, n], [0, 1]].<br>Jadi elemen baris 1 kolom 2 dari A<sup>10</sup> adalah 10. Pengecoh 1024 = 2<sup>10</sup> muncul jika setiap elemen dipangkatkan."
+    },
+    {
+      "number": 16,
+      "difficulty": "Mudah",
+      "question": "Diketahui A = [3  −1; 2  4] dan B = [1  0; −2  5]. Hasil A + B adalah ....",
+      "options": {
+        "A": "[4  1; 0  9]",
+        "B": "[4  −1; 0  9]",
+        "C": "[2  −1; 4  −1]",
+        "D": "[3  0; −4  20]"
+      },
+      "answer": "B",
+      "explanation": "Penjumlahan matriks dilakukan pada elemen yang seletak: [3 + 1, −1 + 0; 2 + (−2), 4 + 5] = [4, −1; 0, 9]. Pengecoh [3  0; −4  20] adalah hasil kali elemen seletak."
+    },
+    {
+      "number": 17,
+      "difficulty": "Mudah",
+      "question": "Hasil 3 · [1  −2; 0  4] adalah ....",
+      "options": {
+        "A": "[3  −6; 0  12]",
+        "B": "[3  −2; 0  4]",
+        "C": "[3  −6; 0  4]",
+        "D": "[4  1; 3  7]"
+      },
+      "answer": "A",
+      "explanation": "Perkalian skalar mengalikan setiap elemen matriks: [3·1, 3·(−2); 3·0, 3·4] = [3, −6; 0, 12]."
+    },
+    {
+      "number": 18,
+      "difficulty": "Mudah",
+      "question": "Diketahui [a  2; 3  b] = [4  2; 3  −1]. Nilai a + b adalah ....",
+      "options": {
+        "A": "5",
+        "B": "−5",
+        "C": "−3",
+        "D": "3"
+      },
+      "answer": "D",
+      "explanation": "Dua matriks sama jika elemen seletaknya sama: a = 4 dan b = −1, sehingga a + b = 3."
+    },
+    {
+      "number": 19,
+      "difficulty": "Sedang",
+      "question": "Diketahui A = [1  2; 3  4] dan B = [0  1; 1  0]. Hasil BA adalah ....",
+      "options": {
+        "A": "[2  1; 4  3]",
+        "B": "[0  2; 3  0]",
+        "C": "[3  4; 1  2]",
+        "D": "[1  3; 2  4]"
+      },
+      "answer": "C",
+      "explanation": "BA = [0·1 + 1·3, 0·2 + 1·4; 1·1 + 0·3, 1·2 + 0·4] = [3, 4; 1, 2]. Pengecoh [2  1; 4  3] adalah AB; perkalian matriks tidak komutatif, jadi urutan menentukan hasil."
+    },
+    {
+      "number": 20,
+      "difficulty": "Sedang",
+      "question": "Sistem persamaan 3x + 2y = 7 dan x − y = 4 diselesaikan dengan invers matriks. Nilai 2x + y adalah ....",
+      "options": {
+        "A": "7",
+        "B": "5",
+        "C": "3",
+        "D": "−5"
+      },
+      "answer": "B",
+      "explanation": "Bentuk matriks: [3  2; 1  −1][x; y] = [7; 4]. det = −3 − 2 = −5, sehingga [x; y] = (1/−5)[−1  −2; −1  3][7; 4] = (1/−5)[−15; 5] = [3; −1].<br>Jadi x = 3, y = −1, dan 2x + y = 5."
     }
   ]
 }
