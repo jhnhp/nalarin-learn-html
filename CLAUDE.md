@@ -2,6 +2,11 @@
 
 Repo ini berisi dua produk: **Nalarin Learn** (materi, `index.html`, `bab.html`, `materi/`) dan **Nalarin Kuis** (`Kuis/`). Jangan menulis "Nalarin Belajar", itu nama lama.
 
+## Hubungan dengan repo Kuis
+
+- Kuis di repo ini **hanya yang fokus ke pelajaran sekolah** (terhubung dengan materi Learn). Kuis lain (misalnya Olimpiade) masuk ke repo terpisah `jhnhp/Kuis` (`/home/jhn/projects/Nalarin/Kuis`), jangan ditambahkan di sini.
+- Folder kuis pelajaran sekolah (misalnya `TKA SMA`) ada di kedua repo. Setelah mengubahnya di sini, salin ke `Kuis/` (`rsync -a`), jalankan `buat-daftar.py` di sana, lalu commit dan push ke `main` di tiap repo.
+
 ## Aturan kuis (wajib)
 
 - **Kuis bab: 20 soal.** **Evaluasi Akhir / Simulasi TKA: 40 soal.** Tidak ada 15, 25, atau jumlah lain.

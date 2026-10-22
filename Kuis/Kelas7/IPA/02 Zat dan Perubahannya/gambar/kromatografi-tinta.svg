@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 340">
+<defs>
+<style>
+text{font-family:Inter,Arial,sans-serif;fill:#0a0f2c;font-size:13px}
+.m{fill:#5a6283;font-size:12px}
+.b{font-weight:700}
+.t{font-family:"Inter Tight",Inter,Arial,sans-serif;font-weight:800;font-size:16px}
+</style>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M0 0L10 5L0 10z" fill="#0a0f2c"/>
+</marker>
+</defs>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="310" y="24" text-anchor="middle" class="t">Kromatografi Kertas pada Pemisahan Tinta Hitam</text>
+
+<!-- Bejana Kaca Kromatografi -->
+<rect x="70" y="45" width="210" height="265" rx="12" fill="#f7f8fd" stroke="#0a0f2c" stroke-width="2.5"/>
+<rect x="60" y="40" width="230" height="10" rx="3" fill="#e3e6f1" stroke="#0a0f2c" stroke-width="2"/>
+
+<!-- Cairan Pelarut (Fase Gerak) di dasar -->
+<path d="M72 275 L72 298 Q72 308 82 308 L268 308 Q278 308 278 298 L278 275 Z" fill="#2447f9" fill-opacity="0.2"/>
+<line x1="72" y1="275" x2="278" y2="275" stroke="#2447f9" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+<!-- Batang penyangga & klip -->
+<line x1="90" y1="55" x2="250" y2="55" stroke="#5a6283" stroke-width="3"/>
+<rect x="165" y="50" width="10" height="12" rx="2" fill="#0a0f2c"/>
+
+<!-- Strip Kertas Kromatografi (Fase Diam) -->
+<rect x="145" y="58" width="50" height="230" fill="#fff" stroke="#0a0f2c" stroke-width="1.5"/>
+
+<!-- Garis Batas Pelarut (Solvent Front) = 10 cm dari garis dasar -->
+<line x1="145" y1="85" x2="195" y2="85" stroke="#0a0f2c" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+<!-- Noda Komponen Warna -->
+<!-- Noda Biru (jarak 8 cm) -->
+<circle cx="170" cy="122" r="7" fill="#2447f9"/>
+<!-- Noda Merah (jarak 6 cm) -->
+<circle cx="170" cy="159" r="7" fill="#e0344b"/>
+<!-- Noda Kuning (jarak 3 cm) -->
+<circle cx="170" cy="214" r="7" fill="#d98200"/>
+
+<!-- Garis Awal / Garis Dasar (Baseline) -->
+<line x1="145" y1="269" x2="195" y2="269" stroke="#0a0f2c" stroke-width="1.5"/>
+<circle cx="170" cy="269" r="3" fill="#0a0f2c"/>
+
+<!-- Penggaris / Skala Jarak di Kanan Kertas -->
+<line x1="220" y1="269" x2="220" y2="85" stroke="#0a0f2c" stroke-width="1.5"/>
+<!-- Ticks -->
+<line x1="215" y1="269" x2="225" y2="269" stroke="#0a0f2c" stroke-width="1.5"/>
+<text x="230" y="273" class="m">0 cm (garis awal)</text>
+
+<line x1="215" y1="214" x2="225" y2="214" stroke="#0a0f2c" stroke-width="1.5"/>
+<text x="230" y="218" class="b" fill="#d98200">3 cm (kuning)</text>
+
+<line x1="215" y1="159" x2="225" y2="159" stroke="#0a0f2c" stroke-width="1.5"/>
+<text x="230" y="163" class="b" fill="#e0344b">6 cm (merah)</text>
+
+<line x1="215" y1="122" x2="225" y2="122" stroke="#0a0f2c" stroke-width="1.5"/>
+<text x="230" y="126" class="b" fill="#2447f9">8 cm (biru)</text>
+
+<line x1="215" y1="85" x2="225" y2="85" stroke="#0a0f2c" stroke-width="1.5"/>
+<text x="230" y="89" class="b">10 cm (garis pelarut)</text>
+
+<!-- Panel Keterangan di Kanan -->
+<g transform="translate(390, 50)">
+  <rect x="0" y="0" width="210" height="255" rx="10" fill="#f7f8fd" stroke="#e3e6f1" stroke-width="1.5"/>
+  <text x="15" y="28" class="b" style="font-size:14px">Keterangan Komponen:</text>
+  
+  <circle cx="25" cy="56" r="6" fill="#2447f9"/>
+  <text x="40" y="60" class="b">Warna Biru</text>
+  <text x="40" y="76" class="m">Jarak: 8 cm | Rf = 0,80</text>
+  <text x="40" y="92" class="m" style="font-size:11px">Paling mudah larut dlm pelarut</text>
+  
+  <circle cx="25" cy="120" r="6" fill="#e0344b"/>
+  <text x="40" y="124" class="b">Warna Merah</text>
+  <text x="40" y="140" class="m">Jarak: 6 cm | Rf = 0,60</text>
+  <text x="40" y="156" class="m" style="font-size:11px">Kelarutan sedang</text>
+  
+  <circle cx="25" cy="184" r="6" fill="#d98200"/>
+  <text x="40" y="188" class="b">Warna Kuning</text>
+  <text x="40" y="204" class="m">Jarak: 3 cm | Rf = 0,30</text>
+  <text x="40" y="220" class="m" style="font-size:11px">Paling kuat terikat kertas</text>
+  
+  <line x1="15" y1="232" x2="195" y2="232" stroke="#e3e6f1" stroke-width="1"/>
+  <text x="15" y="246" class="m" style="font-size:11px">Nilai Rf = Jarak noda / Jarak pelarut</text>
+</g>
+</svg>
