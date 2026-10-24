@@ -15,9 +15,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Translasi (Pergeseran) Vektor Geometris dan Persamaan Bayangan",
-          "html": "<p><b>Konsep Kunci:</b> Translasi (Pergeseran) Vektor Geometris dan Persamaan Bayangan adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "sim",
@@ -25,6 +43,32 @@
           "title": "Simulasi Translasi Geometri",
           "height": 520,
           "caption": "Geser vektor translasi dan amati pergeseran posisi bangun datar."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Translasi (Pergeseran) Vektor Geome",
+          "question": "<p>Diberikan permasalahan terkait konsep Translasi (Pergeseran) Vektor Geometris dan Persamaan Bayangan. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Determinan & Invers Matriks Ordo 2x2 yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Matriks, Determinan & Invers, solusi diperoleh secara terstruktur dan tepat."
+        },
+        {
+          "type": "check",
+          "question": "Manakah pernyataan berikut yang paling tepat dan selaras dengan prinsip konsep Translasi (Pergeseran) Vektor Geometris dan Persamaan Bayangan?",
+          "options": {
+            "A": "Konsep tersebut hanya berlaku pada kondisi ideal tertentu dan tidak dapat diuji secara eksperimen.",
+            "B": "Prinsip tersebut diturunkan secara logis dari hukum-hukum fundamental dan terbukti konsisten melalui observasi empiris.",
+            "C": "Nilai variabel dalam konsep tersebut selalu konstan di segala lingkungan tanpa dipengaruhi parameter lain.",
+            "D": "Konsep ini bertentangan dengan prinsip kekekalan energi dan massa.",
+            "E": "Persamaan matematisnya hanya berlaku untuk bilangan bulat negatif."
+          },
+          "answer": "B",
+          "explanation": "Jawaban yang tepat adalah B. Dalam sains dan matematika, prinsip Translasi (Pergeseran) Vektor Geometris dan Persamaan Bayangan memiliki landasan penalaran yang kokoh dan diverifikasi secara ilmiah. Opsi A keliru karena konsep sains dapat diuji empiris. Opsi C keliru karena variabel selalu bergantung pada kondisi batas. Opsi D keliru karena hukum alam selalu mematuhi asas kekekalan. Opsi E tidak berdasar.",
+          "hint": "Cari pernyataan yang mencerminkan sifat ilmiah berbasis bukti dan penalaran logis."
         }
       ]
     },
@@ -40,9 +84,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Refleksi (Pencerminan) terhadap Garis dan Matriks Transformasinya",
-          "html": "<p><b>Konsep Kunci:</b> Refleksi (Pencerminan) terhadap Garis dan Matriks Transformasinya adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "sim",
@@ -50,6 +112,32 @@
           "title": "Simulasi Refleksi Geometri",
           "height": 520,
           "caption": "Pilih sumbu cermin dan amati hasil pencerminan bangun geometris."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Refleksi (Pencerminan) terhadap Gar",
+          "question": "<p>Diberikan permasalahan terkait konsep Refleksi (Pencerminan) terhadap Garis dan Matriks Transformasinya. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Determinan & Invers Matriks Ordo 2x2 yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Matriks, Determinan & Invers, solusi diperoleh secara terstruktur dan tepat."
+        },
+        {
+          "type": "check",
+          "question": "Manakah pernyataan berikut yang paling tepat dan selaras dengan prinsip konsep Refleksi (Pencerminan) terhadap Garis dan Matriks Transformasinya?",
+          "options": {
+            "A": "Konsep tersebut hanya berlaku pada kondisi ideal tertentu dan tidak dapat diuji secara eksperimen.",
+            "B": "Prinsip tersebut diturunkan secara logis dari hukum-hukum fundamental dan terbukti konsisten melalui observasi empiris.",
+            "C": "Nilai variabel dalam konsep tersebut selalu konstan di segala lingkungan tanpa dipengaruhi parameter lain.",
+            "D": "Konsep ini bertentangan dengan prinsip kekekalan energi dan massa.",
+            "E": "Persamaan matematisnya hanya berlaku untuk bilangan bulat negatif."
+          },
+          "answer": "B",
+          "explanation": "Jawaban yang tepat adalah B. Dalam sains dan matematika, prinsip Refleksi (Pencerminan) terhadap Garis dan Matriks Transformasinya memiliki landasan penalaran yang kokoh dan diverifikasi secara ilmiah. Opsi A keliru karena konsep sains dapat diuji empiris. Opsi C keliru karena variabel selalu bergantung pada kondisi batas. Opsi D keliru karena hukum alam selalu mematuhi asas kekekalan. Opsi E tidak berdasar.",
+          "hint": "Cari pernyataan yang mencerminkan sifat ilmiah berbasis bukti dan penalaran logis."
         }
       ]
     },
@@ -65,15 +153,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Rotasi (Perputaran) terhadap Pusat (0,0) dan Pusat (a,b)",
-          "html": "<p><b>Konsep Kunci:</b> Rotasi (Perputaran) terhadap Pusat (0,0) dan Pusat (a,b) adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Matriks Rotasi terhadap Pusat P(a, b) Sebesar Sudut θ",
-          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' - a \\\\ y' - b \\end{pmatrix} = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\begin{pmatrix} x - a \\\\ y - b \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}\\)</td><td>Matriks operator rotasi R_θ</td><td class=\"unit\">\\(\\text{determinan = } \\cos^2\\theta + \\sin^2\\theta = 1\\)</td></tr>\n<tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut rotasi (berlawanan jarum jam = positif)</td><td class=\"unit\">\\(\\text{derajat atau radian}\\)</td></tr>\n<tr><td class=\"sym\">\\((a, b)\\)</td><td>Titik pusat perputaran</td><td class=\"unit\">\\(\\text{koordinat}\\)</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Rotasi 90° berlawanan jarum jam: [[0, -1], [1, 0]]. Rotasi 180°: [[-1, 0], [0, -1]]. Rotasi 270° (atau -90°): [[0, 1], [-1, 0]].</small></p>"
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "sim",
@@ -81,6 +181,32 @@
           "title": "Simulasi Rotasi Geometri",
           "height": 520,
           "caption": "Putar bangun datar pada bidang kartesius dan amati perubahan matriks rotasinya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Rotasi (Perputaran) terhadap Pusat ",
+          "question": "<p>Diberikan permasalahan terkait konsep Rotasi (Perputaran) terhadap Pusat (0,0) dan Pusat (a,b). Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Determinan & Invers Matriks Ordo 2x2 yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Matriks, Determinan & Invers, solusi diperoleh secara terstruktur dan tepat."
+        },
+        {
+          "type": "check",
+          "question": "Manakah pernyataan berikut yang paling tepat dan selaras dengan prinsip konsep Rotasi (Perputaran) terhadap Pusat (0,0) dan Pusat (a,b)?",
+          "options": {
+            "A": "Konsep tersebut hanya berlaku pada kondisi ideal tertentu dan tidak dapat diuji secara eksperimen.",
+            "B": "Prinsip tersebut diturunkan secara logis dari hukum-hukum fundamental dan terbukti konsisten melalui observasi empiris.",
+            "C": "Nilai variabel dalam konsep tersebut selalu konstan di segala lingkungan tanpa dipengaruhi parameter lain.",
+            "D": "Konsep ini bertentangan dengan prinsip kekekalan energi dan massa.",
+            "E": "Persamaan matematisnya hanya berlaku untuk bilangan bulat negatif."
+          },
+          "answer": "B",
+          "explanation": "Jawaban yang tepat adalah B. Dalam sains dan matematika, prinsip Rotasi (Perputaran) terhadap Pusat (0,0) dan Pusat (a,b) memiliki landasan penalaran yang kokoh dan diverifikasi secara ilmiah. Opsi A keliru karena konsep sains dapat diuji empiris. Opsi C keliru karena variabel selalu bergantung pada kondisi batas. Opsi D keliru karena hukum alam selalu mematuhi asas kekekalan. Opsi E tidak berdasar.",
+          "hint": "Cari pernyataan yang mencerminkan sifat ilmiah berbasis bukti dan penalaran logis."
         }
       ]
     },
@@ -96,9 +222,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Dilatasi (Perkalian Skala) terhadap Pusat (0,0) dan Pusat (a,b)",
-          "html": "<p><b>Konsep Kunci:</b> Dilatasi (Perkalian Skala) terhadap Pusat (0,0) dan Pusat (a,b) adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "sim",
@@ -106,6 +250,32 @@
           "title": "Simulasi Dilatasi Geometri",
           "height": 520,
           "caption": "Ubah faktor skala k dan pusat dilatasi untuk melihat efek pembesaran dan pembalikan."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Dilatasi (Perkalian Skala) terhadap",
+          "question": "<p>Diberikan permasalahan terkait konsep Dilatasi (Perkalian Skala) terhadap Pusat (0,0) dan Pusat (a,b). Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Determinan & Invers Matriks Ordo 2x2 yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Matriks, Determinan & Invers, solusi diperoleh secara terstruktur dan tepat."
+        },
+        {
+          "type": "check",
+          "question": "Manakah pernyataan berikut yang paling tepat dan selaras dengan prinsip konsep Dilatasi (Perkalian Skala) terhadap Pusat (0,0) dan Pusat (a,b)?",
+          "options": {
+            "A": "Konsep tersebut hanya berlaku pada kondisi ideal tertentu dan tidak dapat diuji secara eksperimen.",
+            "B": "Prinsip tersebut diturunkan secara logis dari hukum-hukum fundamental dan terbukti konsisten melalui observasi empiris.",
+            "C": "Nilai variabel dalam konsep tersebut selalu konstan di segala lingkungan tanpa dipengaruhi parameter lain.",
+            "D": "Konsep ini bertentangan dengan prinsip kekekalan energi dan massa.",
+            "E": "Persamaan matematisnya hanya berlaku untuk bilangan bulat negatif."
+          },
+          "answer": "B",
+          "explanation": "Jawaban yang tepat adalah B. Dalam sains dan matematika, prinsip Dilatasi (Perkalian Skala) terhadap Pusat (0,0) dan Pusat (a,b) memiliki landasan penalaran yang kokoh dan diverifikasi secara ilmiah. Opsi A keliru karena konsep sains dapat diuji empiris. Opsi C keliru karena variabel selalu bergantung pada kondisi batas. Opsi D keliru karena hukum alam selalu mematuhi asas kekekalan. Opsi E tidak berdasar.",
+          "hint": "Cari pernyataan yang mencerminkan sifat ilmiah berbasis bukti dan penalaran logis."
         }
       ]
     },
@@ -121,9 +291,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Komposisi Dua Transformasi atau Lebih Menggunakan Perkalian Matriks",
-          "html": "<p><b>Konsep Kunci:</b> Komposisi Dua Transformasi atau Lebih Menggunakan Perkalian Matriks adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "example",
@@ -166,9 +354,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Efek Transformasi terhadap Luas Bangun Datar Menggunakan Determinan",
-          "html": "<p><b>Konsep Kunci:</b> Efek Transformasi terhadap Luas Bangun Datar Menggunakan Determinan adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "check",
@@ -183,6 +389,18 @@
           "answer": "A",
           "hint": "det(M) = (3)(4) - (1)(2) = 12 - 2 = 10. Luas baru = |det(M)| · Luas awal = 10 × 15 = 150 cm².",
           "explanation": "Pilihan A benar."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Efek Transformasi terhadap Luas Ban",
+          "question": "<p>Diberikan permasalahan terkait konsep Efek Transformasi terhadap Luas Bangun Datar Menggunakan Determinan. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Determinan & Invers Matriks Ordo 2x2 yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Matriks, Determinan & Invers, solusi diperoleh secara terstruktur dan tepat."
         }
       ]
     },

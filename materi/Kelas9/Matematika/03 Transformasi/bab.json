@@ -14,6 +14,30 @@
           "html": "<p><b>Pengantar Transformasi Geometri: Objek, Pemetaan, dan Bayangan</b>: Memetakan titik pada bidang ke posisi baru, notasi bayangan P(x, y) -> P'(x', y'), transformasi isometri (mempertahankan bentuk dan ukuran).</p>"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
+        },
+        {
           "type": "h",
           "text": "Objek dan bayangan"
         },
@@ -63,12 +87,6 @@
           "alt": "Empat panel: segitiga biru digeser, dicerminkan terhadap sumbu y, diputar 90 derajat terhadap O, dan diperbesar 2 kali dari O; hasilnya segitiga oranye",
           "width": 600,
           "caption": "Objek (biru) dan bayangannya (oranye) pada keempat transformasi."
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Bayangan titik oleh translasi",
-          "html": "<p>Bayangan titik \\(A(x, y)\\) oleh translasi \\(\\begin{pmatrix}a\\\\b\\end{pmatrix}\\) adalah</p>\n<div class=\"fc-display\">\n\\[A'(x + a,\\; y + b)\\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
@@ -249,6 +267,30 @@
           "text": "Mencari translasi atau titik asal"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
+        },
+        {
           "type": "h",
           "text": "Translasi garis lurus"
         },
@@ -360,6 +402,30 @@
           "text": "Refleksi garis lurus"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
+        },
+        {
           "type": "text",
           "html": "<p>Berdirilah di depan cermin dan angkat tangan kananmu. Bayanganmu mengangkat tangan <b>kiri</b>. Pencerminan membuat bayangan menghadap ke arah sebaliknya. Dalam matematika, pencerminan disebut <b>refleksi</b>.</p>"
         },
@@ -386,21 +452,9 @@
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Refleksi terhadap sumbu dan titik asal",
-          "html": "<table><tr><th>Cermin</th><th>Bayangan titik P(x, y)</th><th>Yang berubah</th></tr><tr><td>sumbu x</td><td>\\(P'(x, -y)\\)</td><td>tanda y</td></tr><tr><td>sumbu y</td><td>\\(P'(-x, y)\\)</td><td>tanda x</td></tr><tr><td>titik asal O(0, 0)</td><td>\\(P'(-x, -y)\\)</td><td>tanda x dan y</td></tr></table>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\lambda\\)</td><td>Panjang Gelombang</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(f\\)</td><td>Frekuensi Getaran / Gelombang</td><td class=\"unit\">\\(\\text{Hertz (Hz)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(T\\)</td><td>Periode Getaran / Suhu Mutlak / Gaya Tegangan Tali</td><td class=\"unit\">\\(\\text{s, K, atau N}\\)</td></tr>\n    <tr><td class=\"sym\">\\(v\\)</td><td>Kecepatan / Kelajuan Linier</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n    <tr><td class=\"sym\">\\(TI\\)</td><td>Taraf Intensitas Bunyi</td><td class=\"unit\">\\(\\text{desibel (dB)}\\)</td></tr>\n  </tbody>\n</table>"
-        },
-        {
-          "type": "callout",
           "variant": "tips",
           "title": "Cara cepat untuk garis",
           "html": "<ul><li>Refleksi terhadap sumbu x: ganti \\(y\\) dengan \\(-y\\). Contoh: \\(-y = 2x + 5 \\Rightarrow y = -2x - 5\\).</li><li>Refleksi terhadap sumbu y: ganti \\(x\\) dengan \\(-x\\).</li><li>Refleksi terhadap titik O: ganti \\(x\\) dengan \\(-x\\) dan \\(y\\) dengan \\(-y\\).</li></ul>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Refleksi terhadap garis",
-          "html": "<table><tr><th>Garis cermin</th><th>Bayangan titik P(x, y)</th></tr><tr><td>\\(y = x\\)</td><td>\\(P'(y, x)\\)</td></tr><tr><td>\\(y = -x\\)</td><td>\\(P'(-y, -x)\\)</td></tr><tr><td>\\(x = k\\)</td><td>\\(P'(2k - x, y)\\)</td></tr><tr><td>\\(y = h\\)</td><td>\\(P'(x, 2h - y)\\)</td></tr></table>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\lambda\\)</td><td>Panjang Gelombang</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(f\\)</td><td>Frekuensi Getaran / Gelombang</td><td class=\"unit\">\\(\\text{Hertz (Hz)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(T\\)</td><td>Periode Getaran / Suhu Mutlak / Gaya Tegangan Tali</td><td class=\"unit\">\\(\\text{s, K, atau N}\\)</td></tr>\n    <tr><td class=\"sym\">\\(v\\)</td><td>Kecepatan / Kelajuan Linier</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n    <tr><td class=\"sym\">\\(TI\\)</td><td>Taraf Intensitas Bunyi</td><td class=\"unit\">\\(\\text{desibel (dB)}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
@@ -468,9 +522,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Refleksi terhadap Garis y = x, y = -x, x = k, dan y = h",
-          "html": "<p><b>Konsep Kunci:</b> Refleksi terhadap Garis y = x, y = -x, x = k, dan y = h adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "image",
@@ -534,9 +606,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Rotasi (Perputaran) dengan Pusat Titik Asal O(0,0)",
-          "html": "<p><b>Konsep Kunci:</b> Rotasi (Perputaran) dengan Pusat Titik Asal O(0,0) adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "text",
@@ -558,12 +648,6 @@
           "variant": "info",
           "title": "Tiga hal yang menentukan rotasi",
           "html": "<ol><li><b>Pusat rotasi</b>: titik tetap tempat objek diputar.</li><li><b>Besar sudut rotasi</b>.</li><li><b>Arah rotasi</b>: berlawanan arah jarum jam ditulis dengan sudut <b>positif</b>, searah jarum jam ditulis dengan sudut <b>negatif</b>.</li></ol>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rotasi dengan pusat O(0, 0)",
-          "html": "<table><tr><th>Sudut rotasi</th><th>Bayangan titik P(x, y)</th></tr><tr><td>90° (berlawanan arah jarum jam)</td><td>\\(P'(-y, x)\\)</td></tr><tr><td>−90° (searah jarum jam), sama dengan 270°</td><td>\\(P'(y, -x)\\)</td></tr><tr><td>180° atau −180°</td><td>\\(P'(-x, -y)\\)</td></tr></table>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
@@ -668,14 +752,32 @@
           "text": "Coba sendiri"
         },
         {
-          "type": "h",
-          "text": "Coba sendiri"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Mentranslasikan titik ke pusat asal, memutar, lalu mengembalikan ke posisi asal: rumus rotasi pusat (a, b).</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
         },
         {
           "type": "example",
@@ -717,9 +819,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Dilatasi (Perkalian): Faktor Skala k dengan Pusat O(0,0)",
-          "html": "<p><b>Konsep Kunci:</b> Dilatasi (Perkalian): Faktor Skala k dengan Pusat O(0,0) adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "text",
@@ -730,12 +850,6 @@
           "variant": "info",
           "title": "Faktor skala dan notasi dilatasi",
           "html": "<p>Dilatasi ditentukan oleh <b>pusat dilatasi</b> dan <b>faktor skala</b> \\(k\\). Untuk setiap titik A dengan bayangan A′ berlaku</p>\n\\[\\overrightarrow{OA'} = k\\,\\overrightarrow{OA}\\]\n<p>Jadi jarak OA′ sama dengan \\(|k|\\) kali jarak OA. Dilatasi dengan pusat O dan faktor skala \\(k\\) ditulis \\([O, k]\\).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Bayangan titik oleh dilatasi",
-          "html": "<p>Pusat O(0, 0):</p>\n<div class=\"fc-display\">\n\\[A(x, y) \\xrightarrow{[O,\\,k]} A'(kx,\\; ky)\\]\n</div>\n<p>Pusat P(a, b):</p>\n<div class=\"fc-display\">\n\\[A(x, y) \\xrightarrow{[P,\\,k]} A'\\big(k(x - a) + a,\\; k(y - b) + b\\big)\\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
@@ -823,14 +937,32 @@
           "text": "Coba sendiri"
         },
         {
-          "type": "h",
-          "text": "Segi banyak yang kongruen"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Rumus dilatasi pusat (a, b): x' = a + k(x - a) dan y' = b + k(y - b).</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
+        },
+        {
+          "type": "h",
+          "text": "Segi banyak yang kongruen"
         },
         {
           "type": "example",
@@ -871,6 +1003,30 @@
           "html": "<p>Untuk segitiga, kita tidak perlu memeriksa keenam ukurannya. Cukup tiga ukuran yang tepat.</p>"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
+        },
+        {
           "type": "text",
           "html": "<p>Motif batik dan ubin sering dibuat dengan beberapa transformasi berturut-turut. Rangkaian dua transformasi atau lebih disebut <b>komposisi transformasi</b>. Bayangan dari transformasi pertama menjadi objek bagi transformasi kedua:</p>\n\\[A \\xrightarrow{\\text{pertama}} A' \\xrightarrow{\\text{kedua}} A''\\]"
         },
@@ -880,21 +1036,9 @@
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Definisi kongruen",
-          "html": "<p>Dua bangun datar dikatakan <b>kongruen</b> jika terdapat transformasi kaku tunggal atau rangkaian transformasi kaku yang membuat bangun pertama tepat berimpit dengan bangun kedua.</p><p>Notasi kongruen adalah \\(\\cong\\), misalnya \\(\\triangle ABC \\cong \\triangle PQR\\).</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
-        },
-        {
-          "type": "callout",
           "variant": "info",
           "title": "Syarat dua segi banyak kongruen",
           "html": "<ol><li>Sisi-sisi yang bersesuaian sama panjang, <b>dan</b></li><li>sudut-sudut yang bersesuaian sama besar.</li></ol><p>Kedua syarat harus dipenuhi. Persegi dan belah ketupat bisa memiliki sisi yang sama panjang, tetapi sudutnya berbeda, sehingga tidak kongruen.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Kriteria kekongruenan segitiga",
-          "html": "<ul><li><b>Sd-S-Sd</b>: dua sudut sama besar dan sisi <i>di antara</i> kedua sudut itu sama panjang.</li><li><b>S-Sd-S</b>: dua sisi sama panjang dan sudut yang <i>diapit</i> kedua sisi itu sama besar.</li><li><b>S-S-S</b>: ketiga sisi yang bersesuaian sama panjang.</li></ul>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
@@ -944,6 +1088,30 @@
         {
           "type": "text",
           "html": "<p><b>Penerapan Transformasi Geometri pada Pola Batik, Seni Escher, dan Grafika Komputer</b>: Tesselasi (pengubinan), simetri lipat dan putar, animasi pergeseran dan perbesaran karakter game.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Animasi Video Game 3D dan Penglihatan Robot AI",
+          "html": "<p>Saat karakter dalam game 3D melompat (translasi), bercermin di genangan air (refleksi), memutar badan menangkis pedang (rotasi), atau kamera melakukan zoom-in mendekati wajah (dilatasi), kartu grafis komputer (GPU) melakukan jutaan perhitungan matriks per detik.</p><p>Seluruh grafika animasi modern dan navigasi spasial robot AI dikendalikan oleh <b>Transformasi Geometri</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Program Erlangen Felix Klein yang Menyatukan Geometri",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Felix Klein</span>\n  <span class=\"h-tag\">Tahun: 1872 M (Erlangen, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Munculnya berbagai geometri non-Euclidean membuat para ilmuwan bingung menentukan apa hakikat dasar dari ruang dan bentuk.</span>\n</div>\n<p>Pada tahun 1872 saat diangkat menjadi profesor di Universitas Erlangen Jerman, matematikawan muda berusia 23 tahun <b>Felix Klein</b> mengumumkan manifesto revolusioner yang dikenal sebagai <i>Erlanger Programm</i>.</p><p>Klein mendefinisikan geometri bukan sebagai studi tentang gambar bentuk statis, melainkan studi tentang <b>sifat-sifat ruang yang tetap tidak berubah (invarian) di bawah suatu kelompok operasi transformasi</b> (translasi, refleksi, rotasi, dilatasi).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Empat Pilar Transformasi Bidang Datar",
+          "html": "<p><b>Transformasi Geometri:</b> Pemetaan satu-satu setiap titik koordinat \\((x, y)\\) pada bidang datar ke titik koordinat baru \\((x', y')\\).</p><p><b>Empat Jenis Transformasi:</b></p><ul><li><b>Translasi (Pergeseran):</b> Memindahkan seluruh titik dengan jarak dan arah vektor tetap.</li><li><b>Refleksi (Pencerminan):</b> Membalik posisi titik terhadap garis cermin tertentu secara simetris.</li><li><b>Rotasi (Perputaran):</b> Memutar titik sebesar sudut \\(\\theta\\) mengelilingi titik pusat acuan.</li><li><b>Dilatasi (Perbesaran/Pengecilan):</b> Mengubah ukuran objek dengan faktor skala \\(k\\) terhadap titik pusat.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Matriks Transformasi Geometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} + \\begin{pmatrix} t_x \\\\ t_y \\end{pmatrix}, \\qquad R_\\theta = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat titik asal sebelum transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x', y')</td><td>Koordinat titik bayangan hasil transformasi</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\"><i>M</i></td><td>Matriks operator transformasi linier (2 x 2)</td><td class=\"unit\">matriks real</td></tr>\n    <tr><td class=\"sym\">\\((t_x, t_y)\\)</td><td>Vektor translasi komponen pergeseran sumbu X dan Y</td><td class=\"unit\">vektor pergeseran</td></tr>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut putar rotasi (positif jika berlawanan jarum jam)</td><td class=\"unit\">radian / derajat</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Translasi, refleksi, dan rotasi adalah transformasi isometri (mempertahankan bentuk dan luas objek), sedangkan dilatasi mengubah ukuran objek sebanding dengan faktor \\(k^2\\).</small></p>"
         },
         {
           "type": "h",

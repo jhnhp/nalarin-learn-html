@@ -106,14 +106,32 @@
           "html": "<p>Susunan kursi di aula, tumpukan kaleng, atau pola ubin sering membentuk pola bilangan. Jika selisih dua suku berurutan selalu sama, barisannya disebut <b>barisan aritmetika</b>.</p>"
         },
         {
-          "type": "text",
-          "html": "<table><tr><th>Pola bilangan</th><th>Barisan</th><th>Suku ke-n</th></tr><tr><td>bilangan ganjil</td><td>1, 3, 5, 7, …</td><td>2n − 1</td></tr><tr><td>bilangan persegi</td><td>1, 4, 9, 16, …</td><td>n²</td></tr><tr><td>bilangan persegi panjang</td><td>2, 6, 12, 20, …</td><td>n(n + 1)</td></tr><tr><td>bilangan segitiga</td><td>1, 3, 6, 10, …</td><td>n(n + 1)/2</td></tr></table><p>Barisan persegi, persegi panjang, dan segitiga <b>bukan</b> barisan aritmetika, karena selisihnya berubah-ubah.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Barisan aritmetika",
-          "html": "<p>Suku pertama a dan beda b:</p><div class=\"fc-display\">\n\\[U_n = a + (n - 1)b\\]\n</div><p>Jumlah n suku pertama: \\(S_n = \\dfrac{n}{2}(a + U_n)\\).</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Pola bilangan</th><th>Barisan</th><th>Suku ke-n</th></tr><tr><td>bilangan ganjil</td><td>1, 3, 5, 7, …</td><td>2n − 1</td></tr><tr><td>bilangan persegi</td><td>1, 4, 9, 16, …</td><td>n²</td></tr><tr><td>bilangan persegi panjang</td><td>2, 6, 12, 20, …</td><td>n(n + 1)</td></tr><tr><td>bilangan segitiga</td><td>1, 3, 6, 10, …</td><td>n(n + 1)/2</td></tr></table><p>Barisan persegi, persegi panjang, dan segitiga <b>bukan</b> barisan aritmetika, karena selisihnya berubah-ubah.</p>"
         },
         {
           "type": "sim",
@@ -160,26 +178,26 @@
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Membawa Segepok Uang Hanya untuk Membeli Sebungkus Roti",
-          "html": "<p>Banyak anak kecil bertanya polos: <i>'Jika negara kita masih banyak orang miskin, mengapa Bank Indonesia tidak mencetak uang kertas rupiah sebanyak-banyaknya lalu membagikannya secara gratis kepada seluruh warga?'</i></p>\n<p>Sejarah mencatat bencana mengerikan saat negara mencoba ide tersebut: di Jerman tahun 1923 dan Zimbabwe tahun 2008, pemerintah mencetak triliunan uang kertas tanpa kendali. Akibatnya uang kehilangan nilai total hingga orang harus membawa uang satu gerobak dorong hanya untuk membeli sebungkus roti tawar!</p>"
+          "title": "Misteri di Kehidupan Nyata: Layar TV Layar Lebar dan Rangka Atap Kuda-Kuda Rumah",
+          "html": "<p>Saat kamu membeli televisi berukuran '55 inci', angka tersebut bukan panjang horizontal maupun tinggi vertikal layar, melainkan panjang garis diagonal miring layar dari sudut kiri atas ke sudut kanan bawah!</p><p>Para tukang kayu dan arsitek konstruksi atap kuda-kuda selalu menggunakan tali tripel 3-4-5 untuk menjamin sudut siku-siku bangunan presisi melalui <b>Teorema Pythagoras</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Teori Kuantitas Uang Irving Fisher dan Pernyataan Milton Friedman",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Irving Fisher, John Maynard Keynes, & Milton Friedman</span>\n  <span class=\"h-tag\">Tahun: 1911 – 1970 M</span>\n  <span class=\"h-tag\">Krisis: Mengapa pemerintah tidak mencetak uang sebanyak-banyaknya dan membagikannya gratis ke seluruh rakyat miskin?</span>\n</div>\n<p>Pada tahun 1911 di Universitas Yale, ekonom Amerika <b>Irving Fisher</b> mempublikasikan mahakaryanya <i>The Purchasing Power of Money</i>. Fisher merumuskan <b>Persamaan Kuantitas Pertukaran</b> yang abadi: \\(M \\cdot V = P \\cdot T\\).</p>\n<p>Enam dekade kemudian, peraih Nobel Ekonomi <b>Milton Friedman</b> menyimpulkan prinsip moneter terpenting abad ke-20: <i>'Inflasi selalu dan di mana pun merupakan fenomena moneter.'</i> Jika jumlah uang yang beredar (\\(M\\)) bertambah jauh lebih cepat daripada pertambahan produksi barang dan jasa (\\(T\\)), maka satu-satunya variabel yang akan melonjak adalah tingkat harga umum (\\(P\\))—inilah yang kita sebut sebagai <b>Inflasi</b>!</p>"
+          "title": "Kilas Balik Sejarah: Persaudaraan Pythagoras dan Rahasia Segitiga Siku-Siku",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Pythagoras dari Samos & Thales dari Miletus</span>\n  <span class=\"h-tag\">Tahun: 570 – 600 SM (Yunani Kuno & Mesir)</span>\n  <span class=\"h-tag\">Krisis: Para pembangun kuil batu kuno membutuhkan cara praktis memastikan dinding bangunan tegak lurus sempurna 90 derajat tanpa melenceng roboh.</span>\n</div>\n<p>Filsuf dan matematikawan Yunani <b>Pythagoras dari Samos</b> mendirikan perkumpulan ilmuwan di Kroton (Italia selatan). Pythagoras membuktikan secara deduktif geometris bahwa luas bujur sangkar yang dibangun di atas sisi miring (hipotenusa) suatu segitiga siku-siku tepat sama dengan jumlah luas bujur sangkar pada kedua sisi tegaknya.</p><p>Gurunya, <b>Thales dari Miletus</b>, sebelumnya telah menunjukkan bahwa tinggi piramida Cheops dapat diukur hanya dengan mengamati panjang bayangan tongkat kecil menggunakan konsep <b>Kesebangunan Segitiga</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Inflasi & Kebijakan Moneter Bank Sentral",
-          "html": "<p><b>Inflasi:</b> Kenaikan tingkat harga barang dan jasa secara umum dan terus-menerus dalam jangka waktu tertentu, yang mengakibatkan penurunan daya beli uang.</p>\n<p><b>Kebijakan Moneter Kontraksioner (Mengatasi Inflasi):</b></p>\n<ul>\n  <li>Menaikkan Suku Bunga Acuan (BI-Rate) agar masyarakat rajin menabung dan konsumsi mengerem.</li>\n  <li>Menaikkan Giro Wajib Minimum (GWM) perbankan di bank sentral.</li>\n  <li>Operasi Pasar Terbuka: Menjual Surat Berharga Negara (SBN) untuk menyedot likuiditas rupiah dari peredaran.</li>\n</ul>"
+          "title": "Definisi Konseptual: Hubungan Kuadrat Sisi Siku-Siku & Kesebangunan Geometris",
+          "html": "<p><b>Teorema Pythagoras:</b> Pada setiap segitiga siku-siku, kuadrat panjang sisi miring (hipotenusa) sama dengan jumlah kuadrat panjang kedua sisi siku-sikunya: \\(a^2 + b^2 = c^2\\).</p><p><b>Kesebangunan Dua Bangun:</b> Dua segitiga dikatakan sebangun jika sudut-sudut yang bersesuaian sama besar dan perbandingan panjang sisi-sisi yang bersesuaian selalu senilai sebanding.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Yang perlu diingat",
-          "html": "<ul><li>Sudut berpelurus jumlahnya 180°; pada garis sejajar, sudut dalam berseberangan sama besar.</li><li>Teorema Pythagoras: \\(c^2 = a^2 + b^2\\).</li><li>Volume kubus \\(s^3\\), volume balok \\(p \\times l \\times t\\).</li></ul>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Teorema Pythagoras & Rasio Kesebangunan",
+          "html": "<div class=\"fc-display\">\n\\[ c^2 = a^2 + b^2 \\iff c = \\sqrt{a^2 + b^2}, \\qquad \\frac{AB}{DE} = \\frac{BC}{EF} = \\frac{AC}{DF} = k \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">a, b</td><td>Panjang sisi-sisi siku-siku segitiga yang saling tegak lurus</td><td class=\"unit\">satuan panjang > 0</td></tr>\n    <tr><td class=\"sym\"><i>c</i></td><td>Panjang sisi miring hipotenusa segitiga siku-siku</td><td class=\"unit\">satuan panjang > 0</td></tr>\n    <tr><td class=\"sym\"><i>k</i></td><td>Faktor skala perbandingan kesebangunan antar sisi bersesuaian</td><td class=\"unit\">rasio positif</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Tripel Pythagoras bilangan bulat populer: (3, 4, 5), (5, 12, 13), (7, 24, 25), (8, 15, 17), dan seluruh kelipatannya.</small></p>"
         },
         {
           "type": "example",
@@ -218,9 +236,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Tanjakan Ekstrem Pegunungan dan Tarif Taksi Online",
+          "html": "<p>Pernahkah kamu melihat rambu lalu lintas bertuliskan 'Tanjakan Curam 12%' di jalur pegunungan? Angka persentase tersebut menunjukkan <b>Kemiringan Lereng (Gradien)</b>: setiap jalan maju mendatar 100 meter, ketinggian jalan menanjak naik 12 meter.</p><p>Prinsip garis lurus ini juga dipakai dalam tarif taksi online: tarif dasar buka pintu ditambah biaya tetap per kilometer perjalanan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Seekor Lalat di Langit-Langit Kamar Tidur René Descartes",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: René Descartes</span>\n  <span class=\"h-tag\">Tahun: 1637 M (La Haye, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Aljabar simbolik dan geometri gambar terpisah menjadi dua dunia matematika berbeda tanpa jembatan penghubung sistemik.</span>\n</div>\n<p>Konon saat berbaring lemah di ranjang kamarnya pada pagi hari, filsuf dan matematikawan Prancis <b>René Descartes</b> mengamati seekor lalat yang merayap di langit-langit kamar tidur. Descartes menyadari bahwa posisi lalat tersebut dapat dipastikan secara tunggal hanya dengan mengukur jaraknya ke dua dinding yang saling tegak lurus.</p><p>Kisah ini melahirkan <b>Sistem Koordinat Kartesius</b> dalam lampiran bukunya <i>La Géométrie</i> (1637). Untuk pertama kalinya dalam sejarah, sebuah garis lurus dapat diekspresikan sebagai persamaan aljabar sederhana: \\(y = mx + c\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Kemiringan Laju Perubahan Gradien & Persamaan Titik",
+          "html": "<p><b>Garis Lurus:</b> Himpunan titik-titik koordinat \\((x, y)\\) pada bidang datar yang memiliki nilai perbandingan perubahan ordinat terhadap absis (<b>Gradien / Kemiringan, \\(m\\)</b>) yang selalu tetap konstan.</p><p><b>Sifat Hubungan Dua Garis:</b></p><ul><li>Dua garis saling <b>sejajar</b> jika memiliki gradien sama besar: \\(m_1 = m_2\\).</li><li>Dua garis saling <b>tegak lurus</b> jika hasil kali kedua gradiennya bernilai \\(-1\\): \\(m_1 \\cdot m_2 = -1\\).</li></ul>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Sifat penting",
-          "html": "<div class=\"fc-display\">\n\\[a^m \\times a^n = a^{m+n} \\qquad a^m : a^n = a^{m-n} \\qquad (a^m)^n = a^{mn} \\qquad \\sqrt{ab} = \\sqrt a \\sqrt b\\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Persamaan Garis Lurus",
+          "html": "<div class=\"fc-display\">\n\\[ y = mx + c, \\qquad m = \\frac{y_2 - y_1}{x_2 - x_1}, \\qquad y - y_1 = m(x - x_1) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\"><i>m</i></td><td>Gradien kemiringan garis (tangen sudut arah terhadap sumbu X positif)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>c</i></td><td>Titik potong garis pada sumbu vertikal Y (saat x = 0)</td><td class=\"unit\">ordinat real</td></tr>\n    <tr><td class=\"sym\">\\((x_1, y_1)\\)</td><td>Koordinat titik acuan yang dilalui oleh garis lurus</td><td class=\"unit\">bidang Kartesius</td></tr>\n    <tr><td class=\"sym\">(x, y)</td><td>Koordinat sebarang titik linier sepanjang garis</td><td class=\"unit\">bidang Kartesius</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Persamaan garis yang melalui dua titik \\((x_1, y_1)\\) dan \\((x_2, y_2)\\) dirumuskan: \\(\\frac{y - y_1}{y_2 - y_1} = \\frac{x - x_1}{x_2 - x_1}\\).</small></p>"
         },
         {
           "type": "example",

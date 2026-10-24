@@ -14,14 +14,32 @@
           "html": "<p><b>Konsep Data Bivariat dan Hubungan Antarvariabel</b>: Membedakan variabel independen (prediktor x) dan variabel dependen (respons y); pasangan data terurut (xi, yi).</p>"
         },
         {
-          "type": "text",
-          "html": "<p>Data <b>kategorikal</b> berupa kelompok atau label (golongan darah, jenis kelamin, merek). Data <b>numerikal</b> berupa angka hasil mengukur atau mencacah (tinggi badan, banyak saudara) yang bermakna jika dioperasikan.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Prediksi Cuaca BMKG dan Analisis Tren Algoritma Media Sosial",
+          "html": "<p>Bagaimana Badan Meteorologi (BMKG) dapat memperkirakan potensi hujan lebat besok sore? Bagaimana pula platform e-commerce dan media sosial tahu persis produk dan video apa yang kamu sukai?</p><p>Di balik layar, jutaan data bivariat dikumpulkan, diolah, dan dianalisis polanya menggunakan <b>Statistika</b> untuk mengambil keputusan logis di tengah ketidakpastian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Tagihan Kematian London dan Kelahiran Statistika Modern",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: John Graunt & Karl Pearson</span>\n  <span class=\"h-tag\">Tahun: 1662 – 1900 M (London, Inggris)</span>\n  <span class=\"h-tag\">Krisis: Kota London dilanda epidemi wabah pes tanpa ada yang tahu berapa korban jiwa, pola mortalitas, dan faktor risiko penyebarannya.</span>\n</div>\n<p>Pada tahun 1662, seorang pedagang kain London bernama <b>John Graunt</b> menganalisis catatan mingguan pemakaman gereja (<i>Bills of Mortality</i>). Graunt menyusun tabel kehidupan pertama di dunia dan menemukan keteraturan rasio kelahiran laki-laki dan perempuan serta mortalitas berdasarkan usia.</p><p>Di awal abad ke-20, <b>Karl Pearson</b> memformalkan matematika statistika dengan merumuskan koefisien korelasi linear dan uji chi-kuadrat, mengubah statistika menjadi disiplin sains paling berpengaruh di era data modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Ukuran Pemusatan, Penyebaran & Korelasi Bivariat",
+          "html": "<p><b>Statistika:</b> Cabang ilmu matematika yang mempelajari metodologi pengumpulan, pengorganisasian, analisis, interpretasi, dan visualisasi data numerik.</p><p><b>Ukuran Pemusatan:</b> Nilai perwakilan pusat data seperti Rerata (<i>Mean</i>), Titik Tengah (<i>Median</i>), dan Nilai Terbanyak (<i>Modus</i>).</p><p><b>Ukuran Penyebaran:</b> Indikator seberapa jauh data menyebar dari pusatnya, dinyatakan melalui Simpangan Baku (\\(\\sigma\\)) dan Varians (\\(\\sigma^2\\)).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Univariat dan bivariat",
-          "html": "<ul><li><b>Data univariat</b>: satu variabel diamati pada setiap individu, misalnya tinggi badan saja.</li><li><b>Data bivariat</b>: dua variabel diamati pada setiap individu, misalnya tinggi <i>dan</i> berat badan setiap siswa. Tujuannya melihat hubungan kedua variabel.</li></ul><p>Jika satu variabel diduga memengaruhi yang lain, yang memengaruhi disebut <b>variabel independen</b> (bebas, biasanya sumbu x) dan yang dipengaruhi <b>variabel dependen</b> (terikat, sumbu y).</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Statistika & Korelasi Data",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad s = \\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n - 1}}, \\qquad r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x - \\bar{x})^2 \\sum (y - \\bar{y})^2}} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}\\)</td><td>Nilai rerata hitung sampel (Mean)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Simpangan baku sampel (Standar Deviasi)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total ukuran sampel data yang diobservasi</td><td class=\"unit\">bilangan bulat positif</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Koefisien korelasi Pearson bivariate (-1 <= r <= +1)</td><td class=\"unit\">tanpa satuan</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai korelasi \\(r = +1\\) menandakan hubungan linear positif sempurna, \\(r = -1\\) linear negatif sempurna, dan \\(r = 0\\) tidak ada hubungan linear.</small></p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Data <b>kategorikal</b> berupa kelompok atau label (golongan darah, jenis kelamin, merek). Data <b>numerikal</b> berupa angka hasil mengukur atau mencacah (tinggi badan, banyak saudara) yang bermakna jika dioperasikan.</p>"
         },
         {
           "type": "example",
@@ -59,6 +77,30 @@
           "html": "<table><tr><th>Pasangan variabel</th><th>Cara menyajikan</th></tr><tr><td>kategorikal – kategorikal</td><td>tabel silang, diagram batang bertumpuk</td></tr><tr><td>numerikal – numerikal</td><td>diagram pencar</td></tr><tr><td>kategorikal – numerikal</td><td>box plot berdampingan</td></tr></table>"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Prediksi Cuaca BMKG dan Analisis Tren Algoritma Media Sosial",
+          "html": "<p>Bagaimana Badan Meteorologi (BMKG) dapat memperkirakan potensi hujan lebat besok sore? Bagaimana pula platform e-commerce dan media sosial tahu persis produk dan video apa yang kamu sukai?</p><p>Di balik layar, jutaan data bivariat dikumpulkan, diolah, dan dianalisis polanya menggunakan <b>Statistika</b> untuk mengambil keputusan logis di tengah ketidakpastian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Tagihan Kematian London dan Kelahiran Statistika Modern",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: John Graunt & Karl Pearson</span>\n  <span class=\"h-tag\">Tahun: 1662 – 1900 M (London, Inggris)</span>\n  <span class=\"h-tag\">Krisis: Kota London dilanda epidemi wabah pes tanpa ada yang tahu berapa korban jiwa, pola mortalitas, dan faktor risiko penyebarannya.</span>\n</div>\n<p>Pada tahun 1662, seorang pedagang kain London bernama <b>John Graunt</b> menganalisis catatan mingguan pemakaman gereja (<i>Bills of Mortality</i>). Graunt menyusun tabel kehidupan pertama di dunia dan menemukan keteraturan rasio kelahiran laki-laki dan perempuan serta mortalitas berdasarkan usia.</p><p>Di awal abad ke-20, <b>Karl Pearson</b> memformalkan matematika statistika dengan merumuskan koefisien korelasi linear dan uji chi-kuadrat, mengubah statistika menjadi disiplin sains paling berpengaruh di era data modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Ukuran Pemusatan, Penyebaran & Korelasi Bivariat",
+          "html": "<p><b>Statistika:</b> Cabang ilmu matematika yang mempelajari metodologi pengumpulan, pengorganisasian, analisis, interpretasi, dan visualisasi data numerik.</p><p><b>Ukuran Pemusatan:</b> Nilai perwakilan pusat data seperti Rerata (<i>Mean</i>), Titik Tengah (<i>Median</i>), dan Nilai Terbanyak (<i>Modus</i>).</p><p><b>Ukuran Penyebaran:</b> Indikator seberapa jauh data menyebar dari pusatnya, dinyatakan melalui Simpangan Baku (\\(\\sigma\\)) dan Varians (\\(\\sigma^2\\)).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Statistika & Korelasi Data",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad s = \\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n - 1}}, \\qquad r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x - \\bar{x})^2 \\sum (y - \\bar{y})^2}} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}\\)</td><td>Nilai rerata hitung sampel (Mean)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Simpangan baku sampel (Standar Deviasi)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total ukuran sampel data yang diobservasi</td><td class=\"unit\">bilangan bulat positif</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Koefisien korelasi Pearson bivariate (-1 <= r <= +1)</td><td class=\"unit\">tanpa satuan</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai korelasi \\(r = +1\\) menandakan hubungan linear positif sempurna, \\(r = -1\\) linear negatif sempurna, dan \\(r = 0\\) tidak ada hubungan linear.</small></p>"
+        },
+        {
           "type": "text",
           "html": "<p>Untuk dua variabel numerikal, setiap individu digambar sebagai satu titik pada <b>diagram pencar</b>. Pola titik-titiknya memberi tiga informasi: <b>arah</b> (positif/negatif), <b>bentuk</b> (linear/kurva), dan <b>kekuatan</b> (rapat/menyebar).</p>"
         },
@@ -72,12 +114,6 @@
           "alt": "Enam diagram pencar: positif kuat, positif lemah, negatif kuat, negatif lemah, tidak ada korelasi, dan tidak linear",
           "width": 600,
           "caption": "Makin rapat titik-titik membentuk garis, makin kuat korelasinya."
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Bentuk matriks",
-          "html": "<p>Jika judul baris dan kolom dihilangkan, isi tabel dapat ditulis sebagai <b>matriks</b>, yaitu susunan bilangan dalam baris dan kolom:</p><div class=\"fc-display\">\n\\[\\begin{pmatrix} 12 & 88 \\\\ 28 & 72 \\end{pmatrix}\\]\n</div><p>Matriks ini berordo 2 × 2 (2 baris, 2 kolom). Bentuk ini memudahkan pengolahan data dalam jumlah besar, misalnya menjumlahkan data tiga kota sekaligus.</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "sim",
@@ -123,9 +159,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Prediksi Cuaca BMKG dan Analisis Tren Algoritma Media Sosial",
+          "html": "<p>Bagaimana Badan Meteorologi (BMKG) dapat memperkirakan potensi hujan lebat besok sore? Bagaimana pula platform e-commerce dan media sosial tahu persis produk dan video apa yang kamu sukai?</p><p>Di balik layar, jutaan data bivariat dikumpulkan, diolah, dan dianalisis polanya menggunakan <b>Statistika</b> untuk mengambil keputusan logis di tengah ketidakpastian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Tagihan Kematian London dan Kelahiran Statistika Modern",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: John Graunt & Karl Pearson</span>\n  <span class=\"h-tag\">Tahun: 1662 – 1900 M (London, Inggris)</span>\n  <span class=\"h-tag\">Krisis: Kota London dilanda epidemi wabah pes tanpa ada yang tahu berapa korban jiwa, pola mortalitas, dan faktor risiko penyebarannya.</span>\n</div>\n<p>Pada tahun 1662, seorang pedagang kain London bernama <b>John Graunt</b> menganalisis catatan mingguan pemakaman gereja (<i>Bills of Mortality</i>). Graunt menyusun tabel kehidupan pertama di dunia dan menemukan keteraturan rasio kelahiran laki-laki dan perempuan serta mortalitas berdasarkan usia.</p><p>Di awal abad ke-20, <b>Karl Pearson</b> memformalkan matematika statistika dengan merumuskan koefisien korelasi linear dan uji chi-kuadrat, mengubah statistika menjadi disiplin sains paling berpengaruh di era data modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Ukuran Pemusatan, Penyebaran & Korelasi Bivariat",
+          "html": "<p><b>Statistika:</b> Cabang ilmu matematika yang mempelajari metodologi pengumpulan, pengorganisasian, analisis, interpretasi, dan visualisasi data numerik.</p><p><b>Ukuran Pemusatan:</b> Nilai perwakilan pusat data seperti Rerata (<i>Mean</i>), Titik Tengah (<i>Median</i>), dan Nilai Terbanyak (<i>Modus</i>).</p><p><b>Ukuran Penyebaran:</b> Indikator seberapa jauh data menyebar dari pusatnya, dinyatakan melalui Simpangan Baku (\\(\\sigma\\)) dan Varians (\\(\\sigma^2\\)).</p>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Dua jenis frekuensi relatif",
-          "html": "<ul><li><b>Frekuensi relatif (total)</b> = frekuensi sel ÷ total keseluruhan.</li><li><b>Frekuensi relatif bersyarat</b> = frekuensi sel ÷ jumlah baris (atau kolom) tempat sel itu berada. Contoh: dari yang divaksin, 12/100 = 12% terserang.</li></ul><p>Jika distribusi bersyarat antarbaris <b>berbeda jauh</b>, ada <b>asosiasi</b> antara kedua variabel. Jika hampir sama, tidak ada asosiasi.</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Statistika & Korelasi Data",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad s = \\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n - 1}}, \\qquad r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x - \\bar{x})^2 \\sum (y - \\bar{y})^2}} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}\\)</td><td>Nilai rerata hitung sampel (Mean)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Simpangan baku sampel (Standar Deviasi)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total ukuran sampel data yang diobservasi</td><td class=\"unit\">bilangan bulat positif</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Koefisien korelasi Pearson bivariate (-1 <= r <= +1)</td><td class=\"unit\">tanpa satuan</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai korelasi \\(r = +1\\) menandakan hubungan linear positif sempurna, \\(r = -1\\) linear negatif sempurna, dan \\(r = 0\\) tidak ada hubungan linear.</small></p>"
         },
         {
           "type": "example",
@@ -164,15 +218,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Prediksi Cuaca BMKG dan Analisis Tren Algoritma Media Sosial",
+          "html": "<p>Bagaimana Badan Meteorologi (BMKG) dapat memperkirakan potensi hujan lebat besok sore? Bagaimana pula platform e-commerce dan media sosial tahu persis produk dan video apa yang kamu sukai?</p><p>Di balik layar, jutaan data bivariat dikumpulkan, diolah, dan dianalisis polanya menggunakan <b>Statistika</b> untuk mengambil keputusan logis di tengah ketidakpastian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Tagihan Kematian London dan Kelahiran Statistika Modern",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: John Graunt & Karl Pearson</span>\n  <span class=\"h-tag\">Tahun: 1662 – 1900 M (London, Inggris)</span>\n  <span class=\"h-tag\">Krisis: Kota London dilanda epidemi wabah pes tanpa ada yang tahu berapa korban jiwa, pola mortalitas, dan faktor risiko penyebarannya.</span>\n</div>\n<p>Pada tahun 1662, seorang pedagang kain London bernama <b>John Graunt</b> menganalisis catatan mingguan pemakaman gereja (<i>Bills of Mortality</i>). Graunt menyusun tabel kehidupan pertama di dunia dan menemukan keteraturan rasio kelahiran laki-laki dan perempuan serta mortalitas berdasarkan usia.</p><p>Di awal abad ke-20, <b>Karl Pearson</b> memformalkan matematika statistika dengan merumuskan koefisien korelasi linear dan uji chi-kuadrat, mengubah statistika menjadi disiplin sains paling berpengaruh di era data modern.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Koefisien Korelasi Pearson (r): Kekuatan Hubungan Linier",
-          "html": "<p><b>Konsep Kunci:</b> Koefisien Korelasi Pearson (r): Kekuatan Hubungan Linier adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Ukuran Pemusatan, Penyebaran & Korelasi Bivariat",
+          "html": "<p><b>Statistika:</b> Cabang ilmu matematika yang mempelajari metodologi pengumpulan, pengorganisasian, analisis, interpretasi, dan visualisasi data numerik.</p><p><b>Ukuran Pemusatan:</b> Nilai perwakilan pusat data seperti Rerata (<i>Mean</i>), Titik Tengah (<i>Median</i>), dan Nilai Terbanyak (<i>Modus</i>).</p><p><b>Ukuran Penyebaran:</b> Indikator seberapa jauh data menyebar dari pusatnya, dinyatakan melalui Simpangan Baku (\\(\\sigma\\)) dan Varians (\\(\\sigma^2\\)).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Koefisien korelasi r",
-          "html": "<p>Kekuatan hubungan linear diukur dengan koefisien korelasi r (Karl Pearson), −1 ≤ r ≤ 1.</p><ul><li>r mendekati 1: korelasi positif kuat; mendekati −1: negatif kuat.</li><li>r mendekati 0: tidak ada hubungan <i>linear</i> (mungkin tetap ada hubungan kurva).</li></ul>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Statistika & Korelasi Data",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad s = \\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n - 1}}, \\qquad r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x - \\bar{x})^2 \\sum (y - \\bar{y})^2}} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}\\)</td><td>Nilai rerata hitung sampel (Mean)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Simpangan baku sampel (Standar Deviasi)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total ukuran sampel data yang diobservasi</td><td class=\"unit\">bilangan bulat positif</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Koefisien korelasi Pearson bivariate (-1 <= r <= +1)</td><td class=\"unit\">tanpa satuan</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai korelasi \\(r = +1\\) menandakan hubungan linear positif sempurna, \\(r = -1\\) linear negatif sempurna, dan \\(r = 0\\) tidak ada hubungan linear.</small></p>"
         },
         {
           "type": "callout",
@@ -218,15 +284,27 @@
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Garis best-fit (regresi linear)",
-          "html": "<p>Garis lurus \\(\\hat{y} = a + bx\\) yang paling mewakili data disebut garis <b>best-fit</b>. Garis ini tidak harus melalui titik data, tetapi selalu melalui titik rata-rata \\((\\bar{x}, \\bar{y})\\).</p><p><b>Residu</b> = y − ŷ, jarak tegak titik ke garis. Garis best-fit membuat jumlah kuadrat residu paling kecil (metode kuadrat terkecil).</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Prediksi Cuaca BMKG dan Analisis Tren Algoritma Media Sosial",
+          "html": "<p>Bagaimana Badan Meteorologi (BMKG) dapat memperkirakan potensi hujan lebat besok sore? Bagaimana pula platform e-commerce dan media sosial tahu persis produk dan video apa yang kamu sukai?</p><p>Di balik layar, jutaan data bivariat dikumpulkan, diolah, dan dianalisis polanya menggunakan <b>Statistika</b> untuk mengambil keputusan logis di tengah ketidakpastian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Tagihan Kematian London dan Kelahiran Statistika Modern",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: John Graunt & Karl Pearson</span>\n  <span class=\"h-tag\">Tahun: 1662 – 1900 M (London, Inggris)</span>\n  <span class=\"h-tag\">Krisis: Kota London dilanda epidemi wabah pes tanpa ada yang tahu berapa korban jiwa, pola mortalitas, dan faktor risiko penyebarannya.</span>\n</div>\n<p>Pada tahun 1662, seorang pedagang kain London bernama <b>John Graunt</b> menganalisis catatan mingguan pemakaman gereja (<i>Bills of Mortality</i>). Graunt menyusun tabel kehidupan pertama di dunia dan menemukan keteraturan rasio kelahiran laki-laki dan perempuan serta mortalitas berdasarkan usia.</p><p>Di awal abad ke-20, <b>Karl Pearson</b> memformalkan matematika statistika dengan merumuskan koefisien korelasi linear dan uji chi-kuadrat, mengubah statistika menjadi disiplin sains paling berpengaruh di era data modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Ukuran Pemusatan, Penyebaran & Korelasi Bivariat",
+          "html": "<p><b>Statistika:</b> Cabang ilmu matematika yang mempelajari metodologi pengumpulan, pengorganisasian, analisis, interpretasi, dan visualisasi data numerik.</p><p><b>Ukuran Pemusatan:</b> Nilai perwakilan pusat data seperti Rerata (<i>Mean</i>), Titik Tengah (<i>Median</i>), dan Nilai Terbanyak (<i>Modus</i>).</p><p><b>Ukuran Penyebaran:</b> Indikator seberapa jauh data menyebar dari pusatnya, dinyatakan melalui Simpangan Baku (\\(\\sigma\\)) dan Varians (\\(\\sigma^2\\)).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Pengayaan: rumus kuadrat terkecil",
-          "html": "<div class=\"fc-display\">\n\\[b = \\frac{n\\sum xy - \\sum x \\sum y}{n\\sum x^2 - (\\sum x)^2}, \\qquad a = \\bar{y} - b\\bar{x}\\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(D\\)</td><td>Diskriminan Kuadrat (b^2 - 4ac)</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x_p\\)</td><td>Absis Titik Puncak / Sumbu Simetri</td><td class=\"unit\">\\(\\text{koordinat real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(y_p\\)</td><td>Nilai Optimum / Ekstrem Fungsi Kuadrat</td><td class=\"unit\">\\(\\text{koordinat real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Statistika & Korelasi Data",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad s = \\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n - 1}}, \\qquad r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x - \\bar{x})^2 \\sum (y - \\bar{y})^2}} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}\\)</td><td>Nilai rerata hitung sampel (Mean)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Simpangan baku sampel (Standar Deviasi)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total ukuran sampel data yang diobservasi</td><td class=\"unit\">bilangan bulat positif</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Koefisien korelasi Pearson bivariate (-1 <= r <= +1)</td><td class=\"unit\">tanpa satuan</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai korelasi \\(r = +1\\) menandakan hubungan linear positif sempurna, \\(r = -1\\) linear negatif sempurna, dan \\(r = 0\\) tidak ada hubungan linear.</small></p>"
         },
         {
           "type": "sim",
@@ -273,6 +351,30 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Prediksi Cuaca BMKG dan Analisis Tren Algoritma Media Sosial",
+          "html": "<p>Bagaimana Badan Meteorologi (BMKG) dapat memperkirakan potensi hujan lebat besok sore? Bagaimana pula platform e-commerce dan media sosial tahu persis produk dan video apa yang kamu sukai?</p><p>Di balik layar, jutaan data bivariat dikumpulkan, diolah, dan dianalisis polanya menggunakan <b>Statistika</b> untuk mengambil keputusan logis di tengah ketidakpastian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Tagihan Kematian London dan Kelahiran Statistika Modern",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: John Graunt & Karl Pearson</span>\n  <span class=\"h-tag\">Tahun: 1662 – 1900 M (London, Inggris)</span>\n  <span class=\"h-tag\">Krisis: Kota London dilanda epidemi wabah pes tanpa ada yang tahu berapa korban jiwa, pola mortalitas, dan faktor risiko penyebarannya.</span>\n</div>\n<p>Pada tahun 1662, seorang pedagang kain London bernama <b>John Graunt</b> menganalisis catatan mingguan pemakaman gereja (<i>Bills of Mortality</i>). Graunt menyusun tabel kehidupan pertama di dunia dan menemukan keteraturan rasio kelahiran laki-laki dan perempuan serta mortalitas berdasarkan usia.</p><p>Di awal abad ke-20, <b>Karl Pearson</b> memformalkan matematika statistika dengan merumuskan koefisien korelasi linear dan uji chi-kuadrat, mengubah statistika menjadi disiplin sains paling berpengaruh di era data modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Ukuran Pemusatan, Penyebaran & Korelasi Bivariat",
+          "html": "<p><b>Statistika:</b> Cabang ilmu matematika yang mempelajari metodologi pengumpulan, pengorganisasian, analisis, interpretasi, dan visualisasi data numerik.</p><p><b>Ukuran Pemusatan:</b> Nilai perwakilan pusat data seperti Rerata (<i>Mean</i>), Titik Tengah (<i>Median</i>), dan Nilai Terbanyak (<i>Modus</i>).</p><p><b>Ukuran Penyebaran:</b> Indikator seberapa jauh data menyebar dari pusatnya, dinyatakan melalui Simpangan Baku (\\(\\sigma\\)) dan Varians (\\(\\sigma^2\\)).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Statistika & Korelasi Data",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad s = \\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n - 1}}, \\qquad r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x - \\bar{x})^2 \\sum (y - \\bar{y})^2}} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}\\)</td><td>Nilai rerata hitung sampel (Mean)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Simpangan baku sampel (Standar Deviasi)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total ukuran sampel data yang diobservasi</td><td class=\"unit\">bilangan bulat positif</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Koefisien korelasi Pearson bivariate (-1 <= r <= +1)</td><td class=\"unit\">tanpa satuan</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai korelasi \\(r = +1\\) menandakan hubungan linear positif sempurna, \\(r = -1\\) linear negatif sempurna, dan \\(r = 0\\) tidak ada hubungan linear.</small></p>"
+        },
+        {
+          "type": "callout",
           "variant": "awas",
           "title": "Asosiasi bukan sebab-akibat",
           "html": "<p>Asosiasi hanya menunjukkan kecenderungan. Untuk menyimpulkan sebab-akibat diperlukan desain penelitian khusus, misalnya eksperimen dengan pembagian kelompok secara acak dan placebo seperti uji obat di atas.</p>"
@@ -316,6 +418,30 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Prediksi Cuaca BMKG dan Analisis Tren Algoritma Media Sosial",
+          "html": "<p>Bagaimana Badan Meteorologi (BMKG) dapat memperkirakan potensi hujan lebat besok sore? Bagaimana pula platform e-commerce dan media sosial tahu persis produk dan video apa yang kamu sukai?</p><p>Di balik layar, jutaan data bivariat dikumpulkan, diolah, dan dianalisis polanya menggunakan <b>Statistika</b> untuk mengambil keputusan logis di tengah ketidakpastian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Tagihan Kematian London dan Kelahiran Statistika Modern",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: John Graunt & Karl Pearson</span>\n  <span class=\"h-tag\">Tahun: 1662 – 1900 M (London, Inggris)</span>\n  <span class=\"h-tag\">Krisis: Kota London dilanda epidemi wabah pes tanpa ada yang tahu berapa korban jiwa, pola mortalitas, dan faktor risiko penyebarannya.</span>\n</div>\n<p>Pada tahun 1662, seorang pedagang kain London bernama <b>John Graunt</b> menganalisis catatan mingguan pemakaman gereja (<i>Bills of Mortality</i>). Graunt menyusun tabel kehidupan pertama di dunia dan menemukan keteraturan rasio kelahiran laki-laki dan perempuan serta mortalitas berdasarkan usia.</p><p>Di awal abad ke-20, <b>Karl Pearson</b> memformalkan matematika statistika dengan merumuskan koefisien korelasi linear dan uji chi-kuadrat, mengubah statistika menjadi disiplin sains paling berpengaruh di era data modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Ukuran Pemusatan, Penyebaran & Korelasi Bivariat",
+          "html": "<p><b>Statistika:</b> Cabang ilmu matematika yang mempelajari metodologi pengumpulan, pengorganisasian, analisis, interpretasi, dan visualisasi data numerik.</p><p><b>Ukuran Pemusatan:</b> Nilai perwakilan pusat data seperti Rerata (<i>Mean</i>), Titik Tengah (<i>Median</i>), dan Nilai Terbanyak (<i>Modus</i>).</p><p><b>Ukuran Penyebaran:</b> Indikator seberapa jauh data menyebar dari pusatnya, dinyatakan melalui Simpangan Baku (\\(\\sigma\\)) dan Varians (\\(\\sigma^2\\)).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Statistika & Korelasi Data",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad s = \\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n - 1}}, \\qquad r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x - \\bar{x})^2 \\sum (y - \\bar{y})^2}} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}\\)</td><td>Nilai rerata hitung sampel (Mean)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Simpangan baku sampel (Standar Deviasi)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total ukuran sampel data yang diobservasi</td><td class=\"unit\">bilangan bulat positif</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Koefisien korelasi Pearson bivariate (-1 <= r <= +1)</td><td class=\"unit\">tanpa satuan</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai korelasi \\(r = +1\\) menandakan hubungan linear positif sempurna, \\(r = -1\\) linear negatif sempurna, dan \\(r = 0\\) tidak ada hubungan linear.</small></p>"
+        },
+        {
+          "type": "callout",
           "variant": "info",
           "title": "Konsep Esensial",
           "html": "<p>Interpretasi persentase variasi variabel y yang dapat dijelaskan oleh variasi variabel x dalam model regresi.</p>"
@@ -352,6 +478,30 @@
       "kind": "latihan",
       "duration": "10 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Prediksi Cuaca BMKG dan Analisis Tren Algoritma Media Sosial",
+          "html": "<p>Bagaimana Badan Meteorologi (BMKG) dapat memperkirakan potensi hujan lebat besok sore? Bagaimana pula platform e-commerce dan media sosial tahu persis produk dan video apa yang kamu sukai?</p><p>Di balik layar, jutaan data bivariat dikumpulkan, diolah, dan dianalisis polanya menggunakan <b>Statistika</b> untuk mengambil keputusan logis di tengah ketidakpastian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Tagihan Kematian London dan Kelahiran Statistika Modern",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: John Graunt & Karl Pearson</span>\n  <span class=\"h-tag\">Tahun: 1662 – 1900 M (London, Inggris)</span>\n  <span class=\"h-tag\">Krisis: Kota London dilanda epidemi wabah pes tanpa ada yang tahu berapa korban jiwa, pola mortalitas, dan faktor risiko penyebarannya.</span>\n</div>\n<p>Pada tahun 1662, seorang pedagang kain London bernama <b>John Graunt</b> menganalisis catatan mingguan pemakaman gereja (<i>Bills of Mortality</i>). Graunt menyusun tabel kehidupan pertama di dunia dan menemukan keteraturan rasio kelahiran laki-laki dan perempuan serta mortalitas berdasarkan usia.</p><p>Di awal abad ke-20, <b>Karl Pearson</b> memformalkan matematika statistika dengan merumuskan koefisien korelasi linear dan uji chi-kuadrat, mengubah statistika menjadi disiplin sains paling berpengaruh di era data modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Ukuran Pemusatan, Penyebaran & Korelasi Bivariat",
+          "html": "<p><b>Statistika:</b> Cabang ilmu matematika yang mempelajari metodologi pengumpulan, pengorganisasian, analisis, interpretasi, dan visualisasi data numerik.</p><p><b>Ukuran Pemusatan:</b> Nilai perwakilan pusat data seperti Rerata (<i>Mean</i>), Titik Tengah (<i>Median</i>), dan Nilai Terbanyak (<i>Modus</i>).</p><p><b>Ukuran Penyebaran:</b> Indikator seberapa jauh data menyebar dari pusatnya, dinyatakan melalui Simpangan Baku (\\(\\sigma\\)) dan Varians (\\(\\sigma^2\\)).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Statistika & Korelasi Data",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x} = \\frac{\\sum_{i=1}^n x_i}{n}, \\qquad s = \\sqrt{\\frac{\\sum_{i=1}^n (x_i - \\bar{x})^2}{n - 1}}, \\qquad r = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sqrt{\\sum (x - \\bar{x})^2 \\sum (y - \\bar{y})^2}} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}\\)</td><td>Nilai rerata hitung sampel (Mean)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Simpangan baku sampel (Standar Deviasi)</td><td class=\"unit\">satuan data</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total ukuran sampel data yang diobservasi</td><td class=\"unit\">bilangan bulat positif</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Koefisien korelasi Pearson bivariate (-1 <= r <= +1)</td><td class=\"unit\">tanpa satuan</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai korelasi \\(r = +1\\) menandakan hubungan linear positif sempurna, \\(r = -1\\) linear negatif sempurna, dan \\(r = 0\\) tidak ada hubungan linear.</small></p>"
+        },
         {
           "type": "callout",
           "variant": "tips",
