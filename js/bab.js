@@ -4,14 +4,22 @@
 const BAB = P.get('bab') || '';
 const BASE = 'materi/' + enc(BAB) + '/';
 // alamat relatif di bab.json dihitung dari folder bab
-const asset = src => /^(https?:)?\/\//.test(src) || src.startsWith('/') ? src : BASE + enc(src);
+const asset = src => {
+  const value = String(src || '');
+  if(/^https?:\/\//i.test(value)) return value;
+  if(value.startsWith('/')) return value;
+  return BASE + enc(value);
+};
 
-Promise.all([
-  loadKatalog().catch(() => ({bab: []})),
-  fetch(BASE + 'bab.json', {cache: 'no-cache'}).then(r => { if(!r.ok) throw new Error(r.status); return r.json(); }),
-]).then(([kat, bab]) => {
-  const meta = (kat.bab || []).find(b => b.id === BAB) || {};
-  render(Object.assign({kelas: meta.kelas, mapel: meta.mapel, no: meta.no, kuis: meta.kuis || []}, bab));
+loadKatalog().then(kat => {
+  const daftar = Array.isArray(kat.bab) ? kat.bab : [];
+  // Hanya izinkan ID bab yang terdaftar di katalog; jangan jadikan query URL
+  // sebagai path file bebas.
+  const meta = daftar.find(item => item && item.id === BAB);
+  if(!meta) throw new Error('ID bab tidak terdaftar');
+  return fetch('materi/' + enc(meta.id) + '/bab.json', {cache: 'no-cache'})
+    .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(bab => render(Object.assign({kelas: meta.kelas, mapel: meta.mapel, no: meta.no, kuis: meta.kuis || []}, bab)));
 }).catch(() => {
   $('side').classList.add('hidden');
   showError($('lesson'), 'Bab ini tidak ditemukan atau <code>bab.json</code> rusak.');
@@ -23,7 +31,8 @@ document.addEventListener('click', e => {
 });
 
 function render(b){
-  const lessons = b.lessons || [];
+  const lessons = Array.isArray(b.lessons) ? b.lessons : [];
+  b.kuis = Array.isArray(b.kuis) ? b.kuis.filter(k => k && typeof k.path === 'string') : [];
   const idx = Math.max(0, lessons.findIndex(l => l.id === P.get('p')));
   const L = lessons[idx];
   document.body.dataset.mapel = b.mapel || '';
@@ -96,20 +105,21 @@ function render(b){
 function block(bl, b){
   switch(bl.type){
     case 'h': case 'heading': return mk(bl.level === 3 ? 'h3' : 'h2', '', bl.text);
-    case 'text': { const d = mk('div', 'prose'); d.innerHTML = bl.html; fixLinks(d); return d; }
+    case 'text': { const d = mk('div', 'prose'); setSafeHTML(d, bl.html); fixLinks(d); return d; }
     case 'image': {
       const f = mk('figure', 'img'), im = mk('img');
       im.src = asset(bl.src); im.alt = bl.alt || ''; im.loading = 'lazy';
       if(bl.width) im.style.width = typeof bl.width === 'number' ? bl.width + 'px' : bl.width;
       f.appendChild(im);
-      if(bl.caption){ const c = mk('figcaption'); c.innerHTML = bl.caption; f.appendChild(c); }
+      if(bl.caption){ const c = mk('figcaption'); setSafeHTML(c, bl.caption); f.appendChild(c); }
       return f;
     }
     case 'callout': {
       const v = {rumus: ['sigma', 'Rumus'], tips: ['bulb', 'Tips'], awas: ['alert', 'Hati-hati'], info: ['info', 'Ingat']}[bl.variant] || ['info', 'Ingat'];
       const d = mk('div', 'callout prose ' + (bl.variant || 'info'));
-      d.innerHTML = `<div class="ct">${ic(v[0], 'width:16px;height:16px')}<span></span></div>${bl.html}`;
+      d.innerHTML = `<div class="ct">${ic(v[0], 'width:16px;height:16px')}<span></span></div>`;
       d.querySelector('.ct span').textContent = bl.title || v[1];
+      const body = mk('div', 'prose'); setSafeHTML(body, bl.html); d.appendChild(body);
       return d;
     }
     case 'video': return video(bl);
@@ -126,19 +136,22 @@ function block(bl, b){
 function video(bl){
   const wrap = mk('div');
   const v = mk('div', 'video'), btn = mk('button');
-  btn.style.backgroundImage = `url(https://i.ytimg.com/vi/${bl.youtube}/hqdefault.jpg)`;
+  const videoId = /^[A-Za-z0-9_-]{11}$/.test(String(bl.youtube || '')) ? bl.youtube : '';
+  if(!videoId) return mk('p', 'muted', 'ID video YouTube tidak valid.');
+  btn.style.backgroundImage = `url(https://i.ytimg.com/vi/${videoId}/hqdefault.jpg)`;
   btn.setAttribute('aria-label', 'Putar video: ' + (bl.title || ''));
   btn.innerHTML = `<span class="play"><svg class="i"><use href="#i-playfill"/></svg></span><span class="vt"><span></span><small></small></span>`;
   btn.querySelector('.vt span').textContent = bl.title || '';
   btn.querySelector('.vt small').textContent = bl.channel ? 'YouTube · ' + bl.channel : 'YouTube';
   btn.onclick = () => {
     const f = mk('iframe');
-    f.src = `https://www.youtube-nocookie.com/embed/${bl.youtube}?autoplay=1&rel=0${bl.start ? '&start=' + bl.start : ''}`;
+    const start = Number.isFinite(Number(bl.start)) && Number(bl.start) >= 0 ? Math.floor(Number(bl.start)) : 0;
+    f.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0${start ? '&start=' + start : ''}`;
     f.title = bl.title || 'Video'; f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen = true;
     btn.replaceWith(f);
   };
   v.appendChild(btn); wrap.appendChild(v);
-  if(bl.note){ const n = mk('p', 'vnote'); n.innerHTML = bl.note; wrap.appendChild(n); wrap.lastChild.style.marginTop = '8px'; }
+  if(bl.note){ const n = mk('p', 'vnote'); setSafeHTML(n, bl.note); wrap.appendChild(n); wrap.lastChild.style.marginTop = '8px'; }
   return wrap;
 }
 
@@ -149,37 +162,43 @@ function sim(bl){
   const f = mk('iframe', 'simframe');
   f.src = asset(bl.src) + '?theme=' + document.documentElement.dataset.theme;
   f.title = bl.title || 'Simulasi'; f.loading = 'lazy';
-  f.style.height = (bl.height || 480) + 'px';
+  const requestedHeight = Number(bl.height);
+  const height = Number.isFinite(requestedHeight) ? Math.max(240, Math.min(2000, Math.round(requestedHeight))) : 480;
+  f.style.height = height + 'px';
   c.appendChild(f);
   c.querySelector('button').onclick = () => (f.requestFullscreen || f.webkitRequestFullscreen || (() => {})).call(f);
-  if(bl.caption){ const p = mk('div', 'cap'); p.innerHTML = bl.caption; c.appendChild(p); }
+  if(bl.caption){ const p = mk('div', 'cap'); setSafeHTML(p, bl.caption); c.appendChild(p); }
   return c;
 }
 // simulasi boleh meminta tinggi sendiri: parent.postMessage({simHeight: 600}, '*')
 addEventListener('message', e => {
-  if(!e.data || !e.data.simHeight) return;
-  document.querySelectorAll('iframe.simframe').forEach(f => { if(f.contentWindow === e.source) f.style.height = e.data.simHeight + 'px'; });
+  if(e.origin !== location.origin || !e.data || !Number.isFinite(e.data.simHeight)) return;
+  const height = Math.max(240, Math.min(2000, Math.round(e.data.simHeight)));
+  document.querySelectorAll('iframe.simframe').forEach(f => {
+    if(f.contentWindow === e.source && new URL(f.src, location.href).origin === location.origin) f.style.height = height + 'px';
+  });
 });
 
 function check(bl){
   const c = mk('section', 'card check');
-  c.innerHTML = `<div class="ct">${ic('check', 'width:16px;height:16px')}${bl.title || 'Cek pemahaman'}</div><div class="qq prose"></div><div class="opts"></div>`;
-  c.querySelector('.qq').innerHTML = bl.question;
+  c.innerHTML = `<div class="ct">${ic('check', 'width:16px;height:16px')}<span></span></div><div class="qq prose"></div><div class="opts"></div>`;
+  c.querySelector('.ct span').textContent = bl.title || 'Cek pemahaman';
+  setSafeHTML(c.querySelector('.qq'), bl.question);
   const opts = c.querySelector('.opts');
   let done = false, fb = null;
   Object.entries(bl.options).forEach(([k, v]) => {
     const o = mk('button', 'opt'); o.innerHTML = `<span class="k"></span><span></span>`;
-    o.firstChild.textContent = k; o.lastChild.innerHTML = v;
+    o.firstChild.textContent = k; setSafeHTML(o.lastChild, v);
     o.onclick = () => {
       if(done) return;
       if(fb) fb.remove();
       fb = mk('div', 'fb prose');
       if(k === bl.answer){
         done = true; o.classList.add('right');
-        fb.classList.add('ok'); fb.innerHTML = '<b>Benar!</b> ' + (bl.explanation || '');
+        fb.classList.add('ok'); fb.innerHTML = '<b>Benar!</b> '; const explanation = mk('span'); setSafeHTML(explanation, bl.explanation || ''); fb.appendChild(explanation);
       } else {
         o.classList.add('wrong');
-        fb.classList.add('no'); fb.innerHTML = '<b>Belum tepat.</b> ' + (bl.hint || 'Coba pilih jawaban lain.');
+        fb.classList.add('no'); fb.innerHTML = '<b>Belum tepat.</b> '; const hint = mk('span'); setSafeHTML(hint, bl.hint || 'Coba pilih jawaban lain.'); fb.appendChild(hint);
       }
       c.appendChild(fb); renderMath(fb);
     };
@@ -194,14 +213,14 @@ function example(bl){
   c.innerHTML = `<div class="ct"></div><div class="qq prose"></div><ol class="steps"></ol><div class="ans prose hidden"></div>
     <button class="btn sm" style="margin-top:12px">${ic('bulb', 'width:16px;height:16px')}<span>Tampilkan langkah 1</span></button>`;
   c.querySelector('.ct').textContent = bl.title || 'Contoh soal';
-  c.querySelector('.qq').innerHTML = bl.question;
+  setSafeHTML(c.querySelector('.qq'), bl.question);
   const ol = c.querySelector('.steps'), ans = c.querySelector('.ans'), btn = c.querySelector('button');
   const steps = bl.steps || [];
   let n = 0;
-  if(bl.answer) ans.innerHTML = 'Jawaban: ' + bl.answer;
+  if(bl.answer){ ans.textContent = 'Jawaban: '; const answer = mk('span'); setSafeHTML(answer, bl.answer); ans.appendChild(answer); }
   const next = () => {
     if(n < steps.length){
-      const li = mk('li'), d = mk('div', 'prose'); d.innerHTML = steps[n]; li.appendChild(d); ol.appendChild(li); renderMath(li); n++;
+      const li = mk('li'), d = mk('div', 'prose'); setSafeHTML(d, steps[n]); li.appendChild(d); ol.appendChild(li); renderMath(li); n++;
     }
     if(n >= steps.length){ if(bl.answer){ ans.classList.remove('hidden'); renderMath(ans); } btn.remove(); }
     else btn.querySelector('span').textContent = 'Langkah ' + (n + 1);

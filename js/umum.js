@@ -6,6 +6,35 @@ const mk = (tag, cls, text) => { const e = document.createElement(tag); if(cls) 
 const nat = (a, b) => a.localeCompare(b, 'id', {numeric: true});
 const enc = path => path.split('/').map(encodeURIComponent).join('/');
 
+// Sanitasi HTML konten sebelum dimasukkan ke DOM. Konten tetap mendukung
+// markup materi, tetapi elemen aktif dan atribut/event berbahaya dibuang.
+function sanitizeHTML(html){
+  const template = document.createElement('template');
+  template.innerHTML = String(html ?? '');
+  template.content.querySelectorAll('script,style,iframe,object,embed,form,input,button,link,meta,base,svg,math').forEach(el => el.remove());
+  template.content.querySelectorAll('*').forEach(el => {
+    [...el.attributes].forEach(attr => {
+      const name = attr.name.toLowerCase();
+      const value = attr.value.trim();
+      if(name.startsWith('on') || name === 'srcdoc' || name === 'style'){
+        el.removeAttribute(attr.name);
+        return;
+      }
+      if(name === 'href' || name === 'src' || name === 'xlink:href' || name === 'action' || name === 'formaction'){
+        const isImage = name === 'src' && el.tagName === 'IMG';
+        const hasScheme = /^[a-z][a-z0-9+.-]*:/i.test(value);
+        const safeScheme = isImage ? /^https?:/i.test(value) : /^(https?:|mailto:|#)/i.test(value);
+        const allowed = !/^\/\//.test(value) && !/[\u0000-\u001f]/.test(value) && (!hasScheme || safeScheme);
+        if(!allowed){
+          el.removeAttribute(attr.name);
+        }
+      }
+    });
+  });
+  return template.innerHTML;
+}
+const setSafeHTML = (el, html) => { el.innerHTML = sanitizeHTML(html); };
+
 /* ---------- tautan ---------- */
 const KUIS_DIR = 'Kuis/';                       // lokasi aplikasi Nalarin Kuis
 const quizUrl = path => KUIS_DIR + 'index.html?kuis=' + enc(path);
@@ -21,7 +50,7 @@ const THEME_COLOR = {light: '#2447F9', dark: '#060a1c'};
 function setTheme(t){
   document.documentElement.dataset.theme = t;
   const m = document.querySelector('meta[name="theme-color"]'); if(m) m.content = THEME_COLOR[t];
-  document.querySelectorAll('iframe.simframe').forEach(f => { try{ f.contentWindow.postMessage({theme: t}, '*'); }catch(e){} });
+  document.querySelectorAll('iframe.simframe').forEach(f => { try{ if(f.contentWindow && new URL(f.src, location.href).origin === location.origin) f.contentWindow.postMessage({theme: t}, location.origin); }catch(e){} });
 }
 (function(){
   let t = null; try{ t = localStorage.getItem('nalarin:theme'); }catch(e){}
