@@ -121,4 +121,13 @@ python3 -m http.server 8000
 
 Lalu buka `http://localhost:8000`. Untuk GitHub Pages, unggah seluruh folder termasuk `Kuis/`.
 
+Sebelum publikasi, jalankan pemeriksaan struktur dan audit placeholder materi:
+
+```bash
+python3 scripts/validate_content.py
+python3 scripts/audit_content.py
+```
+
+`audit_content.py` menandai contoh soal, cek pemahaman, dan langkah pembahasan yang tampak generik. Hasilnya adalah daftar kandidat untuk ditinjau manual, bukan penilaian otomatis bahwa materi salah.
+
 Rumus (KaTeX), huruf (Google Fonts), dan video (YouTube) dimuat dari internet. Tanpa koneksi, rumus tampil sebagai teks mentah.
