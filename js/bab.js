@@ -231,6 +231,14 @@ function fixLinks(el){
 
 // rumus: \( ... \) untuk dalam baris, \[ ... \] atau $$ ... $$ untuk baris sendiri
 function renderMath(el){
+  // Pastikan sel tabel satuan / simbol yang memuat ekspresi LaTeX otomatis terbungkus \( ... \)
+  el.querySelectorAll('.var-table td, td.unit, td.sym').forEach(td => {
+    const txt = td.innerHTML.trim();
+    if((txt.includes('\\') || txt.includes('^') || txt.includes('_')) && !txt.includes('\\(') && !txt.includes('\\[') && !txt.includes('$')){
+      td.innerHTML = '\\(' + txt + '\\)';
+    }
+  });
+
   const go = () => window.renderMathInElement && renderMathInElement(el, {
     delimiters: [
       {left: '\\[', right: '\\]', display: true},
