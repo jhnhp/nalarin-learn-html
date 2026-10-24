@@ -139,10 +139,6 @@
       "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Penjumlahan dan Pengurangan Vektor Grafis: Poligon dan Jajaran Genjang</b>: Metode segitiga, jajaran genjang (aturan kosinus resultan R = √(A^2+B^2+2AB cos θ)), metode poligon banyak vektor, dan vektor negatif sebagai pembalik arah.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
-        {
           "type": "h",
           "text": "Vektor yang sama dan vektor negatif"
         },
@@ -226,10 +222,6 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Dekomposisi Vektor pada Sumbu Kartesius dan Vektor Satuan (i, j, k)</b>: Menguraikan vektor menjadi Ax = A cos θ dan Ay = A sin θ; menyatakan vektor dalam basis vektor satuan v = Axi + Ayj + Azk.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
-        {
-          "type": "text",
           "html": "<p>Sebuah vektor miring selalu bisa dipecah menjadi dua vektor yang saling tegak lurus: satu sejajar sumbu x dan satu sejajar sumbu y. Keduanya disebut <b>komponen vektor</b>. Proses ini disebut <b>menguraikan</b> vektor.</p>"
         },
         {
@@ -258,28 +250,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Dekomposisi Vektor pada Sumbu Kartesius dan Vektor Satuan (i, j, k)",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Dekomposisi Vektor pada Sumbu Kartesius dan Vektor Satuan (i, j, k)</b> berikut. Analisislah berdasarkan kaidah Menguraikan vektor menjadi Ax = A cos θ dan Ay = A sin θ; menyatakan vektor dalam basis vektor satuan v = Axi + Ayj + Azk..</p>",
+          "title": "Contoh Soal: Menentukan Resultan Dua Vektor Gaya Menggunakan Analisis Komponen",
+          "question": "<p>Dua buah gaya bekerja pada satu titik tangkap: \\(F_1 = 10\\) N membentuk sudut 37° terhadap sumbu-X positif, dan \\(F_2 = 10\\) N membentuk sudut 127° terhadap sumbu-X positif (sin 37° = 0,6; cos 37° = 0,8). Tentukan besar resultan kedua vektor gaya tersebut!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Dekomposisi Vektor pada Sumbu Kartesius dan Vektor Satuan (i, j, k) untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Uraikan F₁ ke sumbu kartesius:\n- F₁x = F₁ cos 37° = 10 × 0,8 = 8 N.\n- F₁y = F₁ sin 37° = 10 × 0,6 = 6 N.",
+            "Uraikan F₂ ke sumbu kartesius (127° = 90° + 37° di kuadran II):\n- F₂x = F₂ cos 127° = -F₂ sin 37° = -10 × 0,6 = -6 N.\n- F₂y = F₂ sin 127° = F₂ cos 37° = 10 × 0,8 = 8 N.",
+            "Hitung resultan pada masing-masing sumbu:\n- ΣFx = F₁x + F₂x = 8 + (-6) = 2 N.\n- ΣFy = F₁y + F₂y = 6 + 8 = 14 N.",
+            "Hitung besar resultan total: R = √((ΣFx)² + (ΣFy)²) = √(2² + 14²) = √(4 + 196) = √200 = 10√2 N ≈ 14,14 N."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Besar resultan kedua gaya adalah 10√2 N (sekitar 14,14 N)."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Dekomposisi Vektor pada Sumbu Kartesius dan Vektor Satuan (i, j, k), manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Jika dua buah vektor satuan \\(\\vec{A} = 2\\hat{i} + 3\\hat{j}\\) dan \\(\\vec{B} = 4\\hat{i} - 2\\hat{j}\\), maka nilai perkalian titik (dot product) \\(\\vec{A} \\cdot \\vec{B}\\) adalah ....",
           "options": {
-            "A": "Prinsip Dekomposisi Vektor pada Sumbu Kartesius dan Vektor Satuan (i, j, k) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "2",
+            "B": "14",
+            "C": "-2",
+            "D": "8"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menguraikan vektor menjadi Ax = A cos θ dan Ay = A sin θ; menyatakan vektor dalam basis vektor satuan v = Axi + Ayj + Azk.."
+          "hint": "A · B = (Ax · Bx) + (Ay · By).",
+          "explanation": "A · B = (2 × 4) + (3 × (-2)) = 8 - 6 = 2."
         }
       ]
     },
@@ -289,10 +282,6 @@
       "kind": "simulasi",
       "duration": "8 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Penjumlahan Vektor Analitis Menggunakan Tabel Komponen</b>: Menjumlahkan ΣRx = ΣAx dan ΣRy = ΣAy, menghitung besar resultan R = √(Rx^2 + Ry^2), dan menentukan arah sudut tan θ = Ry / Rx.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
         {
           "type": "h",
           "text": "Menghitung besar resultan: rumus kosinus"
@@ -403,8 +392,22 @@
       "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Aplikasi Vektor: Kesetimbangan Titik Partikel (ΣF = 0) dan Sistem Tali</b>: Teorema Lami untuk tiga gaya seimbang F1/sin α = F2/sin β = F3/sin γ; menghitung tegangan tali pada lampu gantung.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Sintesis Haber-Bosch Menyelamatkan 4 Miliar Manusia dari Kelaparan",
+          "html": "<p>Hampir separuh dari atom nitrogen dalam molekul protein tubuhmu saat ini berasal dari sebuah pabrik kimia industri bernama Proses Haber-Bosch. Tanpa reaksi kimia pembuatan pupuk urea ini, lahan pertanian bumi hanya sanggup memberi makan 4 miliar manusia, dan separuh populasi dunia akan mati kelaparan!</p>\n<p>Namun reaksi pembuatan amonia (\\(\text{N}_2 + 3\text{H}_2 \rightleftharpoons 2\text{NH}_3\\)) bersifat bolak-balik (reversibel). Jika amonia terbentuk, ia segera terurai kembali menjadi gas nitrogen dan hidrogen. Bagaimana para ahli kimia memaksa reaksi alam bergeser menghasilkan produk secara maksimal?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Asas Perlawanan Sistem Henri Le Chatelier",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Henri Le Chatelier & Jacobus Henricus van 't Hoff</span>\n  <span class=\"h-tag\">Tahun: 1884 – 1901 M</span>\n  <span class=\"h-tag\">Krisis: Reaksi industri amonia untuk pupuk dunia macet karena reaksi kimia berbalik kembali ke reaktan</span>\n</div>\n<p>Pada akhir abad ke-19 di Paris, insinyur kimia <b>Henri Louis Le Chatelier</b> meneliti bahaya ledakan gas metana di tambang batu bara. Le Chatelier mengamati bahwa sistem kimia dinamis yang setimbang memiliki perilaku mirip dengan sifat psikologis makhluk hidup: ia selalu melawan gangguan luar.</p>\n<p>Pada tahun 1884, ia merumuskan <b>Asas Le Chatelier</b>: <i>'Jika suatu sistem yang berada dalam kesetimbangan diberikan aksi gangguan dari luar (tekanan, suhu, atau konsentrasi), sistem tersebut akan bergeser sedemikian rupa untuk meniadakan atau mengurangi pengaruh gangguan tersebut.'</i> Prinsip inilah yang dimanfaatkan Fritz Haber dan Carl Bosch untuk merekayasa suhu tinggi dan tekanan raksasa 200 atmosfer guna memproduksi jutaan ton pupuk amonia.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Kesetimbangan Dinamis & Pergeseran Le Chatelier",
+          "html": "<p><b>Kesetimbangan Kimia Dinamis:</b> Kondisi di mana laju reaksi maju (ke kanan) sama persis dengan laju reaksi balik (ke kiri), sehingga konsentrasi seluruh zat reaktan dan produk konstan seiring waktu.</p>\n<p><b>Aturan Pergeseran:</b></p>\n<ul>\n  <li><b>Konsentrasi:</b> Ditambah \\(\to\\) bergeser menjauhi zat tersebut; Dikurangi \\(\to\\) bergeser menuju zat tersebut.</li>\n  <li><b>Suhu:</b> Dinaikkan \\(\to\\) bergeser ke arah reaksi <b>Endoterm</b> (\\(\\Delta H > 0\\)); Diturunkan \\(\to\\) ke arah <b>Eksoterm</b> (\\(\\Delta H < 0\\)).</li>\n  <li><b>Tekanan / Volume:</b> Tekanan diperbesar (volume diperkecil) \\(\to\\) bergeser ke arah jumlah <b>koefisien gas yang lebih kecil</b>.</li>\n</ul>"
         },
         {
           "type": "h",
@@ -460,10 +463,6 @@
       "kind": "simulasi",
       "duration": "8 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Perkalian Skalar / Perkalian Titik (Dot Product): A · B = |A||B| cos θ</b>: Sifat komutatif; perkalian komponen A·B = AxBx + AyBy + AzBz; menghitung sudut apit dua vektor cos θ = (A·B)/(|A||B|); aplikasi usaha fisis W = F · s.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
         {
           "type": "h",
           "text": "Perkalian vektor dengan skalar"
@@ -560,10 +559,6 @@
       "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Perkalian Vektor / Perkalian Silang (Cross Product): A x B</b>: Besar |A x B| = |A||B| sin θ; kaidah tangan kanan menentukan arah vektor hasil tegak lurus bidang; sifat anti-komutatif A x B = -(B x A); determinan matriks 3x3; aplikasi torsi τ = r x F.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
-        {
           "type": "h",
           "text": "Perkalian silang (cross product)"
         },
@@ -590,28 +585,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Perkalian Vektor / Perkalian Silang (Cross Product): A x B",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Perkalian Vektor / Perkalian Silang (Cross Product): A x B</b> berikut. Analisislah berdasarkan kaidah Besar |A x B| = |A||B| sin θ; kaidah tangan kanan menentukan arah vektor hasil tegak lurus bidang; sifat anti-komutatif A x B = -(B x A); determinan matriks 3x3; aplikasi torsi τ = r x F..</p>",
+          "title": "Contoh Soal: Perkalian Vektor / Perkalian Silang (Cross Product): A x B",
+          "question": "<p>Dua buah gaya bekerja pada satu titik tangkap: \\(F_1 = 10\\) N membentuk sudut 37° terhadap sumbu-X positif, dan \\(F_2 = 10\\) N membentuk sudut 127° terhadap sumbu-X positif (sin 37° = 0,6; cos 37° = 0,8). Tentukan besar resultan kedua vektor gaya tersebut!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Perkalian Vektor / Perkalian Silang (Cross Product): A x B untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Uraikan F₁ ke sumbu kartesius:\n- F₁x = F₁ cos 37° = 10 × 0,8 = 8 N.\n- F₁y = F₁ sin 37° = 10 × 0,6 = 6 N.",
+            "Uraikan F₂ ke sumbu kartesius (127° = 90° + 37° di kuadran II):\n- F₂x = F₂ cos 127° = -F₂ sin 37° = -10 × 0,6 = -6 N.\n- F₂y = F₂ sin 127° = F₂ cos 37° = 10 × 0,8 = 8 N.",
+            "Hitung resultan pada masing-masing sumbu:\n- ΣFx = F₁x + F₂x = 8 + (-6) = 2 N.\n- ΣFy = F₁y + F₂y = 6 + 8 = 14 N.",
+            "Hitung besar resultan total: R = √((ΣFx)² + (ΣFy)²) = √(2² + 14²) = √(4 + 196) = √200 = 10√2 N ≈ 14,14 N."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Besar resultan kedua gaya adalah 10√2 N (sekitar 14,14 N)."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Perkalian Vektor / Perkalian Silang (Cross Product): A x B, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman: Perkalian Vektor / Perkalian Silang (Cross Product): A x B",
+          "question": "Jika dua buah vektor satuan \\(\\vec{A} = 2\\hat{i} + 3\\hat{j}\\) dan \\(\\vec{B} = 4\\hat{i} - 2\\hat{j}\\), maka nilai perkalian titik (dot product) \\(\\vec{A} \\cdot \\vec{B}\\) adalah ....",
           "options": {
-            "A": "Prinsip Perkalian Vektor / Perkalian Silang (Cross Product): A x B berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "2",
+            "B": "14",
+            "C": "-2",
+            "D": "8"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Besar |A x B| = |A||B| sin θ; kaidah tangan kanan menentukan arah vektor hasil tegak lurus bidang; sifat anti-komutatif A x B = -(B x A); determinan matriks 3x3; aplikasi torsi τ = r x F.."
+          "hint": "A · B = (Ax · Bx) + (Ay · By).",
+          "explanation": "A · B = (2 × 4) + (3 × (-2)) = 8 - 6 = 2."
         }
       ]
     },
@@ -621,10 +617,6 @@
       "kind": "latihan",
       "duration": "10 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Vektor</b>: Rangkuman visual operasi vektor dan latihan soal bertingkat.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
-        },
         {
           "type": "h",
           "text": "Tonton penjelasannya"
@@ -641,28 +633,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Vektor",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Vektor</b> berikut. Analisislah berdasarkan kaidah Rangkuman visual operasi vektor dan latihan soal bertingkat..</p>",
+          "title": "Contoh Soal Evaluasi: 01 Vektor",
+          "question": "<p>Dalam evaluasi pemahaman materi <b>01 Vektor</b>, tinjau kembali integrasi konsep pada subbab <i>Rangkuman Bab & Uji Kemahiran Vektor</i>. Analisis langkah sistematis penyelesaian permasalahan kuantitatif/konseptual berikut ini:</p><p>Dua buah gaya bekerja pada satu titik tangkap: \\(F_1 = 10\\) N membentuk sudut 37° terhadap sumbu-X positif, dan \\(F_2 = 10\\) N membentuk sudut 127° terhadap sumbu-X positif (sin 37° = 0,6; cos 37° = 0,8). Tentukan besar resultan kedua vektor gaya tersebut!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Vektor untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Uraikan F₁ ke sumbu kartesius:\n- F₁x = F₁ cos 37° = 10 × 0,8 = 8 N.\n- F₁y = F₁ sin 37° = 10 × 0,6 = 6 N.",
+            "Uraikan F₂ ke sumbu kartesius (127° = 90° + 37° di kuadran II):\n- F₂x = F₂ cos 127° = -F₂ sin 37° = -10 × 0,6 = -6 N.\n- F₂y = F₂ sin 127° = F₂ cos 37° = 10 × 0,8 = 8 N.",
+            "Hitung resultan pada masing-masing sumbu:\n- ΣFx = F₁x + F₂x = 8 + (-6) = 2 N.\n- ΣFy = F₁y + F₂y = 6 + 8 = 14 N.",
+            "Hitung besar resultan total: R = √((ΣFx)² + (ΣFy)²) = √(2² + 14²) = √(4 + 196) = √200 = 10√2 N ≈ 14,14 N."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Besar resultan kedua gaya adalah 10√2 N (sekitar 14,14 N)."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Vektor, manakah pernyataan berikut yang paling tepat?",
+          "title": "Uji Kemahiran: 01 Vektor",
+          "question": "Pada tinjauan menyeluruh materi 01 Vektor (Rangkuman Bab & Uji Kemahiran Vektor), prinsip saintifik/matematis yang menjadi landasan utama adalah ....",
           "options": {
-            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Vektor berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "2",
+            "B": "14",
+            "C": "-2",
+            "D": "8"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman visual operasi vektor dan latihan soal bertingkat.."
+          "hint": "Fokus pada konsep kunci yang dibahas dalam bab 01 Vektor.",
+          "explanation": "A · B = (2 × 4) + (3 × (-2)) = 8 - 6 = 2."
         },
         {
           "type": "text",

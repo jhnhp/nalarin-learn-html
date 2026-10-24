@@ -35,17 +35,17 @@
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Pola Bilangan, Konsep Barisan, dan Notasi Suku ke-n (Un), manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Diketahui barisan aritmetika dengan suku ke-3 adalah 11 dan suku ke-8 adalah 26. Nilai suku ke-20 dari barisan tersebut adalah ....",
           "options": {
-            "A": "Prinsip Pola Bilangan, Konsep Barisan, dan Notasi Suku ke-n (Un) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "62",
+            "B": "59",
+            "C": "65",
+            "D": "56"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Membedakan barisan bilangan berurutan dan deret (penjumlahan barisan); aturan formulasi rekursif vs eksplisit.."
+          "hint": "Gunakan Un = a + (n - 1)b. Beda b = (U8 - U3) / (8 - 3) = (26 - 11) / 5 = 3.",
+          "explanation": "b = 15 / 5 = 3. Dari U3 = a + 2(3) = 11 ⇒ a = 5. Maka U20 = 5 + 19(3) = 5 + 57 = 62."
         }
       ]
     },
@@ -55,10 +55,6 @@
       "kind": "simulasi",
       "duration": "8 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Barisan Aritmetika: Beda Konstan (b) dan Rumus Suku ke-n</b>: Beda b = Un - Un-1; penurunan rumus eksplisit Un = a + (n - 1)b; representasi linier titik koordinat (n, Un).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
         {
           "type": "callout",
           "variant": "rumus",
@@ -78,17 +74,17 @@
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Barisan Aritmetika: Beda Konstan (b) dan Rumus Suku ke-n, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Diketahui barisan aritmetika dengan suku ke-3 adalah 11 dan suku ke-8 adalah 26. Nilai suku ke-20 dari barisan tersebut adalah ....",
           "options": {
-            "A": "Prinsip Barisan Aritmetika: Beda Konstan (b) dan Rumus Suku ke-n berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "62",
+            "B": "59",
+            "C": "65",
+            "D": "56"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Beda b = Un - Un-1; penurunan rumus eksplisit Un = a + (n - 1)b; representasi linier titik koordinat (n, Un).."
+          "hint": "Gunakan Un = a + (n - 1)b. Beda b = (U8 - U3) / (8 - 3) = (26 - 11) / 5 = 3.",
+          "explanation": "b = 15 / 5 = 3. Dari U3 = a + 2(3) = 11 ⇒ a = 5. Maka U20 = 5 + 19(3) = 5 + 57 = 62."
         }
       ]
     },
@@ -98,10 +94,6 @@
       "kind": "simulasi",
       "duration": "8 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Suku Tengah dan Sisipan Bilangan pada Barisan Aritmetika</b>: Rumus suku tengah Ut = 1/2 (U1 + Un) untuk n ganjil; menyisipkan k buah bilangan antar dua suku menghasilkan beda baru b' = b / (k + 1).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
         {
           "type": "text",
           "html": "<p>Kursi pada sebuah gedung pertunjukan disusun 20 kursi di baris pertama, 24 di baris kedua, 28 di baris ketiga, dan seterusnya. Banyak kursi setiap baris bertambah dengan jumlah yang sama. Susunan bilangan seperti ini disebut <b>barisan aritmetika</b>.</p>"
@@ -114,28 +106,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Suku Tengah dan Sisipan Bilangan pada Barisan Aritmetika",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Suku Tengah dan Sisipan Bilangan pada Barisan Aritmetika</b> berikut. Analisislah berdasarkan kaidah Rumus suku tengah Ut = 1/2 (U1 + Un) untuk n ganjil; menyisipkan k buah bilangan antar dua suku menghasilkan beda baru b' = b / (k + 1)..</p>",
+          "title": "Contoh Soal: Menghitung Suku dan Jumlah Deret Geometri Tak Hingga",
+          "question": "<p>Sebuah bola dijatuhkan vertikal dari ketinggian 12 meter ke lantai datar. Setiap kali memantul, bola memantul kembali setinggi \\(\\frac{3}{4}\\) dari tinggi sebelumnya. Hitunglah total panjang lintasan yang ditempuh bola hingga berhenti total!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Suku Tengah dan Sisipan Bilangan pada Barisan Aritmetika untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Pahami pola gerak bola: Lintasan turun pertama setinggi h₀ = 12 m. Lintasan berikutnya terdiri dari gerak naik dan turun berulang dengan rasio r = 3/4.",
+            "Rumus cepat total panjang lintasan pantulan bola: S = h₀ × \\frac{1 + r}{1 - r}.",
+            "Substitusikan nilai h₀ = 12 m dan r = 3/4:\nS = 12 \\times \\frac{1 + 3/4}{1 - 3/4} = 12 \\times \\frac{7/4}{1/4}.",
+            "Sederhanakan pecahan: S = 12 × 7 = 84 meter."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Panjang total lintasan bola hingga berhenti adalah 84 meter."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Suku Tengah dan Sisipan Bilangan pada Barisan Aritmetika, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Diketahui barisan aritmetika dengan suku ke-3 adalah 11 dan suku ke-8 adalah 26. Nilai suku ke-20 dari barisan tersebut adalah ....",
           "options": {
-            "A": "Prinsip Suku Tengah dan Sisipan Bilangan pada Barisan Aritmetika berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "62",
+            "B": "59",
+            "C": "65",
+            "D": "56"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rumus suku tengah Ut = 1/2 (U1 + Un) untuk n ganjil; menyisipkan k buah bilangan antar dua suku menghasilkan beda baru b' = b / (k + 1).."
+          "hint": "Gunakan Un = a + (n - 1)b. Beda b = (U8 - U3) / (8 - 3) = (26 - 11) / 5 = 3.",
+          "explanation": "b = 15 / 5 = 3. Dari U3 = a + 2(3) = 11 ⇒ a = 5. Maka U20 = 5 + 19(3) = 5 + 57 = 62."
         }
       ]
     },
@@ -147,11 +140,13 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Deret Aritmetika: Penjumlahan n Suku Pertama (Sn)</b>: Pembuktian visual metode Carl Friedrich Gauss; rumus Sn = n/2 (a + Un) = n/2 (2a + (n-1)b); hubungan Un = Sn - Sn-1.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+          "html": "<p><b>Deret</b> adalah jumlah suku-suku suatu barisan. Konon, Carl Friedrich Gauss kecil menjumlahkan 1 + 2 + … + 100 dalam sekejap: ia memasangkan 1 + 100, 2 + 99, …, sehingga ada 50 pasang yang masing-masing berjumlah 101. Hasilnya 5.050.</p>"
         },
         {
-          "type": "text",
-          "html": "<p><b>Deret</b> adalah jumlah suku-suku suatu barisan. Konon, Carl Friedrich Gauss kecil menjumlahkan 1 + 2 + … + 100 dalam sekejap: ia memasangkan 1 + 100, 2 + 99, …, sehingga ada 50 pasang yang masing-masing berjumlah 101. Hasilnya 5.050.</p>"
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Deret Aritmetika: Penjumlahan n Suku Pertama (Sn)",
+          "html": "<p><b>Konsep Kunci:</b> Deret Aritmetika: Penjumlahan n Suku Pertama (Sn) adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
         },
         {
           "type": "callout",
@@ -161,14 +156,15 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Deret Aritmetika: Penjumlahan n Suku Pertama (Sn)",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Deret Aritmetika: Penjumlahan n Suku Pertama (Sn)</b> berikut. Analisislah berdasarkan kaidah Pembuktian visual metode Carl Friedrich Gauss; rumus Sn = n/2 (a + Un) = n/2 (2a + (n-1)b); hubungan Un = Sn - Sn-1..</p>",
+          "title": "Contoh Soal: Deret Aritmetika: Penjumlahan n Suku Pertama (Sn)",
+          "question": "<p>Sebuah bola dijatuhkan vertikal dari ketinggian 12 meter ke lantai datar. Setiap kali memantul, bola memantul kembali setinggi \\(\\frac{3}{4}\\) dari tinggi sebelumnya. Hitunglah total panjang lintasan yang ditempuh bola hingga berhenti total!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Deret Aritmetika: Penjumlahan n Suku Pertama (Sn) untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Pahami pola gerak bola: Lintasan turun pertama setinggi h₀ = 12 m. Lintasan berikutnya terdiri dari gerak naik dan turun berulang dengan rasio r = 3/4.",
+            "Rumus cepat total panjang lintasan pantulan bola: S = h₀ × \\frac{1 + r}{1 - r}.",
+            "Substitusikan nilai h₀ = 12 m dan r = 3/4:\nS = 12 \\times \\frac{1 + 3/4}{1 - 3/4} = 12 \\times \\frac{7/4}{1/4}.",
+            "Sederhanakan pecahan: S = 12 × 7 = 84 meter."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Panjang total lintasan bola hingga berhenti adalah 84 meter."
         },
         {
           "type": "check",
@@ -192,10 +188,6 @@
       "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Barisan Geometri: Rasio Konstan (r) dan Rumus Suku ke-n</b>: Rasio r = Un / Un-1; penurunan rumus suku ke-n Un = a · r^(n-1); pertumbuhan eksponensial suku-suku barisan geometri.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
-        {
           "type": "callout",
           "variant": "rumus",
           "title": "Barisan geometri",
@@ -214,17 +206,17 @@
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Barisan Geometri: Rasio Konstan (r) dan Rumus Suku ke-n, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman: Barisan Geometri: Rasio Konstan (r) dan Rumus Suku ke-n",
+          "question": "Diketahui barisan aritmetika dengan suku ke-3 adalah 11 dan suku ke-8 adalah 26. Nilai suku ke-20 dari barisan tersebut adalah ....",
           "options": {
-            "A": "Prinsip Barisan Geometri: Rasio Konstan (r) dan Rumus Suku ke-n berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "62",
+            "B": "59",
+            "C": "65",
+            "D": "56"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rasio r = Un / Un-1; penurunan rumus suku ke-n Un = a · r^(n-1); pertumbuhan eksponensial suku-suku barisan geometri.."
+          "hint": "Gunakan Un = a + (n - 1)b. Beda b = (U8 - U3) / (8 - 3) = (26 - 11) / 5 = 3.",
+          "explanation": "b = 15 / 5 = 3. Dari U3 = a + 2(3) = 11 ⇒ a = 5. Maka U20 = 5 + 19(3) = 5 + 57 = 62."
         }
       ]
     },
@@ -235,10 +227,6 @@
       "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Suku Tengah dan Sisipan Bilangan pada Barisan Geometri</b>: Rumus suku tengah geometri Ut = √(U1 · Un); menyisipkan k buah bilangan menghasilkan rasio baru r' = ^(k+1)√r.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
-        {
           "type": "callout",
           "variant": "rumus",
           "title": "Kaidah & Rumus Kunci",
@@ -246,28 +234,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Suku Tengah dan Sisipan Bilangan pada Barisan Geometri",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Suku Tengah dan Sisipan Bilangan pada Barisan Geometri</b> berikut. Analisislah berdasarkan kaidah Rumus suku tengah geometri Ut = √(U1 · Un); menyisipkan k buah bilangan menghasilkan rasio baru r' = ^(k+1)√r..</p>",
+          "title": "Contoh Soal: Suku Tengah dan Sisipan Bilangan pada Barisan Geometri",
+          "question": "<p>Sebuah bola dijatuhkan vertikal dari ketinggian 12 meter ke lantai datar. Setiap kali memantul, bola memantul kembali setinggi \\(\\frac{3}{4}\\) dari tinggi sebelumnya. Hitunglah total panjang lintasan yang ditempuh bola hingga berhenti total!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Suku Tengah dan Sisipan Bilangan pada Barisan Geometri untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Pahami pola gerak bola: Lintasan turun pertama setinggi h₀ = 12 m. Lintasan berikutnya terdiri dari gerak naik dan turun berulang dengan rasio r = 3/4.",
+            "Rumus cepat total panjang lintasan pantulan bola: S = h₀ × \\frac{1 + r}{1 - r}.",
+            "Substitusikan nilai h₀ = 12 m dan r = 3/4:\nS = 12 \\times \\frac{1 + 3/4}{1 - 3/4} = 12 \\times \\frac{7/4}{1/4}.",
+            "Sederhanakan pecahan: S = 12 × 7 = 84 meter."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Panjang total lintasan bola hingga berhenti adalah 84 meter."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Suku Tengah dan Sisipan Bilangan pada Barisan Geometri, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman: Suku Tengah dan Sisipan Bilangan pada Barisan Geometri",
+          "question": "Diketahui barisan aritmetika dengan suku ke-3 adalah 11 dan suku ke-8 adalah 26. Nilai suku ke-20 dari barisan tersebut adalah ....",
           "options": {
-            "A": "Prinsip Suku Tengah dan Sisipan Bilangan pada Barisan Geometri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "62",
+            "B": "59",
+            "C": "65",
+            "D": "56"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rumus suku tengah geometri Ut = √(U1 · Un); menyisipkan k buah bilangan menghasilkan rasio baru r' = ^(k+1)√r.."
+          "hint": "Gunakan Un = a + (n - 1)b. Beda b = (U8 - U3) / (8 - 3) = (26 - 11) / 5 = 3.",
+          "explanation": "b = 15 / 5 = 3. Dari U3 = a + 2(3) = 11 ⇒ a = 5. Maka U20 = 5 + 19(3) = 5 + 57 = 62."
         }
       ]
     },
@@ -278,10 +267,6 @@
       "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1</b>: Pembuktian aljabar dengan mengalikan deret dengan r lalu mengurangkannya; rumus Sn = a(r^n - 1)/(r - 1) atau a(1 - r^n)/(1 - r).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
-        {
           "type": "callout",
           "variant": "rumus",
           "title": "Kaidah & Rumus Kunci",
@@ -289,28 +274,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1</b> berikut. Analisislah berdasarkan kaidah Pembuktian aljabar dengan mengalikan deret dengan r lalu mengurangkannya; rumus Sn = a(r^n - 1)/(r - 1) atau a(1 - r^n)/(1 - r)..</p>",
+          "title": "Contoh Soal: Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1",
+          "question": "<p>Sebuah bola dijatuhkan vertikal dari ketinggian 12 meter ke lantai datar. Setiap kali memantul, bola memantul kembali setinggi \\(\\frac{3}{4}\\) dari tinggi sebelumnya. Hitunglah total panjang lintasan yang ditempuh bola hingga berhenti total!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1 untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Pahami pola gerak bola: Lintasan turun pertama setinggi h₀ = 12 m. Lintasan berikutnya terdiri dari gerak naik dan turun berulang dengan rasio r = 3/4.",
+            "Rumus cepat total panjang lintasan pantulan bola: S = h₀ × \\frac{1 + r}{1 - r}.",
+            "Substitusikan nilai h₀ = 12 m dan r = 3/4:\nS = 12 \\times \\frac{1 + 3/4}{1 - 3/4} = 12 \\times \\frac{7/4}{1/4}.",
+            "Sederhanakan pecahan: S = 12 × 7 = 84 meter."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Panjang total lintasan bola hingga berhenti adalah 84 meter."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman: Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1",
+          "question": "Diketahui barisan aritmetika dengan suku ke-3 adalah 11 dan suku ke-8 adalah 26. Nilai suku ke-20 dari barisan tersebut adalah ....",
           "options": {
-            "A": "Prinsip Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1 berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "62",
+            "B": "59",
+            "C": "65",
+            "D": "56"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Pembuktian aljabar dengan mengalikan deret dengan r lalu mengurangkannya; rumus Sn = a(r^n - 1)/(r - 1) atau a(1 - r^n)/(1 - r).."
+          "hint": "Gunakan Un = a + (n - 1)b. Beda b = (U8 - U3) / (8 - 3) = (26 - 11) / 5 = 3.",
+          "explanation": "b = 15 / 5 = 3. Dari U3 = a + 2(3) = 11 ⇒ a = 5. Maka U20 = 5 + 19(3) = 5 + 57 = 62."
         }
       ]
     },
@@ -321,8 +307,10 @@
       "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Deret Geometri Tak Hingga: Konsep Konvergen vs Divergen</b>: Syarat konvergensi nilai mutlak rasio |r| < 1 (-1 < r < 1); rumus jumlah tak hingga S∞ = a / (1 - r); mengapa deret divergen bernilai tak hingga.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Deret Geometri Tak Hingga: Konsep Konvergen vs Divergen",
+          "html": "<p><b>Konsep Kunci:</b> Deret Geometri Tak Hingga: Konsep Konvergen vs Divergen adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
         },
         {
           "type": "callout",
@@ -366,10 +354,6 @@
       "kind": "simulasi",
       "duration": "8 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Aplikasi Geometri Tak Hingga: Menghitung Panjang Lintasan Bola Memantul</b>: Lintasan naik dan lintasan turun; rumus cepat panjang lintasan bola dijatuhkan dari ketinggian h dengan pantulan a/b: S = h · (b+a)/(b-a).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
         {
           "type": "text",
           "html": "<p>Sebuah bola dijatuhkan dari ketinggian 8 m dan setiap memantul tingginya tinggal ¾ tinggi sebelumnya: 8, 6, 4,5, …. Kali ini setiap suku diperoleh dengan <b>mengalikan</b> bilangan yang sama.</p>"
@@ -419,10 +403,6 @@
       "kind": "latihan",
       "duration": "10 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Aplikasi Masalah Nyata: Bunga Tunggal, Bunga Majemuk, dan Pertumbuhan</b>: Membedakan bunga tunggal (aritmetika) vs bunga majemuk (geometri); perhitungan saldo tabungan bank dan depresiasi nilai aset.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
-        },
         {
           "type": "text",
           "html": "<p>Barisan aritmetika dan geometri dipakai untuk menghitung bunga tabungan, pinjaman, pertumbuhan penduduk, dan penyusutan nilai barang.</p>"
@@ -476,10 +456,6 @@
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Barisan-Deret</b>: Tabel perbandingan barisan aritmetika vs geometri dan bank soal HOTS.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
-        },
-        {
           "type": "callout",
           "variant": "info",
           "title": "Konsep Esensial",
@@ -494,28 +470,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Barisan-Deret",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Barisan-Deret</b> berikut. Analisislah berdasarkan kaidah Tabel perbandingan barisan aritmetika vs geometri dan bank soal HOTS..</p>",
+          "title": "Contoh Soal Evaluasi: 02 Barisan dan Deret",
+          "question": "<p>Dalam evaluasi pemahaman materi <b>02 Barisan dan Deret</b>, tinjau kembali integrasi konsep pada subbab <i>Rangkuman Bab & Uji Kemahiran Barisan-Deret</i>. Analisis langkah sistematis penyelesaian permasalahan kuantitatif/konseptual berikut ini:</p><p>Sebuah bola dijatuhkan vertikal dari ketinggian 12 meter ke lantai datar. Setiap kali memantul, bola memantul kembali setinggi \\(\\frac{3}{4}\\) dari tinggi sebelumnya. Hitunglah total panjang lintasan yang ditempuh bola hingga berhenti total!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Barisan-Deret untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Pahami pola gerak bola: Lintasan turun pertama setinggi h₀ = 12 m. Lintasan berikutnya terdiri dari gerak naik dan turun berulang dengan rasio r = 3/4.",
+            "Rumus cepat total panjang lintasan pantulan bola: S = h₀ × \\frac{1 + r}{1 - r}.",
+            "Substitusikan nilai h₀ = 12 m dan r = 3/4:\nS = 12 \\times \\frac{1 + 3/4}{1 - 3/4} = 12 \\times \\frac{7/4}{1/4}.",
+            "Sederhanakan pecahan: S = 12 × 7 = 84 meter."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Panjang total lintasan bola hingga berhenti adalah 84 meter."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Barisan-Deret, manakah pernyataan berikut yang paling tepat?",
+          "title": "Uji Kemahiran: 02 Barisan dan Deret",
+          "question": "Pada tinjauan menyeluruh materi 02 Barisan dan Deret (Rangkuman Bab & Uji Kemahiran Barisan-Deret), prinsip saintifik/matematis yang menjadi landasan utama adalah ....",
           "options": {
-            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Barisan-Deret berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "62",
+            "B": "59",
+            "C": "65",
+            "D": "56"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tabel perbandingan barisan aritmetika vs geometri dan bank soal HOTS.."
+          "hint": "Fokus pada konsep kunci yang dibahas dalam bab 02 Barisan dan Deret.",
+          "explanation": "b = 15 / 5 = 3. Dari U3 = a + 2(3) = 11 ⇒ a = 5. Maka U20 = 5 + 19(3) = 5 + 57 = 62."
         },
         {
           "type": "text",

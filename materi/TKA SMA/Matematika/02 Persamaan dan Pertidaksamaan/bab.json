@@ -15,9 +15,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Campuran Bahan Kimia Obat Farmasi & Algoritma Tiket Pesawat",
+          "html": "<p>Sebuah industri farmasi ingin membuat kapsul obat dengan kandungan 300 mg parasetamol dan 50 mg kafein. Di gudang mereka hanya memiliki dua jenis serbuk campuran mentah dengan konsentrasi persentase berbeda. Berapa gram dari masing-masing serbuk yang harus ditimbang agar dosisnya presisi?</p>\n<p>Ketika kamu memesan tiket penerbangan transit multi-kota, sistem reservasi maskapai menyelesaikan puluhan persamaan linear variabel sekaligus dalam fraksi milidetik untuk menentukan kombinasi tarif termurah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Risalah Kuno Jiuzhang Suanshu dan Eliminasi Gauss",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Buku Sembilan Bab Tiongkok & Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 150 SM – 1809 M</span>\n  <span class=\"h-tag\">Krisis: Kesulitan menghitung harga komoditas saat melibatkan lebih dari tiga variabel barter</span>\n</div>\n<p>Metode sistematis pertama di dunia untuk menyelesaikan sistem persamaan linear tercatat dalam buku matematika kuno Tiongkok <i>Jiuzhang Suanshu</i> (Sembilan Bab tentang Seni Matematika, sekitar 150 SM). Mereka menggunakan batang-batang bambu hitung di atas papan susun yang merupakan bentuk paling purba dari matriks aljabar.</p>\n<p>Pada awal abad ke-19, 'Pangeran Matematika' <b>Carl Friedrich Gauss</b> membakukan algoritma ini saat menghitung orbit asteroid Ceres yang hilang di balik silau matahari. Algoritma ini kini dikenal sebagai <b>Eliminasi Gauss</b>—fondasi seluruh komputasi aljabar linear modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Sistem Persamaan Linear (SPL) & Jenis Solusi",
+          "html": "<p><b>SPL:</b> Kumpulan dua atau lebih persamaan linear yang melibatkan variabel yang sama dan harus dipenuhi secara simultan.</p>\n<p><b>Tiga Kemungkinan Solusi Geometris:</b></p>\n<ul>\n  <li><b>Satu Solusi Unik:</b> Garis-garis / bidang saling berpotongan di tepat satu titik (gradien berbeda).</li>\n  <li><b>Tidak Memiliki Solusi:</b> Garis-garis saling sejajar sempurna dan tidak pernah bertemu (kontradiktif, inkonsisten).</li>\n  <li><b>Tak Hingga Solusi:</b> Garis-garis saling berhimpit menjadi satu garis yang sama (persamaan berkelipatan sama).</li>\n</ul>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Bentuk Baku SPLTV dan Metode Matriks Determinan (Aturan Cramer)",
-          "html": "<div class=\"fc-display\">\n\\[ x = \\frac{D_x}{D}, \\quad y = \\frac{D_y}{D}, \\quad z = \\frac{D_z}{D} \\qquad \\Longleftrightarrow \\qquad D = \\det\\begin{pmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{pmatrix} \\ne 0 \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(D\\)</td><td>Determinan matriks koefisien utama</td><td class=\"unit\">\\(\\text{bilangan real } \\mathbb{R} \\setminus \\{0\\}\\)</td></tr>\n<tr><td class=\"sym\">\\(D_x, D_y, D_z\\)</td><td>Determinan saat kolom variabel x, y, atau z diganti kolom konstanta</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n<tr><td class=\"sym\">\\((x, y, z)\\)</td><td>Tripel solusi unik koordinat perpotongan ketiga bidang</td><td class=\"unit\">\\(\\mathbb{R}^3\\)</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Dalam ujian dengan batas waktu cepat, metode eliminasi bertahap dua persamaan sering kali lebih cepat dibanding aturan Cramer jika koefisien salah satu variabel sudah bernilai ±1.</small></p>"
+          "title": "Bentuk Umum SPLDV & Aturan Determinan Determinan",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{cases} a_1 x + b_1 y = c_1 \\\\ a_2 x + b_2 y = c_2 \\end{cases} \\quad \\Longrightarrow \\quad x = \\frac{D_x}{D}, \\quad y = \\frac{D_y}{D} \\quad (D \\ne 0) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel penyelesaian sistem</td><td class=\"unit\">\\(\\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(D\\)</td><td>Determinan utama matriks koefisien (a1 b2 - a2 b1)</td><td class=\"unit\">\\(\\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(D_x, D_y\\)</td><td>Determinan variabel pengganti konstanta c</td><td class=\"unit\">\\(\\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jika D != 0 sistem memiliki tepat 1 solusi; jika D = 0 dan Dx = 0 ada tak hingga solusi; jika D = 0 dan Dx != 0 tidak ada solusi.</small></p>"
         },
         {
           "type": "sim",
@@ -69,9 +87,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Desain Kubah Jembatan Lengkung & Titik Impas Bisnis",
+          "html": "<p>Ketika para insinyur merancang jembatan gantung berpelengkung kabel baja, bentuk lengkungan kabel tersebut mengikuti kurva kuadratik. Mereka harus memastikan apakah kabel tersebut akan memotong permukaan air sungai, hanya menyentuh tepat di satu titik permukaan, atau melayang aman di atas air.</p>\n<p>Dalam analisis bisnis, kurva laba rugi terhadap harga jual produk juga berbentuk parabola terbalik. Bagaimana seorang manajer mengetahui apakah perusahaannya bisa mencapai keuntungan tanpa harus menggambar grafik titik demi titik?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Brahmagupta, Al-Khawarizmi, dan Rahasia Diskriminan",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Brahmagupta & Al-Khawarizmi</span>\n  <span class=\"h-tag\">Tahun: 628 – 820 M</span>\n  <span class=\"h-tag\">Krisis: Kebuntuan ribuan tahun untuk menemukan akar persamaan kuadrat tanpa metode geometris manual</span>\n</div>\n<p>Bangsawan Babilonia kuno (2000 SM) telah mampu menyelesaikan persamaan kuadrat sederhana untuk menghitung luas tanah ladang, tetapi mereka tidak memiliki rumus umum aljabar. Pada tahun 628 M di India, matematikawan agung <b>Brahmagupta</b> menuliskan aturan eksplisit pertama untuk menyelesaikan persamaan kuadrat.</p>\n<p>Dua abad kemudian di Baghdad (820 M), <b>Al-Khawarizmi</b> menyempurnakannya dengan metode geometris <i>al-jabr</i> (melengkapi kuadrat sempurna). Nilai di bawah tanda akar (\\(b^2 - 4ac\\)) kemudian dinamai <b>Diskriminan (\\(D\\))</b> oleh matematikawan Inggris James Joseph Sylvester pada abad ke-19, karena nilai inilah yang 'mendiskriminasi' atau membedakan jenis akar real persamaan tanpa perlu menghitung akarnya!</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Persamaan Kuadrat & Sifat Tiga Wilayah Diskriminan",
+          "html": "<p><b>Bentuk Baku:</b> \\(a x^2 + b x + c = 0\\) dengan \\(a, b, c \\in \\mathbb{R}\\) dan \\(a \ne 0\\).</p>\n<p><b>Diskriminan (\\(D = b^2 - 4ac\\)):</b></p>\n<ul>\n  <li>Jika \\(D > 0\\): Memiliki <b>dua akar real yang berlainan</b> (\\(x_1 \ne x_2\\)). Grafiknya memotong sumbu-\\(x\\) di dua titik terpisah.</li>\n  <li>Jika \\(D = 0\\): Memiliki <b>dua akar real kembar / sama</b> (\\(x_1 = x_2 = -\frac{b}{2a}\\)). Grafiknya menyinggung sumbu-\\(x\\) tepat di satu titik.</li>\n  <li>Jika \\(D < 0\\): <b>Tidak memiliki akar real</b> (akarnya imajiner/kompleks). Grafiknya melayang di atas atau di bawah sumbu-\\(x\\) (definit positif atau negatif).</li>\n</ul>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Teorema Vieta (Jumlah dan Hasil Kali Akar) & Persamaan Kuadrat Baru",
-          "html": "<div class=\"fc-display\">\n\\[ x_1 + x_2 = -\\frac{b}{a} \\qquad \\Big| \\qquad x_1 \\cdot x_2 = \\frac{c}{a} \\qquad \\Longleftrightarrow \\qquad x^2 - (x_1 + x_2)x + (x_1 x_2) = 0 \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x_1, x_2\\)</td><td>Akar-akar penyelesaian persamaan kuadrat</td><td class=\"unit\">\\(\\text{bilangan real } \\mathbb{R}\\)</td></tr>\n<tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien suku x², suku x, dan konstanta</td><td class=\"unit\">\\(\\text{bilangan real, } a \\ne 0\\)</td></tr>\n<tr><td class=\"sym\">\\(x_1^2 + x_2^2\\)</td><td>Penjumlahan kuadrat: \\((x_1 + x_2)^2 - 2x_1 x_2\\)</td><td class=\"unit\">\\(\\text{identitas simetris}\\)</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Selisih akar kuadrat: |x₁ - x₂| = √D / |a|.</small></p>"
+          "title": "Rumus Kuadratik Al-Khawarizmi & Teorema Vieta",
+          "html": "<div class=\"fc-display\">\n\\[ x_{1,2} = \\frac{-b \\pm \\sqrt{D}}{2a}, \\qquad D = b^2 - 4ac, \\qquad x_1 + x_2 = -\\frac{b}{a}, \\qquad x_1 \\cdot x_2 = \\frac{c}{a} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien persamaan kuadrat</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R},\\ a \\ne 0\\)</td></tr>\n    <tr><td class=\"sym\">\\(D\\)</td><td>Diskriminan penentu jenis akar</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x_1, x_2\\)</td><td>Akar-akar penyelesaian persamaan</td><td class=\"unit\">\\(\\text{nilai variabel } x\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Selisih mutlak dua akar dapat dihitung kilat dengan formula: |x_1 - x_2| = sqrt(D) / |a|.</small></p>"
         },
         {
           "type": "sim",

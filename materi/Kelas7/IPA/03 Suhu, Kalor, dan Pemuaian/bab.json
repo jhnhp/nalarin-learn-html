@@ -66,10 +66,6 @@
       "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Empat Skala Suhu: Celcius, Reamur, Fahrenheit, dan Kelvin</b>: Titik tetap bawah dan atas, perbandingan skala 5:4:9:5, rumus konversi suhu antarskala, dan skala mutlak Kelvin.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
-        {
           "type": "callout",
           "variant": "rumus",
           "title": "Konversi skala",
@@ -83,28 +79,30 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Empat Skala Suhu: Celcius, Reamur, Fahrenheit, dan Kelvin",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Empat Skala Suhu: Celcius, Reamur, Fahrenheit, dan Kelvin</b> berikut. Analisislah berdasarkan kaidah Titik tetap bawah dan atas, perbandingan skala 5:4:9:5, rumus konversi suhu antarskala, dan skala mutlak Kelvin..</p>",
+          "title": "Contoh Soal: Menghitung Suhu Akhir Campuran Menggunakan Asas Black",
+          "question": "<p>Sebanyak 200 gram air bersuhu 80°C dicampurkan ke dalam bejana terisolasi yang berisi 100 gram air bersuhu 20°C (kalor jenis air c = 1 kal/g°C, kapasitas kalor bejana diabaikan). Berapakah suhu akhir termal campuran tersebut?</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Empat Skala Suhu: Celcius, Reamur, Fahrenheit, dan Kelvin untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Terapkan Asas Black: Kalor yang dilepas oleh zat bersuhu tinggi sama dengan kalor yang diserap oleh zat bersuhu rendah: Q_lepas = Q_terima.",
+            "Rumus kalor lepas (air panas m₁ = 200 g, T₁ = 80°C, suhu akhir Tc): Q_lepas = m₁ · c · (T₁ - Tc) = 200 × 1 × (80 - Tc).",
+            "Rumus kalor terima (air dingin m₂ = 100 g, T₂ = 20°C): Q_terima = m₂ · c · (Tc - T₂) = 100 × 1 × (Tc - 20).",
+            "Samakan persamaan: 200(80 - Tc) = 100(Tc - 20)  ⇒ 2(80 - Tc) = Tc - 20.",
+            "Selesaikan persamaan aljabar: 160 - 2Tc = Tc - 20  ⇒ 3Tc = 180  ⇒ Tc = 60°C."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Suhu akhir kesetimbangan termal campuran air adalah 60°C."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Empat Skala Suhu: Celcius, Reamur, Fahrenheit, dan Kelvin, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah mesin kalor Carnot beroperasi di antara reservoir suhu tinggi 600 K dan reservoir suhu rendah 450 K. Efisiensi termal maksimum dari mesin Carnot tersebut adalah ....",
           "options": {
-            "A": "Prinsip Empat Skala Suhu: Celcius, Reamur, Fahrenheit, dan Kelvin berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "25%",
+            "B": "75%",
+            "C": "33,3%",
+            "D": "50%"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Titik tetap bawah dan atas, perbandingan skala 5:4:9:5, rumus konversi suhu antarskala, dan skala mutlak Kelvin.."
+          "hint": "Efisiensi Carnot: η = (1 - T_rendah / T_tinggi) × 100%.",
+          "explanation": "η = (1 - 450 / 600) × 100% = (1 - 0,75) × 100% = 0,25 × 100% = 25%."
         }
       ]
     },
@@ -116,11 +114,13 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Kalor dan Perubahan Suhu Benda (Q = mcΔT)</b>: Konsep kapasitas kalor, kalor jenis berbagai zat, dan hubungan matematis kalor dengan massa dan kenaikan suhu.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+          "html": "<p>Benda yang dipanaskan umumnya <b>memuai</b> (ukurannya bertambah) karena partikelnya bergerak makin cepat dan jaraknya makin renggang. Pemuaian terjadi pada zat padat, cair, dan gas.</p>"
         },
         {
-          "type": "text",
-          "html": "<p>Benda yang dipanaskan umumnya <b>memuai</b> (ukurannya bertambah) karena partikelnya bergerak makin cepat dan jaraknya makin renggang. Pemuaian terjadi pada zat padat, cair, dan gas.</p>"
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Kalor dan Perubahan Suhu Benda (Q = mcΔT)",
+          "html": "<p><b>Konsep Kunci:</b> Kalor dan Perubahan Suhu Benda (Q = mcΔT) adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
         },
         {
           "type": "text",
@@ -134,14 +134,16 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Kalor dan Perubahan Suhu Benda (Q = mcΔT)",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Kalor dan Perubahan Suhu Benda (Q = mcΔT)</b> berikut. Analisislah berdasarkan kaidah Konsep kapasitas kalor, kalor jenis berbagai zat, dan hubungan matematis kalor dengan massa dan kenaikan suhu..</p>",
+          "title": "Contoh Soal: Kalor dan Perubahan Suhu Benda (Q = mcΔT)",
+          "question": "<p>Sebanyak 200 gram air bersuhu 80°C dicampurkan ke dalam bejana terisolasi yang berisi 100 gram air bersuhu 20°C (kalor jenis air c = 1 kal/g°C, kapasitas kalor bejana diabaikan). Berapakah suhu akhir termal campuran tersebut?</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Kalor dan Perubahan Suhu Benda (Q = mcΔT) untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Terapkan Asas Black: Kalor yang dilepas oleh zat bersuhu tinggi sama dengan kalor yang diserap oleh zat bersuhu rendah: Q_lepas = Q_terima.",
+            "Rumus kalor lepas (air panas m₁ = 200 g, T₁ = 80°C, suhu akhir Tc): Q_lepas = m₁ · c · (T₁ - Tc) = 200 × 1 × (80 - Tc).",
+            "Rumus kalor terima (air dingin m₂ = 100 g, T₂ = 20°C): Q_terima = m₂ · c · (Tc - T₂) = 100 × 1 × (Tc - 20).",
+            "Samakan persamaan: 200(80 - Tc) = 100(Tc - 20)  ⇒ 2(80 - Tc) = Tc - 20.",
+            "Selesaikan persamaan aljabar: 160 - 2Tc = Tc - 20  ⇒ 3Tc = 180  ⇒ Tc = 60°C."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Suhu akhir kesetimbangan termal campuran air adalah 60°C."
         },
         {
           "type": "check",
@@ -164,10 +166,6 @@
       "kind": "simulasi",
       "duration": "8 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Kalor Laten: Melebur dan Menguap (Q = mL dan Q = mU)</b>: Penyerapan kalor tanpa kenaikan suhu, perhitungan kalor total pada grafik pemanasan es hingga uap air.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
         {
           "type": "callout",
           "variant": "info",
@@ -204,17 +202,17 @@
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Kalor Laten: Melebur dan Menguap (Q = mL dan Q = mU), manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman: Kalor Laten: Melebur dan Menguap (Q = mL dan Q = mU)",
+          "question": "Sebuah mesin kalor Carnot beroperasi di antara reservoir suhu tinggi 600 K dan reservoir suhu rendah 450 K. Efisiensi termal maksimum dari mesin Carnot tersebut adalah ....",
           "options": {
-            "A": "Prinsip Kalor Laten: Melebur dan Menguap (Q = mL dan Q = mU) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "25%",
+            "B": "75%",
+            "C": "33,3%",
+            "D": "50%"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Penyerapan kalor tanpa kenaikan suhu, perhitungan kalor total pada grafik pemanasan es hingga uap air.."
+          "hint": "Efisiensi Carnot: η = (1 - T_rendah / T_tinggi) × 100%.",
+          "explanation": "η = (1 - 450 / 600) × 100% = (1 - 0,75) × 100% = 0,25 × 100% = 25%."
         }
       ]
     },
@@ -224,10 +222,6 @@
       "kind": "simulasi",
       "duration": "8 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Asas Black: Hukum Kekekalan Energi Kalor (Q_lepas = Q_terima)</b>: Pencampuran dua zat berbeda suhu, menentukan suhu akhir kesetimbangan termal, dan penggunaan kalorimeter.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
-        },
         {
           "type": "text",
           "html": "<p><b>Kalor</b> adalah energi panas yang berpindah dari benda bersuhu tinggi ke benda bersuhu rendah. Satuan SI kalor adalah joule (J); 1 kalori ≈ 4,2 J. Perpindahan berhenti setelah kedua benda bersuhu sama (kesetimbangan termal).</p>"
@@ -240,28 +234,30 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Asas Black: Hukum Kekekalan Energi Kalor (Q_lepas = Q_terima)",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Asas Black: Hukum Kekekalan Energi Kalor (Q_lepas = Q_terima)</b> berikut. Analisislah berdasarkan kaidah Pencampuran dua zat berbeda suhu, menentukan suhu akhir kesetimbangan termal, dan penggunaan kalorimeter..</p>",
+          "title": "Contoh Soal: Penerapan Hukum Kekekalan Energi Mekanik",
+          "question": "<p>Sebuah bola bermassa 0,5 kg dilepaskan dari puncak lintasan luncur licin setinggi \\(h = 5\\) meter dari tanah (tanpa gesekan udara, \\(g = 10\\) m/s²). Tentukan kecepatan bola saat berada pada ketinggian 1,8 meter dari tanah!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Asas Black: Hukum Kekekalan Energi Kalor (Q_lepas = Q_terima) untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Gunakan Hukum Kekekalan Energi Mekanik: Em₁ = Em₂  ⇒ Ep₁ + Ek₁ = Ep₂ + Ek₂.",
+            "Keadaan 1 (puncak, dilepas dari keadaan diam, v₁ = 0): Ep₁ = mgh₁ = 0,5 × 10 × 5 = 25 Joule; Ek₁ = 0. Jadi Em₁ = 25 J.",
+            "Keadaan 2 (ketinggian h₂ = 1,8 m): Ep₂ = mgh₂ = 0,5 × 10 × 1,8 = 9 Joule.",
+            "Hitung energi kinetik di titik 2: Ek₂ = Em₁ - Ep₂ = 25 J - 9 J = 16 Joule.",
+            "Hitung kecepatan v₂: Ek₂ = 1/2 · m · v₂²  ⇒ 16 = 1/2 × 0,5 × v₂²  ⇒ 16 = 0,25 v₂²  ⇒ v₂² = 64  ⇒ v₂ = 8 m/s."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Kecepatan bola pada ketinggian 1,8 meter adalah 8 m/s."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Asas Black: Hukum Kekekalan Energi Kalor (Q_lepas = Q_terima), manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah mesin derek mengangkat beban seberat 4.000 N vertikal ke atas setinggi 6 meter dalam waktu 12 detik. Daya rata-rata yang dikeluarkan mesin derek tersebut adalah ....",
           "options": {
-            "A": "Prinsip Asas Black: Hukum Kekekalan Energi Kalor (Q_lepas = Q_terima) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "2.000 Watt (2 kW)",
+            "B": "24.000 Watt",
+            "C": "500 Watt",
+            "D": "4.800 Watt"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Pencampuran dua zat berbeda suhu, menentukan suhu akhir kesetimbangan termal, dan penggunaan kalorimeter.."
+          "hint": "Usaha W = F × s. Daya P = W / t.",
+          "explanation": "Usaha W = 4.000 N × 6 m = 24.000 Joule. Daya P = 24.000 J / 12 s = 2.000 Watt (2 kW)."
         }
       ]
     },
@@ -273,11 +269,25 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Pemuaian Zat: Panjang, Luas, Volume, dan Anomali Air</b>: Koefisien muai panjang (α), aplikasi keping bimetal, bahaya pemuaian rel kereta/kabel, dan anomali air 0–4°C.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+          "html": "<p>Penerapan lain: celah pada sambungan jembatan, kabel listrik dipasang kendur, bingkai kaca jendela dibuat agak longgar, tutup botol logam yang sulit dibuka direndam air panas, dan balon udara panas yang naik karena udara di dalamnya memuai.</p>"
         },
         {
-          "type": "text",
-          "html": "<p>Penerapan lain: celah pada sambungan jembatan, kabel listrik dipasang kendur, bingkai kaca jendela dibuat agak longgar, tutup botol logam yang sulit dibuka direndam air panas, dan balon udara panas yang naik karena udara di dalamnya memuai.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Mengapa pH Darah Manusia Tak Boleh Bergeser 0,2?",
+          "html": "<p>Darah manusia normal memiliki pH yang sangat ketat di angka 7,35 hingga 7,45. Jika pH darahmu turun menjadi 7,20 (kondisi asidosis) atau melonjak ke 7,60 (alkalosis) akibat metabolisme yang kacau, enzim-enzim tubuh akan terdenaturasi dan kamu bisa mengalami koma fatal dalam hitungan jam!</p>\n<p>Padahal setiap hari kita meminum minuman bersoda yang sangat asam (pH 2,5) atau memakan buah jeruk. Sistem pertahanan kimiawi apakah yang mampu menyerap lonjakan asam dan basa ekstrem ini di dalam tubuh kita?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Pabrik Bir Carlsberg dan Skala pH Søren Sørensen",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Svante Arrhenius, Brønsted-Lowry, & Sørensen</span>\n  <span class=\"h-tag\">Tahun: 1887 – 1923 M</span>\n  <span class=\"h-tag\">Krisis: Zaman dahulu asam dan basa hanya didefinisikan dari rasa lidah (asam kecut vs pahit licin) yang berbahaya mematikan</span>\n</div>\n<p>Pada akhir abad ke-19, kimiawan Swedia <b>Svante Arrhenius</b> (1887) pertama kali merumuskan teori ion: asam menghasilkan ion hidrogen (\\(\text{H}^+\\)) dalam air, dan basa menghasilkan ion hidroksida (\\(\text{OH}^-\\)). Namun, angka konsentrasi ion hidrogen dalam larutan sangat kecil dan merepotkan (misal \\(0{,}0000001\text{ mol/L}\\)).</p>\n<p>Pada tahun 1909 di Laboratorium Pabrik Bir Carlsberg di Kopenhagen, kimiawan Denmark <b>Søren Sørensen</b> sedang meneliti mengapa rasa bir bisa berubah asam saat proses fermentasi ragi. Untuk menyederhanakan pencatatan logaritma konsentrasi ion hidrogen, Sørensen menciptakan skala <b>pH</b> (singkatan dari <i>puissance d'hydrogène</i> = kekuatan hidrogen): \\(\text{pH} = -\\log[\text{H}^+]\\). Skala 0-14 ini menjadi standar mutlak industri farmasi, pangan, dan biologi di seluruh dunia.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Teori Asam-Basa Brønsted-Lowry & Larutan Penyangga (Buffer)",
+          "html": "<p><b>Asam Brønsted-Lowry:</b> Spesies kimia (molekul atau ion) yang bertindak sebagai <b>donor proton (\\(\text{H}^+\\))</b>.</p>\n<p><b>Basa Brønsted-Lowry:</b> Spesies kimia yang bertindak sebagai <b>akseptor proton (\\(\text{H}^+\\))</b>.</p>\n<p><b>Larutan Penyangga (Buffer):</b> Campuran asam lemah dengan basa konjugasinya (atau basa lemah dengan asam konjugasinya) yang mampu mempertahankan nilai pH larutan secara stabil terhadap penambahan sedikit asam kuat, basa kuat, atau pengenceran.</p>"
         },
         {
           "type": "image",
@@ -335,6 +345,30 @@
           "html": "<p><b>Perpindahan Kalor: Konduksi, Konveksi, dan Radiasi</b>: Mekanisme perpindahan kalor, konduktor vs isolator, angin darat/laut, termos air, dan pemanasan global.</p>"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Membawa Segepok Uang Hanya untuk Membeli Sebungkus Roti",
+          "html": "<p>Banyak anak kecil bertanya polos: <i>'Jika negara kita masih banyak orang miskin, mengapa Bank Indonesia tidak mencetak uang kertas rupiah sebanyak-banyaknya lalu membagikannya secara gratis kepada seluruh warga?'</i></p>\n<p>Sejarah mencatat bencana mengerikan saat negara mencoba ide tersebut: di Jerman tahun 1923 dan Zimbabwe tahun 2008, pemerintah mencetak triliunan uang kertas tanpa kendali. Akibatnya uang kehilangan nilai total hingga orang harus membawa uang satu gerobak dorong hanya untuk membeli sebungkus roti tawar!</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Teori Kuantitas Uang Irving Fisher dan Pernyataan Milton Friedman",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Irving Fisher, John Maynard Keynes, & Milton Friedman</span>\n  <span class=\"h-tag\">Tahun: 1911 – 1970 M</span>\n  <span class=\"h-tag\">Krisis: Mengapa pemerintah tidak mencetak uang sebanyak-banyaknya dan membagikannya gratis ke seluruh rakyat miskin?</span>\n</div>\n<p>Pada tahun 1911 di Universitas Yale, ekonom Amerika <b>Irving Fisher</b> mempublikasikan mahakaryanya <i>The Purchasing Power of Money</i>. Fisher merumuskan <b>Persamaan Kuantitas Pertukaran</b> yang abadi: \\(M \\cdot V = P \\cdot T\\).</p>\n<p>Enam dekade kemudian, peraih Nobel Ekonomi <b>Milton Friedman</b> menyimpulkan prinsip moneter terpenting abad ke-20: <i>'Inflasi selalu dan di mana pun merupakan fenomena moneter.'</i> Jika jumlah uang yang beredar (\\(M\\)) bertambah jauh lebih cepat daripada pertambahan produksi barang dan jasa (\\(T\\)), maka satu-satunya variabel yang akan melonjak adalah tingkat harga umum (\\(P\\))—inilah yang kita sebut sebagai <b>Inflasi</b>!</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Inflasi & Kebijakan Moneter Bank Sentral",
+          "html": "<p><b>Inflasi:</b> Kenaikan tingkat harga barang dan jasa secara umum dan terus-menerus dalam jangka waktu tertentu, yang mengakibatkan penurunan daya beli uang.</p>\n<p><b>Kebijakan Moneter Kontraksioner (Mengatasi Inflasi):</b></p>\n<ul>\n  <li>Menaikkan Suku Bunga Acuan (BI-Rate) agar masyarakat rajin menabung dan konsumsi mengerem.</li>\n  <li>Menaikkan Giro Wajib Minimum (GWM) perbankan di bank sentral.</li>\n  <li>Operasi Pasar Terbuka: Menjual Surat Berharga Negara (SBN) untuk menyedot likuiditas rupiah dari peredaran.</li>\n</ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan Fisher & Laju Inflasi Indeks Harga Konsumen",
+          "html": "<div class=\"fc-display\">\n\\[ M \\cdot V = P \\cdot T, \\qquad \\text{Laju Inflasi} = \\frac{\\text{IHK}_t - \\text{IHK}_{t-1}}{\\text{IHK}_{t-1}}\\times 100\\%, \\qquad \\text{PDB} = C + I + G + (X - M) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M\\)</td><td>Jumlah uang yang beredar di masyarakat</td><td class=\"unit\">\\(\\text{Rupiah (Rp)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(V\\)</td><td>Kecepatan perputaran uang (velocity of money)</td><td class=\"unit\">\\(\\text{kali lipat/tahun}\\)</td></tr>\n    <tr><td class=\"sym\">\\(P\\)</td><td>Tingkat harga umum barang/jasa</td><td class=\"unit\">\\(\\text{indeks harga}\\)</td></tr>\n    <tr><td class=\"sym\">\\(T\\)</td><td>Volume total transaksi barang dan jasa riil</td><td class=\"unit\">\\(\\text{output transaksi}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\text{IHK}\\)</td><td>Indeks Harga Konsumen</td><td class=\"unit\">\\(\\text{indeks poin}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Rumus PDB Pengeluaran (C + I + G + NX) mengukur total nilai pasar seluruh barang dan jasa akhir yang diproduksi di dalam batas wilayah negara selama satu tahun.</small></p>"
+        },
+        {
           "type": "text",
           "html": "<table><tr><th>Cara</th><th>Ciri</th><th>Contoh</th></tr><tr><td>Konduksi (hantaran)</td><td>melalui zat tanpa disertai perpindahan zat</td><td>sendok logam dalam teh panas menjadi panas</td></tr><tr><td>Konveksi (aliran)</td><td>disertai perpindahan zat (cair/gas)</td><td>air mendidih bergolak, angin darat dan angin laut</td></tr><tr><td>Radiasi (pancaran)</td><td>tanpa zat perantara</td><td>panas matahari sampai ke Bumi, hangat api unggun</td></tr></table>"
         },
@@ -384,10 +418,6 @@
       "duration": "10 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Rangkuman Bab & Uji Konsep Mandiri</b>: Rangkuman visual, perumusan Asas Black, dan bank soal latihan bertahap.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
-        },
-        {
           "type": "callout",
           "variant": "rumus",
           "title": "Kaidah & Rumus Kunci",
@@ -395,28 +425,30 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Rangkuman Bab & Uji Konsep Mandiri",
-          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Konsep Mandiri</b> berikut. Analisislah berdasarkan kaidah Rangkuman visual, perumusan Asas Black, dan bank soal latihan bertahap..</p>",
+          "title": "Contoh Soal Evaluasi: 03 Suhu, Kalor, dan Pemuaian",
+          "question": "<p>Dalam evaluasi pemahaman materi <b>03 Suhu, Kalor, dan Pemuaian</b>, tinjau kembali integrasi konsep pada subbab <i>Rangkuman Bab & Uji Konsep Mandiri</i>. Analisis langkah sistematis penyelesaian permasalahan kuantitatif/konseptual berikut ini:</p><p>Sebanyak 200 gram air bersuhu 80°C dicampurkan ke dalam bejana terisolasi yang berisi 100 gram air bersuhu 20°C (kalor jenis air c = 1 kal/g°C, kapasitas kalor bejana diabaikan). Berapakah suhu akhir termal campuran tersebut?</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Rangkuman Bab & Uji Konsep Mandiri untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Terapkan Asas Black: Kalor yang dilepas oleh zat bersuhu tinggi sama dengan kalor yang diserap oleh zat bersuhu rendah: Q_lepas = Q_terima.",
+            "Rumus kalor lepas (air panas m₁ = 200 g, T₁ = 80°C, suhu akhir Tc): Q_lepas = m₁ · c · (T₁ - Tc) = 200 × 1 × (80 - Tc).",
+            "Rumus kalor terima (air dingin m₂ = 100 g, T₂ = 20°C): Q_terima = m₂ · c · (Tc - T₂) = 100 × 1 × (Tc - 20).",
+            "Samakan persamaan: 200(80 - Tc) = 100(Tc - 20)  ⇒ 2(80 - Tc) = Tc - 20.",
+            "Selesaikan persamaan aljabar: 160 - 2Tc = Tc - 20  ⇒ 3Tc = 180  ⇒ Tc = 60°C."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Suhu akhir kesetimbangan termal campuran air adalah 60°C."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Konsep Mandiri, manakah pernyataan berikut yang paling tepat?",
+          "title": "Uji Kemahiran: 03 Suhu, Kalor, dan Pemuaian",
+          "question": "Pada tinjauan menyeluruh materi 03 Suhu, Kalor, dan Pemuaian (Rangkuman Bab & Uji Konsep Mandiri), prinsip saintifik/matematis yang menjadi landasan utama adalah ....",
           "options": {
-            "A": "Prinsip Rangkuman Bab & Uji Konsep Mandiri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "25%",
+            "B": "75%",
+            "C": "33,3%",
+            "D": "50%"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman visual, perumusan Asas Black, dan bank soal latihan bertahap.."
+          "hint": "Fokus pada konsep kunci yang dibahas dalam bab 03 Suhu, Kalor, dan Pemuaian.",
+          "explanation": "η = (1 - 450 / 600) × 100% = (1 - 0,75) × 100% = 0,25 × 100% = 25%."
         },
         {
           "type": "text",

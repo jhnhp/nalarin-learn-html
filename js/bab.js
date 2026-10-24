@@ -115,7 +115,15 @@ function block(bl, b){
       return f;
     }
     case 'callout': {
-      const v = {rumus: ['sigma', 'Rumus'], tips: ['bulb', 'Tips'], awas: ['alert', 'Hati-hati'], info: ['info', 'Ingat']}[bl.variant] || ['info', 'Ingat'];
+      const v = {
+        rumus: ['sigma', 'Rumus'],
+        tips: ['bulb', 'Tips'],
+        awas: ['alert', 'Hati-hati'],
+        info: ['info', 'Ingat'],
+        konteks: ['globe', 'Konteks Nyata'],
+        sejarah: ['history', 'Kilas Balik Sejarah'],
+        definisi: ['book', 'Definisi Konseptual']
+      }[bl.variant] || ['info', 'Ingat'];
       const d = mk('div', 'callout prose ' + (bl.variant || 'info'));
       d.innerHTML = `<div class="ct">${ic(v[0], 'width:16px;height:16px')}<span></span></div>`;
       d.querySelector('.ct span').textContent = bl.title || v[1];
