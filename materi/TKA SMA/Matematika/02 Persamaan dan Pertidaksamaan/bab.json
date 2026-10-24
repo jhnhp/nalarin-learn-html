@@ -15,9 +15,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Campuran Bahan Kimia Obat Farmasi & Algoritma Tiket Pesawat",
+          "html": "<p>Sebuah industri farmasi ingin membuat kapsul obat dengan kandungan 300 mg parasetamol dan 50 mg kafein. Di gudang mereka hanya memiliki dua jenis serbuk campuran mentah dengan konsentrasi persentase berbeda. Berapa gram dari masing-masing serbuk yang harus ditimbang agar dosisnya presisi?</p>\n<p>Ketika kamu memesan tiket penerbangan transit multi-kota, sistem reservasi maskapai menyelesaikan puluhan persamaan linear variabel sekaligus dalam fraksi milidetik untuk menentukan kombinasi tarif termurah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Risalah Kuno Jiuzhang Suanshu dan Eliminasi Gauss",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Buku Sembilan Bab Tiongkok & Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 150 SM – 1809 M</span>\n  <span class=\"h-tag\">Krisis: Kesulitan menghitung harga komoditas saat melibatkan lebih dari tiga variabel barter</span>\n</div>\n<p>Metode sistematis pertama di dunia untuk menyelesaikan sistem persamaan linear tercatat dalam buku matematika kuno Tiongkok <i>Jiuzhang Suanshu</i> (Sembilan Bab tentang Seni Matematika, sekitar 150 SM). Mereka menggunakan batang-batang bambu hitung di atas papan susun yang merupakan bentuk paling purba dari matriks aljabar.</p>\n<p>Pada awal abad ke-19, 'Pangeran Matematika' <b>Carl Friedrich Gauss</b> membakukan algoritma ini saat menghitung orbit asteroid Ceres yang hilang di balik silau matahari. Algoritma ini kini dikenal sebagai <b>Eliminasi Gauss</b>—fondasi seluruh komputasi aljabar linear modern.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Sistem Persamaan Linear (SPL) & Jenis Solusi",
+          "html": "<p><b>SPL:</b> Kumpulan dua atau lebih persamaan linear yang melibatkan variabel yang sama dan harus dipenuhi secara simultan.</p>\n<p><b>Tiga Kemungkinan Solusi Geometris:</b></p>\n<ul>\n  <li><b>Satu Solusi Unik:</b> Garis-garis / bidang saling berpotongan di tepat satu titik (gradien berbeda).</li>\n  <li><b>Tidak Memiliki Solusi:</b> Garis-garis saling sejajar sempurna dan tidak pernah bertemu (kontradiktif, inkonsisten).</li>\n  <li><b>Tak Hingga Solusi:</b> Garis-garis saling berhimpit menjadi satu garis yang sama (persamaan berkelipatan sama).</li>\n</ul>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Bentuk Baku SPLTV dan Metode Matriks Determinan (Aturan Cramer)",
-          "html": "<div class=\"fc-display\">\n\\[ x = \\frac{D_x}{D}, \\quad y = \\frac{D_y}{D}, \\quad z = \\frac{D_z}{D} \\qquad \\Longleftrightarrow \\qquad D = \\det\\begin{pmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{pmatrix} \\ne 0 \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(D\\)</td><td>Determinan matriks koefisien utama</td><td class=\"unit\">\\(\\text{bilangan real } \\mathbb{R} \\setminus \\{0\\}\\)</td></tr>\n<tr><td class=\"sym\">\\(D_x, D_y, D_z\\)</td><td>Determinan saat kolom variabel x, y, atau z diganti kolom konstanta</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n<tr><td class=\"sym\">\\((x, y, z)\\)</td><td>Tripel solusi unik koordinat perpotongan ketiga bidang</td><td class=\"unit\">\\(\\mathbb{R}^3\\)</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Dalam ujian dengan batas waktu cepat, metode eliminasi bertahap dua persamaan sering kali lebih cepat dibanding aturan Cramer jika koefisien salah satu variabel sudah bernilai ±1.</small></p>"
+          "title": "Bentuk Umum SPLDV & Aturan Determinan Determinan",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{cases} a_1 x + b_1 y = c_1 \\\\ a_2 x + b_2 y = c_2 \\end{cases} \\quad \\Longrightarrow \\quad x = \\frac{D_x}{D}, \\quad y = \\frac{D_y}{D} \\quad (D \\ne 0) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel penyelesaian sistem</td><td class=\"unit\">\\(\\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(D\\)</td><td>Determinan utama matriks koefisien (a1 b2 - a2 b1)</td><td class=\"unit\">\\(\\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(D_x, D_y\\)</td><td>Determinan variabel pengganti konstanta c</td><td class=\"unit\">\\(\\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jika D != 0 sistem memiliki tepat 1 solusi; jika D = 0 dan Dx = 0 ada tak hingga solusi; jika D = 0 dan Dx != 0 tidak ada solusi.</small></p>"
         },
         {
           "type": "sim",
@@ -69,9 +87,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Desain Kubah Jembatan Lengkung & Titik Impas Bisnis",
+          "html": "<p>Ketika para insinyur merancang jembatan gantung berpelengkung kabel baja, bentuk lengkungan kabel tersebut mengikuti kurva kuadratik. Mereka harus memastikan apakah kabel tersebut akan memotong permukaan air sungai, hanya menyentuh tepat di satu titik permukaan, atau melayang aman di atas air.</p>\n<p>Dalam analisis bisnis, kurva laba rugi terhadap harga jual produk juga berbentuk parabola terbalik. Bagaimana seorang manajer mengetahui apakah perusahaannya bisa mencapai keuntungan tanpa harus menggambar grafik titik demi titik?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Brahmagupta, Al-Khawarizmi, dan Rahasia Diskriminan",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Brahmagupta & Al-Khawarizmi</span>\n  <span class=\"h-tag\">Tahun: 628 – 820 M</span>\n  <span class=\"h-tag\">Krisis: Kebuntuan ribuan tahun untuk menemukan akar persamaan kuadrat tanpa metode geometris manual</span>\n</div>\n<p>Bangsawan Babilonia kuno (2000 SM) telah mampu menyelesaikan persamaan kuadrat sederhana untuk menghitung luas tanah ladang, tetapi mereka tidak memiliki rumus umum aljabar. Pada tahun 628 M di India, matematikawan agung <b>Brahmagupta</b> menuliskan aturan eksplisit pertama untuk menyelesaikan persamaan kuadrat.</p>\n<p>Dua abad kemudian di Baghdad (820 M), <b>Al-Khawarizmi</b> menyempurnakannya dengan metode geometris <i>al-jabr</i> (melengkapi kuadrat sempurna). Nilai di bawah tanda akar (\\(b^2 - 4ac\\)) kemudian dinamai <b>Diskriminan (\\(D\\))</b> oleh matematikawan Inggris James Joseph Sylvester pada abad ke-19, karena nilai inilah yang 'mendiskriminasi' atau membedakan jenis akar real persamaan tanpa perlu menghitung akarnya!</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Persamaan Kuadrat & Sifat Tiga Wilayah Diskriminan",
+          "html": "<p><b>Bentuk Baku:</b> \\(a x^2 + b x + c = 0\\) dengan \\(a, b, c \\in \\mathbb{R}\\) dan \\(a \ne 0\\).</p>\n<p><b>Diskriminan (\\(D = b^2 - 4ac\\)):</b></p>\n<ul>\n  <li>Jika \\(D > 0\\): Memiliki <b>dua akar real yang berlainan</b> (\\(x_1 \ne x_2\\)). Grafiknya memotong sumbu-\\(x\\) di dua titik terpisah.</li>\n  <li>Jika \\(D = 0\\): Memiliki <b>dua akar real kembar / sama</b> (\\(x_1 = x_2 = -\frac{b}{2a}\\)). Grafiknya menyinggung sumbu-\\(x\\) tepat di satu titik.</li>\n  <li>Jika \\(D < 0\\): <b>Tidak memiliki akar real</b> (akarnya imajiner/kompleks). Grafiknya melayang di atas atau di bawah sumbu-\\(x\\) (definit positif atau negatif).</li>\n</ul>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Teorema Vieta (Jumlah dan Hasil Kali Akar) & Persamaan Kuadrat Baru",
-          "html": "<div class=\"fc-display\">\n\\[ x_1 + x_2 = -\\frac{b}{a} \\qquad \\Big| \\qquad x_1 \\cdot x_2 = \\frac{c}{a} \\qquad \\Longleftrightarrow \\qquad x^2 - (x_1 + x_2)x + (x_1 x_2) = 0 \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x_1, x_2\\)</td><td>Akar-akar penyelesaian persamaan kuadrat</td><td class=\"unit\">\\(\\text{bilangan real } \\mathbb{R}\\)</td></tr>\n<tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien suku x², suku x, dan konstanta</td><td class=\"unit\">\\(\\text{bilangan real, } a \\ne 0\\)</td></tr>\n<tr><td class=\"sym\">\\(x_1^2 + x_2^2\\)</td><td>Penjumlahan kuadrat: \\((x_1 + x_2)^2 - 2x_1 x_2\\)</td><td class=\"unit\">\\(\\text{identitas simetris}\\)</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Selisih akar kuadrat: |x₁ - x₂| = √D / |a|.</small></p>"
+          "title": "Rumus Kuadratik Al-Khawarizmi & Teorema Vieta",
+          "html": "<div class=\"fc-display\">\n\\[ x_{1,2} = \\frac{-b \\pm \\sqrt{D}}{2a}, \\qquad D = b^2 - 4ac, \\qquad x_1 + x_2 = -\\frac{b}{a}, \\qquad x_1 \\cdot x_2 = \\frac{c}{a} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien persamaan kuadrat</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R},\\ a \\ne 0\\)</td></tr>\n    <tr><td class=\"sym\">\\(D\\)</td><td>Diskriminan penentu jenis akar</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x_1, x_2\\)</td><td>Akar-akar penyelesaian persamaan</td><td class=\"unit\">\\(\\text{nilai variabel } x\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Selisih mutlak dua akar dapat dihitung kilat dengan formula: |x_1 - x_2| = sqrt(D) / |a|.</small></p>"
         },
         {
           "type": "sim",
@@ -120,6 +156,30 @@
           "html": "<h3>Alur Baku Menyelesaikan Pertidaksamaan Kuadrat</h3>\n<p>Langkah sistematis menyelesaikan pertidaksamaan kuadrat \\(ax^2 + bx + c > 0\\) (atau \\(\\ge 0, < 0, \\le 0\\)):</p>\n<ol>\n  <li><b>Jadikan Ruas Kanan Nol</b>.</li>\n  <li><b>Pastikan Koefisien \\(a > 0\\)</b> (jika \\(a < 0\\), kalikan kedua ruas dengan -1 dan <b>BALIKKAN TANDA KETAKSAMAAN</b>).</li>\n  <li><b>Tentukan Pembuat Nol</b>: faktorkan \\((x - x_1)(x - x_2) = 0\\) dengan \\(x_1 < x_2\\).</li>\n  <li><b>Gambar Garis Bilangan</b>: bagi garis menjadi 3 daerah interval (\\(x < x_1\\), \\(x_1 < x < x_2\\), \\(x > x_2\\)). Karena \\(a > 0\\), tandanya berselang-seling: <b>+ | - | +</b>.</li>\n  <li><b>Tentukan Himpunan Penyelesaian (HP)</b>:\n    <ul>\n      <li>Jika tanda \\(> 0\\) atau \\(\\ge 0\\): ambil daerah positif (\\(x < x_1\\) atau \\(x > x_2\\)).</li>\n      <li>Jika tanda \\(< 0\\) atau \\(\\le 0\\): ambil daerah negatif di tengah (\\(x_1 < x < x_2\\)).</li>\n    </ul>\n  </li>\n</ol>"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: 37 Triliun Unit Pabrik Mini dalam Tubuh Manusia",
+          "html": "<p>Tubuh seorang manusia dewasa tersusun atas sekitar 37 triliun sel yang hidup, bekerja, dan berkomunikasi satu sama lain setiap detik tanpa henti. Setiap sel tunggal adalah kota metropolitan mikroskopis yang memiliki pembangkit listrik (mitokondria), pusat kendali komputer (nukleus), dan sistem gerbang keamanan pintar (membran sel).</p>\n<p>Bagaimana sebuah sel sperma mikroskopis dan sel telur dapat membelah dan berdiferensiasi menjadi mata yang melihat, jantung yang berdetak, dan otak yang berpikir?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Sayatan Gabus Botol Anggur Robert Hooke",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Robert Hooke & Antonie van Leeuwenhoek</span>\n  <span class=\"h-tag\">Tahun: 1665 – 1674 M</span>\n  <span class=\"h-tag\">Krisis: Manusia mengira semua materi hidup bersifat padat masif tanpa ada unit mikroskopis terkecil</span>\n</div>\n<p>Pada tahun 1665 di London, ilmuwan serbabisa <b>Robert Hooke</b> mengamati sayatan tipis gabus pohon ek di bawah lensa mikroskop majemuk buatannya. Hooke melihat pori-pori kosong berkotak-kotak teratur yang mengingatkannya pada kamar-kamar tidur biarawan biara (disebut <i>cellulae</i>), melahirkan istilah <b>Sel</b>.</p>\n<p>Sembilan tahun kemudian (1674), seorang pedagang kain Belanda bernama <b>Antonie van Leeuwenhoek</b> mengasah lensa kaca bundar super jernih dan terkejut melihat ribuan makhluk renik berenang lincah di setetes air danau (ia menamainya <i>animalcules</i> atau bakteri). Penemuan ini meruntuhkan paham lama dan melahirkan <b>Teori Sel</b> (Schleiden & Schwann, 1839): semua makhluk hidup tersusun dari sel, dan semua sel berasal dari sel sebelumnya (Virchow: <i>Omnis cellula e cellula</i>).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Teori Sel Modern & Organisasi Kehidupan",
+          "html": "<p><b>Sel:</b> Unit struktural, fungsional, dan hereditas terkecil dari seluruh makhluk hidup di bumi.</p>\n<p><b>Prinsip Teori Sel:</b></p>\n<ul>\n  <li>Semua organisme tersusun atas satu atau lebih sel.</li>\n  <li>Sel adalah unit dasar struktur dan fungsi seluruh organisme.</li>\n  <li>Sel-sel baru hanya dapat muncul dari pembelahan sel-sel yang sudah ada sebelumnya.</li>\n</ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Perbesaran Mikroskop Optik & Skala Seluler",
+          "html": "<div class=\"fc-display\">\n\\[ M_{\\text{total}} = M_{\\text{obyektif}} \\times M_{\\text{okuler}}, \\qquad d = \\frac{\\lambda}{2\\text{NA}} \\quad (\\text{Batas Resolusi Abbe}) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M_{\\text{total}}\\)</td><td>Perbesaran total bayangan mikroskop</td><td class=\"unit\">\\(\\text{kali lipat (\\times)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(d\\)</td><td>Batas resolusi terkecil yang dapat dibedakan</td><td class=\"unit\">\\(\\text{nanometer (nm)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\text{NA}\\)</td><td>Apertur numerik lensa obyektif</td><td class=\"unit\">\\(\\text{tanpa satuan}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Mikroskop elektron transmisi (TEM) dapat memperbesar hingga 1.000.000 kali lipat karena panjang gelombang berkas elektron jauh lebih pendek daripada foton cahaya tampak.</small></p>"
+        },
+        {
           "type": "example",
           "title": "Contoh Pertidaksamaan Kuadrat Standar",
           "question": "<p>Tentukan himpunan penyelesaian dari: 2x² - 5x - 3 ≤ 0!</p>",
@@ -157,6 +217,30 @@
         {
           "type": "text",
           "html": "<h3>Jebakan Fatal: Mengapa Tidak Boleh Kali Silang Variabel?</h3>\n<p>Dalam pertidaksamaan, mengalikan kedua ruas dengan bilangan negatif akan membalik tanda ketaksamaan. Pada pecahan aljabar yang memuat variabel di penyebut seperti \\(\\frac{f(x)}{g(x)} \\ge k\\), kita <b>TIDAK TAHU</b> apakah nilai penyebut \\(g(x)\\) positif atau negatif! Mengalikan silang \\(g(x)\\) ke ruas kanan akan menyebabkan hilangnya sebagian solusi atau menghasilkan solusi palsu.</p>\n<h3>Aturan Baku Pertidaksamaan Rasional</h3>\n<ol>\n  <li>Pindahkan semua suku ke ruas kiri sehingga ruas kanan menjadi <b>NOL</b>: \\(\\frac{f(x)}{g(x)} - k \\ge 0\\).</li>\n  <li>Samakan penyebut untuk menggabungkan menjadi satu pecahan tunggal: \\(\\frac{P(x)}{g(x)} \\ge 0\\).</li>\n  <li>Tentukan pembuat nol pembilang (\\(P(x) = 0\\)) dan pembuat nol penyebut (\\(g(x) = 0\\)).</li>\n  <li><b>Syarat Batas Penyebut</b>: penyebut tidak boleh nol (\\(g(x) \\ne 0\\)). Titik pembuat nol penyebut pada garis bilangan <b>SELALU BULATAN KOSONG</b> (tidak pernah masuk HP meskipun ada tanda \\(\\ge\\) atau \\(\\le\\)).</li>\n  <li>Uji tanda pada garis bilangan bertingkat.</li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: 37 Triliun Unit Pabrik Mini dalam Tubuh Manusia",
+          "html": "<p>Tubuh seorang manusia dewasa tersusun atas sekitar 37 triliun sel yang hidup, bekerja, dan berkomunikasi satu sama lain setiap detik tanpa henti. Setiap sel tunggal adalah kota metropolitan mikroskopis yang memiliki pembangkit listrik (mitokondria), pusat kendali komputer (nukleus), dan sistem gerbang keamanan pintar (membran sel).</p>\n<p>Bagaimana sebuah sel sperma mikroskopis dan sel telur dapat membelah dan berdiferensiasi menjadi mata yang melihat, jantung yang berdetak, dan otak yang berpikir?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Sayatan Gabus Botol Anggur Robert Hooke",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Robert Hooke & Antonie van Leeuwenhoek</span>\n  <span class=\"h-tag\">Tahun: 1665 – 1674 M</span>\n  <span class=\"h-tag\">Krisis: Manusia mengira semua materi hidup bersifat padat masif tanpa ada unit mikroskopis terkecil</span>\n</div>\n<p>Pada tahun 1665 di London, ilmuwan serbabisa <b>Robert Hooke</b> mengamati sayatan tipis gabus pohon ek di bawah lensa mikroskop majemuk buatannya. Hooke melihat pori-pori kosong berkotak-kotak teratur yang mengingatkannya pada kamar-kamar tidur biarawan biara (disebut <i>cellulae</i>), melahirkan istilah <b>Sel</b>.</p>\n<p>Sembilan tahun kemudian (1674), seorang pedagang kain Belanda bernama <b>Antonie van Leeuwenhoek</b> mengasah lensa kaca bundar super jernih dan terkejut melihat ribuan makhluk renik berenang lincah di setetes air danau (ia menamainya <i>animalcules</i> atau bakteri). Penemuan ini meruntuhkan paham lama dan melahirkan <b>Teori Sel</b> (Schleiden & Schwann, 1839): semua makhluk hidup tersusun dari sel, dan semua sel berasal dari sel sebelumnya (Virchow: <i>Omnis cellula e cellula</i>).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Teori Sel Modern & Organisasi Kehidupan",
+          "html": "<p><b>Sel:</b> Unit struktural, fungsional, dan hereditas terkecil dari seluruh makhluk hidup di bumi.</p>\n<p><b>Prinsip Teori Sel:</b></p>\n<ul>\n  <li>Semua organisme tersusun atas satu atau lebih sel.</li>\n  <li>Sel adalah unit dasar struktur dan fungsi seluruh organisme.</li>\n  <li>Sel-sel baru hanya dapat muncul dari pembelahan sel-sel yang sudah ada sebelumnya.</li>\n</ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Perbesaran Mikroskop Optik & Skala Seluler",
+          "html": "<div class=\"fc-display\">\n\\[ M_{\\text{total}} = M_{\\text{obyektif}} \\times M_{\\text{okuler}}, \\qquad d = \\frac{\\lambda}{2\\text{NA}} \\quad (\\text{Batas Resolusi Abbe}) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M_{\\text{total}}\\)</td><td>Perbesaran total bayangan mikroskop</td><td class=\"unit\">\\(\\text{kali lipat (\\times)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(d\\)</td><td>Batas resolusi terkecil yang dapat dibedakan</td><td class=\"unit\">\\(\\text{nanometer (nm)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\text{NA}\\)</td><td>Apertur numerik lensa obyektif</td><td class=\"unit\">\\(\\text{tanpa satuan}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Mikroskop elektron transmisi (TEM) dapat memperbesar hingga 1.000.000 kali lipat karena panjang gelombang berkas elektron jauh lebih pendek daripada foton cahaya tampak.</small></p>"
         },
         {
           "type": "example",
@@ -200,6 +284,30 @@
           "html": "<h3>Dua Langkah Kunci Pertidaksamaan Bentuk Akar</h3>\n<p>Menyelesaikan pertidaksamaan irasional memuat bentuk akar \\(\\sqrt{f(x)}\\) mewajibkan pemenuhan dua syarat secara simultan:</p>\n<ol>\n  <li><b>Syarat Domain (Numerus Terdefinisi)</b>:\n    <p>Bilangan di dalam akar kuadrat tidak boleh negatif: <b>\\(f(x) \\ge 0\\)</b> (dan \\(g(x) \\ge 0\\) jika ada bentuk akar kedua).</p>\n  </li>\n  <li><b>Penyelesaian Aljabar Pengkuadratan</b>:\n    <p>Kedua ruas hanya boleh dikuadratkan jika <b>KEDUA RUAS TERJAMIN BERNILAI NON-NEGATIF (\\(\\ge 0\\))</b>.</p>\n  </li>\n  <li><b>Irisan Solusi (Interseksi)</b>:\n    <p>Solusi akhir adalah <b>irisan</b> antara himpunan penyelesaian aljabar pengkuadratan dengan seluruh syarat domain.</p>\n  </li>\n</ol>"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: 37 Triliun Unit Pabrik Mini dalam Tubuh Manusia",
+          "html": "<p>Tubuh seorang manusia dewasa tersusun atas sekitar 37 triliun sel yang hidup, bekerja, dan berkomunikasi satu sama lain setiap detik tanpa henti. Setiap sel tunggal adalah kota metropolitan mikroskopis yang memiliki pembangkit listrik (mitokondria), pusat kendali komputer (nukleus), dan sistem gerbang keamanan pintar (membran sel).</p>\n<p>Bagaimana sebuah sel sperma mikroskopis dan sel telur dapat membelah dan berdiferensiasi menjadi mata yang melihat, jantung yang berdetak, dan otak yang berpikir?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Sayatan Gabus Botol Anggur Robert Hooke",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Robert Hooke & Antonie van Leeuwenhoek</span>\n  <span class=\"h-tag\">Tahun: 1665 – 1674 M</span>\n  <span class=\"h-tag\">Krisis: Manusia mengira semua materi hidup bersifat padat masif tanpa ada unit mikroskopis terkecil</span>\n</div>\n<p>Pada tahun 1665 di London, ilmuwan serbabisa <b>Robert Hooke</b> mengamati sayatan tipis gabus pohon ek di bawah lensa mikroskop majemuk buatannya. Hooke melihat pori-pori kosong berkotak-kotak teratur yang mengingatkannya pada kamar-kamar tidur biarawan biara (disebut <i>cellulae</i>), melahirkan istilah <b>Sel</b>.</p>\n<p>Sembilan tahun kemudian (1674), seorang pedagang kain Belanda bernama <b>Antonie van Leeuwenhoek</b> mengasah lensa kaca bundar super jernih dan terkejut melihat ribuan makhluk renik berenang lincah di setetes air danau (ia menamainya <i>animalcules</i> atau bakteri). Penemuan ini meruntuhkan paham lama dan melahirkan <b>Teori Sel</b> (Schleiden & Schwann, 1839): semua makhluk hidup tersusun dari sel, dan semua sel berasal dari sel sebelumnya (Virchow: <i>Omnis cellula e cellula</i>).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Teori Sel Modern & Organisasi Kehidupan",
+          "html": "<p><b>Sel:</b> Unit struktural, fungsional, dan hereditas terkecil dari seluruh makhluk hidup di bumi.</p>\n<p><b>Prinsip Teori Sel:</b></p>\n<ul>\n  <li>Semua organisme tersusun atas satu atau lebih sel.</li>\n  <li>Sel adalah unit dasar struktur dan fungsi seluruh organisme.</li>\n  <li>Sel-sel baru hanya dapat muncul dari pembelahan sel-sel yang sudah ada sebelumnya.</li>\n</ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Perbesaran Mikroskop Optik & Skala Seluler",
+          "html": "<div class=\"fc-display\">\n\\[ M_{\\text{total}} = M_{\\text{obyektif}} \\times M_{\\text{okuler}}, \\qquad d = \\frac{\\lambda}{2\\text{NA}} \\quad (\\text{Batas Resolusi Abbe}) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M_{\\text{total}}\\)</td><td>Perbesaran total bayangan mikroskop</td><td class=\"unit\">\\(\\text{kali lipat (\\times)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(d\\)</td><td>Batas resolusi terkecil yang dapat dibedakan</td><td class=\"unit\">\\(\\text{nanometer (nm)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\text{NA}\\)</td><td>Apertur numerik lensa obyektif</td><td class=\"unit\">\\(\\text{tanpa satuan}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Mikroskop elektron transmisi (TEM) dapat memperbesar hingga 1.000.000 kali lipat karena panjang gelombang berkas elektron jauh lebih pendek daripada foton cahaya tampak.</small></p>"
+        },
+        {
           "type": "example",
           "title": "Contoh Pertidaksamaan Bentuk Akar TKA",
           "question": "<p>Tentukan nilai x yang memenuhi: \\(\\sqrt{2x + 6} < x - 1\\)!</p>",
@@ -239,6 +347,24 @@
         {
           "type": "text",
           "html": "<h3>Definisi Geometris Nilai Mutlak</h3>\n<p>Nilai mutlak \\(|x|\\) menyatakan <b>jarak</b> bilangan \\(x\\) dari titik nol pada garis bilangan. Karena jarak tidak pernah negatif, nilai mutlak didefinisikan secara formal:</p>\n\\[ |x| = \\begin{cases} x, & \\text{jika } x \\ge 0 \\\\ -x, & \\text{jika } x < 0 \\end{cases} \\]"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: 37 Triliun Unit Pabrik Mini dalam Tubuh Manusia",
+          "html": "<p>Tubuh seorang manusia dewasa tersusun atas sekitar 37 triliun sel yang hidup, bekerja, dan berkomunikasi satu sama lain setiap detik tanpa henti. Setiap sel tunggal adalah kota metropolitan mikroskopis yang memiliki pembangkit listrik (mitokondria), pusat kendali komputer (nukleus), dan sistem gerbang keamanan pintar (membran sel).</p>\n<p>Bagaimana sebuah sel sperma mikroskopis dan sel telur dapat membelah dan berdiferensiasi menjadi mata yang melihat, jantung yang berdetak, dan otak yang berpikir?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Sayatan Gabus Botol Anggur Robert Hooke",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Robert Hooke & Antonie van Leeuwenhoek</span>\n  <span class=\"h-tag\">Tahun: 1665 – 1674 M</span>\n  <span class=\"h-tag\">Krisis: Manusia mengira semua materi hidup bersifat padat masif tanpa ada unit mikroskopis terkecil</span>\n</div>\n<p>Pada tahun 1665 di London, ilmuwan serbabisa <b>Robert Hooke</b> mengamati sayatan tipis gabus pohon ek di bawah lensa mikroskop majemuk buatannya. Hooke melihat pori-pori kosong berkotak-kotak teratur yang mengingatkannya pada kamar-kamar tidur biarawan biara (disebut <i>cellulae</i>), melahirkan istilah <b>Sel</b>.</p>\n<p>Sembilan tahun kemudian (1674), seorang pedagang kain Belanda bernama <b>Antonie van Leeuwenhoek</b> mengasah lensa kaca bundar super jernih dan terkejut melihat ribuan makhluk renik berenang lincah di setetes air danau (ia menamainya <i>animalcules</i> atau bakteri). Penemuan ini meruntuhkan paham lama dan melahirkan <b>Teori Sel</b> (Schleiden & Schwann, 1839): semua makhluk hidup tersusun dari sel, dan semua sel berasal dari sel sebelumnya (Virchow: <i>Omnis cellula e cellula</i>).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Teori Sel Modern & Organisasi Kehidupan",
+          "html": "<p><b>Sel:</b> Unit struktural, fungsional, dan hereditas terkecil dari seluruh makhluk hidup di bumi.</p>\n<p><b>Prinsip Teori Sel:</b></p>\n<ul>\n  <li>Semua organisme tersusun atas satu atau lebih sel.</li>\n  <li>Sel adalah unit dasar struktur dan fungsi seluruh organisme.</li>\n  <li>Sel-sel baru hanya dapat muncul dari pembelahan sel-sel yang sudah ada sebelumnya.</li>\n</ul>"
         },
         {
           "type": "callout",
@@ -286,6 +412,30 @@
         {
           "type": "text",
           "html": "<h3>Empat Arketipe Soal Cerita Aljabar TKA</h3>\n<p>Soal pemodelan menguji kemampuan mentranslasikan narasi verbal ke dalam variabel dan persamaan aljabar formal:</p>\n<ol>\n  <li><b>Kecepatan Relatif & Gerak Papasan / Susul</b>:\n    <ul>\n      <li>Papasan berhadapan: \\(t_{\\text{papasan}} = \\frac{S_{\\text{total}}}{v_1 + v_2}\\).</li>\n      <li>Susul searah: \\(t_{\\text{susul}} = \\frac{\\Delta S}{v_{\\text{cepat}} - v_{\\text{lambat}}}\\).</li>\n    </ul>\n  </li>\n  <li><b>Laju Pekerjaan Bersama (Work Rate)</b>:\n    <p>Jika A menyelesaikan pekerjaan dalam \\(t_A\\) jam dan B dalam \\(t_B\\) jam, laju kerja bersama memenuhi: <b>\\(\\frac{1}{t_{\\text{bersama}}} = \\frac{1}{t_A} + \\frac{1}{t_B}\\)</b>.</p>\n  </li>\n  <li><b>Campuran Larutan & Konsentrasi</b>:\n    <p>\\(m_1 c_1 + m_2 c_2 = (m_1 + m_2) c_{\\text{campuran}}\\).</p>\n  </li>\n  <li><b>Hubungan Umur Bertingkat</b>:\n    <p>Ingat bahwa selisih umur dua orang selalu konstan sepanjang waktu (\\(U_{A}(t) - U_{B}(t) = \\text{tetap}\\)).</p>\n  </li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: 37 Triliun Unit Pabrik Mini dalam Tubuh Manusia",
+          "html": "<p>Tubuh seorang manusia dewasa tersusun atas sekitar 37 triliun sel yang hidup, bekerja, dan berkomunikasi satu sama lain setiap detik tanpa henti. Setiap sel tunggal adalah kota metropolitan mikroskopis yang memiliki pembangkit listrik (mitokondria), pusat kendali komputer (nukleus), dan sistem gerbang keamanan pintar (membran sel).</p>\n<p>Bagaimana sebuah sel sperma mikroskopis dan sel telur dapat membelah dan berdiferensiasi menjadi mata yang melihat, jantung yang berdetak, dan otak yang berpikir?</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Sayatan Gabus Botol Anggur Robert Hooke",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Robert Hooke & Antonie van Leeuwenhoek</span>\n  <span class=\"h-tag\">Tahun: 1665 – 1674 M</span>\n  <span class=\"h-tag\">Krisis: Manusia mengira semua materi hidup bersifat padat masif tanpa ada unit mikroskopis terkecil</span>\n</div>\n<p>Pada tahun 1665 di London, ilmuwan serbabisa <b>Robert Hooke</b> mengamati sayatan tipis gabus pohon ek di bawah lensa mikroskop majemuk buatannya. Hooke melihat pori-pori kosong berkotak-kotak teratur yang mengingatkannya pada kamar-kamar tidur biarawan biara (disebut <i>cellulae</i>), melahirkan istilah <b>Sel</b>.</p>\n<p>Sembilan tahun kemudian (1674), seorang pedagang kain Belanda bernama <b>Antonie van Leeuwenhoek</b> mengasah lensa kaca bundar super jernih dan terkejut melihat ribuan makhluk renik berenang lincah di setetes air danau (ia menamainya <i>animalcules</i> atau bakteri). Penemuan ini meruntuhkan paham lama dan melahirkan <b>Teori Sel</b> (Schleiden & Schwann, 1839): semua makhluk hidup tersusun dari sel, dan semua sel berasal dari sel sebelumnya (Virchow: <i>Omnis cellula e cellula</i>).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Teori Sel Modern & Organisasi Kehidupan",
+          "html": "<p><b>Sel:</b> Unit struktural, fungsional, dan hereditas terkecil dari seluruh makhluk hidup di bumi.</p>\n<p><b>Prinsip Teori Sel:</b></p>\n<ul>\n  <li>Semua organisme tersusun atas satu atau lebih sel.</li>\n  <li>Sel adalah unit dasar struktur dan fungsi seluruh organisme.</li>\n  <li>Sel-sel baru hanya dapat muncul dari pembelahan sel-sel yang sudah ada sebelumnya.</li>\n</ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Perbesaran Mikroskop Optik & Skala Seluler",
+          "html": "<div class=\"fc-display\">\n\\[ M_{\\text{total}} = M_{\\text{obyektif}} \\times M_{\\text{okuler}}, \\qquad d = \\frac{\\lambda}{2\\text{NA}} \\quad (\\text{Batas Resolusi Abbe}) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M_{\\text{total}}\\)</td><td>Perbesaran total bayangan mikroskop</td><td class=\"unit\">\\(\\text{kali lipat (\\times)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(d\\)</td><td>Batas resolusi terkecil yang dapat dibedakan</td><td class=\"unit\">\\(\\text{nanometer (nm)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\text{NA}\\)</td><td>Apertur numerik lensa obyektif</td><td class=\"unit\">\\(\\text{tanpa satuan}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Mikroskop elektron transmisi (TEM) dapat memperbesar hingga 1.000.000 kali lipat karena panjang gelombang berkas elektron jauh lebih pendek daripada foton cahaya tampak.</small></p>"
         },
         {
           "type": "example",
