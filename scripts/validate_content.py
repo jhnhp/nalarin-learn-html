@@ -125,7 +125,8 @@ class Validator:
                             self.error(block_where, '"src" wajib diisi')
                         elif not self.is_external(src) and not src.startswith("/"):
                             asset_path = (folder / src).resolve()
-                            if not asset_path.is_relative_to(folder.resolve()):
+                            materi_root = (ROOT / "materi").resolve()
+                            if not asset_path.is_relative_to(materi_root):
                                 self.error(block_where, "path aset keluar dari folder materi")
                             elif not asset_path.is_file():
                                 self.error(block_where, f"aset tidak ditemukan: {src}")

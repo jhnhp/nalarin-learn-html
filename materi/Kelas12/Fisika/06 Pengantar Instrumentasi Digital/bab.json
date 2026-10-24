@@ -39,17 +39,17 @@
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Sinyal Analog Kontinu vs Sinyal Digital Diskrit, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Gerbang logika yang menghasilkan output bernilai 1 HANYA JIKA kedua inputnya memiliki nilai logika yang sama persis (keduanya 0 atau keduanya 1) adalah gerbang ....",
           "options": {
-            "A": "Prinsip Sinyal Analog Kontinu vs Sinyal Digital Diskrit berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "XNOR (Exclusive NOR)",
+            "B": "XOR (Exclusive OR)",
+            "C": "OR",
+            "D": "NAND"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Kelemahan sinyal analog terhadap gangguan noise derau; keunggulan transmisi data digital kode biner (0 dan 1) yang tahan interferensi dan mudah dikompresi.."
+          "hint": "Gerbang kesetaraan (equivalence gate).",
+          "explanation": "Gerbang XNOR menghasilkan logika 1 jika inputnya sama (0 dan 0 menghasilkan 1; 1 dan 1 menghasilkan 1). Jika inputnya berbeda, outputnya 0."
         }
       ]
     },
@@ -192,14 +192,15 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Konversi Digital ke Analog (DAC): Rekonstruksi Sinyal Suara dan Video",
-          "question": "<p>Perhatikan permasalahan mendalam terkait <b>Konversi Digital ke Analog (DAC): Rekonstruksi Sinyal Suara dan Video</b>. Analisislah kaidah matematis dan tahapan penyelesaiannya secara sistematis!</p>",
+          "title": "Contoh Soal: Menentukan Output Rangkaian Gerbang Logika Kombinasional",
+          "question": "<p>Sebuah rangkaian sistem kendali digital menggunakan gerbang NAND yang menerima dua input biner A = 1 dan B = 0. Output dari gerbang NAND tersebut kemudian dihubungkan ke input gerbang NOT. Tentukan status logika output akhir sistem!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Konversi Digital ke Analog (DAC): Rekonstruksi Sinyal Suara dan Video untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Analisis Gerbang NAND: Gerbang NAND adalah kebalikan dari gerbang AND. Rumus logika: Y₁ = NOT (A AND B).",
+            "Hitung Y₁: A AND B = 1 AND 0 = 0. Maka Y₁ = NOT(0) = 1 (output gerbang NAND bernilai logika TINGGI / 1).",
+            "Analisis Gerbang NOT: Gerbang NOT membalik nilai logika inputnya. Input = Y₁ = 1.",
+            "Hitung output akhir (Y_akhir): Y_akhir = NOT(1) = 0 (output bernilai logika RENDAH / 0)."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Output akhir sistem bernilai logika 0 (Rendah / False)."
         },
         {
           "type": "check",
@@ -263,17 +264,17 @@
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Sistem Bilangan Biner, Desimal, dan Heksadesimal, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman: Sistem Bilangan Biner, Desimal, dan Heksadesimal",
+          "question": "Gerbang logika yang menghasilkan output bernilai 1 HANYA JIKA kedua inputnya memiliki nilai logika yang sama persis (keduanya 0 atau keduanya 1) adalah gerbang ....",
           "options": {
-            "A": "Prinsip Sistem Bilangan Biner, Desimal, dan Heksadesimal berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "XNOR (Exclusive NOR)",
+            "B": "XOR (Exclusive OR)",
+            "C": "OR",
+            "D": "NAND"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Konversi antarsistem bilangan; basis 2 (bit dan byte), basis 16 (alamat memori komputer); operasi aritmetika biner dasar.."
+          "hint": "Gerbang kesetaraan (equivalence gate).",
+          "explanation": "Gerbang XNOR menghasilkan logika 1 jika inputnya sama (0 dan 0 menghasilkan 1; 1 dan 1 menghasilkan 1). Jika inputnya berbeda, outputnya 0."
         }
       ]
     },
@@ -409,14 +410,15 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Gerbang Kombinasional Universal: NAND, NOR, XOR, dan XNOR",
-          "question": "<p>Perhatikan permasalahan mendalam terkait <b>Gerbang Kombinasional Universal: NAND, NOR, XOR, dan XNOR</b>. Analisislah kaidah matematis dan tahapan penyelesaiannya secara sistematis!</p>",
+          "title": "Contoh Soal: Gerbang Kombinasional Universal: NAND, NOR, XOR, dan XNOR",
+          "question": "<p>Sebuah rangkaian sistem kendali digital menggunakan gerbang NAND yang menerima dua input biner A = 1 dan B = 0. Output dari gerbang NAND tersebut kemudian dihubungkan ke input gerbang NOT. Tentukan status logika output akhir sistem!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Gerbang Kombinasional Universal: NAND, NOR, XOR, dan XNOR untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Analisis Gerbang NAND: Gerbang NAND adalah kebalikan dari gerbang AND. Rumus logika: Y₁ = NOT (A AND B).",
+            "Hitung Y₁: A AND B = 1 AND 0 = 0. Maka Y₁ = NOT(0) = 1 (output gerbang NAND bernilai logika TINGGI / 1).",
+            "Analisis Gerbang NOT: Gerbang NOT membalik nilai logika inputnya. Input = Y₁ = 1.",
+            "Hitung output akhir (Y_akhir): Y_akhir = NOT(1) = 0 (output bernilai logika RENDAH / 0)."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Output akhir sistem bernilai logika 0 (Rendah / False)."
         },
         {
           "type": "check",
@@ -551,28 +553,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Pengenalan Mikrokontroler (Arduino/ESP32) dan Sistem Kendali Otomatis IoT",
-          "question": "<p>Perhatikan permasalahan mendalam terkait <b>Pengenalan Mikrokontroler (Arduino/ESP32) dan Sistem Kendali Otomatis IoT</b>. Analisislah kaidah matematis dan tahapan penyelesaiannya secara sistematis!</p>",
+          "title": "Contoh Soal: Pengenalan Mikrokontroler (Arduino/ESP32) dan Sistem Kendali Otomatis IoT",
+          "question": "<p>Sebuah rangkaian sistem kendali digital menggunakan gerbang NAND yang menerima dua input biner A = 1 dan B = 0. Output dari gerbang NAND tersebut kemudian dihubungkan ke input gerbang NOT. Tentukan status logika output akhir sistem!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Pengenalan Mikrokontroler (Arduino/ESP32) dan Sistem Kendali Otomatis IoT untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Analisis Gerbang NAND: Gerbang NAND adalah kebalikan dari gerbang AND. Rumus logika: Y₁ = NOT (A AND B).",
+            "Hitung Y₁: A AND B = 1 AND 0 = 0. Maka Y₁ = NOT(0) = 1 (output gerbang NAND bernilai logika TINGGI / 1).",
+            "Analisis Gerbang NOT: Gerbang NOT membalik nilai logika inputnya. Input = Y₁ = 1.",
+            "Hitung output akhir (Y_akhir): Y_akhir = NOT(1) = 0 (output bernilai logika RENDAH / 0)."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Output akhir sistem bernilai logika 0 (Rendah / False)."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Pengenalan Mikrokontroler (Arduino/ESP32) dan Sistem Kendali Otomatis IoT, manakah pernyataan berikut yang paling tepat?",
+          "title": "Cek Pemahaman: Pengenalan Mikrokontroler (Arduino/ESP32) dan Sistem Kendali Otomatis IoT",
+          "question": "Gerbang logika yang menghasilkan output bernilai 1 HANYA JIKA kedua inputnya memiliki nilai logika yang sama persis (keduanya 0 atau keduanya 1) adalah gerbang ....",
           "options": {
-            "A": "Prinsip Pengenalan Mikrokontroler (Arduino/ESP32) dan Sistem Kendali Otomatis IoT berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "XNOR (Exclusive NOR)",
+            "B": "XOR (Exclusive OR)",
+            "C": "OR",
+            "D": "NAND"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Arsitektur unit pemroses data mikro, pin input/output digital dan analog (PWM); integrasi sensor-mikrokontroler-aktuator (relay, motor servo) pada sistem pintar otomatisasi.."
+          "hint": "Gerbang kesetaraan (equivalence gate).",
+          "explanation": "Gerbang XNOR menghasilkan logika 1 jika inputnya sama (0 dan 0 menghasilkan 1; 1 dan 1 menghasilkan 1). Jika inputnya berbeda, outputnya 0."
         }
       ]
     },
@@ -618,28 +621,29 @@
         },
         {
           "type": "example",
-          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Sistem Digital",
-          "question": "<p>Perhatikan permasalahan mendalam terkait <b>Rangkuman Bab & Uji Kemahiran Sistem Digital</b>. Analisislah kaidah matematis dan tahapan penyelesaiannya secara sistematis!</p>",
+          "title": "Contoh Soal Evaluasi: 06 Pengantar Instrumentasi Digital",
+          "question": "<p>Dalam evaluasi pemahaman materi <b>06 Pengantar Instrumentasi Digital</b>, tinjau kembali integrasi konsep pada subbab <i>Rangkuman Bab & Uji Kemahiran Sistem Digital</i>. Analisis langkah sistematis penyelesaian permasalahan kuantitatif/konseptual berikut ini:</p><p>Sebuah rangkaian sistem kendali digital menggunakan gerbang NAND yang menerima dua input biner A = 1 dan B = 0. Output dari gerbang NAND tersebut kemudian dihubungkan ke input gerbang NOT. Tentukan status logika output akhir sistem!</p>",
           "steps": [
-            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
-            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Sistem Digital untuk menyusun tahapan solusi sistematis.",
-            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+            "Analisis Gerbang NAND: Gerbang NAND adalah kebalikan dari gerbang AND. Rumus logika: Y₁ = NOT (A AND B).",
+            "Hitung Y₁: A AND B = 1 AND 0 = 0. Maka Y₁ = NOT(0) = 1 (output gerbang NAND bernilai logika TINGGI / 1).",
+            "Analisis Gerbang NOT: Gerbang NOT membalik nilai logika inputnya. Input = Y₁ = 1.",
+            "Hitung output akhir (Y_akhir): Y_akhir = NOT(1) = 0 (output bernilai logika RENDAH / 0)."
           ],
-          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+          "answer": "Output akhir sistem bernilai logika 0 (Rendah / False)."
         },
         {
           "type": "check",
-          "title": "Cek pemahaman",
-          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Sistem Digital, manakah pernyataan berikut yang paling tepat?",
+          "title": "Uji Kemahiran: 06 Pengantar Instrumentasi Digital",
+          "question": "Pada tinjauan menyeluruh materi 06 Pengantar Instrumentasi Digital (Rangkuman Bab & Uji Kemahiran Sistem Digital), prinsip saintifik/matematis yang menjadi landasan utama adalah ....",
           "options": {
-            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Sistem Digital berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
-            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
-            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
-            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+            "A": "XNOR (Exclusive NOR)",
+            "B": "XOR (Exclusive OR)",
+            "C": "OR",
+            "D": "NAND"
           },
           "answer": "A",
-          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
-          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tabel ringkasan gerbang logika dan kuis perancangan sirkuit logika.."
+          "hint": "Fokus pada konsep kunci yang dibahas dalam bab 06 Pengantar Instrumentasi Digital.",
+          "explanation": "Gerbang XNOR menghasilkan logika 1 jika inputnya sama (0 dan 0 menghasilkan 1; 1 dan 1 menghasilkan 1). Jika inputnya berbeda, outputnya 0."
         },
         {
           "type": "text",
