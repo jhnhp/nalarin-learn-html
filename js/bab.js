@@ -4,7 +4,12 @@
 const BAB = P.get('bab') || '';
 const BASE = 'materi/' + enc(BAB) + '/';
 // alamat relatif di bab.json dihitung dari folder bab
-const asset = src => /^(https?:)?\/\//.test(src) || src.startsWith('/') ? src : BASE + enc(src);
+const asset = src => {
+  const value = String(src || '');
+  if(/^https?:\/\//i.test(value)) return value;
+  if(value.startsWith('/')) return value;
+  return BASE + enc(value);
+};
 
 loadKatalog().then(kat => {
   const daftar = Array.isArray(kat.bab) ? kat.bab : [];
@@ -157,7 +162,9 @@ function sim(bl){
   const f = mk('iframe', 'simframe');
   f.src = asset(bl.src) + '?theme=' + document.documentElement.dataset.theme;
   f.title = bl.title || 'Simulasi'; f.loading = 'lazy';
-  f.style.height = (bl.height || 480) + 'px';
+  const requestedHeight = Number(bl.height);
+  const height = Number.isFinite(requestedHeight) ? Math.max(240, Math.min(2000, Math.round(requestedHeight))) : 480;
+  f.style.height = height + 'px';
   c.appendChild(f);
   c.querySelector('button').onclick = () => (f.requestFullscreen || f.webkitRequestFullscreen || (() => {})).call(f);
   if(bl.caption){ const p = mk('div', 'cap'); setSafeHTML(p, bl.caption); c.appendChild(p); }
