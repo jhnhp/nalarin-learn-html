@@ -1,25 +1,23 @@
 {
   "title": "Vektor",
-  "summary": "Vektor di bidang dan ruang untuk TKA Matematika Tingkat Lanjut: komponen, panjang, operasi penjumlahan dan perkalian skalar, perkalian titik, sudut antarvektor, proyeksi, serta penerapan pada masalah gerak.",
+  "summary": "Analisis vektor geometri dan aljabar pada ruang R2 dan R3: komponen vektor, panjang (modulus) vektor, vektor satuan, operasi aljabar vektor, perbandingan vektor pembagi ruas garis, perkalian titik (dot product), sudut antara dua vektor, serta proyeksi skalar dan proyeksi vektor ortogonal.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "konsep",
-      "title": "Komponen, panjang, dan operasi vektor",
+      "id": "vektor-geometris-aljabar-r2-r3",
+      "title": "Vektor pada Bidang (R2) dan Ruang (R3): Notasi Komponen, Panjang Vektor, dan Vektor Satuan",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "16 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Vektor pada Bidang (R2) dan Ruang (R3): Notasi Komponen, Panjang Vektor, dan Vektor Satuan</b>: Menghitung panjang vektor |u| = √(x^2 + y^2 + z^2) dan menentukan vektor satuan searah u / |u|.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
         {
           "type": "callout",
           "variant": "info",
           "title": "Cakupan TKA",
           "html": "<p><b>Vektor</b>: vektor pada bidang dan ruang, panjang vektor, dan operasi vektor.</p><p><i>Batasan</i>: komponen vektor maksimum tiga.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Dasar vektor",
-          "html": "<ul><li>Vektor dari A ke B: \\(\\vec{AB} = B - A\\).</li><li>Panjang: \\(|\\vec u| = \\sqrt{u_1^2 + u_2^2 + u_3^2}\\).</li><li>Penjumlahan dan perkalian skalar dilakukan per komponen.</li><li>Vektor satuan: \\(\\hat u = \\dfrac{\\vec u}{|\\vec u|}\\).</li><li>Titik P membagi AB dengan AP : PB = m : n: \\(P = \\dfrac{nA + mB}{m + n}\\).</li><li>A, B, C segaris jika \\(\\vec{AC} = k\\vec{AB}\\).</li></ul>"
         },
         {
           "type": "sim",
@@ -39,16 +37,6 @@
           "answer": "6"
         },
         {
-          "type": "example",
-          "title": "Contoh 2: pembagian ruas garis",
-          "question": "<p>A(2, 0, 5), B(8, 6, −1). Tentukan P pada AB dengan AP : PB = 1 : 2.</p>",
-          "steps": [
-            "\\(P = \\dfrac{2A + 1B}{3} = \\dfrac{(4 + 8, 0 + 6, 10 - 1)}{3}\\).",
-            "P = (4, 2, 3)."
-          ],
-          "answer": "(4, 2, 3)"
-        },
-        {
           "type": "check",
           "question": "Panjang vektor (1, 2, −2) adalah ....",
           "options": {
@@ -64,16 +52,20 @@
       ]
     },
     {
-      "id": "titik",
-      "title": "Perkalian titik, sudut, dan proyeksi",
+      "id": "operasi-aljabar-dan-pembagi-ruas-garis",
+      "title": "Operasi Aljabar Vektor dan Rumus Pembagian Ruas Garis: p = (m·b + n·a) / (m + n)",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "16 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Operasi Aljabar Vektor dan Rumus Pembagian Ruas Garis: p = (m·b + n·a) / (m + n)</b>: Menyelesaikan kombinasi linear ku + lv dan menghitung koordinat titik pembagi ruas garis AP : PB = m : n (dalam dan luar).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Perkalian titik (skalar)",
-          "html": "<ul><li>\\(\\vec u\\cdot\\vec v = u_1v_1 + u_2v_2 + u_3v_3 = |\\vec u||\\vec v|\\cos\\theta\\).</li><li>\\(\\vec u \\perp \\vec v \\Leftrightarrow \\vec u\\cdot\\vec v = 0\\).</li><li>Proyeksi skalar \\(\\vec u\\) pada \\(\\vec v\\): \\(\\dfrac{\\vec u\\cdot\\vec v}{|\\vec v|}\\); proyeksi vektor: \\(\\dfrac{\\vec u\\cdot\\vec v}{|\\vec v|^2}\\vec v\\).</li><li>\\(|\\vec u + \\vec v|^2 = |\\vec u|^2 + |\\vec v|^2 + 2\\,\\vec u\\cdot\\vec v\\).</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Vektor</b>: vektor pada bidang dan ruang, panjang vektor, dan operasi vektor.</p><p><i>Batasan</i>: komponen vektor maksimum tiga.</p>"
         },
         {
           "type": "sim",
@@ -83,32 +75,14 @@
           "caption": "Masukkan komponen u dan v, lalu putar sudut pandang. Cari pasangan vektor yang tegak lurus (u · v = 0) dan lihat proyeksinya."
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/01 Vektor/sim/perkalian.html",
-          "title": "Perkalian titik di bidang",
-          "height": 520,
-          "caption": "Geser vektor dan amati hubungan u · v dengan sudutnya."
-        },
-        {
           "type": "example",
-          "title": "Contoh 1: sudut",
-          "question": "<p>Tentukan sudut antara \\(\\vec a = (1, 0, 1)\\) dan \\(\\vec b = (0, 1, 1)\\).</p>",
+          "title": "Contoh 2: pembagian ruas garis",
+          "question": "<p>A(2, 0, 5), B(8, 6, −1). Tentukan P pada AB dengan AP : PB = 1 : 2.</p>",
           "steps": [
-            "a·b = 0 + 0 + 1 = 1; |a| = |b| = √2.",
-            "cos θ = 1/2 → θ = 60°."
+            "\\(P = \\dfrac{2A + 1B}{3} = \\dfrac{(4 + 8, 0 + 6, 10 - 1)}{3}\\).",
+            "P = (4, 2, 3)."
           ],
-          "answer": "60°"
-        },
-        {
-          "type": "example",
-          "title": "Contoh 2: gerak perahu",
-          "question": "<p>Perahu bergerak tegak lurus tepi sungai 4 m/s menyeberangi sungai selebar 80 m, arus 3 m/s. Berapa jauh perahu hanyut dan berapa kecepatan resultannya?</p>",
-          "steps": [
-            "Waktu = 80/4 = 20 s (hanya komponen tegak lurus).",
-            "Hanyut = 3 × 20 = 60 m.",
-            "Kecepatan resultan √(16 + 9) = 5 m/s."
-          ],
-          "answer": "Hanyut 60 m, kecepatan 5 m/s"
+          "answer": "(4, 2, 3)"
         },
         {
           "type": "check",
@@ -126,26 +100,154 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "35 menit",
+      "id": "perkalian-skalar-dot-product",
+      "title": "Perkalian Skalar Dua Vektor (Dot Product): u · v = |u||v| cos θ",
+      "kind": "artikel",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk vektor AB, selalu hitung B − A (ujung dikurangi pangkal).</li><li>Hasil kali titik negatif berarti sudut tumpul.</li><li>Pada soal gerak menyeberang, waktu hanya ditentukan komponen yang tegak lurus tepi.</li><li>Untuk |u + v| tanpa komponen, gunakan rumus kuadrat panjang dengan cos θ.</li></ul>"
+          "type": "text",
+          "html": "<p><b>Perkalian Skalar Dua Vektor (Dot Product): u · v = |u||v| cos θ</b>: Menghitung u · v = x_1·x_2 + y_1·y_2 + z_1·z_2, menentukan besar sudut θ antara dua vektor, dan syarat ortogonal tegak lurus (u · v = 0).</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Tertukar proyeksi u pada v dengan proyeksi v pada u.</li><li>Menganggap |u + v| = |u| + |v|.</li><li>Memakai bobot terbalik pada rumus pembagian ruas garis.</li><li>Lupa akar saat menghitung panjang.</li></ul>"
+          "variant": "rumus",
+          "title": "Dasar vektor",
+          "html": "<ul><li>Vektor dari A ke B: \\(\\vec{AB} = B - A\\).</li><li>Panjang: \\(|\\vec u| = \\sqrt{u_1^2 + u_2^2 + u_3^2}\\).</li><li>Penjumlahan dan perkalian skalar dilakukan per komponen.</li><li>Vektor satuan: \\(\\hat u = \\dfrac{\\vec u}{|\\vec u|}\\).</li><li>Titik P membagi AB dengan AP : PB = m : n: \\(P = \\dfrac{nA + mB}{m + n}\\).</li><li>A, B, C segaris jika \\(\\vec{AC} = k\\vec{AB}\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: sudut",
+          "question": "<p>Tentukan sudut antara \\(\\vec a = (1, 0, 1)\\) dan \\(\\vec b = (0, 1, 1)\\).</p>",
+          "steps": [
+            "a·b = 0 + 0 + 1 = 1; |a| = |b| = √2.",
+            "cos θ = 1/2 → θ = 60°."
+          ],
+          "answer": "60°"
+        }
+      ]
+    },
+    {
+      "id": "proyeksi-skalar-dan-proyeksi-vektor-ortogonal",
+      "title": "Proyeksi Ortogonal: Panjang Proyeksi (Skalar) dan Vektor Proyeksi",
+      "kind": "simulasi",
+      "duration": "18 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Proyeksi Ortogonal: Panjang Proyeksi (Skalar) dan Vektor Proyeksi</b>: Menghitung panjang proyeksi skalar (|u·v| / |v|) dan vektor proyeksi ortogonal ((u·v) / |v|^2) · v.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Vektor</b>: vektor pada bidang dan ruang, panjang vektor, dan operasi vektor.</p><p><i>Batasan</i>: komponen vektor maksimum tiga.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/01 Vektor/sim/perkalian.html",
+          "title": "Perkalian titik di bidang",
+          "height": 520,
+          "caption": "Geser vektor dan amati hubungan u · v dengan sudutnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: gerak perahu",
+          "question": "<p>Perahu bergerak tegak lurus tepi sungai 4 m/s menyeberangi sungai selebar 80 m, arus 3 m/s. Berapa jauh perahu hanyut dan berapa kecepatan resultannya?</p>",
+          "steps": [
+            "Waktu = 80/4 = 20 s (hanya komponen tegak lurus).",
+            "Hanyut = 3 × 20 = 60 m.",
+            "Kecepatan resultan √(16 + 9) = 5 m/s."
+          ],
+          "answer": "Hanyut 60 m, kecepatan 5 m/s"
+        }
+      ]
+    },
+    {
+      "id": "aplikasi-vektor-geometri-fisika",
+      "title": "Aplikasi Vektor: Pembuktian Ketegaklurusan dan Resultan Gaya Mekanika",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Aplikasi Vektor: Pembuktian Ketegaklurusan dan Resultan Gaya Mekanika</b>: Menyelesaikan masalah geometri analitis ruang dan kesetimbangan gaya menggunakan pendekatan vektor.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Vektor</b>: vektor pada bidang dan ruang, panjang vektor, dan operasi vektor.</p><p><i>Batasan</i>: komponen vektor maksimum tiga.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Aplikasi Vektor: Pembuktian Ketegaklurusan dan Resultan Gaya Mekanika",
+          "question": "<p>Perhatikan permasalahan terkait <b>Aplikasi Vektor: Pembuktian Ketegaklurusan dan Resultan Gaya Mekanika</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan masalah geometri analitis ruang dan kesetimbangan gaya menggunakan pendekatan vektor..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Aplikasi Vektor: Pembuktian Ketegaklurusan dan Resultan Gaya Mekanika, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Aplikasi Vektor: Pembuktian Ketegaklurusan dan Resultan Gaya Mekanika berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan masalah geometri analitis ruang dan kesetimbangan gaya menggunakan pendekatan vektor.."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mtl-05",
+      "title": "Strategi Cepat Vektor dan Latihan Kuis Bab 5",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Vektor dan Latihan Kuis Bab 5</b>: Menguasai analisis vektor analitis dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Vektor</b>: vektor pada bidang dan ruang, panjang vektor, dan operasi vektor.</p><p><i>Batasan</i>: komponen vektor maksimum tiga.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Vektor dan Latihan Kuis Bab 5",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Vektor dan Latihan Kuis Bab 5</b> berikut. Analisislah berdasarkan prinsip Menguasai analisis vektor analitis dan menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Vektor dan Latihan Kuis Bab 5, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Vektor dan Latihan Kuis Bab 5 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai analisis vektor analitis dan menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

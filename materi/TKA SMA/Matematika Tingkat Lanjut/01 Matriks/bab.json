@@ -1,29 +1,23 @@
 {
   "title": "Matriks",
-  "summary": "Matriks untuk TKA Matematika Tingkat Lanjut: ordo, transpos, kesamaan, operasi penjumlahan dan perkalian, determinan 2 × 2 dan 3 × 3, invers, serta persamaan matriks dan penerapannya.",
+  "summary": "Aljabar matriks lanjutan: ordo, transpos, kesamaan dua matriks, operasi penjumlahan dan perkalian skalar/matriks, sifat non-komutatif AB ≠ BA, determinan matriks 2x2 dan 3x3 (metode Sarrus & ekspansi kofaktor), invers matriks, persamaan matriks AX = B, dan penyelesaian SPLDV/SPLTV dengan Aturan Cramer.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "konsep",
-      "title": "Ordo, kesamaan, dan operasi matriks",
+      "id": "definisi-ordo-kesamaan-matriks",
+      "title": "Definisi Matriks, Notasi Ordo, Transpos (A^T), dan Kesamaan Matriks",
       "kind": "artikel",
-      "duration": "25 menit",
+      "duration": "14 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Definisi Matriks, Notasi Ordo, Transpos (A^T), dan Kesamaan Matriks</b>: Menyusun elemen matriks, menentukan transpos dan sifat (A^T)^T = A, serta menyamakan elemen seletak pada persamaan aljabar matriks.</p>"
+        },
         {
           "type": "callout",
           "variant": "info",
           "title": "Cakupan TKA",
           "html": "<p><b>Matriks</b>: operasi matriks, determinan, dan invers matriks.</p><p><i>Batasan</i>: elemen matriks bilangan real; determinan dan invers berukuran 2 × 2 atau 3 × 3.</p>"
-        },
-        {
-          "type": "text",
-          "html": "<p>Matriks berordo \\(m \\times n\\) memiliki \\(m\\) baris dan \\(n\\) kolom. <b>Transpos</b> \\(A^T\\) menukar baris menjadi kolom, sehingga ordonya \\(n \\times m\\). Dua matriks <b>sama</b> jika ordonya sama dan elemen yang seletak sama.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Operasi matriks",
-          "html": "<ul><li>Penjumlahan/pengurangan: hanya untuk ordo yang <b>sama</b>, elemen seletak dijumlahkan.</li><li>Perkalian skalar: setiap elemen dikalikan \\(k\\).</li><li>Perkalian \\(AB\\): syaratnya <b>kolom A = baris B</b>. Jika \\(A_{m\\times n}\\) dan \\(B_{n\\times p}\\), maka \\(AB\\) berordo \\(m\\times p\\). Elemen baris \\(i\\) kolom \\(j\\) = baris \\(i\\) dari A dikali kolom \\(j\\) dari B.</li><li>Umumnya \\(AB \\ne BA\\) (tidak komutatif).</li></ul>"
         },
         {
           "type": "example",
@@ -34,16 +28,6 @@
             "Baris 2 × kolom 1: 0·1 + 3·2 = 6; baris 2 × kolom 2: 0·4 + 3·1 = 3."
           ],
           "answer": "\\(\\begin{pmatrix}0 & 7\\\\6 & 3\\end{pmatrix}\\)"
-        },
-        {
-          "type": "example",
-          "title": "Contoh 2: ordo",
-          "question": "<p>A berordo 3 × 2 dan B berordo 2 × 4. Tentukan ordo AB dan apakah BA terdefinisi.</p>",
-          "steps": [
-            "AB: kolom A (2) = baris B (2), hasilnya 3 × 4.",
-            "BA: kolom B (4) ≠ baris A (3), tidak terdefinisi."
-          ],
-          "answer": "AB berordo 3 × 4; BA tidak terdefinisi"
         },
         {
           "type": "check",
@@ -61,16 +45,68 @@
       ]
     },
     {
-      "id": "determinan",
-      "title": "Determinan dan invers",
+      "id": "operasi-penjumlahan-perkalian-matriks",
+      "title": "Operasi Matriks: Penjumlahan, Pengurangan, dan Perkalian Matriks (Baris × Kolom)",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "16 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Operasi Matriks: Penjumlahan, Pengurangan, dan Perkalian Matriks (Baris × Kolom)</b>: Menerapkan syarat perkalian ordo (m × p) · (p × n) = (m × n) dan memahami bahwa perkalian matriks tidak komutatif (AB ≠ BA).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Determinan dan invers",
-          "html": "<ul><li>\\(\\det \\begin{pmatrix}a & b\\\\c & d\\end{pmatrix} = ad - bc\\).</li><li>Determinan 3 × 3 dengan aturan Sarrus atau ekspansi kofaktor.</li><li>\\(A^{-1} = \\dfrac{1}{ad - bc}\\begin{pmatrix}d & -b\\\\-c & a\\end{pmatrix}\\), hanya jika \\(\\det A \\ne 0\\). Jika \\(\\det A = 0\\), A <b>singular</b>.</li><li>Sifat: \\(\\det(AB) = \\det A\\cdot\\det B\\), \\(\\det(A^{-1}) = \\dfrac{1}{\\det A}\\), \\(\\det(A^T) = \\det A\\), dan untuk ordo \\(n\\): \\(\\det(kA) = k^n\\det A\\).</li><li>\\(AX = B \\Rightarrow X = A^{-1}B\\); \\(XA = B \\Rightarrow X = BA^{-1}\\).</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Matriks</b>: operasi matriks, determinan, dan invers matriks.</p><p><i>Batasan</i>: elemen matriks bilangan real; determinan dan invers berukuran 2 × 2 atau 3 × 3.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/matriks.html",
+          "title": "Matriks sebagai transformasi dan aturan Sarrus",
+          "height": 600,
+          "caption": "Ubah elemen A dan amati: |det A| adalah faktor perubahan luas. Kapan jajargenjang menjadi gepeng (det = 0)? Pada mode 3 × 3, ikuti diagonal hijau dan merah."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: ordo",
+          "question": "<p>A berordo 3 × 2 dan B berordo 2 × 4. Tentukan ordo AB dan apakah BA terdefinisi.</p>",
+          "steps": [
+            "AB: kolom A (2) = baris B (2), hasilnya 3 × 4.",
+            "BA: kolom B (4) ≠ baris A (3), tidak terdefinisi."
+          ],
+          "answer": "AB berordo 3 × 4; BA tidak terdefinisi"
+        },
+        {
+          "type": "check",
+          "question": "Matriks \\(\\begin{pmatrix}x & 4\\\\2 & x\\end{pmatrix}\\) singular jika ....",
+          "options": {
+            "A": "x = 2√2 atau x = −2√2",
+            "B": "x = 8",
+            "C": "x = 2 atau x = 4",
+            "D": "x = 0"
+          },
+          "answer": "A",
+          "hint": "Singular: det = 0.",
+          "explanation": "x² − 8 = 0 → x = ±2√2."
+        }
+      ]
+    },
+    {
+      "id": "determinan-matriks-2x2-3x3",
+      "title": "Determinan Matriks: Rumus 2 × 2 dan Metode Sarrus / Ekspansi Kofaktor 3 × 3",
+      "kind": "simulasi",
+      "duration": "18 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Sistem persamaan linear dapat ditulis \\(AX = B\\) lalu diselesaikan dengan invers atau <b>aturan Cramer</b>: \\(x = \\dfrac{D_x}{D}\\), \\(y = \\dfrac{D_y}{D}\\), dengan \\(D\\) determinan koefisien dan \\(D_x\\) diperoleh dengan mengganti kolom x oleh konstanta.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Matriks</b>: operasi matriks, determinan, dan invers matriks.</p><p><i>Batasan</i>: elemen matriks bilangan real; determinan dan invers berukuran 2 × 2 atau 3 × 3.</p>"
         },
         {
           "type": "sim",
@@ -90,63 +126,6 @@
           "answer": "\\(\\begin{pmatrix}2 & -5\\\\-1 & 3\\end{pmatrix}\\)"
         },
         {
-          "type": "example",
-          "title": "Contoh 2: persamaan matriks",
-          "question": "<p>Tentukan X jika \\(\\begin{pmatrix}1 & 2\\\\1 & 3\\end{pmatrix}X = \\begin{pmatrix}4 & 1\\\\5 & 2\\end{pmatrix}\\).</p>",
-          "steps": [
-            "det = 3 − 2 = 1, invers \\(\\begin{pmatrix}3 & -2\\\\-1 & 1\\end{pmatrix}\\).",
-            "\\(X = A^{-1}B = \\begin{pmatrix}3 & -2\\\\-1 & 1\\end{pmatrix}\\begin{pmatrix}4 & 1\\\\5 & 2\\end{pmatrix} = \\begin{pmatrix}2 & -1\\\\1 & 1\\end{pmatrix}\\)."
-          ],
-          "answer": "\\(X = \\begin{pmatrix}2 & -1\\\\1 & 1\\end{pmatrix}\\)"
-        },
-        {
-          "type": "example",
-          "title": "Contoh 3: determinan 3 × 3",
-          "question": "<p>Hitung \\(\\det\\begin{pmatrix}1 & 0 & 2\\\\3 & 1 & 0\\\\0 & 2 & 1\\end{pmatrix}\\).</p>",
-          "steps": [
-            "Diagonal turun: 1·1·1 + 0·0·0 + 2·3·2 = 1 + 0 + 12 = 13.",
-            "Diagonal naik: 2·1·0 + 1·0·2 + 0·3·1 = 0.",
-            "det = 13 − 0 = 13."
-          ],
-          "answer": "13"
-        },
-        {
-          "type": "check",
-          "question": "Matriks \\(\\begin{pmatrix}x & 4\\\\2 & x\\end{pmatrix}\\) singular jika ....",
-          "options": {
-            "A": "x = 2√2 atau x = −2√2",
-            "B": "x = 8",
-            "C": "x = 2 atau x = 4",
-            "D": "x = 0"
-          },
-          "answer": "A",
-          "hint": "Singular: det = 0.",
-          "explanation": "x² − 8 = 0 → x = ±2√2."
-        }
-      ]
-    },
-    {
-      "id": "penerapan",
-      "title": "Matriks dalam soal cerita",
-      "kind": "artikel",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Sistem persamaan linear dapat ditulis \\(AX = B\\) lalu diselesaikan dengan invers atau <b>aturan Cramer</b>: \\(x = \\dfrac{D_x}{D}\\), \\(y = \\dfrac{D_y}{D}\\), dengan \\(D\\) determinan koefisien dan \\(D_x\\) diperoleh dengan mengganti kolom x oleh konstanta.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh: aturan Cramer",
-          "question": "<p>Harga 3 buku dan 2 pulpen Rp27.000, harga 1 buku dan 4 pulpen Rp19.000. Tentukan harga sebuah buku.</p>",
-          "steps": [
-            "Model: 3b + 2p = 27.000; b + 4p = 19.000.",
-            "D = 3·4 − 2·1 = 10. D<sub>b</sub> = 27.000·4 − 2·19.000 = 70.000.",
-            "b = 70.000/10 = 7.000; p = (19.000 − 7.000)/4 = 3.000."
-          ],
-          "answer": "Rp7.000"
-        },
-        {
           "type": "check",
           "question": "Untuk sistem 2x + y = 5 dan x − y = 1, nilai D (determinan koefisien) adalah ....",
           "options": {
@@ -162,26 +141,154 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "35 menit",
+      "id": "invers-matriks-dan-matriks-singular",
+      "title": "Invers Matriks (A⁻¹) dan Syarat Matriks Singular (det A = 0)",
+      "kind": "artikel",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Periksa ordo sebelum menjumlah atau mengalikan matriks.</li><li>Untuk det(kA) ingat pangkat ordo: 2 × 2 → k², 3 × 3 → k³.</li><li>Persamaan AX = B: invers dikalikan dari <b>kiri</b>; XA = B: dari <b>kanan</b>.</li><li>Soal pola pangkat matriks (A², A³, ...): hitung dua atau tiga pangkat pertama, lalu cari polanya.</li></ul>"
+          "type": "text",
+          "html": "<p>Sistem persamaan linear dapat ditulis \\(AX = B\\) lalu diselesaikan dengan invers atau <b>aturan Cramer</b>: \\(x = \\dfrac{D_x}{D}\\), \\(y = \\dfrac{D_y}{D}\\), dengan \\(D\\) determinan koefisien dan \\(D_x\\) diperoleh dengan mengganti kolom x oleh konstanta.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Mengalikan matriks elemen demi elemen.</li><li>Lupa menukar tanda b dan c pada rumus invers.</li><li>Menganggap AB = BA.</li><li>Menulis det(2A) = 2 det A.</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Matriks</b>: operasi matriks, determinan, dan invers matriks.</p><p><i>Batasan</i>: elemen matriks bilangan real; determinan dan invers berukuran 2 × 2 atau 3 × 3.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: persamaan matriks",
+          "question": "<p>Tentukan X jika \\(\\begin{pmatrix}1 & 2\\\\1 & 3\\end{pmatrix}X = \\begin{pmatrix}4 & 1\\\\5 & 2\\end{pmatrix}\\).</p>",
+          "steps": [
+            "det = 3 − 2 = 1, invers \\(\\begin{pmatrix}3 & -2\\\\-1 & 1\\end{pmatrix}\\).",
+            "\\(X = A^{-1}B = \\begin{pmatrix}3 & -2\\\\-1 & 1\\end{pmatrix}\\begin{pmatrix}4 & 1\\\\5 & 2\\end{pmatrix} = \\begin{pmatrix}2 & -1\\\\1 & 1\\end{pmatrix}\\)."
+          ],
+          "answer": "\\(X = \\begin{pmatrix}2 & -1\\\\1 & 1\\end{pmatrix}\\)"
+        }
+      ]
+    },
+    {
+      "id": "persamaan-matriks-dan-aturan-cramer",
+      "title": "Penyelesaian Persamaan Matriks (AX = B dan XA = B) serta Aturan Cramer",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penyelesaian Persamaan Matriks (AX = B dan XA = B) serta Aturan Cramer</b>: Menyelesaikan X = A⁻¹B dan X = BA⁻¹, serta menyelesaikan SPLDV/SPLTV menggunakan determinan variabel x = D_x/D.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Matriks</b>: operasi matriks, determinan, dan invers matriks.</p><p><i>Batasan</i>: elemen matriks bilangan real; determinan dan invers berukuran 2 × 2 atau 3 × 3.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/matriks.html",
+          "title": "Matriks sebagai transformasi dan aturan Sarrus",
+          "height": 600,
+          "caption": "Ubah elemen A dan amati: |det A| adalah faktor perubahan luas. Kapan jajargenjang menjadi gepeng (det = 0)? Pada mode 3 × 3, ikuti diagonal hijau dan merah."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 3: determinan 3 × 3",
+          "question": "<p>Hitung \\(\\det\\begin{pmatrix}1 & 0 & 2\\\\3 & 1 & 0\\\\0 & 2 & 1\\end{pmatrix}\\).</p>",
+          "steps": [
+            "Diagonal turun: 1·1·1 + 0·0·0 + 2·3·2 = 1 + 0 + 12 = 13.",
+            "Diagonal naik: 2·1·0 + 1·0·2 + 0·3·1 = 0.",
+            "det = 13 − 0 = 13."
+          ],
+          "answer": "13"
+        }
+      ]
+    },
+    {
+      "id": "penerapan-matriks-transformasi-pemodelan",
+      "title": "Aplikasi Matriks: Model Kriptografi, Pemodelan Ekonomi, dan Transformasi Geometri",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Aplikasi Matriks: Model Kriptografi, Pemodelan Ekonomi, dan Transformasi Geometri</b>: Menerapkan matriks representasi rotasi/refleksi dan pemodelan transisi populasi (Matriks Leslie sederhana).</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Matriks</b>: operasi matriks, determinan, dan invers matriks.</p><p><i>Batasan</i>: elemen matriks bilangan real; determinan dan invers berukuran 2 × 2 atau 3 × 3.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh: aturan Cramer",
+          "question": "<p>Harga 3 buku dan 2 pulpen Rp27.000, harga 1 buku dan 4 pulpen Rp19.000. Tentukan harga sebuah buku.</p>",
+          "steps": [
+            "Model: 3b + 2p = 27.000; b + 4p = 19.000.",
+            "D = 3·4 − 2·1 = 10. D<sub>b</sub> = 27.000·4 − 2·19.000 = 70.000.",
+            "b = 70.000/10 = 7.000; p = (19.000 − 7.000)/4 = 3.000."
+          ],
+          "answer": "Rp7.000"
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Aplikasi Matriks: Model Kriptografi, Pemodelan Ekonomi, dan Transformasi Geometri, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Aplikasi Matriks: Model Kriptografi, Pemodelan Ekonomi, dan Transformasi Geometri berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menerapkan matriks representasi rotasi/refleksi dan pemodelan transisi populasi (Matriks Leslie sederhana).."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mtl-01",
+      "title": "Strategi Soal Aljabar Matriks dan Latihan Kuis Bab 1",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Soal Aljabar Matriks dan Latihan Kuis Bab 1</b>: Menguasai seluruh topik matriks TKA dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Matriks</b>: operasi matriks, determinan, dan invers matriks.</p><p><i>Batasan</i>: elemen matriks bilangan real; determinan dan invers berukuran 2 × 2 atau 3 × 3.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Soal Aljabar Matriks dan Latihan Kuis Bab 1",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Soal Aljabar Matriks dan Latihan Kuis Bab 1</b> berikut. Analisislah berdasarkan prinsip Menguasai seluruh topik matriks TKA dan menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Soal Aljabar Matriks dan Latihan Kuis Bab 1, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Soal Aljabar Matriks dan Latihan Kuis Bab 1 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai seluruh topik matriks TKA dan menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

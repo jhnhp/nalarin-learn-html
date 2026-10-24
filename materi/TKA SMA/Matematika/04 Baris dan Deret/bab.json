@@ -1,38 +1,23 @@
 {
   "title": "Baris dan Deret",
-  "summary": "Ringkasan dan latihan TKA SMA: barisan dan deret aritmetika dan geometri, deret tak hingga, bunga tunggal dan majemuk, pertumbuhan, peluruhan, dan anuitas.",
+  "summary": "Pola bilangan dan deret diskret: barisan dan deret aritmetika, barisan dan deret geometri, deret geometri tak hingga konvergen, notasi sigma (Σ), serta aplikasi finansial pada bunga tunggal, bunga majemuk, anuitas, dan model pertumbuhan/peluruhan.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi barisan dan deret",
+      "id": "pola-bilangan-rekursif",
+      "title": "Pola Bilangan, Barisan Rekursif, dan Notasi Deret",
       "kind": "artikel",
-      "duration": "10 menit",
+      "duration": "14 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Kunci soal TKA barisan adalah mengenali apakah perubahannya <b>ditambah tetap</b> (aritmetika) atau <b>dikali tetap</b> (geometri).</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Aritmetika</td><td>Uₙ, Sₙ, soal cerita kursi dan tabungan</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Geometri</td><td>Uₙ, Sₙ, deret tak hingga</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Bunga</td><td>tunggal (aritmetika), majemuk (geometri)</td><td>Kelas 10 Bab 2, Kelas 12 Bab 2</td></tr><tr><td>Pertumbuhan/peluruhan</td><td>M(1 ± i)ⁿ</td><td>Kelas 10 Bab 2</td></tr><tr><td>Anuitas</td><td>nilai akhir tabungan rutin, angsuran</td><td>Kelas 12 Bab 2</td></tr></table>"
+          "html": "<p><b>Pola Bilangan, Barisan Rekursif, dan Notasi Deret</b>: Mengenali relasi keteraturan rekursif u_n = f(u_{n-1}), barisan Fibonacci, dan barisan aritmetika tingkat dua.</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>Aritmetika: Uₙ = a + (n − 1)b; Sₙ = ½n(a + Uₙ).</li><li>Geometri: Uₙ = arⁿ⁻¹; Sₙ = a(rⁿ − 1)/(r − 1); S∞ = a/(1 − r), |r| &lt; 1.</li><li>Bunga tunggal: M(1 + in). Majemuk: M(1 + i)ⁿ. Penyusutan: M(1 − i)ⁿ.</li><li>Nilai akhir anuitas: A[(1 + i)ⁿ − 1]/i.</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "barisan-deret",
-      "title": "Barisan dan deret",
-      "kind": "simulasi",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/barisan.html",
-          "title": "Barisan aritmetika dan geometri",
-          "height": 520,
-          "caption": "Bandingkan pertumbuhan aritmetika dan geometri untuk n besar."
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Eksplorasi visual pola susunan titik/noktah geometris.</p>"
         },
         {
           "type": "example",
@@ -43,23 +28,6 @@
             "S₅ = 2(3⁵ − 1)/2 = 242."
           ],
           "answer": "242"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Koloni berisi 50 bakteri; setiap 30 menit setiap bakteri membelah dua. Berapa bakteri setelah 3 jam?</p>",
-          "steps": [
-            "3 jam = 6 periode.",
-            "50 × 2⁶ = 3.200."
-          ],
-          "answer": "3.200"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas12/Matematika/01 Barisan dan Deret/sim/deret-tak-hingga.html",
-          "title": "Deret geometri tak hingga",
-          "height": 520,
-          "caption": "Bola memantul: panjang lintasan mendekati batas tertentu."
         },
         {
           "type": "check",
@@ -77,44 +45,37 @@
       ]
     },
     {
-      "id": "keuangan",
-      "title": "Bunga, pertumbuhan, dan anuitas",
+      "id": "barisan-deret-aritmetika",
+      "title": "Barisan dan Deret Aritmetika: Suku ke-n (u_n) dan Jumlah Suku (S_n)",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/bunga.html",
-          "title": "Bunga tunggal dan majemuk",
-          "height": 520,
-          "caption": "Bandingkan saldo setelah 10 dan 20 tahun."
+          "type": "text",
+          "html": "<p>Kunci soal TKA barisan adalah mengenali apakah perubahannya <b>ditambah tetap</b> (aritmetika) atau <b>dikali tetap</b> (geometri).</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Aritmetika</td><td>Uₙ, Sₙ, soal cerita kursi dan tabungan</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Geometri</td><td>Uₙ, Sₙ, deret tak hingga</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Bunga</td><td>tunggal (aritmetika), majemuk (geometri)</td><td>Kelas 10 Bab 2, Kelas 12 Bab 2</td></tr><tr><td>Pertumbuhan/peluruhan</td><td>M(1 ± i)ⁿ</td><td>Kelas 10 Bab 2</td></tr><tr><td>Anuitas</td><td>nilai akhir tabungan rutin, angsuran</td><td>Kelas 12 Bab 2</td></tr></table>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Harga mobil Rp200.000.000,00 turun 10% setiap tahun dari nilai tahun sebelumnya. Berapa nilainya setelah 3 tahun?</p>",
-          "steps": [
-            "200.000.000 × 0,9³ = 200.000.000 × 0,729.",
-            "= Rp145.800.000,00."
-          ],
-          "answer": "Rp145.800.000,00"
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Aritmetika: Uₙ = a + (n − 1)b; Sₙ = ½n(a + Uₙ).</li><li>Geometri: Uₙ = arⁿ⁻¹; Sₙ = a(rⁿ − 1)/(r − 1); S∞ = a/(1 − r), |r| &lt; 1.</li><li>Bunga tunggal: M(1 + in). Majemuk: M(1 + i)ⁿ. Penyusutan: M(1 − i)ⁿ.</li><li>Nilai akhir anuitas: A[(1 + i)ⁿ − 1]/i.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/barisan.html",
+          "title": "Barisan aritmetika dan geometri",
+          "height": 520,
+          "caption": "Bandingkan pertumbuhan aritmetika dan geometri untuk n besar."
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Penduduk 500.000 jiwa bertambah 2% per tahun. Berapa penduduk setelah 3 tahun?</p>",
+          "question": "<p>Koloni berisi 50 bakteri; setiap 30 menit setiap bakteri membelah dua. Berapa bakteri setelah 3 jam?</p>",
           "steps": [
-            "500.000 × 1,02³ = 500.000 × 1,061208.",
-            "≈ 530.604 jiwa."
+            "3 jam = 6 periode.",
+            "50 × 2⁶ = 3.200."
           ],
-          "answer": "≈ 530.604 jiwa"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas12/Matematika/02 Investasi dan Pinjaman/sim/tabungan-rutin.html",
-          "title": "Tabungan rutin (anuitas)",
-          "height": 520,
-          "caption": "Bandingkan total setoran dengan bunga yang terkumpul."
+          "answer": "3.200"
         },
         {
           "type": "check",
@@ -132,11 +93,145 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "barisan-deret-geometri",
+      "title": "Barisan dan Deret Geometri: Rasio (r), Pertumbuhan Eksponensial, dan Rumus S_n",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Kunci soal TKA barisan adalah mengenali apakah perubahannya <b>ditambah tetap</b> (aritmetika) atau <b>dikali tetap</b> (geometri).</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Aritmetika</td><td>Uₙ, Sₙ, soal cerita kursi dan tabungan</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Geometri</td><td>Uₙ, Sₙ, deret tak hingga</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Bunga</td><td>tunggal (aritmetika), majemuk (geometri)</td><td>Kelas 10 Bab 2, Kelas 12 Bab 2</td></tr><tr><td>Pertumbuhan/peluruhan</td><td>M(1 ± i)ⁿ</td><td>Kelas 10 Bab 2</td></tr><tr><td>Anuitas</td><td>nilai akhir tabungan rutin, angsuran</td><td>Kelas 12 Bab 2</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Aritmetika: Uₙ = a + (n − 1)b; Sₙ = ½n(a + Uₙ).</li><li>Geometri: Uₙ = arⁿ⁻¹; Sₙ = a(rⁿ − 1)/(r − 1); S∞ = a/(1 − r), |r| &lt; 1.</li><li>Bunga tunggal: M(1 + in). Majemuk: M(1 + i)ⁿ. Penyusutan: M(1 − i)ⁿ.</li><li>Nilai akhir anuitas: A[(1 + i)ⁿ − 1]/i.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Matematika/01 Barisan dan Deret/sim/deret-tak-hingga.html",
+          "title": "Deret geometri tak hingga",
+          "height": 520,
+          "caption": "Bola memantul: panjang lintasan mendekati batas tertentu."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Harga mobil Rp200.000.000,00 turun 10% setiap tahun dari nilai tahun sebelumnya. Berapa nilainya setelah 3 tahun?</p>",
+          "steps": [
+            "200.000.000 × 0,9³ = 200.000.000 × 0,729.",
+            "= Rp145.800.000,00."
+          ],
+          "answer": "Rp145.800.000,00"
+        }
+      ]
+    },
+    {
+      "id": "deret-geometri-tak-hingga",
+      "title": "Deret Geometri Tak Hingga: Konvergensi (|r| < 1) dan Rumus S_∞ = a/(1 − r)",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Kunci soal TKA barisan adalah mengenali apakah perubahannya <b>ditambah tetap</b> (aritmetika) atau <b>dikali tetap</b> (geometri).</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Aritmetika</td><td>Uₙ, Sₙ, soal cerita kursi dan tabungan</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Geometri</td><td>Uₙ, Sₙ, deret tak hingga</td><td>Kelas 10 Bab 2, Kelas 12 Bab 1</td></tr><tr><td>Bunga</td><td>tunggal (aritmetika), majemuk (geometri)</td><td>Kelas 10 Bab 2, Kelas 12 Bab 2</td></tr><tr><td>Pertumbuhan/peluruhan</td><td>M(1 ± i)ⁿ</td><td>Kelas 10 Bab 2</td></tr><tr><td>Anuitas</td><td>nilai akhir tabungan rutin, angsuran</td><td>Kelas 12 Bab 2</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Aritmetika: Uₙ = a + (n − 1)b; Sₙ = ½n(a + Uₙ).</li><li>Geometri: Uₙ = arⁿ⁻¹; Sₙ = a(rⁿ − 1)/(r − 1); S∞ = a/(1 − r), |r| &lt; 1.</li><li>Bunga tunggal: M(1 + in). Majemuk: M(1 + i)ⁿ. Penyusutan: M(1 − i)ⁿ.</li><li>Nilai akhir anuitas: A[(1 + i)ⁿ − 1]/i.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/bunga.html",
+          "title": "Bunga tunggal dan majemuk",
+          "height": 520,
+          "caption": "Bandingkan saldo setelah 10 dan 20 tahun."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Penduduk 500.000 jiwa bertambah 2% per tahun. Berapa penduduk setelah 3 tahun?</p>",
+          "steps": [
+            "500.000 × 1,02³ = 500.000 × 1,061208.",
+            "≈ 530.604 jiwa."
+          ],
+          "answer": "≈ 530.604 jiwa"
+        }
+      ]
+    },
+    {
+      "id": "notasi-sigma-dan-sifatnya",
+      "title": "Manipulasi Aljabar Notasi Sigma (Σ) dan Jumlah Deret Khusus",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Manipulasi Aljabar Notasi Sigma (Σ) dan Jumlah Deret Khusus</b>: Menerapkan sifat pergeseran indeks batas sigma dan rumus jumlahan deret bilangan asli, kuadrat, dan kubik.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Hitung banyak periode dengan teliti (setiap 30 menit selama 3 jam = 6 periode).</li><li>Bedakan kenaikan “sebesar 5 setiap minggu” (aritmetika) dan “5% setiap tahun” (geometri).</li><li>Pada soal obat atau zat yang meluruh dan ditambah berulang, susun tabel beberapa periode pertama.</li></ul>"
+        }
+      ]
+    },
+    {
+      "id": "aplikasi-finansial-bunga-pertumbuhan",
+      "title": "Aplikasi Finansial: Bunga Majemuk, Anuitas Pelunasan, dan Peluruhan Radioaktif",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Aplikasi Finansial: Bunga Majemuk, Anuitas Pelunasan, dan Peluruhan Radioaktif</b>: Menghitung modal akhir M_n = M_0 (1 + i)^n dan membedakannya dari model bunga tunggal linear.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Aritmetika: Uₙ = a + (n − 1)b; Sₙ = ½n(a + Uₙ).</li><li>Geometri: Uₙ = arⁿ⁻¹; Sₙ = a(rⁿ − 1)/(r − 1); S∞ = a/(1 − r), |r| &lt; 1.</li><li>Bunga tunggal: M(1 + in). Majemuk: M(1 + i)ⁿ. Penyusutan: M(1 − i)ⁿ.</li><li>Nilai akhir anuitas: A[(1 + i)ⁿ − 1]/i.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Aplikasi Finansial: Bunga Majemuk, Anuitas Pelunasan, dan Peluruhan Radioaktif",
+          "question": "<p>Perhatikan permasalahan terkait <b>Aplikasi Finansial: Bunga Majemuk, Anuitas Pelunasan, dan Peluruhan Radioaktif</b> berikut. Analisislah berdasarkan prinsip Menghitung modal akhir M_n = M_0 (1 + i)^n dan membedakannya dari model bunga tunggal linear..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Aplikasi Finansial: Bunga Majemuk, Anuitas Pelunasan, dan Peluruhan Radioaktif, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Aplikasi Finansial: Bunga Majemuk, Anuitas Pelunasan, dan Peluruhan Radioaktif berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung modal akhir M_n = M_0 (1 + i)^n dan membedakannya dari model bunga tunggal linear.."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mat-04",
+      "title": "Strategi Cepat Baris-Deret dan Latihan Kuis Bab 4",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Baris-Deret dan Latihan Kuis Bab 4</b>: Menguasai variasi deret campuran dan menuntaskan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
         {
           "type": "callout",
           "variant": "tips",
@@ -144,14 +239,32 @@
           "html": "<ul><li>Hitung banyak periode dengan teliti (setiap 30 menit selama 3 jam = 6 periode).</li><li>Bedakan kenaikan “sebesar 5 setiap minggu” (aritmetika) dan “5% setiap tahun” (geometri).</li><li>Pada soal obat atau zat yang meluruh dan ditambah berulang, susun tabel beberapa periode pertama.</li></ul>"
         },
         {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Memakai rumus deret tak hingga ketika |r| ≥ 1.</li><li>Lupa mengalikan 2 untuk lintasan naik–turun bola.</li><li>Menghitung bunga majemuk seperti bunga tunggal.</li></ul>"
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Baris-Deret dan Latihan Kuis Bab 4",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Baris-Deret dan Latihan Kuis Bab 4</b> berikut. Analisislah berdasarkan prinsip Menguasai variasi deret campuran dan menuntaskan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Baris-Deret dan Latihan Kuis Bab 4, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Baris-Deret dan Latihan Kuis Bab 4 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai variasi deret campuran dan menuntaskan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

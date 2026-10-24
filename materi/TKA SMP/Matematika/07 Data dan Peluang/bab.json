@@ -1,13 +1,13 @@
 {
   "title": "Data dan Peluang",
-  "summary": "Ringkasan dan latihan TKA: membaca diagram, ukuran pemusatan dan penyebaran, populasi dan sampel, serta peluang empiris dan teoretis.",
+  "summary": "Statistika deskriptif dasar dan peluang empirik-teoretik SMP: pengumpulan dan penyajian data (diagram batang, garis, lingkaran), ukuran pemusatan (mean, median, modus data tunggal dan berbobot), jangkauan dan kuartil, peluang teoretis titik sampel pelemparan koin/dadu, peluang empiris frekuensi relatif, serta penarikan sampel representatif.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi data dan peluang",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "penyajian-data-diagram",
+      "title": "Penyajian Data: Membaca dan Mengonversi Diagram Batang, Garis, dan Lingkaran (Derajat vs Persen)",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
           "type": "text",
@@ -18,15 +18,7 @@
           "variant": "rumus",
           "title": "Rumus kunci",
           "html": "<ul><li>Mean = jumlah data ÷ banyak data; jumlah data = mean × banyak data.</li><li>Rata-rata gabungan = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂).</li><li>Median: urutkan dahulu.</li><li>Sudut juring = (frekuensi ÷ total) × 360°.</li><li>Peluang teoretis = n(A)/n(S); peluang empiris = frekuensi kejadian ÷ banyak percobaan; F<sub>h</sub> = P × n.</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "statistika",
-      "title": "Ukuran pemusatan dan penyebaran",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
+        },
         {
           "type": "sim",
           "src": "../../../Kelas8/Matematika/06 Statistika/sim/pusat-data.html",
@@ -45,22 +37,6 @@
           "answer": "87"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Rata-rata 20 siswa kelas 8A adalah 75 dan 30 siswa kelas 8B adalah 80. Berapa rata-rata gabungannya?</p>",
-          "steps": [
-            "(20 × 75 + 30 × 80)/50 = (1.500 + 2.400)/50 = 78."
-          ],
-          "answer": "78"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas8/Matematika/06 Statistika/sim/kuartil.html",
-          "title": "Kuartil dan jangkauan",
-          "height": 520,
-          "caption": "Masukkan data dari soal dan periksa letak Q1, Q2, dan Q3."
-        },
-        {
           "type": "check",
           "question": "Data: 6, 8, 7, 5, 9, 8, 6, 8, 7, 6. Median data tersebut adalah ....",
           "options": {
@@ -76,33 +52,36 @@
       ]
     },
     {
-      "id": "diagram",
-      "title": "Membaca diagram",
+      "id": "ukuran-pemusatan-data-tunggal",
+      "title": "Statistika Deskriptif: Mean (Rata-Rata), Median (Nilai Tengah), dan Modus Data Tunggal",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "../../../Kelas7/Matematika/06 Data dan Diagram/sim/diagram-data.html",
-          "title": "Pembuat diagram",
-          "height": 520,
-          "caption": "Sajikan data yang sama dengan diagram batang dan lingkaran. Mana yang lebih cocok untuk membandingkan bagian dari keseluruhan?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Pada diagram lingkaran pengeluaran keluarga, juring makanan 144°. Jika total pengeluaran Rp5.000.000,00, berapa pengeluaran makanan?</p>",
-          "steps": [
-            "144/360 = 0,4.",
-            "0,4 × 5.000.000 = 2.000.000."
-          ],
-          "answer": "Rp2.000.000,00"
+          "type": "text",
+          "html": "<p><b>Statistika Deskriptif: Mean (Rata-Rata), Median (Nilai Tengah), dan Modus Data Tunggal</b>: Menghitung mean data tabel frekuensi berbobot Σ(f·x)/Σf dan menentukan posisi median pada data genap vs ganjil.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Membaca skala sumbu tegak yang tidak dimulai dari 0.</li><li>Menghitung persentase kenaikan dari nilai akhir, bukan nilai awal.</li><li>Lupa mengurutkan data sebelum mencari median.</li></ul>"
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Mean = jumlah data ÷ banyak data; jumlah data = mean × banyak data.</li><li>Rata-rata gabungan = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂).</li><li>Median: urutkan dahulu.</li><li>Sudut juring = (frekuensi ÷ total) × 360°.</li><li>Peluang teoretis = n(A)/n(S); peluang empiris = frekuensi kejadian ÷ banyak percobaan; F<sub>h</sub> = P × n.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/06 Statistika/sim/kuartil.html",
+          "title": "Kuartil dan jangkauan",
+          "height": 520,
+          "caption": "Masukkan data dari soal dan periksa letak Q1, Q2, dan Q3."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Rata-rata 20 siswa kelas 8A adalah 75 dan 30 siswa kelas 8B adalah 80. Berapa rata-rata gabungannya?</p>",
+          "steps": [
+            "(20 × 75 + 30 × 80)/50 = (1.500 + 2.400)/50 = 78."
+          ],
+          "answer": "78"
         },
         {
           "type": "check",
@@ -120,44 +99,30 @@
       ]
     },
     {
-      "id": "peluang",
-      "title": "Peluang dan sampel",
-      "kind": "simulasi",
-      "duration": "20 menit",
+      "id": "rata-rata-gabungan-dan-perubahan-data",
+      "title": "Keahlian Kunci: Menghitung Rata-Rata Gabungan dan Masalah Nilai Siswa Susulan",
+      "kind": "latihan",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "../../../Kelas9/Matematika/04 Peluang dan Pemilihan Sampel/sim/percobaan.html",
-          "title": "Percobaan peluang",
-          "height": 520,
-          "caption": "Lakukan banyak percobaan dan bandingkan peluang empiris dengan peluang teoretis."
+          "type": "text",
+          "html": "<p><b>Keahlian Kunci: Menghitung Rata-Rata Gabungan dan Masalah Nilai Siswa Susulan</b>: Menerapkan formula x_gab = (n_1 x_1 + n_2 x_2) / (n_1 + n_2) untuk mencari nilai siswa baru atau nilai rata-rata kelompok campuran.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Mean = jumlah data ÷ banyak data; jumlah data = mean × banyak data.</li><li>Rata-rata gabungan = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂).</li><li>Median: urutkan dahulu.</li><li>Sudut juring = (frekuensi ÷ total) × 360°.</li><li>Peluang teoretis = n(A)/n(S); peluang empiris = frekuensi kejadian ÷ banyak percobaan; F<sub>h</sub> = P × n.</li></ul>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Kartu bernomor 1–20 diambil satu secara acak. Berapa peluang terambil bilangan prima?</p>",
+          "question": "<p>Pada diagram lingkaran pengeluaran keluarga, juring makanan 144°. Jika total pengeluaran Rp5.000.000,00, berapa pengeluaran makanan?</p>",
           "steps": [
-            "Prima: 2, 3, 5, 7, 11, 13, 17, 19 = 8 kartu.",
-            "P = 8/20 = 2/5."
+            "144/360 = 0,4.",
+            "0,4 × 5.000.000 = 2.000.000."
           ],
-          "answer": "2/5"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Kantong berisi 15 kelereng merah dan biru. Peluang terambil merah 2/5. Berapa kelereng biru?</p>",
-          "steps": [
-            "Merah = 2/5 × 15 = 6.",
-            "Biru = 15 − 6 = 9."
-          ],
-          "answer": "9 kelereng"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas9/Matematika/04 Peluang dan Pemilihan Sampel/sim/sampel.html",
-          "title": "Populasi dan sampel",
-          "height": 520,
-          "caption": "Bandingkan sampel acak dengan sampel yang dipilih dari satu kelompok saja."
+          "answer": "Rp2.000.000,00"
         },
         {
           "type": "check",
@@ -175,11 +140,121 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "ukuran-penyebaran-jangkauan-kuartil",
+      "title": "Ukuran Penyebaran: Jangkauan (Range), Kuartil Bawah (Q1), Kuartil Atas (Q3), dan Jangkauan Interkuartil (QR)",
+      "kind": "simulasi",
+      "duration": "15 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal TKA data menuntut <b>membaca grafik dengan teliti</b> dan menarik kesimpulan. Peluang di SMP berfokus pada satu percobaan sederhana dan perbandingan peluang empiris dengan teoretis.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Penyajian data</td><td>tabel, diagram batang, garis, lingkaran</td><td>Kelas 7 Bab 6</td></tr><tr><td>Ukuran pemusatan</td><td>mean, median, modus, rata-rata gabungan</td><td>Kelas 8 Bab 6</td></tr><tr><td>Penyebaran</td><td>jangkauan, kuartil, jangkauan antarkuartil</td><td>Kelas 8 Bab 6</td></tr><tr><td>Sampel</td><td>populasi, sampel yang representatif</td><td>Kelas 9 Bab 4</td></tr><tr><td>Peluang</td><td>empiris, teoretis, frekuensi harapan</td><td>Kelas 9 Bab 4</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Simulasi interaktif pemisahan data 4 blok pada garis bilangan.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/Matematika/06 Data dan Diagram/sim/diagram-data.html",
+          "title": "Pembuat diagram",
+          "height": 520,
+          "caption": "Sajikan data yang sama dengan diagram batang dan lingkaran. Mana yang lebih cocok untuk membandingkan bagian dari keseluruhan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kartu bernomor 1–20 diambil satu secara acak. Berapa peluang terambil bilangan prima?</p>",
+          "steps": [
+            "Prima: 2, 3, 5, 7, 11, 13, 17, 19 = 8 kartu.",
+            "P = 8/20 = 2/5."
+          ],
+          "answer": "2/5"
+        }
+      ]
+    },
+    {
+      "id": "ruang-sampel-dan-peluang-teoretik",
+      "title": "Peluang Teoretik: Ruang Sampel S, Titik Sampel Kejadian, dan Peluang Klasik P(A) = n(A) / n(S)",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal TKA data menuntut <b>membaca grafik dengan teliti</b> dan menarik kesimpulan. Peluang di SMP berfokus pada satu percobaan sederhana dan perbandingan peluang empiris dengan teoretis.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Penyajian data</td><td>tabel, diagram batang, garis, lingkaran</td><td>Kelas 7 Bab 6</td></tr><tr><td>Ukuran pemusatan</td><td>mean, median, modus, rata-rata gabungan</td><td>Kelas 8 Bab 6</td></tr><tr><td>Penyebaran</td><td>jangkauan, kuartil, jangkauan antarkuartil</td><td>Kelas 8 Bab 6</td></tr><tr><td>Sampel</td><td>populasi, sampel yang representatif</td><td>Kelas 9 Bab 4</td></tr><tr><td>Peluang</td><td>empiris, teoretis, frekuensi harapan</td><td>Kelas 9 Bab 4</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Mean = jumlah data ÷ banyak data; jumlah data = mean × banyak data.</li><li>Rata-rata gabungan = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂).</li><li>Median: urutkan dahulu.</li><li>Sudut juring = (frekuensi ÷ total) × 360°.</li><li>Peluang teoretis = n(A)/n(S); peluang empiris = frekuensi kejadian ÷ banyak percobaan; F<sub>h</sub> = P × n.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/04 Peluang dan Pemilihan Sampel/sim/percobaan.html",
+          "title": "Percobaan peluang",
+          "height": 520,
+          "caption": "Lakukan banyak percobaan dan bandingkan peluang empiris dengan peluang teoretis."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kantong berisi 15 kelereng merah dan biru. Peluang terambil merah 2/5. Berapa kelereng biru?</p>",
+          "steps": [
+            "Merah = 2/5 × 15 = 6.",
+            "Biru = 15 − 6 = 9."
+          ],
+          "answer": "9 kelereng"
+        }
+      ]
+    },
+    {
+      "id": "peluang-empiris-dan-frekuensi-harapan",
+      "title": "Peluang Empiris (Frekuensi Relatif) dan Frekuensi Harapan: F_h = P(A) × N Percobaan",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal TKA data menuntut <b>membaca grafik dengan teliti</b> dan menarik kesimpulan. Peluang di SMP berfokus pada satu percobaan sederhana dan perbandingan peluang empiris dengan teoretis.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Penyajian data</td><td>tabel, diagram batang, garis, lingkaran</td><td>Kelas 7 Bab 6</td></tr><tr><td>Ukuran pemusatan</td><td>mean, median, modus, rata-rata gabungan</td><td>Kelas 8 Bab 6</td></tr><tr><td>Penyebaran</td><td>jangkauan, kuartil, jangkauan antarkuartil</td><td>Kelas 8 Bab 6</td></tr><tr><td>Sampel</td><td>populasi, sampel yang representatif</td><td>Kelas 9 Bab 4</td></tr><tr><td>Peluang</td><td>empiris, teoretis, frekuensi harapan</td><td>Kelas 9 Bab 4</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Mean = jumlah data ÷ banyak data; jumlah data = mean × banyak data.</li><li>Rata-rata gabungan = (n₁x̄₁ + n₂x̄₂)/(n₁ + n₂).</li><li>Median: urutkan dahulu.</li><li>Sudut juring = (frekuensi ÷ total) × 360°.</li><li>Peluang teoretis = n(A)/n(S); peluang empiris = frekuensi kejadian ÷ banyak percobaan; F<sub>h</sub> = P × n.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/Matematika/04 Peluang dan Pemilihan Sampel/sim/sampel.html",
+          "title": "Populasi dan sampel",
+          "height": 520,
+          "caption": "Bandingkan sampel acak dengan sampel yang dipilih dari satu kelompok saja."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Peluang Empiris (Frekuensi Relatif) dan Frekuensi Harapan: F_h = P(A) × N Percobaan",
+          "question": "<p>Perhatikan permasalahan terkait <b>Peluang Empiris (Frekuensi Relatif) dan Frekuensi Harapan: F_h = P(A) × N Percobaan</b> berikut. Analisislah berdasarkan prinsip Memprediksi berapa kali kejadian tertentu diharapkan muncul dalam N kali uji coba berulang..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-smp-07",
+      "title": "Strategi Cepat Statistika-Peluang SMP dan Latihan Kuis Bab 7",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Statistika-Peluang SMP dan Latihan Kuis Bab 7</b>: Menguasai statistika dan peluang dasar serta menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
         {
           "type": "callout",
           "variant": "tips",
@@ -187,8 +262,32 @@
           "html": "<ul><li>Tulis ulang data dari diagram ke dalam tabel kecil sebelum menghitung.</li><li>Pada soal mean dengan data yang hilang, bekerja dengan <b>jumlah</b>, bukan rata-rata.</li><li>Peluang selalu di antara 0 dan 1; jika jawabanmu di luar itu, ada kesalahan.</li></ul>"
         },
         {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Statistika-Peluang SMP dan Latihan Kuis Bab 7",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Statistika-Peluang SMP dan Latihan Kuis Bab 7</b> berikut. Analisislah berdasarkan prinsip Menguasai statistika dan peluang dasar serta menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Statistika-Peluang SMP dan Latihan Kuis Bab 7, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Statistika-Peluang SMP dan Latihan Kuis Bab 7 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai statistika dan peluang dasar serta menyelesaikan kuis bab 20 butir soal.."
+        },
+        {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

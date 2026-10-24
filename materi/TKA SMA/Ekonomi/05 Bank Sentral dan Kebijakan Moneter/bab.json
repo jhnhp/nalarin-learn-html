@@ -1,42 +1,23 @@
 {
   "title": "Bank Sentral dan Kebijakan Moneter",
-  "summary": "Ringkasan dan latihan TKA Ekonomi: uang dan jenis uang beredar, Bank Indonesia dan tugasnya, lembaga keuangan, instrumen kebijakan moneter, jalur transmisi suku bunga, giro wajib minimum, serta teori kuantitas uang.",
+  "summary": "Sistem moneter dan perbankan: fungsi dan jenis uang, teori nilai uang (Kuantitas Irving Fisher: M·V = P·T), peran dan wewenang Bank Indonesia sebagai bank sentral independen, instrumen kebijakan moneter ekspansif vs kontraktif (diskonto, operasi pasar terbuka, cadangan wajib, dorongan moral).",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi",
+      "id": "uang-motif-memegang-uang",
+      "title": "Uang: Syarat, Fungsi Asli vs Turunan, dan Motif Memegang Uang Menurut Keynes",
       "kind": "artikel",
-      "duration": "10 menit",
+      "duration": "15 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal kebijakan moneter umumnya menanyakan arah kebijakan yang tepat untuk kondisi tertentu dan urutan dampaknya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Uang</td><td>fungsi uang, uang kartal, giral, kuasi; M1 dan M2</td></tr><tr><td>Bank Indonesia</td><td>tujuan, independensi, sistem pembayaran, lender of the last resort</td></tr><tr><td>Lembaga keuangan</td><td>bank umum, BPR, OJK, LPS, lembaga keuangan bukan bank</td></tr><tr><td>Kebijakan moneter</td><td>ekspansif/kontraktif; suku bunga, operasi pasar terbuka, GWM, kredit selektif; transmisi</td></tr></table>"
+          "html": "<p><b>Uang: Syarat, Fungsi Asli vs Turunan, dan Motif Memegang Uang Menurut Keynes</b>: Membedakan motif transaksi, berjaga-jaga, dan spekulasi serta memahami evolusi uang kartal, giral, hingga uang elektronik (e-money/QRIS).</p>"
         },
         {
           "type": "callout",
           "variant": "info",
           "title": "Bank Indonesia",
           "html": "<ul><li>Bank sentral yang <b>independen</b> agar kebijakan moneter tidak dipengaruhi kepentingan politik jangka pendek.</li><li>Tujuan (UU P2SK 2023): mencapai stabilitas nilai rupiah, memelihara stabilitas sistem pembayaran, dan turut menjaga stabilitas sistem keuangan.</li><li>Pengawasan bank dilakukan <b>OJK</b>; penjaminan simpanan nasabah oleh <b>LPS</b> (sampai batas tertentu per nasabah per bank).</li><li>BI juga menjadi <b>lender of the last resort</b> bagi bank yang sehat tetapi kesulitan likuiditas jangka pendek, dan mengatur sistem pembayaran seperti QRIS.</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "moneter",
-      "title": "Instrumen dan transmisi kebijakan moneter",
-      "kind": "simulasi",
-      "duration": "40 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "sim/kebijakan-moneter.html",
-          "title": "Kebijakan moneter",
-          "height": 540,
-          "caption": "Bandingkan jalur transmisi pada kondisi inflasi tinggi dan ekonomi lesu. Lalu ubah GWM: apa dampaknya pada dana yang dapat disalurkan bank?"
-        },
-        {
-          "type": "text",
-          "html": "<table><tr><th>Instrumen</th><th>Kontraktif (meredam inflasi)</th><th>Ekspansif (mendorong ekonomi)</th></tr><tr><td>Suku bunga acuan / diskonto</td><td>dinaikkan</td><td>diturunkan</td></tr><tr><td>Operasi pasar terbuka</td><td>menjual surat berharga</td><td>membeli surat berharga</td></tr><tr><td>Giro wajib minimum</td><td>dinaikkan</td><td>diturunkan</td></tr><tr><td>Kredit selektif</td><td>diperketat</td><td>dilonggarkan</td></tr><tr><td>Imbauan moral</td><td>mengimbau bank berhati-hati menyalurkan kredit</td><td>mendorong penyaluran kredit produktif</td></tr></table>"
         },
         {
           "type": "example",
@@ -47,25 +28,6 @@
             "Tambahan = 45 − 35."
           ],
           "answer": "Rp10 miliar (dana yang dapat disalurkan berkurang sebanyak itu)"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Uang kartal Rp850 triliun, uang giral Rp1.250 triliun, dan uang kuasi Rp6.000 triliun. Hitung M1 dan M2.</p>",
-          "steps": [
-            "M1 = kartal + giral = 2.100.",
-            "M2 = M1 + uang kuasi = 8.100."
-          ],
-          "answer": "M1 Rp2.100 triliun; M2 Rp8.100 triliun"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3 (teori kuantitas)",
-          "question": "<p>Menurut MV = PT, jumlah uang beredar naik 10%, kecepatan peredaran uang tetap, dan volume transaksi naik 4%. Berapa perkiraan kenaikan tingkat harga?</p>",
-          "steps": [
-            "P = MV/T → P baru/P lama = 1,10/1,04 ≈ 1,058."
-          ],
-          "answer": "naik sekitar 5,8%"
         },
         {
           "type": "check",
@@ -83,26 +45,188 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "teori-kuantitas-uang-irving-fisher",
+      "title": "Teori Kuantitas Uang: Persamaan Transaksi Irving Fisher (M · V = P · T)",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tentukan dulu masalahnya (inflasi atau resesi), lalu arah kebijakannya (kontraktif atau ekspansif), baru pilih instrumen.</li><li>Ikuti rantai transmisi langkah demi langkah: suku bunga → kredit/tabungan → konsumsi/investasi → permintaan agregat → inflasi/pertumbuhan.</li><li>M1 hanya kartal + giral; deposito dan tabungan masuk uang kuasi (M2).</li><li>Hafalkan perbedaan tugas BI, OJK, dan LPS.</li></ul>"
+          "type": "text",
+          "html": "<p><b>Teori Kuantitas Uang: Persamaan Transaksi Irving Fisher (M · V = P · T)</b>: Menghitung pengaruh pelipatgandaan jumlah uang beredar (M) dan kecepatan perputaran (V) terhadap tingkat harga umum (P).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Menganggap BI mengawasi bank umum; pengawasan mikro bank ada di OJK.</li><li>Tertukar arah operasi pasar terbuka (menjual SBI/SBN berarti kontraktif).</li><li>Memasukkan deposito ke dalam M1.</li><li>Menganggap kenaikan suku bunga langsung menurunkan inflasi tanpa jeda waktu.</li></ul>"
+          "variant": "info",
+          "title": "Bank Indonesia",
+          "html": "<ul><li>Bank sentral yang <b>independen</b> agar kebijakan moneter tidak dipengaruhi kepentingan politik jangka pendek.</li><li>Tujuan (UU P2SK 2023): mencapai stabilitas nilai rupiah, memelihara stabilitas sistem pembayaran, dan turut menjaga stabilitas sistem keuangan.</li><li>Pengawasan bank dilakukan <b>OJK</b>; penjaminan simpanan nasabah oleh <b>LPS</b> (sampai batas tertentu per nasabah per bank).</li><li>BI juga menjadi <b>lender of the last resort</b> bagi bank yang sehat tetapi kesulitan likuiditas jangka pendek, dan mengatur sistem pembayaran seperti QRIS.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kebijakan-moneter.html",
+          "title": "Kebijakan moneter",
+          "height": 540,
+          "caption": "Bandingkan jalur transmisi pada kondisi inflasi tinggi dan ekonomi lesu. Lalu ubah GWM: apa dampaknya pada dana yang dapat disalurkan bank?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Uang kartal Rp850 triliun, uang giral Rp1.250 triliun, dan uang kuasi Rp6.000 triliun. Hitung M1 dan M2.</p>",
+          "steps": [
+            "M1 = kartal + giral = 2.100.",
+            "M2 = M1 + uang kuasi = 8.100."
+          ],
+          "answer": "M1 Rp2.100 triliun; M2 Rp8.100 triliun"
+        }
+      ]
+    },
+    {
+      "id": "peran-bank-sentral-dan-sistem-perbankan",
+      "title": "Peran Bank Indonesia: Menjaga Stabilitas Nilai Rupiah dan Sistem Pembayaran",
+      "kind": "artikel",
+      "duration": "14 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Peran Bank Indonesia: Menjaga Stabilitas Nilai Rupiah dan Sistem Pembayaran</b>: Menganalisis independensi BI, fungsi pengatur suku bunga acuan (BI-Rate), perbankan umum, dan peran OJK/LPS.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Bank Indonesia",
+          "html": "<ul><li>Bank sentral yang <b>independen</b> agar kebijakan moneter tidak dipengaruhi kepentingan politik jangka pendek.</li><li>Tujuan (UU P2SK 2023): mencapai stabilitas nilai rupiah, memelihara stabilitas sistem pembayaran, dan turut menjaga stabilitas sistem keuangan.</li><li>Pengawasan bank dilakukan <b>OJK</b>; penjaminan simpanan nasabah oleh <b>LPS</b> (sampai batas tertentu per nasabah per bank).</li><li>BI juga menjadi <b>lender of the last resort</b> bagi bank yang sehat tetapi kesulitan likuiditas jangka pendek, dan mengatur sistem pembayaran seperti QRIS.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (teori kuantitas)",
+          "question": "<p>Menurut MV = PT, jumlah uang beredar naik 10%, kecepatan peredaran uang tetap, dan volume transaksi naik 4%. Berapa perkiraan kenaikan tingkat harga?</p>",
+          "steps": [
+            "P = MV/T → P baru/P lama = 1,10/1,04 ≈ 1,058."
+          ],
+          "answer": "naik sekitar 5,8%"
+        }
+      ]
+    },
+    {
+      "id": "empat-instrumen-kebijakan-moneter",
+      "title": "Empat Instrumen Kebijakan Moneter: Operasi Pasar Terbuka, Diskonto, Giro Wajib Minimum (GWM), dan Kredit Selektif",
+      "kind": "simulasi",
+      "duration": "18 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Empat Instrumen Kebijakan Moneter: Operasi Pasar Terbuka, Diskonto, Giro Wajib Minimum (GWM), dan Kredit Selektif</b>: Menerapkan kebijakan moneter kontraktif (mengatasi inflasi) dan ekspansif (mengatasi resesi/lesu ekonomi).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Bank Indonesia",
+          "html": "<ul><li>Bank sentral yang <b>independen</b> agar kebijakan moneter tidak dipengaruhi kepentingan politik jangka pendek.</li><li>Tujuan (UU P2SK 2023): mencapai stabilitas nilai rupiah, memelihara stabilitas sistem pembayaran, dan turut menjaga stabilitas sistem keuangan.</li><li>Pengawasan bank dilakukan <b>OJK</b>; penjaminan simpanan nasabah oleh <b>LPS</b> (sampai batas tertentu per nasabah per bank).</li><li>BI juga menjadi <b>lender of the last resort</b> bagi bank yang sehat tetapi kesulitan likuiditas jangka pendek, dan mengatur sistem pembayaran seperti QRIS.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kebijakan-moneter.html",
+          "title": "Kebijakan moneter",
+          "height": 540,
+          "caption": "Bandingkan jalur transmisi pada kondisi inflasi tinggi dan ekonomi lesu. Lalu ubah GWM: apa dampaknya pada dana yang dapat disalurkan bank?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Empat Instrumen Kebijakan Moneter: Operasi Pasar Terbuka, Diskonto, Giro Wajib Minimum (GWM), dan Kredit Selektif",
+          "question": "<p>Perhatikan permasalahan terkait <b>Empat Instrumen Kebijakan Moneter: Operasi Pasar Terbuka, Diskonto, Giro Wajib Minimum (GWM), dan Kredit Selektif</b> berikut. Analisislah berdasarkan prinsip Menerapkan kebijakan moneter kontraktif (mengatasi inflasi) dan ekspansif (mengatasi resesi/lesu ekonomi)..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "transmisi-kebijakan-moneter",
+      "title": "Jalur Transmisi Moneter: Dari BI-Rate Menuju Suku Bunga Kredit, Investasi, dan Konsumsi Riil",
+      "kind": "latihan",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Jalur Transmisi Moneter: Dari BI-Rate Menuju Suku Bunga Kredit, Investasi, dan Konsumsi Riil</b>: Melacak alur sebab-akibat perubahan suku bunga acuan terhadap belanja masyarakat dan nilai tukar kurs rupiah.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Bank Indonesia",
+          "html": "<ul><li>Bank sentral yang <b>independen</b> agar kebijakan moneter tidak dipengaruhi kepentingan politik jangka pendek.</li><li>Tujuan (UU P2SK 2023): mencapai stabilitas nilai rupiah, memelihara stabilitas sistem pembayaran, dan turut menjaga stabilitas sistem keuangan.</li><li>Pengawasan bank dilakukan <b>OJK</b>; penjaminan simpanan nasabah oleh <b>LPS</b> (sampai batas tertentu per nasabah per bank).</li><li>BI juga menjadi <b>lender of the last resort</b> bagi bank yang sehat tetapi kesulitan likuiditas jangka pendek, dan mengatur sistem pembayaran seperti QRIS.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Jalur Transmisi Moneter: Dari BI-Rate Menuju Suku Bunga Kredit, Investasi, dan Konsumsi Riil",
+          "question": "<p>Perhatikan permasalahan terkait <b>Jalur Transmisi Moneter: Dari BI-Rate Menuju Suku Bunga Kredit, Investasi, dan Konsumsi Riil</b> berikut. Analisislah berdasarkan prinsip Melacak alur sebab-akibat perubahan suku bunga acuan terhadap belanja masyarakat dan nilai tukar kurs rupiah..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Jalur Transmisi Moneter: Dari BI-Rate Menuju Suku Bunga Kredit, Investasi, dan Konsumsi Riil, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Jalur Transmisi Moneter: Dari BI-Rate Menuju Suku Bunga Kredit, Investasi, dan Konsumsi Riil berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Melacak alur sebab-akibat perubahan suku bunga acuan terhadap belanja masyarakat dan nilai tukar kurs rupiah.."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-eko-05",
+      "title": "Strategi Analisis Kebijakan Moneter dan Latihan Kuis Bab 5",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Analisis Kebijakan Moneter dan Latihan Kuis Bab 5</b>: Menguasai instrumen moneter dan kuantitas uang serta menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Bank Indonesia",
+          "html": "<ul><li>Bank sentral yang <b>independen</b> agar kebijakan moneter tidak dipengaruhi kepentingan politik jangka pendek.</li><li>Tujuan (UU P2SK 2023): mencapai stabilitas nilai rupiah, memelihara stabilitas sistem pembayaran, dan turut menjaga stabilitas sistem keuangan.</li><li>Pengawasan bank dilakukan <b>OJK</b>; penjaminan simpanan nasabah oleh <b>LPS</b> (sampai batas tertentu per nasabah per bank).</li><li>BI juga menjadi <b>lender of the last resort</b> bagi bank yang sehat tetapi kesulitan likuiditas jangka pendek, dan mengatur sistem pembayaran seperti QRIS.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Analisis Kebijakan Moneter dan Latihan Kuis Bab 5",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Analisis Kebijakan Moneter dan Latihan Kuis Bab 5</b> berikut. Analisislah berdasarkan prinsip Menguasai instrumen moneter dan kuantitas uang serta menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Analisis Kebijakan Moneter dan Latihan Kuis Bab 5, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Analisis Kebijakan Moneter dan Latihan Kuis Bab 5 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai instrumen moneter dan kuantitas uang serta menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

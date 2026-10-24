@@ -30,7 +30,6 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="seg" id="sets"><button>Jenis majas</button><button>Unsur naskah drama</button></div>
   <p class="intro" id="intro"></p>
   <div class="psg" id="psg" hidden></div>
   <ul class="items" id="items"></ul>
@@ -39,7 +38,7 @@
 </div>
 <script src="../../../../../js/sim.js"></script>
 <script>
-const SETS = [{"name": "Jenis majas", "cats": ["Personifikasi", "Simile", "Metafora", "Hiperbola"], "intro": "Tentukan jenis majas pada setiap larik berikut.", "items": [["angin berbisik di sela daun pisang", 0, "Angin diberi sifat manusia (berbisik)."], ["matanya bening seperti air telaga", 1, "Perbandingan langsung dengan <i>seperti</i>."], ["ibu adalah pelita di rumah kami", 2, "Perbandingan langsung tanpa kata pembanding."], ["tangisnya membanjiri seluruh kampung", 3, "Melebih-lebihkan."], ["bulan tersenyum di atas danau", 0, "Bulan diberi sifat manusia."], ["suaranya bagai guntur di siang hari", 1, "<i>Bagai</i> adalah kata pembanding."], ["dia si kutu buku di kelas kami", 2, "Menyebut orang sebagai <i>kutu buku</i> tanpa kata pembanding."], ["aku sudah menunggumu seribu tahun", 3, "Melebih-lebihkan lamanya menunggu."]]}, {"name": "Unsur naskah drama", "cats": ["Dialog", "Petunjuk lakuan", "Prolog"], "intro": "Tentukan jenis setiap bagian naskah drama berikut.", "items": [["<i>Pada suatu sore di sebuah kampung nelayan, keluarga Pak Darman menunggu kabar dari laut.</i>", 2, "Pengantar sebelum dialog dimulai."], ["BU DARMAN : Sudah hampir magrib, perahu Bapak belum kelihatan.", 0, "Ucapan tokoh."], ["(Bu Darman berjalan mondar-mandir sambil meremas ujung kerudungnya.)", 1, "Petunjuk gerak dan ekspresi pemeran."], ["ANDI : Tenang, Bu. Angin sore ini tidak terlalu kencang.", 0, "Ucapan tokoh."], ["(Terdengar suara mesin perahu dari kejauhan. Andi berlari ke luar.)", 1, "Petunjuk bunyi dan gerak."]]}];
+const SETS = [{"name": "Jenis majas", "cats": ["Personifikasi", "Metafora", "Hiperbola", "Simile"], "intro": "Tentukan jenis majas yang digunakan dalam baris puisi berikut.", "items": [["Angin malam berbisik di sela jendela kamarku.", 0, "Benda mati bersikap seperti manusia: personifikasi."], ["Buku adalah jendela dunia yang membuka cakrawala.", 1, "Perbandingan langsung tanpa kata pembanding: metafora."], ["Suaranya menggelegar membelah angkasa raya.", 2, "Pernyataan yang dilebih-lebihkan: hiperbola."], ["Wajahnya berseri-seri laksana bulan purnama.", 3, "Memakai kata pembanding <i>laksana</i>: simile."], ["Pena itu menari-nari lincah di atas kertas putih.", 0, "Benda mati beraksi seperti manusia: personifikasi."], ["Air matanya mengalir menganak sungai.", 2, "Ungkapan melebih-lebihkan: hiperbola."]]}];
 const MODE = 'classify';
 const T = {"pick": "Pilih kategori untuk setiap butir terlebih dahulu.", "of": "dari", "correct": "benar", "done": "Bagus sekali!", "retry": "Baca catatan di bawah setiap butir, lalu coba lagi.", "pos": "Posisi yang benar:", "ans": "Jawaban:", "up": "Naik", "down": "Turun", "cek": "Periksa", "ulang": "Ulangi"};
 const $ = id => document.getElementById(id);

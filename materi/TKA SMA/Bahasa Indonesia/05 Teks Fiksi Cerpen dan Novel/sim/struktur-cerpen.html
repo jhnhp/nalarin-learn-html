@@ -30,7 +30,6 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="seg" id="sets"><button>Struktur alur</button><button>Sudut pandang</button></div>
   <p class="intro" id="intro"></p>
   <div class="psg" id="psg" hidden></div>
   <ul class="items" id="items"></ul>
@@ -39,7 +38,7 @@
 </div>
 <script src="../../../../../js/sim.js"></script>
 <script>
-const SETS = [{"name": "Struktur alur", "cats": ["Orientasi", "Komplikasi", "Klimaks", "Resolusi"], "intro": "Bagian-bagian berikut berasal dari cerpen <i>Jembatan Bambu</i>. Tentukan bagian alurnya.", "items": [["Desa Lubuk Sirih dipisahkan sungai yang hanya dapat diseberangi lewat jembatan bambu tua. Setiap pagi Nanda menyeberanginya untuk bersekolah.", 0, "Memperkenalkan tokoh dan latar."], ["Musim hujan tiba. Arus sungai makin deras dan tali pengikat jembatan mulai lapuk.", 1, "Masalah mulai muncul."], ["Suatu pagi, saat Nanda dan adiknya berada di tengah, satu tali putus. Jembatan miring dan adiknya hampir terjatuh.", 2, "Puncak ketegangan."], ["Warga bergotong royong membangun jembatan baru dari kayu ulin, dan Nanda kembali bersekolah dengan tenang.", 3, "Masalah terselesaikan."]]}, {"name": "Sudut pandang", "cats": ["Orang pertama", "Orang ketiga"], "intro": "Tentukan sudut pandang yang digunakan dalam setiap kutipan.", "items": [["Aku menatap jam dinding dan menghitung detik yang tersisa sebelum ujian dimulai.", 0, "Pencerita memakai <i>aku</i>."], ["Rara menutup buku hariannya. Ia tahu ibunya tidak akan pernah membaca isinya.", 1, "Pencerita memakai nama dan <i>ia</i>."], ["Kami berlari menembus hujan sambil tertawa.", 0, "<i>Kami</i> adalah orang pertama jamak."], ["Pak Sardi tidak pernah bercerita kepada siapa pun bahwa sawahnya sudah tergadai.", 1, "Pencerita mengetahui rahasia tokoh: orang ketiga serba tahu."]]}];
+const SETS = [{"name": "Tahapan alur cerpen", "cats": ["Pengenalan (Orientasi)", "Komplikasi (Konflik)", "Klimaks", "Resolusi"], "intro": "Tentukan tahapan alur dari setiap kutipan cerpen berikut.", "items": [["Di sebuah desa terpencil di kaki bukit, hiduplah seorang pandai besi tua bersama cucunya.", 0, "Mengenalkan tokoh dan latar: orientasi."], ["Pertengkaran antara kedua saudara itu semakin meruncing saat surat wasiat dibacakan.", 1, "Mulai muncul pertentangan dan masalah: komplikasi."], ["Dengan gemetar, ia menarik pelatuk itu tepat saat musuh mendobrak pintu gudang.", 2, "Puncak ketegangan cerita: klimaks."], ["Akhirnya, mereka saling memaafkan dan berjanji membangun kembali bengkel ayah mereka.", 3, "Penyelesaian masalah: resolusi."], ["Pagi itu, kabut tebal menyelimuti pelabuhan perikanan Samudera.", 0, "Melukiskan latar suasana: orientasi."], ["Keputusan sang raja membuat para menteri terdiam dan saling pandang dengan cemas.", 1, "Ketegangan mulai terbangun: komplikasi."]]}];
 const MODE = 'classify';
 const T = {"pick": "Pilih kategori untuk setiap butir terlebih dahulu.", "of": "dari", "correct": "benar", "done": "Bagus sekali!", "retry": "Baca catatan di bawah setiap butir, lalu coba lagi.", "pos": "Posisi yang benar:", "ans": "Jawaban:", "up": "Naik", "down": "Turun", "cek": "Periksa", "ulang": "Ulangi"};
 const $ = id => document.getElementById(id);

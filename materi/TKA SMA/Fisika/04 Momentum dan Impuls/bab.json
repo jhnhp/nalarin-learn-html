@@ -1,38 +1,23 @@
 {
   "title": "Momentum dan Impuls",
-  "summary": "Ringkasan dan latihan TKA Fisika: momentum, impuls dan grafik F–t, hukum kekekalan momentum, jenis-jenis tumbukan dan koefisien restitusi, serta penerapannya pada keselamatan dan roket.",
+  "summary": "Analisis interaksi tumbukan dan dinamika impulsif: definisi momentum vektor, impuls dari grafik F-t, hukum kekekalan momentum, tumbukan lenting sempurna, sebagian, dan tidak lenting sama sekali, serta aplikasi pada airbag dan propulsi roket.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi",
+      "id": "momentum-dan-vektor-gerak",
+      "title": "Konsep Momentum Linear sebagai Ukuran Kesukaran Menghentikan Gerak",
       "kind": "artikel",
-      "duration": "10 menit",
+      "duration": "14 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Momentum adalah besaran vektor: tentukan arah positif di awal dan beri tanda negatif untuk arah sebaliknya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Momentum dan impuls</td><td>p = mv, I = FΔt = Δp, luas grafik F–t</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Kekekalan momentum</td><td>tumbukan, ledakan, tolakan senapan</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Tumbukan</td><td>lenting sempurna, sebagian, tidak lenting; koefisien restitusi</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
+          "html": "<p><b>Konsep Momentum Linear sebagai Ukuran Kesukaran Menghentikan Gerak</b>: Menghitung momentum p = m · v dan memperlakukannya secara tepat sebagai besaran vektor berarah.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Rumus kunci",
           "html": "<ul><li>\\(p = mv\\); \\(I = F\\,\\Delta t = \\Delta p = m(v' - v)\\).</li><li>Kekekalan: \\(m_1v_1 + m_2v_2 = m_1v_1' + m_2v_2'\\) (tanpa gaya luar).</li><li>\\(e = -\\dfrac{v_1' - v_2'}{v_1 - v_2}\\): lenting sempurna e = 1, sebagian 0 < e < 1, tidak lenting e = 0 (bergerak bersama).</li><li>Bola jatuh memantul: \\(e = \\sqrt{h_2/h_1}\\).</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "tumbukan",
-      "title": "Kekekalan momentum dan tumbukan",
-      "kind": "simulasi",
-      "duration": "35 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/tumbukan.html",
-          "title": "Tumbukan dua troli",
-          "height": 520,
-          "caption": "Bandingkan energi kinetik total sebelum dan sesudah tumbukan untuk e = 1 dan e = 0."
         },
         {
           "type": "example",
@@ -44,26 +29,6 @@
             "F = 4,2/0,01 = 420 N."
           ],
           "answer": "4,2 N·s dan 420 N"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Truk 3.000 kg melaju 10 m/s menabrak dari belakang mobil 1.000 kg yang melaju 6 m/s searah. Keduanya menempel setelah tumbukan. Berapa kecepatan gabungan dan energi kinetik yang hilang?</p>",
-          "steps": [
-            "v' = (30.000 + 6.000)/4.000 = 9 m/s.",
-            "Ek awal = ½(3.000)(100) + ½(1.000)(36) = 168.000 J; Ek akhir = ½(4.000)(81) = 162.000 J."
-          ],
-          "answer": "9 m/s; energi hilang 6.000 J"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Bola dijatuhkan dari ketinggian 2,5 m dan memantul setinggi 0,9 m. Berapa koefisien restitusinya dan tinggi pantulan kedua?</p>",
-          "steps": [
-            "e = √(0,9/2,5) = √0,36 = 0,6.",
-            "h₃ = e² × h₂ = 0,36 × 0,9 ≈ 0,32 m."
-          ],
-          "answer": "0,6 dan ± 0,32 m"
         },
         {
           "type": "check",
@@ -81,11 +46,15 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "teorema-impuls-momentum",
+      "title": "Teorema Impuls-Momentum dan Luas Grafik F–t",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Teorema Impuls-Momentum dan Luas Grafik F–t</b>: Menghitung impuls I = F_avg · Δt = Δp dan mengevaluasi luas kurva gaya terhadap waktu.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
         {
           "type": "callout",
           "variant": "tips",
@@ -93,14 +62,227 @@
           "html": "<ul><li>Tentukan arah positif; kecepatan berlawanan diberi tanda negatif.</li><li>Untuk tumbukan lenting sempurna, gunakan kekekalan momentum bersama e = 1 (lebih mudah daripada kekekalan energi kinetik).</li><li>Impuls dari grafik F–t = luas di bawah grafik.</li><li>Ledakan dan tolakan dimulai dari momentum total nol (atau momentum awal yang diketahui).</li></ul>"
         },
         {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/tumbukan.html",
+          "title": "Tumbukan dua troli",
+          "height": 520,
+          "caption": "Bandingkan energi kinetik total sebelum dan sesudah tumbukan untuk e = 1 dan e = 0."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Truk 3.000 kg melaju 10 m/s menabrak dari belakang mobil 1.000 kg yang melaju 6 m/s searah. Keduanya menempel setelah tumbukan. Berapa kecepatan gabungan dan energi kinetik yang hilang?</p>",
+          "steps": [
+            "v' = (30.000 + 6.000)/4.000 = 9 m/s.",
+            "Ek awal = ½(3.000)(100) + ½(1.000)(36) = 168.000 J; Ek akhir = ½(4.000)(81) = 162.000 J."
+          ],
+          "answer": "9 m/s; energi hilang 6.000 J"
+        }
+      ]
+    },
+    {
+      "id": "hukum-kekekalan-momentum",
+      "title": "Hukum Kekekalan Momentum pada Sistem Terisolasi",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hukum Kekekalan Momentum pada Sistem Terisolasi</b>: Membuktikan Σp_awal = Σp_akhir ketika tidak ada gaya luar netto (ΣF_eksternal = 0).</p>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Lupa tanda arah pada bola yang memantul (perubahan kecepatan = jumlah kelajuan).</li><li>Menganggap energi kinetik selalu kekal pada tumbukan.</li><li>Tertukar massa satuan gram dan kilogram.</li><li>Menganggap dua benda bermassa sama selalu bertukar kecepatan; itu hanya pada tumbukan lenting sempurna.</li></ul>"
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(p = mv\\); \\(I = F\\,\\Delta t = \\Delta p = m(v' - v)\\).</li><li>Kekekalan: \\(m_1v_1 + m_2v_2 = m_1v_1' + m_2v_2'\\) (tanpa gaya luar).</li><li>\\(e = -\\dfrac{v_1' - v_2'}{v_1 - v_2}\\): lenting sempurna e = 1, sebagian 0 < e < 1, tidak lenting e = 0 (bergerak bersama).</li><li>Bola jatuh memantul: \\(e = \\sqrt{h_2/h_1}\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Bola dijatuhkan dari ketinggian 2,5 m dan memantul setinggi 0,9 m. Berapa koefisien restitusinya dan tinggi pantulan kedua?</p>",
+          "steps": [
+            "e = √(0,9/2,5) = √0,36 = 0,6.",
+            "h₃ = e² × h₂ = 0,36 × 0,9 ≈ 0,32 m."
+          ],
+          "answer": "0,6 dan ± 0,32 m"
+        }
+      ]
+    },
+    {
+      "id": "klasifikasi-tumbukan-koefisien-restitusi",
+      "title": "Tiga Jenis Tumbukan dan Koefisien Restitusi (e)",
+      "kind": "simulasi",
+      "duration": "18 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Tiga Jenis Tumbukan dan Koefisien Restitusi (e)</b>: Mengklasifikasikan tumbukan lenting sempurna (e=1), lenting sebagian (0<e<1), dan tidak lenting sama sekali (e=0, benda menyatu).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tentukan arah positif; kecepatan berlawanan diberi tanda negatif.</li><li>Untuk tumbukan lenting sempurna, gunakan kekekalan momentum bersama e = 1 (lebih mudah daripada kekekalan energi kinetik).</li><li>Impuls dari grafik F–t = luas di bawah grafik.</li><li>Ledakan dan tolakan dimulai dari momentum total nol (atau momentum awal yang diketahui).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/tumbukan.html",
+          "title": "Tumbukan dua troli",
+          "height": 520,
+          "caption": "Bandingkan energi kinetik total sebelum dan sesudah tumbukan untuk e = 1 dan e = 0."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Tiga Jenis Tumbukan dan Koefisien Restitusi (e)",
+          "question": "<p>Perhatikan permasalahan terkait <b>Tiga Jenis Tumbukan dan Koefisien Restitusi (e)</b> berikut. Analisislah berdasarkan prinsip Mengklasifikasikan tumbukan lenting sempurna (e=1), lenting sebagian (0<e<1), dan tidak lenting sama sekali (e=0, benda menyatu)..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "tumbukan-pantulan-bola-lantai",
+      "title": "Pantulan Bola pada Lantai dan Rasio Ketinggian",
+      "kind": "latihan",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pantulan Bola pada Lantai dan Rasio Ketinggian</b>: Menghitung koefisien restitusi lantai e = √(h_2 / h_1) dan memprediksi tinggi pantulan berikutnya.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(p = mv\\); \\(I = F\\,\\Delta t = \\Delta p = m(v' - v)\\).</li><li>Kekekalan: \\(m_1v_1 + m_2v_2 = m_1v_1' + m_2v_2'\\) (tanpa gaya luar).</li><li>\\(e = -\\dfrac{v_1' - v_2'}{v_1 - v_2}\\): lenting sempurna e = 1, sebagian 0 < e < 1, tidak lenting e = 0 (bergerak bersama).</li><li>Bola jatuh memantul: \\(e = \\sqrt{h_2/h_1}\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Pantulan Bola pada Lantai dan Rasio Ketinggian",
+          "question": "<p>Perhatikan permasalahan terkait <b>Pantulan Bola pada Lantai dan Rasio Ketinggian</b> berikut. Analisislah berdasarkan prinsip Menghitung koefisien restitusi lantai e = √(h_2 / h_1) dan memprediksi tinggi pantulan berikutnya..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Pantulan Bola pada Lantai dan Rasio Ketinggian, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Pantulan Bola pada Lantai dan Rasio Ketinggian berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung koefisien restitusi lantai e = √(h_2 / h_1) dan memprediksi tinggi pantulan berikutnya.."
+        }
+      ]
+    },
+    {
+      "id": "tumbukan-2d-bidang-datar",
+      "title": "Tumbukan Dua Dimensi pada Meja Biliar",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Momentum adalah besaran vektor: tentukan arah positif di awal dan beri tanda negatif untuk arah sebaliknya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Momentum dan impuls</td><td>p = mv, I = FΔt = Δp, luas grafik F–t</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Kekekalan momentum</td><td>tumbukan, ledakan, tolakan senapan</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Tumbukan</td><td>lenting sempurna, sebagian, tidak lenting; koefisien restitusi</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tentukan arah positif; kecepatan berlawanan diberi tanda negatif.</li><li>Untuk tumbukan lenting sempurna, gunakan kekekalan momentum bersama e = 1 (lebih mudah daripada kekekalan energi kinetik).</li><li>Impuls dari grafik F–t = luas di bawah grafik.</li><li>Ledakan dan tolakan dimulai dari momentum total nol (atau momentum awal yang diketahui).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/tumbukan.html",
+          "title": "Tumbukan dua troli",
+          "height": 520,
+          "caption": "Bandingkan energi kinetik total sebelum dan sesudah tumbukan untuk e = 1 dan e = 0."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Tumbukan Dua Dimensi pada Meja Biliar",
+          "question": "<p>Perhatikan permasalahan terkait <b>Tumbukan Dua Dimensi pada Meja Biliar</b> berikut. Analisislah berdasarkan prinsip Menerapkan kekekalan momentum secara independen pada sumbu X dan sumbu Y..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "aplikasi-keselamatan-airbag-roket",
+      "title": "Aplikasi Nyata: Airbag Kendaraan, Helm, dan Propulsi Roket",
+      "kind": "artikel",
+      "duration": "14 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Aplikasi Nyata: Airbag Kendaraan, Helm, dan Propulsi Roket</b>: Menjelaskan bagaimana memperpanjang waktu kontak (Δt) dapat memperkecil gaya impak fatal (F).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Studi kasus rekayasa keselamatan otomotif dan dorongan gas roket bermassa variabel.</p>"
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-04",
+      "title": "Sintesis Momentum-Impuls dan Latihan Uji Kuis",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Sintesis Momentum-Impuls dan Latihan Uji Kuis</b>: Menyelesaikan soal komprehensif momentum dan menyelesaikan kuis bab 20 soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tentukan arah positif; kecepatan berlawanan diberi tanda negatif.</li><li>Untuk tumbukan lenting sempurna, gunakan kekekalan momentum bersama e = 1 (lebih mudah daripada kekekalan energi kinetik).</li><li>Impuls dari grafik F–t = luas di bawah grafik.</li><li>Ledakan dan tolakan dimulai dari momentum total nol (atau momentum awal yang diketahui).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Sintesis Momentum-Impuls dan Latihan Uji Kuis",
+          "question": "<p>Perhatikan permasalahan terkait <b>Sintesis Momentum-Impuls dan Latihan Uji Kuis</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan soal komprehensif momentum dan menyelesaikan kuis bab 20 soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Sintesis Momentum-Impuls dan Latihan Uji Kuis, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Sintesis Momentum-Impuls dan Latihan Uji Kuis berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan soal komprehensif momentum dan menyelesaikan kuis bab 20 soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

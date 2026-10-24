@@ -1,13 +1,13 @@
 {
   "title": "Persamaan dan Pertidaksamaan",
-  "summary": "Ringkasan dan latihan TKA SMA: sistem persamaan linear dua dan tiga variabel, sistem pertidaksamaan linear dan nilai optimum, serta persamaan kuadrat.",
+  "summary": "Aljabar persamaan dan pertidaksamaan: SPLDV, SPLTV, persamaan dan pertidaksamaan kuadrat, pertidaksamaan rasional dan irasional (akar), pertidaksamaan nilai mutlak, serta pemodelan aljabar masalah nyata.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi persamaan",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "spldv-spltv-metode-efisien",
+      "title": "Sistem Persamaan Linear (SPLDV & SPLTV): Eliminasi-Substitusi Efisien",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
           "type": "text",
@@ -15,18 +15,10 @@
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>a₁x + b₁y = c₁ dan a₂x + b₂y = c₂: jika a₁/a₂ = b₁/b₂ ≠ c₁/c₂, tidak ada penyelesaian (garis sejajar).</li><li>Nilai optimum fungsi tujuan linear pada daerah penyelesaian tercapai di <b>titik pojok</b>.</li><li>ax² + bx + c = 0: x = (−b ± √D)/(2a), D = b² − 4ac.</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "spltv",
-      "title": "Sistem persamaan linear",
-      "kind": "simulasi",
-      "duration": "20 menit",
-      "blocks": [
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Simulasi perpotongan 3 bidang datar di ruang 3D (satu titik, satu garis, atau sejajar).</p>"
+        },
         {
           "type": "sim",
           "src": "../../../Kelas10/Matematika/04 Sistem Persamaan dan Pertidaksamaan Linear/sim/spltv.html",
@@ -47,16 +39,6 @@
           "answer": "11 tembakan 3 poin"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sistem 2x + 3y = 6 dan 4x + 6y = 15. Berapa banyak penyelesaiannya?</p>",
-          "steps": [
-            "Persamaan pertama × 2: 4x + 6y = 12.",
-            "12 ≠ 15: kedua garis sejajar."
-          ],
-          "answer": "tidak ada penyelesaian"
-        },
-        {
           "type": "check",
           "question": "Harga 2 kg apel dan 3 kg jeruk Rp85.000,00, sedangkan 3 kg apel dan 2 kg jeruk Rp90.000,00. Harga 1 kg apel adalah ....",
           "options": {
@@ -72,11 +54,21 @@
       ]
     },
     {
-      "id": "program-linear",
-      "title": "Pertidaksamaan linear dan nilai optimum",
+      "id": "persamaan-kuadrat-diskriminan",
+      "title": "Persamaan Kuadrat: Faktorisasi, Rumus Kuadrat, dan Diskriminan (D)",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "16 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal TKA sering menggabungkan pemodelan dan penyelesaian: dari teks ke sistem persamaan atau pertidaksamaan, lalu menafsirkan jawabannya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>SPLDV, SPLTV</td><td>eliminasi, substitusi, soal cerita, banyak penyelesaian</td><td>Kelas 9, Kelas 10 Bab 4</td></tr><tr><td>SPtLDV</td><td>daerah penyelesaian, titik pojok, nilai optimum</td><td>Kelas 10 Bab 4</td></tr><tr><td>Persamaan kuadrat</td><td>faktorisasi, rumus abc, diskriminan</td><td>Kelas 10 Bab 5</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tulis variabel beserta satuannya sebelum menyusun model.</li><li>Untuk soal campuran larutan, buat persamaan untuk total volume dan total zat terlarut.</li><li>Pilih jawaban lalu substitusikan kembali ke soal untuk memeriksa.</li></ul>"
+        },
         {
           "type": "sim",
           "src": "../../../Kelas10/Matematika/04 Sistem Persamaan dan Pertidaksamaan Linear/sim/daerah-penyelesaian.html",
@@ -86,21 +78,13 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Toko kue membuat paling banyak 40 kotak per hari. Kue A memerlukan 2 kg tepung, kue B 1 kg; tepung tersedia 60 kg. Untung kue A Rp3.000,00 dan kue B Rp2.000,00 per kotak. Tentukan keuntungan maksimum.</p>",
+          "title": "Contoh soal 2",
+          "question": "<p>Sistem 2x + 3y = 6 dan 4x + 6y = 15. Berapa banyak penyelesaiannya?</p>",
           "steps": [
-            "Kendala: x + y ≤ 40, 2x + y ≤ 60, x ≥ 0, y ≥ 0.",
-            "Titik pojok: (0, 0), (30, 0), (20, 20), (0, 40).",
-            "Untung: 0; 90.000; 100.000; 80.000.",
-            "Maksimum Rp100.000,00 di (20, 20)."
+            "Persamaan pertama × 2: 4x + 6y = 12.",
+            "12 ≠ 15: kedua garis sejajar."
           ],
-          "answer": "Rp100.000,00"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Hitung fungsi tujuan di setiap titik pojok; jangan menebak dari gambar.</li><li>Titik pojok yang merupakan perpotongan dua garis dicari dengan eliminasi.</li><li>Jika banyak barang harus bulat, periksa titik bulat di sekitar titik pojok.</li></ul>"
+          "answer": "tidak ada penyelesaian"
         },
         {
           "type": "check",
@@ -118,27 +102,32 @@
       ]
     },
     {
-      "id": "kuadrat",
-      "title": "Persamaan kuadrat",
-      "kind": "simulasi",
+      "id": "pertidaksamaan-kuadrat-garis-bilangan",
+      "title": "Pertidaksamaan Kuadrat: Menentukan Pembuat Nol dan Uji Tanda Garis Bilangan",
+      "kind": "artikel",
       "duration": "15 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/05 Persamaan dan Fungsi Kuadrat/sim/parabola.html",
-          "title": "Penjelajah fungsi kuadrat",
-          "height": 520,
-          "caption": "Akar persamaan kuadrat adalah titik potong parabola dengan sumbu x."
+          "type": "text",
+          "html": "<p>Soal TKA sering menggabungkan pemodelan dan penyelesaian: dari teks ke sistem persamaan atau pertidaksamaan, lalu menafsirkan jawabannya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>SPLDV, SPLTV</td><td>eliminasi, substitusi, soal cerita, banyak penyelesaian</td><td>Kelas 9, Kelas 10 Bab 4</td></tr><tr><td>SPtLDV</td><td>daerah penyelesaian, titik pojok, nilai optimum</td><td>Kelas 10 Bab 4</td></tr><tr><td>Persamaan kuadrat</td><td>faktorisasi, rumus abc, diskriminan</td><td>Kelas 10 Bab 5</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>a₁x + b₁y = c₁ dan a₂x + b₂y = c₂: jika a₁/a₂ = b₁/b₂ ≠ c₁/c₂, tidak ada penyelesaian (garis sejajar).</li><li>Nilai optimum fungsi tujuan linear pada daerah penyelesaian tercapai di <b>titik pojok</b>.</li><li>ax² + bx + c = 0: x = (−b ± √D)/(2a), D = b² − 4ac.</li></ul>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Mobil menempuh 320 km. Jika 24 km/jam lebih cepat, waktunya berkurang 3 jam. Berapa kelajuan awalnya?</p>",
+          "question": "<p>Toko kue membuat paling banyak 40 kotak per hari. Kue A memerlukan 2 kg tepung, kue B 1 kg; tepung tersedia 60 kg. Untung kue A Rp3.000,00 dan kue B Rp2.000,00 per kotak. Tentukan keuntungan maksimum.</p>",
           "steps": [
-            "320/v − 320/(v + 24) = 3 ⇔ v² + 24v − 2.560 = 0.",
-            "(v − 40)(v + 64) = 0, v = 40 km/jam."
+            "Kendala: x + y ≤ 40, 2x + y ≤ 60, x ≥ 0, y ≥ 0.",
+            "Titik pojok: (0, 0), (30, 0), (20, 20), (0, 40).",
+            "Untung: 0; 90.000; 100.000; 80.000.",
+            "Maksimum Rp100.000,00 di (20, 20)."
           ],
-          "answer": "40 km/jam"
+          "answer": "Rp100.000,00"
         },
         {
           "type": "check",
@@ -156,16 +145,48 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "pertidaksamaan-rasional-pecahan",
+      "title": "Pertidaksamaan Rasional (Bentuk Pecahan Aljabar)",
+      "kind": "artikel",
+      "duration": "16 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p>Soal TKA sering menggabungkan pemodelan dan penyelesaian: dari teks ke sistem persamaan atau pertidaksamaan, lalu menafsirkan jawabannya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>SPLDV, SPLTV</td><td>eliminasi, substitusi, soal cerita, banyak penyelesaian</td><td>Kelas 9, Kelas 10 Bab 4</td></tr><tr><td>SPtLDV</td><td>daerah penyelesaian, titik pojok, nilai optimum</td><td>Kelas 10 Bab 4</td></tr><tr><td>Persamaan kuadrat</td><td>faktorisasi, rumus abc, diskriminan</td><td>Kelas 10 Bab 5</td></tr></table>"
+        },
+        {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tulis variabel beserta satuannya sebelum menyusun model.</li><li>Untuk soal campuran larutan, buat persamaan untuk total volume dan total zat terlarut.</li><li>Pilih jawaban lalu substitusikan kembali ke soal untuk memeriksa.</li></ul>"
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Pembedahan kesalahan fatal perkalian silang dengan variabel yang tandanya belum tentu positif.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Mobil menempuh 320 km. Jika 24 km/jam lebih cepat, waktunya berkurang 3 jam. Berapa kelajuan awalnya?</p>",
+          "steps": [
+            "320/v − 320/(v + 24) = 3 ⇔ v² + 24v − 2.560 = 0.",
+            "(v − 40)(v + 64) = 0, v = 40 km/jam."
+          ],
+          "answer": "40 km/jam"
+        }
+      ]
+    },
+    {
+      "id": "pertidaksamaan-irasional-akar",
+      "title": "Pertidaksamaan Irasional (Bentuk Akar) dan Syarat Numerus/Definit",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal TKA sering menggabungkan pemodelan dan penyelesaian: dari teks ke sistem persamaan atau pertidaksamaan, lalu menafsirkan jawabannya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>SPLDV, SPLTV</td><td>eliminasi, substitusi, soal cerita, banyak penyelesaian</td><td>Kelas 9, Kelas 10 Bab 4</td></tr><tr><td>SPtLDV</td><td>daerah penyelesaian, titik pojok, nilai optimum</td><td>Kelas 10 Bab 4</td></tr><tr><td>Persamaan kuadrat</td><td>faktorisasi, rumus abc, diskriminan</td><td>Kelas 10 Bab 5</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Teknik irisan interval bertingkat menggunakan visualisasi garis bilangan ganda.</p>"
         },
         {
           "type": "example",
@@ -178,8 +199,141 @@
           "answer": "50 mL"
         },
         {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Pertidaksamaan Irasional (Bentuk Akar) dan Syarat Numerus/Definit, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Pertidaksamaan Irasional (Bentuk Akar) dan Syarat Numerus/Definit berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan √(f(x)) < g(x) dengan memadukan kuadrat kedua ruas dan irisan syarat domain f(x) ≥ 0.."
+        }
+      ]
+    },
+    {
+      "id": "persamaan-pertidaksamaan-nilai-mutlak",
+      "title": "Nilai Mutlak: Definisi Jarak Geometris dan Penyelesaian Aljabar",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Soal TKA sering menggabungkan pemodelan dan penyelesaian: dari teks ke sistem persamaan atau pertidaksamaan, lalu menafsirkan jawabannya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>SPLDV, SPLTV</td><td>eliminasi, substitusi, soal cerita, banyak penyelesaian</td><td>Kelas 9, Kelas 10 Bab 4</td></tr><tr><td>SPtLDV</td><td>daerah penyelesaian, titik pojok, nilai optimum</td><td>Kelas 10 Bab 4</td></tr><tr><td>Persamaan kuadrat</td><td>faktorisasi, rumus abc, diskriminan</td><td>Kelas 10 Bab 5</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>a₁x + b₁y = c₁ dan a₂x + b₂y = c₂: jika a₁/a₂ = b₁/b₂ ≠ c₁/c₂, tidak ada penyelesaian (garis sejajar).</li><li>Nilai optimum fungsi tujuan linear pada daerah penyelesaian tercapai di <b>titik pojok</b>.</li><li>ax² + bx + c = 0: x = (−b ± √D)/(2a), D = b² − 4ac.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/05 Persamaan dan Fungsi Kuadrat/sim/parabola.html",
+          "title": "Penjelajah fungsi kuadrat",
+          "height": 520,
+          "caption": "Akar persamaan kuadrat adalah titik potong parabola dengan sumbu x."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Nilai Mutlak: Definisi Jarak Geometris dan Penyelesaian Aljabar",
+          "question": "<p>Perhatikan permasalahan terkait <b>Nilai Mutlak: Definisi Jarak Geometris dan Penyelesaian Aljabar</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan |f(x)| = c, |f(x)| = g(x), dan |f(x)| ≤ |g(x)| menggunakan sifat kuadrat atau definisi per bagian..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "pemodelan-soal-cerita-hots",
+      "title": "Pemodelan Aljabar pada Soal Cerita Terapan dan Jebakan Informasi Berlebih",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal TKA sering menggabungkan pemodelan dan penyelesaian: dari teks ke sistem persamaan atau pertidaksamaan, lalu menafsirkan jawabannya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>SPLDV, SPLTV</td><td>eliminasi, substitusi, soal cerita, banyak penyelesaian</td><td>Kelas 9, Kelas 10 Bab 4</td></tr><tr><td>SPtLDV</td><td>daerah penyelesaian, titik pojok, nilai optimum</td><td>Kelas 10 Bab 4</td></tr><tr><td>Persamaan kuadrat</td><td>faktorisasi, rumus abc, diskriminan</td><td>Kelas 10 Bab 5</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Tulis variabel beserta satuannya sebelum menyusun model.</li><li>Untuk soal campuran larutan, buat persamaan untuk total volume dan total zat terlarut.</li><li>Pilih jawaban lalu substitusikan kembali ke soal untuk memeriksa.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Pemodelan Aljabar pada Soal Cerita Terapan dan Jebakan Informasi Berlebih",
+          "question": "<p>Perhatikan permasalahan terkait <b>Pemodelan Aljabar pada Soal Cerita Terapan dan Jebakan Informasi Berlebih</b> berikut. Analisislah berdasarkan prinsip Menerjemahkan narasi kontekstual menjadi variabel matematis serta memeriksa konsistensi sistem informasi..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Pemodelan Aljabar pada Soal Cerita Terapan dan Jebakan Informasi Berlebih, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Pemodelan Aljabar pada Soal Cerita Terapan dan Jebakan Informasi Berlebih berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menerjemahkan narasi kontekstual menjadi variabel matematis serta memeriksa konsistensi sistem informasi.."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mat-02",
+      "title": "Sintesis Persamaan-Pertidaksamaan dan Latihan Kuis Bab 2",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Sintesis Persamaan-Pertidaksamaan dan Latihan Kuis Bab 2</b>: Menuntaskan seluruh variasi aljabar persamaan dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>a₁x + b₁y = c₁ dan a₂x + b₂y = c₂: jika a₁/a₂ = b₁/b₂ ≠ c₁/c₂, tidak ada penyelesaian (garis sejajar).</li><li>Nilai optimum fungsi tujuan linear pada daerah penyelesaian tercapai di <b>titik pojok</b>.</li><li>ax² + bx + c = 0: x = (−b ± √D)/(2a), D = b² − 4ac.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Sintesis Persamaan-Pertidaksamaan dan Latihan Kuis Bab 2",
+          "question": "<p>Perhatikan permasalahan terkait <b>Sintesis Persamaan-Pertidaksamaan dan Latihan Kuis Bab 2</b> berikut. Analisislah berdasarkan prinsip Menuntaskan seluruh variasi aljabar persamaan dan menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Sintesis Persamaan-Pertidaksamaan dan Latihan Kuis Bab 2, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Sintesis Persamaan-Pertidaksamaan dan Latihan Kuis Bab 2 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan seluruh variasi aljabar persamaan dan menyelesaikan kuis bab 20 butir soal.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

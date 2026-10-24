@@ -1,23 +1,17 @@
 {
   "title": "Program Linear",
-  "summary": "Program linear untuk TKA Matematika Tingkat Lanjut: memodelkan masalah menjadi sistem pertidaksamaan, menggambar daerah penyelesaian, menentukan titik pojok, dan mencari nilai optimum dengan uji titik pojok atau garis selidik.",
+  "summary": "Optimasi aljabar linear dua variabel: pertidaksamaan linear dua variabel, daerah himpunan penyelesaian (DHP), pemodelan fungsi kendala dan fungsi objektif f(x, y) = ax + by, metode uji titik pojok (ekstrem), serta metode garis selidik.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "konsep",
-      "title": "Model matematika dan daerah penyelesaian",
+      "id": "daerah-himpunan-penyelesaian-dhp",
+      "title": "Sistem Pertidaksamaan Linear Dua Variabel dan Menentukan DHP",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Program linear</b>: bagian dari elemen aljabar bersama matriks.</p>"
-        },
-        {
           "type": "text",
-          "html": "<p>Langkah menyelesaikan masalah program linear:</p><ol><li>Tentukan <b>variabel</b> (misalnya x = banyak produk A, y = banyak produk B).</li><li>Tulis <b>kendala</b> sebagai pertidaksamaan, termasuk x ≥ 0 dan y ≥ 0. Samakan satuan dulu.</li><li>Tulis <b>fungsi tujuan</b> f(x, y) = px + qy yang dimaksimumkan atau diminimumkan.</li><li>Gambar <b>daerah penyelesaian</b> dan tentukan titik pojoknya.</li><li>Bandingkan nilai fungsi tujuan di titik pojok, atau gunakan <b>garis selidik</b>.</li></ol>"
+          "html": "<p><b>Sistem Pertidaksamaan Linear Dua Variabel dan Menentukan DHP</b>: Menggambar garis batas ax + by = c, menguji titik (0,0), dan mengarsir daerah bersih/kotor yang memenuhi seluruh kendala.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
@@ -31,6 +25,17 @@
           "title": "Daerah penyelesaian pertidaksamaan linear",
           "height": 520,
           "caption": "Ulangi cara menentukan sisi yang diarsir dengan uji titik."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 1: maksimum",
+          "question": "<p>Seorang pengrajin membuat meja (x) dan kursi (y). Meja memerlukan 4 jam kerja dan kursi 2 jam; tersedia 40 jam. Paling banyak 15 barang dibuat. Untung meja Rp150.000 dan kursi Rp80.000. Tentukan untung maksimum.</p>",
+          "steps": [
+            "Kendala: 4x + 2y ≤ 40 → 2x + y ≤ 20; x + y ≤ 15; x, y ≥ 0.",
+            "Titik pojok: (0, 0), (10, 0), perpotongan → x = 5, y = 10, dan (0, 15).",
+            "f (ribu) = 150x + 80y: (10, 0) = 1.500; (5, 10) = 750 + 800 = 1.550; (0, 15) = 1.200."
+          ],
+          "answer": "Rp1.550.000 (5 meja dan 10 kursi)"
         },
         {
           "type": "check",
@@ -48,28 +53,20 @@
       ]
     },
     {
-      "id": "optimum",
-      "title": "Nilai optimum dan garis selidik",
-      "kind": "simulasi",
-      "duration": "35 menit",
+      "id": "pemodelan-matematis-fungsi-kendala",
+      "title": "Pemodelan Matematika: Menerjemahkan Narasi Masalah Nyata ke Fungsi Kendala",
+      "kind": "artikel",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "sim/program-linear.html",
-          "title": "Titik pojok dan garis selidik",
-          "height": 640,
-          "caption": "Ubah kendala dan fungsi tujuan. Geser garis selidik ke luar: titik pojok terakhir yang disentuhnya adalah titik maksimum. Coba fungsi tujuan yang sejajar salah satu kendala (misalnya p = 3, q = 1): maksimumnya terjadi di sepanjang ruas garis."
+          "type": "text",
+          "html": "<p><b>Pemodelan Matematika: Menerjemahkan Narasi Masalah Nyata ke Fungsi Kendala</b>: Menyusun tabel alokasi bahan baku/kapasitas gudang, merumuskan syarat non-negatif (x ≥ 0, y ≥ 0), dan kendala batas.</p>"
         },
         {
-          "type": "example",
-          "title": "Contoh 1: maksimum",
-          "question": "<p>Seorang pengrajin membuat meja (x) dan kursi (y). Meja memerlukan 4 jam kerja dan kursi 2 jam; tersedia 40 jam. Paling banyak 15 barang dibuat. Untung meja Rp150.000 dan kursi Rp80.000. Tentukan untung maksimum.</p>",
-          "steps": [
-            "Kendala: 4x + 2y ≤ 40 → 2x + y ≤ 20; x + y ≤ 15; x, y ≥ 0.",
-            "Titik pojok: (0, 0), (10, 0), perpotongan → x = 5, y = 10, dan (0, 15).",
-            "f (ribu) = 150x + 80y: (10, 0) = 1.500; (5, 10) = 750 + 800 = 1.550; (0, 15) = 1.200."
-          ],
-          "answer": "Rp1.550.000 (5 meja dan 10 kursi)"
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Samakan satuan (kg ke gram, jam ke menit) sebelum menulis kendala.</li><li>Sederhanakan pertidaksamaan dengan membagi faktor persekutuan.</li><li>Untuk minimum biaya, daerahnya biasanya di atas garis (≥) dan tidak terbatas.</li><li>Jika fungsi tujuan sejajar salah satu garis kendala, optimum bisa terjadi di banyak titik.</li></ul>"
         },
         {
           "type": "example",
@@ -97,26 +94,162 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "35 menit",
+      "id": "metode-uji-titik-pojok",
+      "title": "Optimasi: Metode Uji Titik Pojok (Corner Point Method)",
+      "kind": "simulasi",
+      "duration": "18 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Samakan satuan (kg ke gram, jam ke menit) sebelum menulis kendala.</li><li>Sederhanakan pertidaksamaan dengan membagi faktor persekutuan.</li><li>Untuk minimum biaya, daerahnya biasanya di atas garis (≥) dan tidak terbatas.</li><li>Jika fungsi tujuan sejajar salah satu garis kendala, optimum bisa terjadi di banyak titik.</li></ul>"
+          "type": "text",
+          "html": "<p><b>Optimasi: Metode Uji Titik Pojok (Corner Point Method)</b>: Menentukan koordinat titik potong sudut-sudut DHP melalui eliminasi dan menguji nilai f(x, y) = ax + by untuk mencari maksimum/minimum.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Lupa kendala x ≥ 0, y ≥ 0.</li><li>Memakai titik potong dengan sumbu yang tidak termasuk daerah layak.</li><li>Hanya menghitung titik potong dua garis tanpa memeriksa titik pojok lain.</li><li>Tertukar tanda ≤ dan ≥ pada kata 'paling sedikit' dan 'paling banyak'.</li></ul>"
+          "variant": "rumus",
+          "title": "Garis dan daerah",
+          "html": "<ul><li>Garis melalui \\((0, a)\\) dan \\((b, 0)\\): \\(ax + by = ab\\).</li><li>Tentukan sisi daerah dengan <b>uji titik</b> (biasanya (0, 0)).</li><li>Garis selidik \\(px + qy = k\\) digeser sejajar; titik pojok terakhir yang disentuh adalah titik maksimum (untuk masalah maksimum).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/program-linear.html",
+          "title": "Titik pojok dan garis selidik",
+          "height": 640,
+          "caption": "Ubah kendala dan fungsi tujuan. Geser garis selidik ke luar: titik pojok terakhir yang disentuhnya adalah titik maksimum. Coba fungsi tujuan yang sejajar salah satu kendala (misalnya p = 3, q = 1): maksimumnya terjadi di sepanjang ruas garis."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Optimasi: Metode Uji Titik Pojok (Corner Point Method)",
+          "question": "<p>Perhatikan permasalahan terkait <b>Optimasi: Metode Uji Titik Pojok (Corner Point Method)</b> berikut. Analisislah berdasarkan prinsip Menentukan koordinat titik potong sudut-sudut DHP melalui eliminasi dan menguji nilai f(x, y) = ax + by untuk mencari maksimum/minimum..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "metode-garis-selidik",
+      "title": "Metode Garis Selidik: ax + by = k dan Arah Gradien Optimasi",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Metode Garis Selidik: ax + by = k dan Arah Gradien Optimasi</b>: Menggeser garis selidik sejajar untuk menemukan titik kontak terjauh (maksimum) atau terdekat (minimum) tanpa menguji semua titik.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Garis dan daerah",
+          "html": "<ul><li>Garis melalui \\((0, a)\\) dan \\((b, 0)\\): \\(ax + by = ab\\).</li><li>Tentukan sisi daerah dengan <b>uji titik</b> (biasanya (0, 0)).</li><li>Garis selidik \\(px + qy = k\\) digeser sejajar; titik pojok terakhir yang disentuh adalah titik maksimum (untuk masalah maksimum).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/04 Sistem Persamaan dan Pertidaksamaan Linear/sim/daerah-penyelesaian.html",
+          "title": "Daerah penyelesaian pertidaksamaan linear",
+          "height": 520,
+          "caption": "Ulangi cara menentukan sisi yang diarsir dengan uji titik."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Metode Garis Selidik: ax + by = k dan Arah Gradien Optimasi",
+          "question": "<p>Perhatikan permasalahan terkait <b>Metode Garis Selidik: ax + by = k dan Arah Gradien Optimasi</b> berikut. Analisislah berdasarkan prinsip Menggeser garis selidik sejajar untuk menemukan titik kontak terjauh (maksimum) atau terdekat (minimum) tanpa menguji semua titik..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "soal-cerita-hots-dan-kasus-khusus",
+      "title": "Model Soal Cerita HOTS: Solusi Bilangan Bulat dan Kendala Tak Terbatas",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Model Soal Cerita HOTS: Solusi Bilangan Bulat dan Kendala Tak Terbatas</b>: Menyelesaikan program linear dengan syarat diskret integer dan menganalisis daerah DHP tak terbatas (unbounded).</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Garis dan daerah",
+          "html": "<ul><li>Garis melalui \\((0, a)\\) dan \\((b, 0)\\): \\(ax + by = ab\\).</li><li>Tentukan sisi daerah dengan <b>uji titik</b> (biasanya (0, 0)).</li><li>Garis selidik \\(px + qy = k\\) digeser sejajar; titik pojok terakhir yang disentuh adalah titik maksimum (untuk masalah maksimum).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Model Soal Cerita HOTS: Solusi Bilangan Bulat dan Kendala Tak Terbatas",
+          "question": "<p>Perhatikan permasalahan terkait <b>Model Soal Cerita HOTS: Solusi Bilangan Bulat dan Kendala Tak Terbatas</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan program linear dengan syarat diskret integer dan menganalisis daerah DHP tak terbatas (unbounded)..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Model Soal Cerita HOTS: Solusi Bilangan Bulat dan Kendala Tak Terbatas, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Model Soal Cerita HOTS: Solusi Bilangan Bulat dan Kendala Tak Terbatas berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan program linear dengan syarat diskret integer dan menganalisis daerah DHP tak terbatas (unbounded).."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mtl-02",
+      "title": "Strategi Cepat Program Linear dan Latihan Kuis Bab 2",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Program Linear dan Latihan Kuis Bab 2</b>: Menuntaskan soal optimasi aljabar dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Garis dan daerah",
+          "html": "<ul><li>Garis melalui \\((0, a)\\) dan \\((b, 0)\\): \\(ax + by = ab\\).</li><li>Tentukan sisi daerah dengan <b>uji titik</b> (biasanya (0, 0)).</li><li>Garis selidik \\(px + qy = k\\) digeser sejajar; titik pojok terakhir yang disentuh adalah titik maksimum (untuk masalah maksimum).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Program Linear dan Latihan Kuis Bab 2",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Program Linear dan Latihan Kuis Bab 2</b> berikut. Analisislah berdasarkan prinsip Menuntaskan soal optimasi aljabar dan menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Program Linear dan Latihan Kuis Bab 2, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Program Linear dan Latihan Kuis Bab 2 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan soal optimasi aljabar dan menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

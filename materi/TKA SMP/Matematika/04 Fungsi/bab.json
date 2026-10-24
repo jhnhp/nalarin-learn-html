@@ -1,13 +1,13 @@
 {
   "title": "Fungsi",
-  "summary": "Ringkasan dan latihan TKA: relasi dan fungsi, notasi dan nilai fungsi, fungsi linear, gradien, dan persamaan garis lurus dalam konteks.",
+  "summary": "Konsep relasi, fungsi, dan persamaan garis lurus: diagram panah, himpunan pasangan berurutan, domain, kodomain, range, notasi fungsi f(x) = ax + b, gradien (kemiringan garis m), persamaan garis melalui satu/dua titik, serta kedudukan dua garis (sejajar m_1 = m_2 dan tegak lurus m_1 · m_2 = −1).",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi fungsi",
+      "id": "relasi-dan-fungsi-pemetaan",
+      "title": "Relasi vs Fungsi: Definisi Pemetaan, Domain, Kodomain, dan Daerah Hasil (Range)",
       "kind": "artikel",
-      "duration": "10 menit",
+      "duration": "15 menit",
       "blocks": [
         {
           "type": "text",
@@ -18,21 +18,6 @@
           "variant": "rumus",
           "title": "Rumus kunci",
           "html": "<ul><li>Fungsi: setiap anggota domain dipasangkan dengan <b>tepat satu</b> anggota kodomain.</li><li>m = (y₂ − y₁)/(x₂ − x₁); y − y₁ = m(x − x₁).</li><li>Sejajar: m₁ = m₂. Tegak lurus: m₁ × m₂ = −1.</li><li>Dalam konteks: m = laju perubahan, c = nilai awal.</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "relasi-fungsi",
-      "title": "Relasi, fungsi, dan nilai fungsi",
-      "kind": "simulasi",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "../../../Kelas8/Matematika/04 Relasi dan Fungsi/sim/diagram-panah.html",
-          "title": "Diagram panah: relasi atau fungsi?",
-          "height": 520,
-          "caption": "Periksa setiap anggota domain: apakah tepat satu panah keluar?"
         },
         {
           "type": "example",
@@ -43,23 +28,6 @@
             "a = 4."
           ],
           "answer": "a = 4"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>f(x + 1) = 3x − 2. Tentukan f(4).</p>",
-          "steps": [
-            "x + 1 = 4 saat x = 3.",
-            "f(4) = 3(3) − 2 = 7."
-          ],
-          "answer": "7"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas8/Matematika/04 Relasi dan Fungsi/sim/mesin-fungsi.html",
-          "title": "Mesin fungsi",
-          "height": 520,
-          "caption": "Masukkan beberapa nilai x dan tebak aturan mesinnya."
         },
         {
           "type": "check",
@@ -77,45 +45,37 @@
       ]
     },
     {
-      "id": "fungsi-linear",
-      "title": "Fungsi linear dan persamaan garis",
+      "id": "nilai-fungsi-linear",
+      "title": "Notasi dan Nilai Fungsi: f(x) = ax + b dan Menentukan Rumus Fungsi",
       "kind": "simulasi",
-      "duration": "20 menit",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "../../../Kelas8/Matematika/05 Persamaan Garis Lurus/sim/garis-mc.html",
-          "title": "Grafik y = mx + c",
-          "height": 520,
-          "caption": "Ubah m dan c. Mana yang mengubah kemiringan, mana yang menggeser garis?"
+          "type": "text",
+          "html": "<p><b>Notasi dan Nilai Fungsi: f(x) = ax + b dan Menentukan Rumus Fungsi</b>: Menghitung bayangan nilai f(k) dan mencari nilai konstanta a dan b jika dua nilai fungsi f(x_1) dan f(x_2) diketahui.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tagihan air f(x) = 4.500x + 25.000 dengan x pemakaian (m³). Jika tagihan Rp124.000,00, berapa pemakaiannya?</p>",
-          "steps": [
-            "4.500x + 25.000 = 124.000.",
-            "4.500x = 99.000, x = 22 m³."
-          ],
-          "answer": "22 m³"
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi: setiap anggota domain dipasangkan dengan <b>tepat satu</b> anggota kodomain.</li><li>m = (y₂ − y₁)/(x₂ − x₁); y − y₁ = m(x − x₁).</li><li>Sejajar: m₁ = m₂. Tegak lurus: m₁ × m₂ = −1.</li><li>Dalam konteks: m = laju perubahan, c = nilai awal.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/04 Relasi dan Fungsi/sim/diagram-panah.html",
+          "title": "Diagram panah: relasi atau fungsi?",
+          "height": 520,
+          "caption": "Periksa setiap anggota domain: apakah tepat satu panah keluar?"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Air dalam bak 400 liter dikuras dengan laju tetap; setelah 5 menit tersisa 300 liter. Nyatakan volume V(t) dan kapan bak kosong.</p>",
+          "question": "<p>f(x + 1) = 3x − 2. Tentukan f(4).</p>",
           "steps": [
-            "Laju = (400 − 300)/5 = 20 liter/menit.",
-            "V(t) = 400 − 20t.",
-            "Kosong saat 400 − 20t = 0, t = 20 menit."
+            "x + 1 = 4 saat x = 3.",
+            "f(4) = 3(3) − 2 = 7."
           ],
-          "answer": "V(t) = 400 − 20t; 20 menit"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas8/Matematika/05 Persamaan Garis Lurus/sim/dua-titik.html",
-          "title": "Kemiringan dari dua titik",
-          "height": 520,
-          "caption": "Geser kedua titik dan perhatikan Δy/Δx."
+          "answer": "7"
         },
         {
           "type": "check",
@@ -133,16 +93,14 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "gradien-kemiringan-garis",
+      "title": "Gradien (Kemiringan Garis m): Rumus m = Δy / Δx dan Bentuk Persamaan Garis",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Dari tabel, periksa apakah selisih y selalu sama untuk selisih x yang sama: jika ya, fungsinya linear.</li><li>Pada tarif bertingkat (misalnya parkir 2 jam pertama), bagi kasusnya dan perhatikan pembulatan waktu.</li><li>Domain dalam konteks biasanya terbatas: waktu tidak negatif, volume tidak negatif.</li></ul>"
+          "type": "text",
+          "html": "<p>Soal TKA fungsi sering berupa tarif (air, parkir, taksi) atau perubahan yang konstan (air dikuras, lilin terbakar). Laju tetap berarti fungsi linear.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Relasi dan fungsi</td><td>diagram panah, pasangan berurutan, domain, kodomain, range</td><td>Kelas 8 Bab 4</td></tr><tr><td>Nilai fungsi</td><td>f(a), mencari a jika f(a) diketahui</td><td>Kelas 8 Bab 4</td></tr><tr><td>Fungsi linear</td><td>f(x) = mx + c dari tabel, grafik, atau dua titik</td><td>Kelas 8 Bab 5</td></tr><tr><td>Gradien dan garis</td><td>m = Δy/Δx, garis sejajar dan tegak lurus</td><td>Kelas 8 Bab 5</td></tr></table>"
         },
         {
           "type": "callout",
@@ -151,8 +109,187 @@
           "html": "<ul><li>Tertukar gradien Δy/Δx menjadi Δx/Δy.</li><li>Menganggap relasi dengan satu anggota domain yang tidak berpasangan sebagai fungsi.</li><li>Lupa bahwa “jam berikutnya atau bagiannya” berarti dibulatkan ke atas.</li></ul>"
         },
         {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/04 Relasi dan Fungsi/sim/mesin-fungsi.html",
+          "title": "Mesin fungsi",
+          "height": 520,
+          "caption": "Masukkan beberapa nilai x dan tebak aturan mesinnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tagihan air f(x) = 4.500x + 25.000 dengan x pemakaian (m³). Jika tagihan Rp124.000,00, berapa pemakaiannya?</p>",
+          "steps": [
+            "4.500x + 25.000 = 124.000.",
+            "4.500x = 99.000, x = 22 m³."
+          ],
+          "answer": "22 m³"
+        }
+      ]
+    },
+    {
+      "id": "persamaan-garis-lurus",
+      "title": "Menyusun Persamaan Garis Lurus: Melalui Satu Titik Bergradien m dan Melalui Dua Titik",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p><b>Menyusun Persamaan Garis Lurus: Melalui Satu Titik Bergradien m dan Melalui Dua Titik</b>: Menerapkan formula y − y_1 = m(x − x_1) dan (y − y_1)/(y_2 − y_1) = (x − x_1)/(x_2 − x_1) serta menggambar grafiknya.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi: setiap anggota domain dipasangkan dengan <b>tepat satu</b> anggota kodomain.</li><li>m = (y₂ − y₁)/(x₂ − x₁); y − y₁ = m(x − x₁).</li><li>Sejajar: m₁ = m₂. Tegak lurus: m₁ × m₂ = −1.</li><li>Dalam konteks: m = laju perubahan, c = nilai awal.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/Matematika/05 Persamaan Garis Lurus/sim/garis-mc.html",
+          "title": "Grafik y = mx + c",
+          "height": 520,
+          "caption": "Ubah m dan c. Mana yang mengubah kemiringan, mana yang menggeser garis?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Air dalam bak 400 liter dikuras dengan laju tetap; setelah 5 menit tersisa 300 liter. Nyatakan volume V(t) dan kapan bak kosong.</p>",
+          "steps": [
+            "Laju = (400 − 300)/5 = 20 liter/menit.",
+            "V(t) = 400 − 20t.",
+            "Kosong saat 400 − 20t = 0, t = 20 menit."
+          ],
+          "answer": "V(t) = 400 − 20t; 20 menit"
+        }
+      ]
+    },
+    {
+      "id": "kedudukan-dua-garis-sejajar-tegaklurus",
+      "title": "Hubungan Dua Garis: Sejajar (m_1 = m_2), Berimpit, dan Tegak Lurus (m_1 · m_2 = −1)",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hubungan Dua Garis: Sejajar (m_1 = m_2), Berimpit, dan Tegak Lurus (m_1 · m_2 = −1)</b>: Menentukan persamaan garis baru yang sejajar atau tegak lurus dengan garis yang diketahui dan melalui titik tertentu.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi: setiap anggota domain dipasangkan dengan <b>tepat satu</b> anggota kodomain.</li><li>m = (y₂ − y₁)/(x₂ − x₁); y − y₁ = m(x − x₁).</li><li>Sejajar: m₁ = m₂. Tegak lurus: m₁ × m₂ = −1.</li><li>Dalam konteks: m = laju perubahan, c = nilai awal.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Hubungan Dua Garis: Sejajar (m_1 = m_2), Berimpit, dan Tegak Lurus (m_1 · m_2 = −1)",
+          "question": "<p>Perhatikan permasalahan terkait <b>Hubungan Dua Garis: Sejajar (m_1 = m_2), Berimpit, dan Tegak Lurus (m_1 · m_2 = −1)</b> berikut. Analisislah berdasarkan prinsip Menentukan persamaan garis baru yang sejajar atau tegak lurus dengan garis yang diketahui dan melalui titik tertentu..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Hubungan Dua Garis: Sejajar (m_1 = m_2), Berimpit, dan Tegak Lurus (m_1 · m_2 = −1), pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Hubungan Dua Garis: Sejajar (m_1 = m_2), Berimpit, dan Tegak Lurus (m_1 · m_2 = −1) berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menentukan persamaan garis baru yang sejajar atau tegak lurus dengan garis yang diketahui dan melalui titik tertentu.."
+        }
+      ]
+    },
+    {
+      "id": "aplikasi-tarif-linear",
+      "title": "Aplikasi Kontekstual: Tarif Taksi, Biaya Listrik, dan Laju Perubahan Konstan",
+      "kind": "latihan",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Aplikasi Kontekstual: Tarif Taksi, Biaya Listrik, dan Laju Perubahan Konstan</b>: Memodelkan biaya tetap (intersep y) dan biaya variabel per kilometer (gradien m) ke dalam fungsi linear y = mx + c.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Dari tabel, periksa apakah selisih y selalu sama untuk selisih x yang sama: jika ya, fungsinya linear.</li><li>Pada tarif bertingkat (misalnya parkir 2 jam pertama), bagi kasusnya dan perhatikan pembulatan waktu.</li><li>Domain dalam konteks biasanya terbatas: waktu tidak negatif, volume tidak negatif.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Aplikasi Kontekstual: Tarif Taksi, Biaya Listrik, dan Laju Perubahan Konstan",
+          "question": "<p>Perhatikan permasalahan terkait <b>Aplikasi Kontekstual: Tarif Taksi, Biaya Listrik, dan Laju Perubahan Konstan</b> berikut. Analisislah berdasarkan prinsip Memodelkan biaya tetap (intersep y) dan biaya variabel per kilometer (gradien m) ke dalam fungsi linear y = mx + c..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Aplikasi Kontekstual: Tarif Taksi, Biaya Listrik, dan Laju Perubahan Konstan, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Aplikasi Kontekstual: Tarif Taksi, Biaya Listrik, dan Laju Perubahan Konstan berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Memodelkan biaya tetap (intersep y) dan biaya variabel per kilometer (gradien m) ke dalam fungsi linear y = mx + c.."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-smp-04",
+      "title": "Strategi Cepat Relasi-Fungsi-Garis dan Latihan Kuis Bab 4",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Relasi-Fungsi-Garis dan Latihan Kuis Bab 4</b>: Menguasai variasi soal fungsi dan persamaan garis serta menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Dari tabel, periksa apakah selisih y selalu sama untuk selisih x yang sama: jika ya, fungsinya linear.</li><li>Pada tarif bertingkat (misalnya parkir 2 jam pertama), bagi kasusnya dan perhatikan pembulatan waktu.</li><li>Domain dalam konteks biasanya terbatas: waktu tidak negatif, volume tidak negatif.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Relasi-Fungsi-Garis dan Latihan Kuis Bab 4",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Relasi-Fungsi-Garis dan Latihan Kuis Bab 4</b> berikut. Analisislah berdasarkan prinsip Menguasai variasi soal fungsi dan persamaan garis serta menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Relasi-Fungsi-Garis dan Latihan Kuis Bab 4, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Relasi-Fungsi-Garis dan Latihan Kuis Bab 4 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai variasi soal fungsi dan persamaan garis serta menyelesaikan kuis bab 20 butir soal.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

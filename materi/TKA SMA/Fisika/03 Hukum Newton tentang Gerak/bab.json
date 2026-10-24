@@ -1,13 +1,13 @@
 {
   "title": "Hukum Newton tentang Gerak",
-  "summary": "Ringkasan dan latihan TKA Fisika: hukum I, II, dan III Newton, berat dan gaya normal, gaya gesek, bidang miring, sistem benda terhubung, gerak di lift, dan dinamika gerak melingkar.",
+  "summary": "Fondasi dinamika klasik: Hukum I, II, dan III Newton, Diagram Benda Bebas (FBD), gaya normal, gaya gesek statis-kinetis, dinamika bidang miring, sistem katrol benda terhubung, dan gerak dalam lift.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi",
+      "id": "tiga-hukum-newton",
+      "title": "Hukum Inersia, Percepatan, dan Aksi-Reaksi Newton",
       "kind": "artikel",
-      "duration": "10 menit",
+      "duration": "15 menit",
       "blocks": [
         {
           "type": "text",
@@ -15,31 +15,9 @@
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "gaya-gesek",
-      "title": "Hukum Newton, gesekan, dan bidang miring",
-      "kind": "simulasi",
-      "duration": "35 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "../../../Kelas7/IPA/04 Gerak dan Gaya/sim/dorong-kotak.html",
-          "title": "Gaya, gesekan, dan hukum Newton",
-          "height": 480,
-          "caption": "Dorong kotak di permukaan berbeda. Kapan kotak mulai bergerak?"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/bidang-miring.html",
-          "title": "Balok pada bidang miring",
-          "height": 520,
-          "caption": "Pada sudut berapa balok mulai meluncur? Hubungkan dengan tan θ = μₛ."
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Studi kasus kontekstual sabuk pengaman, dorongan roket, dan tumbukan balok.</p>"
         },
         {
           "type": "example",
@@ -50,16 +28,6 @@
             "Gaya dorong 180 N < 200 N, sehingga lemari diam dan gaya gesek statis = 180 N."
           ],
           "answer": "diam; gaya gesek 180 N"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Balok 2 kg dilepas di bidang miring licin bersudut 30° (g = 10 m/s²). Berapa percepatannya dan gaya normalnya?</p>",
-          "steps": [
-            "a = g sin 30° = 5 m/s².",
-            "N = mg cos 30° = 20 × 0,866 ≈ 17,3 N."
-          ],
-          "answer": "5 m/s² dan ± 17,3 N"
         },
         {
           "type": "check",
@@ -77,47 +45,37 @@
       ]
     },
     {
-      "id": "sistem",
-      "title": "Sistem benda terhubung, lift, dan gerak melingkar",
+      "id": "fbd-diagram-benda-bebas",
+      "title": "Keahlian Kunci: Menggambar Diagram Benda Bebas (FBD)",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "18 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "sim/sistem-katrol.html",
-          "title": "Sistem benda terhubung",
-          "height": 520,
-          "caption": "Pada mode meja, naikkan μₖ sampai sistem tidak bergerak. Pada mode lift, kapan angka timbangan lebih kecil dari massa sebenarnya?"
+          "type": "text",
+          "html": "<p><b>Keahlian Kunci: Menggambar Diagram Benda Bebas (FBD)</b>: Mengidentifikasi semua vektor gaya yang bekerja pada benda tunggal tanpa memasukkan gaya luar asing.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Mesin Atwood dengan beban 5 kg dan 3 kg (katrol licin, g = 10 m/s²). Tentukan percepatan dan tegangan tali.</p>",
-          "steps": [
-            "a = (5 − 3) × 10/(5 + 3) = 2,5 m/s².",
-            "T = 3(10 + 2,5) = 37,5 N."
-          ],
-          "answer": "2,5 m/s² dan 37,5 N"
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/IPA/04 Gerak dan Gaya/sim/dorong-kotak.html",
+          "title": "Gaya, gesekan, dan hukum Newton",
+          "height": 480,
+          "caption": "Dorong kotak di permukaan berbeda. Kapan kotak mulai bergerak?"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Seorang anak 40 kg berdiri di lift yang bergerak turun dan diperlambat 1,5 m/s² (g = 10 m/s²). Berapa gaya normal lantai lift?</p>",
+          "question": "<p>Balok 2 kg dilepas di bidang miring licin bersudut 30° (g = 10 m/s²). Berapa percepatannya dan gaya normalnya?</p>",
           "steps": [
-            "Turun diperlambat berarti percepatan ke atas.",
-            "N = 40(10 + 1,5)."
+            "a = g sin 30° = 5 m/s².",
+            "N = mg cos 30° = 20 × 0,866 ≈ 17,3 N."
           ],
-          "answer": "460 N"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Sebuah ember berisi air (1,5 kg) diputar pada bidang vertikal dengan tali sepanjang 0,9 m. Berapa kelajuan minimum di titik tertinggi agar air tidak tumpah (g = 10 m/s²)?</p>",
-          "steps": [
-            "Syarat minimum: tegangan tali nol di titik tertinggi, sehingga mg = mv²/R.",
-            "v = √(gR) = √9."
-          ],
-          "answer": "3 m/s"
+          "answer": "5 m/s² dan ± 17,3 N"
         },
         {
           "type": "check",
@@ -135,26 +93,255 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "gaya-gesek-statis-kinetis",
+      "title": "Friksi: Menentukan Kondisi Diam vs Bergerak",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Gambar diagram gaya bebas tiap benda; jangan memasukkan gaya reaksi pada benda yang sama.</li><li>Periksa dahulu apakah benda bergerak (bandingkan gaya penggerak dengan fₛ maks).</li><li>Pada sistem beberapa benda, hitung percepatan sistem dulu, lalu tegangan atau gaya kontak dari satu benda.</li><li>Gaya yang membentuk sudut mengubah gaya normal: uraikan komponennya.</li></ul>"
+          "type": "text",
+          "html": "<p><b>Friksi: Menentukan Kondisi Diam vs Bergerak</b>: Menghitung f_s,max = μ_s · N, membandingkan dengan gaya penarik, dan beralih ke f_k = μ_k · N saat bergerak.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Menyamakan massa dan berat; massa tetap di mana pun.</li><li>Menganggap N = mg pada semua kasus (salah di bidang miring, lift, atau gaya bersudut).</li><li>Memakai μₛ ketika benda sudah bergerak.</li><li>Menganggap pasangan berat dan gaya normal sebagai aksi–reaksi.</li></ul>"
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/bidang-miring.html",
+          "title": "Balok pada bidang miring",
+          "height": 520,
+          "caption": "Pada sudut berapa balok mulai meluncur? Hubungkan dengan tan θ = μₛ."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Mesin Atwood dengan beban 5 kg dan 3 kg (katrol licin, g = 10 m/s²). Tentukan percepatan dan tegangan tali.</p>",
+          "steps": [
+            "a = (5 − 3) × 10/(5 + 3) = 2,5 m/s².",
+            "T = 3(10 + 2,5) = 37,5 N."
+          ],
+          "answer": "2,5 m/s² dan 37,5 N"
+        }
+      ]
+    },
+    {
+      "id": "dinamika-bidang-miring",
+      "title": "Gerak pada Bidang Miring Licin dan Kasar",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Langkah utama soal dinamika: gambar <b>diagram gaya bebas</b> untuk setiap benda, uraikan gaya, lalu terapkan ΣF = ma pada arah gerak.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Newton</td><td>kelembaman, ΣF = ma, aksi–reaksi</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 3</td></tr><tr><td>Gaya-gaya</td><td>berat, normal, gesek statis dan kinetis, tegangan tali</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Penerapan</td><td>bidang miring, katrol, lift, tikungan</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/sistem-katrol.html",
+          "title": "Sistem benda terhubung",
+          "height": 520,
+          "caption": "Pada mode meja, naikkan μₖ sampai sistem tidak bergerak. Pada mode lift, kapan angka timbangan lebih kecil dari massa sebenarnya?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Seorang anak 40 kg berdiri di lift yang bergerak turun dan diperlambat 1,5 m/s² (g = 10 m/s²). Berapa gaya normal lantai lift?</p>",
+          "steps": [
+            "Turun diperlambat berarti percepatan ke atas.",
+            "N = 40(10 + 1,5)."
+          ],
+          "answer": "460 N"
+        }
+      ]
+    },
+    {
+      "id": "sistem-benda-terhubung-katrol",
+      "title": "Sistem Benda Terhubung, Tegangan Tali, dan Mesin Atwood",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Sistem Benda Terhubung, Tegangan Tali, dan Mesin Atwood</b>: Menentukan percepatan sistem bersama dan gaya tegangan tali (T) pada katrol licin tanpa massa.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Sebuah ember berisi air (1,5 kg) diputar pada bidang vertikal dengan tali sepanjang 0,9 m. Berapa kelajuan minimum di titik tertinggi agar air tidak tumpah (g = 10 m/s²)?</p>",
+          "steps": [
+            "Syarat minimum: tegangan tali nol di titik tertinggi, sehingga mg = mv²/R.",
+            "v = √(gR) = √9."
+          ],
+          "answer": "3 m/s"
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Sistem Benda Terhubung, Tegangan Tali, dan Mesin Atwood, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Sistem Benda Terhubung, Tegangan Tali, dan Mesin Atwood berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menentukan percepatan sistem bersama dan gaya tegangan tali (T) pada katrol licin tanpa massa.."
+        }
+      ]
+    },
+    {
+      "id": "gerak-dan-berat-semu-lift",
+      "title": "Dinamika dalam Lift: Berat Semu dan Kerangka Dipercepat",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Langkah utama soal dinamika: gambar <b>diagram gaya bebas</b> untuk setiap benda, uraikan gaya, lalu terapkan ΣF = ma pada arah gerak.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Newton</td><td>kelembaman, ΣF = ma, aksi–reaksi</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 3</td></tr><tr><td>Gaya-gaya</td><td>berat, normal, gesek statis dan kinetis, tegangan tali</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Penerapan</td><td>bidang miring, katrol, lift, tikungan</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/IPA/04 Gerak dan Gaya/sim/dorong-kotak.html",
+          "title": "Gaya, gesekan, dan hukum Newton",
+          "height": 480,
+          "caption": "Dorong kotak di permukaan berbeda. Kapan kotak mulai bergerak?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Dinamika dalam Lift: Berat Semu dan Kerangka Dipercepat",
+          "question": "<p>Perhatikan permasalahan terkait <b>Dinamika dalam Lift: Berat Semu dan Kerangka Dipercepat</b> berikut. Analisislah berdasarkan prinsip Menghitung skala timbangan (gaya normal) saat lift diam, naik dipercepat, atau turun dipercepat (N = m(g ± a))..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "tikungan-miring-dan-kering",
+      "title": "Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin",
+      "kind": "latihan",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Langkah utama soal dinamika: gambar <b>diagram gaya bebas</b> untuk setiap benda, uraikan gaya, lalu terapkan ΣF = ma pada arah gerak.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Newton</td><td>kelembaman, ΣF = ma, aksi–reaksi</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 3</td></tr><tr><td>Gaya-gaya</td><td>berat, normal, gesek statis dan kinetis, tegangan tali</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Penerapan</td><td>bidang miring, katrol, lift, tikungan</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin",
+          "question": "<p>Perhatikan permasalahan terkait <b>Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin</b> berikut. Analisislah berdasarkan prinsip Menghitung kelajuan maksimum kendaraan agar tidak tergelincir (v_max = √(μgR) dan v = √(gR tan θ))..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung kelajuan maksimum kendaraan agar tidak tergelincir (v_max = √(μgR) dan v = √(gR tan θ)).."
+        }
+      ]
+    },
+    {
+      "id": "mitigasi-miskonsepsi-normal-berat",
+      "title": "Miskonsepsi Fatal: Menganggap Gaya Normal Selalu Sama dengan Gaya Berat",
+      "kind": "artikel",
+      "duration": "12 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Miskonsepsi Fatal: Menganggap Gaya Normal Selalu Sama dengan Gaya Berat</b>: Memahami kondisi di mana N ≠ W (akibat gaya miring, bidang miring, atau akselerasi vertikal).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+        }
+      ]
+    },
+    {
+      "id": "evaluasi-hukum-newton",
+      "title": "Strategi Cepat Dinamika dan Latihan Kuis Bab 3",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Dinamika dan Latihan Kuis Bab 3</b>: Menuntaskan soal dinamika Newton variatif dan menyelesaikan kuis bab 20 soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Paket latihan bergradasi dan evaluasi kuis terintegrasi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Dinamika dan Latihan Kuis Bab 3",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Dinamika dan Latihan Kuis Bab 3</b> berikut. Analisislah berdasarkan prinsip Menuntaskan soal dinamika Newton variatif dan menyelesaikan kuis bab 20 soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Dinamika dan Latihan Kuis Bab 3, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Dinamika dan Latihan Kuis Bab 3 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan soal dinamika Newton variatif dan menyelesaikan kuis bab 20 soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

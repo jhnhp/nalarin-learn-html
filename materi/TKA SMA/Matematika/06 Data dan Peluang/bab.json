@@ -1,32 +1,24 @@
 {
   "title": "Data dan Peluang",
-  "summary": "Ringkasan dan latihan TKA SMA: penyajian data, ukuran pemusatan dan penyebaran data tunggal dan kelompok, kaidah pencacahan, serta peluang kejadian majemuk.",
+  "summary": "Statistika deskriptif dan teori probabilitas: pemusatan data (mean, median, modus), penyebaran data (jangkauan, kuartil, simpangan baku, varians), diagram kotak-garis (boxplot), aturan pencacahan (permutasi & kombinasi), serta peluang kejadian majemuk saling lepas dan saling bebas.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi data dan peluang",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "ukuran-pemusatan-data-tunggal-kelompok",
+      "title": "Ukuran Pemusatan: Mean, Median, Modus, dan Pengaruh Transformasi Data",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
+          "html": "<p><b>Ukuran Pemusatan: Mean, Median, Modus, dan Pengaruh Transformasi Data</b>: Menganalisis pergeseran nilai statistik saat seluruh data ditambah c atau dikalikan k (x_baru = kx + c).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Rumus kunci",
           "html": "<ul><li>Median kelompok: T<sub>b</sub> + (n/2 − F)/f × p.</li><li>σ² = Σ(x − x̄)²/n; σ = √σ².</li><li>P(n, r) = n!/(n − r)!; C(n, r) = n!/(r!(n − r)!).</li><li>P(A ∪ B) = P(A) + P(B) − P(A ∩ B); saling bebas: P(A ∩ B) = P(A)P(B); bersyarat: P(A ∩ B) = P(A)P(B | A).</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "statistika",
-      "title": "Statistika data tunggal dan kelompok",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
+        },
         {
           "type": "sim",
           "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/histogram.html",
@@ -45,23 +37,6 @@
           "answer": "90"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Tentukan simpangan baku data 4, 6, 8, 10, 12.</p>",
-          "steps": [
-            "Mean 8. Kuadrat simpangan: 16, 4, 0, 4, 16, jumlah 40.",
-            "σ² = 8, σ = 2√2."
-          ],
-          "answer": "2√2"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/boxplot.html",
-          "title": "Box plot dan pencilan",
-          "height": 520,
-          "caption": "Periksa batas pencilan Q1 − 1,5 IQR dan Q3 + 1,5 IQR."
-        },
-        {
           "type": "check",
           "question": "Nilai 50, 60, 70 dengan frekuensi 3, 5, 2. Rata-ratanya adalah ....",
           "options": {
@@ -77,45 +52,37 @@
       ]
     },
     {
-      "id": "pencacahan-peluang",
-      "title": "Pencacahan dan peluang",
+      "id": "ukuran-penyebaran-dan-boxplot",
+      "title": "Ukuran Penyebaran: Jangkauan, Simpangan Kuartil, Ragam, Simpangan Baku, dan Diagram Boxplot",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "../../../Kelas12/Matematika/03 Kaidah Pencacahan/sim/susunan.html",
-          "title": "Daftar semua susunan",
-          "height": 520,
-          "caption": "Bandingkan banyak susunan pada mode permutasi dan kombinasi."
+          "type": "text",
+          "html": "<p><b>Ukuran Penyebaran: Jangkauan, Simpangan Kuartil, Ragam, Simpangan Baku, dan Diagram Boxplot</b>: Membaca diagram lima serangkai (min, Q1, Q2, Q3, max), mendeteksi data pencilan (outlier), dan menghitung standar deviasi.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Enam siswa termasuk Andi dan Budi berfoto berjajar. Berapa susunan jika Andi dan Budi selalu berdampingan?</p>",
-          "steps": [
-            "Gabungkan Andi–Budi: 5 objek, 5! = 120.",
-            "Andi dan Budi bertukar: × 2. Total 240."
-          ],
-          "answer": "240"
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/boxplot.html",
+          "title": "Box plot dan pencilan",
+          "height": 520,
+          "caption": "Periksa batas pencilan Q1 − 1,5 IQR dan Q3 + 1,5 IQR."
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Dari 10 lampu, 3 rusak. Diambil 3 lampu sekaligus. Berapa peluang tepat 1 rusak?</p>",
+          "question": "<p>Tentukan simpangan baku data 4, 6, 8, 10, 12.</p>",
           "steps": [
-            "n(S) = C(10, 3) = 120.",
-            "n(A) = C(3, 1) × C(7, 2) = 3 × 21 = 63.",
-            "P = 63/120 = 21/40."
+            "Mean 8. Kuadrat simpangan: 16, 4, 0, 4, 16, jumlah 40.",
+            "σ² = 8, σ = 2√2."
           ],
-          "answer": "21/40"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas12/Matematika/04 Peluang/sim/kantong.html",
-          "title": "Pengambilan bola dari kantong",
-          "height": 520,
-          "caption": "Bandingkan pengambilan dengan dan tanpa pengembalian."
+          "answer": "2√2"
         },
         {
           "type": "check",
@@ -133,16 +100,14 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "aturan-perkalian-faktorial-permutasi",
+      "title": "Kaidah Pencacahan: Aturan Pengisian Tempat (Filling Slots) dan Permutasi",
+      "kind": "artikel",
+      "duration": "15 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
+          "type": "text",
+          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
         },
         {
           "type": "callout",
@@ -151,8 +116,168 @@
           "html": "<ul><li>Menjumlahkan peluang kejadian yang tidak saling lepas tanpa mengurangkan irisan.</li><li>Memakai permutasi untuk memilih anggota tim tanpa jabatan.</li><li>Membagi dengan n − 1 pada simpangan baku populasi (buku memakai n).</li></ul>"
         },
         {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Enam siswa termasuk Andi dan Budi berfoto berjajar. Berapa susunan jika Andi dan Budi selalu berdampingan?</p>",
+          "steps": [
+            "Gabungkan Andi–Budi: 5 objek, 5! = 120.",
+            "Andi dan Budi bertukar: × 2. Total 240."
+          ],
+          "answer": "240"
+        }
+      ]
+    },
+    {
+      "id": "kombinasi-dan-teorema-binomial",
+      "title": "Kombinasi nCr: Pemilihan Tanpa Memperhatikan Urutan dan Ekspansi Binomial",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Matematika/03 Kaidah Pencacahan/sim/susunan.html",
+          "title": "Daftar semua susunan",
+          "height": 520,
+          "caption": "Bandingkan banyak susunan pada mode permutasi dan kombinasi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Dari 10 lampu, 3 rusak. Diambil 3 lampu sekaligus. Berapa peluang tepat 1 rusak?</p>",
+          "steps": [
+            "n(S) = C(10, 3) = 120.",
+            "n(A) = C(3, 1) × C(7, 2) = 3 × 21 = 63.",
+            "P = 63/120 = 21/40."
+          ],
+          "answer": "21/40"
+        }
+      ]
+    },
+    {
+      "id": "peluang-dasar-ruang-sampel",
+      "title": "Peluang Klasik: Ruang Sampel S, Titik Sampel Kejadian, dan Komplemen P(A') = 1 − P(A)",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Matematika/04 Peluang/sim/kantong.html",
+          "title": "Pengambilan bola dari kantong",
+          "height": 520,
+          "caption": "Bandingkan pengambilan dengan dan tanpa pengembalian."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Peluang Klasik: Ruang Sampel S, Titik Sampel Kejadian, dan Komplemen P(A') = 1 − P(A)",
+          "question": "<p>Perhatikan permasalahan terkait <b>Peluang Klasik: Ruang Sampel S, Titik Sampel Kejadian, dan Komplemen P(A') = 1 − P(A)</b> berikut. Analisislah berdasarkan prinsip Menghitung peluang pelemparan koin, dadu, kartu bridge, serta memanfaatkan komplemen untuk soal 'paling sedikit satu'..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "kejadian-majemuk-lepas-bebas",
+      "title": "Peluang Kejadian Majemuk: Aturan Penjumlahan (Saling Lepas) dan Perkalian (Saling Bebas)",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Median kelompok: T<sub>b</sub> + (n/2 − F)/f × p.</li><li>σ² = Σ(x − x̄)²/n; σ = √σ².</li><li>P(n, r) = n!/(n − r)!; C(n, r) = n!/(r!(n − r)!).</li><li>P(A ∪ B) = P(A) + P(B) − P(A ∩ B); saling bebas: P(A ∩ B) = P(A)P(B); bersyarat: P(A ∩ B) = P(A)P(B | A).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/histogram.html",
+          "title": "Histogram dan data kelompok",
+          "height": 640,
+          "caption": "Bandingkan rata-rata dan median data kelompok dengan nilai sebenarnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Peluang Kejadian Majemuk: Aturan Penjumlahan (Saling Lepas) dan Perkalian (Saling Bebas)",
+          "question": "<p>Perhatikan permasalahan terkait <b>Peluang Kejadian Majemuk: Aturan Penjumlahan (Saling Lepas) dan Perkalian (Saling Bebas)</b> berikut. Analisislah berdasarkan prinsip Menerapkan P(A ∪ B) = P(A) + P(B) − P(A ∩ B) dan P(A ∩ B) = P(A) · P(B) serta peluang bersyarat P(A|B)..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mat-06",
+      "title": "Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6</b>: Menyelesaikan variasi soal statistika dan peluang kombinatorika serta menuntaskan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan variasi soal statistika dan peluang kombinatorika serta menuntaskan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan variasi soal statistika dan peluang kombinatorika serta menuntaskan kuis bab 20 butir soal.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

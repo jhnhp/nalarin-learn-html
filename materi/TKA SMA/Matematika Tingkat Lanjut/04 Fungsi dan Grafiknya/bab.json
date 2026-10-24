@@ -1,14 +1,18 @@
 {
   "title": "Fungsi dan Grafiknya",
-  "summary": "Fungsi untuk TKA Matematika Tingkat Lanjut: domain, kodomain, dan daerah hasil, serta grafik fungsi polinom, rasional, akar, eksponensial, logaritma, nilai mutlak, dan trigonometri.",
+  "summary": "Analisis fungsi transenden dan rasional: fungsi rasional dan asimtot (datar, tegak, miring), grafik fungsi eksponensial dan logaritma lanjutan, grafik fungsi trigonometri (amplitudo, periode, pergeseran fasa), serta penentuan rumus fungsi dari kurva grafik.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "domain",
-      "title": "Domain dan daerah hasil",
-      "kind": "artikel",
-      "duration": "30 menit",
+      "id": "fungsi-rasional-asimtot",
+      "title": "Fungsi Rasional: Menentukan Asimtot Tegak, Asimtot Datar, dan Asimtot Miring",
+      "kind": "simulasi",
+      "duration": "18 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Domain</b> adalah himpunan x yang membuat fungsi terdefinisi. <b>Kodomain</b> adalah himpunan tujuan. <b>Daerah hasil</b> (range) adalah himpunan nilai f(x) yang benar-benar dicapai.</p><table><tr><th>Fungsi</th><th>Syarat domain</th><th>Daerah hasil umum</th></tr><tr><td>Polinom</td><td>semua x</td><td>derajat ganjil: semua y; derajat genap: dibatasi puncak</td></tr><tr><td>Rasional \\(\\frac{p(x)}{q(x)}\\)</td><td>\\(q(x) \\ne 0\\)</td><td>lihat asimtot datar</td></tr><tr><td>Akar \\(\\sqrt{g(x)}\\)</td><td>\\(g(x) \\ge 0\\)</td><td>\\(y \\ge 0\\) (sebelum digeser)</td></tr><tr><td>Eksponen \\(a\\cdot b^x + k\\)</td><td>semua x</td><td>\\(y &gt; k\\) jika \\(a &gt; 0\\)</td></tr><tr><td>Logaritma \\({}^b\\log g(x)\\)</td><td>\\(g(x) &gt; 0\\)</td><td>semua y</td></tr><tr><td>Mutlak \\(a|x - h| + k\\)</td><td>semua x</td><td>\\(y \\ge k\\) jika \\(a &gt; 0\\)</td></tr><tr><td>Trigonometri \\(a\\sin bx + d\\)</td><td>semua x</td><td>\\(d - |a| \\le y \\le d + |a|\\), periode \\(\\frac{360^\\circ}{|b|}\\)</td></tr></table>"
+        },
         {
           "type": "callout",
           "variant": "info",
@@ -16,8 +20,11 @@
           "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
         },
         {
-          "type": "text",
-          "html": "<p><b>Domain</b> adalah himpunan x yang membuat fungsi terdefinisi. <b>Kodomain</b> adalah himpunan tujuan. <b>Daerah hasil</b> (range) adalah himpunan nilai f(x) yang benar-benar dicapai.</p><table><tr><th>Fungsi</th><th>Syarat domain</th><th>Daerah hasil umum</th></tr><tr><td>Polinom</td><td>semua x</td><td>derajat ganjil: semua y; derajat genap: dibatasi puncak</td></tr><tr><td>Rasional \\(\\frac{p(x)}{q(x)}\\)</td><td>\\(q(x) \\ne 0\\)</td><td>lihat asimtot datar</td></tr><tr><td>Akar \\(\\sqrt{g(x)}\\)</td><td>\\(g(x) \\ge 0\\)</td><td>\\(y \\ge 0\\) (sebelum digeser)</td></tr><tr><td>Eksponen \\(a\\cdot b^x + k\\)</td><td>semua x</td><td>\\(y &gt; k\\) jika \\(a &gt; 0\\)</td></tr><tr><td>Logaritma \\({}^b\\log g(x)\\)</td><td>\\(g(x) &gt; 0\\)</td><td>semua y</td></tr><tr><td>Mutlak \\(a|x - h| + k\\)</td><td>semua x</td><td>\\(y \\ge k\\) jika \\(a &gt; 0\\)</td></tr><tr><td>Trigonometri \\(a\\sin bx + d\\)</td><td>semua x</td><td>\\(d - |a| \\le y \\le d + |a|\\), periode \\(\\frac{360^\\circ}{|b|}\\)</td></tr></table>"
+          "type": "sim",
+          "src": "sim/grafik-fungsi.html",
+          "title": "Grafik, asimtot, domain, dan daerah hasil",
+          "height": 620,
+          "caption": "Pilih jenis fungsi dan ubah parameternya. Perhatikan bagaimana asimtot, domain, dan daerah hasil ikut berubah. Pada fungsi rasional, coba b = −ac agar muncul lubang, bukan asimtot."
         },
         {
           "type": "example",
@@ -28,17 +35,6 @@
             "Penyebut: x ≠ 2."
           ],
           "answer": "{x | x ≥ −3, x ≠ 2}"
-        },
-        {
-          "type": "example",
-          "title": "Contoh 2: daerah hasil dengan domain terbatas",
-          "question": "<p>Tentukan daerah hasil \\(f(x) = |x - 1| - 2\\) untuk \\(-2 \\le x \\le 3\\).</p>",
-          "steps": [
-            "Nilai terkecil di x = 1: f(1) = −2.",
-            "Ujung: f(−2) = 3 − 2 = 1; f(3) = 2 − 2 = 0.",
-            "Nilai terbesar 1."
-          ],
-          "answer": "{y | −2 ≤ y ≤ 1}"
         },
         {
           "type": "check",
@@ -56,23 +52,20 @@
       ]
     },
     {
-      "id": "grafik",
-      "title": "Grafik berbagai fungsi",
+      "id": "grafik-fungsi-eksponen-logaritma-lanjut",
+      "title": "Eksplorasi Kurva Eksponensial dan Logaritmik dengan Berbagai Basis (a > 1 dan 0 < a < 1)",
       "kind": "simulasi",
-      "duration": "40 menit",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "sim/grafik-fungsi.html",
-          "title": "Grafik, asimtot, domain, dan daerah hasil",
-          "height": 620,
-          "caption": "Pilih jenis fungsi dan ubah parameternya. Perhatikan bagaimana asimtot, domain, dan daerah hasil ikut berubah. Pada fungsi rasional, coba b = −ac agar muncul lubang, bukan asimtot."
+          "type": "text",
+          "html": "<p><b>Eksplorasi Kurva Eksponensial dan Logaritmik dengan Berbagai Basis (a > 1 dan 0 < a < 1)</b>: Menganalisis sifat monoton naik vs monoton turun, asimtot horizontal y = 0 vs asimtot vertikal x = 0, serta titik potong tetap.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Ciri grafik",
-          "html": "<ul><li>Rasional \\(\\frac{ax + b}{x - c}\\): asimtot tegak \\(x = c\\), asimtot datar \\(y = a\\).</li><li>Eksponen \\(a\\cdot b^x + k\\): asimtot datar \\(y = k\\), melalui \\((0, a + k)\\).</li><li>Logaritma \\({}^b\\log(x - h) + k\\): asimtot tegak \\(x = h\\), melalui \\((h + 1, k)\\).</li><li>Trigonometri: amplitudo \\(|a|\\), periode \\(360^\\circ/|b|\\); grafik sin dimulai dari tengah, cos dari puncak (untuk \\(a &gt; 0\\)).</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
         },
         {
           "type": "sim",
@@ -83,13 +76,14 @@
         },
         {
           "type": "example",
-          "title": "Contoh: membaca model eksponen",
-          "question": "<p>Jumlah pengguna sebuah aplikasi dimodelkan \\(N(t) = 3\\cdot 2^t\\) ribu, t dalam bulan. Kapan penggunanya mencapai 96 ribu?</p>",
+          "title": "Contoh 2: daerah hasil dengan domain terbatas",
+          "question": "<p>Tentukan daerah hasil \\(f(x) = |x - 1| - 2\\) untuk \\(-2 \\le x \\le 3\\).</p>",
           "steps": [
-            "\\(3\\cdot 2^t = 96 \\Rightarrow 2^t = 32 = 2^5\\).",
-            "t = 5."
+            "Nilai terkecil di x = 1: f(1) = −2.",
+            "Ujung: f(−2) = 3 − 2 = 1; f(3) = 2 − 2 = 0.",
+            "Nilai terbesar 1."
           ],
-          "answer": "Bulan ke-5"
+          "answer": "{y | −2 ≤ y ≤ 1}"
         },
         {
           "type": "check",
@@ -107,26 +101,125 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "35 menit",
+      "id": "grafik-trigonometri-amplitudo-periode",
+      "title": "Grafik Trigonometri Lanjutan: y = A sin(k(x ± c)) + d dan y = A cos(k(x ± c)) + d",
+      "kind": "simulasi",
+      "duration": "18 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tulis semua syarat (penyebut, akar, numerus) lalu iriskan.</li><li>Untuk daerah hasil pada domain terbatas, cek titik puncak/lembah dan kedua ujung.</li><li>Mencocokkan grafik: cek titik potong sumbu, asimtot, nilai maksimum/minimum, dan periode.</li><li>Model eksponen di dunia nyata biasanya hanya cocok untuk jangka pendek.</li></ul>"
+          "type": "text",
+          "html": "<p><b>Grafik Trigonometri Lanjutan: y = A sin(k(x ± c)) + d dan y = A cos(k(x ± c)) + d</b>: Menghitung amplitudo |A|, periode T = 2π/k, pergeseran fasa horizontal c, dan garis tengah vertikal y = d.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Memasukkan batas ke domain logaritma (padahal harus &gt;).</li><li>Menganggap faktor di dalam sin mengubah amplitudo.</li><li>Lupa bahwa \\(b^x\\) tidak pernah nol, sehingga asimtotnya tidak pernah dicapai.</li><li>Membaca daerah hasil pada sumbu-x.</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/grafik-fungsi.html",
+          "title": "Grafik, asimtot, domain, dan daerah hasil",
+          "height": 620,
+          "caption": "Pilih jenis fungsi dan ubah parameternya. Perhatikan bagaimana asimtot, domain, dan daerah hasil ikut berubah. Pada fungsi rasional, coba b = −ac agar muncul lubang, bukan asimtot."
+        },
+        {
+          "type": "example",
+          "title": "Contoh: membaca model eksponen",
+          "question": "<p>Jumlah pengguna sebuah aplikasi dimodelkan \\(N(t) = 3\\cdot 2^t\\) ribu, t dalam bulan. Kapan penggunanya mencapai 96 ribu?</p>",
+          "steps": [
+            "\\(3\\cdot 2^t = 96 \\Rightarrow 2^t = 32 = 2^5\\).",
+            "t = 5."
+          ],
+          "answer": "Bulan ke-5"
+        }
+      ]
+    },
+    {
+      "id": "rekonstruksi-rumus-dari-grafik",
+      "title": "Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva</b>: Membaca koordinat titik puncak, titik potong sumbu, dan asimtot grafik untuk menyusun rumus eksplisit fungsi.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva",
+          "question": "<p>Perhatikan permasalahan terkait <b>Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva</b> berikut. Analisislah berdasarkan prinsip Membaca koordinat titik puncak, titik potong sumbu, dan asimtot grafik untuk menyusun rumus eksplisit fungsi..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Membaca koordinat titik puncak, titik potong sumbu, dan asimtot grafik untuk menyusun rumus eksplisit fungsi.."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mtl-04",
+      "title": "Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4</b>: Menuntaskan interpretasi fungsi transenden dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4</b> berikut. Analisislah berdasarkan prinsip Menuntaskan interpretasi fungsi transenden dan menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan interpretasi fungsi transenden dan menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

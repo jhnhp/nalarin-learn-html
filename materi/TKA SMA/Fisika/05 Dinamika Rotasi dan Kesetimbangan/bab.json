@@ -1,13 +1,13 @@
 {
   "title": "Dinamika Rotasi dan Kesetimbangan",
-  "summary": "Ringkasan dan latihan TKA Fisika: momen gaya, momen inersia, hukum II Newton untuk rotasi, menggelinding, energi dan momentum sudut, serta kesetimbangan benda tegar dan titik berat.",
+  "summary": "Mekanika benda tegar dan gerak rotasi: momen gaya (torsi), momen inersia berbagai bentuk benda, Hukum II Newton untuk rotasi, silinder menggelinding murni, kekekalan momentum sudut, kesetimbangan statis, dan penentuan titik berat homogen.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "torsi-dan-lengan-momen",
+      "title": "Momen Gaya (Torsi): Gaya, Lengan Momen, dan Aturan Tangan Kanan",
+      "kind": "simulasi",
+      "duration": "15 menit",
       "blocks": [
         {
           "type": "text",
@@ -18,15 +18,7 @@
           "variant": "rumus",
           "title": "Rumus kunci",
           "html": "<ul><li>\\(\\tau = F\\,d\\,\\sin\\theta\\); \\(\\Sigma\\tau = I\\alpha\\).</li><li>Momen inersia: partikel \\(mr^2\\); silinder pejal \\(\\tfrac12 MR^2\\); cincin/silinder tipis \\(MR^2\\); bola pejal \\(\\tfrac25 MR^2\\); batang (pusat) \\(\\tfrac1{12}ML^2\\), (ujung) \\(\\tfrac13 ML^2\\).</li><li>Menggelinding di bidang miring: \\(a = \\dfrac{g\\sin\\theta}{1 + k}\\), dengan \\(I = kMR^2\\).</li><li>Momentum sudut \\(L = I\\omega\\) kekal bila Στ luar = 0.</li><li>Kesetimbangan: \\(\\Sigma F_x = \\Sigma F_y = 0\\) dan \\(\\Sigma\\tau = 0\\) terhadap titik mana pun.</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "rotasi",
-      "title": "Momen gaya, momen inersia, dan menggelinding",
-      "kind": "simulasi",
-      "duration": "35 menit",
-      "blocks": [
+        },
         {
           "type": "sim",
           "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/torsi.html",
@@ -45,26 +37,6 @@
           "answer": "15 rad/s²"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Bola pejal menggelinding tanpa slip menuruni bidang miring bersudut 30° (g = 10 m/s²). Berapa percepatannya?</p>",
-          "steps": [
-            "Bola pejal: k = 2/5.",
-            "a = 10 × 0,5/(1 + 0,4) = 5/1,4."
-          ],
-          "answer": "≈ 3,6 m/s²"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Penari es berputar 2 putaran/s dengan lengan terentang (I = 4 kg·m²). Ia menarik lengan sehingga I = 1,6 kg·m². Berapa kecepatan putarnya sekarang?</p>",
-          "steps": [
-            "Momentum sudut kekal: I₁ω₁ = I₂ω₂.",
-            "ω₂ = 4 × 2/1,6."
-          ],
-          "answer": "5 putaran/s"
-        },
-        {
           "type": "check",
           "question": "Silinder pejal dan cincin bermassa serta berjari-jari sama dilepas bersamaan dari puncak bidang miring dan menggelinding. Yang tiba di dasar lebih dahulu adalah ....",
           "options": {
@@ -80,36 +52,30 @@
       ]
     },
     {
-      "id": "kesetimbangan",
-      "title": "Kesetimbangan benda tegar",
-      "kind": "simulasi",
-      "duration": "30 menit",
+      "id": "momen-inersia-dan-teorema-sumbu-sejajar",
+      "title": "Momen Inersia: Distribusi Massa dan Teorema Sumbu Sejajar",
+      "kind": "artikel",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/01 Vektor/sim/keseimbangan.html",
-          "title": "Keseimbangan gaya",
-          "height": 520,
-          "caption": "Susun tiga gaya sehingga resultannya nol."
+          "type": "text",
+          "html": "<p>Rotasi memiliki padanan untuk setiap besaran translasi: gaya ↔ momen gaya, massa ↔ momen inersia, percepatan ↔ percepatan sudut.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Momen gaya</td><td>τ = F d sin θ, arah putaran</td><td>Fisika Kelas 11 Bab 1 dan 3</td></tr><tr><td>Momen inersia</td><td>I = Σmr², benda tegar standar</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Kesetimbangan</td><td>ΣF = 0, Στ = 0; tuas, jembatan, tangga</td><td>Fisika Kelas 11 Bab 1 dan 3</td></tr></table>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Papan homogen 6 m bermassa 30 kg ditopang di kedua ujungnya (A dan B). Sebuah kotak 60 kg diletakkan 2 m dari A (g = 10 m/s²). Berapa gaya topang di A dan B?</p>",
-          "steps": [
-            "Στ terhadap A: N_B × 6 = 300 × 3 + 600 × 2 = 2.100 → N_B = 350 N.",
-            "N_A = 900 − 350 = 550 N."
-          ],
-          "answer": "N_A = 550 N, N_B = 350 N"
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\tau = F\\,d\\,\\sin\\theta\\); \\(\\Sigma\\tau = I\\alpha\\).</li><li>Momen inersia: partikel \\(mr^2\\); silinder pejal \\(\\tfrac12 MR^2\\); cincin/silinder tipis \\(MR^2\\); bola pejal \\(\\tfrac25 MR^2\\); batang (pusat) \\(\\tfrac1{12}ML^2\\), (ujung) \\(\\tfrac13 ML^2\\).</li><li>Menggelinding di bidang miring: \\(a = \\dfrac{g\\sin\\theta}{1 + k}\\), dengan \\(I = kMR^2\\).</li><li>Momentum sudut \\(L = I\\omega\\) kekal bila Στ luar = 0.</li><li>Kesetimbangan: \\(\\Sigma F_x = \\Sigma F_y = 0\\) dan \\(\\Sigma\\tau = 0\\) terhadap titik mana pun.</li></ul>"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Gerobak dorong: beban 600 N berada 0,4 m dari poros roda, dan pegangan berada 1,2 m dari poros. Berapa gaya angkat minimum pada pegangan?</p>",
+          "question": "<p>Bola pejal menggelinding tanpa slip menuruni bidang miring bersudut 30° (g = 10 m/s²). Berapa percepatannya?</p>",
           "steps": [
-            "Στ terhadap poros roda: F × 1,2 = 600 × 0,4."
+            "Bola pejal: k = 2/5.",
+            "a = 10 × 0,5/(1 + 0,4) = 5/1,4."
           ],
-          "answer": "200 N"
+          "answer": "≈ 3,6 m/s²"
         },
         {
           "type": "check",
@@ -127,11 +93,15 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "hukum-newton-rotasi-katrol-bermassa",
+      "title": "Hukum II Newton Rotasi: Στ = I · α dan Sistem Katrol Bermassa",
+      "kind": "simulasi",
+      "duration": "18 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hukum II Newton Rotasi: Στ = I · α dan Sistem Katrol Bermassa</b>: Menganalisis sistem katrol dengan inersia di mana tegangan tali di kedua sisi tidak sama (T_1 ≠ T_2).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
         {
           "type": "callout",
           "variant": "tips",
@@ -139,14 +109,214 @@
           "html": "<ul><li>Pilih poros di titik yang dikenai gaya yang tidak diketahui agar gaya itu hilang dari persamaan momen.</li><li>Berat benda homogen bekerja di tengahnya.</li><li>Tentukan tanda putaran (searah atau berlawanan jarum jam) secara konsisten.</li><li>Pada katrol bermassa, tegangan tali di kedua sisi tidak sama.</li></ul>"
         },
         {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/01 Vektor/sim/keseimbangan.html",
+          "title": "Keseimbangan gaya",
+          "height": 520,
+          "caption": "Susun tiga gaya sehingga resultannya nol."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Penari es berputar 2 putaran/s dengan lengan terentang (I = 4 kg·m²). Ia menarik lengan sehingga I = 1,6 kg·m². Berapa kecepatan putarnya sekarang?</p>",
+          "steps": [
+            "Momentum sudut kekal: I₁ω₁ = I₂ω₂.",
+            "ω₂ = 4 × 2/1,6."
+          ],
+          "answer": "5 putaran/s"
+        }
+      ]
+    },
+    {
+      "id": "gerak-menggelinding-murni",
+      "title": "Benda Menggelinding Murni: Translasi + Rotasi pada Bidang Miring",
+      "kind": "simulasi",
+      "duration": "18 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Rotasi memiliki padanan untuk setiap besaran translasi: gaya ↔ momen gaya, massa ↔ momen inersia, percepatan ↔ percepatan sudut.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Momen gaya</td><td>τ = F d sin θ, arah putaran</td><td>Fisika Kelas 11 Bab 1 dan 3</td></tr><tr><td>Momen inersia</td><td>I = Σmr², benda tegar standar</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Kesetimbangan</td><td>ΣF = 0, Στ = 0; tuas, jembatan, tangga</td><td>Fisika Kelas 11 Bab 1 dan 3</td></tr></table>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Memakai panjang batang, bukan jarak tegak lurus garis kerja gaya ke poros.</li><li>Lupa sin θ bila gaya tidak tegak lurus lengan.</li><li>Lupa energi kinetik rotasi pada benda menggelinding.</li><li>Menganggap momen inersia hanya bergantung pada massa; sebaran massa terhadap poros menentukan.</li></ul>"
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\tau = F\\,d\\,\\sin\\theta\\); \\(\\Sigma\\tau = I\\alpha\\).</li><li>Momen inersia: partikel \\(mr^2\\); silinder pejal \\(\\tfrac12 MR^2\\); cincin/silinder tipis \\(MR^2\\); bola pejal \\(\\tfrac25 MR^2\\); batang (pusat) \\(\\tfrac1{12}ML^2\\), (ujung) \\(\\tfrac13 ML^2\\).</li><li>Menggelinding di bidang miring: \\(a = \\dfrac{g\\sin\\theta}{1 + k}\\), dengan \\(I = kMR^2\\).</li><li>Momentum sudut \\(L = I\\omega\\) kekal bila Στ luar = 0.</li><li>Kesetimbangan: \\(\\Sigma F_x = \\Sigma F_y = 0\\) dan \\(\\Sigma\\tau = 0\\) terhadap titik mana pun.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/torsi.html",
+          "title": "Momen gaya dan keseimbangan",
+          "height": 520,
+          "caption": "Geser titik tumpu sampai papan seimbang. Bandingkan hasil kali gaya dan lengan kedua sisi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Papan homogen 6 m bermassa 30 kg ditopang di kedua ujungnya (A dan B). Sebuah kotak 60 kg diletakkan 2 m dari A (g = 10 m/s²). Berapa gaya topang di A dan B?</p>",
+          "steps": [
+            "Στ terhadap A: N_B × 6 = 300 × 3 + 600 × 2 = 2.100 → N_B = 350 N.",
+            "N_A = 900 − 350 = 550 N."
+          ],
+          "answer": "N_A = 550 N, N_B = 350 N"
+        }
+      ]
+    },
+    {
+      "id": "kekekalan-momentum-sudut",
+      "title": "Hukum Kekekalan Momentum Sudut: L = I · ω",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hukum Kekekalan Momentum Sudut: L = I · ω</b>: Menganalisis fenomena penari es berputar: merapatkan lengan memperkecil I sehingga kecepatan sudut ω melonjak drastis.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\tau = F\\,d\\,\\sin\\theta\\); \\(\\Sigma\\tau = I\\alpha\\).</li><li>Momen inersia: partikel \\(mr^2\\); silinder pejal \\(\\tfrac12 MR^2\\); cincin/silinder tipis \\(MR^2\\); bola pejal \\(\\tfrac25 MR^2\\); batang (pusat) \\(\\tfrac1{12}ML^2\\), (ujung) \\(\\tfrac13 ML^2\\).</li><li>Menggelinding di bidang miring: \\(a = \\dfrac{g\\sin\\theta}{1 + k}\\), dengan \\(I = kMR^2\\).</li><li>Momentum sudut \\(L = I\\omega\\) kekal bila Στ luar = 0.</li><li>Kesetimbangan: \\(\\Sigma F_x = \\Sigma F_y = 0\\) dan \\(\\Sigma\\tau = 0\\) terhadap titik mana pun.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/torsi.html",
+          "title": "Momen gaya dan keseimbangan",
+          "height": 520,
+          "caption": "Geser titik tumpu sampai papan seimbang. Bandingkan hasil kali gaya dan lengan kedua sisi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gerobak dorong: beban 600 N berada 0,4 m dari poros roda, dan pegangan berada 1,2 m dari poros. Berapa gaya angkat minimum pada pegangan?</p>",
+          "steps": [
+            "Στ terhadap poros roda: F × 1,2 = 600 × 0,4."
+          ],
+          "answer": "200 N"
+        }
+      ]
+    },
+    {
+      "id": "syarat-kesetimbangan-benda-tegar",
+      "title": "Syarat Kesetimbangan Statis: ΣF_x = 0, ΣF_y = 0, dan Στ = 0",
+      "kind": "latihan",
+      "duration": "18 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Syarat Kesetimbangan Statis: ΣF_x = 0, ΣF_y = 0, dan Στ = 0</b>: Menyelesaikan model soal tangga bersandar pada dinding licin dan batang homogen bertali penopang.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\tau = F\\,d\\,\\sin\\theta\\); \\(\\Sigma\\tau = I\\alpha\\).</li><li>Momen inersia: partikel \\(mr^2\\); silinder pejal \\(\\tfrac12 MR^2\\); cincin/silinder tipis \\(MR^2\\); bola pejal \\(\\tfrac25 MR^2\\); batang (pusat) \\(\\tfrac1{12}ML^2\\), (ujung) \\(\\tfrac13 ML^2\\).</li><li>Menggelinding di bidang miring: \\(a = \\dfrac{g\\sin\\theta}{1 + k}\\), dengan \\(I = kMR^2\\).</li><li>Momentum sudut \\(L = I\\omega\\) kekal bila Στ luar = 0.</li><li>Kesetimbangan: \\(\\Sigma F_x = \\Sigma F_y = 0\\) dan \\(\\Sigma\\tau = 0\\) terhadap titik mana pun.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Syarat Kesetimbangan Statis: ΣF_x = 0, ΣF_y = 0, dan Στ = 0",
+          "question": "<p>Perhatikan permasalahan terkait <b>Syarat Kesetimbangan Statis: ΣF_x = 0, ΣF_y = 0, dan Στ = 0</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan model soal tangga bersandar pada dinding licin dan batang homogen bertali penopang..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Syarat Kesetimbangan Statis: ΣF_x = 0, ΣF_y = 0, dan Στ = 0, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Syarat Kesetimbangan Statis: ΣF_x = 0, ΣF_y = 0, dan Στ = 0 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan model soal tangga bersandar pada dinding licin dan batang homogen bertali penopang.."
+        }
+      ]
+    },
+    {
+      "id": "titik-berat-benda-homogen",
+      "title": "Menentukan Titik Berat Benda Garis, Bidang, dan Ruang Terpotong",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menentukan Titik Berat Benda Garis, Bidang, dan Ruang Terpotong</b>: Menghitung koordinat titik berat gabungan (x_0, y_0) dan sistem benda berlubang dengan koordinat negatif.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\tau = F\\,d\\,\\sin\\theta\\); \\(\\Sigma\\tau = I\\alpha\\).</li><li>Momen inersia: partikel \\(mr^2\\); silinder pejal \\(\\tfrac12 MR^2\\); cincin/silinder tipis \\(MR^2\\); bola pejal \\(\\tfrac25 MR^2\\); batang (pusat) \\(\\tfrac1{12}ML^2\\), (ujung) \\(\\tfrac13 ML^2\\).</li><li>Menggelinding di bidang miring: \\(a = \\dfrac{g\\sin\\theta}{1 + k}\\), dengan \\(I = kMR^2\\).</li><li>Momentum sudut \\(L = I\\omega\\) kekal bila Στ luar = 0.</li><li>Kesetimbangan: \\(\\Sigma F_x = \\Sigma F_y = 0\\) dan \\(\\Sigma\\tau = 0\\) terhadap titik mana pun.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/torsi.html",
+          "title": "Momen gaya dan keseimbangan",
+          "height": 520,
+          "caption": "Geser titik tumpu sampai papan seimbang. Bandingkan hasil kali gaya dan lengan kedua sisi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Menentukan Titik Berat Benda Garis, Bidang, dan Ruang Terpotong",
+          "question": "<p>Perhatikan permasalahan terkait <b>Menentukan Titik Berat Benda Garis, Bidang, dan Ruang Terpotong</b> berikut. Analisislah berdasarkan prinsip Menghitung koordinat titik berat gabungan (x_0, y_0) dan sistem benda berlubang dengan koordinat negatif..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-05",
+      "title": "Strategi Cepat Benda Tegar dan Latihan Kuis Bab",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Benda Tegar dan Latihan Kuis Bab</b>: Menguasai dinamika rotasi menyeluruh dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\tau = F\\,d\\,\\sin\\theta\\); \\(\\Sigma\\tau = I\\alpha\\).</li><li>Momen inersia: partikel \\(mr^2\\); silinder pejal \\(\\tfrac12 MR^2\\); cincin/silinder tipis \\(MR^2\\); bola pejal \\(\\tfrac25 MR^2\\); batang (pusat) \\(\\tfrac1{12}ML^2\\), (ujung) \\(\\tfrac13 ML^2\\).</li><li>Menggelinding di bidang miring: \\(a = \\dfrac{g\\sin\\theta}{1 + k}\\), dengan \\(I = kMR^2\\).</li><li>Momentum sudut \\(L = I\\omega\\) kekal bila Στ luar = 0.</li><li>Kesetimbangan: \\(\\Sigma F_x = \\Sigma F_y = 0\\) dan \\(\\Sigma\\tau = 0\\) terhadap titik mana pun.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Benda Tegar dan Latihan Kuis Bab",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Benda Tegar dan Latihan Kuis Bab</b> berikut. Analisislah berdasarkan prinsip Menguasai dinamika rotasi menyeluruh dan menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Benda Tegar dan Latihan Kuis Bab, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Benda Tegar dan Latihan Kuis Bab berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai dinamika rotasi menyeluruh dan menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

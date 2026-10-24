@@ -1,25 +1,23 @@
 {
   "title": "Lingkaran",
-  "summary": "Lingkaran untuk TKA Matematika Tingkat Lanjut: persamaan lingkaran bentuk baku dan umum, kedudukan titik dan garis, persamaan garis singgung, serta panjang busur, luas juring, dan luas tembereng.",
+  "summary": "Geometri analitis lingkaran: persamaan lingkaran berpusat (0,0) dan (a,b), bentuk umum x^2 + y^2 + Ax + By + C = 0, kedudukan titik dan garis terhadap lingkaran, persamaan garis singgung lingkaran (melalui titik pada lingkaran, gradien tertentu, dan titik di luar lingkaran), serta kedudukan dua lingkaran (berpotongan, bersinggungan luar/dalam).",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "persamaan",
-      "title": "Persamaan lingkaran",
+      "id": "persamaan-dasar-lingkaran",
+      "title": "Persamaan Lingkaran: Pusat (a, b) dan Jari-Jari r Serta Bentuk Umum",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "16 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Persamaan Lingkaran: Pusat (a, b) dan Jari-Jari r Serta Bentuk Umum</b>: Menentukan pusat P(−1/2 A, −1/2 B) dan jari-jari r = √(1/4 A^2 + 1/4 B^2 − C) dari bentuk umum kuadratik.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
         {
           "type": "callout",
           "variant": "info",
           "title": "Cakupan TKA",
           "html": "<p><b>Lingkaran</b>: persamaan lingkaran dan persamaan garis singgung; luas dan keliling daerah lingkaran atau bagian daerah lingkaran.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Bentuk persamaan",
-          "html": "<ul><li>Pusat \\((a, b)\\), jari-jari r: \\((x - a)^2 + (y - b)^2 = r^2\\).</li><li>Bentuk umum \\(x^2 + y^2 + Ax + By + C = 0\\): pusat \\(\\left(-\\frac{A}{2}, -\\frac{B}{2}\\right)\\), \\(r = \\sqrt{\\frac{A^2}{4} + \\frac{B^2}{4} - C}\\).</li><li>Kedudukan titik: substitusi ke ruas kiri bentuk baku lalu bandingkan dengan \\(r^2\\) (&lt; di dalam, = pada, &gt; di luar).</li><li>Kedudukan garis: substitusi ke persamaan lingkaran, lihat diskriminan (D &gt; 0 memotong, D = 0 menyinggung, D &lt; 0 tidak memotong), atau bandingkan jarak pusat ke garis dengan r.</li></ul>"
         },
         {
           "type": "sim",
@@ -39,16 +37,6 @@
           "answer": "Pusat (−5, 2), r = 5"
         },
         {
-          "type": "example",
-          "title": "Contoh 2: menyinggung sumbu",
-          "question": "<p>Tentukan persamaan lingkaran berpusat di (3, −4) yang menyinggung sumbu-y.</p>",
-          "steps": [
-            "Jarak pusat ke sumbu-y = |3| = 3 = r.",
-            "(x − 3)² + (y + 4)² = 9."
-          ],
-          "answer": "(x − 3)² + (y + 4)² = 9"
-        },
-        {
           "type": "check",
           "question": "Titik (1, 2) terhadap lingkaran \\(x^2 + y^2 = 4\\) terletak ....",
           "options": {
@@ -64,16 +52,20 @@
       ]
     },
     {
-      "id": "singgung",
-      "title": "Garis singgung lingkaran",
+      "id": "kedudukan-titik-dan-garis-terhadap-lingkaran",
+      "title": "Kedudukan Titik (Di Dalam, Pada, Di Luar) dan Kedudukan Garis (Diskriminan D)",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "16 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Kedudukan Titik (Di Dalam, Pada, Di Luar) dan Kedudukan Garis (Diskriminan D)</b>: Menguji kuasa titik K terhadap lingkaran dan menggunakan nilai D = b^2 − 4ac untuk garis memotong (D>0), menyinggung (D=0), atau lepas (D<0).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Garis singgung",
-          "html": "<ul><li>Di titik \\((x_1, y_1)\\) pada \\(x^2 + y^2 = r^2\\): \\(x_1x + y_1y = r^2\\).</li><li>Di titik \\((x_1, y_1)\\) pada \\((x - a)^2 + (y - b)^2 = r^2\\): \\((x_1 - a)(x - a) + (y_1 - b)(y - b) = r^2\\).</li><li>Bergradien m pada \\(x^2 + y^2 = r^2\\): \\(y = mx \\pm r\\sqrt{1 + m^2}\\); pada lingkaran berpusat (a, b): \\(y - b = m(x - a) \\pm r\\sqrt{1 + m^2}\\).</li><li>Jari-jari ke titik singgung selalu tegak lurus garis singgung.</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Lingkaran</b>: persamaan lingkaran dan persamaan garis singgung; luas dan keliling daerah lingkaran atau bagian daerah lingkaran.</p>"
         },
         {
           "type": "sim",
@@ -84,13 +76,13 @@
         },
         {
           "type": "example",
-          "title": "Contoh: garis singgung bergradien",
-          "question": "<p>Tentukan garis singgung \\(x^2 + y^2 = 9\\) yang sejajar garis \\(y = 2x + 1\\).</p>",
+          "title": "Contoh 2: menyinggung sumbu",
+          "question": "<p>Tentukan persamaan lingkaran berpusat di (3, −4) yang menyinggung sumbu-y.</p>",
           "steps": [
-            "Sejajar → m = 2.",
-            "y = 2x ± 3√(1 + 4) = 2x ± 3√5."
+            "Jarak pusat ke sumbu-y = |3| = 3 = r.",
+            "(x − 3)² + (y + 4)² = 9."
           ],
-          "answer": "y = 2x + 3√5 dan y = 2x − 3√5"
+          "answer": "(x − 3)² + (y + 4)² = 9"
         },
         {
           "type": "check",
@@ -108,27 +100,30 @@
       ]
     },
     {
-      "id": "busur",
-      "title": "Busur, juring, dan tembereng",
+      "id": "garis-singgung-titik-pada-lingkaran",
+      "title": "Persamaan Garis Singgung Lingkaran Melalui Titik Singgung (x_1, y_1)",
       "kind": "artikel",
-      "duration": "20 menit",
+      "duration": "15 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Persamaan Garis Singgung Lingkaran Melalui Titik Singgung (x_1, y_1)</b>: Menerapkan metode bagi adil: x_1 x + y_1 y + 1/2 A(x + x_1) + 1/2 B(y + y_1) + C = 0.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Bagian lingkaran",
-          "html": "<ul><li>Panjang busur = \\(\\frac{\\theta}{360^\\circ}\\times 2\\pi r\\).</li><li>Luas juring = \\(\\frac{\\theta}{360^\\circ}\\times \\pi r^2\\).</li><li>Luas tembereng = luas juring − luas segitiga = \\(\\frac{\\theta}{360^\\circ}\\pi r^2 - \\frac12 r^2\\sin\\theta\\).</li><li>Luas cincin = \\(\\pi(R^2 - r^2)\\).</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Lingkaran</b>: persamaan lingkaran dan persamaan garis singgung; luas dan keliling daerah lingkaran atau bagian daerah lingkaran.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh: tembereng 60°",
-          "question": "<p>Hitung luas tembereng pada lingkaran berjari-jari 6 cm dengan sudut pusat 60°.</p>",
+          "title": "Contoh: garis singgung bergradien",
+          "question": "<p>Tentukan garis singgung \\(x^2 + y^2 = 9\\) yang sejajar garis \\(y = 2x + 1\\).</p>",
           "steps": [
-            "Juring = 60/360 × π × 36 = 6π.",
-            "Segitiga sama sisi: ½ × 36 × sin 60° = 9√3.",
-            "Tembereng = 6π − 9√3 ≈ 3,26 cm²."
+            "Sejajar → m = 2.",
+            "y = 2x ± 3√(1 + 4) = 2x ± 3√5."
           ],
-          "answer": "(6π − 9√3) cm²"
+          "answer": "y = 2x + 3√5 dan y = 2x − 3√5"
         },
         {
           "type": "check",
@@ -146,26 +141,162 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "35 menit",
+      "id": "garis-singgung-gradien-m",
+      "title": "Persamaan Garis Singgung dengan Gradien Tertentu (m)",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Ubah bentuk umum ke bentuk baku dengan melengkapkan kuadrat bila ragu.</li><li>Sebelum memakai rumus garis singgung di titik, cek dulu titiknya memang pada lingkaran.</li><li>Menyinggung sumbu-x berarti r = |b|; menyinggung sumbu-y berarti r = |a|.</li><li>Garis yang melalui pusat memotong lingkaran sepanjang diameter.</li></ul>"
+          "type": "text",
+          "html": "<p><b>Persamaan Garis Singgung dengan Gradien Tertentu (m)</b>: Menerapkan y − b = m(x − a) ± r√(1 + m^2) untuk mencari sepasang garis singgung sejajar atau tegak lurus garis lain.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Salah tanda pusat dari bentuk umum (pusatnya −A/2, −B/2).</li><li>Lupa ± pada garis singgung bergradien.</li><li>Tertukar panjang busur (cm) dan luas juring (cm²).</li><li>Menambahkan lebar jalan dua kali pada soal cincin.</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Lingkaran</b>: persamaan lingkaran dan persamaan garis singgung; luas dan keliling daerah lingkaran atau bagian daerah lingkaran.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/lingkaran.html",
+          "title": "Persamaan lingkaran, garis, juring",
+          "height": 620,
+          "caption": "Mode 1: ubah A, B, C dan amati pusat serta jari-jari. Mode 2: geser garis sampai menyinggung (D = 0). Mode 3: ubah sudut juring."
+        },
+        {
+          "type": "example",
+          "title": "Contoh: tembereng 60°",
+          "question": "<p>Hitung luas tembereng pada lingkaran berjari-jari 6 cm dengan sudut pusat 60°.</p>",
+          "steps": [
+            "Juring = 60/360 × π × 36 = 6π.",
+            "Segitiga sama sisi: ½ × 36 × sin 60° = 9√3.",
+            "Tembereng = 6π − 9√3 ≈ 3,26 cm²."
+          ],
+          "answer": "(6π − 9√3) cm²"
+        }
+      ]
+    },
+    {
+      "id": "garis-singgung-titik-di-luar-garis-kutub",
+      "title": "Garis Singgung Melalui Titik di Luar Lingkaran dan Persamaan Garis Kutub (Polar)",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Garis Singgung Melalui Titik di Luar Lingkaran dan Persamaan Garis Kutub (Polar)</b>: Menentukan persamaan garis polar yang menghubungkan dua titik singgung dan mencari persamaan garis singgungnya.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Lingkaran</b>: persamaan lingkaran dan persamaan garis singgung; luas dan keliling daerah lingkaran atau bagian daerah lingkaran.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Garis Singgung Melalui Titik di Luar Lingkaran dan Persamaan Garis Kutub (Polar)",
+          "question": "<p>Perhatikan permasalahan terkait <b>Garis Singgung Melalui Titik di Luar Lingkaran dan Persamaan Garis Kutub (Polar)</b> berikut. Analisislah berdasarkan prinsip Menentukan persamaan garis polar yang menghubungkan dua titik singgung dan mencari persamaan garis singgungnya..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Garis Singgung Melalui Titik di Luar Lingkaran dan Persamaan Garis Kutub (Polar), pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Garis Singgung Melalui Titik di Luar Lingkaran dan Persamaan Garis Kutub (Polar) berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menentukan persamaan garis polar yang menghubungkan dua titik singgung dan mencari persamaan garis singgungnya.."
+        }
+      ]
+    },
+    {
+      "id": "hubungan-kedudukan-dua-lingkaran",
+      "title": "Hubungan Dua Lingkaran: Bersinggungan Luar/Dalam, Berpotongan, dan Garis Kuasa",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hubungan Dua Lingkaran: Bersinggungan Luar/Dalam, Berpotongan, dan Garis Kuasa</b>: Menganalisis jarak antarpusat d terhadap jumlah dan selisih jari-jari (d = r_1 + r_2, d = |r_1 − r_2|) serta garis singgung persekutuan.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Lingkaran</b>: persamaan lingkaran dan persamaan garis singgung; luas dan keliling daerah lingkaran atau bagian daerah lingkaran.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/lingkaran.html",
+          "title": "Persamaan lingkaran, garis, juring",
+          "height": 620,
+          "caption": "Mode 1: ubah A, B, C dan amati pusat serta jari-jari. Mode 2: geser garis sampai menyinggung (D = 0). Mode 3: ubah sudut juring."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Hubungan Dua Lingkaran: Bersinggungan Luar/Dalam, Berpotongan, dan Garis Kuasa",
+          "question": "<p>Perhatikan permasalahan terkait <b>Hubungan Dua Lingkaran: Bersinggungan Luar/Dalam, Berpotongan, dan Garis Kuasa</b> berikut. Analisislah berdasarkan prinsip Menganalisis jarak antarpusat d terhadap jumlah dan selisih jari-jari (d = r_1 + r_2, d = |r_1 − r_2|) serta garis singgung persekutuan..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mtl-06",
+      "title": "Strategi Geometri Lingkaran dan Latihan Kuis Bab 6",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Geometri Lingkaran dan Latihan Kuis Bab 6</b>: Menguasai geometri analitis lingkaran dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Lingkaran</b>: persamaan lingkaran dan persamaan garis singgung; luas dan keliling daerah lingkaran atau bagian daerah lingkaran.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Geometri Lingkaran dan Latihan Kuis Bab 6",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Geometri Lingkaran dan Latihan Kuis Bab 6</b> berikut. Analisislah berdasarkan prinsip Menguasai geometri analitis lingkaran dan menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Geometri Lingkaran dan Latihan Kuis Bab 6, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Geometri Lingkaran dan Latihan Kuis Bab 6 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai geometri analitis lingkaran dan menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

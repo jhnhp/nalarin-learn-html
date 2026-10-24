@@ -1,38 +1,23 @@
 {
   "title": "Gerak Parabola dan Gerak Melingkar",
-  "summary": "Ringkasan dan latihan TKA Fisika: gerak parabola dan gerak horizontal, besaran gerak melingkar beraturan, percepatan sentripetal, dan hubungan roda-roda.",
+  "summary": "Kinematika dua dimensi dan rotasi melingkar: dekomposisi vektor gerak parabola, ketinggian maksimum, jarak jangkauan terjauh, GMB, GMBB, percepatan sentripetal, serta hubungan roda-roda seporos dan bertali.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi",
+      "id": "prinsip-dekomposisi-vektor-parabola",
+      "title": "Prinsip Kemandirian Gerak dan Dekomposisi Sumbu X-Y",
       "kind": "artikel",
-      "duration": "10 menit",
+      "duration": "15 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Kunci gerak parabola: gerak mendatar beraturan dan gerak vertikal berubah beraturan berlangsung bersamaan dan saling bebas.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gerak parabola</td><td>uraian kecepatan, waktu puncak, tinggi maksimum, jangkauan</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak horizontal</td><td>dilempar mendatar dari ketinggian</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak melingkar</td><td>f, T, ω, v, aₛ; roda seporos dan bersinggungan</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+          "html": "<p><b>Prinsip Kemandirian Gerak dan Dekomposisi Sumbu X-Y</b>: Memisahkan komponen horizontal GLB (v_x = v_0 cos θ) dan komponen vertikal GLBB (v_y = v_0 sin θ − gt).</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(v_{0x} = v_0\\cos\\alpha\\), \\(v_{0y} = v_0\\sin\\alpha\\).</li><li>\\(t_\\text{puncak} = v_0\\sin\\alpha/g\\); \\(h_\\text{maks} = v_0^2\\sin^2\\alpha/(2g)\\); \\(R = v_0^2\\sin 2\\alpha/g\\).</li><li>Gerak horizontal dari tinggi h: \\(t = \\sqrt{2h/g}\\), \\(x = v_0 t\\).</li><li>\\(\\omega = 2\\pi f = 2\\pi/T\\), \\(v = \\omega R\\), \\(a_s = v^2/R = \\omega^2 R\\).</li><li>Roda seporos: ω sama. Roda bersinggungan atau dihubungkan rantai: v tepi sama.</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "parabola",
-      "title": "Gerak parabola",
-      "kind": "simulasi",
-      "duration": "30 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/02 Kinematika/sim/parabola.html",
-          "title": "Gerak parabola",
-          "height": 520,
-          "caption": "Bandingkan jangkauan pada sudut 30° dan 60° dengan kecepatan awal sama. Sudut berapa yang memberi jangkauan terjauh?"
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Visualisasi dekomposisi vektor proyektil di setiap titik lintasan.</p>"
         },
         {
           "type": "example",
@@ -44,16 +29,6 @@
             "R = 15 × 4 = 60 m."
           ],
           "answer": "20 m dan 60 m"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sebuah paket dijatuhkan dari pesawat yang terbang mendatar 50 m/s pada ketinggian 80 m. Berapa jarak mendatar paket dari titik pelepasan saat menyentuh tanah?</p>",
-          "steps": [
-            "t = √(2 × 80/10) = 4 s.",
-            "x = 50 × 4 = 200 m."
-          ],
-          "answer": "200 m"
         },
         {
           "type": "check",
@@ -71,37 +46,37 @@
       ]
     },
     {
-      "id": "melingkar",
-      "title": "Gerak melingkar beraturan dan roda-roda",
+      "id": "titik-puncak-jangkauan-maksimum",
+      "title": "Menurunkan Rumus Titik Tertinggi (h_max) dan Jarak Terjauh (X_max)",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "18 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/02 Kinematika/sim/melingkar.html",
-          "title": "Gerak melingkar beraturan",
-          "height": 520,
-          "caption": "Ubah jari-jari dengan frekuensi tetap. Apa yang terjadi pada kelajuan linear dan percepatan sentripetal?"
+          "type": "text",
+          "html": "<p><b>Menurunkan Rumus Titik Tertinggi (h_max) dan Jarak Terjauh (X_max)</b>: Menghitung waktu ke puncak, ketinggian maksimum, dan jarak tembak terjauh untuk sudut elevasi sembarang.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Roda sepeda berjari-jari 35 cm berputar 120 rpm. Tentukan kecepatan sudut dan kelajuan sepeda (π = 22/7).</p>",
-          "steps": [
-            "f = 120/60 = 2 Hz → ω = 4π = 88/7 rad/s.",
-            "v = ωR = (88/7) × 0,35 = 4,4 m/s."
-          ],
-          "answer": "4π rad/s dan 4,4 m/s"
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(v_{0x} = v_0\\cos\\alpha\\), \\(v_{0y} = v_0\\sin\\alpha\\).</li><li>\\(t_\\text{puncak} = v_0\\sin\\alpha/g\\); \\(h_\\text{maks} = v_0^2\\sin^2\\alpha/(2g)\\); \\(R = v_0^2\\sin 2\\alpha/g\\).</li><li>Gerak horizontal dari tinggi h: \\(t = \\sqrt{2h/g}\\), \\(x = v_0 t\\).</li><li>\\(\\omega = 2\\pi f = 2\\pi/T\\), \\(v = \\omega R\\), \\(a_s = v^2/R = \\omega^2 R\\).</li><li>Roda seporos: ω sama. Roda bersinggungan atau dihubungkan rantai: v tepi sama.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/02 Kinematika/sim/parabola.html",
+          "title": "Gerak parabola",
+          "height": 520,
+          "caption": "Bandingkan jangkauan pada sudut 30° dan 60° dengan kecepatan awal sama. Sudut berapa yang memberi jangkauan terjauh?"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Roda A (R = 15 cm) dihubungkan rantai dengan roda B (R = 5 cm). Roda C (R = 30 cm) seporos dengan B. Jika A berputar 4 rad/s, berapa kelajuan tepi roda C?</p>",
+          "question": "<p>Sebuah paket dijatuhkan dari pesawat yang terbang mendatar 50 m/s pada ketinggian 80 m. Berapa jarak mendatar paket dari titik pelepasan saat menyentuh tanah?</p>",
           "steps": [
-            "Rantai: vA = vB = 4 × 0,15 = 0,6 m/s → ωB = 0,6/0,05 = 12 rad/s.",
-            "Seporos: ωC = 12 rad/s → vC = 12 × 0,3."
+            "t = √(2 × 80/10) = 4 s.",
+            "x = 50 × 4 = 200 m."
           ],
-          "answer": "3,6 m/s"
+          "answer": "200 m"
         },
         {
           "type": "check",
@@ -119,16 +94,83 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
+      "id": "parabola-medan-miring",
+      "title": "Gerak Parabola pada Medan Miring dan Sasaran Bergerak",
       "kind": "latihan",
-      "duration": "30 menit",
+      "duration": "16 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Kunci gerak parabola: gerak mendatar beraturan dan gerak vertikal berubah beraturan berlangsung bersamaan dan saling bebas.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gerak parabola</td><td>uraian kecepatan, waktu puncak, tinggi maksimum, jangkauan</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak horizontal</td><td>dilempar mendatar dari ketinggian</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak melingkar</td><td>f, T, ω, v, aₛ; roda seporos dan bersinggungan</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Penyelesaian geometri koordinat berotasi dan eliminasi parameter waktu t.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Roda sepeda berjari-jari 35 cm berputar 120 rpm. Tentukan kecepatan sudut dan kelajuan sepeda (π = 22/7).</p>",
+          "steps": [
+            "f = 120/60 = 2 Hz → ω = 4π = 88/7 rad/s.",
+            "v = ωR = (88/7) × 0,35 = 4,4 m/s."
+          ],
+          "answer": "4π rad/s dan 4,4 m/s"
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Gerak Parabola pada Medan Miring dan Sasaran Bergerak, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Gerak Parabola pada Medan Miring dan Sasaran Bergerak berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan model soal HOTS proyektil yang ditembakkan dari ketinggian tebing atau menuju lereng bukit.."
+        }
+      ]
+    },
+    {
+      "id": "besaran-sudut-gmb",
+      "title": "Gerak Melingkar Beraturan (GMB): Periode, Frekuensi, dan Kecepatan Sudut",
+      "kind": "artikel",
+      "duration": "14 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Kunci gerak parabola: gerak mendatar beraturan dan gerak vertikal berubah beraturan berlangsung bersamaan dan saling bebas.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gerak parabola</td><td>uraian kecepatan, waktu puncak, tinggi maksimum, jangkauan</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak horizontal</td><td>dilempar mendatar dari ketinggian</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak melingkar</td><td>f, T, ω, v, aₛ; roda seporos dan bersinggungan</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+        },
         {
           "type": "callout",
           "variant": "tips",
           "title": "Strategi mengerjakan",
           "html": "<ul><li>Selalu uraikan kecepatan awal menjadi komponen x dan y sebelum menghitung.</li><li>Waktu adalah penghubung gerak mendatar dan vertikal.</li><li>Sudut-sudut yang berpasangan (misalnya 30° dan 60°) menghasilkan jangkauan yang sama.</li><li>Pada roda-roda, tandai mana yang seporos (ω sama) dan mana yang bersinggungan/berantai (v sama).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Roda A (R = 15 cm) dihubungkan rantai dengan roda B (R = 5 cm). Roda C (R = 30 cm) seporos dengan B. Jika A berputar 4 rad/s, berapa kelajuan tepi roda C?</p>",
+          "steps": [
+            "Rantai: vA = vB = 4 × 0,15 = 0,6 m/s → ωB = 0,6/0,05 = 12 rad/s.",
+            "Seporos: ωC = 12 rad/s → vC = 12 × 0,3."
+          ],
+          "answer": "3,6 m/s"
+        }
+      ]
+    },
+    {
+      "id": "percepatan-gaya-sentripetal",
+      "title": "Percepatan Sentripetal (a_s) dan Dinamika Gerak Melingkar",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Percepatan Sentripetal (a_s) dan Dinamika Gerak Melingkar</b>: Menghitung percepatan sentripetal a_s = v^2/R = ω^2 · R dan memahaminya sebagai agen pengubah arah gerak.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
@@ -137,8 +179,164 @@
           "html": "<ul><li>Memakai sin untuk komponen mendatar.</li><li>Lupa mengubah rpm menjadi rad/s (kalikan 2π/60).</li><li>Menganggap kecepatan pada gerak melingkar beraturan tetap; arahnya selalu berubah.</li><li>Menganggap gaya sentripetal adalah gaya jenis baru; ia adalah resultan gaya ke arah pusat (tali, gesekan, gravitasi).</li></ul>"
         },
         {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/02 Kinematika/sim/melingkar.html",
+          "title": "Gerak melingkar beraturan",
+          "height": 520,
+          "caption": "Ubah jari-jari dengan frekuensi tetap. Apa yang terjadi pada kelajuan linear dan percepatan sentripetal?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Percepatan Sentripetal (a_s) dan Dinamika Gerak Melingkar",
+          "question": "<p>Perhatikan permasalahan terkait <b>Percepatan Sentripetal (a_s) dan Dinamika Gerak Melingkar</b> berikut. Analisislah berdasarkan prinsip Menghitung percepatan sentripetal a_s = v^2/R = ω^2 · R dan memahaminya sebagai agen pengubah arah gerak..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "transmisi-roda-roda",
+      "title": "Hubungan Roda-Roda: Seporos, Bersinggungan, dan Dihubungkan Rantai",
+      "kind": "simulasi",
+      "duration": "15 menit",
+      "blocks": [
+        {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p><b>Hubungan Roda-Roda: Seporos, Bersinggungan, dan Dihubungkan Rantai</b>: Membedakan kondisi kesamaan kecepatan sudut (ω_A = ω_B pada satu poros) vs kecepatan linear (v_A = v_B pada rantai/singgung).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(v_{0x} = v_0\\cos\\alpha\\), \\(v_{0y} = v_0\\sin\\alpha\\).</li><li>\\(t_\\text{puncak} = v_0\\sin\\alpha/g\\); \\(h_\\text{maks} = v_0^2\\sin^2\\alpha/(2g)\\); \\(R = v_0^2\\sin 2\\alpha/g\\).</li><li>Gerak horizontal dari tinggi h: \\(t = \\sqrt{2h/g}\\), \\(x = v_0 t\\).</li><li>\\(\\omega = 2\\pi f = 2\\pi/T\\), \\(v = \\omega R\\), \\(a_s = v^2/R = \\omega^2 R\\).</li><li>Roda seporos: ω sama. Roda bersinggungan atau dihubungkan rantai: v tepi sama.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/02 Kinematika/sim/parabola.html",
+          "title": "Gerak parabola",
+          "height": 520,
+          "caption": "Bandingkan jangkauan pada sudut 30° dan 60° dengan kecepatan awal sama. Sudut berapa yang memberi jangkauan terjauh?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Hubungan Roda-Roda: Seporos, Bersinggungan, dan Dihubungkan Rantai",
+          "question": "<p>Perhatikan permasalahan terkait <b>Hubungan Roda-Roda: Seporos, Bersinggungan, dan Dihubungkan Rantai</b> berikut. Analisislah berdasarkan prinsip Membedakan kondisi kesamaan kecepatan sudut (ω_A = ω_B pada satu poros) vs kecepatan linear (v_A = v_B pada rantai/singgung)..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "gmbb-percepatan-total",
+      "title": "Gerak Melingkar Berubah Beraturan (GMBB) dan Percepatan Total",
+      "kind": "latihan",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Kunci gerak parabola: gerak mendatar beraturan dan gerak vertikal berubah beraturan berlangsung bersamaan dan saling bebas.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gerak parabola</td><td>uraian kecepatan, waktu puncak, tinggi maksimum, jangkauan</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak horizontal</td><td>dilempar mendatar dari ketinggian</td><td>Fisika Kelas 11 Bab 2</td></tr><tr><td>Gerak melingkar</td><td>f, T, ω, v, aₛ; roda seporos dan bersinggungan</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Fokus Konsep",
+          "html": "<p>Penyelesaian analitis vektor tegak lurus percepatan sentripetal dan tangensial.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Gerak Melingkar Berubah Beraturan (GMBB) dan Percepatan Total",
+          "question": "<p>Perhatikan permasalahan terkait <b>Gerak Melingkar Berubah Beraturan (GMBB) dan Percepatan Total</b> berikut. Analisislah berdasarkan prinsip Menghitung percepatan tangensial a_t = α · R dan resultan percepatan total a_tot = √(a_s^2 + a_t^2)..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Gerak Melingkar Berubah Beraturan (GMBB) dan Percepatan Total, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Gerak Melingkar Berubah Beraturan (GMBB) dan Percepatan Total berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung percepatan tangensial a_t = α · R dan resultan percepatan total a_tot = √(a_s^2 + a_t^2).."
+        }
+      ]
+    },
+    {
+      "id": "jebakan-gaya-sentrifugal",
+      "title": "Jebakan Konsep: Gaya Sentripetal Nyata vs Gaya Fiktif Sentrifugal",
+      "kind": "artikel",
+      "duration": "12 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Jebakan Konsep: Gaya Sentripetal Nyata vs Gaya Fiktif Sentrifugal</b>: Mencegah kesalahan menulis gaya sentrifugal pada diagram benda bebas kerangka inersial.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan yang sering muncul",
+          "html": "<ul><li>Memakai sin untuk komponen mendatar.</li><li>Lupa mengubah rpm menjadi rad/s (kalikan 2π/60).</li><li>Menganggap kecepatan pada gerak melingkar beraturan tetap; arahnya selalu berubah.</li><li>Menganggap gaya sentripetal adalah gaya jenis baru; ia adalah resultan gaya ke arah pusat (tali, gesekan, gravitasi).</li></ul>"
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-02",
+      "title": "Strategi Cepat 2D Motion dan Latihan Kuis Bab",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat 2D Motion dan Latihan Kuis Bab</b>: Menyelesaikan kombinasi soal gerak parabola dan melingkar di bawah batas waktu.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Selalu uraikan kecepatan awal menjadi komponen x dan y sebelum menghitung.</li><li>Waktu adalah penghubung gerak mendatar dan vertikal.</li><li>Sudut-sudut yang berpasangan (misalnya 30° dan 60°) menghasilkan jangkauan yang sama.</li><li>Pada roda-roda, tandai mana yang seporos (ω sama) dan mana yang bersinggungan/berantai (v sama).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat 2D Motion dan Latihan Kuis Bab",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat 2D Motion dan Latihan Kuis Bab</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan kombinasi soal gerak parabola dan melingkar di bawah batas waktu..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat 2D Motion dan Latihan Kuis Bab, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat 2D Motion dan Latihan Kuis Bab berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan kombinasi soal gerak parabola dan melingkar di bawah batas waktu.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

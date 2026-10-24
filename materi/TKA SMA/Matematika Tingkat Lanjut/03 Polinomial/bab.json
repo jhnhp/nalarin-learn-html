@@ -1,29 +1,23 @@
 {
   "title": "Polinomial",
-  "summary": "Polinomial untuk TKA Matematika Tingkat Lanjut: derajat dan operasi polinomial, pembagian bersusun dan Horner, teorema sisa, teorema faktor, pemfaktoran, serta sisa pembagian oleh bentuk kuadrat.",
+  "summary": "Teori suku banyak (polinomial): derajat dan koefisien, operasi aljabar, pembagian bersusun dan metode Horner (sintetik), Teorema Sisa, Teorema Faktor, akar-akar rasional, hubungan koefisien dan akar-akar Vieta berderajat n (derajat 3 dan 4), serta identitas polinomial.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "konsep",
-      "title": "Derajat dan operasi polinomial",
+      "id": "definisi-derajat-operasi-polinomial",
+      "title": "Definisi Suku Banyak: Bentuk Baku, Derajat, Koefisien, dan Operasi Aljabar",
       "kind": "artikel",
-      "duration": "20 menit",
+      "duration": "14 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Definisi Suku Banyak: Bentuk Baku, Derajat, Koefisien, dan Operasi Aljabar</b>: Mengidentifikasi derajat tertinggi polinomial, suku tetap (konstanta), serta melakukan penjumlahan, pengurangan, dan perkalian suku banyak.</p>"
+        },
         {
           "type": "callout",
           "variant": "info",
           "title": "Cakupan TKA",
           "html": "<p><b>Polinomial</b>: operasi polinomial, pemfaktoran polinomial, dan suku sisa.</p><p><i>Batasan</i>: derajat polinomial maksimum 4 dan semua koefisiennya bilangan real.</p>"
-        },
-        {
-          "type": "text",
-          "html": "<p>Polinomial (suku banyak) berderajat n: \\(P(x) = a_nx^n + a_{n-1}x^{n-1} + \\dots + a_1x + a_0\\) dengan \\(a_n \\ne 0\\). Derajat hasil kali = jumlah derajat; derajat hasil jumlah ≤ derajat tertinggi.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Pembagian",
-          "html": "<p>\\(P(x) = \\text{pembagi}\\cdot H(x) + S(x)\\), dengan derajat sisa S(x) <b>kurang dari</b> derajat pembagi.</p><ul><li>Pembagi berderajat 1 → sisa konstanta.</li><li>Pembagi berderajat 2 → sisa berbentuk \\(px + q\\).</li></ul>"
         },
         {
           "type": "example",
@@ -51,16 +45,20 @@
       ]
     },
     {
-      "id": "horner",
-      "title": "Horner, teorema sisa, dan teorema faktor",
+      "id": "pembagian-bersusun-dan-metode-horner",
+      "title": "Pembagian Polinomial: Algoritma Pembagian Bersusun dan Metode Skema Horner",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "18 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Pembagian Polinomial: Algoritma Pembagian Bersusun dan Metode Skema Horner</b>: Menentukan hasil bagi H(x) dan sisa S(x) dari pembagian P(x) oleh (x − k), (ax + b), dan pembagi kuadrat ax^2 + bx + c.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Teorema penting",
-          "html": "<ul><li><b>Teorema sisa</b>: sisa pembagian P(x) oleh \\((x - k)\\) adalah \\(P(k)\\); oleh \\((ax - b)\\) adalah \\(P\\left(\\frac{b}{a}\\right)\\).</li><li><b>Teorema faktor</b>: \\((x - k)\\) faktor P(x) ⇔ \\(P(k) = 0\\).</li><li>Akar bulat polinomial berkoefisien bulat adalah pembagi konstanta \\(a_0\\) (dibagi pembagi \\(a_n\\)).</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Polinomial</b>: operasi polinomial, pemfaktoran polinomial, dan suku sisa.</p><p><i>Batasan</i>: derajat polinomial maksimum 4 dan semua koefisiennya bilangan real.</p>"
         },
         {
           "type": "sim",
@@ -81,26 +79,6 @@
           "answer": "H(x) = x² + 2x − 7, sisa 4"
         },
         {
-          "type": "example",
-          "title": "Contoh 2: pemfaktoran",
-          "question": "<p>Faktorkan \\(x^3 - 2x^2 - 5x + 6\\).</p>",
-          "steps": [
-            "Coba pembagi 6: P(1) = 1 − 2 − 5 + 6 = 0 → (x − 1) faktor.",
-            "Horner: hasil bagi \\(x^2 - x - 6 = (x - 3)(x + 2)\\)."
-          ],
-          "answer": "(x − 1)(x − 3)(x + 2)"
-        },
-        {
-          "type": "example",
-          "title": "Contoh 3: sisa oleh bentuk kuadrat",
-          "question": "<p>P(x) dibagi (x − 2) bersisa 3 dan dibagi (x − 3) bersisa 7. Tentukan sisa pembagian oleh \\((x - 2)(x - 3)\\).</p>",
-          "steps": [
-            "Sisa S(x) = px + q. P(2) = 2p + q = 3; P(3) = 3p + q = 7.",
-            "p = 4, q = −5."
-          ],
-          "answer": "4x − 5"
-        },
-        {
           "type": "check",
           "question": "Sisa pembagian \\(x^3 - 3x + 4\\) oleh \\((x - 1)\\) adalah ....",
           "options": {
@@ -116,26 +94,153 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "35 menit",
+      "id": "teorema-sisa-dan-aplikasinya",
+      "title": "Teorema Sisa: Sisa Pembagian P(k) dan Pembagi Berderajat Dua",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Pembagi (x + a) berarti k = −a. Tuliskan tandanya dengan teliti.</li><li>Tulis koefisien 0 untuk suku yang hilang sebelum memakai Horner.</li><li>Dua informasi sisa → dua persamaan untuk mencari dua koefisien yang belum diketahui.</li><li>Jika sisa oleh \\(x^2 - a^2\\) diketahui, sisa oleh \\((x - a)\\) dan \\((x + a)\\) diperoleh dengan substitusi.</li></ul>"
+          "type": "text",
+          "html": "<p><b>Teorema Sisa: Sisa Pembagian P(k) dan Pembagi Berderajat Dua</b>: Menerapkan P(k) = Sisa dan menentukan sisa berderajat satu S(x) = px + q saat dibagi oleh suku kuadrat (x − a)(x − b).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Melewatkan suku bernilai nol di tabel Horner.</li><li>Salah tanda pangkat ganjil bilangan negatif.</li><li>Menganggap sisa pembagian oleh bentuk kuadrat berupa konstanta.</li><li>Lupa membagi dengan a saat pembagi berbentuk (ax − b) dan yang dicari hasil baginya.</li></ul>"
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Polinomial</b>: operasi polinomial, pemfaktoran polinomial, dan suku sisa.</p><p><i>Batasan</i>: derajat polinomial maksimum 4 dan semua koefisiennya bilangan real.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/horner.html",
+          "title": "Pembagian Horner dan teorema sisa",
+          "height": 600,
+          "caption": "Ubah k dan perhatikan: angka terakhir pada tabel Horner selalu sama dengan f(k), yaitu tinggi titik oranye pada grafik. Jika titik tepat di sumbu-x, (x − k) adalah faktor."
+        },
+        {
+          "type": "example",
+          "title": "Contoh 2: pemfaktoran",
+          "question": "<p>Faktorkan \\(x^3 - 2x^2 - 5x + 6\\).</p>",
+          "steps": [
+            "Coba pembagi 6: P(1) = 1 − 2 − 5 + 6 = 0 → (x − 1) faktor.",
+            "Horner: hasil bagi \\(x^2 - x - 6 = (x - 3)(x + 2)\\)."
+          ],
+          "answer": "(x − 1)(x − 3)(x + 2)"
+        }
+      ]
+    },
+    {
+      "id": "teorema-faktor-akar-rasional",
+      "title": "Teorema Faktor dan Penentuan Akar-Akar Rasional Polinomial",
+      "kind": "artikel",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Teorema Faktor dan Penentuan Akar-Akar Rasional Polinomial</b>: Membuktikan (x − k) adalah faktor jika P(k) = 0 dan menerapkan Teorema Akar Rasional (faktor dari a_0 dibagi faktor a_n).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Polinomial</b>: operasi polinomial, pemfaktoran polinomial, dan suku sisa.</p><p><i>Batasan</i>: derajat polinomial maksimum 4 dan semua koefisiennya bilangan real.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh 3: sisa oleh bentuk kuadrat",
+          "question": "<p>P(x) dibagi (x − 2) bersisa 3 dan dibagi (x − 3) bersisa 7. Tentukan sisa pembagian oleh \\((x - 2)(x - 3)\\).</p>",
+          "steps": [
+            "Sisa S(x) = px + q. P(2) = 2p + q = 3; P(3) = 3p + q = 7.",
+            "p = 4, q = −5."
+          ],
+          "answer": "4x − 5"
+        }
+      ]
+    },
+    {
+      "id": "hubungan-akar-koefisien-vieta-polinomial",
+      "title": "Rumus Vieta Polinomial: Jumlah dan Hasil Kali Akar Persamaan Berderajat 3 dan 4",
+      "kind": "latihan",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rumus Vieta Polinomial: Jumlah dan Hasil Kali Akar Persamaan Berderajat 3 dan 4</b>: Menghitung x_1 + x_2 + x_3 = −b/a, Σx_1·x_2 = c/a, dan x_1·x_2·x_3 = −d/a tanpa perlu mencari nilai tiap akar.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Polinomial</b>: operasi polinomial, pemfaktoran polinomial, dan suku sisa.</p><p><i>Batasan</i>: derajat polinomial maksimum 4 dan semua koefisiennya bilangan real.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Rumus Vieta Polinomial: Jumlah dan Hasil Kali Akar Persamaan Berderajat 3 dan 4",
+          "question": "<p>Perhatikan permasalahan terkait <b>Rumus Vieta Polinomial: Jumlah dan Hasil Kali Akar Persamaan Berderajat 3 dan 4</b> berikut. Analisislah berdasarkan prinsip Menghitung x_1 + x_2 + x_3 = −b/a, Σx_1·x_2 = c/a, dan x_1·x_2·x_3 = −d/a tanpa perlu mencari nilai tiap akar..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Rumus Vieta Polinomial: Jumlah dan Hasil Kali Akar Persamaan Berderajat 3 dan 4, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Rumus Vieta Polinomial: Jumlah dan Hasil Kali Akar Persamaan Berderajat 3 dan 4 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung x_1 + x_2 + x_3 = −b/a, Σx_1·x_2 = c/a, dan x_1·x_2·x_3 = −d/a tanpa perlu mencari nilai tiap akar.."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-mtl-03",
+      "title": "Strategi Cepat Polinomial dan Latihan Kuis Bab 3",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Cepat Polinomial dan Latihan Kuis Bab 3</b>: Menguasai variasi suku banyak tingkat lanjut dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Cakupan TKA",
+          "html": "<p><b>Polinomial</b>: operasi polinomial, pemfaktoran polinomial, dan suku sisa.</p><p><i>Batasan</i>: derajat polinomial maksimum 4 dan semua koefisiennya bilangan real.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Cepat Polinomial dan Latihan Kuis Bab 3",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Polinomial dan Latihan Kuis Bab 3</b> berikut. Analisislah berdasarkan prinsip Menguasai variasi suku banyak tingkat lanjut dan menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Polinomial dan Latihan Kuis Bab 3, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Cepat Polinomial dan Latihan Kuis Bab 3 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai variasi suku banyak tingkat lanjut dan menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, kerjakan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

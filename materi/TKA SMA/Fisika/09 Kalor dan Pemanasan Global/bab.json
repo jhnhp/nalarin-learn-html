@@ -1,13 +1,13 @@
 {
   "title": "Kalor dan Pemanasan Global",
-  "summary": "Ringkasan dan latihan TKA Fisika: suhu dan pemuaian, kalor jenis dan kalor laten, asas Black, perpindahan kalor secara konduksi, konveksi, dan radiasi, serta efek rumah kaca dan pemanasan global.",
+  "summary": "Termofisika dan transfer energi panas: konversi skala termometer, pemuaian zat padat/cair/gas, kalor jenis dan kalor laten, Asas Black dan kesetimbangan termal, tiga mekanisme transfer kalor (konduksi, konveksi, radiasi), serta efek rumah kaca dan sains pemanasan global.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "suhu-dan-pemuaian-termal",
+      "title": "Skala Suhu dan Pemuaian Zat: Panjang, Luas, dan Volume",
+      "kind": "simulasi",
+      "duration": "15 menit",
       "blocks": [
         {
           "type": "text",
@@ -18,15 +18,7 @@
           "variant": "rumus",
           "title": "Rumus kunci",
           "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "kalor",
-      "title": "Kalor, perubahan wujud, dan asas Black",
-      "kind": "simulasi",
-      "duration": "35 menit",
-      "blocks": [
+        },
         {
           "type": "sim",
           "src": "../../../Kelas11/Fisika/06 Kalor/sim/asas-black.html",
@@ -45,25 +37,6 @@
           "answer": "92.400 J"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sebanyak 300 g air 90 °C dicampur dengan 200 g air 20 °C. Berapa suhu akhir campuran (tanpa kalor hilang)?</p>",
-          "steps": [
-            "0,3 c (90 − T) = 0,2 c (T − 20).",
-            "27 − 0,3T = 0,2T − 4 → T = 31/0,5."
-          ],
-          "answer": "62 °C"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Rel baja sepanjang 20 m dipasang pada 25 °C (α = 1,2 × 10⁻⁵ /°C). Berapa celah minimum agar rel tidak melengkung pada 55 °C?</p>",
-          "steps": [
-            "ΔL = 20 × 1,2 × 10⁻⁵ × 30 = 7,2 × 10⁻³ m."
-          ],
-          "answer": "7,2 mm"
-        },
-        {
           "type": "check",
           "question": "Saat air mendidih pada 100 °C dan terus dipanaskan, suhunya tetap karena kalor digunakan untuk ....",
           "options": {
@@ -79,11 +52,21 @@
       ]
     },
     {
-      "id": "perpindahan",
-      "title": "Perpindahan kalor dan pemanasan global",
+      "id": "kalor-perubahan-wujud",
+      "title": "Kalor Sensibel (Q = mcΔT) dan Kalor Laten Perubahan Wujud (Q = mL / mU)",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "16 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+        },
         {
           "type": "sim",
           "src": "../../../Kelas11/Fisika/06 Kalor/sim/perpindahan-kalor.html",
@@ -92,29 +75,14 @@
           "caption": "Bandingkan bahan konduktor dan isolator. Bagaimana laju kalor berubah jika ketebalan dilipatduakan?"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas9/IPA/06 Isu-Isu Lingkungan/sim/efek-rumah-kaca.html",
-          "title": "Efek rumah kaca",
-          "height": 480,
-          "caption": "Naikkan kadar gas rumah kaca dan amati suhu Bumi."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dinding bata (k = 0,6 W/m°C) seluas 10 m² dan tebal 20 cm memisahkan ruangan 26 °C dari luar 32 °C. Berapa laju kalor yang masuk?</p>",
-          "steps": [
-            "H = kAΔT/L = 0,6 × 10 × 6/0,2."
-          ],
-          "answer": "180 W"
-        },
-        {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Suhu mutlak suatu permukaan dinaikkan dari 300 K menjadi 450 K. Berapa kali daya radiasinya?</p>",
+          "question": "<p>Sebanyak 300 g air 90 °C dicampur dengan 200 g air 20 °C. Berapa suhu akhir campuran (tanpa kalor hilang)?</p>",
           "steps": [
-            "P ∝ T⁴ → (450/300)⁴ = 1,5⁴."
+            "0,3 c (90 − T) = 0,2 c (T − 20).",
+            "27 − 0,3T = 0,2T − 4 → T = 31/0,5."
           ],
-          "answer": "± 5,06 kali"
+          "answer": "62 °C"
         },
         {
           "type": "check",
@@ -132,11 +100,116 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "asas-black-kesetimbangan-termal",
+      "title": "Asas Black: Q_lepas = Q_terima pada Pencampuran Zat",
+      "kind": "simulasi",
+      "duration": "18 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas9/IPA/06 Isu-Isu Lingkungan/sim/efek-rumah-kaca.html",
+          "title": "Efek rumah kaca",
+          "height": 480,
+          "caption": "Naikkan kadar gas rumah kaca dan amati suhu Bumi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Rel baja sepanjang 20 m dipasang pada 25 °C (α = 1,2 × 10⁻⁵ /°C). Berapa celah minimum agar rel tidak melengkung pada 55 °C?</p>",
+          "steps": [
+            "ΔL = 20 × 1,2 × 10⁻⁵ × 30 = 7,2 × 10⁻³ m."
+          ],
+          "answer": "7,2 mm"
+        }
+      ]
+    },
+    {
+      "id": "mekanisme-konduksi-kalor",
+      "title": "Perpindahan Kalor Konduksi: Laju H = k · A · ΔT / L",
+      "kind": "latihan",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dinding bata (k = 0,6 W/m°C) seluas 10 m² dan tebal 20 cm memisahkan ruangan 26 °C dari luar 32 °C. Berapa laju kalor yang masuk?</p>",
+          "steps": [
+            "H = kAΔT/L = 0,6 × 10 × 6/0,2."
+          ],
+          "answer": "180 W"
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Perpindahan Kalor Konduksi: Laju H = k · A · ΔT / L, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Perpindahan Kalor Konduksi: Laju H = k · A · ΔT / L berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung suhu sambungan pada dua batang logam berbeda konduktivitas termal yang disambung seri.."
+        }
+      ]
+    },
+    {
+      "id": "konveksi-dan-radiasi-stefan-boltzmann",
+      "title": "Konveksi Fluida dan Radiasi Termal Hukum Stefan-Boltzmann (P = eσAT^4)",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Suhu mutlak suatu permukaan dinaikkan dari 300 K menjadi 450 K. Berapa kali daya radiasinya?</p>",
+          "steps": [
+            "P ∝ T⁴ → (450/300)⁴ = 1,5⁴."
+          ],
+          "answer": "± 5,06 kali"
+        }
+      ]
+    },
+    {
+      "id": "sains-efek-rumah-kaca-pemanasan-global",
+      "title": "Sains Perubahan Iklim: Efek Rumah Kaca, Gas GRK, dan Neraca Energi Bumi",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Sains Perubahan Iklim: Efek Rumah Kaca, Gas GRK, dan Neraca Energi Bumi</b>: Menjelaskan mekanisme penyerapan radiasi inframerah oleh gas CO2 dan metana serta dampaknya pada kenaikan muka air laut.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
         {
           "type": "callout",
           "variant": "tips",
@@ -144,14 +217,68 @@
           "html": "<ul><li>Buat diagram tahap pemanasan: naik suhu → berubah wujud → naik suhu, lalu jumlahkan kalor tiap tahap.</li><li>Pada asas Black yang melibatkan es, periksa dulu apakah kalor cukup untuk melebur seluruh es.</li><li>Ubah °C ke kelvin untuk radiasi; perubahan suhu (ΔT) dalam °C dan K sama.</li><li>Untuk sambungan dua batang, laju konduksi pada kedua batang sama.</li></ul>"
         },
         {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/06 Kalor/sim/asas-black.html",
+          "title": "Asas Black",
+          "height": 520,
+          "caption": "Campurkan dua cairan bersuhu berbeda. Mengapa suhu akhir lebih dekat ke suhu cairan yang massanya lebih besar?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Sains Perubahan Iklim: Efek Rumah Kaca, Gas GRK, dan Neraca Energi Bumi",
+          "question": "<p>Perhatikan permasalahan terkait <b>Sains Perubahan Iklim: Efek Rumah Kaca, Gas GRK, dan Neraca Energi Bumi</b> berikut. Analisislah berdasarkan prinsip Menjelaskan mekanisme penyerapan radiasi inframerah oleh gas CO2 dan metana serta dampaknya pada kenaikan muka air laut..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-09",
+      "title": "Strategi Soal Kalor dan Latihan Kuis Bab 9",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Soal Kalor dan Latihan Kuis Bab 9</b>: Menuntaskan soal perhitungan Asas Black dan konsep radiasi serta menyelesaikan kuis bab 20 soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Memakai suhu Celsius dalam rumus radiasi T⁴.</li><li>Lupa kalor laten saat zat berubah wujud.</li><li>Menganggap bimetal melengkung ke arah logam yang muai panjangnya besar; ia melengkung ke arah logam yang muainya kecil.</li><li>Menyamakan efek rumah kaca dengan penipisan lapisan ozon.</li></ul>"
+          "variant": "tips",
+          "title": "Strategi mengerjakan",
+          "html": "<ul><li>Buat diagram tahap pemanasan: naik suhu → berubah wujud → naik suhu, lalu jumlahkan kalor tiap tahap.</li><li>Pada asas Black yang melibatkan es, periksa dulu apakah kalor cukup untuk melebur seluruh es.</li><li>Ubah °C ke kelvin untuk radiasi; perubahan suhu (ΔT) dalam °C dan K sama.</li><li>Untuk sambungan dua batang, laju konduksi pada kedua batang sama.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Soal Kalor dan Latihan Kuis Bab 9",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Soal Kalor dan Latihan Kuis Bab 9</b> berikut. Analisislah berdasarkan prinsip Menuntaskan soal perhitungan Asas Black dan konsep radiasi serta menyelesaikan kuis bab 20 soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Soal Kalor dan Latihan Kuis Bab 9, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Soal Kalor dan Latihan Kuis Bab 9 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan soal perhitungan Asas Black dan konsep radiasi serta menyelesaikan kuis bab 20 soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

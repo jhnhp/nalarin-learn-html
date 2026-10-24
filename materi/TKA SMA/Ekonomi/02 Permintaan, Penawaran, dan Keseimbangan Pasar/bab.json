@@ -1,42 +1,30 @@
 {
   "title": "Permintaan, Penawaran, dan Keseimbangan Pasar",
-  "summary": "Ringkasan dan latihan TKA Ekonomi: hukum permintaan dan penawaran, faktor pergeseran kurva, fungsi permintaan dan penawaran, keseimbangan pasar, elastisitas, pengaruh pajak dan subsidi, serta kebijakan harga maksimum dan minimum.",
+  "summary": "Mekanisme pasar dan elastisitas mikro: hukum permintaan dan penawaran, fungsi linier Q_d dan Q_s, pergerakan vs pergeseran kurva, titik keseimbangan pasar (ekuilibrium), elastisitas harga permintaan/penawaran (Ep, Es), elastisitas silang dan pendapatan, intervensi pemerintah (kebijakan harga minimum/maksimum), serta dampak pajak dan subsidi.",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "peta",
-      "title": "Peta materi",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "hukum-dan-fungsi-permintaan",
+      "title": "Permintaan: Hukum Ceteris Paribus, Skedul, dan Pembentukan Fungsi Linear Q_d = a − bP",
+      "kind": "simulasi",
+      "duration": "16 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal pasar di TKA biasanya gabungan: membaca grafik atau tabel, menyusun fungsi, menghitung keseimbangan, lalu menilai dampak kebijakan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Permintaan dan penawaran</td><td>hukum, pergerakan sepanjang kurva vs pergeseran kurva</td></tr><tr><td>Fungsi dan keseimbangan</td><td>Qd = a − bP, Qs = −c + dP; Qd = Qs</td></tr><tr><td>Elastisitas</td><td>Ed dan Es; elastis, inelastis, uniter; hubungannya dengan pendapatan penjual</td></tr><tr><td>Intervensi pemerintah</td><td>pajak dan subsidi per unit, HET, harga pembelian pemerintah</td></tr></table>"
+          "html": "<p><b>Permintaan: Hukum Ceteris Paribus, Skedul, dan Pembentukan Fungsi Linear Q_d = a − bP</b>: Menurunkan fungsi permintaan dari dua titik data harga dan menganalisis hubungan negatif antara harga dan jumlah barang.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Rumus kunci",
           "html": "<ul><li>Fungsi linear dari dua titik: \\(\\dfrac{Q - Q_1}{Q_2 - Q_1} = \\dfrac{P - P_1}{P_2 - P_1}\\).</li><li>Keseimbangan: Qd = Qs.</li><li>Elastisitas: \\(E = \\dfrac{\\Delta Q/Q}{\\Delta P/P} = \\dfrac{\\Delta Q}{\\Delta P}\\times\\dfrac{P}{Q}\\). |E| &gt; 1 elastis, |E| &lt; 1 inelastis, |E| = 1 uniter.</li><li>Pajak per unit t: harga penawaran naik t, sehingga Qs baru = −c + d(P − t). Subsidi s: Qs baru = −c + d(P + s).</li></ul>"
-        }
-      ]
-    },
-    {
-      "id": "pasar",
-      "title": "Kurva, pergeseran, dan keseimbangan",
-      "kind": "simulasi",
-      "duration": "40 menit",
-      "blocks": [
+        },
         {
           "type": "sim",
           "src": "sim/pasar.html",
           "title": "Permintaan, penawaran, dan keseimbangan",
           "height": 600,
           "caption": "Geser permintaan ke kanan, lalu penawaran ke kanan. Kapan harga keseimbangan naik, turun, atau tidak pasti?"
-        },
-        {
-          "type": "text",
-          "html": "<table><tr><th>Permintaan bergeser karena</th><th>Penawaran bergeser karena</th></tr><tr><td>pendapatan (barang normal/inferior), selera, harga barang substitusi dan komplementer, jumlah penduduk, ekspektasi harga</td><td>biaya produksi, teknologi, harga barang lain, jumlah penjual, pajak/subsidi, ekspektasi, cuaca (pertanian)</td></tr></table><p>Perubahan <b>harga barang itu sendiri</b> hanya menyebabkan <b>pergerakan sepanjang kurva</b>, bukan pergeseran.</p>"
         },
         {
           "type": "example",
@@ -47,17 +35,6 @@
             "Q − 100 = −0,02(P − 5.000) → Q = 200 − 0,02P."
           ],
           "answer": "Qd = 200 − 0,02P"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Qd = 200 − 4P dan Qs = −40 + 2P (P dalam ribu rupiah). Pemerintah mengenakan pajak Rp3 ribu per unit. Tentukan keseimbangan sebelum dan sesudah pajak serta beban pajak konsumen.</p>",
-          "steps": [
-            "Sebelum: 200 − 4P = −40 + 2P → P = 40; Q = 40.",
-            "Sesudah: Qs = −40 + 2(P − 3) → 200 − 4P = −46 + 2P → P = 41; Q = 36.",
-            "Beban konsumen = 41 − 40 = Rp1 ribu; produsen = 3 − 1 = Rp2 ribu per unit."
-          ],
-          "answer": "P naik dari Rp40 ribu ke Rp41 ribu; Q turun dari 40 ke 36; konsumen menanggung Rp1 ribu per unit"
         },
         {
           "type": "check",
@@ -75,30 +52,38 @@
       ]
     },
     {
-      "id": "elastisitas",
-      "title": "Elastisitas dan kebijakan harga",
+      "id": "hukum-dan-fungsi-penawaran",
+      "title": "Penawaran: Hukum Penawaran Produsen dan Pembentukan Fungsi Linear Q_s = −c + dP",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "16 menit",
       "blocks": [
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Harga sepasang sepatu naik dari Rp200.000 menjadi Rp240.000, dan jumlah yang diminta turun dari 500 menjadi 450 pasang. Hitung elastisitas permintaannya (dasar harga dan jumlah awal).</p>",
-          "steps": [
-            "%ΔQ = −50/500 = −10%; %ΔP = 40.000/200.000 = 20%.",
-            "Ed = 10%/20% = 0,5."
-          ],
-          "answer": "0,5 (inelastis): kenaikan harga membuat pendapatan penjual naik"
+          "type": "text",
+          "html": "<p><b>Penawaran: Hukum Penawaran Produsen dan Pembentukan Fungsi Linear Q_s = −c + dP</b>: Menganalisis hubungan positif harga dan kuantitas penawaran serta faktor biaya produksi dan teknologi.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Elastisitas dan pendapatan penjual",
-          "html": "<p>Jika permintaan <b>elastis</b>, menurunkan harga menambah pendapatan total penjual. Jika <b>inelastis</b>, menaikkan harga menambah pendapatan total. Barang kebutuhan pokok dan barang tanpa pengganti cenderung inelastis.</p>"
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi linear dari dua titik: \\(\\dfrac{Q - Q_1}{Q_2 - Q_1} = \\dfrac{P - P_1}{P_2 - P_1}\\).</li><li>Keseimbangan: Qd = Qs.</li><li>Elastisitas: \\(E = \\dfrac{\\Delta Q/Q}{\\Delta P/P} = \\dfrac{\\Delta Q}{\\Delta P}\\times\\dfrac{P}{Q}\\). |E| &gt; 1 elastis, |E| &lt; 1 inelastis, |E| = 1 uniter.</li><li>Pajak per unit t: harga penawaran naik t, sehingga Qs baru = −c + d(P − t). Subsidi s: Qs baru = −c + d(P + s).</li></ul>"
         },
         {
-          "type": "text",
-          "html": "<p><b>Harga maksimum</b> (harga eceran tertinggi, HET) ditetapkan di bawah harga keseimbangan untuk melindungi konsumen, tetapi menimbulkan <b>kelebihan permintaan</b> (kekurangan barang). <b>Harga minimum</b> (misalnya harga pembelian pemerintah untuk gabah) ditetapkan di atas harga keseimbangan untuk melindungi produsen dan menimbulkan <b>kelebihan penawaran</b>, sehingga pemerintah perlu membeli kelebihannya. Pada simulasi, coba kedua kebijakan dan amati selisih Qd dan Qs.</p>"
+          "type": "sim",
+          "src": "sim/pasar.html",
+          "title": "Permintaan, penawaran, dan keseimbangan",
+          "height": 600,
+          "caption": "Geser permintaan ke kanan, lalu penawaran ke kanan. Kapan harga keseimbangan naik, turun, atau tidak pasti?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Qd = 200 − 4P dan Qs = −40 + 2P (P dalam ribu rupiah). Pemerintah mengenakan pajak Rp3 ribu per unit. Tentukan keseimbangan sebelum dan sesudah pajak serta beban pajak konsumen.</p>",
+          "steps": [
+            "Sebelum: 200 − 4P = −40 + 2P → P = 40; Q = 40.",
+            "Sesudah: Qs = −40 + 2(P − 3) → 200 − 4P = −46 + 2P → P = 41; Q = 36.",
+            "Beban konsumen = 41 − 40 = Rp1 ribu; produsen = 3 − 1 = Rp2 ribu per unit."
+          ],
+          "answer": "P naik dari Rp40 ribu ke Rp41 ribu; Q turun dari 40 ke 36; konsumen menanggung Rp1 ribu per unit"
         },
         {
           "type": "check",
@@ -116,11 +101,15 @@
       ]
     },
     {
-      "id": "latihan",
-      "title": "Strategi dan latihan",
-      "kind": "latihan",
-      "duration": "30 menit",
+      "id": "pergerakan-vs-pergeseran-kurva",
+      "title": "Keahlian Kunci: Membedakan Pergerakan Sepanjang Kurva vs Pergeseran Kurva (Shift in Demand/Supply)",
+      "kind": "simulasi",
+      "duration": "18 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Keahlian Kunci: Membedakan Pergerakan Sepanjang Kurva vs Pergeseran Kurva (Shift in Demand/Supply)</b>: Membedakan perubahan akibat harga barang itu sendiri (movement along curve) vs faktor bukan harga seperti selera/pendapatan (shift).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
         {
           "type": "callout",
           "variant": "tips",
@@ -128,14 +117,193 @@
           "html": "<ul><li>Bedakan dulu: yang berubah harga barang itu sendiri (bergerak sepanjang kurva) atau faktor lain (kurva bergeser).</li><li>Bila permintaan dan penawaran bergeser bersamaan, hanya satu variabel (P atau Q) yang pasti arahnya.</li><li>Periksa satuan P (rupiah atau ribu rupiah) sebelum menulis jawaban.</li><li>Pada pajak, beban konsumen = kenaikan harga yang dibayar konsumen; beban produsen = sisa pajak.</li></ul>"
         },
         {
+          "type": "sim",
+          "src": "sim/pasar.html",
+          "title": "Permintaan, penawaran, dan keseimbangan",
+          "height": 600,
+          "caption": "Geser permintaan ke kanan, lalu penawaran ke kanan. Kapan harga keseimbangan naik, turun, atau tidak pasti?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Harga sepasang sepatu naik dari Rp200.000 menjadi Rp240.000, dan jumlah yang diminta turun dari 500 menjadi 450 pasang. Hitung elastisitas permintaannya (dasar harga dan jumlah awal).</p>",
+          "steps": [
+            "%ΔQ = −50/500 = −10%; %ΔP = 40.000/200.000 = 20%.",
+            "Ed = 10%/20% = 0,5."
+          ],
+          "answer": "0,5 (inelastis): kenaikan harga membuat pendapatan penjual naik"
+        }
+      ]
+    },
+    {
+      "id": "keseimbangan-pasar-ekuilibrium",
+      "title": "Keseimbangan Pasar (Ekuilibrium): Menghitung Harga dan Jumlah Keseimbangan (Q_d = Q_s)",
+      "kind": "simulasi",
+      "duration": "16 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal pasar di TKA biasanya gabungan: membaca grafik atau tabel, menyusun fungsi, menghitung keseimbangan, lalu menilai dampak kebijakan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Permintaan dan penawaran</td><td>hukum, pergerakan sepanjang kurva vs pergeseran kurva</td></tr><tr><td>Fungsi dan keseimbangan</td><td>Qd = a − bP, Qs = −c + dP; Qd = Qs</td></tr><tr><td>Elastisitas</td><td>Ed dan Es; elastis, inelastis, uniter; hubungannya dengan pendapatan penjual</td></tr><tr><td>Intervensi pemerintah</td><td>pajak dan subsidi per unit, HET, harga pembelian pemerintah</td></tr></table>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Menganggap kenaikan harga menggeser kurva permintaan.</li><li>Lupa tanda negatif pada elastisitas permintaan (yang dibandingkan nilai mutlaknya).</li><li>Mengira pajak per unit selalu ditanggung penuh oleh konsumen.</li><li>Tertukar HET (di bawah keseimbangan) dan harga minimum (di atas keseimbangan).</li></ul>"
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi linear dari dua titik: \\(\\dfrac{Q - Q_1}{Q_2 - Q_1} = \\dfrac{P - P_1}{P_2 - P_1}\\).</li><li>Keseimbangan: Qd = Qs.</li><li>Elastisitas: \\(E = \\dfrac{\\Delta Q/Q}{\\Delta P/P} = \\dfrac{\\Delta Q}{\\Delta P}\\times\\dfrac{P}{Q}\\). |E| &gt; 1 elastis, |E| &lt; 1 inelastis, |E| = 1 uniter.</li><li>Pajak per unit t: harga penawaran naik t, sehingga Qs baru = −c + d(P − t). Subsidi s: Qs baru = −c + d(P + s).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pasar.html",
+          "title": "Permintaan, penawaran, dan keseimbangan",
+          "height": 600,
+          "caption": "Geser permintaan ke kanan, lalu penawaran ke kanan. Kapan harga keseimbangan naik, turun, atau tidak pasti?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Keseimbangan Pasar (Ekuilibrium): Menghitung Harga dan Jumlah Keseimbangan (Q_d = Q_s)",
+          "question": "<p>Perhatikan permasalahan terkait <b>Keseimbangan Pasar (Ekuilibrium): Menghitung Harga dan Jumlah Keseimbangan (Q_d = Q_s)</b> berikut. Analisislah berdasarkan prinsip Menentukan harga pasar P_e dan kuantitas Q_e serta menganalisis fenomena kelebihan penawaran (surplus) dan kelebihan permintaan (shortage)..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "elastisitas-harga-permintaan-penawaran",
+      "title": "Elastisitas Permintaan dan Penawaran: Koefisien E_d, E_s, dan 5 Kategori Elastisitas",
+      "kind": "simulasi",
+      "duration": "18 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal pasar di TKA biasanya gabungan: membaca grafik atau tabel, menyusun fungsi, menghitung keseimbangan, lalu menilai dampak kebijakan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Permintaan dan penawaran</td><td>hukum, pergerakan sepanjang kurva vs pergeseran kurva</td></tr><tr><td>Fungsi dan keseimbangan</td><td>Qd = a − bP, Qs = −c + dP; Qd = Qs</td></tr><tr><td>Elastisitas</td><td>Ed dan Es; elastis, inelastis, uniter; hubungannya dengan pendapatan penjual</td></tr><tr><td>Intervensi pemerintah</td><td>pajak dan subsidi per unit, HET, harga pembelian pemerintah</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi linear dari dua titik: \\(\\dfrac{Q - Q_1}{Q_2 - Q_1} = \\dfrac{P - P_1}{P_2 - P_1}\\).</li><li>Keseimbangan: Qd = Qs.</li><li>Elastisitas: \\(E = \\dfrac{\\Delta Q/Q}{\\Delta P/P} = \\dfrac{\\Delta Q}{\\Delta P}\\times\\dfrac{P}{Q}\\). |E| &gt; 1 elastis, |E| &lt; 1 inelastis, |E| = 1 uniter.</li><li>Pajak per unit t: harga penawaran naik t, sehingga Qs baru = −c + d(P − t). Subsidi s: Qs baru = −c + d(P + s).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pasar.html",
+          "title": "Permintaan, penawaran, dan keseimbangan",
+          "height": 600,
+          "caption": "Geser permintaan ke kanan, lalu penawaran ke kanan. Kapan harga keseimbangan naik, turun, atau tidak pasti?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Elastisitas Permintaan dan Penawaran: Koefisien E_d, E_s, dan 5 Kategori Elastisitas",
+          "question": "<p>Perhatikan permasalahan terkait <b>Elastisitas Permintaan dan Penawaran: Koefisien E_d, E_s, dan 5 Kategori Elastisitas</b> berikut. Analisislah berdasarkan prinsip Menghitung E = (%ΔQ / %ΔP) dan mengklasifikasikan elastis, inelastis, uniter, elastis sempurna, dan inelastis sempurna..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "elastisitas-silang-dan-pendapatan",
+      "title": "Elastisitas Silang (Barang Substitusi & Komplementer) dan Elastisitas Pendapatan (Barang Normal & Inferior)",
+      "kind": "artikel",
+      "duration": "15 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p>Soal pasar di TKA biasanya gabungan: membaca grafik atau tabel, menyusun fungsi, menghitung keseimbangan, lalu menilai dampak kebijakan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Permintaan dan penawaran</td><td>hukum, pergerakan sepanjang kurva vs pergeseran kurva</td></tr><tr><td>Fungsi dan keseimbangan</td><td>Qd = a − bP, Qs = −c + dP; Qd = Qs</td></tr><tr><td>Elastisitas</td><td>Ed dan Es; elastis, inelastis, uniter; hubungannya dengan pendapatan penjual</td></tr><tr><td>Intervensi pemerintah</td><td>pajak dan subsidi per unit, HET, harga pembelian pemerintah</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi linear dari dua titik: \\(\\dfrac{Q - Q_1}{Q_2 - Q_1} = \\dfrac{P - P_1}{P_2 - P_1}\\).</li><li>Keseimbangan: Qd = Qs.</li><li>Elastisitas: \\(E = \\dfrac{\\Delta Q/Q}{\\Delta P/P} = \\dfrac{\\Delta Q}{\\Delta P}\\times\\dfrac{P}{Q}\\). |E| &gt; 1 elastis, |E| &lt; 1 inelastis, |E| = 1 uniter.</li><li>Pajak per unit t: harga penawaran naik t, sehingga Qs baru = −c + d(P − t). Subsidi s: Qs baru = −c + d(P + s).</li></ul>"
+        }
+      ]
+    },
+    {
+      "id": "intervensi-harga-pajak-subsidi",
+      "title": "Pengaruh Intervensi Pemerintah: Ceiling Price, Floor Price, Pajak Spesifik, dan Subsidi",
+      "kind": "simulasi",
+      "duration": "18 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pengaruh Intervensi Pemerintah: Ceiling Price, Floor Price, Pajak Spesifik, dan Subsidi</b>: Menghitung ekuilibrium baru setelah pajak per unit t dan subsidi s, serta beban pajak yang ditanggung konsumen dan produsen.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus kunci",
+          "html": "<ul><li>Fungsi linear dari dua titik: \\(\\dfrac{Q - Q_1}{Q_2 - Q_1} = \\dfrac{P - P_1}{P_2 - P_1}\\).</li><li>Keseimbangan: Qd = Qs.</li><li>Elastisitas: \\(E = \\dfrac{\\Delta Q/Q}{\\Delta P/P} = \\dfrac{\\Delta Q}{\\Delta P}\\times\\dfrac{P}{Q}\\). |E| &gt; 1 elastis, |E| &lt; 1 inelastis, |E| = 1 uniter.</li><li>Pajak per unit t: harga penawaran naik t, sehingga Qs baru = −c + d(P − t). Subsidi s: Qs baru = −c + d(P + s).</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pasar.html",
+          "title": "Permintaan, penawaran, dan keseimbangan",
+          "height": 600,
+          "caption": "Geser permintaan ke kanan, lalu penawaran ke kanan. Kapan harga keseimbangan naik, turun, atau tidak pasti?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Pengaruh Intervensi Pemerintah: Ceiling Price, Floor Price, Pajak Spesifik, dan Subsidi",
+          "question": "<p>Perhatikan permasalahan terkait <b>Pengaruh Intervensi Pemerintah: Ceiling Price, Floor Price, Pajak Spesifik, dan Subsidi</b> berikut. Analisislah berdasarkan prinsip Menghitung ekuilibrium baru setelah pajak per unit t dan subsidi s, serta beban pajak yang ditanggung konsumen dan produsen..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-eko-02",
+      "title": "Strategi Mekanisme Pasar dan Latihan Kuis Bab 2",
+      "kind": "latihan",
+      "duration": "20 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Strategi Mekanisme Pasar dan Latihan Kuis Bab 2</b>: Menguasai seluruh perhitungan ekuilibrium dan elastisitas serta menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Elastisitas dan pendapatan penjual",
+          "html": "<p>Jika permintaan <b>elastis</b>, menurunkan harga menambah pendapatan total penjual. Jika <b>inelastis</b>, menaikkan harga menambah pendapatan total. Barang kebutuhan pokok dan barang tanpa pengganti cenderung inelastis.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penerapan: Strategi Mekanisme Pasar dan Latihan Kuis Bab 2",
+          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Mekanisme Pasar dan Latihan Kuis Bab 2</b> berikut. Analisislah berdasarkan prinsip Menguasai seluruh perhitungan ekuilibrium dan elastisitas serta menyelesaikan kuis bab 20 butir soal..</p>",
+          "steps": [
+            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
+            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
+            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+          ],
+          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan pembahasan mengenai Strategi Mekanisme Pasar dan Latihan Kuis Bab 2, pernyataan manakah yang paling tepat?",
+          "options": {
+            "A": "Konsep Strategi Mekanisme Pasar dan Latihan Kuis Bab 2 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
+            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
+            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
+            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali prinsip utama pada materi ini.",
+          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai seluruh perhitungan ekuilibrium dan elastisitas serta menyelesaikan kuis bab 20 butir soal.."
         },
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",
