@@ -14,14 +14,32 @@
           "html": "<p><b>Pola Bilangan, Konsep Barisan, dan Notasi Suku ke-n (Un)</b>: Membedakan barisan bilangan berurutan dan deret (penjumlahan barisan); aturan formulasi rekursif vs eksplisit.</p>"
         },
         {
-          "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 2 Barisan dan Deret.</small></p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Membedakan barisan bilangan berurutan dan deret (penjumlahan barisan); aturan formulasi rekursif vs eksplisit.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 2 Barisan dan Deret.</small></p>"
         },
         {
           "type": "example",
@@ -57,9 +75,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Beda b = Un - Un-1; penurunan rumus eksplisit Un = a + (n - 1)b; representasi linier titik koordinat (n, Un).</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",
@@ -100,9 +136,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Barisan aritmetika",
-          "html": "<p>Selisih dua suku berurutan selalu sama, disebut <b>beda</b> \\(b = U_n - U_{n-1}\\).</p><div class=\"fc-display\">\n\\[U_n = a + (n - 1)b\\]\n</div><p>a = suku pertama, n = nomor suku.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",
@@ -144,15 +198,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Deret Aritmetika: Penjumlahan n Suku Pertama (Sn)",
-          "html": "<p><b>Konsep Kunci:</b> Deret Aritmetika: Penjumlahan n Suku Pertama (Sn) adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Pembuktian visual metode Carl Friedrich Gauss; rumus Sn = n/2 (a + Un) = n/2 (2a + (n-1)b); hubungan Un = Sn - Sn-1.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",
@@ -189,9 +255,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Barisan geometri",
-          "html": "<p>Perbandingan dua suku berurutan selalu sama, disebut <b>rasio</b> \\(r = \\dfrac{U_n}{U_{n-1}}\\).</p><div class=\"fc-display\">\n\\[U_n = a \\cdot r^{\\,n-1}\\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",
@@ -228,9 +312,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Rumus suku tengah geometri Ut = √(U1 · Un); menyisipkan k buah bilangan menghasilkan rasio baru r' = ^(k+1)√r.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",
@@ -268,9 +370,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Pembuktian aljabar dengan mengalikan deret dengan r lalu mengurangkannya; rumus Sn = a(r^n - 1)/(r - 1) atau a(1 - r^n)/(1 - r).</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",
@@ -308,15 +428,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Deret Geometri Tak Hingga: Konsep Konvergen vs Divergen",
-          "html": "<p><b>Konsep Kunci:</b> Deret Geometri Tak Hingga: Konsep Konvergen vs Divergen adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Jumlah n suku pertama",
-          "html": "<ul><li>Deret aritmetika: \\(S_n = \\dfrac{n}{2}(a + U_n) = \\dfrac{n}{2}\\big(2a + (n - 1)b\\big)\\).</li><li>Deret geometri: \\(S_n = \\dfrac{a(r^n - 1)}{r - 1}\\) untuk r &gt; 1, atau \\(S_n = \\dfrac{a(1 - r^n)}{1 - r}\\) untuk r &lt; 1.</li><li>Deret geometri tak hingga dengan |r| &lt; 1 <b>konvergen</b>: \\(S_\\infty = \\dfrac{a}{1 - r}\\).</li></ul>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "callout",
@@ -357,6 +489,30 @@
         {
           "type": "text",
           "html": "<p>Sebuah bola dijatuhkan dari ketinggian 8 m dan setiap memantul tingginya tinggal ¾ tinggi sebelumnya: 8, 6, 4,5, …. Kali ini setiap suku diperoleh dengan <b>mengalikan</b> bilangan yang sama.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "image",
@@ -408,14 +564,32 @@
           "html": "<p>Barisan aritmetika dan geometri dipakai untuk menghitung bunga tabungan, pinjaman, pertumbuhan penduduk, dan penyusutan nilai barang.</p>"
         },
         {
-          "type": "text",
-          "html": "<table><tr><th></th><th>Aritmetika</th><th>Geometri</th></tr><tr><td>Ciri</td><td>beda b tetap (ditambah)</td><td>rasio r tetap (dikali)</td></tr><tr><td>Suku ke-n</td><td>\\(a + (n-1)b\\)</td><td>\\(a r^{n-1}\\)</td></tr><tr><td>Jumlah n suku</td><td>\\(\\tfrac n2(a + U_n)\\)</td><td>\\(\\dfrac{a(r^n - 1)}{r - 1}\\)</td></tr><tr><td>Tak hingga</td><td>—</td><td>\\(S_\\infty = \\dfrac{a}{1-r}\\), |r| &lt; 1</td></tr><tr><td>Penerapan</td><td>bunga tunggal</td><td>bunga majemuk, pertumbuhan, peluruhan</td></tr></table>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Bunga",
-          "html": "<ul><li><b>Bunga tunggal</b> (dihitung dari modal awal saja): \\(M_n = M_0(1 + n \\cdot i)\\), barisan aritmetika.</li><li><b>Bunga majemuk</b> (bunga ikut berbunga): \\(M_n = M_0(1 + i)^n\\), barisan geometri.</li></ul><p>M₀ = modal awal, i = suku bunga per periode, n = banyak periode.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th></th><th>Aritmetika</th><th>Geometri</th></tr><tr><td>Ciri</td><td>beda b tetap (ditambah)</td><td>rasio r tetap (dikali)</td></tr><tr><td>Suku ke-n</td><td>\\(a + (n-1)b\\)</td><td>\\(a r^{n-1}\\)</td></tr><tr><td>Jumlah n suku</td><td>\\(\\tfrac n2(a + U_n)\\)</td><td>\\(\\dfrac{a(r^n - 1)}{r - 1}\\)</td></tr><tr><td>Tak hingga</td><td>—</td><td>\\(S_\\infty = \\dfrac{a}{1-r}\\), |r| &lt; 1</td></tr><tr><td>Penerapan</td><td>bunga tunggal</td><td>bunga majemuk, pertumbuhan, peluruhan</td></tr></table>"
         },
         {
           "type": "sim",

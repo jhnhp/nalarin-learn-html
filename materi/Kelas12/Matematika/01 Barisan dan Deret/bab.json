@@ -14,6 +14,30 @@
           "html": "<p><b>Tinjauan Barisan dan Deret: Pola Aritmetika dan Geometri Bertingkat</b>: Membedakan pertumbuhan linier konstan vs eksponensial; formulasi sigma Σ dan sifat-sifat notasi sigma aljabar.</p>"
         },
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
+        },
+        {
           "type": "text",
           "html": "<p>Kursi di sebuah gedung pertunjukan disusun bertingkat: baris pertama 20 kursi, baris kedua 24, baris ketiga 28, dan seterusnya. Selisih dua suku berurutan selalu sama, yaitu 4. Barisan seperti ini disebut <b>barisan aritmetika</b> dengan <b>beda</b> b = 4.</p>"
         },
@@ -41,12 +65,6 @@
           "variant": "tips",
           "title": "Suku tengah dan sisipan",
           "html": "<ul><li>Jika banyak suku ganjil, <b>suku tengah</b> U<sub>t</sub> = ½(a + U<sub>n</sub>).</li><li>Jika di antara dua bilangan x dan y disisipkan k bilangan sehingga membentuk barisan aritmetika, beda barunya b′ = (y − x)/(k + 1).</li></ul>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Jumlah tak hingga",
-          "html": "<div class=\"fc-display\">\n\\[S_\\infty = \\frac{a}{1 - r}, \\qquad -1 &lt; r &lt; 1\\]\n</div><p>Deret ini disebut <b>konvergen</b>. Jika |r| ≥ 1, deret <b>divergen</b> (tidak mempunyai jumlah terbatas).</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Suku ke-n Barisan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah n Suku Pertama Deret</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(b_d\\)</td><td>Beda Barisan Aritmetika</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(r_g\\)</td><td>Rasio Barisan Geometri</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
@@ -172,44 +190,26 @@
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Membawa Segepok Uang Hanya untuk Membeli Sebungkus Roti",
-          "html": "<p>Banyak anak kecil bertanya polos: <i>'Jika negara kita masih banyak orang miskin, mengapa Bank Indonesia tidak mencetak uang kertas rupiah sebanyak-banyaknya lalu membagikannya secara gratis kepada seluruh warga?'</i></p>\n<p>Sejarah mencatat bencana mengerikan saat negara mencoba ide tersebut: di Jerman tahun 1923 dan Zimbabwe tahun 2008, pemerintah mencetak triliunan uang kertas tanpa kendali. Akibatnya uang kehilangan nilai total hingga orang harus membawa uang satu gerobak dorong hanya untuk membeli sebungkus roti tawar!</p>"
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
         },
         {
           "type": "callout",
           "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Teori Kuantitas Uang Irving Fisher dan Pernyataan Milton Friedman",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Irving Fisher, John Maynard Keynes, & Milton Friedman</span>\n  <span class=\"h-tag\">Tahun: 1911 – 1970 M</span>\n  <span class=\"h-tag\">Krisis: Mengapa pemerintah tidak mencetak uang sebanyak-banyaknya dan membagikannya gratis ke seluruh rakyat miskin?</span>\n</div>\n<p>Pada tahun 1911 di Universitas Yale, ekonom Amerika <b>Irving Fisher</b> mempublikasikan mahakaryanya <i>The Purchasing Power of Money</i>. Fisher merumuskan <b>Persamaan Kuantitas Pertukaran</b> yang abadi: \\(M \\cdot V = P \\cdot T\\).</p>\n<p>Enam dekade kemudian, peraih Nobel Ekonomi <b>Milton Friedman</b> menyimpulkan prinsip moneter terpenting abad ke-20: <i>'Inflasi selalu dan di mana pun merupakan fenomena moneter.'</i> Jika jumlah uang yang beredar (\\(M\\)) bertambah jauh lebih cepat daripada pertambahan produksi barang dan jasa (\\(T\\)), maka satu-satunya variabel yang akan melonjak adalah tingkat harga umum (\\(P\\))—inilah yang kita sebut sebagai <b>Inflasi</b>!</p>"
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
         },
         {
           "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Inflasi & Kebijakan Moneter Bank Sentral",
-          "html": "<p><b>Inflasi:</b> Kenaikan tingkat harga barang dan jasa secara umum dan terus-menerus dalam jangka waktu tertentu, yang mengakibatkan penurunan daya beli uang.</p>\n<p><b>Kebijakan Moneter Kontraksioner (Mengatasi Inflasi):</b></p>\n<ul>\n  <li>Menaikkan Suku Bunga Acuan (BI-Rate) agar masyarakat rajin menabung dan konsumsi mengerem.</li>\n  <li>Menaikkan Giro Wajib Minimum (GWM) perbankan di bank sentral.</li>\n  <li>Operasi Pasar Terbuka: Menjual Surat Berharga Negara (SBN) untuk menyedot likuiditas rupiah dari peredaran.</li>\n</ul>"
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Suku ke-n",
-          "html": "<div class=\"fc-display\">\n\\[U_n = a + (n - 1)b, \\qquad b = U_n - U_{n-1}\\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel Bebas dan Terikat</td><td class=\"unit\">\\(\\text{koordinat / nilai real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien dan Konstanta Persamaan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Jumlah n suku pertama",
-          "html": "<div class=\"fc-display\">\n\\[S_n = \\frac{n}{2}(a + U_n) = \\frac{n}{2}\\big(2a + (n-1)b\\big)\\]\n</div><p>Hubungan lain: U<sub>n</sub> = S<sub>n</sub> − S<sub>n−1</sub>.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel Bebas dan Terikat</td><td class=\"unit\">\\(\\text{koordinat / nilai real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien dan Konstanta Persamaan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Jumlah n suku pertama",
-          "html": "<div class=\"fc-display\">\n\\[S_n = \\frac{a(r^n - 1)}{r - 1} \\;(r &gt; 1) \\qquad S_n = \\frac{a(1 - r^n)}{1 - r} \\;(r &lt; 1)\\]\n</div><p>Keduanya sama; pilih yang membuat penyebut positif.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel Bebas dan Terikat</td><td class=\"unit\">\\(\\text{koordinat / nilai real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien dan Konstanta Persamaan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Bunga tunggal",
-          "html": "<div class=\"fc-display\">\n\\[B = M \\cdot i \\cdot n \\qquad M_n = M(1 + i\\,n)\\]\n</div><p>M modal awal, i suku bunga per periode, n banyak periode.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel Bebas dan Terikat</td><td class=\"unit\">\\(\\text{koordinat / nilai real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien dan Konstanta Persamaan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",
@@ -255,26 +255,26 @@
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Membawa Segepok Uang Hanya untuk Membeli Sebungkus Roti",
-          "html": "<p>Banyak anak kecil bertanya polos: <i>'Jika negara kita masih banyak orang miskin, mengapa Bank Indonesia tidak mencetak uang kertas rupiah sebanyak-banyaknya lalu membagikannya secara gratis kepada seluruh warga?'</i></p>\n<p>Sejarah mencatat bencana mengerikan saat negara mencoba ide tersebut: di Jerman tahun 1923 dan Zimbabwe tahun 2008, pemerintah mencetak triliunan uang kertas tanpa kendali. Akibatnya uang kehilangan nilai total hingga orang harus membawa uang satu gerobak dorong hanya untuk membeli sebungkus roti tawar!</p>"
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
         },
         {
           "type": "callout",
           "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Teori Kuantitas Uang Irving Fisher dan Pernyataan Milton Friedman",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Irving Fisher, John Maynard Keynes, & Milton Friedman</span>\n  <span class=\"h-tag\">Tahun: 1911 – 1970 M</span>\n  <span class=\"h-tag\">Krisis: Mengapa pemerintah tidak mencetak uang sebanyak-banyaknya dan membagikannya gratis ke seluruh rakyat miskin?</span>\n</div>\n<p>Pada tahun 1911 di Universitas Yale, ekonom Amerika <b>Irving Fisher</b> mempublikasikan mahakaryanya <i>The Purchasing Power of Money</i>. Fisher merumuskan <b>Persamaan Kuantitas Pertukaran</b> yang abadi: \\(M \\cdot V = P \\cdot T\\).</p>\n<p>Enam dekade kemudian, peraih Nobel Ekonomi <b>Milton Friedman</b> menyimpulkan prinsip moneter terpenting abad ke-20: <i>'Inflasi selalu dan di mana pun merupakan fenomena moneter.'</i> Jika jumlah uang yang beredar (\\(M\\)) bertambah jauh lebih cepat daripada pertambahan produksi barang dan jasa (\\(T\\)), maka satu-satunya variabel yang akan melonjak adalah tingkat harga umum (\\(P\\))—inilah yang kita sebut sebagai <b>Inflasi</b>!</p>"
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
         },
         {
           "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Inflasi & Kebijakan Moneter Bank Sentral",
-          "html": "<p><b>Inflasi:</b> Kenaikan tingkat harga barang dan jasa secara umum dan terus-menerus dalam jangka waktu tertentu, yang mengakibatkan penurunan daya beli uang.</p>\n<p><b>Kebijakan Moneter Kontraksioner (Mengatasi Inflasi):</b></p>\n<ul>\n  <li>Menaikkan Suku Bunga Acuan (BI-Rate) agar masyarakat rajin menabung dan konsumsi mengerem.</li>\n  <li>Menaikkan Giro Wajib Minimum (GWM) perbankan di bank sentral.</li>\n  <li>Operasi Pasar Terbuka: Menjual Surat Berharga Negara (SBN) untuk menyedot likuiditas rupiah dari peredaran.</li>\n</ul>"
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Persamaan Fisher & Laju Inflasi Indeks Harga Konsumen",
-          "html": "<div class=\"fc-display\">\n\\[ M \\cdot V = P \\cdot T, \\qquad \\text{Laju Inflasi} = \\frac{\\text{IHK}_t - \\text{IHK}_{t-1}}{\\text{IHK}_{t-1}}\\times 100\\%, \\qquad \\text{PDB} = C + I + G + (X - M) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M\\)</td><td>Jumlah uang yang beredar di masyarakat</td><td class=\"unit\">\\(\\text{Rupiah (Rp)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(V\\)</td><td>Kecepatan perputaran uang (velocity of money)</td><td class=\"unit\">\\(\\text{kali lipat/tahun}\\)</td></tr>\n    <tr><td class=\"sym\">\\(P\\)</td><td>Tingkat harga umum barang/jasa</td><td class=\"unit\">\\(\\text{indeks harga}\\)</td></tr>\n    <tr><td class=\"sym\">\\(T\\)</td><td>Volume total transaksi barang dan jasa riil</td><td class=\"unit\">\\(\\text{output transaksi}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\text{IHK}\\)</td><td>Indeks Harga Konsumen</td><td class=\"unit\">\\(\\text{indeks poin}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Rumus PDB Pengeluaran (C + I + G + NX) mengukur total nilai pasar seluruh barang dan jasa akhir yang diproduksi di dalam batas wilayah negara selama satu tahun.</small></p>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "callout",
@@ -323,9 +323,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Perhitungan bunga semesteran, kuartalan, bulanan, dan harian: rumus Mn = M0 (1 + i/m)^(m·n); konsep suku bunga efektif tahunan (EAR / APY).</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",
@@ -362,6 +380,30 @@
         {
           "type": "text",
           "html": "<p>Bola yang memantul terus-menerus menempuh lintasan yang makin pendek. Apakah total lintasannya tak terbatas? Ternyata tidak, jika rasionya di antara −1 dan 1.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "callout",
@@ -405,9 +447,27 @@
       "blocks": [
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Barisan sebagai Urutan Suku & Deret sebagai Akumulasi",
+          "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "rumus",
-          "title": "Suku ke-n",
-          "html": "<div class=\"fc-display\">\n\\[U_n = a\\,r^{\\,n-1}, \\qquad r = \\frac{U_n}{U_{n-1}}\\]\n</div><p>Jika r &gt; 1 sukunya membesar (pertumbuhan), jika 0 &lt; r &lt; 1 mengecil (peluruhan), jika r &lt; 0 tandanya berganti-ganti.</p>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Arti / Keterangan Unsur</th><th>Kategori Bilangan</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien / Konstanta / Basis</td><td class=\"unit\">\\(a, b, c \\in \\mathbb{R}\\)</td></tr>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel (Peubah)</td><td class=\"unit\">Bilangan Real</td></tr>\n    <tr><td class=\"sym\">\\(m, n\\)</td><td>Pangkat / Derajat</td><td class=\"unit\">\\(m, n \\in \\mathbb{R}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Utama Barisan & Deret",
+          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
         },
         {
           "type": "example",

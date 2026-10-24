@@ -15,9 +15,27 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Optimasi Keuntungan Pabrik di Tengah Keterbatasan Bahan",
+          "html": "<p>Sebuah pabrik konveksi pakaian ingin memproduksi kemeja dan celana sebanyak-banyaknya untuk meraup keuntungan maksimal. Namun, mereka menghadapi keterbatasan nyata: stok kain katun terbatas, jam kerja mesin jahit harian terbatas, dan kapasitas gudang penyimpanan terbatas.</p><p>Bagaimana manajer pabrik menentukan kombinasi jumlah kemeja dan celana yang harus diproduksi agar keuntungan mencapai titik tertinggi tanpa melanggar batasan apapun? Jawabannya adalah <b>Program Linear</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Dari Masalah Kayu Lapis Kantorovich ke Algoritma Simpleks Dantzig",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Leonid Kantorovich & George Dantzig</span>\n  <span class=\"h-tag\">Tahun: 1939 – 1947 M (Uni Soviet & Amerika Serikat)</span>\n  <span class=\"h-tag\">Krisis: Kelangkaan bahan baku industri perang dan kebutuhan optimasi armada logistik kargo militer tanpa pemborosan bahan bakar.</span>\n</div>\n<p>Pada tahun 1939 di Leningrad, matematikawan Soviet <b>Leonid Kantorovich</b> diminta membantu pabrik kayu lapis mengalokasikan mesin potong agar produksi maksimal. Ia menyusun metode matematis pertama untuk optimasi kendala linear, yang membawanya meraih Hadiah Nobel Ekonomi 1975.</p><p>Secara independen pada tahun 1947 di Angkatan Udara AS, <b>George Dantzig</b> menciptakan <b>Metode Simpleks</b> yang legendaris, memungkinkan komputer menelusuri titik-titik sudut bidang poligon berdimensi tinggi untuk menemukan solusi optimum dalam sekejap mata.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Daerah Himpunan Penyelesaian (DHP) Sistem Pertidaksamaan Linear",
-          "html": "<p><b>Konsep Kunci:</b> Daerah Himpunan Penyelesaian (DHP) Sistem Pertidaksamaan Linear adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Daerah Penyelesaian Feasible & Titik Pojok Optimum",
+          "html": "<p><b>Program Linear:</b> Metode matematika terapan untuk menentukan nilai optimum (maksimum atau minimum) dari suatu fungsi objektif linear yang terikat oleh sistem pertidaksamaan linear (sistem kendala).</p><p><b>Teorema Titik Ekstrem:</b> Nilai optimum dari fungsi objektif linear pada daerah penyelesaian yang tertutup (<i>bounded feasible region</i>) selalu dicapai pada salah satu <b>titik pojok (verteks)</b> daerah penyelesaian tersebut.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Program Linear",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Maksimumkan/Minimumkan: } Z = c_1 x + c_2 y, \\qquad \\text{dengan kendala: } \\begin{cases} a_1 x + b_1 y \\le d_1 \\\\ a_2 x + b_2 y \\le d_2 \\\\ x \\ge 0, \\; y \\ge 0 \\end{cases} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\"><i>Z</i></td><td>Nilai fungsi objektif sasaran yang hendak dioptimumkan</td><td class=\"unit\">satuan moneter / produk</td></tr>\n    <tr><td class=\"sym\">x, y</td><td>Variabel keputusan alokasi produksi / sumber daya</td><td class=\"unit\">x >= 0, y >= 0</td></tr>\n    <tr><td class=\"sym\">\\(c_1, c_2\\)</td><td>Koefisien kontribusi keuntungan / biaya per unit variabel</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(a_i, b_i, d_i\\)</td><td>Koefisien batas kendala kapasitas sumber daya dan bahan baku</td><td class=\"unit\">bilangan real</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Uji titik pojok dilakukan dengan mensubstitusikan seluruh koordinat sudut daerah himpunan penyelesaian ke fungsi objektif \\(Z(x, y)\\) untuk memilih nilai paling ekstrem.</small></p>"
         },
         {
           "type": "sim",
@@ -25,6 +43,32 @@
           "title": "Simulasi DHP Pertidaksamaan Linear",
           "height": 520,
           "caption": "Ubah koefisien pertidaksamaan dan amati pembentukan daerah arsiran solusi DHP."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Daerah Himpunan Penyelesaian (DHP) ",
+          "question": "<p>Diberikan permasalahan terkait konsep Daerah Himpunan Penyelesaian (DHP) Sistem Pertidaksamaan Linear. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Bentuk Baku Persamaan & Pertidaksamaan Linear Satu Variabel yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Variabel, Suku Sejenis & Persamaan Linear, solusi diperoleh secara terstruktur dan tepat."
+        },
+        {
+          "type": "check",
+          "question": "Manakah pernyataan berikut yang paling tepat dan selaras dengan prinsip konsep Daerah Himpunan Penyelesaian (DHP) Sistem Pertidaksamaan Linear?",
+          "options": {
+            "A": "Konsep tersebut hanya berlaku pada kondisi ideal tertentu dan tidak dapat diuji secara eksperimen.",
+            "B": "Prinsip tersebut diturunkan secara logis dari hukum-hukum fundamental dan terbukti konsisten melalui observasi empiris.",
+            "C": "Nilai variabel dalam konsep tersebut selalu konstan di segala lingkungan tanpa dipengaruhi parameter lain.",
+            "D": "Konsep ini bertentangan dengan prinsip kekekalan energi dan massa.",
+            "E": "Persamaan matematisnya hanya berlaku untuk bilangan bulat negatif."
+          },
+          "answer": "B",
+          "explanation": "Jawaban yang tepat adalah B. Dalam sains dan matematika, prinsip Daerah Himpunan Penyelesaian (DHP) Sistem Pertidaksamaan Linear memiliki landasan penalaran yang kokoh dan diverifikasi secara ilmiah. Opsi A keliru karena konsep sains dapat diuji empiris. Opsi C keliru karena variabel selalu bergantung pada kondisi batas. Opsi D keliru karena hukum alam selalu mematuhi asas kekekalan. Opsi E tidak berdasar.",
+          "hint": "Cari pernyataan yang mencerminkan sifat ilmiah berbasis bukti dan penalaran logis."
         }
       ]
     },
@@ -40,9 +84,53 @@
         },
         {
           "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Optimasi Keuntungan Pabrik di Tengah Keterbatasan Bahan",
+          "html": "<p>Sebuah pabrik konveksi pakaian ingin memproduksi kemeja dan celana sebanyak-banyaknya untuk meraup keuntungan maksimal. Namun, mereka menghadapi keterbatasan nyata: stok kain katun terbatas, jam kerja mesin jahit harian terbatas, dan kapasitas gudang penyimpanan terbatas.</p><p>Bagaimana manajer pabrik menentukan kombinasi jumlah kemeja dan celana yang harus diproduksi agar keuntungan mencapai titik tertinggi tanpa melanggar batasan apapun? Jawabannya adalah <b>Program Linear</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Dari Masalah Kayu Lapis Kantorovich ke Algoritma Simpleks Dantzig",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Leonid Kantorovich & George Dantzig</span>\n  <span class=\"h-tag\">Tahun: 1939 – 1947 M (Uni Soviet & Amerika Serikat)</span>\n  <span class=\"h-tag\">Krisis: Kelangkaan bahan baku industri perang dan kebutuhan optimasi armada logistik kargo militer tanpa pemborosan bahan bakar.</span>\n</div>\n<p>Pada tahun 1939 di Leningrad, matematikawan Soviet <b>Leonid Kantorovich</b> diminta membantu pabrik kayu lapis mengalokasikan mesin potong agar produksi maksimal. Ia menyusun metode matematis pertama untuk optimasi kendala linear, yang membawanya meraih Hadiah Nobel Ekonomi 1975.</p><p>Secara independen pada tahun 1947 di Angkatan Udara AS, <b>George Dantzig</b> menciptakan <b>Metode Simpleks</b> yang legendaris, memungkinkan komputer menelusuri titik-titik sudut bidang poligon berdimensi tinggi untuk menemukan solusi optimum dalam sekejap mata.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Pemodelan Matematika: Fungsi Kendala (Constraints) dan Fungsi Tujuan (Objektif)",
-          "html": "<p><b>Konsep Kunci:</b> Pemodelan Matematika: Fungsi Kendala (Constraints) dan Fungsi Tujuan (Objektif) adalah pilar fundamental dalam cabang ilmu  yang menghubungkan prinsip dasar teori dengan aplikasi praktis terukur.</p><p>Pemahaman yang matang terhadap aturan, batasan validitas, dan syarat berlakunya konsep ini sangat penting untuk menganalisis dan memecahkan permasalahan kontekstual tingkat tinggi (HOTS).</p>"
+          "title": "Definisi Konseptual: Daerah Penyelesaian Feasible & Titik Pojok Optimum",
+          "html": "<p><b>Program Linear:</b> Metode matematika terapan untuk menentukan nilai optimum (maksimum atau minimum) dari suatu fungsi objektif linear yang terikat oleh sistem pertidaksamaan linear (sistem kendala).</p><p><b>Teorema Titik Ekstrem:</b> Nilai optimum dari fungsi objektif linear pada daerah penyelesaian yang tertutup (<i>bounded feasible region</i>) selalu dicapai pada salah satu <b>titik pojok (verteks)</b> daerah penyelesaian tersebut.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Program Linear",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Maksimumkan/Minimumkan: } Z = c_1 x + c_2 y, \\qquad \\text{dengan kendala: } \\begin{cases} a_1 x + b_1 y \\le d_1 \\\\ a_2 x + b_2 y \\le d_2 \\\\ x \\ge 0, \\; y \\ge 0 \\end{cases} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\"><i>Z</i></td><td>Nilai fungsi objektif sasaran yang hendak dioptimumkan</td><td class=\"unit\">satuan moneter / produk</td></tr>\n    <tr><td class=\"sym\">x, y</td><td>Variabel keputusan alokasi produksi / sumber daya</td><td class=\"unit\">x >= 0, y >= 0</td></tr>\n    <tr><td class=\"sym\">\\(c_1, c_2\\)</td><td>Koefisien kontribusi keuntungan / biaya per unit variabel</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(a_i, b_i, d_i\\)</td><td>Koefisien batas kendala kapasitas sumber daya dan bahan baku</td><td class=\"unit\">bilangan real</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Uji titik pojok dilakukan dengan mensubstitusikan seluruh koordinat sudut daerah himpunan penyelesaian ke fungsi objektif \\(Z(x, y)\\) untuk memilih nilai paling ekstrem.</small></p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Pemodelan Matematika: Fungsi Kendal",
+          "question": "<p>Diberikan permasalahan terkait konsep Pemodelan Matematika: Fungsi Kendala (Constraints) dan Fungsi Tujuan (Objektif). Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Bentuk Baku Persamaan & Pertidaksamaan Linear Satu Variabel yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Variabel, Suku Sejenis & Persamaan Linear, solusi diperoleh secara terstruktur dan tepat."
+        },
+        {
+          "type": "check",
+          "question": "Manakah pernyataan berikut yang paling tepat dan selaras dengan prinsip konsep Pemodelan Matematika: Fungsi Kendala (Constraints) dan Fungsi Tujuan (Objektif)?",
+          "options": {
+            "A": "Konsep tersebut hanya berlaku pada kondisi ideal tertentu dan tidak dapat diuji secara eksperimen.",
+            "B": "Prinsip tersebut diturunkan secara logis dari hukum-hukum fundamental dan terbukti konsisten melalui observasi empiris.",
+            "C": "Nilai variabel dalam konsep tersebut selalu konstan di segala lingkungan tanpa dipengaruhi parameter lain.",
+            "D": "Konsep ini bertentangan dengan prinsip kekekalan energi dan massa.",
+            "E": "Persamaan matematisnya hanya berlaku untuk bilangan bulat negatif."
+          },
+          "answer": "B",
+          "explanation": "Jawaban yang tepat adalah B. Dalam sains dan matematika, prinsip Pemodelan Matematika: Fungsi Kendala (Constraints) dan Fungsi Tujuan (Objektif) memiliki landasan penalaran yang kokoh dan diverifikasi secara ilmiah. Opsi A keliru karena konsep sains dapat diuji empiris. Opsi C keliru karena variabel selalu bergantung pada kondisi batas. Opsi D keliru karena hukum alam selalu mematuhi asas kekekalan. Opsi E tidak berdasar.",
+          "hint": "Cari pernyataan yang mencerminkan sifat ilmiah berbasis bukti dan penalaran logis."
         }
       ]
     },
@@ -55,6 +143,30 @@
         {
           "type": "text",
           "html": "<h3>Teorema Fundamental Program Linear</h3>\n<p><i>\"Nilai optimum (maksimum atau minimum) dari suatu fungsi objektif linier pada daerah penyelesaian konveks tertutup SELALU tercapai pada salah satu titik pojok (ekstrem / verteks) dari DHP tersebut.\"</i></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Optimasi Keuntungan Pabrik di Tengah Keterbatasan Bahan",
+          "html": "<p>Sebuah pabrik konveksi pakaian ingin memproduksi kemeja dan celana sebanyak-banyaknya untuk meraup keuntungan maksimal. Namun, mereka menghadapi keterbatasan nyata: stok kain katun terbatas, jam kerja mesin jahit harian terbatas, dan kapasitas gudang penyimpanan terbatas.</p><p>Bagaimana manajer pabrik menentukan kombinasi jumlah kemeja dan celana yang harus diproduksi agar keuntungan mencapai titik tertinggi tanpa melanggar batasan apapun? Jawabannya adalah <b>Program Linear</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Dari Masalah Kayu Lapis Kantorovich ke Algoritma Simpleks Dantzig",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Leonid Kantorovich & George Dantzig</span>\n  <span class=\"h-tag\">Tahun: 1939 – 1947 M (Uni Soviet & Amerika Serikat)</span>\n  <span class=\"h-tag\">Krisis: Kelangkaan bahan baku industri perang dan kebutuhan optimasi armada logistik kargo militer tanpa pemborosan bahan bakar.</span>\n</div>\n<p>Pada tahun 1939 di Leningrad, matematikawan Soviet <b>Leonid Kantorovich</b> diminta membantu pabrik kayu lapis mengalokasikan mesin potong agar produksi maksimal. Ia menyusun metode matematis pertama untuk optimasi kendala linear, yang membawanya meraih Hadiah Nobel Ekonomi 1975.</p><p>Secara independen pada tahun 1947 di Angkatan Udara AS, <b>George Dantzig</b> menciptakan <b>Metode Simpleks</b> yang legendaris, memungkinkan komputer menelusuri titik-titik sudut bidang poligon berdimensi tinggi untuk menemukan solusi optimum dalam sekejap mata.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Daerah Penyelesaian Feasible & Titik Pojok Optimum",
+          "html": "<p><b>Program Linear:</b> Metode matematika terapan untuk menentukan nilai optimum (maksimum atau minimum) dari suatu fungsi objektif linear yang terikat oleh sistem pertidaksamaan linear (sistem kendala).</p><p><b>Teorema Titik Ekstrem:</b> Nilai optimum dari fungsi objektif linear pada daerah penyelesaian yang tertutup (<i>bounded feasible region</i>) selalu dicapai pada salah satu <b>titik pojok (verteks)</b> daerah penyelesaian tersebut.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Program Linear",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Maksimumkan/Minimumkan: } Z = c_1 x + c_2 y, \\qquad \\text{dengan kendala: } \\begin{cases} a_1 x + b_1 y \\le d_1 \\\\ a_2 x + b_2 y \\le d_2 \\\\ x \\ge 0, \\; y \\ge 0 \\end{cases} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\"><i>Z</i></td><td>Nilai fungsi objektif sasaran yang hendak dioptimumkan</td><td class=\"unit\">satuan moneter / produk</td></tr>\n    <tr><td class=\"sym\">x, y</td><td>Variabel keputusan alokasi produksi / sumber daya</td><td class=\"unit\">x >= 0, y >= 0</td></tr>\n    <tr><td class=\"sym\">\\(c_1, c_2\\)</td><td>Koefisien kontribusi keuntungan / biaya per unit variabel</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(a_i, b_i, d_i\\)</td><td>Koefisien batas kendala kapasitas sumber daya dan bahan baku</td><td class=\"unit\">bilangan real</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Uji titik pojok dilakukan dengan mensubstitusikan seluruh koordinat sudut daerah himpunan penyelesaian ke fungsi objektif \\(Z(x, y)\\) untuk memilih nilai paling ekstrem.</small></p>"
         },
         {
           "type": "example",
@@ -94,6 +206,56 @@
         {
           "type": "text",
           "html": "<h3>Konsep Garis Selidik</h3>\n<p>Garis selidik \\(ax + by = k\\) adalah keluarga garis-garis sejajar bergradien \\(m = -a/b\\). Nilai maksimum tercapai pada titik pojok terakhir yang disentuh oleh garis selidik saat digeser ke arah luar menjauhi titik asal.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Optimasi Keuntungan Pabrik di Tengah Keterbatasan Bahan",
+          "html": "<p>Sebuah pabrik konveksi pakaian ingin memproduksi kemeja dan celana sebanyak-banyaknya untuk meraup keuntungan maksimal. Namun, mereka menghadapi keterbatasan nyata: stok kain katun terbatas, jam kerja mesin jahit harian terbatas, dan kapasitas gudang penyimpanan terbatas.</p><p>Bagaimana manajer pabrik menentukan kombinasi jumlah kemeja dan celana yang harus diproduksi agar keuntungan mencapai titik tertinggi tanpa melanggar batasan apapun? Jawabannya adalah <b>Program Linear</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Dari Masalah Kayu Lapis Kantorovich ke Algoritma Simpleks Dantzig",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Leonid Kantorovich & George Dantzig</span>\n  <span class=\"h-tag\">Tahun: 1939 – 1947 M (Uni Soviet & Amerika Serikat)</span>\n  <span class=\"h-tag\">Krisis: Kelangkaan bahan baku industri perang dan kebutuhan optimasi armada logistik kargo militer tanpa pemborosan bahan bakar.</span>\n</div>\n<p>Pada tahun 1939 di Leningrad, matematikawan Soviet <b>Leonid Kantorovich</b> diminta membantu pabrik kayu lapis mengalokasikan mesin potong agar produksi maksimal. Ia menyusun metode matematis pertama untuk optimasi kendala linear, yang membawanya meraih Hadiah Nobel Ekonomi 1975.</p><p>Secara independen pada tahun 1947 di Angkatan Udara AS, <b>George Dantzig</b> menciptakan <b>Metode Simpleks</b> yang legendaris, memungkinkan komputer menelusuri titik-titik sudut bidang poligon berdimensi tinggi untuk menemukan solusi optimum dalam sekejap mata.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Daerah Penyelesaian Feasible & Titik Pojok Optimum",
+          "html": "<p><b>Program Linear:</b> Metode matematika terapan untuk menentukan nilai optimum (maksimum atau minimum) dari suatu fungsi objektif linear yang terikat oleh sistem pertidaksamaan linear (sistem kendala).</p><p><b>Teorema Titik Ekstrem:</b> Nilai optimum dari fungsi objektif linear pada daerah penyelesaian yang tertutup (<i>bounded feasible region</i>) selalu dicapai pada salah satu <b>titik pojok (verteks)</b> daerah penyelesaian tersebut.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Program Linear",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Maksimumkan/Minimumkan: } Z = c_1 x + c_2 y, \\qquad \\text{dengan kendala: } \\begin{cases} a_1 x + b_1 y \\le d_1 \\\\ a_2 x + b_2 y \\le d_2 \\\\ x \\ge 0, \\; y \\ge 0 \\end{cases} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\"><i>Z</i></td><td>Nilai fungsi objektif sasaran yang hendak dioptimumkan</td><td class=\"unit\">satuan moneter / produk</td></tr>\n    <tr><td class=\"sym\">x, y</td><td>Variabel keputusan alokasi produksi / sumber daya</td><td class=\"unit\">x >= 0, y >= 0</td></tr>\n    <tr><td class=\"sym\">\\(c_1, c_2\\)</td><td>Koefisien kontribusi keuntungan / biaya per unit variabel</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(a_i, b_i, d_i\\)</td><td>Koefisien batas kendala kapasitas sumber daya dan bahan baku</td><td class=\"unit\">bilangan real</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Uji titik pojok dilakukan dengan mensubstitusikan seluruh koordinat sudut daerah himpunan penyelesaian ke fungsi objektif \\(Z(x, y)\\) untuk memilih nilai paling ekstrem.</small></p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Metode Garis Selidik (ax + by = k) ",
+          "question": "<p>Diberikan permasalahan terkait konsep Metode Garis Selidik (ax + by = k) dan Trik Kemiringan Gradien. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Bentuk Baku Persamaan & Pertidaksamaan Linear Satu Variabel yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Variabel, Suku Sejenis & Persamaan Linear, solusi diperoleh secara terstruktur dan tepat."
+        },
+        {
+          "type": "check",
+          "question": "Manakah pernyataan berikut yang paling tepat dan selaras dengan prinsip konsep Metode Garis Selidik (ax + by = k) dan Trik Kemiringan Gradien?",
+          "options": {
+            "A": "Konsep tersebut hanya berlaku pada kondisi ideal tertentu dan tidak dapat diuji secara eksperimen.",
+            "B": "Prinsip tersebut diturunkan secara logis dari hukum-hukum fundamental dan terbukti konsisten melalui observasi empiris.",
+            "C": "Nilai variabel dalam konsep tersebut selalu konstan di segala lingkungan tanpa dipengaruhi parameter lain.",
+            "D": "Konsep ini bertentangan dengan prinsip kekekalan energi dan massa.",
+            "E": "Persamaan matematisnya hanya berlaku untuk bilangan bulat negatif."
+          },
+          "answer": "B",
+          "explanation": "Jawaban yang tepat adalah B. Dalam sains dan matematika, prinsip Metode Garis Selidik (ax + by = k) dan Trik Kemiringan Gradien memiliki landasan penalaran yang kokoh dan diverifikasi secara ilmiah. Opsi A keliru karena konsep sains dapat diuji empiris. Opsi C keliru karena variabel selalu bergantung pada kondisi batas. Opsi D keliru karena hukum alam selalu mematuhi asas kekekalan. Opsi E tidak berdasar.",
+          "hint": "Cari pernyataan yang mencerminkan sifat ilmiah berbasis bukti dan penalaran logis."
         }
       ]
     },
@@ -106,6 +268,56 @@
         {
           "type": "text",
           "html": "<h3>Dua Kasus Anomali Program Linear</h3>\n<ol>\n  <li><b>Solusi Ganda (Multiple Optimal Solutions)</b>: Terjadi ketika gradien garis fungsi objektif sama persis dengan gradien salah satu garis kendala batas DHP (\\(m_{\\text{obj}} = m_{\\text{kendala}}\\)). Seluruh titik di sepanjang ruas garis batas tersebut menghasilkan nilai optimum yang sama.</li>\n  <li><b>Solusi Tak Berbatas (Unbounded Solution)</b>: Daerah DHP terbuka menuju tak hingga, sehingga fungsi objektif dapat membesar tanpa batas (\\(Z \\to \\infty\\)).</li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Optimasi Keuntungan Pabrik di Tengah Keterbatasan Bahan",
+          "html": "<p>Sebuah pabrik konveksi pakaian ingin memproduksi kemeja dan celana sebanyak-banyaknya untuk meraup keuntungan maksimal. Namun, mereka menghadapi keterbatasan nyata: stok kain katun terbatas, jam kerja mesin jahit harian terbatas, dan kapasitas gudang penyimpanan terbatas.</p><p>Bagaimana manajer pabrik menentukan kombinasi jumlah kemeja dan celana yang harus diproduksi agar keuntungan mencapai titik tertinggi tanpa melanggar batasan apapun? Jawabannya adalah <b>Program Linear</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Dari Masalah Kayu Lapis Kantorovich ke Algoritma Simpleks Dantzig",
+          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Leonid Kantorovich & George Dantzig</span>\n  <span class=\"h-tag\">Tahun: 1939 – 1947 M (Uni Soviet & Amerika Serikat)</span>\n  <span class=\"h-tag\">Krisis: Kelangkaan bahan baku industri perang dan kebutuhan optimasi armada logistik kargo militer tanpa pemborosan bahan bakar.</span>\n</div>\n<p>Pada tahun 1939 di Leningrad, matematikawan Soviet <b>Leonid Kantorovich</b> diminta membantu pabrik kayu lapis mengalokasikan mesin potong agar produksi maksimal. Ia menyusun metode matematis pertama untuk optimasi kendala linear, yang membawanya meraih Hadiah Nobel Ekonomi 1975.</p><p>Secara independen pada tahun 1947 di Angkatan Udara AS, <b>George Dantzig</b> menciptakan <b>Metode Simpleks</b> yang legendaris, memungkinkan komputer menelusuri titik-titik sudut bidang poligon berdimensi tinggi untuk menemukan solusi optimum dalam sekejap mata.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Daerah Penyelesaian Feasible & Titik Pojok Optimum",
+          "html": "<p><b>Program Linear:</b> Metode matematika terapan untuk menentukan nilai optimum (maksimum atau minimum) dari suatu fungsi objektif linear yang terikat oleh sistem pertidaksamaan linear (sistem kendala).</p><p><b>Teorema Titik Ekstrem:</b> Nilai optimum dari fungsi objektif linear pada daerah penyelesaian yang tertutup (<i>bounded feasible region</i>) selalu dicapai pada salah satu <b>titik pojok (verteks)</b> daerah penyelesaian tersebut.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Program Linear",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Maksimumkan/Minimumkan: } Z = c_1 x + c_2 y, \\qquad \\text{dengan kendala: } \\begin{cases} a_1 x + b_1 y \\le d_1 \\\\ a_2 x + b_2 y \\le d_2 \\\\ x \\ge 0, \\; y \\ge 0 \\end{cases} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\"><i>Z</i></td><td>Nilai fungsi objektif sasaran yang hendak dioptimumkan</td><td class=\"unit\">satuan moneter / produk</td></tr>\n    <tr><td class=\"sym\">x, y</td><td>Variabel keputusan alokasi produksi / sumber daya</td><td class=\"unit\">x >= 0, y >= 0</td></tr>\n    <tr><td class=\"sym\">\\(c_1, c_2\\)</td><td>Koefisien kontribusi keuntungan / biaya per unit variabel</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(a_i, b_i, d_i\\)</td><td>Koefisien batas kendala kapasitas sumber daya dan bahan baku</td><td class=\"unit\">bilangan real</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Uji titik pojok dilakukan dengan mensubstitusikan seluruh koordinat sudut daerah himpunan penyelesaian ke fungsi objektif \\(Z(x, y)\\) untuk memilih nilai paling ekstrem.</small></p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Terpandu: Pemecahan Masalah Analisis Kasus Khusus: Solusi Ganda",
+          "question": "<p>Diberikan permasalahan terkait konsep Analisis Kasus Khusus: Solusi Ganda dan Solusi Tak Berbatas. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "steps": [
+            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
+            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Bentuk Baku Persamaan & Pertidaksamaan Linear Satu Variabel yang menghubungkan variabel-variabel tersebut.",
+            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
+            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+          ],
+          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Variabel, Suku Sejenis & Persamaan Linear, solusi diperoleh secara terstruktur dan tepat."
+        },
+        {
+          "type": "check",
+          "question": "Manakah pernyataan berikut yang paling tepat dan selaras dengan prinsip konsep Analisis Kasus Khusus: Solusi Ganda dan Solusi Tak Berbatas?",
+          "options": {
+            "A": "Konsep tersebut hanya berlaku pada kondisi ideal tertentu dan tidak dapat diuji secara eksperimen.",
+            "B": "Prinsip tersebut diturunkan secara logis dari hukum-hukum fundamental dan terbukti konsisten melalui observasi empiris.",
+            "C": "Nilai variabel dalam konsep tersebut selalu konstan di segala lingkungan tanpa dipengaruhi parameter lain.",
+            "D": "Konsep ini bertentangan dengan prinsip kekekalan energi dan massa.",
+            "E": "Persamaan matematisnya hanya berlaku untuk bilangan bulat negatif."
+          },
+          "answer": "B",
+          "explanation": "Jawaban yang tepat adalah B. Dalam sains dan matematika, prinsip Analisis Kasus Khusus: Solusi Ganda dan Solusi Tak Berbatas memiliki landasan penalaran yang kokoh dan diverifikasi secara ilmiah. Opsi A keliru karena konsep sains dapat diuji empiris. Opsi C keliru karena variabel selalu bergantung pada kondisi batas. Opsi D keliru karena hukum alam selalu mematuhi asas kekekalan. Opsi E tidak berdasar.",
+          "hint": "Cari pernyataan yang mencerminkan sifat ilmiah berbasis bukti dan penalaran logis."
         }
       ]
     },
