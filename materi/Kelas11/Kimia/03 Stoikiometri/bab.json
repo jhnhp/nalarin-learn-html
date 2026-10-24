@@ -4,20 +4,24 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "setara",
-      "title": "Stoikiometri dan penyetaraan reaksi",
-      "kind": "simulasi",
-      "duration": "25 menit",
+      "id": "konsep-mol-avogadro",
+      "title": "Konsep Mol dan Bilangan Avogadro (N_A = 6,022 x 10^23)",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Stoikiometri</b> (Yunani <i>stoicheion</i> = unsur, <i>metron</i> = ukuran) adalah hubungan kuantitatif antara pereaksi dan hasil reaksi. Seperti resep kue: 300 g tepung + 800 mL santan + 400 g kelapa menghasilkan 100 kue; jika bahan dikali dua, kuenya pun dua kali lebih banyak. Dalam kimia, “resep” itu adalah <b>persamaan reaksi setara</b>.</p>"
+          "html": "<p><b>Konsep Mol dan Bilangan Avogadro (N_A = 6,022 x 10^23)</b>: Mol sebagai 'lusin' kimia untuk menjembatani dunia mikroskopis atom dengan massa makroskopis gram; konversi jumlah partikel N = n · NA.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Mol</b> adalah satuan jumlah zat. Satu mol berisi 6,02 × 10²³ partikel (<b>bilangan Avogadro</b>, Nₐ), sama seperti satu lusin berisi 12 buah. Massa satu mol zat (massa molar) dalam gram sama dengan A<sub>r</sub> atau M<sub>r</sub> zat itu.</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Prinsip penyetaraan",
-          "html": "<p>Jumlah tiap jenis atom di ruas kiri harus sama dengan di ruas kanan (hukum kekekalan massa). Yang boleh diubah hanya <b>koefisien</b>, bukan indeks rumus kimia.</p>"
+          "variant": "info",
+          "title": "Definisi mol terbaru",
+          "html": "<p>Buku mendefinisikan mol sebagai jumlah partikel dalam 12 gram karbon-12. Sejak 2019, Satuan Internasional (SI) mendefinisikan 1 mol sebagai tepat 6,02214076 × 10²³ partikel. Untuk perhitungan sekolah, kedua definisi memberi hasil yang sama.</p>"
         },
         {
           "type": "sim",
@@ -25,6 +29,13 @@
           "title": "Menyetarakan persamaan reaksi",
           "height": 520,
           "caption": "Setarakan pembakaran propana dan perkaratan besi. Atom mana yang paling mudah disetarakan terakhir?"
+        },
+        {
+          "type": "sim",
+          "src": "sim/konsep-mol.html",
+          "title": "Peta konsep mol",
+          "height": 520,
+          "caption": "Masukkan massa suatu zat, lalu baca jumlah partikel dan volumenya. Coba juga mulai dari volume STP atau jumlah partikel."
         },
         {
           "type": "example",
@@ -35,62 +46,6 @@
             "Samakan Al: 2 Al₂O₃ berisi 4 Al → 4 Al."
           ],
           "answer": "4Al + 3O₂ → 2Al₂O₃"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Setarakan: NH₃ + O₂ → NO + H₂O.</p>",
-          "steps": [
-            "Mulai dari H: 2 NH₃ → 3 H₂O (6 H).",
-            "N: 2 NH₃ → 2 NO.",
-            "O kanan = 2 + 3 = 5 → O₂ = 5/2.",
-            "Kalikan semua dengan 2."
-          ],
-          "answer": "4NH₃ + 5O₂ → 4NO + 6H₂O"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Urutan yang memudahkan",
-          "html": "<p>Setarakan dulu atom yang hanya muncul di satu zat pada tiap ruas (biasanya logam atau C), lalu H, dan terakhir O. Pada reaksi pembakaran hidrokarbon, O₂ disetarakan paling akhir; jika muncul pecahan, kalikan semua koefisien dengan penyebutnya.</p>"
-        },
-        {
-          "type": "check",
-          "question": "Pada reaksi Fe₂O₃ + aCO → bFe + cCO₂, nilai a, b, dan c adalah ....",
-          "options": {
-            "A": "1, 2, 1",
-            "B": "3, 2, 3",
-            "C": "2, 2, 3",
-            "D": "3, 1, 3"
-          },
-          "answer": "B",
-          "hint": "Fe₂O₃ mengandung 2 Fe dan 3 O.",
-          "explanation": "Fe: b = 2. O dari Fe₂O₃ (3) dipindah ke CO₂: a = c = 3."
-        }
-      ]
-    },
-    {
-      "id": "konsep-mol",
-      "title": "Konsep mol",
-      "kind": "simulasi",
-      "duration": "35 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Mol</b> adalah satuan jumlah zat. Satu mol berisi 6,02 × 10²³ partikel (<b>bilangan Avogadro</b>, Nₐ), sama seperti satu lusin berisi 12 buah. Massa satu mol zat (massa molar) dalam gram sama dengan A<sub>r</sub> atau M<sub>r</sub> zat itu.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Hubungan mol",
-          "html": "<p>\\[n = \\frac{m}{M_r} \\qquad N = n \\times 6{,}02\\times10^{23} \\qquad V_{\\text{STP}} = n \\times 22{,}4\\ \\text{L}\\]</p><p>STP: 0 °C (273 K) dan 1 atm. Volume molar 22,4 L/mol hanya untuk gas.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/konsep-mol.html",
-          "title": "Peta konsep mol",
-          "height": 520,
-          "caption": "Masukkan massa suatu zat, lalu baca jumlah partikel dan volumenya. Coba juga mulai dari volume STP atau jumlah partikel."
         },
         {
           "type": "example",
@@ -113,14 +68,15 @@
           "answer": "4,8 gram"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Definisi mol terbaru",
-          "html": "<p>Buku mendefinisikan mol sebagai jumlah partikel dalam 12 gram karbon-12. Sejak 2019, Satuan Internasional (SI) mendefinisikan 1 mol sebagai tepat 6,02214076 × 10²³ partikel. Untuk perhitungan sekolah, kedua definisi memberi hasil yang sama.</p>"
-        },
-        {
-          "type": "text",
-          "html": "<p><b>Koefisien reaksi = perbandingan mol.</b> Pada N₂ + 3H₂ → 2NH₃, setiap 1 mol N₂ bereaksi dengan 3 mol H₂ menghasilkan 2 mol NH₃. Untuk gas pada suhu dan tekanan sama, perbandingan koefisien juga merupakan perbandingan volume (hipotesis Avogadro).</p>"
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kalium klorat dipanaskan: 2KClO₃ → 2KCl + 3O₂. Berapa gram O₂ yang dihasilkan dari 24,5 g KClO₃ (M<sub>r</sub> = 122,5)?</p>",
+          "steps": [
+            "n KClO₃ = 24,5/122,5 = 0,2 mol.",
+            "n O₂ = 3/2 × 0,2 = 0,3 mol.",
+            "m O₂ = 0,3 × 32 = 9,6 g."
+          ],
+          "answer": "9,6 gram"
         },
         {
           "type": "check",
@@ -138,11 +94,213 @@
       ]
     },
     {
-      "id": "rumus-empiris",
-      "title": "Rumus empiris, rumus molekul, dan kadar unsur",
+      "id": "massa-molar-konversi-gram",
+      "title": "Massa Molar (Ar dan Mr) dan Konversi Mol-Gram",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Massa Molar (Ar dan Mr) dan Konversi Mol-Gram</b>: Definisi massa molar zat (gram/mol); rumus gram = n · Mr dan sebaliknya; latihan konversi multi-langkah.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Definisi massa molar zat (gram/mol); rumus gram = n · Mr dan sebaliknya; latihan konversi multi-langkah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Massa Molar (Ar dan Mr) dan Konversi Mol-Gram",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Massa Molar (Ar dan Mr) dan Konversi Mol-Gram</b> berikut. Analisislah berdasarkan kaidah Definisi massa molar zat (gram/mol); rumus gram = n · Mr dan sebaliknya; latihan konversi multi-langkah..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Massa Molar (Ar dan Mr) dan Konversi Mol-Gram untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Massa Molar (Ar dan Mr) dan Konversi Mol-Gram, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Massa Molar (Ar dan Mr) dan Konversi Mol-Gram berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Definisi massa molar zat (gram/mol); rumus gram = n · Mr dan sebaliknya; latihan konversi multi-langkah.."
+        }
+      ]
+    },
+    {
+      "id": "volume-molar-gas",
+      "title": "Volume Molar Gas: Kondisi STP, RTP, dan Gas Ideal (PV = nRT)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Volume Molar Gas: Kondisi STP, RTP, dan Gas Ideal (PV = nRT)</b>: Kondisi standar STP (0°C, 1 atm, V = 22,4 L/mol); kondisi kamar RTP (25°C, 1 atm, V = 24 L/mol); perhitungan gas pada suhu/tekanan sembarang PV = nRT; rasio gas pada P,T sama: n1/V1 = n2/V2.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Koefisien reaksi = perbandingan mol.</b> Pada N₂ + 3H₂ → 2NH₃, setiap 1 mol N₂ bereaksi dengan 3 mol H₂ menghasilkan 2 mol NH₃. Untuk gas pada suhu dan tekanan sama, perbandingan koefisien juga merupakan perbandingan volume (hipotesis Avogadro).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hubungan mol",
+          "html": "<p>\\[n = \\frac{m}{M_r} \\qquad N = n \\times 6{,}02\\times10^{23} \\qquad V_{\\text{STP}} = n \\times 22{,}4\\ \\text{L}\\]</p><p>STP: 0 °C (273 K) dan 1 atm. Volume molar 22,4 L/mol hanya untuk gas.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 13 g seng (A<sub>r</sub> Zn = 65) direaksikan dengan HCl berlebih: Zn + 2HCl → ZnCl₂ + H₂. Berapa liter gas H₂ yang terbentuk pada STP?</p>",
+          "steps": [
+            "n Zn = 13/65 = 0,2 mol.",
+            "Perbandingan koefisien Zn : H₂ = 1 : 1 → n H₂ = 0,2 mol.",
+            "V = 0,2 × 22,4 = 4,48 L."
+          ],
+          "answer": "4,48 L"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Volume Molar Gas: Kondisi STP, RTP, dan Gas Ideal (PV = nRT), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Volume Molar Gas: Kondisi STP, RTP, dan Gas Ideal (PV = nRT) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Kondisi standar STP (0°C, 1 atm, V = 22,4 L/mol); kondisi kamar RTP (25°C, 1 atm, V = 24 L/mol); perhitungan gas pada suhu/tekanan sembarang PV = nRT; rasio gas pada P,T sama: n1/V1 = n2/V2.."
+        }
+      ]
+    },
+    {
+      "id": "konsentrasi-molaritas-pengenceran",
+      "title": "Molaritas Larutan (M = n / V) dan Rumus Pengenceran",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Molaritas Larutan (M = n / V) dan Rumus Pengenceran</b>: Konsentrasi molar (mol/L larutan); pembuatan larutan baku di lab; rumus pengenceran mempertahankan mol zat terlarut: M1 · V1 = M2 · V2; pencampuran dua larutan konsentrasi berbeda.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Konsentrasi molar (mol/L larutan); pembuatan larutan baku di lab; rumus pengenceran mempertahankan mol zat terlarut: M1 · V1 = M2 · V2; pencampuran dua larutan konsentrasi berbeda.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Molaritas Larutan (M = n / V) dan Rumus Pengenceran",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Molaritas Larutan (M = n / V) dan Rumus Pengenceran</b> berikut. Analisislah berdasarkan kaidah Konsentrasi molar (mol/L larutan); pembuatan larutan baku di lab; rumus pengenceran mempertahankan mol zat terlarut: M1 · V1 = M2 · V2; pencampuran dua larutan konsentrasi berbeda..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Molaritas Larutan (M = n / V) dan Rumus Pengenceran untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Molaritas Larutan (M = n / V) dan Rumus Pengenceran, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Molaritas Larutan (M = n / V) dan Rumus Pengenceran berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Konsentrasi molar (mol/L larutan); pembuatan larutan baku di lab; rumus pengenceran mempertahankan mol zat terlarut: M1 · V1 = M2 · V2; pencampuran dua larutan konsentrasi berbeda.."
+        }
+      ]
+    },
+    {
+      "id": "komposisi-persen-unsur",
+      "title": "Komposisi Persen Massa Unsur dalam Senyawa (% Komposisi)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Komposisi Persen Massa Unsur dalam Senyawa (% Komposisi)</b>: Rumus % unsur = (jumlah atom x Ar / Mr senyawa) x 100%; menghitung massa unsur tertentu yang terkandung dalam sekian gram pupuk/senyawa kimia.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Stoikiometri</b> (Yunani <i>stoicheion</i> = unsur, <i>metron</i> = ukuran) adalah hubungan kuantitatif antara pereaksi dan hasil reaksi. Seperti resep kue: 300 g tepung + 800 mL santan + 400 g kelapa menghasilkan 100 kue; jika bahan dikali dua, kuenya pun dua kali lebih banyak. Dalam kimia, “resep” itu adalah <b>persamaan reaksi setara</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Prinsip penyetaraan",
+          "html": "<p>Jumlah tiap jenis atom di ruas kiri harus sama dengan di ruas kanan (hukum kekekalan massa). Yang boleh diubah hanya <b>koefisien</b>, bukan indeks rumus kimia.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Langkah-langkah",
+          "html": "<ol><li>Anggap sampel 100 g sehingga % = gram.</li><li>Mol tiap unsur = massa ÷ A<sub>r</sub>.</li><li>Bagi semua mol dengan mol terkecil; bulatkan (kalikan 2 atau 3 bila hasilnya x,5 atau x,33).</li><li>Rumus molekul = (RE)ₙ dengan \\(n = \\dfrac{M_r\\ \\text{senyawa}}{M_r\\ \\text{RE}}\\).</li></ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kadar unsur dalam senyawa",
+          "html": "<p>\\[\\%X = \\frac{\\text{jumlah atom X} \\times A_r\\,X}{M_r\\ \\text{senyawa}} \\times 100\\%\\]</p><p>Contoh: kadar N dalam amonium nitrat NH₄NO₃ (M<sub>r</sub> 80) = 2 × 14/80 × 100% = 35%.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Pada contoh seng sulfida, soal menyebut ZnS yang diperoleh 90 g, tetapi penyelesaiannya memakai 92 g. Dengan 90 g, persen hasilnya 90/97 × 100% ≈ 92,8%; dengan 92 g, ≈ 94,8%. Selain itu, pada soal latihan pembakaran glukosa, rumusnya seharusnya C₆H₁₂O₆, bukan C₆H₁₂O.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Komposisi Persen Massa Unsur dalam Senyawa (% Komposisi)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Komposisi Persen Massa Unsur dalam Senyawa (% Komposisi)</b> berikut. Analisislah berdasarkan kaidah Rumus % unsur = (jumlah atom x Ar / Mr senyawa) x 100%; menghitung massa unsur tertentu yang terkandung dalam sekian gram pupuk/senyawa kimia..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Komposisi Persen Massa Unsur dalam Senyawa (% Komposisi) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Komposisi Persen Massa Unsur dalam Senyawa (% Komposisi), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Komposisi Persen Massa Unsur dalam Senyawa (% Komposisi) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rumus % unsur = (jumlah atom x Ar / Mr senyawa) x 100%; menghitung massa unsur tertentu yang terkandung dalam sekian gram pupuk/senyawa kimia.."
+        }
+      ]
+    },
+    {
+      "id": "rumus-empiris-dan-molekul",
+      "title": "Penentuan Rumus Empiris (RE) dan Rumus Molekul (RM)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penentuan Rumus Empiris (RE) dan Rumus Molekul (RM)</b>: Langkah sistematis: persen massa -> konversi ke mol -> perbandingan mol bulat terkecil (RE); hubungan RM = (RE)_n dengan Mr diketahui; senyawa hidrokarbon hasil pembakaran.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p><b>Rumus molekul</b> menyatakan jumlah atom sebenarnya dalam satu molekul (benzena C₆H₆). <b>Rumus empiris</b> menyatakan perbandingan bilangan bulat paling sederhana atom-atomnya (benzena: CH). Rumus empiris ditentukan dari data percobaan (persen massa); rumus molekul memerlukan tambahan M<sub>r</sub>.</p>"
@@ -150,8 +308,8 @@
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Langkah-langkah",
-          "html": "<ol><li>Anggap sampel 100 g sehingga % = gram.</li><li>Mol tiap unsur = massa ÷ A<sub>r</sub>.</li><li>Bagi semua mol dengan mol terkecil; bulatkan (kalikan 2 atau 3 bila hasilnya x,5 atau x,33).</li><li>Rumus molekul = (RE)ₙ dengan \\(n = \\dfrac{M_r\\ \\text{senyawa}}{M_r\\ \\text{RE}}\\).</li></ol>"
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Langkah sistematis: persen massa -> konversi ke mol -> perbandingan mol bulat terkecil (RE); hubungan RM = (RE)_n dengan Mr diketahui; senyawa hidrokarbon hasil pembakaran.</p>"
         },
         {
           "type": "sim",
@@ -182,10 +340,15 @@
           "answer": "C₄H₁₀"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Kadar unsur dalam senyawa",
-          "html": "<p>\\[\\%X = \\frac{\\text{jumlah atom X} \\times A_r\\,X}{M_r\\ \\text{senyawa}} \\times 100\\%\\]</p><p>Contoh: kadar N dalam amonium nitrat NH₄NO₃ (M<sub>r</sub> 80) = 2 × 14/80 × 100% = 35%.</p>"
+          "type": "example",
+          "title": "Contoh soal 3 (studi kasus buku)",
+          "question": "<p>Sebuah desa berisi 2.500 rumah. Tiap rumah memakai 3 kg elpiji per minggu (50% propana, 50% butana). Berapa CO₂ yang dihasilkan per minggu jika pembakaran sempurna?<br>C₃H₈ + 5O₂ → 3CO₂ + 4H₂O; 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O</p>",
+          "steps": [
+            "Per rumah: propana 1.500 g = 1.500/44 = 34,1 mol → CO₂ = 3 × 34,1 = 102,3 mol = 4,50 kg.",
+            "Butana 1.500 g = 1.500/58 = 25,9 mol → CO₂ = 4 × 25,9 = 103,4 mol = 4,55 kg.",
+            "Per rumah ≈ 9,05 kg CO₂; untuk 2.500 rumah ≈ 22.600 kg."
+          ],
+          "answer": "≈ 22,6 ton CO₂ per minggu"
         },
         {
           "type": "check",
@@ -203,11 +366,63 @@
       ]
     },
     {
-      "id": "hitungan-reaksi",
-      "title": "Perhitungan kimia dalam reaksi",
-      "kind": "artikel",
-      "duration": "30 menit",
+      "id": "rumus-air-kristal-hidrat",
+      "title": "Penentuan Rumus Kimia Hidrat (Air Kristal)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penentuan Rumus Kimia Hidrat (Air Kristal)</b>: Garam hidrat berikatan dengan molekul air kristal (misal CuSO4·xH2O); pemanasan melepaskan air; menghitung nilai x dari selisih massa sebelum dan sesudah dipanaskan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Garam hidrat berikatan dengan molekul air kristal (misal CuSO4·xH2O); pemanasan melepaskan air; menghitung nilai x dari selisih massa sebelum dan sesudah dipanaskan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Penentuan Rumus Kimia Hidrat (Air Kristal)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Penentuan Rumus Kimia Hidrat (Air Kristal)</b> berikut. Analisislah berdasarkan kaidah Garam hidrat berikatan dengan molekul air kristal (misal CuSO4·xH2O); pemanasan melepaskan air; menghitung nilai x dari selisih massa sebelum dan sesudah dipanaskan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Penentuan Rumus Kimia Hidrat (Air Kristal) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Pada reaksi Fe₂O₃ + aCO → bFe + cCO₂, nilai a, b, dan c adalah ....",
+          "options": {
+            "A": "1, 2, 1",
+            "B": "3, 2, 3",
+            "C": "2, 2, 3",
+            "D": "3, 1, 3"
+          },
+          "answer": "B",
+          "hint": "Fe₂O₃ mengandung 2 Fe dan 3 O.",
+          "explanation": "Fe: b = 2. O dari Fe₂O₃ (3) dipindah ke CO₂: a = c = 3."
+        }
+      ]
+    },
+    {
+      "id": "stoikiometri-reaksi-dasar",
+      "title": "Perhitungan Stoikiometri Reaksi Sederhana Berbasis Koefisien",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Perhitungan Stoikiometri Reaksi Sederhana Berbasis Koefisien</b>: Jembatan emas mol: Massa zat A -> Mol zat A -> [Perbandingan Koefisien] -> Mol zat B -> Besaran yang dicari (massa, volume, molaritas zat B).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Urutan yang memudahkan",
+          "html": "<p>Setarakan dulu atom yang hanya muncul di satu zat pada tiap ruas (biasanya logam atau C), lalu H, dan terakhir O. Pada reaksi pembakaran hidrokarbon, O₂ disetarakan paling akhir; jika muncul pecahan, kalikan semua koefisien dengan penyebutnya.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
@@ -216,58 +431,41 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Sebanyak 13 g seng (A<sub>r</sub> Zn = 65) direaksikan dengan HCl berlebih: Zn + 2HCl → ZnCl₂ + H₂. Berapa liter gas H₂ yang terbentuk pada STP?</p>",
+          "title": "Contoh Penerapan: Perhitungan Stoikiometri Reaksi Sederhana Berbasis Koefisien",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Perhitungan Stoikiometri Reaksi Sederhana Berbasis Koefisien</b> berikut. Analisislah berdasarkan kaidah Jembatan emas mol: Massa zat A -> Mol zat A -> [Perbandingan Koefisien] -> Mol zat B -> Besaran yang dicari (massa, volume, molaritas zat B)..</p>",
           "steps": [
-            "n Zn = 13/65 = 0,2 mol.",
-            "Perbandingan koefisien Zn : H₂ = 1 : 1 → n H₂ = 0,2 mol.",
-            "V = 0,2 × 22,4 = 4,48 L."
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Perhitungan Stoikiometri Reaksi Sederhana Berbasis Koefisien untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
           ],
-          "answer": "4,48 L"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Kalium klorat dipanaskan: 2KClO₃ → 2KCl + 3O₂. Berapa gram O₂ yang dihasilkan dari 24,5 g KClO₃ (M<sub>r</sub> = 122,5)?</p>",
-          "steps": [
-            "n KClO₃ = 24,5/122,5 = 0,2 mol.",
-            "n O₂ = 3/2 × 0,2 = 0,3 mol.",
-            "m O₂ = 0,3 × 32 = 9,6 g."
-          ],
-          "answer": "9,6 gram"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3 (studi kasus buku)",
-          "question": "<p>Sebuah desa berisi 2.500 rumah. Tiap rumah memakai 3 kg elpiji per minggu (50% propana, 50% butana). Berapa CO₂ yang dihasilkan per minggu jika pembakaran sempurna?<br>C₃H₈ + 5O₂ → 3CO₂ + 4H₂O; 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O</p>",
-          "steps": [
-            "Per rumah: propana 1.500 g = 1.500/44 = 34,1 mol → CO₂ = 3 × 34,1 = 102,3 mol = 4,50 kg.",
-            "Butana 1.500 g = 1.500/58 = 25,9 mol → CO₂ = 4 × 25,9 = 103,4 mol = 4,55 kg.",
-            "Per rumah ≈ 9,05 kg CO₂; untuk 2.500 rumah ≈ 22.600 kg."
-          ],
-          "answer": "≈ 22,6 ton CO₂ per minggu"
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
-          "question": "Pada reaksi 2H₂ + O₂ → 2H₂O, jumlah mol O₂ yang diperlukan untuk menghasilkan 3 mol H₂O adalah ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Perhitungan Stoikiometri Reaksi Sederhana Berbasis Koefisien, manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "1,5 mol",
-            "B": "3 mol",
-            "C": "6 mol",
-            "D": "0,75 mol"
+            "A": "Prinsip Perhitungan Stoikiometri Reaksi Sederhana Berbasis Koefisien berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
           "answer": "A",
-          "hint": "Koefisien O₂ : H₂O = 1 : 2.",
-          "explanation": "n O₂ = 1/2 × 3 = 1,5 mol."
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Jembatan emas mol: Massa zat A -> Mol zat A -> [Perbandingan Koefisien] -> Mol zat B -> Besaran yang dicari (massa, volume, molaritas zat B).."
         }
       ]
     },
     {
-      "id": "pereaksi-pembatas",
-      "title": "Pereaksi pembatas",
+      "id": "pereaksi-pembatas-limiting-reactant",
+      "title": "Konsep Pereaksi Pembatas (Limiting Reactant) dan Pereaksi Sisa",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Konsep Pereaksi Pembatas (Limiting Reactant) dan Pereaksi Sisa</b>: Zat yang habis bereaksi pertama kali membatasi jumlah produk; metode membagi mol awal dengan koefisien reaksi untuk menentukan reaktan terkecil; membuat tabel mula-mula, bereaksi, sisa (MBS).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Jika pereaksi dicampur tidak tepat sesuai perbandingan koefisien, salah satunya habis lebih dulu. Zat itu disebut <b>pereaksi pembatas</b> karena menentukan banyaknya produk; pereaksi lain bersisa. Analogi resep: dengan 500 g tepung, 1 L santan, dan 600 g kelapa, santan habis lebih dulu (1.000/800 = 1,25 adalah perbandingan terkecil), sehingga hanya 125 kue yang bisa dibuat.</p>"
@@ -277,6 +475,24 @@
           "variant": "rumus",
           "title": "Cara menentukan",
           "html": "<p>Hitung \\(\\dfrac{\\text{mol pereaksi}}{\\text{koefisien}}\\) untuk setiap pereaksi. Nilai terkecil = pereaksi pembatas. Semua perhitungan produk memakai mol pereaksi pembatas.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Beberapa angka di buku tidak konsisten: (1) resep kue di awal bab memakai 300 g tepung, tetapi pada bagian pereaksi pembatas tertulis 500 g tepung (perhitungannya tetap memakai 300 g); (2) pada contoh metana dan oksigen, soal menyebut 16 g O₂, tetapi tabelnya tertulis 12 g. Perhitungan yang benar memakai 16 g: 16/32 = 0,5 mol, dibagi koefisien 2 = 0,25, sehingga O₂ adalah pereaksi pembatas.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Di industri",
+          "html": "<p>Pabrik biasanya menjadikan bahan yang paling mahal sebagai pereaksi pembatas dan memberi bahan murah secara berlebih, agar bahan mahal habis bereaksi.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menghitung dengan persamaan reaksi yang belum setara.</li><li>Membandingkan massa (gram) langsung dengan koefisien; yang dibandingkan harus mol.</li><li>Memakai 22,4 L/mol untuk zat cair atau padat, atau pada keadaan bukan STP.</li><li>Menentukan pereaksi pembatas dari mol terkecil tanpa membagi dengan koefisien.</li></ul>"
         },
         {
           "type": "sim",
@@ -298,16 +514,17 @@
           "answer": "HCl; 2,24 L; sisa 6,5 g Zn"
         },
         {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Catatan buku",
-          "html": "<p>Beberapa angka di buku tidak konsisten: (1) resep kue di awal bab memakai 300 g tepung, tetapi pada bagian pereaksi pembatas tertulis 500 g tepung (perhitungannya tetap memakai 300 g); (2) pada contoh metana dan oksigen, soal menyebut 16 g O₂, tetapi tabelnya tertulis 12 g. Perhitungan yang benar memakai 16 g: 16/32 = 0,5 mol, dibagi koefisien 2 = 0,25, sehingga O₂ adalah pereaksi pembatas.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Di industri",
-          "html": "<p>Pabrik biasanya menjadikan bahan yang paling mahal sebagai pereaksi pembatas dan memberi bahan murah secara berlebih, agar bahan mahal habis bereaksi.</p>"
+          "type": "check",
+          "question": "Pada reaksi 2H₂ + O₂ → 2H₂O, jumlah mol O₂ yang diperlukan untuk menghasilkan 3 mol H₂O adalah ....",
+          "options": {
+            "A": "1,5 mol",
+            "B": "3 mol",
+            "C": "6 mol",
+            "D": "0,75 mol"
+          },
+          "answer": "A",
+          "hint": "Koefisien O₂ : H₂O = 1 : 2.",
+          "explanation": "n O₂ = 1/2 × 3 = 1,5 mol."
         },
         {
           "type": "check",
@@ -321,15 +538,32 @@
           "answer": "A",
           "hint": "Bandingkan 2/2 dengan 2/1.",
           "explanation": "H₂: 2/2 = 1; O₂: 2/1 = 2. H₂ pembatas; O₂ terpakai 1 mol, sisa 1 mol."
+        },
+        {
+          "type": "check",
+          "question": "Secara teori reaksi menghasilkan 40 g produk, tetapi yang diperoleh 30 g. Persen hasilnya ....",
+          "options": {
+            "A": "25%",
+            "B": "75%",
+            "C": "70%",
+            "D": "133%"
+          },
+          "answer": "B",
+          "hint": "aktual/teoretis.",
+          "explanation": "30/40 × 100% = 75%."
         }
       ]
     },
     {
-      "id": "persen-hasil",
-      "title": "Persen hasil dan persen kemurnian",
-      "kind": "artikel",
-      "duration": "30 menit",
+      "id": "persen-hasil-dan-kemurnian",
+      "title": "Persentase Hasil (% Yield) dan Persen Kemurnian Zat",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Persentase Hasil (% Yield) dan Persen Kemurnian Zat</b>: Membedakan hasil teoretis (perhitungan stoikiometri di atas kertas) vs hasil nyata eksperimen di laboratorium: % Hasil = (Hasil Nyata / Hasil Teoretis) x 100%; menghitung kadar kemurnian sampel mineral/bijih.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Hasil reaksi yang diperoleh (<b>hasil aktual</b>) hampir selalu lebih kecil daripada perhitungan (<b>hasil teoretis</b>), misalnya karena reaksi tidak tuntas, ada reaksi samping, zat hilang saat dipindahkan atau disaring, dan bahan tidak murni.</p>"
@@ -363,41 +597,70 @@
           "answer": "88%"
         },
         {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Catatan buku",
-          "html": "<p>Pada contoh seng sulfida, soal menyebut ZnS yang diperoleh 90 g, tetapi penyelesaiannya memakai 92 g. Dengan 90 g, persen hasilnya 90/97 × 100% ≈ 92,8%; dengan 92 g, ≈ 94,8%. Selain itu, pada soal latihan pembakaran glukosa, rumusnya seharusnya C₆H₁₂O₆, bukan C₆H₁₂O.</p>"
-        },
-        {
           "type": "check",
-          "question": "Secara teori reaksi menghasilkan 40 g produk, tetapi yang diperoleh 30 g. Persen hasilnya ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Persentase Hasil (% Yield) dan Persen Kemurnian Zat, manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "25%",
-            "B": "75%",
-            "C": "70%",
-            "D": "133%"
+            "A": "Prinsip Persentase Hasil (% Yield) dan Persen Kemurnian Zat berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "B",
-          "hint": "aktual/teoretis.",
-          "explanation": "30/40 × 100% = 75%."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Membedakan hasil teoretis (perhitungan stoikiometri di atas kertas) vs hasil nyata eksperimen di laboratorium: % Hasil = (Hasil Nyata / Hasil Teoretis) x 100%; menghitung kadar kemurnian sampel mineral/bijih.."
         }
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Perhitungan Stoikiometri",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menghitung dengan persamaan reaksi yang belum setara.</li><li>Membandingkan massa (gram) langsung dengan koefisien; yang dibandingkan harus mol.</li><li>Memakai 22,4 L/mol untuk zat cair atau padat, atau pada keadaan bukan STP.</li><li>Menentukan pereaksi pembatas dari mol terkecil tanpa membagi dengan koefisien.</li></ul>"
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Perhitungan Stoikiometri</b>: Peta jalan komprehensif konversi stoikiometri dan bank soal latihan bergradasi.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab III Stoikiometri.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Peta jalan komprehensif konversi stoikiometri dan bank soal latihan bergradasi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Setarakan: NH₃ + O₂ → NO + H₂O.</p>",
+          "steps": [
+            "Mulai dari H: 2 NH₃ → 3 H₂O (6 H).",
+            "N: 2 NH₃ → 2 NO.",
+            "O kanan = 2 + 3 = 5 → O₂ = 5/2.",
+            "Kalikan semua dengan 2."
+          ],
+          "answer": "4NH₃ + 5O₂ → 4NO + 6H₂O"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Perhitungan Stoikiometri, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Perhitungan Stoikiometri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Peta jalan komprehensif konversi stoikiometri dan bank soal latihan bergradasi.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

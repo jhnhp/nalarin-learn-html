@@ -4,35 +4,39 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "model-atom",
-      "title": "Perkembangan model atom",
-      "kind": "simulasi",
-      "duration": "25 menit",
+      "id": "kegagalan-bohr-ke-mekanika-gelombang",
+      "title": "Kelemahan Model Atom Bohr dan Lahirnya Mekanika Gelombang",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Kelemahan Model Atom Bohr dan Lahirnya Mekanika Gelombang</b>: Model Bohr hanya berlaku untuk atom berelektron tunggal (H, He+); dualisme gelombang De Broglie dan prinsip ketidakpastian Heisenberg mengubah lintasan menjadi orbital.</p>"
+        },
         {
           "type": "text",
           "html": "<table><tr><th>Model</th><th>Pokok gagasan</th><th>Kelemahan</th></tr><tr><td>Dalton (1803)</td><td>atom bola pejal tak terbagi</td><td>tidak menjelaskan elektron dan listrik</td></tr><tr><td>Thomson (1904)</td><td>roti kismis: bola positif dengan elektron tersebar</td><td>bertentangan dengan hamburan alfa</td></tr><tr><td>Rutherford (1911)</td><td>inti kecil positif; sebagian besar atom ruang kosong</td><td>tidak menjelaskan kestabilan elektron dan spektrum garis</td></tr><tr><td>Bohr (1913)</td><td>elektron pada lintasan berenergi tertentu</td><td>hanya cocok untuk atom berelektron satu; tidak menjelaskan efek Zeeman</td></tr><tr><td>Mekanika kuantum</td><td>elektron dalam orbital (daerah peluang)</td><td>model yang dipakai sekarang</td></tr></table>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas10/IPA/03 Struktur Atom Fakta di Balik Materi/sim/rutherford.html",
-          "title": "Percobaan hamburan Rutherford",
-          "height": 500,
-          "caption": "Bandingkan model Rutherford dan Thomson. Model mana yang cocok dengan partikel alfa yang dipantulkan?"
+          "type": "text",
+          "html": "<p>Garam logam yang dibakar memberi warna nyala khas (natrium kuning, stronsium merah, barium hijau, tembaga hijau kebiruan) karena atom memancarkan <b>spektrum garis</b>. Bohr menjelaskannya: elektron hanya berada pada lintasan berenergi tertentu; saat berpindah dari tingkat energi tinggi ke rendah, elektron memancarkan foton dengan energi \\(\\Delta E = hf = hc/\\lambda\\).</p>"
         },
         {
           "type": "text",
-          "html": "<p>Notasi \\({}^{A}_{Z}\\text{X}\\): Z = proton, A = proton + neutron. <b>Isotop</b>: Z sama (¹⁶O dan ¹⁸O); <b>isobar</b>: A sama (⁵⁸₂₆Fe dan ⁵⁸₂₈Ni); <b>isoton</b>: jumlah neutron sama.</p>"
+          "html": "<p><b>Model mekanika kuantum</b> dikembangkan oleh de Broglie (elektron bersifat gelombang, 1924), Heisenberg (asas ketidakpastian: posisi dan momentum elektron tidak dapat diketahui pasti bersamaan), dan Schrödinger (persamaan gelombang). Elektron tidak beredar pada lintasan tertentu, melainkan berada dalam <b>orbital</b>, yaitu daerah dengan peluang terbesar menemukan elektron.</p>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tentukan p, n, dan e pada \\({}^{32}_{16}\\text{S}^{2-}\\).</p>",
-          "steps": [
-            "p = 16; n = 32 − 16 = 16.",
-            "Ion 2− menerima 2 elektron: e = 18."
-          ],
-          "answer": "16, 16, 18"
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Satuan konstanta Planck adalah J·s (joule sekon), bukan J·detik⁻¹ seperti tertulis di buku.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/spektrum.html",
+          "title": "Spektrum atom hidrogen",
+          "height": 500,
+          "caption": "Pilih transisi ke n = 2. Transisi mana yang menghasilkan cahaya merah? Bandingkan dengan transisi ke n = 1."
         },
         {
           "type": "check",
@@ -46,51 +50,6 @@
           "answer": "B",
           "hint": "Nomor massa sama.",
           "explanation": "Nomor massa sama, nomor atom berbeda: isobar."
-        }
-      ]
-    },
-    {
-      "id": "bohr-kuantum",
-      "title": "Spektrum atom, model Bohr, dan mekanika kuantum",
-      "kind": "simulasi",
-      "duration": "30 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Garam logam yang dibakar memberi warna nyala khas (natrium kuning, stronsium merah, barium hijau, tembaga hijau kebiruan) karena atom memancarkan <b>spektrum garis</b>. Bohr menjelaskannya: elektron hanya berada pada lintasan berenergi tertentu; saat berpindah dari tingkat energi tinggi ke rendah, elektron memancarkan foton dengan energi \\(\\Delta E = hf = hc/\\lambda\\).</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/spektrum.html",
-          "title": "Spektrum atom hidrogen",
-          "height": 500,
-          "caption": "Pilih transisi ke n = 2. Transisi mana yang menghasilkan cahaya merah? Bandingkan dengan transisi ke n = 1."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Kembang api stronsium memancarkan cahaya merah 650 nm. Berapa energi satu fotonnya? (h = 6,63 × 10⁻³⁴ J·s, c = 3 × 10⁸ m/s)</p>",
-          "steps": [
-            "\\(E = \\dfrac{hc}{\\lambda} = \\dfrac{6{,}63\\times10^{-34}\\times3\\times10^8}{650\\times10^{-9}}\\)."
-          ],
-          "answer": "≈ 3,06 × 10⁻¹⁹ J"
-        },
-        {
-          "type": "text",
-          "html": "<p><b>Model mekanika kuantum</b> dikembangkan oleh de Broglie (elektron bersifat gelombang, 1924), Heisenberg (asas ketidakpastian: posisi dan momentum elektron tidak dapat diketahui pasti bersamaan), dan Schrödinger (persamaan gelombang). Elektron tidak beredar pada lintasan tertentu, melainkan berada dalam <b>orbital</b>, yaitu daerah dengan peluang terbesar menemukan elektron.</p>"
-        },
-        {
-          "type": "image",
-          "src": "gambar/orbital.svg",
-          "alt": "Bentuk orbital s seperti bola dan orbital p seperti balon terpilin pada sumbu x, y, dan z",
-          "width": 640,
-          "caption": "Bentuk orbital s dan p."
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Catatan buku",
-          "html": "<p>Satuan konstanta Planck adalah J·s (joule sekon), bukan J·detik⁻¹ seperti tertulis di buku.</p>"
         },
         {
           "type": "check",
@@ -108,29 +67,47 @@
       ]
     },
     {
-      "id": "bilangan-kuantum",
-      "title": "Bilangan kuantum",
-      "kind": "artikel",
-      "duration": "25 menit",
+      "id": "persamaan-schrodinger-dan-orbital",
+      "title": "Persamaan Gelombang Schrödinger dan Bentuk Orbital (s, p, d, f)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Bilangan kuantum</th><th>Lambang dan nilai</th><th>Menyatakan</th></tr><tr><td>Utama</td><td>n = 1, 2, 3, … (kulit K, L, M, …)</td><td>kulit dan tingkat energi</td></tr><tr><td>Azimut</td><td>l = 0 sampai n − 1 (s, p, d, f)</td><td>subkulit dan bentuk orbital</td></tr><tr><td>Magnetik</td><td>m = −l sampai +l</td><td>orientasi orbital</td></tr><tr><td>Spin</td><td>s = +½ atau −½</td><td>arah putar elektron</td></tr></table>"
+          "html": "<p><b>Persamaan Gelombang Schrödinger dan Bentuk Orbital (s, p, d, f)</b>: Fungsi gelombang probabilitas menemukan elektron (Ψ^2); bentuk bola orbital s, bentuk balon terpilin orbital p (px, py, pz), bentuk bunga orbital d.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
-          "type": "text",
-          "html": "<table><tr><th>Subkulit</th><th>l</th><th>Jumlah orbital</th><th>Elektron maksimum</th></tr><tr><td>s</td><td>0</td><td>1</td><td>2</td></tr><tr><td>p</td><td>1</td><td>3</td><td>6</td></tr><tr><td>d</td><td>2</td><td>5</td><td>10</td></tr><tr><td>f</td><td>3</td><td>7</td><td>14</td></tr></table><p>Kulit ke-n berisi n² orbital dan paling banyak 2n² elektron. Kulit M (n = 3): 9 orbital, 18 elektron.</p>"
+          "type": "image",
+          "src": "gambar/orbital.svg",
+          "alt": "Bentuk orbital s seperti bola dan orbital p seperti balon terpilin pada sumbu x, y, dan z",
+          "width": 640,
+          "caption": "Bentuk orbital s dan p."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Fungsi gelombang probabilitas menemukan elektron (Ψ^2); bentuk bola orbital s, bentuk balon terpilin orbital p (px, py, pz), bentuk bunga orbital d.</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Tentukan keempat bilangan kuantum elektron terakhir ₇N (1s² 2s² 2p³).</p>",
+          "question": "<p>Tentukan p, n, dan e pada \\({}^{32}_{16}\\text{S}^{2-}\\).</p>",
           "steps": [
-            "Elektron terakhir di 2p: n = 2, l = 1.",
-            "Diagram 2p: [↑][↑][↑] dengan m = −1, 0, +1; elektron ketiga di m = +1.",
-            "Masih tunggal (menghadap atas): s = +½."
+            "p = 16; n = 32 − 16 = 16.",
+            "Ion 2− menerima 2 elektron: e = 18."
           ],
-          "answer": "n = 2, l = 1, m = +1, s = +½"
+          "answer": "16, 16, 18"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Logam alkali Li, Na, K bereaksi dengan air. Mana yang paling hebat, dan bagaimana dengan Rb?</p>",
+          "steps": [
+            "Ke bawah jari-jari bertambah, elektron valensi (ns¹) makin mudah lepas.",
+            "Rb ([Kr] 5s¹) berada di bawah K."
+          ],
+          "answer": "K paling hebat di antara ketiganya; Rb lebih hebat lagi"
         },
         {
           "type": "check",
@@ -148,11 +125,107 @@
       ]
     },
     {
-      "id": "konfigurasi",
-      "title": "Konfigurasi elektron dan diagram orbital",
+      "id": "empat-bilangan-kuantum",
+      "title": "Empat Bilangan Kuantum: Alamat Pasti Elektron dalam Atom",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Empat Bilangan Kuantum: Alamat Pasti Elektron dalam Atom</b>: Bilangan kuantum utama (n), azimuth/sudut (l = 0 s.d. n-1), magnetik (m = -l s.d. +l), dan spin (s = +1/2 atau -1/2); menentukan bilangan kuantum elektron terakhir suatu atom.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Bilangan kuantum</th><th>Lambang dan nilai</th><th>Menyatakan</th></tr><tr><td>Utama</td><td>n = 1, 2, 3, … (kulit K, L, M, …)</td><td>kulit dan tingkat energi</td></tr><tr><td>Azimut</td><td>l = 0 sampai n − 1 (s, p, d, f)</td><td>subkulit dan bentuk orbital</td></tr><tr><td>Magnetik</td><td>m = −l sampai +l</td><td>orientasi orbital</td></tr><tr><td>Spin</td><td>s = +½ atau −½</td><td>arah putar elektron</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Bilangan kuantum utama (n), azimuth/sudut (l = 0 s.d. n-1), magnetik (m = -l s.d. +l), dan spin (s = +1/2 atau -1/2); menentukan bilangan kuantum elektron terakhir suatu atom.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Empat Bilangan Kuantum: Alamat Pasti Elektron dalam Atom",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Empat Bilangan Kuantum: Alamat Pasti Elektron dalam Atom</b> berikut. Analisislah berdasarkan kaidah Bilangan kuantum utama (n), azimuth/sudut (l = 0 s.d. n-1), magnetik (m = -l s.d. +l), dan spin (s = +1/2 atau -1/2); menentukan bilangan kuantum elektron terakhir suatu atom..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Empat Bilangan Kuantum: Alamat Pasti Elektron dalam Atom untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Empat Bilangan Kuantum: Alamat Pasti Elektron dalam Atom, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Empat Bilangan Kuantum: Alamat Pasti Elektron dalam Atom berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Bilangan kuantum utama (n), azimuth/sudut (l = 0 s.d. n-1), magnetik (m = -l s.d. +l), dan spin (s = +1/2 atau -1/2); menentukan bilangan kuantum elektron terakhir suatu atom.."
+        }
+      ]
+    },
+    {
+      "id": "prinsip-aufbau-diagram-mollier",
+      "title": "Prinsip Aufbau: Urutan Pengisian Tingkat Energi Subkulit",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Prinsip Aufbau: Urutan Pengisian Tingkat Energi Subkulit</b>: Aturan (n + l) terendah terisi dahulu; membaca diagram garis panah pengisian: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, dst.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Aturan (n + l) terendah terisi dahulu; membaca diagram garis panah pengisian: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, dst.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kembang api stronsium memancarkan cahaya merah 650 nm. Berapa energi satu fotonnya? (h = 6,63 × 10⁻³⁴ J·s, c = 3 × 10⁸ m/s)</p>",
+          "steps": [
+            "\\(E = \\dfrac{hc}{\\lambda} = \\dfrac{6{,}63\\times10^{-34}\\times3\\times10^8}{650\\times10^{-9}}\\)."
+          ],
+          "answer": "≈ 3,06 × 10⁻¹⁹ J"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Prinsip Aufbau: Urutan Pengisian Tingkat Energi Subkulit, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Prinsip Aufbau: Urutan Pengisian Tingkat Energi Subkulit berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Aturan (n + l) terendah terisi dahulu; membaca diagram garis panah pengisian: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, dst.."
+        }
+      ]
+    },
+    {
+      "id": "larangan-pauli-dan-aturan-hund",
+      "title": "Asas Larangan Pauli dan Aturan Hund pada Diagram Kotak Orbital",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Asas Larangan Pauli dan Aturan Hund pada Diagram Kotak Orbital</b>: Tidak boleh ada 2 elektron dengan keempat bilangan kuantum sama (maksimal 2 elektron per orbital dengan spin berlawanan); aturan Hund mengisi orbital sejajar sebelum berpasangan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Notasi \\({}^{A}_{Z}\\text{X}\\): Z = proton, A = proton + neutron. <b>Isotop</b>: Z sama (¹⁶O dan ¹⁸O); <b>isobar</b>: A sama (⁵⁸₂₆Fe dan ⁵⁸₂₈Ni); <b>isoton</b>: jumlah neutron sama.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
@@ -167,18 +240,15 @@
           "caption": "Telusuri Z = 21–30. Perhatikan pengecualian Cr (24) dan Cu (29). Lalu buat ion Fe²⁺ dan Fe³⁺."
         },
         {
-          "type": "text",
-          "html": "<p><b>Pengecualian</b>: subkulit d yang setengah penuh (d⁵) atau penuh (d¹⁰) lebih stabil, sehingga ₂₄Cr = [Ar] 3d⁵ 4s¹ dan ₂₉Cu = [Ar] 3d¹⁰ 4s¹. Pada <b>ion positif</b>, elektron dilepas dari kulit terluar dulu (4s sebelum 3d): ₂₆Fe²⁺ = [Ar] 3d⁶.</p>"
-        },
-        {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Tuliskan konfigurasi ₂₅Mn dan ₂₅Mn²⁺.</p>",
+          "question": "<p>Tentukan keempat bilangan kuantum elektron terakhir ₇N (1s² 2s² 2p³).</p>",
           "steps": [
-            "Mn: [Ar] 4s² 3d⁵ (ditulis [Ar] 3d⁵ 4s²).",
-            "Mn²⁺: lepas 2 elektron 4s → [Ar] 3d⁵."
+            "Elektron terakhir di 2p: n = 2, l = 1.",
+            "Diagram 2p: [↑][↑][↑] dengan m = −1, 0, +1; elektron ketiga di m = +1.",
+            "Masih tunggal (menghadap atas): s = +½."
           ],
-          "answer": "[Ar] 3d⁵ 4s² dan [Ar] 3d⁵"
+          "answer": "n = 2, l = 1, m = +1, s = +½"
         },
         {
           "type": "check",
@@ -196,11 +266,58 @@
       ]
     },
     {
-      "id": "letak-unsur",
-      "title": "Sistem periodik dan letak unsur",
-      "kind": "artikel",
-      "duration": "30 menit",
+      "id": "konfigurasi-gas-mulia-dan-anomali-d",
+      "title": "Penyingkatan Gas Mulia dan Anomali Kestabilan Subkulit d Penuh / Setengah Penuh",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penyingkatan Gas Mulia dan Anomali Kestabilan Subkulit d Penuh / Setengah Penuh</b>: Menyingkat dengan [He], [Ne], [Ar], [Kr], [Xe]; kestabilan khusus subkulit d^5 dan d^10 pada konfigurasi atom Kromium (24Cr: [Ar] 4s^1 3d^5) dan Tembaga (29Cu: [Ar] 4s^1 3d^10).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Menyingkat dengan [He], [Ne], [Ar], [Kr], [Xe]; kestabilan khusus subkulit d^5 dan d^10 pada konfigurasi atom Kromium (24Cr: [Ar] 4s^1 3d^5) dan Tembaga (29Cu: [Ar] 4s^1 3d^10).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Penyingkatan Gas Mulia dan Anomali Kestabilan Subkulit d Penuh / Setengah Penuh",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Penyingkatan Gas Mulia dan Anomali Kestabilan Subkulit d Penuh / Setengah Penuh</b> berikut. Analisislah berdasarkan kaidah Menyingkat dengan [He], [Ne], [Ar], [Kr], [Xe]; kestabilan khusus subkulit d^5 dan d^10 pada konfigurasi atom Kromium (24Cr: [Ar] 4s^1 3d^5) dan Tembaga (29Cu: [Ar] 4s^1 3d^10)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Penyingkatan Gas Mulia dan Anomali Kestabilan Subkulit d Penuh / Setengah Penuh untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Penyingkatan Gas Mulia dan Anomali Kestabilan Subkulit d Penuh / Setengah Penuh, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Penyingkatan Gas Mulia dan Anomali Kestabilan Subkulit d Penuh / Setengah Penuh berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menyingkat dengan [He], [Ne], [Ar], [Kr], [Xe]; kestabilan khusus subkulit d^5 dan d^10 pada konfigurasi atom Kromium (24Cr: [Ar] 4s^1 3d^5) dan Tembaga (29Cu: [Ar] 4s^1 3d^10).."
+        }
+      ]
+    },
+    {
+      "id": "penentuan-golongan-periode-modern",
+      "title": "Menentukan Letak Unsur (Golongan dan Periode) dari Konfigurasi Subkulit",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menentukan Letak Unsur (Golongan dan Periode) dari Konfigurasi Subkulit</b>: Blok s dan p sebagai Golongan Utama (IA–VIIIA); blok d sebagai Golongan Transisi (IB–VIIIB); blok f sebagai Lantanida dan Aktinida; nomor periode dari nilai n terbesar.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Sistem periodik modern disusun berdasarkan kenaikan nomor atom. <b>Periode</b> = nilai n terbesar pada konfigurasi. Golongan ditentukan oleh elektron valensi dan <b>blok</b> (subkulit terakhir yang diisi):</p>"
@@ -208,6 +325,16 @@
         {
           "type": "text",
           "html": "<table><tr><th>Blok</th><th>Elektron valensi</th><th>Golongan</th></tr><tr><td>s</td><td>ns¹ / ns²</td><td>IA / IIA</td></tr><tr><td>p</td><td>ns² np¹ … ns² np⁶</td><td>IIIA … VIIIA</td></tr><tr><td>d</td><td>ns + (n−1)d: 3, 4, 5, 6, 7</td><td>IIIB, IVB, VB, VIB, VIIB</td></tr><tr><td>d</td><td>8, 9, 10</td><td>VIIIB</td></tr><tr><td>d</td><td>(n−1)d¹⁰ ns¹ / ns²</td><td>IB / IIB</td></tr><tr><td>f</td><td>lantanida dan aktinida</td><td>transisi dalam</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Model atom</td><td>Dalton → Thomson → Rutherford → Bohr → mekanika kuantum</td></tr><tr><td>Bilangan kuantum</td><td>n, l (0…n−1), m (−l…+l), s (±½); kulit n: n² orbital, 2n² elektron</td></tr><tr><td>Konfigurasi</td><td>Aufbau, Pauli, Hund; Cr dan Cu; ion melepas 4s dulu</td></tr><tr><td>Letak unsur</td><td>periode = n terbesar; golongan dari elektron valensi dan blok</td></tr><tr><td>Sifat periodik</td><td>ke bawah: jari-jari ↑, EI ↓, EN ↓; ke kanan: sebaliknya</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Melepas elektron 3d sebelum 4s pada ion logam transisi.</li><li>Lupa pengecualian Cr dan Cu.</li><li>Menentukan golongan unsur blok d hanya dari elektron 4s.</li></ul>"
         },
         {
           "type": "example",
@@ -245,14 +372,32 @@
       ]
     },
     {
-      "id": "sifat-periodik",
-      "title": "Sifat periodik unsur",
+      "id": "sifat-keperiodikan-lanjut-dan-anomali",
+      "title": "Analisis Mendalam Tren Sifat Keperiodikan dan Anomali Energi Ionisasi",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Analisis Mendalam Tren Sifat Keperiodikan dan Anomali Energi Ionisasi</b>: Kenaikan muatan inti efektif (Zeff) dan efek perisai elektron kulit dalam; anomali penurunan energi ionisasi Golongan IIA ke IIIA dan VA ke VIA akibat konfigurasi orbital setengah penuh.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Subkulit</th><th>l</th><th>Jumlah orbital</th><th>Elektron maksimum</th></tr><tr><td>s</td><td>0</td><td>1</td><td>2</td></tr><tr><td>p</td><td>1</td><td>3</td><td>6</td></tr><tr><td>d</td><td>2</td><td>5</td><td>10</td></tr><tr><td>f</td><td>3</td><td>7</td><td>14</td></tr></table><p>Kulit ke-n berisi n² orbital dan paling banyak 2n² elektron. Kulit M (n = 3): 9 orbital, 18 elektron.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Pengecualian</b>: subkulit d yang setengah penuh (d⁵) atau penuh (d¹⁰) lebih stabil, sehingga ₂₄Cr = [Ar] 3d⁵ 4s¹ dan ₂₉Cu = [Ar] 3d¹⁰ 4s¹. Pada <b>ion positif</b>, elektron dilepas dari kulit terluar dulu (4s sebelum 3d): ₂₆Fe²⁺ = [Ar] 3d⁶.</p>"
+        },
+        {
+          "type": "text",
           "html": "<table><tr><th>Sifat</th><th>Satu golongan (ke bawah)</th><th>Satu periode (ke kanan)</th></tr><tr><td>Jari-jari atom</td><td>bertambah (kulit bertambah)</td><td>berkurang (muatan inti efektif bertambah)</td></tr><tr><td>Energi ionisasi</td><td>berkurang</td><td>umumnya bertambah</td></tr><tr><td>Afinitas elektron</td><td>umumnya berkurang</td><td>umumnya bertambah (makin negatif)</td></tr><tr><td>Keelektronegatifan</td><td>berkurang</td><td>bertambah</td></tr><tr><td>Sifat logam / reaktivitas logam</td><td>bertambah</td><td>berkurang</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Energi ionisasi berturut-turut",
+          "html": "<p>Energi ionisasi kedua, ketiga, dan seterusnya selalu lebih besar. Lonjakan sangat besar terjadi ketika elektron mulai diambil dari kulit dalam. Jika lonjakan terjadi antara EI₂ dan EI₃, unsur itu mempunyai 2 elektron valensi (golongan IIA).</p>"
         },
         {
           "type": "sim",
@@ -262,20 +407,14 @@
           "caption": "Sorot golongan IA dan VIIA. Mengapa reaktivitas alkali bertambah ke bawah, sedangkan reaktivitas halogen berkurang ke bawah?"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Energi ionisasi berturut-turut",
-          "html": "<p>Energi ionisasi kedua, ketiga, dan seterusnya selalu lebih besar. Lonjakan sangat besar terjadi ketika elektron mulai diambil dari kulit dalam. Jika lonjakan terjadi antara EI₂ dan EI₃, unsur itu mempunyai 2 elektron valensi (golongan IIA).</p>"
-        },
-        {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Logam alkali Li, Na, K bereaksi dengan air. Mana yang paling hebat, dan bagaimana dengan Rb?</p>",
+          "question": "<p>Tuliskan konfigurasi ₂₅Mn dan ₂₅Mn²⁺.</p>",
           "steps": [
-            "Ke bawah jari-jari bertambah, elektron valensi (ns¹) makin mudah lepas.",
-            "Rb ([Kr] 5s¹) berada di bawah K."
+            "Mn: [Ar] 4s² 3d⁵ (ditulis [Ar] 3d⁵ 4s²).",
+            "Mn²⁺: lepas 2 elektron 4s → [Ar] 3d⁵."
           ],
-          "answer": "K paling hebat di antara ketiganya; Rb lebih hebat lagi"
+          "answer": "[Ar] 3d⁵ 4s² dan [Ar] 3d⁵"
         },
         {
           "type": "check",
@@ -293,24 +432,92 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
+      "id": "sifat-kemagnetan-atom",
+      "title": "Sifat Magnetik Zat: Diamagnetik vs Paramagnetik",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Model atom</td><td>Dalton → Thomson → Rutherford → Bohr → mekanika kuantum</td></tr><tr><td>Bilangan kuantum</td><td>n, l (0…n−1), m (−l…+l), s (±½); kulit n: n² orbital, 2n² elektron</td></tr><tr><td>Konfigurasi</td><td>Aufbau, Pauli, Hund; Cr dan Cu; ion melepas 4s dulu</td></tr><tr><td>Letak unsur</td><td>periode = n terbesar; golongan dari elektron valensi dan blok</td></tr><tr><td>Sifat periodik</td><td>ke bawah: jari-jari ↑, EI ↓, EN ↓; ke kanan: sebaliknya</td></tr></table>"
+          "html": "<p><b>Sifat Magnetik Zat: Diamagnetik vs Paramagnetik</b>: Pengaruh elektron tak berpasangan; zat paramagnetik ditarik medan magnet karena memiliki elektron tak berpasangan, zat diamagnetik ditolak lemah karena semua elektron berpasangan.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Melepas elektron 3d sebelum 4s pada ion logam transisi.</li><li>Lupa pengecualian Cr dan Cu.</li><li>Menentukan golongan unsur blok d hanya dari elektron 4s.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Pengaruh elektron tak berpasangan; zat paramagnetik ditarik medan magnet karena memiliki elektron tak berpasangan, zat diamagnetik ditolak lemah karena semua elektron berpasangan.</p>"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Sifat Magnetik Zat: Diamagnetik vs Paramagnetik, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Sifat Magnetik Zat: Diamagnetik vs Paramagnetik berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Pengaruh elektron tak berpasangan; zat paramagnetik ditarik medan magnet karena memiliki elektron tak berpasangan, zat diamagnetik ditolak lemah karena semua elektron berpasangan.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Struktur Atom",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Struktur Atom</b>: Rangkuman visual bilangan kuantum-konfigurasi dan bank soal identifikasi unsur.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab I Struktur Atom dan Sistem Periodik Unsur.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Rangkuman visual bilangan kuantum-konfigurasi dan bank soal identifikasi unsur.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/IPA/03 Struktur Atom Fakta di Balik Materi/sim/rutherford.html",
+          "title": "Percobaan hamburan Rutherford",
+          "height": 500,
+          "caption": "Bandingkan model Rutherford dan Thomson. Model mana yang cocok dengan partikel alfa yang dipantulkan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Struktur Atom",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Struktur Atom</b> berikut. Analisislah berdasarkan kaidah Rangkuman visual bilangan kuantum-konfigurasi dan bank soal identifikasi unsur..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Struktur Atom untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Struktur Atom, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Struktur Atom berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman visual bilangan kuantum-konfigurasi dan bank soal identifikasi unsur.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

@@ -4,14 +4,18 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "ruang-sampel",
-      "title": "Percobaan, ruang sampel, dan kejadian",
+      "id": "percobaan-ruang-sampel-kejadian",
+      "title": "Percobaan Acak, Ruang Sampel S, dan Titik Sampel",
       "kind": "artikel",
-      "duration": "15 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Sebelum pertandingan sepak bola, wasit melempar koin untuk menentukan tim yang memulai. Hasilnya tidak bisa dipastikan, tetapi kita tahu semua kemungkinannya: angka atau gambar. Matematika yang mempelajari kemungkinan seperti ini disebut <b>peluang</b>.</p>"
+          "html": "<p><b>Percobaan Acak, Ruang Sampel S, dan Titik Sampel</b>: Definisi eksperimen acak; menentukan ruang sampel pelemparan koin, dadu, dan kartu remi; notasi n(S) dan n(A).</p>"
+        },
+        {
+          "type": "h",
+          "text": "Menentukan ruang sampel"
         },
         {
           "type": "callout",
@@ -20,8 +24,48 @@
           "html": "<ul><li><b>Percobaan</b>: kegiatan yang hasilnya tidak pasti, misalnya melempar dadu.</li><li><b>Ruang sampel</b> (S): himpunan semua hasil yang mungkin. Dadu: S = {1, 2, 3, 4, 5, 6}, n(S) = 6.</li><li><b>Titik sampel</b>: setiap anggota ruang sampel.</li><li><b>Kejadian</b>: himpunan bagian ruang sampel, misalnya \"muncul bilangan genap\" = {2, 4, 6}.</li></ul>"
         },
         {
-          "type": "h",
-          "text": "Menentukan ruang sampel"
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira jumlah dua dadu 2 sampai 12 sama peluangnya.</li><li>Menganggap frekuensi harapan pasti terjadi.</li><li>Menyimpulkan tentang populasi dari sampel yang bias.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Banyak titik sampel pada pelemparan dua koin dan satu dadu adalah ....",
+          "options": {
+            "A": "8",
+            "B": "12",
+            "C": "24",
+            "D": "36"
+          },
+          "answer": "C",
+          "hint": "Kalikan banyak hasil setiap benda.",
+          "explanation": "2 × 2 × 6 = 24."
+        },
+        {
+          "type": "check",
+          "question": "Sebuah kartu diambil acak dari kartu bernomor 1 sampai 20. Peluang terambil kartu bernomor bilangan prima adalah ....",
+          "options": {
+            "A": "2/5",
+            "B": "1/2",
+            "C": "9/20",
+            "D": "8/20"
+          },
+          "answer": "A",
+          "hint": "Daftar bilangan prima dari 1 sampai 20.",
+          "explanation": "Prima: 2, 3, 5, 7, 11, 13, 17, 19 = 8 bilangan. P = 8/20 = 2/5. Pilihan D bernilai sama tetapi belum disederhanakan, sedangkan 1 bukan bilangan prima."
+        }
+      ]
+    },
+    {
+      "id": "teknik-mendaftar-ruang-sampel",
+      "title": "Menentukan Ruang Sampel: Mendaftar, Diagram Pohon, dan Tabel Silang",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menentukan Ruang Sampel: Mendaftar, Diagram Pohon, dan Tabel Silang</b>: Pohon kemungkinan pelemparan 3 koin, tabel silang pelemparan 2 dadu (36 titik sampel), menghitung kejadian dengan syarat tertentu.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "text",
@@ -42,31 +86,105 @@
           "caption": "Pelemparan dua dadu memiliki 6 × 6 = 36 titik sampel."
         },
         {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Pohon kemungkinan pelemparan 3 koin, tabel silang pelemparan 2 dadu (36 titik sampel), menghitung kejadian dengan syarat tertentu.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Menentukan Ruang Sampel: Mendaftar, Diagram Pohon, dan Tabel Silang",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Menentukan Ruang Sampel: Mendaftar, Diagram Pohon, dan Tabel Silang</b> berikut. Analisislah berdasarkan kaidah Pohon kemungkinan pelemparan 3 koin, tabel silang pelemparan 2 dadu (36 titik sampel), menghitung kejadian dengan syarat tertentu..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Menentukan Ruang Sampel: Mendaftar, Diagram Pohon, dan Tabel Silang untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
           "type": "check",
-          "question": "Banyak titik sampel pada pelemparan dua koin dan satu dadu adalah ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menentukan Ruang Sampel: Mendaftar, Diagram Pohon, dan Tabel Silang, manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "8",
-            "B": "12",
-            "C": "24",
-            "D": "36"
+            "A": "Prinsip Menentukan Ruang Sampel: Mendaftar, Diagram Pohon, dan Tabel Silang berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "C",
-          "hint": "Kalikan banyak hasil setiap benda.",
-          "explanation": "2 × 2 × 6 = 24."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Pohon kemungkinan pelemparan 3 koin, tabel silang pelemparan 2 dadu (36 titik sampel), menghitung kejadian dengan syarat tertentu.."
         }
       ]
     },
     {
-      "id": "nilai-peluang",
-      "title": "Nilai peluang",
-      "kind": "artikel",
-      "duration": "15 menit",
+      "id": "peluang-teoretis-klasik",
+      "title": "Peluang Teoretis (Klasik): Rumus P(A) = n(A) / n(S)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Peluang Teoretis (Klasik): Rumus P(A) = n(A) / n(S)</b>: Asumsi setiap hasil memiliki kemungkinan sama besar (equally likely), kisaran nilai peluang 0 ≤ P(A) ≤ 1, kejadian mustahil (0) vs pasti (1).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Peluang kejadian A",
           "html": "\\[P(A) = \\frac{n(A)}{n(S)}\\]<p>berlaku jika setiap titik sampel memiliki kesempatan yang sama untuk muncul.</p><ul><li>\\(0 \\le P(A) \\le 1\\). P = 0 berarti mustahil, P = 1 berarti pasti terjadi.</li><li><b>Komplemen</b>: peluang A tidak terjadi adalah \\(P(A^c) = 1 - P(A)\\).</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Populasi dan sampel",
+          "html": "<ul><li><b>Populasi</b>: seluruh objek yang ingin diteliti, misalnya semua siswa SMP di sebuah kota.</li><li><b>Sampel</b>: sebagian anggota populasi yang benar-benar diteliti.</li><li>Sampel yang baik <b>mewakili</b> populasi. Caranya: <b>sampel acak</b>, setiap anggota populasi memiliki peluang yang sama untuk terpilih.</li><li>Sampel yang tidak mewakili disebut <b>bias</b>.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Peluang Teoretis (Klasik): Rumus P(A) = n(A) / n(S)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Peluang Teoretis (Klasik): Rumus P(A) = n(A) / n(S)</b> berikut. Analisislah berdasarkan kaidah Asumsi setiap hasil memiliki kemungkinan sama besar (equally likely), kisaran nilai peluang 0 ≤ P(A) ≤ 1, kejadian mustahil (0) vs pasti (1)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Peluang Teoretis (Klasik): Rumus P(A) = n(A) / n(S) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Sebuah dadu dilempar 60 kali dan mata dadu 4 muncul 15 kali. Pernyataan yang benar adalah ....",
+          "options": {
+            "A": "Peluang empiris mata 4 adalah 1/4, sedangkan teoretisnya 1/6.",
+            "B": "Peluang teoretis mata 4 adalah 1/4.",
+            "C": "Dadunya pasti tidak seimbang.",
+            "D": "Peluang empiris selalu sama dengan peluang teoretis."
+          },
+          "answer": "A",
+          "hint": "Hitung 15/60 dan bandingkan dengan 1/6.",
+          "explanation": "15/60 = 1/4, berbeda dari 1/6. Perbedaan ini wajar pada percobaan yang sedikit, sehingga belum tentu dadunya tidak seimbang."
+        }
+      ]
+    },
+    {
+      "id": "peluang-kejadian-komplemen",
+      "title": "Peluang Kejadian Komplemen: P(A') = 1 - P(A)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Peluang Kejadian Komplemen: P(A') = 1 - P(A)</b>: Menyelesaikan soal dengan membalik pertanyaan ('peluang paling sedikit muncul satu angka' = 1 - peluang tidak ada angka sama sekali).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Untuk mengetahui pendapat seluruh siswa sekolah, kita tidak selalu bisa bertanya kepada semuanya. Kita memilih sebagian siswa, lalu menarik kesimpulan untuk semuanya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Menyelesaikan soal dengan membalik pertanyaan ('peluang paling sedikit muncul satu angka' = 1 - peluang tidak ada angka sama sekali).</p>"
         },
         {
           "type": "example",
@@ -91,44 +209,6 @@
           "answer": "1/2"
         },
         {
-          "type": "check",
-          "question": "Sebuah kartu diambil acak dari kartu bernomor 1 sampai 20. Peluang terambil kartu bernomor bilangan prima adalah ....",
-          "options": {
-            "A": "2/5",
-            "B": "1/2",
-            "C": "9/20",
-            "D": "8/20"
-          },
-          "answer": "A",
-          "hint": "Daftar bilangan prima dari 1 sampai 20.",
-          "explanation": "Prima: 2, 3, 5, 7, 11, 13, 17, 19 = 8 bilangan. P = 8/20 = 2/5. Pilihan D bernilai sama tetapi belum disederhanakan, sedangkan 1 bukan bilangan prima."
-        }
-      ]
-    },
-    {
-      "id": "peluang-empiris",
-      "title": "Peluang empiris",
-      "kind": "simulasi",
-      "duration": "15 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Peluang teoretis dihitung dari ruang sampel. <b>Peluang empiris</b> dihitung dari hasil percobaan yang benar-benar dilakukan:</p>\\[P_{\\text{empiris}}(A) = \\frac{\\text{banyak kejadian A muncul}}{\\text{banyak percobaan}}\\]<p>Peluang empiris juga disebut <b>frekuensi relatif</b>. Peluang empiris dipakai ketika ruang sampelnya sulit ditentukan, misalnya peluang paku payung jatuh dengan ujung ke atas.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/percobaan.html",
-          "title": "Percobaan peluang",
-          "height": 470,
-          "caption": "Lakukan sedikit percobaan, lalu ribuan percobaan. Bandingkan batang (empiris) dengan garis putus-putus (teoretis). Untuk dua dadu, mengapa jumlah 7 paling sering muncul?"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Semakin banyak, semakin dekat",
-          "html": "<p>Jika percobaan diulang sangat banyak, peluang empiris cenderung mendekati peluang teoretis. Namun pada percobaan yang sedikit, hasilnya bisa sangat berbeda: melempar koin 10 kali bisa saja menghasilkan 7 angka.</p>"
-        },
-        {
           "type": "example",
           "title": "Contoh soal 1",
           "question": "<p>Sebuah paku payung dilempar 200 kali dan jatuh dengan ujung ke atas 76 kali. Tentukan peluang empirisnya.</p>",
@@ -138,43 +218,6 @@
           "answer": "0,38"
         },
         {
-          "type": "check",
-          "question": "Sebuah dadu dilempar 60 kali dan mata dadu 4 muncul 15 kali. Pernyataan yang benar adalah ....",
-          "options": {
-            "A": "Peluang empiris mata 4 adalah 1/4, sedangkan teoretisnya 1/6.",
-            "B": "Peluang teoretis mata 4 adalah 1/4.",
-            "C": "Dadunya pasti tidak seimbang.",
-            "D": "Peluang empiris selalu sama dengan peluang teoretis."
-          },
-          "answer": "A",
-          "hint": "Hitung 15/60 dan bandingkan dengan 1/6.",
-          "explanation": "15/60 = 1/4, berbeda dari 1/6. Perbedaan ini wajar pada percobaan yang sedikit, sehingga belum tentu dadunya tidak seimbang."
-        }
-      ]
-    },
-    {
-      "id": "frekuensi-harapan",
-      "title": "Frekuensi harapan",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Frekuensi harapan",
-          "html": "\\[F_h(A) = P(A) \\times n\\]<p>n adalah banyak percobaan. Frekuensi harapan adalah banyak kejadian A yang <i>diharapkan</i> muncul, bukan yang pasti muncul.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dua koin dilempar 120 kali. Berapa kali diharapkan muncul dua angka?</p>",
-          "steps": [
-            "S = {AA, AG, GA, GG}, P(AA) = 1/4.",
-            "F<sub>h</sub> = 1/4 × 120 = 30 kali."
-          ],
-          "answer": "30 kali"
-        },
-        {
           "type": "example",
           "title": "Contoh soal 2",
           "question": "<p>Peluang seorang pasien sembuh dengan obat tertentu 0,85. Dari 400 pasien, berapa yang diharapkan sembuh?</p>",
@@ -182,6 +225,113 @@
             "F<sub>h</sub> = 0,85 × 400 = 340 pasien."
           ],
           "answer": "340 pasien"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Peluang Kejadian Komplemen: P(A') = 1 - P(A), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Peluang Kejadian Komplemen: P(A') = 1 - P(A) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menyelesaikan soal dengan membalik pertanyaan ('peluang paling sedikit muncul satu angka' = 1 - peluang tidak ada angka sama sekali).."
+        }
+      ]
+    },
+    {
+      "id": "peluang-empiris-hukum-bilangan-besar",
+      "title": "Peluang Empiris (Frekuensi Relatif) dan Hukum Bilangan Besar",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Peluang Empiris (Frekuensi Relatif) dan Hukum Bilangan Besar</b>: Frekuensi relatif = banyak kejadian muncul / banyak percobaan; eksperimen simulasi komputer: semakin banyak lemparan, frekuensi relatif mendekati peluang teoretis.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Peluang teoretis dihitung dari ruang sampel. <b>Peluang empiris</b> dihitung dari hasil percobaan yang benar-benar dilakukan:</p>\\[P_{\\text{empiris}}(A) = \\frac{\\text{banyak kejadian A muncul}}{\\text{banyak percobaan}}\\]<p>Peluang empiris juga disebut <b>frekuensi relatif</b>. Peluang empiris dipakai ketika ruang sampelnya sulit ditentukan, misalnya peluang paku payung jatuh dengan ujung ke atas.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Ruang sampel</td><td>Semua hasil yang mungkin. Dua koin: 4, dua dadu: 36.</td></tr><tr><td>Peluang teoretis</td><td>P(A) = n(A)/n(S), 0 ≤ P ≤ 1.</td></tr><tr><td>Komplemen</td><td>P(bukan A) = 1 − P(A).</td></tr><tr><td>Peluang empiris</td><td>banyak kejadian : banyak percobaan.</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = P(A) × n.</td></tr><tr><td>Sampel</td><td>Sebagian populasi; sampel acak mengurangi bias.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Semakin banyak, semakin dekat",
+          "html": "<p>Jika percobaan diulang sangat banyak, peluang empiris cenderung mendekati peluang teoretis. Namun pada percobaan yang sedikit, hasilnya bisa sangat berbeda: melempar koin 10 kali bisa saja menghasilkan 7 angka.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Frekuensi harapan",
+          "html": "\\[F_h(A) = P(A) \\times n\\]<p>n adalah banyak percobaan. Frekuensi harapan adalah banyak kejadian A yang <i>diharapkan</i> muncul, bukan yang pasti muncul.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/percobaan.html",
+          "title": "Percobaan peluang",
+          "height": 470,
+          "caption": "Lakukan sedikit percobaan, lalu ribuan percobaan. Bandingkan batang (empiris) dengan garis putus-putus (teoretis). Untuk dua dadu, mengapa jumlah 7 paling sering muncul?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Peluang Empiris (Frekuensi Relatif) dan Hukum Bilangan Besar",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Peluang Empiris (Frekuensi Relatif) dan Hukum Bilangan Besar</b> berikut. Analisislah berdasarkan kaidah Frekuensi relatif = banyak kejadian muncul / banyak percobaan; eksperimen simulasi komputer: semakin banyak lemparan, frekuensi relatif mendekati peluang teoretis..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Peluang Empiris (Frekuensi Relatif) dan Hukum Bilangan Besar untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Peluang Empiris (Frekuensi Relatif) dan Hukum Bilangan Besar, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Peluang Empiris (Frekuensi Relatif) dan Hukum Bilangan Besar berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Frekuensi relatif = banyak kejadian muncul / banyak percobaan; eksperimen simulasi komputer: semakin banyak lemparan, frekuensi relatif mendekati peluang teoretis.."
+        }
+      ]
+    },
+    {
+      "id": "frekuensi-harapan-kejadian",
+      "title": "Frekuensi Harapan: Fh(A) = n · P(A)",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Frekuensi Harapan: Fh(A) = n · P(A)</b>: Ekspektasi banyaknya kemunculan suatu kejadian dalam n kali percobaan berulang; aplikasi dalam undian, asuransi, dan pengujian kualitas produksi pabrik.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Ekspektasi banyaknya kemunculan suatu kejadian dalam n kali percobaan berulang; aplikasi dalam undian, asuransi, dan pengujian kualitas produksi pabrik.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Frekuensi Harapan: Fh(A) = n · P(A)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Frekuensi Harapan: Fh(A) = n · P(A)</b> berikut. Analisislah berdasarkan kaidah Ekspektasi banyaknya kemunculan suatu kejadian dalam n kali percobaan berulang; aplikasi dalam undian, asuransi, dan pengujian kualitas produksi pabrik..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Frekuensi Harapan: Fh(A) = n · P(A) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
@@ -199,20 +349,20 @@
       ]
     },
     {
-      "id": "pemilihan-sampel",
-      "title": "Populasi dan pemilihan sampel",
-      "kind": "simulasi",
-      "duration": "15 menit",
+      "id": "konsep-populasi-dan-sampel",
+      "title": "Statistika Inferensial Dasar: Konsep Populasi vs Sampel",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Untuk mengetahui pendapat seluruh siswa sekolah, kita tidak selalu bisa bertanya kepada semuanya. Kita memilih sebagian siswa, lalu menarik kesimpulan untuk semuanya.</p>"
+          "html": "<p><b>Statistika Inferensial Dasar: Konsep Populasi vs Sampel</b>: Mengapa sensus seluruh populasi seringkali mustahil/mahal, peran sampel yang representatif mencerminkan sifat populasi.</p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Populasi dan sampel",
-          "html": "<ul><li><b>Populasi</b>: seluruh objek yang ingin diteliti, misalnya semua siswa SMP di sebuah kota.</li><li><b>Sampel</b>: sebagian anggota populasi yang benar-benar diteliti.</li><li>Sampel yang baik <b>mewakili</b> populasi. Caranya: <b>sampel acak</b>, setiap anggota populasi memiliki peluang yang sama untuk terpilih.</li><li>Sampel yang tidak mewakili disebut <b>bias</b>.</li></ul>"
+          "title": "Konsep Esensial",
+          "html": "<p>Mengapa sensus seluruh populasi seringkali mustahil/mahal, peran sampel yang representatif mencerminkan sifat populasi.</p>"
         },
         {
           "type": "sim",
@@ -222,8 +372,55 @@
           "caption": "Ambil sampel acak beberapa kali, lalu ambil sampel hanya dari kelas dekat perpustakaan. Bandingkan perkiraannya dengan nilai sebenarnya."
         },
         {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Statistika Inferensial Dasar: Konsep Populasi vs Sampel, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Statistika Inferensial Dasar: Konsep Populasi vs Sampel berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Mengapa sensus seluruh populasi seringkali mustahil/mahal, peran sampel yang representatif mencerminkan sifat populasi.."
+        }
+      ]
+    },
+    {
+      "id": "metode-pemilihan-sampel-dan-bias",
+      "title": "Teknik Pemilihan Sampel Acak (Random Sampling) dan Menghindari Bias",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Teknik Pemilihan Sampel Acak (Random Sampling) dan Menghindari Bias</b>: Simple random sampling, stratified sampling; contoh bias pemilihan sampel (survei telepon yang mengecualikan kelompok tertentu, self-selection bias).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
           "type": "text",
           "html": "<p>Contoh sampel bias: menanyakan olahraga favorit hanya kepada anggota klub sepak bola, atau survei daring yang hanya dijawab orang yang tertarik dengan topiknya. Cara memilih sampel acak antara lain undian nomor, tabel bilangan acak, atau aplikasi pengacak.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas IX</i> (Kemendikbudristek), Bab 4 Peluang dan Pemilihan Sampel.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi Pemecahan Masalah",
+          "html": "<p>Simple random sampling, stratified sampling; contoh bias pemilihan sampel (survei telepon yang mengecualikan kelompok tertentu, self-selection bias).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Teknik Pemilihan Sampel Acak (Random Sampling) dan Menghindari Bias",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Teknik Pemilihan Sampel Acak (Random Sampling) dan Menghindari Bias</b> berikut. Analisislah berdasarkan kaidah Simple random sampling, stratified sampling; contoh bias pemilihan sampel (survei telepon yang mengecualikan kelompok tertentu, self-selection bias)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Teknik Pemilihan Sampel Acak (Random Sampling) dan Menghindari Bias untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
@@ -241,24 +438,138 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "estimasi-karakteristik-populasi",
+      "title": "Menggunakan Sampel untuk Mengestimasi Karakteristik Populasi",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Ruang sampel</td><td>Semua hasil yang mungkin. Dua koin: 4, dua dadu: 36.</td></tr><tr><td>Peluang teoretis</td><td>P(A) = n(A)/n(S), 0 ≤ P ≤ 1.</td></tr><tr><td>Komplemen</td><td>P(bukan A) = 1 − P(A).</td></tr><tr><td>Peluang empiris</td><td>banyak kejadian : banyak percobaan.</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = P(A) × n.</td></tr><tr><td>Sampel</td><td>Sebagian populasi; sampel acak mengurangi bias.</td></tr></table>"
+          "html": "<p><b>Menggunakan Sampel untuk Mengestimasi Karakteristik Populasi</b>: Metode Capture-Recapture untuk memperkirakan populasi satwa liar di hutan, proyeksi hasil survei pemilu.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi Pemecahan Masalah",
+          "html": "<p>Metode Capture-Recapture untuk memperkirakan populasi satwa liar di hutan, proyeksi hasil survei pemilu.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Menggunakan Sampel untuk Mengestimasi Karakteristik Populasi",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Menggunakan Sampel untuk Mengestimasi Karakteristik Populasi</b> berikut. Analisislah berdasarkan kaidah Metode Capture-Recapture untuk memperkirakan populasi satwa liar di hutan, proyeksi hasil survei pemilu..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Menggunakan Sampel untuk Mengestimasi Karakteristik Populasi untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menggunakan Sampel untuk Mengestimasi Karakteristik Populasi, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Menggunakan Sampel untuk Mengestimasi Karakteristik Populasi berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Metode Capture-Recapture untuk memperkirakan populasi satwa liar di hutan, proyeksi hasil survei pemilu.."
+        }
+      ]
+    },
+    {
+      "id": "miskonsepsi-peluang",
+      "title": "Miskonsepsi Peluang: Kesesatan Penjudi (Gambler's Fallacy)",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Miskonsepsi Peluang: Kesesatan Penjudi (Gambler's Fallacy)</b>: Memahami sifat independen lemparan koin acak ('karena sudah muncul gambar 5 kali berturut-turut, lemparan ke-6 pasti angka' adalah mitos).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Sebelum pertandingan sepak bola, wasit melempar koin untuk menentukan tim yang memulai. Hasilnya tidak bisa dipastikan, tetapi kita tahu semua kemungkinannya: angka atau gambar. Matematika yang mempelajari kemungkinan seperti ini disebut <b>peluang</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Mengira jumlah dua dadu 2 sampai 12 sama peluangnya.</li><li>Menganggap frekuensi harapan pasti terjadi.</li><li>Menyimpulkan tentang populasi dari sampel yang bias.</li></ul>"
+          "title": "Peringatan & Miskonsepsi Umum",
+          "html": "<p>Memahami sifat independen lemparan koin acak ('karena sudah muncul gambar 5 kali berturut-turut, lemparan ke-6 pasti angka' adalah mitos).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dua koin dilempar 120 kali. Berapa kali diharapkan muncul dua angka?</p>",
+          "steps": [
+            "S = {AA, AG, GA, GG}, P(AA) = 1/4.",
+            "F<sub>h</sub> = 1/4 × 120 = 30 kali."
+          ],
+          "answer": "30 kali"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Miskonsepsi Peluang: Kesesatan Penjudi (Gambler's Fallacy), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Miskonsepsi Peluang: Kesesatan Penjudi (Gambler's Fallacy) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Memahami sifat independen lemparan koin acak ('karena sudah muncul gambar 5 kali berturut-turut, lemparan ke-6 pasti angka' adalah mitos).."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Mandiri",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Mandiri</b>: Rangkuman konsep peluang dan sampling beserta latihan soal bertahap.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Rangkuman konsep peluang dan sampling beserta latihan soal bertahap.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Mandiri",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Mandiri</b> berikut. Analisislah berdasarkan kaidah Rangkuman konsep peluang dan sampling beserta latihan soal bertahap..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Mandiri untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Mandiri, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Mandiri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman konsep peluang dan sampling beserta latihan soal bertahap.."
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas IX</i> (Kemendikbudristek), Bab 4 Peluang dan Pemilihan Sampel.</small></p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

@@ -4,20 +4,34 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "benda-hitam",
-      "title": "Radiasi benda hitam: Stefan–Boltzmann dan Wien",
+      "id": "radiasi-benda-hitam-bencana-uv",
+      "title": "Bencana Ultraviolet (Ultraviolet Catastrophe) dan Lahirnya Fisika Kuantum",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Bencana Ultraviolet (Ultraviolet Catastrophe) dan Lahirnya Fisika Kuantum</b>: Kegagalan teori gelombang elektromagnetik klasik Rayleigh-Jeans memprediksi radiasi benda hitam pada frekuensi tinggi; kurva emisi energi radiasi vs panjang gelombang.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
           "html": "<p>Setiap benda bersuhu di atas 0 K memancarkan radiasi elektromagnetik. Pada suhu kamar (± 300 K) radiasinya berupa inframerah yang tidak terlihat. Sekitar 1.000 K benda mulai berpijar merah, dan di atas 2.000 K berpijar kuning hingga putih, seperti filamen lampu.</p><p><b>Benda hitam sempurna</b> adalah benda yang menyerap seluruh radiasi yang mengenainya; benda ini juga merupakan pemancar terbaik. Modelnya adalah rongga berlubang kecil: cahaya yang masuk terpantul berulang-ulang di dalam dan tidak dapat keluar lagi.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Fisika klasik (rumus Rayleigh–Jeans) meramalkan bahwa intensitas radiasi benda hitam terus naik tanpa batas pada panjang gelombang pendek. Ramalan ini disebut <b>bencana ultraviolet</b> dan bertentangan dengan hasil percobaan. Pada tahun 1900, <b>Max Planck</b> berhasil menurunkan kurva yang tepat dengan satu anggapan berani: osilator atom pada dinding benda hitam hanya dapat memiliki energi yang <b>diskrit (terkuantisasi)</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Hukum Stefan–Boltzmann dan pergeseran Wien",
           "html": "<p><b>Stefan–Boltzmann</b>: daya yang dipancarkan per satuan luas sebanding dengan pangkat empat suhu mutlak.</p><p>\\(\\dfrac{P}{A} = e\\sigma T^4 \\quad\\text{atau}\\quad P = e\\sigma AT^4, \\qquad \\sigma = 5{,}67\\times10^{-8}\\ \\text{W m}^{-2}\\text{K}^{-4}\\)</p><p>Emisivitas e = 1 untuk benda hitam sempurna dan 0 &lt; e &lt; 1 untuk benda lain.</p><p><b>Pergeseran Wien</b>: puncak spektrum bergeser ke panjang gelombang yang lebih pendek ketika suhu naik.</p><p>\\(\\lambda_\\text{maks}\\,T = b = 2{,}9\\times10^{-3}\\ \\text{m K}\\)</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kuantum energi",
+          "html": "<p>\\(E_n = nhf, \\quad n = 1, 2, 3, \\dots \\qquad h = 6{,}63\\times10^{-34}\\ \\text{J s}\\)</p><p>Energi satu kuantum (satu <b>foton</b>): \\(E = hf = \\dfrac{hc}{\\lambda}\\). Satuan yang praktis adalah elektronvolt: 1 eV = 1,6 × 10⁻¹⁹ J, dan \\(E\\,(\\text{eV}) \\approx \\dfrac{1240}{\\lambda\\,(\\text{nm})}\\).</p><p>Berkas berdaya P yang terdiri atas foton berenergi hf memancarkan \\(n = \\dfrac{P}{hf}\\) foton per sekon.</p>"
         },
         {
           "type": "sim",
@@ -47,12 +61,6 @@
           "answer": "≈ 1.134 W dan ≈ 5.741 W"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Koreksi buku",
-          "html": "<p>Pada contoh bintang Rigel dan Betelgeuse, buku menyalin perhitungan Rigel untuk Betelgeuse. Perhitungan yang benar: Rigel T = 2,9 × 10⁻³ / 263 × 10⁻⁹ ≈ 11.000 K, sedangkan Betelgeuse T = 2,9 × 10⁻³ / 828 × 10⁻⁹ ≈ <b>3.500 K</b>. Jadi Betelgeuse yang lebih dingin; itu sebabnya ia tampak kemerahan.</p>"
-        },
-        {
           "type": "check",
           "question": "Bintang A tampak biru keputihan dan bintang B tampak merah. Pernyataan yang benar adalah ....",
           "options": {
@@ -68,20 +76,104 @@
       ]
     },
     {
-      "id": "planck",
-      "title": "Teori kuantum Planck dan foton",
-      "kind": "artikel",
-      "duration": "25 menit",
+      "id": "hipotesis-kuantum-max-planck",
+      "title": "Hipotesis Kuantisasi Energi Max Planck: E = n · h · f",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Fisika klasik (rumus Rayleigh–Jeans) meramalkan bahwa intensitas radiasi benda hitam terus naik tanpa batas pada panjang gelombang pendek. Ramalan ini disebut <b>bencana ultraviolet</b> dan bertentangan dengan hasil percobaan. Pada tahun 1900, <b>Max Planck</b> berhasil menurunkan kurva yang tepat dengan satu anggapan berani: osilator atom pada dinding benda hitam hanya dapat memiliki energi yang <b>diskrit (terkuantisasi)</b>.</p>"
+          "html": "<p><b>Hipotesis Kuantisasi Energi Max Planck: E = n · h · f</b>: Energi radiasi tidak dipancarkan kontinu melainkan dalam paket-paket diskrit diskrit yang disebut kuanta (foton); konstanta fundamental Planck h = 6,626 x 10^-34 J·s; perhitungan energi foton.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Pada contoh bintang Rigel dan Betelgeuse, buku menyalin perhitungan Rigel untuk Betelgeuse. Perhitungan yang benar: Rigel T = 2,9 × 10⁻³ / 263 × 10⁻⁹ ≈ 11.000 K, sedangkan Betelgeuse T = 2,9 × 10⁻³ / 828 × 10⁻⁹ ≈ <b>3.500 K</b>. Jadi Betelgeuse yang lebih dingin; itu sebabnya ia tampak kemerahan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut Planck pada tahun 1901 berhipotesis bahwa cahaya terdiri atas foton. Sebenarnya Planck (1900) hanya mengkuantisasi energi <b>osilator</b> pada dinding benda hitam. Gagasan bahwa <b>cahaya itu sendiri</b> terdiri atas kuanta (foton) dikemukakan Einstein pada tahun 1905, dan istilah \"foton\" baru dipakai mulai tahun 1926.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Hipotesis Kuantisasi Energi Max Planck: E = n · h · f",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Hipotesis Kuantisasi Energi Max Planck: E = n · h · f</b> berikut. Analisislah berdasarkan kaidah Energi radiasi tidak dipancarkan kontinu melainkan dalam paket-paket diskrit diskrit yang disebut kuanta (foton); konstanta fundamental Planck h = 6,626 x 10^-34 J·s; perhitungan energi foton..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Hipotesis Kuantisasi Energi Max Planck: E = n · h · f untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Hipotesis Kuantisasi Energi Max Planck: E = n · h · f, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Hipotesis Kuantisasi Energi Max Planck: E = n · h · f berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Energi radiasi tidak dipancarkan kontinu melainkan dalam paket-paket diskrit diskrit yang disebut kuanta (foton); konstanta fundamental Planck h = 6,626 x 10^-34 J·s; perhitungan energi foton.."
+        }
+      ]
+    },
+    {
+      "id": "efek-fotolistrik-einstein",
+      "title": "Efek Fotolistrik: Pembuktian Eksperimental Cahaya sebagai Partikel Foton",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Efek Fotolistrik: Pembuktian Eksperimental Cahaya sebagai Partikel Foton</b>: Foton menabrak elektron lempeng logam memicu emisi elektron; mengapa teori gelombang klasik gagal (intensitas cahaya tidak menambah energi kinetik elektron, hanya menambah jumlah elektron); peran frekuensi ambang f0.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Ketika cahaya mengenai permukaan logam, elektron dapat terlepas. Peristiwa ini disebut <b>efek fotolistrik</b>, dan elektron yang terlepas disebut fotoelektron. Hasil percobaannya tidak dapat dijelaskan oleh teori gelombang cahaya:</p><ul><li>Elektron hanya lepas jika frekuensi cahaya melebihi <b>frekuensi ambang</b> f₀, seterang apa pun cahayanya.</li><li>Energi kinetik maksimum elektron bergantung pada frekuensi, tidak pada intensitas.</li><li>Intensitas hanya menentukan <b>jumlah</b> elektron (besar arus).</li><li>Elektron lepas seketika, tanpa jeda waktu, meskipun cahayanya redup.</li></ul><p><b>Einstein (1905)</b> menjelaskan semuanya: cahaya terdiri atas foton, dan satu foton diserap seluruhnya oleh satu elektron.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa UV berbahaya, tetapi microwave tidak mengionisasi?",
+          "html": "<p>Kemampuan merusak molekul ditentukan oleh energi <b>tiap foton</b>, bukan oleh jumlah total energi. Foton gelombang mikro (≈ 10⁻⁵ eV) terlalu lemah untuk memutus ikatan atau mengionisasi atom, berapa pun dayanya; ia hanya memanaskan. Foton UV (beberapa eV) dan sinar-X (ribuan eV) mampu memutus ikatan DNA satu per satu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Aplikasi",
+          "html": "<p>Sel fotolistrik dipakai sebagai sensor pada pintu otomatis dan penghitung barang. CCD dan sensor CMOS pada kamera digital mengubah foton menjadi muatan listrik di setiap piksel. Sel surya memanfaatkan efek fotovoltaik, yaitu kerabat efek fotolistrik: foton membangkitkan pasangan elektron–hole pada sambungan p-n, tetapi elektronnya tidak keluar dari bahan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Buku menyebut Davisson dan Germer \"masing-masing melakukan eksperimen secara terpisah\". Sebenarnya Davisson dan Germer bekerja <b>bersama</b> di Bell Labs. Yang melakukan percobaan terpisah adalah G. P. Thomson, yang mendifraksikan elektron melalui lapisan logam tipis. Davisson dan Thomson berbagi Nobel Fisika 1937.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Kuantum energi",
-          "html": "<p>\\(E_n = nhf, \\quad n = 1, 2, 3, \\dots \\qquad h = 6{,}63\\times10^{-34}\\ \\text{J s}\\)</p><p>Energi satu kuantum (satu <b>foton</b>): \\(E = hf = \\dfrac{hc}{\\lambda}\\). Satuan yang praktis adalah elektronvolt: 1 eV = 1,6 × 10⁻¹⁹ J, dan \\(E\\,(\\text{eV}) \\approx \\dfrac{1240}{\\lambda\\,(\\text{nm})}\\).</p><p>Berkas berdaya P yang terdiri atas foton berenergi hf memancarkan \\(n = \\dfrac{P}{hf}\\) foton per sekon.</p>"
+          "title": "Panjang gelombang minimum (Duane–Hunt)",
+          "html": "<p>Jika seluruh energi kinetik elektron eV berubah menjadi satu foton, diperoleh foton dengan energi terbesar atau panjang gelombang terkecil:</p><p>\\(\\lambda_\\text{min} = \\dfrac{hc}{eV}\\)</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira cahaya yang lebih terang menghasilkan elektron yang lebih cepat. Intensitas hanya menambah jumlah elektron.</li><li>Lupa mengubah eV ke joule (× 1,6 × 10⁻¹⁹) sebelum menghitung kecepatan elektron.</li><li>Memakai suhu dalam °C pada rumus Wien atau Stefan–Boltzmann; harus dalam kelvin.</li><li>Mengira panjang gelombang foton berkurang pada efek Compton; yang benar bertambah.</li><li>Lupa bahwa daya Stefan–Boltzmann sebanding dengan T⁴, bukan T.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/fotolistrik.html",
+          "title": "Efek fotolistrik",
+          "height": 600,
+          "caption": "Pilih tembaga dan sinari dengan cahaya tampak seterang mungkin. Adakah elektron yang lepas? Lalu ubah intensitas pada natrium: bagian grafik i–V mana yang berubah?"
         },
         {
           "type": "example",
@@ -104,16 +196,15 @@
           "answer": "≈ 2,5 × 10¹⁸ foton per sekon"
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Mengapa UV berbahaya, tetapi microwave tidak mengionisasi?",
-          "html": "<p>Kemampuan merusak molekul ditentukan oleh energi <b>tiap foton</b>, bukan oleh jumlah total energi. Foton gelombang mikro (≈ 10⁻⁵ eV) terlalu lemah untuk memutus ikatan atau mengionisasi atom, berapa pun dayanya; ia hanya memanaskan. Foton UV (beberapa eV) dan sinar-X (ribuan eV) mampu memutus ikatan DNA satu per satu.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Catatan buku",
-          "html": "<p>Buku menyebut Planck pada tahun 1901 berhipotesis bahwa cahaya terdiri atas foton. Sebenarnya Planck (1900) hanya mengkuantisasi energi <b>osilator</b> pada dinding benda hitam. Gagasan bahwa <b>cahaya itu sendiri</b> terdiri atas kuanta (foton) dikemukakan Einstein pada tahun 1905, dan istilah \"foton\" baru dipakai mulai tahun 1926.</p>"
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Permukaan kalsium (W₀ = 2,9 eV) disinari ultraviolet 300 nm. Tentukan energi kinetik maksimum fotoelektron, potensial hentinya, dan panjang gelombang ambang kalsium.</p>",
+          "steps": [
+            "Energi foton: E = 1240/300 ≈ 4,13 eV.",
+            "K<sub>maks</sub> = 4,13 − 2,9 = 1,23 eV, sehingga V₀ = 1,23 V.",
+            "λ₀ = 1240/2,9 ≈ 428 nm."
+          ],
+          "answer": "1,23 eV; 1,23 V; ≈ 428 nm"
         },
         {
           "type": "check",
@@ -127,48 +218,6 @@
           "answer": "C",
           "hint": "E ∝ 1/λ.",
           "explanation": "E<sub>ungu</sub>/E<sub>merah</sub> = 700/400 = 1,75."
-        }
-      ]
-    },
-    {
-      "id": "fotolistrik",
-      "title": "Efek fotolistrik",
-      "kind": "simulasi",
-      "duration": "40 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Ketika cahaya mengenai permukaan logam, elektron dapat terlepas. Peristiwa ini disebut <b>efek fotolistrik</b>, dan elektron yang terlepas disebut fotoelektron. Hasil percobaannya tidak dapat dijelaskan oleh teori gelombang cahaya:</p><ul><li>Elektron hanya lepas jika frekuensi cahaya melebihi <b>frekuensi ambang</b> f₀, seterang apa pun cahayanya.</li><li>Energi kinetik maksimum elektron bergantung pada frekuensi, tidak pada intensitas.</li><li>Intensitas hanya menentukan <b>jumlah</b> elektron (besar arus).</li><li>Elektron lepas seketika, tanpa jeda waktu, meskipun cahayanya redup.</li></ul><p><b>Einstein (1905)</b> menjelaskan semuanya: cahaya terdiri atas foton, dan satu foton diserap seluruhnya oleh satu elektron.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Persamaan efek fotolistrik Einstein",
-          "html": "<p>\\(hf = W_0 + K_\\text{maks}, \\qquad W_0 = hf_0 = \\dfrac{hc}{\\lambda_0}\\)</p><p>W₀ adalah fungsi kerja logam. Energi kinetik maksimum diukur dengan <b>potensial henti</b> V₀, yaitu tegangan balik yang tepat menghentikan elektron tercepat: \\(K_\\text{maks} = eV_0 = \\tfrac12 mv_\\text{maks}^2\\).</p><p>Grafik K<sub>maks</sub> terhadap f berupa garis lurus dengan kemiringan h, dan memotong sumbu f di f₀.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/fotolistrik.html",
-          "title": "Efek fotolistrik",
-          "height": 600,
-          "caption": "Pilih tembaga dan sinari dengan cahaya tampak seterang mungkin. Adakah elektron yang lepas? Lalu ubah intensitas pada natrium: bagian grafik i–V mana yang berubah?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Permukaan kalsium (W₀ = 2,9 eV) disinari ultraviolet 300 nm. Tentukan energi kinetik maksimum fotoelektron, potensial hentinya, dan panjang gelombang ambang kalsium.</p>",
-          "steps": [
-            "Energi foton: E = 1240/300 ≈ 4,13 eV.",
-            "K<sub>maks</sub> = 4,13 − 2,9 = 1,23 eV, sehingga V₀ = 1,23 V.",
-            "λ₀ = 1240/2,9 ≈ 428 nm."
-          ],
-          "answer": "1,23 eV; 1,23 V; ≈ 428 nm"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Aplikasi",
-          "html": "<p>Sel fotolistrik dipakai sebagai sensor pada pintu otomatis dan penghitung barang. CCD dan sensor CMOS pada kamera digital mengubah foton menjadi muatan listrik di setiap piksel. Sel surya memanfaatkan efek fotovoltaik, yaitu kerabat efek fotolistrik: foton membangkitkan pasangan elektron–hole pada sambungan p-n, tetapi elektronnya tidak keluar dari bahan.</p>"
         },
         {
           "type": "check",
@@ -186,20 +235,81 @@
       ]
     },
     {
-      "id": "compton-debroglie",
-      "title": "Efek Compton dan dualitas gelombang-partikel",
+      "id": "persamaan-energi-efek-fotolistrik",
+      "title": "Persamaan Efek Fotolistrik Einstein: Ek_max = h·f - W0 = e · V0",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Persamaan Efek Fotolistrik Einstein: Ek_max = h·f - W0 = e · V0</b>: Fungsi kerja logam W0 = h · f0; energi kinetik maksimum elektron terlepas; potensial henti (stopping potential V0) penghenti arus foto; grafik Ek vs frekuensi f dengan kemiringan konstanta h.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Pemanfaatan</b>: foto rontgen dan CT scan (tulang menyerap sinar-X lebih banyak daripada jaringan lunak), pemindai bagasi di bandara, radioterapi, kristalografi (menentukan struktur kristal, termasuk struktur DNA), dan pemeriksaan retak pada logam. <b>Risiko</b>: paparan berlebihan dapat merusak sel dan DNA, sehingga operator berlindung di balik timbal dan dosis untuk pasien dibuat serendah mungkin.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan efek fotolistrik Einstein",
+          "html": "<p>\\(hf = W_0 + K_\\text{maks}, \\qquad W_0 = hf_0 = \\dfrac{hc}{\\lambda_0}\\)</p><p>W₀ adalah fungsi kerja logam. Energi kinetik maksimum diukur dengan <b>potensial henti</b> V₀, yaitu tegangan balik yang tepat menghentikan elektron tercepat: \\(K_\\text{maks} = eV_0 = \\tfrac12 mv_\\text{maks}^2\\).</p><p>Grafik K<sub>maks</sub> terhadap f berupa garis lurus dengan kemiringan h, dan memotong sumbu f di f₀.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Persamaan Efek Fotolistrik Einstein: Ek_max = h·f - W0 = e · V0",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Persamaan Efek Fotolistrik Einstein: Ek_max = h·f - W0 = e · V0</b> berikut. Analisislah berdasarkan kaidah Fungsi kerja logam W0 = h · f0; energi kinetik maksimum elektron terlepas; potensial henti (stopping potential V0) penghenti arus foto; grafik Ek vs frekuensi f dengan kemiringan konstanta h..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Persamaan Efek Fotolistrik Einstein: Ek_max = h·f - W0 = e · V0 untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Persamaan Efek Fotolistrik Einstein: Ek_max = h·f - W0 = e · V0, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Persamaan Efek Fotolistrik Einstein: Ek_max = h·f - W0 = e · V0 berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Fungsi kerja logam W0 = h · f0; energi kinetik maksimum elektron terlepas; potensial henti (stopping potential V0) penghenti arus foto; grafik Ek vs frekuensi f dengan kemiringan konstanta h.."
+        }
+      ]
+    },
+    {
+      "id": "efek-hamburan-compton",
+      "title": "Efek Hamburan Compton: Tumbukan Elastis Foton Sinar-X dengan Elektron Bebas",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Efek Hamburan Compton: Tumbukan Elastis Foton Sinar-X dengan Elektron Bebas</b>: Foton kehilangan energi setelah menumbuk elektron dan terhambur dengan sudut θ; pergeseran panjang gelombang Compton Δλ = λ' - λ = (h / m_e c) · (1 - cos θ); panjang gelombang Compton elektron λC = 0,0243 Å.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
           "html": "<p>Pada tahun 1923, <b>Arthur Compton</b> menembakkan sinar-X ke grafit dan mendapati bahwa sinar-X yang terhambur memiliki panjang gelombang <b>lebih besar</b>. Ia menjelaskannya sebagai tumbukan antara foton dan elektron, seperti tumbukan dua bola. Foton memberikan sebagian energi dan momentumnya kepada elektron, sehingga energinya turun dan panjang gelombangnya bertambah. Ini bukti bahwa foton memiliki momentum \\(p = h/\\lambda\\).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Sinar-X ditemukan <b>Wilhelm Röntgen</b> pada tahun 1895. Pada tabung sinar-X modern, <b>katode</b> berupa filamen tungsten yang dipanaskan sehingga memancarkan elektron. Elektron dipercepat oleh tegangan tinggi (puluhan kilovolt), lalu menumbuk <b>anode</b> logam berat (biasanya tungsten). Perlambatan mendadak elektron menghasilkan sinar-X kontinu (bremsstrahlung). Elektron yang mengeluarkan elektron kulit dalam atom anode menghasilkan sinar-X karakteristik.</p><p>Sifat sinar-X: merupakan gelombang elektromagnetik dengan panjang gelombang sekitar 0,01–10 nm, tidak bermuatan sehingga tidak dibelokkan medan listrik maupun magnet, daya tembusnya besar, dapat mengionisasi, dan menghitamkan pelat foto.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Pergeseran Compton",
           "html": "<p>\\(\\Delta\\lambda = \\lambda' - \\lambda = \\dfrac{h}{m_ec}(1 - \\cos\\theta)\\)</p><p>\\(h/m_ec = 2{,}43\\times10^{-12}\\) m (panjang gelombang Compton elektron). Pergeseran terbesar terjadi pada θ = 180°, yaitu 2 × 2,43 pm.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Catatan buku",
+          "html": "<p>Pada penjelasan prinsip kerja tabung sinar-X, buku menulis katode \"biasanya tembaga\". Katode berupa filamen <b>tungsten</b> yang dipanaskan; tembaga dipakai sebagai penyangga anode untuk membuang panas. Buku juga memberikan rentang panjang gelombang yang tidak konsisten (10⁻⁸–10⁻¹² m di satu tempat, 0,01–100 nm di tempat lain). Rentang yang umum dipakai sekitar 0,01–10 nm.</p>"
         },
         {
           "type": "sim",
@@ -220,8 +330,49 @@
           "answer": "≈ 33,64 pm"
         },
         {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tabung rontgen gigi bekerja pada tegangan 30 kV. Berapa panjang gelombang sinar-X terpendek yang dihasilkan?</p>",
+          "steps": [
+            "Energi foton maksimum: 30 keV = 30.000 eV.",
+            "λ<sub>min</sub> = 1240 eV nm / 30.000 eV."
+          ],
+          "answer": "≈ 0,041 nm = 41 pm"
+        },
+        {
+          "type": "check",
+          "question": "Tegangan tabung sinar-X dinaikkan dua kali. Panjang gelombang minimum sinar-X yang dihasilkan menjadi ....",
+          "options": {
+            "A": "dua kali semula",
+            "B": "setengah semula",
+            "C": "empat kali semula",
+            "D": "tetap"
+          },
+          "answer": "B",
+          "hint": "λ<sub>min</sub> = hc/(eV).",
+          "explanation": "λ<sub>min</sub> berbanding terbalik dengan V, jadi menjadi setengahnya."
+        }
+      ]
+    },
+    {
+      "id": "dualisme-gelombang-partikel-de-broglie",
+      "title": "Dualisme Gelombang-Partikel Louis de Broglie: λ = h / p = h / (m · v)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Dualisme Gelombang-Partikel Louis de Broglie: λ = h / p = h / (m · v)</b>: Jika gelombang cahaya memiliki sifat partikel, maka partikel materi (elektron) juga memiliki sifat gelombang; menghitung panjang gelombang De Broglie elektron yang dipercepat beda potensial V.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
           "type": "text",
           "html": "<p>Jika gelombang (cahaya) dapat bersifat partikel, apakah partikel dapat bersifat gelombang? <b>Louis de Broglie</b> (1924) mengusulkan bahwa setiap partikel bermomentum p memiliki panjang gelombang:</p><p>\\(\\lambda = \\dfrac{h}{p} = \\dfrac{h}{mv}\\)</p><p>Untuk elektron yang dipercepat dari keadaan diam oleh beda potensial V: \\(eV = \\tfrac12mv^2\\), sehingga \\(\\lambda = \\dfrac{h}{\\sqrt{2meV}}\\). <b>Davisson dan Germer</b> (1927) membuktikannya: berkas elektron yang ditembakkan ke kristal nikel menghasilkan pola difraksi, persis seperti gelombang. Mikroskop elektron memanfaatkan panjang gelombang elektron yang sangat pendek untuk melihat benda yang jauh lebih kecil daripada batas mikroskop cahaya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Jika gelombang cahaya memiliki sifat partikel, maka partikel materi (elektron) juga memiliki sifat gelombang; menghitung panjang gelombang De Broglie elektron yang dipercepat beda potensial V.</p>"
         },
         {
           "type": "example",
@@ -243,12 +394,6 @@
           "answer": "6,63 × 10⁻³⁴ m, terlalu kecil untuk diamati sehingga bola tidak menunjukkan sifat gelombang"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Catatan buku",
-          "html": "<p>Buku menyebut Davisson dan Germer \"masing-masing melakukan eksperimen secara terpisah\". Sebenarnya Davisson dan Germer bekerja <b>bersama</b> di Bell Labs. Yang melakukan percobaan terpisah adalah G. P. Thomson, yang mendifraksikan elektron melalui lapisan logam tipis. Davisson dan Thomson berbagi Nobel Fisika 1937.</p>"
-        },
-        {
           "type": "check",
           "question": "Elektron dan proton bergerak dengan kelajuan yang sama. Panjang gelombang de Broglie yang lebih panjang dimiliki oleh ....",
           "options": {
@@ -264,71 +409,128 @@
       ]
     },
     {
-      "id": "sinar-x",
-      "title": "Sinar-X",
+      "id": "percobaan-davisson-germer",
+      "title": "Pembuktian Eksperimental Gelombang Materi: Difraksi Elektron Davisson-Germer",
       "kind": "artikel",
-      "duration": "20 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Sinar-X ditemukan <b>Wilhelm Röntgen</b> pada tahun 1895. Pada tabung sinar-X modern, <b>katode</b> berupa filamen tungsten yang dipanaskan sehingga memancarkan elektron. Elektron dipercepat oleh tegangan tinggi (puluhan kilovolt), lalu menumbuk <b>anode</b> logam berat (biasanya tungsten). Perlambatan mendadak elektron menghasilkan sinar-X kontinu (bremsstrahlung). Elektron yang mengeluarkan elektron kulit dalam atom anode menghasilkan sinar-X karakteristik.</p><p>Sifat sinar-X: merupakan gelombang elektromagnetik dengan panjang gelombang sekitar 0,01–10 nm, tidak bermuatan sehingga tidak dibelokkan medan listrik maupun magnet, daya tembusnya besar, dapat mengionisasi, dan menghitamkan pelat foto.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Panjang gelombang minimum (Duane–Hunt)",
-          "html": "<p>Jika seluruh energi kinetik elektron eV berubah menjadi satu foton, diperoleh foton dengan energi terbesar atau panjang gelombang terkecil:</p><p>\\(\\lambda_\\text{min} = \\dfrac{hc}{eV}\\)</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tabung rontgen gigi bekerja pada tegangan 30 kV. Berapa panjang gelombang sinar-X terpendek yang dihasilkan?</p>",
-          "steps": [
-            "Energi foton maksimum: 30 keV = 30.000 eV.",
-            "λ<sub>min</sub> = 1240 eV nm / 30.000 eV."
-          ],
-          "answer": "≈ 0,041 nm = 41 pm"
-        },
-        {
-          "type": "text",
-          "html": "<p><b>Pemanfaatan</b>: foto rontgen dan CT scan (tulang menyerap sinar-X lebih banyak daripada jaringan lunak), pemindai bagasi di bandara, radioterapi, kristalografi (menentukan struktur kristal, termasuk struktur DNA), dan pemeriksaan retak pada logam. <b>Risiko</b>: paparan berlebihan dapat merusak sel dan DNA, sehingga operator berlindung di balik timbal dan dosis untuk pasien dibuat serendah mungkin.</p>"
+          "html": "<p><b>Pembuktian Eksperimental Gelombang Materi: Difraksi Elektron Davisson-Germer</b>: Penembakan berkas elektron ke kristal nikel menghasilkan pola difraksi dan interferensi khas gelombang; penerapan praktis pada mikroskop elektron (TEM/SEM) beresolusi sub-nanometer.</p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Catatan buku",
-          "html": "<p>Pada penjelasan prinsip kerja tabung sinar-X, buku menulis katode \"biasanya tembaga\". Katode berupa filamen <b>tungsten</b> yang dipanaskan; tembaga dipakai sebagai penyangga anode untuk membuang panas. Buku juga memberikan rentang panjang gelombang yang tidak konsisten (10⁻⁸–10⁻¹² m di satu tempat, 0,01–100 nm di tempat lain). Rentang yang umum dipakai sekitar 0,01–10 nm.</p>"
+          "title": "Konsep Esensial",
+          "html": "<p>Penembakan berkas elektron ke kristal nikel menghasilkan pola difraksi dan interferensi khas gelombang; penerapan praktis pada mikroskop elektron (TEM/SEM) beresolusi sub-nanometer.</p>"
         },
         {
           "type": "check",
-          "question": "Tegangan tabung sinar-X dinaikkan dua kali. Panjang gelombang minimum sinar-X yang dihasilkan menjadi ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Pembuktian Eksperimental Gelombang Materi: Difraksi Elektron Davisson-Germer, manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "dua kali semula",
-            "B": "setengah semula",
-            "C": "empat kali semula",
-            "D": "tetap"
+            "A": "Prinsip Pembuktian Eksperimental Gelombang Materi: Difraksi Elektron Davisson-Germer berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "B",
-          "hint": "λ<sub>min</sub> = hc/(eV).",
-          "explanation": "λ<sub>min</sub> berbanding terbalik dengan V, jadi menjadi setengahnya."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Penembakan berkas elektron ke kristal nikel menghasilkan pola difraksi dan interferensi khas gelombang; penerapan praktis pada mikroskop elektron (TEM/SEM) beresolusi sub-nanometer.."
         }
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
+      "id": "prinsip-ketidakpastian-heisenberg",
+      "title": "Prinsip Ketidakpastian Heisenberg: Δx · Δp ≥ h / 4π",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "6 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Prinsip Ketidakpastian Heisenberg: Δx · Δp ≥ h / 4π</b>: Ketidakmungkinan mengukur posisi dan momentum partikel subatomik secara bersamaan dengan ketelitian mutlak; pengukuran posisi presisi tinggi mengacaukan momentumnya; batas fundamental alam mikroskopis.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Mengira cahaya yang lebih terang menghasilkan elektron yang lebih cepat. Intensitas hanya menambah jumlah elektron.</li><li>Lupa mengubah eV ke joule (× 1,6 × 10⁻¹⁹) sebelum menghitung kecepatan elektron.</li><li>Memakai suhu dalam °C pada rumus Wien atau Stefan–Boltzmann; harus dalam kelvin.</li><li>Mengira panjang gelombang foton berkurang pada efek Compton; yang benar bertambah.</li><li>Lupa bahwa daya Stefan–Boltzmann sebanding dengan T⁴, bukan T.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Ketidakmungkinan mengukur posisi dan momentum partikel subatomik secara bersamaan dengan ketelitian mutlak; pengukuran posisi presisi tinggi mengacaukan momentumnya; batas fundamental alam mikroskopis.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Prinsip Ketidakpastian Heisenberg: Δx · Δp ≥ h / 4π",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Prinsip Ketidakpastian Heisenberg: Δx · Δp ≥ h / 4π</b> berikut. Analisislah berdasarkan kaidah Ketidakmungkinan mengukur posisi dan momentum partikel subatomik secara bersamaan dengan ketelitian mutlak; pengukuran posisi presisi tinggi mengacaukan momentumnya; batas fundamental alam mikroskopis..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Prinsip Ketidakpastian Heisenberg: Δx · Δp ≥ h / 4π untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Prinsip Ketidakpastian Heisenberg: Δx · Δp ≥ h / 4π, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Prinsip Ketidakpastian Heisenberg: Δx · Δp ≥ h / 4π berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Ketidakmungkinan mengukur posisi dan momentum partikel subatomik secara bersamaan dengan ketelitian mutlak; pengukuran posisi presisi tinggi mengacaukan momentumnya; batas fundamental alam mikroskopis.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Fisika Kuantum",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Fisika Kuantum</b>: Peta konsep fenomena kuantum awal dan bank latihan soal analitis.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 8 Gejala Kuantum.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Peta konsep fenomena kuantum awal dan bank latihan soal analitis.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Fisika Kuantum",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Fisika Kuantum</b> berikut. Analisislah berdasarkan kaidah Peta konsep fenomena kuantum awal dan bank latihan soal analitis..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Fisika Kuantum untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Fisika Kuantum, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Fisika Kuantum berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Peta konsep fenomena kuantum awal dan bank latihan soal analitis.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

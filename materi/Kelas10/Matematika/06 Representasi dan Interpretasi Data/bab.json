@@ -4,21 +4,38 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "histogram",
-      "title": "Tabel distribusi frekuensi dan histogram",
+      "id": "tabel-distribusi-frekuensi-kelompok",
+      "title": "Konstruksi Tabel Distribusi Frekuensi Data Kelompok",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Konstruksi Tabel Distribusi Frekuensi Data Kelompok</b>: Menentukan rentang data R = x_max - x_min, banyak kelas interval k menggunakan Aturan Sturges (k = 1 + 3.3 log n), dan panjang kelas c = R / k; batas kelas vs tepi kelas.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Data <b>kategorik</b> (merek ponsel, olahraga favorit) cocok disajikan dengan diagram batang. Data <b>numerik</b> yang banyak dan beragam (tinggi badan, waktu penggunaan ponsel) lebih mudah dibaca jika dikelompokkan ke dalam interval, lalu disajikan dalam <b>histogram</b>.</p>"
         },
         {
-          "type": "image",
-          "src": "gambar/histogram-batang.svg",
-          "alt": "Kiri histogram tinggi badan dengan batang berdempetan, kanan diagram batang olahraga favorit dengan batang terpisah",
-          "width": 600,
-          "caption": "Histogram untuk data numerik, diagram batang untuk data kategorik."
+          "type": "text",
+          "html": "<p>Dua kelas dengan banyak siswa berbeda tidak dapat dibandingkan langsung memakai frekuensi. Kita gunakan <b>frekuensi relatif</b>, yaitu bagian dari keseluruhan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika yang kita miliki hanya tabel distribusi frekuensi, nilai asli setiap data tidak diketahui. Kita <b>memperkirakan</b> ukuran pemusatan dengan menganggap setiap data dalam suatu kelas berada di titik tengahnya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Kuartil</b> membagi data terurut menjadi empat bagian sama banyak: Q1 (25% data di bawahnya), Q2 = median, dan Q3 (75%).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Bima ingin tahu apakah banyak buku yang dibacanya berhubungan dengan nilai ulangan Bahasa Indonesia. Ia mencatat data selama 10 bulan.</p><table><tr><th>Buku per bulan</th><td>2</td><td>4</td><td>1</td><td>3</td><td>5</td><td>0</td><td>6</td><td>7</td><td>3</td><td>2</td></tr><tr><th>Nilai ulangan</th><td>60</td><td>70</td><td>55</td><td>65</td><td>75</td><td>50</td><td>80</td><td>85</td><td>67</td><td>58</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 6 Representasi dan Interpretasi Data.</small></p>"
         },
         {
           "type": "callout",
@@ -33,11 +50,36 @@
           "html": "<ol><li>Tentukan jangkauan R = data terbesar − data terkecil.</li><li>Pilih banyak kelas, biasanya 5–10 (aturan Sturges: k ≈ 1 + 3,3 log n).</li><li>Panjang kelas p ≈ R/k, bulatkan ke atas.</li><li>Mulai dari data terkecil, susun kelas dan hitung frekuensinya dengan turus.</li></ol>"
         },
         {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan",
+          "html": "<p>Pada contoh serupa di buku siswa, batas atas tertulis 26 + 3,75 = 29,75. Yang benar memakai Q3 = 25,5 sehingga batas atasnya 29,25. Kesimpulannya tetap sama.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Varian dan simpangan baku",
+          "html": "\\[\\sigma^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n} = \\frac{\\sum x_i^2}{n} - \\left(\\frac{\\sum x_i}{n}\\right)^2 \\qquad \\sigma = \\sqrt{\\sigma^2}\\]<p>Untuk data kelompok, ganti x<sub>i</sub> dengan titik tengah kelas dan beri bobot frekuensi f<sub>i</sub>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa mengurutkan data sebelum mencari median atau kuartil.</li><li>Memakai batas kelas, bukan tepi kelas, pada rumus median.</li><li>Menyimpulkan sebab-akibat dari diagram pencar.</li></ul>"
+        },
+        {
           "type": "sim",
           "src": "sim/histogram.html",
           "title": "Histogram dan data kelompok",
           "height": 640,
           "caption": "Ubah panjang kelas dan batas bawah kelas pertama. Perhatikan bagaimana bentuk histogram berubah walaupun datanya sama."
+        },
+        {
+          "type": "sim",
+          "src": "sim/histogram.html",
+          "title": "Bandingkan data kelompok dengan data tunggal",
+          "height": 640,
+          "caption": "Bandingkan rata-rata dan median data kelompok dengan nilai sebenarnya. Apakah selisihnya membesar jika panjang kelas diperbesar?"
         },
         {
           "type": "example",
@@ -52,62 +94,6 @@
         },
         {
           "type": "check",
-          "question": "Tepi bawah kelas 61–70 adalah ....",
-          "options": {
-            "A": "60",
-            "B": "60,5",
-            "C": "61,5",
-            "D": "65,5"
-          },
-          "answer": "B",
-          "hint": "Tepi bawah = batas bawah − 0,5.",
-          "explanation": "61 − 0,5 = 60,5. Nilai 65,5 adalah titik tengah kelas itu."
-        }
-      ]
-    },
-    {
-      "id": "frekuensi-relatif",
-      "title": "Frekuensi relatif dan bentuk distribusi",
-      "kind": "artikel",
-      "duration": "15 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Dua kelas dengan banyak siswa berbeda tidak dapat dibandingkan langsung memakai frekuensi. Kita gunakan <b>frekuensi relatif</b>, yaitu bagian dari keseluruhan.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Frekuensi relatif",
-          "html": "\\[f_{\\text{rel}} = \\frac{f_i}{n} \\times 100\\%\\]<p>Jumlah semua frekuensi relatif adalah 100%. Histogram frekuensi relatif bentuknya sama dengan histogram frekuensi; hanya skala sumbu tegaknya yang berubah.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Di kelas X-A, 8 dari 32 siswa memakai ponsel lebih dari 6 jam per hari. Di kelas X-B, 9 dari 40 siswa. Kelas mana yang persentasenya lebih besar?</p>",
-          "steps": [
-            "X-A: 8/32 = 25%.",
-            "X-B: 9/40 = 22,5%."
-          ],
-          "answer": "X-A, walaupun frekuensinya lebih kecil"
-        },
-        {
-          "type": "h",
-          "text": "Bentuk distribusi"
-        },
-        {
-          "type": "image",
-          "src": "gambar/bentuk-distribusi.svg",
-          "alt": "Tiga histogram: simetris, menceng ke kanan dengan ekor panjang di kanan, menceng ke kiri dengan ekor panjang di kiri",
-          "width": 600,
-          "caption": "Arah menceng mengikuti letak ekor yang panjang."
-        },
-        {
-          "type": "text",
-          "html": "<p>Pada distribusi menceng ke kanan (misalnya pendapatan), sebagian kecil data sangat besar menarik <b>mean</b> ke kanan, sehingga mean lebih besar daripada median.</p>"
-        },
-        {
-          "type": "check",
           "question": "Dari 40 siswa, 8 siswa memperoleh nilai 81–90. Frekuensi relatif kelas itu adalah ....",
           "options": {
             "A": "8%",
@@ -118,98 +104,6 @@
           "answer": "B",
           "hint": "Bagi frekuensi dengan banyak data.",
           "explanation": "8/40 × 100% = 20%."
-        }
-      ]
-    },
-    {
-      "id": "pemusatan",
-      "title": "Ukuran pemusatan dan jangkauan",
-      "kind": "artikel",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Data tunggal",
-          "html": "<ul><li><b>Mean</b> (rata-rata): \\(\\bar{x} = \\dfrac{\\sum x_i}{n}\\).</li><li><b>Median</b>: nilai tengah data terurut. Jika n genap, rata-rata dua data tengah.</li><li><b>Modus</b>: data yang paling sering muncul (bisa lebih dari satu, misalnya bimodal).</li><li><b>Jangkauan</b>: data terbesar − data terkecil.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Ukuran sepatu 5 siswa: 41, 43, 44, 44, 46. Tentukan mean, median, modus, dan jangkauan.</p>",
-          "steps": [
-            "Mean = 218/5 = 43,6.",
-            "Median = data ke-3 = 44. Modus = 44.",
-            "Jangkauan = 46 − 41 = 5."
-          ],
-          "answer": "43,6; 44; 44; 5"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Pengaruh pencilan",
-          "html": "<p><b>Pencilan</b> adalah data yang jauh dari data lainnya. Mean sangat terpengaruh pencilan, sedangkan median dan modus hampir tidak berubah. Contoh: tambahkan ukuran 30 (salah ketik) ke data di atas: mean turun menjadi 41,3, median menjadi 43,5.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Rata-rata nilai 10 siswa adalah 70. Seorang siswa baru dengan nilai 92 bergabung. Berapa rata-rata sekarang?</p>",
-          "steps": [
-            "Jumlah nilai semula 10 × 70 = 700.",
-            "Jumlah baru 700 + 92 = 792 untuk 11 siswa.",
-            "Rata-rata = 792/11 = 72."
-          ],
-          "answer": "72"
-        },
-        {
-          "type": "check",
-          "question": "Ukuran pemusatan yang paling terpengaruh oleh pencilan adalah ....",
-          "options": {
-            "A": "mean",
-            "B": "median",
-            "C": "modus",
-            "D": "ketiganya sama"
-          },
-          "answer": "A",
-          "hint": "Ukuran mana yang menggunakan nilai setiap data?",
-          "explanation": "Mean menjumlahkan semua nilai, sehingga satu nilai ekstrem menggeser mean. Median hanya bergantung pada urutan."
-        }
-      ]
-    },
-    {
-      "id": "data-kelompok",
-      "title": "Mean, median, dan modus data kelompok",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Jika yang kita miliki hanya tabel distribusi frekuensi, nilai asli setiap data tidak diketahui. Kita <b>memperkirakan</b> ukuran pemusatan dengan menganggap setiap data dalam suatu kelas berada di titik tengahnya.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus data kelompok",
-          "html": "\\[\\bar{x} = \\frac{\\sum f_i x_i}{\\sum f_i} \\qquad Me = T_b + \\frac{\\tfrac{n}{2} - F}{f}\\, p\\]<p>T<sub>b</sub> tepi bawah kelas median, F frekuensi kumulatif sebelum kelas median, f frekuensi kelas median, p panjang kelas. <b>Kelas modus</b> adalah kelas dengan frekuensi terbesar.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Penjualan sepatu toko A (30 data): 37–39: 2; 40–42: 11; 43–45: 16; 46–48: 1. Tentukan mean, median, dan kelas modus.</p>",
-          "steps": [
-            "Titik tengah 38, 41, 44, 47. Σf x = 76 + 451 + 704 + 47 = 1.278. Mean = 1.278/30 = 42,6.",
-            "n/2 = 15. Frekuensi kumulatif: 2, 13, 29, sehingga kelas median 43–45 dengan T<sub>b</sub> = 42,5, F = 13, f = 16, p = 3.",
-            "Me = 42,5 + (15 − 13)/16 × 3 = 42,5 + 0,375 = 42,875.",
-            "Kelas modus: 43–45 (frekuensi 16)."
-          ],
-          "answer": "mean 42,6; median 42,875; kelas modus 43–45"
-        },
-        {
-          "type": "sim",
-          "src": "sim/histogram.html",
-          "title": "Bandingkan data kelompok dengan data tunggal",
-          "height": 640,
-          "caption": "Bandingkan rata-rata dan median data kelompok dengan nilai sebenarnya. Apakah selisihnya membesar jika panjang kelas diperbesar?"
         },
         {
           "type": "check",
@@ -227,20 +121,313 @@
       ]
     },
     {
-      "id": "box-plot",
-      "title": "Kuartil, box plot, dan pencilan",
+      "id": "histogram-dan-poligon-frekuensi",
+      "title": "Histogram dan Poligon Frekuensi: Menggambar dan Membaca Bentuk Distribusi",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Kuartil</b> membagi data terurut menjadi empat bagian sama banyak: Q1 (25% data di bawahnya), Q2 = median, dan Q3 (75%).</p>"
+          "html": "<p><b>Histogram dan Poligon Frekuensi: Menggambar dan Membaca Bentuk Distribusi</b>: Batang saling berimpit berbasis tepi bawah dan tepi atas; poligon menghubungkan titik tengah kelas; mengenali bentuk distribusi simetris lonceng (normal), menceng ke kanan (positif), menceng ke kiri (negatif).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Bentuk distribusi"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada distribusi menceng ke kanan (misalnya pendapatan), sebagian kecil data sangat besar menarik <b>mean</b> ke kanan, sehingga mean lebih besar daripada median.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Histogram</td><td>data numerik dalam kelas, batang berdempetan pada tepi kelas</td></tr><tr><td>Frekuensi relatif</td><td>f/n × 100%, untuk membandingkan kelompok berbeda ukuran</td></tr><tr><td>Mean kelompok</td><td>Σf x / Σf dengan x titik tengah</td></tr><tr><td>Median kelompok</td><td>T<sub>b</sub> + (n/2 − F)/f × p</td></tr><tr><td>Box plot</td><td>min, Q1, Q2, Q3, maks; IQR = Q3 − Q1</td></tr><tr><td>Varian, simpangan baku</td><td>σ² = rata-rata kuadrat simpangan, σ = √σ²</td></tr><tr><td>Pencilan</td><td>di luar Q1 − 1,5 IQR atau Q3 + 1,5 IQR</td></tr><tr><td>Diagram pencar</td><td>korelasi positif, negatif, atau tidak ada</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/histogram-batang.svg",
+          "alt": "Kiri histogram tinggi badan dengan batang berdempetan, kanan diagram batang olahraga favorit dengan batang terpisah",
+          "width": 600,
+          "caption": "Histogram untuk data numerik, diagram batang untuk data kategorik."
+        },
+        {
+          "type": "image",
+          "src": "gambar/bentuk-distribusi.svg",
+          "alt": "Tiga histogram: simetris, menceng ke kanan dengan ekor panjang di kanan, menceng ke kiri dengan ekor panjang di kiri",
+          "width": 600,
+          "caption": "Arah menceng mengikuti letak ekor yang panjang."
+        },
+        {
+          "type": "image",
+          "src": "gambar/pencar.svg",
+          "alt": "Diagram pencar banyak buku dan nilai ulangan; titik-titik naik dari kiri bawah ke kanan atas",
+          "width": 460,
+          "caption": "Setiap pasangan data menjadi satu titik."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Frekuensi relatif",
+          "html": "\\[f_{\\text{rel}} = \\frac{f_i}{n} \\times 100\\%\\]<p>Jumlah semua frekuensi relatif adalah 100%. Histogram frekuensi relatif bentuknya sama dengan histogram frekuensi; hanya skala sumbu tegaknya yang berubah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Penjualan sepatu toko A (30 data): 37–39: 2; 40–42: 11; 43–45: 16; 46–48: 1. Tentukan mean, median, dan kelas modus.</p>",
+          "steps": [
+            "Titik tengah 38, 41, 44, 47. Σf x = 76 + 451 + 704 + 47 = 1.278. Mean = 1.278/30 = 42,6.",
+            "n/2 = 15. Frekuensi kumulatif: 2, 13, 29, sehingga kelas median 43–45 dengan T<sub>b</sub> = 42,5, F = 13, f = 16, p = 3.",
+            "Me = 42,5 + (15 − 13)/16 × 3 = 42,5 + 0,375 = 42,875.",
+            "Kelas modus: 43–45 (frekuensi 16)."
+          ],
+          "answer": "mean 42,6; median 42,875; kelas modus 43–45"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Durasi baterai 80 ponsel (jam): 6–10: 2; 11–15: 10; 16–20: 18; 21–25: 45; 26–30: 5. Tentukan variannya.</p>",
+          "steps": [
+            "Titik tengah 8, 13, 18, 23, 28. Σf x = 1.645 dan Σf x² = 35.375.",
+            "σ² = 35.375/80 − (1.645/80)² = 442,19 − 422,82 ≈ 19,37.",
+            "σ ≈ 4,40 jam."
+          ],
+          "answer": "varian ≈ 19,37; simpangan baku ≈ 4,40 jam"
+        },
+        {
+          "type": "check",
+          "question": "Tepi bawah kelas 61–70 adalah ....",
+          "options": {
+            "A": "60",
+            "B": "60,5",
+            "C": "61,5",
+            "D": "65,5"
+          },
+          "answer": "B",
+          "hint": "Tepi bawah = batas bawah − 0,5.",
+          "explanation": "61 − 0,5 = 60,5. Nilai 65,5 adalah titik tengah kelas itu."
+        }
+      ]
+    },
+    {
+      "id": "ogive-frekuensi-kumulatif",
+      "title": "Kurva Ogive: Distribusi Frekuensi Kumulatif 'Kurang Dari' dan 'Lebih Dari'",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Kurva Ogive: Distribusi Frekuensi Kumulatif 'Kurang Dari' dan 'Lebih Dari'</b>: Konstruksi ogive positif (naik) dan ogive negatif (turun); membaca estimasi letak nilai kuartil secara grafis.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Konstruksi ogive positif (naik) dan ogive negatif (turun); membaca estimasi letak nilai kuartil secara grafis.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Kurva Ogive: Distribusi Frekuensi Kumulatif 'Kurang Dari' dan 'Lebih Dari'",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Kurva Ogive: Distribusi Frekuensi Kumulatif 'Kurang Dari' dan 'Lebih Dari'</b> berikut. Analisislah berdasarkan kaidah Konstruksi ogive positif (naik) dan ogive negatif (turun); membaca estimasi letak nilai kuartil secara grafis..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Kurva Ogive: Distribusi Frekuensi Kumulatif 'Kurang Dari' dan 'Lebih Dari' untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Kurva Ogive: Distribusi Frekuensi Kumulatif 'Kurang Dari' dan 'Lebih Dari', manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Kurva Ogive: Distribusi Frekuensi Kumulatif 'Kurang Dari' dan 'Lebih Dari' berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Konstruksi ogive positif (naik) dan ogive negatif (turun); membaca estimasi letak nilai kuartil secara grafis.."
+        }
+      ]
+    },
+    {
+      "id": "mean-data-kelompok",
+      "title": "Ukuran Pemusatan 1: Rata-Rata Hitung (Mean) Data Kelompok",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Ukuran Pemusatan 1: Rata-Rata Hitung (Mean) Data Kelompok</b>: Metode titik tengah xi: x̄ = Σ(fi · xi) / Σfi; metode rata-rata sementara (metode deviasi di = xi - x̄s) dan metode koding ci untuk meringkas hitungan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Pengaruh pencilan",
+          "html": "<p><b>Pencilan</b> adalah data yang jauh dari data lainnya. Mean sangat terpengaruh pencilan, sedangkan median dan modus hampir tidak berubah. Contoh: tambahkan ukuran 30 (salah ketik) ke data di atas: mean turun menjadi 41,3, median menjadi 43,5.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung varian dan simpangan baku kedua kelompok umur di atas.</p>",
+          "steps": [
+            "Kelompok 1: kuadrat simpangan 9, 4, 1, 1, 0, 0, 1, 1, 1, 1, 1, 4, jumlahnya 24. σ² = 24/12 = 2, σ ≈ 1,41.",
+            "Kelompok 2: kuadrat simpangan 225, 169, 144, 121, 81, 64, 16, 121, 144, 169, 256, 400, jumlahnya 1.910. σ² ≈ 159,17, σ ≈ 12,62."
+          ],
+          "answer": "kelompok 2 jauh lebih menyebar"
+        },
+        {
+          "type": "check",
+          "question": "Ukuran pemusatan yang paling terpengaruh oleh pencilan adalah ....",
+          "options": {
+            "A": "mean",
+            "B": "median",
+            "C": "modus",
+            "D": "ketiganya sama"
+          },
+          "answer": "A",
+          "hint": "Ukuran mana yang menggunakan nilai setiap data?",
+          "explanation": "Mean menjumlahkan semua nilai, sehingga satu nilai ekstrem menggeser mean. Median hanya bergantung pada urutan."
+        }
+      ]
+    },
+    {
+      "id": "median-data-kelompok",
+      "title": "Ukuran Pemusatan 2: Median (Nilai Tengah) Data Kelompok",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Ukuran Pemusatan 2: Median (Nilai Tengah) Data Kelompok</b>: Menentukan kelas median (letak 1/2 n); rumus Me = Tb + ((1/2 n - Σfs) / f_me) · c; intuisi interpolasi linier nilai tengah dalam kelas.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kuartil dan persentil data kelompok",
+          "html": "<p>Sama seperti median, gunakan interpolasi pada kelas yang memuat data ke-(i·n/4) untuk Q<sub>i</sub>, atau data ke-(i·n/100) untuk persentil P<sub>i</sub>:</p>\\[Q_i = T_b + \\frac{\\tfrac{i}{4}n - F}{f}\\,p\\]<p>Contoh: berat 31 sapi, kelas 450–499 (f = 7) memuat data ke-23,25 dengan F = 19, sehingga Q3 = 449,5 + (23,25 − 19)/7 × 50 ≈ 479,9 kg. Artinya 75% sapi beratnya kurang dari sekitar 480 kg.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Ukuran Pemusatan 2: Median (Nilai Tengah) Data Kelompok",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Ukuran Pemusatan 2: Median (Nilai Tengah) Data Kelompok</b> berikut. Analisislah berdasarkan kaidah Menentukan kelas median (letak 1/2 n); rumus Me = Tb + ((1/2 n - Σfs) / f_me) · c; intuisi interpolasi linier nilai tengah dalam kelas..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Ukuran Pemusatan 2: Median (Nilai Tengah) Data Kelompok untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Ukuran Pemusatan 2: Median (Nilai Tengah) Data Kelompok, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Ukuran Pemusatan 2: Median (Nilai Tengah) Data Kelompok berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menentukan kelas median (letak 1/2 n); rumus Me = Tb + ((1/2 n - Σfs) / f_me) · c; intuisi interpolasi linier nilai tengah dalam kelas.."
+        }
+      ]
+    },
+    {
+      "id": "modus-data-kelompok",
+      "title": "Ukuran Pemusatan 3: Modus Data Kelompok",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Ukuran Pemusatan 3: Modus Data Kelompok</b>: Menentukan kelas modus (frekuensi tertinggi); rumus Mo = Tb + (d1 / (d1 + d2)) · c di mana d1 selisih dengan frekuensi sebelum dan d2 sesudahnya.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus data kelompok",
+          "html": "\\[\\bar{x} = \\frac{\\sum f_i x_i}{\\sum f_i} \\qquad Me = T_b + \\frac{\\tfrac{n}{2} - F}{f}\\, p\\]<p>T<sub>b</sub> tepi bawah kelas median, F frekuensi kumulatif sebelum kelas median, f frekuensi kelas median, p panjang kelas. <b>Kelas modus</b> adalah kelas dengan frekuensi terbesar.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Di kelas X-A, 8 dari 32 siswa memakai ponsel lebih dari 6 jam per hari. Di kelas X-B, 9 dari 40 siswa. Kelas mana yang persentasenya lebih besar?</p>",
+          "steps": [
+            "X-A: 8/32 = 25%.",
+            "X-B: 9/40 = 22,5%."
+          ],
+          "answer": "X-A, walaupun frekuensinya lebih kecil"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Ukuran Pemusatan 3: Modus Data Kelompok, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Ukuran Pemusatan 3: Modus Data Kelompok berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menentukan kelas modus (frekuensi tertinggi); rumus Mo = Tb + (d1 / (d1 + d2)) · c di mana d1 selisih dengan frekuensi sebelum dan d2 sesudahnya.."
+        }
+      ]
+    },
+    {
+      "id": "kuartil-dan-persentil-kelompok",
+      "title": "Ukuran Letak Data Kelompok: Kuartil Bawah, Kuartil Atas, dan Persentil",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Ukuran Letak Data Kelompok: Kuartil Bawah, Kuartil Atas, dan Persentil</b>: Rumus kuartil Qi = Tb + ((i/4 n - Σfs) / f_qi) · c untuk i = 1, 2, 3; konsep persentil ke-k (k/100 n) dalam pengujian standar.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Letak kuartil (data tunggal)",
           "html": "<p>Hitung n/4 untuk Q1 (dan 3n/4 untuk Q3).</p><ul><li>Jika hasilnya bilangan bulat m, kuartil = rata-rata data ke-m dan ke-(m + 1).</li><li>Jika tidak bulat, bulatkan ke atas; kuartil = data pada urutan itu.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Ukuran Letak Data Kelompok: Kuartil Bawah, Kuartil Atas, dan Persentil",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Ukuran Letak Data Kelompok: Kuartil Bawah, Kuartil Atas, dan Persentil</b> berikut. Analisislah berdasarkan kaidah Rumus kuartil Qi = Tb + ((i/4 n - Σfs) / f_qi) · c untuk i = 1, 2, 3; konsep persentil ke-k (k/100 n) dalam pengujian standar..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Ukuran Letak Data Kelompok: Kuartil Bawah, Kuartil Atas, dan Persentil untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Ukuran Letak Data Kelompok: Kuartil Bawah, Kuartil Atas, dan Persentil, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Ukuran Letak Data Kelompok: Kuartil Bawah, Kuartil Atas, dan Persentil berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rumus kuartil Qi = Tb + ((i/4 n - Σfs) / f_qi) · c untuk i = 1, 2, 3; konsep persentil ke-k (k/100 n) dalam pengujian standar.."
+        }
+      ]
+    },
+    {
+      "id": "diagram-kotak-garis-dan-pencilan",
+      "title": "Diagram Kotak Garis (Box Plot) dan Identifikasi Pencilan (Outlier)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Diagram Kotak Garis (Box Plot) dan Identifikasi Pencilan (Outlier)</b>: Menentukan lima angka ringkasan: Min, Q1, Q2, Q3, Max; menghitung jangkauan interkuartil IQR = Q3 - Q1; menghitung batas pagar dalam dan luar (1.5 x IQR) untuk mendeteksi data outlier.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
@@ -268,12 +455,6 @@
           "answer": "ada, yaitu 36 Mbps"
         },
         {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Catatan",
-          "html": "<p>Pada contoh serupa di buku siswa, batas atas tertulis 26 + 3,75 = 29,75. Yang benar memakai Q3 = 25,5 sehingga batas atasnya 29,25. Kesimpulannya tetap sama.</p>"
-        },
-        {
           "type": "check",
           "question": "Data: 4, 7, 8, 10, 12, 13, 15, 18, 20, 25. Jangkauan antarkuartilnya adalah ....",
           "options": {
@@ -289,11 +470,15 @@
       ]
     },
     {
-      "id": "penyebaran",
-      "title": "Varian, simpangan baku, dan persentil",
-      "kind": "artikel",
-      "duration": "25 menit",
+      "id": "ukuran-penyebaran-varians-sd",
+      "title": "Ukuran Penyebaran: Jangkauan, Simpangan Rata-Rata, Varians, dan Standar Deviasi",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Ukuran Penyebaran: Jangkauan, Simpangan Rata-Rata, Varians, dan Standar Deviasi</b>: Definisi varians s^2 dan simpangan baku (standar deviasi s) sebagai ukuran rata-rata penyimpangan data dari nilai mean; interpretasi data homogen vs heterogen.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Dua kelompok umur berikut sama-sama mempunyai rata-rata 16 tahun:</p><ul><li>Kelompok 1: 13, 14, 15, 15, 16, 16, 17, 17, 17, 17, 17, 18</li><li>Kelompok 2: 1, 3, 4, 5, 7, 8, 12, 27, 28, 29, 32, 36</li></ul><p>Jelas sebarannya berbeda. Ukuran yang menangkap seberapa jauh data dari rata-ratanya adalah <b>varian</b> dan <b>simpangan baku</b>.</p>"
@@ -301,35 +486,30 @@
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Varian dan simpangan baku",
-          "html": "\\[\\sigma^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n} = \\frac{\\sum x_i^2}{n} - \\left(\\frac{\\sum x_i}{n}\\right)^2 \\qquad \\sigma = \\sqrt{\\sigma^2}\\]<p>Untuk data kelompok, ganti x<sub>i</sub> dengan titik tengah kelas dan beri bobot frekuensi f<sub>i</sub>.</p>"
+          "title": "Data tunggal",
+          "html": "<ul><li><b>Mean</b> (rata-rata): \\(\\bar{x} = \\dfrac{\\sum x_i}{n}\\).</li><li><b>Median</b>: nilai tengah data terurut. Jika n genap, rata-rata dua data tengah.</li><li><b>Modus</b>: data yang paling sering muncul (bisa lebih dari satu, misalnya bimodal).</li><li><b>Jangkauan</b>: data terbesar − data terkecil.</li></ul>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Hitung varian dan simpangan baku kedua kelompok umur di atas.</p>",
+          "question": "<p>Ukuran sepatu 5 siswa: 41, 43, 44, 44, 46. Tentukan mean, median, modus, dan jangkauan.</p>",
           "steps": [
-            "Kelompok 1: kuadrat simpangan 9, 4, 1, 1, 0, 0, 1, 1, 1, 1, 1, 4, jumlahnya 24. σ² = 24/12 = 2, σ ≈ 1,41.",
-            "Kelompok 2: kuadrat simpangan 225, 169, 144, 121, 81, 64, 16, 121, 144, 169, 256, 400, jumlahnya 1.910. σ² ≈ 159,17, σ ≈ 12,62."
+            "Mean = 218/5 = 43,6.",
+            "Median = data ke-3 = 44. Modus = 44.",
+            "Jangkauan = 46 − 41 = 5."
           ],
-          "answer": "kelompok 2 jauh lebih menyebar"
+          "answer": "43,6; 44; 44; 5"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Durasi baterai 80 ponsel (jam): 6–10: 2; 11–15: 10; 16–20: 18; 21–25: 45; 26–30: 5. Tentukan variannya.</p>",
+          "question": "<p>Rata-rata nilai 10 siswa adalah 70. Seorang siswa baru dengan nilai 92 bergabung. Berapa rata-rata sekarang?</p>",
           "steps": [
-            "Titik tengah 8, 13, 18, 23, 28. Σf x = 1.645 dan Σf x² = 35.375.",
-            "σ² = 35.375/80 − (1.645/80)² = 442,19 − 422,82 ≈ 19,37.",
-            "σ ≈ 4,40 jam."
+            "Jumlah nilai semula 10 × 70 = 700.",
+            "Jumlah baru 700 + 92 = 792 untuk 11 siswa.",
+            "Rata-rata = 792/11 = 72."
           ],
-          "answer": "varian ≈ 19,37; simpangan baku ≈ 4,40 jam"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Kuartil dan persentil data kelompok",
-          "html": "<p>Sama seperti median, gunakan interpolasi pada kelas yang memuat data ke-(i·n/4) untuk Q<sub>i</sub>, atau data ke-(i·n/100) untuk persentil P<sub>i</sub>:</p>\\[Q_i = T_b + \\frac{\\tfrac{i}{4}n - F}{f}\\,p\\]<p>Contoh: berat 31 sapi, kelas 450–499 (f = 7) memuat data ke-23,25 dengan F = 19, sehingga Q3 = 449,5 + (23,25 − 19)/7 × 50 ≈ 479,9 kg. Artinya 75% sapi beratnya kurang dari sekitar 480 kg.</p>"
+          "answer": "72"
         },
         {
           "type": "check",
@@ -347,21 +527,14 @@
       ]
     },
     {
-      "id": "diagram-pencar",
-      "title": "Diagram pencar",
-      "kind": "artikel",
-      "duration": "15 menit",
+      "id": "diagram-pencar-scatter-plot",
+      "title": "Diagram Pencar (Scatter Plot) dan Analisis Tren Dua Variabel",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bima ingin tahu apakah banyak buku yang dibacanya berhubungan dengan nilai ulangan Bahasa Indonesia. Ia mencatat data selama 10 bulan.</p><table><tr><th>Buku per bulan</th><td>2</td><td>4</td><td>1</td><td>3</td><td>5</td><td>0</td><td>6</td><td>7</td><td>3</td><td>2</td></tr><tr><th>Nilai ulangan</th><td>60</td><td>70</td><td>55</td><td>65</td><td>75</td><td>50</td><td>80</td><td>85</td><td>67</td><td>58</td></tr></table>"
-        },
-        {
-          "type": "image",
-          "src": "gambar/pencar.svg",
-          "alt": "Diagram pencar banyak buku dan nilai ulangan; titik-titik naik dari kiri bawah ke kanan atas",
-          "width": 460,
-          "caption": "Setiap pasangan data menjadi satu titik."
+          "html": "<p><b>Diagram Pencar (Scatter Plot) dan Analisis Tren Dua Variabel</b>: Memplot pasangan data bivariat (x, y); menganalisis arah korelasi: korelasi positif (searah), negatif (berlawanan), atau nir-korelasi (acak acak); korelasi linier vs non-linier.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
@@ -374,6 +547,17 @@
           "variant": "awas",
           "title": "Korelasi bukan sebab-akibat",
           "html": "<p>Data Bima menunjukkan korelasi positif yang kuat, tetapi diagram pencar saja tidak membuktikan bahwa membaca <i>menyebabkan</i> nilai naik. Bisa jadi ada faktor lain, misalnya waktu belajar.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Diagram Pencar (Scatter Plot) dan Analisis Tren Dua Variabel",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Diagram Pencar (Scatter Plot) dan Analisis Tren Dua Variabel</b> berikut. Analisislah berdasarkan kaidah Memplot pasangan data bivariat (x, y); menganalisis arah korelasi: korelasi positif (searah), negatif (berlawanan), atau nir-korelasi (acak acak); korelasi linier vs non-linier..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Diagram Pencar (Scatter Plot) dan Analisis Tren Dua Variabel untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
@@ -391,24 +575,92 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "interpretasi-kritis-distribusi",
+      "title": "Interpretasi Kritis: Membandingkan Dua Kelompok Data untuk Mengambil Kesimpulan",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Histogram</td><td>data numerik dalam kelas, batang berdempetan pada tepi kelas</td></tr><tr><td>Frekuensi relatif</td><td>f/n × 100%, untuk membandingkan kelompok berbeda ukuran</td></tr><tr><td>Mean kelompok</td><td>Σf x / Σf dengan x titik tengah</td></tr><tr><td>Median kelompok</td><td>T<sub>b</sub> + (n/2 − F)/f × p</td></tr><tr><td>Box plot</td><td>min, Q1, Q2, Q3, maks; IQR = Q3 − Q1</td></tr><tr><td>Varian, simpangan baku</td><td>σ² = rata-rata kuadrat simpangan, σ = √σ²</td></tr><tr><td>Pencilan</td><td>di luar Q1 − 1,5 IQR atau Q3 + 1,5 IQR</td></tr><tr><td>Diagram pencar</td><td>korelasi positif, negatif, atau tidak ada</td></tr></table>"
+          "html": "<p><b>Interpretasi Kritis: Membandingkan Dua Kelompok Data untuk Mengambil Kesimpulan</b>: Mengevaluasi klaim statistik; mengapa membandingkan rata-rata saja tanpa melihat standar deviasi dan box plot dapat menyesatkan.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Lupa mengurutkan data sebelum mencari median atau kuartil.</li><li>Memakai batas kelas, bukan tepi kelas, pada rumus median.</li><li>Menyimpulkan sebab-akibat dari diagram pencar.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Mengevaluasi klaim statistik; mengapa membandingkan rata-rata saja tanpa melihat standar deviasi dan box plot dapat menyesatkan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Interpretasi Kritis: Membandingkan Dua Kelompok Data untuk Mengambil Kesimpulan",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Interpretasi Kritis: Membandingkan Dua Kelompok Data untuk Mengambil Kesimpulan</b> berikut. Analisislah berdasarkan kaidah Mengevaluasi klaim statistik; mengapa membandingkan rata-rata saja tanpa melihat standar deviasi dan box plot dapat menyesatkan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Interpretasi Kritis: Membandingkan Dua Kelompok Data untuk Mengambil Kesimpulan untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Interpretasi Kritis: Membandingkan Dua Kelompok Data untuk Mengambil Kesimpulan, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Interpretasi Kritis: Membandingkan Dua Kelompok Data untuk Mengambil Kesimpulan berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Mengevaluasi klaim statistik; mengapa membandingkan rata-rata saja tanpa melihat standar deviasi dan box plot dapat menyesatkan.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Statistika",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Statistika</b>: Peta konsep statistika deskriptif data kelompok dan paket soal latihan.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Peta konsep statistika deskriptif data kelompok dan paket soal latihan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Statistika",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Statistika</b> berikut. Analisislah berdasarkan kaidah Peta konsep statistika deskriptif data kelompok dan paket soal latihan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Statistika untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Statistika, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Statistika berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Peta konsep statistika deskriptif data kelompok dan paket soal latihan.."
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 6 Representasi dan Interpretasi Data.</small></p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

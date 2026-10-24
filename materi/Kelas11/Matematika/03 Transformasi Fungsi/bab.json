@@ -4,14 +4,75 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "pergeseran",
-      "title": "Pergeseran (translasi) fungsi",
+      "id": "tinjauan-fungsi-induk",
+      "title": "Mengenal Keluarga Fungsi Induk (Parent Functions)",
       "kind": "artikel",
-      "duration": "20 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Mengenal Keluarga Fungsi Induk (Parent Functions)</b>: Grafik standar fungsi linear y = x, kuadrat y = x^2, kubik y = x^3, nilai mutlak y = |x|, akar y = √x, dan resiprokal y = 1/x.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Untuk memodelkan data, pilih dahulu <b>fungsi dasar</b> yang bentuknya cocok, lalu atur transformasinya.</p><ul><li>Naik lalu turun (lemparan bola, lengkung jembatan): kuadrat dengan a &lt; 0, puncak (h, k).</li><li>Tumbuh atau meluruh dengan faktor tetap (bakteri, radioaktif): eksponensial.</li><li>Berubah dengan laju tetap: linear.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Grafik standar fungsi linear y = x, kuadrat y = x^2, kubik y = x^3, nilai mutlak y = |x|, akar y = √x, dan resiprokal y = 1/x.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/cocokkan-grafik.html",
+          "title": "Tantangan mencocokkan grafik",
+          "height": 560,
+          "caption": "Atur a, h, dan k sampai grafik biru melewati semua titik merah. Gunakan titik puncak atau asimtot sebagai petunjuk."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Titik (3, −2) terletak pada grafik f. Tentukan bayangannya pada y = 2f(x − 1) + 3.</p>",
+          "steps": [
+            "x: 3 + 1 = 4.",
+            "y: 2 × (−2) + 3 = −1."
+          ],
+          "answer": "(4, −1)"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Mengenal Keluarga Fungsi Induk (Parent Functions), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Mengenal Keluarga Fungsi Induk (Parent Functions) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Grafik standar fungsi linear y = x, kuadrat y = x^2, kubik y = x^3, nilai mutlak y = |x|, akar y = √x, dan resiprokal y = 1/x.."
+        }
+      ]
+    },
+    {
+      "id": "translasi-vertikal-fungsi",
+      "title": "Translasi Vertikal: Efek Grafik y = f(x) + d",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Translasi Vertikal: Efek Grafik y = f(x) + d</b>: Pergeseran kurva ke atas (d > 0) atau ke bawah (d < 0) sebesar |d| satuan; nilai output bertambah tanpa mengubah bentuk atau lebar kurva.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
           "html": "<p>Di kelas IX kamu menggeser bangun datar. Grafik fungsi pun dapat digeser tanpa mengubah bentuknya. Kita mulai dari <b>fungsi dasar</b> seperti y = x, y = x², dan y = 2ˣ.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Transformasi dapat digabungkan menjadi satu bentuk umum:</p>\\[y = a\\,f\\big(b(x - h)\\big) + k\\]"
         },
         {
           "type": "image",
@@ -21,6 +82,13 @@
           "caption": "Parabola digeser 2 satuan ke kanan dan 1 satuan ke atas."
         },
         {
+          "type": "image",
+          "src": "gambar/regangan.svg",
+          "alt": "Grafik y = x², y = 3x² yang lebih sempit, dan y = ⅓x² yang lebih lebar",
+          "width": 420,
+          "caption": "Mengalikan f(x) dengan a meregangkan atau memampatkan secara vertikal."
+        },
+        {
           "type": "callout",
           "variant": "rumus",
           "title": "Aturan pergeseran",
@@ -28,9 +96,57 @@
         },
         {
           "type": "callout",
+          "variant": "tips",
+          "title": "Geser – cerminkan – geser kembali",
+          "html": "<p>Untuk mencerminkan terhadap y = c: geser grafik dan garis ke bawah c satuan (garis menjadi sumbu x), cerminkan, lalu geser kembali ke atas c satuan. Hasilnya <b>y = 2c − f(x)</b>. Terhadap x = c hasilnya <b>y = f(2c − x)</b>.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Cerminkan y = (x − 1)² + 1 terhadap garis y = 2.</p>",
+          "steps": [
+            "Geser ke bawah 2: y = (x − 1)² − 1.",
+            "Cerminkan terhadap sumbu x: y = −(x − 1)² + 1.",
+            "Geser ke atas 2: y = −(x − 1)² + 3. (Sama dengan 2·2 − f(x).)"
+          ],
+          "answer": "y = −(x − 1)² + 3"
+        },
+        {
+          "type": "check",
+          "question": "Grafik y = 3f(x) diperoleh dari y = f(x) dengan ....",
+          "options": {
+            "A": "peregangan vertikal dengan faktor 3",
+            "B": "pemampatan vertikal dengan faktor ⅓",
+            "C": "peregangan horizontal dengan faktor 3",
+            "D": "pergeseran 3 satuan ke atas"
+          },
+          "answer": "A",
+          "hint": "Faktor di luar f mengubah nilai y.",
+          "explanation": "Setiap nilai y dikali 3, jadi grafik diregangkan vertikal dengan faktor 3. Geser ke atas 3 adalah f(x) + 3."
+        }
+      ]
+    },
+    {
+      "id": "translasi-horizontal-fungsi",
+      "title": "Translasi Horizontal: Efek Grafik y = f(x - c)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Translasi Horizontal: Efek Grafik y = f(x - c)</b>: Pergeseran kurva ke kanan (c > 0) atau ke kiri (c < 0) sebesar |c| satuan; intuisi mengapa tanda minus bergeser ke kanan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
           "variant": "awas",
           "title": "Tanda pada geser horizontal",
           "html": "<p>y = (x − 2)² bergeser ke <b>kanan</b>, bukan ke kiri. Alasannya: agar nilai di dalam kurung sama dengan nilai di titik puncak lama (0), x harus 2.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menggeser f(x − 3) ke kiri.</li><li>Menganggap f(2x) meregangkan grafik secara horizontal (justru memampatkan).</li><li>Lupa bahwa asimtot ikut bergeser secara vertikal.</li></ul>"
         },
         {
           "type": "example",
@@ -59,17 +175,18 @@
       ]
     },
     {
-      "id": "pencerminan",
-      "title": "Pencerminan fungsi",
-      "kind": "artikel",
-      "duration": "20 menit",
+      "id": "kombinasi-translasi-dua-arah",
+      "title": "Kombinasi Translasi Vertikal dan Horizontal: y = f(x - c) + d",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
-          "type": "image",
-          "src": "gambar/pencerminan.svg",
-          "alt": "Grafik y = 2ˣ, pencerminannya terhadap sumbu x yaitu y = −2ˣ, dan terhadap sumbu y yaitu y = 2⁻ˣ",
-          "width": 420,
-          "caption": "Dua pencerminan dasar."
+          "type": "text",
+          "html": "<p><b>Kombinasi Translasi Vertikal dan Horizontal: y = f(x - c) + d</b>: Melacak pergeseran titik karakteristik (titik puncak parabola, titik belok kubik, titik sudut nilai mutlak) ke koordinat baru (c, d).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Bentuk</th><th>Transformasi</th><th>Titik (p, q) menjadi</th></tr><tr><td>f(x) + k</td><td>geser vertikal k</td><td>(p, q + k)</td></tr><tr><td>f(x − h)</td><td>geser horizontal h (h &gt; 0 ke kanan)</td><td>(p + h, q)</td></tr><tr><td>−f(x)</td><td>cermin sumbu x</td><td>(p, −q)</td></tr><tr><td>f(−x)</td><td>cermin sumbu y</td><td>(−p, q)</td></tr><tr><td>a·f(x)</td><td>regang/mampat vertikal</td><td>(p, aq)</td></tr><tr><td>f(bx)</td><td>regang/mampat horizontal</td><td>(p/b, q)</td></tr><tr><td>2c − f(x)</td><td>cermin garis y = c</td><td>(p, 2c − q)</td></tr></table>"
         },
         {
           "type": "callout",
@@ -78,59 +195,16 @@
           "html": "<ul><li>Terhadap <b>sumbu x</b>: y = −f(x). Titik (p, q) → (p, −q).</li><li>Terhadap <b>sumbu y</b>: y = f(−x). Titik (p, q) → (−p, q).</li></ul>"
         },
         {
-          "type": "h",
-          "text": "Pencerminan terhadap garis yang sejajar sumbu"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Geser – cerminkan – geser kembali",
-          "html": "<p>Untuk mencerminkan terhadap y = c: geser grafik dan garis ke bawah c satuan (garis menjadi sumbu x), cerminkan, lalu geser kembali ke atas c satuan. Hasilnya <b>y = 2c − f(x)</b>. Terhadap x = c hasilnya <b>y = f(2c − x)</b>.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Cerminkan y = (x − 1)² + 1 terhadap garis y = 2.</p>",
-          "steps": [
-            "Geser ke bawah 2: y = (x − 1)² − 1.",
-            "Cerminkan terhadap sumbu x: y = −(x − 1)² + 1.",
-            "Geser ke atas 2: y = −(x − 1)² + 3. (Sama dengan 2·2 − f(x).)"
-          ],
-          "answer": "y = −(x − 1)² + 3"
-        },
-        {
-          "type": "check",
-          "question": "Hasil pencerminan y = x² + 1 terhadap sumbu x adalah ....",
-          "options": {
-            "A": "y = −x² − 1",
-            "B": "y = −x² + 1",
-            "C": "y = x² − 1",
-            "D": "y = (−x)² + 1"
-          },
-          "answer": "A",
-          "hint": "Seluruh f(x) dikalikan −1.",
-          "explanation": "y = −(x² + 1) = −x² − 1. Pilihan (−x)² + 1 adalah pencerminan terhadap sumbu y (yang untuk fungsi ini tidak mengubah grafik)."
-        }
-      ]
-    },
-    {
-      "id": "regangan",
-      "title": "Peregangan dan pemampatan",
-      "kind": "artikel",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "image",
-          "src": "gambar/regangan.svg",
-          "alt": "Grafik y = x², y = 3x² yang lebih sempit, dan y = ⅓x² yang lebih lebar",
-          "width": 420,
-          "caption": "Mengalikan f(x) dengan a meregangkan atau memampatkan secara vertikal."
-        },
-        {
           "type": "callout",
           "variant": "rumus",
           "title": "Aturan",
           "html": "<ul><li><b>y = a·f(x)</b>, a &gt; 0: setiap nilai y dikali a. Jika a &gt; 1 diregangkan vertikal, jika 0 &lt; a &lt; 1 dimampatkan vertikal. Titik (p, q) → (p, aq).</li><li><b>y = f(bx)</b>, b &gt; 0: setiap nilai x dibagi b. Jika b &gt; 1 dimampatkan horizontal, jika 0 &lt; b &lt; 1 diregangkan horizontal. Titik (p, q) → (p/b, q).</li></ul><p>Jika a atau b negatif, terjadi juga pencerminan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Urutan yang aman",
+          "html": "<ol><li>Regang/mampat dan cerminkan secara horizontal (b).</li><li>Regang/mampat dan cerminkan secara vertikal (a).</li><li>Geser horizontal h dan vertikal k.</li></ol><p>Titik (p, q) pada f berpindah ke <b>(p/b + h, aq + k)</b>.</p>"
         },
         {
           "type": "example",
@@ -141,50 +215,6 @@
             "y = f(2x): (2/2, 4) = (1, 4). Periksa: (2 · 1)² = 4 ✓."
           ],
           "answer": "(2, 12) dan (1, 4)"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Satu grafik, dua tafsiran",
-          "html": "<p>Untuk f(x) = x², f(2x) = 4x² = 4f(x). Pemampatan horizontal dengan faktor ½ menghasilkan grafik yang sama dengan peregangan vertikal faktor 4. Ini tidak berlaku untuk semua fungsi, misalnya 2ˣ.</p>"
-        },
-        {
-          "type": "check",
-          "question": "Grafik y = 3f(x) diperoleh dari y = f(x) dengan ....",
-          "options": {
-            "A": "peregangan vertikal dengan faktor 3",
-            "B": "pemampatan vertikal dengan faktor ⅓",
-            "C": "peregangan horizontal dengan faktor 3",
-            "D": "pergeseran 3 satuan ke atas"
-          },
-          "answer": "A",
-          "hint": "Faktor di luar f mengubah nilai y.",
-          "explanation": "Setiap nilai y dikali 3, jadi grafik diregangkan vertikal dengan faktor 3. Geser ke atas 3 adalah f(x) + 3."
-        }
-      ]
-    },
-    {
-      "id": "gabungan",
-      "title": "Transformasi gabungan",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Transformasi dapat digabungkan menjadi satu bentuk umum:</p>\\[y = a\\,f\\big(b(x - h)\\big) + k\\]"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Urutan yang aman",
-          "html": "<ol><li>Regang/mampat dan cerminkan secara horizontal (b).</li><li>Regang/mampat dan cerminkan secara vertikal (a).</li><li>Geser horizontal h dan vertikal k.</li></ol><p>Titik (p, q) pada f berpindah ke <b>(p/b + h, aq + k)</b>.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/transformasi-fungsi.html",
-          "title": "Penjelajah transformasi fungsi",
-          "height": 600,
-          "caption": "Pilih fungsi dasar, lalu ubah satu parameter setiap kali. Perhatikan titik oranye: ke mana titik acuan berpindah?"
         },
         {
           "type": "example",
@@ -199,41 +229,6 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Titik (3, −2) terletak pada grafik f. Tentukan bayangannya pada y = 2f(x − 1) + 3.</p>",
-          "steps": [
-            "x: 3 + 1 = 4.",
-            "y: 2 × (−2) + 3 = −1."
-          ],
-          "answer": "(4, −1)"
-        },
-        {
-          "type": "check",
-          "question": "Asimtot datar grafik y = 3 · 2^(x − 1) + 2 adalah ....",
-          "options": {
-            "A": "y = 0",
-            "B": "y = 2",
-            "C": "y = 3",
-            "D": "x = 1"
-          },
-          "answer": "B",
-          "hint": "Asimtot y = 0 dari 2ˣ hanya dipengaruhi pergeseran vertikal.",
-          "explanation": "Regangan 3 dan geser horizontal 1 tidak mengubah y = 0; geser ke atas 2 memindahkannya ke y = 2."
-        }
-      ]
-    },
-    {
-      "id": "pemodelan",
-      "title": "Pemodelan dengan transformasi fungsi",
-      "kind": "simulasi",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Untuk memodelkan data, pilih dahulu <b>fungsi dasar</b> yang bentuknya cocok, lalu atur transformasinya.</p><ul><li>Naik lalu turun (lemparan bola, lengkung jembatan): kuadrat dengan a &lt; 0, puncak (h, k).</li><li>Tumbuh atau meluruh dengan faktor tetap (bakteri, radioaktif): eksponensial.</li><li>Berubah dengan laju tetap: linear.</li></ul>"
-        },
-        {
-          "type": "example",
           "title": "Contoh soal 1",
           "question": "<p>Bola dilempar dari ketinggian 0,5 m dan mencapai tinggi maksimum 5 m pada jarak mendatar 3 m. Tentukan modelnya.</p>",
           "steps": [
@@ -242,23 +237,6 @@
             "Model: y = −0,5(x − 3)² + 5."
           ],
           "answer": "y = −0,5(x − 3)² + 5"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Zat radioaktif bermassa 80 g dengan waktu paruh 5 tahun. Nyatakan massanya sebagai transformasi y = (½)ˣ.</p>",
-          "steps": [
-            "Setiap 5 tahun massa menjadi setengah: M(t) = 80 · (½)^(t/5).",
-            "Ini peregangan horizontal faktor 5 dan peregangan vertikal faktor 80 dari y = (½)ˣ."
-          ],
-          "answer": "M(t) = 80 · (½)^(t/5)"
-        },
-        {
-          "type": "sim",
-          "src": "sim/cocokkan-grafik.html",
-          "title": "Tantangan mencocokkan grafik",
-          "height": 560,
-          "caption": "Atur a, h, dan k sampai grafik biru melewati semua titik merah. Gunakan titik puncak atau asimtot sebagai petunjuk."
         },
         {
           "type": "check",
@@ -276,24 +254,283 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "refleksi-terhadap-sumbu-x",
+      "title": "Refleksi Vertikal: Efek Grafik y = -f(x)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Bentuk</th><th>Transformasi</th><th>Titik (p, q) menjadi</th></tr><tr><td>f(x) + k</td><td>geser vertikal k</td><td>(p, q + k)</td></tr><tr><td>f(x − h)</td><td>geser horizontal h (h &gt; 0 ke kanan)</td><td>(p + h, q)</td></tr><tr><td>−f(x)</td><td>cermin sumbu x</td><td>(p, −q)</td></tr><tr><td>f(−x)</td><td>cermin sumbu y</td><td>(−p, q)</td></tr><tr><td>a·f(x)</td><td>regang/mampat vertikal</td><td>(p, aq)</td></tr><tr><td>f(bx)</td><td>regang/mampat horizontal</td><td>(p/b, q)</td></tr><tr><td>2c − f(x)</td><td>cermin garis y = c</td><td>(p, 2c − q)</td></tr></table>"
+          "html": "<p><b>Refleksi Vertikal: Efek Grafik y = -f(x)</b>: Pencerminan kurva terhadap sumbu-x; semua nilai ordinat y bertukar tanda menjadi lawannya.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Pencerminan terhadap garis yang sejajar sumbu"
+        },
+        {
+          "type": "image",
+          "src": "gambar/pencerminan.svg",
+          "alt": "Grafik y = 2ˣ, pencerminannya terhadap sumbu x yaitu y = −2ˣ, dan terhadap sumbu y yaitu y = 2⁻ˣ",
+          "width": 420,
+          "caption": "Dua pencerminan dasar."
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menggeser f(x − 3) ke kiri.</li><li>Menganggap f(2x) meregangkan grafik secara horizontal (justru memampatkan).</li><li>Lupa bahwa asimtot ikut bergeser secara vertikal.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Pencerminan kurva terhadap sumbu-x; semua nilai ordinat y bertukar tanda menjadi lawannya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Refleksi Vertikal: Efek Grafik y = -f(x)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Refleksi Vertikal: Efek Grafik y = -f(x)</b> berikut. Analisislah berdasarkan kaidah Pencerminan kurva terhadap sumbu-x; semua nilai ordinat y bertukar tanda menjadi lawannya..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Refleksi Vertikal: Efek Grafik y = -f(x) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Hasil pencerminan y = x² + 1 terhadap sumbu x adalah ....",
+          "options": {
+            "A": "y = −x² − 1",
+            "B": "y = −x² + 1",
+            "C": "y = x² − 1",
+            "D": "y = (−x)² + 1"
+          },
+          "answer": "A",
+          "hint": "Seluruh f(x) dikalikan −1.",
+          "explanation": "y = −(x² + 1) = −x² − 1. Pilihan (−x)² + 1 adalah pencerminan terhadap sumbu y (yang untuk fungsi ini tidak mengubah grafik)."
+        }
+      ]
+    },
+    {
+      "id": "refleksi-terhadap-sumbu-y",
+      "title": "Refleksi Horizontal: Efek Grafik y = f(-x)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Refleksi Horizontal: Efek Grafik y = f(-x)</b>: Pencerminan kurva terhadap sumbu-y; semua nilai absis x bertukar tanda; konsep simetri fungsi genap (f(-x) = f(x)) dan ganjil (f(-x) = -f(x)).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Satu grafik, dua tafsiran",
+          "html": "<p>Untuk f(x) = x², f(2x) = 4x² = 4f(x). Pemampatan horizontal dengan faktor ½ menghasilkan grafik yang sama dengan peregangan vertikal faktor 4. Ini tidak berlaku untuk semua fungsi, misalnya 2ˣ.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Refleksi Horizontal: Efek Grafik y = f(-x)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Refleksi Horizontal: Efek Grafik y = f(-x)</b> berikut. Analisislah berdasarkan kaidah Pencerminan kurva terhadap sumbu-y; semua nilai absis x bertukar tanda; konsep simetri fungsi genap (f(-x) = f(x)) dan ganjil (f(-x) = -f(x))..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Refleksi Horizontal: Efek Grafik y = f(-x) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Refleksi Horizontal: Efek Grafik y = f(-x), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Refleksi Horizontal: Efek Grafik y = f(-x) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Pencerminan kurva terhadap sumbu-y; semua nilai absis x bertukar tanda; konsep simetri fungsi genap (f(-x) = f(x)) dan ganjil (f(-x) = -f(x)).."
+        }
+      ]
+    },
+    {
+      "id": "dilatasi-vertikal-fungsi",
+      "title": "Peregangan dan Penyempitan Vertikal: Efek Grafik y = a · f(x)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Peregangan dan Penyempitan Vertikal: Efek Grafik y = a · f(x)</b>: Peregangan vertikal jika a > 1 (kurva tampak lebih curam); penyempitan vertikal jika 0 < a < 1 (kurva tampak lebih datar); kombinasi dengan refleksi jika a < 0.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Peregangan vertikal jika a > 1 (kurva tampak lebih curam); penyempitan vertikal jika 0 < a < 1 (kurva tampak lebih datar); kombinasi dengan refleksi jika a < 0.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Peregangan dan Penyempitan Vertikal: Efek Grafik y = a · f(x)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Peregangan dan Penyempitan Vertikal: Efek Grafik y = a · f(x)</b> berikut. Analisislah berdasarkan kaidah Peregangan vertikal jika a > 1 (kurva tampak lebih curam); penyempitan vertikal jika 0 < a < 1 (kurva tampak lebih datar); kombinasi dengan refleksi jika a < 0..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Peregangan dan Penyempitan Vertikal: Efek Grafik y = a · f(x) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Asimtot datar grafik y = 3 · 2^(x − 1) + 2 adalah ....",
+          "options": {
+            "A": "y = 0",
+            "B": "y = 2",
+            "C": "y = 3",
+            "D": "x = 1"
+          },
+          "answer": "B",
+          "hint": "Asimtot y = 0 dari 2ˣ hanya dipengaruhi pergeseran vertikal.",
+          "explanation": "Regangan 3 dan geser horizontal 1 tidak mengubah y = 0; geser ke atas 2 memindahkannya ke y = 2."
+        }
+      ]
+    },
+    {
+      "id": "dilatasi-horizontal-fungsi",
+      "title": "Peregangan dan Penyempitan Horizontal: Efek Grafik y = f(b · x)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Peregangan dan Penyempitan Horizontal: Efek Grafik y = f(b · x)</b>: Penyempitan horizontal faktor 1/b jika b > 1; peregangan horizontal jika 0 < b < 1; membalik intuisi karena operasi dilakukan langsung pada x.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Penyempitan horizontal faktor 1/b jika b > 1; peregangan horizontal jika 0 < b < 1; membalik intuisi karena operasi dilakukan langsung pada x.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Zat radioaktif bermassa 80 g dengan waktu paruh 5 tahun. Nyatakan massanya sebagai transformasi y = (½)ˣ.</p>",
+          "steps": [
+            "Setiap 5 tahun massa menjadi setengah: M(t) = 80 · (½)^(t/5).",
+            "Ini peregangan horizontal faktor 5 dan peregangan vertikal faktor 80 dari y = (½)ˣ."
+          ],
+          "answer": "M(t) = 80 · (½)^(t/5)"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Peregangan dan Penyempitan Horizontal: Efek Grafik y = f(b · x), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Peregangan dan Penyempitan Horizontal: Efek Grafik y = f(b · x) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Penyempitan horizontal faktor 1/b jika b > 1; peregangan horizontal jika 0 < b < 1; membalik intuisi karena operasi dilakukan langsung pada x.."
+        }
+      ]
+    },
+    {
+      "id": "hierarki-urutan-transformasi",
+      "title": "Hierarki Urutan Transformasi Gabungan: y = a · f(b(x - c)) + d",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hierarki Urutan Transformasi Gabungan: y = a · f(b(x - c)) + d</b>: Menganalisis langkah sistematis: dilatasi dan refleksi terlebih dahulu, dilanjutkan dengan translasi; menuliskan persamaan baru dari sketsa kurva yang diketahui.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Menganalisis langkah sistematis: dilatasi dan refleksi terlebih dahulu, dilanjutkan dengan translasi; menuliskan persamaan baru dari sketsa kurva yang diketahui.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Hierarki Urutan Transformasi Gabungan: y = a · f(b(x - c)) + d",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Hierarki Urutan Transformasi Gabungan: y = a · f(b(x - c)) + d</b> berikut. Analisislah berdasarkan kaidah Menganalisis langkah sistematis: dilatasi dan refleksi terlebih dahulu, dilanjutkan dengan translasi; menuliskan persamaan baru dari sketsa kurva yang diketahui..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Hierarki Urutan Transformasi Gabungan: y = a · f(b(x - c)) + d untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Hierarki Urutan Transformasi Gabungan: y = a · f(b(x - c)) + d, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Hierarki Urutan Transformasi Gabungan: y = a · f(b(x - c)) + d berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menganalisis langkah sistematis: dilatasi dan refleksi terlebih dahulu, dilanjutkan dengan translasi; menuliskan persamaan baru dari sketsa kurva yang diketahui.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Transformasi Fungsi",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Transformasi Fungsi</b>: Tabel ringkasan aturan transformasi fungsi dan bank latihan visual.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas XI</i> (Kemendikbudristek), Bab 3 Transformasi Fungsi.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Tabel ringkasan aturan transformasi fungsi dan bank latihan visual.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/transformasi-fungsi.html",
+          "title": "Penjelajah transformasi fungsi",
+          "height": 600,
+          "caption": "Pilih fungsi dasar, lalu ubah satu parameter setiap kali. Perhatikan titik oranye: ke mana titik acuan berpindah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Transformasi Fungsi",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Transformasi Fungsi</b> berikut. Analisislah berdasarkan kaidah Tabel ringkasan aturan transformasi fungsi dan bank latihan visual..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Transformasi Fungsi untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Transformasi Fungsi, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Transformasi Fungsi berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tabel ringkasan aturan transformasi fungsi dan bank latihan visual.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

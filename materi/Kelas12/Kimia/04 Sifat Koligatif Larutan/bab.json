@@ -4,14 +4,22 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "konsentrasi",
-      "title": "Sifat koligatif, satuan konsentrasi, dan faktor van 't Hoff",
-      "kind": "artikel",
-      "duration": "30 menit",
+      "id": "definisi-koligatif-dan-konsentrasi",
+      "title": "Pengertian Sifat Koligatif dan Satuan Konsentrasi: Molalitas (m) dan Fraksi Mol (X)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Pengertian Sifat Koligatif dan Satuan Konsentrasi: Molalitas (m) dan Fraksi Mol (X)</b>: Sifat larutan yang HANYA bergantung pada jumlah partikel zat terlarut, bukan jenis zatnya; definisi molalitas m = mol terlarut / kg pelarut murni; fraksi mol Xt dan Xp di mana Xt + Xp = 1.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
           "html": "<p>Air membeku pada 0 °C dan mendidih pada 100 °C (1 atm). Larutan gula atau garam membeku pada suhu lebih rendah dan mendidih pada suhu lebih tinggi. Sifat larutan yang hanya bergantung pada <b>jumlah partikel</b> zat terlarut, bukan jenisnya, disebut <b>sifat koligatif</b>. Ada empat: penurunan tekanan uap, kenaikan titik didih, penurunan titik beku, dan tekanan osmosis.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab I Larutan dan Koloid (D. Sifat Koligatif Larutan).</small></p>"
         },
         {
           "type": "callout",
@@ -20,10 +28,11 @@
           "html": "<ul><li>Molaritas: \\(M = \\dfrac{n}{V\\,(\\text{L})}\\)</li><li>Molalitas: \\(m = \\dfrac{n}{\\text{massa pelarut (kg)}} = \\dfrac{\\text{massa}}{M_r} \\times \\dfrac{1000}{p\\,(\\text{g})}\\)</li><li>Fraksi mol: \\(X_t = \\dfrac{n_t}{n_t + n_p}\\), dengan \\(X_t + X_p = 1\\)</li></ul>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Faktor van 't Hoff",
-          "html": "<p>Larutan elektrolit menghasilkan lebih banyak partikel karena zat terlarutnya terurai menjadi ion:</p><p>\\(i = 1 + (n - 1)\\alpha\\)</p><p>n = jumlah ion per satuan rumus, α = derajat ionisasi. Nonelektrolit: i = 1. Elektrolit kuat (α = 1): i = n, misalnya NaCl i = 2, CaCl₂ i = 3, Al₂(SO₄)₃ i = 5.</p>"
+          "type": "sim",
+          "src": "sim/koligatif.html",
+          "title": "Diagram fasa dan sifat koligatif",
+          "height": 560,
+          "caption": "Bandingkan glukosa dan MgCl₂ dengan jumlah mol yang sama. Berapa kali ΔTf MgCl₂ dibanding glukosa?"
         },
         {
           "type": "example",
@@ -37,13 +46,25 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Asam lemah biner HA terion 30% dalam air. Berapa faktor van 't Hoff-nya?</p>",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 0,5 mol urea dilarutkan dalam 9,5 mol air. Tekanan uap air murni pada suhu itu 30 mmHg. Hitung tekanan uap larutan dan penurunannya.</p>",
           "steps": [
-            "HA ⇌ H⁺ + A⁻ → n = 2, α = 0,3.",
-            "i = 1 + (2 − 1) × 0,3."
+            "X air = 9,5/(9,5 + 0,5) = 0,95.",
+            "P = 0,95 × 30 = 28,5 mmHg.",
+            "ΔP = 30 − 28,5."
           ],
-          "answer": "i = 1,3"
+          "answer": "P = 28,5 mmHg; ΔP = 1,5 mmHg"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3 (menentukan Mr)",
+          "question": "<p>Sebanyak 3 g zat nonelektrolit dilarutkan dalam 100 g air. Larutan membeku pada −0,465 °C. Tentukan Mr zat tersebut.</p>",
+          "steps": [
+            "m = ΔTf/Kf = 0,465/1,86 = 0,25 m.",
+            "n = 0,25 × 0,1 kg = 0,025 mol.",
+            "Mr = 3/0,025."
+          ],
+          "answer": "Mr = 120"
         },
         {
           "type": "check",
@@ -61,11 +82,15 @@
       ]
     },
     {
-      "id": "tekanan-uap",
-      "title": "Penurunan tekanan uap",
-      "kind": "artikel",
-      "duration": "25 menit",
+      "id": "penurunan-tekanan-uap-raoult",
+      "title": "Penurunan Tekanan Uap Jenuh Larutan (ΔP) dan Hukum Raoult",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penurunan Tekanan Uap Jenuh Larutan (ΔP) dan Hukum Raoult</b>: Zat terlarut non-volatil menghalangi molekul pelarut menguap di permukaan cairan; Hukum Raoult P = Xp · P°; penurunan tekanan uap ΔP = P° - P = Xt · P°.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Di permukaan larutan, sebagian tempat ditempati partikel zat terlarut yang tidak mudah menguap, dan molekul pelarut tertahan oleh gaya tarik zat terlarut. Akibatnya lebih sedikit molekul pelarut yang menguap, sehingga <b>tekanan uap larutan lebih rendah</b> daripada pelarut murninya. Inilah sebabnya air dalam gelas berisi air murni lama-kelamaan pindah ke gelas berisi larutan gula jika keduanya disimpan dalam kotak tertutup.</p>"
@@ -78,52 +103,46 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Sebanyak 0,5 mol urea dilarutkan dalam 9,5 mol air. Tekanan uap air murni pada suhu itu 30 mmHg. Hitung tekanan uap larutan dan penurunannya.</p>",
+          "title": "Contoh Penerapan: Penurunan Tekanan Uap Jenuh Larutan (ΔP) dan Hukum Raoult",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Penurunan Tekanan Uap Jenuh Larutan (ΔP) dan Hukum Raoult</b> berikut. Analisislah berdasarkan kaidah Zat terlarut non-volatil menghalangi molekul pelarut menguap di permukaan cairan; Hukum Raoult P = Xp · P°; penurunan tekanan uap ΔP = P° - P = Xt · P°..</p>",
           "steps": [
-            "X air = 9,5/(9,5 + 0,5) = 0,95.",
-            "P = 0,95 × 30 = 28,5 mmHg.",
-            "ΔP = 30 − 28,5."
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Penurunan Tekanan Uap Jenuh Larutan (ΔP) dan Hukum Raoult untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
           ],
-          "answer": "P = 28,5 mmHg; ΔP = 1,5 mmHg"
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
-          "question": "Tekanan uap larutan glukosa dibandingkan dengan tekanan uap larutan NaCl yang molalitasnya sama adalah ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Penurunan Tekanan Uap Jenuh Larutan (ΔP) dan Hukum Raoult, manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "lebih rendah",
-            "B": "sama",
-            "C": "lebih tinggi",
-            "D": "tidak dapat dibandingkan"
+            "A": "Prinsip Penurunan Tekanan Uap Jenuh Larutan (ΔP) dan Hukum Raoult berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "C",
-          "hint": "NaCl menghasilkan dua kali partikel.",
-          "explanation": "Partikel NaCl dua kali lebih banyak, sehingga penurunan tekanan uapnya lebih besar dan tekanan uapnya lebih rendah. Tekanan uap larutan glukosa lebih tinggi."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Zat terlarut non-volatil menghalangi molekul pelarut menguap di permukaan cairan; Hukum Raoult P = Xp · P°; penurunan tekanan uap ΔP = P° - P = Xt · P°.."
         }
       ]
     },
     {
-      "id": "titik-didih-beku",
-      "title": "Kenaikan titik didih dan penurunan titik beku",
+      "id": "diagram-fase-pt-pelarut-larutan",
+      "title": "Diagram Fase P-T (Tekanan-Suhu) Air Murni vs Larutan",
       "kind": "simulasi",
-      "duration": "40 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Cairan mendidih saat tekanan uapnya sama dengan tekanan udara luar. Karena tekanan uap larutan lebih rendah, larutan harus dipanaskan lebih tinggi untuk mendidih. Saat membeku, partikel zat terlarut mengganggu penyusunan kristal pelarut, sehingga diperlukan suhu lebih rendah.</p>"
+          "html": "<p><b>Diagram Fase P-T (Tekanan-Suhu) Air Murni vs Larutan</b>: Titik tripel dan kurva kesetimbangan padat-cair-gas; pergeseran kurva sublimasi, peleburan, dan penguapan larutan memperluas daerah fase cair (kenaikan titik didih dan penurunan titik beku).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus",
-          "html": "<p>\\(\\Delta T_b = K_b \\cdot m \\cdot i, \\qquad T_b = 100\\text{ °C} + \\Delta T_b\\)</p><p>\\(\\Delta T_f = K_f \\cdot m \\cdot i, \\qquad T_f = 0\\text{ °C} - \\Delta T_f\\)</p><p>Untuk air: K<sub>b</sub> = 0,52 °C/m dan K<sub>f</sub> = 1,86 °C/m.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/koligatif.html",
-          "title": "Diagram fasa dan sifat koligatif",
-          "height": 560,
-          "caption": "Bandingkan glukosa dan MgCl₂ dengan jumlah mol yang sama. Berapa kali ΔTf MgCl₂ dibanding glukosa?"
+          "variant": "info",
+          "title": "Koreksi buku",
+          "html": "<p>Pada soal latihan larutan oralit, buku menulis \"Titik didih ... (Kf = 1,86 °C/m)\" dan \"Titik beku ... (Kb = 0,52 °C/m)\". Tetapannya tertukar. Untuk titik didih gunakan <b>Kb = 0,52 °C/m</b>, dan untuk titik beku gunakan <b>Kf = 1,86 °C/m</b>. Data pada Aktivitas 1.7 juga seharusnya ditulis dalam molal (m), bukan molar (M), karena rumus ΔTb dan ΔTf memakai molalitas.</p>"
         },
         {
           "type": "example",
@@ -146,23 +165,6 @@
           "answer": "−0,744 °C"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 3 (menentukan Mr)",
-          "question": "<p>Sebanyak 3 g zat nonelektrolit dilarutkan dalam 100 g air. Larutan membeku pada −0,465 °C. Tentukan Mr zat tersebut.</p>",
-          "steps": [
-            "m = ΔTf/Kf = 0,465/1,86 = 0,25 m.",
-            "n = 0,25 × 0,1 kg = 0,025 mol.",
-            "Mr = 3/0,025."
-          ],
-          "answer": "Mr = 120"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Koreksi buku",
-          "html": "<p>Pada soal latihan larutan oralit, buku menulis \"Titik didih ... (Kf = 1,86 °C/m)\" dan \"Titik beku ... (Kb = 0,52 °C/m)\". Tetapannya tertukar. Untuk titik didih gunakan <b>Kb = 0,52 °C/m</b>, dan untuk titik beku gunakan <b>Kf = 1,86 °C/m</b>. Data pada Aktivitas 1.7 juga seharusnya ditulis dalam molal (m), bukan molar (M), karena rumus ΔTb dan ΔTf memakai molalitas.</p>"
-        },
-        {
           "type": "check",
           "question": "Air laut dapat tetap cair pada suhu sedikit di bawah 0 °C, sedangkan air danau sudah membeku. Penjelasannya adalah ....",
           "options": {
@@ -178,11 +180,104 @@
       ]
     },
     {
-      "id": "osmosis",
-      "title": "Tekanan osmosis",
-      "kind": "artikel",
-      "duration": "30 menit",
+      "id": "kenaikan-titik-didih-ebulioskopi",
+      "title": "Kenaikan Titik Didih Larutan (ΔTb) dan Tetapan Ebulioskopi Pelarut (Kb)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Kenaikan Titik Didih Larutan (ΔTb) dan Tetapan Ebulioskopi Pelarut (Kb)</b>: Larutan mendidih saat tekanan uap jenuh sama dengan tekanan atmosfer luar; rumus kenaikan titik didih ΔTb = m · Kb; titik didih larutan Tb = Tb° + ΔTb.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Cairan mendidih saat tekanan uapnya sama dengan tekanan udara luar. Karena tekanan uap larutan lebih rendah, larutan harus dipanaskan lebih tinggi untuk mendidih. Saat membeku, partikel zat terlarut mengganggu penyusunan kristal pelarut, sehingga diperlukan suhu lebih rendah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Larutan mendidih saat tekanan uap jenuh sama dengan tekanan atmosfer luar; rumus kenaikan titik didih ΔTb = m · Kb; titik didih larutan Tb = Tb° + ΔTb.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Kenaikan Titik Didih Larutan (ΔTb) dan Tetapan Ebulioskopi Pelarut (Kb)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Kenaikan Titik Didih Larutan (ΔTb) dan Tetapan Ebulioskopi Pelarut (Kb)</b> berikut. Analisislah berdasarkan kaidah Larutan mendidih saat tekanan uap jenuh sama dengan tekanan atmosfer luar; rumus kenaikan titik didih ΔTb = m · Kb; titik didih larutan Tb = Tb° + ΔTb..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Kenaikan Titik Didih Larutan (ΔTb) dan Tetapan Ebulioskopi Pelarut (Kb) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Tekanan uap larutan glukosa dibandingkan dengan tekanan uap larutan NaCl yang molalitasnya sama adalah ....",
+          "options": {
+            "A": "lebih rendah",
+            "B": "sama",
+            "C": "lebih tinggi",
+            "D": "tidak dapat dibandingkan"
+          },
+          "answer": "C",
+          "hint": "NaCl menghasilkan dua kali partikel.",
+          "explanation": "Partikel NaCl dua kali lebih banyak, sehingga penurunan tekanan uapnya lebih besar dan tekanan uapnya lebih rendah. Tekanan uap larutan glukosa lebih tinggi."
+        }
+      ]
+    },
+    {
+      "id": "penurunan-titik-beku-krioskopi",
+      "title": "Penurunan Titik Beku Larutan (ΔTf) dan Tetapan Krioskopi Pelarut (Kf)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penurunan Titik Beku Larutan (ΔTf) dan Tetapan Krioskopi Pelarut (Kf)</b>: Kehadiran zat terlarut merusak susunan kristal rapi es pelarut; rumus penurunan titik beku ΔTf = m · Kf; titik beku larutan Tf = Tf° - ΔTf; aplikasi garam pencair salju di jalan dan pembuatan es krim putar.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai molaritas untuk ΔTb dan ΔTf; yang benar molalitas. Tekanan osmosis memakai molaritas.</li><li>Lupa faktor i untuk elektrolit.</li><li>Lupa mengubah °C ke kelvin pada rumus tekanan osmosis.</li><li>Menuliskan titik beku sebagai +ΔTf; titik beku larutan = 0 − ΔTf.</li><li>Pada Raoult, memakai mol zat terlarut sebagai X pelarut.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Penurunan Titik Beku Larutan (ΔTf) dan Tetapan Krioskopi Pelarut (Kf)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Penurunan Titik Beku Larutan (ΔTf) dan Tetapan Krioskopi Pelarut (Kf)</b> berikut. Analisislah berdasarkan kaidah Kehadiran zat terlarut merusak susunan kristal rapi es pelarut; rumus penurunan titik beku ΔTf = m · Kf; titik beku larutan Tf = Tf° - ΔTf; aplikasi garam pencair salju di jalan dan pembuatan es krim putar..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Penurunan Titik Beku Larutan (ΔTf) dan Tetapan Krioskopi Pelarut (Kf) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Penurunan Titik Beku Larutan (ΔTf) dan Tetapan Krioskopi Pelarut (Kf), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Penurunan Titik Beku Larutan (ΔTf) dan Tetapan Krioskopi Pelarut (Kf) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Kehadiran zat terlarut merusak susunan kristal rapi es pelarut; rumus penurunan titik beku ΔTf = m · Kf; titik beku larutan Tf = Tf° - ΔTf; aplikasi garam pencair salju di jalan dan pembuatan es krim putar.."
+        }
+      ]
+    },
+    {
+      "id": "tekanan-osmotik-hukum-van-t-hoff",
+      "title": "Tekanan Osmotik (π) dan Persamaan Hukum Van 't Hoff",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Tekanan Osmotik (π) dan Persamaan Hukum Van 't Hoff</b>: Tekanan hidrostatis yang mencegah aliran osmosis pelarut menembus membran semipermeabel; rumus π = M · R · T (analog dengan persamaan gas ideal); larutan isotonik, hipotonik, hipertonik.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p><b>Osmosis</b> adalah perpindahan pelarut melalui membran semipermeabel dari larutan encer ke larutan pekat. <b>Tekanan osmosis</b> (π) adalah tekanan yang harus diberikan pada larutan agar osmosis berhenti.</p>"
@@ -195,17 +290,62 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Cairan infus NaCl 0,15 M diberikan pada suhu tubuh 37 °C. Hitung tekanan osmosisnya.</p>",
+          "title": "Contoh Penerapan: Tekanan Osmotik (π) dan Persamaan Hukum Van 't Hoff",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Tekanan Osmotik (π) dan Persamaan Hukum Van 't Hoff</b> berikut. Analisislah berdasarkan kaidah Tekanan hidrostatis yang mencegah aliran osmosis pelarut menembus membran semipermeabel; rumus π = M · R · T (analog dengan persamaan gas ideal); larutan isotonik, hipotonik, hipertonik..</p>",
           "steps": [
-            "T = 37 + 273 = 310 K; i = 2.",
-            "π = 0,15 × 0,082 × 310 × 2."
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Tekanan Osmotik (π) dan Persamaan Hukum Van 't Hoff untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
           ],
-          "answer": "≈ 7,6 atm, kira-kira sama dengan tekanan osmosis darah (isotonik)"
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Tekanan Osmotik (π) dan Persamaan Hukum Van 't Hoff, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Tekanan Osmotik (π) dan Persamaan Hukum Van 't Hoff berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tekanan hidrostatis yang mencegah aliran osmosis pelarut menembus membran semipermeabel; rumus π = M · R · T (analog dengan persamaan gas ideal); larutan isotonik, hipotonik, hipertonik.."
+        }
+      ]
+    },
+    {
+      "id": "sifat-koligatif-elektrolit-faktor-i",
+      "title": "Sifat Koligatif Larutan Elektrolit: Faktor Van 't Hoff (i)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
           "type": "text",
-          "html": "<p><b>Penerapan sifat koligatif</b>:</p><ul><li><b>Osmosis balik</b> (reverse osmosis): air laut ditekan melebihi tekanan osmosisnya melalui membran, sehingga air murni keluar. Cara ini dipakai untuk desalinasi dan penjernih air minum isi ulang.</li><li>Cairan infus dibuat isotonik dengan darah agar sel darah tidak mengerut atau pecah.</li><li>Pengawetan dengan garam atau gula: mikroba kehilangan air karena lingkungannya hipertonik.</li><li>Garam ditaburkan di jalan bersalju, dan campuran es dan garam dipakai untuk membuat es puter (penurunan titik beku).</li><li>Penentuan massa molekul relatif zat, misalnya protein, dengan pengukuran tekanan osmosis.</li></ul>"
+          "html": "<p><b>Sifat Koligatif Larutan Elektrolit: Faktor Van 't Hoff (i)</b>: Elektrolit terdisosiasi menjadi n ion di air meningkatkan jumlah partikel efektif: i = 1 + (n - 1)α; memasukkan faktor i ke dalam rumus ΔP, ΔTb, ΔTf, dan π; perbandingan sifat koligatif larutan nonelektrolit (glukosa, urea) vs elektrolit kuat (NaCl, BaCl2).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Faktor van 't Hoff",
+          "html": "<p>Larutan elektrolit menghasilkan lebih banyak partikel karena zat terlarutnya terurai menjadi ion:</p><p>\\(i = 1 + (n - 1)\\alpha\\)</p><p>n = jumlah ion per satuan rumus, α = derajat ionisasi. Nonelektrolit: i = 1. Elektrolit kuat (α = 1): i = n, misalnya NaCl i = 2, CaCl₂ i = 3, Al₂(SO₄)₃ i = 5.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus",
+          "html": "<p>\\(\\Delta T_b = K_b \\cdot m \\cdot i, \\qquad T_b = 100\\text{ °C} + \\Delta T_b\\)</p><p>\\(\\Delta T_f = K_f \\cdot m \\cdot i, \\qquad T_f = 0\\text{ °C} - \\Delta T_f\\)</p><p>Untuk air: K<sub>b</sub> = 0,52 °C/m dan K<sub>f</sub> = 1,86 °C/m.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Asam lemah biner HA terion 30% dalam air. Berapa faktor van 't Hoff-nya?</p>",
+          "steps": [
+            "HA ⇌ H⁺ + A⁻ → n = 2, α = 0,3.",
+            "i = 1 + (2 − 1) × 0,3."
+          ],
+          "answer": "i = 1,3"
         },
         {
           "type": "check",
@@ -223,20 +363,138 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "penentuan-massa-molekul-relatif",
+      "title": "Aplikasi Koligatif: Penentuan Massa Molekul Relatif (Mr) Zat Asing",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Aplikasi Koligatif: Penentuan Massa Molekul Relatif (Mr) Zat Asing</b>: Mengukur kenaikan titik didih atau tekanan osmotik polimer/protein untuk menghitung massa molar Mr zat terlarut.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Memakai molaritas untuk ΔTb dan ΔTf; yang benar molalitas. Tekanan osmosis memakai molaritas.</li><li>Lupa faktor i untuk elektrolit.</li><li>Lupa mengubah °C ke kelvin pada rumus tekanan osmosis.</li><li>Menuliskan titik beku sebagai +ΔTf; titik beku larutan = 0 − ΔTf.</li><li>Pada Raoult, memakai mol zat terlarut sebagai X pelarut.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Mengukur kenaikan titik didih atau tekanan osmotik polimer/protein untuk menghitung massa molar Mr zat terlarut.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Aplikasi Koligatif: Penentuan Massa Molekul Relatif (Mr) Zat Asing",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Aplikasi Koligatif: Penentuan Massa Molekul Relatif (Mr) Zat Asing</b> berikut. Analisislah berdasarkan kaidah Mengukur kenaikan titik didih atau tekanan osmotik polimer/protein untuk menghitung massa molar Mr zat terlarut..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Aplikasi Koligatif: Penentuan Massa Molekul Relatif (Mr) Zat Asing untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Aplikasi Koligatif: Penentuan Massa Molekul Relatif (Mr) Zat Asing, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Aplikasi Koligatif: Penentuan Massa Molekul Relatif (Mr) Zat Asing berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Mengukur kenaikan titik didih atau tekanan osmotik polimer/protein untuk menghitung massa molar Mr zat terlarut.."
+        }
+      ]
+    },
+    {
+      "id": "aplikasi-nyata-sifat-koligatif",
+      "title": "Penerapan Sifat Koligatif dalam Kehidupan Nyata dan Industri Medis",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penerapan Sifat Koligatif dalam Kehidupan Nyata dan Industri Medis</b>: Cairan infus isotonik darah (NaCl 0,9%), cairan antibeku radiator etilen glikol, desalinasi air laut reverse osmosis (osmosis balik) tekanan tinggi.</p>"
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Kimia untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab I Larutan dan Koloid (D. Sifat Koligatif Larutan).</small></p>"
+          "html": "<p><b>Penerapan sifat koligatif</b>:</p><ul><li><b>Osmosis balik</b> (reverse osmosis): air laut ditekan melebihi tekanan osmosisnya melalui membran, sehingga air murni keluar. Cara ini dipakai untuk desalinasi dan penjernih air minum isi ulang.</li><li>Cairan infus dibuat isotonik dengan darah agar sel darah tidak mengerut atau pecah.</li><li>Pengawetan dengan garam atau gula: mikroba kehilangan air karena lingkungannya hipertonik.</li><li>Garam ditaburkan di jalan bersalju, dan campuran es dan garam dipakai untuk membuat es puter (penurunan titik beku).</li><li>Penentuan massa molekul relatif zat, misalnya protein, dengan pengukuran tekanan osmosis.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Cairan infus isotonik darah (NaCl 0,9%), cairan antibeku radiator etilen glikol, desalinasi air laut reverse osmosis (osmosis balik) tekanan tinggi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Cairan infus NaCl 0,15 M diberikan pada suhu tubuh 37 °C. Hitung tekanan osmosisnya.</p>",
+          "steps": [
+            "T = 37 + 273 = 310 K; i = 2.",
+            "π = 0,15 × 0,082 × 310 × 2."
+          ],
+          "answer": "≈ 7,6 atm, kira-kira sama dengan tekanan osmosis darah (isotonik)"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Penerapan Sifat Koligatif dalam Kehidupan Nyata dan Industri Medis, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Penerapan Sifat Koligatif dalam Kehidupan Nyata dan Industri Medis berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Cairan infus isotonik darah (NaCl 0,9%), cairan antibeku radiator etilen glikol, desalinasi air laut reverse osmosis (osmosis balik) tekanan tinggi.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Sifat Koligatif",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Sifat Koligatif</b>: Tabel ringkasan rumus koligatif nonelektrolit vs elektrolit dan bank soal perhitungan.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Tabel ringkasan rumus koligatif nonelektrolit vs elektrolit dan bank soal perhitungan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Sifat Koligatif",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Sifat Koligatif</b> berikut. Analisislah berdasarkan kaidah Tabel ringkasan rumus koligatif nonelektrolit vs elektrolit dan bank soal perhitungan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Sifat Koligatif untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Sifat Koligatif, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Sifat Koligatif berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tabel ringkasan rumus koligatif nonelektrolit vs elektrolit dan bank soal perhitungan.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

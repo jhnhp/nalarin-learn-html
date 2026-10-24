@@ -4,14 +4,32 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "unsur-aljabar",
-      "title": "Variabel dan unsur bentuk aljabar",
-      "kind": "simulasi",
-      "duration": "15 menit",
+      "id": "dari-pola-ke-aljabar",
+      "title": "Mengapa Aljabar? Menemukan Pola Bilangan Menuju Variabel",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Rani menyusun korek api membentuk persegi berderet. Satu persegi perlu 4 korek, dua persegi perlu 7 korek, tiga persegi perlu 10 korek. Berapa korek untuk 100 persegi? Daripada menggambar 100 persegi, kita cari aturannya dan menuliskannya dengan huruf.</p>"
+          "html": "<p><b>Mengapa Aljabar? Menemukan Pola Bilangan Menuju Variabel</b>: Transisi dari aritmetika angka tetap ke variabel huruf sebagai kuantitas yang belum diketahui/dapat berubah.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Aturan \"banyak korek = 3n + 1\" disebut <b>bentuk aljabar</b>. Huruf n mewakili bilangan yang dapat berubah-ubah dan disebut <b>variabel</b>. Kata <i>aljabar</i> berasal dari judul buku karya Al-Khawarizmi, matematikawan Persia abad ke-9.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Bentuk aljabar membantu menuliskan situasi sehari-hari secara singkat. Kuncinya: tentukan apa yang tidak diketahui, beri nama variabel, lalu terjemahkan kata-katanya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Variabel</td><td>Huruf yang mewakili bilangan yang belum diketahui atau dapat berubah.</td></tr><tr><td>Koefisien, konstanta, suku</td><td>Pada 5x² − 3x + 7: koefisien 5 dan −3, konstanta 7, suku 5x², −3x, 7.</td></tr><tr><td>Suku sejenis</td><td>Variabel dan pangkatnya sama. Hanya suku sejenis yang bisa dijumlahkan.</td></tr><tr><td>Distributif</td><td>\\(a(b + c) = ab + ac\\).</td></tr><tr><td>Bentuk faktor</td><td>Keluarkan FPB koefisien dan variabel bersama: 8x² − 12x = 4x(2x − 3).</td></tr><tr><td>Setara</td><td>Dua bentuk aljabar setara jika nilainya sama untuk setiap nilai variabel.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Teka-teki angka",
+          "html": "<p>Pilih sebarang bilangan. Kalikan 2, tambahkan 6, bagi 2, lalu kurangi dengan bilangan awal. Hasilnya selalu 3! Mengapa? Misalkan bilangannya n:</p>\\[n \\to 2n \\to 2n + 6 \\to \\frac{2n + 6}{2} = n + 3 \\to n + 3 - n = 3\\]<p>Aljabar menjelaskan mengapa trik itu selalu berhasil untuk bilangan apa pun.</p>"
         },
         {
           "type": "sim",
@@ -21,8 +39,48 @@
           "caption": "Geser n dan perhatikan korek merah dan biru. Mengapa aturannya 3n + 1, bukan 4n? Coba juga pola segitiga."
         },
         {
+          "type": "sim",
+          "src": "sim/ubin-aljabar.html",
+          "title": "Ubin aljabar",
+          "height": 440,
+          "caption": "Ubah pengali dan isi kurung. Hitung ubin x dan ubin satuan, lalu bandingkan dengan bentuk jabarannya. Centang pilihan pengali x untuk melihat x(2x + 3)."
+        },
+        {
+          "type": "check",
+          "question": "Hasil penyederhanaan 7m − 3n − 2m + 8n adalah ....",
+          "options": {
+            "A": "5m + 5n",
+            "B": "5m − 11n",
+            "C": "9m + 5n",
+            "D": "10mn"
+          },
+          "answer": "A",
+          "hint": "Jumlahkan suku m dengan suku m, suku n dengan suku n.",
+          "explanation": "(7m − 2m) + (−3n + 8n) = 5m + 5n. Suku m dan n tidak sejenis, jadi tidak bisa digabung menjadi 10mn."
+        }
+      ]
+    },
+    {
+      "id": "unsur-unsur-aljabar",
+      "title": "Anatomi Bentuk Aljabar: Variabel, Koefisien, Konstanta, dan Derajat",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
           "type": "text",
-          "html": "<p>Aturan \"banyak korek = 3n + 1\" disebut <b>bentuk aljabar</b>. Huruf n mewakili bilangan yang dapat berubah-ubah dan disebut <b>variabel</b>. Kata <i>aljabar</i> berasal dari judul buku karya Al-Khawarizmi, matematikawan Persia abad ke-9.</p>"
+          "html": "<p><b>Anatomi Bentuk Aljabar: Variabel, Koefisien, Konstanta, dan Derajat</b>: Membedakan suku tunggal (monomial), suku dua (binomial), suku tiga (trinomial), dan suku banyak (polinomial).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Rani menyusun korek api membentuk persegi berderet. Satu persegi perlu 4 korek, dua persegi perlu 7 korek, tiga persegi perlu 10 korek. Berapa korek untuk 100 persegi? Daripada menggambar 100 persegi, kita cari aturannya dan menuliskannya dengan huruf.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Rani merancang kolam renang persegi bersisi s meter yang dikelilingi ubin berukuran 1 m × 1 m. Teman-temannya menghitung banyak ubin dengan cara berbeda dan menulis bentuk aljabar yang berbeda pula. Apakah semuanya benar?</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Kalimat</th><th>Bentuk aljabar</th></tr><tr><td>lima lebihnya dari suatu bilangan n</td><td>n + 5</td></tr><tr><td>tiga kurangnya dari dua kali n</td><td>2n − 3</td></tr><tr><td>setengah dari jumlah x dan 4</td><td>\\(\\tfrac{1}{2}(x + 4)\\)</td></tr><tr><td>harga y apel jika satu apel Rp5.000,00</td><td>5.000y</td></tr><tr><td>berat Ayu p kg, berat kakak 6 kg lebihnya</td><td>p + 6</td></tr></table>"
         },
         {
           "type": "image",
@@ -38,10 +96,25 @@
           "html": "<ul><li><b>Variabel</b>: huruf yang mewakili bilangan, misalnya x.</li><li><b>Koefisien</b>: bilangan yang dikalikan dengan variabel, beserta tandanya: 5 dan −3.</li><li><b>Konstanta</b>: suku tanpa variabel: 7.</li><li><b>Suku</b>: bagian yang dipisahkan tanda + atau −: 5x², −3x, dan 7.</li><li><b>Suku sejenis</b>: suku dengan variabel dan pangkat yang sama, misalnya 4a dan −9a. Suku 2x dan 2x² <i>tidak</i> sejenis.</li></ul>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Menghitung nilai bentuk aljabar",
-          "html": "<p>Ganti (substitusikan) variabel dengan bilangan, lalu hitung dengan urutan operasi yang benar. Untuk x = −2:</p>\\[5x^2 - 3x + 7 = 5(-2)^2 - 3(-2) + 7 = 20 + 6 + 7 = 33\\]<p>Tulis bilangan negatif di dalam kurung agar tandanya tidak hilang.</p>"
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tulis 15a + 25 dan 8x² − 12x dalam bentuk faktor.</p>",
+          "steps": [
+            "15a + 25: FPB(15, 25) = 5, sehingga 15a + 25 = 5(3a + 5).",
+            "8x² − 12x: faktor bersama koefisien 4, dan x muncul di kedua suku. Hasilnya 4x(2x − 3)."
+          ],
+          "answer": "5(3a + 5) dan 4x(2x − 3)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rumah Dodi berjarak x km dari sekolah. Ia bersepeda dengan kecepatan 12 km/jam. Tulis bentuk aljabar waktu tempuhnya dalam menit, lalu hitung untuk x = 3.</p>",
+          "steps": [
+            "Waktu (jam) = jarak : kecepatan = \\(\\tfrac{x}{12}\\) jam.",
+            "Dalam menit: \\(\\tfrac{x}{12} \\times 60 = 5x\\) menit.",
+            "Untuk x = 3: 5 × 3 = 15 menit."
+          ],
+          "answer": "5x menit; 15 menit"
         },
         {
           "type": "check",
@@ -55,98 +128,6 @@
           "answer": "B",
           "hint": "Suku −p sama dengan −1 × p.",
           "explanation": "Suku −p = (−1)p, jadi koefisiennya −1. 4 adalah koefisien p², dan 9 adalah konstanta."
-        },
-        {
-          "type": "check",
-          "question": "Nilai 3a − 2b untuk a = −4 dan b = −5 adalah ....",
-          "options": {
-            "A": "−22",
-            "B": "−2",
-            "C": "2",
-            "D": "22"
-          },
-          "answer": "B",
-          "hint": "3(−4) − 2(−5).",
-          "explanation": "3(−4) − 2(−5) = −12 + 10 = −2."
-        }
-      ]
-    },
-    {
-      "id": "operasi-aljabar",
-      "title": "Operasi dan sifat bentuk aljabar",
-      "kind": "simulasi",
-      "duration": "15 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Rani merancang kolam renang persegi bersisi s meter yang dikelilingi ubin berukuran 1 m × 1 m. Teman-temannya menghitung banyak ubin dengan cara berbeda dan menulis bentuk aljabar yang berbeda pula. Apakah semuanya benar?</p>"
-        },
-        {
-          "type": "image",
-          "src": "gambar/kolam-ubin.svg",
-          "alt": "Kolam persegi dikelilingi ubin: empat deret ubin sepanjang s dan empat ubin pojok",
-          "width": 540,
-          "caption": "Banyak ubin di sekeliling kolam."
-        },
-        {
-          "type": "text",
-          "html": "<p>Bentuk 4s + 4, 4(s + 1), dan s + s + s + s + 4 menghasilkan nilai yang sama untuk setiap s. Bentuk-bentuk seperti ini disebut <b>setara</b> (ekuivalen).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Operasi pada bentuk aljabar",
-          "html": "<ul><li><b>Penjumlahan dan pengurangan</b>: hanya suku sejenis yang dapat dijumlahkan, dengan menjumlahkan koefisiennya. 5x + 3y − 2x + y = 3x + 4y.</li><li><b>Sifat distributif</b>: \\(a(b + c) = ab + ac\\). Contoh: 3(2x + 4) = 6x + 12.</li><li><b>Bentuk jabaran</b> (tanpa kurung) dan <b>bentuk faktor</b> (dengan kurung) adalah dua cara menulis bentuk yang sama: 6x + 12 = 6(x + 2).</li></ul>"
-        },
-        {
-          "type": "h",
-          "text": "Coba sendiri"
-        },
-        {
-          "type": "sim",
-          "src": "sim/ubin-aljabar.html",
-          "title": "Ubin aljabar",
-          "height": 440,
-          "caption": "Ubah pengali dan isi kurung. Hitung ubin x dan ubin satuan, lalu bandingkan dengan bentuk jabarannya. Centang pilihan pengali x untuk melihat x(2x + 3)."
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Tanda minus di depan kurung",
-          "html": "<p>Tanda minus di depan kurung mengubah tanda <b>semua</b> suku di dalamnya: −(2a − 5) = −2a + 5. Jadi (4a − 3b) − (2a − 5b) = 4a − 3b − 2a + 5b = 2a + 2b.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Sederhanakan 2(3x − 4) − 3(x − 5).</p>",
-          "steps": [
-            "Jabarkan: 2(3x − 4) = 6x − 8, dan −3(x − 5) = −3x + 15.",
-            "Kelompokkan suku sejenis: (6x − 3x) + (−8 + 15) = 3x + 7."
-          ],
-          "answer": "3x + 7"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Tulis 15a + 25 dan 8x² − 12x dalam bentuk faktor.</p>",
-          "steps": [
-            "15a + 25: FPB(15, 25) = 5, sehingga 15a + 25 = 5(3a + 5).",
-            "8x² − 12x: faktor bersama koefisien 4, dan x muncul di kedua suku. Hasilnya 4x(2x − 3)."
-          ],
-          "answer": "5(3a + 5) dan 4x(2x − 3)"
-        },
-        {
-          "type": "check",
-          "question": "Hasil penyederhanaan 7m − 3n − 2m + 8n adalah ....",
-          "options": {
-            "A": "5m + 5n",
-            "B": "5m − 11n",
-            "C": "9m + 5n",
-            "D": "10mn"
-          },
-          "answer": "A",
-          "hint": "Jumlahkan suku m dengan suku m, suku n dengan suku n.",
-          "explanation": "(7m − 2m) + (−3n + 8n) = 5m + 5n. Suku m dan n tidak sejenis, jadi tidak bisa digabung menjadi 10mn."
         },
         {
           "type": "check",
@@ -164,35 +145,74 @@
       ]
     },
     {
-      "id": "pemodelan",
-      "title": "Pemodelan dengan bentuk aljabar",
-      "kind": "artikel",
-      "duration": "15 menit",
+      "id": "mengidentifikasi-suku-sejenis",
+      "title": "Mengidentifikasi dan Mengelompokkan Suku-Suku Sejenis",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Bentuk aljabar membantu menuliskan situasi sehari-hari secara singkat. Kuncinya: tentukan apa yang tidak diketahui, beri nama variabel, lalu terjemahkan kata-katanya.</p>"
-        },
-        {
-          "type": "text",
-          "html": "<table><tr><th>Kalimat</th><th>Bentuk aljabar</th></tr><tr><td>lima lebihnya dari suatu bilangan n</td><td>n + 5</td></tr><tr><td>tiga kurangnya dari dua kali n</td><td>2n − 3</td></tr><tr><td>setengah dari jumlah x dan 4</td><td>\\(\\tfrac{1}{2}(x + 4)\\)</td></tr><tr><td>harga y apel jika satu apel Rp5.000,00</td><td>5.000y</td></tr><tr><td>berat Ayu p kg, berat kakak 6 kg lebihnya</td><td>p + 6</td></tr></table>"
+          "html": "<p><b>Mengidentifikasi dan Mengelompokkan Suku-Suku Sejenis</b>: Syarat suku sejenis (variabel sama dan pangkat variabel sama), menjodohkan suku sejenis dalam ekspresi aljabar.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Teka-teki angka",
-          "html": "<p>Pilih sebarang bilangan. Kalikan 2, tambahkan 6, bagi 2, lalu kurangi dengan bilangan awal. Hasilnya selalu 3! Mengapa? Misalkan bilangannya n:</p>\\[n \\to 2n \\to 2n + 6 \\to \\frac{2n + 6}{2} = n + 3 \\to n + 3 - n = 3\\]<p>Aljabar menjelaskan mengapa trik itu selalu berhasil untuk bilangan apa pun.</p>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Syarat suku sejenis (variabel sama dan pangkat variabel sama), menjodohkan suku sejenis dalam ekspresi aljabar.</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Rumah Dodi berjarak x km dari sekolah. Ia bersepeda dengan kecepatan 12 km/jam. Tulis bentuk aljabar waktu tempuhnya dalam menit, lalu hitung untuk x = 3.</p>",
+          "question": "<p>Sederhanakan 2(3x − 4) − 3(x − 5).</p>",
           "steps": [
-            "Waktu (jam) = jarak : kecepatan = \\(\\tfrac{x}{12}\\) jam.",
-            "Dalam menit: \\(\\tfrac{x}{12} \\times 60 = 5x\\) menit.",
-            "Untuk x = 3: 5 × 3 = 15 menit."
+            "Jabarkan: 2(3x − 4) = 6x − 8, dan −3(x − 5) = −3x + 15.",
+            "Kelompokkan suku sejenis: (6x − 3x) + (−8 + 15) = 3x + 7."
           ],
-          "answer": "5x menit; 15 menit"
+          "answer": "3x + 7"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Mengidentifikasi dan Mengelompokkan Suku-Suku Sejenis, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Mengidentifikasi dan Mengelompokkan Suku-Suku Sejenis berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Syarat suku sejenis (variabel sama dan pangkat variabel sama), menjodohkan suku sejenis dalam ekspresi aljabar.."
+        }
+      ]
+    },
+    {
+      "id": "penjumlahan-pengurangan-aljabar",
+      "title": "Operasi Penjumlahan dan Pengurangan Bentuk Aljabar",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Operasi Penjumlahan dan Pengurangan Bentuk Aljabar</b>: Menggabungkan suku sejenis menggunakan sifat distributif faktorisasi: ax + bx = (a+b)x; jebakan tanda kurung minus.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Operasi pada bentuk aljabar",
+          "html": "<ul><li><b>Penjumlahan dan pengurangan</b>: hanya suku sejenis yang dapat dijumlahkan, dengan menjumlahkan koefisiennya. 5x + 3y − 2x + y = 3x + 4y.</li><li><b>Sifat distributif</b>: \\(a(b + c) = ab + ac\\). Contoh: 3(2x + 4) = 6x + 12.</li><li><b>Bentuk jabaran</b> (tanpa kurung) dan <b>bentuk faktor</b> (dengan kurung) adalah dua cara menulis bentuk yang sama: 6x + 12 = 6(x + 2).</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Tanda minus di depan kurung",
+          "html": "<p>Tanda minus di depan kurung mengubah tanda <b>semua</b> suku di dalamnya: −(2a − 5) = −2a + 5. Jadi (4a − 3b) − (2a − 5b) = 4a − 3b − 2a + 5b = 2a + 2b.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menggabungkan suku tidak sejenis: 3x + 2y ≠ 5xy.</li><li>Hanya mengalikan suku pertama: 3(x + 2) ≠ 3x + 2.</li><li>Lupa mengubah tanda setelah minus di depan kurung.</li><li>Substitusi tanpa kurung: untuk x = −3, x² = 9, bukan −9.</li></ul>"
         },
         {
           "type": "example",
@@ -204,6 +224,282 @@
             "Keliling = 2(3x + 2) = 6x + 4 cm."
           ],
           "answer": "(6x + 4) cm"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Operasi Penjumlahan dan Pengurangan Bentuk Aljabar, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Operasi Penjumlahan dan Pengurangan Bentuk Aljabar berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menggabungkan suku sejenis menggunakan sifat distributif faktorisasi: ax + bx = (a+b)x; jebakan tanda kurung minus.."
+        }
+      ]
+    },
+    {
+      "id": "perkalian-distributif-tunggal",
+      "title": "Perkalian Suku Tunggal dengan Suku Banyak (Sifat Distributif)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Perkalian Suku Tunggal dengan Suku Banyak (Sifat Distributif)</b>: Mengalikan koefisien dan menjumlahkan pangkat variabel: a(bx + c) = abx + ac, serta aturan tanda.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Mengalikan koefisien dan menjumlahkan pangkat variabel: a(bx + c) = abx + ac, serta aturan tanda.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Perkalian Suku Tunggal dengan Suku Banyak (Sifat Distributif)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Perkalian Suku Tunggal dengan Suku Banyak (Sifat Distributif)</b> berikut. Analisislah berdasarkan kaidah Mengalikan koefisien dan menjumlahkan pangkat variabel: a(bx + c) = abx + ac, serta aturan tanda..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Perkalian Suku Tunggal dengan Suku Banyak (Sifat Distributif) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Perkalian Suku Tunggal dengan Suku Banyak (Sifat Distributif), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Perkalian Suku Tunggal dengan Suku Banyak (Sifat Distributif) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Mengalikan koefisien dan menjumlahkan pangkat variabel: a(bx + c) = abx + ac, serta aturan tanda.."
+        }
+      ]
+    },
+    {
+      "id": "perkalian-dua-suku-model-luas",
+      "title": "Perkalian Dua Suku Banyak: Model Geometris Luas dan Aturan FOIL",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Perkalian Dua Suku Banyak: Model Geometris Luas dan Aturan FOIL</b>: Visualisasi luas persegi panjang (x+a)(x+b) = x^2 + (a+b)x + ab, perkalian bentuk istimewa (a+b)^2 dan (a+b)(a-b).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/kolam-ubin.svg",
+          "alt": "Kolam persegi dikelilingi ubin: empat deret ubin sepanjang s dan empat ubin pojok",
+          "width": 540,
+          "caption": "Banyak ubin di sekeliling kolam."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Visualisasi luas persegi panjang (x+a)(x+b) = x^2 + (a+b)x + ab, perkalian bentuk istimewa (a+b)^2 dan (a+b)(a-b).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Perkalian Dua Suku Banyak: Model Geometris Luas dan Aturan FOIL",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Perkalian Dua Suku Banyak: Model Geometris Luas dan Aturan FOIL</b> berikut. Analisislah berdasarkan kaidah Visualisasi luas persegi panjang (x+a)(x+b) = x^2 + (a+b)x + ab, perkalian bentuk istimewa (a+b)^2 dan (a+b)(a-b)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Perkalian Dua Suku Banyak: Model Geometris Luas dan Aturan FOIL untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Perkalian Dua Suku Banyak: Model Geometris Luas dan Aturan FOIL, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Perkalian Dua Suku Banyak: Model Geometris Luas dan Aturan FOIL berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Visualisasi luas persegi panjang (x+a)(x+b) = x^2 + (a+b)x + ab, perkalian bentuk istimewa (a+b)^2 dan (a+b)(a-b).."
+        }
+      ]
+    },
+    {
+      "id": "pembagian-aljabar-sederhana",
+      "title": "Pembagian Bentuk Aljabar dan Menyederhanakan Pecahan Aljabar",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pembagian Bentuk Aljabar dan Menyederhanakan Pecahan Aljabar</b>: Membagi suku tunggal dengan suku tunggal, membagi polinomial dengan suku tunggal, dan mencoret faktor persekutuan.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Membagi suku tunggal dengan suku tunggal, membagi polinomial dengan suku tunggal, dan mencoret faktor persekutuan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Pembagian Bentuk Aljabar dan Menyederhanakan Pecahan Aljabar",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Pembagian Bentuk Aljabar dan Menyederhanakan Pecahan Aljabar</b> berikut. Analisislah berdasarkan kaidah Membagi suku tunggal dengan suku tunggal, membagi polinomial dengan suku tunggal, dan mencoret faktor persekutuan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Pembagian Bentuk Aljabar dan Menyederhanakan Pecahan Aljabar untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Pembagian Bentuk Aljabar dan Menyederhanakan Pecahan Aljabar, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Pembagian Bentuk Aljabar dan Menyederhanakan Pecahan Aljabar berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Membagi suku tunggal dengan suku tunggal, membagi polinomial dengan suku tunggal, dan mencoret faktor persekutuan.."
+        }
+      ]
+    },
+    {
+      "id": "faktorisasi-fpb-aljabar",
+      "title": "Faktorisasi Aljabar Dasar: Memfaktorkan Faktor Persekutuan (FPB)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Faktorisasi Aljabar Dasar: Memfaktorkan Faktor Persekutuan (FPB)</b>: Kebalikan sifat distributif: mengubah penjumlahan aljabar menjadi perkalian faktor, contoh 6x^2 + 9x = 3x(2x + 3).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Kebalikan sifat distributif: mengubah penjumlahan aljabar menjadi perkalian faktor, contoh 6x^2 + 9x = 3x(2x + 3).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Faktorisasi Aljabar Dasar: Memfaktorkan Faktor Persekutuan (FPB)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Faktorisasi Aljabar Dasar: Memfaktorkan Faktor Persekutuan (FPB)</b> berikut. Analisislah berdasarkan kaidah Kebalikan sifat distributif: mengubah penjumlahan aljabar menjadi perkalian faktor, contoh 6x^2 + 9x = 3x(2x + 3)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Faktorisasi Aljabar Dasar: Memfaktorkan Faktor Persekutuan (FPB) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Faktorisasi Aljabar Dasar: Memfaktorkan Faktor Persekutuan (FPB), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Faktorisasi Aljabar Dasar: Memfaktorkan Faktor Persekutuan (FPB) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Kebalikan sifat distributif: mengubah penjumlahan aljabar menjadi perkalian faktor, contoh 6x^2 + 9x = 3x(2x + 3).."
+        }
+      ]
+    },
+    {
+      "id": "substitusi-nilai-aljabar",
+      "title": "Substitusi Nilai Numerik ke dalam Bentuk Aljabar",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Substitusi Nilai Numerik ke dalam Bentuk Aljabar</b>: Mengevaluasi nilai rumus fisika/matematika dengan mengganti variabel dengan nilai bilangan tertentu (termasuk bilangan negatif).</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Bentuk 4s + 4, 4(s + 1), dan s + s + s + s + 4 menghasilkan nilai yang sama untuk setiap s. Bentuk-bentuk seperti ini disebut <b>setara</b> (ekuivalen).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VII</i> (Kemendikbudristek), Bab 4 Bentuk Aljabar.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Menghitung nilai bentuk aljabar",
+          "html": "<p>Ganti (substitusikan) variabel dengan bilangan, lalu hitung dengan urutan operasi yang benar. Untuk x = −2:</p>\\[5x^2 - 3x + 7 = 5(-2)^2 - 3(-2) + 7 = 20 + 6 + 7 = 33\\]<p>Tulis bilangan negatif di dalam kurung agar tandanya tidak hilang.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Substitusi Nilai Numerik ke dalam Bentuk Aljabar",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Substitusi Nilai Numerik ke dalam Bentuk Aljabar</b> berikut. Analisislah berdasarkan kaidah Mengevaluasi nilai rumus fisika/matematika dengan mengganti variabel dengan nilai bilangan tertentu (termasuk bilangan negatif)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Substitusi Nilai Numerik ke dalam Bentuk Aljabar untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Nilai 3a − 2b untuk a = −4 dan b = −5 adalah ....",
+          "options": {
+            "A": "−22",
+            "B": "−2",
+            "C": "2",
+            "D": "22"
+          },
+          "answer": "B",
+          "hint": "3(−4) − 2(−5).",
+          "explanation": "3(−4) − 2(−5) = −12 + 10 = −2."
+        }
+      ]
+    },
+    {
+      "id": "pemodelan-matematis-aljabar",
+      "title": "Memodelkan Situasi Kehidupan Nyata Menjadi Bentuk Aljabar",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Memodelkan Situasi Kehidupan Nyata Menjadi Bentuk Aljabar</b>: Menerjemahkan kalimat verbal menjadi persamaan aljabar (keliling taman, harga total paket pembelian).</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Menerjemahkan kalimat verbal menjadi persamaan aljabar (keliling taman, harga total paket pembelian).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Memodelkan Situasi Kehidupan Nyata Menjadi Bentuk Aljabar",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Memodelkan Situasi Kehidupan Nyata Menjadi Bentuk Aljabar</b> berikut. Analisislah berdasarkan kaidah Menerjemahkan kalimat verbal menjadi persamaan aljabar (keliling taman, harga total paket pembelian)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Memodelkan Situasi Kehidupan Nyata Menjadi Bentuk Aljabar untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
@@ -221,24 +517,49 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Mandiri",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Variabel</td><td>Huruf yang mewakili bilangan yang belum diketahui atau dapat berubah.</td></tr><tr><td>Koefisien, konstanta, suku</td><td>Pada 5x² − 3x + 7: koefisien 5 dan −3, konstanta 7, suku 5x², −3x, 7.</td></tr><tr><td>Suku sejenis</td><td>Variabel dan pangkatnya sama. Hanya suku sejenis yang bisa dijumlahkan.</td></tr><tr><td>Distributif</td><td>\\(a(b + c) = ab + ac\\).</td></tr><tr><td>Bentuk faktor</td><td>Keluarkan FPB koefisien dan variabel bersama: 8x² − 12x = 4x(2x − 3).</td></tr><tr><td>Setara</td><td>Dua bentuk aljabar setara jika nilainya sama untuk setiap nilai variabel.</td></tr></table>"
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Mandiri</b>: Peta konsep aljabar, rangkuman rumus perkalian istimewa, dan latihan mandiri.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menggabungkan suku tidak sejenis: 3x + 2y ≠ 5xy.</li><li>Hanya mengalikan suku pertama: 3(x + 2) ≠ 3x + 2.</li><li>Lupa mengubah tanda setelah minus di depan kurung.</li><li>Substitusi tanpa kurung: untuk x = −3, x² = 9, bukan −9.</li></ul>"
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Peta konsep aljabar, rangkuman rumus perkalian istimewa, dan latihan mandiri.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Mandiri",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Mandiri</b> berikut. Analisislah berdasarkan kaidah Peta konsep aljabar, rangkuman rumus perkalian istimewa, dan latihan mandiri..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Mandiri untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Mandiri, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Mandiri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Peta konsep aljabar, rangkuman rumus perkalian istimewa, dan latihan mandiri.."
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VII</i> (Kemendikbudristek), Bab 4 Bentuk Aljabar.</small></p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

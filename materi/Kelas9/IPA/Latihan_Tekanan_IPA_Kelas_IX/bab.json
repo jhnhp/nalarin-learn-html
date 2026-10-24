@@ -4,16 +4,46 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "padat",
-      "title": "Tekanan zat padat",
-      "kind": "artikel",
-      "duration": "15 menit",
+      "id": "pendalaman-tekanan-padat",
+      "title": "Pendalaman Konsep dan Soal Tekanan Zat Padat",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pendalaman Konsep dan Soal Tekanan Zat Padat</b>: Variasi luas bidang sentuh, tekanan balok pada berbagai orientasi sisi, dan optimasi struktur.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Penerapan: pisau tajam (luas kecil → tekanan besar), sepatu salju dan roda traktor yang lebar (luas besar → tekanan kecil sehingga tidak terbenam).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Tekanan zat padat</td><td>\\(P = F/A\\)</td></tr><tr><td>Tekanan hidrostatis</td><td>\\(P_h = \\rho g h\\)</td></tr><tr><td>Archimedes</td><td>\\(F_A = \\rho_{cair} g V_{tercelup}\\)</td></tr><tr><td>Pascal</td><td>\\(F_1/A_1 = F_2/A_2\\)</td></tr><tr><td>Boyle</td><td>\\(P_1V_1 = P_2V_2\\)</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Materi lengkap ada di bab <i>Tekanan pada Zat</i> IPA Kelas 8.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Tekanan",
           "html": "<p>\\[P = \\frac{F}{A}\\]</p><p>P tekanan (pascal, Pa = N/m²), F gaya tekan (N), A luas bidang tekan (m²). Gaya tetap, luas diperbesar → tekanan mengecil.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/tekanan-cair.html",
+          "title": "Tekanan hidrostatis",
+          "height": 480,
+          "caption": "Ubah kedalaman dan jenis cairan."
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/hidrolik.html",
+          "title": "Dongkrak hidrolik",
+          "height": 480,
+          "caption": "Ubah luas piston dan gaya tekan."
         },
         {
           "type": "example",
@@ -25,8 +55,22 @@
           "answer": "4.000 Pa"
         },
         {
-          "type": "text",
-          "html": "<p>Penerapan: pisau tajam (luas kecil → tekanan besar), sepatu salju dan roda traktor yang lebar (luas besar → tekanan kecil sehingga tidak terbenam).</p>"
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Piston kecil 4 cm² diberi gaya 15 N. Berapa gaya pada piston besar 40 cm²?</p>",
+          "steps": [
+            "\\(F_2 = F_1 \\dfrac{A_2}{A_1} = 15 \\times \\dfrac{40}{4}\\)."
+          ],
+          "answer": "150 N"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gas 120 kPa bervolume 5 L dimampatkan menjadi 3 L pada suhu tetap. Berapa tekanannya?</p>",
+          "steps": [
+            "\\(P_2 = \\dfrac{P_1V_1}{V_2} = \\dfrac{120\\times5}{3}\\)."
+          ],
+          "answer": "200 kPa"
         },
         {
           "type": "check",
@@ -44,23 +88,20 @@
       ]
     },
     {
-      "id": "cair",
-      "title": "Tekanan hidrostatis dan hukum Archimedes",
+      "id": "pendalaman-tekanan-hidrostatis-bejana",
+      "title": "Pendalaman Tekanan Hidrostatis dan Perhitungan Pipa U Multicairan",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pendalaman Tekanan Hidrostatis dan Perhitungan Pipa U Multicairan</b>: Perhitungan fluida berlapis dengan minyak, air, dan raksa; tekanan total pada dasar dan dinding samping.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Tekanan hidrostatis",
           "html": "<p>\\[P_h = \\rho\\,g\\,h\\]</p><p>ρ massa jenis cairan (kg/m³), g percepatan gravitasi (m/s²), h kedalaman dari permukaan (m). Tidak bergantung pada bentuk wadah.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/tekanan-cair.html",
-          "title": "Tekanan hidrostatis",
-          "height": 480,
-          "caption": "Ubah kedalaman dan jenis cairan."
         },
         {
           "type": "example",
@@ -70,6 +111,31 @@
             "\\(h = \\dfrac{P}{\\rho g} = \\dfrac{20.000}{1.000\\times10}\\)."
           ],
           "answer": "2 m"
+        },
+        {
+          "type": "check",
+          "question": "Benda memindahkan 0,004 m³ air (ρ = 1.000 kg/m³, g = 10 m/s²). Gaya apungnya ....",
+          "options": {
+            "A": "4 N",
+            "B": "40 N",
+            "C": "400 N",
+            "D": "4.000 N"
+          },
+          "answer": "B",
+          "hint": "F = ρgV.",
+          "explanation": "1.000 × 10 × 0,004 = 40 N."
+        }
+      ]
+    },
+    {
+      "id": "pendalaman-archimedes-terapung",
+      "title": "Pendalaman Hukum Archimedes: Benda Terapung Sebagian dan Massa Jenis Benda",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pendalaman Hukum Archimedes: Benda Terapung Sebagian dan Massa Jenis Benda</b>: Menghitung volume benda yang tercelup (V_celup / V_total = ρ_benda / ρ_cair) dan berat semu.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
@@ -98,25 +164,30 @@
         },
         {
           "type": "check",
-          "question": "Benda memindahkan 0,004 m³ air (ρ = 1.000 kg/m³, g = 10 m/s²). Gaya apungnya ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Pendalaman Hukum Archimedes: Benda Terapung Sebagian dan Massa Jenis Benda, manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "4 N",
-            "B": "40 N",
-            "C": "400 N",
-            "D": "4.000 N"
+            "A": "Prinsip Pendalaman Hukum Archimedes: Benda Terapung Sebagian dan Massa Jenis Benda berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "B",
-          "hint": "F = ρgV.",
-          "explanation": "1.000 × 10 × 0,004 = 40 N."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menghitung volume benda yang tercelup (V_celup / V_total = ρ_benda / ρ_cair) dan berat semu.."
         }
       ]
     },
     {
-      "id": "pascal-boyle",
-      "title": "Hukum Pascal dan hukum Boyle",
+      "id": "pendalaman-hukum-pascal-hidrolik",
+      "title": "Pendalaman Hukum Pascal dan Perhitungan Sistem Hidrolik Bertingkat",
       "kind": "simulasi",
-      "duration": "20 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pendalaman Hukum Pascal dan Perhitungan Sistem Hidrolik Bertingkat</b>: Perbandingan luas penampang lingkaran (d1^2 : d2^2), usaha mekanis piston hidrolik.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
@@ -124,20 +195,41 @@
           "html": "<p>Tekanan pada zat cair dalam ruang tertutup diteruskan <b>ke segala arah sama besar</b>. Pada dongkrak hidrolik: \\(\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2}\\).</p>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas8/IPA/04 Tekanan pada Zat/sim/hidrolik.html",
-          "title": "Dongkrak hidrolik",
-          "height": 480,
-          "caption": "Ubah luas piston dan gaya tekan."
+          "type": "example",
+          "title": "Contoh Penerapan: Pendalaman Hukum Pascal dan Perhitungan Sistem Hidrolik Bertingkat",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Pendalaman Hukum Pascal dan Perhitungan Sistem Hidrolik Bertingkat</b> berikut. Analisislah berdasarkan kaidah Perbandingan luas penampang lingkaran (d1^2 : d2^2), usaha mekanis piston hidrolik..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Pendalaman Hukum Pascal dan Perhitungan Sistem Hidrolik Bertingkat untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Piston kecil 4 cm² diberi gaya 15 N. Berapa gaya pada piston besar 40 cm²?</p>",
-          "steps": [
-            "\\(F_2 = F_1 \\dfrac{A_2}{A_1} = 15 \\times \\dfrac{40}{4}\\)."
-          ],
-          "answer": "150 N"
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Pendalaman Hukum Pascal dan Perhitungan Sistem Hidrolik Bertingkat, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Pendalaman Hukum Pascal dan Perhitungan Sistem Hidrolik Bertingkat berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Perbandingan luas penampang lingkaran (d1^2 : d2^2), usaha mekanis piston hidrolik.."
+        }
+      ]
+    },
+    {
+      "id": "pendalaman-tekanan-gas-hukum-boyle",
+      "title": "Pendalaman Tekanan Gas, Barometer Torricelli, dan Hukum Boyle",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pendalaman Tekanan Gas, Barometer Torricelli, dan Hukum Boyle</b>: Perhitungan ketinggian tempat berdasarkan penurunan tekanan barometer dan ekspansi gas tertutup.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
@@ -147,12 +239,14 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Gas 120 kPa bervolume 5 L dimampatkan menjadi 3 L pada suhu tetap. Berapa tekanannya?</p>",
+          "title": "Contoh Penerapan: Pendalaman Tekanan Gas, Barometer Torricelli, dan Hukum Boyle",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Pendalaman Tekanan Gas, Barometer Torricelli, dan Hukum Boyle</b> berikut. Analisislah berdasarkan kaidah Perhitungan ketinggian tempat berdasarkan penurunan tekanan barometer dan ekspansi gas tertutup..</p>",
           "steps": [
-            "\\(P_2 = \\dfrac{P_1V_1}{V_2} = \\dfrac{120\\times5}{3}\\)."
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Pendalaman Tekanan Gas, Barometer Torricelli, dan Hukum Boyle untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
           ],
-          "answer": "200 kPa"
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
@@ -170,18 +264,92 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan",
+      "id": "penerapan-tekanan-sains-biologi",
+      "title": "Aplikasi Tekanan pada Sistem Biologi: Hemodinamika dan Turgor Sel",
       "kind": "artikel",
-      "duration": "5 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Tekanan zat padat</td><td>\\(P = F/A\\)</td></tr><tr><td>Tekanan hidrostatis</td><td>\\(P_h = \\rho g h\\)</td></tr><tr><td>Archimedes</td><td>\\(F_A = \\rho_{cair} g V_{tercelup}\\)</td></tr><tr><td>Pascal</td><td>\\(F_1/A_1 = F_2/A_2\\)</td></tr><tr><td>Boyle</td><td>\\(P_1V_1 = P_2V_2\\)</td></tr></table>"
+          "html": "<p><b>Aplikasi Tekanan pada Sistem Biologi: Hemodinamika dan Turgor Sel</b>: Tekanan osmotik dinding sel tumbuhan menjaga ketegaran, sfignomanometer mengukur tekanan darah arteri.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Tekanan osmotik dinding sel tumbuhan menjaga ketegaran, sfignomanometer mengukur tekanan darah arteri.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Aplikasi Tekanan pada Sistem Biologi: Hemodinamika dan Turgor Sel",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Aplikasi Tekanan pada Sistem Biologi: Hemodinamika dan Turgor Sel</b> berikut. Analisislah berdasarkan kaidah Tekanan osmotik dinding sel tumbuhan menjaga ketegaran, sfignomanometer mengukur tekanan darah arteri..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Aplikasi Tekanan pada Sistem Biologi: Hemodinamika dan Turgor Sel untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Aplikasi Tekanan pada Sistem Biologi: Hemodinamika dan Turgor Sel, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Aplikasi Tekanan pada Sistem Biologi: Hemodinamika dan Turgor Sel berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tekanan osmotik dinding sel tumbuhan menjaga ketegaran, sfignomanometer mengukur tekanan darah arteri.."
+        }
+      ]
+    },
+    {
+      "id": "bank-soal-komprehensif-tekanan",
+      "title": "Bank Soal Pengayaan Tekanan Zat dan Pembahasan Terstruktur",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Bank Soal Pengayaan Tekanan Zat dan Pembahasan Terstruktur</b>: Kumpulan soal bertingkat dari mudah hingga kompetisi sains madya.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Kumpulan soal bertingkat dari mudah hingga kompetisi sains madya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Bank Soal Pengayaan Tekanan Zat dan Pembahasan Terstruktur",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Bank Soal Pengayaan Tekanan Zat dan Pembahasan Terstruktur</b> berikut. Analisislah berdasarkan kaidah Kumpulan soal bertingkat dari mudah hingga kompetisi sains madya..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Bank Soal Pengayaan Tekanan Zat dan Pembahasan Terstruktur untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Bank Soal Pengayaan Tekanan Zat dan Pembahasan Terstruktur, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Bank Soal Pengayaan Tekanan Zat dan Pembahasan Terstruktur berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Kumpulan soal bertingkat dari mudah hingga kompetisi sains madya.."
         },
         {
           "type": "text",
-          "html": "<p>Materi lengkap ada di bab <i>Tekanan pada Zat</i> IPA Kelas 8.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

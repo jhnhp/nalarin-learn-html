@@ -4,31 +4,28 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "ukuran-pemusatan",
-      "title": "Mean, median, dan modus",
+      "id": "ukuran-pemusatan-mean",
+      "title": "Ukuran Pemusatan 1: Rata-Rata Hitung (Mean) Data Tunggal",
       "kind": "simulasi",
-      "duration": "20 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Ukuran Pemusatan 1: Rata-Rata Hitung (Mean) Data Tunggal</b>: Menghitung mean = jumlah seluruh data / banyak data, menghitung mean gabungan (rata-rata terbobot).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Mean dari tabel frekuensi"
+        },
         {
           "type": "text",
           "html": "<p>Berita ekonomi sering menyebut \"rata-rata pendapatan\", dan laporan sekolah menyebut \"nilai rata-rata kelas\". Satu angka dipakai untuk mewakili sekumpulan data. Angka seperti itu disebut <b>ukuran pemusatan data</b>.</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Tiga ukuran pemusatan",
-          "html": "<ul><li><b>Mean</b> (rata-rata): \\(\\bar{x} = \\dfrac{\\text{jumlah semua data}}{\\text{banyak data}}\\).</li><li><b>Median</b>: nilai tengah setelah data <b>diurutkan</b>. Jika banyak data genap, median adalah rata-rata dua data di tengah.</li><li><b>Modus</b>: data yang paling sering muncul. Bisa ada lebih dari satu modus, atau tidak ada sama sekali.</li></ul>"
-        },
-        {
-          "type": "h",
-          "text": "Coba sendiri"
-        },
-        {
-          "type": "sim",
-          "src": "sim/pusat-data.html",
-          "title": "Mean, median, dan modus",
-          "height": 430,
-          "caption": "Tambah dan hapus data dengan mengeklik. Lalu tekan <b>Tambah pencilan</b>. Ukuran mana yang paling banyak bergeser?"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Menghitung mean = jumlah seluruh data / banyak data, menghitung mean gabungan (rata-rata terbobot).</p>"
         },
         {
           "type": "example",
@@ -41,14 +38,6 @@
             "Modus = 148 cm (muncul 3 kali)."
           ],
           "answer": "mean 152,25 cm, median 151 cm, modus 148 cm"
-        },
-        {
-          "type": "h",
-          "text": "Mean dari tabel frekuensi"
-        },
-        {
-          "type": "text",
-          "html": "<p>Jika data disajikan dalam tabel frekuensi, kalikan setiap nilai dengan frekuensinya: \\(\\bar{x} = \\dfrac{\\Sigma (x \\times f)}{\\Sigma f}\\).</p>"
         },
         {
           "type": "example",
@@ -77,17 +66,78 @@
       ]
     },
     {
-      "id": "memilih-ukuran",
-      "title": "Memilih ukuran pemusatan yang tepat",
-      "kind": "artikel",
-      "duration": "10 menit",
+      "id": "ukuran-pemusatan-median-modus",
+      "title": "Ukuran Pemusatan 2: Median (Nilai Tengah) dan Modus (Nilai Terbanyak)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
-          "type": "image",
-          "src": "gambar/gaji-pencilan.svg",
-          "alt": "Diagram titik gaji 10 karyawan; satu gaji 40 juta menarik mean ke 9 juta, sedangkan median 5,5 juta",
-          "width": 640,
-          "caption": "Satu pencilan menarik mean jauh ke kanan, tetapi median hampir tidak berubah."
+          "type": "text",
+          "html": "<p><b>Ukuran Pemusatan 2: Median (Nilai Tengah) dan Modus (Nilai Terbanyak)</b>: Mengurutkan data untuk median genap vs ganjil; modus tunggal, bimodal, multimodal, atau tidak memiliki modus.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika data disajikan dalam tabel frekuensi, kalikan setiap nilai dengan frekuensinya: \\(\\bar{x} = \\dfrac{\\Sigma (x \\times f)}{\\Sigma f}\\).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Dua kelas bisa memiliki rata-rata nilai sama, 75, tetapi pada kelas pertama semua siswa mendapat 70–80, sedangkan pada kelas kedua ada yang mendapat 40 dan ada yang 100. Selain pusat data, kita perlu mengukur seberapa <b>menyebar</b> data itu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tiga ukuran pemusatan",
+          "html": "<ul><li><b>Mean</b> (rata-rata): \\(\\bar{x} = \\dfrac{\\text{jumlah semua data}}{\\text{banyak data}}\\).</li><li><b>Median</b>: nilai tengah setelah data <b>diurutkan</b>. Jika banyak data genap, median adalah rata-rata dua data di tengah.</li><li><b>Modus</b>: data yang paling sering muncul. Bisa ada lebih dari satu modus, atau tidak ada sama sekali.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mencari median tanpa mengurutkan data.</li><li>Pada tabel frekuensi, menjumlahkan nilai x tanpa mengalikan frekuensinya.</li><li>Memakai mean untuk data dengan pencilan besar.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pusat-data.html",
+          "title": "Mean, median, dan modus",
+          "height": 430,
+          "caption": "Tambah dan hapus data dengan mengeklik. Lalu tekan <b>Tambah pencilan</b>. Ukuran mana yang paling banyak bergeser?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Ukuran Pemusatan 2: Median (Nilai Tengah) dan Modus (Nilai Terbanyak)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Ukuran Pemusatan 2: Median (Nilai Tengah) dan Modus (Nilai Terbanyak)</b> berikut. Analisislah berdasarkan kaidah Mengurutkan data untuk median genap vs ganjil; modus tunggal, bimodal, multimodal, atau tidak memiliki modus..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Ukuran Pemusatan 2: Median (Nilai Tengah) dan Modus (Nilai Terbanyak) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Ukuran Pemusatan 2: Median (Nilai Tengah) dan Modus (Nilai Terbanyak), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Ukuran Pemusatan 2: Median (Nilai Tengah) dan Modus (Nilai Terbanyak) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Mengurutkan data untuk median genap vs ganjil; modus tunggal, bimodal, multimodal, atau tidak memiliki modus.."
+        }
+      ]
+    },
+    {
+      "id": "pengaruh-pencilan-outlier",
+      "title": "Sensitivitas Ukuran Pemusatan terhadap Pencilan (Outlier)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Sensitivitas Ukuran Pemusatan terhadap Pencilan (Outlier)</b>: Mengapa mean sangat rentan ditarik oleh nilai ekstrem, mengapa median lebih tahan (resisten), dan kapan memilih ukuran pemusatan yang tepat.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "text",
@@ -96,6 +146,30 @@
         {
           "type": "text",
           "html": "<table><tr><th>Ukuran</th><th>Tepat dipakai jika</th></tr><tr><td>Mean</td><td>data numerik tanpa pencilan, misalnya nilai ulangan satu kelas.</td></tr><tr><td>Median</td><td>data numerik dengan pencilan, misalnya gaji atau harga rumah.</td></tr><tr><td>Modus</td><td>data kategorik, misalnya ukuran baju atau warna yang paling laku.</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/gaji-pencilan.svg",
+          "alt": "Diagram titik gaji 10 karyawan; satu gaji 40 juta menarik mean ke 9 juta, sedangkan median 5,5 juta",
+          "width": 640,
+          "caption": "Satu pencilan menarik mean jauh ke kanan, tetapi median hampir tidak berubah."
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa jangkauan antarkuartil?",
+          "html": "<p>Jangkauan sangat dipengaruhi pencilan, karena hanya memakai dua data paling ujung. Jangkauan antarkuartil hanya melihat bagian tengah data, sehingga lebih stabil.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Sensitivitas Ukuran Pemusatan terhadap Pencilan (Outlier)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Sensitivitas Ukuran Pemusatan terhadap Pencilan (Outlier)</b> berikut. Analisislah berdasarkan kaidah Mengapa mean sangat rentan ditarik oleh nilai ekstrem, mengapa median lebih tahan (resisten), dan kapan memilih ukuran pemusatan yang tepat..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Sensitivitas Ukuran Pemusatan terhadap Pencilan (Outlier) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
@@ -113,31 +187,67 @@
       ]
     },
     {
-      "id": "ukuran-penyebaran",
-      "title": "Jangkauan dan kuartil",
-      "kind": "simulasi",
-      "duration": "20 menit",
+      "id": "ukuran-penyebaran-jangkauan",
+      "title": "Ukuran Penyebaran 1: Jangkauan (Range) Data",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Dua kelas bisa memiliki rata-rata nilai sama, 75, tetapi pada kelas pertama semua siswa mendapat 70–80, sedangkan pada kelas kedua ada yang mendapat 40 dan ada yang 100. Selain pusat data, kita perlu mengukur seberapa <b>menyebar</b> data itu.</p>"
+          "html": "<p><b>Ukuran Penyebaran 1: Jangkauan (Range) Data</b>: Menghitung selisih nilai maksimum dan nilai minimum (J = x_max - x_min) serta keterbatasannya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Ukuran</th><th>Cara menghitung</th></tr><tr><td>Mean</td><td>jumlah data : banyak data; dari tabel: Σ(x × f) : Σf.</td></tr><tr><td>Median (Q2)</td><td>nilai tengah data terurut.</td></tr><tr><td>Modus</td><td>data paling sering muncul.</td></tr><tr><td>Jangkauan</td><td>maksimum − minimum.</td></tr><tr><td>Q1, Q3</td><td>median bagian bawah dan bagian atas data terurut.</td></tr><tr><td>Jangkauan antarkuartil</td><td>Q3 − Q1.</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Menghitung selisih nilai maksimum dan nilai minimum (J = x_max - x_min) serta keterbatasannya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Ukuran Penyebaran 1: Jangkauan (Range) Data",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Ukuran Penyebaran 1: Jangkauan (Range) Data</b> berikut. Analisislah berdasarkan kaidah Menghitung selisih nilai maksimum dan nilai minimum (J = x_max - x_min) serta keterbatasannya..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Ukuran Penyebaran 1: Jangkauan (Range) Data untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Ukuran Penyebaran 1: Jangkauan (Range) Data, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Ukuran Penyebaran 1: Jangkauan (Range) Data berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menghitung selisih nilai maksimum dan nilai minimum (J = x_max - x_min) serta keterbatasannya.."
+        }
+      ]
+    },
+    {
+      "id": "kuartil-data-tunggal",
+      "title": "Ukuran Letak: Kuartil Bawah (Q1), Kuartil Tengah (Q2), dan Kuartil Atas (Q3)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Ukuran Letak: Kuartil Bawah (Q1), Kuartil Tengah (Q2), dan Kuartil Atas (Q3)</b>: Membagi kumpulan data terurut menjadi empat bagian sama besar, metode Tukey / Moore & McCabe.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Ukuran penyebaran",
           "html": "<ul><li><b>Jangkauan</b> = data terbesar − data terkecil.</li><li><b>Kuartil</b> membagi data terurut menjadi empat bagian sama banyak: Q1 (kuartil bawah), Q2 (median), dan Q3 (kuartil atas).</li><li><b>Jangkauan antarkuartil</b> = Q3 − Q1, yaitu jangkauan 50% data di tengah.</li></ul>"
-        },
-        {
-          "type": "h",
-          "text": "Coba sendiri"
-        },
-        {
-          "type": "sim",
-          "src": "sim/kuartil.html",
-          "title": "Kuartil dan diagram kotak garis",
-          "height": 520,
-          "caption": "Ubah datanya. Ganti salah satu nilai dengan bilangan yang sangat besar. Apa yang berubah: jangkauan atau jangkauan antarkuartil?"
         },
         {
           "type": "example",
@@ -151,12 +261,6 @@
             "Jangkauan antarkuartil = 85 − 68 = 17."
           ],
           "answer": "jangkauan 37, Q1 68, Q2 75, Q3 85, jangkauan antarkuartil 17"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Mengapa jangkauan antarkuartil?",
-          "html": "<p>Jangkauan sangat dipengaruhi pencilan, karena hanya memakai dua data paling ujung. Jangkauan antarkuartil hanya melihat bagian tengah data, sehingga lebih stabil.</p>"
         },
         {
           "type": "check",
@@ -174,24 +278,197 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "jangkauan-interkuartil-iqr",
+      "title": "Jangkauan Interkuartil (IQR) dan Simpangan Kuartil (Qd)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Ukuran</th><th>Cara menghitung</th></tr><tr><td>Mean</td><td>jumlah data : banyak data; dari tabel: Σ(x × f) : Σf.</td></tr><tr><td>Median (Q2)</td><td>nilai tengah data terurut.</td></tr><tr><td>Modus</td><td>data paling sering muncul.</td></tr><tr><td>Jangkauan</td><td>maksimum − minimum.</td></tr><tr><td>Q1, Q3</td><td>median bagian bawah dan bagian atas data terurut.</td></tr><tr><td>Jangkauan antarkuartil</td><td>Q3 − Q1.</td></tr></table>"
+          "html": "<p><b>Jangkauan Interkuartil (IQR) dan Simpangan Kuartil (Qd)</b>: Menghitung IQR = Q3 - Q1 dan Qd = 1/2 IQR; mengukur sebaran 50% data di tengah.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Mencari median tanpa mengurutkan data.</li><li>Pada tabel frekuensi, menjumlahkan nilai x tanpa mengalikan frekuensinya.</li><li>Memakai mean untuk data dengan pencilan besar.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Menghitung IQR = Q3 - Q1 dan Qd = 1/2 IQR; mengukur sebaran 50% data di tengah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Jangkauan Interkuartil (IQR) dan Simpangan Kuartil (Qd)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Jangkauan Interkuartil (IQR) dan Simpangan Kuartil (Qd)</b> berikut. Analisislah berdasarkan kaidah Menghitung IQR = Q3 - Q1 dan Qd = 1/2 IQR; mengukur sebaran 50% data di tengah..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Jangkauan Interkuartil (IQR) dan Simpangan Kuartil (Qd) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Jangkauan Interkuartil (IQR) dan Simpangan Kuartil (Qd), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Jangkauan Interkuartil (IQR) dan Simpangan Kuartil (Qd) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menghitung IQR = Q3 - Q1 dan Qd = 1/2 IQR; mengukur sebaran 50% data di tengah.."
+        }
+      ]
+    },
+    {
+      "id": "diagram-kotak-garis-boxplot",
+      "title": "Diagram Kotak Garis (Box Plot) dan Batas Pencilan",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Diagram Kotak Garis (Box Plot) dan Batas Pencilan</b>: Konstruksi lima angka ringkasan (Min, Q1, Q2, Q3, Max), menghitung pagar luar (1.5 x IQR) untuk mengidentifikasi outlier.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Konstruksi lima angka ringkasan (Min, Q1, Q2, Q3, Max), menghitung pagar luar (1.5 x IQR) untuk mengidentifikasi outlier.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/kuartil.html",
+          "title": "Kuartil dan diagram kotak garis",
+          "height": 520,
+          "caption": "Ubah datanya. Ganti salah satu nilai dengan bilangan yang sangat besar. Apa yang berubah: jangkauan atau jangkauan antarkuartil?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Diagram Kotak Garis (Box Plot) dan Batas Pencilan",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Diagram Kotak Garis (Box Plot) dan Batas Pencilan</b> berikut. Analisislah berdasarkan kaidah Konstruksi lima angka ringkasan (Min, Q1, Q2, Q3, Max), menghitung pagar luar (1.5 x IQR) untuk mengidentifikasi outlier..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Diagram Kotak Garis (Box Plot) dan Batas Pencilan untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Diagram Kotak Garis (Box Plot) dan Batas Pencilan, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Diagram Kotak Garis (Box Plot) dan Batas Pencilan berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Konstruksi lima angka ringkasan (Min, Q1, Q2, Q3, Max), menghitung pagar luar (1.5 x IQR) untuk mengidentifikasi outlier.."
+        }
+      ]
+    },
+    {
+      "id": "interpretasi-pengambilan-keputusan",
+      "title": "Interpretasi dan Pengambilan Keputusan Berbasis Data Statistik",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Interpretasi dan Pengambilan Keputusan Berbasis Data Statistik</b>: Membandingkan performa dua kelas/tim berdasarkan mean, median, dan sebaran IQR; menarik kesimpulan ilmiah.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VIII</i> (Kemendikbudristek), Bab 6 Statistika.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Membandingkan performa dua kelas/tim berdasarkan mean, median, dan sebaran IQR; menarik kesimpulan ilmiah.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Interpretasi dan Pengambilan Keputusan Berbasis Data Statistik",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Interpretasi dan Pengambilan Keputusan Berbasis Data Statistik</b> berikut. Analisislah berdasarkan kaidah Membandingkan performa dua kelas/tim berdasarkan mean, median, dan sebaran IQR; menarik kesimpulan ilmiah..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Interpretasi dan Pengambilan Keputusan Berbasis Data Statistik untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Interpretasi dan Pengambilan Keputusan Berbasis Data Statistik, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Interpretasi dan Pengambilan Keputusan Berbasis Data Statistik berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Membandingkan performa dua kelas/tim berdasarkan mean, median, dan sebaran IQR; menarik kesimpulan ilmiah.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Mandiri",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Mandiri</b>: Rangkuman visual statistika deskriptif dan bank latihan soal.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Rangkuman visual statistika deskriptif dan bank latihan soal.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Mandiri",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Mandiri</b> berikut. Analisislah berdasarkan kaidah Rangkuman visual statistika deskriptif dan bank latihan soal..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Mandiri untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Mandiri, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Mandiri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman visual statistika deskriptif dan bank latihan soal.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

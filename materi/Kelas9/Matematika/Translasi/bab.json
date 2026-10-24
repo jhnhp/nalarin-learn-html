@@ -4,33 +4,30 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "translasi-titik-bangun",
-      "title": "Translasi titik dan bangun",
+      "id": "translasi-vektor-titik",
+      "title": "Translasi Titik pada Bidang Cartesius: Penjumlahan Vektor",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Translasi Titik pada Bidang Cartesius: Penjumlahan Vektor</b>: Notasi vektor kolom (a, b)^T, aturan P(x, y) + (a, b) = P'(x+a, y+b), visualisasi arah pergeseran horizontal (a) dan vertikal (b).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Bidak catur yang digeser, lift yang naik, dan karakter gim yang berjalan mengalami <b>translasi</b>: setiap titik berpindah dengan jarak dan arah yang sama, tanpa berputar atau berubah ukuran.</p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Translasi T(a, b)",
-          "html": "<p>Translasi \\(T(a, b)\\), atau ditulis \\(\\begin{pmatrix}a\\\\b\\end{pmatrix}\\), menggeser setiap titik a satuan mendatar (ke kanan jika a positif) dan b satuan tegak (ke atas jika b positif):</p>\\[(x, y) \\xrightarrow{T(a,\\,b)} (x + a,\\; y + b)\\]"
-        },
-        {
-          "type": "sim",
-          "src": "../03 Transformasi/sim/translasi.html",
-          "title": "Translasi segitiga",
-          "height": 470,
-          "caption": "Ubah a dan b, atau geser titik A′. Perhatikan bahwa bentuk dan ukuran segitiga tidak berubah."
-        },
-        {
-          "type": "callout",
           "variant": "tips",
           "title": "Tiga jenis soal",
           "html": "<ul><li>Diketahui titik dan translasi, cari bayangan: <b>tambahkan</b>.</li><li>Diketahui titik dan bayangan, cari translasi: <b>kurangkan</b> bayangan − titik asal.</li><li>Diketahui bayangan dan translasi, cari titik asal: <b>kurangkan</b> translasi dari bayangan.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan substitusi",
+          "html": "<p>Untuk mentranslasikan grafik oleh T(a, b), ganti <b>x dengan (x − a)</b> dan <b>y dengan (y − b)</b>:</p>\\[y = f(x) \\;\\xrightarrow{T(a,\\,b)}\\; y - b = f(x - a)\\]"
         },
         {
           "type": "example",
@@ -41,6 +38,16 @@
             "Periksa: (−5 + 3, 4 − 4) = (−2, 0)."
           ],
           "answer": "B(−5, 4)"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah robot di titik (−2, −3) menjalankan perintah T(4, 1), T(−1, 5), lalu T(3, −2). Di mana posisi akhirnya?</p>",
+          "steps": [
+            "Translasi total: T(4 − 1 + 3, 1 + 5 − 2) = T(6, 4).",
+            "Posisi akhir: (−2 + 6, −3 + 4) = (4, 1)."
+          ],
+          "answer": "(4, 1)"
         },
         {
           "type": "check",
@@ -54,81 +61,6 @@
           "answer": "A",
           "hint": "Bayangan − asal.",
           "explanation": "a = −1 − 3 = −4 dan b = 5 − (−2) = 7."
-        }
-      ]
-    },
-    {
-      "id": "translasi-garis-grafik",
-      "title": "Translasi garis dan grafik",
-      "kind": "simulasi",
-      "duration": "15 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Garis dan grafik fungsi juga dapat ditranslasikan. Setiap titik (x, y) pada grafik asal pindah ke (x + a, y + b). Jika (x′, y′) titik pada bayangan, titik asalnya adalah (x′ − a, y′ − b), dan titik asal itu memenuhi persamaan semula.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Aturan substitusi",
-          "html": "<p>Untuk mentranslasikan grafik oleh T(a, b), ganti <b>x dengan (x − a)</b> dan <b>y dengan (y − b)</b>:</p>\\[y = f(x) \\;\\xrightarrow{T(a,\\,b)}\\; y - b = f(x - a)\\]"
-        },
-        {
-          "type": "sim",
-          "src": "sim/grafik-translasi.html",
-          "title": "Translasi grafik",
-          "height": 500,
-          "caption": "Pilih grafik dan ubah a, b. Perhatikan persamaan bayangannya. Pada parabola, titik puncak (0, 0) berpindah ke mana?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tentukan bayangan garis \\(y = 2x + 1\\) oleh T(3, −2).</p>",
-          "steps": [
-            "Ganti x dengan (x − 3) dan y dengan (y + 2): \\(y + 2 = 2(x - 3) + 1\\).",
-            "\\(y + 2 = 2x - 5\\), sehingga \\(y = 2x - 7\\)."
-          ],
-          "answer": "\\(y = 2x - 7\\)"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Grafik \\(y = x^2\\) ditranslasikan oleh T(2, 1). Tentukan persamaan bayangan dan titik puncaknya.</p>",
-          "steps": [
-            "\\(y - 1 = (x - 2)^2\\), sehingga \\(y = (x - 2)^2 + 1\\).",
-            "Titik puncak (0, 0) bergeser menjadi (2, 1)."
-          ],
-          "answer": "\\(y = (x - 2)^2 + 1\\), puncak (2, 1)"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Tanda yang sering tertukar",
-          "html": "<p>Menggeser 2 satuan ke <b>kanan</b> justru menghasilkan \\((x - 2)\\), bukan \\((x + 2)\\). Pikirkan: titik puncak baru berada di x = 2, dan di situ \\(x - 2 = 0\\).</p>"
-        }
-      ]
-    },
-    {
-      "id": "komposisi-translasi",
-      "title": "Komposisi translasi",
-      "kind": "artikel",
-      "duration": "10 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Dua translasi berturut-turut",
-          "html": "\\[T_1(a, b) \\text{ lalu } T_2(c, d) = T(a + c,\\; b + d)\\]<p>Urutannya tidak berpengaruh: \\(T_1\\) lalu \\(T_2\\) sama dengan \\(T_2\\) lalu \\(T_1\\).</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Sebuah robot di titik (−2, −3) menjalankan perintah T(4, 1), T(−1, 5), lalu T(3, −2). Di mana posisi akhirnya?</p>",
-          "steps": [
-            "Translasi total: T(4 − 1 + 3, 1 + 5 − 2) = T(6, 4).",
-            "Posisi akhir: (−2 + 6, −3 + 4) = (4, 1)."
-          ],
-          "answer": "(4, 1)"
         },
         {
           "type": "check",
@@ -146,18 +78,294 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "translasi-bangun-geometri",
+      "title": "Translasi Bangun Datar: Segitiga, Segiempat, dan Lingkaran",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Translasi Bangun Datar: Segitiga, Segiempat, dan Lingkaran</b>: Mentranslasikan seluruh titik sudut bangun, membuktikan bahwa luas, keliling, dan orientasi sudut bangun tidak berubah.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Dua translasi berturut-turut",
+          "html": "\\[T_1(a, b) \\text{ lalu } T_2(c, d) = T(a + c,\\; b + d)\\]<p>Urutannya tidak berpengaruh: \\(T_1\\) lalu \\(T_2\\) sama dengan \\(T_2\\) lalu \\(T_1\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../03 Transformasi/sim/translasi.html",
+          "title": "Translasi segitiga",
+          "height": 470,
+          "caption": "Ubah a dan b, atau geser titik A′. Perhatikan bahwa bentuk dan ukuran segitiga tidak berubah."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Translasi Bangun Datar: Segitiga, Segiempat, dan Lingkaran",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Translasi Bangun Datar: Segitiga, Segiempat, dan Lingkaran</b> berikut. Analisislah berdasarkan kaidah Mentranslasikan seluruh titik sudut bangun, membuktikan bahwa luas, keliling, dan orientasi sudut bangun tidak berubah..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Translasi Bangun Datar: Segitiga, Segiempat, dan Lingkaran untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Translasi Bangun Datar: Segitiga, Segiempat, dan Lingkaran, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Translasi Bangun Datar: Segitiga, Segiempat, dan Lingkaran berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Mentranslasikan seluruh titik sudut bangun, membuktikan bahwa luas, keliling, dan orientasi sudut bangun tidak berubah.."
+        }
+      ]
+    },
+    {
+      "id": "translasi-persamaan-garis",
+      "title": "Translasi Garis Lurus: Menentukan Persamaan Garis Bayangan",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Translasi Garis Lurus: Menentukan Persamaan Garis Bayangan</b>: Substitusi invers: mengganti x dengan (x' - a) dan y dengan (y' - b) pada persamaan garis y = mx + c; mengapa garis hasil translasi selalu sejajar garis mula-mula.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Garis dan grafik fungsi juga dapat ditranslasikan. Setiap titik (x, y) pada grafik asal pindah ke (x + a, y + b). Jika (x′, y′) titik pada bayangan, titik asalnya adalah (x′ − a, y′ − b), dan titik asal itu memenuhi persamaan semula.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Substitusi invers: mengganti x dengan (x' - a) dan y dengan (y' - b) pada persamaan garis y = mx + c; mengapa garis hasil translasi selalu sejajar garis mula-mula.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan bayangan garis \\(y = 2x + 1\\) oleh T(3, −2).</p>",
+          "steps": [
+            "Ganti x dengan (x − 3) dan y dengan (y + 2): \\(y + 2 = 2(x - 3) + 1\\).",
+            "\\(y + 2 = 2x - 5\\), sehingga \\(y = 2x - 7\\)."
+          ],
+          "answer": "\\(y = 2x - 7\\)"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Translasi Garis Lurus: Menentukan Persamaan Garis Bayangan, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Translasi Garis Lurus: Menentukan Persamaan Garis Bayangan berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Substitusi invers: mengganti x dengan (x' - a) dan y dengan (y' - b) pada persamaan garis y = mx + c; mengapa garis hasil translasi selalu sejajar garis mula-mula.."
+        }
+      ]
+    },
+    {
+      "id": "translasi-grafik-parabola",
+      "title": "Translasi Grafik Fungsi Kuadrat (Parabola)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Translasi Grafik Fungsi Kuadrat (Parabola)</b>: Pergeseran kurva parabola y = ax^2 menjadi bentuk puncak y = a(x - h)^2 + k; menggeser titik puncak dari (0,0) ke (h, k).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Translasi titik</td><td>(x, y) → (x + a, y + b).</td></tr><tr><td>Mencari translasi</td><td>bayangan − titik asal.</td></tr><tr><td>Translasi grafik</td><td>ganti x dengan (x − a), y dengan (y − b).</td></tr><tr><td>Komposisi</td><td>T(a, b) lalu T(c, d) = T(a + c, b + d).</td></tr></table><p>Pelajari juga translasi bersama refleksi, rotasi, dan dilatasi di bab <a href=\"bab.html?bab=Kelas9%2FMatematika%2F03%20Transformasi\">Transformasi Geometri</a>.</p>"
         },
         {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Translasi T(a, b)",
+          "html": "<p>Translasi \\(T(a, b)\\), atau ditulis \\(\\begin{pmatrix}a\\\\b\\end{pmatrix}\\), menggeser setiap titik a satuan mendatar (ke kanan jika a positif) dan b satuan tegak (ke atas jika b positif):</p>\\[(x, y) \\xrightarrow{T(a,\\,b)} (x + a,\\; y + b)\\]"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Tanda yang sering tertukar",
+          "html": "<p>Menggeser 2 satuan ke <b>kanan</b> justru menghasilkan \\((x - 2)\\), bukan \\((x + 2)\\). Pikirkan: titik puncak baru berada di x = 2, dan di situ \\(x - 2 = 0\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/grafik-translasi.html",
+          "title": "Translasi grafik",
+          "height": 500,
+          "caption": "Pilih grafik dan ubah a, b. Perhatikan persamaan bayangannya. Pada parabola, titik puncak (0, 0) berpindah ke mana?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Grafik \\(y = x^2\\) ditranslasikan oleh T(2, 1). Tentukan persamaan bayangan dan titik puncaknya.</p>",
+          "steps": [
+            "\\(y - 1 = (x - 2)^2\\), sehingga \\(y = (x - 2)^2 + 1\\).",
+            "Titik puncak (0, 0) bergeser menjadi (2, 1)."
+          ],
+          "answer": "\\(y = (x - 2)^2 + 1\\), puncak (2, 1)"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Translasi Grafik Fungsi Kuadrat (Parabola), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Translasi Grafik Fungsi Kuadrat (Parabola) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Pergeseran kurva parabola y = ax^2 menjadi bentuk puncak y = a(x - h)^2 + k; menggeser titik puncak dari (0,0) ke (h, k).."
+        }
+      ]
+    },
+    {
+      "id": "komposisi-translasi-berurutan",
+      "title": "Komposisi Translasi Berurutan (T2 ∘ T1) dan Sifat Komutatif",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Komposisi Translasi Berurutan (T2 ∘ T1) dan Sifat Komutatif</b>: Membuktikan bahwa T2 ∘ T1 = T1 ∘ T2 = (a1+a2, b1+b2); mencari vektor translasi tunggal pengganti.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Membuktikan bahwa T2 ∘ T1 = T1 ∘ T2 = (a1+a2, b1+b2); mencari vektor translasi tunggal pengganti.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Komposisi Translasi Berurutan (T2 ∘ T1) dan Sifat Komutatif",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Komposisi Translasi Berurutan (T2 ∘ T1) dan Sifat Komutatif</b> berikut. Analisislah berdasarkan kaidah Membuktikan bahwa T2 ∘ T1 = T1 ∘ T2 = (a1+a2, b1+b2); mencari vektor translasi tunggal pengganti..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Komposisi Translasi Berurutan (T2 ∘ T1) dan Sifat Komutatif untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Komposisi Translasi Berurutan (T2 ∘ T1) dan Sifat Komutatif, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Komposisi Translasi Berurutan (T2 ∘ T1) dan Sifat Komutatif berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Membuktikan bahwa T2 ∘ T1 = T1 ∘ T2 = (a1+a2, b1+b2); mencari vektor translasi tunggal pengganti.."
+        }
+      ]
+    },
+    {
+      "id": "penerapan-translasi-animasi-desain",
+      "title": "Penerapan Translasi pada Sistem Koordinat Animasi Komputer dan Robotika",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penerapan Translasi pada Sistem Koordinat Animasi Komputer dan Robotika</b>: Algoritma perpindahan sprite pada layar game, koordinat matriks transformasi pada sistem navigasi robot.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Algoritma perpindahan sprite pada layar game, koordinat matriks transformasi pada sistem navigasi robot.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Penerapan Translasi pada Sistem Koordinat Animasi Komputer dan Robotika",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Penerapan Translasi pada Sistem Koordinat Animasi Komputer dan Robotika</b> berikut. Analisislah berdasarkan kaidah Algoritma perpindahan sprite pada layar game, koordinat matriks transformasi pada sistem navigasi robot..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Penerapan Translasi pada Sistem Koordinat Animasi Komputer dan Robotika untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Penerapan Translasi pada Sistem Koordinat Animasi Komputer dan Robotika, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Penerapan Translasi pada Sistem Koordinat Animasi Komputer dan Robotika berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Algoritma perpindahan sprite pada layar game, koordinat matriks transformasi pada sistem navigasi robot.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Mandiri",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Mandiri</b>: Rangkuman lengkap translasi geometri dan set latihan soal analitis.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas IX</i> (Kemendikbudristek), Bab 3 Transformasi Geometri, subbab Translasi.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Rangkuman lengkap translasi geometri dan set latihan soal analitis.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Mandiri",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Mandiri</b> berikut. Analisislah berdasarkan kaidah Rangkuman lengkap translasi geometri dan set latihan soal analitis..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Mandiri untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Mandiri, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Mandiri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman lengkap translasi geometri dan set latihan soal analitis.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

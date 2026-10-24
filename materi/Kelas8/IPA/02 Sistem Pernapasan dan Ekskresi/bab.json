@@ -4,14 +4,18 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "organ-pernapasan",
-      "title": "Organ pernapasan",
+      "id": "organ-saluran-pernapasan",
+      "title": "Anatomi Saluran Pernapasan: Hidung hingga Alveolus",
       "kind": "artikel",
-      "duration": "20 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Setiap sel tubuh memerlukan oksigen untuk mengubah sari makanan menjadi energi (respirasi sel), dan menghasilkan karbon dioksida yang harus dibuang. Sistem pernapasan bertugas memasukkan oksigen dan mengeluarkan karbon dioksida.</p>"
+          "html": "<p><b>Anatomi Saluran Pernapasan: Hidung hingga Alveolus</b>: Fungsi silia hidung dan mukus menyaring udara, laring (pita suara & epiglotis), trakea, percabangan bronkus, bronkiolus, alveoli.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Saluran napas</td><td>hidung → faring → laring → trakea → bronkus → bronkiolus → alveolus</td></tr><tr><td>Mekanisme</td><td>inspirasi: dada membesar, tekanan turun; ekspirasi sebaliknya</td></tr><tr><td>Rokok</td><td>tar, CO, nikotin</td></tr><tr><td>Ekskresi</td><td>ginjal (urine), paru-paru (CO₂, uap air), kulit (keringat), hati (urea, empedu)</td></tr><tr><td>Homeostasis air</td><td>panas/berkeringat → urine sedikit dan pekat</td></tr></table>"
         },
         {
           "type": "image",
@@ -21,17 +25,17 @@
           "caption": "Udara melewati saluran pernapasan sampai ke alveolus."
         },
         {
-          "type": "image",
-          "src": "gambar/alveolus.svg",
-          "alt": "Oksigen berdifusi dari alveolus ke kapiler darah, karbon dioksida sebaliknya",
-          "width": 520,
-          "caption": "Pertukaran gas di alveolus."
-        },
-        {
           "type": "callout",
           "variant": "tips",
           "title": "Mengapa bernapas lewat hidung?",
           "html": "<p>Rambut hidung dan lendir menyaring debu dan kuman, sedangkan pembuluh darah di rongga hidung menghangatkan udara sebelum masuk paru-paru.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/model-paru.html",
+          "title": "Model pernapasan",
+          "height": 500,
+          "caption": "Geser diafragma perlahan atau nyalakan napas otomatis. Kapan udara masuk dan kapan keluar?"
         },
         {
           "type": "check",
@@ -49,11 +53,15 @@
       ]
     },
     {
-      "id": "mekanisme",
-      "title": "Mekanisme pernapasan",
+      "id": "mekanisme-pernapasan-dada-perut",
+      "title": "Mekanisme Ventilasi Paru-Paru: Pernapasan Dada vs Pernapasan Perut",
       "kind": "simulasi",
-      "duration": "20 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Mekanisme Ventilasi Paru-Paru: Pernapasan Dada vs Pernapasan Perut</b>: Kontraksi otot antartulang rusuk (interkostal) dan diafragma; perubahan volume rongga dada dan gradien tekanan udara (Hukum Boyle).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
@@ -61,11 +69,10 @@
           "html": "<table><tr><th></th><th>Inspirasi (menarik napas)</th><th>Ekspirasi (mengembuskan napas)</th></tr><tr><td>Otot antartulang rusuk</td><td>berkontraksi, rusuk terangkat</td><td>relaksasi, rusuk turun</td></tr><tr><td>Diafragma</td><td>berkontraksi, mendatar</td><td>relaksasi, melengkung ke atas</td></tr><tr><td>Rongga dada</td><td>membesar, tekanan turun</td><td>mengecil, tekanan naik</td></tr><tr><td>Udara</td><td>masuk</td><td>keluar</td></tr></table><p><b>Pernapasan dada</b> terutama digerakkan otot antartulang rusuk; <b>pernapasan perut</b> terutama oleh diafragma.</p>"
         },
         {
-          "type": "sim",
-          "src": "sim/model-paru.html",
-          "title": "Model pernapasan",
-          "height": 500,
-          "caption": "Geser diafragma perlahan atau nyalakan napas otomatis. Kapan udara masuk dan kapan keluar?"
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyebut udara masuk karena paru-paru “menyedot” sendiri (yang bekerja otot dada dan diafragma).</li><li>Tertukar ureter dan uretra.</li><li>Menyamakan ekskresi dengan pengeluaran feses (feses adalah sisa pencernaan, bukan metabolisme).</li></ul>"
         },
         {
           "type": "example",
@@ -94,16 +101,118 @@
       ]
     },
     {
-      "id": "gangguan-napas",
-      "title": "Gangguan pernapasan dan bahaya rokok",
-      "kind": "artikel",
-      "duration": "20 menit",
+      "id": "volume-kapasitas-paru",
+      "title": "Volume dan Kapasitas Paru-Paru (Spirometri)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Volume dan Kapasitas Paru-Paru (Spirometri)</b>: Volume tidal, volume cadangan inspirasi (komplementer), volume cadangan ekspirasi (suplementer), volume residu, kapasitas vital.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Zat berbahaya dalam rokok",
-          "html": "<ul><li><b>Tar</b>: zat hitam lengket yang menempel di silia dan paru-paru, memicu kanker.</li><li><b>Karbon monoksida (CO)</b>: mengikat hemoglobin lebih kuat daripada oksigen, sehingga darah kekurangan oksigen.</li><li><b>Nikotin</b>: menyebabkan kecanduan dan menaikkan tekanan darah.</li></ul><p>Perokok pasif (yang menghirup asap orang lain) juga terkena dampaknya.</p>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Volume tidal, volume cadangan inspirasi (komplementer), volume cadangan ekspirasi (suplementer), volume residu, kapasitas vital.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Volume dan Kapasitas Paru-Paru (Spirometri)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Volume dan Kapasitas Paru-Paru (Spirometri)</b> berikut. Analisislah berdasarkan kaidah Volume tidal, volume cadangan inspirasi (komplementer), volume cadangan ekspirasi (suplementer), volume residu, kapasitas vital..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Volume dan Kapasitas Paru-Paru (Spirometri) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Volume dan Kapasitas Paru-Paru (Spirometri), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Volume dan Kapasitas Paru-Paru (Spirometri) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Volume tidal, volume cadangan inspirasi (komplementer), volume cadangan ekspirasi (suplementer), volume residu, kapasitas vital.."
+        }
+      ]
+    },
+    {
+      "id": "pertukaran-gas-respirasi-sel",
+      "title": "Pertukaran Gas di Alveolus dan Jaringan Tubuh (Difusi Gas)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pertukaran Gas di Alveolus dan Jaringan Tubuh (Difusi Gas)</b>: Tekanan parsial O2 dan CO2, pengikatan oksigen oleh oksihemoglobin (HbO2), transpor CO2 dalam bentuk ion bikarbonat (HCO3-).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/alveolus.svg",
+          "alt": "Oksigen berdifusi dari alveolus ke kapiler darah, karbon dioksida sebaliknya",
+          "width": 520,
+          "caption": "Pertukaran gas di alveolus."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Tekanan parsial O2 dan CO2, pengikatan oksigen oleh oksihemoglobin (HbO2), transpor CO2 dalam bentuk ion bikarbonat (HCO3-).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/keseimbangan-air.html",
+          "title": "Keseimbangan air tubuh",
+          "height": 480,
+          "caption": "Ubah cuaca, olahraga, dan banyak air minum. Bagaimana ginjal menyesuaikan volume dan warna urine?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Pertukaran Gas di Alveolus dan Jaringan Tubuh (Difusi Gas)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Pertukaran Gas di Alveolus dan Jaringan Tubuh (Difusi Gas)</b> berikut. Analisislah berdasarkan kaidah Tekanan parsial O2 dan CO2, pengikatan oksigen oleh oksihemoglobin (HbO2), transpor CO2 dalam bentuk ion bikarbonat (HCO3-)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Pertukaran Gas di Alveolus dan Jaringan Tubuh (Difusi Gas) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Pertukaran Gas di Alveolus dan Jaringan Tubuh (Difusi Gas), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Pertukaran Gas di Alveolus dan Jaringan Tubuh (Difusi Gas) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tekanan parsial O2 dan CO2, pengikatan oksigen oleh oksihemoglobin (HbO2), transpor CO2 dalam bentuk ion bikarbonat (HCO3-).."
+        }
+      ]
+    },
+    {
+      "id": "gangguan-pernapasan",
+      "title": "Penyakit Sistem Pernapasan dan Pengaruh Polusi Udara/Merokok",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penyakit Sistem Pernapasan dan Pengaruh Polusi Udara/Merokok</b>: Asma, tuberkulosis (TBC), pneumonia, bronkitis, emfisema, kanker paru-paru, serta bahaya tar, nikotin, dan karbon monoksida.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Setiap sel tubuh memerlukan oksigen untuk mengubah sari makanan menjadi energi (respirasi sel), dan menghasilkan karbon dioksida yang harus dibuang. Sistem pernapasan bertugas memasukkan oksigen dan mengeluarkan karbon dioksida.</p>"
         },
         {
           "type": "text",
@@ -112,6 +221,12 @@
         {
           "type": "text",
           "html": "<p>Menjaga kesehatan pernapasan: tidak merokok, memakai masker di udara berdebu atau berasap, berolahraga, dan menanam pohon untuk udara bersih.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Zat berbahaya dalam rokok",
+          "html": "<ul><li><b>Tar</b>: zat hitam lengket yang menempel di silia dan paru-paru, memicu kanker.</li><li><b>Karbon monoksida (CO)</b>: mengikat hemoglobin lebih kuat daripada oksigen, sehingga darah kekurangan oksigen.</li><li><b>Nikotin</b>: menyebabkan kecanduan dan menaikkan tekanan darah.</li></ul><p>Perokok pasif (yang menghirup asap orang lain) juga terkena dampaknya.</p>"
         },
         {
           "type": "check",
@@ -129,37 +244,82 @@
       ]
     },
     {
-      "id": "ekskresi",
-      "title": "Sistem ekskresi",
-      "kind": "simulasi",
-      "duration": "25 menit",
+      "id": "konsep-ekskresi-organ",
+      "title": "Konsep Ekskresi: Membuang Zat Sisa Metabolisme",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Konsep Ekskresi: Membuang Zat Sisa Metabolisme</b>: Perbedaan ekskresi (zat sisa metabolisme), sekresi (getah berguna), dan defekasi (feses); 4 organ ekskresi utama manusia.</p>"
+        },
         {
           "type": "text",
           "html": "<p><b>Ekskresi</b> adalah pengeluaran zat sisa metabolisme yang tidak berguna atau berbahaya bagi tubuh, misalnya urea (sisa pemecahan protein), karbon dioksida, dan kelebihan air serta garam.</p>"
         },
         {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Perbedaan ekskresi (zat sisa metabolisme), sekresi (getah berguna), dan defekasi (feses); 4 organ ekskresi utama manusia.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Konsep Ekskresi: Membuang Zat Sisa Metabolisme",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Konsep Ekskresi: Membuang Zat Sisa Metabolisme</b> berikut. Analisislah berdasarkan kaidah Perbedaan ekskresi (zat sisa metabolisme), sekresi (getah berguna), dan defekasi (feses); 4 organ ekskresi utama manusia..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Konsep Ekskresi: Membuang Zat Sisa Metabolisme untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Konsep Ekskresi: Membuang Zat Sisa Metabolisme, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Konsep Ekskresi: Membuang Zat Sisa Metabolisme berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Perbedaan ekskresi (zat sisa metabolisme), sekresi (getah berguna), dan defekasi (feses); 4 organ ekskresi utama manusia.."
+        }
+      ]
+    },
+    {
+      "id": "anatomi-ginjal-nefron",
+      "title": "Struktur Ginjal dan Unit Fungsional Nefron",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
           "type": "text",
-          "html": "<table><tr><th>Organ</th><th>Zat yang dikeluarkan</th></tr><tr><td>Ginjal</td><td>urine (air, urea, garam berlebih); mengatur kadar air tubuh</td></tr><tr><td>Paru-paru</td><td>karbon dioksida dan uap air</td></tr><tr><td>Kulit</td><td>keringat (air, garam, sedikit urea); membantu mengatur suhu tubuh</td></tr><tr><td>Hati</td><td>membentuk urea dari sisa protein; menghasilkan empedu dari perombakan sel darah merah tua</td></tr></table>"
+          "html": "<p><b>Struktur Ginjal dan Unit Fungsional Nefron</b>: Korteks, medula, pelvis renalis; bagian nefron: glomerulus, kapsula Bowman, tubulus kontortus proksimal, lengkung Henle, TK distal, tubulus kolektivus.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMP Kelas VIII</i> (Kemendikbudristek), Bab II Struktur dan Fungsi Tubuh Makhluk Hidup (Bagian II).</small></p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Perjalanan urine",
-          "html": "<p>Ginjal menyaring darah dan membentuk urine. Urine mengalir melalui <b>ureter</b> ke <b>kandung kemih</b> untuk ditampung, lalu dikeluarkan melalui <b>uretra</b>. Urine normal tersusun sekitar 95% air; padatannya sebagian besar urea.</p>"
+          "title": "Konsep Esensial",
+          "html": "<p>Korteks, medula, pelvis renalis; bagian nefron: glomerulus, kapsula Bowman, tubulus kontortus proksimal, lengkung Henle, TK distal, tubulus kolektivus.</p>"
         },
         {
-          "type": "sim",
-          "src": "sim/keseimbangan-air.html",
-          "title": "Keseimbangan air tubuh",
-          "height": 480,
-          "caption": "Ubah cuaca, olahraga, dan banyak air minum. Bagaimana ginjal menyesuaikan volume dan warna urine?"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Gangguan ekskresi",
-          "html": "<ul><li><b>Batu ginjal</b>: endapan garam di ginjal; dicegah dengan cukup minum.</li><li><b>Gagal ginjal</b>: ginjal tidak mampu menyaring darah; penderita memerlukan cuci darah (hemodialisis).</li><li><b>Biang keringat</b>: pori-pori kulit tersumbat.</li></ul>"
+          "type": "example",
+          "title": "Contoh Penerapan: Struktur Ginjal dan Unit Fungsional Nefron",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Struktur Ginjal dan Unit Fungsional Nefron</b> berikut. Analisislah berdasarkan kaidah Korteks, medula, pelvis renalis; bagian nefron: glomerulus, kapsula Bowman, tubulus kontortus proksimal, lengkung Henle, TK distal, tubulus kolektivus..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Struktur Ginjal dan Unit Fungsional Nefron untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
@@ -177,24 +337,177 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "proses-pembentukan-urine",
+      "title": "Tiga Tahapan Pembentukan Urine: Filtrasi, Reabsorpsi, dan Augmentasi",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Saluran napas</td><td>hidung → faring → laring → trakea → bronkus → bronkiolus → alveolus</td></tr><tr><td>Mekanisme</td><td>inspirasi: dada membesar, tekanan turun; ekspirasi sebaliknya</td></tr><tr><td>Rokok</td><td>tar, CO, nikotin</td></tr><tr><td>Ekskresi</td><td>ginjal (urine), paru-paru (CO₂, uap air), kulit (keringat), hati (urea, empedu)</td></tr><tr><td>Homeostasis air</td><td>panas/berkeringat → urine sedikit dan pekat</td></tr></table>"
+          "html": "<p><b>Tiga Tahapan Pembentukan Urine: Filtrasi, Reabsorpsi, dan Augmentasi</b>: Filtrasi menghasilkan urine primer, reabsorpsi selektif glukosa/asam amino menghasilkan urine sekunder, augmentasi menghasilkan urine sejati.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Filtrasi menghasilkan urine primer, reabsorpsi selektif glukosa/asam amino menghasilkan urine sekunder, augmentasi menghasilkan urine sejati.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Tiga Tahapan Pembentukan Urine: Filtrasi, Reabsorpsi, dan Augmentasi",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Tiga Tahapan Pembentukan Urine: Filtrasi, Reabsorpsi, dan Augmentasi</b> berikut. Analisislah berdasarkan kaidah Filtrasi menghasilkan urine primer, reabsorpsi selektif glukosa/asam amino menghasilkan urine sekunder, augmentasi menghasilkan urine sejati..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Tiga Tahapan Pembentukan Urine: Filtrasi, Reabsorpsi, dan Augmentasi untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Tiga Tahapan Pembentukan Urine: Filtrasi, Reabsorpsi, dan Augmentasi, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Tiga Tahapan Pembentukan Urine: Filtrasi, Reabsorpsi, dan Augmentasi berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Filtrasi menghasilkan urine primer, reabsorpsi selektif glukosa/asam amino menghasilkan urine sekunder, augmentasi menghasilkan urine sejati.."
+        }
+      ]
+    },
+    {
+      "id": "organ-ekskresi-lain",
+      "title": "Kulit, Hati, dan Paru-Paru sebagai Organ Pengeluaran",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Kulit, Hati, dan Paru-Paru sebagai Organ Pengeluaran</b>: Kelenjar keringat kulit untuk termoregulasi dan ekskresi garam/urea; peran hati memecah hemoglobin menjadi bilirubin/biliverdin dan urea.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Organ</th><th>Zat yang dikeluarkan</th></tr><tr><td>Ginjal</td><td>urine (air, urea, garam berlebih); mengatur kadar air tubuh</td></tr><tr><td>Paru-paru</td><td>karbon dioksida dan uap air</td></tr><tr><td>Kulit</td><td>keringat (air, garam, sedikit urea); membantu mengatur suhu tubuh</td></tr><tr><td>Hati</td><td>membentuk urea dari sisa protein; menghasilkan empedu dari perombakan sel darah merah tua</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Kelenjar keringat kulit untuk termoregulasi dan ekskresi garam/urea; peran hati memecah hemoglobin menjadi bilirubin/biliverdin dan urea.</p>"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Kulit, Hati, dan Paru-Paru sebagai Organ Pengeluaran, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Kulit, Hati, dan Paru-Paru sebagai Organ Pengeluaran berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Kelenjar keringat kulit untuk termoregulasi dan ekskresi garam/urea; peran hati memecah hemoglobin menjadi bilirubin/biliverdin dan urea.."
+        }
+      ]
+    },
+    {
+      "id": "gangguan-ekskresi",
+      "title": "Gangguan Ginjal dan Teknologi Pengobatannya",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Gangguan Ginjal dan Teknologi Pengobatannya</b>: Gagal ginjal, batu ginjal, nefritis, diabetes insipidus (kekurangan ADH), diabetes melitus, albuminuria, dan prosedur hemodialisis (cuci darah).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Perjalanan urine",
+          "html": "<p>Ginjal menyaring darah dan membentuk urine. Urine mengalir melalui <b>ureter</b> ke <b>kandung kemih</b> untuk ditampung, lalu dikeluarkan melalui <b>uretra</b>. Urine normal tersusun sekitar 95% air; padatannya sebagian besar urea.</p>"
         },
         {
           "type": "callout",
           "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menyebut udara masuk karena paru-paru “menyedot” sendiri (yang bekerja otot dada dan diafragma).</li><li>Tertukar ureter dan uretra.</li><li>Menyamakan ekskresi dengan pengeluaran feses (feses adalah sisa pencernaan, bukan metabolisme).</li></ul>"
+          "title": "Gangguan ekskresi",
+          "html": "<ul><li><b>Batu ginjal</b>: endapan garam di ginjal; dicegah dengan cukup minum.</li><li><b>Gagal ginjal</b>: ginjal tidak mampu menyaring darah; penderita memerlukan cuci darah (hemodialisis).</li><li><b>Biang keringat</b>: pori-pori kulit tersumbat.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Gangguan Ginjal dan Teknologi Pengobatannya",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Gangguan Ginjal dan Teknologi Pengobatannya</b> berikut. Analisislah berdasarkan kaidah Gagal ginjal, batu ginjal, nefritis, diabetes insipidus (kekurangan ADH), diabetes melitus, albuminuria, dan prosedur hemodialisis (cuci darah)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Gangguan Ginjal dan Teknologi Pengobatannya untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Gangguan Ginjal dan Teknologi Pengobatannya, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Gangguan Ginjal dan Teknologi Pengobatannya berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Gagal ginjal, batu ginjal, nefritis, diabetes insipidus (kekurangan ADH), diabetes melitus, albuminuria, dan prosedur hemodialisis (cuci darah).."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Pemahaman Mandiri",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Pemahaman Mandiri</b>: Rangkuman komprehensif respirasi dan ekskresi beserta kuis evaluasi.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Rangkuman komprehensif respirasi dan ekskresi beserta kuis evaluasi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Pemahaman Mandiri",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Pemahaman Mandiri</b> berikut. Analisislah berdasarkan kaidah Rangkuman komprehensif respirasi dan ekskresi beserta kuis evaluasi..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Pemahaman Mandiri untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Pemahaman Mandiri, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Pemahaman Mandiri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman komprehensif respirasi dan ekskresi beserta kuis evaluasi.."
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMP Kelas VIII</i> (Kemendikbudristek), Bab II Struktur dan Fungsi Tubuh Makhluk Hidup (Bagian II).</small></p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

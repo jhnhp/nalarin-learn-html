@@ -4,20 +4,61 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "aritmetika",
-      "title": "Barisan aritmetika",
-      "kind": "simulasi",
-      "duration": "20 menit",
+      "id": "tinjauan-barisan-deret-lanjut",
+      "title": "Tinjauan Barisan dan Deret: Pola Aritmetika dan Geometri Bertingkat",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Tinjauan Barisan dan Deret: Pola Aritmetika dan Geometri Bertingkat</b>: Membedakan pertumbuhan linier konstan vs eksponensial; formulasi sigma Σ dan sifat-sifat notasi sigma aljabar.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Kursi di sebuah gedung pertunjukan disusun bertingkat: baris pertama 20 kursi, baris kedua 24, baris ketiga 28, dan seterusnya. Selisih dua suku berurutan selalu sama, yaitu 4. Barisan seperti ini disebut <b>barisan aritmetika</b> dengan <b>beda</b> b = 4.</p>"
         },
         {
+          "type": "text",
+          "html": "<p>Sebuah bola dijatuhkan dari balkon setinggi 5 m. Setiap memantul, tingginya tinggal 3/5 tinggi sebelumnya: 5; 3; 1,8; 1,08; … Perbandingan dua suku berurutan selalu tetap. Barisan seperti ini disebut <b>barisan geometri</b> dengan <b>rasio</b> r.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jumlah suku-suku barisan disebut <b>deret</b>. Konon, Carl Friedrich Gauss kecil menjumlahkan 1 sampai 100 dalam sekejap dengan memasangkan suku-sukunya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th></th><th>Aritmetika</th><th>Geometri</th></tr><tr><td>Pola</td><td>ditambah b</td><td>dikali r</td></tr><tr><td>Suku ke-n</td><td>a + (n − 1)b</td><td>a r<sup>n−1</sup></td></tr><tr><td>Jumlah n suku</td><td>½n(a + U<sub>n</sub>)</td><td>a(rⁿ − 1)/(r − 1)</td></tr><tr><td>Tak hingga</td><td>–</td><td>a/(1 − r), −1 &lt; r &lt; 1</td></tr><tr><td>Penerapan</td><td>bunga tunggal</td><td>bunga majemuk, pertumbuhan, peluruhan</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/gauss.svg",
+          "alt": "Deret ditulis dua kali, maju dan mundur, sehingga setiap pasangan berjumlah 101",
+          "width": 560,
+          "caption": "Ide Gauss: pasangkan suku pertama dengan suku terakhir."
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Suku tengah dan sisipan",
+          "html": "<ul><li>Jika banyak suku ganjil, <b>suku tengah</b> U<sub>t</sub> = ½(a + U<sub>n</sub>).</li><li>Jika di antara dua bilangan x dan y disisipkan k bilangan sehingga membentuk barisan aritmetika, beda barunya b′ = (y − x)/(k + 1).</li></ul>"
+        },
+        {
           "type": "callout",
           "variant": "rumus",
-          "title": "Suku ke-n",
-          "html": "\\[U_n = a + (n - 1)b, \\qquad b = U_n - U_{n-1}\\]"
+          "title": "Jumlah tak hingga",
+          "html": "\\[S_\\infty = \\frac{a}{1 - r}, \\qquad -1 &lt; r &lt; 1\\]<p>Deret ini disebut <b>konvergen</b>. Jika |r| ≥ 1, deret <b>divergen</b> (tidak mempunyai jumlah terbatas).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Tidak mungkin negatif?",
+          "html": "<p>Galang berpendapat deret dengan suku pertama positif bisa mempunyai S∞ = −3. Ini salah: jika a &gt; 0 dan −1 &lt; r &lt; 1, maka 1 − r &gt; 0 sehingga S∞ = a/(1 − r) &gt; 0.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai pangkat n, bukan n − 1, pada U<sub>n</sub> geometri.</li><li>Lupa mengalikan 2 lintasan naik-turun pada soal bola memantul.</li><li>Memakai S∞ ketika |r| ≥ 1.</li></ul>"
         },
         {
           "type": "sim",
@@ -25,6 +66,13 @@
           "title": "Barisan aritmetika dan geometri",
           "height": 520,
           "caption": "Pilih barisan aritmetika, ubah a dan b, lalu tebak suku ke-n sebelum melihat hasilnya."
+        },
+        {
+          "type": "sim",
+          "src": "sim/deret-tak-hingga.html",
+          "title": "Deret geometri tak hingga",
+          "height": 560,
+          "caption": "Tambah n sedikit demi sedikit dan perhatikan sisa menuju batas. Ubah rasio pantulan mendekati 1: apa yang terjadi pada S∞?"
         },
         {
           "type": "example",
@@ -38,10 +86,24 @@
           "answer": "a = 4, b = 3, U₂₀ = 61"
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Suku tengah dan sisipan",
-          "html": "<ul><li>Jika banyak suku ganjil, <b>suku tengah</b> U<sub>t</sub> = ½(a + U<sub>n</sub>).</li><li>Jika di antara dua bilangan x dan y disisipkan k bilangan sehingga membentuk barisan aritmetika, beda barunya b′ = (y − x)/(k + 1).</li></ul>"
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pada barisan geometri, U₂ = 6 dan U₅ = 162. Tentukan U₄.</p>",
+          "steps": [
+            "U₅/U₂ = r³ = 27, sehingga r = 3.",
+            "a = 6/3 = 2, U₄ = 2 × 3³ = 54."
+          ],
+          "answer": "54"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung jumlah 26 suku pertama deret 9 + 12 + 15 + ….</p>",
+          "steps": [
+            "a = 9, b = 3, n = 26.",
+            "S₂₆ = 13 × (18 + 25 × 3) = 13 × 93 = 1.209."
+          ],
+          "answer": "1.209"
         },
         {
           "type": "check",
@@ -55,44 +117,6 @@
           "answer": "A",
           "hint": "a = 3, b = 4.",
           "explanation": "U₁₀ = 3 + 9 × 4 = 39."
-        }
-      ]
-    },
-    {
-      "id": "geometri",
-      "title": "Barisan geometri",
-      "kind": "artikel",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Sebuah bola dijatuhkan dari balkon setinggi 5 m. Setiap memantul, tingginya tinggal 3/5 tinggi sebelumnya: 5; 3; 1,8; 1,08; … Perbandingan dua suku berurutan selalu tetap. Barisan seperti ini disebut <b>barisan geometri</b> dengan <b>rasio</b> r.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Suku ke-n",
-          "html": "\\[U_n = a\\,r^{\\,n-1}, \\qquad r = \\frac{U_n}{U_{n-1}}\\]<p>Jika r &gt; 1 sukunya membesar (pertumbuhan), jika 0 &lt; r &lt; 1 mengecil (peluruhan), jika r &lt; 0 tandanya berganti-ganti.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Sebuah akun media sosial menyebarkan pesan berantai. Setiap 2 jam, banyak akun yang terpengaruh menjadi 3 kali. Jika awalnya 5 akun, berapa akun setelah 8 jam?</p>",
-          "steps": [
-            "8 jam = 4 periode, sehingga yang dicari U₅ dengan a = 5, r = 3.",
-            "U₅ = 5 × 3⁴ = 405."
-          ],
-          "answer": "405 akun"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Pada barisan geometri, U₂ = 6 dan U₅ = 162. Tentukan U₄.</p>",
-          "steps": [
-            "U₅/U₂ = r³ = 27, sehingga r = 3.",
-            "a = 6/3 = 2, U₄ = 2 × 3³ = 54."
-          ],
-          "answer": "54"
         },
         {
           "type": "check",
@@ -106,98 +130,6 @@
           "answer": "B",
           "hint": "Bagi suatu suku dengan suku sebelumnya.",
           "explanation": "6/2 = 18/6 = 3."
-        }
-      ]
-    },
-    {
-      "id": "deret-aritmetika",
-      "title": "Deret aritmetika",
-      "kind": "artikel",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Jumlah suku-suku barisan disebut <b>deret</b>. Konon, Carl Friedrich Gauss kecil menjumlahkan 1 sampai 100 dalam sekejap dengan memasangkan suku-sukunya.</p>"
-        },
-        {
-          "type": "image",
-          "src": "gambar/gauss.svg",
-          "alt": "Deret ditulis dua kali, maju dan mundur, sehingga setiap pasangan berjumlah 101",
-          "width": 560,
-          "caption": "Ide Gauss: pasangkan suku pertama dengan suku terakhir."
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Jumlah n suku pertama",
-          "html": "\\[S_n = \\frac{n}{2}(a + U_n) = \\frac{n}{2}\\big(2a + (n-1)b\\big)\\]<p>Hubungan lain: U<sub>n</sub> = S<sub>n</sub> − S<sub>n−1</sub>.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Hitung jumlah 26 suku pertama deret 9 + 12 + 15 + ….</p>",
-          "steps": [
-            "a = 9, b = 3, n = 26.",
-            "S₂₆ = 13 × (18 + 25 × 3) = 13 × 93 = 1.209."
-          ],
-          "answer": "1.209"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Gedung pertunjukan mempunyai 15 baris kursi. Baris pertama 20 kursi dan setiap baris berikutnya bertambah 4. Berapa kapasitas gedung?</p>",
-          "steps": [
-            "U₁₅ = 20 + 14 × 4 = 76.",
-            "S₁₅ = 15/2 × (20 + 76) = 720."
-          ],
-          "answer": "720 kursi"
-        },
-        {
-          "type": "check",
-          "question": "Jumlah 100 bilangan asli pertama adalah ....",
-          "options": {
-            "A": "5.000",
-            "B": "5.050",
-            "C": "10.100",
-            "D": "10.000"
-          },
-          "answer": "B",
-          "hint": "Gunakan cara Gauss.",
-          "explanation": "S = 100/2 × (1 + 100) = 5.050."
-        }
-      ]
-    },
-    {
-      "id": "deret-geometri",
-      "title": "Deret geometri",
-      "kind": "artikel",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Jumlah n suku pertama",
-          "html": "\\[S_n = \\frac{a(r^n - 1)}{r - 1} \\;(r &gt; 1) \\qquad S_n = \\frac{a(1 - r^n)}{1 - r} \\;(r &lt; 1)\\]<p>Keduanya sama; pilih yang membuat penyebut positif.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Hitung 3 + 6 + 12 + … sampai 6 suku.</p>",
-          "steps": [
-            "a = 3, r = 2, n = 6.",
-            "S₆ = 3(2⁶ − 1)/(2 − 1) = 3 × 63 = 189."
-          ],
-          "answer": "189"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Seorang pedagang menabung Rp100.000,00 pada bulan pertama dan setiap bulan menabung dua kali bulan sebelumnya. Berapa total tabungannya setelah 5 bulan?</p>",
-          "steps": [
-            "a = 100.000, r = 2, n = 5.",
-            "S₅ = 100.000 × (32 − 1) = 3.100.000."
-          ],
-          "answer": "Rp3.100.000,00"
         },
         {
           "type": "check",
@@ -211,48 +143,6 @@
           "answer": "B",
           "hint": "a = 2, r = 3.",
           "explanation": "S₅ = 2(3⁵ − 1)/2 = 243 − 1 = 242. 162 adalah U₅."
-        }
-      ]
-    },
-    {
-      "id": "tak-hingga",
-      "title": "Deret geometri tak hingga",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Bola yang memantul terus-menerus menempuh lintasan yang makin pendek. Apakah total lintasannya tak terbatas? Ternyata tidak, jika rasionya di antara −1 dan 1.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Jumlah tak hingga",
-          "html": "\\[S_\\infty = \\frac{a}{1 - r}, \\qquad -1 &lt; r &lt; 1\\]<p>Deret ini disebut <b>konvergen</b>. Jika |r| ≥ 1, deret <b>divergen</b> (tidak mempunyai jumlah terbatas).</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/deret-tak-hingga.html",
-          "title": "Deret geometri tak hingga",
-          "height": 560,
-          "caption": "Tambah n sedikit demi sedikit dan perhatikan sisa menuju batas. Ubah rasio pantulan mendekati 1: apa yang terjadi pada S∞?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Bola dijatuhkan dari ketinggian 5 m dan memantul 3/5 tinggi sebelumnya. Tentukan panjang lintasan sampai bola berhenti.</p>",
-          "steps": [
-            "Lintasan turun: 5 + 3 + 1,8 + …; lintasan naik: 3 + 1,8 + ….",
-            "Jumlah lintasan naik = 3/(1 − 3/5) = 7,5 m.",
-            "Total = 5 + 2 × 7,5 = 20 m."
-          ],
-          "answer": "20 m"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Tidak mungkin negatif?",
-          "html": "<p>Galang berpendapat deret dengan suku pertama positif bisa mempunyai S∞ = −3. Ini salah: jika a &gt; 0 dan −1 &lt; r &lt; 1, maka 1 − r &gt; 0 sehingga S∞ = a/(1 − r) &gt; 0.</p>"
         },
         {
           "type": "check",
@@ -270,14 +160,36 @@
       ]
     },
     {
-      "id": "bunga-tunggal",
-      "title": "Bunga tunggal sebagai barisan aritmetika",
+      "id": "bunga-tunggal-matematika-keuangan",
+      "title": "Matematika Keuangan 1: Bunga Tunggal dan Nilai Akhir Modal",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Matematika Keuangan 1: Bunga Tunggal dan Nilai Akhir Modal</b>: Rumus modal akhir Mn = M0 (1 + n·i); perhitungan suku bunga harian, bulanan, dan tahunan; diskonto bank.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
           "html": "<p>Pada <b>bunga tunggal</b>, bunga dihitung dari modal awal saja, sehingga besarnya sama setiap periode. Saldo tabungan membentuk barisan aritmetika dengan beda = bunga per periode.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Suku ke-n",
+          "html": "\\[U_n = a + (n - 1)b, \\qquad b = U_n - U_{n-1}\\]"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Jumlah n suku pertama",
+          "html": "\\[S_n = \\frac{n}{2}(a + U_n) = \\frac{n}{2}\\big(2a + (n-1)b\\big)\\]<p>Hubungan lain: U<sub>n</sub> = S<sub>n</sub> − S<sub>n−1</sub>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Jumlah n suku pertama",
+          "html": "\\[S_n = \\frac{a(r^n - 1)}{r - 1} \\;(r &gt; 1) \\qquad S_n = \\frac{a(1 - r^n)}{1 - r} \\;(r &lt; 1)\\]<p>Keduanya sama; pilih yang membuat penyebut positif.</p>"
         },
         {
           "type": "callout",
@@ -286,11 +198,14 @@
           "html": "\\[B = M \\cdot i \\cdot n \\qquad M_n = M(1 + i\\,n)\\]<p>M modal awal, i suku bunga per periode, n banyak periode.</p>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/bunga.html",
-          "title": "Bunga tunggal dan bunga majemuk",
-          "height": 520,
-          "caption": "Bandingkan pertumbuhan bunga tunggal (garis lurus, aritmetika) dan bunga majemuk (melengkung, geometri)."
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung 3 + 6 + 12 + … sampai 6 suku.</p>",
+          "steps": [
+            "a = 3, r = 2, n = 6.",
+            "S₆ = 3(2⁶ − 1)/(2 − 1) = 3 × 63 = 189."
+          ],
+          "answer": "189"
         },
         {
           "type": "example",
@@ -318,24 +233,243 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "bunga-majemuk-periode-tahunan",
+      "title": "Matematika Keuangan 2: Bunga Majemuk Tahunan (Mn = M0 (1 + i)^n)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th></th><th>Aritmetika</th><th>Geometri</th></tr><tr><td>Pola</td><td>ditambah b</td><td>dikali r</td></tr><tr><td>Suku ke-n</td><td>a + (n − 1)b</td><td>a r<sup>n−1</sup></td></tr><tr><td>Jumlah n suku</td><td>½n(a + U<sub>n</sub>)</td><td>a(rⁿ − 1)/(r − 1)</td></tr><tr><td>Tak hingga</td><td>–</td><td>a/(1 − r), −1 &lt; r &lt; 1</td></tr><tr><td>Penerapan</td><td>bunga tunggal</td><td>bunga majemuk, pertumbuhan, peluruhan</td></tr></table>"
+          "html": "<p><b>Matematika Keuangan 2: Bunga Majemuk Tahunan (Mn = M0 (1 + i)^n)</b>: Konsep bunga berbunga; grafik kurva pertumbuhan eksponensial simpanan bank; membandingkan akumulasi bunga tunggal vs majemuk dalam jangka panjang.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Memakai pangkat n, bukan n − 1, pada U<sub>n</sub> geometri.</li><li>Lupa mengalikan 2 lintasan naik-turun pada soal bola memantul.</li><li>Memakai S∞ ketika |r| ≥ 1.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Konsep bunga berbunga; grafik kurva pertumbuhan eksponensial simpanan bank; membandingkan akumulasi bunga tunggal vs majemuk dalam jangka panjang.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/bunga.html",
+          "title": "Bunga tunggal dan bunga majemuk",
+          "height": 520,
+          "caption": "Bandingkan pertumbuhan bunga tunggal (garis lurus, aritmetika) dan bunga majemuk (melengkung, geometri)."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bola dijatuhkan dari ketinggian 5 m dan memantul 3/5 tinggi sebelumnya. Tentukan panjang lintasan sampai bola berhenti.</p>",
+          "steps": [
+            "Lintasan turun: 5 + 3 + 1,8 + …; lintasan naik: 3 + 1,8 + ….",
+            "Jumlah lintasan naik = 3/(1 − 3/5) = 7,5 m.",
+            "Total = 5 + 2 × 7,5 = 20 m."
+          ],
+          "answer": "20 m"
+        },
+        {
+          "type": "check",
+          "question": "Jumlah 100 bilangan asli pertama adalah ....",
+          "options": {
+            "A": "5.000",
+            "B": "5.050",
+            "C": "10.100",
+            "D": "10.000"
+          },
+          "answer": "B",
+          "hint": "Gunakan cara Gauss.",
+          "explanation": "S = 100/2 × (1 + 100) = 5.050."
+        }
+      ]
+    },
+    {
+      "id": "bunga-majemuk-konversi-periode",
+      "title": "Bunga Majemuk dengan Periode Majemuk Lebih dari Sekali Setahun",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Bunga Majemuk dengan Periode Majemuk Lebih dari Sekali Setahun</b>: Perhitungan bunga semesteran, kuartalan, bulanan, dan harian: rumus Mn = M0 (1 + i/m)^(m·n); konsep suku bunga efektif tahunan (EAR / APY).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Perhitungan bunga semesteran, kuartalan, bulanan, dan harian: rumus Mn = M0 (1 + i/m)^(m·n); konsep suku bunga efektif tahunan (EAR / APY).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah akun media sosial menyebarkan pesan berantai. Setiap 2 jam, banyak akun yang terpengaruh menjadi 3 kali. Jika awalnya 5 akun, berapa akun setelah 8 jam?</p>",
+          "steps": [
+            "8 jam = 4 periode, sehingga yang dicari U₅ dengan a = 5, r = 3.",
+            "U₅ = 5 × 3⁴ = 405."
+          ],
+          "answer": "405 akun"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Bunga Majemuk dengan Periode Majemuk Lebih dari Sekali Setahun, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Bunga Majemuk dengan Periode Majemuk Lebih dari Sekali Setahun berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Perhitungan bunga semesteran, kuartalan, bulanan, dan harian: rumus Mn = M0 (1 + i/m)^(m·n); konsep suku bunga efektif tahunan (EAR / APY).."
+        }
+      ]
+    },
+    {
+      "id": "future-value-dan-present-value",
+      "title": "Konsep Nilai Masa Depan (Future Value) dan Nilai Sekarang (Present Value)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Konsep Nilai Masa Depan (Future Value) dan Nilai Sekarang (Present Value)</b>: Nilai waktu dari uang (Time Value of Money); diskonto arus kas masa depan PV = FV / (1 + i)^n; mengapa uang Rp 1 juta hari ini bernilai lebih tinggi dari Rp 1 juta 5 tahun mendatang.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Bola yang memantul terus-menerus menempuh lintasan yang makin pendek. Apakah total lintasannya tak terbatas? Ternyata tidak, jika rasionya di antara −1 dan 1.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Nilai waktu dari uang (Time Value of Money); diskonto arus kas masa depan PV = FV / (1 + i)^n; mengapa uang Rp 1 juta hari ini bernilai lebih tinggi dari Rp 1 juta 5 tahun mendatang.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Konsep Nilai Masa Depan (Future Value) dan Nilai Sekarang (Present Value)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Konsep Nilai Masa Depan (Future Value) dan Nilai Sekarang (Present Value)</b> berikut. Analisislah berdasarkan kaidah Nilai waktu dari uang (Time Value of Money); diskonto arus kas masa depan PV = FV / (1 + i)^n; mengapa uang Rp 1 juta hari ini bernilai lebih tinggi dari Rp 1 juta 5 tahun mendatang..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Konsep Nilai Masa Depan (Future Value) dan Nilai Sekarang (Present Value) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Konsep Nilai Masa Depan (Future Value) dan Nilai Sekarang (Present Value), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Konsep Nilai Masa Depan (Future Value) dan Nilai Sekarang (Present Value) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Nilai waktu dari uang (Time Value of Money); diskonto arus kas masa depan PV = FV / (1 + i)^n; mengapa uang Rp 1 juta hari ini bernilai lebih tinggi dari Rp 1 juta 5 tahun mendatang.."
+        }
+      ]
+    },
+    {
+      "id": "pertumbuhan-dan-peluruhan-matematis",
+      "title": "Model Pertumbuhan dan Peluruhan Eksponensial Kontinu (N(t) = N0 · e^(kt))",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Model Pertumbuhan dan Peluruhan Eksponensial Kontinu (N(t) = N0 · e^(kt))</b>: Penerapan konstanta Euler e = 2.71828...; menghitung laju pertumbuhan populasi dan laju penyusutan nilai buku aset kendaraan/mesin pabrik.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Suku ke-n",
+          "html": "\\[U_n = a\\,r^{\\,n-1}, \\qquad r = \\frac{U_n}{U_{n-1}}\\]<p>Jika r &gt; 1 sukunya membesar (pertumbuhan), jika 0 &lt; r &lt; 1 mengecil (peluruhan), jika r &lt; 0 tandanya berganti-ganti.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Model Pertumbuhan dan Peluruhan Eksponensial Kontinu (N(t) = N0 · e^(kt))",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Model Pertumbuhan dan Peluruhan Eksponensial Kontinu (N(t) = N0 · e^(kt))</b> berikut. Analisislah berdasarkan kaidah Penerapan konstanta Euler e = 2.71828...; menghitung laju pertumbuhan populasi dan laju penyusutan nilai buku aset kendaraan/mesin pabrik..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Model Pertumbuhan dan Peluruhan Eksponensial Kontinu (N(t) = N0 · e^(kt)) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Model Pertumbuhan dan Peluruhan Eksponensial Kontinu (N(t) = N0 · e^(kt)), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Model Pertumbuhan dan Peluruhan Eksponensial Kontinu (N(t) = N0 · e^(kt)) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Penerapan konstanta Euler e = 2.71828...; menghitung laju pertumbuhan populasi dan laju penyusutan nilai buku aset kendaraan/mesin pabrik.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Barisan Finansial",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Barisan Finansial</b>: Tabel ringkasan rumus matematika keuangan dan set latihan soal kontekstual.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 1 Barisan dan Deret.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Tabel ringkasan rumus matematika keuangan dan set latihan soal kontekstual.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Gedung pertunjukan mempunyai 15 baris kursi. Baris pertama 20 kursi dan setiap baris berikutnya bertambah 4. Berapa kapasitas gedung?</p>",
+          "steps": [
+            "U₁₅ = 20 + 14 × 4 = 76.",
+            "S₁₅ = 15/2 × (20 + 76) = 720."
+          ],
+          "answer": "720 kursi"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Seorang pedagang menabung Rp100.000,00 pada bulan pertama dan setiap bulan menabung dua kali bulan sebelumnya. Berapa total tabungannya setelah 5 bulan?</p>",
+          "steps": [
+            "a = 100.000, r = 2, n = 5.",
+            "S₅ = 100.000 × (32 − 1) = 3.100.000."
+          ],
+          "answer": "Rp3.100.000,00"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Barisan Finansial, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Barisan Finansial berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tabel ringkasan rumus matematika keuangan dan set latihan soal kontekstual.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

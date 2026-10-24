@@ -4,14 +4,54 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "spltv",
-      "title": "Sistem persamaan linear tiga variabel",
-      "kind": "simulasi",
-      "duration": "25 menit",
+      "id": "pengantar-spltv-dan-geometri-3d",
+      "title": "Pengantar SPLTV dan Interpretasi Geometris Tiga Bidang Datar di Ruang 3D",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Pengantar SPLTV dan Interpretasi Geometris Tiga Bidang Datar di Ruang 3D</b>: Bentuk umum ax + by + cz = d; solusi unik (titik temu 3 bidang), tak hingga solusi (perpotongan garis/bidang berimpit), dan tanpa solusi (bidang paralel).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Bentuk umum ax + by + cz = d; solusi unik (titik temu 3 bidang), tak hingga solusi (perpotongan garis/bidang berimpit), dan tanpa solusi (bidang paralel).</p>"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Pengantar SPLTV dan Interpretasi Geometris Tiga Bidang Datar di Ruang 3D, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Pengantar SPLTV dan Interpretasi Geometris Tiga Bidang Datar di Ruang 3D berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Bentuk umum ax + by + cz = d; solusi unik (titik temu 3 bidang), tak hingga solusi (perpotongan garis/bidang berimpit), dan tanpa solusi (bidang paralel).."
+        }
+      ]
+    },
+    {
+      "id": "metode-eliminasi-bertingkat-spltv",
+      "title": "Menyelesaikan SPLTV: Metode Eliminasi Bertingkat (Mereduksi ke SPLDV)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menyelesaikan SPLTV: Metode Eliminasi Bertingkat (Mereduksi ke SPLDV)</b>: Memilih variabel yang paling mudah dieliminasi dari dua pasang persamaan, menghasilkan SPLDV dua variabel, lalu menyelesaikan nilai x, y, dan z.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
           "html": "<p>Di SMP kamu sudah menyelesaikan sistem dengan dua variabel. Bagaimana jika ada tiga hal yang belum diketahui, misalnya harga apel, jeruk, dan mangga, dan kita mempunyai tiga informasi belanja? Kita memerlukan <b>sistem persamaan linear tiga variabel</b> (SPLTV).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Selain eliminasi, SPLTV dapat diselesaikan dengan <b>substitusi</b>: nyatakan satu variabel dari persamaan yang paling sederhana, lalu masukkan ke persamaan lain. Cara ini efektif jika ada persamaan yang hanya memuat dua variabel atau berkoefisien 1.</p>"
         },
         {
           "type": "callout",
@@ -26,65 +66,23 @@
           "html": "<ol><li>Pilih satu variabel, misalnya z, lalu eliminasi dari dua pasang persamaan: (1)–(2) dan (1)–(3). Diperoleh dua persamaan dua variabel.</li><li>Selesaikan SPLDV yang terbentuk.</li><li>Substitusikan kembali untuk mendapatkan variabel ketiga, lalu periksa.</li></ol>"
         },
         {
-          "type": "sim",
-          "src": "sim/spltv.html",
-          "title": "Langkah menyelesaikan SPLTV",
-          "height": 560,
-          "caption": "Tekan <b>Langkah berikutnya</b> satu per satu. Lalu tekan <b>Soal baru</b> dan coba selesaikan di kertas sebelum melihat langkahnya."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Bu Ani membeli 2 kg apel, 1 kg jeruk, dan 1 kg mangga seharga Rp95.000,00. Bu Siti membeli 1 kg apel, 2 kg jeruk, dan 1 kg mangga seharga Rp85.000,00. Bu Rina membeli 1 kg apel, 1 kg jeruk, dan 2 kg mangga seharga Rp90.000,00. Berapa harga masing-masing per kg?</p>",
-          "steps": [
-            "Dalam ribuan: 2a + j + m = 95 … (1), a + 2j + m = 85 … (2), a + j + 2m = 90 … (3).",
-            "Jumlahkan ketiganya: 4a + 4j + 4m = 270, sehingga a + j + m = 67,5 … (4).",
-            "(1) − (4): a = 27,5. (2) − (4): j = 17,5. (3) − (4): m = 22,5."
-          ],
-          "answer": "apel Rp27.500,00; jeruk Rp17.500,00; mangga Rp22.500,00"
-        },
-        {
-          "type": "check",
-          "question": "Penyelesaian sistem x + y + z = 6, x − y = 1, dan y + z = 4 adalah ....",
-          "options": {
-            "A": "(2, 1, 3)",
-            "B": "(1, 2, 3)",
-            "C": "(3, 2, 1)",
-            "D": "(2, 3, 1)"
-          },
-          "answer": "A",
-          "hint": "Kurangkan persamaan ketiga dari persamaan pertama.",
-          "explanation": "(x + y + z) − (y + z) = 6 − 4, sehingga x = 2. Dari x − y = 1, y = 1. Dari y + z = 4, z = 3."
-        }
-      ]
-    },
-    {
-      "id": "spltv-cerita",
-      "title": "Substitusi dan soal cerita SPLTV",
-      "kind": "artikel",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Selain eliminasi, SPLTV dapat diselesaikan dengan <b>substitusi</b>: nyatakan satu variabel dari persamaan yang paling sederhana, lalu masukkan ke persamaan lain. Cara ini efektif jika ada persamaan yang hanya memuat dua variabel atau berkoefisien 1.</p>"
-        },
-        {
           "type": "callout",
           "variant": "tips",
           "title": "Memodelkan soal cerita",
           "html": "<ol><li>Tentukan tiga besaran yang dicari dan beri nama variabel (sertakan satuannya).</li><li>Terjemahkan setiap informasi menjadi satu persamaan.</li><li>Selesaikan, lalu jawab pertanyaan dalam kalimat dan periksa kewajarannya.</li></ol>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Rani membeli 1 pensil, 1 penghapus, dan 1 buku seharga Rp15.000,00. Dina membeli 2 pensil dan 1 penghapus seharga Rp14.000,00. Sari membeli 1 penghapus dan 3 buku seharga Rp21.000,00. Tentukan harga masing-masing.</p>",
-          "steps": [
-            "Dalam ribuan: p + h + b = 15 … (1), 2p + h = 14 … (2), h + 3b = 21 … (3).",
-            "Dari (2): h = 14 − 2p. Dari (1): b = 15 − p − h = 15 − p − 14 + 2p = 1 + p.",
-            "Substitusi ke (3): (14 − 2p) + 3(1 + p) = 21, sehingga 17 + p = 21 dan p = 4.",
-            "h = 14 − 8 = 6 dan b = 5. Periksa (1): 4 + 6 + 5 = 15 ✓."
-          ],
-          "answer": "pensil Rp4.000,00; penghapus Rp6.000,00; buku Rp5.000,00"
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Pada SPLTV, mengeliminasi variabel yang berbeda pada dua pasangan persamaan.</li><li>Mengarsir sisi yang salah tanpa menguji titik.</li><li>Lupa syarat x ≥ 0 dan y ≥ 0 pada soal cerita.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/spltv.html",
+          "title": "Langkah menyelesaikan SPLTV",
+          "height": 560,
+          "caption": "Tekan <b>Langkah berikutnya</b> satu per satu. Lalu tekan <b>Soal baru</b> dan coba selesaikan di kertas sebelum melihat langkahnya."
         },
         {
           "type": "example",
@@ -114,20 +112,188 @@
       ]
     },
     {
-      "id": "ptldv",
-      "title": "Pertidaksamaan linear dua variabel",
-      "kind": "artikel",
-      "duration": "20 menit",
+      "id": "metode-substitusi-dan-campuran-spltv",
+      "title": "Menyelesaikan SPLTV: Metode Substitusi dan Campuran yang Efisien",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Menyelesaikan SPLTV: Metode Substitusi dan Campuran yang Efisien</b>: Mengisolasi variabel tunggal koefisien 1; teknik campuran yang meminimalkan kerumitan hitungan.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi Pemecahan Masalah",
+          "html": "<p>Mengisolasi variabel tunggal koefisien 1; teknik campuran yang meminimalkan kerumitan hitungan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Menyelesaikan SPLTV: Metode Substitusi dan Campuran yang Efisien",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Menyelesaikan SPLTV: Metode Substitusi dan Campuran yang Efisien</b> berikut. Analisislah berdasarkan kaidah Mengisolasi variabel tunggal koefisien 1; teknik campuran yang meminimalkan kerumitan hitungan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Menyelesaikan SPLTV: Metode Substitusi dan Campuran yang Efisien untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menyelesaikan SPLTV: Metode Substitusi dan Campuran yang Efisien, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Menyelesaikan SPLTV: Metode Substitusi dan Campuran yang Efisien berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Mengisolasi variabel tunggal koefisien 1; teknik campuran yang meminimalkan kerumitan hitungan.."
+        }
+      ]
+    },
+    {
+      "id": "kasus-khusus-spltv",
+      "title": "Menganalisis SPLTV Khusus: Solusi Tak Hingga Banyak dan Tanpa Solusi",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menganalisis SPLTV Khusus: Solusi Tak Hingga Banyak dan Tanpa Solusi</b>: Mengenali persamaan yang menghasilkan kontradiksi (misal 0 = 5 berarti tidak ada solusi) atau tautologi identitas (0 = 0 berarti solusi parametrik tak terhingga).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Toko kue memiliki 8 kg tepung dan 12 kg gula. Kue A memerlukan 1 kg tepung dan 2 kg gula per loyang, kue B memerlukan 1 kg tepung dan 1 kg gula. Banyak loyang yang mungkin dibuat (x loyang A, y loyang B) dibatasi oleh <b>pertidaksamaan</b>, bukan persamaan:</p>\\[x + y \\le 8, \\quad 2x + y \\le 12, \\quad x \\ge 0, \\quad y \\ge 0\\]"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Mengenali persamaan yang menghasilkan kontradiksi (misal 0 = 5 berarti tidak ada solusi) atau tautologi identitas (0 = 0 berarti solusi parametrik tak terhingga).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Menganalisis SPLTV Khusus: Solusi Tak Hingga Banyak dan Tanpa Solusi",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Menganalisis SPLTV Khusus: Solusi Tak Hingga Banyak dan Tanpa Solusi</b> berikut. Analisislah berdasarkan kaidah Mengenali persamaan yang menghasilkan kontradiksi (misal 0 = 5 berarti tidak ada solusi) atau tautologi identitas (0 = 0 berarti solusi parametrik tak terhingga)..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Menganalisis SPLTV Khusus: Solusi Tak Hingga Banyak dan Tanpa Solusi untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menganalisis SPLTV Khusus: Solusi Tak Hingga Banyak dan Tanpa Solusi, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Menganalisis SPLTV Khusus: Solusi Tak Hingga Banyak dan Tanpa Solusi berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Mengenali persamaan yang menghasilkan kontradiksi (misal 0 = 5 berarti tidak ada solusi) atau tautologi identitas (0 = 0 berarti solusi parametrik tak terhingga).."
+        }
+      ]
+    },
+    {
+      "id": "pemodelan-matematis-spltv",
+      "title": "Pemodelan Soal Cerita SPLTV dalam Masalah Nyata",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pemodelan Soal Cerita SPLTV dalam Masalah Nyata</b>: Soal paket harga tiket bioskop, komposisi racikan bahan kimia pupuk, perbandingan umur tiga anggota keluarga.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Soal paket harga tiket bioskop, komposisi racikan bahan kimia pupuk, perbandingan umur tiga anggota keluarga.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bu Ani membeli 2 kg apel, 1 kg jeruk, dan 1 kg mangga seharga Rp95.000,00. Bu Siti membeli 1 kg apel, 2 kg jeruk, dan 1 kg mangga seharga Rp85.000,00. Bu Rina membeli 1 kg apel, 1 kg jeruk, dan 2 kg mangga seharga Rp90.000,00. Berapa harga masing-masing per kg?</p>",
+          "steps": [
+            "Dalam ribuan: 2a + j + m = 95 … (1), a + 2j + m = 85 … (2), a + j + 2m = 90 … (3).",
+            "Jumlahkan ketiganya: 4a + 4j + 4m = 270, sehingga a + j + m = 67,5 … (4).",
+            "(1) − (4): a = 27,5. (2) − (4): j = 17,5. (3) − (4): m = 22,5."
+          ],
+          "answer": "apel Rp27.500,00; jeruk Rp17.500,00; mangga Rp22.500,00"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rani membeli 1 pensil, 1 penghapus, dan 1 buku seharga Rp15.000,00. Dina membeli 2 pensil dan 1 penghapus seharga Rp14.000,00. Sari membeli 1 penghapus dan 3 buku seharga Rp21.000,00. Tentukan harga masing-masing.</p>",
+          "steps": [
+            "Dalam ribuan: p + h + b = 15 … (1), 2p + h = 14 … (2), h + 3b = 21 … (3).",
+            "Dari (2): h = 14 − 2p. Dari (1): b = 15 − p − h = 15 − p − 14 + 2p = 1 + p.",
+            "Substitusi ke (3): (14 − 2p) + 3(1 + p) = 21, sehingga 17 + p = 21 dan p = 4.",
+            "h = 14 − 8 = 6 dan b = 5. Periksa (1): 4 + 6 + 5 = 15 ✓."
+          ],
+          "answer": "pensil Rp4.000,00; penghapus Rp6.000,00; buku Rp5.000,00"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Pemodelan Soal Cerita SPLTV dalam Masalah Nyata, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Pemodelan Soal Cerita SPLTV dalam Masalah Nyata berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Soal paket harga tiket bioskop, komposisi racikan bahan kimia pupuk, perbandingan umur tiga anggota keluarga.."
+        }
+      ]
+    },
+    {
+      "id": "pertidaksamaan-linear-dua-variabel",
+      "title": "Pertidaksamaan Linear Dua Variabel (PtLDV): Garis Pembatas dan Uji Titik Selidik",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pertidaksamaan Linear Dua Variabel (PtLDV): Garis Pembatas dan Uji Titik Selidik</b>: Menggambar garis ax + by = c (garis tegas untuk ≤, ≥ vs garis putus-putus untuk <, >); menguji titik (0,0) untuk menentukan daerah arsiran yang benar.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
           "html": "<p><b>Pertidaksamaan linear dua variabel</b> berbentuk ax + by ≤ c (atau &lt;, ≥, &gt;). Penyelesaiannya bukan satu titik, melainkan <b>setengah bidang</b>: semua titik di satu sisi garis ax + by = c.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/contoh-daerah.svg",
+          "alt": "Daerah penyelesaian x + y ≤ 8, 2x + y ≤ 12, x ≥ 0, y ≥ 0 berbentuk segi empat dengan titik pojok (0,0), (6,0), (4,4), dan (0,8)",
+          "width": 420,
+          "caption": "Daerah penyelesaian contoh toko kue."
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Uji titik",
           "html": "<p>Pilih titik yang tidak terletak pada garis batas, misalnya (0, 0). Substitusikan ke pertidaksamaan.</p><ul><li>Jika pernyataannya benar, sisi yang memuat titik itu adalah daerah penyelesaian.</li><li>Jika salah, daerah penyelesaiannya sisi yang lain.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Menentukan pertidaksamaan dari gambar",
+          "html": "<p>Garis yang memotong sumbu x di (a, 0) dan sumbu y di (0, b) adalah bx + ay = ab. Lalu uji (0, 0): jika (0, 0) berada di daerah arsir, tandanya ≤ (karena 0 ≤ ab).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Menggambar daerah penyelesaian",
+          "html": "<ol><li>Gambar garis batasnya (ganti tanda pertidaksamaan dengan =).</li><li>Uji satu titik yang tidak terletak pada garis, biasanya (0, 0). Jika memenuhi, daerah yang memuat titik itu termasuk penyelesaian.</li><li>Daerah penyelesaian sistem adalah irisan semua daerah. Garis penuh untuk ≤, ≥; garis putus-putus untuk &lt;, &gt;.</li></ol>"
         },
         {
           "type": "example",
@@ -141,12 +307,6 @@
           "answer": "setengah bidang di bawah garis yang melalui (6, 0) dan (0, 4)"
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Menentukan pertidaksamaan dari gambar",
-          "html": "<p>Garis yang memotong sumbu x di (a, 0) dan sumbu y di (0, b) adalah bx + ay = ab. Lalu uji (0, 0): jika (0, 0) berada di daerah arsir, tandanya ≤ (karena 0 ≤ ab).</p>"
-        },
-        {
           "type": "check",
           "question": "Titik berikut yang memenuhi pertidaksamaan 2x + 3y ≤ 12 adalah ....",
           "options": {
@@ -158,49 +318,6 @@
           "answer": "C",
           "hint": "Substitusikan setiap titik.",
           "explanation": "(2, 2): 4 + 6 = 10 ≤ 12. Titik lainnya menghasilkan 15."
-        }
-      ]
-    },
-    {
-      "id": "sptldv",
-      "title": "Sistem pertidaksamaan linear dua variabel",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Toko kue memiliki 8 kg tepung dan 12 kg gula. Kue A memerlukan 1 kg tepung dan 2 kg gula per loyang, kue B memerlukan 1 kg tepung dan 1 kg gula. Banyak loyang yang mungkin dibuat (x loyang A, y loyang B) dibatasi oleh <b>pertidaksamaan</b>, bukan persamaan:</p>\\[x + y \\le 8, \\quad 2x + y \\le 12, \\quad x \\ge 0, \\quad y \\ge 0\\]"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Menggambar daerah penyelesaian",
-          "html": "<ol><li>Gambar garis batasnya (ganti tanda pertidaksamaan dengan =).</li><li>Uji satu titik yang tidak terletak pada garis, biasanya (0, 0). Jika memenuhi, daerah yang memuat titik itu termasuk penyelesaian.</li><li>Daerah penyelesaian sistem adalah irisan semua daerah. Garis penuh untuk ≤, ≥; garis putus-putus untuk &lt;, &gt;.</li></ol>"
-        },
-        {
-          "type": "image",
-          "src": "gambar/contoh-daerah.svg",
-          "alt": "Daerah penyelesaian x + y ≤ 8, 2x + y ≤ 12, x ≥ 0, y ≥ 0 berbentuk segi empat dengan titik pojok (0,0), (6,0), (4,4), dan (0,8)",
-          "width": 420,
-          "caption": "Daerah penyelesaian contoh toko kue."
-        },
-        {
-          "type": "sim",
-          "src": "sim/daerah-penyelesaian.html",
-          "title": "Daerah penyelesaian",
-          "height": 500,
-          "caption": "Ubah koefisien dan tanda pertidaksamaan. Geser titik uji T ke dalam dan ke luar daerah biru. Coba tambahkan pertidaksamaan ketiga."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tentukan titik pojok daerah penyelesaian contoh toko kue.</p>",
-          "steps": [
-            "Titik potong dengan sumbu: (0, 0), (6, 0) dari 2x + y = 12, dan (0, 8) dari x + y = 8.",
-            "Titik potong kedua garis: kurangkan x + y = 8 dari 2x + y = 12, sehingga x = 4 dan y = 4.",
-            "Titik pojok: (0, 0), (6, 0), (4, 4), dan (0, 8)."
-          ],
-          "answer": "(0, 0), (6, 0), (4, 4), (0, 8)"
         },
         {
           "type": "check",
@@ -218,24 +335,192 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "sistem-pertidaksamaan-linear-sptldv",
+      "title": "Sistem Pertidaksamaan Linear Dua Variabel (SPtLDV): Irisan Daerah Bersih",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Sistem Pertidaksamaan Linear Dua Variabel (SPtLDV): Irisan Daerah Bersih</b>: Menentukan Daerah Himpunan Penyelesaian (DHP) yang memenuhi sekaligus beberapa pertidaksamaan linear; metode arsiran daerah penyelesaian.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi Pemecahan Masalah",
+          "html": "<p>Menentukan Daerah Himpunan Penyelesaian (DHP) yang memenuhi sekaligus beberapa pertidaksamaan linear; metode arsiran daerah penyelesaian.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/daerah-penyelesaian.html",
+          "title": "Daerah penyelesaian",
+          "height": 500,
+          "caption": "Ubah koefisien dan tanda pertidaksamaan. Geser titik uji T ke dalam dan ke luar daerah biru. Coba tambahkan pertidaksamaan ketiga."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Sistem Pertidaksamaan Linear Dua Variabel (SPtLDV): Irisan Daerah Bersih",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Sistem Pertidaksamaan Linear Dua Variabel (SPtLDV): Irisan Daerah Bersih</b> berikut. Analisislah berdasarkan kaidah Menentukan Daerah Himpunan Penyelesaian (DHP) yang memenuhi sekaligus beberapa pertidaksamaan linear; metode arsiran daerah penyelesaian..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Sistem Pertidaksamaan Linear Dua Variabel (SPtLDV): Irisan Daerah Bersih untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Penyelesaian sistem x + y + z = 6, x − y = 1, dan y + z = 4 adalah ....",
+          "options": {
+            "A": "(2, 1, 3)",
+            "B": "(1, 2, 3)",
+            "C": "(3, 2, 1)",
+            "D": "(2, 3, 1)"
+          },
+          "answer": "A",
+          "hint": "Kurangkan persamaan ketiga dari persamaan pertama.",
+          "explanation": "(x + y + z) − (y + z) = 6 − 4, sehingga x = 2. Dari x − y = 1, y = 1. Dari y + z = 4, z = 3."
+        }
+      ]
+    },
+    {
+      "id": "menentukan-sistem-dari-grafik",
+      "title": "Menentukan Sistem Pertidaksamaan Linear dari Grafik DHP yang Diketahui",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menentukan Sistem Pertidaksamaan Linear dari Grafik DHP yang Diketahui</b>: Menentukan persamaan garis batas dari titik potong sumbu (rumus bx + ay = a·b), lalu menentukan tanda ketidaksamaan berdasarkan arah arsiran.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
         {
           "type": "text",
           "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>SPLTV</td><td>Eliminasi satu variabel dari dua pasang persamaan, selesaikan SPLDV, lalu substitusi.</td></tr><tr><td>Pertidaksamaan linear</td><td>Garis batas + uji titik untuk menentukan sisi yang diarsir.</td></tr><tr><td>Sistem pertidaksamaan</td><td>Daerah penyelesaian = irisan semua daerah.</td></tr><tr><td>Titik pojok</td><td>Titik potong garis-garis batas yang membatasi daerah.</td></tr></table>"
         },
         {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 4 Sistem Persamaan dan Pertidaksamaan Linear.</small></p>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Pada SPLTV, mengeliminasi variabel yang berbeda pada dua pasangan persamaan.</li><li>Mengarsir sisi yang salah tanpa menguji titik.</li><li>Lupa syarat x ≥ 0 dan y ≥ 0 pada soal cerita.</li></ul>"
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Menentukan persamaan garis batas dari titik potong sumbu (rumus bx + ay = a·b), lalu menentukan tanda ketidaksamaan berdasarkan arah arsiran.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan titik pojok daerah penyelesaian contoh toko kue.</p>",
+          "steps": [
+            "Titik potong dengan sumbu: (0, 0), (6, 0) dari 2x + y = 12, dan (0, 8) dari x + y = 8.",
+            "Titik potong kedua garis: kurangkan x + y = 8 dari 2x + y = 12, sehingga x = 4 dan y = 4.",
+            "Titik pojok: (0, 0), (6, 0), (4, 4), dan (0, 8)."
+          ],
+          "answer": "(0, 0), (6, 0), (4, 4), (0, 8)"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menentukan Sistem Pertidaksamaan Linear dari Grafik DHP yang Diketahui, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Menentukan Sistem Pertidaksamaan Linear dari Grafik DHP yang Diketahui berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menentukan persamaan garis batas dari titik potong sumbu (rumus bx + ay = a·b), lalu menentukan tanda ketidaksamaan berdasarkan arah arsiran.."
+        }
+      ]
+    },
+    {
+      "id": "pengantar-program-linear-sederhana",
+      "title": "Pengantar Optimasi Nilai Optimum Fungsi Objektif",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Pengantar Optimasi Nilai Optimum Fungsi Objektif</b>: Menentukan titik-titik pojok (titik verteks) dari DHP tertutup dan menguji nilai fungsi tujuan f(x,y) = ax + by untuk mencari nilai maksimum/minimum.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Menentukan titik-titik pojok (titik verteks) dari DHP tertutup dan menguji nilai fungsi tujuan f(x,y) = ax + by untuk mencari nilai maksimum/minimum.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Pengantar Optimasi Nilai Optimum Fungsi Objektif",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Pengantar Optimasi Nilai Optimum Fungsi Objektif</b> berikut. Analisislah berdasarkan kaidah Menentukan titik-titik pojok (titik verteks) dari DHP tertutup dan menguji nilai fungsi tujuan f(x,y) = ax + by untuk mencari nilai maksimum/minimum..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Pengantar Optimasi Nilai Optimum Fungsi Objektif untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Pengantar Optimasi Nilai Optimum Fungsi Objektif, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Pengantar Optimasi Nilai Optimum Fungsi Objektif berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menentukan titik-titik pojok (titik verteks) dari DHP tertutup dan menguji nilai fungsi tujuan f(x,y) = ax + by untuk mencari nilai maksimum/minimum.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Sistem Linear",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Sistem Linear</b>: Peta konsep SPLTV/SPtLDV dan paket latihan soal terpadu.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Peta konsep SPLTV/SPtLDV dan paket latihan soal terpadu.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Sistem Linear",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Sistem Linear</b> berikut. Analisislah berdasarkan kaidah Peta konsep SPLTV/SPtLDV dan paket latihan soal terpadu..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Sistem Linear untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Sistem Linear, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Sistem Linear berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Peta konsep SPLTV/SPtLDV dan paket latihan soal terpadu.."
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 4 Sistem Persamaan dan Pertidaksamaan Linear.</small></p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

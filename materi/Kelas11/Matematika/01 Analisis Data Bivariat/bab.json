@@ -4,11 +4,15 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "data-bivariat",
-      "title": "Data kategorikal, numerikal, dan bivariat",
+      "id": "pengertian-data-bivariat",
+      "title": "Konsep Data Bivariat dan Hubungan Antarvariabel",
       "kind": "artikel",
-      "duration": "15 menit",
+      "duration": "6 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Konsep Data Bivariat dan Hubungan Antarvariabel</b>: Membedakan variabel independen (prediktor x) dan variabel dependen (respons y); pasangan data terurut (xi, yi).</p>"
+        },
         {
           "type": "text",
           "html": "<p>Data <b>kategorikal</b> berupa kelompok atau label (golongan darah, jenis kelamin, merek). Data <b>numerikal</b> berupa angka hasil mengukur atau mencacah (tinggi badan, banyak saudara) yang bermakna jika dioperasikan.</p>"
@@ -18,10 +22,6 @@
           "variant": "rumus",
           "title": "Univariat dan bivariat",
           "html": "<ul><li><b>Data univariat</b>: satu variabel diamati pada setiap individu, misalnya tinggi badan saja.</li><li><b>Data bivariat</b>: dua variabel diamati pada setiap individu, misalnya tinggi <i>dan</i> berat badan setiap siswa. Tujuannya melihat hubungan kedua variabel.</li></ul><p>Jika satu variabel diduga memengaruhi yang lain, yang memengaruhi disebut <b>variabel independen</b> (bebas, biasanya sumbu x) dan yang dipengaruhi <b>variabel dependen</b> (terikat, sumbu y).</p>"
-        },
-        {
-          "type": "text",
-          "html": "<table><tr><th>Pasangan variabel</th><th>Cara menyajikan</th></tr><tr><td>kategorikal – kategorikal</td><td>tabel silang, diagram batang bertumpuk</td></tr><tr><td>numerikal – numerikal</td><td>diagram pencar</td></tr><tr><td>kategorikal – numerikal</td><td>box plot berdampingan</td></tr></table>"
         },
         {
           "type": "example",
@@ -49,65 +49,39 @@
       ]
     },
     {
-      "id": "tabel-silang",
-      "title": "Tabel silang dan bentuk matriks",
-      "kind": "artikel",
-      "duration": "20 menit",
+      "id": "diagram-pencar-pola-sebaran",
+      "title": "Diagram Pencar (Scatter Plot): Arah, Bentuk, dan Kekuatan Korelasi",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Hubungan dua variabel kategorikal diringkas dalam <b>tabulasi silang</b> (tabel kontingensi): kategori satu variabel menjadi baris, kategori variabel lain menjadi kolom, dan setiap sel berisi frekuensi.</p>"
+          "html": "<p><b>Diagram Pencar (Scatter Plot): Arah, Bentuk, dan Kekuatan Korelasi</b>: Korelasi positif, negatif, atau nir-korelasi; pola linier vs kurvilinier; kekuatan hubungan data rapat vs menyebar.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "text",
-          "html": "<p><b>Uji coba vaksin hepatitis B di Bandung</b></p><table><tr><th>Status \\ Kondisi</th><th>Terserang</th><th>Tidak terserang</th><th>Jumlah</th></tr><tr><td>Divaksin</td><td>12</td><td>88</td><td>100</td></tr><tr><td>Tidak divaksin</td><td>28</td><td>72</td><td>100</td></tr><tr><td>Jumlah</td><td>40</td><td>160</td><td>200</td></tr></table>"
+          "html": "<table><tr><th>Pasangan variabel</th><th>Cara menyajikan</th></tr><tr><td>kategorikal – kategorikal</td><td>tabel silang, diagram batang bertumpuk</td></tr><tr><td>numerikal – numerikal</td><td>diagram pencar</td></tr><tr><td>kategorikal – numerikal</td><td>box plot berdampingan</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Untuk dua variabel numerikal, setiap individu digambar sebagai satu titik pada <b>diagram pencar</b>. Pola titik-titiknya memberi tiga informasi: <b>arah</b> (positif/negatif), <b>bentuk</b> (linear/kurva), dan <b>kekuatan</b> (rapat/menyebar).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Data bivariat</td><td>dua variabel diamati pada setiap individu</td></tr><tr><td>Tabel silang</td><td>dua variabel kategorikal; dapat ditulis sebagai matriks</td></tr><tr><td>Frekuensi relatif bersyarat</td><td>sel ÷ jumlah baris; beda jauh antarbaris = asosiasi</td></tr><tr><td>Diagram pencar</td><td>arah, bentuk, kekuatan; r antara −1 dan 1</td></tr><tr><td>Garis best-fit</td><td>ŷ = a + bx, melalui (x̄, ȳ), meminimumkan jumlah kuadrat residu</td></tr><tr><td>Prediksi</td><td>interpolasi lebih dapat dipercaya daripada ekstrapolasi</td></tr></table>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/jenis-korelasi.svg",
+          "alt": "Enam diagram pencar: positif kuat, positif lemah, negatif kuat, negatif lemah, tidak ada korelasi, dan tidak linear",
+          "width": 600,
+          "caption": "Makin rapat titik-titik membentuk garis, makin kuat korelasinya."
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Bentuk matriks",
           "html": "<p>Jika judul baris dan kolom dihilangkan, isi tabel dapat ditulis sebagai <b>matriks</b>, yaitu susunan bilangan dalam baris dan kolom:</p>\\[\\begin{pmatrix} 12 & 88 \\\\ 28 & 72 \\end{pmatrix}\\]<p>Matriks ini berordo 2 × 2 (2 baris, 2 kolom). Bentuk ini memudahkan pengolahan data dalam jumlah besar, misalnya menjumlahkan data tiga kota sekaligus.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Di Palembang hasilnya \\(\\begin{pmatrix} 10 & 90 \\\\ 25 & 75 \\end{pmatrix}\\). Tentukan matriks gabungan Bandung dan Palembang.</p>",
-          "steps": [
-            "Jumlahkan elemen yang seletak.",
-            "\\(\\begin{pmatrix} 12+10 & 88+90 \\\\ 28+25 & 72+75 \\end{pmatrix} = \\begin{pmatrix} 22 & 178 \\\\ 53 & 147 \\end{pmatrix}\\)"
-          ],
-          "answer": "(22 178; 53 147)"
-        },
-        {
-          "type": "check",
-          "question": "Tabel silang dengan 3 kategori baris dan 4 kategori kolom (tanpa baris dan kolom jumlah) dapat ditulis sebagai matriks berordo ....",
-          "options": {
-            "A": "3 × 4",
-            "B": "4 × 3",
-            "C": "7 × 1",
-            "D": "12 × 1"
-          },
-          "answer": "A",
-          "hint": "Ordo ditulis banyak baris × banyak kolom.",
-          "explanation": "3 baris dan 4 kolom, jadi ordonya 3 × 4."
-        }
-      ]
-    },
-    {
-      "id": "frekuensi-bersyarat",
-      "title": "Frekuensi relatif bersyarat dan asosiasi",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Apakah tablet obat mual benar-benar mengurangi mual? Kita tidak cukup membandingkan frekuensi, apalagi jika banyak anggota tiap kelompok berbeda. Kita bandingkan <b>proporsi</b> di dalam setiap kelompok.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Dua jenis frekuensi relatif",
-          "html": "<ul><li><b>Frekuensi relatif (total)</b> = frekuensi sel ÷ total keseluruhan.</li><li><b>Frekuensi relatif bersyarat</b> = frekuensi sel ÷ jumlah baris (atau kolom) tempat sel itu berada. Contoh: dari yang divaksin, 12/100 = 12% terserang.</li></ul><p>Jika distribusi bersyarat antarbaris <b>berbeda jauh</b>, ada <b>asosiasi</b> antara kedua variabel. Jika hampir sama, tidak ada asosiasi.</p>"
         },
         {
           "type": "sim",
@@ -119,19 +93,12 @@
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Tablet obat: 41 tidak mual, 38 ringan, 16 sedang, 5 berat (dari 100). Placebo: 17, 30, 38, 15 (dari 100). Apakah ada asosiasi?</p>",
+          "question": "<p>Di Palembang hasilnya \\(\\begin{pmatrix} 10 & 90 \\\\ 25 & 75 \\end{pmatrix}\\). Tentukan matriks gabungan Bandung dan Palembang.</p>",
           "steps": [
-            "Persentase tidak mual: 41% (obat) vs 17% (placebo).",
-            "Persentase mual sedang atau berat: 21% (obat) vs 53% (placebo).",
-            "Distribusi bersyarat berbeda jauh, jadi ada asosiasi: kelompok tablet obat cenderung lebih sedikit mual."
+            "Jumlahkan elemen yang seletak.",
+            "\\(\\begin{pmatrix} 12+10 & 88+90 \\\\ 28+25 & 72+75 \\end{pmatrix} = \\begin{pmatrix} 22 & 178 \\\\ 53 & 147 \\end{pmatrix}\\)"
           ],
-          "answer": "ada asosiasi"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Asosiasi bukan sebab-akibat",
-          "html": "<p>Asosiasi hanya menunjukkan kecenderungan. Untuk menyimpulkan sebab-akibat diperlukan desain penelitian khusus, misalnya eksperimen dengan pembagian kelompok secara acak dan placebo seperti uji obat di atas.</p>"
+          "answer": "(22 178; 53 147)"
         },
         {
           "type": "check",
@@ -149,21 +116,61 @@
       ]
     },
     {
-      "id": "korelasi",
-      "title": "Diagram pencar dan korelasi",
-      "kind": "artikel",
-      "duration": "20 menit",
+      "id": "kovarians-dan-arah-korelasi",
+      "title": "Kovarians Dua Variabel (Cov(X, Y)): Mengukur Arah Hubungan",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Untuk dua variabel numerikal, setiap individu digambar sebagai satu titik pada <b>diagram pencar</b>. Pola titik-titiknya memberi tiga informasi: <b>arah</b> (positif/negatif), <b>bentuk</b> (linear/kurva), dan <b>kekuatan</b> (rapat/menyebar).</p>"
+          "html": "<p><b>Kovarians Dua Variabel (Cov(X, Y)): Mengukur Arah Hubungan</b>: Rumus kovarians sampel; makna tanda positif/negatif; keterbatasan kovarians yang tergantung satuan ukuran.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
-          "type": "image",
-          "src": "gambar/jenis-korelasi.svg",
-          "alt": "Enam diagram pencar: positif kuat, positif lemah, negatif kuat, negatif lemah, tidak ada korelasi, dan tidak linear",
-          "width": 600,
-          "caption": "Makin rapat titik-titik membentuk garis, makin kuat korelasinya."
+          "type": "text",
+          "html": "<p>Hubungan dua variabel kategorikal diringkas dalam <b>tabulasi silang</b> (tabel kontingensi): kategori satu variabel menjadi baris, kategori variabel lain menjadi kolom, dan setiap sel berisi frekuensi.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Dua jenis frekuensi relatif",
+          "html": "<ul><li><b>Frekuensi relatif (total)</b> = frekuensi sel ÷ total keseluruhan.</li><li><b>Frekuensi relatif bersyarat</b> = frekuensi sel ÷ jumlah baris (atau kolom) tempat sel itu berada. Contoh: dari yang divaksin, 12/100 = 12% terserang.</li></ul><p>Jika distribusi bersyarat antarbaris <b>berbeda jauh</b>, ada <b>asosiasi</b> antara kedua variabel. Jika hampir sama, tidak ada asosiasi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Kovarians Dua Variabel (Cov(X, Y)): Mengukur Arah Hubungan",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Kovarians Dua Variabel (Cov(X, Y)): Mengukur Arah Hubungan</b> berikut. Analisislah berdasarkan kaidah Rumus kovarians sampel; makna tanda positif/negatif; keterbatasan kovarians yang tergantung satuan ukuran..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Kovarians Dua Variabel (Cov(X, Y)): Mengukur Arah Hubungan untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Kovarians Dua Variabel (Cov(X, Y)): Mengukur Arah Hubungan, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Kovarians Dua Variabel (Cov(X, Y)): Mengukur Arah Hubungan berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rumus kovarians sampel; makna tanda positif/negatif; keterbatasan kovarians yang tergantung satuan ukuran.."
+        }
+      ]
+    },
+    {
+      "id": "koefisien-korelasi-pearson",
+      "title": "Koefisien Korelasi Pearson (r): Kekuatan Hubungan Linier",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Koefisien Korelasi Pearson (r): Kekuatan Hubungan Linier</b>: Penurunan rumus r dari z-score; rentang nilai -1 ≤ r ≤ +1; korelasi sempurna, kuat, sedang, lemah; korelasi vs sebab-akibat (kausalitas).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
@@ -176,6 +183,17 @@
           "variant": "awas",
           "title": "Korelasi dan kausalitas",
           "html": "<p>Penjualan es krim berkorelasi positif dengan banyak kasus tenggelam, tetapi es krim tidak menyebabkan tenggelam. Keduanya dipengaruhi <b>variabel ketiga</b>: cuaca panas. Korelasi tidak sama dengan sebab-akibat.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tablet obat: 41 tidak mual, 38 ringan, 16 sedang, 5 berat (dari 100). Placebo: 17, 30, 38, 15 (dari 100). Apakah ada asosiasi?</p>",
+          "steps": [
+            "Persentase tidak mual: 41% (obat) vs 17% (placebo).",
+            "Persentase mual sedang atau berat: 21% (obat) vs 53% (placebo).",
+            "Distribusi bersyarat berbeda jauh, jadi ada asosiasi: kelompok tablet obat cenderung lebih sedikit mual."
+          ],
+          "answer": "ada asosiasi"
         },
         {
           "type": "check",
@@ -193,20 +211,30 @@
       ]
     },
     {
-      "id": "best-fit",
-      "title": "Garis best-fit dan prediksi",
+      "id": "garis-regresi-linear-ols",
+      "title": "Garis Regresi Linear: Metode Kuadrat Terkecil (Ordinary Least Squares)",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Mona mencatat uang jajan dan uang yang ditabung 8 temannya (dalam ribu rupiah): (10, 2), (40, 11), (25, 8), (50, 14), (15, 5), (35, 10), (30, 7), (45, 15). Bisakah kita memprediksi tabungan siswa yang uang jajannya 20 ribu?</p>"
+          "html": "<p><b>Garis Regresi Linear: Metode Kuadrat Terkecil (Ordinary Least Squares)</b>: Persamaan garis tren ŷ = a + bx; menghitung kemiringan b = r · (sy / sx) dan intersep a = ȳ - b·x̄; meminimalkan jumlah kuadrat sisaan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Uji coba vaksin hepatitis B di Bandung</b></p><table><tr><th>Status \\ Kondisi</th><th>Terserang</th><th>Tidak terserang</th><th>Jumlah</th></tr><tr><td>Divaksin</td><td>12</td><td>88</td><td>100</td></tr><tr><td>Tidak divaksin</td><td>28</td><td>72</td><td>100</td></tr><tr><td>Jumlah</td><td>40</td><td>160</td><td>200</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Garis best-fit (regresi linear)",
           "html": "<p>Garis lurus \\(\\hat{y} = a + bx\\) yang paling mewakili data disebut garis <b>best-fit</b>. Garis ini tidak harus melalui titik data, tetapi selalu melalui titik rata-rata \\((\\bar{x}, \\bar{y})\\).</p><p><b>Residu</b> = y − ŷ, jarak tegak titik ke garis. Garis best-fit membuat jumlah kuadrat residu paling kecil (metode kuadrat terkecil).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pengayaan: rumus kuadrat terkecil",
+          "html": "\\[b = \\frac{n\\sum xy - \\sum x \\sum y}{n\\sum x^2 - (\\sum x)^2}, \\qquad a = \\bar{y} - b\\bar{x}\\]"
         },
         {
           "type": "sim",
@@ -216,28 +244,108 @@
           "caption": "Geser P dan Q untuk membuat jumlah kuadrat residu sekecil mungkin, lalu bandingkan dengan garis best-fit. Gunakan penggeser prediksi untuk melihat beda interpolasi dan ekstrapolasi."
         },
         {
+          "type": "example",
+          "title": "Contoh Penerapan: Garis Regresi Linear: Metode Kuadrat Terkecil (Ordinary Least Squares)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Garis Regresi Linear: Metode Kuadrat Terkecil (Ordinary Least Squares)</b> berikut. Analisislah berdasarkan kaidah Persamaan garis tren ŷ = a + bx; menghitung kemiringan b = r · (sy / sx) dan intersep a = ȳ - b·x̄; meminimalkan jumlah kuadrat sisaan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Garis Regresi Linear: Metode Kuadrat Terkecil (Ordinary Least Squares) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Tabel silang dengan 3 kategori baris dan 4 kategori kolom (tanpa baris dan kolom jumlah) dapat ditulis sebagai matriks berordo ....",
+          "options": {
+            "A": "3 × 4",
+            "B": "4 × 3",
+            "C": "7 × 1",
+            "D": "12 × 1"
+          },
+          "answer": "A",
+          "hint": "Ordo ditulis banyak baris × banyak kolom.",
+          "explanation": "3 baris dan 4 kolom, jadi ordonya 3 × 4."
+        }
+      ]
+    },
+    {
+      "id": "analisis-residual-dan-plot-sisaan",
+      "title": "Analisis Residual (e = y - ŷ) dan Uji Validitas Model",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Analisis Residual (e = y - ŷ) dan Uji Validitas Model</b>: Memplot grafik residual vs x; mendeteksi pola heteroskedastisitas atau non-linier yang menunjukkan model garis lurus kurang tepat.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Apakah tablet obat mual benar-benar mengurangi mual? Kita tidak cukup membandingkan frekuensi, apalagi jika banyak anggota tiap kelompok berbeda. Kita bandingkan <b>proporsi</b> di dalam setiap kelompok.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Pengayaan: rumus kuadrat terkecil",
-          "html": "\\[b = \\frac{n\\sum xy - \\sum x \\sum y}{n\\sum x^2 - (\\sum x)^2}, \\qquad a = \\bar{y} - b\\bar{x}\\]"
+          "variant": "awas",
+          "title": "Asosiasi bukan sebab-akibat",
+          "html": "<p>Asosiasi hanya menunjukkan kecenderungan. Untuk menyimpulkan sebab-akibat diperlukan desain penelitian khusus, misalnya eksperimen dengan pembagian kelompok secara acak dan placebo seperti uji obat di atas.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tentukan garis best-fit data Mona dan prediksi tabungan untuk uang jajan 20 ribu.</p>",
+          "title": "Contoh Penerapan: Analisis Residual (e = y - ŷ) dan Uji Validitas Model",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Analisis Residual (e = y - ŷ) dan Uji Validitas Model</b> berikut. Analisislah berdasarkan kaidah Memplot grafik residual vs x; mendeteksi pola heteroskedastisitas atau non-linier yang menunjukkan model garis lurus kurang tepat..</p>",
           "steps": [
-            "n = 8, Σx = 250, Σy = 72, Σxy = 2.670, Σx² = 9.200.",
-            "b = (8 × 2.670 − 250 × 72)/(8 × 9.200 − 250²) = 3.360/11.100 ≈ 0,303.",
-            "a = 9 − 0,303 × 31,25 ≈ −0,46. Jadi ŷ = −0,46 + 0,303x.",
-            "x = 20: ŷ ≈ 5,6 ribu rupiah."
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Analisis Residual (e = y - ŷ) dan Uji Validitas Model untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
           ],
-          "answer": "ŷ = −0,46 + 0,303x; prediksi sekitar Rp5.600,00"
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Analisis Residual (e = y - ŷ) dan Uji Validitas Model, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Analisis Residual (e = y - ŷ) dan Uji Validitas Model berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Memplot grafik residual vs x; mendeteksi pola heteroskedastisitas atau non-linier yang menunjukkan model garis lurus kurang tepat.."
+        }
+      ]
+    },
+    {
+      "id": "koefisien-determinasi-r2",
+      "title": "Koefisien Determinasi (r^2): Seberapa Baik Garis Memprediksi Data?",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Koefisien Determinasi (r^2): Seberapa Baik Garis Memprediksi Data?</b>: Interpretasi persentase variasi variabel y yang dapat dijelaskan oleh variasi variabel x dalam model regresi.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Mona mencatat uang jajan dan uang yang ditabung 8 temannya (dalam ribu rupiah): (10, 2), (40, 11), (25, 8), (50, 14), (15, 5), (35, 10), (30, 7), (45, 15). Bisakah kita memprediksi tabungan siswa yang uang jajannya 20 ribu?</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Interpolasi dan ekstrapolasi",
-          "html": "<p><b>Interpolasi</b>: memprediksi di dalam jangkauan data (uang jajan 10–50 ribu). <b>Ekstrapolasi</b>: di luar jangkauan, misalnya 60 ribu. Ekstrapolasi kurang dapat dipercaya karena belum tentu polanya tetap berlaku. Pencilan juga dapat mengubah garis dan nilai r secara drastis.</p>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Interpretasi persentase variasi variabel y yang dapat dijelaskan oleh variasi variabel x dalam model regresi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Koefisien Determinasi (r^2): Seberapa Baik Garis Memprediksi Data?",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Koefisien Determinasi (r^2): Seberapa Baik Garis Memprediksi Data?</b> berikut. Analisislah berdasarkan kaidah Interpretasi persentase variasi variabel y yang dapat dijelaskan oleh variasi variabel x dalam model regresi..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Koefisien Determinasi (r^2): Seberapa Baik Garis Memprediksi Data? untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
@@ -255,14 +363,20 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "interpolasi-ekstrapolasi-dan-pencilan",
+      "title": "Interpolasi, Bahaya Ekstrapolasi Jauh, dan Titik Pengaruh (Leverage)",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Data bivariat</td><td>dua variabel diamati pada setiap individu</td></tr><tr><td>Tabel silang</td><td>dua variabel kategorikal; dapat ditulis sebagai matriks</td></tr><tr><td>Frekuensi relatif bersyarat</td><td>sel ÷ jumlah baris; beda jauh antarbaris = asosiasi</td></tr><tr><td>Diagram pencar</td><td>arah, bentuk, kekuatan; r antara −1 dan 1</td></tr><tr><td>Garis best-fit</td><td>ŷ = a + bx, melalui (x̄, ȳ), meminimumkan jumlah kuadrat residu</td></tr><tr><td>Prediksi</td><td>interpolasi lebih dapat dipercaya daripada ekstrapolasi</td></tr></table>"
+          "html": "<p><b>Interpolasi, Bahaya Ekstrapolasi Jauh, dan Titik Pengaruh (Leverage)</b>: Melakukan prediksi dalam rentang data vs risiko ekstrapolasi di luar domain pengamatan; pengaruh pencilan (outlier) terhadap kemiringan garis regresi.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Interpolasi dan ekstrapolasi",
+          "html": "<p><b>Interpolasi</b>: memprediksi di dalam jangkauan data (uang jajan 10–50 ribu). <b>Ekstrapolasi</b>: di luar jangkauan, misalnya 60 ribu. Ekstrapolasi kurang dapat dipercaya karena belum tentu polanya tetap berlaku. Pencilan juga dapat mengubah garis dan nilai r secara drastis.</p>"
         },
         {
           "type": "callout",
@@ -271,8 +385,81 @@
           "html": "<ul><li>Membandingkan frekuensi, bukan frekuensi relatif bersyarat, pada kelompok berbeda ukuran.</li><li>Menganggap korelasi atau asosiasi sebagai sebab-akibat.</li><li>Mempercayai prediksi jauh di luar jangkauan data.</li></ul>"
         },
         {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan garis best-fit data Mona dan prediksi tabungan untuk uang jajan 20 ribu.</p>",
+          "steps": [
+            "n = 8, Σx = 250, Σy = 72, Σxy = 2.670, Σx² = 9.200.",
+            "b = (8 × 2.670 − 250 × 72)/(8 × 9.200 − 250²) = 3.360/11.100 ≈ 0,303.",
+            "a = 9 − 0,303 × 31,25 ≈ −0,46. Jadi ŷ = −0,46 + 0,303x.",
+            "x = 20: ŷ ≈ 5,6 ribu rupiah."
+          ],
+          "answer": "ŷ = −0,46 + 0,303x; prediksi sekitar Rp5.600,00"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Interpolasi, Bahaya Ekstrapolasi Jauh, dan Titik Pengaruh (Leverage), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Interpolasi, Bahaya Ekstrapolasi Jauh, dan Titik Pengaruh (Leverage) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Melakukan prediksi dalam rentang data vs risiko ekstrapolasi di luar domain pengamatan; pengaruh pencilan (outlier) terhadap kemiringan garis regresi.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Data Bivariat",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Data Bivariat</b>: Rangkuman rumus statistik bivariat dan paket latihan komprehensif.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas XI</i> (Kemendikbudristek), Bab 1 Analisis Data Bivariat.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Rangkuman rumus statistik bivariat dan paket latihan komprehensif.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Data Bivariat",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Data Bivariat</b> berikut. Analisislah berdasarkan kaidah Rangkuman rumus statistik bivariat dan paket latihan komprehensif..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Data Bivariat untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Data Bivariat, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Data Bivariat berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman rumus statistik bivariat dan paket latihan komprehensif.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

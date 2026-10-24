@@ -4,14 +4,119 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "bunga-majemuk",
-      "title": "Bunga tunggal dan bunga majemuk",
-      "kind": "simulasi",
-      "duration": "20 menit",
+      "id": "konsep-investasi-dan-anuitas",
+      "title": "Konsep Dasar Investasi Berkala dan Pengertian Anuitas",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Koperasi menawarkan dua jenis simpanan. Pada <b>bunga tunggal</b>, bunga dihitung dari modal awal saja. Pada <b>bunga majemuk</b>, bunga ditambahkan ke saldo dan ikut berbunga pada periode berikutnya (bunga berbunga).</p>"
+          "html": "<p><b>Konsep Dasar Investasi Berkala dan Pengertian Anuitas</b>: Rangkaian pembayaran atau penerimaan tetap yang dilakukan secara teratur pada interval waktu yang sama; anuitas biasa (ordinary annuity) vs anuitas jatuh tempo (annuity due).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Anuitas</b> adalah rangkaian pembayaran atau penerimaan dengan jumlah tetap pada setiap periode yang sama. Contohnya menabung Rp5.000.000,00 setiap akhir tahun, atau menerima uang pensiun bulanan. Pada <b>anuitas biasa</b> pembayaran dilakukan di akhir periode; pada <b>anuitas terutang</b> di awal periode.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/garis-waktu-anuitas.svg",
+          "alt": "Garis waktu setoran A setiap akhir tahun; setoran pertama berbunga n − 1 tahun, setoran terakhir tidak berbunga",
+          "width": 600,
+          "caption": "Nilai akhir anuitas adalah jumlah deret geometri."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Rangkaian pembayaran atau penerimaan tetap yang dilakukan secara teratur pada interval waktu yang sama; anuitas biasa (ordinary annuity) vs anuitas jatuh tempo (annuity due).</p>"
+        },
+        {
+          "type": "check",
+          "question": "Nilai akhir anuitas biasa dihitung dengan rumus jumlah deret ....",
+          "options": {
+            "A": "aritmetika dengan beda i",
+            "B": "geometri dengan rasio (1 + i)",
+            "C": "geometri dengan rasio i",
+            "D": "aritmetika dengan beda A"
+          },
+          "answer": "B",
+          "hint": "Setiap setoran berbunga majemuk dengan lama berbeda.",
+          "explanation": "Nilai setiap setoran: A, A(1 + i), A(1 + i)², …, sehingga rasionya (1 + i)."
+        },
+        {
+          "type": "check",
+          "question": "Pada contoh Jihan, total pembayaran bulan ke-5 adalah ....",
+          "options": {
+            "A": "Rp1.590.000,00",
+            "B": "Rp1.605.000,00",
+            "C": "Rp1.575.000,00",
+            "D": "Rp1.650.000,00"
+          },
+          "answer": "A",
+          "hint": "Sisa pinjaman awal bulan ke-5 = 15 juta − 4 × 1,5 juta.",
+          "explanation": "Sisa 9.000.000, bunga 90.000. Total 1.500.000 + 90.000 = 1.590.000."
+        }
+      ]
+    },
+    {
+      "id": "nilai-masa-depan-anuitas-investasi",
+      "title": "Nilai Masa Depan Anuitas (Future Value of Annuity): Tabungan Rencana",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Nilai Masa Depan Anuitas (Future Value of Annuity): Tabungan Rencana</b>: Menghitung akumulasi total investasi berkala bulanan FV = A · [((1 + i)^n - 1) / i]; merencanakan dana pensiun dan dana pendidikan anak.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Nilai akhir dan nilai sekarang anuitas",
+          "html": "\\[FV = A\\,\\frac{(1 + i)^n - 1}{i} \\qquad PV = A\\,\\frac{1 - (1 + i)^{-n}}{i}\\]<p>FV: total tabungan di akhir periode ke-n. PV: dana yang harus disimpan sekarang agar dapat diambil A setiap periode selama n periode.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/tabungan-rutin.html",
+          "title": "Tabungan rutin (anuitas)",
+          "height": 520,
+          "caption": "Bandingkan bagian hijau (bunga) ketika lama menabung 10 tahun dan 30 tahun. Mana yang lebih berpengaruh: menaikkan setoran atau memperpanjang waktu?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dana Rp30.000.000,00 diinvestasikan 2 tahun dengan bunga majemuk 3% atau 7% per tahun. Berapa selisih nilai akhirnya?</p>",
+          "steps": [
+            "3%: 30.000.000 × 1,0609 = 31.827.000.",
+            "7%: 30.000.000 × 1,1449 = 34.347.000.",
+            "Selisih Rp2.520.000,00."
+          ],
+          "answer": "Rp2.520.000,00"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Nilai Masa Depan Anuitas (Future Value of Annuity): Tabungan Rencana, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Nilai Masa Depan Anuitas (Future Value of Annuity): Tabungan Rencana berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menghitung akumulasi total investasi berkala bulanan FV = A · [((1 + i)^n - 1) / i]; merencanakan dana pensiun dan dana pendidikan anak.."
+        }
+      ]
+    },
+    {
+      "id": "nilai-sekarang-anuitas-pinjaman",
+      "title": "Nilai Sekarang Anuitas (Present Value of Annuity): Pinjaman dan Kredit",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Nilai Sekarang Anuitas (Present Value of Annuity): Pinjaman dan Kredit</b>: Menghitung besar pinjaman pokok yang dapat dicairkan PV = A · [(1 - (1 + i)^(-n)) / i] dari cicilan angsuran rutin A per bulan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
@@ -20,11 +125,24 @@
           "html": "\\[\\text{tunggal: } M_n = M(1 + in) \\qquad \\text{majemuk: } M_n = M(1 + i)^n\\]<p>Jika bunga i per tahun dimajemukkan m kali setahun, gunakan suku bunga i/m per periode dan banyak periode m × t. Hubungan nilai: FV = PV(1 + i)ⁿ.</p>"
         },
         {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Ringkasan pengaruh",
+          "html": "<ul><li>Investasi: i makin besar atau n makin lama → nilai akhir makin besar, dan pengaruhnya melipat (eksponensial).</li><li>Pinjaman: n makin lama → anuitas per bulan makin kecil, tetapi <b>total bunga makin besar</b>.</li><li>Pinjaman: uang muka makin besar → pokok pinjaman dan total bunga makin kecil.</li></ul>"
+        },
+        {
           "type": "sim",
-          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/bunga.html",
-          "title": "Bunga tunggal dan bunga majemuk",
-          "height": 520,
-          "caption": "Perpanjang lama menabung: kapan selisih bunga majemuk dan bunga tunggal mulai terasa besar?"
+          "src": "sim/pinjaman.html",
+          "title": "Simulasi pinjaman",
+          "height": 640,
+          "caption": "Pilih <b>Pokok tetap</b> dan periksa tabel dengan contoh Jihan. Lalu bandingkan total bunganya dengan skema anuitas."
+        },
+        {
+          "type": "sim",
+          "src": "sim/pinjaman.html",
+          "title": "Simulasi pinjaman anuitas",
+          "height": 640,
+          "caption": "Perhatikan bagian oranye (bunga) yang mengecil dan bagian biru (pokok) yang membesar. Ubah lama pinjaman menjadi 36 bulan dan bandingkan total bunganya."
         },
         {
           "type": "example",
@@ -48,62 +166,6 @@
           "answer": "≈ Rp11.268.250,00"
         },
         {
-          "type": "check",
-          "question": "Rp10.000.000,00 dengan bunga majemuk 10% per tahun selama 2 tahun menjadi ....",
-          "options": {
-            "A": "Rp12.000.000,00",
-            "B": "Rp12.100.000,00",
-            "C": "Rp11.000.000,00",
-            "D": "Rp12.210.000,00"
-          },
-          "answer": "B",
-          "hint": "M(1 + i)².",
-          "explanation": "10.000.000 × 1,21 = 12.100.000. Rp12.000.000,00 adalah hasil bunga tunggal."
-        }
-      ]
-    },
-    {
-      "id": "investasi-anuitas",
-      "title": "Investasi anuitas: nilai akhir dan nilai sekarang",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Anuitas</b> adalah rangkaian pembayaran atau penerimaan dengan jumlah tetap pada setiap periode yang sama. Contohnya menabung Rp5.000.000,00 setiap akhir tahun, atau menerima uang pensiun bulanan. Pada <b>anuitas biasa</b> pembayaran dilakukan di akhir periode; pada <b>anuitas terutang</b> di awal periode.</p>"
-        },
-        {
-          "type": "image",
-          "src": "gambar/garis-waktu-anuitas.svg",
-          "alt": "Garis waktu setoran A setiap akhir tahun; setoran pertama berbunga n − 1 tahun, setoran terakhir tidak berbunga",
-          "width": 600,
-          "caption": "Nilai akhir anuitas adalah jumlah deret geometri."
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Nilai akhir dan nilai sekarang anuitas",
-          "html": "\\[FV = A\\,\\frac{(1 + i)^n - 1}{i} \\qquad PV = A\\,\\frac{1 - (1 + i)^{-n}}{i}\\]<p>FV: total tabungan di akhir periode ke-n. PV: dana yang harus disimpan sekarang agar dapat diambil A setiap periode selama n periode.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/tabungan-rutin.html",
-          "title": "Tabungan rutin (anuitas)",
-          "height": 520,
-          "caption": "Bandingkan bagian hijau (bunga) ketika lama menabung 10 tahun dan 30 tahun. Mana yang lebih berpengaruh: menaikkan setoran atau memperpanjang waktu?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Seseorang menabung Rp5.000.000,00 setiap akhir tahun dengan bunga majemuk 6% per tahun. Berapa tabungannya setelah 10 tahun? (1,06¹⁰ ≈ 1,790848)</p>",
-          "steps": [
-            "FV = 5.000.000 × (1,790848 − 1)/0,06.",
-            "FV ≈ 5.000.000 × 13,18079 ≈ Rp65.903.975,00.",
-            "Total setoran Rp50.000.000,00; bunganya sekitar Rp15,9 juta."
-          ],
-          "answer": "≈ Rp65.903.975,00"
-        },
-        {
           "type": "example",
           "title": "Contoh soal 2",
           "question": "<p>Berapa uang yang harus disimpan sekarang dengan bunga 4% per tahun agar dapat diambil Rp1.000.000,00 setiap tahun selama 10 tahun? (1,04⁻¹⁰ ≈ 0,675564)</p>",
@@ -112,96 +174,6 @@
             "PV ≈ 1.000.000 × 8,110896 = Rp8.110.895,78."
           ],
           "answer": "≈ Rp8.110.895,78"
-        },
-        {
-          "type": "check",
-          "question": "Nilai akhir anuitas biasa dihitung dengan rumus jumlah deret ....",
-          "options": {
-            "A": "aritmetika dengan beda i",
-            "B": "geometri dengan rasio (1 + i)",
-            "C": "geometri dengan rasio i",
-            "D": "aritmetika dengan beda A"
-          },
-          "answer": "B",
-          "hint": "Setiap setoran berbunga majemuk dengan lama berbeda.",
-          "explanation": "Nilai setiap setoran: A, A(1 + i), A(1 + i)², …, sehingga rasionya (1 + i)."
-        }
-      ]
-    },
-    {
-      "id": "pinjaman-pokok-tetap",
-      "title": "Pinjaman dengan angsuran pokok tetap",
-      "kind": "simulasi",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Jihan meminjam Rp15.000.000,00 dengan bunga 12% per tahun (1% per bulan) selama 10 bulan. Bank menetapkan <b>angsuran pokok tetap</b> Rp1.500.000,00 per bulan, sedangkan bunganya dihitung dari <b>sisa pinjaman</b>. Akibatnya bunga, dan total pembayaran, makin kecil setiap bulan.</p>"
-        },
-        {
-          "type": "text",
-          "html": "<table><tr><th>Bulan</th><th>Sisa pinjaman</th><th>Pokok</th><th>Bunga 1%</th><th>Total bayar</th></tr><tr><td>1</td><td>15.000.000</td><td>1.500.000</td><td>150.000</td><td>1.650.000</td></tr><tr><td>2</td><td>13.500.000</td><td>1.500.000</td><td>135.000</td><td>1.635.000</td></tr><tr><td>3</td><td>12.000.000</td><td>1.500.000</td><td>120.000</td><td>1.620.000</td></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr><tr><td>10</td><td>1.500.000</td><td>1.500.000</td><td>15.000</td><td>1.515.000</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Pola",
-          "html": "<ul><li>Angsuran pokok = pinjaman ÷ banyak periode.</li><li>Bunga bulan ke-k = i × sisa pinjaman awal bulan ke-k; bunga turun dengan beda tetap (barisan aritmetika).</li><li>Total bunga = i × (jumlah semua sisa pinjaman).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/pinjaman.html",
-          "title": "Simulasi pinjaman",
-          "height": 640,
-          "caption": "Pilih <b>Pokok tetap</b> dan periksa tabel dengan contoh Jihan. Lalu bandingkan total bunganya dengan skema anuitas."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Hitung total bunga pinjaman Jihan.</p>",
-          "steps": [
-            "Bunga: 150.000, 135.000, …, 15.000 (10 suku, beda −15.000).",
-            "Total = 10/2 × (150.000 + 15.000) = 825.000."
-          ],
-          "answer": "Rp825.000,00"
-        },
-        {
-          "type": "check",
-          "question": "Pada contoh Jihan, total pembayaran bulan ke-5 adalah ....",
-          "options": {
-            "A": "Rp1.590.000,00",
-            "B": "Rp1.605.000,00",
-            "C": "Rp1.575.000,00",
-            "D": "Rp1.650.000,00"
-          },
-          "answer": "A",
-          "hint": "Sisa pinjaman awal bulan ke-5 = 15 juta − 4 × 1,5 juta.",
-          "explanation": "Sisa 9.000.000, bunga 90.000. Total 1.500.000 + 90.000 = 1.590.000."
-        }
-      ]
-    },
-    {
-      "id": "pinjaman-anuitas",
-      "title": "Pinjaman anuitas dan tabel pelunasan",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Kredit rumah dan kendaraan umumnya memakai <b>anuitas</b>: pembayaran setiap bulan sama besar. Di awal, sebagian besar anuitas dipakai untuk membayar bunga; makin lama, bagian angsuran pokok makin besar.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Anuitas pinjaman",
-          "html": "\\[A = M\\,\\frac{i}{1 - (1 + i)^{-n}}\\]<p>Setiap periode: bunga = i × sisa pinjaman, angsuran pokok = A − bunga, sisa baru = sisa lama − angsuran pokok. Angsuran pokok membentuk barisan geometri dengan rasio (1 + i).</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/pinjaman.html",
-          "title": "Simulasi pinjaman anuitas",
-          "height": 640,
-          "caption": "Perhatikan bagian oranye (bunga) yang mengecil dan bagian biru (pokok) yang membesar. Ubah lama pinjaman menjadi 36 bulan dan bandingkan total bunganya."
         },
         {
           "type": "example",
@@ -225,48 +197,6 @@
           "answer": "sisa setelah bulan ke-2 Rp6.181.000,00"
         },
         {
-          "type": "check",
-          "question": "Pada pinjaman anuitas, seiring berjalannya waktu ....",
-          "options": {
-            "A": "bagian bunga mengecil dan bagian angsuran pokok membesar",
-            "B": "bagian bunga dan angsuran pokok tetap",
-            "C": "bagian bunga membesar",
-            "D": "total pembayaran setiap bulan makin kecil"
-          },
-          "answer": "A",
-          "hint": "Bunga dihitung dari sisa pinjaman yang terus berkurang.",
-          "explanation": "Anuitas tetap, bunga mengecil, sehingga angsuran pokok = A − bunga membesar."
-        }
-      ]
-    },
-    {
-      "id": "parameter",
-      "title": "Pengaruh parameter investasi dan pinjaman",
-      "kind": "artikel",
-      "duration": "15 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Nilai akhir investasi dan besar angsuran pinjaman bergantung pada tiga <b>parameter</b>: suku bunga i, lama waktu n, dan besar setoran atau pinjaman.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Ringkasan pengaruh",
-          "html": "<ul><li>Investasi: i makin besar atau n makin lama → nilai akhir makin besar, dan pengaruhnya melipat (eksponensial).</li><li>Pinjaman: n makin lama → anuitas per bulan makin kecil, tetapi <b>total bunga makin besar</b>.</li><li>Pinjaman: uang muka makin besar → pokok pinjaman dan total bunga makin kecil.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dana Rp30.000.000,00 diinvestasikan 2 tahun dengan bunga majemuk 3% atau 7% per tahun. Berapa selisih nilai akhirnya?</p>",
-          "steps": [
-            "3%: 30.000.000 × 1,0609 = 31.827.000.",
-            "7%: 30.000.000 × 1,1449 = 34.347.000.",
-            "Selisih Rp2.520.000,00."
-          ],
-          "answer": "Rp2.520.000,00"
-        },
-        {
           "type": "example",
           "title": "Contoh soal 2",
           "question": "<p>Berapa tahun minimal agar Rp10.000.000,00 dengan bunga majemuk 8% per tahun menjadi lebih dari Rp20.000.000,00?</p>",
@@ -278,10 +208,76 @@
           "answer": "10 tahun"
         },
         {
+          "type": "check",
+          "question": "Rp10.000.000,00 dengan bunga majemuk 10% per tahun selama 2 tahun menjadi ....",
+          "options": {
+            "A": "Rp12.000.000,00",
+            "B": "Rp12.100.000,00",
+            "C": "Rp11.000.000,00",
+            "D": "Rp12.210.000,00"
+          },
+          "answer": "B",
+          "hint": "M(1 + i)².",
+          "explanation": "10.000.000 × 1,21 = 12.100.000. Rp12.000.000,00 adalah hasil bunga tunggal."
+        }
+      ]
+    },
+    {
+      "id": "komponen-anuitas-bunga-dan-angsuran",
+      "title": "Anatomi Cicilan Anuitas: Angsuran Pokok (an) dan Bunga (bn)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Anatomi Cicilan Anuitas: Angsuran Pokok (an) dan Bunga (bn)</b>: Hubungan fundamental A = an + bn; pada awal masa pinjaman porsi bunga sangat besar dan angsuran pokok kecil, seiring waktu porsi bunga mengecil dan porsi angsuran pokok membesar.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Nilai akhir investasi dan besar angsuran pinjaman bergantung pada tiga <b>parameter</b>: suku bunga i, lama waktu n, dan besar setoran atau pinjaman.</p>"
+        },
+        {
           "type": "callout",
           "variant": "tips",
           "title": "Aturan 72",
           "html": "<p>Perkiraan cepat waktu agar uang menjadi dua kali lipat: 72 ÷ (suku bunga dalam persen). Untuk 8%: 72/8 = 9 tahun, dekat dengan hasil hitungan di atas.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai bunga tahunan untuk periode bulanan tanpa membagi 12.</li><li>Menghitung bunga anuitas dari pinjaman awal, bukan dari sisa pinjaman.</li><li>Menganggap angsuran kecil berarti pinjaman lebih murah.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/02 Barisan dan Deret/sim/bunga.html",
+          "title": "Bunga tunggal dan bunga majemuk",
+          "height": 520,
+          "caption": "Perpanjang lama menabung: kapan selisih bunga majemuk dan bunga tunggal mulai terasa besar?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Anatomi Cicilan Anuitas: Angsuran Pokok (an) dan Bunga (bn)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Anatomi Cicilan Anuitas: Angsuran Pokok (an) dan Bunga (bn)</b> berikut. Analisislah berdasarkan kaidah Hubungan fundamental A = an + bn; pada awal masa pinjaman porsi bunga sangat besar dan angsuran pokok kecil, seiring waktu porsi bunga mengecil dan porsi angsuran pokok membesar..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Anatomi Cicilan Anuitas: Angsuran Pokok (an) dan Bunga (bn) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Pada pinjaman anuitas, seiring berjalannya waktu ....",
+          "options": {
+            "A": "bagian bunga mengecil dan bagian angsuran pokok membesar",
+            "B": "bagian bunga dan angsuran pokok tetap",
+            "C": "bagian bunga membesar",
+            "D": "total pembayaran setiap bulan makin kecil"
+          },
+          "answer": "A",
+          "hint": "Bunga dihitung dari sisa pinjaman yang terus berkurang.",
+          "explanation": "Anuitas tetap, bunga mengecil, sehingga angsuran pokok = A − bunga membesar."
         },
         {
           "type": "check",
@@ -299,24 +295,212 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "hubungan-antarsuku-angsuran",
+      "title": "Hubungan Matematis Antara Angsuran Pokok: an = a1 (1 + i)^(n - 1)",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hubungan Matematis Antara Angsuran Pokok: an = a1 (1 + i)^(n - 1)</b>: Membuktikan bahwa angsuran pokok membentuk barisan geometri dengan rasio (1 + i); menghitung sisa pinjaman setelah sekian periode cicilan.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Anuitas pinjaman",
+          "html": "\\[A = M\\,\\frac{i}{1 - (1 + i)^{-n}}\\]<p>Setiap periode: bunga = i × sisa pinjaman, angsuran pokok = A − bunga, sisa baru = sisa lama − angsuran pokok. Angsuran pokok membentuk barisan geometri dengan rasio (1 + i).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Hubungan Matematis Antara Angsuran Pokok: an = a1 (1 + i)^(n - 1)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Hubungan Matematis Antara Angsuran Pokok: an = a1 (1 + i)^(n - 1)</b> berikut. Analisislah berdasarkan kaidah Membuktikan bahwa angsuran pokok membentuk barisan geometri dengan rasio (1 + i); menghitung sisa pinjaman setelah sekian periode cicilan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Hubungan Matematis Antara Angsuran Pokok: an = a1 (1 + i)^(n - 1) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Hubungan Matematis Antara Angsuran Pokok: an = a1 (1 + i)^(n - 1), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Hubungan Matematis Antara Angsuran Pokok: an = a1 (1 + i)^(n - 1) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Membuktikan bahwa angsuran pokok membentuk barisan geometri dengan rasio (1 + i); menghitung sisa pinjaman setelah sekian periode cicilan.."
+        }
+      ]
+    },
+    {
+      "id": "tabel-amortisasi-pinjaman",
+      "title": "Konstruksi Tabel Amortisasi Pinjaman Bank (KPR / Kredit Kendaraan)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Konstruksi Tabel Amortisasi Pinjaman Bank (KPR / Kredit Kendaraan)</b>: Membuat tabel kolom demi kolom: Periode, Saldo Awal, Total Anuitas, Porsi Bunga, Porsi Angsuran Pokok, Saldo Akhir Pinjaman; transparansi perhitungan bank.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Koperasi menawarkan dua jenis simpanan. Pada <b>bunga tunggal</b>, bunga dihitung dari modal awal saja. Pada <b>bunga majemuk</b>, bunga ditambahkan ke saldo dan ikut berbunga pada periode berikutnya (bunga berbunga).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jihan meminjam Rp15.000.000,00 dengan bunga 12% per tahun (1% per bulan) selama 10 bulan. Bank menetapkan <b>angsuran pokok tetap</b> Rp1.500.000,00 per bulan, sedangkan bunganya dihitung dari <b>sisa pinjaman</b>. Akibatnya bunga, dan total pembayaran, makin kecil setiap bulan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Bulan</th><th>Sisa pinjaman</th><th>Pokok</th><th>Bunga 1%</th><th>Total bayar</th></tr><tr><td>1</td><td>15.000.000</td><td>1.500.000</td><td>150.000</td><td>1.650.000</td></tr><tr><td>2</td><td>13.500.000</td><td>1.500.000</td><td>135.000</td><td>1.635.000</td></tr><tr><td>3</td><td>12.000.000</td><td>1.500.000</td><td>120.000</td><td>1.620.000</td></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr><tr><td>10</td><td>1.500.000</td><td>1.500.000</td><td>15.000</td><td>1.515.000</td></tr></table>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Kredit rumah dan kendaraan umumnya memakai <b>anuitas</b>: pembayaran setiap bulan sama besar. Di awal, sebagian besar anuitas dipakai untuk membayar bunga; makin lama, bagian angsuran pokok makin besar.</p>"
+        },
         {
           "type": "text",
           "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Bunga tunggal</td><td>M(1 + in)</td></tr><tr><td>Bunga majemuk</td><td>M(1 + i)ⁿ; dimajemukkan m kali: i/m dan m·t periode</td></tr><tr><td>Nilai akhir anuitas</td><td>A[(1 + i)ⁿ − 1]/i</td></tr><tr><td>Nilai sekarang anuitas</td><td>A[1 − (1 + i)⁻ⁿ]/i</td></tr><tr><td>Anuitas pinjaman</td><td>M·i/[1 − (1 + i)⁻ⁿ]</td></tr><tr><td>Pokok tetap</td><td>pokok M/n, bunga dari sisa pinjaman</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Memakai bunga tahunan untuk periode bulanan tanpa membagi 12.</li><li>Menghitung bunga anuitas dari pinjaman awal, bukan dari sisa pinjaman.</li><li>Menganggap angsuran kecil berarti pinjaman lebih murah.</li></ul>"
+          "variant": "rumus",
+          "title": "Pola",
+          "html": "<ul><li>Angsuran pokok = pinjaman ÷ banyak periode.</li><li>Bunga bulan ke-k = i × sisa pinjaman awal bulan ke-k; bunga turun dengan beda tetap (barisan aritmetika).</li><li>Total bunga = i × (jumlah semua sisa pinjaman).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Seseorang menabung Rp5.000.000,00 setiap akhir tahun dengan bunga majemuk 6% per tahun. Berapa tabungannya setelah 10 tahun? (1,06¹⁰ ≈ 1,790848)</p>",
+          "steps": [
+            "FV = 5.000.000 × (1,790848 − 1)/0,06.",
+            "FV ≈ 5.000.000 × 13,18079 ≈ Rp65.903.975,00.",
+            "Total setoran Rp50.000.000,00; bunganya sekitar Rp15,9 juta."
+          ],
+          "answer": "≈ Rp65.903.975,00"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hitung total bunga pinjaman Jihan.</p>",
+          "steps": [
+            "Bunga: 150.000, 135.000, …, 15.000 (10 suku, beda −15.000).",
+            "Total = 10/2 × (150.000 + 15.000) = 825.000."
+          ],
+          "answer": "Rp825.000,00"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Konstruksi Tabel Amortisasi Pinjaman Bank (KPR / Kredit Kendaraan), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Konstruksi Tabel Amortisasi Pinjaman Bank (KPR / Kredit Kendaraan) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Membuat tabel kolom demi kolom: Periode, Saldo Awal, Total Anuitas, Porsi Bunga, Porsi Angsuran Pokok, Saldo Akhir Pinjaman; transparansi perhitungan bank.."
+        }
+      ]
+    },
+    {
+      "id": "dana-pelunasan-sinking-fund",
+      "title": "Dana Pelunasan Pinjaman (Sinking Fund) dan Rencana Pelunasan Obligasi",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Dana Pelunasan Pinjaman (Sinking Fund) dan Rencana Pelunasan Obligasi</b>: Menghitung setoran berkala rutin yang harus dialokasikan perusahaan agar pada tanggal jatuh tempo utang pokok dapat dilunasi secara tunai sekaligus.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Menghitung setoran berkala rutin yang harus dialokasikan perusahaan agar pada tanggal jatuh tempo utang pokok dapat dilunasi secara tunai sekaligus.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Dana Pelunasan Pinjaman (Sinking Fund) dan Rencana Pelunasan Obligasi",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Dana Pelunasan Pinjaman (Sinking Fund) dan Rencana Pelunasan Obligasi</b> berikut. Analisislah berdasarkan kaidah Menghitung setoran berkala rutin yang harus dialokasikan perusahaan agar pada tanggal jatuh tempo utang pokok dapat dilunasi secara tunai sekaligus..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Dana Pelunasan Pinjaman (Sinking Fund) dan Rencana Pelunasan Obligasi untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Dana Pelunasan Pinjaman (Sinking Fund) dan Rencana Pelunasan Obligasi, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Dana Pelunasan Pinjaman (Sinking Fund) dan Rencana Pelunasan Obligasi berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menghitung setoran berkala rutin yang harus dialokasikan perusahaan agar pada tanggal jatuh tempo utang pokok dapat dilunasi secara tunai sekaligus.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Matematika Anuitas",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Matematika Anuitas</b>: Peta konsep sistem anuitas dan paket latihan perhitungan simulasi kredit perbankan.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 2 Investasi dan Pinjaman.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Peta konsep sistem anuitas dan paket latihan perhitungan simulasi kredit perbankan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Matematika Anuitas",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Matematika Anuitas</b> berikut. Analisislah berdasarkan kaidah Peta konsep sistem anuitas dan paket latihan perhitungan simulasi kredit perbankan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Matematika Anuitas untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Matematika Anuitas, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Matematika Anuitas berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Peta konsep sistem anuitas dan paket latihan perhitungan simulasi kredit perbankan.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

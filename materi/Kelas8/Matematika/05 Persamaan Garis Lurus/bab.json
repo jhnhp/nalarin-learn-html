@@ -4,20 +4,47 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "grafik-garis",
-      "title": "Grafik persamaan garis lurus",
-      "kind": "artikel",
-      "duration": "12 menit",
+      "id": "bentuk-umum-grafik-pgl",
+      "title": "Bentuk Umum Persamaan Garis Lurus dan Cara Menggambar Grafiknya",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Bentuk Umum Persamaan Garis Lurus dan Cara Menggambar Grafiknya</b>: Bentuk y = mx + c dan ax + by + c = 0; menggambar garis dengan menentukan titik potong sumbu-x (y=0) dan sumbu-y (x=0).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
           "html": "<p>Persamaan seperti \\(y = 2x + 1\\) atau \\(4x - y = 5\\) disebut <b>persamaan garis lurus</b>, karena semua titik (x, y) yang memenuhinya terletak pada satu garis lurus. Bentuk umumnya:</p>\\[y = mx + c \\qquad \\text{atau} \\qquad ax + by = c\\]"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VIII</i> (Kemendikbudristek), Bab 5 Persamaan Garis Lurus.</small></p>"
         },
         {
           "type": "callout",
           "variant": "tips",
           "title": "Cara cepat menggambar",
           "html": "<ol><li>Cari dua titik pada garis. Paling mudah: titik potong dengan sumbu x (y = 0) dan sumbu y (x = 0).</li><li>Gambar kedua titik pada bidang koordinat.</li><li>Tarik garis lurus melalui keduanya.</li></ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Kemiringan dari persamaan",
+          "html": "<ul><li>\\(y = mx + c\\): kemiringannya langsung m.</li><li>\\(ax + by = c\\): ubah dulu ke bentuk y = …, atau pakai \\(m = -\\dfrac{a}{b}\\). Contoh: 2x + 4y = 8 memiliki m = −2/4 = −½.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menghitung Δx/Δy, padahal yang benar Δy/Δx.</li><li>Mengambil m = a pada ax + by = c tanpa mengubah ke bentuk y = ….</li><li>Lupa membalik tanda saat mencari kemiringan garis tegak lurus.</li></ul>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/garis-mc.html",
+          "title": "Grafik y = mx + c",
+          "height": 520,
+          "caption": "Ubah m dan c. Apa pengaruh m? Apa pengaruh c? Centang <b>garis sejajar dan tegak lurus</b> dan amati kemiringan ketiga garis."
         },
         {
           "type": "example",
@@ -32,6 +59,17 @@
           "answer": "garis melalui (0, −5), (1¼, 0), dan (2, 3)"
         },
         {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tentukan persamaan garis melalui (−1, 4) dan (3, −4).</p>",
+          "steps": [
+            "\\(m = \\dfrac{-4 - 4}{3 - (-1)} = \\dfrac{-8}{4} = -2\\).",
+            "\\(y - 4 = -2(x + 1)\\), sehingga \\(y = -2x + 2\\).",
+            "Periksa dengan (3, −4): −2(3) + 2 = −4. Benar."
+          ],
+          "answer": "\\(y = -2x + 2\\)"
+        },
+        {
           "type": "check",
           "question": "Titik berikut yang terletak pada garis \\(y = 2x - 1\\) adalah ....",
           "options": {
@@ -43,24 +81,52 @@
           "answer": "B",
           "hint": "Substitusikan x, lalu cocokkan y.",
           "explanation": "Untuk x = 3: y = 2(3) − 1 = 5. Jadi (3, 5) terletak pada garis."
+        },
+        {
+          "type": "check",
+          "question": "Persamaan garis yang melalui (0, −1) dan tegak lurus dengan \\(y = \\tfrac{1}{2}x + 3\\) adalah ....",
+          "options": {
+            "A": "\\(y = \\tfrac12 x - 1\\)",
+            "B": "\\(y = -2x - 1\\)",
+            "C": "\\(y = 2x - 1\\)",
+            "D": "\\(y = -\\tfrac12 x - 1\\)"
+          },
+          "answer": "B",
+          "hint": "Kemiringan garis tegak lurus adalah kebalikan negatif dari ½.",
+          "explanation": "m = −2 dan titik potong sumbu y −1, jadi \\(y = -2x - 1\\)."
+        },
+        {
+          "type": "check",
+          "question": "Tarif air PDAM: biaya tetap Rp15.000,00 ditambah Rp4.000,00 per m³. Pada persamaan y = 4.000x + 15.000, angka 4.000 menyatakan ....",
+          "options": {
+            "A": "biaya tetap bulanan",
+            "B": "biaya setiap 1 m³ air",
+            "C": "total tagihan",
+            "D": "banyak air yang dipakai"
+          },
+          "answer": "B",
+          "hint": "Kemiringan = perubahan y untuk setiap kenaikan 1 pada x.",
+          "explanation": "4.000 adalah kemiringan: tagihan naik Rp4.000,00 untuk setiap 1 m³. 15.000 adalah biaya tetap (nilai awal)."
         }
       ]
     },
     {
-      "id": "kemiringan",
-      "title": "Kemiringan (gradien)",
+      "id": "pengertian-kemiringan-gradien",
+      "title": "Konsep Kemiringan / Gradien (m = Perubahan Tegak / Perubahan Mendatar)",
       "kind": "simulasi",
-      "duration": "20 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Konsep Kemiringan / Gradien (m = Perubahan Tegak / Perubahan Mendatar)</b>: Gradien positif (menanjak ke kanan), gradien negatif (menurun ke kanan), gradien nol (horizontal), dan gradien tak terdefinisi (vertikal).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Jalan menanjak, atap rumah, dan tangga yang bersandar memiliki <b>kemiringan</b>. Semakin curam, semakin besar kemiringannya. Dalam matematika, kemiringan garis disebut juga <b>gradien</b> dan dilambangkan m.</p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Kemiringan",
-          "html": "\\[m = \\frac{\\text{perubahan tegak}}{\\text{perubahan mendatar}} = \\frac{y_2 - y_1}{x_2 - x_1}\\]"
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Persamaan garis</td><td>\\(y = mx + c\\) atau \\(ax + by = c\\).</td></tr><tr><td>Kemiringan</td><td>\\(m = \\dfrac{y_2 - y_1}{x_2 - x_1}\\); dari ax + by = c: \\(m = -\\tfrac{a}{b}\\).</td></tr><tr><td>Tanda m</td><td>positif naik, negatif turun, nol mendatar, garis tegak tidak terdefinisi.</td></tr><tr><td>Melalui satu titik</td><td>\\(y - y_1 = m(x - x_1)\\).</td></tr><tr><td>Sejajar, tegak lurus</td><td>\\(m_1 = m_2\\); \\(m_1 m_2 = -1\\).</td></tr><tr><td>Konteks</td><td>m = laju perubahan, c = nilai awal.</td></tr></table>"
         },
         {
           "type": "image",
@@ -77,21 +143,10 @@
           "caption": "Tanda kemiringan menunjukkan arah garis."
         },
         {
-          "type": "h",
-          "text": "Coba sendiri"
-        },
-        {
-          "type": "sim",
-          "src": "sim/dua-titik.html",
-          "title": "Kemiringan dari dua titik",
-          "height": 480,
-          "caption": "Geser A dan B. Perhatikan tanda Δx dan Δy. Buat garis mendatar dan garis tegak. Berapa kemiringannya?"
-        },
-        {
           "type": "callout",
-          "variant": "info",
-          "title": "Kemiringan dari persamaan",
-          "html": "<ul><li>\\(y = mx + c\\): kemiringannya langsung m.</li><li>\\(ax + by = c\\): ubah dulu ke bentuk y = …, atau pakai \\(m = -\\dfrac{a}{b}\\). Contoh: 2x + 4y = 8 memiliki m = −2/4 = −½.</li></ul>"
+          "variant": "rumus",
+          "title": "Kemiringan",
+          "html": "\\[m = \\frac{\\text{perubahan tegak}}{\\text{perubahan mendatar}} = \\frac{y_2 - y_1}{x_2 - x_1}\\]"
         },
         {
           "type": "example",
@@ -102,6 +157,232 @@
             "Dalam persen: 0,075 × 100% = 7,5%. Rambu jalan biasanya menulis \"tanjakan 7,5%\"."
           ],
           "answer": "0,075 atau 7,5%"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Konsep Kemiringan / Gradien (m = Perubahan Tegak / Perubahan Mendatar), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Konsep Kemiringan / Gradien (m = Perubahan Tegak / Perubahan Mendatar) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Gradien positif (menanjak ke kanan), gradien negatif (menurun ke kanan), gradien nol (horizontal), dan gradien tak terdefinisi (vertikal).."
+        }
+      ]
+    },
+    {
+      "id": "menghitung-gradien-dua-titik",
+      "title": "Menghitung Gradien Garis Melalui Dua Titik (m = (y2-y1)/(x2-x1))",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menghitung Gradien Garis Melalui Dua Titik (m = (y2-y1)/(x2-x1))</b>: Penurunan rumus dari segitiga laju perubahan pada koordinat Cartesius dan contoh perhitungan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Arti m dan c dalam konteks",
+          "html": "<p>Pada \\(y = mx + c\\): <b>m</b> adalah laju perubahan (berapa y berubah untuk setiap 1 satuan x), dan <b>c</b> adalah nilai awal (nilai y ketika x = 0).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Nilai sebuah truk baru Rp400 juta dan turun Rp30 juta setiap tahun. Tulis rumus nilai truk, lalu tentukan nilainya setelah 6 tahun.</p>",
+          "steps": [
+            "Nilai awal c = 400 dan laju m = −30 (turun), dalam juta rupiah.",
+            "V(t) = −30t + 400.",
+            "V(6) = −180 + 400 = 220 juta rupiah."
+          ],
+          "answer": "Rp220 juta"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menghitung Gradien Garis Melalui Dua Titik (m = (y2-y1)/(x2-x1)), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Menghitung Gradien Garis Melalui Dua Titik (m = (y2-y1)/(x2-x1)) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Penurunan rumus dari segitiga laju perubahan pada koordinat Cartesius dan contoh perhitungan.."
+        }
+      ]
+    },
+    {
+      "id": "menentukan-gradien-dari-persamaan",
+      "title": "Menentukan Gradien dari Persamaan Garis",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menentukan Gradien dari Persamaan Garis</b>: Gradien dari persamaan eksplisit y = mx + c adalah m, gradien dari bentuk implisit ax + by + c = 0 adalah -a/b.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "h",
+          "text": "Coba sendiri"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Gradien dari persamaan eksplisit y = mx + c adalah m, gradien dari bentuk implisit ax + by + c = 0 adalah -a/b.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Menentukan Gradien dari Persamaan Garis",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Menentukan Gradien dari Persamaan Garis</b> berikut. Analisislah berdasarkan kaidah Gradien dari persamaan eksplisit y = mx + c adalah m, gradien dari bentuk implisit ax + by + c = 0 adalah -a/b..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Menentukan Gradien dari Persamaan Garis untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menentukan Gradien dari Persamaan Garis, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Menentukan Gradien dari Persamaan Garis berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Gradien dari persamaan eksplisit y = mx + c adalah m, gradien dari bentuk implisit ax + by + c = 0 adalah -a/b.."
+        }
+      ]
+    },
+    {
+      "id": "persamaan-garis-gradien-titik",
+      "title": "Menentukan Persamaan Garis dengan Gradien m Melalui Titik (x1, y1)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menentukan Persamaan Garis dengan Gradien m Melalui Titik (x1, y1)</b>: Menggunakan rumus y - y1 = m(x - x1) dan mengubahnya ke bentuk standar.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Menggunakan rumus y - y1 = m(x - x1) dan mengubahnya ke bentuk standar.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Menentukan Persamaan Garis dengan Gradien m Melalui Titik (x1, y1)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Menentukan Persamaan Garis dengan Gradien m Melalui Titik (x1, y1)</b> berikut. Analisislah berdasarkan kaidah Menggunakan rumus y - y1 = m(x - x1) dan mengubahnya ke bentuk standar..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Menentukan Persamaan Garis dengan Gradien m Melalui Titik (x1, y1) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menentukan Persamaan Garis dengan Gradien m Melalui Titik (x1, y1), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Menentukan Persamaan Garis dengan Gradien m Melalui Titik (x1, y1) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menggunakan rumus y - y1 = m(x - x1) dan mengubahnya ke bentuk standar.."
+        }
+      ]
+    },
+    {
+      "id": "persamaan-garis-dua-titik",
+      "title": "Menentukan Persamaan Garis Melalui Dua Titik (x1, y1) dan (x2, y2)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Menentukan Persamaan Garis Melalui Dua Titik (x1, y1) dan (x2, y2)</b>: Menggunakan rumus (y - y1)/(y2 - y1) = (x - x1)/(x2 - x1) secara terstruktur.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan garis",
+          "html": "<ul><li>Melalui titik \\((x_1, y_1)\\) dengan kemiringan m: \\(y - y_1 = m(x - x_1)\\).</li><li>Melalui dua titik: hitung dulu \\(m = \\dfrac{y_2 - y_1}{x_2 - x_1}\\), lalu pakai rumus di atas.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Menentukan Persamaan Garis Melalui Dua Titik (x1, y1) dan (x2, y2)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Menentukan Persamaan Garis Melalui Dua Titik (x1, y1) dan (x2, y2)</b> berikut. Analisislah berdasarkan kaidah Menggunakan rumus (y - y1)/(y2 - y1) = (x - x1)/(x2 - x1) secara terstruktur..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Menentukan Persamaan Garis Melalui Dua Titik (x1, y1) dan (x2, y2) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menentukan Persamaan Garis Melalui Dua Titik (x1, y1) dan (x2, y2), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Menentukan Persamaan Garis Melalui Dua Titik (x1, y1) dan (x2, y2) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menggunakan rumus (y - y1)/(y2 - y1) = (x - x1)/(x2 - x1) secara terstruktur.."
+        }
+      ]
+    },
+    {
+      "id": "hubungan-garis-sejajar",
+      "title": "Hubungan Garis-Garis Sejajar (m1 = m2)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hubungan Garis-Garis Sejajar (m1 = m2)</b>: Dua garis tidak pernah berpotongan karena memiliki kemiringan yang identik; menentukan garis sejajar garis lain melalui suatu titik.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Dua garis tidak pernah berpotongan karena memiliki kemiringan yang identik; menentukan garis sejajar garis lain melalui suatu titik.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/dua-titik.html",
+          "title": "Kemiringan dari dua titik",
+          "height": 480,
+          "caption": "Geser A dan B. Perhatikan tanda Δx dan Δy. Buat garis mendatar dan garis tegak. Berapa kemiringannya?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Tentukan persamaan garis yang melalui (1, 2) dan sejajar dengan \\(3x - y = 5\\).</p>",
+          "steps": [
+            "\\(3x - y = 5\\) sama dengan \\(y = 3x - 5\\), jadi m = 3.",
+            "Garis sejajar juga memiliki m = 3: \\(y - 2 = 3(x - 1)\\).",
+            "\\(y = 3x - 1\\)."
+          ],
+          "answer": "\\(y = 3x - 1\\)"
         },
         {
           "type": "check",
@@ -132,31 +413,22 @@
       ]
     },
     {
-      "id": "persamaan-garis",
-      "title": "Menentukan persamaan garis",
+      "id": "hubungan-garis-tegak-lurus",
+      "title": "Hubungan Garis-Garis Tegak Lurus (m1 · m2 = -1)",
       "kind": "simulasi",
-      "duration": "20 menit",
+      "duration": "8 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Persamaan garis",
-          "html": "<ul><li>Melalui titik \\((x_1, y_1)\\) dengan kemiringan m: \\(y - y_1 = m(x - x_1)\\).</li><li>Melalui dua titik: hitung dulu \\(m = \\dfrac{y_2 - y_1}{x_2 - x_1}\\), lalu pakai rumus di atas.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tentukan persamaan garis melalui (−1, 4) dan (3, −4).</p>",
-          "steps": [
-            "\\(m = \\dfrac{-4 - 4}{3 - (-1)} = \\dfrac{-8}{4} = -2\\).",
-            "\\(y - 4 = -2(x + 1)\\), sehingga \\(y = -2x + 2\\).",
-            "Periksa dengan (3, −4): −2(3) + 2 = −4. Benar."
-          ],
-          "answer": "\\(y = -2x + 2\\)"
+          "type": "text",
+          "html": "<p><b>Hubungan Garis-Garis Tegak Lurus (m1 · m2 = -1)</b>: Dua garis berpotongan membentuk sudut 90°, pembuktian rotasi bahwa gradien garis tegak lurus adalah kebalikan negatifnya (m2 = -1/m1).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "h",
           "text": "Garis sejajar dan tegak lurus"
+        },
+        {
+          "type": "text",
+          "html": "<p>Banyak hubungan sehari-hari berbentuk garis lurus: nilai truk yang turun dengan jumlah tetap setiap tahun, tarif air yang terdiri atas biaya tetap dan biaya per meter kubik, atau suhu yang naik secara teratur.</p>"
         },
         {
           "type": "callout",
@@ -165,99 +437,162 @@
           "html": "<ul><li><b>Sejajar</b>: kemiringannya sama, \\(m_1 = m_2\\).</li><li><b>Tegak lurus</b>: hasil kali kemiringannya −1, \\(m_1 \\times m_2 = -1\\). Contoh: m = ½ tegak lurus dengan m = −2.</li></ul>"
         },
         {
-          "type": "sim",
-          "src": "sim/garis-mc.html",
-          "title": "Grafik y = mx + c",
-          "height": 520,
-          "caption": "Ubah m dan c. Apa pengaruh m? Apa pengaruh c? Centang <b>garis sejajar dan tegak lurus</b> dan amati kemiringan ketiga garis."
-        },
-        {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Tentukan persamaan garis yang melalui (1, 2) dan sejajar dengan \\(3x - y = 5\\).</p>",
+          "title": "Contoh Penerapan: Hubungan Garis-Garis Tegak Lurus (m1 · m2 = -1)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Hubungan Garis-Garis Tegak Lurus (m1 · m2 = -1)</b> berikut. Analisislah berdasarkan kaidah Dua garis berpotongan membentuk sudut 90°, pembuktian rotasi bahwa gradien garis tegak lurus adalah kebalikan negatifnya (m2 = -1/m1)..</p>",
           "steps": [
-            "\\(3x - y = 5\\) sama dengan \\(y = 3x - 5\\), jadi m = 3.",
-            "Garis sejajar juga memiliki m = 3: \\(y - 2 = 3(x - 1)\\).",
-            "\\(y = 3x - 1\\)."
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Hubungan Garis-Garis Tegak Lurus (m1 · m2 = -1) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
           ],
-          "answer": "\\(y = 3x - 1\\)"
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
-          "question": "Persamaan garis yang melalui (0, −1) dan tegak lurus dengan \\(y = \\tfrac{1}{2}x + 3\\) adalah ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Hubungan Garis-Garis Tegak Lurus (m1 · m2 = -1), manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "\\(y = \\tfrac12 x - 1\\)",
-            "B": "\\(y = -2x - 1\\)",
-            "C": "\\(y = 2x - 1\\)",
-            "D": "\\(y = -\\tfrac12 x - 1\\)"
+            "A": "Prinsip Hubungan Garis-Garis Tegak Lurus (m1 · m2 = -1) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "B",
-          "hint": "Kemiringan garis tegak lurus adalah kebalikan negatif dari ½.",
-          "explanation": "m = −2 dan titik potong sumbu y −1, jadi \\(y = -2x - 1\\)."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Dua garis berpotongan membentuk sudut 90°, pembuktian rotasi bahwa gradien garis tegak lurus adalah kebalikan negatifnya (m2 = -1/m1).."
         }
       ]
     },
     {
-      "id": "penerapan",
-      "title": "Penerapan persamaan garis lurus",
-      "kind": "artikel",
-      "duration": "12 menit",
+      "id": "titik-potong-dua-garis",
+      "title": "Menentukan Titik Potong Dua Garis Lurus",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Banyak hubungan sehari-hari berbentuk garis lurus: nilai truk yang turun dengan jumlah tetap setiap tahun, tarif air yang terdiri atas biaya tetap dan biaya per meter kubik, atau suhu yang naik secara teratur.</p>"
+          "html": "<p><b>Menentukan Titik Potong Dua Garis Lurus</b>: Penyelesaian aljabar titik potong sebagai solusi persekutuan (pengantar SPLDV).</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "callout",
           "variant": "info",
-          "title": "Arti m dan c dalam konteks",
-          "html": "<p>Pada \\(y = mx + c\\): <b>m</b> adalah laju perubahan (berapa y berubah untuk setiap 1 satuan x), dan <b>c</b> adalah nilai awal (nilai y ketika x = 0).</p>"
+          "title": "Konsep Esensial",
+          "html": "<p>Penyelesaian aljabar titik potong sebagai solusi persekutuan (pengantar SPLDV).</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Nilai sebuah truk baru Rp400 juta dan turun Rp30 juta setiap tahun. Tulis rumus nilai truk, lalu tentukan nilainya setelah 6 tahun.</p>",
+          "title": "Contoh Penerapan: Menentukan Titik Potong Dua Garis Lurus",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Menentukan Titik Potong Dua Garis Lurus</b> berikut. Analisislah berdasarkan kaidah Penyelesaian aljabar titik potong sebagai solusi persekutuan (pengantar SPLDV)..</p>",
           "steps": [
-            "Nilai awal c = 400 dan laju m = −30 (turun), dalam juta rupiah.",
-            "V(t) = −30t + 400.",
-            "V(6) = −180 + 400 = 220 juta rupiah."
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Menentukan Titik Potong Dua Garis Lurus untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
           ],
-          "answer": "Rp220 juta"
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
         },
         {
           "type": "check",
-          "question": "Tarif air PDAM: biaya tetap Rp15.000,00 ditambah Rp4.000,00 per m³. Pada persamaan y = 4.000x + 15.000, angka 4.000 menyatakan ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Menentukan Titik Potong Dua Garis Lurus, manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "biaya tetap bulanan",
-            "B": "biaya setiap 1 m³ air",
-            "C": "total tagihan",
-            "D": "banyak air yang dipakai"
+            "A": "Prinsip Menentukan Titik Potong Dua Garis Lurus berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "B",
-          "hint": "Kemiringan = perubahan y untuk setiap kenaikan 1 pada x.",
-          "explanation": "4.000 adalah kemiringan: tagihan naik Rp4.000,00 untuk setiap 1 m³. 15.000 adalah biaya tetap (nilai awal)."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Penyelesaian aljabar titik potong sebagai solusi persekutuan (pengantar SPLDV).."
         }
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "penerapan-pgl-kontekstual",
+      "title": "Aplikasi PGL dalam Masalah Nyata (Laju Perubahan Konstan)",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Persamaan garis</td><td>\\(y = mx + c\\) atau \\(ax + by = c\\).</td></tr><tr><td>Kemiringan</td><td>\\(m = \\dfrac{y_2 - y_1}{x_2 - x_1}\\); dari ax + by = c: \\(m = -\\tfrac{a}{b}\\).</td></tr><tr><td>Tanda m</td><td>positif naik, negatif turun, nol mendatar, garis tegak tidak terdefinisi.</td></tr><tr><td>Melalui satu titik</td><td>\\(y - y_1 = m(x - x_1)\\).</td></tr><tr><td>Sejajar, tegak lurus</td><td>\\(m_1 = m_2\\); \\(m_1 m_2 = -1\\).</td></tr><tr><td>Konteks</td><td>m = laju perubahan, c = nilai awal.</td></tr></table>"
+          "html": "<p><b>Aplikasi PGL dalam Masalah Nyata (Laju Perubahan Konstan)</b>: Model depresiasi harga kendaraan terhadap umur, kecepatan konstan, biaya sewa harian.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menghitung Δx/Δy, padahal yang benar Δy/Δx.</li><li>Mengambil m = a pada ax + by = c tanpa mengubah ke bentuk y = ….</li><li>Lupa membalik tanda saat mencari kemiringan garis tegak lurus.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Model depresiasi harga kendaraan terhadap umur, kecepatan konstan, biaya sewa harian.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Aplikasi PGL dalam Masalah Nyata (Laju Perubahan Konstan)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Aplikasi PGL dalam Masalah Nyata (Laju Perubahan Konstan)</b> berikut. Analisislah berdasarkan kaidah Model depresiasi harga kendaraan terhadap umur, kecepatan konstan, biaya sewa harian..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Aplikasi PGL dalam Masalah Nyata (Laju Perubahan Konstan) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Aplikasi PGL dalam Masalah Nyata (Laju Perubahan Konstan), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Aplikasi PGL dalam Masalah Nyata (Laju Perubahan Konstan) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Model depresiasi harga kendaraan terhadap umur, kecepatan konstan, biaya sewa harian.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Mandiri",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Mandiri</b>: Rangkuman rumus lengkap PGL dan set latihan soal analitis.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Rangkuman rumus lengkap PGL dan set latihan soal analitis.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Mandiri",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Mandiri</b> berikut. Analisislah berdasarkan kaidah Rangkuman rumus lengkap PGL dan set latihan soal analitis..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Mandiri untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Mandiri, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Mandiri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman rumus lengkap PGL dan set latihan soal analitis.."
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMP/MTs Kelas VIII</i> (Kemendikbudristek), Bab 5 Persamaan Garis Lurus.</small></p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

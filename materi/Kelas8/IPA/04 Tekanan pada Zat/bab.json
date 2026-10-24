@@ -4,20 +4,18 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "tekanan-padat",
-      "title": "Tekanan pada zat padat",
-      "kind": "artikel",
-      "duration": "20 menit",
+      "id": "tekanan-zat-padat",
+      "title": "Tekanan pada Zat Padat (P = F / A)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Mengapa pisau yang tajam lebih mudah memotong daripada pisau tumpul, padahal gaya yang kita berikan sama? Jawabannya adalah <b>tekanan</b>: besar gaya yang bekerja pada setiap satuan luas bidang tekan.</p>"
+          "html": "<p><b>Tekanan pada Zat Padat (P = F / A)</b>: Hubungan tekanan berbanding lurus dengan gaya dan berbanding terbalik dengan luas permukaan sentuh; paku runcing, sepatu salju.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Tekanan",
-          "html": "\\[P = \\frac{F}{A}\\]<p>P tekanan (N/m² = pascal, Pa), F gaya tekan (N), A luas bidang tekan (m²). Gaya sama dengan luas kecil menghasilkan tekanan besar.</p>"
+          "type": "text",
+          "html": "<table><tr><th>Memperbesar tekanan (luas kecil)</th><th>Memperkecil tekanan (luas besar)</th></tr><tr><td>mata pisau dan kapak tajam, ujung paku runcing, jarum suntik</td><td>sepatu salju, ban truk lebar, rel kereta di atas bantalan, tali tas yang lebar</td></tr></table>"
         },
         {
           "type": "image",
@@ -27,8 +25,10 @@
           "caption": "Tekanan bergantung pada luas bidang tekan."
         },
         {
-          "type": "text",
-          "html": "<table><tr><th>Memperbesar tekanan (luas kecil)</th><th>Memperkecil tekanan (luas besar)</th></tr><tr><td>mata pisau dan kapak tajam, ujung paku runcing, jarum suntik</td><td>sepatu salju, ban truk lebar, rel kereta di atas bantalan, tali tas yang lebar</td></tr></table>"
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Hubungan tekanan berbanding lurus dengan gaya dan berbanding terbalik dengan luas permukaan sentuh; paku runcing, sepatu salju.</p>"
         },
         {
           "type": "example",
@@ -56,29 +56,20 @@
       ]
     },
     {
-      "id": "zat-cair",
-      "title": "Tekanan hidrostatis dan hukum Archimedes",
+      "id": "tekanan-hidrostatis",
+      "title": "Tekanan Zat Cair / Hidrostatis (P_h = ρ·g·h)",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Tekanan Zat Cair / Hidrostatis (P_h = ρ·g·h)</b>: Tekanan zat cair hanya dipengaruhi massa jenis, percepatan gravitasi, dan kedalaman (h); tekanan pada dinding bendungan dan penyelam.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Tekanan hidrostatis",
           "html": "\\[P_h = \\rho \\cdot g \\cdot h\\]<p>ρ massa jenis zat cair (kg/m³), g percepatan gravitasi (10 m/s²), h kedalaman (m). Makin dalam, makin besar tekanannya. Karena itu dinding bendungan dibuat makin tebal ke bawah dan penyelam merasa telinganya tertekan.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Hukum Archimedes",
-          "html": "\\[F_a = \\rho_{\\text{cair}} \\cdot g \\cdot V_{\\text{tercelup}}\\]<p>Benda yang dicelupkan ke dalam zat cair mendapat gaya ke atas (gaya apung) sebesar berat zat cair yang dipindahkannya. Terapung jika Fa maks &gt; W, melayang jika sama, tenggelam jika Fa maks &lt; W.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/tekanan-cair.html",
-          "title": "Tekanan hidrostatis dan gaya apung",
-          "height": 520,
-          "caption": "Geser alat ukur tekanan ke kedalaman berbeda dan ganti zat cairnya. Turunkan benda pelan-pelan: bagaimana angka neraca pegas berubah?"
         },
         {
           "type": "example",
@@ -91,51 +82,87 @@
           "answer": "30.000 Pa"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Batu bervolume 0,002 m³ beratnya 50 N di udara. Berapa beratnya di dalam air?</p>",
-          "steps": [
-            "Fa = 1.000 × 10 × 0,002 = 20 N.",
-            "Berat semu = 50 − 20 = 30 N."
-          ],
-          "answer": "30 N"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Catatan buku",
-          "html": "<p>Buku siswa mengaitkan mudahnya orang terapung di Laut Mati dengan tekanan hidrostatis. Penyebab utamanya adalah <b>massa jenis</b> air Laut Mati yang sangat besar (± 1.240 kg/m³) karena kadar garamnya tinggi, sehingga gaya apungnya lebih besar (hukum Archimedes).</p>"
-        },
-        {
           "type": "check",
-          "question": "Kapal baja yang berat dapat terapung karena ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Tekanan Zat Cair / Hidrostatis (P_h = ρ·g·h), manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "baja lebih ringan daripada air",
-            "B": "bentuk kapal yang berongga memindahkan banyak air sehingga gaya apungnya besar",
-            "C": "tekanan hidrostatis di permukaan nol",
-            "D": "kapal selalu bergerak"
+            "A": "Prinsip Tekanan Zat Cair / Hidrostatis (P_h = ρ·g·h) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "B",
-          "hint": "Pikirkan volume air yang dipindahkan.",
-          "explanation": "Rongga udara membuat volume kapal besar sehingga air yang dipindahkan (dan gaya apung) cukup untuk mengimbangi berat kapal."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tekanan zat cair hanya dipengaruhi massa jenis, percepatan gravitasi, dan kedalaman (h); tekanan pada dinding bendungan dan penyelam.."
         }
       ]
     },
     {
-      "id": "tekanan-gas",
-      "title": "Tekanan gas dan hukum Pascal",
+      "id": "hukum-utama-hidrostatis-bejana",
+      "title": "Hukum Utama Hidrostatis dan Bejana Berhubungan",
       "kind": "simulasi",
-      "duration": "25 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Udara juga menekan segala sesuatu di sekitarnya: <b>tekanan atmosfer</b> di permukaan laut sekitar 1 atm ≈ 101.300 Pa. Makin tinggi tempat, makin tipis udara dan makin kecil tekanannya. Inilah sebabnya air dalam gelas yang ditutup kertas lalu dibalik tidak tumpah: tekanan udara dari bawah menahan kertas.</p>"
+          "html": "<p><b>Hukum Utama Hidrostatis dan Bejana Berhubungan</b>: Tekanan pada kedalaman yang sama di zat cair sejenis bernilai sama; pipa U untuk menentukan massa jenis cairan asing.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Gas yang dipanaskan",
-          "html": "<p>Balon pada mulut botol mengembang jika botol direndam air panas dan menyusut di air dingin: gas memuai saat dipanaskan. Balon udara terbang karena udara panas di dalamnya kurang rapat daripada udara di luar, sehingga gaya apung udara lebih besar daripada beratnya.</p>"
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Tekanan pada kedalaman yang sama di zat cair sejenis bernilai sama; pipa U untuk menentukan massa jenis cairan asing.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Hukum Utama Hidrostatis dan Bejana Berhubungan",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Hukum Utama Hidrostatis dan Bejana Berhubungan</b> berikut. Analisislah berdasarkan kaidah Tekanan pada kedalaman yang sama di zat cair sejenis bernilai sama; pipa U untuk menentukan massa jenis cairan asing..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Hukum Utama Hidrostatis dan Bejana Berhubungan untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Hukum Utama Hidrostatis dan Bejana Berhubungan, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Hukum Utama Hidrostatis dan Bejana Berhubungan berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tekanan pada kedalaman yang sama di zat cair sejenis bernilai sama; pipa U untuk menentukan massa jenis cairan asing.."
+        }
+      ]
+    },
+    {
+      "id": "hukum-pascal",
+      "title": "Hukum Pascal: Penerapan Dongkrak dan Rem Hidrolik (F1/A1 = F2/A2)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hukum Pascal: Penerapan Dongkrak dan Rem Hidrolik (F1/A1 = F2/A2)</b>: Tekanan zat cair dalam ruang tertutup diteruskan ke segala arah sama besar; perbesaran gaya mekanis.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Mengapa pisau yang tajam lebih mudah memotong daripada pisau tumpul, padahal gaya yang kita berikan sama? Jawabannya adalah <b>tekanan</b>: besar gaya yang bekerja pada setiap satuan luas bidang tekan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMP Kelas VIII</i> (Kemendikbudristek), Bab IV Teknologi Penerapan Tekanan pada Zat.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Tekanan",
+          "html": "\\[P = \\frac{F}{A}\\]<p>P tekanan (N/m² = pascal, Pa), F gaya tekan (N), A luas bidang tekan (m²). Gaya sama dengan luas kecil menghasilkan tekanan besar.</p>"
         },
         {
           "type": "callout",
@@ -176,11 +203,207 @@
       ]
     },
     {
-      "id": "makhluk-hidup",
-      "title": "Tekanan pada makhluk hidup",
-      "kind": "artikel",
-      "duration": "15 menit",
+      "id": "hukum-archimedes-gaya-apung",
+      "title": "Hukum Archimedes: Gaya Apung (Fa = ρ_cair · g · V_celup)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hukum Archimedes: Gaya Apung (Fa = ρ_cair · g · V_celup)</b>: Penurunan gaya apung sebagai resultan tekanan hidrostatis bawah dan atas, pengukuran berat benda di udara vs di air.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Konsep</th><th>Rumus / inti</th></tr><tr><td>Tekanan zat padat</td><td>P = F/A</td></tr><tr><td>Tekanan hidrostatis</td><td>P = ρgh</td></tr><tr><td>Archimedes</td><td>Fa = ρgV tercelup</td></tr><tr><td>Pascal</td><td>F₁/A₁ = F₂/A₂</td></tr><tr><td>Tekanan udara</td><td>makin tinggi tempat, makin kecil</td></tr><tr><td>Tumbuhan</td><td>tekanan akar, kapilaritas, transpirasi</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku siswa mengaitkan mudahnya orang terapung di Laut Mati dengan tekanan hidrostatis. Penyebab utamanya adalah <b>massa jenis</b> air Laut Mati yang sangat besar (± 1.240 kg/m³) karena kadar garamnya tinggi, sehingga gaya apungnya lebih besar (hukum Archimedes).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Gas yang dipanaskan",
+          "html": "<p>Balon pada mulut botol mengembang jika botol direndam air panas dan menyusut di air dingin: gas memuai saat dipanaskan. Balon udara terbang karena udara panas di dalamnya kurang rapat daripada udara di luar, sehingga gaya apung udara lebih besar daripada beratnya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Tekanan darah",
+          "html": "<p>Jantung memompa darah sehingga menimbulkan tekanan pada dinding pembuluh. Tekanan darah diukur dengan tensimeter dan ditulis dua angka, misalnya 120/80 mmHg: angka atas saat jantung memompa (sistol), angka bawah saat jantung beristirahat (diastol).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/tekanan-cair.html",
+          "title": "Tekanan hidrostatis dan gaya apung",
+          "height": 520,
+          "caption": "Geser alat ukur tekanan ke kedalaman berbeda dan ganti zat cairnya. Turunkan benda pelan-pelan: bagaimana angka neraca pegas berubah?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Batu bervolume 0,002 m³ beratnya 50 N di udara. Berapa beratnya di dalam air?</p>",
+          "steps": [
+            "Fa = 1.000 × 10 × 0,002 = 20 N.",
+            "Berat semu = 50 − 20 = 30 N."
+          ],
+          "answer": "30 N"
+        },
+        {
+          "type": "check",
+          "question": "Kapal baja yang berat dapat terapung karena ....",
+          "options": {
+            "A": "baja lebih ringan daripada air",
+            "B": "bentuk kapal yang berongga memindahkan banyak air sehingga gaya apungnya besar",
+            "C": "tekanan hidrostatis di permukaan nol",
+            "D": "kapal selalu bergerak"
+          },
+          "answer": "B",
+          "hint": "Pikirkan volume air yang dipindahkan.",
+          "explanation": "Rongga udara membuat volume kapal besar sehingga air yang dipindahkan (dan gaya apung) cukup untuk mengimbangi berat kapal."
+        }
+      ]
+    },
+    {
+      "id": "terapung-melayang-tenggelam",
+      "title": "Penerapan Archimedes: Terapung, Melayang, dan Tenggelam",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Penerapan Archimedes: Terapung, Melayang, dan Tenggelam</b>: Perbandingan gaya apung vs gaya berat, perbandingan massa jenis benda vs zat cair; prinsip kapal laut, kapal selam, jembatan ponton.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Archimedes",
+          "html": "\\[F_a = \\rho_{\\text{cair}} \\cdot g \\cdot V_{\\text{tercelup}}\\]<p>Benda yang dicelupkan ke dalam zat cair mendapat gaya ke atas (gaya apung) sebesar berat zat cair yang dipindahkannya. Terapung jika Fa maks &gt; W, melayang jika sama, tenggelam jika Fa maks &lt; W.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa mengubah cm² menjadi m² (1 cm² = 0,0001 m²).</li><li>Memakai kedalaman diukur dari dasar, bukan dari permukaan zat cair.</li><li>Menganggap benda berat pasti tenggelam.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Penerapan Archimedes: Terapung, Melayang, dan Tenggelam",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Penerapan Archimedes: Terapung, Melayang, dan Tenggelam</b> berikut. Analisislah berdasarkan kaidah Perbandingan gaya apung vs gaya berat, perbandingan massa jenis benda vs zat cair; prinsip kapal laut, kapal selam, jembatan ponton..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Penerapan Archimedes: Terapung, Melayang, dan Tenggelam untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Penerapan Archimedes: Terapung, Melayang, dan Tenggelam, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Penerapan Archimedes: Terapung, Melayang, dan Tenggelam berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Perbandingan gaya apung vs gaya berat, perbandingan massa jenis benda vs zat cair; prinsip kapal laut, kapal selam, jembatan ponton.."
+        }
+      ]
+    },
+    {
+      "id": "tekanan-gas-atmosfer",
+      "title": "Tekanan Gas dan Tekanan Atmosfer Bumi",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Tekanan Gas dan Tekanan Atmosfer Bumi</b>: Percobaan Torricelli (76 cmHg = 1 atm), hubungan penurunan tekanan udara terhadap kenaikan ketinggian tempat, prinsip barometer.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Udara juga menekan segala sesuatu di sekitarnya: <b>tekanan atmosfer</b> di permukaan laut sekitar 1 atm ≈ 101.300 Pa. Makin tinggi tempat, makin tipis udara dan makin kecil tekanannya. Inilah sebabnya air dalam gelas yang ditutup kertas lalu dibalik tidak tumpah: tekanan udara dari bawah menahan kertas.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Percobaan Torricelli (76 cmHg = 1 atm), hubungan penurunan tekanan udara terhadap kenaikan ketinggian tempat, prinsip barometer.</p>"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Tekanan Gas dan Tekanan Atmosfer Bumi, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Tekanan Gas dan Tekanan Atmosfer Bumi berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Percobaan Torricelli (76 cmHg = 1 atm), hubungan penurunan tekanan udara terhadap kenaikan ketinggian tempat, prinsip barometer.."
+        }
+      ]
+    },
+    {
+      "id": "hukum-boyle-gas",
+      "title": "Hukum Boyle: Tekanan dan Volume Gas Ruang Tertutup (P1·V1 = P2·V2)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Hukum Boyle: Tekanan dan Volume Gas Ruang Tertutup (P1·V1 = P2·V2)</b>: Hubungan berbanding terbalik tekanan dan volume gas pada suhu konstan; pompa sepeda dan suntikan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Hubungan berbanding terbalik tekanan dan volume gas pada suhu konstan; pompa sepeda dan suntikan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Hukum Boyle: Tekanan dan Volume Gas Ruang Tertutup (P1·V1 = P2·V2)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Hukum Boyle: Tekanan dan Volume Gas Ruang Tertutup (P1·V1 = P2·V2)</b> berikut. Analisislah berdasarkan kaidah Hubungan berbanding terbalik tekanan dan volume gas pada suhu konstan; pompa sepeda dan suntikan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Hukum Boyle: Tekanan dan Volume Gas Ruang Tertutup (P1·V1 = P2·V2) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Hukum Boyle: Tekanan dan Volume Gas Ruang Tertutup (P1·V1 = P2·V2), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Hukum Boyle: Tekanan dan Volume Gas Ruang Tertutup (P1·V1 = P2·V2) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Hubungan berbanding terbalik tekanan dan volume gas pada suhu konstan; pompa sepeda dan suntikan.."
+        }
+      ]
+    },
+    {
+      "id": "tekanan-biologi",
+      "title": "Aplikasi Konsep Tekanan pada Makhluk Hidup",
+      "kind": "artikel",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Aplikasi Konsep Tekanan pada Makhluk Hidup</b>: Pengangkutan air dan nutrisi pada xilem/floem (kapilaritas & daya hisap daun), dan hemodinamika tekanan darah mamalia.</p>"
+        },
         {
           "type": "image",
           "src": "gambar/pengangkutan-tumbuhan.svg",
@@ -193,12 +416,6 @@
           "variant": "info",
           "title": "Pengangkutan air pada tumbuhan",
           "html": "<ul><li><b>Tekanan akar</b>: akar menyerap air dari tanah dan mendorongnya ke atas.</li><li><b>Kapilaritas</b>: air merambat naik dalam pembuluh xilem yang sangat sempit.</li><li><b>Transpirasi</b>: penguapan air melalui stomata daun menciptakan daya isap yang menarik air dari bawah.</li></ul>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Tekanan darah",
-          "html": "<p>Jantung memompa darah sehingga menimbulkan tekanan pada dinding pembuluh. Tekanan darah diukur dengan tensimeter dan ditulis dua angka, misalnya 120/80 mmHg: angka atas saat jantung memompa (sistol), angka bawah saat jantung beristirahat (diastol).</p>"
         },
         {
           "type": "check",
@@ -216,24 +433,49 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Pemahaman Mandiri",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Rumus / inti</th></tr><tr><td>Tekanan zat padat</td><td>P = F/A</td></tr><tr><td>Tekanan hidrostatis</td><td>P = ρgh</td></tr><tr><td>Archimedes</td><td>Fa = ρgV tercelup</td></tr><tr><td>Pascal</td><td>F₁/A₁ = F₂/A₂</td></tr><tr><td>Tekanan udara</td><td>makin tinggi tempat, makin kecil</td></tr><tr><td>Tumbuhan</td><td>tekanan akar, kapilaritas, transpirasi</td></tr></table>"
+          "html": "<p><b>Rangkuman Bab & Uji Pemahaman Mandiri</b>: Rangkuman komprehensif rumus tekanan dan set latihan soal perhitungan.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Lupa mengubah cm² menjadi m² (1 cm² = 0,0001 m²).</li><li>Memakai kedalaman diukur dari dasar, bukan dari permukaan zat cair.</li><li>Menganggap benda berat pasti tenggelam.</li></ul>"
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Rangkuman komprehensif rumus tekanan dan set latihan soal perhitungan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Pemahaman Mandiri",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Pemahaman Mandiri</b> berikut. Analisislah berdasarkan kaidah Rangkuman komprehensif rumus tekanan dan set latihan soal perhitungan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Pemahaman Mandiri untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Pemahaman Mandiri, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Pemahaman Mandiri berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Rangkuman komprehensif rumus tekanan dan set latihan soal perhitungan.."
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Ilmu Pengetahuan Alam untuk SMP Kelas VIII</i> (Kemendikbudristek), Bab IV Teknologi Penerapan Tekanan pada Zat.</small></p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

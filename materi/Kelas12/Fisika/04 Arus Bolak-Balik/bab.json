@@ -4,14 +4,64 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "tegangan-ac",
-      "title": "Tegangan dan arus bolak-balik",
-      "kind": "simulasi",
-      "duration": "35 menit",
+      "id": "karakteristik-arus-tegangan-ac",
+      "title": "Karakteristik Gelombang Sinusoidal Arus Bolak-Balik (AC)",
+      "kind": "artikel",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
+          "html": "<p><b>Karakteristik Gelombang Sinusoidal Arus Bolak-Balik (AC)</b>: Persamaan sinusoidal V(t) = Vm sin(ωt) dan I(t) = Im sin(ωt); frekuensi jala-jala listrik PLN 50 Hz; periode, tegangan puncak-ke-puncak (Vpp).</p>"
+        },
+        {
+          "type": "text",
           "html": "<p>Generator di pembangkit listrik menghasilkan tegangan yang berubah sinusoidal terhadap waktu, sehingga arus yang mengalir pun bolak-balik (AC). Listrik PLN di Indonesia berfrekuensi 50 Hz.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 4 Arus Bolak-Balik.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kaidah & Rumus Kunci",
+          "html": "<p>Persamaan sinusoidal V(t) = Vm sin(ωt) dan I(t) = Im sin(ωt); frekuensi jala-jala listrik PLN 50 Hz; periode, tegangan puncak-ke-puncak (Vpp).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Tegangan listrik dinyatakan V = 311 sin(100πt) volt. Tentukan tegangan efektif dan frekuensinya.</p>",
+          "steps": [
+            "V<sub>ef</sub> = 311/√2 ≈ 220 V.",
+            "ω = 100π → f = ω/2π = 50 Hz."
+          ],
+          "answer": "± 220 V; 50 Hz"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Karakteristik Gelombang Sinusoidal Arus Bolak-Balik (AC), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Karakteristik Gelombang Sinusoidal Arus Bolak-Balik (AC) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Persamaan sinusoidal V(t) = Vm sin(ωt) dan I(t) = Im sin(ωt); frekuensi jala-jala listrik PLN 50 Hz; periode, tegangan puncak-ke-puncak (Vpp).."
+        }
+      ]
+    },
+    {
+      "id": "nilai-efektif-rms-dan-rata-rata",
+      "title": "Nilai Efektif (Root Mean Square / RMS) dan Nilai Rata-Rata",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Nilai Efektif (Root Mean Square / RMS) dan Nilai Rata-Rata</b>: Mengapa nilai efektif V_eff = Vm / √2 dan I_eff = Im / √2; nilai efektif setara dengan efek panas arus searah; membaca tegangan voltmeter AC vs osiloskop.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
         },
         {
           "type": "callout",
@@ -28,23 +78,12 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tegangan listrik dinyatakan V = 311 sin(100πt) volt. Tentukan tegangan efektif dan frekuensinya.</p>",
-          "steps": [
-            "V<sub>ef</sub> = 311/√2 ≈ 220 V.",
-            "ω = 100π → f = ω/2π = 50 Hz."
-          ],
-          "answer": "± 220 V; 50 Hz"
-        },
-        {
-          "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Pada osiloskop dengan pengaturan 2 V/div dan 2 ms/div, puncak gelombang berada 3 kotak di atas garis tengah dan satu gelombang penuh menempati 8 kotak. Tentukan V<sub>maks</sub>, V<sub>ef</sub>, dan f.</p>",
+          "question": "<p>Voltmeter menunjukkan V<sub>R</sub> = 30 V, V<sub>L</sub> = 70 V, dan V<sub>C</sub> = 30 V. Berapa tegangan sumbernya?</p>",
           "steps": [
-            "V<sub>maks</sub> = 3 × 2 = 6 V; V<sub>ef</sub> = 6/√2 ≈ 4,24 V.",
-            "T = 8 × 2 ms = 16 ms → f = 1/0,016."
+            "V = √(30² + (70 − 30)²) = √(900 + 1.600)."
           ],
-          "answer": "6 V; ≈ 4,24 V; 62,5 Hz"
+          "answer": "50 V (bukan 130 V)"
         },
         {
           "type": "check",
@@ -62,21 +101,66 @@
       ]
     },
     {
-      "id": "rlc-tunggal",
-      "title": "Resistor, induktor, dan kapasitor dalam rangkaian AC",
+      "id": "rangkaian-ac-resistor-murni",
+      "title": "Rangkaian AC Beban Resistor Murni: Arus dan Tegangan Sefase",
       "kind": "simulasi",
-      "duration": "35 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkaian AC Beban Resistor Murni: Arus dan Tegangan Sefase</b>: Tegangan dan arus mencapai puncak bersamaan (beda fase sudut 0°); diagram fasor dan grafik fungsi gelombang.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menjumlahkan V<sub>R</sub>, V<sub>L</sub>, dan V<sub>C</sub> secara aljabar; harus secara fasor.</li><li>Memakai f langsung pada X<sub>L</sub> = ωL tanpa dikali 2π.</li><li>Lupa mengubah μF ke F dan mH ke H.</li><li>Menyangka daya rangkaian = V × I tanpa faktor daya.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pada osiloskop dengan pengaturan 2 V/div dan 2 ms/div, puncak gelombang berada 3 kotak di atas garis tengah dan satu gelombang penuh menempati 8 kotak. Tentukan V<sub>maks</sub>, V<sub>ef</sub>, dan f.</p>",
+          "steps": [
+            "V<sub>maks</sub> = 3 × 2 = 6 V; V<sub>ef</sub> = 6/√2 ≈ 4,24 V.",
+            "T = 8 × 2 ms = 16 ms → f = 1/0,016."
+          ],
+          "answer": "6 V; ≈ 4,24 V; 62,5 Hz"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkaian AC Beban Resistor Murni: Arus dan Tegangan Sefase, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkaian AC Beban Resistor Murni: Arus dan Tegangan Sefase berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tegangan dan arus mencapai puncak bersamaan (beda fase sudut 0°); diagram fasor dan grafik fungsi gelombang.."
+        }
+      ]
+    },
+    {
+      "id": "rangkaian-ac-induktor-murni",
+      "title": "Rangkaian AC Beban Induktor Murni: Reaktansi Induktif (XL = ω·L)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkaian AC Beban Induktor Murni: Reaktansi Induktif (XL = ω·L)</b>: Tegangan mendahului arus sebesar 90° (π/2 rad); reaktansi induktif XL berbanding lurus dengan frekuensi sudut; induktor memblokir arus frekuensi tinggi.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "text",
           "html": "<table><tr><th>Komponen</th><th>Hambatan terhadap AC</th><th>Hubungan fase</th></tr><tr><td>Resistor R</td><td>R (tidak bergantung frekuensi)</td><td>V dan I sefase</td></tr><tr><td>Induktor L</td><td>reaktansi induktif \\(X_L = \\omega L\\)</td><td>V mendahului I sebesar 90°</td></tr><tr><td>Kapasitor C</td><td>reaktansi kapasitif \\(X_C = \\dfrac{1}{\\omega C}\\)</td><td>I mendahului V sebesar 90°</td></tr></table><p>Untuk masing-masing komponen berlaku \\(V_\\text{ef} = I_\\text{ef}\\,X\\). Makin tinggi frekuensi, X<sub>L</sub> makin besar dan X<sub>C</sub> makin kecil. Pada arus searah (f = 0) induktor tidak menghambat, sedangkan kapasitor memutus arus.</p>"
         },
         {
-          "type": "sim",
-          "src": "sim/rlc.html",
-          "title": "Rangkaian AC",
-          "height": 640,
-          "caption": "Pilih L saja, lalu C saja. Ubah frekuensi dan perhatikan reaktansi serta urutan puncak tegangan dan arus pada grafik."
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Tegangan mendahului arus sebesar 90° (π/2 rad); reaktansi induktif XL berbanding lurus dengan frekuensi sudut; induktor memblokir arus frekuensi tinggi.</p>"
         },
         {
           "type": "example",
@@ -87,6 +171,48 @@
             "I = 220/62,8."
           ],
           "answer": "≈ 62,8 Ω; ≈ 3,5 A"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rangkaian seri dengan L = 0,4 H dan C = 25 μF. Tentukan frekuensi resonansinya.</p>",
+          "steps": [
+            "LC = 0,4 × 25 × 10⁻⁶ = 10⁻⁵.",
+            "ω₀ = 1/√10⁻⁵ ≈ 316 rad/s → f₀ = 316/(2π)."
+          ],
+          "answer": "≈ 50,3 Hz"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkaian AC Beban Induktor Murni: Reaktansi Induktif (XL = ω·L), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkaian AC Beban Induktor Murni: Reaktansi Induktif (XL = ω·L) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tegangan mendahului arus sebesar 90° (π/2 rad); reaktansi induktif XL berbanding lurus dengan frekuensi sudut; induktor memblokir arus frekuensi tinggi.."
+        }
+      ]
+    },
+    {
+      "id": "rangkaian-ac-kapasitor-murni",
+      "title": "Rangkaian AC Beban Kapasitor Murni: Reaktansi Kapasitif (XC = 1 / ω·C)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkaian AC Beban Kapasitor Murni: Reaktansi Kapasitif (XC = 1 / ω·C)</b>: Arus mendahului tegangan sebesar 90° (π/2 rad); reaktansi kapasitif XC berbanding terbalik dengan frekuensi; kapasitor memblokir arus DC frekuensi nol.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Arus mendahului tegangan sebesar 90° (π/2 rad); reaktansi kapasitif XC berbanding terbalik dengan frekuensi; kapasitor memblokir arus DC frekuensi nol.</p>"
         },
         {
           "type": "example",
@@ -114,16 +240,33 @@
       ]
     },
     {
-      "id": "rlc-seri",
-      "title": "Impedansi dan daya rangkaian RLC seri",
+      "id": "rangkaian-rlc-seri-dan-impedansi",
+      "title": "Rangkaian RLC Seri: Diagram Fasor dan Segitiga Impedansi (Z)",
       "kind": "simulasi",
-      "duration": "40 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkaian RLC Seri: Diagram Fasor dan Segitiga Impedansi (Z)</b>: Tegangan total VR, VL, VC; rumus impedansi Z = √(R^2 + (XL - XC)^2); sudut fase tan φ = (XL - XC) / R; sifat rangkaian induktif (XL > XC), kapasitif (XC > XL), atau resistif (XL = XC).</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Rangkaian RLC seri",
           "html": "<p>Arus sama di semua komponen; tegangan dijumlahkan secara fasor:</p><p>\\[V = \\sqrt{V_R^2 + (V_L - V_C)^2} \\qquad Z = \\sqrt{R^2 + (X_L - X_C)^2} \\qquad I = \\frac{V}{Z}\\]</p><p>Sudut fase: \\(\\tan\\varphi = \\dfrac{X_L - X_C}{R}\\). X<sub>L</sub> > X<sub>C</sub>: bersifat <b>induktif</b> (tegangan mendahului arus); X<sub>C</sub> > X<sub>L</sub>: <b>kapasitif</b>.</p><p>Daya hanya diserap resistor: \\(P = I_\\text{ef}^2R = V_\\text{ef}I_\\text{ef}\\cos\\varphi\\), dengan \\(\\cos\\varphi = R/Z\\) disebut <b>faktor daya</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Catatan buku",
+          "html": "<p>Buku memakai lambang Ω untuk sudut fase (“V = V<sub>maks</sub> sin(ωt ± Ω)”). Ω adalah lambang satuan ohm; sudut fase biasanya dilambangkan φ atau θ. Rumus reaktansi induktif dan kapasitif di buku juga terpotong dalam beberapa cetakan; yang benar \\(X_L = \\omega L\\) dan \\(X_C = 1/(\\omega C)\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/rlc.html",
+          "title": "Rangkaian AC",
+          "height": 640,
+          "caption": "Pilih L saja, lalu C saja. Ubah frekuensi dan perhatikan reaktansi serta urutan puncak tegangan dan arus pada grafik."
         },
         {
           "type": "sim",
@@ -144,21 +287,6 @@
           "answer": "100 Ω; 1,5 A; 0,8 induktif; 180 W"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Voltmeter menunjukkan V<sub>R</sub> = 30 V, V<sub>L</sub> = 70 V, dan V<sub>C</sub> = 30 V. Berapa tegangan sumbernya?</p>",
-          "steps": [
-            "V = √(30² + (70 − 30)²) = √(900 + 1.600)."
-          ],
-          "answer": "50 V (bukan 130 V)"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Catatan buku",
-          "html": "<p>Buku memakai lambang Ω untuk sudut fase (“V = V<sub>maks</sub> sin(ωt ± Ω)”). Ω adalah lambang satuan ohm; sudut fase biasanya dilambangkan φ atau θ. Rumus reaktansi induktif dan kapasitif di buku juga terpotong dalam beberapa cetakan; yang benar \\(X_L = \\omega L\\) dan \\(X_C = 1/(\\omega C)\\).</p>"
-        },
-        {
           "type": "check",
           "question": "Pada rangkaian RLC seri, energi listrik yang berubah menjadi kalor hanya terjadi pada ....",
           "options": {
@@ -174,11 +302,19 @@
       ]
     },
     {
-      "id": "resonansi",
-      "title": "Resonansi rangkaian RLC",
+      "id": "resonansi-rangkaian-rlc",
+      "title": "Resonansi Rangkaian RLC Seri: Frekuensi Resonansi dan Penala Radio",
       "kind": "simulasi",
-      "duration": "30 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Resonansi Rangkaian RLC Seri: Frekuensi Resonansi dan Penala Radio</b>: Kondisi saat XL = XC menghasilkan impedansi minimum Z = R dan arus maksimum I_max; frekuensi resonansi f0 = 1 / (2π√(LC)); prinsip rangkaian tuner radio memilih gelombang stasiun siaran.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Penerapan</b>: tuner radio memutar kapasitor variabel sehingga frekuensi resonansi rangkaian sama dengan frekuensi stasiun yang diinginkan; hanya sinyal itu yang menghasilkan arus besar. Alat <b>BIA</b> (<i>bioelectrical impedance analysis</i>) mengalirkan arus AC kecil ke tubuh dan mengukur impedansinya untuk memperkirakan kadar air dan lemak tubuh, karena tubuh berperilaku seperti resistor (cairan) dan kapasitor (membran sel).</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
@@ -191,20 +327,6 @@
           "title": "Kurva resonansi",
           "height": 640,
           "caption": "Geser frekuensi sampai titik merah berada di puncak kurva. Lalu perbesar R: apa yang terjadi pada tinggi dan lebar puncak?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Rangkaian seri dengan L = 0,4 H dan C = 25 μF. Tentukan frekuensi resonansinya.</p>",
-          "steps": [
-            "LC = 0,4 × 25 × 10⁻⁶ = 10⁻⁵.",
-            "ω₀ = 1/√10⁻⁵ ≈ 316 rad/s → f₀ = 316/(2π)."
-          ],
-          "answer": "≈ 50,3 Hz"
-        },
-        {
-          "type": "text",
-          "html": "<p><b>Penerapan</b>: tuner radio memutar kapasitor variabel sehingga frekuensi resonansi rangkaian sama dengan frekuensi stasiun yang diinginkan; hanya sinyal itu yang menghasilkan arus besar. Alat <b>BIA</b> (<i>bioelectrical impedance analysis</i>) mengalirkan arus AC kecil ke tubuh dan mengukur impedansinya untuk memperkirakan kadar air dan lemak tubuh, karena tubuh berperilaku seperti resistor (cairan) dan kapasitor (membran sel).</p>"
         },
         {
           "type": "example",
@@ -232,20 +354,92 @@
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "daya-pada-rangkaian-ac-faktor-daya",
+      "title": "Daya Nyata, Daya Semu, dan Faktor Daya (cos φ)",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Daya Nyata, Daya Semu, dan Faktor Daya (cos φ)</b>: Daya aktif P = V_eff · I_eff · cos φ; faktor daya cos φ = R / Z; dampak faktor daya rendah pada efisiensi industri dan penambahan kapasitor bank pengoreksi daya.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menjumlahkan V<sub>R</sub>, V<sub>L</sub>, dan V<sub>C</sub> secara aljabar; harus secara fasor.</li><li>Memakai f langsung pada X<sub>L</sub> = ωL tanpa dikali 2π.</li><li>Lupa mengubah μF ke F dan mH ke H.</li><li>Menyangka daya rangkaian = V × I tanpa faktor daya.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Daya aktif P = V_eff · I_eff · cos φ; faktor daya cos φ = R / Z; dampak faktor daya rendah pada efisiensi industri dan penambahan kapasitor bank pengoreksi daya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Daya Nyata, Daya Semu, dan Faktor Daya (cos φ)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Daya Nyata, Daya Semu, dan Faktor Daya (cos φ)</b> berikut. Analisislah berdasarkan kaidah Daya aktif P = V_eff · I_eff · cos φ; faktor daya cos φ = R / Z; dampak faktor daya rendah pada efisiensi industri dan penambahan kapasitor bank pengoreksi daya..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Daya Nyata, Daya Semu, dan Faktor Daya (cos φ) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Daya Nyata, Daya Semu, dan Faktor Daya (cos φ), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Daya Nyata, Daya Semu, dan Faktor Daya (cos φ) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Daya aktif P = V_eff · I_eff · cos φ; faktor daya cos φ = R / Z; dampak faktor daya rendah pada efisiensi industri dan penambahan kapasitor bank pengoreksi daya.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Rangkaian AC",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Rangkaian AC</b>: Tabel ringkasan karakteristik rangkaian R, L, C, RLC dan paket soal resonansi.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Tabel ringkasan karakteristik rangkaian R, L, C, RLC dan paket soal resonansi.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Rangkaian AC",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Rangkaian AC</b> berikut. Analisislah berdasarkan kaidah Tabel ringkasan karakteristik rangkaian R, L, C, RLC dan paket soal resonansi..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Rangkaian AC untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Rangkaian AC, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Rangkaian AC berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tabel ringkasan karakteristik rangkaian R, L, C, RLC dan paket soal resonansi.."
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 4 Arus Bolak-Balik.</small></p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",

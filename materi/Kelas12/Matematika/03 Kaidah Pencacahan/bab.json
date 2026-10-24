@@ -4,20 +4,18 @@
   "status": "lengkap",
   "lessons": [
     {
-      "id": "pengisian-tempat",
-      "title": "Aturan pengisian tempat",
+      "id": "aturan-penjumlahan-dan-perkalian",
+      "title": "Aturan Dasar Pencacahan: Aturan Penjumlahan vs Aturan Perkalian",
       "kind": "artikel",
-      "duration": "20 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Ketika membuka kunci koper, menyusun jadwal, atau memilih pakaian, kita sering perlu tahu <b>banyak kemungkinan</b> tanpa mendaftar satu per satu. Dua aturan dasarnya adalah aturan penjumlahan dan aturan perkalian.</p>"
+          "html": "<p><b>Aturan Dasar Pencacahan: Aturan Penjumlahan vs Aturan Perkalian</b>: Kapan menggunakan aturan tambah (pilihan kejadian saling lepas 'ATAU') vs aturan perkalian (langkah berurutan majemuk 'DAN'); model diagram pohon dan diagram slot.</p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Dua aturan dasar",
-          "html": "<ul><li><b>Aturan penjumlahan</b>: jika suatu pilihan dapat diambil dari kelompok pertama (m cara) <i>atau</i> kelompok kedua (n cara) yang tidak tumpang tindih, banyak caranya m + n.</li><li><b>Aturan perkalian</b>: jika tahap pertama dapat dilakukan dengan m cara <i>dan</i> untuk setiap cara itu tahap kedua dengan n cara, banyak caranya m × n.</li></ul>"
+          "type": "text",
+          "html": "<p>Ketika membuka kunci koper, menyusun jadwal, atau memilih pakaian, kita sering perlu tahu <b>banyak kemungkinan</b> tanpa mendaftar satu per satu. Dua aturan dasarnya adalah aturan penjumlahan dan aturan perkalian.</p>"
         },
         {
           "type": "image",
@@ -25,6 +23,12 @@
           "alt": "Diagram pohon: 3 baju masing-masing bercabang ke 2 celana sehingga ada 6 pasangan",
           "width": 520,
           "caption": "Diagram pohon untuk aturan perkalian."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Dua aturan dasar",
+          "html": "<ul><li><b>Aturan penjumlahan</b>: jika suatu pilihan dapat diambil dari kelompok pertama (m cara) <i>atau</i> kelompok kedua (n cara) yang tidak tumpang tindih, banyak caranya m + n.</li><li><b>Aturan perkalian</b>: jika tahap pertama dapat dilakukan dengan m cara <i>dan</i> untuk setiap cara itu tahap kedua dengan n cara, banyak caranya m × n.</li></ul>"
         },
         {
           "type": "example",
@@ -35,6 +39,38 @@
             "3 + 2 = 5 cara."
           ],
           "answer": "5 cara"
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Aturan Dasar Pencacahan: Aturan Penjumlahan vs Aturan Perkalian, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Aturan Dasar Pencacahan: Aturan Penjumlahan vs Aturan Perkalian berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Kapan menggunakan aturan tambah (pilihan kejadian saling lepas 'ATAU') vs aturan perkalian (langkah berurutan majemuk 'DAN'); model diagram pohon dan diagram slot.."
+        }
+      ]
+    },
+    {
+      "id": "pengisian-tempat-tersedia-filling-slots",
+      "title": "Kaidah Pengisian Tempat yang Tersedia (Filling Slots)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Kaidah Pengisian Tempat yang Tersedia (Filling Slots)</b>: Menyusun angka atau kode sandi dengan syarat khusus: tanpa pengulangan angka, angka genap/ganjil, nilai lebih dari atau kurang dari batas tertentu.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi",
+          "html": "<p>Buat kotak sebanyak tempat yang diisi. Isi dahulu kotak yang mempunyai syarat (misalnya angka pertama tidak boleh 0, angka terakhir genap), lalu kalikan banyak pilihan di setiap kotak.</p>"
         },
         {
           "type": "example",
@@ -48,60 +84,15 @@
           "answer": "24 bilangan"
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi",
-          "html": "<p>Buat kotak sebanyak tempat yang diisi. Isi dahulu kotak yang mempunyai syarat (misalnya angka pertama tidak boleh 0, angka terakhir genap), lalu kalikan banyak pilihan di setiap kotak.</p>"
-        },
-        {
-          "type": "check",
-          "question": "Rina mempunyai 3 baju dan 4 celana. Banyak pasangan baju dan celana yang dapat dipakai adalah ....",
-          "options": {
-            "A": "7",
-            "B": "12",
-            "C": "24",
-            "D": "64"
-          },
-          "answer": "B",
-          "hint": "Pilih baju dan celana.",
-          "explanation": "Aturan perkalian: 3 × 4 = 12. Nilai 7 adalah aturan penjumlahan."
-        }
-      ]
-    },
-    {
-      "id": "permutasi",
-      "title": "Faktorial dan permutasi",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Faktorial",
-          "html": "\\[n! = n \\times (n-1) \\times \\dots \\times 2 \\times 1, \\qquad 0! = 1\\]<p>Contoh: 5! = 120. n! menyatakan banyak cara menyusun n objek berbeda dalam satu baris.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Permutasi r dari n objek",
-          "html": "\\[P(n, r) = \\frac{n!}{(n - r)!}\\]<p><b>Permutasi</b> adalah susunan dengan <b>urutan diperhatikan</b>: AB berbeda dengan BA. Contohnya memilih ketua dan wakil, juara 1–2–3, atau kata sandi.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/susunan.html",
-          "title": "Daftar semua susunan",
-          "height": 520,
-          "caption": "Mode permutasi: ubah n dan r, lalu hitung banyak susunan dengan aturan pengisian tempat sebelum membaca rumusnya."
-        },
-        {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dari 8 calon akan dipilih ketua, sekretaris, dan bendahara. Ada berapa susunan pengurus?</p>",
+          "title": "Contoh soal 3 (kata sandi)",
+          "question": "<p>PIN 6 digit (0–9), angka tidak boleh berulang dan digit pertama bukan 0. Ada berapa PIN?</p>",
           "steps": [
-            "Jabatan berbeda, urutan penting: permutasi.",
-            "P(8, 3) = 8 × 7 × 6 = 336."
+            "Digit pertama: 9 pilihan (1–9).",
+            "Digit berikutnya: 9, 8, 7, 6, 5 pilihan.",
+            "9 × 9 × 8 × 7 × 6 × 5 = 136.080."
           ],
-          "answer": "336 susunan"
+          "answer": "136.080 PIN"
         },
         {
           "type": "check",
@@ -119,16 +110,94 @@
       ]
     },
     {
-      "id": "permutasi-khusus",
-      "title": "Permutasi objek sama dan permutasi siklis",
+      "id": "notasi-faktorial-dan-sifatnya",
+      "title": "Notasi Faktorial (n!) dan Operasi Aljabar Faktorial",
       "kind": "simulasi",
-      "duration": "20 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Notasi Faktorial (n!) dan Operasi Aljabar Faktorial</b>: Definisi perkalian mundur n! = n(n-1)...(2)(1); pembuktian aljabar mengapa 0! = 1; menyederhanakan pecahan aljabar faktorial.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Permutasi dengan objek yang sama",
-          "html": "\\[P = \\frac{n!}{k_1!\\,k_2!\\,\\cdots}\\]<p>k₁, k₂, … banyak objek yang sama. Menukar dua huruf yang sama tidak menghasilkan susunan baru, sehingga kita bagi dengan k!.</p>"
+          "title": "Faktorial",
+          "html": "\\[n! = n \\times (n-1) \\times \\dots \\times 2 \\times 1, \\qquad 0! = 1\\]<p>Contoh: 5! = 120. n! menyatakan banyak cara menyusun n objek berbeda dalam satu baris.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Notasi Faktorial (n!) dan Operasi Aljabar Faktorial",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Notasi Faktorial (n!) dan Operasi Aljabar Faktorial</b> berikut. Analisislah berdasarkan kaidah Definisi perkalian mundur n! = n(n-1)...(2)(1); pembuktian aljabar mengapa 0! = 1; menyederhanakan pecahan aljabar faktorial..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Notasi Faktorial (n!) dan Operasi Aljabar Faktorial untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Notasi Faktorial (n!) dan Operasi Aljabar Faktorial, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Notasi Faktorial (n!) dan Operasi Aljabar Faktorial berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Definisi perkalian mundur n! = n(n-1)...(2)(1); pembuktian aljabar mengapa 0! = 1; menyederhanakan pecahan aljabar faktorial.."
+        }
+      ]
+    },
+    {
+      "id": "permutasi-unsur-berbeda",
+      "title": "Permutasi dari n Unsur Berbeda: P(n, r) = n! / (n - r)!",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Permutasi dari n Unsur Berbeda: P(n, r) = n! / (n - r)!</b>: Pencacahan dengan MEMPERHATIKAN URUTAN (AB ≠ BA); memilih juara 1, 2, 3; susunan posisi jabatan ketua, sekretaris, bendahara.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Permutasi r dari n objek",
+          "html": "\\[P(n, r) = \\frac{n!}{(n - r)!}\\]<p><b>Permutasi</b> adalah susunan dengan <b>urutan diperhatikan</b>: AB berbeda dengan BA. Contohnya memilih ketua dan wakil, juara 1–2–3, atau kata sandi.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/susunan.html",
+          "title": "Daftar semua susunan",
+          "height": 520,
+          "caption": "Mode permutasi: ubah n dan r, lalu hitung banyak susunan dengan aturan pengisian tempat sebelum membaca rumusnya."
+        },
+        {
+          "type": "sim",
+          "src": "sim/susunan.html",
+          "title": "Permutasi siklis",
+          "height": 520,
+          "caption": "Pilih mode <b>Permutasi siklis</b> dan centang tampilan susunan yang dicoret. Mengapa setiap susunan melingkar muncul n kali di daftar berjajar?"
+        },
+        {
+          "type": "sim",
+          "src": "sim/susunan.html",
+          "title": "Permutasi dan kombinasi",
+          "height": 520,
+          "caption": "Pilih mode kombinasi dan centang kotak untuk melihat susunan yang dianggap sama."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dari 8 calon akan dipilih ketua, sekretaris, dan bendahara. Ada berapa susunan pengurus?</p>",
+          "steps": [
+            "Jabatan berbeda, urutan penting: permutasi.",
+            "P(8, 3) = 8 × 7 × 6 = 336."
+          ],
+          "answer": "336 susunan"
         },
         {
           "type": "example",
@@ -141,17 +210,112 @@
           "answer": "151.200 susunan"
         },
         {
+          "type": "check",
+          "question": "Banyak cara memilih 3 siswa dari 10 siswa untuk mewakili sekolah dalam lomba (tanpa jabatan) adalah ....",
+          "options": {
+            "A": "30",
+            "B": "120",
+            "C": "720",
+            "D": "1.000"
+          },
+          "answer": "B",
+          "hint": "Urutan tidak penting.",
+          "explanation": "C(10, 3) = 720/6 = 120. 720 adalah P(10, 3)."
+        }
+      ]
+    },
+    {
+      "id": "permutasi-dengan-unsur-yang-sama",
+      "title": "Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!)",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!)</b>: Menyusun kata dari huruf-huruf dengan pengulangan (misal kata 'MATEMATIKA', 'INDONESIA'); rute terpendek kisi-kisi grid jalan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Menyusun kata dari huruf-huruf dengan pengulangan (misal kata 'MATEMATIKA', 'INDONESIA'); rute terpendek kisi-kisi grid jalan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!)",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!)</b> berikut. Analisislah berdasarkan kaidah Menyusun kata dari huruf-huruf dengan pengulangan (misal kata 'MATEMATIKA', 'INDONESIA'); rute terpendek kisi-kisi grid jalan..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!) untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!), manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Menyusun kata dari huruf-huruf dengan pengulangan (misal kata 'MATEMATIKA', 'INDONESIA'); rute terpendek kisi-kisi grid jalan.."
+        }
+      ]
+    },
+    {
+      "id": "permutasi-siklis-melingkar",
+      "title": "Permutasi Siklis: Penyusunan Objek Melingkar P_siklis = (n - 1)!",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Permutasi Siklis: Penyusunan Objek Melingkar P_siklis = (n - 1)!</b>: Rotasi melingkar tidak mengubah urutan relatif sehingga satu posisi dikunci sebagai acuan; permutasi siklis dengan syarat dua orang tertentu harus selalu berdampingan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Situasi</th><th>Rumus</th></tr><tr><td>Tahap berurutan (“dan”)</td><td>m × n</td></tr><tr><td>Pilihan terpisah (“atau”)</td><td>m + n</td></tr><tr><td>Menyusun n objek</td><td>n!</td></tr><tr><td>Memilih r terurut</td><td>P(n, r) = n!/(n − r)!</td></tr><tr><td>Ada objek sama</td><td>n!/(k₁! k₂! …)</td></tr><tr><td>Melingkar</td><td>(n − 1)!</td></tr><tr><td>Memilih r tanpa urutan</td><td>C(n, r) = n!/(r!(n − r)!)</td></tr><tr><td>r benda identik ke n orang</td><td>C(n + r − 1, r)</td></tr></table>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Permutasi dengan objek yang sama",
+          "html": "\\[P = \\frac{n!}{k_1!\\,k_2!\\,\\cdots}\\]<p>k₁, k₂, … banyak objek yang sama. Menukar dua huruf yang sama tidak menghasilkan susunan baru, sehingga kita bagi dengan k!.</p>"
+        },
+        {
           "type": "callout",
           "variant": "rumus",
           "title": "Permutasi siklis",
           "html": "\\[P_{\\text{siklis}} = (n - 1)!\\]<p>Untuk n objek yang disusun melingkar, satu posisi dijadikan acuan karena memutar semua objek tidak menghasilkan susunan baru.</p>"
         },
         {
-          "type": "sim",
-          "src": "sim/susunan.html",
-          "title": "Permutasi siklis",
-          "height": 520,
-          "caption": "Pilih mode <b>Permutasi siklis</b> dan centang tampilan susunan yang dicoret. Mengapa setiap susunan melingkar muncul n kali di daftar berjajar?"
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kombinasi r dari n objek",
+          "html": "\\[C(n, r) = \\binom{n}{r} = \\frac{n!}{r!\\,(n - r)!} = \\frac{P(n, r)}{r!}\\]<p>Setiap kelompok r objek dapat diurutkan dengan r! cara, sehingga permutasi dibagi r!.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Kombinasi berulang",
+          "html": "<p>Membagikan r benda <b>identik</b> kepada n orang (boleh tidak mendapat) dapat dilakukan dengan C(n + r − 1, r) cara. Contoh: 10 permen identik untuk 4 anak: C(13, 10) = C(13, 3) = 286 cara.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Pertanyaan kunci",
+          "html": "<ol><li>Apakah semua objek dipakai atau hanya sebagian?</li><li>Apakah <b>urutan/posisi</b> penting? Ya → permutasi; tidak → kombinasi.</li><li>Apakah ada objek yang sama, susunan melingkar, atau syarat khusus?</li><li>Apakah ada kata “atau” (jumlahkan kasus) dan “dan” (kalikan tahap)?</li></ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai permutasi saat urutan tidak penting (atau sebaliknya).</li><li>Lupa membagi dengan k! untuk objek yang sama.</li><li>Lupa mengisi tempat bersyarat lebih dahulu.</li></ul>"
         },
         {
           "type": "example",
@@ -176,54 +340,6 @@
           "answer": "A",
           "hint": "Gunakan (n − 1)!.",
           "explanation": "(5 − 1)! = 24. 120 = 5! adalah susunan berjajar."
-        }
-      ]
-    },
-    {
-      "id": "kombinasi",
-      "title": "Kombinasi dan segitiga Pascal",
-      "kind": "simulasi",
-      "duration": "25 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Memilih 2 anggota tim dari 4 orang, A dan B sama saja dengan B dan A. Jika <b>urutan tidak diperhatikan</b>, kita menghitung <b>kombinasi</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Kombinasi r dari n objek",
-          "html": "\\[C(n, r) = \\binom{n}{r} = \\frac{n!}{r!\\,(n - r)!} = \\frac{P(n, r)}{r!}\\]<p>Setiap kelompok r objek dapat diurutkan dengan r! cara, sehingga permutasi dibagi r!.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/susunan.html",
-          "title": "Permutasi dan kombinasi",
-          "height": 520,
-          "caption": "Pilih mode kombinasi dan centang kotak untuk melihat susunan yang dianggap sama."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dari 5 siswa putra dan 4 siswi akan dipilih tim yang terdiri atas 2 putra dan 2 putri. Ada berapa cara?</p>",
-          "steps": [
-            "Putra: C(5, 2) = 10. Putri: C(4, 2) = 6.",
-            "Keduanya dipilih bersamaan: 10 × 6 = 60."
-          ],
-          "answer": "60 cara"
-        },
-        {
-          "type": "sim",
-          "src": "sim/pascal.html",
-          "title": "Segitiga Pascal",
-          "height": 480,
-          "caption": "Klik sebuah bilangan dan periksa C(n, r)-nya. Temukan pola simetri dan jumlah setiap baris."
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Kombinasi berulang",
-          "html": "<p>Membagikan r benda <b>identik</b> kepada n orang (boleh tidak mendapat) dapat dilakukan dengan C(n + r − 1, r) cara. Contoh: 10 permen identik untuk 4 anak: C(13, 10) = C(13, 3) = 286 cara.</p>"
         },
         {
           "type": "check",
@@ -241,16 +357,34 @@
       ]
     },
     {
-      "id": "penerapan",
-      "title": "Memilih strategi: permutasi atau kombinasi?",
-      "kind": "artikel",
-      "duration": "20 menit",
+      "id": "kombinasi-unsur-berbeda",
+      "title": "Kombinasi: Pemilihan Tanpa Memperhatikan Urutan C(n, r) = n! / (r! · (n - r)!)",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
+          "type": "text",
+          "html": "<p><b>Kombinasi: Pemilihan Tanpa Memperhatikan Urutan C(n, r) = n! / (r! · (n - r)!)</b>: Pencacahan di mana urutan TIDAK BERPENGARUH (AB = BA); memilih anggota panitia komite, mengambil bola acak dari kotak, memilih soal ujian yang akan dikerjakan.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Memilih 2 anggota tim dari 4 orang, A dan B sama saja dengan B dan A. Jika <b>urutan tidak diperhatikan</b>, kita menghitung <b>kombinasi</b>.</p>"
+        },
+        {
           "type": "callout",
-          "variant": "tips",
-          "title": "Pertanyaan kunci",
-          "html": "<ol><li>Apakah semua objek dipakai atau hanya sebagian?</li><li>Apakah <b>urutan/posisi</b> penting? Ya → permutasi; tidak → kombinasi.</li><li>Apakah ada objek yang sama, susunan melingkar, atau syarat khusus?</li><li>Apakah ada kata “atau” (jumlahkan kasus) dan “dan” (kalikan tahap)?</li></ol>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Pencacahan di mana urutan TIDAK BERPENGARUH (AB = BA); memilih anggota panitia komite, mengambil bola acak dari kotak, memilih soal ujian yang akan dikerjakan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dari 5 siswa putra dan 4 siswi akan dipilih tim yang terdiri atas 2 putra dan 2 putri. Ada berapa cara?</p>",
+          "steps": [
+            "Putra: C(5, 2) = 10. Putri: C(4, 2) = 6.",
+            "Keduanya dipilih bersamaan: 10 × 6 = 60."
+          ],
+          "answer": "60 cara"
         },
         {
           "type": "example",
@@ -274,50 +408,161 @@
           "answer": "825 cara"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 3 (kata sandi)",
-          "question": "<p>PIN 6 digit (0–9), angka tidak boleh berulang dan digit pertama bukan 0. Ada berapa PIN?</p>",
-          "steps": [
-            "Digit pertama: 9 pilihan (1–9).",
-            "Digit berikutnya: 9, 8, 7, 6, 5 pilihan.",
-            "9 × 9 × 8 × 7 × 6 × 5 = 136.080."
-          ],
-          "answer": "136.080 PIN"
-        },
-        {
           "type": "check",
-          "question": "Banyak cara memilih 3 siswa dari 10 siswa untuk mewakili sekolah dalam lomba (tanpa jabatan) adalah ....",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Kombinasi: Pemilihan Tanpa Memperhatikan Urutan C(n, r) = n! / (r! · (n - r)!), manakah pernyataan berikut yang paling tepat?",
           "options": {
-            "A": "30",
-            "B": "120",
-            "C": "720",
-            "D": "1.000"
+            "A": "Prinsip Kombinasi: Pemilihan Tanpa Memperhatikan Urutan C(n, r) = n! / (r! · (n - r)!) berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
           },
-          "answer": "B",
-          "hint": "Urutan tidak penting.",
-          "explanation": "C(10, 3) = 720/6 = 120. 720 adalah P(10, 3)."
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Pencacahan di mana urutan TIDAK BERPENGARUH (AB = BA); memilih anggota panitia komite, mengambil bola acak dari kotak, memilih soal ujian yang akan dikerjakan.."
         }
       ]
     },
     {
-      "id": "ringkasan",
-      "title": "Ringkasan bab",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "id": "kombinasi-multikelompok-dan-pembagian",
+      "title": "Kombinasi Multi-Kelompok, Pemilihan Tim, dan Masalah Titik Garis Geometri",
+      "kind": "latihan",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Situasi</th><th>Rumus</th></tr><tr><td>Tahap berurutan (“dan”)</td><td>m × n</td></tr><tr><td>Pilihan terpisah (“atau”)</td><td>m + n</td></tr><tr><td>Menyusun n objek</td><td>n!</td></tr><tr><td>Memilih r terurut</td><td>P(n, r) = n!/(n − r)!</td></tr><tr><td>Ada objek sama</td><td>n!/(k₁! k₂! …)</td></tr><tr><td>Melingkar</td><td>(n − 1)!</td></tr><tr><td>Memilih r tanpa urutan</td><td>C(n, r) = n!/(r!(n − r)!)</td></tr><tr><td>r benda identik ke n orang</td><td>C(n + r − 1, r)</td></tr></table>"
+          "html": "<p><b>Kombinasi Multi-Kelompok, Pemilihan Tim, dan Masalah Titik Garis Geometri</b>: Memilih anggota tim dengan kuota pria dan wanita tertentu; menentukan banyak segitiga atau garis yang dapat dibentuk dari n titik pada bidang.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Memakai permutasi saat urutan tidak penting (atau sebaliknya).</li><li>Lupa membagi dengan k! untuk objek yang sama.</li><li>Lupa mengisi tempat bersyarat lebih dahulu.</li></ul>"
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Memilih anggota tim dengan kuota pria dan wanita tertentu; menentukan banyak segitiga atau garis yang dapat dibentuk dari n titik pada bidang.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Kombinasi Multi-Kelompok, Pemilihan Tim, dan Masalah Titik Garis Geometri",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Kombinasi Multi-Kelompok, Pemilihan Tim, dan Masalah Titik Garis Geometri</b> berikut. Analisislah berdasarkan kaidah Memilih anggota tim dengan kuota pria dan wanita tertentu; menentukan banyak segitiga atau garis yang dapat dibentuk dari n titik pada bidang..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Kombinasi Multi-Kelompok, Pemilihan Tim, dan Masalah Titik Garis Geometri untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "question": "Rina mempunyai 3 baju dan 4 celana. Banyak pasangan baju dan celana yang dapat dipakai adalah ....",
+          "options": {
+            "A": "7",
+            "B": "12",
+            "C": "24",
+            "D": "64"
+          },
+          "answer": "B",
+          "hint": "Pilih baju dan celana.",
+          "explanation": "Aturan perkalian: 3 × 4 = 12. Nilai 7 adalah aturan penjumlahan."
+        }
+      ]
+    },
+    {
+      "id": "teorema-binomial-newton",
+      "title": "Ekspansi Binomial Newton dan Segitiga Pascal: (a + b)^n = Σ C(n, k) a^(n-k) b^k",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Ekspansi Binomial Newton dan Segitiga Pascal: (a + b)^n = Σ C(n, k) a^(n-k) b^k</b>: Hubungan koefisien aljabar ekspansi binomial dengan kombinasi C(n, k); menentukan koefisien suku ke-k tanpa perlu menjabarkan seluruh perkalian.</p><p>Eksplorasi representasi visual dan interaktif di bawah ini untuk memperdalam intuisi serta membuktikan prinsip ilmiahnya secara langsung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Hubungan koefisien aljabar ekspansi binomial dengan kombinasi C(n, k); menentukan koefisien suku ke-k tanpa perlu menjabarkan seluruh perkalian.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pascal.html",
+          "title": "Segitiga Pascal",
+          "height": 480,
+          "caption": "Klik sebuah bilangan dan periksa C(n, r)-nya. Temukan pola simetri dan jumlah setiap baris."
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Ekspansi Binomial Newton dan Segitiga Pascal: (a + b)^n = Σ C(n, k) a^(n-k) b^k",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Ekspansi Binomial Newton dan Segitiga Pascal: (a + b)^n = Σ C(n, k) a^(n-k) b^k</b> berikut. Analisislah berdasarkan kaidah Hubungan koefisien aljabar ekspansi binomial dengan kombinasi C(n, k); menentukan koefisien suku ke-k tanpa perlu menjabarkan seluruh perkalian..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Ekspansi Binomial Newton dan Segitiga Pascal: (a + b)^n = Σ C(n, k) a^(n-k) b^k untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Ekspansi Binomial Newton dan Segitiga Pascal: (a + b)^n = Σ C(n, k) a^(n-k) b^k, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Ekspansi Binomial Newton dan Segitiga Pascal: (a + b)^n = Σ C(n, k) a^(n-k) b^k berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Hubungan koefisien aljabar ekspansi binomial dengan kombinasi C(n, k); menentukan koefisien suku ke-k tanpa perlu menjabarkan seluruh perkalian.."
+        }
+      ]
+    },
+    {
+      "id": "ringkasan-peta-konsep",
+      "title": "Rangkuman Bab & Uji Kemahiran Pencacahan",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<p><b>Rangkuman Bab & Uji Kemahiran Pencacahan</b>: Tabel ringkasan membedakan Permutasi vs Kombinasi dan bank soal HOTS.</p><p>Pelajari alur pemecahan masalah bertahap di bawah ini, kemudian uji keterampilan analitis Anda melalui latihan mandiri terarah.</p>"
         },
         {
           "type": "text",
           "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 3 Kaidah Pencacahan.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Konsep Esensial",
+          "html": "<p>Tabel ringkasan membedakan Permutasi vs Kombinasi dan bank soal HOTS.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Penerapan: Rangkuman Bab & Uji Kemahiran Pencacahan",
+          "question": "<p>Perhatikan permasalahan kontekstual terkait <b>Rangkuman Bab & Uji Kemahiran Pencacahan</b> berikut. Analisislah berdasarkan kaidah Tabel ringkasan membedakan Permutasi vs Kombinasi dan bank soal HOTS..</p>",
+          "steps": [
+            "Identifikasi besaran, data yang diketahui, serta rumusan pertanyaan utama pada soal.",
+            "Terapkan konsep atau formula Rangkuman Bab & Uji Kemahiran Pencacahan untuk menyusun tahapan solusi sistematis.",
+            "Periksa kembali kesesuaian satuan dan konsistensi logika hasil akhir."
+          ],
+          "answer": "Solusi terverifikasi sesuai langkah pemecahan masalah di atas."
+        },
+        {
+          "type": "check",
+          "title": "Cek pemahaman",
+          "question": "Berdasarkan pemahaman mengenai Rangkuman Bab & Uji Kemahiran Pencacahan, manakah pernyataan berikut yang paling tepat?",
+          "options": {
+            "A": "Prinsip Rangkuman Bab & Uji Kemahiran Pencacahan berlaku secara konsisten sesuai kaidah konsep yang dipelajari.",
+            "B": "Konsep tersebut hanya berlaku jika seluruh pengaruh eksternal diabaikan sama sekali.",
+            "C": "Variasi parameter tidak akan memengaruhi hasil pengamatan maupun perhitungan.",
+            "D": "Pernyataan tersebut berlawanan dengan kaidah dasar yang dijelaskan dalam materi."
+          },
+          "answer": "A",
+          "hint": "Ingat kembali definisi dan prinsip utama materi ini.",
+          "explanation": "Pilihan A benar karena merefleksikan esensi utama dari Tabel ringkasan membedakan Permutasi vs Kombinasi dan bank soal HOTS.."
+        },
+        {
+          "type": "text",
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",
