@@ -229,10 +229,15 @@ function fixLinks(el){
   el.querySelectorAll('img[src]').forEach(im => { im.src = asset(im.getAttribute('src')); im.loading = 'lazy'; });
 }
 
-// rumus: \( ... \) untuk dalam baris, \[ ... \] untuk baris sendiri
+// rumus: \( ... \) untuk dalam baris, \[ ... \] atau $$ ... $$ untuk baris sendiri
 function renderMath(el){
   const go = () => window.renderMathInElement && renderMathInElement(el, {
-    delimiters: [{left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}],
+    delimiters: [
+      {left: '\\[', right: '\\]', display: true},
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false},
+      {left: '$', right: '$', display: false}
+    ],
     throwOnError: false,
   });
   if(window.renderMathInElement) go(); else addEventListener('load', go, {once: true});

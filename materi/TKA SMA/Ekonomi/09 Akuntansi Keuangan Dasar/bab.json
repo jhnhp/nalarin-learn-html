@@ -1,292 +1,113 @@
 {
   "title": "Akuntansi Keuangan Dasar",
-  "summary": "Siklus akuntansi perusahaan jasa dan dagang: persamaan dasar akuntansi (Aset = Liabilitas + Ekuitas), aturan debit-kredit saldo normal akun, jurnal umum, buku besar dan neraca saldo, jurnal penyesuaian (AJP), kertas kerja (neraca lajur), serta laporan keuangan utama (Laba Rugi, Perubahan Modal, dan Neraca).",
+  "summary": "Materi komprehensif TKA Ekonomi: persamaan dasar akuntansi PDA, mekanisme aturan saldo normal debit-kredit, pencatatan jurnal umum posting buku besar, ayat jurnal penyesuaian AJP akhir periode, kertas kerja neraca lajur 10 kolom, serta tiga laporan keuangan utama.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "persamaan-dasar-akuntansi",
-      "title": "Persamaan Dasar Akuntansi: Aset = Kewajiban (Liabilitas) + Ekuitas (Modal)",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Persamaan Dasar Akuntansi (PDA) dan Analisis Transaksi Keuangan",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Kunci bab ini: setiap transaksi harus membuat persamaan dasar tetap seimbang.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Akuntansi</td><td>pengertian, pengguna internal dan eksternal, siklus akuntansi</td></tr><tr><td>Persamaan dasar</td><td>Aset = Liabilitas + Ekuitas; pengaruh transaksi</td></tr><tr><td>Laporan keuangan</td><td>laba rugi, perubahan modal, posisi keuangan, arus kas; urutan penyusunan</td></tr><tr><td>Konsep</td><td>basis akrual, prive, aset lancar dan tetap, aktivitas arus kas</td></tr></table>"
+          "html": "<h3>Prinsip Keseimbangan Dua Sisi Neraca</h3>\n<p>Persamaan dasar akuntansi menunjukkan hubungan antara kekayaan yang dimiliki perusahaan dengan sumber perolehannya (kewajiban kepada kreditor dan hak pemilik):</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk setiap transaksi, tanyakan: akun apa yang bertambah, akun apa yang berkurang, dan apakah persamaan tetap seimbang.</li><li>Pendapatan menambah ekuitas; beban dan prive mengurangi ekuitas.</li><li>Saat mencari kas dari tabel neraca, gunakan total aset = total liabilitas + ekuitas.</li><li>Untuk perusahaan dagang, hitung HPP sebelum laba kotor.</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/persamaan-akuntansi.html",
-          "title": "Pengaruh transaksi terhadap persamaan dasar",
-          "height": 620,
-          "caption": "Jalankan transaksi satu per satu. Transaksi mana yang mengubah ekuitas, dan mana yang hanya menukar satu aset dengan aset lain?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Pada simulasi, tentukan pengaruh transaksi nomor 2 (membeli mesin Rp25 juta: Rp15 juta tunai, sisanya utang).</p>",
-          "steps": [
-            "Peralatan (aset) bertambah 25 juta, kas (aset) berkurang 15 juta.",
-            "Utang (liabilitas) bertambah 10 juta. Aset neto +10 = liabilitas +10."
-          ],
-          "answer": "aset bertambah Rp10 juta dan liabilitas bertambah Rp10 juta"
-        },
-        {
-          "type": "check",
-          "question": "Transaksi berikut yang tidak mengubah total aset adalah ....",
-          "options": {
-            "A": "pemilik menyetor modal tunai",
-            "B": "membayar utang usaha",
-            "C": "membeli perlengkapan secara tunai",
-            "D": "menerima pendapatan jasa tunai"
-          },
-          "answer": "C",
-          "hint": "Cari pertukaran antar-aset.",
-          "explanation": "Kas berkurang dan perlengkapan bertambah dengan jumlah sama, sehingga total aset tetap."
+          "variant": "rumus",
+          "title": "Persamaan Dasar Akuntansi dan Perluasannya",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Aset (Harta)} = \\text{Liabilitas (Utang)} + \\text{Ekuitas (Modal)} + (\\text{Pendapatan} - \\text{Beban}) - \\text{Prive} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\text{Aset}\\)</td><td>Kekayaan ekonomi perusahaan (Kas, Piutang, Perlengkapan, Peralatan)</td><td class=\"unit\">\\text{Rupiah (Rp)}</td></tr>\n<tr><td class=\"sym\">\\(\\text{Liabilitas}\\)</td><td>Kewajiban pihak ketiga (Utang Usaha, Utang Bank)</td><td class=\"unit\">\\text{Rupiah (Rp)}</td></tr>\n<tr><td class=\"sym\">\\(\\text{Ekuitas}\\)</td><td>Hak kepemilikan modal pemilik</td><td class=\"unit\">\\text{Rupiah (Rp)}</td></tr>\n<tr><td class=\"sym\">\\(\\text{Pendapatan}\\)</td><td>Menambah nilai modal (+)</td><td class=\"unit\">\\text{Rupiah (Rp)}</td></tr>\n<tr><td class=\"sym\">\\(\\text{Beban & Prive}\\)</td><td>Mengurangi nilai modal (-)</td><td class=\"unit\">\\text{Rupiah (Rp)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Kedua ruas (Sisi Kiri Aset = Sisi Kanan Liabilitas + Ekuitas) HARUS SELALU SEIMBANG (balans) setelah setiap transaksi terjadi.</small></p>"
         }
       ]
     },
     {
       "id": "mekanisme-debit-kredit-dan-saldo-normal",
-      "title": "Mekanisme Debit-Kredit dan Saldo Normal Akun (H-U-M-P-B)",
+      "title": "Aturan Mekanisme Debit-Kredit dan Saldo Normal Akun",
       "kind": "artikel",
-      "duration": "15 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Mekanisme Debit-Kredit dan Saldo Normal Akun (H-U-M-P-B)</b>: Menguasai aturan pertambahan dan pengurangan akun Harta, Utang, Modal, Pendapatan, dan Beban pada posisi debit/kredit.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk setiap transaksi, tanyakan: akun apa yang bertambah, akun apa yang berkurang, dan apakah persamaan tetap seimbang.</li><li>Pendapatan menambah ekuitas; beban dan prive mengurangi ekuitas.</li><li>Saat mencari kas dari tabel neraca, gunakan total aset = total liabilitas + ekuitas.</li><li>Untuk perusahaan dagang, hitung HPP sebelum laba kotor.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Modal awal Toko Laris Rp60 juta. Selama setahun laba bersihnya Rp17,5 juta dan pemilik mengambil prive Rp4 juta. Berapa modal akhirnya?</p>",
-          "steps": [
-            "Modal akhir = 60 + 17,5 − 4."
-          ],
-          "answer": "Rp73,5 juta"
+          "html": "<h3>Aturan Baku Saldo Normal Lima Kelompok Akun</h3>\n<p>Mnemonik: <b>H-B-U-M-P (Harta dan Beban di KIRI Debit; Utang, Modal, Pendapatan di KANAN Kredit)</b></p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Kelompok Akun</th><th>Bertambah (+)</th><th>Berkurang (-)</th><th>Saldo Normal Alami</th></tr>\n  </thead>\n  <tbody>\n    <tr><td><b>Aset / Harta</b></td><td><b>DEBIT</b></td><td>KREDIT</td><td>DEBIT</td></tr>\n    <tr><td><b>Beban / Biaya</b></td><td><b>DEBIT</b></td><td>KREDIT</td><td>DEBIT</td></tr>\n    <tr><td><b>Liabilitas / Utang</b></td><td>KREDIT</td><td><b>DEBIT</b></td><td>KREDIT</td></tr>\n    <tr><td><b>Ekuitas / Modal</b></td><td>KREDIT</td><td><b>DEBIT</b></td><td>KREDIT</td></tr>\n    <tr><td><b>Pendapatan</b></td><td>KREDIT</td><td><b>DEBIT</b></td><td>KREDIT</td></tr>\n    <tr><td><b>Prive (Penarikan Pribadi)</b></td><td><b>DEBIT</b></td><td>KREDIT</td><td>DEBIT</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "check",
-          "question": "Pembayaran tunai untuk melunasi pinjaman bank dicatat dalam laporan arus kas sebagai aktivitas ....",
+          "title": "Cek Pemahaman",
+          "question": "Jika sebuah salon membeli perlengkapan salon seharga Rp2.000.000 secara KREDIT (belum dibayar tunai), pencatatan jurnal yang benar adalah ....",
           "options": {
-            "A": "operasi",
-            "B": "investasi",
-            "C": "pendanaan",
-            "D": "tidak dicatat"
+            "A": "Perlengkapan (D) Rp2.000.000 dan Kas (K) Rp2.000.000",
+            "B": "Perlengkapan (D) Rp2.000.000 dan Utang Usaha (K) Rp2.000.000",
+            "C": "Utang Usaha (D) Rp2.000.000 dan Perlengkapan (K) Rp2.000.000",
+            "D": "Kas (D) Rp2.000.000 dan Perlengkapan (K) Rp2.000.000"
           },
-          "answer": "C",
-          "hint": "Berkaitan dengan sumber dana.",
-          "explanation": "Penerimaan dan pelunasan pinjaman termasuk aktivitas pendanaan."
+          "answer": "B",
+          "hint": "Perlengkapan bertambah (Aset bertambah di DEBIT) dan Utang Usaha bertambah (Liabilitas bertambah di KREDIT).",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "pencatatan-jurnal-umum-buku-besar",
-      "title": "Siklus Transaksi: Dari Bukti Transaksi, Jurnal Umum, hingga Posting Buku Besar",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Pencatatan Jurnal Umum dan Posting ke Buku Besar (Bentuk T dan Skontro)",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Kunci bab ini: setiap transaksi harus membuat persamaan dasar tetap seimbang.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Akuntansi</td><td>pengertian, pengguna internal dan eksternal, siklus akuntansi</td></tr><tr><td>Persamaan dasar</td><td>Aset = Liabilitas + Ekuitas; pengaruh transaksi</td></tr><tr><td>Laporan keuangan</td><td>laba rugi, perubahan modal, posisi keuangan, arus kas; urutan penyusunan</td></tr><tr><td>Konsep</td><td>basis akrual, prive, aset lancar dan tetap, aktivitas arus kas</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Fokus Konsep",
-          "html": "<p>Simulasi interaktif lembar jurnal umum dengan auto-check keseimbangan total debit-kredit.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/persamaan-akuntansi.html",
-          "title": "Pengaruh transaksi terhadap persamaan dasar",
-          "height": 620,
-          "caption": "Jalankan transaksi satu per satu. Transaksi mana yang mengubah ekuitas, dan mana yang hanya menukar satu aset dengan aset lain?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Selama bulan Mei, Bengkel Andalan memperoleh pendapatan jasa Rp32 juta. Bebannya: gaji Rp9 juta, sewa Rp4 juta, dan listrik Rp1,5 juta. Hitung laba bersihnya.</p>",
-          "steps": [
-            "Total beban = 9 + 4 + 1,5 = 14,5 juta.",
-            "Laba = 32 − 14,5."
-          ],
-          "answer": "Rp17,5 juta"
+          "html": "<h3>Tahap Pencatatan Siklus Akuntansi</h3>\n<ol>\n  <li><b>Analisis Bukti Transaksi</b> (faktur, kuitansi, nota, cek).</li>\n  <li><b>Jurnal Umum (General Journal)</b>: Mencatat transaksi secara kronologis sesuai urutan tanggal dengan prinsip debit = kredit.</li>\n  <li><b>Posting ke Buku Besar (Ledger)</b>: Memindahkan data dari jurnal umum ke masing-masing akun untuk mengetahui saldo akhir akun tersebut.</li>\n</ol>"
         }
       ]
     },
     {
       "id": "jurnal-penyesuaian-ajp",
-      "title": "Keahlian Kunci: Jurnal Penyesuaian (AJP) Beban Dibayar Dimuka, Piutang, Penyusutan, dan Perlengkapan",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Ayat Jurnal Penyesuaian (AJP) Akhir Periode",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Keahlian Kunci: Jurnal Penyesuaian (AJP) Beban Dibayar Dimuka, Piutang, Penyusutan, dan Perlengkapan</b>: Membedakan pencatatan pendekatan neraca vs laba-rugi serta menghitung depresiasi aset tetap garis lurus.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Fokus Konsep",
-          "html": "<p>Simulasi timeline alokasi biaya penyesuaian akhir periode akuntansi.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/persamaan-akuntansi.html",
-          "title": "Pengaruh transaksi terhadap persamaan dasar",
-          "height": 620,
-          "caption": "Jalankan transaksi satu per satu. Transaksi mana yang mengubah ekuitas, dan mana yang hanya menukar satu aset dengan aset lain?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Keahlian Kunci: Jurnal Penyesuaian (AJP) Beban Dibayar Dimuka, Piutang, Penyusutan, dan Perlengkapan",
-          "question": "<p>Perhatikan permasalahan terkait <b>Keahlian Kunci: Jurnal Penyesuaian (AJP) Beban Dibayar Dimuka, Piutang, Penyusutan, dan Perlengkapan</b> berikut. Analisislah berdasarkan prinsip Membedakan pencatatan pendekatan neraca vs laba-rugi serta menghitung depresiasi aset tetap garis lurus..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "html": "<h3>Tujuan Penyusunan Ayat Jurnal Penyesuaian</h3>\n<p>AJP dibuat pada akhir periode agar akun riil menunjukkan posisi harta dan utang sebenarnya, dan akun nominal mencerminkan pendapatan dan beban yang benar-benar menjadi hak periode berjalan (prinsip Akrual).</p>\n<h3>Empat Kasus Klasik AJP Ujian TKA</h3>\n<ol>\n  <li><b>Perlengkapan yang Terpakai</b>:\n  \\[ \\text{Beban Perlengkapan (D)} \\quad \\text{dan} \\quad \\text{Perlengkapan (K)} \\quad (\\text{sebesar nilai yang TERPAKAI}) \\]</li>\n  <li><b>Penyusutan Aset Tetap</b>:\n  \\[ \\text{Beban Penyusutan (D)} \\quad \\text{dan} \\quad \\text{Akumulasi Penyusutan (K)} \\]</li>\n  <li><b>Beban Dibayar di Muka (Pendekatan Harta)</b>: Menyesuaikan bagian yang sudah menjadi beban (waktu yang sudah lewat).</li>\n  <li><b>Pendapatan Diterima di Muka</b>: Menyesuaikan bagian yang sudah benar-benar menjadi hak jasa perusahaan.</li>\n</ol>"
         }
       ]
     },
     {
       "id": "kertas-kerja-neraca-lajur-10-kolom",
-      "title": "Kertas Kerja (Neraca Lajur): Menyusun Kolom Neraca Saldo, AJP, NSD, Laba-Rugi, dan Neraca",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Kertas Kerja (Worksheet / Neraca Lajur) 10 Kolom",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Kertas Kerja (Neraca Lajur): Menyusun Kolom Neraca Saldo, AJP, NSD, Laba-Rugi, dan Neraca</b>: Menyelesaikan neraca lajur 10 kolom dan menentukan saldo laba bersih / rugi usaha.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk setiap transaksi, tanyakan: akun apa yang bertambah, akun apa yang berkurang, dan apakah persamaan tetap seimbang.</li><li>Pendapatan menambah ekuitas; beban dan prive mengurangi ekuitas.</li><li>Saat mencari kas dari tabel neraca, gunakan total aset = total liabilitas + ekuitas.</li><li>Untuk perusahaan dagang, hitung HPP sebelum laba kotor.</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/persamaan-akuntansi.html",
-          "title": "Pengaruh transaksi terhadap persamaan dasar",
-          "height": 620,
-          "caption": "Jalankan transaksi satu per satu. Transaksi mana yang mengubah ekuitas, dan mana yang hanya menukar satu aset dengan aset lain?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Kertas Kerja (Neraca Lajur): Menyusun Kolom Neraca Saldo, AJP, NSD, Laba-Rugi, dan Neraca",
-          "question": "<p>Perhatikan permasalahan terkait <b>Kertas Kerja (Neraca Lajur): Menyusun Kolom Neraca Saldo, AJP, NSD, Laba-Rugi, dan Neraca</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan neraca lajur 10 kolom dan menentukan saldo laba bersih / rugi usaha..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "html": "<h3>Struktur Kolom Neraca Lajur</h3>\n<p>Terdiri dari 5 pasang kolom (10 kolom):</p>\n<ol>\n  <li>Kolom Neraca Saldo (D & K)</li>\n  <li>Kolom Penyesuaian / AJP (D & K)</li>\n  <li>Kolom Neraca Saldo Disesuaikan / NSD (D & K)</li>\n  <li>Kolom <b>Laba / Rugi</b> (D & K): HANYA memuat <b>Akun Nominal (Pendapatan & Beban)</b>!</li>\n  <li>Kolom <b>Neraca</b> (D & K): HANYA memuat <b>Akun Riil (Harta, Utang, Modal, Prive)</b>!</li>\n</ol>"
         }
       ]
     },
     {
       "id": "tiga-laporan-keuangan-utama",
-      "title": "Penyusunan Laporan Keuangan: Laporan Laba-Rugi, Laporan Perubahan Ekuitas, dan Neraca",
-      "kind": "latihan",
-      "duration": "16 menit",
+      "title": "Penyusunan Tiga Laporan Keuangan Utama: Laba Rugi, Perubahan Modal, dan Neraca",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Kunci bab ini: setiap transaksi harus membuat persamaan dasar tetap seimbang.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th></tr><tr><td>Akuntansi</td><td>pengertian, pengguna internal dan eksternal, siklus akuntansi</td></tr><tr><td>Persamaan dasar</td><td>Aset = Liabilitas + Ekuitas; pengaruh transaksi</td></tr><tr><td>Laporan keuangan</td><td>laba rugi, perubahan modal, posisi keuangan, arus kas; urutan penyusunan</td></tr><tr><td>Konsep</td><td>basis akrual, prive, aset lancar dan tetap, aktivitas arus kas</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Mencatat prive sebagai beban usaha.</li><li>Mencatat pendapatan pada saat kas diterima, padahal jasa sudah diserahkan bulan sebelumnya.</li><li>Tertukar aset lancar (perlengkapan, piutang) dan aset tetap (kendaraan, mesin).</li><li>Menyusun neraca sebelum laporan perubahan modal.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Penyusunan Laporan Keuangan: Laporan Laba-Rugi, Laporan Perubahan Ekuitas, dan Neraca",
-          "question": "<p>Perhatikan permasalahan terkait <b>Penyusunan Laporan Keuangan: Laporan Laba-Rugi, Laporan Perubahan Ekuitas, dan Neraca</b> berikut. Analisislah berdasarkan prinsip Menyusun laporan laba rugi single-step/multiple-step dan menghubungkan laba bersih ke modal akhir di neraca..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Penyusunan Laporan Keuangan: Laporan Laba-Rugi, Laporan Perubahan Ekuitas, dan Neraca, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Penyusunan Laporan Keuangan: Laporan Laba-Rugi, Laporan Perubahan Ekuitas, dan Neraca berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyusun laporan laba rugi single-step/multiple-step dan menghubungkan laba bersih ke modal akhir di neraca.."
+          "html": "<h3>Keterkaitan Antara Tiga Laporan Keuangan</h3>\n<ol>\n  <li><b>Laporan Laba/Rugi (Income Statement)</b>:\n  \\[ \\text{Laba Bersih} = \\text{Total Pendapatan} - \\text{Total Beban} \\]</li>\n  <li><b>Laporan Perubahan Modal</b>:\n  \\[ \\text{Modal Akhir} = \\text{Modal Awal} + \\text{Laba Bersih} - \\text{Prive} \\]\n  (Nilai Laba Bersih dari Laporan Laba/Rugi mengalir masuk ke sini!).</li>\n  <li><b>Neraca Keuangan (Balance Sheet)</b>:\n  Menampilkan posisi Aset, Liabilitas, dan Modal Akhir pada tanggal tertentu (Sisi Aset = Sisi Liabilitas + Modal Akhir).</li>\n</ol>"
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-eko-09",
-      "title": "Strategi Cepat Akuntansi dan Latihan Kuis Bab 9",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Akuntansi Keuangan Dasar",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Akuntansi dan Latihan Kuis Bab 9</b>: Menguasai siklus akuntansi lengkap dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk setiap transaksi, tanyakan: akun apa yang bertambah, akun apa yang berkurang, dan apakah persamaan tetap seimbang.</li><li>Pendapatan menambah ekuitas; beban dan prive mengurangi ekuitas.</li><li>Saat mencari kas dari tabel neraca, gunakan total aset = total liabilitas + ekuitas.</li><li>Untuk perusahaan dagang, hitung HPP sebelum laba kotor.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Akuntansi dan Latihan Kuis Bab 9",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Akuntansi dan Latihan Kuis Bab 9</b> berikut. Analisislah berdasarkan prinsip Menguasai siklus akuntansi lengkap dan menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Akuntansi dan Latihan Kuis Bab 9, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Akuntansi dan Latihan Kuis Bab 9 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai siklus akuntansi lengkap dan menyelesaikan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<p>Uji keterampilan akuntansi keuangan jurnal penyesuaian dan neraca lajur Anda melalui kuis resmi 20 butir soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Ekonomi SMA topik Akuntansi Keuangan Dasar. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Ekonomi: Akuntansi Keuangan Dasar (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

@@ -1,300 +1,306 @@
 {
   "title": "Rangkaian Arus Searah",
-  "summary": "Elektrodinamika arus searah (DC): arus listrik, resistansi kawat penghantar dan hambatan jenis, Hukum Ohm, rangkaian resistor seri-paralel, GGL dan hambatan dalam baterai, Hukum I dan II Kirchhoff pada rangkaian multi-loop, alat ukur listrik (amperemeter & voltmeter), serta daya dan energi listrik rumah tangga.",
+  "summary": "Materi komprehensif TKA Fisika: arus listrik dan hambatan jenis kawat penghantar, rangkaian resistor seri-paralel dan jembatan Wheatstone, GGL baterai dan tegangan jepit, hukum I dan II Kirchhoff pada rangkaian majemuk multi-loop, batas ukur amperemeter shunt dan voltmeter multiplier, serta daya dan energi listrik kWh.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "arus-dan-resistansi-kawat",
-      "title": "Arus Listrik, Hukum Ohm, dan Hambatan Jenis Kawat: R = ρ·L/A",
+      "title": "Kuat Arus Listrik, Hukum Ohm, dan Hambatan Jenis Kawat Penghantar",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal rangkaian TKA biasanya menuntut penyederhanaan bertahap, lalu membagi arus dan tegangan kembali ke tiap komponen.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Ohm</td><td>V = IR, R = ρL/A</td><td>IPA Kelas 9, Fisika Kelas 12 Bab 2</td></tr><tr><td>Rangkaian</td><td>seri, paralel, campuran, Kirchhoff</td><td>Fisika Kelas 12 Bab 2</td></tr><tr><td>Energi listrik</td><td>W = VIt, P = VI = I²R = V²/R, kWh</td><td>IPA Kelas 9, Fisika Kelas 12 Bab 2</td></tr></table>"
+          "html": "<h3>Aliran Muatan dan Kecepatan Hanyut Elektron</h3>\n<p>Kuat arus listrik (\\(I\\)) adalah laju aliran muatan listrik neto yang menembus suatu penampang penghantar per satuan waktu: <b>\\(I = \\frac{dQ}{dt}\\)</b> (satuan Ampere = Coulomb/sekon). Arah arus konvensional disepakati searah dengan aliran muatan positif (dari potensial tinggi ke rendah), yang berlawanan dengan arah gerak fisik elektron bebas.</p>\n<p>Hukum Ohm menyatakan bahwa pada suhu konstan, beda potensial (\\(V\\)) pada ujung-ujung konduktor sebanding dengan kuat arus (\\(I\\)) yang mengalir melaluinya: <b>\\(V = I \\cdot R\\)</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(V = IR\\); \\(R = \\rho L/A\\).</li><li>Seri: \\(R_s = R_1 + R_2 + ...\\), arus sama. Paralel: \\(1/R_p = 1/R_1 + 1/R_2 + ...\\), tegangan sama.</li><li>Baterai: \\(I = \\dfrac{\\varepsilon}{R + r}\\); tegangan jepit \\(V = \\varepsilon - Ir\\).</li><li>Kirchhoff I: ΣI masuk = ΣI keluar. Kirchhoff II: \\(\\Sigma\\varepsilon + \\Sigma IR = 0\\) pada setiap loop.</li><li>\\(P = VI = I^2R = V^2/R\\); energi (kWh) = P (kW) × t (jam).</li></ul>"
+          "title": "Persamaan Resistansi Kawat Penghantar dan Pengaruh Suhu",
+          "html": "<div class=\"fc-display\">\n\\[ R = \\rho \\frac{L}{A} \\qquad \\Longleftrightarrow \\qquad R_T = R_0 \\left(1 + \\alpha \\Delta T\\right) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(R\\)</td><td>Resistansi / hambatan kawat penghantar</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(\\rho\\)</td><td>Hambatan jenis (resistivitas) bahan kawat</td><td class=\"unit\">\\Omega\\cdot\\text{meter}</td></tr>\n<tr><td class=\"sym\">\\(L\\)</td><td>Panjang bentangan kawat penghantar</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(A\\)</td><td>Luas penampang kawat (\\(A = \frac{1}{4}\\pi d^2\\))</td><td class=\"unit\">\\text{m}^2</td></tr>\n<tr><td class=\"sym\">\\(R_T\\)</td><td>Resistansi kawat pada suhu tinggi T</td><td class=\"unit\">\\Omega</td></tr>\n<tr><td class=\"sym\">\\(R_0\\)</td><td>Resistansi kawat pada suhu acuan T₀ (biasanya 20°C)</td><td class=\"unit\">\\Omega</td></tr>\n<tr><td class=\"sym\">\\(\\alpha\\)</td><td>Koefisien suhu resistansi bahan</td><td class=\"unit\">^\\circ\\text{C}^{-1}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta T\\)</td><td>Kenaikan suhu kawat (\\(T - T_0\\))</td><td class=\"unit\">^\\circ\\text{C}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perhatikan rasio geometri: kawat yang ditarik sehingga panjangnya berlipat n kali (volumenya tetap konstan, luas penampang menyusut 1/n), hambatannya melonjak menjadi n² KALI LIPAT!</small></p>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas9/IPA/05 Listrik, Magnet, dan Energi Alternatif/sim/rangkaian.html",
-          "title": "Rangkaian seri dan paralel",
-          "height": 480,
-          "caption": "Bandingkan nyala lampu pada rangkaian seri dan paralel. Apa yang terjadi bila satu lampu putus?"
+          "src": "../../../Kelas12/Fisika/02 Listrik Arus Searah/sim/hambatan-kawat.html",
+          "title": "Simulasi Hambatan Kawat Penghantar",
+          "height": 520,
+          "caption": "Ubah panjang, luas penampang, dan jenis kawat untuk mengamati nilai hambatannya."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Resistor 4 Ω diseri dengan paralel 6 Ω dan 12 Ω, lalu dihubungkan ke baterai 24 V (ideal). Berapa arus pada resistor 6 Ω?</p>",
+          "title": "Contoh Perhitungan Kawat yang Ditarik Memanjang",
+          "question": "<p>Seutas kawat tembaga homogen memiliki hambatan 8 Ohm. Kawat tersebut ditarik secara merata sehingga panjangnya menjadi dua kali panjang semula (volume kawat tetap konstan). Berapakah hambatan kawat tembaga sekarang?</p>",
           "steps": [
-            "Paralel: 6 × 12/18 = 4 Ω; total 8 Ω; I = 3 A.",
-            "Tegangan paralel = 3 × 4 = 12 V.",
-            "I₆ = 12/6."
+            "Volume kawat konstan: V = A · L = A' · L'.",
+            "Karena L' = 2L, maka luas penampang menyusut menjadi A' = A / 2.",
+            "Hambatan baru: R' = ρ · L' / A' = ρ · (2L) / (A / 2) = 4 · (ρ · L / A) = 4 · R.",
+            "R' = 4 × 8 Ohm = 32 Ohm."
           ],
-          "answer": "2 A"
+          "answer": "Hambatan kawat baru menjadi 32 Ohm (4 kali lipat)."
         },
         {
           "type": "check",
-          "question": "Lampu di rumah dipasang paralel terutama agar ....",
+          "title": "Cek Pemahaman",
+          "question": "Dua kawat penghantar A dan B terbuat dari bahan yang sama dengan panjang yang sama. Diameter kawat A adalah setengah dari diameter kawat B. Perbandingan hambatan kawat R_A : R_B adalah ....",
           "options": {
-            "A": "arus setiap lampu sama",
-            "B": "setiap lampu mendapat tegangan penuh dan dapat dinyalakan sendiri-sendiri",
-            "C": "hambatan total makin besar",
-            "D": "daya total makin kecil"
+            "A": "1 : 2",
+            "B": "2 : 1",
+            "C": "1 : 4",
+            "D": "4 : 1"
           },
-          "answer": "B",
-          "hint": "Paralel: tegangan sama.",
-          "explanation": "Setiap cabang mendapat 220 V dan dapat dimatikan tanpa memengaruhi cabang lain."
+          "answer": "D",
+          "hint": "R sebanding dengan 1 / A = 1 / d². Karena d_A = ½ d_B, maka R_A / R_B = (d_B / d_A)² = (2 / 1)² = 4 : 1.",
+          "explanation": "Pilihan D benar."
         }
       ]
     },
     {
       "id": "resistor-seri-paralel-jembatan",
-      "title": "Rangkaian Resistor Seri, Paralel, dan Jembatan Wheatstone",
+      "title": "Rangkaian Resistor Seri, Paralel, dan Kesetimbangan Jembatan Wheatstone",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal rangkaian TKA biasanya menuntut penyederhanaan bertahap, lalu membagi arus dan tegangan kembali ke tiap komponen.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Ohm</td><td>V = IR, R = ρL/A</td><td>IPA Kelas 9, Fisika Kelas 12 Bab 2</td></tr><tr><td>Rangkaian</td><td>seri, paralel, campuran, Kirchhoff</td><td>Fisika Kelas 12 Bab 2</td></tr><tr><td>Energi listrik</td><td>W = VIt, P = VI = I²R = V²/R, kWh</td><td>IPA Kelas 9, Fisika Kelas 12 Bab 2</td></tr></table>"
+          "html": "<h3>Prinsip Pembagi Tegangan dan Pembagi Arus</h3>\n<p>Dalam analisis jaringan listrik arus searah (DC):</p>\n<ul>\n  <li><b>Resistor Seri (Pembagi Tegangan)</b>:\n    \\[ R_s = R_1 + R_2 + \\dots \\qquad \\Big| \\qquad I_1 = I_2 = I_{\\text{total}} \\qquad \\Big| \\qquad V_1 : V_2 = R_1 : R_2 \\]\n  </li>\n  <li><b>Resistor Paralel (Pembagi Arus)</b>:\n    \\[ \\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2} + \\dots \\qquad \\Big| \\qquad V_1 = V_2 = V_{\\text{total}} \\qquad \\Big| \\qquad I_1 : I_2 = \\frac{1}{R_1} : \\frac{1}{R_2} \\]\n  </li>\n</ul>\n<h3>Jembatan Wheatstone</h3>\n<p>Jembatan Wheatstone tersusun atas empat resistor yang membentuk jembatan belah ketupat dengan galvanometer di tengahnya. Jika hasil kali silang resistor berhadapan sama besar: <b>\\(R_1 \\cdot R_3 = R_2 \\cdot R_4\\)</b>, maka jembatan berada dalam <b>kondisi seimbang</b> (potensial di kedua ujung galvanometer sama, tidak ada arus yang mengalir melalui cabang tengah sehingga cabang tengah dapat <b>dihilangkan / dicopot</b>).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(V = IR\\); \\(R = \\rho L/A\\).</li><li>Seri: \\(R_s = R_1 + R_2 + ...\\), arus sama. Paralel: \\(1/R_p = 1/R_1 + 1/R_2 + ...\\), tegangan sama.</li><li>Baterai: \\(I = \\dfrac{\\varepsilon}{R + r}\\); tegangan jepit \\(V = \\varepsilon - Ir\\).</li><li>Kirchhoff I: ΣI masuk = ΣI keluar. Kirchhoff II: \\(\\Sigma\\varepsilon + \\Sigma IR = 0\\) pada setiap loop.</li><li>\\(P = VI = I^2R = V^2/R\\); energi (kWh) = P (kW) × t (jam).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas12/Fisika/02 Listrik Arus Searah/sim/kirchhoff.html",
-          "title": "Hukum Kirchhoff",
-          "height": 520,
-          "caption": "Ubah salah satu GGL dan perhatikan arah arus di tiap cabang."
+          "title": "Kaidah Kesetimbangan Jembatan Wheatstone",
+          "html": "<div class=\"fc-display\">\n\\[ R_1 \\cdot R_3 = R_2 \\cdot R_4 \\quad \\Longrightarrow \\quad I_G = 0 \\quad (V_A = V_B) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(R_1, R_3\\)</td><td>Pasangan resistor pada sisi diagonal pertama</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(R_2, R_4\\)</td><td>Pasangan resistor pada sisi diagonal kedua</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(I_G\\)</td><td>Kuat arus yang mengalir melalui galvanometer tengah</td><td class=\"unit\">\\text{Ampere (A)} = 0</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika R₁ · R₃ ≠ R₂ · R₄ (jembatan tidak seimbang), rangkaian harus diselesaikan dengan Transformasi Delta-Bintang (Δ - Y) atau Hukum Kirchhoff.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Aki dengan GGL 12 V dan hambatan dalam 0,2 Ω mengalirkan arus 5 A ke lampu mobil. Berapa tegangan jepit aki dan hambatan lampu?</p>",
+          "title": "Contoh Perhitungan Hambatan Pengganti Jembatan Wheatstone",
+          "question": "<p>Lima buah resistor masing-masing bernilai R₁ = 2 Ω, R₂ = 4 Ω, R₃ = 6 Ω, R₄ = 3 Ω, dan R₅ = 10 Ω (di tengah) disusun membentuk jembatan Wheatstone. Tentukan hambatan total rangkaian tersebut!</p>",
           "steps": [
-            "V = 12 − 5 × 0,2 = 11 V.",
-            "R = 11/5 = 2,2 Ω."
+            "Uji syarat perkalian silang diagonal: R₁ · R₃ = 2 × 6 = 12. R₂ · R₄ = 4 × 3 = 12.",
+            "Karena 12 = 12 (seimbang), maka arus pada resistor tengah R₅ bernilai nol (R₅ dapat dicopot).",
+            "Cabang atas: R_atas = R₁ + R₄ = 2 + 3 = 5 Ω.",
+            "Cabang bawah: R_bawah = R₂ + R₃ = 4 + 6 = 10 Ω.",
+            "Hambatan total paralel: 1/R_total = 1/5 + 1/10 = (2 + 1) / 10 = 3/10  =>  R_total = 10 / 3 ≈ 3,33 Ω."
           ],
-          "answer": "11 V dan 2,2 Ω"
+          "answer": "Hambatan pengganti rangkaian adalah 10/3 Ω (3,33 Ω)."
         },
         {
           "type": "check",
-          "question": "Untuk mengukur kuat arus pada sebuah resistor, amperemeter dipasang ....",
+          "title": "Cek Pemahaman",
+          "question": "Tiga resistor identik masing-masing bernilai 6 Ω dirangkai paralel. Hambatan pengganti kombinasi tersebut adalah ....",
           "options": {
-            "A": "paralel dengan resistor",
-            "B": "seri dengan resistor",
-            "C": "di antara kutub baterai saja",
-            "D": "boleh di mana saja"
+            "A": "2 Ω",
+            "B": "3 Ω",
+            "C": "6 Ω",
+            "D": "18 Ω"
           },
-          "answer": "B",
-          "hint": "Arus yang diukur harus melewati alat.",
-          "explanation": "Amperemeter dipasang seri (hambatannya sangat kecil); voltmeter dipasang paralel (hambatannya sangat besar)."
+          "answer": "A",
+          "hint": "1 / R_p = 1/6 + 1/6 + 1/6 = 3/6 = 1/2  =>  R_p = 2 Ω.",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "ggl-dan-hambatan-dalam-baterai",
-      "title": "GGL Sumber Tegangan, Hambatan Dalam (r), dan Tegangan Jepit",
+      "title": "Gaya Gerak Listrik (GGL), Hambatan Dalam, dan Tegangan Jepit Baterai",
       "kind": "artikel",
-      "duration": "15 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>GGL Sumber Tegangan, Hambatan Dalam (r), dan Tegangan Jepit</b>: Menjelaskan perbedaan tegangan saat sirkuit terbuka (GGL ε) vs sirkuit tertutup mengalir arus (V_jepit = ε − I·r).</p>"
+          "html": "<h3>Perbedaan GGL dan Tegangan Jepit</h3>\n<p>Baterai atau sumber tegangan kimiawi tidaklah murni ideal. Di dalam struktur kimia baterai terdapat resistansi internal yang disebut <b>Hambatan Dalam (\\(r\\))</b>.</p>\n<ul>\n  <li><b>Gaya Gerak Listrik (\\(\\mathcal{E}\\) / GGL)</b>: beda potensial murni pada kutub-kutub baterai saat sakelar terbuka (<b>rangkaian terbuka, arus listrik \\(I = 0\\)</b>).</li>\n  <li><b>Tegangan Jepit (\\(V_j\\))</b>: beda potensial terukur pada kutub-kutub baterai saat baterai sedang mengalirkan arus ke rangkaian luar (<b>rangkaian tertutup, \\(I > 0\\)</b>). Tegangan jepit selalu <b>lebih kecil</b> daripada GGL karena ada penurunan tegangan pada hambatan dalam baterai (\\(I \\cdot r\\)).</li>\n</ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(V = IR\\); \\(R = \\rho L/A\\).</li><li>Seri: \\(R_s = R_1 + R_2 + ...\\), arus sama. Paralel: \\(1/R_p = 1/R_1 + 1/R_2 + ...\\), tegangan sama.</li><li>Baterai: \\(I = \\dfrac{\\varepsilon}{R + r}\\); tegangan jepit \\(V = \\varepsilon - Ir\\).</li><li>Kirchhoff I: ΣI masuk = ΣI keluar. Kirchhoff II: \\(\\Sigma\\varepsilon + \\Sigma IR = 0\\) pada setiap loop.</li><li>\\(P = VI = I^2R = V^2/R\\); energi (kWh) = P (kW) × t (jam).</li></ul>"
+          "title": "Persamaan Arus Rangkaian Sederhana dan Tegangan Jepit",
+          "html": "<div class=\"fc-display\">\n\\[ I = \\frac{\\mathcal{E}}{R + r} \\qquad \\Longleftrightarrow \\qquad V_j = \\mathcal{E} - I \\cdot r = I \\cdot R \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\mathcal{E}\\)</td><td>Gaya Gerak Listrik (GGL) baterai</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n<tr><td class=\"sym\">\\(V_j\\)</td><td>Tegangan jepit pada kutub baterai saat berbeban</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n<tr><td class=\"sym\">\\(I\\)</td><td>Kuat arus total yang keluar dari baterai</td><td class=\"unit\">\\text{Ampere (A)}</td></tr>\n<tr><td class=\"sym\">\\(R\\)</td><td>Hambatan luar (beban lampu / resistor)</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(r\\)</td><td>Hambatan dalam baterai</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Susunan Baterai: n baterai identik dirangkai SERI menghasilkan GGL total = n·E dan r_total = n·r. n baterai identik dirangkai PARALEL menghasilkan GGL total = E dan r_total = r/n.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Sebuah pemanas bertuliskan 880 W/220 V. Berapa hambatan dan arusnya saat dipakai normal?</p>",
+          "title": "Contoh Perhitungan Tegangan Jepit Baterai Berbeban",
+          "question": "<p>Sebuah aki memiliki GGL 12 Volt dan hambatan dalam 0,5 Ohm. Aki tersebut dihubungkan dengan lampu luar yang berhambatan 5,5 Ohm. Tentukan: (a) kuat arus yang mengalir, (b) tegangan jepit pada kutub aki!</p>",
           "steps": [
-            "R = V²/P = 48.400/880 = 55 Ω.",
-            "I = P/V = 4 A."
+            "(a) Kuat arus total: I = E / (R + r) = 12 / (5,5 + 0,5) = 12 / 6 = 2 Ampere.",
+            "(b) Tegangan jepit: V_j = E - I · r = 12 - (2 × 0,5) = 12 - 1 = 11 Volt (atau V_j = I · R = 2 × 5,5 = 11 Volt)."
           ],
-          "answer": "55 Ω dan 4 A"
+          "answer": "(a) Kuat arus 2 Ampere; (b) Tegangan jepit aki terukur 11 Volt."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah baterai diukur tegangannya dengan voltmeter saat tidak dihubungkan ke rangkaian luar menunjukkan 9,0 Volt. Saat dihubungkan dengan resistor 17 Ω, arusnya terukur 0,5 A. Hambatan dalam baterai tersebut adalah ....",
+          "options": {
+            "A": "0,5 Ω",
+            "B": "1,0 Ω",
+            "C": "1,5 Ω",
+            "D": "2,0 Ω"
+          },
+          "answer": "B",
+          "hint": "E = 9,0 V. I = E / (R + r)  =>  0,5 = 9,0 / (17 + r)  =>  17 + r = 9,0 / 0,5 = 18  =>  r = 1,0 Ω.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "hukum-kirchhoff-rangkaian-satu-dua-loop",
-      "title": "Hukum I dan II Kirchhoff: Analisis Sirkuit Multi-Loop",
+      "title": "Hukum I & II Kirchhoff: Analisis Sistematis Rangkaian Majemuk Multi-Loop",
       "kind": "simulasi",
-      "duration": "18 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal rangkaian TKA biasanya menuntut penyederhanaan bertahap, lalu membagi arus dan tegangan kembali ke tiap komponen.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Ohm</td><td>V = IR, R = ρL/A</td><td>IPA Kelas 9, Fisika Kelas 12 Bab 2</td></tr><tr><td>Rangkaian</td><td>seri, paralel, campuran, Kirchhoff</td><td>Fisika Kelas 12 Bab 2</td></tr><tr><td>Energi listrik</td><td>W = VIt, P = VI = I²R = V²/R, kWh</td><td>IPA Kelas 9, Fisika Kelas 12 Bab 2</td></tr></table>"
+          "html": "<h3>Dua Hukum Pokok Sirkuit Listrik Gustav Kirchhoff</h3>\n<p>Untuk rangkaian majemuk multi-loop yang tidak dapat diselesaikan dengan aturan seri-paralel sederhana, digunakan dua hukum Kirchhoff:</p>\n<ol>\n  <li><b>Hukum I Kirchhoff (KCL - Kekekalan Muatan)</b>:\n  <p><i>\"Jumlah aljabar kuat arus listrik yang masuk ke suatu titik percabangan sama dengan jumlah aljabar kuat arus yang keluar dari titik percabangan tersebut.\"</i></p>\n  \\[ \\Sigma I_{\\text{masuk}} = \\Sigma I_{\\text{keluar}} \\]</li>\n  <li><b>Hukum II Kirchhoff (KVL - Kekekalan Energi)</b>:\n  <p><i>\"Dalam suatu rangkaian tertutup (loop tertutup), jumlah aljabar dari perubahan potensial dan gaya gerak listrik (GGL) adalah sama dengan nol.\"</i></p>\n  \\[ \\Sigma \\mathcal{E} + \\Sigma I \\cdot R = 0 \\]</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(V = IR\\); \\(R = \\rho L/A\\).</li><li>Seri: \\(R_s = R_1 + R_2 + ...\\), arus sama. Paralel: \\(1/R_p = 1/R_1 + 1/R_2 + ...\\), tegangan sama.</li><li>Baterai: \\(I = \\dfrac{\\varepsilon}{R + r}\\); tegangan jepit \\(V = \\varepsilon - Ir\\).</li><li>Kirchhoff I: ΣI masuk = ΣI keluar. Kirchhoff II: \\(\\Sigma\\varepsilon + \\Sigma IR = 0\\) pada setiap loop.</li><li>\\(P = VI = I^2R = V^2/R\\); energi (kWh) = P (kW) × t (jam).</li></ul>"
+          "title": "Persamaan Hukum II Kirchhoff dan Aturan Tanda Loop",
+          "html": "<div class=\"fc-display\">\n\\[ \\Sigma \\mathcal{E} + \\Sigma I \\cdot R = 0 \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\Sigma \\mathcal{E}\\)</td><td>Jumlah aljabar GGL sumber tegangan dalam satu loop</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n<tr><td class=\"sym\">\\(\\Sigma I \\cdot R\\)</td><td>Jumlah aljabar penurunan tegangan pada seluruh resistor dalam loop</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Aturan Tanda Mutlak Loop: 1) Jika arah lintasan loop pertama kali menjumpai kutub POSITIF baterai (garis panjang), GGL bertanda (+); jika menjumpai kutub NEGATIF (garis pendek), GGL bertanda (-). 2) Jika arah lintasan loop SEARAH dengan arah arus I pada cabang tersebut, suku I·R bertanda (+); jika BERLAWANAN arah, suku I·R bertanda (-).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Langkah Standar Menyelesaikan Soal 2 Loop TKA",
+          "html": "<ol>\n  <li>Tentukan arah arus pada setiap cabang (misal \\(I_1\\) di cabang kiri, \\(I_2\\) di kanan, \\(I_3\\) di tengah) dan terapkan Hukum I Kirchhoff: \\(I_3 = I_1 + I_2\\).</li>\n  <li>Tentukan arah putaran lintasan Loop 1 dan Loop 2 (biasanya searah jarum jam).</li>\n  <li>Tuliskan persamaan KVL untuk Loop 1 dan Loop 2 secara terpisah.</li>\n  <li>Selesaikan sistem dua persamaan linier (eliminasi / substitusi). Jika hasil akhir suatu arus bertanda negatif (-), artinya besarnya benar tetapi <b>arah arus fisiknya berlawanan</b> dengan panah permisalan awal.</li>\n</ol>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas12/Fisika/02 Listrik Arus Searah/sim/hambatan-kawat.html",
-          "title": "Hambatan kawat",
+          "src": "../../../Kelas12/Fisika/02 Listrik Arus Searah/sim/kirchhoff.html",
+          "title": "Simulasi Hukum Kirchhoff 2 Loop",
           "height": 520,
-          "caption": "Gandakan panjang kawat, lalu gandakan diameternya. Bagaimana hambatannya berubah?"
+          "caption": "Atur GGL baterai dan nilai resistor pada rangkaian 2 loop, amati arus di tiap cabang."
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sebuah rumah menyalakan 5 lampu 20 W selama 10 jam/hari dan sebuah kulkas 150 W selama 24 jam/hari. Tarif Rp1.400/kWh. Berapa biaya listrik selama 30 hari?</p>",
+          "title": "Contoh Analisis Rangkaian 1 Loop",
+          "question": "<p>Sebuah rangkaian tertutup 1 loop terdiri dari dua baterai E₁ = 12 V (kutub positif menghadap ke atas), E₂ = 6 V (kutub positif menghadap ke atas berlawanan), dan dua resistor R₁ = 4 Ω serta R₂ = 2 Ω. Hitung kuat arus yang mengalir pada rangkaian!</p>",
           "steps": [
-            "Lampu: 5 × 20 × 10 = 1.000 Wh = 1 kWh/hari.",
-            "Kulkas: 150 × 24 = 3.600 Wh = 3,6 kWh/hari.",
-            "Total 4,6 × 30 = 138 kWh → 138 × 1.400."
+            "Pilih arah loop searah jarum jam:",
+            "Lintasan melewati E₁ dari kutub negatif ke positif (menjumpai kutub positif): +12 V.",
+            "Lintasan melewati E₂ dari kutub positif ke negatif (menjumpai kutub negatif): -6 V.",
+            "Terapkan KVL: ΣE + I · ΣR = 0  =>  (12 - 6) + I · (4 + 2) = 0.",
+            "6 + 6I = 0  =>  I = 6 / 6 = 1 Ampere (searah jarum jam)."
           ],
-          "answer": "Rp193.200"
+          "answer": "Kuat arus yang mengalir adalah 1 Ampere."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Pada sebuah titik percabangan sirkuit, arus yang masuk adalah I₁ = 3 A dan I₂ = 5 A. Jika arus yang keluar melalui salah satu cabang adalah I₃ = 2 A, maka arus yang keluar melalui cabang lainnya (I₄) adalah ....",
+          "options": {
+            "A": "4 A",
+            "B": "6 A",
+            "C": "8 A",
+            "D": "10 A"
+          },
+          "answer": "B",
+          "hint": "Hukum I Kirchhoff: ΣI_masuk = ΣI_keluar  =>  3 + 5 = 2 + I₄  =>  8 = 2 + I₄  =>  I₄ = 6 A.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "alat-ukur-amperemeter-voltmeter",
-      "title": "Batas Ukur Alat Listrik: Shunt Amperemeter dan Pengganda Voltmeter",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Alat Ukur Listrik: Amperemeter (Shunt) dan Voltmeter (Multiplier)",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Batas Ukur Alat Listrik: Shunt Amperemeter dan Pengganda Voltmeter</b>: Menghitung hambatan shunt R_sh agar amperemeter mampu mengukur n kali lipat dan hambatan muka R_v untuk voltmeter.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Prinsip Pengukuran Arus dan Tegangan</h3>\n<p>Galvanometer dasar memiliki keterbatasan batas ukur maksimum (skala penuh) yang sangat kecil (orde miliampere). Untuk memperbesar batas ukurnya agar dapat mengukur arus atau tegangan besar, ditambahkan resistor presisi:</p>\n<ol>\n  <li><b>Amperemeter (Pengukur Arus)</b>:\n    <ul>\n      <li>Dipasang secara <b>SERI</b> dengan komponen yang hendak diukur arusnya.</li>\n      <li>Amperemeter ideal memiliki hambatan dalam <b>nol (\\(R_A = 0\\))</b> agar tidak mempengaruhi arus rangkaian.</li>\n      <li>Untuk menaikkan batas ukur arus sebesar \\(n\\) kali (\\(n = I / I_A\\)), dipasang <b>Hambatan Shunt (\\(R_{sh}\\)) secara PARALEL</b> dengan galvanometer.</li>\n    </ul>\n  </li>\n  <li><b>Voltmeter (Pengukur Tegangan)</b>:\n    <ul>\n      <li>Dipasang secara <b>PARALEL</b> dengan komponen yang hendak diukur tegangannya.</li>\n      <li>Voltmeter ideal memiliki hambatan dalam <b>tak hingga (\\(R_V = \\infty\\))</b> agar tidak menyedot arus dari rangkaian.</li>\n      <li>Untuk menaikkan batas ukur tegangan sebesar \\(n\\) kali (\\(n = V / V_V\\)), dipasang <b>Hambatan Muka / Multiplier (\\(R_m\\)) secara SERI</b> dengan galvanometer.</li>\n    </ul>\n  </li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Penurunan rumus praktis perbesaran batas ukur galvanomter analog.</p>"
+          "title": "Persamaan Hambatan Shunt dan Hambatan Multiplier",
+          "html": "<div class=\"fc-display\">\n\\[ R_{sh} = \\frac{R_A}{n - 1} \\quad \\left(n = \\frac{I_{\\text{baru}}}{I_{\\text{lama}}}\\right) \\qquad \\Big| \\qquad R_m = (n - 1) R_V \\quad \\left(n = \\frac{V_{\\text{baru}}}{V_{\\text{lama}}}\\right) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(R_{sh}\\)</td><td>Hambatan Shunt yang dipasang paralel pada Amperemeter</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(R_m\\)</td><td>Hambatan Muka / Multiplier yang dipasang seri pada Voltmeter</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(R_A, R_V\\)</td><td>Hambatan dalam galvanometer amperemeter dan voltmeter mula-mula</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(n\\)</td><td>Faktor pelipatan batas ukur alat</td><td class=\"unit\">\\text{kali lipat}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Mnemonik: Shunt dibagi (R_A / (n-1)), Multiplier dikali ((n-1) · R_V).</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Batas Ukur Alat Listrik: Shunt Amperemeter dan Pengganda Voltmeter",
-          "question": "<p>Perhatikan permasalahan terkait <b>Batas Ukur Alat Listrik: Shunt Amperemeter dan Pengganda Voltmeter</b> berikut. Analisislah berdasarkan prinsip Menghitung hambatan shunt R_sh agar amperemeter mampu mengukur n kali lipat dan hambatan muka R_v untuk voltmeter..</p>",
+          "title": "Contoh Perhitungan Hambatan Shunt Amperemeter",
+          "question": "<p>Sebuah galvanometer memiliki hambatan dalam 18 Ohm dan batas ukur arus maksimum 50 mA. Agar galvanometer tersebut dapat digunakan sebagai amperemeter dengan batas ukur 500 mA, tentukan besar hambatan shunt yang harus dipasang!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Faktor perbesaran batas ukur: n = I_baru / I_lama = 500 mA / 50 mA = 10 kali.",
+            "Terapkan rumus hambatan shunt: R_sh = R_A / (n - 1).",
+            "R_sh = 18 / (10 - 1) = 18 / 9 = 2 Ohm (dipasang paralel dengan galvanometer)."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Dibutuhkan hambatan shunt sebesar 2 Ohm yang dipasang secara paralel."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Batas Ukur Alat Listrik: Shunt Amperemeter dan Pengganda Voltmeter, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah voltmeter dengan hambatan dalam 2 kΩ memiliki batas ukur maksimum 10 Volt. Agar voltmeter mampu mengukur tegangan hingga 100 Volt, maka harus dipasang hambatan multiplier secara seri sebesar ....",
           "options": {
-            "A": "Konsep Batas Ukur Alat Listrik: Shunt Amperemeter dan Pengganda Voltmeter berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "9 kΩ",
+            "B": "18 kΩ",
+            "C": "20 kΩ",
+            "D": "200 kΩ"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung hambatan shunt R_sh agar amperemeter mampu mengukur n kali lipat dan hambatan muka R_v untuk voltmeter.."
+          "answer": "B",
+          "hint": "n = 100 V / 10 V = 10 kali. R_m = (n - 1) · R_V = (10 - 1) × 2 kΩ = 9 × 2 kΩ = 18 kΩ.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "daya-energi-dan-biaya-listrik",
-      "title": "Energi, Daya Listrik (P = V·I = I^2·R), dan Tarif kWh Rumah Tangga",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Daya Listrik, Efisiensi Transmisi, dan Perhitungan Rekening Listrik PLN",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Energi, Daya Listrik (P = V·I = I^2·R), dan Tarif kWh Rumah Tangga</b>: Menghitung daya disipasi peralatan saat tegangan jala-jala turun dan menghitung tagihan rekening listrik bulanan.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Konversi Energi Listrik dan Disipasi Kalor Joule</h3>\n<p>Ketika arus listrik mengalir melalui suatu beban resistif, energi potensial elektrostatik diubah menjadi bentuk energi lain (energi mekanik pada motor, cahaya pada lampu, atau energi kalor Joule). Laju perubahan energi per satuan waktu disebut <b>Daya Listrik (\\(P\\))</b> dengan satuan <b>Watt (W = Joule/sekon)</b>.</p>\n<h3>Satuan Energi Komersial PLN: Kilowatt-hour (kWh)</h3>\n<p>Untuk pemakaian rumah tangga komersial, PLN menggunakan satuan energi <b>kWh (kilowatt-jam)</b>:\n\\[ 1\\text{ kWh} = 1.000\\text{ Watt} \\times 3.600\\text{ sekon} = 3,6 \\times 10^6\\text{ Joule} = 3,6\\text{ MJ} \\]</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(V = IR\\); \\(R = \\rho L/A\\).</li><li>Seri: \\(R_s = R_1 + R_2 + ...\\), arus sama. Paralel: \\(1/R_p = 1/R_1 + 1/R_2 + ...\\), tegangan sama.</li><li>Baterai: \\(I = \\dfrac{\\varepsilon}{R + r}\\); tegangan jepit \\(V = \\varepsilon - Ir\\).</li><li>Kirchhoff I: ΣI masuk = ΣI keluar. Kirchhoff II: \\(\\Sigma\\varepsilon + \\Sigma IR = 0\\) pada setiap loop.</li><li>\\(P = VI = I^2R = V^2/R\\); energi (kWh) = P (kW) × t (jam).</li></ul>"
+          "title": "Persamaan Daya Listrik dan Energi Listrik",
+          "html": "<div class=\"fc-display\">\n\\[ P = V \\cdot I = I^2 \\cdot R = \\frac{V^2}{R} \\qquad \\Longleftrightarrow \\qquad W = P \\cdot t \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(P\\)</td><td>Daya listrik perangkat</td><td class=\"unit\">\\text{Watt (W)}</td></tr>\n<tr><td class=\"sym\">\\(W\\)</td><td>Energi listrik yang dikonsumsi</td><td class=\"unit\">\\text{Joule (J) atau kWh}</td></tr>\n<tr><td class=\"sym\">\\(V\\)</td><td>Tegangan listrik yang bekerja pada perangkat</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n<tr><td class=\"sym\">\\(I\\)</td><td>Kuat arus yang mengalir</td><td class=\"unit\">\\text{Ampere (A)}</td></tr>\n<tr><td class=\"sym\">\\(R\\)</td><td>Hambatan listrik perangkat</td><td class=\"unit\">\\text{Ohm (}\\Omega\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(t\\)</td><td>Waktu pengoperasian perangkat</td><td class=\"unit\">\\text{sekon (s) atau jam (h)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Daya lampu yang dipasang pada tegangan berbeda (tegangan turun): P_baru = P_spesifikasi · (V_baru / V_spesifikasi)² (karena hambatan filamen lampu R = konstan).</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Energi, Daya Listrik (P = V·I = I^2·R), dan Tarif kWh Rumah Tangga",
-          "question": "<p>Perhatikan permasalahan terkait <b>Energi, Daya Listrik (P = V·I = I^2·R), dan Tarif kWh Rumah Tangga</b> berikut. Analisislah berdasarkan prinsip Menghitung daya disipasi peralatan saat tegangan jala-jala turun dan menghitung tagihan rekening listrik bulanan..</p>",
+          "title": "Contoh Perhitungan Biaya Listrik Bulanan",
+          "question": "<p>Sebuah rumah menyalakan: 5 lampu LED masing-masing 20 Watt selama 10 jam/hari, dan 1 kulkas 150 Watt yang menyala 24 jam/hari. Jika tarif listrik PLN adalah Rp1.500 per kWh, hitunglah total biaya rekening listrik yang harus dibayar selama 30 hari (1 bulan)!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Konsumsi energi harian:",
+            "Lampu: 5 × 20 W × 10 jam = 1.000 Wh/hari = 1 kWh/hari.",
+            "Kulkas: 1 × 150 W × 24 jam = 3.600 Wh/hari = 3,6 kWh/hari.",
+            "Total energi harian = 1 + 3,6 = 4,6 kWh/hari.",
+            "Total energi 30 hari: 4,6 kWh/hari × 30 hari = 138 kWh.",
+            "Total biaya bulanan: 138 kWh × Rp1.500/kWh = Rp207.000."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Total tagihan listrik yang harus dibayar selama 1 bulan adalah Rp207.000."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Energi, Daya Listrik (P = V·I = I^2·R), dan Tarif kWh Rumah Tangga, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah lampu bertuliskan spesifikasi '220 V, 100 W' dihubungkan pada sumber tegangan listrik 110 V. Daya listrik yang diserap oleh lampu tersebut sekarang adalah ....",
           "options": {
-            "A": "Konsep Energi, Daya Listrik (P = V·I = I^2·R), dan Tarif kWh Rumah Tangga berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "25 Watt",
+            "B": "50 Watt",
+            "C": "75 Watt",
+            "D": "100 Watt"
           },
           "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung daya disipasi peralatan saat tegangan jala-jala turun dan menghitung tagihan rekening listrik bulanan.."
+          "hint": "P' = P · (V' / V)² = 100 × (110 / 220)² = 100 × (1/2)² = 100 × 1/4 = 25 Watt.",
+          "explanation": "Daya turun menjadi seperempatnya (25 Watt)."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-12",
-      "title": "Strategi Cepat Analisis Rangkaian DC dan Latihan Kuis Bab 12",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Rangkaian Arus Searah",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Analisis Rangkaian DC dan Latihan Kuis Bab 12</b>: Menguasai analisis rangkaian arus searah dan menuntaskan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Sederhanakan rangkaian dari bagian terjauh dari sumber.</li><li>Pada Kirchhoff, tetapkan arah arus dan arah loop sembarang; hasil negatif berarti arah arus sebenarnya terbalik.</li><li>Pada soal lampu dipasang pada tegangan lain, hambatan dianggap tetap: P₂ = (V₂/V₁)² P₁.</li><li>Ubah W ke kW dan menit ke jam untuk biaya listrik.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Analisis Rangkaian DC dan Latihan Kuis Bab 12",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Analisis Rangkaian DC dan Latihan Kuis Bab 12</b> berikut. Analisislah berdasarkan prinsip Menguasai analisis rangkaian arus searah dan menuntaskan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Analisis Rangkaian DC dan Latihan Kuis Bab 12, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Analisis Rangkaian DC dan Latihan Kuis Bab 12 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai analisis rangkaian arus searah dan menuntaskan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Rumus Kunci Rangkaian Arus Searah</h3>\n<p>Kuasai Hukum Ohm (\\(V = IR\\)), resistansi kawat (\\(R = \\rho L/A\\)), tegangan jepit (\\(V_j = \\mathcal{E} - Ir\\)), jembatan Wheatstone (\\(R_1R_3 = R_2R_4\\)), Hukum Kirchhoff (\\(\\Sigma \\mathcal{E} + \\Sigma IR = 0\\)), shunt amperemeter/multiplier voltmeter, dan perhitungan rekening PLN.</p>\n<p>Uji pemahaman komprehensif Anda melalui kuis resmi 20 soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Rangkaian Arus Searah. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Fisika: Rangkaian Arus Searah (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

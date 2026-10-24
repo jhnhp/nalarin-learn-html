@@ -1,339 +1,276 @@
 {
   "title": "Geometri dan Trigonometri",
-  "summary": "Geometri bidang, ruang, dan trigonometri analitis: dalil Pythagoras, kesebangunan, rasio trigonometri segitiga siku-siku, sudut berelasi di 4 kuadran, aturan sinus dan kosinus, luas segitiga sembarang, geometri dimensi tiga (jarak titik ke garis/bidang), dan identitas dasar.",
+  "summary": "Materi komprehensif TKA Matematika SMA: perbandingan trigonometri dasar segitiga siku-siku, lingkaran satuan dan sudut berelasi empat kuadran, aturan sinus dan aturan kosinus, teorema kesebangunan geometri bidang, geometri ruang dimensi tiga kubus dan limas, serta aplikasi sudut elevasi-depresi.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "rasio-trigonometri-segitiga-siku",
-      "title": "Rasio Trigonometri Dasar: Sinus, Kosinus, Tangen pada Segitiga Siku-Siku",
-      "kind": "artikel",
-      "duration": "15 menit",
+      "title": "Perbandingan Trigonometri Dasar pada Segitiga Siku-Siku",
+      "kind": "simulasi",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Rasio Trigonometri Dasar: Sinus, Kosinus, Tangen pada Segitiga Siku-Siku</b>: Menerapkan perbandingan sisi depan, samping, miring (Demi-Sami-Desa) dan menghafal nilai sudut istimewa 0°, 30°, 45°, 60°, 90°.</p>"
+          "html": "<h3>Definisi Dasar Rasio Demi-Sami-Desa</h3>\n<p>Pada segitiga siku-siku dengan sudut lancip \\(\\theta\\):</p>\n<ul>\n  <li><b>Sinus (\\(\\sin\\theta\\))</b>: depan / miring (Demi)</li>\n  <li><b>Kosinus (\\(\\cos\\theta\\))</b>: samping / miring (Sami)</li>\n  <li><b>Tangen (\\(\\tan\\theta\\))</b>: depan / samping (Desa) = \\(\\frac{\\sin\\theta}{\\cos\\theta}\\)</li>\n  <li><b>Kosekan (\\(\\csc\\theta\\))</b>: kebalikan sinus (\\(1 / \\sin\\theta\\))</li>\n  <li><b>Sekan (\\(\\sec\\theta\\))</b>: kebalikan kosinus (\\(1 / \\cos\\theta\\))</li>\n  <li><b>Kotangen (\\(\\cot\\theta\\))</b>: kebalikan tangen (\\(1 / \\tan\\theta\\))</li>\n</ul>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Gambar segitiga siku-siku bantu dan tandai sisi depan, samping, miring terhadap sudut yang diketahui.</li><li>Tentukan kuadran sudut sebelum menentukan tanda nilai trigonometri.</li><li>Pada soal jarak dalam ruang, cari bidang yang memuat kedua titik dan bentuk segitiga siku-siku.</li></ul>"
+          "variant": "rumus",
+          "title": "Identitas Pokok Pythagoras Trigonometri",
+          "html": "<div class=\"fc-display\">\n\\[ \\sin^2\\theta + \\cos^2\\theta = 1 \\qquad \\Big| \\qquad 1 + \\tan^2\\theta = \\sec^2\\theta \\qquad \\Big| \\qquad 1 + \\cot^2\\theta = \\csc^2\\theta \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\theta\\)</td><td>Besar sudut lancip atau sembarang sudut</td><td class=\"unit\">\\text{derajat atau radian}</td></tr>\n<tr><td class=\"sym\">\\(\\sin\\theta, \\cos\\theta\\)</td><td>Nilai fungsi sinus dan kosinus</td><td class=\"unit\">\\text{rentang } [-1, 1]</td></tr>\n<tr><td class=\"sym\">\\(\\tan\\theta\\)</td><td>Nilai fungsi tangen</td><td class=\"unit\">\\text{bilangan real } \\mathbb{R}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Nilai Sudut Istimewa: sin(30°) = 1/2, sin(45°) = 1/2√2, sin(60°) = 1/2√3. cos(30°) = 1/2√3, cos(45°) = 1/2√2, cos(60°) = 1/2. tan(45°) = 1.</small></p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/03 Perbandingan Trigonometri/sim/segitiga-trig.html",
+          "title": "Simulasi Segitiga Siku-Siku Trigonometri",
+          "height": 520,
+          "caption": "Ubah panjang sisi segitiga siku-siku dan amati nilai perbandingan trigonometrinya."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Hitung sin 150° − cos 120° + tan 45°.</p>",
+          "title": "Contoh Menghitung Rasio Lain dari Satu Nilai Trigonometri",
+          "question": "<p>Diketahui tan θ = 3/4 dengan θ berada pada kuadran I. Tentukan nilai dari (sin θ · cos θ)!</p>",
           "steps": [
-            "sin 150° = sin 30° = ½; cos 120° = −cos 60° = −½; tan 45° = 1.",
-            "½ − (−½) + 1 = 2."
+            "tan θ = depan / samping = 3 / 4.",
+            "Panjang sisi miring segitiga: miring = √(3² + 4²) = √(9 + 16) = √25 = 5.",
+            "Maka sin θ = depan / miring = 3/5, dan cos θ = samping / miring = 4/5.",
+            "Hasil kali: sin θ · cos θ = (3/5) · (4/5) = 12/25."
           ],
-          "answer": "2"
+          "answer": "Nilai sin θ · cos θ adalah 12/25."
         },
         {
           "type": "check",
-          "question": "Benang layang-layang 50 m membentuk sudut 30° dengan tanah. Tinggi layang-layang (dari tangan) adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Nilai dari (sin 30° + cos 60°) / tan 45° adalah ....",
           "options": {
-            "A": "25 m",
-            "B": "25√3 m",
-            "C": "50√3 m",
-            "D": "100 m"
+            "A": "0,5",
+            "B": "1,0",
+            "C": "1,5",
+            "D": "2,0"
           },
-          "answer": "A",
-          "hint": "Tinggi adalah sisi depan sudut.",
-          "explanation": "t = 50 × sin 30° = 25 m."
+          "answer": "B",
+          "hint": "sin 30° = 0,5; cos 60° = 0,5; tan 45° = 1. (0,5 + 0,5) / 1 = 1 / 1 = 1,0.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "lingkaran-satuan-dan-empat-kuadran",
-      "title": "Lingkaran Satuan dan Sudut Berelasi di Empat Kuadran (ASTC)",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Lingkaran Satuan, Tanda Empat Kuadran, dan Sudut Berelasi",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal TKA geometri memadukan gambar dan konteks (menara, tiang, logo, kolam). Buat sketsa segitiga siku-siku dari setiap situasi.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Trigonometri</td><td>sin, cos, tan; sudut istimewa; sudut berelasi; kuadran</td><td>Kelas 10 Bab 3</td></tr><tr><td>Elevasi dan depresi</td><td>tinggi dan jarak dengan tan</td><td>Kelas 10 Bab 3</td></tr><tr><td>Transformasi</td><td>translasi, refleksi, rotasi, dilatasi dan komposisinya</td><td>Kelas 9 Bab 3</td></tr><tr><td>Lingkaran</td><td>sudut pusat dan keliling, garis singgung</td><td>Kelas 11 Bab 4</td></tr><tr><td>Bangun ruang</td><td>diagonal kubus dan balok, luas dan volume</td><td>Kelas 9 Bab 2</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>sin = de/mi, cos = sa/mi, tan = de/sa.</li><li>sin 30° = ½, cos 60° = ½, sin 45° = cos 45° = ½√2, tan 60° = √3.</li><li>sin(180° − α) = sin α; cos(180° − α) = −cos α. Di kuadran II hanya sin (dan csc) positif.</li><li>Diagonal sisi kubus s√2, diagonal ruang s√3; diagonal ruang balok √(p² + l² + t²).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/03 Perbandingan Trigonometri/sim/segitiga-trig.html",
-          "title": "Perbandingan trigonometri",
-          "height": 520,
-          "caption": "Ubah sudut dan perhatikan bahwa perbandingan sisi tidak bergantung pada ukuran segitiga."
+          "html": "<h3>Aturan Tanda Empat Kuadran (ASTC)</h3>\n<p>Mnemonik: <b>\"All - Sin - Tan - Cos\" (Semua - Sindikat - Tangan - Kosong)</b></p>\n<ul>\n  <li><b>Kuadran I (\\(0^\\circ - 90^\\circ\\))</b>: SEMUA bernilai positif (+).</li>\n  <li><b>Kuadran II (\\(90^\\circ - 180^\\circ\\))</b>: Hanya SINUS (dan csc) yang positif (+).</li>\n  <li><b>Kuadran III (\\(180^\\circ - 270^\\circ\\))</b>: Hanya TANGEN (dan cot) yang positif (+).</li>\n  <li><b>Kuadran IV (\\(270^\\circ - 360^\\circ\\))</b>: Hanya KOSINUS (dan sec) yang positif (+).</li>\n</ul>\n<h3>Kaidah Perubahan Fungsi Sudut Berelasi</h3>\n<ul>\n  <li>Relasi terhadap sumbu mendatar (\\(180^\\circ \\pm \\alpha\\) atau \\(360^\\circ - \\alpha\\)): <b>Fungsi TETAP</b> (\\(\\sin \\to \\sin, \\cos \\to \\cos\\)).</li>\n  <li>Relasi terhadap sumbu tegak (\\(90^\\circ \\pm \\alpha\\) atau \\(270^\\circ \\pm \\alpha\\)): <b>Fungsi BERUBAH ke kofungsi</b> (\\(\\sin \\leftrightarrow \\cos, \\tan \\leftrightarrow \\cot\\)).</li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>sin A = 8/17 dan A sudut tumpul. Tentukan csc A + cot A.</p>",
+          "title": "Contoh Sudut Berelasi Kuadran II dan III",
+          "question": "<p>Tentukan nilai dari: (a) sin 150°, (b) cos 240°!</p>",
           "steps": [
-            "Sisi samping = √(17² − 8²) = 15. Di kuadran II, cos A = −15/17.",
-            "csc A = 17/8, cot A = −15/8.",
-            "Jumlah = 2/8 = ¼."
+            "(a) 150° berada di Kuadran II (sinus positif). Relasi 180°: sin(180° - 30°) = +sin 30° = +1/2.",
+            "(b) 240° berada di Kuadran III (kosinus negatif). Relasi 180°: cos(180° + 60°) = -cos 60° = -1/2."
           ],
-          "answer": "¼"
+          "answer": "(a) sin 150° = 1/2; (b) cos 240° = -1/2."
         },
         {
           "type": "check",
-          "question": "Titik (x, y) dirotasi 90° berlawanan arah jarum jam terhadap O. Bayangannya adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Nilai dari tan 315° adalah ....",
           "options": {
-            "A": "(−y, x)",
-            "B": "(y, −x)",
-            "C": "(−x, −y)",
-            "D": "(y, x)"
+            "A": "1",
+            "B": "-1",
+            "C": "√3",
+            "D": "-√3"
           },
-          "answer": "A",
-          "hint": "Uji dengan titik (1, 0).",
-          "explanation": "(1, 0) berpindah ke (0, 1) = (−y, x)."
+          "answer": "B",
+          "hint": "315° berada di Kuadran IV (tangen bernilai negatif). tan(360° - 45°) = -tan 45° = -1.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "aturan-sinus-dan-kosinus",
-      "title": "Segitiga Sembarang: Aturan Sinus, Aturan Kosinus, dan Luas Segitiga",
+      "title": "Aturan Sinus, Aturan Kosinus, dan Rumus Luas Segitiga Sembarang",
       "kind": "simulasi",
-      "duration": "18 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal TKA geometri memadukan gambar dan konteks (menara, tiang, logo, kolam). Buat sketsa segitiga siku-siku dari setiap situasi.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Trigonometri</td><td>sin, cos, tan; sudut istimewa; sudut berelasi; kuadran</td><td>Kelas 10 Bab 3</td></tr><tr><td>Elevasi dan depresi</td><td>tinggi dan jarak dengan tan</td><td>Kelas 10 Bab 3</td></tr><tr><td>Transformasi</td><td>translasi, refleksi, rotasi, dilatasi dan komposisinya</td><td>Kelas 9 Bab 3</td></tr><tr><td>Lingkaran</td><td>sudut pusat dan keliling, garis singgung</td><td>Kelas 11 Bab 4</td></tr><tr><td>Bangun ruang</td><td>diagonal kubus dan balok, luas dan volume</td><td>Kelas 9 Bab 2</td></tr></table>"
+          "html": "<h3>Trigonometri Segitiga Sembarang (Non-Siku)</h3>\n<p>Untuk sembarang segitiga dengan panjang sisi \\(a, b, c\\) dan sudut di hadapannya \\(A, B, C\\):</p>\n<ol>\n  <li><b>Aturan Sinus</b>: digunakan jika diketahui pasangan <b>satu sisi dan sudut di hadapannya</b>.</li>\n  <li><b>Aturan Kosinus</b>: digunakan jika diketahui <b>tiga sisi (SSS)</b> atau <b>dua sisi mengapit satu sudut (SAS)</b>.</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>sin = de/mi, cos = sa/mi, tan = de/sa.</li><li>sin 30° = ½, cos 60° = ½, sin 45° = cos 45° = ½√2, tan 60° = √3.</li><li>sin(180° − α) = sin α; cos(180° − α) = −cos α. Di kuadran II hanya sin (dan csc) positif.</li><li>Diagonal sisi kubus s√2, diagonal ruang s√3; diagonal ruang balok √(p² + l² + t²).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/03 Perbandingan Trigonometri/sim/elevasi.html",
-          "title": "Mengukur tinggi dengan sudut elevasi",
-          "height": 520,
-          "caption": "Jangan lupa menambahkan tinggi mata pengamat."
+          "title": "Persamaan Aturan Sinus, Kosinus, dan Luas Segitiga",
+          "html": "<div class=\"fc-display\">\n\\[ \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R \\qquad \\Big| \\qquad a^2 = b^2 + c^2 - 2bc \\cos A \\qquad \\Big| \\qquad L = \\frac{1}{2}ab \\sin C \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Panjang sisi-sisi segitiga</td><td class=\"unit\">\\text{satuan panjang}</td></tr>\n<tr><td class=\"sym\">\\(A, B, C\\)</td><td>Besar sudut-sudut di hadapan sisi a, b, c</td><td class=\"unit\">\\text{derajat (}^\\circ\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(R\\)</td><td>Jari-jari lingkaran luar segitiga (circumcircle)</td><td class=\"unit\">\\text{satuan panjang}</td></tr>\n<tr><td class=\"sym\">\\(L\\)</td><td>Luas bidang segitiga</td><td class=\"unit\">\\text{satuan luas}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Rumus Heron untuk segitiga jika ketiga sisinya diketahui: L = √[s(s-a)(s-b)(s-c)] dengan s = ½(a+b+c).</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>A(3, −2) dicerminkan terhadap x = 1, lalu dirotasi 180° terhadap O. Tentukan bayangannya.</p>",
+          "title": "Contoh Perhitungan Aturan Kosinus Mencari Panjang Sisi",
+          "question": "<p>Pada segitiga ABC, panjang b = 6 cm, c = 10 cm, dan besar sudut A = 60°. Tentukan panjang sisi a!</p>",
           "steps": [
-            "Cermin x = 1: (2·1 − 3, −2) = (−1, −2).",
-            "Rotasi 180°: (1, 2)."
+            "Terapkan aturan kosinus: a² = b² + c² - 2bc cos A.",
+            "a² = 6² + 10² - 2(6)(10) cos 60°.",
+            "a² = 36 + 100 - 120 × (1/2) = 136 - 60 = 76.",
+            "a = √76 = √(4 × 19) = 2√19 cm."
           ],
-          "answer": "(1, 2)"
+          "answer": "Panjang sisi a adalah 2√19 cm."
         },
         {
           "type": "check",
-          "question": "Panjang diagonal ruang kubus dengan rusuk 4 cm adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Luas segitiga ABC yang memiliki panjang sisi a = 8 cm, b = 10 cm, dan sudut C = 30° adalah ....",
           "options": {
-            "A": "4√2 cm",
-            "B": "4√3 cm",
-            "C": "8 cm",
-            "D": "12 cm"
+            "A": "20 cm²",
+            "B": "40 cm²",
+            "C": "20√3 cm²",
+            "D": "40√3 cm²"
           },
-          "answer": "B",
-          "hint": "s√3.",
-          "explanation": "4√3 cm. 4√2 adalah diagonal sisi."
+          "answer": "A",
+          "hint": "Luas = ½ · a · b · sin C = ½ × 8 × 10 × sin 30° = 40 × ½ = 20 cm².",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "geometri-bidang-kesebangunan",
-      "title": "Geometri Bidang Datar: Kesebangunan, Kekongruenan, dan Garis-Garis Istimewa Segitiga",
+      "title": "Geometri Bidang Datar: Teorema Kesebangunan dan Perbandingan Luas",
       "kind": "artikel",
-      "duration": "16 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal TKA geometri memadukan gambar dan konteks (menara, tiang, logo, kolam). Buat sketsa segitiga siku-siku dari setiap situasi.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Trigonometri</td><td>sin, cos, tan; sudut istimewa; sudut berelasi; kuadran</td><td>Kelas 10 Bab 3</td></tr><tr><td>Elevasi dan depresi</td><td>tinggi dan jarak dengan tan</td><td>Kelas 10 Bab 3</td></tr><tr><td>Transformasi</td><td>translasi, refleksi, rotasi, dilatasi dan komposisinya</td><td>Kelas 9 Bab 3</td></tr><tr><td>Lingkaran</td><td>sudut pusat dan keliling, garis singgung</td><td>Kelas 11 Bab 4</td></tr><tr><td>Bangun ruang</td><td>diagonal kubus dan balok, luas dan volume</td><td>Kelas 9 Bab 2</td></tr></table>"
+          "html": "<h3>Kekongruenan vs Kesebangunan</h3>\n<ul>\n  <li><b>Kongruen (\\(\\cong\\))</b>: bentuk dan ukuran sama persis (rasio sisi \\(k = 1\\)).</li>\n  <li><b>Sebangun (\\(\\sim\\))</b>: bentuk sama, sudut-sudut bersesuaian sama besar, sisi-sisi bersesuaian sebanding (\\(k\\)).</li>\n</ul>\n<p>Kaidah Kuadrat Rasio Luas:</p>\n\\[ \\frac{\\text{Luas}_1}{\\text{Luas}_2} = k^2 = \\left(\\frac{s_1}{s_2}\\right)^2 \\]"
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Gambar segitiga siku-siku bantu dan tandai sisi depan, samping, miring terhadap sudut yang diketahui.</li><li>Tentukan kuadran sudut sebelum menentukan tanda nilai trigonometri.</li><li>Pada soal jarak dalam ruang, cari bidang yang memuat kedua titik dan bentuk segitiga siku-siku.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Logo 8 cm × 5 cm diperbesar dengan faktor 4. Berapa luas logo pada spanduk?</p>",
-          "steps": [
-            "Luas asal 40 cm². Luas dikali 4² = 16.",
-            "640 cm²."
-          ],
-          "answer": "640 cm²"
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua segitiga sebangun memiliki perbandingan sisi 2 : 3. Jika luas segitiga yang lebih kecil adalah 24 cm², maka luas segitiga yang lebih besar adalah ....",
+          "options": {
+            "A": "36 cm²",
+            "B": "48 cm²",
+            "C": "54 cm²",
+            "D": "72 cm²"
+          },
+          "answer": "C",
+          "hint": "Rasio luas = (s₂ / s₁)² = (3 / 2)² = 9 / 4. Luas₂ = 24 × (9 / 4) = 6 × 9 = 54 cm².",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "dimensi-tiga-jarak-kubus-limas",
-      "title": "Geometri Dimensi Tiga: Jarak Titik ke Titik, Titik ke Garis, dan Titik ke Bidang",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Geometri Dimensi Tiga: Jarak Titik ke Garis dan Titik ke Bidang pada Kubus",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal TKA geometri memadukan gambar dan konteks (menara, tiang, logo, kolam). Buat sketsa segitiga siku-siku dari setiap situasi.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Trigonometri</td><td>sin, cos, tan; sudut istimewa; sudut berelasi; kuadran</td><td>Kelas 10 Bab 3</td></tr><tr><td>Elevasi dan depresi</td><td>tinggi dan jarak dengan tan</td><td>Kelas 10 Bab 3</td></tr><tr><td>Transformasi</td><td>translasi, refleksi, rotasi, dilatasi dan komposisinya</td><td>Kelas 9 Bab 3</td></tr><tr><td>Lingkaran</td><td>sudut pusat dan keliling, garis singgung</td><td>Kelas 11 Bab 4</td></tr><tr><td>Bangun ruang</td><td>diagonal kubus dan balok, luas dan volume</td><td>Kelas 9 Bab 2</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>sin = de/mi, cos = sa/mi, tan = de/sa.</li><li>sin 30° = ½, cos 60° = ½, sin 45° = cos 45° = ½√2, tan 60° = √3.</li><li>sin(180° − α) = sin α; cos(180° − α) = −cos α. Di kuadran II hanya sin (dan csc) positif.</li><li>Diagonal sisi kubus s√2, diagonal ruang s√3; diagonal ruang balok √(p² + l² + t²).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/rotasi.html",
-          "title": "Rotasi bangun datar",
-          "height": 520,
-          "caption": "Rotasikan titik dan perhatikan pola koordinatnya."
+          "html": "<h3>Jarak Terpendek pada Ruang Tiga Dimensi</h3>\n<p>Jarak antara dua objek geometris selalu didefinisikan sebagai panjang ruas garis hubung <b>TEGAK LURUS (ortogonal)</b> terpendek.</p>\n<h3>Jurus Cepat Kubus Berusuk s</h3>\n<ul>\n  <li>Diagonal sisi / bidang kubus: <b>\\(s\\sqrt{2}\\)</b></li>\n  <li>Diagonal ruang kubus: <b>\\(s\\sqrt{3}\\)</b></li>\n  <li>Jarak titik sudut ke bidang diagonal terjauh (misal titik C ke bidang BDG): <b>\\(\\frac{1}{3} s\\sqrt{3}\\)</b></li>\n  <li>Jarak titik sudut ke bidang diagonal terdekat (misal titik E ke bidang BDG): <b>\\(\\frac{2}{3} s\\sqrt{3}\\)</b></li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Kubus ABCD.EFGH berusuk 6 cm. Tentukan panjang AG dan jarak A ke garis CG.</p>",
+          "title": "Contoh Jarak Titik ke Garis pada Kubus",
+          "question": "<p>Diketahui kubus ABCD.EFGH dengan panjang rusuk 6 cm. Tentukan jarak titik A ke garis diagonal bidang BD!</p>",
           "steps": [
-            "AG diagonal ruang = 6√3 cm.",
-            "Jarak A ke CG = AC (AC ⊥ CG) = 6√2 cm."
+            "Tinjau segitiga ABD pada alas kubus. Segitiga ABD adalah segitiga siku-siku sama kaki di titik A dengan AB = AD = 6 cm.",
+            "Panjang BD adalah diagonal sisi: BD = 6√2 cm.",
+            "Jarak titik A ke garis BD adalah tinggi segitiga dari titik A tegak lurus ke sisi miring BD (sebut titik proyeksinya P).",
+            "Gunakan luas segitiga: ½ · AB · AD = ½ · BD · AP.",
+            "6 × 6 = 6√2 × AP  =>  36 = 6√2 · AP  =>  AP = 36 / (6√2) = 6 / √2 = 3√2 cm."
           ],
-          "answer": "6√3 cm dan 6√2 cm"
+          "answer": "Jarak titik A ke diagonal BD adalah 3√2 cm."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Pada kubus ABCD.EFGH dengan rusuk 12 cm, jarak titik E ke bidang BDG adalah ....",
+          "options": {
+            "A": "4√3 cm",
+            "B": "6√3 cm",
+            "C": "8√3 cm",
+            "D": "12√3 cm"
+          },
+          "answer": "C",
+          "hint": "Jarak E ke bidang BDG = 2/3 dari diagonal ruang = 2/3 × 12√3 = 8√3 cm.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "sudut-dalam-ruang-dimensi-tiga",
-      "title": "Sudut Antara Dua Garis dan Sudut Antara Garis dengan Bidang pada Bangun Ruang",
-      "kind": "latihan",
-      "duration": "16 menit",
+      "title": "Sudut Antara Garis dan Bidang serta Sudut Antara Dua Bidang",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal TKA geometri memadukan gambar dan konteks (menara, tiang, logo, kolam). Buat sketsa segitiga siku-siku dari setiap situasi.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Trigonometri</td><td>sin, cos, tan; sudut istimewa; sudut berelasi; kuadran</td><td>Kelas 10 Bab 3</td></tr><tr><td>Elevasi dan depresi</td><td>tinggi dan jarak dengan tan</td><td>Kelas 10 Bab 3</td></tr><tr><td>Transformasi</td><td>translasi, refleksi, rotasi, dilatasi dan komposisinya</td><td>Kelas 9 Bab 3</td></tr><tr><td>Lingkaran</td><td>sudut pusat dan keliling, garis singgung</td><td>Kelas 11 Bab 4</td></tr><tr><td>Bangun ruang</td><td>diagonal kubus dan balok, luas dan volume</td><td>Kelas 9 Bab 2</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>sin = de/mi, cos = sa/mi, tan = de/sa.</li><li>sin 30° = ½, cos 60° = ½, sin 45° = cos 45° = ½√2, tan 60° = √3.</li><li>sin(180° − α) = sin α; cos(180° − α) = −cos α. Di kuadran II hanya sin (dan csc) positif.</li><li>Diagonal sisi kubus s√2, diagonal ruang s√3; diagonal ruang balok √(p² + l² + t²).</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Gudang balok 12 m × 4 m × 3 m. Berapa panjang tali terpendek yang ditarik lurus dari satu sudut lantai ke sudut langit-langit yang berseberangan?</p>",
-          "steps": [
-            "Diagonal ruang = √(144 + 16 + 9) = √169.",
-            "= 13 m."
-          ],
-          "answer": "13 m"
+          "html": "<h3>Penentuan Sudut dalam Ruang Dimensi Tiga</h3>\n<ol>\n  <li><b>Sudut Garis dan Bidang</b>: Sudut antara garis \\(g\\) dan garis hasil proyeksi tegak lurusnya pada bidang tersebut.</li>\n  <li><b>Sudut Dua Bidang (Sudut Tumpu)</b>: Tarik dua garis pada masing-masing bidang yang sama-sama tegak lurus terhadap garis potong (persekutuan) kedua bidang di satu titik yang sama.</li>\n</ol>"
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Sudut Antara Dua Garis dan Sudut Antara Garis dengan Bidang pada Bangun Ruang, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Pada kubus ABCD.EFGH, besar sudut antara garis diagonal ruang AG dan bidang alas ABCD adalah ....",
           "options": {
-            "A": "Konsep Sudut Antara Dua Garis dan Sudut Antara Garis dengan Bidang pada Bangun Ruang berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "Sudut α dengan tan α = 1",
+            "B": "Sudut α dengan tan α = 1/√2",
+            "C": "Sudut α dengan sin α = 1/2",
+            "D": "Sudut α dengan cos α = 1/2"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menentukan pergeseran garis sejajar untuk membentuk sudut perpotongan dan menghitung nilai kosinus sudutnya.."
+          "answer": "B",
+          "hint": "Proyeksi garis AG pada bidang ABCD adalah diagonal alas AC. Segitiga ACG siku-siku di C. AC = s√2, CG = s. tan α = CG / AC = s / (s√2) = 1/√2.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "sudut-elevasi-depresi-aplikasi",
-      "title": "Aplikasi Nyata Trigonometri: Sudut Elevasi, Depresi, dan Navigasi Arah Jurusan Tiga Angka",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Aplikasi Klinometer: Sudut Elevasi dan Depresi Pengukuran Lapangan",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Aplikasi Nyata Trigonometri: Sudut Elevasi, Depresi, dan Navigasi Arah Jurusan Tiga Angka</b>: Menyelesaikan soal ketinggian menara, lebar sungai, dan jarak tempuh pelayaran kapal sudut azimuth.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Pengukuran Tinggi Objek Tanpa Memanjat</h3>\n<ul>\n  <li><b>Sudut Elevasi</b>: Sudut yang dibentuk oleh garis pandang ke atas terhadap garis horizontal mata pengamat.</li>\n  <li><b>Sudut Depresi</b>: Sudut yang dibentuk oleh garis pandang ke bawah terhadap garis horizontal pengamat dari tempat tinggi.</li>\n</ul>\n<p>Hubungan Tinggi Menara: <b>\\(H = h_{\\text{mata}} + x \\cdot \\tan\\alpha\\)</b> (dengan \\(x\\) adalah jarak horizontal ke dasar menara).</p>"
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Gambar segitiga siku-siku bantu dan tandai sisi depan, samping, miring terhadap sudut yang diketahui.</li><li>Tentukan kuadran sudut sebelum menentukan tanda nilai trigonometri.</li><li>Pada soal jarak dalam ruang, cari bidang yang memuat kedua titik dan bentuk segitiga siku-siku.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Aplikasi Nyata Trigonometri: Sudut Elevasi, Depresi, dan Navigasi Arah Jurusan Tiga Angka",
-          "question": "<p>Perhatikan permasalahan terkait <b>Aplikasi Nyata Trigonometri: Sudut Elevasi, Depresi, dan Navigasi Arah Jurusan Tiga Angka</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan soal ketinggian menara, lebar sungai, dan jarak tempuh pelayaran kapal sudut azimuth..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "type": "sim",
+          "src": "../../../Kelas10/Matematika/03 Perbandingan Trigonometri/sim/elevasi.html",
+          "title": "Simulasi Sudut Elevasi dan Depresi",
+          "height": 520,
+          "caption": "Ubah jarak pengamat dan sudut elevasi untuk menghitung tinggi gedung secara interaktif."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Aplikasi Nyata Trigonometri: Sudut Elevasi, Depresi, dan Navigasi Arah Jurusan Tiga Angka, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Seorang pengamat dengan tinggi mata 1,6 m melihat puncak pohon dengan sudut elevasi 45°. Jika jarak horizontal pengamat ke dasar pohon adalah 15 meter, tinggi pohon tersebut adalah ....",
           "options": {
-            "A": "Konsep Aplikasi Nyata Trigonometri: Sudut Elevasi, Depresi, dan Navigasi Arah Jurusan Tiga Angka berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "15,0 m",
+            "B": "16,6 m",
+            "C": "18,2 m",
+            "D": "21,2 m"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan soal ketinggian menara, lebar sungai, dan jarak tempuh pelayaran kapal sudut azimuth.."
+          "answer": "B",
+          "hint": "Tinggi = h_mata + x · tan 45° = 1,6 + 15(1) = 16,6 meter.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-mat-05",
-      "title": "Strategi Cepat Geometri-Trigonometri dan Latihan Kuis Bab 5",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Geometri dan Trigonometri",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Geometri-Trigonometri dan Latihan Kuis Bab 5</b>: Menguasai geometri analitis ruang dan menuntaskan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>sin = de/mi, cos = sa/mi, tan = de/sa.</li><li>sin 30° = ½, cos 60° = ½, sin 45° = cos 45° = ½√2, tan 60° = √3.</li><li>sin(180° − α) = sin α; cos(180° − α) = −cos α. Di kuadran II hanya sin (dan csc) positif.</li><li>Diagonal sisi kubus s√2, diagonal ruang s√3; diagonal ruang balok √(p² + l² + t²).</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Geometri-Trigonometri dan Latihan Kuis Bab 5",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Geometri-Trigonometri dan Latihan Kuis Bab 5</b> berikut. Analisislah berdasarkan prinsip Menguasai geometri analitis ruang dan menuntaskan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Geometri-Trigonometri dan Latihan Kuis Bab 5, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Geometri-Trigonometri dan Latihan Kuis Bab 5 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai geometri analitis ruang dan menuntaskan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Bab 05: Geometri dan Trigonometri</h3>\n<p>Kuasai rasio dasar trigonometri segitiga siku-siku, sudut berelasi 4 kuadran, aturan sinus dan kosinus segitiga sembarang, geometri dimensi tiga jarak dan sudut kubus, serta sudut elevasi.</p>\n<p>Kerjakan kuis resmi 20 butir soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA SMA topik Geometri dan Trigonometri. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Matematika SMA: Geometri dan Trigonometri (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

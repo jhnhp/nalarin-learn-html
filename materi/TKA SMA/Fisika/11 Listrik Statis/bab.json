@@ -1,292 +1,340 @@
 {
   "title": "Listrik Statis",
-  "summary": "Elektrostatika fundamental: muatan dan elektroskop, Hukum Coulomb gaya elektrostatik antarmuatan titik, kuat medan listrik vektor, Hukum Gauss, potensial dan energi potensial listrik, gerak partikel bermuatan dalam medan serba sama, serta kapasitas kapasitor keping sejajar.",
+  "summary": "Materi komprehensif TKA Fisika: hukum Coulomb dan superposisi vektor gaya elektrostatik, kuat medan listrik dan titik kuat medan nol, potensial listrik dan energi potensial elektrostatik, percepatan gerak muatan dalam beda potensial, kapasitor keping sejajar dengan dielektrik, serta kombinasi rangkaian kapasitor seri-paralel.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "muatan-listrik-dan-hukum-coulomb",
-      "title": "Muatan Listrik, Induksi, dan Hukum Coulomb: F = k·q_1·q_2 / r^2",
+      "title": "Hukum Coulomb: Interaksi Gaya Elektrostatik dan Superposisi Vektor",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Gaya dan medan listrik adalah vektor; potensial listrik adalah skalar yang dijumlahkan biasa (dengan tanda muatan).</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Muatan</td><td>menggosok, induksi, elektroskop</td><td>IPA Kelas 9 Bab 5</td></tr><tr><td>Gaya dan medan</td><td>F = kq₁q₂/r², E = kq/r², resultan vektor</td><td>Fisika Kelas 12 Bab 1</td></tr><tr><td>Potensial</td><td>V = kq/r (skalar), W = qΔV, Ek = qV</td><td>Fisika Kelas 12 Bab 1</td></tr></table>"
+          "html": "<h3>Muatan Listrik dan Sifat Dasar Gaya Elektrostatik</h3>\n<p>Muatan listrik bersifat terkuantisasi dalam kelipatan muatan elementer elektron (\\(e = 1,6 \\times 10^{-19}\\) Coulomb). Partikel bermuatan sejenis (positif-positif atau negatif-negatif) saling tolak-menolak, sedangkan partikel bermuatan tak sejenis (positif-negatif) saling tarik-menarik.</p>\n<p>Charles-Augustin de Coulomb menemukan bahwa besar gaya interaksi elektrostatik antara dua muatan titik sebanding dengan hasil kali kedua muatan dan berbanding terbalik dengan kuadrat jarak pisahnya.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(F = k\\dfrac{q_1q_2}{r^2}\\), k = 9 × 10⁹ N m²/C².</li><li>\\(E = F/q = kq/r^2\\): menjauhi muatan positif, menuju muatan negatif.</li><li>\\(V = kq/r\\); \\(W_{A\\to B} = q(V_B - V_A)\\); \\(E_p = kq_1q_2/r\\).</li><li>Muatan dipercepat beda potensial: \\(\\tfrac12 mv^2 = qV\\).</li><li>Medan nol di antara dua muatan sejenis: lebih dekat ke muatan yang lebih kecil.</li></ul>"
+          "title": "Persamaan Hukum Coulomb dan Pengaruh Medium Dielektrik",
+          "html": "<div class=\"fc-display\">\n\\[ F = k \\frac{|q_1 \\cdot q_2|}{r^2} = \\frac{1}{4\\pi\\varepsilon_0}\\frac{|q_1 \\cdot q_2|}{r^2} \\qquad \\Longleftrightarrow \\qquad F_{\\text{medium}} = \\frac{F_{\\text{vakum}}}{\\varepsilon_r} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(F\\)</td><td>Besar gaya tarik atau tolak elektrostatik Coulomb</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(k\\)</td><td>Konstanta elektrostatik ruang hampa (\\(k = 9 \times 10^9 \text{ N}\\cdot\text{m}^2/\text{C}^2\\))</td><td class=\"unit\">\\text{N}\\cdot\\text{m}^2/\\text{C}^2</td></tr>\n<tr><td class=\"sym\">\\(q_1, q_2\\)</td><td>Besar muatan listrik titik 1 dan 2</td><td class=\"unit\">\\text{Coulomb (C)}</td></tr>\n<tr><td class=\"sym\">\\(r\\)</td><td>Jarak pisah antara kedua pusat muatan</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(\\varepsilon_0\\)</td><td>Permitivitas listrik ruang hampa (\\(8,85 \times 10^{-12} \text{ C}^2/(\text{N}\\cdot\text{m}^2)\\))</td><td class=\"unit\">\\text{C}^2/(\\text{N}\\cdot\\text{m}^2)</td></tr>\n<tr><td class=\"sym\">\\(\\varepsilon_r\\)</td><td>Permitivitas relatif / konstanta dielektrik medium (\\(\u000barepsilon_r \\ge 1\\))</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Gaya Coulomb adalah BESARAN VEKTOR. Dalam rumus kuantitatif F = k|q₁q₂|/r², tanda muatan (+ atau -) TIDAK dimasukkan ke dalam perhitungan angka, melainkan digunakan untuk menentukan ARAH panah vektor (tarik atau tolak).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Superposisi Vektor Gaya Coulomb Multi-Muatan",
+          "html": "<p>Jika satu muatan dipengaruhi oleh dua gaya \\(\\vec{F}_1\\) dan \\(\\vec{F}_2\\) yang membentuk sudut apit \\(\\theta\\):</p>\n\\[ F_{\\text{total}} = \\sqrt{F_1^2 + F_2^2 + 2 F_1 F_2 \\cos\\theta} \\]\n<p>Jika kedua gaya saling tegak lurus (\\(\\theta = 90^\\circ\\)): \\(F_{\\text{total}} = \\sqrt{F_1^2 + F_2^2}\\).</p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas9/IPA/05 Listrik, Magnet, dan Energi Alternatif/sim/coulomb.html",
-          "title": "Hukum Coulomb",
-          "height": 480,
-          "caption": "Gandakan jarak kedua muatan. Berapa kali gaya berubah?"
+          "title": "Simulasi Gaya Coulomb",
+          "height": 520,
+          "caption": "Ubah besar muatan dan jarak pisah untuk mengamati perubahan vektor gaya elektrostatik."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Muatan +5 μC dan −2 μC terpisah 30 cm. Berapa besar gaya Coulomb di antara keduanya?</p>",
+          "title": "Contoh Perhitungan Gaya Coulomb Tiga Muatan Segaris",
+          "question": "<p>Muatan A (+4 μC) berada di titik x = 0 cm, dan muatan B (+9 μC) berada di titik x = 10 cm. Muatan uji C (+2 μC) diletakkan di antara A dan B pada garis hubung keduanya. Di manakah muatan C harus diletakkan agar gaya Coulomb total yang dialaminya bernilai nol?</p>",
           "steps": [
-            "F = 9 × 10⁹ × 5 × 10⁻⁶ × 2 × 10⁻⁶ / 0,09.",
-            "F = 0,09/0,09."
+            "Misalkan jarak muatan C dari muatan A adalah r_AC = x cm, maka jarak C dari B adalah r_BC = (10 - x) cm.",
+            "Karena muatan A, B, dan C semuanya positif, muatan C ditolak oleh A ke kanan (F_CA) dan ditolak oleh B ke kiri (F_CB).",
+            "Agar resultan gaya nol: F_CA = F_CB  =>  k · q_A · q_C / r_AC² = k · q_B · q_C / r_BC².",
+            "Coret k dan q_C: q_A / x² = q_B / (10 - x)²  =>  4 / x² = 9 / (10 - x)².",
+            "Tarik akar kuadrat pada kedua ruas: 2 / x = 3 / (10 - x).",
+            "Kali silang: 2(10 - x) = 3x  =>  20 - 2x = 3x  =>  5x = 20  =>  x = 4 cm."
           ],
-          "answer": "1 N (tarik-menarik)"
+          "answer": "Muatan C harus diletakkan 4 cm di sebelah kanan muatan A (atau 6 cm di sebelah kiri muatan B)."
         },
         {
           "type": "check",
-          "question": "Jika jarak dua muatan dijadikan 3 kali semula, gaya Coulomb menjadi ....",
+          "title": "Cek Pemahaman",
+          "question": "Dua buah muatan listrik terpisah sejauh r saling tolak-menolak dengan gaya F. Jika jarak antara kedua muatan tersebut diperbesar menjadi 3r, maka gaya tolak-menolaknya akan menjadi ....",
           "options": {
-            "A": "3 kali",
-            "B": "1/3 kali",
-            "C": "9 kali",
-            "D": "1/9 kali"
+            "A": "3 F",
+            "B": "1/3 F",
+            "C": "1/9 F",
+            "D": "9 F"
           },
-          "answer": "D",
-          "hint": "F ∝ 1/r².",
-          "explanation": "Gaya berbanding terbalik dengan kuadrat jarak: 1/9 kali."
+          "answer": "C",
+          "hint": "F sebanding dengan 1 / r²: F' = F / (3)² = 1/9 F.",
+          "explanation": "Gaya Coulomb berkurang menjadi sepersembilan semula."
         }
       ]
     },
     {
       "id": "medan-listrik-titik-nol",
-      "title": "Kuat Medan Listrik (E = k·q / r^2) dan Lokasi Medan Nol",
+      "title": "Medan Listrik, Garis Gaya Listrik, dan Penentuan Titik Kuat Medan Nol",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Kuat Medan Listrik (E = k·q / r^2) dan Lokasi Medan Nol</b>: Menentukan arah garis gaya listrik dan menghitung titik di mana resultan medan listrik sama dengan nol.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Konsep Medan Listrik dan Muatan Uji</h3>\n<p>Medan listrik adalah ruang di sekitar benda bermuatan di mana muatan listrik lain yang berada di dalam ruang tersebut akan mengalami gaya elektrostatik. Kuat medan listrik didefinisikan sebagai <b>gaya Coulomb per satuan muatan uji positif</b>: \\(\\vec{E} = \\frac{\\vec{F}}{q_0}\\).</p>\n<p>Kaidah Arah Garis Gaya Medan Listrik:</p>\n<ul>\n  <li>Keluar secara radial menjauhi <b>muatan positif (+)</b>.</li>\n  <li>Masuk secara radial menuju <b>muatan negatif (-)</b>.</li>\n</ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(F = k\\dfrac{q_1q_2}{r^2}\\), k = 9 × 10⁹ N m²/C².</li><li>\\(E = F/q = kq/r^2\\): menjauhi muatan positif, menuju muatan negatif.</li><li>\\(V = kq/r\\); \\(W_{A\\to B} = q(V_B - V_A)\\); \\(E_p = kq_1q_2/r\\).</li><li>Muatan dipercepat beda potensial: \\(\\tfrac12 mv^2 = qV\\).</li><li>Medan nol di antara dua muatan sejenis: lebih dekat ke muatan yang lebih kecil.</li></ul>"
+          "title": "Persamaan Kuat Medan Listrik Muatan Titik",
+          "html": "<div class=\"fc-display\">\n\\[ E = k \\frac{|q|}{r^2} \\qquad \\Longleftrightarrow \\qquad \\vec{F} = q \\cdot \\vec{E} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(E\\)</td><td>Kuat medan listrik</td><td class=\"unit\">\\text{N/C atau Volt/meter (V/m)}</td></tr>\n<tr><td class=\"sym\">\\(k\\)</td><td>Konstanta elektrostatik (\\(9 \times 10^9 \text{ N}\\cdot\text{m}^2/\text{C}^2\\))</td><td class=\"unit\">\\text{N}\\cdot\\text{m}^2/\\text{C}^2</td></tr>\n<tr><td class=\"sym\">\\(q\\)</td><td>Besar muatan sumber yang menciptakan medan listrik</td><td class=\"unit\">\\text{Coulomb (C)}</td></tr>\n<tr><td class=\"sym\">\\(r\\)</td><td>Jarak titik pengamatan dari muatan sumber</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{F}\\)</td><td>Gaya listrik yang dialami muatan q di dalam medan E</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Arah gaya pada muatan di dalam medan: jika muatan q positif (+), arah gaya F SEARAH medan E; jika muatan q negatif (-), arah gaya F BERLAWANAN ARAH medan E.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Aturan Menentukan Titik Kuat Medan Listrik Nol (\\(E_{\text{total}} = 0\\))",
+          "html": "<ol>\n  <li><b>Dua Muatan Sejenis (+ dan + atau - dan -)</b>: Titik medan nol <b>pasti terletak DI ANTARA kedua muatan</b> (lebih dekat ke muatan yang nilainya lebih kecil).</li>\n  <li><b>Dua Muatan Tak Sejenis (+ dan -)</b>: Titik medan nol <b>pasti terletak DI LUAR kedua muatan</b> pada garis perpanjangan, tepatnya <b>di dekat muatan yang nilai mutlaknya lebih kecil</b>.</li>\n</ol>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas12/Fisika/01 Listrik Statis/sim/medan-listrik.html",
-          "title": "Medan listrik",
+          "title": "Simulasi Garis Medan Listrik",
           "height": 520,
-          "caption": "Letakkan dua muatan sejenis. Di mana medannya nol?"
+          "caption": "Letakkan muatan positif dan negatif lalu visualisasikan vektor medan dan kerapatan garis gayanya."
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Muatan A = +9 μC dan B = +1 μC terpisah 40 cm. Di mana titik di antara keduanya yang kuat medannya nol?</p>",
+          "title": "Contoh Penentuan Titik Medan Nol Dua Muatan Tak Sejenis",
+          "question": "<p>Muatan A (+16 μC) dan muatan B (-4 μC) terpisah sejauh 12 cm pada sumbu x. Tentukan letak titik di mana kuat medan listrik total bernilai nol!</p>",
           "steps": [
-            "k·9/x² = k·1/(0,4 − x)² → 3/x = 1/(0,4 − x).",
-            "1,2 − 3x = x → x = 0,3 m."
+            "Karena muatan tak sejenis, titik medan nol terletak DI LUAR garis hubung, dekat muatan dengan magnitudo lebih kecil (muatan B).",
+            "Misalkan titik P berada sejauh x cm di sebelah kanan muatan B. Jarak P dari A adalah (12 + x) cm.",
+            "Agar kuat medan nol: E_A = E_B  =>  k · q_A / r_PA² = k · |q_B| / r_PB².",
+            "16 / (12 + x)² = 4 / x².",
+            "Tarik akar kuadrat kedua ruas: 4 / (12 + x) = 2 / x.",
+            "Sederhanakan: 2 / (12 + x) = 1 / x  =>  2x = 12 + x  =>  x = 12 cm."
           ],
-          "answer": "30 cm dari A (10 cm dari B)"
+          "answer": "Titik kuat medan nol terletak 12 cm di sebelah kanan muatan B."
         },
         {
           "type": "check",
-          "question": "Bola konduktor bermuatan. Kuat medan listrik di dalam bola konduktor adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah elektron (muatan -1,6 × 10⁻¹⁹ C) berada dalam medan listrik homogen berkekuatan 500 N/C yang berarah ke timur. Arah dan besar gaya listrik yang dialami elektron tersebut adalah ....",
           "options": {
-            "A": "paling besar di pusat",
-            "B": "nol",
-            "C": "sama dengan di permukaan",
-            "D": "bergantung jari-jari"
+            "A": "8 × 10⁻¹⁷ N ke arah timur",
+            "B": "8 × 10⁻¹⁷ N ke arah barat",
+            "C": "3,125 × 10²¹ N ke arah barat",
+            "D": "0 N"
           },
           "answer": "B",
-          "hint": "Muatan konduktor tersebar di permukaan.",
-          "explanation": "Di dalam konduktor dalam keadaan setimbang, kuat medan listrik nol; potensialnya sama dengan di permukaan."
+          "hint": "Besar gaya F = |q| · E = (1,6 × 10⁻¹⁹) × 500 = 8 × 10⁻¹⁷ N. Karena elektron bermuatan negatif (-), arah gaya BERLAWANAN dengan arah medan listrik (ke barat).",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "potensial-dan-energi-potensial",
-      "title": "Energi Potensial Listrik (EP) dan Potensial Listrik Skalar (V = k·q / r)",
+      "title": "Potensial Listrik, Energi Potensial Elektrostatik, dan Usaha Pemindahan Muatan",
       "kind": "artikel",
-      "duration": "15 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Energi Potensial Listrik (EP) dan Potensial Listrik Skalar (V = k·q / r)</b>: Menerapkan besaran skalar potensial listrik dan menghitung usaha pemindahan muatan W = q·ΔV.</p>"
+          "html": "<h3>Besaran Skalar dalam Elektrostatika</h3>\n<p>Berbeda dengan Gaya Listrik (\\(\\vec{F}\\)) dan Kuat Medan Listrik (\\(\\vec{E}\\)) yang merupakan besaran vektor, <b>Energi Potensial Listrik (\\(Ep\\))</b> dan <b>Potensial Listrik (\\(V\\))</b> adalah <b>BESARAN SKALAR</b>.</p>\n<p>Dalam perhitungan besaran skalar potensial listrik, <b>TANDA MUATAN POSITIF DAN NEGATIF WAJIB DIMASUKKAN</b> ke dalam persamaan! Muatan positif menghasilkan potensial positif (\\(V > 0\\)), sedangkan muatan negatif menghasilkan potensial negatif (\\(V < 0\\)).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(F = k\\dfrac{q_1q_2}{r^2}\\), k = 9 × 10⁹ N m²/C².</li><li>\\(E = F/q = kq/r^2\\): menjauhi muatan positif, menuju muatan negatif.</li><li>\\(V = kq/r\\); \\(W_{A\\to B} = q(V_B - V_A)\\); \\(E_p = kq_1q_2/r\\).</li><li>Muatan dipercepat beda potensial: \\(\\tfrac12 mv^2 = qV\\).</li><li>Medan nol di antara dua muatan sejenis: lebih dekat ke muatan yang lebih kecil.</li></ul>"
+          "title": "Persamaan Potensial Listrik, Energi Potensial, dan Usaha",
+          "html": "<div class=\"fc-display\">\n\\[ V = k \\frac{q}{r} \\qquad \\Big| \\qquad Ep = k \\frac{q_1 \\cdot q_2}{r} \\qquad \\Big| \\qquad W_{A \\to B} = q \\cdot \\Delta V = q (V_B - V_A) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(V\\)</td><td>Potensial listrik pada suatu titik</td><td class=\"unit\">\\text{Volt (V)} = \\text{Joule/Coulomb}</td></tr>\n<tr><td class=\"sym\">\\(Ep\\)</td><td>Energi potensial elektrostatik interaksi dua muatan</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(W_{A \\to B}\\)</td><td>Usaha yang dibutuhkan untuk memindahkan muatan q dari titik A ke titik B</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(q\\)</td><td>Muatan listrik yang dipindahkan</td><td class=\"unit\">\\text{Coulomb (C)}</td></tr>\n<tr><td class=\"sym\">\\(V_A, V_B\\)</td><td>Potensial listrik di titik awal A dan titik akhir B</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n<tr><td class=\"sym\">\\(r\\)</td><td>Jarak titik pengamatan dari muatan sumber</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Bidang Ekuipotensial adalah bidang di mana semua titik memiliki potensial listrik yang sama (V_A = V_B). Usaha untuk memindahkan muatan di sepanjang bidang ekuipotensial SELALU bernilai NOL (W = 0) karena ΔV = 0.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dua muatan +4 nC dan −6 nC berada di ujung-ujung garis sepanjang 50 cm. Titik P berada di tengah garis. Berapa potensial listrik di P?</p>",
+          "title": "Contoh Perhitungan Usaha Pemindahan Muatan Listrik",
+          "question": "<p>Titik A berpotensial +40 Volt dan titik B berpotensial +90 Volt. Tentukan usaha yang diperlukan untuk memindahkan muatan sebesar +5 μC dari titik A ke titik B!</p>",
           "steps": [
-            "Jarak masing-masing 0,25 m.",
-            "V = 9 × 10⁹(4 − 6) × 10⁻⁹/0,25 = −18/0,25."
+            "Beda potensial: ΔV = V_B - V_A = 90 V - 40 V = +50 Volt.",
+            "Besar muatan: q = +5 μC = 5 × 10⁻⁶ C.",
+            "Terapkan rumus usaha: W = q · ΔV.",
+            "W = (5 × 10⁻⁶ C) × (50 V) = 2,5 × 10⁻⁴ Joule."
           ],
-          "answer": "−72 V"
+          "answer": "Usaha yang diperlukan adalah 2,5 × 10⁻⁴ Joule."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Potensial listrik pada jarak 30 cm dari suatu muatan titik q adalah 60 Volt. Besar kuat medan listrik di titik tersebut adalah ....",
+          "options": {
+            "A": "18 N/C",
+            "B": "60 N/C",
+            "C": "200 N/C",
+            "D": "600 N/C"
+          },
+          "answer": "C",
+          "hint": "Hubungan potensial dan medan listrik: V = k · q / r dan E = k · q / r²  =>  E = V / r.",
+          "explanation": "r = 30 cm = 0,3 m. E = 60 / 0,3 = 200 V/m = 200 N/C."
         }
       ]
     },
     {
       "id": "hukum-kekekalan-energi-gerak-muatan",
-      "title": "Gerak Muatan dalam Medan Listrik Homogen dan Kekekalan Energi Mekanik",
+      "title": "Hukum Kekekalan Energi Mekanik Partikel Bermuatan dalam Medan Listrik",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Gerak Muatan dalam Medan Listrik Homogen dan Kekekalan Energi Mekanik</b>: Menghitung lintasan defleksi elektron/proton dan kecepatan akhir dari pelat pemercepat (q·V = 1/2 mv^2).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Akselerasi Partikel Bermuatan dalam Beda Potensial</h3>\n<p>Ketika partikel bermuatan (seperti elektron atau proton) dilepaskan dari keadaan diam di dalam ruang yang memiliki beda potensial (\\(\\Delta V\\)), gaya elektrostatik melakukan usaha untuk mempercepat partikel tersebut. Berdasarkan <b>Teorema Usaha-Energi</b> dan Hukum Kekekalan Energi Mekanik, penurunan energi potensial listrik berubah seluruhnya menjadi energi kinetik (\\(Ek\\)).</p>\n<p>Prinsip ini digunakan pada penembak elektron tabung sinar katode (CRT), mikroskop elektron (TEM/SEM), dan akselerator partikel siklotron.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(F = k\\dfrac{q_1q_2}{r^2}\\), k = 9 × 10⁹ N m²/C².</li><li>\\(E = F/q = kq/r^2\\): menjauhi muatan positif, menuju muatan negatif.</li><li>\\(V = kq/r\\); \\(W_{A\\to B} = q(V_B - V_A)\\); \\(E_p = kq_1q_2/r\\).</li><li>Muatan dipercepat beda potensial: \\(\\tfrac12 mv^2 = qV\\).</li><li>Medan nol di antara dua muatan sejenis: lebih dekat ke muatan yang lebih kecil.</li></ul>"
+          "title": "Hukum Kekekalan Energi Gerak Muatan dan Satuan Elektron-Volt (eV)",
+          "html": "<div class=\"fc-display\">\n\\[ q \\cdot \\Delta V = \\frac{1}{2} m v^2 \\qquad \\Longleftrightarrow \\qquad v = \\sqrt{\\frac{2 q \\Delta V}{m}} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(q\\)</td><td>Muatan partikel yang dipercepat</td><td class=\"unit\">\\text{Coulomb (C)}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta V\\)</td><td>Beda potensial pemercepat antara dua keping</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa partikel (massa elektron \\(m_e = 9,1 \times 10^{-31}\\) kg; proton \\(m_p = 1,67 \times 10^{-27}\\) kg)</td><td class=\"unit\">\\text{kilogram (kg)}</td></tr>\n<tr><td class=\"sym\">\\(v\\)</td><td>Kelajuan akhir partikel setelah dipercepat</td><td class=\"unit\">\\text{m/s}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Definisi 1 Elektron-Volt (eV): Energi kinetik yang diperoleh oleh satu elektron saat dipercepat melalui beda potensial 1 Volt: 1 eV = 1,6 × 10⁻¹⁹ Joule.</small></p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas12/Fisika/01 Listrik Statis/sim/defleksi.html",
-          "title": "Muatan dalam medan listrik",
+          "title": "Simulasi Defleksi Muatan Listrik",
           "height": 520,
-          "caption": "Ubah tegangan pemercepat. Bagaimana kelajuan elektron dan defleksinya berubah?"
+          "caption": "Tembakkan partikel bermuatan menembus medan listrik homogen dan amati kelengkungan lintasannya."
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Proton (q = 1,6 × 10⁻¹⁹ C) dipercepat dari diam oleh beda potensial 2.000 V. Berapa energi kinetiknya dalam joule dan eV?</p>",
+          "title": "Contoh Perhitungan Kelajuan Elektron Dipercepat",
+          "question": "<p>Sebuah elektron (massa 9,1 × 10⁻³¹ kg, muatan 1,6 × 10⁻¹⁹ C) dipercepat dari keadaan diam melalui beda potensial 200 Volt. Tentukan kelajuan akhir elektron tersebut!</p>",
           "steps": [
-            "Ek = qV = 1,6 × 10⁻¹⁹ × 2.000 = 3,2 × 10⁻¹⁶ J.",
-            "Dalam eV: 2.000 eV."
+            "Terapkan kekekalan energi: ½ m v² = q · ΔV.",
+            "v² = 2 · q · ΔV / m = (2 × 1,6 × 10⁻¹⁹ × 200) / (9,1 × 10⁻³¹) = (6,4 × 10⁻¹⁷) / (9,1 × 10⁻³¹) ≈ 7,03 × 10¹³ m²/s².",
+            "v = √(7,03 × 10¹³) ≈ 8,39 × 10⁶ m/s (sekitar 8.390 km/sekon)."
           ],
-          "answer": "3,2 × 10⁻¹⁶ J = 2 keV"
+          "answer": "Kelajuan akhir elektron adalah sekitar 8,39 × 10⁶ m/s."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Jika beda potensial pemercepat suatu partikel bermuatan dinaikkan menjadi 4 kali lipat dari semula, maka kelajuan akhir partikel tersebut akan menjadi ....",
+          "options": {
+            "A": "2 kali kelajuan semula",
+            "B": "4 kali kelajuan semula",
+            "C": "8 kali kelajuan semula",
+            "D": "16 kali kelajuan semula"
+          },
+          "answer": "A",
+          "hint": "Berdasarkan v = √(2qΔV / m), kelajuan sebanding dengan akar kuadrat beda potensial (v ~ √ΔV).",
+          "explanation": "v' = √4 · v = 2 v."
         }
       ]
     },
     {
       "id": "kapasitor-keping-sejajar-dielektrik",
-      "title": "Kapasitor Keping Sejajar: Kapasitansi (C = ε·A/d) dan Pengaruh Dielektrik",
+      "title": "Kapasitor Keping Sejajar, Bahan Dielektrik, dan Efek Baterai Terhubung vs Dilepas",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Kapasitor Keping Sejajar: Kapasitansi (C = ε·A/d) dan Pengaruh Dielektrik</b>: Menganalisis perubahan kapasitansi, muatan (Q = CV), dan energi simpan (W = 1/2 CV^2) saat disisipkan bahan dielektrik.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Penyimpan Muatan dan Energi: Kapasitor</h3>\n<p>Kapasitor adalah komponen elektronika pasif yang dirancang untuk menyimpan muatan listrik dan energi potensial elektrostatik dalam bentuk medan listrik di antara dua pelat konduktor sejajar yang dipisahkan oleh lapisan isolator (dielektrik).</p>\n<p>Kapasitansi (\\(C\\)) menyatakan kapasitas penyimpanan muatan per satuan beda potensial: <b>\\(C = \\frac{Q}{V}\\)</b> (satuan Farad = C/V).</p>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Fokus Konsep",
-          "html": "<p>Simulasi kapasitor keping sejajar dengan pengatur luas keping, jarak antar-pelat, dan jenis dielektrik.</p>"
+          "variant": "rumus",
+          "title": "Persamaan Kapasitor Keping Sejajar dan Kuat Medan Listrik",
+          "html": "<div class=\"fc-display\">\n\\[ C = \\varepsilon_r \\cdot \\varepsilon_0 \\cdot \\frac{A}{d} \\qquad \\Big| \\qquad E = \\frac{V}{d} = \\frac{\\sigma}{\\varepsilon} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(C\\)</td><td>Kapasitansi kapasitor keping sejajar</td><td class=\"unit\">\\text{Farad (F)}</td></tr>\n<tr><td class=\"sym\">\\(\\varepsilon_r\\)</td><td>Konstanta dielektrik relatif bahan pengisi (\\(\u000barepsilon_r = 1\\) untuk udara/hampa; \\(\u000barepsilon_r > 1\\) untuk mika/keramik)</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(\\varepsilon_0\\)</td><td>Permitivitas ruang hampa (\\(8,85 \times 10^{-12} \text{ F/m}\\))</td><td class=\"unit\">\\text{Farad/meter (F/m)}</td></tr>\n<tr><td class=\"sym\">\\(A\\)</td><td>Luas penampang salah satu keping pelat</td><td class=\"unit\">\\text{m}^2</td></tr>\n<tr><td class=\"sym\">\\(d\\)</td><td>Jarak pisah antar keping sejajar</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(E\\)</td><td>Kuat medan listrik homogen di antara kedua keping</td><td class=\"unit\">\\text{V/m atau N/C}</td></tr>\n<tr><td class=\"sym\">\\(V\\)</td><td>Beda potensial tegangan antar kedua keping</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Menyisipkan bahan dielektrik (ε_r > 1) SELALU meningkatkan nilai kapasitansi sebesar ε_r kali lipat: C_dielektrik = ε_r · C_udara.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan Klasik TKA: Baterai Tetap Terhubung vs Baterai Dilepas",
+          "html": "<p>Saat keping disisipkan dielektrik (\\(\\varepsilon_r\\)) atau jarak \\(d\\) diubah, amati status sumber tegangan baterai:</p>\n<table style=\"width:100%;text-align:center;\">\n  <thead><tr><th>Kondisi Baterai</th><th>Besaran Tetap Konstan</th><th>Konsekuensi Variabel Lain</th></tr></thead>\n  <tbody>\n    <tr><td><b>Baterai TETAP Terhubung</b></td><td><b>Tegangan \\(V = \\text{konstan}\\)</b></td><td>Muatan \\(Q\\) berubah: \\(Q = C \\cdot V\\). Energi \\(W = \\frac{1}{2} C V^2 \\propto C\\).</td></tr>\n    <tr><td><b>Baterai DILEPAS / Terputus</b></td><td><b>Muatan \\(Q = \\text{konstan}\\)</b></td><td>Tegangan \\(V\\) berubah: \\(V = \\frac{Q}{C}\\). Energi \\(W = \\frac{Q^2}{2C} \\propto \\frac{1}{C}\\).</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas9/IPA/05 Listrik, Magnet, dan Energi Alternatif/sim/coulomb.html",
-          "title": "Hukum Coulomb",
-          "height": 480,
-          "caption": "Gandakan jarak kedua muatan. Berapa kali gaya berubah?"
+          "src": "../../../Kelas12/Fisika/01 Listrik Statis/sim/kapasitor.html",
+          "title": "Simulasi Kapasitor Keping Sejajar",
+          "height": 520,
+          "caption": "Ubah luas pelat, jarak pisah, dan jenis dielektrik untuk melihat efeknya terhadap muatan dan medan."
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Kapasitor Keping Sejajar: Kapasitansi (C = ε·A/d) dan Pengaruh Dielektrik",
-          "question": "<p>Perhatikan permasalahan terkait <b>Kapasitor Keping Sejajar: Kapasitansi (C = ε·A/d) dan Pengaruh Dielektrik</b> berikut. Analisislah berdasarkan prinsip Menganalisis perubahan kapasitansi, muatan (Q = CV), dan energi simpan (W = 1/2 CV^2) saat disisipkan bahan dielektrik..</p>",
+          "title": "Contoh Perhitungan Kapasitor Disisipi Dielektrik",
+          "question": "<p>Sebuah kapasitor keping sejajar di udara memiliki kapasitansi 10 μF dan dihubungkan dengan baterai 12 Volt sehingga terisi penuh. Baterai kemudian dilepaskan. Setelah itu, ruang antara kedua keping diisi zat dielektrik dengan konstanta ε_r = 3. Tentukan: (a) kapasitansi baru, (b) muatan pada keping, (c) beda potensial baru antar keping!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Muatan mula-mula: Q = C_awal · V_awal = 10 μF × 12 V = 120 μC.",
+            "(a) Kapasitansi baru: C' = ε_r · C_awal = 3 × 10 μF = 30 μF.",
+            "(b) Karena baterai DILEPAS, muatan terperangkap konstan: Q' = Q = 120 μC.",
+            "(c) Beda potensial baru: V' = Q' / C' = 120 μC / 30 μF = 4 Volt (tegangan turun menjadi sepertiganya!)."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "(a) C' = 30 μF; (b) Q' = 120 μC; (c) V' = 4 Volt."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah kapasitor keping sejajar tetap terhubung pada sumber tegangan konstan V. Jika jarak antar keping diperkecil menjadi setengahnya (d' = ½ d), maka energi yang tersimpan dalam kapasitor akan ....",
+          "options": {
+            "A": "Menjadi seperempat kali semula",
+            "B": "Menjadi setengah kali semula",
+            "C": "Menjadi 2 kali lipat semula",
+            "D": "Menjadi 4 kali lipat semula"
+          },
+          "answer": "C",
+          "hint": "Kapasitansi C = εA/d. Jika d menjadi ½ d, maka C menjadi 2C. Karena tegangan tetap (baterai terhubung), gunakan rumus W = ½ C V². Energi W sebanding dengan C, sehingga energi tersimpan menjadi 2 kali lipat.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "rangkaian-kapasitor-seri-paralel",
-      "title": "Rangkaian Kapasitor Seri dan Paralel",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Rangkaian Kapasitor Gabungan Seri-Paralel dan Energi Tersimpan",
+      "kind": "simulasi",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Rangkaian Kapasitor Seri dan Paralel</b>: Menghitung kapasitansi ekivalen, pembagian muatan pada rangkaian paralel, dan pembagian tegangan pada susunan seri.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Kombinasi Kapasitor Seri dan Paralel</h3>\n<p>Dalam sirkuit elektronik, kapasitor sering dirangkai seri atau paralel untuk mendapatkan nilai kapasitansi ekuivalen atau batas tegangan kerja yang diinginkan.</p>\n<ul>\n  <li><b>Rangkaian Seri</b>:\n    <ul>\n      <li>Muatan pada setiap kapasitor SAMA BESAR: \\(Q_1 = Q_2 = Q_3 = Q_{\\text{total}}\\).</li>\n      <li>Tegangan terbagi: \\(V_{\\text{total}} = V_1 + V_2 + V_3\\).</li>\n      <li>Kapasitansi ekuivalen mengecil: <b>\\(\\frac{1}{C_s} = \\frac{1}{C_1} + \\frac{1}{C_2} + \\dots\\)</b>.</li>\n    </ul>\n  </li>\n  <li><b>Rangkaian Paralel</b>:\n    <ul>\n      <li>Beda potensial pada setiap cabang SAMA BESAR: \\(V_1 = V_2 = V_3 = V_{\\text{total}}\\).</li>\n      <li>Muatan terbagi: \\(Q_{\\text{total}} = Q_1 + Q_2 + Q_3\\).</li>\n      <li>Kapasitansi ekuivalen membesar: <b>\\(C_p = C_1 + C_2 + C_3 + \\dots\\)</b>.</li>\n    </ul>\n  </li>\n</ul>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Menjumlahkan besar medan dari dua muatan yang arahnya berlawanan.</li><li>Lupa mengkuadratkan jarak.</li><li>Menganggap potensial nol berarti medan nol (atau sebaliknya).</li><li>Pada elektroskop, menyebut muatan positif yang berpindah; yang berpindah elektron.</li></ul>"
+          "variant": "rumus",
+          "title": "Persamaan Kapasitansi Pengganti dan Energi Tersimpan Kapasitor",
+          "html": "<div class=\"fc-display\">\n\\[ W = \\frac{1}{2} C V^2 = \\frac{1}{2} Q V = \\frac{Q^2}{2 C} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(W\\)</td><td>Energi elektrostatik yang tersimpan dalam kapasitor</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(C\\)</td><td>Kapasitansi kapasitor</td><td class=\"unit\">\\text{Farad (F)}</td></tr>\n<tr><td class=\"sym\">\\(V\\)</td><td>Tegangan antar kedua keping kapasitor</td><td class=\"unit\">\\text{Volt (V)}</td></tr>\n<tr><td class=\"sym\">\\(Q\\)</td><td>Muatan listrik yang tersimpan pada keping</td><td class=\"unit\">\\text{Coulomb (C)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Ingat perbedaan penting rumus pengganti: Kapasitor seri menggunakan rumus 1/C (kebalikan dari resistor!), sedangkan kapasitor paralel dijumlahkan langsung C₁ + C₂.</small></p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas12/Fisika/01 Listrik Statis/sim/rangkaian-kapasitor.html",
+          "title": "Simulasi Rangkaian Kapasitor",
+          "height": 520,
+          "caption": "Rangkai kapasitor seri dan paralel, lalu ukur muatan dan tegangan pada tiap komponen."
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Rangkaian Kapasitor Seri dan Paralel",
-          "question": "<p>Perhatikan permasalahan terkait <b>Rangkaian Kapasitor Seri dan Paralel</b> berikut. Analisislah berdasarkan prinsip Menghitung kapasitansi ekivalen, pembagian muatan pada rangkaian paralel, dan pembagian tegangan pada susunan seri..</p>",
+          "title": "Contoh Perhitungan Rangkaian Kapasitor Seri",
+          "question": "<p>Dua kapasitor C₁ = 6 μF dan C₂ = 3 μF dirangkai secara seri dan dihubungkan ke sumber tegangan 18 Volt. Tentukan: (a) kapasitansi pengganti total, (b) muatan total rangkaian, (c) tegangan pada kapasitor C₁!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "(a) Kapasitansi seri: 1/C_s = 1/6 + 1/3 = (1 + 2) / 6 = 3/6 = 1/2  =>  C_s = 2 μF.",
+            "(b) Muatan total: Q_total = C_s · V = 2 μF × 18 V = 36 μC. Karena seri: Q₁ = Q₂ = 36 μC.",
+            "(c) Tegangan pada C₁: V₁ = Q₁ / C₁ = 36 μC / 6 μF = 6 Volt (sedangkan V₂ = 36/3 = 12 Volt; total V₁ + V₂ = 18 V)."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "(a) C_s = 2 μF; (b) Q_total = 36 μC; (c) V₁ = 6 Volt."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Rangkaian Kapasitor Seri dan Paralel, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Tiga buah kapasitor identik masing-masing bernilai C disusun sedemikian rupa sehingga menghasilkan nilai kapasitansi pengganti sebesar 1,5 C. Susunan rangkaian yang benar adalah ....",
           "options": {
-            "A": "Konsep Rangkaian Kapasitor Seri dan Paralel berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "Ketiganya dirangkai seri",
+            "B": "Ketiganya dirangkai paralel",
+            "C": "Dua kapasitor paralel, lalu diserikan dengan kapasitor ketiga",
+            "D": "Dua kapasitor seri, lalu diparalelkan dengan kapasitor ketiga"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung kapasitansi ekivalen, pembagian muatan pada rangkaian paralel, dan pembagian tegangan pada susunan seri.."
+          "answer": "D",
+          "hint": "Dua kapasitor seri: C_s = C / 2 = 0,5 C. Hasilnya diparalelkan dengan satu kapasitor C: C_total = 0,5 C + C = 1,5 C.",
+          "explanation": "Pilihan D benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-11",
-      "title": "Strategi Cepat Listrik Statis dan Latihan Kuis Bab 11",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Listrik Statis",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Listrik Statis dan Latihan Kuis Bab 11</b>: Menuntaskan soal analisis elektrostatika dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(F = k\\dfrac{q_1q_2}{r^2}\\), k = 9 × 10⁹ N m²/C².</li><li>\\(E = F/q = kq/r^2\\): menjauhi muatan positif, menuju muatan negatif.</li><li>\\(V = kq/r\\); \\(W_{A\\to B} = q(V_B - V_A)\\); \\(E_p = kq_1q_2/r\\).</li><li>Muatan dipercepat beda potensial: \\(\\tfrac12 mv^2 = qV\\).</li><li>Medan nol di antara dua muatan sejenis: lebih dekat ke muatan yang lebih kecil.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Listrik Statis dan Latihan Kuis Bab 11",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Listrik Statis dan Latihan Kuis Bab 11</b> berikut. Analisislah berdasarkan prinsip Menuntaskan soal analisis elektrostatika dan menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Listrik Statis dan Latihan Kuis Bab 11, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Listrik Statis dan Latihan Kuis Bab 11 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan soal analisis elektrostatika dan menyelesaikan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Rumus Kunci Listrik Statis</h3>\n<p>Kuasai perbedaan vektor vs skalar: Gaya Coulomb (\\(F\\)) dan Kuat Medan (\\(E\\)) adalah <b>vektor</b> (perhatikan sudut dan arah), sedangkan Potensial Listrik (\\(V\\)) dan Energi Potensial (\\(Ep\\)) adalah <b>skalar</b> (masukkan tanda + dan -).</p>\n<p>Kuasai pula kekekalan energi gerak muatan (\\(q\\Delta V = \\frac{1}{2}mv^2\\)) serta prinsip kapasitor pelat sejajar dan rangkaian seri-paralel.</p>\n<p>Uji kesiapan Anda melalui kuis evaluasi 20 soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Listrik Statis. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Fisika: Listrik Statis (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

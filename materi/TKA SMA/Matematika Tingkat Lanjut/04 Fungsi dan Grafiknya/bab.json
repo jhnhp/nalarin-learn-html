@@ -1,229 +1,69 @@
 {
   "title": "Fungsi dan Grafiknya",
-  "summary": "Analisis fungsi transenden dan rasional: fungsi rasional dan asimtot (datar, tegak, miring), grafik fungsi eksponensial dan logaritma lanjutan, grafik fungsi trigonometri (amplitudo, periode, pergeseran fasa), serta penentuan rumus fungsi dari kurva grafik.",
+  "summary": "Materi komprehensif TKA Matematika Tingkat Lanjut: asimtot fungsi rasional, kurva eksponensial dan logaritmik lanjut, grafik fungsi trigonometri sinusoidal, serta rekonstruksi formula aljabar dari tampilan visual kurva.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "fungsi-rasional-asimtot",
-      "title": "Fungsi Rasional: Menentukan Asimtot Tegak, Asimtot Datar, dan Asimtot Miring",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Fungsi Rasional: Asimtot Datar, Asimtot Tegak, dan Asimtot Miring",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Domain</b> adalah himpunan x yang membuat fungsi terdefinisi. <b>Kodomain</b> adalah himpunan tujuan. <b>Daerah hasil</b> (range) adalah himpunan nilai f(x) yang benar-benar dicapai.</p><table><tr><th>Fungsi</th><th>Syarat domain</th><th>Daerah hasil umum</th></tr><tr><td>Polinom</td><td>semua x</td><td>derajat ganjil: semua y; derajat genap: dibatasi puncak</td></tr><tr><td>Rasional \\(\\frac{p(x)}{q(x)}\\)</td><td>\\(q(x) \\ne 0\\)</td><td>lihat asimtot datar</td></tr><tr><td>Akar \\(\\sqrt{g(x)}\\)</td><td>\\(g(x) \\ge 0\\)</td><td>\\(y \\ge 0\\) (sebelum digeser)</td></tr><tr><td>Eksponen \\(a\\cdot b^x + k\\)</td><td>semua x</td><td>\\(y &gt; k\\) jika \\(a &gt; 0\\)</td></tr><tr><td>Logaritma \\({}^b\\log g(x)\\)</td><td>\\(g(x) &gt; 0\\)</td><td>semua y</td></tr><tr><td>Mutlak \\(a|x - h| + k\\)</td><td>semua x</td><td>\\(y \\ge k\\) jika \\(a &gt; 0\\)</td></tr><tr><td>Trigonometri \\(a\\sin bx + d\\)</td><td>semua x</td><td>\\(d - |a| \\le y \\le d + |a|\\), periode \\(\\frac{360^\\circ}{|b|}\\)</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/grafik-fungsi.html",
-          "title": "Grafik, asimtot, domain, dan daerah hasil",
-          "height": 620,
-          "caption": "Pilih jenis fungsi dan ubah parameternya. Perhatikan bagaimana asimtot, domain, dan daerah hasil ikut berubah. Pada fungsi rasional, coba b = −ac agar muncul lubang, bukan asimtot."
-        },
-        {
-          "type": "example",
-          "title": "Contoh 1: domain gabungan",
-          "question": "<p>Tentukan domain \\(f(x) = \\dfrac{\\sqrt{x + 3}}{x - 2}\\).</p>",
-          "steps": [
-            "Akar: x + 3 ≥ 0 → x ≥ −3.",
-            "Penyebut: x ≠ 2."
-          ],
-          "answer": "{x | x ≥ −3, x ≠ 2}"
-        },
-        {
-          "type": "check",
-          "question": "Domain \\(f(x) = \\log(4 - x)\\) adalah ....",
-          "options": {
-            "A": "x &lt; 4",
-            "B": "x ≤ 4",
-            "C": "x &gt; 4",
-            "D": "x &gt; 0"
-          },
-          "answer": "A",
-          "hint": "Numerus harus positif.",
-          "explanation": "4 − x &gt; 0 → x &lt; 4."
+          "html": "<h3>Konsep Asimtot Fungsi Rasional</h3>\n<p>Asimtot adalah garis lurus yang didekati oleh kurva fungsi hingga jaraknya mendekati nol ketika titik pada kurva bergerak menuju tak hingga.</p>\n<ul>\n  <li><b>Asimtot Tegak (Vertikal)</b>: diperoleh saat penyebut bernilai nol (\\(g(x) = 0\\)) dan pembilang tidak nol. Garis berupa \\(x = c\\).</li>\n  <li><b>Asimtot Datar (Horizontal)</b>: diperoleh dari \\(\\lim_{x \\to \\pm\\infty} f(x)\\). Garis berupa \\(y = L\\).</li>\n  <li><b>Asimtot Miring (Slant / Oblique)</b>: terjadi jika derajat pembilang tepat 1 tingkat lebih tinggi dari penyebut (\\(\\text{derajat } P(x) = \\text{derajat } Q(x) + 1\\)). Diperoleh dari hasil bagi pembagian polinomial.</li>\n</ul>"
         }
       ]
     },
     {
       "id": "grafik-fungsi-eksponen-logaritma-lanjut",
-      "title": "Eksplorasi Kurva Eksponensial dan Logaritmik dengan Berbagai Basis (a > 1 dan 0 < a < 1)",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Grafik Fungsi Eksponensial dan Logaritma Lanjut serta Nilai Batas",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Eksplorasi Kurva Eksponensial dan Logaritmik dengan Berbagai Basis (a > 1 dan 0 < a < 1)</b>: Menganalisis sifat monoton naik vs monoton turun, asimtot horizontal y = 0 vs asimtot vertikal x = 0, serta titik potong tetap.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Matematika/03 Transformasi Fungsi/sim/transformasi-fungsi.html",
-          "title": "Transformasi fungsi",
-          "height": 520,
-          "caption": "Ulangi pengaruh pergeseran dan pencerminan terhadap grafik dasar."
-        },
-        {
-          "type": "example",
-          "title": "Contoh 2: daerah hasil dengan domain terbatas",
-          "question": "<p>Tentukan daerah hasil \\(f(x) = |x - 1| - 2\\) untuk \\(-2 \\le x \\le 3\\).</p>",
-          "steps": [
-            "Nilai terkecil di x = 1: f(1) = −2.",
-            "Ujung: f(−2) = 3 − 2 = 1; f(3) = 2 − 2 = 0.",
-            "Nilai terbesar 1."
-          ],
-          "answer": "{y | −2 ≤ y ≤ 1}"
-        },
-        {
-          "type": "check",
-          "question": "Periode \\(f(x) = 3\\cos\\left(\\frac{x}{2}\\right)\\) adalah ....",
-          "options": {
-            "A": "720°",
-            "B": "180°",
-            "C": "360°",
-            "D": "120°"
-          },
-          "answer": "A",
-          "hint": "Periode = 360°/|b|.",
-          "explanation": "b = 1/2 → periode 720°."
+          "html": "<h3>Hubungan Simetri Grafik Eksponen dan Logaritma</h3>\n<p>Grafik \\(y = a^x\\) dan \\(y = \\log_a x\\) saling mencerminkan terhadap garis \\(y = x\\). Karakteristik grafik eksponen memiliki asimtot datar \\(y = 0\\), sedangkan grafik logaritma memiliki asimtot tegak \\(x = 0\\).</p>"
         }
       ]
     },
     {
       "id": "grafik-trigonometri-amplitudo-periode",
-      "title": "Grafik Trigonometri Lanjutan: y = A sin(k(x ± c)) + d dan y = A cos(k(x ± c)) + d",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Grafik Fungsi Trigonometri: Amplitudo, Periode, dan Pergeseran Fase",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Grafik Trigonometri Lanjutan: y = A sin(k(x ± c)) + d dan y = A cos(k(x ± c)) + d</b>: Menghitung amplitudo |A|, periode T = 2π/k, pergeseran fasa horizontal c, dan garis tengah vertikal y = d.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/grafik-fungsi.html",
-          "title": "Grafik, asimtot, domain, dan daerah hasil",
-          "height": 620,
-          "caption": "Pilih jenis fungsi dan ubah parameternya. Perhatikan bagaimana asimtot, domain, dan daerah hasil ikut berubah. Pada fungsi rasional, coba b = −ac agar muncul lubang, bukan asimtot."
-        },
-        {
-          "type": "example",
-          "title": "Contoh: membaca model eksponen",
-          "question": "<p>Jumlah pengguna sebuah aplikasi dimodelkan \\(N(t) = 3\\cdot 2^t\\) ribu, t dalam bulan. Kapan penggunanya mencapai 96 ribu?</p>",
-          "steps": [
-            "\\(3\\cdot 2^t = 96 \\Rightarrow 2^t = 32 = 2^5\\).",
-            "t = 5."
-          ],
-          "answer": "Bulan ke-5"
+          "html": "<h3>Bentuk Umum Kurva Sinusoidal</h3>\n\\[ y = A \\sin(k(x - \\alpha)) + C \\qquad \\text{atau} \\qquad y = A \\cos(k(x - \\alpha)) + C \\]\n<ul>\n  <li><b>Amplitudo</b>: \\(|A| = \\frac{y_{\\max} - y_{\\min}}{2}\\).</li>\n  <li><b>Periode</b>: \\(T = \\frac{2\\pi}{k} = \\frac{360^\\circ}{k}\\).</li>\n  <li><b>Garis Tengah Vertikal</b>: \\(y = C = \\frac{y_{\\max} + y_{\\min}}{2}\\).</li>\n  <li><b>Pergeseran Fase</b>: geser ke kanan sebesar \\(\\alpha\\) jika \\((x - \\alpha)\\).</li>\n</ul>"
         }
       ]
     },
     {
       "id": "rekonstruksi-rumus-dari-grafik",
-      "title": "Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva",
-      "kind": "latihan",
-      "duration": "16 menit",
+      "title": "Rekonstruksi Persamaan Fungsi dari Gambar Grafik",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva</b>: Membaca koordinat titik puncak, titik potong sumbu, dan asimtot grafik untuk menyusun rumus eksplisit fungsi.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva",
-          "question": "<p>Perhatikan permasalahan terkait <b>Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva</b> berikut. Analisislah berdasarkan prinsip Membaca koordinat titik puncak, titik potong sumbu, dan asimtot grafik untuk menyusun rumus eksplisit fungsi..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Keahlian Kunci: Menentukan Persamaan Fungsi Berdasarkan Sketsa Kurva berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Membaca koordinat titik puncak, titik potong sumbu, dan asimtot grafik untuk menyusun rumus eksplisit fungsi.."
+          "html": "<h3>Taktik Menemukan Rumus dari Gambar Grafik TKA</h3>\n<ol>\n  <li>Identifikasi titik potong sumbu-x (akar-akar).</li>\n  <li>Identifikasi titik potong sumbu-y atau puncak maksimum/minimum.</li>\n  <li>Substitusikan titik acuan ke persamaan dasar untuk menentukan nilai faktor kelengkungan \\(a\\).</li>\n</ol>"
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-mtl-04",
-      "title": "Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Fungsi dan Grafiknya",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4</b>: Menuntaskan interpretasi fungsi transenden dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Fungsi</b>: domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri.</p><p><i>Batasan</i>: fungsi polinom maksimum berderajat 4; bilangan pokok fungsi eksponensial berupa bilangan asli.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4</b> berikut. Analisislah berdasarkan prinsip Menuntaskan interpretasi fungsi transenden dan menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Analisis Grafik Lanjutan dan Latihan Kuis Bab 4 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan interpretasi fungsi transenden dan menyelesaikan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<p>Uji pemahaman grafik analitis Anda melalui kuis resmi 20 butir soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Fungsi dan Grafiknya. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Matematika Tingkat Lanjut: Fungsi dan Grafiknya (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

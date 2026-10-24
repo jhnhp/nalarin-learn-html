@@ -1,351 +1,445 @@
 {
   "title": "Hukum Newton tentang Gerak",
-  "summary": "Fondasi dinamika klasik: Hukum I, II, dan III Newton, Diagram Benda Bebas (FBD), gaya normal, gaya gesek statis-kinetis, dinamika bidang miring, sistem katrol benda terhubung, dan gerak dalam lift.",
+  "summary": "Materi komprehensif TKA Fisika...",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "tiga-hukum-newton",
-      "title": "Hukum Inersia, Percepatan, dan Aksi-Reaksi Newton",
-      "kind": "artikel",
-      "duration": "15 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Langkah utama soal dinamika: gambar <b>diagram gaya bebas</b> untuk setiap benda, uraikan gaya, lalu terapkan ΣF = ma pada arah gerak.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Newton</td><td>kelembaman, ΣF = ma, aksi–reaksi</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 3</td></tr><tr><td>Gaya-gaya</td><td>berat, normal, gesek statis dan kinetis, tegangan tali</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Penerapan</td><td>bidang miring, katrol, lift, tikungan</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Fokus Konsep",
-          "html": "<p>Studi kasus kontekstual sabuk pengaman, dorongan roket, dan tumbukan balok.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Lemari 40 kg di lantai (μₛ = 0,5; μₖ = 0,4; g = 10 m/s²) didorong mendatar dengan gaya 180 N. Apakah lemari bergerak? Berapa gaya geseknya?</p>",
-          "steps": [
-            "N = 400 N; fₛ maks = 0,5 × 400 = 200 N.",
-            "Gaya dorong 180 N < 200 N, sehingga lemari diam dan gaya gesek statis = 180 N."
-          ],
-          "answer": "diam; gaya gesek 180 N"
-        },
-        {
-          "type": "check",
-          "question": "Seseorang mendorong tembok dengan gaya 50 N. Gaya reaksinya adalah ....",
-          "options": {
-            "A": "gaya gesek kaki dengan lantai",
-            "B": "gaya tembok mendorong orang sebesar 50 N",
-            "C": "berat orang",
-            "D": "gaya normal lantai pada orang"
-          },
-          "answer": "B",
-          "hint": "Aksi–reaksi bekerja pada dua benda berbeda.",
-          "explanation": "Reaksi dari dorongan orang pada tembok adalah dorongan tembok pada orang, sama besar dan berlawanan arah."
-        }
-      ]
-    },
-    {
-      "id": "fbd-diagram-benda-bebas",
-      "title": "Keahlian Kunci: Menggambar Diagram Benda Bebas (FBD)",
+      "id": "hukum-i-newton-inersia",
+      "title": "Hukum I Newton: Konsep Inersia (Kelembaman) dan Kerangka Acuan",
       "kind": "simulasi",
-      "duration": "18 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Keahlian Kunci: Menggambar Diagram Benda Bebas (FBD)</b>: Mengidentifikasi semua vektor gaya yang bekerja pada benda tunggal tanpa memasukkan gaya luar asing.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Prinsip Kelembaman (Inersia) Benda</h3>\n<p>Hukum I Newton menyatakan bahwa setiap benda akan terus mempertahankan keadaan diamnya atau terus bergerak lurus beraturan dengan kecepatan tetap, kecuali jika ada resultan gaya luar yang memaksanya untuk mengubah keadaan tersebut.</p>\n<p>Kecenderungan alami materi untuk menolak perubahan status gerak ini disebut sebagai <b>Inersia (Kelembaman)</b>. Besaran fisika yang menjadi ukuran kuantitatif dari inersia suatu benda adalah <b>massa inersia (\\(m\\))</b>. Semakin besar massa suatu benda, semakin sukar benda tersebut digerakkan dari keadaan diam dan semakin sukar dihentikan saat sedang melaju.</p>\n<p>Secara matematis, Hukum I Newton berlaku ketika resultan seluruh vektor gaya yang bekerja pada benda bernilai nol:</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas7/IPA/04 Gerak dan Gaya/sim/dorong-kotak.html",
-          "title": "Gaya, gesekan, dan hukum Newton",
-          "height": 480,
-          "caption": "Dorong kotak di permukaan berbeda. Kapan kotak mulai bergerak?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Balok 2 kg dilepas di bidang miring licin bersudut 30° (g = 10 m/s²). Berapa percepatannya dan gaya normalnya?</p>",
-          "steps": [
-            "a = g sin 30° = 5 m/s².",
-            "N = mg cos 30° = 20 × 0,866 ≈ 17,3 N."
-          ],
-          "answer": "5 m/s² dan ± 17,3 N"
-        },
-        {
-          "type": "check",
-          "question": "Pada sistem balok di meja licin yang dihubungkan tali ke balok tergantung, tegangan tali dibandingkan berat balok tergantung adalah ....",
-          "options": {
-            "A": "lebih besar",
-            "B": "sama",
-            "C": "lebih kecil",
-            "D": "nol"
-          },
-          "answer": "C",
-          "hint": "Balok tergantung dipercepat ke bawah.",
-          "explanation": "Karena balok tergantung dipercepat ke bawah, mg − T = ma > 0, sehingga T < mg."
-        }
-      ]
-    },
-    {
-      "id": "gaya-gesek-statis-kinetis",
-      "title": "Friksi: Menentukan Kondisi Diam vs Bergerak",
-      "kind": "simulasi",
-      "duration": "16 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Friksi: Menentukan Kondisi Diam vs Bergerak</b>: Menghitung f_s,max = μ_s · N, membandingkan dengan gaya penarik, dan beralih ke f_k = μ_k · N saat bergerak.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "title": "Syarat Keseimbangan Hukum I Newton",
+          "html": "<div class=\"fc-display\">\n\\[ \\Sigma \\vec{F} = 0 \\quad \\Longrightarrow \\quad \\vec{a} = 0 \\quad (\\vec{v} = 0 \\text{ atau } \\vec{v} = \\text{konstan}) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\Sigma \\vec{F}\\)</td><td>Resultan seluruh vektor gaya luar yang bekerja pada sistem</td><td class=\"unit\">\\text{Newton (N)} = \\text{kg}\\cdot\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(\\vec{a}\\)</td><td>Percepatan linier yang dialami benda</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(\\vec{v}\\)</td><td>Kecepatan linier benda (diam atau GLB)</td><td class=\"unit\">\\text{m/s}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Hukum I Newton hanya berlaku pada Kerangka Acuan Inersial (kerangka yang diam atau bergerak dengan kecepatan tetap).</small></p>"
         },
         {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/bidang-miring.html",
-          "title": "Balok pada bidang miring",
-          "height": 520,
-          "caption": "Pada sudut berapa balok mulai meluncur? Hubungkan dengan tan θ = μₛ."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Mesin Atwood dengan beban 5 kg dan 3 kg (katrol licin, g = 10 m/s²). Tentukan percepatan dan tegangan tali.</p>",
-          "steps": [
-            "a = (5 − 3) × 10/(5 + 3) = 2,5 m/s².",
-            "T = 3(10 + 2,5) = 37,5 N."
-          ],
-          "answer": "2,5 m/s² dan 37,5 N"
-        }
-      ]
-    },
-    {
-      "id": "dinamika-bidang-miring",
-      "title": "Gerak pada Bidang Miring Licin dan Kasar",
-      "kind": "simulasi",
-      "duration": "16 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Langkah utama soal dinamika: gambar <b>diagram gaya bebas</b> untuk setiap benda, uraikan gaya, lalu terapkan ΣF = ma pada arah gerak.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Newton</td><td>kelembaman, ΣF = ma, aksi–reaksi</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 3</td></tr><tr><td>Gaya-gaya</td><td>berat, normal, gesek statis dan kinetis, tegangan tali</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Penerapan</td><td>bidang miring, katrol, lift, tikungan</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+          "variant": "tips",
+          "title": "Aplikasi Nyata: Sabuk Pengaman Mobil",
+          "html": "<p>Ketika mobil yang melaju kencang tiba-tiba direm mendadak, tubuh penumpang akan terdorong ke depan. Hal ini bukan karena ada gaya misterius yang mendorong ke depan, melainkan karena tubuh penumpang mempertahankan kecepatannya semula ke depan sesuai sifat inersia. Sabuk pengaman menyediakan gaya eksternal penahan untuk menghentikan tubuh penumpang dengan aman.</p>"
         },
         {
           "type": "sim",
           "src": "sim/sistem-katrol.html",
-          "title": "Sistem benda terhubung",
+          "title": "Simulasi Hukum Newton",
           "height": 520,
-          "caption": "Pada mode meja, naikkan μₖ sampai sistem tidak bergerak. Pada mode lift, kapan angka timbangan lebih kecil dari massa sebenarnya?"
+          "caption": "Ubah gaya luar dan amati status gerak benda saat resultan gaya nol vs tidak nol."
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Seorang anak 40 kg berdiri di lift yang bergerak turun dan diperlambat 1,5 m/s² (g = 10 m/s²). Berapa gaya normal lantai lift?</p>",
+          "title": "Contoh Analisis Benda Diam dengan Dua Gaya",
+          "question": "<p>Sebuah balok bermassa 5 kg diam di atas lantai datar licin. Balok tersebut ditarik oleh gaya F₁ = 25 N ke arah kanan. Agar balok tetap mempertahankan keadaan diamnya (GLB v = 0), tentukan besar dan arah gaya kedua (F₂) yang harus diberikan!</p>",
           "steps": [
-            "Turun diperlambat berarti percepatan ke atas.",
-            "N = 40(10 + 1,5)."
+            "Terapkan syarat Hukum I Newton: ΣF = 0.",
+            "Tetapkan arah ke kanan sebagai positif (+): F₁ + F₂ = 0.",
+            "Substitusikan nilai F₁: +25 + F₂ = 0  =>  F₂ = -25 N.",
+            "Tanda negatif menunjukkan arah berlawanan, yaitu ke arah kiri."
           ],
-          "answer": "460 N"
-        }
-      ]
-    },
-    {
-      "id": "sistem-benda-terhubung-katrol",
-      "title": "Sistem Benda Terhubung, Tegangan Tali, dan Mesin Atwood",
-      "kind": "latihan",
-      "duration": "16 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Sistem Benda Terhubung, Tegangan Tali, dan Mesin Atwood</b>: Menentukan percepatan sistem bersama dan gaya tegangan tali (T) pada katrol licin tanpa massa.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Sebuah ember berisi air (1,5 kg) diputar pada bidang vertikal dengan tali sepanjang 0,9 m. Berapa kelajuan minimum di titik tertinggi agar air tidak tumpah (g = 10 m/s²)?</p>",
-          "steps": [
-            "Syarat minimum: tegangan tali nol di titik tertinggi, sehingga mg = mv²/R.",
-            "v = √(gR) = √9."
-          ],
-          "answer": "3 m/s"
+          "answer": "Gaya F₂ harus bernilai 25 Newton dengan arah ke kiri."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Sistem Benda Terhubung, Tegangan Tali, dan Mesin Atwood, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah pesawat antariksa meluncur di ruang hampa antarbintang yang sangat jauh dari planet atau bintang mana pun (hampa gravitasi). Jika mesin pesawat dimatikan sepenuhnya, pesawat tersebut akan ....",
           "options": {
-            "A": "Konsep Sistem Benda Terhubung, Tegangan Tali, dan Mesin Atwood berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "Perlahan-lahan melambat lalu berhenti",
+            "B": "Terus melaju lurus dengan kelajuan tetap tanpa batas waktu",
+            "C": "Membelok membentuk lintasan melingkar",
+            "D": "Seketika berhenti di tempat"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menentukan percepatan sistem bersama dan gaya tegangan tali (T) pada katrol licin tanpa massa.."
+          "answer": "B",
+          "hint": "Ingat: di ruang hampa tidak ada gesekan udara atau gaya gravitasi (ΣF = 0).",
+          "explanation": "Pilihan B benar sesuai Hukum I Newton. Karena resultan gaya nol (ΣF = 0), pesawat akan terus mempertahankan kecepatan konstan dalam garis lurus (GLB) selamanya."
         }
       ]
     },
     {
-      "id": "gerak-dan-berat-semu-lift",
-      "title": "Dinamika dalam Lift: Berat Semu dan Kerangka Dipercepat",
+      "id": "hukum-ii-newton-resultan-gaya",
+      "title": "Hukum II Newton: Resultan Gaya, Massa Inersia, dan Percepatan",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Langkah utama soal dinamika: gambar <b>diagram gaya bebas</b> untuk setiap benda, uraikan gaya, lalu terapkan ΣF = ma pada arah gerak.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Newton</td><td>kelembaman, ΣF = ma, aksi–reaksi</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 3</td></tr><tr><td>Gaya-gaya</td><td>berat, normal, gesek statis dan kinetis, tegangan tali</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Penerapan</td><td>bidang miring, katrol, lift, tikungan</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
+          "html": "<h3>Hubungan Kausalitas Gaya dan Percepatan</h3>\n<p>Ketika resultan gaya luar yang bekerja pada benda tidak sama dengan nol (\\(\\Sigma \u000bec{F} \ne 0\\)), keadaan gerak benda akan berubah. Benda mengalami <b>percepatan (\\(\u000bec{a}\\))</b>.</p>\n<p>Hukum II Newton menyatakan bahwa percepatan yang dialami oleh suatu benda:</p>\n<ol>\n  <li>Berbanding lurus dengan resultan gaya total yang bekerja pada benda (\\(a \\propto \\Sigma F\\)).</li>\n  <li>Berbanding terbalik dengan massa inersia benda (\\(a \\propto \frac{1}{m}\\)).</li>\n  <li>Memiliki arah vektor yang <b>persis sama dengan arah resultan gaya</b> tersebut.</li>\n</ol>\n<p>Secara fisis, gaya adalah laju perubahan momentum linier terhadap waktu: \\(\u000bec{F} = \frac{d\u000bec{p}}{dt} = \frac{d(m\u000bec{v})}{dt} = m\u000bec{a}\\) (untuk massa konstan).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+          "title": "Hukum II Newton tentang Gerak",
+          "html": "<div class=\"fc-display\">\n\\[ \\Sigma \\vec{F} = m \\cdot \\vec{a} \\quad \\Longleftrightarrow \\quad \\vec{a} = \\frac{\\Sigma \\vec{F}}{m} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\Sigma \\vec{F}\\)</td><td>Resultan gaya total yang bekerja pada benda/sistem</td><td class=\"unit\">\\text{Newton (N)} = \\text{kg}\\cdot\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa inersia total benda atau sistem</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{a}\\)</td><td>Percepatan linier yang dihasilkan (searah resultan gaya)</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Pada sistem banyak benda yang bergerak bersama, gunakan ΣF_eksternal = m_total · a untuk mencari percepatan sistem secara langsung.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi 3 Langkah Dinamika Newton",
+          "html": "<ol>\n  <li>Gambar diagram benda bebas (FBD) secara terpisah untuk setiap benda.</li>\n  <li>Tetapkan sumbu gerak: sumbu searah gerak (\\(\\Sigma F = ma\\)) dan sumbu tegak lurus gerak (\\(\\Sigma F = 0\\)).</li>\n  <li>Gaya yang searah percepatan bertanda POSITIF (+), dan gaya yang berlawanan percepatan bertanda NEGATIF (-).</li>\n</ol>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Perhitungan Percepatan Dua Balok Kontak",
+          "question": "<p>Dua balok A (massa 3 kg) dan B (massa 2 kg) saling bersentuhan di atas lantai datar licin. Balok A didorong dari kiri oleh gaya horizontal tetap F = 20 N. Tentukan: (a) percepatan kedua balok, dan (b) besar gaya kontak timbal balik antara balok A dan balok B!</p>",
+          "steps": [
+            "Tinjau sistem gabungan (A + B): Massa total m_total = 3 kg + 2 kg = 5 kg. Gaya luar total ΣF = 20 N.",
+            "Hitung percepatan sistem: a = ΣF / m_total = 20 / 5 = 4 m/s² ke arah kanan.",
+            "Tinjau FBD balok B saja: Satu-satunya gaya horizontal yang mendorong balok B adalah gaya kontak dari balok A (N_AB).",
+            "Terapkan Hukum II Newton pada balok B: ΣF_B = m_B · a  =>  N_AB = 2 kg × 4 m/s² = 8 Newton."
+          ],
+          "answer": "Percepatan sistem adalah 4 m/s² dan gaya kontak antarbalok adalah 8 Newton."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah gaya F menghasilkan percepatan a pada benda bermassa m. Jika gaya diperbesar menjadi 3F dan massa benda ditambah menjadi 2m, percepatan yang dihasilkan sekarang adalah ....",
+          "options": {
+            "A": "0,5 a",
+            "B": "1,5 a",
+            "C": "2 a",
+            "D": "6 a"
+          },
+          "answer": "B",
+          "hint": "Gunakan perbandingan a = F / m.",
+          "explanation": "Pilihan B benar karena a' = F' / m' = (3F) / (2m) = 1,5 (F/m) = 1,5 a."
+        }
+      ]
+    },
+    {
+      "id": "hukum-iii-newton-aksi-reaksi",
+      "title": "Hukum III Newton: Pasangan Aksi-Reaksi vs Gaya Seimbang",
+      "kind": "artikel",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<h3>Hakikat Pasangan Gaya Aksi-Reaksi</h3>\n<p>Gaya tidak pernah muncul sendirian di alam semesta. Gaya selalu merupakan interaksi timbal balik antara dua benda. Hukum III Newton menyatakan:</p>\n<p><i>\"Ketika suatu benda memberikan gaya (aksi) pada benda kedua, benda kedua tersebut akan memberikan gaya (reaksi) yang besarnya sama dan arahnya berlawanan pada benda pertama.\"</i></p>\n<h3>Empat Ciri Mutlak Pasangan Aksi-Reaksi (Wajib Dihafal)</h3>\n<ol>\n  <li><b>Bekerja pada DUA BENDA YANG BERBEDA</b>: Jika gaya \\(F_{12}\\) bekerja pada benda 2 oleh benda 1, maka reaksinya \\(F_{21}\\) bekerja pada benda 1 oleh benda 2. Karena bekerja pada benda yang berbeda, <b>gaya aksi-reaksi TIDAK PERNAH saling meniadakan (tidak bisa dijumlahkan menjadi nol)</b>!</li>\n  <li><b>Besarnya persis sama</b>: \\(|F_{\text{aksi}}| = |F_{\text{reaksi}}|\\).</li>\n  <li><b>Arahnya berlawanan</b>: \\(\u000bec{F}_{\text{aksi}} = -\u000bec{F}_{\text{reaksi}}\\).</li>\n  <li><b>Jenis gayanya harus sama</b>: Jika aksinya adalah gaya gravitasi, reaksinya harus gaya gravitasi; jika aksinya gaya kontak normal, reaksinya gaya kontak normal.</li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan Hukum III Newton",
+          "html": "<div class=\"fc-display\">\n\\[ \\vec{F}_{\\text{aksi}} = -\\vec{F}_{\\text{reaksi}} \\qquad (|F_{\\text{aksi}}| = |F_{\\text{reaksi}}|) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\vec{F}_{\\text{aksi}}\\)</td><td>Gaya yang dikerjakan benda A pada benda B</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{F}_{\\text{reaksi}}\\)</td><td>Gaya yang dikerjakan benda B pada benda A (arah berlawanan)</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perbedaan Kunci: Gaya seimbang bekerja pada SATU BENDA yang sama (sehingga ΣF = 0). Pasangan aksi-reaksi bekerja pada DUA BENDA yang berbeda.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan Terbesar: Gaya Normal dan Gaya Berat",
+          "html": "<p>Pada buku yang tergeletak diam di atas meja, terdapat gaya berat \\(W\\) (ke bawah) dan gaya normal \\(N\\) (ke atas) dengan besar \\(N = W\\). <b>Apakah \\(N\\) dan \\(W\\) adalah pasangan aksi-reaksi? BUKAN!</b></p>\n<ul>\n  <li>Gaya \\(N\\) dan \\(W\\) bekerja pada benda yang sama (buku), jenisnya beda (gravitasi vs elektromagnetik kontak). Keduanya adalah <b>gaya seimbang</b>.</li>\n  <li>Reaksi dari gaya berat buku \\(W\\) (tarikan gravitasi bumi pada buku) adalah <b>tarikan gravitasi buku pada bumi</b> (mengarah ke atas pada pusat bumi).</li>\n  <li>Reaksi dari gaya normal meja pada buku adalah <b>gaya tekan buku pada permukaan meja</b> (mengarah ke bawah).</li>\n</ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Identifikasi Pasangan Aksi-Reaksi Kuda Menarik Gerobak",
+          "question": "<p>Seekor kuda menarik gerobak ke depan dengan gaya 500 N. Menurut Hukum III Newton, gerobak juga menarik kuda ke belakang dengan gaya 500 N yang sama besar. Mengapa kuda dan gerobak tetap bisa bergerak maju dan tidak saling meniadakan?</p>",
+          "steps": [
+            "Analisis titik kerja gaya: Gaya tarik kuda bekerja pada GEROBAK, sedangkan gaya reaksi gerobak bekerja pada KUDA (bekerja pada dua benda berbeda, bukan satu benda).",
+            "Tinjau gerak gerobak: Gerobak ditarik gaya kuda 500 N ke depan. Selama gaya ini lebih besar dari gaya gesek roda gerobak dengan tanah, gerobak bergerak maju.",
+            "Tinjau gerak kuda: Kuda ditarik gerobak 500 N ke belakang, TETAPI kaki kuda mendorong tanah ke belakang, sehingga tanah memberikan gaya reaksi gesekan ke DEPAN pada kaki kuda sebesar misalnya 700 N.",
+            "Resultan gaya pada kuda ke depan: ΣF_kuda = 700 N - 500 N = 200 N ke depan. Kuda berakselerasi maju membawa gerobak."
+          ],
+          "answer": "Kuda dan gerobak dapat melaju karena gaya aksi-reaksi bekerja pada benda berbeda dan ada gaya dorong reaksi dari tanah pada kaki kuda."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Seorang anak melompat ke atas dari permukaan tanah. Saat anak tersebut mendorong tanah ke bawah dengan kakinya, gaya yang membuat anak terangkat ke atas adalah ....",
+          "options": {
+            "A": "Gaya otot kaki anak itu sendiri",
+            "B": "Gaya reaksi normal dari tanah yang mendorong kaki anak ke atas",
+            "C": "Gaya gravitasi bumi yang berkurang sesaat",
+            "D": "Gaya kelembaman inersia udara di sekitar anak"
+          },
+          "answer": "B",
+          "hint": "Cari gaya eksternal yang bekerja PADA tubuh anak ke arah atas.",
+          "explanation": "Pilihan B benar sesuai Hukum III Newton. Kaki anak mendorong tanah ke bawah (aksi), dan tanah memberikan gaya reaksi normal yang sama besar mendorong kaki anak ke atas (reaksi), yang mengangkat tubuh anak."
+        }
+      ]
+    },
+    {
+      "id": "gaya-normal-dan-gesekan",
+      "title": "Gaya Normal dan Gaya Gesekan (Statis vs Kinetis)",
+      "kind": "simulasi",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<h3>Gaya Normal (N)</h3>\n<p>Gaya normal adalah gaya kontak yang dikerjakan oleh permukaan bidang tumpu pada benda yang menyentuhnya. Arah vektor gaya normal <b>selalu tegak lurus (normal)</b> terhadap bidang sentuh mengarah menjauhi bidang.</p>\n<p>Besar gaya normal tidak selalu sama dengan berat benda (\\(W = mg\\)):</p>\n<ul>\n  <li>Di lantai datar tanpa gaya luar lain: \\(N = mg\\).</li>\n  <li>Ditekan ke bawah dengan gaya \\(F\\): \\(N = mg + F\\).</li>\n  <li>Ditarik miring ke atas dengan sudut \\(\theta\\): \\(N = mg - F\\sin\theta\\).</li>\n  <li>Pada bidang miring bersudut \\(\theta\\): \\(N = mg \\cos\theta\\).</li>\n</ul>\n<h3>Gaya Gesekan: Statis (\\(f_s\\)) vs Kinetis (\\(f_k\\))</h3>\n<p>Gaya gesekan terjadi akibat interaksi mikroskopis antara permukaan dua benda yang bersentuhan. Arah gaya gesek <b>selalu berlawanan dengan kecenderungan arah gerak relatif</b> benda.</p>\n<ol>\n  <li><b>Gaya Gesek Statis (\\(f_s\\))</b>: Bekerja saat benda masih diam. Nilai gaya gesek statis bersifat adaptif menyesuaikan gaya dorong luar, dari nol hingga mencapai batas maksimumnya: \\(f_{s(\text{maks})} = \\mu_s \\cdot N\\). Jika gaya dorong \\(F \\le f_{s(\text{maks})}\\), benda tetap diam dan \\(f_s = F\\).</li>\n  <li><b>Gaya Gesek Kinetis (\\(f_k\\))</b>: Bekerja saat benda sudah bergerak meluncur. Nilainya bernilai konstan: \\(f_k = \\mu_k \\cdot N\\).</li>\n  <li>Secara umum, koefisien gesek statis selalu lebih besar daripada koefisien gesek kinetis (\\(\\mu_s > \\mu_k\\)), itulah sebabnya memulai menggeser lemari lebih berat daripada mempertahankannya tetap meluncur.</li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formula Gaya Gesek Statis Maksimum dan Kinetis",
+          "html": "<div class=\"fc-display\">\n\\[ f_{s(\\text{maks})} = \\mu_s \\cdot N, \\qquad f_k = \\mu_k \\cdot N \\quad (\\mu_s > \\mu_k) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(f_{s(\\text{maks})}\\)</td><td>Gaya gesek statis maksimum (gaya minimum untuk membuat benda mulai bergerak)</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(f_k\\)</td><td>Gaya gesek kinetis konstan saat benda meluncur</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(\\mu_s\\)</td><td>Koefisien gesekan statis</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(\\mu_k\\)</td><td>Koefisien gesekan kinetis</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(N\\)</td><td>Gaya normal bidang sentuh</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika gaya tarik luar F < f_s(maks), benda DIAM dan besar gaya gesek yang bekerja BUKAN μ_s·N, melainkan sama persis dengan gaya tarik luar F!</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan Terbesar: Menghitung Gaya Gesek Statis!",
+          "html": "<p>Jika balok bermassa 10 kg berada di lantai (\\(\\mu_s = 0,5; g = 10\text{ m/s}^2\\)), maka \\(f_{s(\text{maks})} = 0,5 \times 100 = 50\text{ N}\\). Jika balok ditarik dengan gaya \\(F = 20\text{ N}\\), berapakah gaya geseknya? <b>Bukan 50 N, melainkan 20 N!</b> Jika gaya geseknya 50 N, balok justru akan bergerak mundur sendiri, yang mustahil secara fisika.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Penentuan Status Gerak dan Percepatan",
+          "question": "<p>Sebuah balok bermassa 4 kg berada di atas lantai mendatar dengan koefisien gesekan μ_s = 0,4 dan μ_k = 0,2 (g = 10 m/s²). Balok ditarik horizontal dengan gaya F. Tentukan gaya gesek yang bekerja dan percepatan balok jika: (a) F = 10 N, dan (b) F = 24 N!</p>",
+          "steps": [
+            "Hitung gaya normal: N = m·g = 4 × 10 = 40 Newton.",
+            "Hitung batas gesek statis maksimum: f_s(maks) = μ_s · N = 0,4 × 40 = 16 Newton.",
+            "Kasus (a) F = 10 N: Karena F (10 N) < f_s(maks) (16 N), benda DIAM. Gaya gesek yang bekerja f_s = F = 10 N, dan percepatan a = 0.",
+            "Kasus (b) F = 24 N: Karena F (24 N) > f_s(maks) (16 N), benda BERGERAK. Gaya gesek yang bekerja adalah gesek kinetis: f_k = μ_k · N = 0,2 × 40 = 8 Newton.",
+            "Hitung percepatan pada kasus (b): a = (F - f_k) / m = (24 - 8) / 4 = 16 / 4 = 4 m/s²."
+          ],
+          "answer": "Pada F = 10 N, balok diam (f_s = 10 N, a = 0). Pada F = 24 N, balok bergerak (f_k = 8 N, a = 4 m/s²)."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Koefisien gesekan statis antara balok kayu bermassa 2 kg dan lantai adalah 0,3 (g = 10 m/s²). Jika balok didorong mendatar dengan gaya 4 N, besar gaya gesekan yang bekerja pada balok adalah ....",
+          "options": {
+            "A": "6 N",
+            "B": "4 N",
+            "C": "2 N",
+            "D": "0 N"
+          },
+          "answer": "B",
+          "hint": "Hitung f_s(maks) terlebih dahulu, lalu bandingkan dengan gaya dorong 4 N.",
+          "explanation": "Pilihan B benar karena f_s(maks) = 0,3 × 20 = 6 N. Karena gaya dorong 4 N < 6 N, balok masih diam sehingga gaya gesek statis yang bekerja tepat mengimbangi gaya dorong, yaitu 4 N."
+        }
+      ]
+    },
+    {
+      "id": "fbd-bidang-miring",
+      "title": "Diagram Benda Bebas (FBD) pada Bidang Miring (Licin dan Kasar)",
+      "kind": "simulasi",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<h3>Dekomposisi Gaya pada Bidang Miring</h3>\n<p>Pada bidang miring bersudut kemiringan \\(\theta\\) terhadap horizontal, arah gerak benda dibatasi sejajar dengan permukaan bidang. Oleh karena itu, kita memutar sumbu koordinat:</p>\n<ul>\n  <li><b>Sumbu X (sejajar bidang miring)</b>: Sumbu tempat terjadinya gerak dan percepatan (\\(\\Sigma F_x = m \\cdot a\\)).</li>\n  <li><b>Sumbu Y (tegak lurus bidang miring)</b>: Sumbu di mana benda tidak pernah meninggalkan bidang (\\(\\Sigma F_y = 0\\)).</li>\n</ul>\n<p>Gaya berat benda (\\(W = mg\\)) yang selalu mengarah vertikal ke pusat bumi diuraikan menjadi dua komponen:</p>\n<ol>\n  <li>Komponen penarik ke bawah sejajar bidang: <b>\\(W_x = mg \\sin\theta\\)</b>.</li>\n  <li>Komponen penekan tegak lurus bidang: <b>\\(W_y = mg \\cos\theta\\)</b>.</li>\n</ol>\n<p>Dari kesetimbangan sumbu tegak lurus (\\(\\Sigma F_y = 0\\)), kita peroleh besar gaya normal pada bidang miring:</p>\n<p>\\[ N = mg \\cos\theta \\]</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan Gerak pada Bidang Miring Kasar (Meluncur Turun)",
+          "html": "<div class=\"fc-display\">\n\\[ \\Sigma F_x = mg \\sin\\theta - f_k = m \\cdot a \\quad \\Longrightarrow \\quad a = g(\\sin\\theta - \\mu_k \\cos\\theta) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a\\)</td><td>Percepatan luncur benda menuruni bidang miring</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(g\\)</td><td>Percepatan gravitasi bumi</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut kemiringan bidang terhadap bidang horizontal</td><td class=\"unit\">\\text{derajat (}^\\circ\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(\\mu_k\\)</td><td>Koefisien gesekan kinetis antara benda dan bidang</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(N\\)</td><td>Gaya normal (N = mg cos θ)</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika bidang miring licin (μ_k = 0), percepatan luncur murni a = g sin θ, sama sekali tidak bergantung pada massa benda!</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Sudut Kritis Kemiringan (Angle of Repose)",
+          "html": "<p>Benda yang diletakkan di atas bidang miring kasar akan tepat akan mulai meluncur jika komponen penarik menuruni bidang sama dengan gesekan statis maksimum: \\(mg \\sin\theta = \\mu_s mg \\cos\theta \\Rightarrow \\mathbf{\tan\theta = \\mu_s}\\). Sudut ini disebut sudut kemiringan kritis.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Bidang Miring Kasar",
+          "question": "<p>Sebuah balok bermassa 5 kg meluncur menuruni bidang miring yang memiliki sudut kemiringan 37° (sin 37° = 0,6; cos 37° = 0,8). Koefisien gesekan kinetis antara balok dan bidang adalah 0,25 (g = 10 m/s²). Tentukan percepatan luncur balok tersebut!</p>",
+          "steps": [
+            "Hitung komponen gaya berat: W_x = mg sin 37° = 5 × 10 × 0,6 = 30 N. W_y = mg cos 37° = 5 × 10 × 0,8 = 40 N.",
+            "Hitung gaya normal: N = W_y = 40 N.",
+            "Hitung gaya gesek kinetis: f_k = μ_k · N = 0,25 × 40 = 10 N.",
+            "Terapkan Hukum II Newton sejajar bidang: ΣF_x = m·a  =>  W_x - f_k = m·a.",
+            "Hitung percepatan: 30 - 10 = 5·a  =>  20 = 5·a  =>  a = 4 m/s²."
+          ],
+          "answer": "Percepatan luncur balok adalah 4 m/s² menuruni bidang miring."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua balok A (10 kg) dan B (2 kg) dilepaskan bersamaan dari puncak bidang miring licin yang sama dari ketinggian h. Pernyataan yang benar mengenai percepatan luncur kedua balok adalah ....",
+          "options": {
+            "A": "Balok A memiliki percepatan 5 kali lebih besar",
+            "B": "Balok B memiliki percepatan 5 kali lebih besar",
+            "C": "Kedua balok memiliki percepatan yang persis sama (a = g sin θ)",
+            "D": "Percepatan balok bergantung pada luas penampang alasnya"
+          },
+          "answer": "C",
+          "hint": "Perhatikan rumus percepatan pada bidang miring licin: a = g sin θ.",
+          "explanation": "Pilihan C benar karena pada bidang licin a = g sin θ, massa balok saling meniadakan (massa tereliminasi) sehingga semua benda meluncur dengan percepatan yang identik."
+        }
+      ]
+    },
+    {
+      "id": "sistem-katrol-tegangan-tali",
+      "title": "Sistem Katrol dan Analisis Tegangan Tali (Atwood Machine)",
+      "kind": "simulasi",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<h3>Mesin Atwood dan Dinamika Sistem Katrol</h3>\n<p>Sistem katrol yang menghubungkan dua benda bermassa dengan seutas tali ringan tak bermassa adalah model soal wajib TKA. Pada katrol licin dan massanya diabaikan:</p>\n<ul>\n  <li>Tegangan tali di sepanjang satu utas tali yang sama bernilai <b>seragam (\\(T_1 = T_2 = T\\))</b>.</li>\n  <li>Kedua benda bergerak bersamaan dengan <b>besar percepatan yang sama (\\(a_1 = a_2 = a\\))</b>.</li>\n</ul>\n<h3>Dua Konfigurasi Katrol Paling Populer</h3>\n<ol>\n  <li><b>Mesin Atwood Vertikal (Dua Benda Tergantung Bebas)</b>:\n    <p>Benda bermassa lebih besar (\\(m_1 > m_2\\)) akan bergerak turun, sedangkan benda lebih ringan (\\(m_2\\)) bergerak naik. Resultan gaya sistem adalah selisih berat kedua benda:</p>\n    <p>\\[ \\Sigma F_{\text{sistem}} = m_1 g - m_2 g = (m_1 + m_2) a \\]</p>\n  </li>\n  <li><b>Satu Benda di Meja Datar dan Satu Benda Tergantung</b>:\n    <p>Benda \\(m_1\\) di atas meja ditarik oleh tali yang dihubungkan ke benda \\(m_2\\) yang tergantung bebas. Gaya penggerak utama hanyalah berat benda yang tergantung (\\(m_2 g\\)).</p>\n  </li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formula Percepatan dan Tegangan Tali Mesin Atwood",
+          "html": "<div class=\"fc-display\">\n\\[ a = \\frac{m_1 - m_2}{m_1 + m_2} g \\quad (m_1 > m_2), \\qquad T = \\frac{2 m_1 m_2}{m_1 + m_2} g \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a\\)</td><td>Percepatan linier gerak kedua benda</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(T\\)</td><td>Tegangan tali penghubung katrol</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(m_1\\)</td><td>Massa benda pertama (yang lebih berat)</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(m_2\\)</td><td>Massa benda kedua (yang lebih ringan)</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(g\\)</td><td>Percepatan gravitasi bumi</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Untuk mencari tegangan tali T dengan cepat tanpa rumus hafalan: tinjau FBD salah satu benda saja: benda turun (m₁g - T = m₁a) atau benda naik (T - m₂g = m₂a).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Metode Cepat 'Tinjau Seluruh Sistem'",
+          "html": "<p>Untuk mencari percepatan sistem katrol bertingkat apa pun, gunakan rumus sakti: <b>\\(a = \frac{\\Sigma F_{\text{penarik}} - \\Sigma F_{\text{penghambat}}}{M_{\text{total}}}\\)</b>. Tegangan tali merupakan gaya internal sistem sehingga tidak perlu dimasukkan saat mencari percepatan total.</p>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas7/IPA/04 Gerak dan Gaya/sim/dorong-kotak.html",
-          "title": "Gaya, gesekan, dan hukum Newton",
-          "height": 480,
-          "caption": "Dorong kotak di permukaan berbeda. Kapan kotak mulai bergerak?"
+          "src": "sim/sistem-katrol.html",
+          "title": "Simulasi Sistem Katrol Atwood",
+          "height": 520,
+          "caption": "Variasikan massa kedua beban dan amati pergerakan serta nilai percepatannya."
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Dinamika dalam Lift: Berat Semu dan Kerangka Dipercepat",
-          "question": "<p>Perhatikan permasalahan terkait <b>Dinamika dalam Lift: Berat Semu dan Kerangka Dipercepat</b> berikut. Analisislah berdasarkan prinsip Menghitung skala timbangan (gaya normal) saat lift diam, naik dipercepat, atau turun dipercepat (N = m(g ± a))..</p>",
+          "title": "Contoh Perhitungan Mesin Atwood Lengkap",
+          "question": "<p>Dua beban m₁ = 6 kg dan m₂ = 4 kg dihubungkan melalui katrol licin tak bermassa (g = 10 m/s²). Kedua beban mula-mula ditahan diam lalu dilepaskan. Tentukan: (a) percepatan gerak kedua beban, dan (b) besar tegangan tali penghubung!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Identifikasi gaya penarik: Benda m₁ lebih berat (6 kg > 4 kg), maka m₁ bergerak turun dan m₂ bergerak naik.",
+            "Hitung percepatan sistem: a = (m₁ - m₂)g / (m₁ + m₂) = (6 - 4)(10) / (6 + 4) = 20 / 10 = 2 m/s².",
+            "Hitung tegangan tali T (tinjau m₂ yang bergerak naik): ΣF₂ = m₂·a  =>  T - m₂g = m₂·a.",
+            "Substitusi nilai: T - (4 × 10) = 4 × 2  =>  T - 40 = 8  =>  T = 48 Newton."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        }
-      ]
-    },
-    {
-      "id": "tikungan-miring-dan-kering",
-      "title": "Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin",
-      "kind": "latihan",
-      "duration": "15 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Langkah utama soal dinamika: gambar <b>diagram gaya bebas</b> untuk setiap benda, uraikan gaya, lalu terapkan ΣF = ma pada arah gerak.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Hukum Newton</td><td>kelembaman, ΣF = ma, aksi–reaksi</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 3</td></tr><tr><td>Gaya-gaya</td><td>berat, normal, gesek statis dan kinetis, tegangan tali</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Penerapan</td><td>bidang miring, katrol, lift, tikungan</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin",
-          "question": "<p>Perhatikan permasalahan terkait <b>Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin</b> berikut. Analisislah berdasarkan prinsip Menghitung kelajuan maksimum kendaraan agar tidak tergelincir (v_max = √(μgR) dan v = √(gR tan θ))..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Percepatan sistem adalah 2 m/s² dan tegangan tali sebesar 48 Newton."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Pada mesin Atwood vertikal dengan dua massa m₁ = 3 kg dan m₂ = 3 kg yang identik sama, besar tegangan tali penghubung katrol saat sistem dilepaskan adalah ....",
           "options": {
-            "A": "Konsep Dinamika Gerak Melingkar: Tikungan Datar Kasar dan Tikungan Miring Licin berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "0 N",
+            "B": "15 N",
+            "C": "30 N",
+            "D": "60 N"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung kelajuan maksimum kendaraan agar tidak tergelincir (v_max = √(μgR) dan v = √(gR tan θ)).."
+          "answer": "C",
+          "hint": "Karena massa kedua benda sama (m₁ = m₂), sistem berada dalam kesetimbangan statis (a = 0).",
+          "explanation": "Pilihan C benar karena a = (3 - 3)g / (3 + 3) = 0. Tinjau salah satu massa: T - mg = 0  =>  T = mg = 3 × 10 = 30 Newton."
         }
       ]
     },
     {
-      "id": "mitigasi-miskonsepsi-normal-berat",
-      "title": "Miskonsepsi Fatal: Menganggap Gaya Normal Selalu Sama dengan Gaya Berat",
+      "id": "gaya-kontak-desak-kaki-lift",
+      "title": "Gaya Kontak Antarbalok dan Berat Semu dalam Lift Bergerak",
       "kind": "artikel",
-      "duration": "12 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Miskonsepsi Fatal: Menganggap Gaya Normal Selalu Sama dengan Gaya Berat</b>: Memahami kondisi di mana N ≠ W (akibat gaya miring, bidang miring, atau akselerasi vertikal).</p>"
+          "html": "<h3>Konsep Berat Semu (Apparent Weight)</h3>\n<p>Ketika Anda menaiki timbangan badan di dalam lift yang sedang berakselerasi, jarum timbangan tidak menunjukkan gaya gravitasi Anda yang sebenarnya, melainkan <b>gaya normal penopang (gaya desak kaki \\(N\\))</b> yang dikerjakan lantai lift pada tubuh Anda. Nilai \\(N\\) inilah yang disebut <b>berat semu</b>.</p>\n<h3>Analisis Tiga Kondisi Gerak Lift</h3>\n<ol>\n  <li><b>Lift Diam atau Bergerak dengan Kecepatan Konstan (GLB, \\(a = 0\\))</b>:\n    <p>Sesuai Hukum I Newton: \\(\\Sigma F = N - mg = 0 \\Rightarrow \\mathbf{N = mg}\\). Berat semu sama persis dengan berat asli.</p>\n  </li>\n  <li><b>Lift Mengalami Percepatan ke Atas (\\(a\\) ke atas)</b>:\n    <p>Terjadi saat lift baru mulai bergerak naik atau saat lift yang sedang turun direm diperlambat. Sesuai Hukum II Newton: \\(\\Sigma F = N - mg = ma \\Rightarrow \\mathbf{N = m(g + a)}\\). Tubuh terasa lebih berat dan jarum timbangan naik.</p>\n  </li>\n  <li><b>Lift Mengalami Percepatan ke Bawah (\\(a\\) ke bawah)</b>:\n    <p>Terjadi saat lift baru mulai bergerak turun atau saat lift yang sedang naik direm diperlambat: \\(\\Sigma F = mg - N = ma \\Rightarrow \\mathbf{N = m(g - a)}\\). Tubuh terasa melayang lebih ringan.</p>\n  </li>\n  <li><b>Kondisi Tali Lift Putus (Jatuh Bebas, \\(a = g\\))</b>:\n    <p>\\(N = m(g - g) = 0\\). Terjadi kondisi <b>tanpa bobot (weightlessness)</b>; tubuh melayang di dalam lift.</p>\n  </li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Sigma F = m a\\); berat \\(w = m g\\).</li><li>Gesekan: \\(f_s \\le \\mu_s N\\) (benda diam), \\(f_k = \\mu_k N\\) (benda bergerak).</li><li>Bidang miring licin: \\(a = g\\sin\\theta\\); kasar: \\(a = g(\\sin\\theta - \\mu_k\\cos\\theta)\\).</li><li>Lift: \\(N = m(g + a)\\) bila percepatan ke atas, \\(N = m(g - a)\\) bila ke bawah.</li><li>Gerak melingkar: \\(\\Sigma F_\\text{ke pusat} = m v^2/R\\).</li></ul>"
+          "title": "Formula Berat Semu (Gaya Desak Kaki) di Dalam Lift",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Percepatan ke Atas:} \\quad N = m(g + a); \\qquad \\text{Percepatan ke Bawah:} \\quad N = m(g - a) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(N\\)</td><td>Gaya desak kaki / angka yang terbaca pada timbangan (berat semu)</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa tubuh orang</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(g\\)</td><td>Percepatan gravitasi bumi</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(a\\)</td><td>Besar percepatan gerak lift</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Ingat: Kunci utama adalah ARAH PERCEPATAN (a), bukan arah gerak lift! Jika lift bergerak naik tapi diperlambat, arah percepatannya ke BAWAH, sehingga rumusnya N = m(g - a).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Jebakan: 'Bergerak Naik' vs 'Dipercepat Naik'",
+          "html": "<p>Banyak siswa salah mengira jika lift bergerak naik, rumusnya selalu \\(N = m(g + a)\\). Ini salah! Jika lift sedang bergerak naik mendekati lantai tujuan, lift mengalami <i>perlambatan</i> (arah vektor \\(a\\) mengarah ke bawah), sehingga \\(N = m(g - a)\\) dan tubuh terasa lebih ringan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Perhitungan Berat Semu Siswa di Lift",
+          "question": "<p>Seseorang bermassa 60 kg berdiri di atas timbangan di dalam lift (g = 10 m/s²). Tentukan angka yang terbaca pada timbangan (dalam Newton dan kg) jika: (a) lift bergerak naik dengan percepatan 2 m/s², dan (b) lift bergerak turun dipercepat 2 m/s²!</p>",
+          "steps": [
+            "Berat asli orang: W = m·g = 60 × 10 = 600 Newton.",
+            "Kasus (a) Percepatan ke atas: N = m(g + a) = 60 × (10 + 2) = 60 × 12 = 720 Newton. Angka skala timbangan = N / g = 720 / 10 = 72 kg.",
+            "Kasus (b) Percepatan ke bawah: N = m(g - a) = 60 × (10 - 2) = 60 × 8 = 480 Newton. Angka skala timbangan = N / g = 480 / 10 = 48 kg."
+          ],
+          "answer": "Saat lift dipercepat ke atas timbangan membaca 720 N (72 kg); saat dipercepat ke bawah membaca 480 N (48 kg)."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah lift yang sedang bergerak naik dari lantai 1 menuju lantai 10 mulai melambat dengan perlambatan 3 m/s² menjelang berhenti di lantai 10. Jika massa penumpang 50 kg (g = 10 m/s²), gaya tekan kaki penumpang pada lantai lift saat itu adalah ....",
+          "options": {
+            "A": "650 N",
+            "B": "500 N",
+            "C": "350 N",
+            "D": "150 N"
+          },
+          "answer": "C",
+          "hint": "Perhatikan: lift bergerak naik tetapi melambat, sehingga arah percepatan ke BAWAH (a = 3 m/s²).",
+          "explanation": "Pilihan C benar karena arah percepatan ke bawah: N = m(g - a) = 50 × (10 - 3) = 50 × 7 = 350 Newton."
         }
       ]
     },
     {
-      "id": "evaluasi-hukum-newton",
-      "title": "Strategi Cepat Dinamika dan Latihan Kuis Bab 3",
-      "kind": "latihan",
-      "duration": "20 menit",
+      "id": "jebakan-gesekan-menggelinding",
+      "title": "Jebakan Arah Gaya Gesek pada Roda Bergerak / Menggelinding",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Dinamika dan Latihan Kuis Bab 3</b>: Menuntaskan soal dinamika Newton variatif dan menyelesaikan kuis bab 20 soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Misteri Arah Gaya Gesek pada Roda</h3>\n<p>Dalam soal TKA Fisika tingkat lanjut, pertanyaan mengenai arah gaya gesekan pada roda kendaraan bermotor sering mengecoh sebagian besar siswa. Mengapa? Karena arah gaya gesekan pada roda bergantung pada apakah roda tersebut merupakan <b>roda penggerak (drive wheel)</b> atau <b>roda yang ditarik/didorong pasif (driven wheel)</b>.</p>\n<h3>Analisis Roda Penggerak vs Roda Pasif pada Sepeda / Mobil</h3>\n<ol>\n  <li><b>Roda Belakang Sepeda (Roda Penggerak Aktif)</b>:\n    <p>Ketika pengayuh memutar pedal, rantai memutar gir roda belakang searah jarum jam. Bagian bawah ban yang menyentuh jalan memiliki kecenderungan bergerak <i>tergelincir ke belakang</i> terhadap tanah. Akibatnya, permukaan jalan memberikan gaya gesekan statis ke arah <b>DEPAN (\\(\u000bec{f}_s\\) ke depan)</b>! Gaya gesek ke depan inilah gaya pendorong utama yang membuat sepeda melaju maju!</p>\n  </li>\n  <li><b>Roda Depan Sepeda (Roda Pasif yang Didorong)</b>:\n    <p>Roda depan tidak terhubung ke rantai. Roda depan didorong maju oleh rangka sepeda. Bagian bawah ban depan yang menyentuh tanah cenderung tergelincir ke depan, sehingga tanah memberikan gaya gesekan ke arah <b>BELAKANG (\\(\u000bec{f}_s\\) ke belakang)</b> yang memutar roda depan searah putaran sepeda.</p>\n  </li>\n</ol>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Fokus Konsep",
-          "html": "<p>Paket latihan bergradasi dan evaluasi kuis terintegrasi.</p>"
+          "variant": "rumus",
+          "title": "Syarat Gerak Menggelinding Murni Tanpa Slip",
+          "html": "<div class=\"fc-display\">\n\\[ v_{\\text{pusat}} = \\omega \\cdot R, \\qquad a_{\\text{pusat}} = \\alpha \\cdot R, \\qquad f_s \\le \\mu_s \\cdot N \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(v_{\\text{pusat}}\\)</td><td>Kecepatan linier pusat massa roda</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(\\omega\\)</td><td>Kecepatan sudut putaran roda</td><td class=\"unit\">\\text{rad/s}</td></tr>\n<tr><td class=\"sym\">\\(R\\)</td><td>Jari-jari roda</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(a_{\\text{pusat}}\\)</td><td>Percepatan linier pusat massa roda</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(\\alpha\\)</td><td>Percepatan sudut rotasi roda</td><td class=\"unit\">\\text{rad/s}^2</td></tr>\n<tr><td class=\"sym\">\\(f_s\\)</td><td>Gaya gesek statis yang memungkinkan terjadinya putaran tanpa slip</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika gaya dorong melebihi batas gesek statis (F > μ_s N), roda akan mengalami 'slip' (berputar di tempat tanpa maju efektif).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Ringkasan Cepat Arah Gaya Gesek Roda",
+          "html": "<ul>\n  <li><b>Roda penggerak mesin/rantai</b>: Gaya gesekan mengarah ke <b>DEPAN</b> (searah gerak kendaraan).</li>\n  <li><b>Roda pasif (tidak digerakkan mesin)</b>: Gaya gesekan mengarah ke <b>BELAKANG</b> (menghambat gerak translasi namun memutar rotasi).</li>\n  <li><b>Benda meluncur tanpa berputar</b>: Gaya gesekan selalu mengarah ke <b>BELAKANG</b>.</li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Dinamika dan Latihan Kuis Bab 3",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Dinamika dan Latihan Kuis Bab 3</b> berikut. Analisislah berdasarkan prinsip Menuntaskan soal dinamika Newton variatif dan menyelesaikan kuis bab 20 soal..</p>",
+          "title": "Contoh Analisis Arah Gaya Gesek Mobil Penggerak Roda Belakang",
+          "question": "<p>Sebuah mobil berpenggerak roda belakang (Rear-Wheel Drive / RWD) sedang berakselerasi maju di jalan aspal datar. Tentukan arah gaya gesek yang bekerja pada roda belakang dan roda depan mobil tersebut!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Tinjau roda belakang (penggerak): Mesin memutar roda belakang, sehingga tepi ban bawah menendang aspal ke arah belakang. Sesuai Hukum III Newton, aspal memberikan gaya reaksi gesek statis ke arah DEPAN pada ban belakang.",
+            "Tinjau roda depan (pasif): Roda depan didorong ke depan oleh bodi mobil, sehingga tepi ban bawah terdorong ke depan terhadap aspal. Aspal memberikan gaya reaksi gesek ke arah BELAKANG pada ban depan.",
+            "Resultan gaya ke depan: Agar mobil berakselerasi maju, besar gaya gesek roda belakang harus lebih besar dari gaya gesek roda depan: f_belakang - f_depan = m_mobil · a."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Gaya gesek pada roda belakang mengarah ke DEPAN, sedangkan gaya gesek pada roda depan mengarah ke BELAKANG."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Dinamika dan Latihan Kuis Bab 3, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Seseorang mengendarai sepeda motor standar yang digerakkan oleh rantai roda belakang di jalan datar lurus yang dipercepat ke depan. Arah gaya gesekan jalan pada ban belakang dan ban depan berturut-turut adalah ....",
           "options": {
-            "A": "Konsep Strategi Cepat Dinamika dan Latihan Kuis Bab 3 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "Ke depan dan ke depan",
+            "B": "Ke depan dan ke belakang",
+            "C": "Ke belakang dan ke depan",
+            "D": "Ke belakang dan ke belakang"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan soal dinamika Newton variatif dan menyelesaikan kuis bab 20 soal.."
+          "answer": "B",
+          "hint": "Roda belakang adalah roda penggerak aktif, sedangkan roda depan adalah roda pasif yang didorong.",
+          "explanation": "Pilihan B benar karena roda belakang menerima torsi mesin sehingga gesekannya ke DEPAN (mendorong motor), sedangkan roda depan pasif menerima gesekan ke BELAKANG (memutar roda depan)."
+        }
+      ]
+    },
+    {
+      "id": "latihan-dan-kuis-03",
+      "title": "Strategi Cepat Dinamika Gerak dan Latihan Bab",
+      "kind": "latihan",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<h3>Peta Konsep dan Strategi Cepat Dinamika Newton</h3>\n<p>Sebelum mengerjakan evaluasi 20 soal, mantapkan matriks formula kunci Dinamika Hukum Newton di bawah ini:</p>\n<table style=\"width:100%;border-collapse:collapse;margin:12px 0;\">\n  <thead>\n    <tr style=\"background:var(--surface-2);\">\n      <th style=\"padding:8px;border:1px solid var(--line);\">Model Masalah</th>\n      <th style=\"padding:8px;border:1px solid var(--line);\">Kaidah / Syarat Fisis</th>\n      <th style=\"padding:8px;border:1px solid var(--line);\">Formula Percepatan Cepat</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Dua balok kontak terdorong</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Lantai licin, bergerak bersama</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(a = \frac{F}{m_1 + m_2}\\)</td>\n    </tr>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Bidang miring kasar</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Meluncur turun</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(a = g(\\sin\theta - \\mu_k \\cos\theta)\\)</td>\n    </tr>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Mesin Atwood katrol</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Dua beban menggantung (\\(m_1 > m_2\\))</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(a = \frac{m_1 - m_2}{m_1 + m_2} g\\)</td>\n    </tr>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Lift bergerak dipercepat naik</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Arah \\(a\\) ke atas</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(N = m(g + a)\\)</td>\n    </tr>\n  </tbody>\n</table>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Manajemen Waktu Mengerjakan Soal Dinamika",
+          "html": "<p>Jika soal melibatkan banyak benda, jangan tergesa-gesa menghitung tegangan tali atau gaya kontak terlebih dahulu. <b>Cari percepatan sistem (\\(a\\)) terlebih dahulu dengan memandang seluruh benda sebagai satu kesatuan massa</b>. Setelah \\(a\\) diketahui, barulah isolasi satu benda untuk menghitung gaya internal.</p>"
         },
         {
           "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<p>Ujilah kesiapan Anda pada soal-soal standar TKA Fisika Bab 03 Dinamika Gerak melalui kuis evaluasi 20 soal berikut.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Hukum Newton tentang Gerak. Setiap soal dilengkapi pembahasan."
+          "text": "Latihan soal TKA Fisika SMA topik Hukum Newton tentang Gerak. Setiap soal dilengkapi pembahasan mendalam."
         }
       ]
     }

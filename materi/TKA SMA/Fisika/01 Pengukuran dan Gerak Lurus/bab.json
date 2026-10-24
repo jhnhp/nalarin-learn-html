@@ -1,53 +1,62 @@
 {
   "title": "Pengukuran dan Gerak Lurus",
-  "summary": "Analisis kinematika satu dimensi dan presisi eksperimental: jangka sorong, mikrometer sekrup, aturan angka penting, GLB, GLBB, gerak jatuh bebas, analisis grafik s-t dan v-t, serta soal HOTS perjumpaan dua benda.",
+  "summary": "Materi komprehensif TKA Fisika...",
   "status": "lengkap",
   "lessons": [
     {
       "id": "alat-ukur-dan-ketidakpastian",
       "title": "Ketelitian Alat Ukur: Jangka Sorong, Mikrometer, dan Ketidakpastian",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Ketelitian Alat Ukur: Jangka Sorong, Mikrometer, dan Ketidakpastian</b>: Membaca skala utama dan skala nonius, menghitung nilai skala terkecil (NST), dan menentukan ketidakpastian mutlak/relatif.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Pentingnya Ketelitian dalam Pengukuran Fisika</h3>\n<p>Dalam kerja ilmiah fisika dan soal-soal TKA, pengukuran bukan sekadar membaca angka pada penggaris. Setiap alat ukur memiliki batas ketelitian fisik yang ditentukan oleh <b>Nilai Skala Terkecil (NST)</b>. Memilih alat ukur yang tepat untuk suatu objek sangat menentukan validitas data eksperimen.</p>\n<p>Tiga alat ukur panjang yang sering diuji dalam TKA adalah:</p>\n<ul>\n  <li><b>Mistar biasa</b>: Memiliki NST \\(1\text{ mm} = 0,1\text{ cm}\\) dengan ketidakpastian mutlak \\(\\Delta x = 0,5\text{ mm}\\). Cocok untuk mengukur benda berukuran sedang seperti buku atau meja.</li>\n  <li><b>Jangka Sorong (Vernier Caliper)</b>: Memiliki skala utama (dalam cm atau mm) dan skala nonius (biasanya 10, 20, atau 50 skala). Jangka sorong 10 skala nonius memiliki NST \\(0,1\text{ mm}\\); jangka sorong 20 skala nonius memiliki NST \\(0,05\text{ mm}\\); sedangkan 50 skala nonius memiliki NST \\(0,02\text{ mm}\\). Digunakan untuk mengukur diameter luar, diameter dalam (menggunakan rahang atas), dan kedalaman tabung (menggunakan ekor pengukur).</li>\n  <li><b>Mikrometer Sekrup</b>: Memiliki ketelitian tertinggi di antara ketiganya dengan NST \\(0,01\text{ mm}\\). Skala utama tertera pada silinder tetap (skala 0,5 mm), dan skala putar (thimble) memiliki 50 bagian. Satu putaran penuh thimble memajukan poros geser sejauh 0,5 mm. Sangat presisi untuk mengukur ketebalan kawat, kertas, atau keping tipis.</li>\n</ul>\n<p>Hasil pengukuran tunggal selalu dilaporkan dalam format ilmiah: \\(x = x_0 \\pm \\Delta x\\), di mana \\(x_0\\) adalah nilai terbaca dan \\(\\Delta x = \frac{1}{2} \times \text{NST}\\) adalah ketidakpastian mutlaknya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pelaporan Pengukuran & Ketidakpastian Mutlak / Relatif",
+          "html": "<div class=\"fc-display\">\n\\[ x = x_0 \\pm \\Delta x, \\quad \\Delta x = \\frac{1}{2} \\times \\text{NST}, \\quad \\text{KR} = \\frac{\\Delta x}{x_0} \\times 100\\% \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x\\)</td><td>Hasil akhir pelaporan pengukuran fisika</td><td class=\"unit\">\\text{meter (m) atau mm}</td></tr>\n<tr><td class=\"sym\">\\(x_0\\)</td><td>Nilai skala yang terbaca pada alat (skala utama + nonius)</td><td class=\"unit\">\\text{mm}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta x\\)</td><td>Ketidakpastian mutlak pengukuran tunggal (setengah NST)</td><td class=\"unit\">\\text{mm}</td></tr>\n<tr><td class=\"sym\">\\(\\text{NST}\\)</td><td>Nilai Skala Terkecil alat ukur</td><td class=\"unit\">\\text{mm}</td></tr>\n<tr><td class=\"sym\">\\(\\text{KR}\\)</td><td>Ketidakpastian Relatif (semakin kecil KR, semakin tinggi ketelitian)</td><td class=\"unit\">\\%</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Aturan praktis angka penting: Jika KR sekitar 10%, gunakan 2 angka penting; jika KR sekitar 1%, gunakan 3 angka penting; jika KR sekitar 0,1%, gunakan 4 angka penting.</small></p>"
         },
         {
           "type": "callout",
           "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Tertukar jarak (skalar) dan perpindahan (vektor).</li><li>Lupa waktu reaksi pada soal pengereman: selama waktu reaksi mobil masih bergerak dengan kecepatan tetap.</li><li>Menganggap kecepatan di titik tertinggi gerak vertikal bukan nol, atau percepatannya nol.</li><li>Membulatkan hasil sebelum langkah terakhir.</li></ul>"
+          "title": "Peringatan & Jebakan Umum",
+          "html": "<p><b>Jebakan Titik Nol & Paralaks:</b> Sebelum membaca jangka sorong atau mikrometer, periksa apakah saat rahang tertutup rapat garis nol skala nonius tepat berimpit dengan garis nol skala utama. Jika bergeser ke kanan, terdapat <i>kesalahan nol positif</i> (hasil baca harus dikurangi); jika ke kiri, terdapat <i>kesalahan nol negatif</i> (hasil baca harus ditambah). Selain itu, pastikan mata tegak lurus terhadap skala agar terhindar dari <b>kesalahan paralaks</b>.</p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas10/IPA/01 Sistem Pengukuran dalam Kerja Ilmiah/sim/alat-ukur.html",
-          "title": "Membaca jangka sorong dan mikrometer sekrup",
+          "title": "Membaca Jangka Sorong dan Mikrometer Sekrup",
           "height": 520,
-          "caption": "Baca beberapa hasil ukur. Berapa ketelitian masing-masing alat?"
+          "caption": "Geser skala nonius dan amati pembacaan skala utama serta garis yang berimpit."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Skala utama jangka sorong menunjukkan 3,2 cm dan garis nonius ke-7 berimpit dengan garis skala utama (nonius 10 bagian). Berapa hasil pengukurannya?</p>",
+          "title": "Contoh Soal Pembacaan Jangka Sorong",
+          "question": "<p>Seorang siswa mengukur diameter sebuah kelereng menggunakan jangka sorong dengan 10 skala nonius. Skala utama menunjukkan angka 2,4 cm (garis nol nonius berada di antara 2,4 cm dan 2,5 cm). Garis nonius ke-7 tepat berimpit lurus dengan salah satu garis skala utama. Tuliskan hasil pengukuran lengkap beserta ketidakpastian mutlaknya dalam satuan mm!</p>",
           "steps": [
-            "Ketelitian 0,1 mm = 0,01 cm.",
-            "Hasil = 3,2 + 7 × 0,01 = 3,27 cm."
+            "Identifikasi NST jangka sorong: NST = 1 mm / 10 = 0,1 mm = 0,01 cm.",
+            "Tentukan ketidakpastian mutlak: Δx = 1/2 × NST = 0,05 mm = 0,005 cm.",
+            "Hitung nilai terbaca (x₀): Skala Utama = 2,4 cm = 24,0 mm. Skala Nonius = 7 × 0,1 mm = 0,7 mm. Maka x₀ = 24,0 + 0,7 = 24,7 mm.",
+            "Tuliskan format pelaporan: x = (24,70 ± 0,05) mm atau (2,470 ± 0,005) cm."
           ],
-          "answer": "3,27 cm"
+          "answer": "Hasil pengukuran adalah (24,70 ± 0,05) mm."
         },
         {
           "type": "check",
-          "question": "Banyaknya angka penting pada 0,003060 adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Alat ukur manakah yang paling tepat digunakan untuk mengukur diameter kawat tembaga tipis berukuran sekitar 0,35 mm agar memiliki ketelitian paling tinggi?",
           "options": {
-            "A": "3",
-            "B": "4",
-            "C": "6",
-            "D": "7"
+            "A": "Mistar baja dengan skala terkecil 1 mm",
+            "B": "Jangka sorong dengan ketelitian 0,05 mm",
+            "C": "Mikrometer sekrup dengan ketelitian 0,01 mm",
+            "D": "Neraca Ohaus tiga lengan"
           },
-          "answer": "B",
-          "hint": "Nol di depan tidak penting.",
-          "explanation": "Angka pentingnya 3, 0, 6, 0 (nol di antara dan di belakang desimal penting), jadi 4."
+          "answer": "C",
+          "hint": "Pertimbangkan orde ukuran benda (0,35 mm) dan NST dari masing-masing alat ukur.",
+          "explanation": "Pilihan C benar karena mikrometer sekrup memiliki NST 0,01 mm, sehingga persentase ketidakpastian relatifnya paling kecil untuk benda setipis 0,35 mm."
         }
       ]
     },
@@ -55,68 +64,100 @@
       "id": "angka-penting-dimensi",
       "title": "Aturan Angka Penting, Notasi Ilmiah, dan Analisis Dimensi",
       "kind": "artikel",
-      "duration": "14 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>TKA tidak hanya menguji hitungan, tetapi juga <b>membaca skala</b> alat ukur, <b>membaca grafik</b>, dan menafsirkan data percobaan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Alat ukur</td><td>mistar 1 mm, jangka sorong 0,1 mm, mikrometer sekrup 0,01 mm, neraca</td><td>IPA Kelas 7, Kelas 10</td></tr><tr><td>Angka penting</td><td>aturan menghitung, hasil kali/bagi dan jumlah/kurang</td><td>Kelas 10</td></tr><tr><td>GLB dan GLBB</td><td>persamaan, grafik x–t dan v–t, gerak vertikal</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+          "html": "<h3>Angka Penting dan Orde Notasi Ilmiah</h3>\n<p>Dalam fisika eksperimental, angka penting (AP) mencerminkan kepresisian alat ukur. Angka penting terdiri atas semua angka pasti yang terbaca pada alat ukur ditambah <b>satu angka taksiran terakhir</b>.</p>\n<p>Kaidah penentuan angka penting:</p>\n<ol>\n  <li>Semua angka bukan nol adalah angka penting (misal: 145,2 m memiliki 4 AP).</li>\n  <li>Angka nol di antara angka bukan nol adalah angka penting (misal: 4005 s memiliki 4 AP).</li>\n  <li>Angka nol di depan angka bukan nol BUKAN angka penting (misal: 0,0025 kg hanya memiliki 2 AP, yaitu 2 dan 5).</li>\n  <li>Angka nol di belakang tanda desimal dan mengikuti angka bukan nol adalah angka penting (misal: 12,50 A memiliki 4 AP).</li>\n</ol>\n<p><b>Aturan Operasi Berhitung:</b></p>\n<ul>\n  <li><b>Perkalian & Pembagian</b>: Hasil akhir dibulatkan hingga memiliki jumlah angka penting yang sama dengan faktor yang memiliki <b>angka penting paling sedikit</b>.</li>\n  <li><b>Penjumlahan & Pengurangan</b>: Hasil akhir hanya boleh mengandung <b>satu angka taksiran</b> (mengikuti desimal paling sedikit).</li>\n</ul>\n<h3>Analisis Dimensi</h3>\n<p>Dimensi menunjukkan bagaimana suatu besaran turunan tersusun dari 7 besaran pokok: massa \\([M]\\), panjang \\([L]\\), waktu \\([T]\\), arus listrik \\([I]\\), suhu termodinamika \\([\theta]\\), jumlah zat \\([N]\\), dan intensitas cahaya \\([J]\\). Dua besaran fisika hanya dapat dijumlahkan, dikurangkan, atau disamakan jika keduanya memiliki dimensi yang identik (Prinsip Homogenitas Dimensi).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Aturan angka penting",
-          "html": "<ul><li>Semua angka bukan nol penting; nol di antara angka bukan nol penting; nol di depan tidak penting; nol di belakang angka desimal penting.</li><li>Perkalian/pembagian: hasil mengikuti jumlah angka penting <b>paling sedikit</b>.</li><li>Penjumlahan/pengurangan: hasil mengikuti angka di belakang koma <b>paling sedikit</b>.</li></ul>"
+          "title": "Format Notasi Ilmiah & Dimensi Besaran Turunan Utama",
+          "html": "<div class=\"fc-display\">\n\\[ x = a \\times 10^n, \\quad 1 \\le a < 10, \\quad [F] = [M][L][T]^{-2}, \\quad [Ek] = [W] = [M][L]^2[T]^{-2}, \\quad [P] = [M][L]^2[T]^{-3} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a\\)</td><td>Bilangan pokok (mantisa) angka penting</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(n\\)</td><td>Eksponen orde kelipatan pangkat 10</td><td class=\"unit\">\\text{bilangan bulat}</td></tr>\n<tr><td class=\"sym\">\\([F]\\)</td><td>Dimensi Gaya (Newton = kg·m/s²)</td><td class=\"unit\">[M][L][T]^{-2}</td></tr>\n<tr><td class=\"sym\">\\([Ek]\\)</td><td>Dimensi Energi Kinetik / Usaha (Joule = kg·m²/s²)</td><td class=\"unit\">[M][L]^2[T]^{-2}</td></tr>\n<tr><td class=\"sym\">\\([P]\\)</td><td>Dimensi Daya (Watt = Joule/s = kg·m²/s³)</td><td class=\"unit\">[M][L]^2[T]^{-3}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Konstanta murni seperti 1/2, 2, atau π adalah besaran tak berdimensi [1].</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi Analisis Dimensi di Soal TKA",
+          "html": "<p>Jika soal TKA meminta membuktikan kesetaraan rumus baru atau menentukan pangkat pada hubungan empiris (metode Rayleigh), uraikan setiap besaran ke satuan dasar SI (\\(\text{kg, m, s}\\)) lalu samakan pangkat dari \\([M], [L], [T]\\) di ruas kiri dan ruas kanan.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sebuah balok berukuran 2,50 cm × 1,2 cm × 4,05 cm. Tuliskan volumenya sesuai aturan angka penting.</p>",
+          "title": "Contoh Operasi Hitung Angka Penting",
+          "question": "<p>Sebuah plat tembaga tipis berbentuk persegi panjang diukur menggunakan mikrometer sekrup dan jangka sorong. Panjangnya terukur 12,45 cm dan lebarnya terukur 4,2 cm. Hitung luas plat tersebut berdasarkan aturan angka penting!</p>",
           "steps": [
-            "Hasil kali = 12,15 cm³.",
-            "Angka penting paling sedikit = 2 (pada 1,2 cm)."
+            "Hitung luas perkalian mentah: L = panjang × lebar = 12,45 cm × 4,2 cm = 52,29 cm².",
+            "Identifikasi jumlah angka penting: Panjang 12,45 cm memiliki 4 AP. Lebar 4,2 cm memiliki 2 AP.",
+            "Terapkan kaidah perkalian: Hasil perkalian harus memiliki angka penting paling sedikit, yaitu 2 AP.",
+            "Bulatkan 52,29 menjadi 2 angka penting: 52 cm²."
           ],
-          "answer": "12 cm³"
+          "answer": "Luas plat tembaga sesuai kaidah angka penting adalah 52 cm²."
         },
         {
           "type": "check",
-          "question": "Pada grafik x–t, garis mendatar menunjukkan benda ....",
+          "title": "Cek Pemahaman",
+          "question": "Berdasarkan analisis dimensi, konstanta gravitasi universal G pada hukum gravitasi Newton F = G·(m₁·m₂)/r² memiliki dimensi ....",
           "options": {
-            "A": "bergerak dengan kecepatan tetap",
-            "B": "diam",
-            "C": "dipercepat",
-            "D": "diperlambat"
+            "A": "[M]⁻¹ [L]³ [T]⁻²",
+            "B": "[M] [L]² [T]⁻²",
+            "C": "[M]⁻² [L]³ [T]⁻¹",
+            "D": "[M] [L] [T]⁻¹"
           },
-          "answer": "B",
-          "hint": "Kemiringan x–t = kecepatan.",
-          "explanation": "Posisi tidak berubah, sehingga kecepatan nol: benda diam."
+          "answer": "A",
+          "hint": "Isolasi G terlebih dahulu: G = F·r² / (m₁·m₂), lalu substitusikan dimensi dari F, r, dan m.",
+          "explanation": "Pilihan A benar karena [G] = ([M][L][T]⁻²)·[L]² / ([M]·[M]) = [M]⁻¹ [L]³ [T]⁻²."
         }
       ]
     },
     {
       "id": "glb-dan-vektor-posisi",
       "title": "Gerak Lurus Beraturan (GLB): Posisi, Perpindahan, dan Kecepatan",
-      "kind": "artikel",
-      "duration": "15 menit",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>TKA tidak hanya menguji hitungan, tetapi juga <b>membaca skala</b> alat ukur, <b>membaca grafik</b>, dan menafsirkan data percobaan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Alat ukur</td><td>mistar 1 mm, jangka sorong 0,1 mm, mikrometer sekrup 0,01 mm, neraca</td><td>IPA Kelas 7, Kelas 10</td></tr><tr><td>Angka penting</td><td>aturan menghitung, hasil kali/bagi dan jumlah/kurang</td><td>Kelas 10</td></tr><tr><td>GLB dan GLBB</td><td>persamaan, grafik x–t dan v–t, gerak vertikal</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+          "html": "<h3>Konsep Kinematika: Skalar vs Vektor</h3>\n<p>Banyak siswa terjebak dalam soal kinematika TKA karena tidak membedakan antara besaran skalar dan vektor:</p>\n<ul>\n  <li><b>Posisi (\\(\u000bec{r}\\))</b>: Kedudukan suatu benda terhadap titik acuan tertentu pada ruang koordinat.</li>\n  <li><b>Jarak tempuh (\\(s\\))</b>: Besaran skalar yang menyatakan panjang seluruh lintasan yang dilalui benda (selalu bernilai positif atau nol).</li>\n  <li><b>Perpindahan (\\(\\Delta \u000bec{r}\\))</b>: Besaran vektor yang menyatakan perubahan posisi dari titik awal ke titik akhir: \\(\\Delta \u000bec{r} = \u000bec{r}_{\text{akhir}} - \u000bec{r}_{\text{awal}}\\). Nilainya dapat positif, nol, atau negatif.</li>\n  <li><b>Kelajuan rata-rata (\\(v\\))</b>: Jarak total dibagi waktu total: \\(v = \frac{s_{\text{total}}}{t_{\text{total}}}\\) (skalar).</li>\n  <li><b>Kecepatan rata-rata (\\(\u000bec{v}\\))</b>: Perpindahan dibagi waktu total: \\(\u000bec{v} = \frac{\\Delta \u000bec{r}}{\\Delta t}\\) (vektor).</li>\n</ul>\n<p><b>Karakteristik Gerak Lurus Beraturan (GLB):</b></p>\n<p>Benda dikatakan bergerak lurus beraturan jika lintasannya berupa garis lurus dan <b>kecepatannya konstan</b> baik besar maupun arahnya. Konsekuensi langsung dari kecepatan konstan adalah <b>percepatan benda bernilai nol (\\(a = 0\\))</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>GLB: \\(s = v t\\).</li><li>GLBB: \\(v = v_0 + a t\\), \\(s = v_0 t + \\tfrac12 a t^2\\), \\(v^2 = v_0^2 + 2 a s\\).</li><li>Gerak vertikal ke atas: \\(t_\\text{naik} = v_0/g\\), \\(h_\\text{maks} = v_0^2/(2g)\\). Jatuh bebas: \\(h = \\tfrac12 g t^2\\).</li><li>Grafik: kemiringan x–t = kecepatan; kemiringan v–t = percepatan; luas di bawah v–t = perpindahan.</li></ul>"
+          "title": "Persamaan Kinematika Gerak Lurus Beraturan (GLB)",
+          "html": "<div class=\"fc-display\">\n\\[ s(t) = s_0 + v \\cdot t, \\quad v = \\frac{\\Delta s}{\\Delta t} = \\frac{s_2 - s_1}{t_2 - t_1} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(s(t)\\)</td><td>Posisi benda pada saat t</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(s_0\\)</td><td>Posisi awal benda saat t = 0</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(v\\)</td><td>Kecepatan linier tetap</td><td class=\"unit\">\\text{meter per sekon (m/s)}</td></tr>\n<tr><td class=\"sym\">\\(t\\)</td><td>Waktu tempuh gerak</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta s\\)</td><td>Perpindahan yang ditempuh dalam selang waktu Δt</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Konversi satuan kecepatan: 1 km/jam = 1.000 m / 3.600 s = (1 / 3,6) m/s. Sebaliknya, 1 m/s = 3,6 km/jam.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Membaca Grafik Posisi-Waktu (s–t) pada GLB",
+          "html": "<p>Pada grafik \\(s-t\\), garis lurus dengan kemiringan konstan menandakan GLB. <b>Kemiringan (gradien) grafik \\(s-t\\) menyatakan nilai kecepatan</b>: \\(\text{gradien} = \tan\u0007lpha = \frac{\\Delta s}{\\Delta t} = v\\). Jika garis mendatar, benda dalam keadaan diam (\\(v = 0\\)). Jika garis miring ke bawah, kecepatan bernilai negatif (benda bergerak ke arah kiri atau berbalik arah).</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Sebuah kereta melaju 30 m/s, lalu direm dengan perlambatan tetap 1,5 m/s² sampai berhenti. Berapa jarak pengereman dan waktunya?</p>",
+          "title": "Contoh Perhitungan Kelajuan vs Kecepatan Rata-Rata",
+          "question": "<p>Sebuah mobil bergerak ke timur menempuh jarak 60 km dalam waktu 1 jam, kemudian berbalik arah ke barat menempuh jarak 20 km dalam waktu 30 menit. Tentukan: (a) kelajuan rata-rata mobil, dan (b) kecepatan rata-rata mobil dalam km/jam!</p>",
           "steps": [
-            "t = (0 − 30)/(−1,5) = 20 s.",
-            "s = v₀²/(2a) = 900/3 = 300 m."
+            "Hitung jarak total: s_total = 60 km + 20 km = 80 km.",
+            "Hitung perpindahan total (vektor arah timur positif): Δr = +60 km - 20 km = +40 km ke arah timur.",
+            "Hitung waktu total: t_total = 1 jam + 0,5 jam = 1,5 jam.",
+            "Hitung kelajuan rata-rata: v = s_total / t_total = 80 / 1,5 = 53,33 km/jam.",
+            "Hitung kecepatan rata-rata: v_vektor = Δr / t_total = +40 / 1,5 = +26,67 km/jam ke arah timur."
           ],
-          "answer": "300 m dalam 20 s"
+          "answer": "Kelajuan rata-rata mobil adalah 53,33 km/jam; kecepatan rata-rata mobil adalah 26,67 km/jam ke arah timur."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Seorang atlet berlari mengelilingi lintasan berbentuk lingkaran dengan keliling 400 meter tepat 2 putaran penuh dalam waktu 80 sekon. Besar kecepatan rata-rata atlet tersebut adalah ....",
+          "options": {
+            "A": "0 m/s",
+            "B": "5 m/s",
+            "C": "10 m/s",
+            "D": "20 m/s"
+          },
+          "answer": "A",
+          "hint": "Ingat definisi kecepatan rata-rata: perpindahan dibagi selang waktu total.",
+          "explanation": "Pilihan A benar karena setelah menempuh 2 putaran penuh, atlet kembali ke posisi semula sehingga perpindahannya nol (Δr = 0), yang menyebabkan kecepatan rata-ratanya bernilai 0 m/s."
         }
       ]
     },
@@ -124,34 +165,56 @@
       "id": "glbb-tiga-persamaan-utama",
       "title": "Gerak Lurus Berubah Beraturan (GLBB): Tiga Persamaan Kunci",
       "kind": "simulasi",
-      "duration": "18 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>TKA tidak hanya menguji hitungan, tetapi juga <b>membaca skala</b> alat ukur, <b>membaca grafik</b>, dan menafsirkan data percobaan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Alat ukur</td><td>mistar 1 mm, jangka sorong 0,1 mm, mikrometer sekrup 0,01 mm, neraca</td><td>IPA Kelas 7, Kelas 10</td></tr><tr><td>Angka penting</td><td>aturan menghitung, hasil kali/bagi dan jumlah/kurang</td><td>Kelas 10</td></tr><tr><td>GLB dan GLBB</td><td>persamaan, grafik x–t dan v–t, gerak vertikal</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+          "html": "<h3>Karakteristik GLBB dan Konsep Percepatan</h3>\n<p>Benda mengalami <b>Gerak Lurus Berubah Beraturan (GLBB)</b> apabila bergerak pada lintasan lurus dengan <b>percepatan konstan (\\(a = \text{tetap} \ne 0\\))</b>. Artinya, dalam setiap satu satuan waktu, besar kecepatan benda bertambah atau berkurang dengan jumlah yang sama.</p>\n<p>Jika arah percepatan searah dengan kecepatan (\\(a > 0\\)), benda mengalami <b>GLBB dipercepat</b> (kelajuannya bertambah). Sebaliknya, jika arah percepatan berlawanan dengan arah kecepatan (\\(a < 0\\)), benda mengalami <b>GLBB diperlambat</b> (kelajuannya berkurang hingga berhenti).</p>\n<h3>Penurunan Tiga Persamaan Kinematika GLBB</h3>\n<p>Dari definisi matematis percepatan rata-rata \\(a = \frac{v_t - v_0}{t}\\), kita peroleh persamaan kecepatan pertama:</p>\n<p>\\[ v_t = v_0 + a \\cdot t \\]</p>\n<p>Perpindahan benda adalah luas daerah di bawah grafik kecepatan terhadap waktu (\\(v-t\\)) yang berbentuk bangun trapesium. Luas trapesium tersebut adalah:</p>\n<p>\\[ s = \\left(\frac{v_0 + v_t}{2}\right) \\cdot t = \\left(\frac{v_0 + (v_0 + at)}{2}\right) \\cdot t = v_0 \\cdot t + \frac{1}{2} a \\cdot t^2 \\]</p>\n<p>Jika variabel waktu \\(t = \frac{v_t - v_0}{a}\\) disubstitusikan ke dalam persamaan perpindahan, kita mendapatkan persamaan ketiga yang independen terhadap waktu:</p>\n<p>\\[ v_t^2 = v_0^2 + 2 a \\cdot s \\]</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>GLB: \\(s = v t\\).</li><li>GLBB: \\(v = v_0 + a t\\), \\(s = v_0 t + \\tfrac12 a t^2\\), \\(v^2 = v_0^2 + 2 a s\\).</li><li>Gerak vertikal ke atas: \\(t_\\text{naik} = v_0/g\\), \\(h_\\text{maks} = v_0^2/(2g)\\). Jatuh bebas: \\(h = \\tfrac12 g t^2\\).</li><li>Grafik: kemiringan x–t = kecepatan; kemiringan v–t = percepatan; luas di bawah v–t = perpindahan.</li></ul>"
+          "title": "Tiga Persamaan Kunci Kinematika GLBB",
+          "html": "<div class=\"fc-display\">\n\\[ v_t = v_0 + a \\cdot t, \\quad s = v_0 \\cdot t + \\frac{1}{2} a \\cdot t^2, \\quad v_t^2 = v_0^2 + 2 a \\cdot s \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(v_t\\)</td><td>Kecepatan akhir benda pada waktu t</td><td class=\"unit\">\\text{meter per sekon (m/s)}</td></tr>\n<tr><td class=\"sym\">\\(v_0\\)</td><td>Kecepatan awal benda saat t = 0</td><td class=\"unit\">\\text{meter per sekon (m/s)}</td></tr>\n<tr><td class=\"sym\">\\(a\\)</td><td>Percepatan linier benda (positif jika dipercepat, negatif jika diperlambat)</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(s\\)</td><td>Jarak tempuh atau perpindahan linier</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(t\\)</td><td>Selang waktu perpindahan</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Aturan praktis pemilihan rumus: Cari besaran apa yang 'tidak diketahui dan tidak ditanyakan' pada soal. Jika t tidak terlibat, gunakan rumus v_t² = v_0² + 2as. Jika s tidak terlibat, gunakan v_t = v_0 + at. Jika v_t tidak terlibat, gunakan s = v_0 t + 1/2 a t².</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi Mengerjakan Soal Pengereman Kendaraan",
+          "html": "<p>Pada soal pengereman mobil atau kereta api hingga berhenti, kata kunci <i>'sampai berhenti'</i> berarti kecepatan akhir \\(v_t = 0\\). Perlambatan \\(a\\) harus dimasukkan dengan tanda negatif (\\(-a\\)). Jika terdapat <b>waktu reaksi pengemudi (\\(t_r\\))</b> sebelum menginjak rem, mobil masih menempuh jarak GLB terlebih dahulu: \\(s_{\text{reaksi}} = v_0 \\cdot t_r\\), sehingga jarak henti total adalah \\(s_{\text{henti}} = s_{\text{reaksi}} + s_{\text{rem}}\\).</p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas11/Fisika/02 Kinematika/sim/gerak-lurus.html",
-          "title": "Gerak lurus dan grafiknya",
+          "title": "Simulasi Gerak Lurus GLB dan GLBB",
           "height": 520,
-          "caption": "Ubah percepatan menjadi negatif. Bagaimana bentuk grafik x–t dan v–t?"
+          "caption": "Ubah nilai percepatan dan perhatikan perubahan kurva posisi (parabolik) serta kecepatan (linier)."
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sebuah batu dijatuhkan dari jembatan dan menyentuh air 2,5 s kemudian (g = 10 m/s²). Berapa tinggi jembatan dari air dan kecepatan batu saat menyentuh air?</p>",
+          "title": "Contoh Perhitungan Jarak Pengereman Kereta Cepat",
+          "question": "<p>Sebuah kereta cepat melaju dengan kecepatan 108 km/jam. Masinis melihat sinyal darurat dan langsung mengerem dengan perlambatan konstan sebesar 2,5 m/s² sampai kereta berhenti sempurna. Tentukan: (a) waktu yang dibutuhkan kereta hingga berhenti, dan (b) jarak pengereman total kereta!</p>",
           "steps": [
-            "h = ½ g t² = ½ × 10 × 6,25 = 31,25 m.",
-            "v = g t = 25 m/s."
+            "Konversi satuan kecepatan awal ke SI: v₀ = 108 km/jam = 108 × (1.000 / 3.600) = 30 m/s.",
+            "Identifikasi data: v₀ = 30 m/s, v_t = 0 m/s (berhenti), a = -2,5 m/s² (perlambatan).",
+            "Hitung waktu pengereman menggunakan v_t = v₀ + a·t: 0 = 30 + (-2,5)·t  =>  2,5·t = 30  =>  t = 12 sekon.",
+            "Hitung jarak pengereman menggunakan v_t² = v₀² + 2·a·s: 0² = 30² + 2·(-2,5)·s  =>  0 = 900 - 5·s  =>  5·s = 900  =>  s = 180 meter."
           ],
-          "answer": "31,25 m dan 25 m/s"
+          "answer": "Waktu henti kereta adalah 12 sekon dan jarak pengereman total adalah 180 meter."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah partikel bergerak dari keadaan diam dengan percepatan tetap 4 m/s². Jarak yang ditempuh partikel tersebut pada detik ke-3 saja (antara t = 2 s dan t = 3 s) adalah ....",
+          "options": {
+            "A": "8 m",
+            "B": "10 m",
+            "C": "14 m",
+            "D": "18 m"
+          },
+          "answer": "B",
+          "hint": "Hitung selisih jarak tempuh: s(3) - s(2) menggunakan rumus s = 1/2·a·t².",
+          "explanation": "Pilihan B benar. s(3) = 1/2 × 4 × 3² = 18 m, sedangkan s(2) = 1/2 × 4 × 2² = 8 m. Jarak pada detik ke-3 saja adalah 18 m - 8 m = 10 meter."
         }
       ]
     },
@@ -159,34 +222,48 @@
       "id": "gerak-vertikal-jatuh-bebas",
       "title": "Gerak Vertikal: Jatuh Bebas, Dilempar ke Atas, dan ke Bawah",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>TKA tidak hanya menguji hitungan, tetapi juga <b>membaca skala</b> alat ukur, <b>membaca grafik</b>, dan menafsirkan data percobaan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Alat ukur</td><td>mistar 1 mm, jangka sorong 0,1 mm, mikrometer sekrup 0,01 mm, neraca</td><td>IPA Kelas 7, Kelas 10</td></tr><tr><td>Angka penting</td><td>aturan menghitung, hasil kali/bagi dan jumlah/kurang</td><td>Kelas 10</td></tr><tr><td>GLB dan GLBB</td><td>persamaan, grafik x–t dan v–t, gerak vertikal</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+          "html": "<h3>Dinamika Gerak Vertikal di Bawah Pengaruh Gravitasi</h3>\n<p>Gerak vertikal merupakan aplikasi nyata dari GLBB di mana satu-satunya percepatan yang bekerja pada benda (dengan mengabaikan gesekan udara) adalah <b>percepatan gravitasi bumi (\\(g\\))</b>. Arah gravitasi selalu vertikal ke bawah menuju pusat bumi.</p>\n<p>Tiga klasifikasi gerak vertikal:</p>\n<ol>\n  <li><b>Gerak Jatuh Bebas (GJB)</b>: Benda dilepas dari suatu ketinggian tanpa kecepatan awal (\\(v_0 = 0\\)). Benda mengalami percepatan \\(a = +g\\) ke bawah. Massa benda tidak memengaruhi kecepatan jatuhnya (prinsip ekuivalensi Galileo).</li>\n  <li><b>Gerak Vertikal ke Bawah (GVB)</b>: Benda dilempar ke bawah dengan kecepatan awal tertentu (\\(v_0 > 0\\)) dan percepatan \\(a = +g\\).</li>\n  <li><b>Gerak Vertikal ke Atas (GVA)</b>: Benda dilempar ke atas dengan kecepatan awal \\(v_0\\). Benda mengalami perlambatan \\(a = -g\\) hingga kecepatannya menjadi nol di titik tertinggi (\\(v_{\text{puncak}} = 0\\)), kemudian jatuh bebas kembali ke bawah.</li>\n</ol>\n<p><b>Simetri Gerak Vertikal ke Atas:</b></p>\n<ul>\n  <li>Waktu naik ke titik tertinggi sama dengan waktu turun kembali ke titik asal: \\(t_{\text{naik}} = t_{\text{turun}} = \frac{v_0}{g}\\). Waktu total di udara: \\(t_{\text{total}} = \frac{2v_0}{g}\\).</li>\n  <li>Besar kecepatan benda saat kembali ke ketinggian semula sama persis dengan besar kecepatan awal pelemparan (\\(|v_{\text{kembali}}| = v_0\\)), hanya arahnya yang berlawanan.</li>\n</ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>GLB: \\(s = v t\\).</li><li>GLBB: \\(v = v_0 + a t\\), \\(s = v_0 t + \\tfrac12 a t^2\\), \\(v^2 = v_0^2 + 2 a s\\).</li><li>Gerak vertikal ke atas: \\(t_\\text{naik} = v_0/g\\), \\(h_\\text{maks} = v_0^2/(2g)\\). Jatuh bebas: \\(h = \\tfrac12 g t^2\\).</li><li>Grafik: kemiringan x–t = kecepatan; kemiringan v–t = percepatan; luas di bawah v–t = perpindahan.</li></ul>"
+          "title": "Persamaan Khusus Gerak Vertikal (GJB & GVA)",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{GJB:} \\quad h = \\frac{1}{2} g \\cdot t^2, \\quad v_t = \\sqrt{2gh}; \\qquad \\text{GVA:} \\quad h_{\\text{maks}} = \\frac{v_0^2}{2g}, \\quad t_{\\text{puncak}} = \\frac{v_0}{g} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(h\\)</td><td>Ketinggian lintasan vertikal / jarak jatuh</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(h_{\text{maks}}\\)</td><td>Ketinggian maksimum dari titik pelemparan</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(v_0\\)</td><td>Kecepatan awal pelemparan</td><td class=\"unit\">\\text{meter per sekon (m/s)}</td></tr>\n<tr><td class=\"sym\">\\(v_t\\)</td><td>Kecepatan benda saat menyentuh tanah atau pada waktu t</td><td class=\"unit\">\\text{meter per sekon (m/s)}</td></tr>\n<tr><td class=\"sym\">\\(g\\)</td><td>Percepatan gravitasi bumi (standar TKA: 9,8 atau 10 m/s²)</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n<tr><td class=\"sym\">\\(t_{\text{puncak}}\\)</td><td>Waktu mencapai titik tertinggi</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Di titik tertinggi (h = h_maks), kecepatan vertikal benda selalu nol (v = 0), namun percepatan benda tetap g = 10 m/s² ke arah bawah!</small></p>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas10/IPA/01 Sistem Pengukuran dalam Kerja Ilmiah/sim/alat-ukur.html",
-          "title": "Membaca jangka sorong dan mikrometer sekrup",
-          "height": 520,
-          "caption": "Baca beberapa hasil ukur. Berapa ketelitian masing-masing alat?"
+          "type": "callout",
+          "variant": "awas",
+          "title": "Miskonsepsi Klasik: Berat vs Kecepatan Jatuh",
+          "html": "<p>Banyak siswa mengira benda yang lebih berat jatuh lebih cepat daripada benda ringan. Di dalam ruang hampa udara, <b>semua benda jatuh dengan percepatan yang persis sama (\\(g\\))</b> terlepas dari massanya. Waktu jatuh hanya bergantung pada ketinggian: \\(t = \\sqrt{\frac{2h}{g}}\\).</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 3 (grafik)",
-          "question": "<p>Grafik v–t sebuah sepeda: naik lurus dari 0 ke 6 m/s selama 4 s, lalu tetap 6 m/s selama 6 s. Berapa jarak total?</p>",
+          "title": "Contoh Perhitungan Gerak Vertikal ke Atas",
+          "question": "<p>Sebuah bola kasti dilemparkan vertikal ke atas dari permukaan tanah dengan kecepatan awal 20 m/s (asumsikan g = 10 m/s² dan abaikan gesekan udara). Tentukan: (a) tinggi maksimum yang dicapai bola, (b) waktu total bola melayang di udara hingga tiba kembali di tanah, dan (c) kecepatan bola pada saat ketinggiannya 15 m!</p>",
           "steps": [
-            "Luas segitiga = ½ × 4 × 6 = 12 m.",
-            "Luas persegi panjang = 6 × 6 = 36 m."
+            "Hitung tinggi maksimum: h_maks = v₀² / (2g) = 20² / (2 × 10) = 400 / 20 = 20 meter.",
+            "Hitung waktu mencapai puncak: t_puncak = v₀ / g = 20 / 10 = 2 sekon. Waktu total bolak-balik: t_total = 2 × t_puncak = 4 sekon.",
+            "Hitung kecepatan pada ketinggian h = 15 m menggunakan v_t² = v₀² - 2·g·h: v_t² = 20² - 2 × 10 × 15 = 400 - 300 = 100. Maka v_t = √100 = ±10 m/s (+10 m/s saat naik, -10 m/s saat turun)."
           ],
-          "answer": "48 m"
+          "answer": "Tinggi maksimum bola adalah 20 meter, waktu di udara 4 sekon, dan besar kecepatannya saat di ketinggian 15 m adalah 10 m/s."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua buah bola A (massa 1 kg) dan B (massa 4 kg) dijatuhkan bersamaan dari atap gedung yang sama tanpa kecepatan awal (hampa udara). Pernyataan yang benar adalah ....",
+          "options": {
+            "A": "Bola B mencapai tanah lebih cepat karena massanya lebih besar",
+            "B": "Kedua bola mencapai tanah pada waktu yang sama dan dengan kelajuan yang sama",
+            "C": "Bola A memiliki percepatan yang lebih besar",
+            "D": "Kecepatan sesaat sebelum menyentuh tanah sebanding dengan kuadrat massanya"
+          },
+          "answer": "B",
+          "hint": "Perhatikan rumus jatuh bebas: v = √(2gh) dan t = √(2h/g). Adakah variabel massa (m) dalam rumus tersebut?",
+          "explanation": "Pilihan B benar karena percepatan gravitasi g tidak bergantung pada massa benda. Keduanya jatuh dengan percepatan sama sehingga tiba bersamaan dengan kelajuan sama."
         }
       ]
     },
@@ -194,35 +271,51 @@
       "id": "analisis-konversi-grafik-gerak",
       "title": "Membaca dan Mengonversi Grafik Gerak (s-t, v-t, a-t)",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>TKA tidak hanya menguji hitungan, tetapi juga <b>membaca skala</b> alat ukur, <b>membaca grafik</b>, dan menafsirkan data percobaan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Alat ukur</td><td>mistar 1 mm, jangka sorong 0,1 mm, mikrometer sekrup 0,01 mm, neraca</td><td>IPA Kelas 7, Kelas 10</td></tr><tr><td>Angka penting</td><td>aturan menghitung, hasil kali/bagi dan jumlah/kurang</td><td>Kelas 10</td></tr><tr><td>GLB dan GLBB</td><td>persamaan, grafik x–t dan v–t, gerak vertikal</td><td>Fisika Kelas 11 Bab 2</td></tr></table>"
+          "html": "<h3>Penerjemahan Geometris Turunan dan Integral pada Grafik</h3>\n<p>Soal tipe grafik merupakan materi wajib dalam TKA Fisika. Menyelesaikan soal grafik tidak memerlukan hafalan rumus yang rumit jika memahami dua prinsip kalkulus geometris:</p>\n<ol>\n  <li><b>Makna Kemiringan (Slope / Gradien Garis)</b>:\n    <ul>\n      <li>Kemiringan grafik posisi terhadap waktu (\\(s-t\\)) adalah <b>kecepatan (\\(v = \frac{\\Delta s}{\\Delta t}\\))</b>.</li>\n      <li>Kemiringan grafik kecepatan terhadap waktu (\\(v-t\\)) adalah <b>percepatan (\\(a = \frac{\\Delta v}{\\Delta t}\\))</b>.</li>\n    </ul>\n  </li>\n  <li><b>Makna Luas Daerah di Bawah Kurva (Luas Integral)</b>:\n    <ul>\n      <li>Luas daerah di bawah kurva grafik kecepatan terhadap waktu (\\(v-t\\)) menyatakan <b>perpindahan benda (\\(\\Delta s = \\int v \\, dt\\))</b>.</li>\n      <li>Luas daerah di bawah kurva grafik percepatan terhadap waktu (\\(a-t\\)) menyatakan <b>perubahan kecepatan (\\(\\Delta v = \\int a \\, dt\\))</b>.</li>\n    </ul>\n  </li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>GLB: \\(s = v t\\).</li><li>GLBB: \\(v = v_0 + a t\\), \\(s = v_0 t + \\tfrac12 a t^2\\), \\(v^2 = v_0^2 + 2 a s\\).</li><li>Gerak vertikal ke atas: \\(t_\\text{naik} = v_0/g\\), \\(h_\\text{maks} = v_0^2/(2g)\\). Jatuh bebas: \\(h = \\tfrac12 g t^2\\).</li><li>Grafik: kemiringan x–t = kecepatan; kemiringan v–t = percepatan; luas di bawah v–t = perpindahan.</li></ul>"
+          "title": "Kaidah Geometris Grafik Kinematika 1D",
+          "html": "<div class=\"fc-display\">\n\\[ v = \\frac{\\Delta s}{\\Delta t} \\ (\\text{Gradien } s\\text{--}t), \\quad a = \\frac{\\Delta v}{\\Delta t} \\ (\\text{Gradien } v\\text{--}t), \\quad \\Delta s = \\text{Luas daerah di bawah kurva } v\\text{--}t \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\Delta s\\)</td><td>Perpindahan total (luas di atas sumbu t positif, di bawah sumbu t negatif)</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(v\\)</td><td>Kecepatan sesaat</td><td class=\"unit\">\\text{meter per sekon (m/s)}</td></tr>\n<tr><td class=\"sym\">\\(a\\)</td><td>Percepatan sesaat</td><td class=\"unit\">\\text{meter per sekon kuadrat (m/s}^2\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(t\\)</td><td>Waktu</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perbedaan Perpindahan vs Jarak pada grafik v-t: Perpindahan = Luas Atas - Luas Bawah. Jarak Tempuh = Luas Atas + Luas Bawah (seluruh luas dimutlakkan positif).</small></p>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas10/IPA/01 Sistem Pengukuran dalam Kerja Ilmiah/sim/alat-ukur.html",
-          "title": "Membaca jangka sorong dan mikrometer sekrup",
-          "height": 520,
-          "caption": "Baca beberapa hasil ukur. Berapa ketelitian masing-masing alat?"
+          "type": "callout",
+          "variant": "tips",
+          "title": "Aturan Konversi Bentuk Kurva",
+          "html": "<p><b>Hierarki Bentuk Kurva:</b></p>\n<ul>\n  <li>Jika grafik \\(s-t\\) berupa <b>parabola melengkung</b>, maka grafik \\(v-t\\) berupa <b>garis miring lurus</b> (GLBB), dan grafik \\(a-t\\) berupa <b>garis mendatar konstan</b> (\\(a \ne 0\\)).</li>\n  <li>Jika grafik \\(s-t\\) berupa <b>garis miring lurus</b>, maka grafik \\(v-t\\) berupa <b>garis mendatar konstan</b> (GLB), dan grafik \\(a-t\\) bernilai <b>nol tepat di sumbu waktu</b> (\\(a = 0\\)).</li>\n  <li>Jika grafik \\(s-t\\) berupa <b>garis mendatar</b>, benda sedang <b>diam</b> (\\(v = 0, a = 0\\)).</li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Membaca dan Mengonversi Grafik Gerak (s-t, v-t, a-t)",
-          "question": "<p>Perhatikan permasalahan terkait <b>Membaca dan Mengonversi Grafik Gerak (s-t, v-t, a-t)</b> berikut. Analisislah berdasarkan prinsip Menghitung gradien kurva sebagai kecepatan/percepatan dan luas area di bawah grafik v-t sebagai perpindahan..</p>",
+          "title": "Contoh Perhitungan Jarak dan Perpindahan dari Grafik v–t",
+          "question": "<p>Sebuah partikel bergerak lurus dengan grafik v–t sebagai berikut: Pada t = 0 s hingga t = 4 s, kecepatan naik linier dari 0 hingga 10 m/s. Pada t = 4 s hingga t = 8 s, kecepatan tetap 10 m/s. Pada t = 8 s hingga t = 10 s, kecepatan turun linier dari 10 m/s hingga -5 m/s (melewati v = 0 pada t = 9,33 s). Hitung perpindahan partikel selama 8 sekon pertama!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Bagi grafik dari t = 0 s sampai t = 8 s menjadi dua bangun geometris: segitiga dan persegi panjang (atau langsung satu trapesium).",
+            "Gunakan rumus luas trapesium: Luas = 1/2 × (jumlah sisi sejajar) × tinggi.",
+            "Sisi sejajar atas (saat v tetap 10 m/s): dari t = 4 sampai t = 8, panjangnya = 8 - 4 = 4 sekon.",
+            "Sisi sejajar bawah (total waktu): dari t = 0 sampai t = 8, panjangnya = 8 sekon.",
+            "Tinggi trapesium: v = 10 m/s.",
+            "Luas = 1/2 × (4 + 8) × 10 = 1/2 × 12 × 10 = 60 meter."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Perpindahan partikel selama 8 sekon pertama adalah 60 meter."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Pada grafik posisi terhadap waktu (s–t), sebuah kurva membentuk parabola yang membuka ke bawah. Hal ini menunjukkan bahwa partikel sedang mengalami gerak ....",
+          "options": {
+            "A": "GLB dengan kecepatan konstan",
+            "B": "GLBB dipercepat",
+            "C": "GLBB diperlambat",
+            "D": "Gerak melingkar beraturan"
+          },
+          "answer": "C",
+          "hint": "Ingat: kemiringan kurva s–t adalah kecepatan. Jika kurva parabola membuka ke bawah, kemiringannya semakin melandai seiring berjalannya waktu.",
+          "explanation": "Pilihan C benar karena kemiringan (kecepatan) berkurang seiring bertambahnya waktu, yang merupakan definisi dari GLBB diperlambat (percepatan negatif)."
         }
       ]
     },
@@ -230,41 +323,51 @@
       "id": "soal-hots-perjumpaan-pengejaran",
       "title": "Model Soal TKA HOTS: Perjumpaan dan Pengejaran Dua Benda",
       "kind": "latihan",
-      "duration": "16 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Model Soal TKA HOTS: Perjumpaan dan Pengejaran Dua Benda</b>: Menyusun sistem persamaan waktu tempuh dan posisi saat dua kendaraan saling berpapasan atau menyusul.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Kerangka Berpikir Menyelesaikan Soal Dua Benda Bergerak</h3>\n<p>Soal perjumpaan (berpapasan) dan pengejaran (menyusul) adalah tipe soal tingkat tinggi (HOTS) yang paling sering muncul dalam TKA. Kunci sukses menyelesaikan tipe soal ini adalah <b>menetapkan titik acuan ruang dan waktu yang konsisten</b>.</p>\n<p>Tiga skenario utama:</p>\n<ol>\n  <li><b>Berpapasan dari Arah Berlawanan (Berangkat Bersamaan)</b>:\n    <p>Benda A dan B terpisah jarak total \\(S_{\text{total}}\\). Saat berpapasan, jumlah jarak tempuh kedua benda sama dengan jarak awal pemisah:</p>\n    <p>\\[ s_A(t) + s_B(t) = S_{\text{total}} \\]</p>\n  </li>\n  <li><b>Berpapasan dengan Selisih Waktu Keberangkatan</b>:\n    <p>Jika benda A berangkat lebih dahulu \\(\\Delta t\\) sekon daripada benda B, maka saat berpapasan waktu tempuh benda A adalah \\(t\\) dan waktu tempuh benda B adalah \\((t - \\Delta t)\\).</p>\n  </li>\n  <li><b>Pengejaran Searah (Menyusul)</b>:\n    <p>Benda pengejar (A) berada di belakang benda yang dikejar (B) sejauh \\(d_0\\). Benda A berhasil menyusul benda B ketika posisi koordinat keduanya bernilai sama:</p>\n    <p>\\[ s_A(t) = d_0 + s_B(t) \\]</p>\n  </li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formula Persamaan Posisi Perjumpaan dan Pengejaran",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Berpapasan:} \\quad s_A(t) + s_B(t) = S_{\\text{total}}; \\qquad \\text{Menyusul:} \\quad s_A(t) = s_B(t) + d_0 \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(s_A(t)\\)</td><td>Posisi atau jarak tempuh benda A sebagai fungsi waktu t</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(s_B(t)\\)</td><td>Posisi atau jarak tempuh benda B sebagai fungsi waktu t</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(S_{\text{total}}\\)</td><td>Jarak pisah awal kedua benda saat bergerak saling mendekat</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(d_0\\)</td><td>Selisih jarak awal pada kasus pengejaran searah</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(t\\)</td><td>Waktu temu atau waktu susul terhitung sejak waktu acuan</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika salah satu benda GLB dan benda lainnya GLBB, persamaan posisi akan berbentuk persamaan kuadrat a·t² + b·t + c = 0. Selesaikan untuk mencari t positif.</small></p>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tuliskan semua besaran yang diketahui beserta satuan SI (km/jam ÷ 3,6 menjadi m/s).</li><li>Pilih persamaan GLBB yang tidak memuat besaran yang tidak ditanyakan.</li><li>Pada soal kejar-kejaran, samakan posisi kedua benda pada waktu yang sama.</li><li>Untuk grafik v–t, hitung jarak dengan luas, bukan dengan rumus.</li></ul>"
+          "title": "Metode Cepat Kecepatan Relatif",
+          "html": "<p>Pada kasus kedua benda sama-sama bergerak GLB, gunakan konsep <b>Kecepatan Relatif (\\(v_{\text{rel}}\\))</b>:</p>\n<ul>\n  <li>Jika bergerak saling mendekat (berlawanan arah): \\(v_{\text{rel}} = v_A + v_B\\), sehingga waktu berpapasan adalah \\(t = \frac{S_{\text{total}}}{v_A + v_B}\\).</li>\n  <li>Jika bergerak searah (A mengejar B): \\(v_{\text{rel}} = v_A - v_B\\), sehingga waktu menyusul adalah \\(t = \frac{d_0}{v_A - v_B}\\).</li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Model Soal TKA HOTS: Perjumpaan dan Pengejaran Dua Benda",
-          "question": "<p>Perhatikan permasalahan terkait <b>Model Soal TKA HOTS: Perjumpaan dan Pengejaran Dua Benda</b> berikut. Analisislah berdasarkan prinsip Menyusun sistem persamaan waktu tempuh dan posisi saat dua kendaraan saling berpapasan atau menyusul..</p>",
+          "title": "Contoh Soal HOTS: Pengejaran Mobil Polisi terhadap Pelanggar",
+          "question": "<p>Sebuah mobil sedan melanggar batas kecepatan dan melintas di depan pos polisi dengan kelajuan tetap 30 m/s (GLB). Tepat 2 sekon kemudian, mobil patroli polisi mulai mengejar dari pos polisi dalam keadaan diam dengan percepatan tetap 5 m/s² (GLBB). Tentukan waktu yang dibutuhkan polisi untuk menyusul mobil sedan terhitung sejak polisi mulai bergerak!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Tentukan selisih jarak awal (d₀) saat polisi mulai bergerak (t = 0 polisi): Mobil sedan telah bergerak selama 2 s dengan kecepatan 30 m/s, maka d₀ = v_sedan × 2 = 30 × 2 = 60 meter.",
+            "Tuliskan fungsi jarak tempuh masing-masing sejak polisi bergerak (t): s_sedan(t) = 30·t. s_polisi(t) = 1/2·a·t² = 1/2 × 5 × t² = 2,5·t².",
+            "Syarat menyusul: s_polisi = d₀ + s_sedan  =>  2,5·t² = 60 + 30·t.",
+            "Susun persamaan kuadrat: 2,5·t² - 30·t - 60 = 0. Kalikan 2 agar bulat: 5·t² - 60·t - 120 = 0. Bagi 5: t² - 12·t - 24 = 0.",
+            "Gunakan rumus ABC: t = [12 ± √(144 - 4(1)(-24))] / 2 = [12 ± √(144 + 96)] / 2 = [12 ± √240] / 2 = [12 ± 15,49] / 2.",
+            "Ambil nilai t positif: t = (12 + 15,49) / 2 = 27,49 / 2 ≈ 13,75 sekon."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Mobil polisi berhasil menyusul sedan dalam waktu sekitar 13,75 sekon setelah mulai bergerak."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Model Soal TKA HOTS: Perjumpaan dan Pengejaran Dua Benda, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Dua mobil P dan Q berjarak 600 m satu sama lain pada jalan lurus. P bergerak ke kanan dengan kecepatan tetap 20 m/s dan Q bergerak ke kiri dengan kecepatan tetap 10 m/s. Keduanya berangkat bersamaan. Jarak yang telah ditempuh mobil P saat keduanya berpapasan adalah ....",
           "options": {
-            "A": "Konsep Model Soal TKA HOTS: Perjumpaan dan Pengejaran Dua Benda berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "200 m",
+            "B": "300 m",
+            "C": "400 m",
+            "D": "500 m"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyusun sistem persamaan waktu tempuh dan posisi saat dua kendaraan saling berpapasan atau menyusul.."
+          "answer": "C",
+          "hint": "Hitung waktu temu terlebih dahulu menggunakan t = S_total / (v_P + v_Q), lalu cari s_P = v_P × t.",
+          "explanation": "Pilihan C benar. Waktu berpapasan t = 600 / (20 + 10) = 20 s. Jarak tempuh mobil P adalah s_P = 20 m/s × 20 s = 400 meter."
         }
       ]
     },
@@ -272,17 +375,52 @@
       "id": "jebakan-tanda-vektor",
       "title": "Jebakan Tanda Vektor (+) dan (−) pada Gerak Vertikal",
       "kind": "artikel",
-      "duration": "12 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Jebakan Tanda Vektor (+) dan (−) pada Gerak Vertikal</b>: Menghindari kesalahan umum penetapan arah acuan koordinat percepatan gravitasi bumi.</p>"
+          "html": "<h3>Mengapa Tanda Vektor Sangat Krusial?</h3>\n<p>Kesalahan nomor satu peserta TKA pada materi gerak vertikal adalah inkonsistensi penetapan tanda vektor (\\(+\\) dan \\(-\\)). Kinematika satu dimensi pada dasarnya adalah aljabar vektor bertanda pada satu sumbu koordinat (sumbu \\(y\\)).</p>\n<h3>Kaidah Standar: Menetapkan Arah ke Atas sebagai Positif (+)</h3>\n<p>Jika kita menetapkan <b>arah vertikal ke atas sebagai arah positif (+)</b>, maka seluruh besaran fisika harus tunduk pada konvensi ini tanpa kecuali:</p>\n<ul>\n  <li><b>Percepatan gravitasi (\\(g\\))</b>: Karena gravitasi bumi selalu menarik ke bawah menuju pusat bumi, maka percepatannya <b>wajib bertanda negatif (\\(a = -g = -10\text{ m/s}^2\\))</b> di sepanjang seluruh lintasan, baik saat benda sedang bergerak naik, berada di puncak, maupun sedang jatuh turun!</li>\n  <li><b>Kecepatan awal (\\(v_0\\))</b>: Jika dilempar ke atas, \\(v_0 > 0\\). Jika dilempar ke bawah, \\(v_0 < 0\\). Jika jatuh bebas dari diam, \\(v_0 = 0\\).</li>\n  <li><b>Posisi vertikal (\\(y\\))</b>: Dihitung relatif terhadap titik awal pelemparan (\\(y_0 = 0\\)). Jika benda berada di atas titik awal, \\(y > 0\\). Jika benda jatuh ke jurang atau titik di bawah posisi awal pelemparan, <b>\\(y < 0\\) (bernilai negatif)</b>.</li>\n</ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan Kinematika Vektor Konsisten (Acuan ke Atas Positif)",
+          "html": "<div class=\"fc-display\">\n\\[ y(t) = y_0 + v_{0y} \\cdot t - \\frac{1}{2} g \\cdot t^2, \\quad v_y(t) = v_{0y} - g \\cdot t, \\quad v_y^2 = v_{0y}^2 - 2g(y - y_0) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(y(t)\\)</td><td>Koordinat posisi vertikal benda pada waktu t</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(y_0\\)</td><td>Koordinat titik awal pelepasan benda (biasanya diset 0)</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(v_{0y}\\)</td><td>Kecepatan awal vertikal (+ jika ke atas, - jika ke bawah)</td><td class=\"unit\">\\text{meter per sekon (m/s)}</td></tr>\n<tr><td class=\"sym\">\\(v_y(t)\\)</td><td>Kecepatan vertikal sesaat (+ berarti sedang naik, - berarti sedang turun)</td><td class=\"unit\">\\text{meter per sekon (m/s)}</td></tr>\n<tr><td class=\"sym\">\\(g\\)</td><td>Percepatan gravitasi (masukkan nilai positifnya saja, misal 10 m/s², karena tanda minus sudah ada di rumus)</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jangan pernah mengganti tanda minus gravitasi menjadi plus saat benda berbalik arah ke bawah jika menggunakan kerangka acuan yang sama!</small></p>"
         },
         {
           "type": "callout",
           "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Tertukar jarak (skalar) dan perpindahan (vektor).</li><li>Lupa waktu reaksi pada soal pengereman: selama waktu reaksi mobil masih bergerak dengan kecepatan tetap.</li><li>Menganggap kecepatan di titik tertinggi gerak vertikal bukan nol, atau percepatannya nol.</li><li>Membulatkan hasil sebelum langkah terakhir.</li></ul>"
+          "title": "Jebakan Pelemparan dari Tepi Jurang / Gedung",
+          "html": "<p>Bila batu dilempar vertikal ke atas dari atap gedung setinggi \\(H = 40\text{ m}\\) lalu jatuh ke tanah di dasar gedung: saat menyentuh tanah, perpindahan vertikalnya adalah <b>\\(y = -40\text{ m}\\)</b> (BUKAN \\(+40\text{ m}\\)). Memasukkan tanda \\(+40\\) akan menghasilkan nilai waktu \\(t\\) yang salah atau imajiner.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal Tepi Tebing dengan Penandaan Vektor",
+          "question": "<p>Seseorang melempar batu dari tepi tebing setinggi 60 meter dengan kecepatan awal 20 m/s vertikal ke atas. Tentukan waktu yang dibutuhkan batu tersebut untuk mencapai dasar tebing di bawah! (Gunakan g = 10 m/s²).</p>",
+          "steps": [
+            "Tetapkan sistem koordinat: titik pelemparan y₀ = 0, arah ke atas positif.",
+            "Identifikasi variabel: v₀ = +20 m/s; g = 10 m/s²; posisi dasar tebing y = -60 m.",
+            "Gunakan persamaan posisi: y = v₀·t - 1/2·g·t²  =>  -60 = 20·t - 1/2·(10)·t².",
+            "Sederhanakan persamaan: -60 = 20·t - 5·t²  =>  5·t² - 20·t - 60 = 0.",
+            "Bagi kedua ruas dengan 5: t² - 4·t - 12 = 0.",
+            "Faktorkan: (t - 6)(t + 2) = 0. Diperoleh t = 6 sekon atau t = -2 sekon.",
+            "Karena waktu fisika harus positif, maka t = 6 sekon."
+          ],
+          "answer": "Waktu total batu melayang di udara hingga tiba di dasar tebing adalah 6 sekon."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah roket mainan ditembakkan vertikal ke atas dan mencapai ketinggian 80 meter sebelum jatuh kembali. Saat roket berada pada ketinggian 60 meter dalam gerak turunnya, arah kecepatan dan arah percepatannya berturut-turut adalah ....",
+          "options": {
+            "A": "Kecepatan ke atas, percepatan ke bawah",
+            "B": "Kecepatan ke bawah, percepatan ke atas",
+            "C": "Kecepatan ke bawah, percepatan ke bawah",
+            "D": "Kecepatan ke atas, percepatan nol"
+          },
+          "answer": "C",
+          "hint": "Perhatikan fase gerak (sedang turun) dan arah medan gravitasi bumi.",
+          "explanation": "Pilihan C benar karena roket sedang bergerak turun sehingga vektor kecepatannya mengarah ke bawah, dan percepatan gravitasi bumi selalu mengarah ke bawah (ke pusat bumi) di setiap titik."
         }
       ]
     },
@@ -290,49 +428,25 @@
       "id": "latihan-dan-kuis-01",
       "title": "Strategi Cepat Kinematika 1D dan Latihan Bab",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Kinematika 1D dan Latihan Bab</b>: Menguasai seluruh spektrum soal kinematika lurus dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Peta Sintesis & Checklist Ujian TKA Kinematika 1D</h3>\n<p>Sebelum mengerjakan kuis evaluasi 20 soal, pastikan Anda telah menguasai matriks keputusan berikut dalam waktu kurang dari 10 detik saat membaca soal:</p>\n<table style=\"width:100%;border-collapse:collapse;margin:12px 0;\">\n  <thead>\n    <tr style=\"background:var(--surface-2);\">\n      <th style=\"padding:8px;border:1px solid var(--line);\">Kondisi Soal</th>\n      <th style=\"padding:8px;border:1px solid var(--line);\">Ciri Kunci</th>\n      <th style=\"padding:8px;border:1px solid var(--line);\">Formula Prioritas</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Kecepatan konstan</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(a = 0\\), lintasan lurus datar</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(s = v \\cdot t\\)</td>\n    </tr>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">GLBB tanpa jarak (\\(s\\))</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Diketahui \\(v_0, v_t, t\\) atau \\(a\\)</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(v_t = v_0 + at\\)</td>\n    </tr>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">GLBB tanpa waktu (\\(t\\))</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Jarak henti, pengereman mendadak</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(v_t^2 = v_0^2 + 2as\\)</td>\n    </tr>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Jatuh bebas dari diam</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(v_0 = 0\\), ketinggian \\(h\\)</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(v = \\sqrt{2gh}, \\quad t = \\sqrt{2h/g}\\)</td>\n    </tr>\n    <tr>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Dua benda berpapasan</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">Saling mendekat dari jarak \\(S\\)</td>\n      <td style=\"padding:8px;border:1px solid var(--line);\">\\(s_1 + s_2 = S_{\text{total}}\\)</td>\n    </tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Tertukar jarak (skalar) dan perpindahan (vektor).</li><li>Lupa waktu reaksi pada soal pengereman: selama waktu reaksi mobil masih bergerak dengan kecepatan tetap.</li><li>Menganggap kecepatan di titik tertinggi gerak vertikal bukan nol, atau percepatannya nol.</li><li>Membulatkan hasil sebelum langkah terakhir.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Kinematika 1D dan Latihan Bab",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Kinematika 1D dan Latihan Bab</b> berikut. Analisislah berdasarkan prinsip Menguasai seluruh spektrum soal kinematika lurus dan menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Kinematika 1D dan Latihan Bab, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Kinematika 1D dan Latihan Bab berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai seluruh spektrum soal kinematika lurus dan menyelesaikan kuis bab 20 butir soal.."
+          "variant": "tips",
+          "title": "Manajemen Waktu Pengerjaan Soal Kinematika",
+          "html": "<p>Alokasi waktu ideal untuk soal kinematika TKA adalah <b>90 detik per butir</b>. Jangan menghabiskan waktu lebih dari 2 menit untuk soal yang memerlukan persamaan kuadrat rumit. Gunakan pendekatan eliminasi opsi salah dengan menaksir orde besaran (taksiran batas atas dan bawah).</p>"
         },
         {
           "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah penguasaan komprehensif Anda melalui kuis 20 soal terpadu di bawah ini. Kerjakan tanpa kalkulator untuk melatih ketangkasan hitungan manual standar ujian.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Pengukuran dan Gerak Lurus. Setiap soal dilengkapi pembahasan."
+          "text": "Latihan soal TKA Fisika SMA topik Pengukuran dan Gerak Lurus. Setiap soal dilengkapi pembahasan mendalam."
         }
       ]
     }

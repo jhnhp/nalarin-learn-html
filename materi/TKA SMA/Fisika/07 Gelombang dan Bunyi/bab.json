@@ -1,306 +1,386 @@
 {
   "title": "Gelombang dan Bunyi",
-  "summary": "Kinematika dan dinamika gelombang mekanik: persamaan gelombang berjalan, gelombang stasioner ujung bebas/terikat, cepat rambat pada dawai (Hukum Melde), resonansi pipa organa, intensitas dan taraf intensitas desibel (TI), efek Doppler, dan pelayangan bunyi.",
+  "summary": "Materi komprehensif TKA Fisika: besaran dan persamaan gelombang berjalan, gelombang stasioner ujung bebas vs tetap, hukum Melde pada dawai, frekuensi harmonik POB dan POU, efek Doppler gerak sumber-pengamat, taraf intensitas desibel multi-sumber dan jarak, serta pelayangan dan difraksi bunyi.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "besaran-dan-persamaan-gelombang-berjalan",
-      "title": "Gelombang Berjalan: Frekuensi, Panjang Gelombang, dan Persamaan y = A sin(ωt ± kx)",
+      "title": "Besaran Fisis dan Persamaan Simpangan Gelombang Berjalan",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal bunyi TKA sering berbentuk konteks nyata: kebisingan, USG, alat musik, atau sirene.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Besaran gelombang</td><td>v = λf, gelombang transversal dan longitudinal</td><td>IPA Kelas 8, Fisika Kelas 11 Bab 5</td></tr><tr><td>Sumber bunyi</td><td>dawai, pipa organa terbuka dan tertutup, resonansi</td><td>Fisika Kelas 11 Bab 5</td></tr><tr><td>Sifat bunyi</td><td>intensitas, taraf intensitas, Doppler, pelayangan, interferensi</td><td>Fisika Kelas 11 Bab 5</td></tr></table>"
+          "html": "<h3>Hakikat Gelombang Mekanik</h3>\n<p>Gelombang adalah getaran atau usikan yang merambat melalui suatu medium dengan memindahkan <b>energi dan momentum</b> tanpa memindahkan partikel medium secara permanen. Partikel medium hanya berosilasi di sekitar posisi setimbangnya saat dilewati gelombang.</p>\n<p>Pada <b>gelombang berjalan sinusoidal</b>, getaran merambat terus ke arah tertentu dengan amplitudo tetap di setiap titik medium.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(v = \\lambda f\\); dawai \\(v = \\sqrt{F/\\mu}\\).</li><li>Dawai dan pipa terbuka: \\(f_n = (n+1)\\dfrac{v}{2L}\\) (semua harmonik). Pipa tertutup: \\(f_n = (2n+1)\\dfrac{v}{4L}\\) (harmonik ganjil).</li><li>\\(I = P/(4\\pi r^2)\\); \\(TI = 10\\log(I/I_0)\\), \\(I_0 = 10^{-12}\\) W/m². n sumber: \\(TI + 10\\log n\\). Jarak r₂: \\(TI - 20\\log(r_2/r_1)\\).</li><li>Doppler: \\(f_p = \\dfrac{v \\pm v_p}{v \\mp v_s} f_s\\) (atas: saling mendekat).</li><li>Pelayangan: \\(f_L = |f_1 - f_2|\\).</li></ul>"
+          "title": "Persamaan Umum Gelombang Berjalan Sinusoidal",
+          "html": "<div class=\"fc-display\">\n\\[ y(x, t) = \\pm A \\sin\\left(\\omega t \\mp kx + \\varphi_0\\right) = \\pm A \\sin 2\\pi\\left(\\frac{t}{T} \\mp \\frac{x}{\\lambda}\\right) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(y\\)</td><td>Simpangan getaran partikel medium pada posisi x dan waktu t</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(A\\)</td><td>Amplitudo (simpangan terjauh dari posisi setimbang)</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(\\omega\\)</td><td>Frekuensi sudut (\\(\\omega = 2\\pi f = \frac{2\\pi}{T}\\))</td><td class=\"unit\">\\text{rad/s}</td></tr>\n<tr><td class=\"sym\">\\(k\\)</td><td>Bilangan gelombang (\\(k = \frac{2\\pi}{\\lambda} = \frac{\\omega}{v}\\))</td><td class=\"unit\">\\text{rad/m}</td></tr>\n<tr><td class=\"sym\">\\(v\\)</td><td>Cepat rambat gelombang (\\(v = \\lambda \\cdot f = \frac{\\omega}{k}\\))</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(\\lambda\\)</td><td>Panjang gelombang (jarak satu gelombang penuh)</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(T\\)</td><td>Periode gelombang (waktu tempuh satu siklus)</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Konvensi tanda: (+) A jika getaran awal merambat ke atas, (-) A jika getaran awal ke bawah. Tanda di dalam sudut sinus: (-) kx jika merambat ke KANAN (+x), (+) kx jika merambat ke KIRI (-x).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Sudut Fase, Fase, dan Beda Fase",
+          "html": "<p>Sudut fase: \\(\\theta = \\omega t - kx = 2\\pi\\left(\\frac{t}{T} - \\frac{x}{\\lambda}\\right)\\).<br>\nFase: \\(\\varphi = \\frac{\\theta}{2\\pi} = \\frac{t}{T} - \\frac{x}{\\lambda}\\).<br>\nBeda fase antara dua titik berjarak \\(\\Delta x\\): <b>\\(\\Delta\\varphi = \\frac{\\Delta x}{\\lambda}\\)</b> (selalu positif).</p>\n<p>Dua titik <b>sefase</b> jika \\(\\Delta\\varphi = 0, 1, 2, \\dots\\) (\\(\\Delta x = n\\lambda\\)). Dua titik <b>berlawanan fase</b> jika \\(\\Delta\\varphi = \\frac{1}{2}, \\frac{3}{2}, \\frac{5}{2}, \\dots\\).</p>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas11/Fisika/05 Gelombang, Bunyi, dan Cahaya/sim/gelombang-stasioner.html",
-          "title": "Gelombang stasioner",
+          "src": "../../../Kelas11/Fisika/05 Gelombang, Bunyi, dan Cahaya/sim/gelombang-berjalan.html",
+          "title": "Simulasi Gelombang Berjalan",
           "height": 520,
-          "caption": "Hitung simpul dan perut pada beberapa harmonik. Bagaimana hubungannya dengan panjang dawai?"
+          "caption": "Ubah frekuensi dan amplitudo untuk mengamati cepat rambat dan panjang gelombang."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Pipa organa terbuka sepanjang 85 cm (v bunyi = 340 m/s). Tentukan frekuensi nada dasar dan nada atas kedua.</p>",
+          "title": "Contoh Analisis Persamaan Gelombang Berjalan",
+          "question": "<p>Persamaan gelombang berjalan pada seutas tali dinyatakan oleh: \\(y = 0,04 \\sin(20\\pi t - 4\\pi x)\\) dengan \\(x\\) dan \\(y\\) dalam meter, dan \\(t\\) dalam sekon. Tentukan: (a) amplitudo, (b) frekuensi, (c) panjang gelombang, (d) cepat rambat gelombang, dan arah rambatnya!</p>",
           "steps": [
-            "f₀ = v/(2L) = 340/1,7 = 200 Hz.",
-            "Nada atas kedua = 3f₀."
+            "Bandingkan dengan persamaan umum y = A sin(ωt - kx):",
+            "(a) Amplitudo A = 0,04 meter = 4 cm.",
+            "(b) Frekuensi sudut ω = 20π rad/s  =>  2πf = 20π  =>  f = 10 Hz.",
+            "(c) Bilangan gelombang k = 4π rad/m  =>  2π / λ = 4π  =>  λ = 2π / 4π = 0,5 meter.",
+            "(d) Cepat rambat v = ω / k = 20π / 4π = 5 m/s (atau v = λ · f = 0,5 · 10 = 5 m/s).",
+            "Karena tanda di depan x adalah negatif (-), arah rambat gelombang adalah ke KANAN (+x)."
           ],
-          "answer": "200 Hz dan 600 Hz"
+          "answer": "A = 0,04 m, f = 10 Hz, λ = 0,5 m, v = 5 m/s, arah ke kanan."
         },
         {
           "type": "check",
-          "question": "Pipa organa tertutup hanya menghasilkan harmonik ganjil karena ....",
+          "title": "Cek Pemahaman",
+          "question": "Dua titik pada sebuah gelombang berjarak 75 cm satu sama lain. Jika panjang gelombang adalah 50 cm, maka beda fase antara kedua titik tersebut adalah ....",
           "options": {
-            "A": "ujung tertutup selalu menjadi simpul dan ujung terbuka menjadi perut",
-            "B": "kedua ujungnya simpul",
-            "C": "kedua ujungnya perut",
-            "D": "udara di dalamnya tidak bergetar"
+            "A": "0,5 (berlawanan fase)",
+            "B": "1,0 (sefase)",
+            "C": "1,5 (berlawanan fase)",
+            "D": "2,0 (sefase)"
           },
-          "answer": "A",
-          "hint": "Pola simpul–perut.",
-          "explanation": "Simpul di ujung tertutup dan perut di ujung terbuka hanya memungkinkan L = λ/4, 3λ/4, 5λ/4, ..."
+          "answer": "C",
+          "hint": "Beda fase Δφ = Δx / λ.",
+          "explanation": "Δφ = 75 cm / 50 cm = 1,5 = 3/2. Karena nilai desimalnya adalah ½, kedua titik berlawanan fase."
         }
       ]
     },
     {
       "id": "gelombang-stasioner-interferensi",
-      "title": "Gelombang Stasioner: Ujung Bebas dan Ujung Terikat",
+      "title": "Gelombang Stasioner: Ujung Bebas vs Ujung Tetap dan Letak Simpul-Perut",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal bunyi TKA sering berbentuk konteks nyata: kebisingan, USG, alat musik, atau sirene.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Besaran gelombang</td><td>v = λf, gelombang transversal dan longitudinal</td><td>IPA Kelas 8, Fisika Kelas 11 Bab 5</td></tr><tr><td>Sumber bunyi</td><td>dawai, pipa organa terbuka dan tertutup, resonansi</td><td>Fisika Kelas 11 Bab 5</td></tr><tr><td>Sifat bunyi</td><td>intensitas, taraf intensitas, Doppler, pelayangan, interferensi</td><td>Fisika Kelas 11 Bab 5</td></tr></table>"
+          "html": "<h3>Superposisi Gelombang Datang dan Pantul</h3>\n<p>Ketika dua gelombang berjalan dengan amplitudo, frekuensi, dan panjang gelombang yang sama merambat dalam arah yang berlawanan di dalam medium yang sama, superposisi keduanya menghasilkan <b>Gelombang Stasioner (Gelombang Berdiri)</b>.</p>\n<p>Ciri khas gelombang stasioner:</p>\n<ul>\n  <li>Tidak ada perambatan energi neto ke arah mana pun.</li>\n  <li>Amplitudo getaran partikel bergantung pada posisi \\(x\\).</li>\n  <li>Terdapat titik-titik yang berosilasi dengan amplitudo maksimum (\\(2A\\)) yang disebut <b>Perut (P)</b>.</li>\n  <li>Terdapat titik-titik yang selalu diam (\\(\\text{Amplitudo} = 0\\)) yang disebut <b>Simpul (S)</b>.</li>\n</ul>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Tertukar nada atas ke-n dan harmonik ke-n.</li><li>Menjumlahkan desibel secara biasa (70 dB + 70 dB ≠ 140 dB).</li><li>Lupa bahwa frekuensi tidak berubah saat gelombang pindah medium.</li><li>Memakai rumus pipa terbuka untuk pipa tertutup.</li></ul>"
+          "variant": "rumus",
+          "title": "Persamaan Gelombang Stasioner Ujung Bebas dan Ujung Tetap",
+          "html": "<div class=\"fc-display\">\n\\[ \\text{Ujung Bebas: } y = 2A \\cos(kx) \\sin(\\omega t) \\qquad \\Big| \\qquad \\text{Ujung Tetap: } y = 2A \\sin(kx) \\cos(\\omega t) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(2A \\cos(kx)\\)</td><td>Amplitudo stasioner pada pemantulan ujung bebas (fungsi cosinus)</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(2A \\sin(kx)\\)</td><td>Amplitudo stasioner pada pemantulan ujung tetap (fungsi sinus)</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(x\\)</td><td>Jarak titik pengamatan diukur DARI TITIK PANTUL (ujung tali)</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(k\\)</td><td>Bilangan gelombang (\\(k = \frac{2\\pi}{\\lambda}\\))</td><td class=\"unit\">\\text{rad/m}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Di titik pantul (x = 0): Ujung bebas membentuk PERUT (cos 0 = 1 => As = 2A). Ujung tetap membentuk SIMPUL (sin 0 = 0 => As = 0).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Rumus Praktis Letak Simpul dan Perut dari Titik Pantul",
+          "html": "<table style=\"width:100%;text-align:center;\">\n  <thead><tr><th>Jenis Pemantulan</th><th>Letak Perut ke-(n+1)</th><th>Letak Simpul ke-(n+1)</th></tr></thead>\n  <tbody>\n    <tr><td><b>Ujung Bebas</b></td><td>\\(x_P = 2n \\left(\\frac{1}{4}\\lambda\\right) = n \\left(\\frac{1}{2}\\lambda\\right)\\)</td><td>\\(x_S = (2n + 1)\\left(\\frac{1}{4}\\lambda\\right)\\)</td></tr>\n    <tr><td><b>Ujung Tetap</b></td><td>\\(x_P = (2n + 1)\\left(\\frac{1}{4}\\lambda\\right)\\)</td><td>\\(x_S = 2n \\left(\\frac{1}{4}\\lambda\\right) = n \\left(\\frac{1}{2}\\lambda\\right)\\)</td></tr>\n  </tbody>\n</table>\n<p><small>Catatan indeks: \\(n = 0\\) untuk perut/simpul ke-1, \\(n = 1\\) untuk perut/simpul ke-2, dst.</small></p>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas11/Fisika/05 Gelombang, Bunyi, dan Cahaya/sim/doppler.html",
-          "title": "Efek Doppler",
+          "src": "../../../Kelas11/Fisika/05 Gelombang, Bunyi, dan Cahaya/sim/gelombang-stasioner.html",
+          "title": "Simulasi Gelombang Stasioner",
           "height": 520,
-          "caption": "Gerakkan sumber mendekati dan menjauhi pendengar. Kapan frekuensi yang didengar lebih tinggi?"
+          "caption": "Amati pembentukan pola simpul dan perut pada berbagai frekuensi getar."
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sebuah dawai bertegangan 100 N memiliki μ = 0,01 kg/m dan panjang 50 cm. Berapa frekuensi nada dasarnya?</p>",
+          "title": "Contoh Perhitungan Letak Simpul Ketiga Ujung Bebas",
+          "question": "<p>Seutas tali yang panjangnya 2 meter salah satu ujungnya diikatkan pada cincin licin (ujung bebas). Gelombang stasioner terbentuk dengan panjang gelombang 40 cm. Tentukan jarak simpul ke-3 diukur dari ujung pantul bebas!</p>",
           "steps": [
-            "v = √(100/0,01) = 100 m/s.",
-            "f₀ = v/(2L) = 100/1."
+            "Pada ujung bebas, simpul memenuhi rumus kelipatan ganjil seperempat panjang gelombang: x_S = (2n + 1) · (λ / 4).",
+            "Untuk simpul ke-3, indeks n = 2: x_S3 = (2·2 + 1) · (40 / 4) = 5 · 10 = 50 cm.",
+            "Jika ditanyakan dari sumber getar asal: x_asal = Panjang total - x_S3 = 200 cm - 50 cm = 150 cm."
           ],
-          "answer": "100 Hz"
+          "answer": "Jarak simpul ke-3 dari ujung bebas adalah 50 cm."
         },
         {
           "type": "check",
-          "question": "Dua garpu tala berfrekuensi 512 Hz dan 508 Hz dibunyikan bersamaan. Yang terdengar adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Jarak antara perut terdekat dan simpul terdekat yang berturutan pada gelombang stasioner dengan panjang gelombang λ adalah ....",
           "options": {
-            "A": "4 layangan setiap sekon",
-            "B": "bunyi 1.020 Hz",
-            "C": "bunyi 4 Hz",
-            "D": "tidak terdengar apa pun"
+            "A": "¼ λ",
+            "B": "½ λ",
+            "C": "¾ λ",
+            "D": "1 λ"
           },
           "answer": "A",
-          "hint": "fL = |f₁ − f₂|.",
-          "explanation": "Kedua bunyi berinterferensi menghasilkan keras-lemah sebanyak 4 kali per sekon."
+          "hint": "Jarak simpul ke perut terdekat selalu seperempat panjang gelombang (¼ λ), sedangkan jarak dua simpul berturutan atau dua perut berturutan adalah setengah panjang gelombang (½ λ).",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "cepat-rambat-dawai-hukum-melde",
-      "title": "Cepat Rambat Bunyi pada Dawai dan Hukum Melde: v = √(F/μ)",
+      "title": "Hukum Melde: Cepat Rambat Gelombang Transversal pada Dawai",
       "kind": "artikel",
-      "duration": "14 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Cepat Rambat Bunyi pada Dawai dan Hukum Melde: v = √(F/μ)</b>: Menganalisis pengaruh tegangan dawai (F) dan massa persatuan panjang (μ) terhadap frekuensi nada dasar gitar.</p>"
+          "html": "<h3>Eksperimen Melde dan Elastisitas Medium Tali</h3>\n<p>Franz Melde meneliti faktor-faktor yang menentukan kelajuan perambatan gelombang transversal pada dawai atau senar. Dari hasil percobaannya, cepat rambat gelombang ditentukan oleh dua sifat fisis medium:</p>\n<ol>\n  <li><b>Faktor Gaya (Tegangan Dawai \\(F\\))</b>: semakin kencang senar ditarik, gaya pemulih elastis semakin besar sehingga gelombang merambat semakin cepat.</li>\n  <li><b>Faktor Kelembaman (Massa per satuan panjang \\(\\mu\\))</b>: semakin berat dan tebal tali, kelembaman medium semakin besar sehingga gelombang merambat lebih lambat.</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(v = \\lambda f\\); dawai \\(v = \\sqrt{F/\\mu}\\).</li><li>Dawai dan pipa terbuka: \\(f_n = (n+1)\\dfrac{v}{2L}\\) (semua harmonik). Pipa tertutup: \\(f_n = (2n+1)\\dfrac{v}{4L}\\) (harmonik ganjil).</li><li>\\(I = P/(4\\pi r^2)\\); \\(TI = 10\\log(I/I_0)\\), \\(I_0 = 10^{-12}\\) W/m². n sumber: \\(TI + 10\\log n\\). Jarak r₂: \\(TI - 20\\log(r_2/r_1)\\).</li><li>Doppler: \\(f_p = \\dfrac{v \\pm v_p}{v \\mp v_s} f_s\\) (atas: saling mendekat).</li><li>Pelayangan: \\(f_L = |f_1 - f_2|\\).</li></ul>"
+          "title": "Persamaan Hukum Melde pada Dawai",
+          "html": "<div class=\"fc-display\">\n\\[ v = \\sqrt{\\frac{F}{\\mu}} = \\sqrt{\\frac{F \\cdot L}{m}} = \\sqrt{\\frac{F}{\\rho \\cdot A}} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(v\\)</td><td>Cepat rambat gelombang transversal pada dawai</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(F\\)</td><td>Gaya tegangan dawai (biasanya berasal dari berat beban gantung \\(m_{\text{beban}} \\cdot g\\))</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(\\mu\\)</td><td>Massa linier per satuan panjang dawai (\\(\\mu = m/L\\))</td><td class=\"unit\">\\text{kg/m}</td></tr>\n<tr><td class=\"sym\">\\(L\\)</td><td>Panjang bentangan dawai yang bergetar</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa total dawai</td><td class=\"unit\">\\text{kilogram (kg)}</td></tr>\n<tr><td class=\"sym\">\\(\\rho\\)</td><td>Massa jenis bahan logam dawai</td><td class=\"unit\">\\text{kg/m}^3</td></tr>\n<tr><td class=\"sym\">\\(A\\)</td><td>Luas penampang kawat dawai (\\(A = \frac{1}{4}\\pi d^2\\))</td><td class=\"unit\">\\text{m}^2</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika dawai tegang ditarik dengan gaya 4 kali lipat, cepat rambatnya menjadi √4 = 2 kali lipat semula.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Taraf intensitas sebuah mesin 75 dB. Berapa taraf intensitas jika 100 mesin identik dinyalakan bersamaan?</p>",
+          "title": "Contoh Perhitungan Cepat Rambat Dawai Gitar",
+          "question": "<p>Seutas senar gitar memiliki panjang 60 cm dan bermassa 3 gram. Senar tersebut ditarik dengan gaya tegangan 180 Newton. Hitunglah cepat rambat gelombang pada senar tersebut!</p>",
           "steps": [
-            "TI = 75 + 10 log 100 = 75 + 20."
+            "Konversi satuan SI: L = 60 cm = 0,6 m; m = 3 gram = 3 × 10⁻³ kg.",
+            "Hitung massa linier: μ = m / L = (3 × 10⁻³) / 0,6 = 5 × 10⁻³ kg/m.",
+            "Gunakan Hukum Melde: v = √(F / μ) = √(180 / (5 × 10⁻³)) = √36.000 = √(3600 × 10) = 60√10 ≈ 189,7 m/s."
           ],
-          "answer": "95 dB"
+          "answer": "Cepat rambat gelombang pada senar adalah 60√10 m/s (sekitar 189,7 m/s)."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua dawai sejenis A dan B memiliki panjang yang sama, tetapi diameter kawat B dua kali diameter kawat A. Jika kedua dawai ditarik dengan gaya tegangan yang sama, perbandingan cepat rambat gelombang v_A : v_B adalah ....",
+          "options": {
+            "A": "1 : 2",
+            "B": "2 : 1",
+            "C": "1 : 4",
+            "D": "4 : 1"
+          },
+          "answer": "B",
+          "hint": "Perhatikan hubungan v = √(F / (ρ · A)). Karena A sebanding dengan d², maka v berbanding terbalik dengan diameter d (v ~ 1/d).",
+          "explanation": "v_A / v_B = d_B / d_A = 2 / 1. Perbandingannya adalah 2 : 1."
         }
       ]
     },
     {
       "id": "nada-dawai-dan-pipa-organa",
-      "title": "Harmonik Bunyi: Nada Dasar dan Atas pada Pipa Organa Terbuka & Tertutup",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Frekuensi Harmonik: Dawai, Pipa Organa Terbuka (POB), dan Tertutup (POU)",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Harmonik Bunyi: Nada Dasar dan Atas pada Pipa Organa Terbuka & Tertutup</b>: Menghitung rasio frekuensi f_0 : f_1 : f_2 (1:2:3 pada pipa terbuka dan 1:3:5 pada pipa tertutup).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Sumber Bunyi Akustik: Frekuensi Harmonik</h3>\n<p>Alat musik tiup dan dawai menghasilkan nada musik melalui gelombang stasioner akustik yang beresonansi di dalam kolom udara atau pada senar. Gelombang bunyi merupakan <b>gelombang longitudinal</b> (terdiri dari rapatan dan renggangan).</p>\n<p>Berdasarkan geometri ujung pembatasnya, sumber bunyi dibagi menjadi tiga kategori utama:</p>\n<ol>\n  <li><b>Dawai / Senar Gitar</b>: Kedua ujungnya terikat kencang (simpul di kedua ujung).</li>\n  <li><b>Pipa Organa Terbuka (POB)</b>: Kedua ujung pipa terbuka berhubungan dengan udara luar (perut di kedua ujung). Memiliki pola perbandingan frekuensi identik dengan dawai!</li>\n  <li><b>Pipa Organa Tertutup (POU)</b>: Salah satu ujung terbuka (perut) dan ujung lainnya tertutup rapat (simpul).</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(v = \\lambda f\\); dawai \\(v = \\sqrt{F/\\mu}\\).</li><li>Dawai dan pipa terbuka: \\(f_n = (n+1)\\dfrac{v}{2L}\\) (semua harmonik). Pipa tertutup: \\(f_n = (2n+1)\\dfrac{v}{4L}\\) (harmonik ganjil).</li><li>\\(I = P/(4\\pi r^2)\\); \\(TI = 10\\log(I/I_0)\\), \\(I_0 = 10^{-12}\\) W/m². n sumber: \\(TI + 10\\log n\\). Jarak r₂: \\(TI - 20\\log(r_2/r_1)\\).</li><li>Doppler: \\(f_p = \\dfrac{v \\pm v_p}{v \\mp v_s} f_s\\) (atas: saling mendekat).</li><li>Pelayangan: \\(f_L = |f_1 - f_2|\\).</li></ul>"
+          "title": "Rumus Frekuensi Harmonik Dawai, POB, dan POU",
+          "html": "<div class=\"fc-display\">\n\\[ f_n^{\\text{dawai / POB}} = (n + 1)\\frac{v}{2L} \\qquad \\Big| \\qquad f_n^{\\text{POU}} = (2n + 1)\\frac{v}{4L} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(f_n\\)</td><td>Frekuensi nada ke-n (n = 0: Nada Dasar, n = 1: Nada Atas 1, n = 2: Nada Atas 2, dst.)</td><td class=\"unit\">\\text{Hertz (Hz)}</td></tr>\n<tr><td class=\"sym\">\\(v\\)</td><td>Cepat rambat bunyi di udara (atau cepat rambat gelombang pada dawai)</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(L\\)</td><td>Panjang pipa organa atau dawai</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Rasio nada harmonik: Dawai & POB = f₀ : f₁ : f₂ : f₃ = 1 : 2 : 3 : 4 (kelipatan bilangan bulat). POU = f₀ : f₁ : f₂ : f₃ = 1 : 3 : 5 : 7 (hanya kelipatan bilangan GANJIL!).</small></p>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/05 Gelombang, Bunyi, dan Cahaya/sim/gelombang-stasioner.html",
-          "title": "Gelombang stasioner",
-          "height": 520,
-          "caption": "Hitung simpul dan perut pada beberapa harmonik. Bagaimana hubungannya dengan panjang dawai?"
+          "type": "callout",
+          "variant": "tips",
+          "title": "Trik Cepat Soal Resonansi TKA",
+          "html": "<p>Jika diketahui nada atas ke-1 pipa organa tertutup beresonansi (berfrekuensi sama) dengan nada dasar pipa organa terbuka:</p>\n\\[ f_1^{\\text{POU}} = f_0^{\\text{POB}} \\implies \\frac{3v}{4L_{\\text{POU}}} = \\frac{v}{2L_{\\text{POB}}} \\implies \\frac{L_{\\text{POU}}}{L_{\\text{POB}}} = \\frac{3}{2} \\]\n<p>Pola kesamaan frekuensi antar sumber bunyi adalah salah satu tipe soal paling sering keluar di TKA Sains.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Taraf intensitas sebuah petasan pada jarak 2 m adalah 100 dB. Berapa taraf intensitasnya pada jarak 20 m?</p>",
+          "title": "Contoh Perhitungan Resonansi Pipa Organa",
+          "question": "<p>Sebuah pipa organa terbuka memiliki panjang 60 cm. Tentukan: (a) frekuensi nada dasar, dan (b) frekuensi nada atas kedua pipa tersebut jika cepat rambat bunyi di udara adalah 340 m/s!</p>",
           "steps": [
-            "TI₂ = 100 − 20 log(20/2) = 100 − 20."
+            "Panjang pipa: L = 60 cm = 0,6 m.",
+            "(a) Nada dasar (n = 0): f₀ = (0 + 1) · v / (2L) = 340 / (2 · 0,6) = 340 / 1,2 ≈ 283,3 Hz.",
+            "(b) Nada atas kedua (n = 2): f₂ = (2 + 1) · f₀ = 3 · 283,3 = 850 Hz (atau f₂ = 3v / (2L) = 3 · 340 / 1,2 = 850 Hz)."
           ],
-          "answer": "80 dB"
+          "answer": "Frekuensi nada dasar 283,3 Hz dan nada atas kedua 850 Hz."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah pipa organa tertutup memiliki panjang L. Nada atas pertama pipa organa tertutup tersebut memiliki panjang gelombang sebesar ....",
+          "options": {
+            "A": "4 L",
+            "B": "2 L",
+            "C": "4/3 L",
+            "D": "4/5 L"
+          },
+          "answer": "C",
+          "hint": "Pada POU nada atas 1 (n = 1): L = ¾ λ  =>  λ = 4/3 L.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "efek-doppler-sumber-pendengar",
-      "title": "Efek Doppler: Pergeseran Frekuensi Akibat Gerak Relatif",
+      "title": "Efek Doppler: Relativitas Gerak Sumber dan Pendengar Bunyi",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Efek Doppler: Pergeseran Frekuensi Akibat Gerak Relatif</b>: Menerapkan formula f_p = [(v ± v_p) / (v ± v_s)] · f_s dengan aturan tanda gerak saling mendekat/menjauh.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Perubahan Frekuensi Akibat Gerak Relatif</h3>\n<p>Ketika Anda berdiri di pinggir jalan dan sebuah ambulans dengan sirene menyala melaju mendekati Anda, nada sirene terdengar lebih tinggi (melengking). Begitu ambulans melintas dan menjauhi Anda, nada sirene seketika terdengar lebih rendah (berat). Fenomena perubahan frekuensi bunyi yang diterima oleh pendengar akibat gerak relatif antara sumber bunyi dan pendengar disebut <b>Efek Doppler</b>.</p>\n<p>Ketika sumber mendekati pendengar, muka gelombang terkompresi ke depan sehingga panjang gelombang yang teramati memendek (\\(\\lambda' < \\lambda\\)) dan frekuensi yang diterima meningkat (\\(f_p > f_s\\)).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(v = \\lambda f\\); dawai \\(v = \\sqrt{F/\\mu}\\).</li><li>Dawai dan pipa terbuka: \\(f_n = (n+1)\\dfrac{v}{2L}\\) (semua harmonik). Pipa tertutup: \\(f_n = (2n+1)\\dfrac{v}{4L}\\) (harmonik ganjil).</li><li>\\(I = P/(4\\pi r^2)\\); \\(TI = 10\\log(I/I_0)\\), \\(I_0 = 10^{-12}\\) W/m². n sumber: \\(TI + 10\\log n\\). Jarak r₂: \\(TI - 20\\log(r_2/r_1)\\).</li><li>Doppler: \\(f_p = \\dfrac{v \\pm v_p}{v \\mp v_s} f_s\\) (atas: saling mendekat).</li><li>Pelayangan: \\(f_L = |f_1 - f_2|\\).</li></ul>"
+          "title": "Persamaan Umum Efek Doppler dengan Angin",
+          "html": "<div class=\"fc-display\">\n\\[ f_p = \\frac{v \\pm v_p}{v \\mp v_s} f_s \\qquad \\Big| \\qquad f_p = \\frac{(v \\pm v_w) \\pm v_p}{(v \\pm v_w) \\mp v_s} f_s \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(f_p\\)</td><td>Frekuensi bunyi yang diterima / didengar oleh pendengar</td><td class=\"unit\">\\text{Hertz (Hz)}</td></tr>\n<tr><td class=\"sym\">\\(f_s\\)</td><td>Frekuensi bunyi yang dipancarkan oleh sumber bunyi asli</td><td class=\"unit\">\\text{Hertz (Hz)}</td></tr>\n<tr><td class=\"sym\">\\(v\\)</td><td>Cepat rambat bunyi di udara (rata-rata 340 m/s)</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(v_p\\)</td><td>Kecepatan gerak pengamat / pendengar</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(v_s\\)</td><td>Kecepatan gerak sumber bunyi</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(v_w\\)</td><td>Kecepatan tiupan angin medium (+ jika searah rambat bunyi)</td><td class=\"unit\">\\text{m/s}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Aturan Tanda Mutlak: Pendengar MENDEKATI sumber => v_p bertanda (+). Pendengar MENJAUHI sumber => v_p bertanda (-). Sumber MENDEKATI pendengar => v_s bertanda (-). Sumber MENJAUHI pendengar => v_s bertanda (+).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mnemonik Hafalan Tanda Doppler",
+          "html": "<p>Ingat orientasi kata: <b>P - S</b> (Pendengar di kiri, Sumber di kanan). Arah ke kanan dianggap positif (+), arah ke kiri dianggap negatif (-):</p>\n<ul>\n  <li>Jika P bergerak ke kanan (menuju S)  \\(\\implies v_p\\) bernilai <b>(+)</b>.</li>\n  <li>Jika S bergerak ke kiri (menuju P)  \\(\\implies v_s\\) bernilai <b>(-)</b>.</li>\n  <li>Kaidah: Gerakan <i>mendekat</i> selalu <b>memperbesar</b> nilai pecahan (\\(f_p > f_s\\)), sedangkan gerakan <i>menjauh</i> selalu <b>memperkecil</b> nilai pecahan.</li>\n</ul>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas11/Fisika/05 Gelombang, Bunyi, dan Cahaya/sim/gelombang-stasioner.html",
-          "title": "Gelombang stasioner",
+          "src": "../../../Kelas11/Fisika/05 Gelombang, Bunyi, dan Cahaya/sim/doppler.html",
+          "title": "Simulasi Efek Doppler",
           "height": 520,
-          "caption": "Hitung simpul dan perut pada beberapa harmonik. Bagaimana hubungannya dengan panjang dawai?"
+          "caption": "Jalankan sumber bunyi bergerak dan amati gelombang terkompresi di depan dan renggang di belakang."
         },
         {
           "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Ambulans bersirene 900 Hz bergerak 30 m/s menjauhi seorang pejalan kaki yang diam (v bunyi = 330 m/s). Berapa frekuensi yang didengar?</p>",
+          "title": "Contoh Perhitungan Efek Doppler Dua Kendaraan",
+          "question": "<p>Sebuah mobil patroli polisi bergerak dengan kelajuan 72 km/jam sambil membunyikan sirene berfrekuensi 640 Hz mengejar pengendara sepeda motor di depannya yang melaju dengan kelajuan 36 km/jam. Cepat rambat bunyi di udara adalah 340 m/s. Tentukan frekuensi sirene yang didengar oleh pengendara motor!</p>",
           "steps": [
-            "Sumber menjauh: f = v/(v + vs) × fs = 330/360 × 900."
+            "Konversi kecepatan ke SI: v_s (polisi) = 72 km/jam = 20 m/s; v_p (motor) = 36 km/jam = 10 m/s.",
+            "Tentukan orientasi arah: Polisi mengejar motor (sumber MENDEKATI pendengar => v_s bertanda -). Motor melaju di depan menjauhi polisi (pendengar MENJAUHI sumber => v_p bertanda -).",
+            "Substitusi ke rumus: f_p = [(v - v_p) / (v - v_s)] · f_s.",
+            "f_p = [(340 - 10) / (340 - 20)] · 640 = [330 / 320] · 640 = 330 · 2 = 660 Hz."
           ],
-          "answer": "825 Hz"
+          "answer": "Pengendara motor mendengar sirene dengan frekuensi 660 Hz."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah sumber bunyi berfrekuensi 680 Hz diam di tempat. Seorang pengamat bergerak mendekati sumber bunyi tersebut dengan kelajuan 17 m/s. Jika cepat rambat bunyi di udara 340 m/s, frekuensi yang didengar pengamat adalah ....",
+          "options": {
+            "A": "646 Hz",
+            "B": "680 Hz",
+            "C": "714 Hz",
+            "D": "748 Hz"
+          },
+          "answer": "C",
+          "hint": "Sumber diam (v_s = 0), pendengar mendekat (v_p = +17 m/s).",
+          "explanation": "f_p = [(340 + 17) / 340] × 680 = [357 / 340] × 680 = 357 × 2 = 714 Hz."
         }
       ]
     },
     {
       "id": "intensitas-dan-taraf-intensitas-ti",
-      "title": "Intensitas Bunyi (I = P/A) dan Taraf Intensitas Skala Desibel (TI)",
-      "kind": "latihan",
-      "duration": "16 menit",
+      "title": "Intensitas Bunyi, Hukum Kuadrat Terbalik, dan Skala Logaritmik Desibel (dB)",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal bunyi TKA sering berbentuk konteks nyata: kebisingan, USG, alat musik, atau sirene.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Besaran gelombang</td><td>v = λf, gelombang transversal dan longitudinal</td><td>IPA Kelas 8, Fisika Kelas 11 Bab 5</td></tr><tr><td>Sumber bunyi</td><td>dawai, pipa organa terbuka dan tertutup, resonansi</td><td>Fisika Kelas 11 Bab 5</td></tr><tr><td>Sifat bunyi</td><td>intensitas, taraf intensitas, Doppler, pelayangan, interferensi</td><td>Fisika Kelas 11 Bab 5</td></tr></table>"
+          "html": "<h3>Daya Gelombang dan Luas Muka Bola</h3>\n<p>Bunyi dari sumber titik memancar ke segala arah membentuk muka gelombang berbentuk bola. Energi gelombang yang menembus tegak lurus bidang per satuan luas per satuan waktu disebut <b>Intensitas Bunyi (\\(I\\))</b>.</p>\n<p>Karena luas permukaan bola adalah \\(A = 4\\pi r^2\\), intensitas bunyi berkurang secara drastis mengikuti <b>Hukum Kuadrat Terbalik (Inverse Square Law)</b> terhadap jarak: \\(I \\propto \\frac{1}{r^2}\\).</p>\n<h3>Skala Respon Pendengaran Manusia: Taraf Intensitas (dB)</h3>\n<p>Telinga manusia merespons kekuatan bunyi tidak secara linier, melainkan secara logaritmik (Hukum Weber-Fechner). Oleh karena itu, diperkenalkan besaran <b>Taraf Intensitas Bunyi (\\(TI\\))</b> yang dinyatakan dalam satuan desibel (dB).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(v = \\lambda f\\); dawai \\(v = \\sqrt{F/\\mu}\\).</li><li>Dawai dan pipa terbuka: \\(f_n = (n+1)\\dfrac{v}{2L}\\) (semua harmonik). Pipa tertutup: \\(f_n = (2n+1)\\dfrac{v}{4L}\\) (harmonik ganjil).</li><li>\\(I = P/(4\\pi r^2)\\); \\(TI = 10\\log(I/I_0)\\), \\(I_0 = 10^{-12}\\) W/m². n sumber: \\(TI + 10\\log n\\). Jarak r₂: \\(TI - 20\\log(r_2/r_1)\\).</li><li>Doppler: \\(f_p = \\dfrac{v \\pm v_p}{v \\mp v_s} f_s\\) (atas: saling mendekat).</li><li>Pelayangan: \\(f_L = |f_1 - f_2|\\).</li></ul>"
+          "title": "Persamaan Intensitas dan Taraf Intensitas Bunyi (dB)",
+          "html": "<div class=\"fc-display\">\n\\[ I = \\frac{P}{4\\pi r^2} \\qquad \\Big| \\qquad TI = 10 \\log_{10}\\left(\\frac{I}{I_0}\\right) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(I\\)</td><td>Intensitas gelombang bunyi pada jarak r</td><td class=\"unit\">\\text{Watt/m}^2 \\text{ (W/m}^2\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(P\\)</td><td>Daya akustik rata-rata sumber bunyi</td><td class=\"unit\">\\text{Watt (W)}</td></tr>\n<tr><td class=\"sym\">\\(r\\)</td><td>Jarak pengamat dari sumber bunyi titik</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(TI\\)</td><td>Taraf intensitas bunyi</td><td class=\"unit\">\\text{desibel (dB)}</td></tr>\n<tr><td class=\"sym\">\\(I_0\\)</td><td>Intensitas ambang pendengaran manusia (standar = 10⁻¹² W/m²)</td><td class=\"unit\">\\text{W/m}^2</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Ambang rasa sakit pada telinga manusia rata-rata berada pada intensitas 1 W/m² atau 120 dB.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Dua Formula Cepat TKA untuk Taraf Intensitas",
+          "html": "<ol>\n  <li><b>Penambahan \\(n\\) Sumber Bunyi Identik yang Dibunyikan Bersama</b>:\n  \\[ TI_n = TI_1 + 10 \\log_{10}(n) \\]\n  <i>Contoh: 1 mesin = 60 dB, maka 100 mesin identik = 60 + 10 log(100) = 60 + 20 = 80 dB (BUKAN 6.000 dB!).</i></li>\n  <li><b>Perubahan Jarak Pengamatan (\\(r_1 \\to r_2\\))</b>:\n  \\[ TI_2 = TI_1 - 20 \\log_{10}\\left(\\frac{r_2}{r_1}\\right) \\]\n  <i>Contoh: Jarak menjauh 10 kali lipat (r₂/r₁ = 10) => TI berkurang sebesar 20 dB.</i></li>\n</ol>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Intensitas Bunyi (I = P/A) dan Taraf Intensitas Skala Desibel (TI)",
-          "question": "<p>Perhatikan permasalahan terkait <b>Intensitas Bunyi (I = P/A) dan Taraf Intensitas Skala Desibel (TI)</b> berikut. Analisislah berdasarkan prinsip Menghitung perubahan TI akibat perubahan jarak sumber (TI_2 = TI_1 − 20 log(r_2/r_1)) dan penggandaan sumber identik (TI_n = TI_1 + 10 log n)..</p>",
+          "title": "Contoh Perhitungan Taraf Intensitas Multi Sumber dan Jarak",
+          "question": "<p>Taraf intensitas sebuah mesin bubut di pabrik pada jarak 2 meter adalah 70 dB. Jika pabrik menyalakan 10 mesin bubut identik secara serentak, tentukan taraf intensitas yang didengar oleh seorang pekerja yang berdiri pada jarak 20 meter dari deretan mesin tersebut!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Langkah 1: Hitung taraf intensitas 10 mesin pada jarak 2 meter:",
+            "TI_10 (2 m) = TI_1 + 10 log(10) = 70 + 10(1) = 80 dB.",
+            "Langkah 2: Hitung penurunan intensitas akibat jarak menjauh dari r₁ = 2 m menjadi r₂ = 20 m:",
+            "TI (20 m) = TI (2 m) - 20 log(r₂ / r₁) = 80 - 20 log(20 / 2) = 80 - 20 log(10) = 80 - 20(1) = 60 dB."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Taraf intensitas yang didengar pekerja pada jarak 20 meter adalah 60 dB."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Intensitas Bunyi (I = P/A) dan Taraf Intensitas Skala Desibel (TI), pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Jika intensitas bunyi suatu sumber ditingkatkan menjadi 1.000 kali lipat dari semula, maka taraf intensitas bunyi akan bertambah sebesar ....",
           "options": {
-            "A": "Konsep Intensitas Bunyi (I = P/A) dan Taraf Intensitas Skala Desibel (TI) berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "10 dB",
+            "B": "30 dB",
+            "C": "100 dB",
+            "D": "300 dB"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung perubahan TI akibat perubahan jarak sumber (TI_2 = TI_1 − 20 log(r_2/r_1)) dan penggandaan sumber identik (TI_n = TI_1 + 10 log n).."
+          "answer": "B",
+          "hint": "ΔTI = 10 log(I₂ / I₁) = 10 log(1.000) = 10 × 3 = 30 dB.",
+          "explanation": "Taraf intensitas bertambah 30 dB."
         }
       ]
     },
     {
       "id": "pelayangan-dan-difraksi-bunyi",
-      "title": "Pelayangan Bunyi dan Gejala Difraksi Gelombang Bunyi",
+      "title": "Pelayangan Bunyi (Beats) dan Efek Difraksi Gelombang Akustik",
       "kind": "artikel",
-      "duration": "14 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal bunyi TKA sering berbentuk konteks nyata: kebisingan, USG, alat musik, atau sirene.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Besaran gelombang</td><td>v = λf, gelombang transversal dan longitudinal</td><td>IPA Kelas 8, Fisika Kelas 11 Bab 5</td></tr><tr><td>Sumber bunyi</td><td>dawai, pipa organa terbuka dan tertutup, resonansi</td><td>Fisika Kelas 11 Bab 5</td></tr><tr><td>Sifat bunyi</td><td>intensitas, taraf intensitas, Doppler, pelayangan, interferensi</td><td>Fisika Kelas 11 Bab 5</td></tr></table>"
+          "html": "<h3>Interferensi Dua Frekuensi Berdekatan: Pelayangan</h3>\n<p>Ketika dua sumber bunyi yang memiliki frekuensi yang <b>sedikit berbeda</b> dibunyikan secara bersamaan, terjadi interferensi gelombang yang menghasilkan penguatan dan pelemahan bunyi secara periodik. Fenomena denyutan keras-lemah bunyi yang berulang ini disebut <b>Pelayangan Bunyi (Beats)</b>.</p>\n<p>Fenomena pelayangan digunakan secara luas oleh pemusik untuk menyetem (tuning) dawai piano atau gitar agar menghasilkan nada yang presisi tanpa ada denyut pelayangan.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(v = \\lambda f\\); dawai \\(v = \\sqrt{F/\\mu}\\).</li><li>Dawai dan pipa terbuka: \\(f_n = (n+1)\\dfrac{v}{2L}\\) (semua harmonik). Pipa tertutup: \\(f_n = (2n+1)\\dfrac{v}{4L}\\) (harmonik ganjil).</li><li>\\(I = P/(4\\pi r^2)\\); \\(TI = 10\\log(I/I_0)\\), \\(I_0 = 10^{-12}\\) W/m². n sumber: \\(TI + 10\\log n\\). Jarak r₂: \\(TI - 20\\log(r_2/r_1)\\).</li><li>Doppler: \\(f_p = \\dfrac{v \\pm v_p}{v \\mp v_s} f_s\\) (atas: saling mendekat).</li><li>Pelayangan: \\(f_L = |f_1 - f_2|\\).</li></ul>"
+          "title": "Persamaan Frekuensi Pelayangan Bunyi",
+          "html": "<div class=\"fc-display\">\n\\[ f_{\\text{layang}} = |f_1 - f_2| \\qquad \\Longleftrightarrow \\qquad T_{\\text{layang}} = \\frac{1}{|f_1 - f_2|} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(f_{\\text{layang}}\\)</td><td>Frekuensi denyutan pelayangan (banyaknya bunyi keras per detik)</td><td class=\"unit\">\\text{Hertz (Hz)}</td></tr>\n<tr><td class=\"sym\">\\(f_1, f_2\\)</td><td>Frekuensi masing-masing kedua sumber bunyi</td><td class=\"unit\">\\text{Hertz (Hz)}</td></tr>\n<tr><td class=\"sym\">\\(T_{\\text{layang}}\\)</td><td>Periode selang waktu antara dua bunyi keras berturutan</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Telinga manusia hanya mampu membedakan pelayangan bunyi hingga frekuensi sekitar 10 Hz. Di atas 10 Hz, bunyi terdengar kasar atau menjadi dua nada berbeda.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa Bunyi Mudah Berdifraksi dibanding Cahaya?",
+          "html": "<p><b>Difraksi</b> adalah peristiwa pelenturan gelombang ketika melewati celah sempit atau melewati penghalang. Gelombang akan mengalami difraksi kuat jika ukuran penghalang atau celah <b>sebanding dengan panjang gelombangnya (\\(\\lambda\\))</b>.</p>\n<p>Panjang gelombang bunyi yang didengar manusia berkisar antara puluhan sentimeter hingga beberapa meter (\\(\\lambda \\approx 0,2 \\text{ m} - 3 \\text{ m}\\)), yang ukurannya sangat mirip dengan lebar pintu, jendela, dan celah tembok rumah. Inilah sebabnya kita dapat mendengar suara orang mengobrol di balik tikungan tembok meskipun orangnya tidak terlihat (karena cahaya memiliki \\(\\lambda \\approx 10^{-7}\\) m yang terlalu kecil untuk mendifraksi pintu).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Analisis Pelayangan Garpu Tala",
+          "question": "<p>Sebuah garpu tala standar berfrekuensi 440 Hz dibunyikan bersamaan dengan senar biola sehingga terdengar 4 denyut pelayangan per detik. Ketika tegangan senar biola sedikit dinaikkan, frekuensi pelayangan bertambah menjadi 6 denyut per detik. Berapakah frekuensi awal senar biola tersebut sebelum tegangannya dinaikkan?</p>",
+          "steps": [
+            "Berdasarkan f_layang = |f_senar - 440| = 4, maka frekuensi awal senar biola memiliki dua kemungkinan: f = 444 Hz atau f = 436 Hz.",
+            "Berdasarkan Hukum Melde, menaikkan gaya tegangan dawai (F ↑) akan MENAIKKAN cepat rambat dan MENAIKKAN frekuensi (f_senar bertambah naik).",
+            "Jika frekuensi awal 444 Hz: saat dinaikkan menjadi misalnya 446 Hz, maka pelayangan baru = |446 - 440| = 6 Hz (COCOK dengan soal!).",
+            "Jika frekuensi awal 436 Hz: saat dinaikkan menjadi misalnya 438 Hz, maka pelayangan baru = |438 - 440| = 2 Hz (berkurang, bukan bertambah).",
+            "Jadi frekuensi awal senar biola haruslah 444 Hz."
+          ],
+          "answer": "Frekuensi awal senar biola adalah 444 Hz."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua buah pipa organa terbuka ditiup bersama-sama. Pipa pertama panjangnya 50 cm dan pipa kedua 50,5 cm. Jika cepat rambat bunyi di udara 340 m/s, frekuensi pelayangan nada dasar kedua pipa adalah ....",
+          "options": {
+            "A": "1,7 Hz",
+            "B": "3,4 Hz",
+            "C": "5,1 Hz",
+            "D": "6,8 Hz"
+          },
+          "answer": "B",
+          "hint": "f₀ = v / (2L). f₁ = 340 / (2 × 0,5) = 340 Hz. f₂ = 340 / (2 × 0,505) = 340 / 1,01 ≈ 336,63 Hz.",
+          "explanation": "f_layang = 340 - 336,63 = 3,37 Hz ≈ 3,4 Hz."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-07",
-      "title": "Strategi Cepat Gelombang Bunyi dan Latihan Kuis Bab",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Gelombang dan Bunyi",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Gelombang Bunyi dan Latihan Kuis Bab</b>: Menguasai seluruh topik gelombang mekanik dan menuntaskan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(v = \\lambda f\\); dawai \\(v = \\sqrt{F/\\mu}\\).</li><li>Dawai dan pipa terbuka: \\(f_n = (n+1)\\dfrac{v}{2L}\\) (semua harmonik). Pipa tertutup: \\(f_n = (2n+1)\\dfrac{v}{4L}\\) (harmonik ganjil).</li><li>\\(I = P/(4\\pi r^2)\\); \\(TI = 10\\log(I/I_0)\\), \\(I_0 = 10^{-12}\\) W/m². n sumber: \\(TI + 10\\log n\\). Jarak r₂: \\(TI - 20\\log(r_2/r_1)\\).</li><li>Doppler: \\(f_p = \\dfrac{v \\pm v_p}{v \\mp v_s} f_s\\) (atas: saling mendekat).</li><li>Pelayangan: \\(f_L = |f_1 - f_2|\\).</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Gelombang Bunyi dan Latihan Kuis Bab",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Gelombang Bunyi dan Latihan Kuis Bab</b> berikut. Analisislah berdasarkan prinsip Menguasai seluruh topik gelombang mekanik dan menuntaskan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Gelombang Bunyi dan Latihan Kuis Bab, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Gelombang Bunyi dan Latihan Kuis Bab berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai seluruh topik gelombang mekanik dan menuntaskan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Rumus Kunci Gelombang dan Bunyi</h3>\n<p>Uji kesiapan komprehensif Anda melalui kuis resmi 20 soal bertarget TKA di bawah ini. Pastikan Anda menguasai variasi rumus gelombang transversal/longitudinal, dawai Melde, perbandingan POB/POU, Efek Doppler, dan penurunan desibel taraf intensitas.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Gelombang dan Bunyi. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Fisika: Gelombang dan Bunyi (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

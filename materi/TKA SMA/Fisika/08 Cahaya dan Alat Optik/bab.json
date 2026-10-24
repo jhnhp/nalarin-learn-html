@@ -1,332 +1,354 @@
 {
   "title": "Cahaya dan Alat Optik",
-  "summary": "Optika geometri dan instrumen optik: pemantulan cermin datar/cekung/cembung, pembiasan dan Hukum Snellius, sudut kritis dan pemantulan internal total, pembiasan lensa tipis, cacat mata dan kacamata (miopi, hipermetropi, presbiopi), lup, mikroskop, dan teropong bintang.",
+  "summary": "Materi komprehensif TKA Fisika: pemantulan cermin cekung dan cembung, pembiasan Snellius dan sudut kritis pemantulan total internal, lensa tipis dan persamaan pembuat lensa, cacat mata miopi dan hipermetropi, kaca pembesar lup, sistem optik mikroskop dua lensa, dan teropong bintang serta teropong bumi.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "pemantulan-cermin-lengkung",
-      "title": "Hukum Pemantulan dan Pembentukan Bayangan pada Cermin Cekung & Cembung",
+      "title": "Hukum Pemantulan Cahaya dan Pembentukan Bayangan pada Cermin Lengkung",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Hukum Pemantulan dan Pembentukan Bayangan pada Cermin Cekung & Cembung</b>: Menerapkan sinar-sinar istimewa, formula 1/f = 1/s + 1/s', dan menghitung perbesaran bayangan M = |s'/s|.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Hukum Pemantulan dan Karakteristik Cermin Lengkung</h3>\n<p>Hukum Snellius untuk pemantulan menyatakan bahwa: (1) Sinar datang, garis normal, dan sinar pantul terletak pada satu bidang datar; (2) Sudut datang sama dengan sudut pantul (\\(\\theta_i = \\theta_r\\)).</p>\n<p>Pada cermin lengkung sferis, permukaan cermin merupakan bagian dari bola dengan jari-jari kelengkungan \\(R\\). Titik fokus cermin terletak tepat di tengah antara pusat kelengkungan dan titik apeks cermin: <b>\\(f = \\frac{1}{2}R\\)</b>.</p>\n<ul>\n  <li><b>Cermin Cekung (Konkaf / Konvergen)</b>: mengumpulkan berkas sinar pantul. Fokus bernilai <b>positif (\\(f > 0\\))</b>. Menghasilkan bayangan nyata terbalik atau maya tegak diperbesar.</li>\n  <li><b>Cermin Cembung (Konveks / Divergen)</b>: menyebarkan berkas sinar pantul. Fokus bernilai <b>negatif (\\(f < 0\\))</b>. Selalu menghasilkan bayangan <b>maya, tegak, dan diperkecil</b> untuk semua posisi benda nyata (digunakan sebagai kaca spion kendaraan).</li>\n</ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\dfrac1f = \\dfrac1s + \\dfrac1{s'}\\); cermin \\(f = R/2\\); \\(M = |s'/s| = h'/h\\); \\(P = 100/f\\) (f dalam cm).</li><li>Snellius: \\(n_1\\sin\\theta_1 = n_2\\sin\\theta_2\\); \\(n = c/v\\); \\(\\lambda_\\text{medium} = \\lambda_0/n\\). Sudut kritis: \\(\\sin\\theta_k = n_2/n_1\\).</li><li>Hipermetropi/presbiopi: \\(P = \\dfrac{100}{25} - \\dfrac{100}{PP}\\). Miopi: \\(P = -\\dfrac{100}{PR}\\).</li><li>Lup: \\(M = Sn/f\\) (tak berakomodasi), \\(M = Sn/f + 1\\) (akomodasi maksimum).</li><li>Mikroskop: \\(M = \\dfrac{s'_{ob}}{s_{ob}} \\times \\dfrac{Sn}{f_{ok}}\\). Teropong bintang: \\(M = f_{ob}/f_{ok}\\), \\(d = f_{ob} + f_{ok}\\).</li></ul>"
+          "title": "Persamaan Gauss dan Perbesaran Cermin Lengkung",
+          "html": "<div class=\"fc-display\">\n\\[ \\frac{1}{f} = \\frac{1}{s} + \\frac{1}{s'} \\qquad \\Longleftrightarrow \\qquad M = \\left|\\frac{s'}{s}\\right| = \\left|\\frac{h'}{h}\\right| \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(f\\)</td><td>Jarak fokus cermin (cekung: f > 0; cembung: f < 0)</td><td class=\"unit\">\\text{cm atau m}</td></tr>\n<tr><td class=\"sym\">\\(s\\)</td><td>Jarak benda di depan cermin (benda nyata: s > 0)</td><td class=\"unit\">\\text{cm atau m}</td></tr>\n<tr><td class=\"sym\">\\(s'\\)</td><td>Jarak bayangan (s' > 0: nyata/di depan cermin; s' < 0: maya/di belakang cermin)</td><td class=\"unit\">\\text{cm atau m}</td></tr>\n<tr><td class=\"sym\">\\(M\\)</td><td>Perbesaran linier bayangan (M > 1 diperbesar; M < 1 diperkecil)</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(h, h'\\)</td><td>Tinggi benda asli dan tinggi bayangan</td><td class=\"unit\">\\text{cm atau m}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Aturan Tanda: s' positif (+) artinya bayangan NYATA dan TERBALIK. s' negatif (-) artinya bayangan MAYA dan TEGAK.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Dalil Esbach untuk Cermin Cekung",
+          "html": "<p>Ruang Benda + Ruang Bayangan = 5 (\\(R_b + R_{bay} = 5\\)):</p>\n<ul>\n  <li>Benda di Ruang I (antara O dan F): Bayangan di Ruang IV (Maya, Tegak, Diperbesar).</li>\n  <li>Benda di Ruang II (antara F dan 2F): Bayangan di Ruang III (Nyata, Terbalik, Diperbesar).</li>\n  <li>Benda di Ruang III (di luar 2F): Bayangan di Ruang II (Nyata, Terbalik, Diperkecil).</li>\n  <li>Benda tepat di titik F: Bayangan di tak hingga (berkas sinar pantul sejajar).</li>\n</ul>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas8/IPA/05 Gelombang dan Cahaya/sim/lensa.html",
-          "title": "Pembentukan bayangan oleh lensa",
-          "height": 500,
-          "caption": "Geser benda dari jauh ke dekat lensa cembung. Kapan bayangan berubah dari nyata menjadi maya?"
+          "src": "sim/alat-optik.html",
+          "title": "Simulasi Pembentukan Bayangan Optik",
+          "height": 520,
+          "caption": "Geser posisi benda dan amati jalannya tiga sinar istimewa serta sifat bayangannya."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Benda setinggi 4 cm diletakkan 30 cm di depan lensa cembung berjarak fokus 20 cm. Tentukan letak, tinggi, dan sifat bayangan.</p>",
+          "title": "Contoh Perhitungan Cermin Cekung",
+          "question": "<p>Sebuah lilin setinggi 4 cm diletakkan pada jarak 15 cm di depan cermin cekung yang memiliki jari-jari kelengkungan 20 cm. Tentukan: (a) jarak bayangan, (b) perbesaran, (c) tinggi bayangan, dan (d) sifat bayangan!</p>",
           "steps": [
-            "1/s' = 1/20 − 1/30 = 1/60 → s' = 60 cm.",
-            "M = 60/30 = 2 → h' = 8 cm."
+            "Fokus cermin cekung: f = R / 2 = 20 / 2 = +10 cm. Jarak benda: s = +15 cm.",
+            "Terapkan rumus Gauss: 1/f = 1/s + 1/s'  =>  1/10 = 1/15 + 1/s'.",
+            "1/s' = 1/10 - 1/15 = (3 - 2) / 30 = 1/30  =>  s' = +30 cm.",
+            "Perbesaran: M = |s' / s| = |30 / 15| = 2 kali lipat.",
+            "Tinggi bayangan: h' = M · h = 2 · 4 cm = 8 cm.",
+            "Sifat bayangan: Karena s' positif (+), bayangan bersifat NYATA, TERBALIK, dan DIPERBESAR (karena M = 2 > 1)."
           ],
-          "answer": "60 cm di belakang lensa, 8 cm, nyata, terbalik, diperbesar"
+          "answer": "Jarak bayangan 30 cm di depan cermin; bayangan nyata, terbalik, diperbesar (tinggi 8 cm)."
         },
         {
           "type": "check",
-          "question": "Bayangan yang dibentuk cermin cembung selalu ....",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah benda diletakkan 20 cm di depan cermin cembung yang berjarak fokus 20 cm. Jarak bayangan yang terbentuk adalah ....",
           "options": {
-            "A": "nyata, terbalik, diperkecil",
-            "B": "maya, tegak, diperkecil",
-            "C": "maya, tegak, diperbesar",
-            "D": "nyata, tegak, sama besar"
+            "A": "+10 cm (di depan cermin)",
+            "B": "-10 cm (di belakang cermin)",
+            "C": "-20 cm (di belakang cermin)",
+            "D": "+40 cm (di depan cermin)"
           },
           "answer": "B",
-          "hint": "Cermin cembung menyebarkan cahaya.",
-          "explanation": "Karena itu cermin cembung dipakai sebagai spion: bayangan maya, tegak, diperkecil, dan medan pandang luas."
+          "hint": "Cermin cembung: f = -20 cm, s = +20 cm.",
+          "explanation": "1/(-20) = 1/20 + 1/s'  =>  1/s' = -1/20 - 1/20 = -2/20 = -1/10  =>  s' = -10 cm (maya, tegak, di belakang cermin)."
         }
       ]
     },
     {
       "id": "pembiasan-hukum-snellius",
-      "title": "Pembiasan Cahaya: Indeks Bias, Hukum Snellius, dan Sudut Kritis",
+      "title": "Hukum Pembiasan Snellius, Pemantulan Total Internal, dan Dispersi Prisma",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Perjanjian tanda: f positif untuk cermin cekung dan lensa cembung; s' positif berarti bayangan nyata.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Cermin dan lensa</td><td>1/f = 1/s + 1/s', perbesaran, sifat bayangan, kekuatan lensa</td><td>IPA Kelas 8, Fisika Kelas 11 Bab 5</td></tr><tr><td>Pembiasan</td><td>Snellius, indeks bias, pemantulan sempurna</td><td>Fisika Kelas 11 Bab 5</td></tr><tr><td>Alat optik</td><td>mata, kacamata, lup, mikroskop, teropong</td><td>Fisika Kelas 11 Bab 5</td></tr><tr><td>Gelombang EM</td><td>spektrum dan pemanfaatan</td><td>Fisika Kelas 12 Bab 5</td></tr></table>"
+          "html": "<h3>Pembiasan Cahaya (Refraksi)</h3>\n<p>Ketika cahaya merambat dari suatu medium optik ke medium optik lain yang berbeda kerapatan optiknya, kelajuan rambat cahaya berubah. Perubahan kelajuan ini menyebabkan berkas cahaya membelok (terbias) pada batas antar medium.</p>\n<p>Kerapatan optik suatu medium dinyatakan oleh <b>Indeks Bias Mutlak (\\(n\\))</b>: <b>\\(n = \\frac{c}{v}\\)</b>, di mana \\(c = 3 \\times 10^8\\) m/s adalah kelajuan cahaya dalam ruang hampa, dan \\(v\\) adalah kelajuan cahaya di dalam medium tersebut.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\dfrac1f = \\dfrac1s + \\dfrac1{s'}\\); cermin \\(f = R/2\\); \\(M = |s'/s| = h'/h\\); \\(P = 100/f\\) (f dalam cm).</li><li>Snellius: \\(n_1\\sin\\theta_1 = n_2\\sin\\theta_2\\); \\(n = c/v\\); \\(\\lambda_\\text{medium} = \\lambda_0/n\\). Sudut kritis: \\(\\sin\\theta_k = n_2/n_1\\).</li><li>Hipermetropi/presbiopi: \\(P = \\dfrac{100}{25} - \\dfrac{100}{PP}\\). Miopi: \\(P = -\\dfrac{100}{PR}\\).</li><li>Lup: \\(M = Sn/f\\) (tak berakomodasi), \\(M = Sn/f + 1\\) (akomodasi maksimum).</li><li>Mikroskop: \\(M = \\dfrac{s'_{ob}}{s_{ob}} \\times \\dfrac{Sn}{f_{ok}}\\). Teropong bintang: \\(M = f_{ob}/f_{ok}\\), \\(d = f_{ob} + f_{ok}\\).</li></ul>"
+          "title": "Hukum Pembiasan Snellius dan Sudut Kritis",
+          "html": "<div class=\"fc-display\">\n\\[ n_1 \\sin\\theta_1 = n_2 \\sin\\theta_2 \\qquad \\Longleftrightarrow \\qquad \\sin\\theta_k = \\frac{n_2}{n_1} \\quad (n_1 > n_2) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(n_1, n_2\\)</td><td>Indeks bias medium asal dan medium tujuan</td><td class=\"unit\">\\text{tanpa satuan (n } \\ge 1)</td></tr>\n<tr><td class=\"sym\">\\(\\theta_1\\)</td><td>Sudut datang (diukur terhadap garis normal tegak lurus bidang)</td><td class=\"unit\">\\text{derajat (}^\\circ\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(\\theta_2\\)</td><td>Sudut bias (diukur terhadap garis normal)</td><td class=\"unit\">\\text{derajat (}^\\circ\\text{)}</td></tr>\n<tr><td class=\"sym\">\\(\\theta_k\\)</td><td>Sudut kritis batas terjadinya Pemantulan Total Internal (Total Internal Reflection)</td><td class=\"unit\">\\text{derajat (}^\\circ\\text{)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Cahaya dari rapat ke renggang (n₁ > n₂) dibiaskan MENJAUHI garis normal (θ₂ > θ₁). Jika sudut datang melebihi sudut kritis (θ₁ > θ_k), cahaya TIDAK lagi dibiaskan, melainkan dipantulkan sempurna 100% (prinsip serat optik / fiber optic).</small></p>"
         },
         {
-          "type": "sim",
-          "src": "sim/alat-optik.html",
-          "title": "Alat optik",
-          "height": 520,
-          "caption": "Pada mode mikroskop, dekatkan preparat ke titik fokus objektif. Apa yang terjadi pada perbesaran dan panjang mikroskop?"
+          "type": "callout",
+          "variant": "tips",
+          "title": "Kedalaman Semu (Apparent Depth)",
+          "html": "<p>Saat Anda melihat ikan di dalam kolam jernih dari udara tepat di atasnya (\\(\\theta \\approx 0^\\circ\\)), ikan tampak berada lebih dangkal dibanding posisi sebenarnya:\n\\[ h' = h \\cdot \\frac{n_{\\text{pengamat}}}{n_{\\text{benda}}} = h \\cdot \\frac{n_{\\text{udara}}}{n_{\\text{air}}} = \\frac{h}{1,33} \\approx 0,75\\, h \\]</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Cahaya dari air (n = 4/3) menuju udara. Berapa sudut kritisnya?</p>",
+          "title": "Contoh Perhitungan Sudut Kritis Berlian-Air",
+          "question": "<p>Sebuah berkas cahaya merambat di dalam air (n₁ = 4/3). Berapakah sudut kritis jika berkas cahaya hendak keluar menuju udara (n₂ = 1)?</p>",
           "steps": [
-            "sin θk = 1/(4/3) = 0,75.",
-            "θk ≈ 48,6°."
+            "Syarat pemantulan total: berkas dari medium lebih rapat (air) ke renggang (udara).",
+            "Terapkan rumus sudut kritis: sin θ_k = n₂ / n₁.",
+            "sin θ_k = 1 / (4/3) = 3/4 = 0,75.",
+            "θ_k = arcsin(0,75) ≈ 48,6°."
           ],
-          "answer": "± 48,6°"
+          "answer": "Sudut kritis air-udara adalah sekitar 48,6 derajat."
         },
         {
           "type": "check",
-          "question": "Cacat mata yang ditolong dengan lensa cekung adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Kabel serat optik (fiber optic) yang mentransmisikan data internet super cepat bekerja berdasarkan prinsip optik ....",
           "options": {
-            "A": "hipermetropi",
-            "B": "presbiopi",
-            "C": "miopi",
-            "D": "katarak"
+            "A": "Difraksi cahaya pada celah mikro",
+            "B": "Pemantulan total internal di dalam inti kabel",
+            "C": "Dispersi warna cahaya oleh kaca prisma",
+            "D": "Polarisasi gelombang transversal"
           },
-          "answer": "C",
-          "hint": "Miopi: bayangan jatuh di depan retina.",
-          "explanation": "Lensa cekung menyebarkan cahaya sehingga bayangan benda jauh mundur tepat ke retina."
+          "answer": "B",
+          "hint": "Sinyal cahaya terperangkap di dalam serat optik karena mengalami pemantulan total internal secara berulang-ulang tanpa energi keluar menembus selubung (cladding).",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "lensa-tipis-cembung-cekung",
-      "title": "Pembentukan Bayangan pada Lensa Cembung dan Cekung",
+      "title": "Lensa Tipis Cembung-Cekung, Persamaan Pembuat Lensa, dan Kuat Lensa",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Pembentukan Bayangan pada Lensa Cembung dan Cekung</b>: Menganalisis sinar istimewa lensa tipis, rumus pembuat lensa (Lensmaker's Equation), dan kekuatan lensa P = 100/f (dioptri).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Pembiasan Ganda pada Lensa Tipis</h3>\n<p>Lensa adalah benda bening yang dibatasi oleh dua bidang lengkung (atau satu bidang lengkung dan satu bidang datar). Cahaya mengalami dua kali pembiasan saat memasuki dan meninggalkan lensa.</p>\n<ul>\n  <li><b>Lensa Cembung (Konveks / Konvergen / Positif)</b>: bagian tengah lebih tebal daripada bagian tepi. Mengumpulkan berkas cahaya ke satu titik fokus nyata. Fokus bernilai <b>positif (\\(f > 0\\))</b>.</li>\n  <li><b>Lensa Cekung (Konkaf / Divergen / Negatif)</b>: bagian tengah lebih tipis daripada bagian tepi. Menyebarkan berkas cahaya seolah-olah berasal dari titik fokus maya. Fokus bernilai <b>negatif (\\(f < 0\\))</b>.</li>\n</ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan Pembuat Lensa dan Kuat Lensa (Dioptri)",
+          "html": "<div class=\"fc-display\">\n\\[ \\frac{1}{f} = \\left(\\frac{n_l}{n_m} - 1\\right)\\left(\\frac{1}{R_1} + \\frac{1}{R_2}\\right) \\qquad \\Big| \\qquad P = \\frac{1}{f\\text{ (m)}} = \\frac{100}{f\\text{ (cm)}} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(f\\)</td><td>Jarak fokus lensa tipis</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(n_l\\)</td><td>Indeks bias bahan penyusun lensa (misal kaca n = 1,5)</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(n_m\\)</td><td>Indeks bias medium di sekeliling lensa (udara = 1, air = 1,33)</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(R_1, R_2\\)</td><td>Jari-jari kelengkungan permukaan 1 dan 2 lensa</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(P\\)</td><td>Kekuatan / daya lensa</td><td class=\"unit\">\\text{Dioptri (D)} = \\text{m}^{-1}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Konvensi tanda R: Cembung R bernilai (+), Cekung R bernilai (-), Datar R = ∞ (sehingga 1/R = 0). Jika lensa kaca dicelupkan ke dalam air, fokusnya menjadi LEBIH PANJANG (lensa menjadi kurang membiaskan cahaya karena rasio n_l/n_m mengecil).</small></p>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tulis tanda f dan s' dengan teliti; s' negatif berarti maya.</li><li>Untuk dua lensa, bayangan lensa pertama menjadi benda lensa kedua; jarak benda kedua = jarak antarlensa − s'₁.</li><li>Ubah jarak ke meter sebelum menghitung dioptri, atau gunakan P = 100/f dengan f dalam cm.</li><li>Frekuensi cahaya tetap saat masuk medium lain; kelajuan dan panjang gelombangnya berkurang.</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas8/IPA/05 Gelombang dan Cahaya/sim/lensa.html",
-          "title": "Pembentukan bayangan oleh lensa",
-          "height": 500,
-          "caption": "Geser benda dari jauh ke dekat lensa cembung. Kapan bayangan berubah dari nyata menjadi maya?"
+          "title": "Kombinasi Dua Lensa Tipis yang Ditempelkan",
+          "html": "<p>Jika dua lensa tipis dengan kekuatan \\(P_1\\) dan \\(P_2\\) (atau fokus \\(f_1\\) dan \\(f_2\\)) ditempelkan rapat bersentuhan:</p>\n\\[ P_{\\text{gab}} = P_1 + P_2 \\qquad \\Longleftrightarrow \\qquad \\frac{1}{f_{\\text{gab}}} = \\frac{1}{f_1} + \\frac{1}{f_2} \\]"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Seseorang memiliki titik jauh 2 m. Berapa kekuatan kacamata yang diperlukan untuk melihat benda jauh dengan normal?</p>",
+          "title": "Contoh Perhitungan Kuat Lensa dan Bayangan Lensa Cembung",
+          "question": "<p>Sebuah lensa cembung memiliki jarak fokus 20 cm. (a) Hitung kekuatan lensa tersebut dalam satuan dioptri! (b) Jika benda diletakkan 30 cm di depan lensa, di manakah bayangan terbentuk?</p>",
           "steps": [
-            "P = −100/PR = −100/200."
+            "(a) Kuat lensa: P = 100 / f(cm) = 100 / +20 = +5 Dioptri.",
+            "(b) Jarak bayangan: 1/f = 1/s + 1/s'  =>  1/20 = 1/30 + 1/s'.",
+            "1/s' = 1/20 - 1/30 = (3 - 2) / 60 = 1/60  =>  s' = +60 cm.",
+            "Perbesaran: M = |s' / s| = |60 / 30| = 2 kali lipat (nyata, terbalik, diperbesar)."
           ],
-          "answer": "−0,5 dioptri"
+          "answer": "Kekuatan lensa +5 Dioptri, bayangan terbentuk 60 cm di belakang lensa (nyata, terbalik)."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah lensa bikonveks (kedua permukaan cembung simetris R₁ = R₂ = 20 cm) terbuat dari kaca berindeks bias 1,5. Jarak fokus lensa tersebut di udara adalah ....",
+          "options": {
+            "A": "10 cm",
+            "B": "20 cm",
+            "C": "30 cm",
+            "D": "40 cm"
+          },
+          "answer": "B",
+          "hint": "Gunakan pembuat lensa: 1/f = (n_l - 1)(1/R₁ + 1/R₂).",
+          "explanation": "1/f = (1,5 - 1)(1/20 + 1/20) = 0,5 × (2/20) = 0,5 × 0,1 = 0,05 = 1/20  =>  f = 20 cm."
         }
       ]
     },
     {
       "id": "cacat-mata-dan-kacamata",
-      "title": "Fisiologi Mata, Titik Dekat/Jauh, dan Koreksi Kacamata (Miopi & Hipermetropi)",
-      "kind": "latihan",
-      "duration": "16 menit",
+      "title": "Optika Mata Manusia, Daya Akomodasi, dan Koreksi Cacat Mata (Kacamata)",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Fisiologi Mata, Titik Dekat/Jauh, dan Koreksi Kacamata (Miopi & Hipermetropi)</b>: Menghitung kuat lensa negatif untuk penderita rabun jauh (P = −100/PR) dan lensa positif untuk rabun dekat (P = 4 − 100/PP).</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Mekanisme Penglihatan dan Daya Akomodasi</h3>\n<p>Mata manusia membentuk bayangan nyata, terbalik, dan diperkecil tepat pada bintik kuning retina. Agar dapat melihat benda pada berbagai jarak, otot siliaris mengubah ketebalan dan kelengkungan lensa mata; kemampuan ini disebut <b>Daya Akomodasi Mata</b>.</p>\n<ul>\n  <li><b>Titik Dekat (Punctum Proximum / PP)</b>: jarak terdekat yang masih dapat dilihat dengan jelas saat mata berakomodasi maksimum (mata normal emetrop: \\(s_n = PP = 25\\) cm).</li>\n  <li><b>Titik Jauh (Punctum Remotum / PR)</b>: jarak terjauh yang masih dapat dilihat dengan jelas tanpa akomodasi / rileks (mata normal: \\(PR = \\infty\\)).</li>\n</ul>\n<h3>Dua Cacat Mata Utama pada Ujian TKA</h3>\n<p><b>1. Miopi (Rabun Jauh)</b>: Bayangan jatuh di depan retina karena bola mata terlalu lonjong atau lensa terlalu cembung. Titik jauh terbatas (\\(PR < \\infty\\)). Ditolong dengan <b>kacamata berlensa cekung (negatif)</b> agar benda di tak hingga (\\(s = \\infty\\)) dibentuk menjadi bayangan maya di titik jauhnya (\\(s' = -PR\\)).</p>\n<p><b>2. Hipermetropi (Rabun Dekat)</b>: Bayangan jatuh di belakang retina karena bola mata terlalu pipih. Titik dekat menjauh (\\(PP > 25\\) cm). Ditolong dengan <b>kacamata berlensa cembung (positif)</b> agar benda pada jarak baca normal (\\(s = s_n = 25\\) cm) dibentuk bayangannya di titik dekat penderita (\\(s' = -PP\\)).</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tulis tanda f dan s' dengan teliti; s' negatif berarti maya.</li><li>Untuk dua lensa, bayangan lensa pertama menjadi benda lensa kedua; jarak benda kedua = jarak antarlensa − s'₁.</li><li>Ubah jarak ke meter sebelum menghitung dioptri, atau gunakan P = 100/f dengan f dalam cm.</li><li>Frekuensi cahaya tetap saat masuk medium lain; kelajuan dan panjang gelombangnya berkurang.</li></ul>"
+          "variant": "rumus",
+          "title": "Persamaan Daya Kacamata untuk Miopi dan Hipermetropi",
+          "html": "<div class=\"fc-display\">\n\\[ P_{\\text{miopi}} = -\\frac{100}{PR\\text{ (cm)}} \\qquad \\Big| \\qquad P_{\\text{hipermetropi}} = \\frac{100}{s_n\\text{ (cm)}} - \\frac{100}{PP\\text{ (cm)}} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(P\\)</td><td>Kuat lensa kacamata yang dibutuhkan penderita</td><td class=\"unit\">\\text{Dioptri (D)}</td></tr>\n<tr><td class=\"sym\">\\(PR\\)</td><td>Titik jauh mata miopi (jarak terjauh yang terlihat tanpa kacamata)</td><td class=\"unit\">\\text{cm}</td></tr>\n<tr><td class=\"sym\">\\(PP\\)</td><td>Titik dekat mata hipermetropi (jarak terdekat yang terlihat jelas)</td><td class=\"unit\">\\text{cm}</td></tr>\n<tr><td class=\"sym\">\\(s_n\\)</td><td>Jarak baca standar yang diinginkan (umumnya 25 cm atau 30 cm)</td><td class=\"unit\">\\text{cm}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perhatikan tanda: Kacamata miopi selalu bertanda MINUS (-), kacamata hipermetropi selalu bertanda PLUS (+).</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Lup berjarak fokus 10 cm dipakai oleh mata normal. Berapa perbesarannya saat mata tidak berakomodasi dan saat berakomodasi maksimum?</p>",
+          "title": "Contoh Perhitungan Kacamata Miopi dan Hipermetropi",
+          "question": "<p>(a) Seseorang hanya dapat melihat benda terjauh dengan jelas pada jarak 200 cm. Berapakah kekuatan kacamata yang ia perlukan?<br>(b) Seorang kakek tidak dapat membaca koran pada jarak lebih dekat dari 50 cm. Berapakah kekuatan kacamata baca yang dibutuhkannya agar dapat membaca pada jarak normal 25 cm?</p>",
           "steps": [
-            "Tidak berakomodasi: 25/10 = 2,5 kali.",
-            "Akomodasi maksimum: 25/10 + 1 = 3,5 kali."
+            "(a) Penderita miopi dengan PR = 200 cm: P = -100 / PR = -100 / 200 = -0,5 Dioptri.",
+            "(b) Penderita hipermetropi dengan PP = 50 cm dan s_n = 25 cm:",
+            "P = (100 / s_n) - (100 / PP) = (100 / 25) - (100 / 50) = 4 - 2 = +2 Dioptri."
           ],
-          "answer": "2,5 kali dan 3,5 kali"
+          "answer": "(a) Miopi butuh lensa -0,5 Dioptri. (b) Hipermetropi butuh lensa +2 Dioptri."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Fisiologi Mata, Titik Dekat/Jauh, dan Koreksi Kacamata (Miopi & Hipermetropi), pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Seseorang yang memakai kacamata berkekuatan -2,5 Dioptri memiliki titik jauh mata (PR) sebesar ....",
           "options": {
-            "A": "Konsep Fisiologi Mata, Titik Dekat/Jauh, dan Koreksi Kacamata (Miopi & Hipermetropi) berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "25 cm",
+            "B": "40 cm",
+            "C": "50 cm",
+            "D": "250 cm"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung kuat lensa negatif untuk penderita rabun jauh (P = −100/PR) dan lensa positif untuk rabun dekat (P = 4 − 100/PP).."
+          "answer": "B",
+          "hint": "P = -100 / PR  =>  -2,5 = -100 / PR  =>  PR = 100 / 2,5 = 40 cm.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "kaca-pembesar-lup",
-      "title": "Lup (Kaca Pembesar): Perbesaran Anguler Berakomodasi vs Rileks",
+      "title": "Kaca Pembesar (Lup): Perbesaran Anguler Berakomodasi Maksimum dan Rileks",
       "kind": "artikel",
-      "duration": "14 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Lup (Kaca Pembesar): Perbesaran Anguler Berakomodasi vs Rileks</b>: Menghitung perbesaran anguler lup untuk mata berakomodasi maksimum (M = Sn/f + 1) dan tanpa akomodasi (M = Sn/f).</p>"
+          "html": "<h3>Prinsip Pembesaran Sudut (Angular Magnification)</h3>\n<p>Lup (kaca pembesar) adalah sebuah lensa cembung sederhana yang digunakan untuk melihat benda renik dengan memperbesar sudut pandang (subtended angle) pada retina mata. Benda diletakkan di antara lensa dan titik fokus (\\(s \\le f\\)) sehingga terbentuk bayangan <b>maya, tegak, dan diperbesar</b>.</p>\n<p>Dua kondisi pengamatan lup yang paling sering diujikan:</p>\n<ol>\n  <li><b>Mata Berakomodasi Maksimum</b>: Bayangan maya dibentuk tepat pada titik dekat mata (\\(s' = -s_n = -25\\) cm). Mata cepat lelah.</li>\n  <li><b>Mata Tanpa Akomodasi (Rileks)</b>: Benda diletakkan tepat di titik fokus lensa (\\(s = f\\)), sehingga berkas sinar keluar sejajar dan bayangan terbentuk di tak hingga (\\(s' = \\infty\\)). Pengamatan sangat nyaman untuk waktu lama.</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\dfrac1f = \\dfrac1s + \\dfrac1{s'}\\); cermin \\(f = R/2\\); \\(M = |s'/s| = h'/h\\); \\(P = 100/f\\) (f dalam cm).</li><li>Snellius: \\(n_1\\sin\\theta_1 = n_2\\sin\\theta_2\\); \\(n = c/v\\); \\(\\lambda_\\text{medium} = \\lambda_0/n\\). Sudut kritis: \\(\\sin\\theta_k = n_2/n_1\\).</li><li>Hipermetropi/presbiopi: \\(P = \\dfrac{100}{25} - \\dfrac{100}{PP}\\). Miopi: \\(P = -\\dfrac{100}{PR}\\).</li><li>Lup: \\(M = Sn/f\\) (tak berakomodasi), \\(M = Sn/f + 1\\) (akomodasi maksimum).</li><li>Mikroskop: \\(M = \\dfrac{s'_{ob}}{s_{ob}} \\times \\dfrac{Sn}{f_{ok}}\\). Teropong bintang: \\(M = f_{ob}/f_{ok}\\), \\(d = f_{ob} + f_{ok}\\).</li></ul>"
+          "title": "Persamaan Perbesaran Sudut Lup",
+          "html": "<div class=\"fc-display\">\n\\[ M_{\\text{akom. maks}} = \\frac{s_n}{f} + 1 \\qquad \\Big| \\qquad M_{\\text{tanpa akom.}} = \\frac{s_n}{f} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M\\)</td><td>Perbesaran sudut / anguler lup</td><td class=\"unit\">\\text{kali lipat}</td></tr>\n<tr><td class=\"sym\">\\(s_n\\)</td><td>Jarak titik dekat mata pengamat (standar normal = 25 cm)</td><td class=\"unit\">\\text{cm}</td></tr>\n<tr><td class=\"sym\">\\(f\\)</td><td>Jarak fokus lensa lup</td><td class=\"unit\">\\text{cm}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perbesaran saat berakomodasi maksimum SELALU tepat 1 kali lebih besar daripada saat tanpa berakomodasi.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Teropong bintang memiliki fokus objektif 150 cm dan fokus okuler 3 cm. Tentukan perbesaran dan panjangnya untuk mata tidak berakomodasi.</p>",
+          "title": "Contoh Perhitungan Perbesaran Lup",
+          "question": "<p>Seorang pengamat bermata normal (sn = 25 cm) mengamati tulisan kecil menggunakan lup dengan kekuatan 20 Dioptri. Tentukan perbesaran bayangan yang diperoleh jika: (a) mata berakomodasi maksimum, (b) mata rileks tanpa akomodasi!</p>",
           "steps": [
-            "M = 150/3 = 50 kali.",
-            "d = 150 + 3 = 153 cm."
+            "Hitung fokus lup: f = 100 / P = 100 / 20 = 5 cm.",
+            "(a) Mata berakomodasi maksimum: M = (s_n / f) + 1 = (25 / 5) + 1 = 5 + 1 = 6 kali.",
+            "(b) Mata rileks tanpa akomodasi: M = s_n / f = 25 / 5 = 5 kali."
           ],
-          "answer": "50 kali dan 153 cm"
+          "answer": "(a) 6 kali saat akomodasi maksimum; (b) 5 kali saat tanpa akomodasi."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Jika sebuah lup dengan panjang fokus 10 cm digunakan oleh orang bermata normal (sn = 25 cm) dengan mata tidak berakomodasi, letak preparat benda harus diletakkan pada jarak ....",
+          "options": {
+            "A": "5,0 cm di depan lup",
+            "B": "7,14 cm di depan lup",
+            "C": "10,0 cm di depan lup",
+            "D": "25,0 cm di depan lup"
+          },
+          "answer": "C",
+          "hint": "Agar mata tidak berakomodasi, berkas sinar harus keluar sejajar menuju tak hingga, yang mensyaratkan benda berada tepat di titik fokus (s = f = 10 cm).",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "mikroskop-dua-lensa",
-      "title": "Mikroskop: Sistem Dua Lensa Obyektif dan Okuler",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Mikroskop: Sistem Dua Lensa Obyektif dan Okuler serta Panjang Tubus",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Mikroskop: Sistem Dua Lensa Obyektif dan Okuler</b>: Menghitung perbesaran total mikroskop M_tot = M_ob · M_ok dan panjang tabung tubus d = s'_ob + s_ok.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Sistem Optik Dua Lensa Pembesar</h3>\n<p>Mikroskop digunakan untuk melihat objek mikroskopis yang tidak dapat dilihat dengan mata telanjang atau lup biasa. Mikroskop tersusun atas dua lensa cembung:</p>\n<ol>\n  <li><b>Lensa Obyektif (f_ob pendek)</b>: terletak dekat benda. Benda diletakkan di Ruang II (\\(f_{ob} < s_{ob} < 2f_{ob}\\)) sehingga menghasilkan bayangan pertama yang bersifat <b>nyata, terbalik, dan diperbesar</b>.</li>\n  <li><b>Lensa Okuler (f_ok > f_ob)</b>: berfungsi sebagai lup yang memperbesar bayangan dari lensa obyektif, menghasilkan bayangan akhir yang bersifat <b>maya, terbalik terhadap benda asli, dan sangat diperbesar</b>.</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\dfrac1f = \\dfrac1s + \\dfrac1{s'}\\); cermin \\(f = R/2\\); \\(M = |s'/s| = h'/h\\); \\(P = 100/f\\) (f dalam cm).</li><li>Snellius: \\(n_1\\sin\\theta_1 = n_2\\sin\\theta_2\\); \\(n = c/v\\); \\(\\lambda_\\text{medium} = \\lambda_0/n\\). Sudut kritis: \\(\\sin\\theta_k = n_2/n_1\\).</li><li>Hipermetropi/presbiopi: \\(P = \\dfrac{100}{25} - \\dfrac{100}{PP}\\). Miopi: \\(P = -\\dfrac{100}{PR}\\).</li><li>Lup: \\(M = Sn/f\\) (tak berakomodasi), \\(M = Sn/f + 1\\) (akomodasi maksimum).</li><li>Mikroskop: \\(M = \\dfrac{s'_{ob}}{s_{ob}} \\times \\dfrac{Sn}{f_{ok}}\\). Teropong bintang: \\(M = f_{ob}/f_{ok}\\), \\(d = f_{ob} + f_{ok}\\).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas8/IPA/05 Gelombang dan Cahaya/sim/lensa.html",
-          "title": "Pembentukan bayangan oleh lensa",
-          "height": 500,
-          "caption": "Geser benda dari jauh ke dekat lensa cembung. Kapan bayangan berubah dari nyata menjadi maya?"
+          "title": "Persamaan Perbesaran Total Mikroskop dan Panjang Tubus",
+          "html": "<div class=\"fc-display\">\n\\[ M_{\\text{total}} = M_{ob} \\times M_{ok} \\qquad \\Longleftrightarrow \\qquad d = s_{ob}' + s_{ok} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M_{\\text{total}}\\)</td><td>Perbesaran total mikroskop</td><td class=\"unit\">\\text{kali lipat}</td></tr>\n<tr><td class=\"sym\">\\(M_{ob}\\)</td><td>Perbesaran linier lensa obyektif (\\(M_{ob} = |\frac{s_{ob}'}{s_{ob}}|\\))</td><td class=\"unit\">\\text{kali lipat}</td></tr>\n<tr><td class=\"sym\">\\(M_{ok}\\)</td><td>Perbesaran anguler lensa okuler (lup): \\(\frac{s_n}{f_{ok}} + 1\\) (akomodasi maks) atau \\(\frac{s_n}{f_{ok}}\\) (tanpa akomodasi)</td><td class=\"unit\">\\text{kali lipat}</td></tr>\n<tr><td class=\"sym\">\\(d\\)</td><td>Panjang tubus mikroskop (jarak antara lensa obyektif dan lensa okuler)</td><td class=\"unit\">\\text{cm}</td></tr>\n<tr><td class=\"sym\">\\(s_{ob}'\\)</td><td>Jarak bayangan obyektif</td><td class=\"unit\">\\text{cm}</td></tr>\n<tr><td class=\"sym\">\\(s_{ok}\\)</td><td>Jarak benda bagi lensa okuler (untuk mata tanpa akomodasi: \\(s_{ok} = f_{ok}\\))</td><td class=\"unit\">\\text{cm}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Untuk mata tanpa akomodasi (pengamatan rileks): s_ok = f_ok, sehingga panjang tubus menjadi d = s_ob' + f_ok.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Mikroskop: Sistem Dua Lensa Obyektif dan Okuler",
-          "question": "<p>Perhatikan permasalahan terkait <b>Mikroskop: Sistem Dua Lensa Obyektif dan Okuler</b> berikut. Analisislah berdasarkan prinsip Menghitung perbesaran total mikroskop M_tot = M_ob · M_ok dan panjang tabung tubus d = s'_ob + s_ok..</p>",
+          "title": "Contoh Perhitungan Mikroskop Mata Rileks",
+          "question": "<p>Sebuah mikroskop memiliki lensa obyektif dengan fokus 1 cm dan lensa okuler dengan fokus 5 cm. Sebuah preparat diletakkan 1,2 cm di depan lensa obyektif. Pengamat bermata normal (sn = 25 cm) melihat preparat tanpa berakomodasi. Tentukan: (a) perbesaran total mikroskop, (b) panjang tubus mikroskop!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Langkah 1 (Lensa Obyektif): 1/f_ob = 1/s_ob + 1/s_ob'  =>  1/1 = 1/1,2 + 1/s_ob'.",
+            "1/s_ob' = 1 - 5/6 = 1/6  =>  s_ob' = +6 cm.",
+            "Perbesaran obyektif: M_ob = |s_ob' / s_ob| = 6 / 1,2 = 5 kali.",
+            "Langkah 2 (Lensa Okuler tanpa akomodasi): M_ok = s_n / f_ok = 25 / 5 = 5 kali.",
+            "(a) Perbesaran total: M_total = M_ob × M_ok = 5 × 5 = 25 kali lipat.",
+            "(b) Panjang tubus tanpa akomodasi (s_ok = f_ok): d = s_ob' + f_ok = 6 + 5 = 11 cm."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Perbesaran total 25 kali lipat dan panjang tubus mikroskop 11 cm."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sifat bayangan akhir yang dihasilkan oleh mikroskop untuk mata pengamat adalah ....",
+          "options": {
+            "A": "Nyata, tegak, diperbesar",
+            "B": "Maya, terbalik terhadap benda asli, diperbesar",
+            "C": "Maya, tegak terhadap benda asli, diperkecil",
+            "D": "Nyata, terbalik terhadap benda asli, diperkecil"
+          },
+          "answer": "B",
+          "hint": "Lensa objektif membentuk bayangan nyata dan terbalik. Lensa okuler (lup) membentuk bayangan maya yang searah dengan bayangan objektif (sehingga tetap terbalik terhadap benda asli) dan sangat diperbesar.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "teropong-bintang-dan-bumi",
-      "title": "Teleskop: Teropong Bintang dan Teropong Bumi",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Teropong Bintang (Teleskop Astronomi) dan Teropong Bumi (Teleskop Terestrial)",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Teleskop: Teropong Bintang dan Teropong Bumi</b>: Menghitung perbesaran teropong bintang M = f_ob / f_ok dan panjang tabung d = f_ob + f_ok untuk mata rileks.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Teleskop Pengamat Benda Jauh</h3>\n<p>Teropong digunakan untuk melihat benda-benda yang sangat jauh (\\(s_{ob} \\approx \\infty\\)) sehingga bayangan pertama oleh lensa obyektif selalu terbentuk tepat di titik fokus obyektif (\\(s_{ob}' = f_{ob}\\)).</p>\n<ol>\n  <li><b>Teropong Bintang (Astronomis)</b>: Terdiri dari dua lensa cembung dengan <b>\\(f_{ob} \\gg f_{ok}\\)</b>. Bayangan akhir bersifat maya, terbalik, dan diperbesar (tidak masalah terbalik karena benda langit tidak memiliki atas-bawah).</li>\n  <li><b>Teropong Bumi (Terestrial)</b>: Ditambahkan satu lensa cembung ketiga di antara obyektif dan okuler yang disebut <b>Lensa Pembalik (\\(f_p\\))</b> agar bayangan tegak seperti kenyataan. Lensa pembalik tidak memperbesar (\\(M = 1\\)) tetapi menambah panjang tabung sebesar \\(4f_p\\).</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\dfrac1f = \\dfrac1s + \\dfrac1{s'}\\); cermin \\(f = R/2\\); \\(M = |s'/s| = h'/h\\); \\(P = 100/f\\) (f dalam cm).</li><li>Snellius: \\(n_1\\sin\\theta_1 = n_2\\sin\\theta_2\\); \\(n = c/v\\); \\(\\lambda_\\text{medium} = \\lambda_0/n\\). Sudut kritis: \\(\\sin\\theta_k = n_2/n_1\\).</li><li>Hipermetropi/presbiopi: \\(P = \\dfrac{100}{25} - \\dfrac{100}{PP}\\). Miopi: \\(P = -\\dfrac{100}{PR}\\).</li><li>Lup: \\(M = Sn/f\\) (tak berakomodasi), \\(M = Sn/f + 1\\) (akomodasi maksimum).</li><li>Mikroskop: \\(M = \\dfrac{s'_{ob}}{s_{ob}} \\times \\dfrac{Sn}{f_{ok}}\\). Teropong bintang: \\(M = f_{ob}/f_{ok}\\), \\(d = f_{ob} + f_{ok}\\).</li></ul>"
+          "title": "Persamaan Teropong Bintang dan Teropong Bumi (Mata Rileks)",
+          "html": "<div class=\"fc-display\">\n\\[ M = \\frac{f_{ob}}{f_{ok}} \\qquad \\Big| \\qquad d_{\\text{bintang}} = f_{ob} + f_{ok} \\qquad \\Big| \\qquad d_{\\text{bumi}} = f_{ob} + 4f_p + f_{ok} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(M\\)</td><td>Perbesaran sudut teropong bintang / bumi</td><td class=\"unit\">\\text{kali lipat}</td></tr>\n<tr><td class=\"sym\">\\(f_{ob}\\)</td><td>Jarak fokus lensa obyektif (sangat panjang)</td><td class=\"unit\">\\text{cm}</td></tr>\n<tr><td class=\"sym\">\\(f_{ok}\\)</td><td>Jarak fokus lensa okuler (pendek)</td><td class=\"unit\">\\text{cm}</td></tr>\n<tr><td class=\"sym\">\\(f_p\\)</td><td>Jarak fokus lensa pembalik pada teropong bumi</td><td class=\"unit\">\\text{cm}</td></tr>\n<tr><td class=\"sym\">\\(d\\)</td><td>Panjang tabung teropong</td><td class=\"unit\">\\text{cm}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Semakin panjang fokus obyektif f_ob dan semakin pendek fokus okuler f_ok, perbesaran teropong bintang M = f_ob / f_ok akan semakin besar.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Teleskop: Teropong Bintang dan Teropong Bumi",
-          "question": "<p>Perhatikan permasalahan terkait <b>Teleskop: Teropong Bintang dan Teropong Bumi</b> berikut. Analisislah berdasarkan prinsip Menghitung perbesaran teropong bintang M = f_ob / f_ok dan panjang tabung d = f_ob + f_ok untuk mata rileks..</p>",
+          "title": "Contoh Perhitungan Teropong Bintang",
+          "question": "<p>Sebuah teropong bintang memiliki lensa obyektif dengan jarak fokus 120 cm dan lensa okuler dengan fokus 6 cm. Pengamatan dilakukan dengan mata tidak berakomodasi. Tentukan: (a) perbesaran anguler teropong, (b) panjang tabung teropong!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "(a) Perbesaran anguler mata rileks: M = f_ob / f_ok = 120 / 6 = 20 kali lipat.",
+            "(b) Panjang tabung teropong mata rileks: d = f_ob + f_ok = 120 + 6 = 126 cm."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Perbesaran 20 kali lipat dan panjang tabung teropong 126 cm."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Teleskop: Teropong Bintang dan Teropong Bumi, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah teropong bumi memiliki fokus obyektif 80 cm, fokus pembalik 5 cm, dan fokus okuler 10 cm. Panjang tabung teropong bumi tersebut untuk mata tak berakomodasi adalah ....",
           "options": {
-            "A": "Konsep Teleskop: Teropong Bintang dan Teropong Bumi berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "95 cm",
+            "B": "105 cm",
+            "C": "110 cm",
+            "D": "120 cm"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung perbesaran teropong bintang M = f_ob / f_ok dan panjang tabung d = f_ob + f_ok untuk mata rileks.."
+          "answer": "C",
+          "hint": "d = f_ob + 4f_p + f_ok = 80 + 4(5) + 10 = 80 + 20 + 10 = 110 cm.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-08",
-      "title": "Strategi Cepat Optika dan Latihan Kuis Bab 8",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Cahaya dan Alat Optik",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Optika dan Latihan Kuis Bab 8</b>: Menuntaskan soal gabungan cermin, lensa, dan alat optik serta menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tulis tanda f dan s' dengan teliti; s' negatif berarti maya.</li><li>Untuk dua lensa, bayangan lensa pertama menjadi benda lensa kedua; jarak benda kedua = jarak antarlensa − s'₁.</li><li>Ubah jarak ke meter sebelum menghitung dioptri, atau gunakan P = 100/f dengan f dalam cm.</li><li>Frekuensi cahaya tetap saat masuk medium lain; kelajuan dan panjang gelombangnya berkurang.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Optika dan Latihan Kuis Bab 8",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Optika dan Latihan Kuis Bab 8</b> berikut. Analisislah berdasarkan prinsip Menuntaskan soal gabungan cermin, lensa, dan alat optik serta menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Optika dan Latihan Kuis Bab 8, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Optika dan Latihan Kuis Bab 8 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan soal gabungan cermin, lensa, dan alat optik serta menyelesaikan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Rumus Kunci Cahaya dan Alat Optik</h3>\n<p>Kuasai pemantulan cermin, hukum pembiasan Snellius, pembuat lensa, rumus kacamata cacat mata, perbesaran lup (\\(s_n/f + 1\\) vs \\(s_n/f\\)), mikroskop (\\(M_{ob} \\times M_{ok}\\)), dan teropong (\\(f_{ob}/f_{ok}\\)).</p>\n<p>Uji pemahaman Anda melalui kuis resmi 20 soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Cahaya dan Alat Optik. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Fisika: Cahaya dan Alat Optik (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

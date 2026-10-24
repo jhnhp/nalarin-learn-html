@@ -1,287 +1,255 @@
 {
   "title": "Data dan Peluang",
-  "summary": "Statistika deskriptif dan teori probabilitas: pemusatan data (mean, median, modus), penyebaran data (jangkauan, kuartil, simpangan baku, varians), diagram kotak-garis (boxplot), aturan pencacahan (permutasi & kombinasi), serta peluang kejadian majemuk saling lepas dan saling bebas.",
+  "summary": "Materi komprehensif TKA Matematika SMA: ukuran pemusatan mean gabungan dan median, ukuran penyebaran dan invariansi operasi data, kaidah permutasi dan kombinasi, teorema binomial, peluang teoritis ruang sampel, serta kejadian majemuk saling lepas, saling bebas, dan bersyarat.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "ukuran-pemusatan-data-tunggal-kelompok",
-      "title": "Ukuran Pemusatan: Mean, Median, Modus, dan Pengaruh Transformasi Data",
+      "title": "Ukuran Pemusatan: Mean (Rata-rata Gabungan), Median, dan Modus",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Ukuran Pemusatan: Mean, Median, Modus, dan Pengaruh Transformasi Data</b>: Menganalisis pergeseran nilai statistik saat seluruh data ditambah c atau dikalikan k (x_baru = kx + c).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Tiga Ukuran Pemusatan Data Utama</h3>\n<ol>\n  <li><b>Mean (Rata-Rata Hitung \\(\\bar{x}\\))</b>: sensitif terhadap nilai pencilan (outlier ekstrim).</li>\n  <li><b>Median (\\(Me = Q_2\\))</b>: nilai tengah setelah data diurutkan. Kebal terhadap outlier ekstrim.</li>\n  <li><b>Modus (\\(Mo\\))</b>: nilai atau kategori dengan frekuensi kemunculan terbanyak.</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>Median kelompok: T<sub>b</sub> + (n/2 − F)/f × p.</li><li>σ² = Σ(x − x̄)²/n; σ = √σ².</li><li>P(n, r) = n!/(n − r)!; C(n, r) = n!/(r!(n − r)!).</li><li>P(A ∪ B) = P(A) + P(B) − P(A ∩ B); saling bebas: P(A ∩ B) = P(A)P(B); bersyarat: P(A ∩ B) = P(A)P(B | A).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/histogram.html",
-          "title": "Histogram dan data kelompok",
-          "height": 640,
-          "caption": "Bandingkan rata-rata dan median data kelompok dengan nilai sebenarnya."
+          "title": "Formula Rata-Rata Gabungan (Weighted Mean)",
+          "html": "<div class=\"fc-display\">\n\\[ \\bar{x}_{\\text{gab}} = \\frac{n_1 \\bar{x}_1 + n_2 \\bar{x}_2 + \\dots + n_k \\bar{x}_k}{n_1 + n_2 + \\dots + n_k} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\bar{x}_{\\text{gab}}\\)</td><td>Rata-rata nilai gabungan seluruh kelompok</td><td class=\"unit\">\\text{nilai data}</td></tr>\n<tr><td class=\"sym\">\\(n_1, n_2\\)</td><td>Banyaknya data anggota kelompok 1 dan 2</td><td class=\"unit\">\\text{frekuensi / orang}</td></tr>\n<tr><td class=\"sym\">\\(\\bar{x}_1, \\bar{x}_2\\)</td><td>Rata-rata masing-masing kelompok</td><td class=\"unit\">\\text{nilai data}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika seluruh data dikali p lalu ditambah q: Mean baru = p · Mean lama + q. Beda dengan ukuran penyebaran yang tidak terpengaruh penjumlahan q!</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Rata-rata 5 siswa 78. Setelah nilai Budi ditambahkan, rata-ratanya 80. Berapa nilai Budi?</p>",
+          "title": "Contoh Perhitungan Rata-Rata Gabungan TKA",
+          "question": "<p>Nilai rata-rata ujian matematika 30 siswa pria adalah 75, sedangkan rata-rata 20 siswa wanita adalah 85. Berapakah rata-rata nilai gabungan seluruh siswa di kelas tersebut?</p>",
           "steps": [
-            "Jumlah 5 nilai = 390. Jumlah 6 nilai = 480.",
-            "Nilai Budi = 90."
+            "n₁ = 30, x̄₁ = 75. n₂ = 20, x̄₂ = 85.",
+            "x̄_gab = (30 × 75 + 20 × 85) / (30 + 20).",
+            "x̄_gab = (2.250 + 1.700) / 50 = 3.950 / 50 = 79."
           ],
-          "answer": "90"
+          "answer": "Rata-rata nilai gabungan kelas adalah 79."
         },
         {
           "type": "check",
-          "question": "Nilai 50, 60, 70 dengan frekuensi 3, 5, 2. Rata-ratanya adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Jika setiap data dari suatu kumpulan data dikalikan 2 lalu dikurangi 5, maka rata-rata data yang baru akan ....",
           "options": {
-            "A": "58",
-            "B": "59",
-            "C": "60",
-            "D": "61"
+            "A": "Tetap sama tidak berubah",
+            "B": "Menjadi 2 kali rata-rata lama dikurangi 5",
+            "C": "Menjadi 2 kali rata-rata lama tanpa dikurangi 5",
+            "D": "Menjadi rata-rata lama dikurangi 5"
           },
           "answer": "B",
-          "hint": "Σfx/Σf.",
-          "explanation": "(150 + 300 + 140)/10 = 590/10 = 59."
+          "hint": "Ukuran pemusatan (mean, median, modus) dipengaruhi oleh operasi perkalian dan penjumlahan/pengurangan: x̄' = 2 x̄ - 5.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "ukuran-penyebaran-dan-boxplot",
-      "title": "Ukuran Penyebaran: Jangkauan, Simpangan Kuartil, Ragam, Simpangan Baku, dan Diagram Boxplot",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Ukuran Penyebaran: Jangkauan Interkuartil, Simpangan Baku, dan Boxplot",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Ukuran Penyebaran: Jangkauan, Simpangan Kuartil, Ragam, Simpangan Baku, dan Diagram Boxplot</b>: Membaca diagram lima serangkai (min, Q1, Q2, Q3, max), mendeteksi data pencilan (outlier), dan menghitung standar deviasi.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Variabilitas Data dan Ketahanan terhadap Transformasi</h3>\n<ul>\n  <li><b>Jangkauan (Range)</b>: \\(R = x_{\\max} - x_{\\min}\\)</li>\n  <li><b>Jangkauan Interkuartil (Hamparan)</b>: \\(H = IQR = Q_3 - Q_1\\)</li>\n  <li><b>Simpangan Kuartil (Semi-Interquartile)</b>: \\(Q_d = \\frac{1}{2}(Q_3 - Q_1)\\)</li>\n  <li><b>Simpangan Baku / Deviasi Standar (\\(s\\))</b>:\n  \\[ s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n}} \\]</li>\n</ul>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/boxplot.html",
-          "title": "Box plot dan pencilan",
-          "height": 520,
-          "caption": "Periksa batas pencilan Q1 − 1,5 IQR dan Q3 + 1,5 IQR."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Tentukan simpangan baku data 4, 6, 8, 10, 12.</p>",
-          "steps": [
-            "Mean 8. Kuadrat simpangan: 16, 4, 0, 4, 16, jumlah 40.",
-            "σ² = 8, σ = 2√2."
-          ],
-          "answer": "2√2"
+          "title": "Efek Transformasi Data pada Ukuran Penyebaran",
+          "html": "<p>Jika setiap data dikalikan \\(p\\) lalu ditambah \\(q\\) (\\(x' = p \\cdot x + q\\)):</p>\n<ul>\n  <li><b>Operasi Penjumlahan (+ q) TIDAK MEMPENGARUHI</b> ukuran penyebaran sama sekali! (Karena jarak relatif antar data tidak berubah).</li>\n  <li><b>Operasi Perkalian (\\(\\times p\\)) MELIPATGANDAKAN</b> ukuran penyebaran sebesar \\(|p|\\): \\(s' = |p| \\cdot s\\). Varians menjadi \\(p^2 \\cdot s^2\\).</li>\n</ul>"
         },
         {
           "type": "check",
-          "question": "Tim debat 5 orang dipilih dari 6 putra dan 4 putri dengan tepat 2 putri. Banyak cara memilih adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Simpangan baku sekumpulan data adalah 6. Jika seluruh data dikalikan 3 lalu ditambah 10, maka simpangan baku data yang baru adalah ....",
           "options": {
-            "A": "60",
-            "B": "120",
-            "C": "210",
-            "D": "252"
+            "A": "6",
+            "B": "18",
+            "C": "28",
+            "D": "36"
           },
           "answer": "B",
-          "hint": "Pilih putri dan putra secara terpisah lalu kalikan.",
-          "explanation": "C(4, 2) × C(6, 3) = 6 × 20 = 120. 252 = C(10, 5) tanpa syarat."
+          "hint": "Penambahan +10 tidak mengubah simpangan baku. Pengalian 3 melipatgandakan simpangan baku: s' = 3 × 6 = 18.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "aturan-perkalian-faktorial-permutasi",
-      "title": "Kaidah Pencacahan: Aturan Pengisian Tempat (Filling Slots) dan Permutasi",
+      "title": "Kaidah Pencacahan: Aturan Pengisian Tempat, Faktorial, dan Permutasi",
       "kind": "artikel",
-      "duration": "15 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
+          "html": "<h3>Kaidah Pengisian Tempat dan Permutasi</h3>\n<p>Kaidah pencacahan menentukan berapa banyak kemungkinan susunan suatu kejadian. Permutasi memperhatikan <b>URUTAN</b> (AB ≠ BA, seperti susunan juara lomba atau kode password).</p>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Menjumlahkan peluang kejadian yang tidak saling lepas tanpa mengurangkan irisan.</li><li>Memakai permutasi untuk memilih anggota tim tanpa jabatan.</li><li>Membagi dengan n − 1 pada simpangan baku populasi (buku memakai n).</li></ul>"
+          "variant": "rumus",
+          "title": "Persamaan Permutasi Objek Berbeda, Unsur Sama, dan Siklis",
+          "html": "<div class=\"fc-display\">\n\\[ P(n, r) = \\frac{n!}{(n - r)!} \\qquad \\Big| \\qquad P_{\\text{unsur sama}} = \\frac{n!}{k_1! k_2! \\dots k_m!} \\qquad \\Big| \\qquad P_{\\text{siklis}} = (n - 1)! \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(P(n, r)\\)</td><td>Permutasi r unsur dipilih dari n unsur berbeda (memperhatikan urutan)</td><td class=\"unit\">\\text{banyaknya susunan}</td></tr>\n<tr><td class=\"sym\">\\(n!\\)</td><td>Faktorial bilangan n (\\(n! = n \times (n-1) \times \\dots \times 1\\); \\(0! = 1\\))</td><td class=\"unit\">\\text{bilangan bulat}</td></tr>\n<tr><td class=\"sym\">\\(k_1, k_2\\)</td><td>Banyaknya unsur yang identik / sama</td><td class=\"unit\">\\text{bilangan bulat}</td></tr>\n<tr><td class=\"sym\">\\(P_{\\text{siklis}}\\)</td><td>Permutasi melingkar meja bundar</td><td class=\"unit\">\\text{banyaknya susunan}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Mnemonik: Permutasi = Posisi / Peringkat (urutan penting!).</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Enam siswa termasuk Andi dan Budi berfoto berjajar. Berapa susunan jika Andi dan Budi selalu berdampingan?</p>",
+          "title": "Contoh Permutasi Unsur Sama Kata",
+          "question": "<p>Tentukan banyaknya susunan kata berbeda yang dapat dibentuk dari huruf-huruf pembentuk kata: 'MALAM'!</p>",
           "steps": [
-            "Gabungkan Andi–Budi: 5 objek, 5! = 120.",
-            "Andi dan Budi bertukar: × 2. Total 240."
+            "Total huruf n = 5.",
+            "Unsur berulang: huruf M ada 2, huruf A ada 2, huruf L ada 1.",
+            "Gunakan rumus permutasi unsur sama: P = 5! / (2! · 2! · 1!).",
+            "P = 120 / (2 × 2 × 1) = 120 / 4 = 30 susunan."
           ],
-          "answer": "240"
+          "answer": "Banyaknya susunan kata berbeda adalah 30."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Enam orang pengurus organisasi duduk melingkar mengelilingi meja bundar. Banyaknya susunan duduk melingkar yang dapat terjadi adalah ....",
+          "options": {
+            "A": "60",
+            "B": "120",
+            "C": "360",
+            "D": "720"
+          },
+          "answer": "B",
+          "hint": "Permutasi siklis: P = (n - 1)! = (6 - 1)! = 5! = 5 × 4 × 3 × 2 × 1 = 120 susunan.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "kombinasi-dan-teorema-binomial",
-      "title": "Kombinasi nCr: Pemilihan Tanpa Memperhatikan Urutan dan Ekspansi Binomial",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Kombinasi Pemilihan Bebas dan Teorema Binomial Newton",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
+          "html": "<h3>Kombinasi: Pemilihan Tanpa Memperhatikan Urutan</h3>\n<p>Kombinasi digunakan saat urutan pemilihan tidak mempengaruhi status (AB = BA, seperti memilih anggota delegasi tim, jabat tangan, atau mengambil kelereng sekaligus).</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas12/Matematika/03 Kaidah Pencacahan/sim/susunan.html",
-          "title": "Daftar semua susunan",
-          "height": 520,
-          "caption": "Bandingkan banyak susunan pada mode permutasi dan kombinasi."
+          "variant": "rumus",
+          "title": "Persamaan Kombinasi dan Teorema Binomial Newton",
+          "html": "<div class=\"fc-display\">\n\\[ C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n - r)!} \\qquad \\Longleftrightarrow \\qquad (a + b)^n = \\sum_{k=0}^n \\binom{n}{k} a^{n - k} b^k \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(C(n, r)\\)</td><td>Kombinasi r objek dari n objek</td><td class=\"unit\">\\text{bilangan bulat positif}</td></tr>\n<tr><td class=\"sym\">\\(\\binom{n}{k}\\)</td><td>Koefisien binomial suku ke-(k+1)</td><td class=\"unit\">\\text{koefisien}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Sifat Simetri Kombinasi: C(n, r) = C(n, n - r). Contoh: C(10, 8) = C(10, 2) = (10 × 9) / 2 = 45.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Dari 10 lampu, 3 rusak. Diambil 3 lampu sekaligus. Berapa peluang tepat 1 rusak?</p>",
+          "title": "Contoh Pemilihan Delegasi Kombinasi",
+          "question": "<p>Dari 7 siswa pria dan 5 siswa wanita akan dipilih 4 orang delegasi. Berapa banyak cara memilih delegasi yang terdiri dari 3 pria dan 1 wanita?</p>",
           "steps": [
-            "n(S) = C(10, 3) = 120.",
-            "n(A) = C(3, 1) × C(7, 2) = 3 × 21 = 63.",
-            "P = 63/120 = 21/40."
+            "Pilih 3 pria dari 7 pria: C(7, 3) = (7 × 6 × 5) / (3 × 2 × 1) = 35.",
+            "Pilih 1 wanita dari 5 wanita: C(5, 1) = 5.",
+            "Berdasarkan kaidah perkalian: Total cara = C(7, 3) × C(5, 1) = 35 × 5 = 175 cara."
           ],
-          "answer": "21/40"
+          "answer": "Banyaknya cara pemilihan delegasi adalah 175 cara."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dalam suatu pertemuan yang dihadiri 10 orang, setiap orang saling bersalaman satu sama lain tepat satu kali. Banyaknya jabat tangan yang terjadi adalah ....",
+          "options": {
+            "A": "20",
+            "B": "45",
+            "C": "90",
+            "D": "100"
+          },
+          "answer": "B",
+          "hint": "Satu jabat tangan melibatkan 2 orang tanpa urutan: C(10, 2) = (10 × 9) / 2 = 45 jabat tangan.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "peluang-dasar-ruang-sampel",
-      "title": "Peluang Klasik: Ruang Sampel S, Titik Sampel Kejadian, dan Komplemen P(A') = 1 − P(A)",
+      "title": "Peluang Klasik, Ruang Sampel, Komplemen, dan Frekuensi Harapan",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
+          "html": "<h3>Konsep Peluang Teoretis</h3>\n<p>Peluang kejadian \\(A\\) dalam ruang sampel berhingga equiprobable (\\(S\\)):</p>\n\\[ P(A) = \\frac{n(A)}{n(S)} \\quad \\text{dengan rentang } 0 \\le P(A) \\le 1 \\]\n<ul>\n  <li>Peluang Komplemen: <b>\\(P(A') = 1 - P(A)\\)</b> (\"Peluang paling sedikit 1 = 1 - Peluang tidak ada sama sekali\").</li>\n  <li>Frekuensi Harapan: <b>\\(F_h(A) = n \\times P(A)\\)</b>.</li>\n</ul>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas12/Matematika/04 Peluang/sim/kantong.html",
-          "title": "Pengambilan bola dari kantong",
+          "src": "../../../Kelas10/Matematika/07 Peluang/sim/dua-dadu.html",
+          "title": "Simulasi Peluang Pelemparan Dua Dadu",
           "height": 520,
-          "caption": "Bandingkan pengambilan dengan dan tanpa pengembalian."
+          "caption": "Lempar dua dadu ribuan kali dan bandingkan frekuensi relatif dengan peluang teoretis."
         },
         {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Peluang Klasik: Ruang Sampel S, Titik Sampel Kejadian, dan Komplemen P(A') = 1 − P(A)",
-          "question": "<p>Perhatikan permasalahan terkait <b>Peluang Klasik: Ruang Sampel S, Titik Sampel Kejadian, dan Komplemen P(A') = 1 − P(A)</b> berikut. Analisislah berdasarkan prinsip Menghitung peluang pelemparan koin, dadu, kartu bridge, serta memanfaatkan komplemen untuk soal 'paling sedikit satu'..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua keping uang logam dilempar bersamaan sebanyak 120 kali. Frekuensi harapan munculnya paling sedikit satu angka adalah ....",
+          "options": {
+            "A": "30 kali",
+            "B": "60 kali",
+            "C": "90 kali",
+            "D": "120 kali"
+          },
+          "answer": "C",
+          "hint": "Ruang sampel 2 koin: {AA, AG, GA, GG} (n(S) = 4). Kejadian paling sedikit satu angka: {AA, AG, GA} (n(A) = 3). P(A) = 3/4. F_h = 120 × (3/4) = 90 kali.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "kejadian-majemuk-lepas-bebas",
-      "title": "Peluang Kejadian Majemuk: Aturan Penjumlahan (Saling Lepas) dan Perkalian (Saling Bebas)",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Peluang Kejadian Majemuk: Saling Lepas vs Saling Bebas dan Bersyarat",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Pada TKA SMA, peluang hampir selalu memerlukan kaidah pencacahan. Tentukan dahulu apakah urutan penting dan apakah pengambilan dikembalikan.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Statistika</td><td>mean gabungan, median dan modus data kelompok, simpangan baku</td><td>Kelas 10 Bab 6</td></tr><tr><td>Data bivariat</td><td>tabel silang, diagram pencar</td><td>Kelas 11 Bab 1</td></tr><tr><td>Pencacahan</td><td>aturan perkalian, permutasi, kombinasi</td><td>Kelas 12 Bab 3</td></tr><tr><td>Peluang</td><td>komplemen, saling lepas, saling bebas, bersyarat</td><td>Kelas 10 Bab 7, Kelas 12 Bab 4</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>Median kelompok: T<sub>b</sub> + (n/2 − F)/f × p.</li><li>σ² = Σ(x − x̄)²/n; σ = √σ².</li><li>P(n, r) = n!/(n − r)!; C(n, r) = n!/(r!(n − r)!).</li><li>P(A ∪ B) = P(A) + P(B) − P(A ∩ B); saling bebas: P(A ∩ B) = P(A)P(B); bersyarat: P(A ∩ B) = P(A)P(B | A).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/06 Representasi dan Interpretasi Data/sim/histogram.html",
-          "title": "Histogram dan data kelompok",
-          "height": 640,
-          "caption": "Bandingkan rata-rata dan median data kelompok dengan nilai sebenarnya."
+          "html": "<h3>Membedakan 'Saling Lepas' dan 'Saling Bebas'</h3>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Jenis Kejadian</th><th>Makna Fisis</th><th>Rumus Probabilitas</th></tr>\n  </thead>\n  <tbody>\n    <tr><td><b>Saling Lepas (Mutually Exclusive)</b></td><td>Dua kejadian TIDAK BISA terjadi bersama-sama (\\(A \\cap B = \\emptyset\\)). Kata kunci: <b>'ATAU'</b>.</td><td>\\(P(A \\cup B) = P(A) + P(B)\\)</td></tr>\n    <tr><td><b>Tidak Saling Lepas</b></td><td>Ada irisan yang bisa terjadi bersamaan.</td><td>\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)</td></tr>\n    <tr><td><b>Saling Bebas (Independent)</b></td><td>Terjadinya A TIDAK MEMPENGARUHI peluang B. Kata kunci: <b>'DAN'</b>.</td><td>\\(P(A \\cap B) = P(A) \\cdot P(B)\\)</td></tr>\n    <tr><td><b>Bersyarat (Conditional)</b></td><td>Peluang A dengan syarat B telah terjadi.</td><td>\\(P(A|B) = \\frac{P(A \\cap B)}{P(B)}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Peluang Kejadian Majemuk: Aturan Penjumlahan (Saling Lepas) dan Perkalian (Saling Bebas)",
-          "question": "<p>Perhatikan permasalahan terkait <b>Peluang Kejadian Majemuk: Aturan Penjumlahan (Saling Lepas) dan Perkalian (Saling Bebas)</b> berikut. Analisislah berdasarkan prinsip Menerapkan P(A ∪ B) = P(A) + P(B) − P(A ∩ B) dan P(A ∩ B) = P(A) · P(B) serta peluang bersyarat P(A|B)..</p>",
+          "title": "Contoh Peluang Pengambilan Bola Berturutan Tanpa Pengembalian",
+          "question": "<p>Sebuah kotak berisi 5 bola merah dan 3 bola putih. Dua bola diambil satu per satu tanpa pengembalian. Berapakah peluang terambilnya bola pertama merah dan bola kedua putih?</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Total bola mula-mula = 5 + 3 = 8.",
+            "Peluang bola 1 merah: P(M₁) = 5/8.",
+            "Karena tanpa pengembalian, sisa bola di kotak sekarang ada 7 bola (4 merah, 3 putih).",
+            "Peluang bola 2 putih bersyarat bola 1 merah: P(P₂|M₁) = 3/7.",
+            "Peluang gabungan: P(M₁ ∩ P₂) = (5/8) × (3/7) = 15/56."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Peluang terambilnya bola merah lalu putih adalah 15/56."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua buah dadu bermata 6 dilempar bersamaan. Peluang munculnya jumlah kedua mata dadu sama dengan 7 ATAU 10 adalah ....",
+          "options": {
+            "A": "1/4",
+            "B": "1/6",
+            "C": "7/36",
+            "D": "9/36 = 1/4"
+          },
+          "answer": "A",
+          "hint": "Total ruang sampel 2 dadu = 36. Jumlah 7: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) -> 6 titik. Jumlah 10: (4,6),(5,5),(6,4) -> 3 titik. Karena saling lepas: P = (6 + 3) / 36 = 9/36 = 1/4.",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-mat-06",
-      "title": "Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Data dan Peluang",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6</b>: Menyelesaikan variasi soal statistika dan peluang kombinatorika serta menuntaskan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk peluang “paling sedikit satu”, gunakan komplemen.</li><li>Diambil sekaligus → kombinasi; diambil satu per satu tanpa pengembalian → kalikan peluang bersyarat (hasilnya sama).</li><li>Pada data kelompok, tulis tepi kelas, frekuensi kumulatif, dan panjang kelas sebelum memakai rumus median.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan variasi soal statistika dan peluang kombinatorika serta menuntaskan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Statistika-Peluang dan Latihan Kuis Bab 6 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan variasi soal statistika dan peluang kombinatorika serta menuntaskan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Bab 06: Data dan Peluang</h3>\n<p>Kuasai mean gabungan, efek transformasi data pada simpangan baku, kaidah permutasi dan kombinasi, teorema binomial, komplemen peluang, dan peluang bersyarat.</p>\n<p>Kerjakan kuis resmi 20 butir soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA SMA topik Data dan Peluang. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Matematika SMA: Data dan Peluang (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

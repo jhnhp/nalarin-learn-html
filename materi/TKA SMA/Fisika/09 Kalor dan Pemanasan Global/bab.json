@@ -1,288 +1,319 @@
 {
   "title": "Kalor dan Pemanasan Global",
-  "summary": "Termofisika dan transfer energi panas: konversi skala termometer, pemuaian zat padat/cair/gas, kalor jenis dan kalor laten, Asas Black dan kesetimbangan termal, tiga mekanisme transfer kalor (konduksi, konveksi, radiasi), serta efek rumah kaca dan sains pemanasan global.",
+  "summary": "Materi komprehensif TKA Fisika: konversi skala suhu dan pemuaian termal zat, kalor sensibel dan kalor laten perubahan wujud, asas Black dan kesetimbangan termal pada kalorimeter, laju konduksi Fourier sambungan batang logam, radiasi benda hitam Stefan-Boltzmann dan hukum Wien, serta mekanisme fisika efek rumah kaca dan pemanasan global.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "suhu-dan-pemuaian-termal",
-      "title": "Skala Suhu dan Pemuaian Zat: Panjang, Luas, dan Volume",
+      "title": "Konversi Skala Suhu, Kalibrasi Termometer, dan Pemuaian Termal Zat",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+          "html": "<h3>Derajat Panas dan Kalibrasi Termometer</h3>\n<p>Suhu adalah ukuran derajat panas atau dinginnya suatu zat yang secara mikroskopis merepresentasikan energi kinetik rata-rata translasi partikel materi. Dalam SI, satuan suhu mutlak adalah <b>Kelvin (K)</b>.</p>\n<p>Empat skala termometer yang lazim digunakan memiliki titik tetap bawah (titik beku air) dan titik tetap atas (titik didih air) pada tekanan 1 atm:</p>\n<ul>\n  <li><b>Celcius (C)</b>: 0°C – 100°C (rentang 100)</li>\n  <li><b>Reamur (R)</b>: 0°R – 80°R (rentang 80)</li>\n  <li><b>Fahrenheit (F)</b>: 32°F – 212°F (rentang 180)</li>\n  <li><b>Kelvin (K)</b>: 273 K – 373 K (rentang 100, \\(T_{\\text{Kelvin}} = T_{\\text{Celcius}} + 273\\))</li>\n</ul>\n<p>Perbandingan rentang skala: <b>\\(C : R : (F - 32) = 5 : 4 : 9\\)</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+          "title": "Persamaan Pemuaian Panjang, Luas, dan Volume Zat Padat",
+          "html": "<div class=\"fc-display\">\n\\[ \\Delta L = L_0 \\alpha \\Delta T \\qquad \\Big| \\qquad \\Delta A = A_0 \\beta \\Delta T \\qquad \\Big| \\qquad \\Delta V = V_0 \\gamma \\Delta T \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\Delta L, \\Delta A, \\Delta V\\)</td><td>Pertambahan panjang, luas, dan volume benda</td><td class=\"unit\">\\text{m, m}^2\\text{, m}^3</td></tr>\n<tr><td class=\"sym\">\\(L_0, A_0, V_0\\)</td><td>Panjang, luas, dan volume mula-mula sebelum dipanaskan</td><td class=\"unit\">\\text{m, m}^2\\text{, m}^3</td></tr>\n<tr><td class=\"sym\">\\(\\alpha\\)</td><td>Koefisien muai panjang bahan</td><td class=\"unit\">^\\circ\\text{C}^{-1} \\text{ atau K}^{-1}</td></tr>\n<tr><td class=\"sym\">\\(\\beta\\)</td><td>Koefisien muai luas (\\(\beta = 2\u0007lpha\\))</td><td class=\"unit\">^\\circ\\text{C}^{-1}</td></tr>\n<tr><td class=\"sym\">\\(\\gamma\\)</td><td>Koefisien muai volume (\\(\\gamma = 3\u0007lpha\\))</td><td class=\"unit\">^\\circ\\text{C}^{-1}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta T\\)</td><td>Perubahan suhu pemanasan (\\(T_{\text{akhir}} - T_{\text{awal}}\\))</td><td class=\"unit\">^\\circ\\text{C atau K}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Anomali Air: Pada rentang suhu 0°C sampai 4°C, air TIDAK memuai melainkan MENYUSUT saat dipanaskan (volume minimum dan massa jenis maksimum tercapai tepat pada suhu 4°C). Hal ini menjaga kehidupan biota di dasar danau es kutub.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Aplikasi Bimetal",
+          "html": "<p>Keping bimetal terdiri dari dua logam dengan koefisien muai panjang berbeda yang dikeling menjadi satu. Ketika <b>dipanaskan</b>, keping bimetal akan melengkung ke arah <b>logam yang memiliki \\(\\alpha\\) lebih kecil</b>. Ketika <b>didinginkan</b>, keping bimetal akan melengkung ke arah <b>logam yang memiliki \\(\\alpha\\) lebih besar</b>. Digunakan pada termostat setrika listrik dan sensor alarm kebakaran.</p>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas11/Fisika/06 Kalor/sim/asas-black.html",
-          "title": "Asas Black",
+          "src": "../../../Kelas11/Fisika/06 Kalor/sim/pemuaian.html",
+          "title": "Simulasi Pemuaian Zat",
           "height": 520,
-          "caption": "Campurkan dua cairan bersuhu berbeda. Mengapa suhu akhir lebih dekat ke suhu cairan yang massanya lebih besar?"
+          "caption": "Ubah suhu dan amati pertambahan panjang berbagai jenis logam padat."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Berapa kalor untuk mengubah 200 g es bersuhu 0 °C menjadi air 30 °C? (L es = 336.000 J/kg; c air = 4.200 J/kg°C)</p>",
+          "title": "Contoh Perhitungan Pemuaian Rel Kereta Api",
+          "question": "<p>Sebuah batang rel baja panjangnya 20 meter pada suhu 20°C. Koefisien muai panjang baja adalah 1,2 × 10⁻⁵ /°C. Berapakah pertambahan panjang batang baja tersebut jika suhu siang hari naik menjadi 50°C?</p>",
           "steps": [
-            "Melebur: 0,2 × 336.000 = 67.200 J.",
-            "Memanaskan: 0,2 × 4.200 × 30 = 25.200 J."
+            "Identifikasi besaran: L₀ = 20 m, T₁ = 20°C, T₂ = 50°C, ΔT = 50 - 20 = 30°C.",
+            "Terapkan rumus muai panjang: ΔL = L₀ · α · ΔT.",
+            "ΔL = 20 × (1,2 × 10⁻⁵) × 30 = 600 × 1,2 × 10⁻⁵ = 7,2 × 10⁻³ m = 7,2 mm."
           ],
-          "answer": "92.400 J"
+          "answer": "Pertambahan panjang baja rel adalah 7,2 mm."
         },
         {
           "type": "check",
-          "question": "Saat air mendidih pada 100 °C dan terus dipanaskan, suhunya tetap karena kalor digunakan untuk ....",
+          "title": "Cek Pemahaman",
+          "question": "Termometer X memiliki titik beku air pada -10°X dan titik didih air pada 140°X. Jika termometer Celcius menunjukkan angka 40°C, maka termometer X akan menunjukkan angka ....",
           "options": {
-            "A": "menaikkan energi kinetik molekul",
-            "B": "mengubah wujud air menjadi uap",
-            "C": "memanaskan panci",
-            "D": "dipancarkan ke udara"
+            "A": "40°X",
+            "B": "50°X",
+            "C": "60°X",
+            "D": "70°X"
           },
           "answer": "B",
-          "hint": "Kalor laten.",
-          "explanation": "Kalor uap dipakai memutus ikatan antarmolekul, bukan menaikkan suhu."
+          "hint": "Gunakan interpolasi linier: (T_X - Titik Beku) / (Rentang X) = (T_C - 0) / 100.",
+          "explanation": "(T_X - (-10)) / (140 - (-10)) = 40 / 100  =>  (T_X + 10) / 150 = 0,4  =>  T_X + 10 = 60  =>  T_X = 50°X."
         }
       ]
     },
     {
       "id": "kalor-perubahan-wujud",
-      "title": "Kalor Sensibel (Q = mcΔT) dan Kalor Laten Perubahan Wujud (Q = mL / mU)",
+      "title": "Kalor Sensibel, Kalor Laten Perubahan Wujud, dan Grafik Pemanasan",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+          "html": "<h3>Kalor sebagai Bentuk Energi Termal yang Berpindah</h3>\n<p>Kalor adalah energi termal yang berpindah dari benda bersuhu lebih tinggi ke benda bersuhu lebih rendah secara spontan. Kalor dapat menimbulkan dua efek fisis yang berbeda:</p>\n<ol>\n  <li><b>Mengubah Suhu Benda (Kalor Sensibel)</b>: partikel bergetar lebih cepat sehingga suhu naik atau turun.</li>\n  <li><b>Mengubah Wujud Zat (Kalor Laten)</b>: suhu benda <b>tetap konstan (\\(\\Delta T = 0\\))</b> selama proses perubahan fase berlangsung, karena seluruh energi kalor digunakan untuk memutus atau merenggangkan ikatan antar molekul.</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+          "title": "Persamaan Kalor Sensibel dan Kalor Laten Perubahan Wujud",
+          "html": "<div class=\"fc-display\">\n\\[ Q = m \\cdot c \\cdot \\Delta T = C \\cdot \\Delta T \\qquad \\Big| \\qquad Q = m \\cdot L \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(Q\\)</td><td>Banyaknya kalor yang diserap atau dilepaskan</td><td class=\"unit\">\\text{Joule (J) atau kalori}</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa zat</td><td class=\"unit\">\\text{kilogram (kg)}</td></tr>\n<tr><td class=\"sym\">\\(c\\)</td><td>Kalor jenis zat (karakteristik kemampuan menyimpan panas)</td><td class=\"unit\">\\text{J/(kg}\\cdot\\text{K) atau J/(kg}\\cdot^\\circ\\text{C)}</td></tr>\n<tr><td class=\"sym\">\\(C\\)</td><td>Kapasitas kalor total benda (\\(C = m \\cdot c\\))</td><td class=\"unit\">\\text{J/K atau J/}^\\circ\\text{C}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta T\\)</td><td>Perubahan suhu zat</td><td class=\"unit\">^\\circ\\text{C atau K}</td></tr>\n<tr><td class=\"sym\">\\(L\\)</td><td>Kalor laten perubahan wujud (\\(L_f\\) = kalor lebur/beku; \\(L_v\\) = kalor uap/embun)</td><td class=\"unit\">\\text{J/kg}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Konversi satuan kalor: 1 kalori = 4,184 Joule (sering dibulatkan 4,2 Joule). Air memiliki kalor jenis sangat tinggi (c_air = 4.200 J/kg°C) sehingga sangat efektif digunakan sebagai pendingin radiator mesin.</small></p>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/06 Kalor/sim/perpindahan-kalor.html",
-          "title": "Perpindahan kalor",
-          "height": 520,
-          "caption": "Bandingkan bahan konduktor dan isolator. Bagaimana laju kalor berubah jika ketebalan dilipatduakan?"
+          "type": "callout",
+          "variant": "tips",
+          "title": "Analisis Grafik Suhu-Waktu Pemanasan Es ke Uap",
+          "html": "<p>Pemanasan 1 kg es dari -10°C menjadi uap air 100°C membutuhkan 4 tahap kalor:</p>\n<ul>\n  <li><b>Tahap 1 (Menaikkan suhu es)</b>: \\(Q_1 = m \\cdot c_{\\text{es}} \\cdot \\Delta T\\) (grafik miring naik dari -10°C ke 0°C).</li>\n  <li><b>Tahap 2 (Meleburkan es menjadi air)</b>: \\(Q_2 = m \\cdot L_f\\) (grafik mendatar pada suhu konstan 0°C).</li>\n  <li><b>Tahap 3 (Menaikkan suhu air)</b>: \\(Q_3 = m \\cdot c_{\\text{air}} \\cdot \\Delta T\\) (grafik miring naik dari 0°C ke 100°C).</li>\n  <li><b>Tahap 4 (Menguapkan air menjadi uap)</b>: \\(Q_4 = m \\cdot L_v\\) (grafik mendatar pada suhu konstan 100°C).</li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sebanyak 300 g air 90 °C dicampur dengan 200 g air 20 °C. Berapa suhu akhir campuran (tanpa kalor hilang)?</p>",
+          "title": "Contoh Perhitungan Kalor Total Meleburkan Es",
+          "question": "<p>Berapakah kalor total yang diperlukan untuk mengubah 500 gram es bersuhu -10°C seluruhnya menjadi air bersuhu 20°C? (Diketahui: c_es = 2.100 J/kg°C, L_f = 336.000 J/kg, c_air = 4.200 J/kg°C).</p>",
           "steps": [
-            "0,3 c (90 − T) = 0,2 c (T − 20).",
-            "27 − 0,3T = 0,2T − 4 → T = 31/0,5."
+            "Massa: m = 500 g = 0,5 kg.",
+            "Q₁ (es -10°C ke 0°C): m · c_es · ΔT = 0,5 × 2.100 × (0 - (-10)) = 0,5 × 2.100 × 10 = 10.500 J.",
+            "Q₂ (melebur es di 0°C): m · L_f = 0,5 × 336.000 = 168.000 J.",
+            "Q₃ (air 0°C ke 20°C): m · c_air · ΔT = 0,5 × 4.200 × (20 - 0) = 0,5 × 4.200 × 20 = 42.000 J.",
+            "Q_total = Q₁ + Q₂ + Q₃ = 10.500 + 168.000 + 42.000 = 220.500 J = 220,5 kJ."
           ],
-          "answer": "62 °C"
+          "answer": "Kalor total yang diperlukan adalah 220,5 kJ."
         },
         {
           "type": "check",
-          "question": "Gas berikut yang menyerap radiasi inframerah dari permukaan Bumi sehingga memperkuat efek rumah kaca adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Selama proses es melebur menjadi air pada suhu 0°C, besaran yang TIDAK mengalami perubahan adalah ....",
           "options": {
-            "A": "nitrogen",
-            "B": "oksigen",
-            "C": "metana",
-            "D": "argon"
+            "A": "Volume zat",
+            "B": "Energi dalam sistem",
+            "C": "Suhu zat",
+            "D": "Kerapatan massa jenis"
           },
           "answer": "C",
-          "hint": "Gas rumah kaca: CO₂, CH₄, N₂O, uap air.",
-          "explanation": "Metana menyerap inframerah dengan sangat kuat; N₂, O₂, dan Ar tidak."
+          "hint": "Pada saat perubahan wujud (fase), suhu zat selalu tetap konstan (T = 0°C) sampai seluruh es melebur sempurna menjadi air.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "asas-black-kesetimbangan-termal",
-      "title": "Asas Black: Q_lepas = Q_terima pada Pencampuran Zat",
+      "title": "Asas Black, Kesetimbangan Termal, dan Penentuan Suhu Campuran",
       "kind": "simulasi",
-      "duration": "18 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+          "html": "<h3>Hukum Kekekalan Energi Termal: Asas Black</h3>\n<p>Joseph Black menyatakan bahwa dalam suatu sistem terisolasi tanpa pertukaran energi dengan lingkungan: <i>\"Banyaknya kalor yang dilepaskan oleh benda bersuhu tinggi sama persis dengan banyaknya kalor yang diserap oleh benda bersuhu lebih rendah hingga keduanya mencapai suhu kesetimbangan termal yang sama (\\(T_c\\)).\"</i></p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+          "title": "Persamaan Asas Black dan Kalorimeter",
+          "html": "<div class=\"fc-display\">\n\\[ Q_{\\text{lepas}} = Q_{\\text{terima}} \\qquad \\Longleftrightarrow \\qquad m_1 c_1 (T_1 - T_c) = m_2 c_2 (T_c - T_2) + C_k (T_c - T_2) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(Q_{\\text{lepas}}\\)</td><td>Kalor yang dilepas oleh zat bersuhu tinggi (\\(T_1 > T_c\\))</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(Q_{\\text{terima}}\\)</td><td>Kalor yang diserap oleh zat bersuhu rendah (\\(T_2 < T_c\\))</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(m_1, m_2\\)</td><td>Massa zat pelepas dan penyerap kalor</td><td class=\"unit\">\\text{kilogram (kg)}</td></tr>\n<tr><td class=\"sym\">\\(c_1, c_2\\)</td><td>Kalor jenis masing-masing zat</td><td class=\"unit\">\\text{J/(kg}\\cdot^\\circ\\text{C)}</td></tr>\n<tr><td class=\"sym\">\\(T_1, T_2\\)</td><td>Suhu awal zat panas dan zat dingin</td><td class=\"unit\">^\\circ\\text{C}</td></tr>\n<tr><td class=\"sym\">\\(T_c\\)</td><td>Suhu akhir campuran saat kesetimbangan termal tercapai</td><td class=\"unit\">^\\circ\\text{C}</td></tr>\n<tr><td class=\"sym\">\\(C_k\\)</td><td>Kapasitas kalor kalorimeter (wadah)</td><td class=\"unit\">\\text{J/}^\\circ\\text{C}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Selisih suhu selalu bernilai positif: pada Q_lepas gunakan (T_panas - T_c), sedangkan pada Q_terima gunakan (T_c - T_dingin).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan Campuran Es dan Air Panas",
+          "html": "<p>Jika es dicampur dengan air panas, <b>jangan langsung berasumsi es melebur seluruhnya!</b> Hitung terlebih dahulu:</p>\n<ul>\n  <li>Kalor maksimal yang bisa dilepaskan air panas untuk turun ke 0°C: \\(Q_{\\text{lepas, maks}} = m_{\\text{air}} \\cdot c_{\\text{air}} \\cdot (T_{\\text{air}} - 0)\\).</li>\n  <li>Kalor yang dibutuhkan untuk melebur seluruh es: \\(Q_{\\text{lebur}} = m_{\\text{es}} \\cdot L_f\\).</li>\n  <li>Jika \\(Q_{\\text{lepas, maks}} < Q_{\\text{lebur}}\\): <b>suhu akhir campuran pasti tepat 0°C</b>, dan hanya sebagian es yang melebur (terbentuk campuran air dan sisa es).</li>\n</ul>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas9/IPA/06 Isu-Isu Lingkungan/sim/efek-rumah-kaca.html",
-          "title": "Efek rumah kaca",
-          "height": 480,
-          "caption": "Naikkan kadar gas rumah kaca dan amati suhu Bumi."
+          "src": "../../../Kelas11/Fisika/06 Kalor/sim/asas-black.html",
+          "title": "Simulasi Asas Black dan Kalorimeter",
+          "height": 520,
+          "caption": "Campurkan dua zat dengan massa dan suhu berbeda lalu amati grafik suhu menuju kesetimbangan."
         },
         {
           "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Rel baja sepanjang 20 m dipasang pada 25 °C (α = 1,2 × 10⁻⁵ /°C). Berapa celah minimum agar rel tidak melengkung pada 55 °C?</p>",
+          "title": "Contoh Perhitungan Suhu Campuran Dua Air",
+          "question": "<p>Air sebanyak 200 gram bersuhu 80°C dicampurkan ke dalam bejana berisi 300 gram air bersuhu 20°C. Bejana dianggap tidak menyerap kalor. Tentukan suhu akhir kesetimbangan campuran tersebut!</p>",
           "steps": [
-            "ΔL = 20 × 1,2 × 10⁻⁵ × 30 = 7,2 × 10⁻³ m."
+            "Karena kedua zat sejenis (air), kalor jenis c saling mencoret: m₁ (T₁ - T_c) = m₂ (T_c - T₂).",
+            "200 · (80 - T_c) = 300 · (T_c - 20).",
+            "2 · (80 - T_c) = 3 · (T_c - 20)  =>  160 - 2T_c = 3T_c - 60.",
+            "160 + 60 = 3T_c + 2T_c  =>  220 = 5T_c  =>  T_c = 220 / 5 = 44°C."
           ],
-          "answer": "7,2 mm"
+          "answer": "Suhu akhir kesetimbangan campuran air adalah 44°C."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebanyak 100 gram es 0°C dimasukkan ke dalam 200 gram air bersuhu 40°C (c_air = 1 kal/g°C, L_es = 80 kal/g). Suhu akhir campuran adalah ....",
+          "options": {
+            "A": "0°C dengan seluruh es melebur sempurna",
+            "B": "0°C dengan sebagian es belum melebur",
+            "C": "10°C",
+            "D": "20°C"
+          },
+          "answer": "A",
+          "hint": "Kalor maksimal yang dilepas air turun ke 0°C: Q_lepas = 200 × 1 × (40 - 0) = 8.000 kalori. Kalor untuk melebur seluruh es: Q_lebur = 100 × 80 = 8.000 kalori.",
+          "explanation": "Karena Q_lepas = Q_lebur = 8.000 kal, seluruh kalor air panas habis pas untuk meleburkan es menjadi air 0°C. Suhu akhir tepat 0°C dengan seluruh es baru saja melebur sempurna."
         }
       ]
     },
     {
       "id": "mekanisme-konduksi-kalor",
-      "title": "Perpindahan Kalor Konduksi: Laju H = k · A · ΔT / L",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Perpindahan Kalor Secara Konduksi dan Batang Logam Sambungan",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+          "html": "<h3>Konduksi Termal pada Zat Padat</h3>\n<p>Konduksi adalah perpindahan kalor melalui kontak fisik zat padat tanpa disertai perpindahan partikel zat tersebut. Kalor dirambatkan melalui getaran kisi kristal (fonon) dan tumbukan elektron bebas (pada logam konduktor).</p>\n<p>Laju perpindahan kalor konduksi memenuhi <b>Hukum Fourier</b>: sebanding dengan konduktivitas termal bahan (\\(k\\)), luas penampang (\\(A\\)), dan gradien suhu (\\(\\Delta T / L\\)).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+          "title": "Persamaan Laju Aliran Kalor Konduksi Fourier",
+          "html": "<div class=\"fc-display\">\n\\[ H = \\frac{Q}{t} = \\frac{k \\cdot A \\cdot \\Delta T}{L} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(H\\)</td><td>Laju perambatan kalor konduksi per satuan waktu</td><td class=\"unit\">\\text{J/s atau Watt (W)}</td></tr>\n<tr><td class=\"sym\">\\(Q\\)</td><td>Banyaknya kalor yang merambat</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(t\\)</td><td>Selang waktu perambatan kalor</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n<tr><td class=\"sym\">\\(k\\)</td><td>Konduktivitas termal bahan (kemampuan menghantarkan panas)</td><td class=\"unit\">\\text{W/(m}\\cdot\\text{K)}</td></tr>\n<tr><td class=\"sym\">\\(A\\)</td><td>Luas penampang tegak lurus aliran panas</td><td class=\"unit\">\\text{m}^2</td></tr>\n<tr><td class=\"sym\">\\(\\Delta T\\)</td><td>Selisih suhu antara kedua ujung batang (\\(T_{\text{panas}} - T_{\text{dingin}}\\))</td><td class=\"unit\">^\\circ\\text{C atau K}</td></tr>\n<tr><td class=\"sym\">\\(L\\)</td><td>Panjang / ketebalan batang konduktor</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Pada keadaan tunak (steady-state), laju kalor yang mengalir melalui batang sambungan seri bernilai sama di setiap penampang: H₁ = H₂.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Rumus Cepat Suhu Sambungan Dua Logam Seri",
+          "html": "<p>Jika dua logam A dan B disambungkan seri (\\(H_A = H_B\\)) dengan luas \\(A\\) dan panjang \\(L\\) yang sama:</p>\n\\[ k_A (T_A - T_s) = k_B (T_s - T_B) \\implies T_s = \\frac{k_A T_A + k_B T_B}{k_A + k_B} \\]\n<p>Suhu sambungan \\(T_s\\) selalu tertarik lebih dekat ke suhu logam yang memiliki konduktivitas \\(k\\) lebih tinggi.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas11/Fisika/06 Kalor/sim/perpindahan-kalor.html",
+          "title": "Simulasi Perpindahan Kalor",
+          "height": 520,
+          "caption": "Bandingkan laju rambat kalor pada batang logam tembaga, besi, dan kaca."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dinding bata (k = 0,6 W/m°C) seluas 10 m² dan tebal 20 cm memisahkan ruangan 26 °C dari luar 32 °C. Berapa laju kalor yang masuk?</p>",
+          "title": "Contoh Perhitungan Suhu Sambungan Dua Batang Logam",
+          "question": "<p>Dua batang logam P dan Q dengan luas penampang dan panjang yang sama disambungkan. Suhu ujung bebas batang P adalah 100°C dan suhu ujung bebas batang Q adalah 20°C. Jika konduktivitas termal batang P adalah 3 kali konduktivitas termal batang Q (k_P = 3k_Q), berapakah suhu sambungan kedua batang tersebut?</p>",
           "steps": [
-            "H = kAΔT/L = 0,6 × 10 × 6/0,2."
+            "Pada kondisi tunak: H_P = H_Q.",
+            "(k_P · A · (T_P - T_s)) / L = (k_Q · A · (T_s - T_Q)) / L.",
+            "Karena A dan L sama: k_P (100 - T_s) = k_Q (T_s - 20).",
+            "Substitusi k_P = 3k_Q: 3k_Q (100 - T_s) = k_Q (T_s - 20).",
+            "3 (100 - T_s) = T_s - 20  =>  300 - 3T_s = T_s - 20  =>  320 = 4T_s  =>  T_s = 80°C."
           ],
-          "answer": "180 W"
+          "answer": "Suhu sambungan kedua batang logam adalah 80°C."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Perpindahan Kalor Konduksi: Laju H = k · A · ΔT / L, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Untuk mengurangi laju kehilangan panas dari dalam rumah ke udara luar melalui jendela kaca, tindakan arsitektur yang paling efektif berdasarkan Hukum Fourier adalah ....",
           "options": {
-            "A": "Konsep Perpindahan Kalor Konduksi: Laju H = k · A · ΔT / L berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "Membuat luas jendela kaca sebesar mungkin",
+            "B": "Membuat kaca setipis mungkin",
+            "C": "Menggunakan kaca ganda (double-glazed) dengan lapisan udara tipis di tengahnya",
+            "D": "Mengganti kaca dengan lembaran tembaga"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung suhu sambungan pada dua batang logam berbeda konduktivitas termal yang disambung seri.."
+          "answer": "C",
+          "hint": "Udara memiliki konduktivitas termal k yang amat sangat kecil dibanding kaca. Jendela berlapis ganda menyekap lapisan udara sehingga memperbesar resistansi termal (L/k) dan memangkas laju rambat kalor H secara drastis.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "konveksi-dan-radiasi-stefan-boltzmann",
-      "title": "Konveksi Fluida dan Radiasi Termal Hukum Stefan-Boltzmann (P = eσAT^4)",
+      "title": "Konveksi Termal, Radiasi Benda Hitam Stefan-Boltzmann, dan Hukum Wien",
       "kind": "artikel",
-      "duration": "15 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal kalor TKA sering bersifat kontekstual: pemanas air tenaga surya, termos, kalorimeter, atau perubahan iklim.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Suhu dan pemuaian</td><td>skala suhu, muai panjang/luas/volume, bimetal</td><td>IPA Kelas 7, Fisika Kelas 11 Bab 6</td></tr><tr><td>Kalor</td><td>Q = mcΔT, Q = mL, asas Black</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Perpindahan kalor</td><td>konduksi, konveksi, radiasi</td><td>Fisika Kelas 11 Bab 6</td></tr><tr><td>Pemanasan global</td><td>efek rumah kaca, gas rumah kaca, mitigasi</td><td>IPA Kelas 9 dan 10</td></tr></table>"
+          "html": "<h3>Konveksi: Aliran Fluida Pembawa Energi</h3>\n<p>Konveksi adalah perpindahan kalor yang disertai dengan perpindahan fisik partikel fluida (cair atau gas) akibat perbedaan massa jenis saat dipanaskan. Fluida yang dipanaskan memuai, massa jenisnya mengecil (\\(\\rho \\downarrow\\)), lalu membubung ke atas digantikan oleh fluida dingin yang lebih berat (arus konveksi alami, seperti terjadinya angin darat dan angin laut).</p>\n<h3>Radiasi Elektromagnetik: Laju Stefan-Boltzmann</h3>\n<p>Radiasi adalah perpindahan energi termal dalam bentuk gelombang elektromagnetik (terutama sinar inframerah) yang <b>dapat merambat melalui ruang hampa udara</b> tanpa memerlukan medium (misalnya panas pancaran Matahari ke Bumi).</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(\\Delta L = L_0\\alpha\\Delta T\\); \\(\\beta = 2\\alpha\\); \\(\\gamma = 3\\alpha\\).</li><li>\\(Q = mc\\Delta T\\); \\(Q = mL\\) (perubahan wujud, suhu tetap); \\(C = mc\\).</li><li>Asas Black: \\(Q_\\text{lepas} = Q_\\text{terima}\\).</li><li>Konduksi \\(H = kA\\Delta T/L\\); konveksi \\(H = hA\\Delta T\\); radiasi \\(P = e\\sigma A T^4\\) (T dalam kelvin).</li></ul>"
+          "title": "Hukum Stefan-Boltzmann dan Hukum Pergeseran Wien",
+          "html": "<div class=\"fc-display\">\n\\[ P_{\\text{radiasi}} = e \\cdot \\sigma \\cdot A \\cdot T^4 \\qquad \\Longleftrightarrow \\qquad \\lambda_{\\max} \\cdot T = C \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(P\\)</td><td>Daya radiasi kalor total yang dipancarkan permukaan benda</td><td class=\"unit\">\\text{Watt (W)} = \\text{J/s}</td></tr>\n<tr><td class=\"sym\">\\(e\\)</td><td>Emisivitas permukaan (\\(0 < e \\le 1\\); benda hitam sempurna memiliki \\(e = 1\\))</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(\\sigma\\)</td><td>Konstanta Stefan-Boltzmann (\\(\\sigma = 5,67 \times 10^{-8} \text{ W/(m}^2\\cdot\text{K}^4)\\))</td><td class=\"unit\">\\text{W/(m}^2\\cdot\\text{K}^4)</td></tr>\n<tr><td class=\"sym\">\\(A\\)</td><td>Luas permukaan pemancar radiasi</td><td class=\"unit\">\\text{m}^2</td></tr>\n<tr><td class=\"sym\">\\(T\\)</td><td>Temperatur MUTLAK permukaan benda (HARUS DALAM KELVIN!)</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n<tr><td class=\"sym\">\\(\\lambda_{\\max}\\)</td><td>Panjang gelombang pada intensitas radiasi maksimum</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(C\\)</td><td>Konstanta pergeseran Wien (\\(C = 2,898 \times 10^{-3} \text{ m}\\cdot\text{K}\\))</td><td class=\"unit\">\\text{m}\\cdot\\text{K}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perhatikan ketergantungan pangkat empat: jika suhu mutlak dilipatduakan (2T), daya radiasi melonjak menjadi 2⁴ = 16 KALI LIPAT!</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Suhu mutlak suatu permukaan dinaikkan dari 300 K menjadi 450 K. Berapa kali daya radiasinya?</p>",
+          "title": "Contoh Perhitungan Rasio Radiasi Benda Hitam",
+          "question": "<p>Sebuah benda hitam mutlak (e = 1) memancarkan daya radiasi sebesar 40 Watt saat suhunya 300 K. Jika suhu benda tersebut dinaikkan menjadi 600 K, berapakah daya radiasi yang dipancarkannya sekarang?</p>",
           "steps": [
-            "P ∝ T⁴ → (450/300)⁴ = 1,5⁴."
+            "Berdasarkan Hukum Stefan-Boltzmann: P sebanding dengan T⁴ (P ~ T⁴).",
+            "P₂ / P₁ = (T₂ / T₁)⁴.",
+            "P₂ / 40 = (600 / 300)⁴ = (2)⁴ = 16.",
+            "P₂ = 40 × 16 = 640 Watt."
           ],
-          "answer": "± 5,06 kali"
+          "answer": "Daya radiasi naik menjadi 640 Watt (16 kali lipat)."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah bintang memiliki suhu permukaan 6.000 K. Berdasarkan Hukum Pergeseran Wien (C = 2,9 × 10⁻³ m·K), puncak pancaran radiasi bintang tersebut berada pada panjang gelombang ....",
+          "options": {
+            "A": "483,3 nm (cahaya tampak biru-kehijauan)",
+            "B": "650,0 nm (merah)",
+            "C": "1.200 nm (inframerah)",
+            "D": "250 nm (ultraviolet)"
+          },
+          "answer": "A",
+          "hint": "λ_max = C / T = (2,9 × 10⁻³) / 6.000 = 4,833 × 10⁻⁷ m = 483,3 nm.",
+          "explanation": "Pilihan A benar (panjang gelombang cahaya tampak Matahari)."
         }
       ]
     },
     {
       "id": "sains-efek-rumah-kaca-pemanasan-global",
-      "title": "Sains Perubahan Iklim: Efek Rumah Kaca, Gas GRK, dan Neraca Energi Bumi",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Fisika Efek Rumah Kaca, Keseimbangan Radiasi Bumi, dan Pemanasan Global",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Sains Perubahan Iklim: Efek Rumah Kaca, Gas GRK, dan Neraca Energi Bumi</b>: Menjelaskan mekanisme penyerapan radiasi inframerah oleh gas CO2 dan metana serta dampaknya pada kenaikan muka air laut.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Keseimbangan Radiasi Planet Bumi</h3>\n<p>Matahari yang bersuhu permukaan sekitar 5.800 K memancarkan radiasi gelombang pendek (spektrum tampak dan ultraviolet). Atmosfer bumi relatif transparan terhadap radiasi gelombang pendek ini, sehingga energi matahari diserap oleh permukaan daratan dan lautan, menghangatkan bumi.</p>\n<p>Bumi yang bersuhu rata-rata ~288 K (15°C) meradiasikan kembali energi panas ke angkasa dalam bentuk <b>radiasi gelombang panjang (spektrum inframerah termal)</b>.</p>\n<h3>Peran Gas Rumah Kaca (Greenhouse Gases / GHG)</h3>\n<p>Molekul gas rumah kaca di atmosfer—terutama Karbon Dioksida (\\(\\text{CO}_2\\)), Metana (\\(\\text{CH}_4\\)), Dinitrogen Oksida (\\(\\text{N}_2\\text{O}\\)), dan uap air (\\(\\text{H}_2\\text{O}\\))—memiliki frekuensi vibrasi ikatan kimiawi yang beresonansi dengan radiasi inframerah. Gas-gas ini menyerap radiasi inframerah dari bumi lalu meradiasikannya kembali ke segala arah, termasuk kembali ke permukaan bumi (radiasi balik atmosfer).</p>\n<ul>\n  <li><b>Efek Rumah Kaca Alami</b>: sangat vital karena menjaga suhu rata-rata bumi pada +15°C (tanpa efek ini, suhu bumi akan beku ekstrem pada -18°C).</li>\n  <li><b>Pemanasan Global Antropogenik</b>: emisi bahan bakar fosil dan deforestasi melipatgandakan konsentrasi gas rumah kaca, memicu kenaikan suhu global, kenaikan muka air laut, dan cuaca ekstrem.</li>\n</ul>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Buat diagram tahap pemanasan: naik suhu → berubah wujud → naik suhu, lalu jumlahkan kalor tiap tahap.</li><li>Pada asas Black yang melibatkan es, periksa dulu apakah kalor cukup untuk melebur seluruh es.</li><li>Ubah °C ke kelvin untuk radiasi; perubahan suhu (ΔT) dalam °C dan K sama.</li><li>Untuk sambungan dua batang, laju konduksi pada kedua batang sama.</li></ul>"
+          "title": "Mitigasi dan Transisi Energi Bersih",
+          "html": "<p>Langkah-langkah terukur dalam mereduksi jejak karbon (carbon footprint) mencakup: elektrifikasi transportasi (kendaraan listrik), pengembangan energi terbarukan (PLTS surya, PLTB angin, panas bumi), konservasi hutan penyerap karbon, dan penerapan teknologi penangkapan karbon (Carbon Capture and Storage / CCS).</p>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/06 Kalor/sim/asas-black.html",
-          "title": "Asas Black",
-          "height": 520,
-          "caption": "Campurkan dua cairan bersuhu berbeda. Mengapa suhu akhir lebih dekat ke suhu cairan yang massanya lebih besar?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Sains Perubahan Iklim: Efek Rumah Kaca, Gas GRK, dan Neraca Energi Bumi",
-          "question": "<p>Perhatikan permasalahan terkait <b>Sains Perubahan Iklim: Efek Rumah Kaca, Gas GRK, dan Neraca Energi Bumi</b> berikut. Analisislah berdasarkan prinsip Menjelaskan mekanisme penyerapan radiasi inframerah oleh gas CO2 dan metana serta dampaknya pada kenaikan muka air laut..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Mekanisme fisis utama yang menyebabkan terjadinya efek rumah kaca di atmosfer bumi adalah ....",
+          "options": {
+            "A": "Penyerapan radiasi ultraviolet matahari oleh lapisan ozon stratosfer",
+            "B": "Penyerapan radiasi inframerah gelombang panjang bumi oleh gas rumah kaca",
+            "C": "Pemantulan seluruh cahaya matahari oleh partikel debu aerosol",
+            "D": "Pembelokan medan magnet bumi oleh angin badai matahari"
+          },
+          "answer": "B",
+          "hint": "Gas rumah kaca menyerap radiasi inframerah termal (gelombang panjang) yang dipancarkan bumi lalu memancarkannya kembali ke permukaan bumi, menahan pelepasan panas ke ruang angkasa.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-09",
-      "title": "Strategi Soal Kalor dan Latihan Kuis Bab 9",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Kalor dan Pemanasan Global",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Soal Kalor dan Latihan Kuis Bab 9</b>: Menuntaskan soal perhitungan Asas Black dan konsep radiasi serta menyelesaikan kuis bab 20 soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Buat diagram tahap pemanasan: naik suhu → berubah wujud → naik suhu, lalu jumlahkan kalor tiap tahap.</li><li>Pada asas Black yang melibatkan es, periksa dulu apakah kalor cukup untuk melebur seluruh es.</li><li>Ubah °C ke kelvin untuk radiasi; perubahan suhu (ΔT) dalam °C dan K sama.</li><li>Untuk sambungan dua batang, laju konduksi pada kedua batang sama.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Soal Kalor dan Latihan Kuis Bab 9",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Soal Kalor dan Latihan Kuis Bab 9</b> berikut. Analisislah berdasarkan prinsip Menuntaskan soal perhitungan Asas Black dan konsep radiasi serta menyelesaikan kuis bab 20 soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Soal Kalor dan Latihan Kuis Bab 9, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Soal Kalor dan Latihan Kuis Bab 9 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan soal perhitungan Asas Black dan konsep radiasi serta menyelesaikan kuis bab 20 soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Evaluasi Akhir Pemahaman Kalor dan Termal</h3>\n<p>Uji pemahaman Anda melalui kuis resmi 20 soal bertarget TKA di bawah ini. Pastikan Anda menguasai perhitungan konversi skala suhu, pemuaian batang dan keping bimetal, Asas Black, konduksi Fourier sambungan seri, serta radiasi Stefan-Boltzmann.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Kalor dan Pemanasan Global. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Fisika: Kalor dan Pemanasan Global (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

@@ -1,326 +1,336 @@
 {
   "title": "Bilangan",
-  "summary": "Fondasi bilangan real dan penalaran numerik: klasifikasi bilangan rasional/irasional, sifat eksponen dan bentuk akar, rasionalisasi penyebut, logaritma dan aplikasinya, notasi ilmiah, pola angka satuan pangkat besar, serta soal kecukupan data (data sufficiency).",
+  "summary": "Materi komprehensif TKA Matematika SMA: klasifikasi bilangan real dan pecahan berulang, sifat operasi aljabar eksponen, bentuk akar bertingkat dan rasionalisasi penyebut, sifat logaritma dan perubahan basis, notasi ilmiah skala logaritmik, angka satuan siklis keterbagian, serta strategi kecukupan data.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "klasifikasi-bilangan-real",
-      "title": "Sistem Bilangan Real: Rasional, Irasional, dan Kerapatan pada Garis Bilangan",
+      "title": "Struktur dan Hierarki Sistem Bilangan Real, Rasional, dan Irasional",
       "kind": "artikel",
-      "duration": "14 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Sistem Bilangan Real: Rasional, Irasional, dan Kerapatan pada Garis Bilangan</b>: Membuktikan sifat ketertutupan, densitas bilangan rasional, dan membuktikan keirasionalan √2 atau bilangan irasional lainnya.</p>"
+          "html": "<h3>Hierarki Sistem Bilangan Real (\\(\\mathbb{R}\\))</h3>\n<p>Dalam matematika sekolah dan asesmen standar TKA, seluruh pembahasan berlandaskan pada himpunan bilangan real. Bilangan real mencakup seluruh titik pada garis bilangan kontinu dan dibagi menjadi dua kategori komplementer yang saling lepas:</p>\n<ol>\n  <li><b>Bilangan Rasional (\\(\\mathbb{Q}\\))</b>: bilangan yang dapat dinyatakan dalam bentuk pecahan biasa \\(\\frac{a}{b}\\) dengan \\(a, b \\in \\mathbb{Z}\\) dan \\(b \\ne 0\\). Bentuk desimalnya selalu <b>berhenti</b> (misal \\(0,75 = \\frac{3}{4}\\)) atau <b>berulang teratur tanpa henti</b> (misal \\(0,333\\dots = \\frac{1}{3}\\) atau \\(0,142857142857\\dots = \\frac{1}{7}\\)).</li>\n  <li><b>Bilangan Irasional</b>: bilangan real yang <b>TIDAK DAPAT</b> dituliskan sebagai rasio dua bilangan bulat. Desimalnya tak berhingga dan tidak berpola (misal \\(\\sqrt{2} \\approx 1,41421\\dots\\), \\(\\pi \\approx 3,14159\\dots\\), dan bilangan Euler \\(e \\approx 2,71828\\dots\\)).</li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Konversi Desimal Berulang Menjadi Pecahan Rasional",
+          "html": "<div class=\"fc-display\">\n\\[ x = 0,\\overline{d_1 d_2 \\dots d_k} \\qquad \\Longleftrightarrow \\qquad x = \\frac{d_1 d_2 \\dots d_k}{10^k - 1} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x\\)</td><td>Nilai bilangan rasional desimal berulang</td><td class=\"unit\">\\text{bilangan real } \\mathbb{Q}</td></tr>\n<tr><td class=\"sym\">\\(k\\)</td><td>Banyaknya digit dalam satu periode pengulangan</td><td class=\"unit\">\\text{bilangan bulat positif } \\mathbb{Z}^+</td></tr>\n<tr><td class=\"sym\">\\(10^k - 1\\)</td><td>Penyebut pecahan (terdiri dari k angka 9 berurutan)</td><td class=\"unit\">\\text{bilangan bulat}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Contoh: 0,777... memiliki 1 digit berulang (k=1) => 7/9. 0,272727... memiliki 2 digit berulang (k=2) => 27/99 = 3/11.</small></p>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk pernyataan “selalu benar”, cukup satu contoh penyangkal untuk menunjukkan salah.</li><li>Samakan bilangan pokok sebelum membandingkan pangkat (misalnya 2^(1/2) dan 3^(1/3): pangkatkan keduanya dengan 6).</li><li>Pada soal kecukupan data, periksa setiap pernyataan sendiri-sendiri, lalu gabungan keduanya.</li><li>Ubah ke notasi ilmiah sebelum mengalikan atau membagi bilangan sangat besar/kecil.</li></ul>"
+          "title": "Sifat Aljabar Bilangan Rasional dan Irasional",
+          "html": "<ul>\n  <li>Rasional + Rasional = <b>Pasti Rasional</b>.</li>\n  <li>Rasional \\(\\times\\) Rasional = <b>Pasti Rasional</b>.</li>\n  <li>Rasional + Irasional = <b>Pasti Irasional</b>.</li>\n  <li>Irasional \\(\\times\\) Irasional = <b>BISA Rasional atau Irasional</b> (Contoh: \\(\\sqrt{2} \\times \\sqrt{8} = \\sqrt{16} = 4\\) [Rasional], tetapi \\(\\sqrt{2} \\times \\sqrt{3} = \\sqrt{6}\\) [Irasional]).</li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Hitung 27^(2/3) + 16^(−1/2) × 8.</p>",
+          "title": "Contoh Mengubah Desimal Campuran Menjadi Pecahan Biasa",
+          "question": "<p>Ubahlah bilangan desimal berulang 1,2363636... menjadi bentuk pecahan paling sederhana p/q!</p>",
           "steps": [
-            "27^(2/3) = (∛27)² = 9.",
-            "16^(−1/2) = 1/4, sehingga 1/4 × 8 = 2.",
-            "Hasil = 11."
+            "Misalkan x = 1,2363636...",
+            "Kalikan dengan 10 agar bagian tak berulang bergeser ke kiri koma: 10x = 12,363636...",
+            "Kalikan dengan 1000 karena ada 2 digit berulang (36): 1000x = 1236,363636...",
+            "Kurangkan kedua persamaan: 1000x - 10x = 1236,3636... - 12,3636...",
+            "990x = 1224  =>  x = 1224 / 990.",
+            "Sederhanakan dengan membagi pembilang dan penyebut dengan FPB = 18: x = 68 / 55."
           ],
-          "answer": "11"
+          "answer": "Bentuk pecahan paling sederhana adalah 68/55."
         },
         {
           "type": "check",
-          "question": "Hasil kali dua bilangan irasional ....",
+          "title": "Cek Pemahaman",
+          "question": "Manakah di antara pernyataan berikut yang SELALU BENAR untuk sembarang bilangan real?",
           "options": {
-            "A": "selalu irasional",
-            "B": "selalu rasional",
-            "C": "bisa rasional, misalnya √2 × √2",
-            "D": "selalu bilangan bulat"
+            "A": "Hasil kali dua bilangan irasional selalu menghasilkan bilangan irasional",
+            "B": "Jumlah bilangan rasional bukan nol dengan bilangan irasional selalu merupakan bilangan irasional",
+            "C": "Akar kuadrat dari sembarang bilangan bulat positif adalah bilangan irasional",
+            "D": "Bilangan dengan representasi desimal tak hingga pasti merupakan bilangan irasional"
           },
-          "answer": "C",
-          "hint": "Cari contoh penyangkal.",
-          "explanation": "√2 × √2 = 2 rasional, tetapi √2 × √3 = √6 irasional. Jadi bisa keduanya."
+          "answer": "B",
+          "hint": "Penjumlahan bilangan rasional dan irasional (r + i) selalu menghasilkan bilangan irasional, sebab jika r + i = q (rasional), maka i = q - r yang menghasilkan irasional = rasional (kontradiksi).",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "sifat-eksponen-pangkat-pecahan",
-      "title": "Eksponen: Pangkat Bulat, Pangkat Pecahan, dan Persamaan Eksponensial Sederhana",
+      "title": "Sifat-Sifat Operasi Eksponen dan Pangkat Pecahan (Bentuk Pangkat Aljabar)",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Eksponen: Pangkat Bulat, Pangkat Pecahan, dan Persamaan Eksponensial Sederhana</b>: Menyederhanakan bentuk pangkat majemuk a^(m/n) dan menyelesaikan a^f(x) = a^g(x).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Definisi dan Landasan Aljabar Eksponen</h3>\n<p>Eksponen atau pemangkatan menyatakan operasi perkalian berulang suatu bilangan pokok (basis) \\(a\\) sebanyak \\(n\\) faktor. Sifat-sifat eksponen berlaku secara universal untuk sembarang pangkat bilangan bulat maupun pangkat rasional (pecahan).</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk pernyataan “selalu benar”, cukup satu contoh penyangkal untuk menunjukkan salah.</li><li>Samakan bilangan pokok sebelum membandingkan pangkat (misalnya 2^(1/2) dan 3^(1/3): pangkatkan keduanya dengan 6).</li><li>Pada soal kecukupan data, periksa setiap pernyataan sendiri-sendiri, lalu gabungan keduanya.</li><li>Ubah ke notasi ilmiah sebelum mengalikan atau membagi bilangan sangat besar/kecil.</li></ul>"
+          "variant": "rumus",
+          "title": "Sifat-Sifat Pokok Aljabar Eksponen",
+          "html": "<div class=\"fc-display\">\n\\[ a^m \\cdot a^n = a^{m+n} \\qquad \\Big| \\qquad \\frac{a^m}{a^n} = a^{m-n} \\qquad \\Big| \\qquad (a^m)^n = a^{m \\cdot n} \\qquad \\Big| \\qquad a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b\\)</td><td>Bilangan pokok (basis) dengan syarat \\(a > 0, a \ne 1\\)</td><td class=\"unit\">\\text{bilangan real positif}</td></tr>\n<tr><td class=\"sym\">\\(m, n\\)</td><td>Eksponen / pangkat</td><td class=\"unit\">\\text{bilangan real } \\mathbb{R}</td></tr>\n<tr><td class=\"sym\">\\(a^0 = 1\\)</td><td>Pangkat nol untuk sembarang basis bukan nol (\\(a \ne 0\\))</td><td class=\"unit\">\\text{konstanta 1}</td></tr>\n<tr><td class=\"sym\">\\(a^{-n} = \\frac{1}{a^n}\\)</td><td>Pangkat negatif sebagai kebalikan nilai pecahan</td><td class=\"unit\">\\text{bilangan real}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Ingat: (a + b)ⁿ TIDAK SAMA DENGAN aⁿ + bⁿ. Pemangkatan tidak distributif terhadap operasi penjumlahan!</small></p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas10/Matematika/01 Eksponen dan Logaritma/sim/fungsi-eksponen.html",
-          "title": "Fungsi eksponensial",
+          "title": "Simulasi Grafik Fungsi Eksponen",
           "height": 520,
-          "caption": "Ubah bilangan pokok dan nilai awal; perhatikan pertumbuhan dan peluruhan."
+          "caption": "Ubah basis a dan pangkat untuk mengamati pertumbuhan grafik eksponensial."
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Rasionalkan 6/(√5 − √2).</p>",
+          "title": "Contoh Penyederhanaan Aljabar Bentuk Pangkat TKA",
+          "question": "<p>Sederhanakan bentuk: \\(\\frac{(2^{n+2} \\cdot 4^{n-1})}{8^{n}}\\)!</p>",
           "steps": [
-            "Kalikan dengan (√5 + √2)/(√5 + √2).",
-            "6(√5 + √2)/(5 − 2) = 2(√5 + √2)."
+            "Ubah seluruh basis menjadi basis 2: 4 = 2² dan 8 = 2³.",
+            "Pembilang: 2^{n+2} · (2²)^{n-1} = 2^{n+2} · 2^{2n-2} = 2^{(n+2) + (2n-2)} = 2^{3n}.",
+            "Penyebut: 8^n = (2³)^n = 2^{3n}.",
+            "Bagi pembilang dengan penyebut: 2^{3n} / 2^{3n} = 2^{3n - 3n} = 2^0 = 1."
           ],
-          "answer": "2√5 + 2√2"
+          "answer": "Bentuk sederhana dari ekspresi tersebut adalah 1."
         },
         {
           "type": "check",
-          "question": "Nilai ²log 32 − ²log 4 adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Nilai dari (81)^(3/4) - (125)^(2/3) + (32)^(2/5) adalah ....",
           "options": {
-            "A": "3",
-            "B": "5",
+            "A": "4",
+            "B": "6",
             "C": "8",
-            "D": "28"
+            "D": "10"
           },
-          "answer": "A",
-          "hint": "Gunakan log(x/y).",
-          "explanation": "²log(32/4) = ²log 8 = 3."
+          "answer": "B",
+          "hint": "Ubah setiap bilangan ke bentuk basis berpangkat terkecil.",
+          "explanation": "81^(3/4) = (3⁴)^(3/4) = 3³ = 27. 125^(2/3) = (5³)^(2/3) = 5² = 25. 32^(2/5) = (2⁵)^(2/5) = 2² = 4. Hasil = 27 - 25 + 4 = 6."
         }
       ]
     },
     {
       "id": "bentuk-akar-dan-rasionalisasi",
-      "title": "Bentuk Akar: Operasi Aljabar, Merasionalkan Penyebut, dan Akar Bertingkat",
+      "title": "Bentuk Akar, Menyederhanakan Akar Bertingkat, dan Merasionalkan Penyebut",
       "kind": "artikel",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Selain hitungan, TKA SMA menguji <b>penalaran</b>: menilai benar tidaknya pernyataan tentang bilangan dan menentukan apakah informasi cukup untuk menjawab.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Bilangan real</td><td>rasional dan irasional, letak pada garis bilangan</td><td>SMP, Kelas 10</td></tr><tr><td>Bentuk akar</td><td>menyederhanakan, merasionalkan penyebut</td><td>Kelas 10 Bab 1</td></tr><tr><td>Eksponen</td><td>sifat pangkat bulat dan pecahan, notasi ilmiah</td><td>Kelas 10 Bab 1</td></tr><tr><td>Logaritma</td><td>definisi dan sifat-sifat</td><td>Kelas 10 Bab 1</td></tr><tr><td>Penalaran</td><td>pola angka satuan, keterbagian, pernyataan benar/salah</td><td>SMP</td></tr></table>"
+          "html": "<h3>Rasionalisasi Bentuk Akar</h3>\n<p>Bentuk akar \\(\\sqrt[n]{a}\\) dikatakan irasional jika tidak dapat ditarik akar eksak. Dalam konvensi standar aljabar matematika, bentuk pecahan yang memiliki akar pada penyebutnya harus <b>dirasionalkan</b> dengan mengalikan pembilang dan penyebut dengan bentuk sekawannya (konjugat).</p>\n<p>Trik perkalian sekawan memanfaatkan identitas selisih dua kuadrat: <b>\\((a + b)(a - b) = a^2 - b^2\\)</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formula Menyederhanakan Bentuk Akar Bertingkat",
+          "html": "<div class=\"fc-display\">\n\\[ \\sqrt{(a + b) \\pm 2\\sqrt{a \\cdot b}} = \\sqrt{a} \\pm \\sqrt{b} \\quad (a \\ge b > 0) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, b\\)</td><td>Dua bilangan positif pembentuk jumlah dan hasil kali</td><td class=\"unit\">a \\ge b > 0</td></tr>\n<tr><td class=\"sym\">\\(a + b\\)</td><td>Jumlah dua bilangan di luar akar dalam</td><td class=\"unit\">\\text{bilangan real positif}</td></tr>\n<tr><td class=\"sym\">\\(a \\cdot b\\)</td><td>Hasil kali dua bilangan di dalam tanda akar</td><td class=\"unit\">\\text{bilangan real positif}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perhatikan angka 2 di depan akar dalam! Jika koefisien akar dalam bukan 2 (misalnya 4 atau 6), faktorkan keluar angka 2 terlebih dahulu.</small></p>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk pernyataan “selalu benar”, cukup satu contoh penyangkal untuk menunjukkan salah.</li><li>Samakan bilangan pokok sebelum membandingkan pangkat (misalnya 2^(1/2) dan 3^(1/3): pangkatkan keduanya dengan 6).</li><li>Pada soal kecukupan data, periksa setiap pernyataan sendiri-sendiri, lalu gabungan keduanya.</li><li>Ubah ke notasi ilmiah sebelum mengalikan atau membagi bilangan sangat besar/kecil.</li></ul>"
+          "title": "Tiga Tipe Rasionalisasi Penyebut",
+          "html": "<ol>\n  <li>Tipe tunggal: \\(\\frac{a}{\\sqrt{b}} = \\frac{a\\sqrt{b}}{b}\\).</li>\n  <li>Tipe sekawan dua suku: \\(\\frac{c}{\\sqrt{a} \\pm \\sqrt{b}} = \\frac{c(\\sqrt{a} \\mp \\sqrt{b})}{a - b}\\).</li>\n  <li>Tipe sekawan bulat: \\(\\frac{c}{a \\pm \\sqrt{b}} = \\frac{c(a \\mp \\sqrt{b})}{a^2 - b}\\).</li>\n</ol>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Tentukan angka satuan 7²⁰²⁶.</p>",
+          "title": "Contoh Menyederhanakan Akar Bertingkat",
+          "question": "<p>Sederhanakan bentuk akar bertingkat: \\(\\sqrt{8 - \\sqrt{60}}\\)!</p>",
           "steps": [
-            "Angka satuan pangkat 7 berulang: 7, 9, 3, 1 (periode 4).",
-            "2026 = 4 × 506 + 2, sehingga sama dengan 7² → 9."
+            "Bentuk harus memiliki angka 2 di depan akar dalam: √60 = √(4 × 15) = 2√15.",
+            "Ekspresi menjadi: √(8 - 2√15).",
+            "Cari dua bilangan a dan b sedemikian rupa sehingga: a + b = 8 dan a · b = 15.",
+            "Dua bilangan tersebut adalah a = 5 dan b = 3.",
+            "Maka √(8 - 2√15) = √5 - √3."
           ],
-          "answer": "9"
+          "answer": "Bentuk sederhana adalah √5 - √3."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Bentuk rasional dari 6 / (√5 + √2) adalah ....",
+          "options": {
+            "A": "2(√5 - √2)",
+            "B": "3(√5 - √2)",
+            "C": "2(√5 + √2)",
+            "D": "6(√5 - √2)"
+          },
+          "answer": "A",
+          "hint": "Kalikan sekawan (√5 - √2): [6(√5 - √2)] / (5 - 2) = [6(√5 - √2)] / 3 = 2(√5 - √2).",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "konsep-sifat-logaritma",
-      "title": "Logaritma: Definisi, Sifat-Sifat Operasi, dan Basis Sembarang",
+      "title": "Konsep dan Sifat-Sifat Logaritma serta Persamaan Logaritma",
       "kind": "simulasi",
-      "duration": "18 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Logaritma: Definisi, Sifat-Sifat Operasi, dan Basis Sembarang</b>: Membuktikan dan menerapkan sifat ᵃlog(xy) = ᵃlog x + ᵃlog y, ᵃlog(b) = (ᶜlog b)/(ᶜlog a), dan sifat pangkat.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Logaritma sebagai Invers dari Eksponen</h3>\n<p>Logaritma menjawab pertanyaan: <i>\"Berapa pangkat yang harus diberikan pada basis \\(a\\) agar menghasilkan nilai numerus \\(b\\)?\"</i></p>\n\\[ ^a\\log b = c \\iff a^c = b \\]\n<p>Syarat mutlak basis dan numerus (Domain Keberlakuan Logaritma):</p>\n<ul>\n  <li><b>Basis \\(a\\)</b>: harus positif dan bukan satu (\\(a > 0, a \\ne 1\\)).</li>\n  <li><b>Numerus \\(b\\)</b>: harus mutlak bernilai positif (\\(b > 0\\)).</li>\n</ul>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Fokus Konsep",
-          "html": "<p>Simulasi interaktif logaritma sebagai invers eksponen dengan grafik cermin y = x.</p>"
+          "variant": "rumus",
+          "title": "Sifat-Sifat Utama Aljabar Logaritma",
+          "html": "<div class=\"fc-display\">\n\\[ ^a\\log(x \\cdot y) = ^a\\log x + ^a\\log y \\qquad \\Big| \\qquad ^a\\log\\left(\\frac{x}{y}\\right) = ^a\\log x - ^a\\log y \\qquad \\Big| \\qquad ^a\\log(x^n) = n \\cdot ^a\\log x \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(^a\\log x\\)</td><td>Logaritma x pada basis a</td><td class=\"unit\">\\text{bilangan real } \\mathbb{R}</td></tr>\n<tr><td class=\"sym\">\\(^a\\log b \\cdot ^b\\log c = ^a\\log c\\)</td><td>Sifat rantai perkalian logaritma</td><td class=\"unit\">\\text{berlaku untuk basis yang sama}</td></tr>\n<tr><td class=\"sym\">\\(^a\\log b = \\frac{\\log b}{\\log a} = \\frac{1}{^b\\log a}\\)</td><td>Sifat perubahan basis sembarang</td><td class=\"unit\">\\text{berlaku jika } b \\ne 1</td></tr>\n<tr><td class=\"sym\">\\(^{a^m}\\log(b^n) = \\frac{n}{m} \\cdot ^a\\log b\\)</td><td>Sifat pangkat simultan basis dan numerus</td><td class=\"unit\">\\text{sangat sering diuji di TKA}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika basis tidak dituliskan (misal log x), maka basisnya disepakati adalah basis 10. Jika menggunakan basis bilangan natural e, ditulis sebagai ln x (logaritma natural).</small></p>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas8/Matematika/01 Bilangan Berpangkat/sim/pola-pangkat.html",
-          "title": "Pola bilangan berpangkat",
+          "src": "../../../Kelas10/Matematika/01 Eksponen dan Logaritma/sim/logaritma.html",
+          "title": "Simulasi Fungsi Logaritma",
           "height": 520,
-          "caption": "Amati pola angka satuan dan pola pangkat negatif."
+          "caption": "Geser nilai basis dan amati grafik fungsi logaritma serta titik potong sumbu-x."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Hitung ²log 8 + ³log 9 − log 100.</p>",
+          "title": "Contoh Perhitungan Logaritma Bersusun TKA",
+          "question": "<p>Jika ⁴log 3 = m, tentukan nilai dari ⁹log 8 dinyatakan dalam m!</p>",
           "steps": [
-            "²log 8 = 3, ³log 9 = 2, log 100 = 2.",
-            "3 + 2 − 2 = 3."
+            "Ubah ⁴log 3: ⁴log 3 = ^{(2²)}\\log 3 = ½ · ²log 3 = m  =>  ²log 3 = 2m.",
+            "Uraikan ⁹log 8: ⁹log 8 = ^{(3²)}\\log(2³) = 3/2 · ³log 2.",
+            "Gunakan sifat kebalikan: ³log 2 = 1 / (²log 3) = 1 / (2m).",
+            "Substitusi: ⁹log 8 = 3/2 · (1 / (2m)) = 3 / (4m)."
           ],
-          "answer": "3"
+          "answer": "Nilai ⁹log 8 dinyatakan dalam m adalah 3 / (4m)."
+        },
+        {
+          "type": "check",
+          "title": "Hasil = (4 + ²log 3) + ½ ²log 3 - (1 + 2 ²log 3) = (4 - 1) + (1 + 0,5 - 2) ²log 3 = 3 - 0,5 ²log 3.",
+          "question": "Nilai dari ²log 48 + ²log √3 - ²log 18 adalah ....",
+          "options": {
+            "A": "1,5",
+            "B": "2",
+            "C": "2,5",
+            "D": "3"
+          },
+          "answer": "C",
+          "hint": "Gabungkan dengan sifat logaritma: ²log [ (48 × √3) / 18 ] = ²log [ (8√3) / 3 ] = ²log [ 8 / √3 ] (atau hitung pangkat langsung: 48 = 16×3 = 2⁴×3, 18 = 2×3²).",
+          "explanation": "²log 48 = 4 + ²log 3; ²log √3 = ½ ²log 3; ²log 18 = 1 + 2 ²log 3."
         }
       ]
     },
     {
       "id": "notasi-ilmiah-dan-skala-logaritmik",
-      "title": "Notasi Ilmiah, Orde Magnitudo, dan Skala Logaritmik (pH & Richter)",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Notasi Ilmiah dan Skala Logaritmik (pH, Richter, Decibel)",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Selain hitungan, TKA SMA menguji <b>penalaran</b>: menilai benar tidaknya pernyataan tentang bilangan dan menentukan apakah informasi cukup untuk menjawab.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Bilangan real</td><td>rasional dan irasional, letak pada garis bilangan</td><td>SMP, Kelas 10</td></tr><tr><td>Bentuk akar</td><td>menyederhanakan, merasionalkan penyebut</td><td>Kelas 10 Bab 1</td></tr><tr><td>Eksponen</td><td>sifat pangkat bulat dan pecahan, notasi ilmiah</td><td>Kelas 10 Bab 1</td></tr><tr><td>Logaritma</td><td>definisi dan sifat-sifat</td><td>Kelas 10 Bab 1</td></tr><tr><td>Penalaran</td><td>pola angka satuan, keterbagian, pernyataan benar/salah</td><td>SMP</td></tr></table>"
+          "html": "<h3>Representasi Orde Magnitudo dan Notasi Ilmiah</h3>\n<p>Untuk menuliskan besaran yang sangat besar (seperti massa bumi \\(5,97 \\times 10^{24}\\) kg) atau sangat kecil (seperti muatan elektron \\(1,6 \\times 10^{-19}\\) C), digunakan <b>Notasi Ilmiah Standar</b>: <b>\\(a \\times 10^n\\)</b> dengan batas kaku: <b>\\(1 \\le a < 10\\)</b> dan \\(n \\in \\mathbb{Z}\\).</p>\n<h3>Skala Logaritmik dalam Sains Terapan</h3>\n<p>Skala logaritmik digunakan ketika suatu variabel fisis mencakup rentang nilai berorde-orde pangkat sepuluh:</p>\n<ul>\n  <li><b>Skala Richter (Gempa Bumi)</b>: Kenaikan 1 skala Richter berarti amplitudo getaran tanah melonjak <b>10 kali lipat</b> dan energi yang dilepaskan melonjak sekitar <b>31,6 kali lipat (\\(10^{1,5}\\))</b>.</li>\n  <li><b>Derajat Keasaman (\\(\\text{pH}\\))</b>: \\(\\text{pH} = -\\log_{10}[\\text{H}^+]\\). Larutan ber-pH 3 memiliki konsentrasi ion hidrogen <b>100 kali lebih pekat</b> dibanding larutan ber-pH 5.</li>\n</ul>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk pernyataan “selalu benar”, cukup satu contoh penyangkal untuk menunjukkan salah.</li><li>Samakan bilangan pokok sebelum membandingkan pangkat (misalnya 2^(1/2) dan 3^(1/3): pangkatkan keduanya dengan 6).</li><li>Pada soal kecukupan data, periksa setiap pernyataan sendiri-sendiri, lalu gabungan keduanya.</li><li>Ubah ke notasi ilmiah sebelum mengalikan atau membagi bilangan sangat besar/kecil.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Cahaya merambat 3 × 10⁸ m/s. Jarak Bumi–Matahari sekitar 1,5 × 10¹¹ m. Berapa lama cahaya Matahari sampai ke Bumi?</p>",
-          "steps": [
-            "t = 1,5 × 10¹¹ / (3 × 10⁸) = 0,5 × 10³ = 500 s.",
-            "≈ 8 menit 20 detik."
-          ],
-          "answer": "500 detik"
+          "title": "Aplikasi TKA Soal Pertumbuhan Logaritmik",
+          "html": "<p>Soal peluruhan radioaktif atau pertumbuhan bakteri sering menggunakan persamaan berbasis logaritma natural (\\(\\ln\\)):\n\\[ N(t) = N_0 \\cdot e^{kt} \\iff t = \\frac{1}{k} \\ln\\left(\\frac{N(t)}{N_0}\\right) \\]</p>"
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Notasi Ilmiah, Orde Magnitudo, dan Skala Logaritmik (pH & Richter), pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Gempa bumi di kota A tercatat berkekuatan 7,0 skala Richter, sedangkan gempa di kota B berkekuatan 5,0 skala Richter. Amplitudo gelombang seismik gempa kota A dibandingkan gempa kota B adalah ....",
           "options": {
-            "A": "Konsep Notasi Ilmiah, Orde Magnitudo, dan Skala Logaritmik (pH & Richter) berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "2 kali lebih besar",
+            "B": "20 kali lebih besar",
+            "C": "100 kali lebih besar",
+            "D": "1.000 kali lebih besar"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Mengoperasikan bilangan orde mikro/makro dan memecahkan soal terapan skala Richter atau desibel.."
+          "answer": "C",
+          "hint": "Selisih skala = 7 - 5 = 2. Karena skala Richter adalah logaritmik basis 10, rasio amplitudo = 10^(ΔM) = 10² = 100 kali lebih besar.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "penalaran-angka-satuan-keterbagian",
-      "title": "Penalaran Numerik: Siklus Angka Satuan Pangkat Besar dan Keterbagian",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Teori Bilangan: Angka Satuan Siklis, Keterbagian, dan Aritmetika Modular",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Selain hitungan, TKA SMA menguji <b>penalaran</b>: menilai benar tidaknya pernyataan tentang bilangan dan menentukan apakah informasi cukup untuk menjawab.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Bilangan real</td><td>rasional dan irasional, letak pada garis bilangan</td><td>SMP, Kelas 10</td></tr><tr><td>Bentuk akar</td><td>menyederhanakan, merasionalkan penyebut</td><td>Kelas 10 Bab 1</td></tr><tr><td>Eksponen</td><td>sifat pangkat bulat dan pecahan, notasi ilmiah</td><td>Kelas 10 Bab 1</td></tr><tr><td>Logaritma</td><td>definisi dan sifat-sifat</td><td>Kelas 10 Bab 1</td></tr><tr><td>Penalaran</td><td>pola angka satuan, keterbagian, pernyataan benar/salah</td><td>SMP</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk pernyataan “selalu benar”, cukup satu contoh penyangkal untuk menunjukkan salah.</li><li>Samakan bilangan pokok sebelum membandingkan pangkat (misalnya 2^(1/2) dan 3^(1/3): pangkatkan keduanya dengan 6).</li><li>Pada soal kecukupan data, periksa setiap pernyataan sendiri-sendiri, lalu gabungan keduanya.</li><li>Ubah ke notasi ilmiah sebelum mengalikan atau membagi bilangan sangat besar/kecil.</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/01 Eksponen dan Logaritma/sim/logaritma.html",
-          "title": "Eksponen dan logaritma",
-          "height": 520,
-          "caption": "Lihat logaritma sebagai pertanyaan “dipangkatkan berapa?”."
+          "html": "<h3>Siklisitas Angka Satuan Pangkat Besar</h3>\n<p>Dalam soal penalaran analitis matematika TKA, kita sering diminta mencari angka satuan dari perpangkatan raksasa seperti \\(7^{2026}\\). Angka satuan dari sembarang bilangan bulat selalu berulang secara periodik (siklis) dengan periode maksimal 4:</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Digit Terakhir</th><th>Pola Siklus Angka Satuan (\\(n = 1, 2, 3, 4, \\dots\\))</th><th>Panjang Siklus</th></tr>\n  </thead>\n  <tbody>\n    <tr><td><b>2</b></td><td>2, 4, 8, 6 (lalu berulang lagi ke 2, 4, 8, 6)</td><td>4</td></tr>\n    <tr><td><b>3</b></td><td>3, 9, 7, 1 (lalu berulang lagi ke 3, 9, 7, 1)</td><td>4</td></tr>\n    <tr><td><b>4</b></td><td>4, 6 (4 jika pangkat ganjil, 6 jika pangkat genap)</td><td>2</td></tr>\n    <tr><td><b>7</b></td><td>7, 9, 3, 1 (lalu berulang lagi ke 7, 9, 3, 1)</td><td>4</td></tr>\n    <tr><td><b>8</b></td><td>8, 4, 2, 6 (lalu berulang lagi ke 8, 4, 2, 6)</td><td>4</td></tr>\n    <tr><td><b>9</b></td><td>9, 1 (9 jika pangkat ganjil, 1 jika pangkat genap)</td><td>2</td></tr>\n    <tr><td><b>0, 1, 5, 6</b></td><td>Selalu berakhir pada angka itu sendiri (0, 1, 5, 6)</td><td>1</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "example",
-          "title": "Contoh soal penalaran",
-          "question": "<p>Urutkan p = 2^(1/2), q = 3^(1/3), r = 6^(1/6) dari yang terkecil.</p>",
+          "title": "Contoh Menentukan Angka Satuan Pangkat Besar",
+          "question": "<p>Tentukan angka satuan dari bilangan: 7²⁰²⁶ + 3²⁰²⁵!</p>",
           "steps": [
-            "Pangkatkan ketiganya dengan 6: p⁶ = 8, q⁶ = 9, r⁶ = 6.",
-            "Urutan: r &lt; p &lt; q."
+            "Pola satuan basis 7 memiliki periode 4: 7¹=7, 7²=9, 7³=3, 7⁴=1.",
+            "Bagi eksponen 2026 dengan 4: 2026 = 4 × 506 + sisa 2.",
+            "Sisa 2 berarti angka satuan dari 7²⁰²⁶ sama dengan 7² = 9.",
+            "Pola satuan basis 3 memiliki periode 4: 3¹=3, 3²=9, 3³=7, 3⁴=1.",
+            "Bagi eksponen 2025 dengan 4: 2025 = 4 × 506 + sisa 1.",
+            "Sisa 1 berarti angka satuan dari 3²⁰²⁵ sama dengan 3¹ = 3.",
+            "Jumlahkan kedua angka satuan: 9 + 3 = 12. Angka satuannya adalah 2."
           ],
-          "answer": "r, p, q"
+          "answer": "Angka satuan dari hasil penjumlahan tersebut adalah 2."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Angka satuan dari bilangan 2²⁰²⁴ adalah ....",
+          "options": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8"
+          },
+          "answer": "C",
+          "hint": "Pola satuan 2: [2, 4, 8, 6]. Bagi pangkat dengan 4: 2024 / 4 = 506 bersisa 0 (habis dibagi). Sisa 0 setara dengan urutan ke-4, yaitu 6.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "soal-kecukupan-data-bilangan",
-      "title": "Soal Model TKA: Kecukupan Data (Data Sufficiency) pada Bilangan",
-      "kind": "latihan",
-      "duration": "16 menit",
+      "title": "Tipe Soal Kecukupan Data (Data Sufficiency) Domain Bilangan",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Setelah memahami ringkasan dan contoh di atas, uji dirimu dengan kuis bab ini. Kerjakan tanpa melihat pembahasan dahulu, lalu pelajari pembahasan setiap soal yang salah.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk pernyataan “selalu benar”, cukup satu contoh penyangkal untuk menunjukkan salah.</li><li>Samakan bilangan pokok sebelum membandingkan pangkat (misalnya 2^(1/2) dan 3^(1/3): pangkatkan keduanya dengan 6).</li><li>Pada soal kecukupan data, periksa setiap pernyataan sendiri-sendiri, lalu gabungan keduanya.</li><li>Ubah ke notasi ilmiah sebelum mengalikan atau membagi bilangan sangat besar/kecil.</li></ul>"
+          "html": "<h3>Format Soal Kecukupan Data (Pilihan 1 sampai 5)</h3>\n<p>Soal kecukupan data menguji kemampuan logika deduktif: apakah informasi yang diberikan cukup untuk menjawab pertanyaan secara unik dan pasti, tanpa perlu menghitung nilai akhir secara detail.</p>\n<p>Opsi Standar Kecukupan Data:</p>\n<ol>\n  <li><b>(A)</b> Pernyataan (1) SAJA cukup untuk menjawab pertanyaan, tetapi pernyataan (2) SAJA tidak cukup.</li>\n  <li><b>(B)</b> Pernyataan (2) SAJA cukup untuk menjawab pertanyaan, tetapi pernyataan (1) SAJA tidak cukup.</li>\n  <li><b>(C)</b> DUA pernyataan BERSAMA-SAMA cukup untuk menjawab pertanyaan, tetapi SATU pernyataan SAJA tidak cukup.</li>\n  <li><b>(D)</b> Pernyataan (1) SAJA cukup dan pernyataan (2) SAJA cukup.</li>\n  <li><b>(E)</b> Pernyataan (1) dan pernyataan (2) tidak cukup untuk menjawab pertanyaan.</li>\n</ol>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Soal Model TKA: Kecukupan Data (Data Sufficiency) pada Bilangan",
-          "question": "<p>Perhatikan permasalahan terkait <b>Soal Model TKA: Kecukupan Data (Data Sufficiency) pada Bilangan</b> berikut. Analisislah berdasarkan prinsip Menilai apakah pernyataan (1) dan (2) cukup secara independen atau bersama-sama untuk menjawab pertanyaan..</p>",
+          "title": "Contoh Analisis Kecukupan Data Bilangan",
+          "question": "<p>Apakah x > 0?<br>(1) x² - 4 = 0<br>(2) x + |x| = 0</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Uji Pernyataan (1): x² = 4  =>  x = 2 atau x = -2. Karena ada dua kemungkinan (satu positif dan satu negatif), kita TIDAK BISA memastikan apakah x > 0. Maka (1) SAJA TIDAK CUKUP.",
+            "Uji Pernyataan (2): x + |x| = 0  =>  |x| = -x. Persamaan ini terpenuhi untuk SEMUA bilangan x ≤ 0. Maka kita BISA MEMASTIKAN bahwa x TIDAK LEBIH BESAR DARI NOL (jawabannya pasti 'TIDAK'). Karena menghasilkan jawaban pasti tunggal ('tidak'), maka pernyataan (2) SAJA CUKUP!",
+            "Kesimpulan: Pernyataan (2) SAJA cukup, tetapi pernyataan (1) SAJA tidak cukup."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Jawaban yang benar adalah (B)."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Soal Model TKA: Kecukupan Data (Data Sufficiency) pada Bilangan, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Apakah bilangan bulat n ganjil?\n(1) n + 3 adalah bilangan genap.\n(2) 2n adalah bilangan genap.",
           "options": {
-            "A": "Konsep Soal Model TKA: Kecukupan Data (Data Sufficiency) pada Bilangan berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "Pernyataan (1) SAJA cukup, tetapi (2) SAJA tidak cukup",
+            "B": "Pernyataan (2) SAJA cukup, tetapi (1) SAJA tidak cukup",
+            "C": "DUA pernyataan BERSAMA-SAMA cukup",
+            "D": "Pernyataan (1) SAJA cukup dan (2) SAJA cukup"
           },
           "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menilai apakah pernyataan (1) dan (2) cukup secara independen atau bersama-sama untuk menjawab pertanyaan.."
+          "hint": "Dari (1): n + 3 = genap  =>  n + ganjil = genap  =>  n harus ganjil (PASTI CUKUP). Dari (2): 2n genap selalu benar untuk sembarang n (baik n ganjil maupun genap), sehingga (2) tidak memberi informasi tentang paritas n.",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-mat-01",
-      "title": "Strategi Cepat Soal Bilangan dan Latihan Kuis Bab 1",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Bilangan TKA Matematika",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Soal Bilangan dan Latihan Kuis Bab 1</b>: Menguasai variasi soal bilangan dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk pernyataan “selalu benar”, cukup satu contoh penyangkal untuk menunjukkan salah.</li><li>Samakan bilangan pokok sebelum membandingkan pangkat (misalnya 2^(1/2) dan 3^(1/3): pangkatkan keduanya dengan 6).</li><li>Pada soal kecukupan data, periksa setiap pernyataan sendiri-sendiri, lalu gabungan keduanya.</li><li>Ubah ke notasi ilmiah sebelum mengalikan atau membagi bilangan sangat besar/kecil.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Soal Bilangan dan Latihan Kuis Bab 1",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Soal Bilangan dan Latihan Kuis Bab 1</b> berikut. Analisislah berdasarkan prinsip Menguasai variasi soal bilangan dan menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Soal Bilangan dan Latihan Kuis Bab 1, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Soal Bilangan dan Latihan Kuis Bab 1 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai variasi soal bilangan dan menyelesaikan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Bab 01: Bilangan</h3>\n<p>Kuasai hierarki bilangan real, manipulasi pangkat eksponen pecahan, menyederhanakan bentuk akar bertingkat \\(\\sqrt{(a+b) \\pm 2\\sqrt{ab}}\\), sifat-sifat logaritma, keterbagian dan angka satuan siklis, serta logika kecukupan data.</p>\n<p>Kerjakan kuis resmi 20 butir soal di bawah ini untuk menguji penguasaan materi Anda.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA SMA topik Bilangan. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Matematika SMA: Bilangan (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

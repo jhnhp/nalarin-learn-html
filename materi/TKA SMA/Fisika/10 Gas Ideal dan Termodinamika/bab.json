@@ -1,302 +1,360 @@
 {
   "title": "Gas Ideal dan Termodinamika",
-  "summary": "Teori kinetik partikel dan termodinamika makroskopik: persamaan gas ideal PV = nRT, energi kinetik molekul dan kecepatan efektif rms, Hukum I Termodinamika (Q = W + ΔU), proses isobarik, isokhorik, isotermal, adiabatik, efisiensi Mesin Carnot, dan siklus pendingin kulkas.",
+  "summary": "Materi komprehensif TKA Fisika: persamaan keadaan gas ideal dan hukum Boyle-Gay Lussac, teori kinetik gas dan kecepatan efektif v_rms, hukum I termodinamika dan energi dalam, empat proses termodinamika khusus, siklus Carnot dan efisiensi mesin termal, koefisien performansi kulkas K_P, serta analisis jebakan skala mutlak Kelvin.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "persamaan-keadaan-gas-ideal",
-      "title": "Hukum Gas Ideal: Hukum Boyle, Charles, Gay-Lussac, dan PV = nRT",
+      "title": "Persamaan Keadaan Gas Ideal dan Hukum Boyle-Gay Lussac",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Suhu dalam semua rumus gas dan termodinamika memakai kelvin.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gas ideal</td><td>PV = nRT, PV/T tetap, energi kinetik molekul</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum I</td><td>Q = ΔU + W, isobarik, isokhorik, isotermal, adiabatik</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum II</td><td>mesin kalor, Carnot, mesin pendingin</td><td>Fisika Kelas 11 Bab 7</td></tr></table>"
+          "html": "<h3>Asumsi Dasar Model Gas Ideal</h3>\n<p>Dalam teori kinetik gas TKA Fisika, gas diasumsikan sebagai <b>gas ideal</b> yang memenuhi postulat:</p>\n<ol>\n  <li>Terdiri atas partikel-partikel identik berjumlah sangat banyak yang tersebar merata.</li>\n  <li>Volume total partikel gas diabaikan terhadap volume wadah penampungnya.</li>\n  <li>Tidak ada gaya tarik-menarik antar partikel (kecuali saat terjadi tumbukan).</li>\n  <li>Semua tumbukan antar partikel maupun dengan dinding wadah bersifat <b>lenting sempurna</b>.</li>\n  <li>Partikel mematuhi Hukum Newton tentang gerak dan bergerak acak ke segala arah.</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(PV = nRT = NkT\\); \\(\\dfrac{P_1V_1}{T_1} = \\dfrac{P_2V_2}{T_2}\\).</li><li>Energi kinetik rata-rata \\(\\bar E_k = \\tfrac32 kT\\); \\(v_\\text{rms} = \\sqrt{3RT/M}\\).</li><li>Hukum I: \\(Q = \\Delta U + W\\). Gas monoatomik: \\(\\Delta U = \\tfrac32 nR\\Delta T\\).</li><li>Isobarik \\(W = P\\Delta V\\); isokhorik W = 0; isotermal ΔU = 0, \\(W = nRT\\ln(V_2/V_1)\\); adiabatik Q = 0. Usaha = luas di bawah grafik P–V.</li><li>Mesin: \\(\\eta = W/Q_1 = 1 - Q_2/Q_1\\); Carnot \\(\\eta = 1 - T_2/T_1\\). Pendingin \\(K = Q_2/W\\).</li></ul>"
+          "title": "Persamaan Umum Keadaan Gas Ideal dan Massa Jenis Gas",
+          "html": "<div class=\"fc-display\">\n\\[ P \\cdot V = n \\cdot R \\cdot T = N \\cdot k_B \\cdot T \\qquad \\Longleftrightarrow \\qquad \\rho = \\frac{P \\cdot M_r}{R \\cdot T} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(P\\)</td><td>Tekanan gas ideal</td><td class=\"unit\">\\text{Pascal (Pa)} = \\text{N/m}^2</td></tr>\n<tr><td class=\"sym\">\\(V\\)</td><td>Volume ruang yang ditempati gas</td><td class=\"unit\">\\text{m}^3</td></tr>\n<tr><td class=\"sym\">\\(n\\)</td><td>Jumlah mol gas (\\(n = m / M_r\\))</td><td class=\"unit\">\\text{mol}</td></tr>\n<tr><td class=\"sym\">\\(R\\)</td><td>Konstanta gas universal (\\(R = 8,314 \text{ J/(mol}\\cdot\text{K)}\\))</td><td class=\"unit\">\\text{J/(mol}\\cdot\\text{K)}</td></tr>\n<tr><td class=\"sym\">\\(T\\)</td><td>Temperatur MUTLAK gas (MUTLAK KELVIN: \\(T = T_C + 273\\))</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n<tr><td class=\"sym\">\\(N\\)</td><td>Jumlah total partikel gas (\\(N = n \\cdot N_A\\))</td><td class=\"unit\">\\text{partikel}</td></tr>\n<tr><td class=\"sym\">\\(k_B\\)</td><td>Konstanta Boltzmann (\\(k_B = R / N_A = 1,38 \times 10^{-23} \text{ J/K}\\))</td><td class=\"unit\">\\text{J/K}</td></tr>\n<tr><td class=\"sym\">\\(\\rho\\)</td><td>Massa jenis gas ideal</td><td class=\"unit\">\\text{kg/m}^3</td></tr>\n<tr><td class=\"sym\">\\(M_r\\)</td><td>Massa molar gas</td><td class=\"unit\">\\text{kg/mol}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Hukum Boyle-Gay Lussac untuk gas dalam bejana tertutup bermassa tetap (n konstan): (P₁ · V₁) / T₁ = (P₂ · V₂) / T₂.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Keadaan Standar STP (Standard Temperature and Pressure)",
+          "html": "<p>Pada kondisi STP (\\(T = 0^\\circ\\text{C} = 273\\text{ K}\\) dan \\(P = 1\\text{ atm} = 1,013 \\times 10^5\\text{ Pa}\\)), volume 1 mol sembarang gas ideal adalah tepat <b>22,4 liter</b> (\\(22,4 \\times 10^{-3}\\text{ m}^3\\)).</p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas11/Fisika/07 Termodinamika/sim/gas-kinetik.html",
-          "title": "Teori kinetik gas",
+          "title": "Simulasi Gas Ideal dalam Wadah",
           "height": 520,
-          "caption": "Naikkan suhu dengan volume tetap. Apa yang terjadi pada kelajuan partikel dan tekanan?"
+          "caption": "Ubah suhu dan volume untuk melihat pengaruhnya terhadap tekanan dinding wadah."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tabung 20 L berisi gas bertekanan 3 atm pada 27 °C. Gas dipanaskan sampai 127 °C dan sebagian gas dibuang sehingga tekanannya tetap 3 atm. Berapa persen massa gas yang dibuang?</p>",
+          "title": "Contoh Perhitungan Gas Ideal Hukum Boyle-Gay Lussac",
+          "question": "<p>Sejumlah gas ideal dalam ruang tertutup awalnya memiliki volume 2 liter pada tekanan 1 atm dan suhu 27°C. Jika gas tersebut ditekan hingga volumenya menjadi 1 liter dan suhunya dipanaskan hingga 127°C, berapakah tekanan akhir gas tersebut?</p>",
           "steps": [
-            "P dan V tetap → n ∝ 1/T.",
-            "n₂/n₁ = 300/400 = 0,75."
+            "Ubah suhu ke Kelvin: T₁ = 27 + 273 = 300 K; T₂ = 127 + 273 = 400 K.",
+            "Terapkan hukum Boyle-Gay Lussac: (P₁ · V₁) / T₁ = (P₂ · V₂) / T₂.",
+            "(1 · 2) / 300 = (P₂ · 1) / 400.",
+            "2 / 300 = P₂ / 400  =>  P₂ = (2 × 400) / 300 = 800 / 300 ≈ 2,67 atm."
           ],
-          "answer": "25% gas dibuang"
+          "answer": "Tekanan akhir gas menjadi 2,67 atmosfer."
         },
         {
           "type": "check",
-          "question": "Jika suhu mutlak gas ideal dijadikan 4 kali, energi kinetik rata-rata molekulnya menjadi ....",
+          "title": "Cek Pemahaman",
+          "question": "Jika sebuah ban sepeda yang tertutup rapat dipanaskan dari suhu 27°C menjadi 87°C (volume ban dianggap tidak berubah), maka tekanan udara di dalam ban akan bertambah sebesar ....",
           "options": {
-            "A": "2 kali",
-            "B": "4 kali",
-            "C": "8 kali",
-            "D": "16 kali"
+            "A": "20%",
+            "B": "30%",
+            "C": "60%",
+            "D": "222%"
           },
-          "answer": "B",
-          "hint": "Ek ∝ T.",
-          "explanation": "Energi kinetik rata-rata sebanding dengan suhu mutlak."
+          "answer": "A",
+          "hint": "T₁ = 27 + 273 = 300 K; T₂ = 87 + 273 = 360 K. Karena isokhorik: P₂ / P₁ = T₂ / T₁ = 360 / 300 = 1,2.",
+          "explanation": "Tekanan menjadi 1,2 kali tekanan semula, artinya bertambah sebesar 20% (bukan 87/27!)."
         }
       ]
     },
     {
       "id": "teori-kinetik-kecepatan-rms",
-      "title": "Teori Kinetik Gas: Energi Kinetik Rata-rata dan Kecepatan Efektif v_rms",
+      "title": "Teori Kinetik Gas: Energi Kinetik Rata-rata dan Kecepatan Efektif (v_rms)",
       "kind": "artikel",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Teori Kinetik Gas: Energi Kinetik Rata-rata dan Kecepatan Efektif v_rms</b>: Menghubungkan suhu makroskopik dengan gerak partikel mikroskopik (EK = 3/2 kT dan v_rms = √(3RT/M)).</p>"
+          "html": "<h3>Tekanan Mikroskopis dari Tumbukan Partikel</h3>\n<p>Tekanan gas pada dinding wadah bukanlah gaya dorong statis, melainkan hasil akumulasi transfer momentum dari triliunan partikel gas yang menumbuk dinding wadah secara terus-menerus. Dari tinjauan mekanika Newton, tekanan gas berhubungan langsung dengan energi kinetik translasi rata-rata molekulnya.</p>\n<p>Suhu gas mutlak (\\(T\\)) merupakan representasi langsung dari energi kinetik rata-rata partikel: <b>semakin panas suatu gas, semakin kencang partikel-partikel di dalamnya bergerak</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(PV = nRT = NkT\\); \\(\\dfrac{P_1V_1}{T_1} = \\dfrac{P_2V_2}{T_2}\\).</li><li>Energi kinetik rata-rata \\(\\bar E_k = \\tfrac32 kT\\); \\(v_\\text{rms} = \\sqrt{3RT/M}\\).</li><li>Hukum I: \\(Q = \\Delta U + W\\). Gas monoatomik: \\(\\Delta U = \\tfrac32 nR\\Delta T\\).</li><li>Isobarik \\(W = P\\Delta V\\); isokhorik W = 0; isotermal ΔU = 0, \\(W = nRT\\ln(V_2/V_1)\\); adiabatik Q = 0. Usaha = luas di bawah grafik P–V.</li><li>Mesin: \\(\\eta = W/Q_1 = 1 - Q_2/Q_1\\); Carnot \\(\\eta = 1 - T_2/T_1\\). Pendingin \\(K = Q_2/W\\).</li></ul>"
+          "title": "Persamaan Energi Kinetik Rata-Rata dan Kecepatan RMS",
+          "html": "<div class=\"fc-display\">\n\\[ \\overline{Ek} = \\frac{3}{2} k_B T \\qquad \\Longleftrightarrow \\qquad v_{rms} = \\sqrt{\\frac{3RT}{M_r}} = \\sqrt{\\frac{3k_B T}{m}} = \\sqrt{\\frac{3P}{\\rho}} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\overline{Ek}\\)</td><td>Energi kinetik translasi rata-rata per molekul gas</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(v_{rms}\\)</td><td>Kecepatan efektif gas (Root-Mean-Square velocity)</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(k_B\\)</td><td>Konstanta Boltzmann (\\(1,38 \times 10^{-23} \text{ J/K}\\))</td><td class=\"unit\">\\text{J/K}</td></tr>\n<tr><td class=\"sym\">\\(T\\)</td><td>Temperatur mutlak gas dalam Kelvin</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n<tr><td class=\"sym\">\\(R\\)</td><td>Konstanta gas universal (\\(8,314 \text{ J/(mol}\\cdot\text{K)}\\))</td><td class=\"unit\">\\text{J/(mol}\\cdot\\text{K)}</td></tr>\n<tr><td class=\"sym\">\\(M_r\\)</td><td>Massa molar gas</td><td class=\"unit\">\\text{kg/mol}</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa satu partikel molekul gas</td><td class=\"unit\">\\text{kilogram (kg)}</td></tr>\n<tr><td class=\"sym\">\\(\\rho\\)</td><td>Massa jenis gas</td><td class=\"unit\">\\text{kg/m}^3</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perhatikan: Kecepatan efektif v_rms sebanding dengan AKAR suhu mutlak (v_rms ~ √T) dan berbanding terbalik dengan AKAR massa molar (v_rms ~ 1/√Mr). Gas yang lebih ringan (seperti H₂ atau He) bergerak jauh lebih kencang dibanding gas berat (seperti O₂ atau CO₂) pada suhu yang sama.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Teorema Ekuipartisi Energi dan Derajat Kebebasan",
+          "html": "<p>Setiap derajat kebebasan (\\(f\\)) yang aktif menyumbangkan energi rata-rata sebesar \\(\\frac{1}{2} k_B T\\) per molekul:</p>\n<ul>\n  <li><b>Gas Monoatomik (He, Ne, Ar)</b>: hanya memiliki 3 derajat kebebasan translasi (\\(f = 3\\)) pada semua rentang suhu: \\(\\overline{Ek} = \\frac{3}{2} k_B T\\).</li>\n  <li><b>Gas Diatomik (O₂, N₂, H₂)</b>:\n    <ul>\n      <li>Suhu rendah (\\(T \\le 250\\text{ K}\\)): \\(f = 3\\) (hanya translasi).</li>\n      <li>Suhu sedang (\\(T \\approx 300\\text{ K} - 500\\text{ K}\\)): \\(f = 5\\) (3 translasi + 2 rotasi): \\(\\overline{Ek} = \\frac{5}{2} k_B T\\).</li>\n      <li>Suhu tinggi (\\(T \\ge 1.000\\text{ K}\\)): \\(f = 7\\) (3 translasi + 2 rotasi + 2 vibrasi): \\(\\overline{Ek} = \\frac{7}{2} k_B T\\).</li>\n    </ul>\n  </li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Suhu gas dinaikkan dari 27 °C menjadi 327 °C. Berapa kali kelajuan efektif (vrms) molekulnya?</p>",
+          "title": "Contoh Perbandingan Kecepatan Efektif Gas",
+          "question": "<p>Kecepatan efektif partikel gas hidrogen (Mr = 2 g/mol) pada suhu 300 K adalah v. Jika gas oksigen (Mr = 32 g/mol) berada pada suhu 1.200 K, berapakah kecepatan efektif molekul gas oksigen dinyatakan dalam v?</p>",
           "steps": [
-            "vrms ∝ √T → √(600/300) = √2."
+            "Gunakan hubungan v_rms = √(3RT / Mr)  =>  v_rms sebanding dengan √(T / Mr).",
+            "v_O2 / v_H2 = √[(T_O2 / Mr_O2) / (T_H2 / Mr_H2)].",
+            "v_O2 / v = √[(1200 / 32) / (300 / 2)] = √[(37,5) / (150)] = √(1 / 4) = 1/2.",
+            "v_O2 = 0,5 v."
           ],
-          "answer": "√2 kali (± 1,41 kali)"
+          "answer": "Kecepatan efektif molekul oksigen adalah 0,5 v (setengah dari hidrogen)."
         },
         {
           "type": "check",
-          "question": "Pada proses adiabatik, gas yang memuai akan ....",
+          "title": "Cek Pemahaman",
+          "question": "Jika suhu mutlak suatu gas ideal dinaikkan menjadi 4 kali lipat dari suhu semula, maka kecepatan efektif partikel-partikel gas akan ....",
           "options": {
-            "A": "menyerap kalor dari lingkungan",
-            "B": "turun suhunya karena usaha diambil dari energi dalam",
-            "C": "tetap suhunya",
-            "D": "tidak melakukan usaha"
+            "A": "Menjadi 2 kali semula",
+            "B": "Menjadi 4 kali semula",
+            "C": "Menjadi 8 kali semula",
+            "D": "Menjadi 16 kali semula"
           },
-          "answer": "B",
-          "hint": "Q = 0 → ΔU = −W.",
-          "explanation": "Gas melakukan usaha tanpa menerima kalor, sehingga energi dalamnya berkurang dan suhunya turun."
+          "answer": "A",
+          "hint": "v_rms sebanding dengan akar kuadrat temperatur mutlak: v' / v = √(T' / T) = √4 = 2.",
+          "explanation": "Kecepatan efektif menjadi 2 kali lipat semula."
         }
       ]
     },
     {
       "id": "hukum-i-termodinamika-usaha",
-      "title": "Hukum I Termodinamika: Usaha Gas (W = PΔV) dan Energi Dalam (ΔU)",
+      "title": "Hukum I Termodinamika, Konvensi Tanda Usaha-Kalor, dan Energi Dalam",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Suhu dalam semua rumus gas dan termodinamika memakai kelvin.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gas ideal</td><td>PV = nRT, PV/T tetap, energi kinetik molekul</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum I</td><td>Q = ΔU + W, isobarik, isokhorik, isotermal, adiabatik</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum II</td><td>mesin kalor, Carnot, mesin pendingin</td><td>Fisika Kelas 11 Bab 7</td></tr></table>"
+          "html": "<h3>Hukum Kekekalan Energi pada Sistem Termal</h3>\n<p>Hukum I Termodinamika adalah wujud penerapan hukum kekekalan energi mekanik pada sistem gas yang bertukar kalor dan melakukan usaha dengan lingkungannya.</p>\n<p><i>\"Kalor (\\(Q\\)) yang diserap oleh sistem digunakan sebagian untuk menaikkan energi dalam sistem (\\(\\Delta U\\)) dan sebagian lagi diubah menjadi usaha luar (\\(W\\)) yang dilakukan sistem terhadap lingkungan.\"</i></p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(PV = nRT = NkT\\); \\(\\dfrac{P_1V_1}{T_1} = \\dfrac{P_2V_2}{T_2}\\).</li><li>Energi kinetik rata-rata \\(\\bar E_k = \\tfrac32 kT\\); \\(v_\\text{rms} = \\sqrt{3RT/M}\\).</li><li>Hukum I: \\(Q = \\Delta U + W\\). Gas monoatomik: \\(\\Delta U = \\tfrac32 nR\\Delta T\\).</li><li>Isobarik \\(W = P\\Delta V\\); isokhorik W = 0; isotermal ΔU = 0, \\(W = nRT\\ln(V_2/V_1)\\); adiabatik Q = 0. Usaha = luas di bawah grafik P–V.</li><li>Mesin: \\(\\eta = W/Q_1 = 1 - Q_2/Q_1\\); Carnot \\(\\eta = 1 - T_2/T_1\\). Pendingin \\(K = Q_2/W\\).</li></ul>"
+          "title": "Persamaan Hukum I Termodinamika dan Energi Dalam Gas Monoatomik",
+          "html": "<div class=\"fc-display\">\n\\[ \\Delta U = Q - W \\qquad \\Longleftrightarrow \\qquad \\Delta U = \\frac{3}{2} n R \\Delta T = \\frac{3}{2} \\Delta(PV) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\Delta U\\)</td><td>Perubahan energi dalam gas ideal</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(Q\\)</td><td>Kalor yang diserap atau dilepas oleh sistem gas</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(W\\)</td><td>Usaha luar yang dilakukan oleh atau pada sistem gas</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(n\\)</td><td>Jumlah mol gas ideal</td><td class=\"unit\">\\text{mol}</td></tr>\n<tr><td class=\"sym\">\\(R\\)</td><td>Konstanta gas universal (\\(8,314 \text{ J/(mol}\\cdot\text{K)}\\))</td><td class=\"unit\">\\text{J/(mol}\\cdot\\text{K)}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta T\\)</td><td>Perubahan temperatur gas (\\(T_2 - T_1\\))</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Aturan Konvensi Tanda TKA: Q bernilai (+) jika sistem MENYERAP kalor dari lingkungan, (-) jika sistem MELEPASKAN kalor. W bernilai (+) jika gas MEMUAI (melakukan usaha ke luar), (-) jika gas DIKOMPRESI (menerima usaha dari luar). ΔU bernilai (+) jika suhu NAIK, (-) jika suhu TURUN.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Usaha Luar sebagai Luas Daerah Kurva Diagram P-V",
+          "html": "<p>Pada grafik tekanan terhadap volume (\\(P-V\\)), <b>Usaha luar \\(W\\) sama dengan luas daerah di bawah kurva lintasan proses</b>:</p>\n\\[ W = \\int P \\, dV \\]\n<p>Jika siklus berputar <b>searah jarum jam (clockwise)</b>: usaha total siklus bernilai <b>positif (\\(W_{\\text{net}} > 0\\))</b>, sistem bertindak sebagai <b>Mesin Kalor (Heat Engine)</b>. Jika berputar <b>berlawanan jarum jam</b>: sistem bertindak sebagai <b>Mesin Pendingin (Refrigerator)</b> (\\(W_{\\text{net}} < 0\\)).</p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas11/Fisika/07 Termodinamika/sim/proses-pv.html",
-          "title": "Proses termodinamika pada grafik P–V",
+          "title": "Simulasi Diagram P-V Termodinamika",
           "height": 520,
-          "caption": "Bandingkan usaha pada proses isobarik dan isotermal antara dua volume yang sama."
+          "caption": "Gambarkan siklus pada diagram P-V dan hitung usaha total serta perubahan energi dalamnya."
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Gas menerima kalor 1.200 J dan mengalami ekspansi isobarik pada tekanan 1,5 × 10⁵ Pa dari 4 L menjadi 6 L. Berapa perubahan energi dalamnya?</p>",
+          "title": "Contoh Analisis Hukum I Termodinamika",
+          "question": "<p>Sejumlah gas ideal menyerap kalor sebesar 1.200 Joule dari lingkungan. Pada saat yang bersamaan, gas memuai dan melakukan usaha luar sebesar 450 Joule terhadap piston. Tentukan perubahan energi dalam gas tersebut!</p>",
           "steps": [
-            "W = PΔV = 1,5 × 10⁵ × 2 × 10⁻³ = 300 J.",
-            "ΔU = Q − W = 1.200 − 300."
+            "Identifikasi tanda besaran:",
+            "Menyerap kalor  =>  Q = +1.200 J.",
+            "Gas memuai melakukan usaha  =>  W = +450 J.",
+            "Terapkan Hukum I Termodinamika: ΔU = Q - W.",
+            "ΔU = 1.200 - 450 = +750 Joule."
           ],
-          "answer": "900 J"
+          "answer": "Energi dalam gas bertambah sebesar 750 Joule (suhu gas meningkat)."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dalam suatu proses termodinamika, suatu gas dikompresi sehingga lingkungan melakukan usaha 600 J pada gas tersebut, dan gas melepaskan kalor 400 J ke lingkungan. Perubahan energi dalam gas adalah ....",
+          "options": {
+            "A": "-1.000 J",
+            "B": "-200 J",
+            "C": "+200 J",
+            "D": "+1.000 J"
+          },
+          "answer": "C",
+          "hint": "Q dilepas = -400 J. Lingkungan melakukan usaha pada gas (gas dikompresi) = W = -600 J.",
+          "explanation": "ΔU = Q - W = -400 - (-600) = -400 + 600 = +200 J."
         }
       ]
     },
     {
       "id": "empat-proses-termodinamika",
-      "title": "Empat Proses Termodinamika: Isobarik, Isokhorik, Isotermal, dan Adiabatik",
+      "title": "Empat Proses Termodinamika Khusus: Isobarik, Isokhorik, Isotermal, dan Adiabatik",
       "kind": "artikel",
-      "duration": "16 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Empat Proses Termodinamika: Isobarik, Isokhorik, Isotermal, dan Adiabatik</b>: Membandingkan kurva dan rumus perhitungan usaha W, kalor Q, dan energi dalam ΔU pada keempat proses dasar.</p>"
+          "html": "<h3>Klasifikasi Empat Proses Termodinamika Gas Ideal</h3>\n<p>Dalam analisis mesin kalor, perubahan keadaan gas dari keadaan 1 ke keadaan 2 dapat berlangsung melalui empat proses termodinamika khas:</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Nama Proses</th><th>Kondisi Konstan</th><th>Persamaan Usaha (\\(W\\))</th><th>Hukum I Termodinamika</th></tr>\n  </thead>\n  <tbody>\n    <tr><td><b>Isobarik</b></td><td>Tekanan konstan (\\(P = C\\))</td><td>\\(W = P(V_2 - V_1) = nR\\Delta T\\)</td><td>\\(Q = \\Delta U + W\\)</td></tr>\n    <tr><td><b>Isokhorik / Isometrik</b></td><td>Volume konstan (\\(V = C\\))</td><td>\\(W = 0\\) (tidak ada gerak piston)</td><td>\\(Q = \\Delta U\\) (\\(Q_v = \\frac{3}{2}nR\\Delta T\\))</td></tr>\n    <tr><td><b>Isotermal</b></td><td>Suhu konstan (\\(T = C\\))</td><td>\\(W = nRT \\ln\\left(\\frac{V_2}{V_1}\\right) = Q\\)</td><td>\\(\\Delta U = 0\\) (\\(Q = W\\))</td></tr>\n    <tr><td><b>Adiabatik</b></td><td>Kalor terisolasi (\\(Q = 0\\))</td><td>\\(W = -\\Delta U = -\\frac{3}{2}nR\\Delta T\\)</td><td>\\(\\Delta U = -W\\) (\\(PV^\\gamma = C\\))</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Jebakan yang sering muncul",
-          "html": "<ul><li>Memakai °C pada PV = nRT atau efisiensi Carnot.</li><li>Menganggap proses isotermal tidak menyerap kalor.</li><li>Tertukar koefisien kinerja pendingin dan efisiensi mesin.</li><li>Lupa bahwa pada isokhorik semua kalor menjadi perubahan energi dalam.</li></ul>"
+          "variant": "rumus",
+          "title": "Persamaan Khusus Proses Isobarik dan Adiabatik",
+          "html": "<div class=\"fc-display\">\n\\[ W_{\\text{isobarik}} = P \\cdot \\Delta V \\qquad \\Big| \\qquad P_1 V_1^\\gamma = P_2 V_2^\\gamma \\quad \\text{dan} \\quad T_1 V_1^{\\gamma - 1} = T_2 V_2^{\\gamma - 1} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(P\\)</td><td>Tekanan konstan pada proses isobarik</td><td class=\"unit\">\\text{Pascal (Pa)}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta V\\)</td><td>Perubahan volume gas (\\(V_2 - V_1\\))</td><td class=\"unit\">\\text{m}^3</td></tr>\n<tr><td class=\"sym\">\\(\\gamma\\)</td><td>Konstanta Laplace (rasio kapasitas kalor \\(\\gamma = C_p / C_v \u0007pprox 1,67\\) untuk monoatomik)</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(T_1, T_2\\)</td><td>Suhu awal dan suhu akhir pada proses adiabatik</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Pada ekspansi adiabatik (gas memuai tanpa kalor masuk, Q = 0), gas melakukan usaha dengan mengorbankan energi dalamnya sendiri (W = -ΔU > 0), sehingga energi dalam berkurang dan temperatur gas seketika ANJLOK MENDINGIN (prinsip pembentukan embun saat semprotan aerosol ditekan).</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Mesin Carnot bekerja antara 600 K dan 360 K serta menyerap 3.000 J per siklus. Berapa usaha dan kalor yang dibuang?</p>",
+          "title": "Contoh Perhitungan Usaha dan Kalor pada Proses Isobarik",
+          "question": "<p>Dua mol gas monoatomik ideal berada pada tekanan konstan 2 × 10⁵ Pa. Gas memuai secara isobarik dari volume 0,01 m³ menjadi 0,03 m³. Tentukan: (a) usaha yang dilakukan gas, (b) perubahan energi dalam, dan (c) kalor yang diserap gas!</p>",
           "steps": [
-            "η = 1 − 360/600 = 0,4.",
-            "W = 0,4 × 3.000 = 1.200 J; Q₂ = 1.800 J."
+            "(a) Usaha isobarik: W = P · ΔV = (2 × 10⁵) · (0,03 - 0,01) = (2 × 10⁵) · (0,02) = 4.000 Joule.",
+            "(b) Perubahan energi dalam monoatomik: ΔU = 3/2 · P · ΔV = 3/2 · 4.000 = 6.000 Joule.",
+            "(c) Kalor yang diserap gas: Q = ΔU + W = 6.000 + 4.000 = 10.000 Joule (atau Q_p = 5/2 · P · ΔV = 5/2 · 4000 = 10.000 J)."
           ],
-          "answer": "1.200 J dan 1.800 J"
+          "answer": "(a) W = 4.000 J; (b) ΔU = 6.000 J; (c) Q = 10.000 J."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Pada proses termodinamika di mana volume bejana tertutup dijaga tetap konstan (isokhorik), jika gas menyerap kalor sebesar 500 J, maka usaha yang dilakukan gas adalah ....",
+          "options": {
+            "A": "0 Joule",
+            "B": "250 Joule",
+            "C": "500 Joule",
+            "D": "750 Joule"
+          },
+          "answer": "A",
+          "hint": "Pada proses isokhorik, volume tidak berubah (ΔV = 0), sehingga piston tidak bergerak sama sekali: W = P · ΔV = 0 Joule.",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "siklus-carnot-efisiensi-mesin",
-      "title": "Hukum II Termodinamika dan Efisiensi Mesin Kalor Carnot: η = (1 − T_C/T_H)",
+      "title": "Siklus Carnot: Mesin Kalor Ideal, Hukum II Termodinamika, dan Efisiensi Maksimum",
       "kind": "simulasi",
-      "duration": "18 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Suhu dalam semua rumus gas dan termodinamika memakai kelvin.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gas ideal</td><td>PV = nRT, PV/T tetap, energi kinetik molekul</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum I</td><td>Q = ΔU + W, isobarik, isokhorik, isotermal, adiabatik</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum II</td><td>mesin kalor, Carnot, mesin pendingin</td><td>Fisika Kelas 11 Bab 7</td></tr></table>"
+          "html": "<h3>Siklus Mesin Kalor Paling Efisien: Siklus Carnot</h3>\n<p>Sadi Carnot membuktikan bahwa tidak ada mesin kalor nyata yang dapat melebihi efisiensi mesin reversibel ideal yang beroperasi di antara dua reservoir suhu tertentu. Siklus Carnot terdiri atas <b>empat proses reversibel berturutan</b>:</p>\n<ol>\n  <li><b>Ekspansi Isotermal pada suhu tinggi (\\(T_H\\))</b>: menyerap kalor \\(Q_H\\) dari reservoir panas.</li>\n  <li><b>Ekspansi Adiabatik</b>: suhu turun dari \\(T_H\\) ke \\(T_L\\) tanpa ada kalor yang keluar/masuk.</li>\n  <li><b>Kompresi Isotermal pada suhu rendah (\\(T_L\\))</b>: membuang kalor sisa \\(Q_L\\) ke reservoir dingin.</li>\n  <li><b>Kompresi Adiabatik</b>: suhu naik kembali dari \\(T_L\\) ke \\(T_H\\), menutup satu siklus utuh.</li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(PV = nRT = NkT\\); \\(\\dfrac{P_1V_1}{T_1} = \\dfrac{P_2V_2}{T_2}\\).</li><li>Energi kinetik rata-rata \\(\\bar E_k = \\tfrac32 kT\\); \\(v_\\text{rms} = \\sqrt{3RT/M}\\).</li><li>Hukum I: \\(Q = \\Delta U + W\\). Gas monoatomik: \\(\\Delta U = \\tfrac32 nR\\Delta T\\).</li><li>Isobarik \\(W = P\\Delta V\\); isokhorik W = 0; isotermal ΔU = 0, \\(W = nRT\\ln(V_2/V_1)\\); adiabatik Q = 0. Usaha = luas di bawah grafik P–V.</li><li>Mesin: \\(\\eta = W/Q_1 = 1 - Q_2/Q_1\\); Carnot \\(\\eta = 1 - T_2/T_1\\). Pendingin \\(K = Q_2/W\\).</li></ul>"
+          "title": "Persamaan Efisiensi Mesin Kalor Carnot",
+          "html": "<div class=\"fc-display\">\n\\[ \\eta = \\left(1 - \\frac{T_L}{T_H}\\right) \\times 100\\% = \\left(1 - \\frac{Q_L}{Q_H}\\right) \\times 100\\% \\qquad \\Longleftrightarrow \\qquad W = Q_H - Q_L \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\eta\\)</td><td>Efisiensi termal mesin Carnot</td><td class=\"unit\">\\text{persen (\\%)}</td></tr>\n<tr><td class=\"sym\">\\(T_H\\)</td><td>Suhu mutlak reservoir panas / kalor masuk (HIGH)</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n<tr><td class=\"sym\">\\(T_L\\)</td><td>Suhu mutlak reservoir dingin / kalor buang (LOW)</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n<tr><td class=\"sym\">\\(Q_H\\)</td><td>Kalor yang diserap dari reservoir panas per siklus</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(Q_L\\)</td><td>Kalor yang dibuang ke reservoir dingin per siklus</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(W\\)</td><td>Usaha mekanik bersih yang dihasilkan mesin per siklus</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Hukum II Termodinamika (Kelvin-Planck): Mustahil membuat mesin kalor yang dapat mengubah 100% kalor yang diserap seluruhnya menjadi usaha mekanik tanpa membuang kalor sisa ke lingkungan (efisiensi selalu < 100%).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Suhu Reservoir HARUS Selalu Dikonversi ke Kelvin",
+          "html": "<p>Kesalahan fatal terbesar siswa di UTBK-TKA adalah memasukkan suhu dalam derajat Celcius ke rumus efisiensi Carnot! Misalnya jika \\(T_H = 300^\\circ\\text{C}\\) dan \\(T_L = 100^\\circ\\text{C}\\), efisiensi <b>BUKAN</b> \\((1 - 100/300) = 66,7\\%\\)!</p>\n<p>Konversi yang benar: \\(T_H = 300 + 273 = 573\\text{ K}\\), \\(T_L = 100 + 273 = 373\\text{ K}\\). Efisiensi sebenarnya: \\(\\eta = (1 - 373/573) \\approx 34,9\\%\\).</p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas11/Fisika/07 Termodinamika/sim/mesin-kalor.html",
-          "title": "Mesin kalor dan mesin Carnot",
+          "title": "Simulasi Siklus Carnot",
           "height": 520,
-          "caption": "Ubah suhu reservoir. Bagaimana efisiensi Carnot berubah?"
+          "caption": "Atur suhu reservoir panas dan dingin untuk melihat efisiensi dan diagram aliran energi."
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Hukum II Termodinamika dan Efisiensi Mesin Kalor Carnot: η = (1 − T_C/T_H)",
-          "question": "<p>Perhatikan permasalahan terkait <b>Hukum II Termodinamika dan Efisiensi Mesin Kalor Carnot: η = (1 − T_C/T_H)</b> berikut. Analisislah berdasarkan prinsip Menghitung efisiensi teoritis maksimum mesin kalor dan kerja netto dari aliran kalor reservoir panas ke dingin..</p>",
+          "title": "Contoh Perhitungan Efisiensi Mesin Carnot Bertingkat",
+          "question": "<p>Sebuah mesin Carnot beroperasi di antara suhu reservoir 600 K dan 400 K. Pada setiap siklusnya, mesin menyerap kalor sebesar 1.500 Joule dari reservoir panas. Tentukan: (a) efisiensi mesin Carnot, (b) usaha yang dihasilkan mesin per siklus, dan (c) kalor yang dibuang ke reservoir dingin!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "(a) Efisiensi Carnot: η = (1 - T_L / T_H) × 100% = (1 - 400 / 600) × 100% = (1 - 2/3) × 100% = 1/3 × 100% ≈ 33,33%.",
+            "(b) Usaha mekanik per siklus: W = η · Q_H = (1/3) × 1.500 J = 500 Joule.",
+            "(c) Kalor yang dibuang: Q_L = Q_H - W = 1.500 - 500 = 1.000 Joule."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "(a) Efisiensi 33,33%; (b) Usaha 500 J; (c) Kalor buang 1.000 J."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah mesin Carnot mula-mula memiliki efisiensi 40% dengan reservoir dingin bersuhu 300 K. Jika diinginkan efisiensi mesin naik menjadi 50% tanpa mengubah suhu reservoir dingin, maka suhu reservoir panas harus dinaikkan menjadi ....",
+          "options": {
+            "A": "500 K",
+            "B": "600 K",
+            "C": "750 K",
+            "D": "800 K"
+          },
+          "answer": "B",
+          "hint": "Kondisi 1: η₁ = 1 - T_L / T_H1  =>  0,4 = 1 - 300 / T_H1  =>  300 / T_H1 = 0,6  =>  T_H1 = 300 / 0,6 = 500 K.",
+          "explanation": "Kondisi 2: η₂ = 1 - T_L / T_H2  =>  0,5 = 1 - 300 / T_H2  =>  300 / T_H2 = 0,5  =>  T_H2 = 300 / 0,5 = 600 K."
         }
       ]
     },
     {
       "id": "mesin-pendingin-koefisien-kinerja",
-      "title": "Mesin Pendingin (Kulkas/AC) dan Koefisien Performa K_p",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Mesin Pendingin (Refrigerator / AC) dan Koefisien Performansi (K_P)",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Suhu dalam semua rumus gas dan termodinamika memakai kelvin.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Gas ideal</td><td>PV = nRT, PV/T tetap, energi kinetik molekul</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum I</td><td>Q = ΔU + W, isobarik, isokhorik, isotermal, adiabatik</td><td>Fisika Kelas 11 Bab 7</td></tr><tr><td>Hukum II</td><td>mesin kalor, Carnot, mesin pendingin</td><td>Fisika Kelas 11 Bab 7</td></tr></table>"
+          "html": "<h3>Siklus Termodinamika Terbalik: Pompa Kalor & Kulkas</h3>\n<p>Hukum II Termodinamika (pernyataan Clausius) menyatakan: <i>\"Mustahil membuat alat yang bekerja dalam suatu siklus yang semata-mata memindahkan kalor dari benda bersuhu dingin ke benda bersuhu panas tanpa memerlukan masukan usaha dari luar.\"</i></p>\n<p>Mesin pendingin (kulkas dan pendingin ruangan AC) memutar siklus termodinamika secara terbalik (berlawanan arah jarum jam pada diagram P-V). Mesin menyerap kalor dari ruang dingin (\\(Q_L\\)), menerima pasokan kerja kompresor (\\(W\\)), lalu membuang panas total (\\(Q_H = Q_L + W\\)) ke udara luar di belakang kulkas.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(PV = nRT = NkT\\); \\(\\dfrac{P_1V_1}{T_1} = \\dfrac{P_2V_2}{T_2}\\).</li><li>Energi kinetik rata-rata \\(\\bar E_k = \\tfrac32 kT\\); \\(v_\\text{rms} = \\sqrt{3RT/M}\\).</li><li>Hukum I: \\(Q = \\Delta U + W\\). Gas monoatomik: \\(\\Delta U = \\tfrac32 nR\\Delta T\\).</li><li>Isobarik \\(W = P\\Delta V\\); isokhorik W = 0; isotermal ΔU = 0, \\(W = nRT\\ln(V_2/V_1)\\); adiabatik Q = 0. Usaha = luas di bawah grafik P–V.</li><li>Mesin: \\(\\eta = W/Q_1 = 1 - Q_2/Q_1\\); Carnot \\(\\eta = 1 - T_2/T_1\\). Pendingin \\(K = Q_2/W\\).</li></ul>"
+          "title": "Persamaan Koefisien Performansi (Coefficient of Performance) Mesin Pendingin",
+          "html": "<div class=\"fc-display\">\n\\[ K_P = \\frac{Q_L}{W} = \\frac{Q_L}{Q_H - Q_L} \\qquad \\Longleftrightarrow \\qquad K_P^{\\text{Carnot}} = \\frac{T_L}{T_H - T_L} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(K_P\\)</td><td>Koefisien performansi (unjuk kerja) mesin pendingin</td><td class=\"unit\">\\text{tanpa satuan (biasanya bernilai 3 s.d. 8)}</td></tr>\n<tr><td class=\"sym\">\\(Q_L\\)</td><td>Kalor yang diserap dari ruang dingin di dalam kulkas</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(W\\)</td><td>Usaha listrik luar yang dipasok ke kompresor kulkas</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(Q_H\\)</td><td>Kalor yang dibuang ke lingkungan luar di belakang kulkas</td><td class=\"unit\">\\text{Joule (J)}</td></tr>\n<tr><td class=\"sym\">\\(T_L\\)</td><td>Suhu ruang dalam kulkas (mutlak Kelvin)</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n<tr><td class=\"sym\">\\(T_H\\)</td><td>Suhu udara ruangan luar (mutlak Kelvin)</td><td class=\"unit\">\\text{Kelvin (K)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Semakin besar nilai K_P, semakin efisien kulkas tersebut (menghasilkan pendinginan besar dengan konsumsi listrik minimal).</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Mesin Pendingin (Kulkas/AC) dan Koefisien Performa K_p",
-          "question": "<p>Perhatikan permasalahan terkait <b>Mesin Pendingin (Kulkas/AC) dan Koefisien Performa K_p</b> berikut. Analisislah berdasarkan prinsip Menghitung koefisien performa K_p = Q_C / W = T_C / (T_H − T_C) pada mesin pendingin ideal..</p>",
+          "title": "Contoh Perhitungan Koefisien Performansi Kulkas",
+          "question": "<p>Sebuah kulkas ideal beroperasi di antara suhu ruang dalam -3°C dan suhu lingkungan luar 27°C. Tentukan: (a) koefisien performansi kulkas tersebut, (b) energi listrik yang dibutuhkan jika kulkas menyerap panas 540 Joule dari bahan makanan di dalamnya!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Ubah suhu ke Kelvin: T_L = -3 + 273 = 270 K; T_H = 27 + 273 = 300 K.",
+            "(a) Koefisien performansi Carnot: K_P = T_L / (T_H - T_L) = 270 / (300 - 270) = 270 / 30 = 9.",
+            "(b) Energi listrik yang dibutuhkan kompresor: K_P = Q_L / W  =>  9 = 540 / W  =>  W = 540 / 9 = 60 Joule."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "(a) K_P = 9; (b) Usaha listrik yang dibutuhkan adalah 60 Joule."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Mesin Pendingin (Kulkas/AC) dan Koefisien Performa K_p, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Jika pintu sebuah lemari es yang sedang menyala dibiarkan terbuka terus-menerus di dalam sebuah kamar tertutup rapat yang terisolasi termal, maka setelah beberapa jam suhu kamar akan ....",
           "options": {
-            "A": "Konsep Mesin Pendingin (Kulkas/AC) dan Koefisien Performa K_p berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "Turun secara signifikan menjadi sangat dingin",
+            "B": "Tetap persis sama karena terjadi kesetimbangan",
+            "C": "Naik perlahan-lahan menjadi lebih hangat",
+            "D": "Turun pada awalnya lalu naik kembali"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung koefisien performa K_p = Q_C / W = T_C / (T_H − T_C) pada mesin pendingin ideal.."
+          "answer": "C",
+          "hint": "Kulkas membuang panas Q_H = Q_L + W ke ruangan, di mana W adalah energi listrik dari stopkontak PLN. Karena seluruh sistem berada di dalam kamar yang sama, panas bersih yang dilepaskan ke kamar bertambah sebesar W (energi listrik berubah menjadi kalor), sehingga suhu ruangan justru bertambah panas.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "jebakan-suhu-celcius-kelvin",
-      "title": "Jebakan Satuan Suhu: Keharusan Mengonversi ke Skala Mutlak Kelvin (K)",
+      "title": "Bedah Jebakan Ujian TKA: Konversi Skala Mutlak Kelvin vs Selisih Suhu Celcius",
       "kind": "artikel",
-      "duration": "12 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Jebakan Satuan Suhu: Keharusan Mengonversi ke Skala Mutlak Kelvin (K)</b>: Mencegah kesalahan paling jamak memasukkan suhu dalam skala Celcius ke rumus efisiensi atau gas ideal.</p>"
+          "html": "<h3>Kapan Menggunakan Selisih (\\(\\Delta T\\)) vs Suhu Mutlak (\\(T\\))?</h3>\n<p>Salah satu sumber kehilangan poin paling sering pada soal termodinamika TKA Fisika adalah ketidakcermatan dalam membedakan pemakaian skala Celcius dan Kelvin:</p>\n<ol>\n  <li><b>Boleh Celcius atau Kelvin (Jika berbentuk \\(\\Delta T\\))</b>:\n    <p>Karena rentang 1 derajat Celcius sama persis dengan rentang 1 Kelvin (\\(\\Delta T = 1^\\circ\\text{C} \\iff \\Delta T = 1\\text{ K}\\)), rumus-rumus yang hanya mengandung selisih suhu (\\(\\Delta T\\)) memberikan hasil numerik yang sama:</p>\n    <ul>\n      <li>Pemuaian: \\(\\Delta L = L_0 \\alpha \\Delta T\\)</li>\n      <li>Kalor: \\(Q = m c \\Delta T\\)</li>\n      <li>Konduksi: \\(H = \\frac{k A \\Delta T}{L}\\)</li>\n    </ul>\n  </li>\n  <li><b>HARUS SELALU KELVIN (Jika suhu berdiri sendiri \\(T\\) atau dalam rasio)</b>:\n    <p>Rumus-rumus teori gas kinetik dan termodinamika berasal dari energi kinetik partikel yang bernilai nol hanya pada <b>Nol Mutlak (0 Kelvin)</b>. Memasukkan angka Celcius ke dalam rumus di bawah ini akan menyebabkan <b>jawaban SALAH FATAL</b>:</p>\n    <ul>\n      <li>Persamaan Gas Ideal: \\(PV = nRT\\)</li>\n      <li>Kecepatan RMS: \\(v_{rms} = \\sqrt{\\frac{3RT}{M_r}}\\)</li>\n      <li>Energi Kinetik Rata-rata: \\(\\overline{Ek} = \\frac{3}{2} k_B T\\)</li>\n      <li>Hukum Radiasi: \\(P = e \\sigma A T^4\\)</li>\n      <li>Hukum Wien: \\(\\lambda_{\\max} T = C\\)</li>\n      <li>Efisiensi Carnot: \\(\\eta = 1 - \\frac{T_L}{T_H}\\)</li>\n      <li>Koefisien Pendingin: \\(K_P = \\frac{T_L}{T_H - T_L}\\)</li>\n    </ul>\n  </li>\n</ol>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Ubah liter ke m³ (× 10⁻³) dan atm ke Pa (× 1,013 × 10⁵ atau 10⁵ sesuai soal).</li><li>Gunakan tanda hukum I dengan konsisten: Q positif bila diserap, W positif bila gas melakukan usaha.</li><li>Usaha siklus = luas di dalam siklus; searah jarum jam pada P–V berarti gas melakukan usaha positif.</li><li>Klaim efisiensi mesin lebih besar dari efisiensi Carnot pada suhu yang sama pasti tidak mungkin.</li></ul>"
+          "title": "Mantra Emas TKA Termodinamika",
+          "html": "<p><b>\"Setiap kali melihat simbol \\(T\\) sendirian (bukan \\(\\Delta T\\)), detik itu juga tambahkan 273!\"</b> Terapkan kebiasaan ini secara refleks pada setiap pengerjaan soal latihan maupun ujian simulasi.</p>"
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua mol gas ideal monoatomik dipanaskan dari 27°C ke 77°C. Perubahan energi dalam gas tersebut dihitung menggunakan rumus ΔU = 3/2 n R ΔT. Berapakah nilai ΔT yang benar dimasukkan ke dalam rumus?",
+          "options": {
+            "A": "50 K (atau 50°C)",
+            "B": "323 K",
+            "C": "350 K",
+            "D": "623 K"
+          },
+          "answer": "A",
+          "hint": "ΔT = T₂ - T₁ = (77 + 273) - (27 + 273) = 350 - 300 = 50 K = 50°C. Nilai selisih suhu dalam skala Celcius selalu sama persis dengan selisih dalam skala Kelvin.",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-10",
-      "title": "Strategi Cepat Termodinamika dan Latihan Kuis Bab 10",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Gas Ideal dan Termodinamika",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Termodinamika dan Latihan Kuis Bab 10</b>: Menuntaskan soal termodinamika berbasis grafik siklus dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Ubah liter ke m³ (× 10⁻³) dan atm ke Pa (× 1,013 × 10⁵ atau 10⁵ sesuai soal).</li><li>Gunakan tanda hukum I dengan konsisten: Q positif bila diserap, W positif bila gas melakukan usaha.</li><li>Usaha siklus = luas di dalam siklus; searah jarum jam pada P–V berarti gas melakukan usaha positif.</li><li>Klaim efisiensi mesin lebih besar dari efisiensi Carnot pada suhu yang sama pasti tidak mungkin.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Termodinamika dan Latihan Kuis Bab 10",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Termodinamika dan Latihan Kuis Bab 10</b> berikut. Analisislah berdasarkan prinsip Menuntaskan soal termodinamika berbasis grafik siklus dan menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Termodinamika dan Latihan Kuis Bab 10, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Termodinamika dan Latihan Kuis Bab 10 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menuntaskan soal termodinamika berbasis grafik siklus dan menyelesaikan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Rumus Kunci Termodinamika</h3>\n<p>Kuasai persamaan keadaan gas ideal (\\(PV = nRT\\)), teori kinetik (\\(\\overline{Ek} = \\frac{3}{2}k_BT, v_{rms} = \\sqrt{3RT/M_r}\\)), Hukum I Termodinamika (\\(\\Delta U = Q - W\\)), empat proses isobarik/isokhorik/isotermal/adiabatik, siklus Carnot (\\(\\eta = 1 - T_L/T_H\\)), dan kulkas (\\(K_P = T_L/(T_H - T_L)\\)).</p>\n<p>Uji pemahaman mendalam Anda melalui kuis resmi 20 soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Gas Ideal dan Termodinamika. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Fisika: Gas Ideal dan Termodinamika (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

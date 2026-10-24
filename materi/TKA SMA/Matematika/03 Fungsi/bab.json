@@ -1,299 +1,218 @@
 {
   "title": "Fungsi",
-  "summary": "Analisis fungsi dan pemetaan: domain dan range, aljabar fungsi, komposisi fungsi (f ∘ g), invers fungsi f⁻¹, sifat simetri grafik, pergeseran transformasi (translasi, refleksi, dilatasi), dan pembacaan grafik fungsi kontinu.",
+  "summary": "Materi komprehensif TKA Matematika SMA: domain dan range fungsi, komposisi fungsi, invers fungsi dan formula kilat pecahan, transformasi geometri grafik fungsi, paritas fungsi genap-ganjil, serta interpretasi visual grafik fungsi analitis.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "konsep-fungsi-domain-range",
-      "title": "Relasi, Fungsi, Daerah Asal (Domain), dan Daerah Hasil (Range)",
+      "title": "Konsep Pemetaan Fungsi, Domain Alami (Daerah Asal), dan Range (Daerah Hasil)",
       "kind": "artikel",
-      "duration": "15 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Relasi, Fungsi, Daerah Asal (Domain), dan Daerah Hasil (Range)</b>: Menentukan domain alami fungsi pecahan, akar, dan logaritma serta mengidentifikasi fungsi surjektif, injektif, dan bijektif.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Daerah hasil pada domain terbatas",
-          "html": "<p>Jangan hanya menghitung f di kedua ujung domain. Jika puncak berada di dalam domain, nilai puncak adalah nilai minimum (atau maksimum).</p>"
+          "html": "<h3>Definisi Formal dan Syarat Keberlakuan Fungsi</h3>\n<p>Suatu relasi dari himpunan \\(A\\) ke himpunan \\(B\\) disebut <b>Fungsi (\\(f: A \\to B\\))</b> jika dan hanya jika <b>setiap elemen di domain \\(A\\) dipetakan ke tepat satu elemen di kodomain \\(B\\)</b>.</p>\n<p>Tiga Syarat Baku Menentukan Domain Alami (\\(D_f\\)) pada Bilangan Real:</p>\n<ol>\n  <li><b>Penyebut Pecahan Tak Boleh Nol</b>: Pada \\(f(x) = \\frac{P(x)}{Q(x)}\\), syarat: <b>\\(Q(x) \\ne 0\\)</b>.</li>\n  <li><b>Bentuk Akar Berpangkat Genap Non-Negatif</b>: Pada \\(f(x) = \\sqrt{g(x)}\\), syarat: <b>\\(g(x) \\ge 0\\)</b>.</li>\n  <li><b>Numerus Logaritma Strictly Positif</b>: Pada \\(f(x) = \\log_a(h(x))\\), syarat: <b>\\(h(x) > 0\\)</b>.</li>\n</ol>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tentukan domain f(x) = √(6 − 2x)/(x + 1).</p>",
+          "title": "Contoh Menentukan Domain Alami Fungsi Majemuk",
+          "question": "<p>Tentukan domain alami dari fungsi: \\(f(x) = \\frac{\\sqrt{x^2 - 4}}{x - 3}\\)!</p>",
           "steps": [
-            "6 − 2x ≥ 0 ⇔ x ≤ 3.",
-            "x + 1 ≠ 0 ⇔ x ≠ −1.",
-            "Domain: {x | x ≤ 3, x ≠ −1}."
+            "Syarat 1 (dalam akar kuadrat): x² - 4 ≥ 0  =>  (x - 2)(x + 2) ≥ 0  =>  x ≤ -2 atau x ≥ 2.",
+            "Syarat 2 (penyebut pecahan): x - 3 ≠ 0  =>  x ≠ 3.",
+            "Iriskan kedua syarat: D_f = { x ∈ ℝ | (x ≤ -2 atau x ≥ 2) dan x ≠ 3 }."
           ],
-          "answer": "x ≤ 3, x ≠ −1"
+          "answer": "Domain fungsi adalah x ≤ -2 atau (2 ≤ x < 3) atau x > 3."
         },
         {
           "type": "check",
-          "question": "Ketinggian bola h(t) = −5t² + 20t + 1 meter. Ketinggian maksimumnya adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Domain alami dari fungsi f(x) = √(6 - 2x) adalah ....",
           "options": {
-            "A": "20 m",
-            "B": "21 m",
-            "C": "25 m",
-            "D": "41 m"
+            "A": "x ≥ 3",
+            "B": "x ≤ 3",
+            "C": "x > 3",
+            "D": "x < 3"
           },
           "answer": "B",
-          "hint": "t puncak = −b/(2a).",
-          "explanation": "t = 2, h(2) = −20 + 40 + 1 = 21 m."
+          "hint": "Syarat akar kuadrat: 6 - 2x ≥ 0  =>  6 ≥ 2x  =>  x ≤ 3.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "komposisi-fungsi-f-g",
-      "title": "Komposisi Fungsi (f ∘ g)(x): Definisi, Sifat, dan Syarat Keberadaan",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Komposisi Fungsi (f ∘ g)(x), Sifat-Sifatnya, dan Rekonstruksi Komponen",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal fungsi TKA SMA banyak yang kontekstual (tarif listrik, produksi tahu, suhu kopi) dan menuntut membaca grafik atau tabel.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Domain dan range</td><td>syarat akar dan pecahan, range pada domain terbatas</td><td>Kelas 10–11</td></tr><tr><td>Fungsi kuadrat</td><td>puncak, sumbu simetri, nilai maksimum/minimum</td><td>Kelas 10 Bab 5</td></tr><tr><td>Komposisi dan invers</td><td>(f ∘ g)(x), f⁻¹, invers fungsi rasional</td><td>Kelas 11 Bab 2</td></tr><tr><td>Transformasi</td><td>geser, cermin, regang</td><td>Kelas 11 Bab 3</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>√u terdefinisi jika u ≥ 0; p/q terdefinisi jika q ≠ 0.</li><li>Puncak f(x) = ax² + bx + c: x = −b/(2a).</li><li>(f ∘ g)(x) = f(g(x)).</li><li>(ax + b)/(cx + d) → f⁻¹(x) = (−dx + b)/(cx − a).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas10/Matematika/05 Persamaan dan Fungsi Kuadrat/sim/parabola.html",
-          "title": "Penjelajah fungsi kuadrat",
-          "height": 520,
-          "caption": "Bandingkan nilai fungsi di puncak dan di ujung domain."
+          "html": "<h3>Mekanisme Operasi Komposisi</h3>\n<p>Komposisi fungsi \\((f \\circ g)(x) = f(g(x))\\) berarti output dari fungsi \\(g\\) menjadi input langsung bagi fungsi \\(f\\). Syarat agar \\((f \\circ g)\\) terdefinisi adalah <b>irisan antara Range \\(g\\) dengan Domain \\(f\\) tidak boleh kosong (\\(R_g \\cap D_f \\ne \\emptyset\\))</b>.</p>\n<p>Sifat-sifat Komposisi Fungsi:</p>\n<ul>\n  <li><b>TIDAK Komutatif</b>: \\(f \\circ g \\ne g \\circ f\\) secara umum.</li>\n  <li><b>Asosiatif</b>: \\((f \\circ (g \\circ h))(x) = ((f \\circ g) \\circ h)(x)\\).</li>\n  <li><b>Elemen Identitas</b>: \\(f \\circ I = I \\circ f = f\\) (dengan \\(I(x) = x\\)).</li>\n</ul>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Tentukan daerah hasil f(x) = x² − 4x + 1 pada domain 0 ≤ x ≤ 5.</p>",
+          "title": "Contoh Mencari Fungsi Komponen dari Hasil Komposisi",
+          "question": "<p>Diketahui f(x) = 2x - 3 dan (f ∘ g)(x) = 2x² + 4x + 1. Tentukan rumus fungsi g(x)!</p>",
           "steps": [
-            "Puncak di x = 2: f(2) = −3 (minimum, karena a &gt; 0).",
-            "Ujung domain: f(0) = 1, f(5) = 6.",
-            "Daerah hasil: −3 ≤ y ≤ 6."
+            "(f ∘ g)(x) = f(g(x)) = 2 g(x) - 3.",
+            "Samakan dengan hasil yang diketahui: 2 g(x) - 3 = 2x² + 4x + 1.",
+            "2 g(x) = 2x² + 4x + 1 + 3 = 2x² + 4x + 4.",
+            "Bagi kedua ruas dengan 2: g(x) = x² + 2x + 2."
           ],
-          "answer": "[−3, 6]"
+          "answer": "Rumus fungsi g(x) adalah x² + 2x + 2."
         },
         {
           "type": "check",
-          "question": "f(x) = 3x − 5. Nilai f⁻¹(7) adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Jika f(x) = x² + 1 dan g(x) = 2x - 1, maka nilai dari (g ∘ f)(2) adalah ....",
           "options": {
-            "A": "4",
-            "B": "16",
-            "C": "2/3",
+            "A": "5",
+            "B": "9",
+            "C": "10",
             "D": "26"
           },
-          "answer": "A",
-          "hint": "Cari x dengan f(x) = 7.",
-          "explanation": "3x − 5 = 7, x = 4. 16 = f(7)."
+          "answer": "B",
+          "hint": "f(2) = 2² + 1 = 5. (g ∘ f)(2) = g(f(2)) = g(5) = 2(5) - 1 = 10 - 1 = 9.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "invers-fungsi-dan-grafik",
-      "title": "Invers Fungsi f⁻¹(x): Algoritma Aljabar dan Cermin Sumbu y = x",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Invers Fungsi, Syarat Bijektif, Trik Pecahan Aljabar, dan Sifat Simetri Grafik",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal fungsi TKA SMA banyak yang kontekstual (tarif listrik, produksi tahu, suhu kopi) dan menuntut membaca grafik atau tabel.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Domain dan range</td><td>syarat akar dan pecahan, range pada domain terbatas</td><td>Kelas 10–11</td></tr><tr><td>Fungsi kuadrat</td><td>puncak, sumbu simetri, nilai maksimum/minimum</td><td>Kelas 10 Bab 5</td></tr><tr><td>Komposisi dan invers</td><td>(f ∘ g)(x), f⁻¹, invers fungsi rasional</td><td>Kelas 11 Bab 2</td></tr><tr><td>Transformasi</td><td>geser, cermin, regang</td><td>Kelas 11 Bab 3</td></tr></table>"
+          "html": "<h3>Syarat Keberadaan Invers Fungsi</h3>\n<p>Suatu fungsi \\(f\\) memiliki fungsi invers \\(f^{-1}\\) jika dan hanya jika \\(f\\) merupakan <b>Fungsi Bijektif (Korespondensi Satu-Satu dan Pada)</b>. Setiap garis horizontal \\(y = c\\) hanya boleh memotong kurva fungsi di paling banyak satu titik (Uji Garis Horizontal).</p>\n<p>Secara geometris, grafik fungsi invers \\(y = f^{-1}(x)\\) merupakan <b>pencerminan (refleksi) dari grafik \\(y = f(x)\\) terhadap garis cermin \\(y = x\\)</b>.</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk mencocokkan grafik kuadrat, periksa tiga hal: arah buka (tanda a), titik potong sumbu y (c), dan puncak.</li><li>Pada fungsi bertingkat (tarif, kategori suhu), tentukan dahulu interval tempat nilai x berada.</li><li>f⁻¹(k) dapat dicari langsung dengan menyelesaikan f(x) = k tanpa menurunkan rumus invers.</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Matematika/02 Komposisi Fungsi dan Fungsi Invers/sim/komposisi.html",
-          "title": "Mesin komposisi fungsi",
-          "height": 520,
-          "caption": "Bandingkan f ∘ g dan g ∘ f."
+          "variant": "rumus",
+          "title": "Formula Kilat Invers Pecahan Linear Aljabar",
+          "html": "<div class=\"fc-display\">\n\\[ f(x) = \\frac{ax + b}{cx + d} \\quad \\left(x \\ne -\\frac{d}{c}\\right) \\qquad \\Longleftrightarrow \\qquad f^{-1}(x) = \\frac{-dx + b}{cx - a} \\quad \\left(x \\ne \\frac{a}{c}\\right) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a, d\\)</td><td>Koefisien x pembilang dan konstanta penyebut (bertukar posisi dan tanda)</td><td class=\"unit\">\\text{bilangan real}</td></tr>\n<tr><td class=\"sym\">\\(b, c\\)</td><td>Konstanta pembilang dan koefisien x penyebut (tetap persis)</td><td class=\"unit\">\\text{bilangan real}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Sifat Invers Komposisi: (f ∘ g)⁻¹(x) = (g⁻¹ ∘ f⁻¹)(x). Urutan fungsi dibalik!</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>f(x) = 2x − 1, g(x) = x² + 3. Tentukan (f ∘ g)(2).</p>",
+          "title": "Contoh Menentukan Invers Pecahan Aljabar",
+          "question": "<p>Tentukan invers dari fungsi f(x) = (3x + 4) / (2x - 5) untuk x ≠ 5/2!</p>",
           "steps": [
-            "g(2) = 7.",
-            "f(7) = 13."
+            "Berdasarkan rumus kilat f(x) = (ax + b) / (cx + d)  =>  f⁻¹(x) = (-dx + b) / (cx - a):",
+            "Nilai a = 3, b = 4, c = 2, d = -5.",
+            "Tukar posisi dan balik tanda antara a dan d: a = 3 menjadi -3 di penyebut, d = -5 menjadi +5 di pembilang.",
+            "f⁻¹(x) = (5x + 4) / (2x - 3) dengan syarat x ≠ 3/2."
           ],
-          "answer": "13"
+          "answer": "Invers fungsinya adalah f⁻¹(x) = (5x + 4) / (2x - 3) untuk x ≠ 3/2."
         },
         {
           "type": "check",
-          "question": "Grafik y = 2ˣ digeser 3 satuan ke kanan dan 1 satuan ke atas. Fungsinya adalah ....",
+          "title": "Cek Pemahaman",
+          "question": "Jika f(x) = 4x - 7, maka nilai dari f⁻¹(5) adalah ....",
           "options": {
-            "A": "y = 2^(x − 3) + 1",
-            "B": "y = 2^(x + 3) + 1",
-            "C": "y = 2^(x − 1) + 3",
-            "D": "y = 2ˣ − 3 + 1"
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "13"
           },
-          "answer": "A",
-          "hint": "Geser kanan h: ganti x dengan x − h.",
-          "explanation": "y = 2^(x − 3) + 1."
+          "answer": "B",
+          "hint": "f⁻¹(5) = k artinya f(k) = 5. Maka 4k - 7 = 5  =>  4k = 12  =>  k = 3.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "transformasi-geometri-grafik-fungsi",
-      "title": "Pergeseran Grafik Fungsi: Translasi, Refleksi, dan Skala Dilatasi",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Transformasi Geometri Grafik Fungsi: Translasi, Refleksi, dan Dilatasi",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Pergeseran Grafik Fungsi: Translasi, Refleksi, dan Skala Dilatasi</b>: Menganalisis pergeseran horizontal f(x ± c), vertikal f(x) ± c, pembalikan −f(x) dan f(−x), serta peregangan af(x).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Kaidah Baku Modifikasi Rumus terhadap Bentuk Grafik</h3>\n<p>Dari grafik dasar \\(y = f(x)\\), transformasi kurva mengikuti aturan baku:</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Bentuk Transformasi</th><th>Efek Perubahan pada Grafik</th><th>Keterangan Arah</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>\\(y = f(x) + k\\)</td><td>Translasi Vertikal</td><td>Geser ke ATAS sebesar k (\\(k > 0\\))</td></tr>\n    <tr><td>\\(y = f(x) - k\\)</td><td>Translasi Vertikal</td><td>Geser ke BAWAH sebesar k (\\(k > 0\\))</td></tr>\n    <tr><td>\\(y = f(x - h)\\)</td><td>Translasi Horizontal</td><td>Geser ke KANAN sebesar h (\\(h > 0\\))</td></tr>\n    <tr><td>\\(y = f(x + h)\\)</td><td>Translasi Horizontal</td><td>Geser ke KIRI sebesar h (\\(h > 0\\))</td></tr>\n    <tr><td>\\(y = -f(x)\\)</td><td>Refleksi Vertikal</td><td>Dicerminkan terhadap Sumbu-X</td></tr>\n    <tr><td>\\(y = f(-x)\\)</td><td>Refleksi Horizontal</td><td>Dicerminkan terhadap Sumbu-Y</td></tr>\n    <tr><td>\\(y = c \\cdot f(x)\\)</td><td>Peregangan Vertikal</td><td>Merenggang vertikal (\\(c > 1\\)) atau memipih (\\(0 < c < 1\\))</td></tr>\n  </tbody>\n</table>"
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk mencocokkan grafik kuadrat, periksa tiga hal: arah buka (tanda a), titik potong sumbu y (c), dan puncak.</li><li>Pada fungsi bertingkat (tarif, kategori suhu), tentukan dahulu interval tempat nilai x berada.</li><li>f⁻¹(k) dapat dicari langsung dengan menyelesaikan f(x) = k tanpa menurunkan rumus invers.</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Matematika/02 Komposisi Fungsi dan Fungsi Invers/sim/invers.html",
-          "title": "Grafik fungsi invers",
-          "height": 520,
-          "caption": "Grafik invers adalah cerminan terhadap y = x."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>f(x) = (3x + 2)/(x − 1). Tentukan f⁻¹(x).</p>",
-          "steps": [
-            "Pola (ax + b)/(cx + d) dengan a = 3, b = 2, c = 1, d = −1.",
-            "f⁻¹(x) = (x + 2)/(x − 3), x ≠ 3."
-          ],
-          "answer": "(x + 2)/(x − 3)"
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Grafik y = (x - 2)² + 3 diperoleh dari grafik dasar y = x² melalui pergeseran ....",
+          "options": {
+            "A": "2 satuan ke kiri dan 3 satuan ke bawah",
+            "B": "2 satuan ke kanan dan 3 satuan ke atas",
+            "C": "2 satuan ke kiri dan 3 satuan ke atas",
+            "D": "2 satuan ke kanan dan 3 satuan ke bawah"
+          },
+          "answer": "B",
+          "hint": "(x - 2) menggeser 2 satuan ke KANAN, dan +3 menggeser 3 satuan ke ATAS.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "fungsi-genap-ganjil-periodik",
-      "title": "Karakteristik Fungsi: Genap (Simetri Sumbu Y), Ganjil (Simetri Titik Asal), dan Periodik",
+      "title": "Klasifikasi Fungsi Genap, Ganjil, dan Fungsi Periodik",
       "kind": "artikel",
-      "duration": "14 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Karakteristik Fungsi: Genap (Simetri Sumbu Y), Ganjil (Simetri Titik Asal), dan Periodik</b>: Membuktikan f(−x) = f(x) atau f(−x) = −f(x) secara aljabar dan memanfaatkan simetrinya untuk mempercepat hitungan.</p>"
+          "html": "<h3>Simetri Aljabar dan Grafik: Genap vs Ganjil</h3>\n<ol>\n  <li><b>Fungsi Genap (Even Function)</b>:\n    \\[ f(-x) = f(x) \\]\n    <p>Grafiknya <b>simetris sempurna terhadap sumbu-Y</b>. Contoh: \\(f(x) = x^2, x^4, |x|, \\cos x\\).</p>\n  </li>\n  <li><b>Fungsi Ganjil (Odd Function)</b>:\n    \\[ f(-x) = -f(x) \\]\n    <p>Grafiknya <b>simetris putar 180° terhadap titik asal \\((0,0)\\)</b>. Contoh: \\(f(x) = x, x^3, \\frac{1}{x}, \\sin x, \\tan x\\).</p>\n  </li>\n  <li><b>Fungsi Periodik</b>:\n    \\[ f(x + T) = f(x) \\]\n    <p>Nilai fungsi berulang setiap selang periode \\(T\\) (misal \\(\\sin x\\) dan \\(\\cos x\\) dengan \\(T = 2\\pi\\)).</p>\n  </li>\n</ol>"
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk mencocokkan grafik kuadrat, periksa tiga hal: arah buka (tanda a), titik potong sumbu y (c), dan puncak.</li><li>Pada fungsi bertingkat (tarif, kategori suhu), tentukan dahulu interval tempat nilai x berada.</li><li>f⁻¹(k) dapat dicari langsung dengan menyelesaikan f(x) = k tanpa menurunkan rumus invers.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>f(x) = √x dan g(x) = 4 − x². Tentukan domain f ∘ g.</p>",
-          "steps": [
-            "(f ∘ g)(x) = √(4 − x²).",
-            "4 − x² ≥ 0 ⇔ −2 ≤ x ≤ 2."
-          ],
-          "answer": "−2 ≤ x ≤ 2"
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Fungsi berikut yang merupakan fungsi GANJIL adalah ....",
+          "options": {
+            "A": "f(x) = x² + 4",
+            "B": "f(x) = x³ - 5x",
+            "C": "f(x) = cos(x) + 2",
+            "D": "f(x) = x⁴ - x²"
+          },
+          "answer": "B",
+          "hint": "f(-x) = (-x)³ - 5(-x) = -x³ + 5x = -(x³ - 5x) = -f(x). Maka f(x) = x³ - 5x adalah fungsi ganjil.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "interpretasi-grafik-fungsi-tka",
-      "title": "Membaca Grafik Fungsi Nyata: Titik Puncak, Interval Naik-Turun, dan Titik Balik",
-      "kind": "latihan",
-      "duration": "16 menit",
+      "title": "Interpretasi Analitis Grafik Fungsi Non-Linear pada Soal TKA",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Soal fungsi TKA SMA banyak yang kontekstual (tarif listrik, produksi tahu, suhu kopi) dan menuntut membaca grafik atau tabel.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Domain dan range</td><td>syarat akar dan pecahan, range pada domain terbatas</td><td>Kelas 10–11</td></tr><tr><td>Fungsi kuadrat</td><td>puncak, sumbu simetri, nilai maksimum/minimum</td><td>Kelas 10 Bab 5</td></tr><tr><td>Komposisi dan invers</td><td>(f ∘ g)(x), f⁻¹, invers fungsi rasional</td><td>Kelas 11 Bab 2</td></tr><tr><td>Transformasi</td><td>geser, cermin, regang</td><td>Kelas 11 Bab 3</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk mencocokkan grafik kuadrat, periksa tiga hal: arah buka (tanda a), titik potong sumbu y (c), dan puncak.</li><li>Pada fungsi bertingkat (tarif, kategori suhu), tentukan dahulu interval tempat nilai x berada.</li><li>f⁻¹(k) dapat dicari langsung dengan menyelesaikan f(x) = k tanpa menurunkan rumus invers.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tentukan fungsi kuadrat dengan puncak (2, −1) yang melalui (0, 3).</p>",
-          "steps": [
-            "f(x) = a(x − 2)² − 1.",
-            "f(0) = 4a − 1 = 3, a = 1.",
-            "f(x) = (x − 2)² − 1 = x² − 4x + 3."
-          ],
-          "answer": "x² − 4x + 3"
+          "html": "<h3>Membaca Kurva Grafik Tanpa Rumus Eksplisit</h3>\n<p>Soal penalaran analitis TKA sering menyajikan grafik tanpa persamaan rumus. Kunci membaca grafik:</p>\n<ul>\n  <li><b>Titik Potong Sumbu-X</b>: pembuat nol fungsi (\\(f(x) = 0\\)).</li>\n  <li><b>Titik Potong Sumbu-Y</b>: nilai fungsi saat input nol (\\(f(0)\\)).</li>\n  <li><b>Interval Fungsi Naik</b>: kurva menanjak dari kiri ke kanan (\\(f'(x) > 0\\)).</li>\n  <li><b>Interval Fungsi Turun</b>: kurva meluncur ke bawah dari kiri ke kanan (\\(f'(x) < 0\\)).</li>\n  <li><b>Banyaknya Solusi Persamaan \\(f(x) = g(x)\\)</b>: sama dengan <b>banyaknya titik potong fisik</b> antara grafik \\(f(x)\\) dan grafik \\(g(x)\\).</li>\n</ul>"
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Membaca Grafik Fungsi Nyata: Titik Puncak, Interval Naik-Turun, dan Titik Balik, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Jika kurva y = f(x) memotong sumbu-x di x = -3 dan x = 5, maka kurva y = f(x + 2) akan memotong sumbu-x di ....",
           "options": {
-            "A": "Konsep Membaca Grafik Fungsi Nyata: Titik Puncak, Interval Naik-Turun, dan Titik Balik berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "x = -1 dan x = 7",
+            "B": "x = -5 dan x = 3",
+            "C": "x = -5 dan x = 7",
+            "D": "x = -1 dan x = 3"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Mengekstraksi informasi nilai optimum, asimtot, dan laju perubahan dari representasi kurva soal.."
+          "answer": "B",
+          "hint": "Transformasi f(x + 2) menggeser grafik sejauh 2 satuan ke KIRI. Maka titik potong sumbu-x bergeser ke kiri: -3 - 2 = -5, dan 5 - 2 = 3.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-mat-03",
-      "title": "Strategi Analisis Fungsi dan Latihan Kuis Bab 3",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Fungsi",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Analisis Fungsi dan Latihan Kuis Bab 3</b>: Menguasai komposisi dan invers serta menuntaskan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Untuk mencocokkan grafik kuadrat, periksa tiga hal: arah buka (tanda a), titik potong sumbu y (c), dan puncak.</li><li>Pada fungsi bertingkat (tarif, kategori suhu), tentukan dahulu interval tempat nilai x berada.</li><li>f⁻¹(k) dapat dicari langsung dengan menyelesaikan f(x) = k tanpa menurunkan rumus invers.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Analisis Fungsi dan Latihan Kuis Bab 3",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Analisis Fungsi dan Latihan Kuis Bab 3</b> berikut. Analisislah berdasarkan prinsip Menguasai komposisi dan invers serta menuntaskan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Analisis Fungsi dan Latihan Kuis Bab 3, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Analisis Fungsi dan Latihan Kuis Bab 3 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai komposisi dan invers serta menuntaskan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<h3>Rangkuman Bab 03: Fungsi</h3>\n<p>Kuasai penentuan domain alami, aturan rantai komposisi, invers pecahan aljabar, pergeseran geometri kurva, fungsi genap/ganjil, dan interpretasi grafik.</p>\n<p>Uji pemahaman Anda melalui kuis resmi 20 soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA SMA topik Fungsi. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Matematika SMA: Fungsi (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

@@ -1,306 +1,168 @@
 {
   "title": "Transformasi Geometri",
-  "summary": "Transformasi geometri analitis berbasis matriks: translasi (pergeseran vektor), refleksi (pencerminan terhadap sumbu, garis y=x, y=−x, titik asal), rotasi terhadap pusat (0,0) dan (a,b), dilatasi (faktor skala k), komposisi transformasi matriks T_2 ∘ T_1, serta transformasi luas daerah.",
+  "summary": "Materi komprehensif TKA Matematika Tingkat Lanjut: translasi pergeseran, matriks refleksi garis sumbu, rotasi pusat umum dan matriks trigonometri, dilatasi faktor skala, komposisi perkalian matriks urutan terbalik, serta determinan pengubah luas bangun datar.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "translasi-pergeseran-vektor",
-      "title": "Translasi (Pergeseran): Vektor Translasi T = (a, b) pada Titik dan Kurva",
+      "title": "Translasi (Pergeseran) Vektor Geometris dan Persamaan Bayangan",
       "kind": "simulasi",
-      "duration": "15 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Transformasi</th><th>Aturan</th><th>Matriks</th></tr><tr><td>Translasi (a, b)</td><td>(x + a, y + b)</td><td>tidak berupa matriks 2 × 2 (penjumlahan vektor)</td></tr><tr><td>Refleksi sumbu-x</td><td>(x, −y)</td><td>\\(\\begin{pmatrix}1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi sumbu-y</td><td>(−x, y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & 1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = x</td><td>(y, x)</td><td>\\(\\begin{pmatrix}0 & 1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = −x</td><td>(−y, −x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi x = h</td><td>(2h − x, y)</td><td>—</td></tr><tr><td>Rotasi θ pusat O</td><td></td><td>\\(\\begin{pmatrix}\\cos\\theta & -\\sin\\theta\\\\\\sin\\theta & \\cos\\theta\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 90° pusat O</td><td>(−y, x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 180° pusat O</td><td>(−x, −y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Dilatasi [O, k]</td><td>(kx, ky)</td><td>\\(\\begin{pmatrix}k & 0\\\\0 & k\\end{pmatrix}\\)</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Transformasi geometri</b>: translasi, refleksi, rotasi, dilatasi, serta komposisinya dari bentuk geometris dan matriks transformasinya.</p><p><i>Batasan</i>: bentuk yang ditransformasi meliputi titik, garis, dan bangun datar.</p>"
+          "html": "<h3>Konsep Translasi Titik dan Kurva</h3>\n<p>Translasi oleh vektor \\(T = \\begin{pmatrix} a \\\\ b \\end{pmatrix}\\) menggeser setiap titik \\((x, y)\\) menjadi:</p>\n\\[ x' = x + a \\iff x = x' - a \\qquad \\Big| \\qquad y' = y + b \\iff y = y' - b \\]\n<p>Untuk mencari bayangan kurva \\(F(x, y) = 0\\), substitusikan \\(x = x' - a\\) dan \\(y = y' - b\\).</p>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/rotasi.html",
-          "title": "Rotasi bangun datar",
+          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/translasi.html",
+          "title": "Simulasi Translasi Geometri",
           "height": 520,
-          "caption": "Ulangi rotasi 90°, 180°, dan 270° serta pengaruh pusat rotasi."
-        },
-        {
-          "type": "example",
-          "title": "Contoh 1: rotasi pusat P",
-          "question": "<p>Tentukan bayangan A(5, 3) oleh rotasi 90° berlawanan jarum jam dengan pusat P(2, 1).</p>",
-          "steps": [
-            "Geser: A − P = (3, 2).",
-            "Rotasi 90°: (−2, 3).",
-            "Geser kembali: (−2 + 2, 3 + 1) = (0, 4)."
-          ],
-          "answer": "(0, 4)"
-        },
-        {
-          "type": "check",
-          "question": "Bayangan (−2, 5) oleh refleksi terhadap garis x = 3 adalah ....",
-          "options": {
-            "A": "(8, 5)",
-            "B": "(−8, 5)",
-            "C": "(2, 5)",
-            "D": "(−2, 1)"
-          },
-          "answer": "A",
-          "hint": "(2h − x, y).",
-          "explanation": "(6 + 2, 5) = (8, 5)."
+          "caption": "Geser vektor translasi dan amati pergeseran posisi bangun datar."
         }
       ]
     },
     {
       "id": "refleksi-pencerminan-matriks",
-      "title": "Refleksi (Pencerminan): Matriks Transformasi Terhadap Sumbu X, Sumbu Y, Garis y = ±x, dan Titik (a, b)",
+      "title": "Refleksi (Pencerminan) terhadap Garis dan Matriks Transformasinya",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Transformasi</th><th>Aturan</th><th>Matriks</th></tr><tr><td>Translasi (a, b)</td><td>(x + a, y + b)</td><td>tidak berupa matriks 2 × 2 (penjumlahan vektor)</td></tr><tr><td>Refleksi sumbu-x</td><td>(x, −y)</td><td>\\(\\begin{pmatrix}1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi sumbu-y</td><td>(−x, y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & 1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = x</td><td>(y, x)</td><td>\\(\\begin{pmatrix}0 & 1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = −x</td><td>(−y, −x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi x = h</td><td>(2h − x, y)</td><td>—</td></tr><tr><td>Rotasi θ pusat O</td><td></td><td>\\(\\begin{pmatrix}\\cos\\theta & -\\sin\\theta\\\\\\sin\\theta & \\cos\\theta\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 90° pusat O</td><td>(−y, x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 180° pusat O</td><td>(−x, −y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Dilatasi [O, k]</td><td>(kx, ky)</td><td>\\(\\begin{pmatrix}k & 0\\\\0 & k\\end{pmatrix}\\)</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Transformasi geometri</b>: translasi, refleksi, rotasi, dilatasi, serta komposisinya dari bentuk geometris dan matriks transformasinya.</p><p><i>Batasan</i>: bentuk yang ditransformasi meliputi titik, garis, dan bangun datar.</p>"
+          "html": "<h3>Tabel Matriks Refleksi Standar</h3>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Sumbu Pencerminan</th><th>Bayangan Titik \\((x', y')\\)</th><th>Matriks Transformasi \\(M\\)</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Sumbu-X (\\(y = 0\\))</td><td>\\((x, -y)\\)</td><td>\\(\\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}\\)</td></tr>\n    <tr><td>Sumbu-Y (\\(x = 0\\))</td><td>\\((-x, y)\\)</td><td>\\(\\begin{pmatrix} -1 & 0 \\\\ 0 & 1 \\end{pmatrix}\\)</td></tr>\n    <tr><td>Garis \\(y = x\\)</td><td>\\((y, x)\\)</td><td>\\(\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}\\)</td></tr>\n    <tr><td>Garis \\(y = -x\\)</td><td>\\((-y, -x)\\)</td><td>\\(\\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}\\)</td></tr>\n    <tr><td>Titik Asal \\((0, 0)\\)</td><td>\\((-x, -y)\\)</td><td>\\(\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}\\)</td></tr>\n    <tr><td>Garis \\(x = h\\)</td><td>\\((2h - x, y)\\)</td><td>Translasi + Refleksi</td></tr>\n    <tr><td>Garis \\(y = k\\)</td><td>\\((x, 2k - y)\\)</td><td>Translasi + Refleksi</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "sim",
-          "src": "sim/komposisi-transformasi.html",
-          "title": "Komposisi transformasi",
-          "height": 640,
-          "caption": "Pilih dua transformasi. Bandingkan hasilnya bila urutan ditukar, dan perhatikan matriks komposisi serta perbandingan luasnya."
-        },
-        {
-          "type": "example",
-          "title": "Contoh 1: matriks komposisi",
-          "question": "<p>Tentukan matriks refleksi terhadap sumbu-y dilanjutkan rotasi 90° pusat O.</p>",
-          "steps": [
-            "\\(M = R_{90}\\cdot M_y = \\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\begin{pmatrix}-1 & 0\\\\0 & 1\\end{pmatrix} = \\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\).",
-            "Hasilnya refleksi terhadap y = −x."
-          ],
-          "answer": "\\(\\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\)"
-        },
-        {
-          "type": "check",
-          "question": "Persegi berluas 5 ditransformasikan oleh \\(\\begin{pmatrix}2 & 1\\\\1 & 3\\end{pmatrix}\\). Luas bayangannya ....",
-          "options": {
-            "A": "25",
-            "B": "5",
-            "C": "35",
-            "D": "10"
-          },
-          "answer": "A",
-          "hint": "|det M| × luas.",
-          "explanation": "det = 6 − 1 = 5 → 25."
+          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/refleksi.html",
+          "title": "Simulasi Refleksi Geometri",
+          "height": 520,
+          "caption": "Pilih sumbu cermin dan amati hasil pencerminan bangun geometris."
         }
       ]
     },
     {
       "id": "rotasi-terhadap-pusat",
-      "title": "Rotasi (Perputaran): Pusat (0,0) dan Pusat (a,b) dengan Sudut Putar θ",
+      "title": "Rotasi (Perputaran) terhadap Pusat (0,0) dan Pusat (a,b)",
       "kind": "simulasi",
-      "duration": "18 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Transformasi</th><th>Aturan</th><th>Matriks</th></tr><tr><td>Translasi (a, b)</td><td>(x + a, y + b)</td><td>tidak berupa matriks 2 × 2 (penjumlahan vektor)</td></tr><tr><td>Refleksi sumbu-x</td><td>(x, −y)</td><td>\\(\\begin{pmatrix}1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi sumbu-y</td><td>(−x, y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & 1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = x</td><td>(y, x)</td><td>\\(\\begin{pmatrix}0 & 1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = −x</td><td>(−y, −x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi x = h</td><td>(2h − x, y)</td><td>—</td></tr><tr><td>Rotasi θ pusat O</td><td></td><td>\\(\\begin{pmatrix}\\cos\\theta & -\\sin\\theta\\\\\\sin\\theta & \\cos\\theta\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 90° pusat O</td><td>(−y, x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 180° pusat O</td><td>(−x, −y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Dilatasi [O, k]</td><td>(kx, ky)</td><td>\\(\\begin{pmatrix}k & 0\\\\0 & k\\end{pmatrix}\\)</td></tr></table>"
+          "html": "<h3>Matriks Rotasi dengan Sudut Putar \\(\\theta\\)</h3>\n<p>Konvensi Sudut: Sudut \\(\\theta\\) bertanda <b>positif (+) jika BERLAWANAN ARAH jarum jam</b>, dan bernilai <b>negatif (-) jika SEARAH jarum jam</b>.</p>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Transformasi geometri</b>: translasi, refleksi, rotasi, dilatasi, serta komposisinya dari bentuk geometris dan matriks transformasinya.</p><p><i>Batasan</i>: bentuk yang ditransformasi meliputi titik, garis, dan bangun datar.</p>"
+          "variant": "rumus",
+          "title": "Matriks Rotasi terhadap Pusat P(a, b) Sebesar Sudut θ",
+          "html": "<div class=\"fc-display\">\n\\[ \\begin{pmatrix} x' - a \\\\ y' - b \\end{pmatrix} = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\begin{pmatrix} x - a \\\\ y - b \\end{pmatrix} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}\\)</td><td>Matriks operator rotasi R_θ</td><td class=\"unit\">\\text{determinan = } \\cos^2\\theta + \\sin^2\\theta = 1</td></tr>\n<tr><td class=\"sym\">\\(\\theta\\)</td><td>Sudut rotasi (berlawanan jarum jam = positif)</td><td class=\"unit\">\\text{derajat atau radian}</td></tr>\n<tr><td class=\"sym\">\\((a, b)\\)</td><td>Titik pusat perputaran</td><td class=\"unit\">\\text{koordinat}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Rotasi 90° berlawanan jarum jam: [[0, -1], [1, 0]]. Rotasi 180°: [[-1, 0], [0, -1]]. Rotasi 270° (atau -90°): [[0, 1], [-1, 0]].</small></p>"
         },
         {
           "type": "sim",
           "src": "../../../Kelas9/Matematika/03 Transformasi/sim/rotasi.html",
-          "title": "Rotasi bangun datar",
+          "title": "Simulasi Rotasi Geometri",
           "height": 520,
-          "caption": "Ulangi rotasi 90°, 180°, dan 270° serta pengaruh pusat rotasi."
-        },
-        {
-          "type": "example",
-          "title": "Contoh 2: bayangan garis",
-          "question": "<p>Tentukan bayangan garis \\(x - 2y + 4 = 0\\) oleh dilatasi [O, 3].</p>",
-          "steps": [
-            "x = x′/3, y = y′/3.",
-            "x′/3 − 2y′/3 + 4 = 0 → x′ − 2y′ + 12 = 0."
-          ],
-          "answer": "x − 2y + 12 = 0"
+          "caption": "Putar bangun datar pada bidang kartesius dan amati perubahan matriks rotasinya."
         }
       ]
     },
     {
       "id": "dilatasi-faktor-skala-luas",
-      "title": "Dilatasi (Perkalian Skala): Faktor Skala k, Pusat Dilatasi, dan Pengaruh Terhadap Luas",
+      "title": "Dilatasi (Perkalian Skala) terhadap Pusat (0,0) dan Pusat (a,b)",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Transformasi</th><th>Aturan</th><th>Matriks</th></tr><tr><td>Translasi (a, b)</td><td>(x + a, y + b)</td><td>tidak berupa matriks 2 × 2 (penjumlahan vektor)</td></tr><tr><td>Refleksi sumbu-x</td><td>(x, −y)</td><td>\\(\\begin{pmatrix}1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi sumbu-y</td><td>(−x, y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & 1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = x</td><td>(y, x)</td><td>\\(\\begin{pmatrix}0 & 1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = −x</td><td>(−y, −x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi x = h</td><td>(2h − x, y)</td><td>—</td></tr><tr><td>Rotasi θ pusat O</td><td></td><td>\\(\\begin{pmatrix}\\cos\\theta & -\\sin\\theta\\\\\\sin\\theta & \\cos\\theta\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 90° pusat O</td><td>(−y, x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 180° pusat O</td><td>(−x, −y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Dilatasi [O, k]</td><td>(kx, ky)</td><td>\\(\\begin{pmatrix}k & 0\\\\0 & k\\end{pmatrix}\\)</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Transformasi geometri</b>: translasi, refleksi, rotasi, dilatasi, serta komposisinya dari bentuk geometris dan matriks transformasinya.</p><p><i>Batasan</i>: bentuk yang ditransformasi meliputi titik, garis, dan bangun datar.</p>"
+          "html": "<h3>Perubahan Ukuran Bangun Geometris</h3>\n\\[ \\begin{pmatrix} x' - a \\\\ y' - b \\end{pmatrix} = k \\begin{pmatrix} x - a \\\\ y - b \\end{pmatrix} = \\begin{pmatrix} k & 0 \\\\ 0 & k \\end{pmatrix} \\begin{pmatrix} x - a \\\\ y - b \\end{pmatrix} \\]\n<p>Jika \\(|k| > 1\\), bangun diperbesar. Jika \\(0 < |k| < 1\\), bangun diperkecil. Jika \\(k < 0\\), bangun diperbesar/diperkecil dan posisinya dibalik terhadap pusat dilatasi.</p>"
         },
         {
           "type": "sim",
-          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/rotasi.html",
-          "title": "Rotasi bangun datar",
+          "src": "../../../Kelas9/Matematika/03 Transformasi/sim/dilatasi.html",
+          "title": "Simulasi Dilatasi Geometri",
           "height": 520,
-          "caption": "Ulangi rotasi 90°, 180°, dan 270° serta pengaruh pusat rotasi."
-        },
-        {
-          "type": "example",
-          "title": "Contoh 3: bayangan kurva",
-          "question": "<p>Tentukan bayangan \\(y = x^2 + 1\\) oleh refleksi terhadap garis y = x.</p>",
-          "steps": [
-            "(x, y) → (y, x), jadi x = y′ dan y = x′.",
-            "x′ = (y′)² + 1."
-          ],
-          "answer": "x = y² + 1"
+          "caption": "Ubah faktor skala k dan pusat dilatasi untuk melihat efek pembesaran dan pembalikan."
         }
       ]
     },
     {
       "id": "komposisi-transformasi-matriks",
-      "title": "Komposisi Dua Transformasi atau Lebih: Matriks Gabungan M = M_2 · M_1",
-      "kind": "latihan",
-      "duration": "16 menit",
+      "title": "Komposisi Dua Transformasi atau Lebih Menggunakan Perkalian Matriks",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Komposisi Dua Transformasi atau Lebih: Matriks Gabungan M = M_2 · M_1</b>: Menerapkan urutan perkalian matriks terbalik (T_2 setelah T_1 dikerjakan sebagai M_2 · M_1) pada titik dan garis.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Transformasi geometri</b>: translasi, refleksi, rotasi, dilatasi, serta komposisinya dari bentuk geometris dan matriks transformasinya.</p><p><i>Batasan</i>: bentuk yang ditransformasi meliputi titik, garis, dan bangun datar.</p>"
+          "html": "<h3>Urutan Perkalian Matriks Komposisi (Dibalik!)</h3>\n<p>Jika transformasi \\(T_1\\) dengan matriks \\(M_1\\) dilanjutkan oleh transformasi \\(T_2\\) dengan matriks \\(M_2\\), maka matriks komposisi total \\(M_{\\text{total}}\\) dirumuskan oleh:</p>\n\\[ M_{\\text{total}} = M_2 \\cdot M_1 \\]\n<p>Ingat baik-baik: <b>Matriks transformasi kedua ditulis di DEPAN (kiri) matriks transformasi pertama!</b></p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Komposisi Dua Transformasi atau Lebih: Matriks Gabungan M = M_2 · M_1",
-          "question": "<p>Perhatikan permasalahan terkait <b>Komposisi Dua Transformasi atau Lebih: Matriks Gabungan M = M_2 · M_1</b> berikut. Analisislah berdasarkan prinsip Menerapkan urutan perkalian matriks terbalik (T_2 setelah T_1 dikerjakan sebagai M_2 · M_1) pada titik dan garis..</p>",
+          "title": "Contoh Komposisi Dua Transformasi",
+          "question": "<p>Titik P(2, 1) ditransformasikan oleh pencerminan terhadap sumbu-X dilanjutkan rotasi 90° berlawanan arah jarum jam terhadap pusat (0,0). Tentukan koordinat bayangan akhir titik P!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Matriks transformasi 1 (refleksi sumbu-X): M₁ = [[1, 0], [0, -1]].",
+            "Matriks transformasi 2 (rotasi 90°): M₂ = [[0, -1], [1, 0]].",
+            "Matriks komposisi M = M₂ · M₁ = [[0, -1], [1, 0]] · [[1, 0], [0, -1]].",
+            "M = [[(0·1 + (-1)·0), (0·0 + (-1)·(-1))], [(1·1 + 0·0), (1·0 + 0·(-1))]] = [[0, 1], [1, 0]].",
+            "Hitung bayangan titik P: [x', y']^T = [[0, 1], [1, 0]] · [2, 1]^T = [1, 2]^T."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Koordinat bayangan akhir adalah P'(1, 2)."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Komposisi Dua Transformasi atau Lebih: Matriks Gabungan M = M_2 · M_1, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Matriks komposisi yang bersesuaian dengan transformasi rotasi 90° terhadap O dilanjutkan rotasi 90° lagi terhadap O adalah ....",
           "options": {
-            "A": "Konsep Komposisi Dua Transformasi atau Lebih: Matriks Gabungan M = M_2 · M_1 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "[[1, 0], [0, 1]]",
+            "B": "[[-1, 0], [0, -1]]",
+            "C": "[[0, -1], [-1, 0]]",
+            "D": "[[0, 1], [1, 0]]"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menerapkan urutan perkalian matriks terbalik (T_2 setelah T_1 dikerjakan sebagai M_2 · M_1) pada titik dan garis.."
+          "answer": "B",
+          "hint": "Rotasi 90° + rotasi 90° = rotasi 180°. Matriks rotasi 180° adalah [[-1, 0], [0, -1]].",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "transformasi-luas-bangun-datar",
-      "title": "Transformasi Luas: Menghitung Luas Bayangan Menggunakan Determinan Matriks",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Efek Transformasi terhadap Luas Bangun Datar Menggunakan Determinan",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<table><tr><th>Transformasi</th><th>Aturan</th><th>Matriks</th></tr><tr><td>Translasi (a, b)</td><td>(x + a, y + b)</td><td>tidak berupa matriks 2 × 2 (penjumlahan vektor)</td></tr><tr><td>Refleksi sumbu-x</td><td>(x, −y)</td><td>\\(\\begin{pmatrix}1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi sumbu-y</td><td>(−x, y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & 1\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = x</td><td>(y, x)</td><td>\\(\\begin{pmatrix}0 & 1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi y = −x</td><td>(−y, −x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\-1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Refleksi x = h</td><td>(2h − x, y)</td><td>—</td></tr><tr><td>Rotasi θ pusat O</td><td></td><td>\\(\\begin{pmatrix}\\cos\\theta & -\\sin\\theta\\\\\\sin\\theta & \\cos\\theta\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 90° pusat O</td><td>(−y, x)</td><td>\\(\\begin{pmatrix}0 & -1\\\\1 & 0\\end{pmatrix}\\)</td></tr><tr><td>Rotasi 180° pusat O</td><td>(−x, −y)</td><td>\\(\\begin{pmatrix}-1 & 0\\\\0 & -1\\end{pmatrix}\\)</td></tr><tr><td>Dilatasi [O, k]</td><td>(kx, ky)</td><td>\\(\\begin{pmatrix}k & 0\\\\0 & k\\end{pmatrix}\\)</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Transformasi geometri</b>: translasi, refleksi, rotasi, dilatasi, serta komposisinya dari bentuk geometris dan matriks transformasinya.</p><p><i>Batasan</i>: bentuk yang ditransformasi meliputi titik, garis, dan bangun datar.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Transformasi Luas: Menghitung Luas Bayangan Menggunakan Determinan Matriks",
-          "question": "<p>Perhatikan permasalahan terkait <b>Transformasi Luas: Menghitung Luas Bayangan Menggunakan Determinan Matriks</b> berikut. Analisislah berdasarkan prinsip Menghitung luas elips atau segitiga bayangan menggunakan formula Luas_bayangan = |det(T)| · Luas_awal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "html": "<h3>Pengaruh Matriks Transformasi terhadap Luas</h3>\n<p>Jika suatu bangun datar dengan luas awal \\(L\\) ditransformasikan oleh matriks \\(M = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}\\), maka luas bangun bayangan (\\(L'\\)) memenuhi hubungan:</p>\n\\[ L' = |\\det(M)| \\cdot L = |ad - bc| \\cdot L \\]"
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Transformasi Luas: Menghitung Luas Bayangan Menggunakan Determinan Matriks, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Segitiga ABC memiliki luas 15 cm². Segitiga tersebut ditransformasikan oleh matriks M = [[3, 1], [2, 4]]. Luas bayangan segitiga tersebut adalah ....",
           "options": {
-            "A": "Konsep Transformasi Luas: Menghitung Luas Bayangan Menggunakan Determinan Matriks berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "150 cm²",
+            "B": "120 cm²",
+            "C": "100 cm²",
+            "D": "60 cm²"
           },
           "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung luas elips atau segitiga bayangan menggunakan formula Luas_bayangan = |det(T)| · Luas_awal.."
+          "hint": "det(M) = (3)(4) - (1)(2) = 12 - 2 = 10. Luas baru = |det(M)| · Luas awal = 10 × 15 = 150 cm².",
+          "explanation": "Pilihan A benar."
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-mtl-07",
-      "title": "Strategi Cepat Transformasi Geometri dan Latihan Kuis Bab 7",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Transformasi Geometri",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Transformasi Geometri dan Latihan Kuis Bab 7</b>: Menguasai analisis transformasi geometri analitis dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Transformasi geometri</b>: translasi, refleksi, rotasi, dilatasi, serta komposisinya dari bentuk geometris dan matriks transformasinya.</p><p><i>Batasan</i>: bentuk yang ditransformasi meliputi titik, garis, dan bangun datar.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Transformasi Geometri dan Latihan Kuis Bab 7",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Transformasi Geometri dan Latihan Kuis Bab 7</b> berikut. Analisislah berdasarkan prinsip Menguasai analisis transformasi geometri analitis dan menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Transformasi Geometri dan Latihan Kuis Bab 7, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Transformasi Geometri dan Latihan Kuis Bab 7 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai analisis transformasi geometri analitis dan menyelesaikan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<p>Uji pemahaman komprehensif transformasi geometri dan matriks operator Anda melalui kuis resmi 20 butir soal di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Transformasi Geometri. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Matematika Tingkat Lanjut: Transformasi Geometri (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }

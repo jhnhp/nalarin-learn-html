@@ -1,292 +1,331 @@
 {
   "title": "Momentum dan Impuls",
-  "summary": "Analisis interaksi tumbukan dan dinamika impulsif: definisi momentum vektor, impuls dari grafik F-t, hukum kekekalan momentum, tumbukan lenting sempurna, sebagian, dan tidak lenting sama sekali, serta aplikasi pada airbag dan propulsi roket.",
+  "summary": "Materi komprehensif TKA Fisika...",
   "status": "lengkap",
   "lessons": [
     {
-      "id": "momentum-dan-vektor-gerak",
-      "title": "Konsep Momentum Linear sebagai Ukuran Kesukaran Menghentikan Gerak",
-      "kind": "artikel",
-      "duration": "14 menit",
+      "id": "momentum-dan-impuls-dasar",
+      "title": "Konsep Momentum Linier dan Impuls Gaya",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Konsep Momentum Linear sebagai Ukuran Kesukaran Menghentikan Gerak</b>: Menghitung momentum p = m · v dan memperlakukannya secara tepat sebagai besaran vektor berarah.</p>"
+          "html": "<h3>Besaran Pengukur Kesukaran Menghentikan Benda</h3>\n<p>Dalam kehidupan sehari-hari, sebuah truk bermuatan berat yang melaju 30 km/jam jauh lebih sulit dihentikan daripada sepeda motor yang melaju dengan kelajuan yang sama. Di sisi lain, peluru kecil bermassa hanya 10 gram dapat menembus papan tebal karena kelajuannya yang sangat tinggi (300 m/s). Kuantitas fisika yang menggabungkan faktor massa dan kecepatan gerak ini disebut <b>Momentum Linier (\\(\u000bec{p}\\))</b>.</p>\n<p>Momentum linier adalah besaran vektor yang didefinisikan sebagai hasil kali antara massa inersia benda (\\(m\\)) dan vektor kecepatannya (\\(\u000bec{v}\\)):</p>\n<p>Arah vektor momentum selalu searah dengan arah vektor kecepatan benda.</p>\n<h3>Impuls Gaya (\\(\u000bec{I}\\))</h3>\n<p>Untuk mengubah momentum suatu benda (misalnya menendang bola atau mengerem mobil), harus ada gaya luar yang bekerja selama selang waktu tertentu (\\(\\Delta t\\)). Perkalian antara gaya rata-rata (\\(\u000bec{F}\\)) dan selang waktu sentuh (\\(\\Delta t\\)) didefinisikan sebagai <b>Impuls (\\(\u000bec{I}\\))</b>.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(p = mv\\); \\(I = F\\,\\Delta t = \\Delta p = m(v' - v)\\).</li><li>Kekekalan: \\(m_1v_1 + m_2v_2 = m_1v_1' + m_2v_2'\\) (tanpa gaya luar).</li><li>\\(e = -\\dfrac{v_1' - v_2'}{v_1 - v_2}\\): lenting sempurna e = 1, sebagian 0 < e < 1, tidak lenting e = 0 (bergerak bersama).</li><li>Bola jatuh memantul: \\(e = \\sqrt{h_2/h_1}\\).</li></ul>"
+          "title": "Definisi Momentum Linier dan Impuls Gaya",
+          "html": "<div class=\"fc-display\">\n\\[ \\vec{p} = m \\cdot \\vec{v}, \\qquad \\vec{I} = \\vec{F} \\cdot \\Delta t = \\int_{t_1}^{t_2} \\vec{F} \\, dt \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\vec{p}\\)</td><td>Momentum linier benda (besaran vektor)</td><td class=\"unit\">\\text{kg}\\cdot\\text{m/s} = \\text{N}\\cdot\\text{s}</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa benda</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{v}\\)</td><td>Kecepatan linier gerak benda</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{I}\\)</td><td>Impuls gaya</td><td class=\"unit\">\\text{N}\\cdot\\text{s} = \\text{kg}\\cdot\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{F}\\)</td><td>Gaya kontak rata-rata yang bekerja</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta t\\)</td><td>Selang waktu bekerjanya gaya kontak</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Analisis Dimensi: Momentum dan Impuls memiliki dimensi yang identik: [M][L][T]⁻¹.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Makna Geometris Grafik Gaya terhadap Waktu (F–t)",
+          "html": "<p>Pada grafik gaya terhadap waktu (\\(F-t\\)), <b>luas daerah di bawah kurva menyatakan besar impuls</b>: \\(\text{Luas } (F-t) = I = \\Delta p\\). Jika kurva berbentuk segitiga (gaya tumbukan yang naik lalu turun), luasnya dihitung dengan \\(\frac{1}{2} \times \text{alas} \times \text{tinggi}\\).</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Bola tenis 0,06 kg datang dengan kelajuan 30 m/s dan dipukul balik dengan kelajuan 40 m/s. Raket menyentuh bola selama 0,01 s. Berapa impuls dan gaya rata-rata raket?</p>",
+          "title": "Contoh Perhitungan Impuls dari Tendangan Bola",
+          "question": "<p>Sebuah bola sepak bermassa 0,4 kg yang mula-mula diam ditendang dengan gaya kontak rata-rata 200 N. Kaki pemain menyentuh bola selama selang waktu Δt = 0,05 sekon. Tentukan: (a) besar impuls yang diterima bola, dan (b) kelajuan bola sesaat setelah terlepas dari kaki!</p>",
           "steps": [
-            "Ambil arah pukulan positif: v = −30, v' = +40.",
-            "I = 0,06(40 − (−30)) = 4,2 N·s.",
-            "F = 4,2/0,01 = 420 N."
+            "Hitung impuls: I = F · Δt = 200 N × 0,05 s = 10 N·s.",
+            "Gunakan teorema impuls-momentum: I = Δp = m·v_akhir - m·v_awal.",
+            "Karena bola mula-mula diam (v_awal = 0): 10 = 0,4 · v_akhir  =>  v_akhir = 10 / 0,4 = 25 m/s."
           ],
-          "answer": "4,2 N·s dan 420 N"
+          "answer": "Besar impuls adalah 10 N·s dan kelajuan bola setelah ditendang adalah 25 m/s."
         },
         {
           "type": "check",
-          "question": "Kantong udara (airbag) melindungi pengemudi saat tabrakan karena ....",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah bola bermassa 0,2 kg dilempar mendatar ke arah dinding dengan kecepatan 15 m/s ke kanan dan memantul kembali dengan kelajuan 10 m/s ke kiri. Besar perubahan momentum (impuls) yang dialami bola adalah ....",
           "options": {
-            "A": "mengurangi perubahan momentum pengemudi",
-            "B": "memperpanjang waktu tumbukan sehingga gaya rata-rata lebih kecil",
-            "C": "menambah massa pengemudi",
-            "D": "membuat tumbukan lenting sempurna"
+            "A": "1 N·s",
+            "B": "2 N·s",
+            "C": "5 N·s",
+            "D": "25 N·s"
           },
-          "answer": "B",
-          "hint": "F = Δp/Δt.",
-          "explanation": "Perubahan momentum sama, tetapi waktunya lebih panjang, sehingga gaya rata-rata pada tubuh lebih kecil."
+          "answer": "C",
+          "hint": "Ingat momentum adalah besaran vektor: perhatikan tanda positif dan negatif pada arah gerak bola.",
+          "explanation": "Pilihan C benar. Tetapkan arah ke kanan positif (+): v₁ = +15 m/s, v₂ = -10 m/s. Impuls I = m(v₂ - v₁) = 0,2 × (-10 - 15) = 0,2 × (-25) = -5 N·s (besarnya 5 N·s ke arah kiri)."
         }
       ]
     },
     {
       "id": "teorema-impuls-momentum",
-      "title": "Teorema Impuls-Momentum dan Luas Grafik F–t",
+      "title": "Teorema Impuls-Momentum dan Gaya Benturan",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Teorema Impuls-Momentum dan Luas Grafik F–t</b>: Menghitung impuls I = F_avg · Δt = Δp dan mengevaluasi luas kurva gaya terhadap waktu.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "html": "<h3>Penyatuan Konsep: Teorema Impuls-Momentum</h3>\n<p>Berdasarkan Hukum II Newton dalam bentuk aslinya, gaya total adalah laju perubahan momentum terhadap waktu: \\(\u000bec{F} = \frac{\\Delta\u000bec{p}}{\\Delta t}\\). Jika kedua ruas dikalikan dengan selang waktu \\(\\Delta t\\), diperoleh <b>Teorema Impuls-Momentum</b>:</p>\n<p><i>\"Impuls total yang dikerjakan oleh suatu gaya pada benda sama dengan perubahan momentum linier benda tersebut.\"</i></p>\n<p>\\[ \u000bec{I} = \\Delta\u000bec{p} = \u000bec{p}_{\text{akhir}} - \u000bec{p}_{\text{awal}} = m \u000bec{v}_t - m \u000bec{v}_0 \\]</p>\n<h3>Prinsip Keselamatan Kendaraan: Menurunkan Gaya Benturan</h3>\n<p>Dari persamaan \\(F = \frac{\\Delta p}{\\Delta t}\\), terlihat jelas bahwa untuk perubahan momentum tertentu (\\(\\Delta p\\) konstan, misalnya mobil melaju kencang lalu berhenti menabrak):</p>\n<ul>\n  <li>Jika waktu benturan \\(\\Delta t\\) sangat singkat (mobil kaku tanpa crumple zone menabrak pilar beton), gaya benturan \\(F\\) akan <b>menjadi sangat raksasa dan mematikan</b>.</li>\n  <li>Jika waktu benturan \\(\\Delta t\\) dapat <b>diperpanjang</b> (menggunakan zona bentur elastis / crumple zone, kantung udara / airbag, matras lompat tinggi, atau helm busa), maka gaya kontak rata-rata \\(F\\) akan <b>mengecil drastis</b>, sehingga menyelamatkan nyawa penumpang.</li>\n</ul>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tentukan arah positif; kecepatan berlawanan diberi tanda negatif.</li><li>Untuk tumbukan lenting sempurna, gunakan kekekalan momentum bersama e = 1 (lebih mudah daripada kekekalan energi kinetik).</li><li>Impuls dari grafik F–t = luas di bawah grafik.</li><li>Ledakan dan tolakan dimulai dari momentum total nol (atau momentum awal yang diketahui).</li></ul>"
+          "variant": "rumus",
+          "title": "Teorema Impuls-Momentum & Gaya Benturan Rata-Rata",
+          "html": "<div class=\"fc-display\">\n\\[ \\vec{I} = \\Delta\\vec{p} = m(\\vec{v}_t - \\vec{v}_0), \\qquad \\vec{F}_{\\text{rata-rata}} = \\frac{m(\\vec{v}_t - \\vec{v}_0)}{\\Delta t} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(\\vec{I}\\)</td><td>Impuls total</td><td class=\"unit\">\\text{N}\\cdot\\text{s}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta\\vec{p}\\)</td><td>Perubahan momentum linier</td><td class=\"unit\">\\text{kg}\\cdot\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{F}_{\\text{rata-rata}}\\)</td><td>Gaya kontak rata-rata selama tumbukan</td><td class=\"unit\">\\text{Newton (N)}</td></tr>\n<tr><td class=\"sym\">\\(\\Delta t\\)</td><td>Durasi waktu tumbukan (waktu deformasi kontak)</td><td class=\"unit\">\\text{sekon (s)}</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa benda</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{v}_t, \\vec{v}_0\\)</td><td>Kecepatan akhir dan kecepatan awal</td><td class=\"unit\">\\text{m/s}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Selalu masukkan arah vektor kecepatan secara konsisten (arah kanan/atas positif, kiri/bawah negatif).</small></p>"
         },
         {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/tumbukan.html",
-          "title": "Tumbukan dua troli",
-          "height": 520,
-          "caption": "Bandingkan energi kinetik total sebelum dan sesudah tumbukan untuk e = 1 dan e = 0."
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jebakan Perubahan Momentum pada Pemantulan",
+          "html": "<p>Jika benda menumbuk dinding lalu <b>memantul berbalik arah</b>, perubahan momentumnya adalah penjumlahan kelajuan: \\(|\\Delta p| = m(v_2 - (-v_1)) = m(v_2 + v_1)\\). Banyak siswa salah mengurangkan kelajuan (\\(v_2 - v_1\\)) karena mengabaikan tanda vektor.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Truk 3.000 kg melaju 10 m/s menabrak dari belakang mobil 1.000 kg yang melaju 6 m/s searah. Keduanya menempel setelah tumbukan. Berapa kecepatan gabungan dan energi kinetik yang hilang?</p>",
+          "title": "Contoh Perhitungan Gaya Benturan Airbag",
+          "question": "<p>Seorang pengemudi bermassa 70 kg melaju 72 km/jam saat mobilnya mengalami tabrakan mendadak hingga berhenti. Hitung gaya benturan rata-rata yang dialami tubuh pengemudi jika: (a) mobil tanpa airbag sehingga tubuh membentur setir kaku selama Δt = 0,02 s, dan (b) mobil dilengkapi airbag sehingga kepala terbenam lembut selama Δt = 0,2 s!</p>",
           "steps": [
-            "v' = (30.000 + 6.000)/4.000 = 9 m/s.",
-            "Ek awal = ½(3.000)(100) + ½(1.000)(36) = 168.000 J; Ek akhir = ½(4.000)(81) = 162.000 J."
+            "Konversi kecepatan awal: v₀ = 72 km/jam = 20 m/s. Kecepatan akhir v_t = 0 m/s.",
+            "Hitung perubahan momentum: Δp = m(0 - 20) = 70 × (-20) = -1.400 kg·m/s (besar perubahan momentum 1.400 N·s).",
+            "Kasus (a) Tanpa airbag (Δt = 0,02 s): F = |Δp| / Δt = 1.400 / 0,02 = 70.000 Newton (setara tertimpa beban 7 ton, fatal).",
+            "Kasus (b) Dengan airbag (Δt = 0,2 s): F = |Δp| / Δt = 1.400 / 0,2 = 7.000 Newton (berkurang 10 kali lipat, menyelamatkan nyawa)."
           ],
-          "answer": "9 m/s; energi hilang 6.000 J"
+          "answer": "Gaya benturan tanpa airbag adalah 70.000 N, sedangkan dengan airbag berkurang drastis menjadi 7.000 N."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Pesenam yang melompat dari palang tunggal selalu mendarat dengan menekuk lututnya. Tujuan utama menekuk lutut saat mendarat ditinjau dari fisika adalah ....",
+          "options": {
+            "A": "Mengurangi perubahan momentum total pesenam",
+            "B": "Memperpanjang waktu henti benturan (Δt) sehingga memperkecil gaya benturan pada sendi",
+            "C": "Memperbesar percepatan gravitasi bumi",
+            "D": "Membuat kecepatan akhir saat mendarat bernilai positif"
+          },
+          "answer": "B",
+          "hint": "Perhatikan hubungan gaya benturan F = Δp / Δt: perubahan momentum Δp bernilai tetap saat mendarat.",
+          "explanation": "Pilihan B benar karena menekuk lutut memperpanjang durasi waktu pengereman tubuh (Δt membesar), yang secara langsung memperkecil gaya kontak F pada lutut dan tulang belakang."
         }
       ]
     },
     {
       "id": "hukum-kekekalan-momentum",
-      "title": "Hukum Kekekalan Momentum pada Sistem Terisolasi",
-      "kind": "artikel",
-      "duration": "15 menit",
+      "title": "Hukum Kekekalan Momentum Linier pada Sistem Terisolasi",
+      "kind": "simulasi",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Hukum Kekekalan Momentum pada Sistem Terisolasi</b>: Membuktikan Σp_awal = Σp_akhir ketika tidak ada gaya luar netto (ΣF_eksternal = 0).</p>"
+          "html": "<h3>Prinsip Kekekalan Fundamental Alam</h3>\n<p>Hukum Kekekalan Momentum Linier adalah salah satu hukum paling fundamental dalam seluruh cabang ilmu fisika, berlaku dari partikel subatomik hingga galaksi raksasa:</p>\n<p><i>\"Pada suatu sistem terisolasi (sistem tertutup di mana resultan gaya luar neto bernilai nol, \\(\\Sigma \u000bec{F}_{\text{luar}} = 0\\)), jumlah momentum linier total sistem sebelum interaksi sama persis dengan jumlah momentum linier total setelah interaksi.\"</i></p>\n<p>Hukum ini merupakan konsekuensi langsung dari Hukum III Newton. Ketika dua benda 1 dan 2 bertumbukan, gaya kontak yang terjadi adalah gaya aksi-reaksi internal: \\(\u000bec{F}_{12} = -\u000bec{F}_{21}\\). Karena waktu kontak kedua benda sama, maka impuls yang dialami kedua benda saling menghilangkan (\\(\u000bec{I}_1 = -\u000bec{I}_2\\)), sehingga momentum total sistem tidak pernah berubah.</p>\n<h3>Aplikasi Utama: Tumbukan dan Ledakan / Dorongan Roket</h3>\n<ul>\n  <li><b>Tumbukan dua benda</b>: \\(m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2'\\).</li>\n  <li><b>Sistem Senapan dan Peluru (Tolak Belakang / Recoil)</b>: Mula-mula senapan dan peluru diam (\\(p_{\text{awal}} = 0\\)). Saat peluru melesat ke depan, senapan terdorong ke belakang: \\(0 = m_p v_p' + m_s v_s' \\Rightarrow v_s' = -\frac{m_p}{m_s} v_p'\\).</li>\n  <li><b>Prinsip Propulsi Roket</b>: Roket bergerak maju di ruang angkasa dengan menyemburkan gas pembakaran bermassa ke arah belakang dengan kelajuan sangat tinggi.</li>\n</ul>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(p = mv\\); \\(I = F\\,\\Delta t = \\Delta p = m(v' - v)\\).</li><li>Kekekalan: \\(m_1v_1 + m_2v_2 = m_1v_1' + m_2v_2'\\) (tanpa gaya luar).</li><li>\\(e = -\\dfrac{v_1' - v_2'}{v_1 - v_2}\\): lenting sempurna e = 1, sebagian 0 < e < 1, tidak lenting e = 0 (bergerak bersama).</li><li>Bola jatuh memantul: \\(e = \\sqrt{h_2/h_1}\\).</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Bola dijatuhkan dari ketinggian 2,5 m dan memantul setinggi 0,9 m. Berapa koefisien restitusinya dan tinggi pantulan kedua?</p>",
-          "steps": [
-            "e = √(0,9/2,5) = √0,36 = 0,6.",
-            "h₃ = e² × h₂ = 0,36 × 0,9 ≈ 0,32 m."
-          ],
-          "answer": "0,6 dan ± 0,32 m"
-        }
-      ]
-    },
-    {
-      "id": "klasifikasi-tumbukan-koefisien-restitusi",
-      "title": "Tiga Jenis Tumbukan dan Koefisien Restitusi (e)",
-      "kind": "simulasi",
-      "duration": "18 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Tiga Jenis Tumbukan dan Koefisien Restitusi (e)</b>: Mengklasifikasikan tumbukan lenting sempurna (e=1), lenting sebagian (0<e<1), dan tidak lenting sama sekali (e=0, benda menyatu).</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
+          "title": "Hukum Kekekalan Momentum Linier",
+          "html": "<div class=\"fc-display\">\n\\[ \\Sigma \\vec{p}_{\\text{awal}} = \\Sigma \\vec{p}_{\\text{akhir}} \\quad \\Longleftrightarrow \\quad m_1 \\vec{v}_1 + m_2 \\vec{v}_2 = m_1 \\vec{v}_1' + m_2 \\vec{v}_2' \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(m_1, m_2\\)</td><td>Massa benda pertama dan kedua</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{v}_1, \\vec{v}_2\\)</td><td>Kecepatan benda 1 dan 2 sebelum tumbukan/ledakan</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(\\vec{v}_1', \\vec{v}_2'\\)</td><td>Kecepatan benda 1 dan 2 setelah tumbukan/ledakan</td><td class=\"unit\">\\text{m/s}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Hukum ini adalah persamaan VEKTOR. Jika benda bergerak ke kiri atau berlawanan dengan arah acuan, masukkan kecepatannya dengan tanda minus (-).</small></p>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tentukan arah positif; kecepatan berlawanan diberi tanda negatif.</li><li>Untuk tumbukan lenting sempurna, gunakan kekekalan momentum bersama e = 1 (lebih mudah daripada kekekalan energi kinetik).</li><li>Impuls dari grafik F–t = luas di bawah grafik.</li><li>Ledakan dan tolakan dimulai dari momentum total nol (atau momentum awal yang diketahui).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/tumbukan.html",
-          "title": "Tumbukan dua troli",
-          "height": 520,
-          "caption": "Bandingkan energi kinetik total sebelum dan sesudah tumbukan untuk e = 1 dan e = 0."
+          "title": "Aplikasi Orang Melompat dari Perahu",
+          "html": "<p>Sebuah perahu diam dinaiki seseorang. Ketika orang tersebut melompat ke depan ke arah dermaga dengan kecepatan \\(v_{\text{orang}}\\), perahu akan terdorong mundur ke belakang dengan kecepatan \\(v_{\text{perahu}} = -\frac{m_{\text{orang}}}{m_{\text{perahu}}} v_{\text{orang}}\\). Total momentum sistem orang + perahu tetap nol.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Tiga Jenis Tumbukan dan Koefisien Restitusi (e)",
-          "question": "<p>Perhatikan permasalahan terkait <b>Tiga Jenis Tumbukan dan Koefisien Restitusi (e)</b> berikut. Analisislah berdasarkan prinsip Mengklasifikasikan tumbukan lenting sempurna (e=1), lenting sebagian (0<e<1), dan tidak lenting sama sekali (e=0, benda menyatu)..</p>",
+          "title": "Contoh Perhitungan Sentakan Senapan (Recoil)",
+          "question": "<p>Sebuah senapan bermassa 4 kg menembakkan sebutir peluru bermassa 10 gram dengan kelajuan 400 m/s mendatar ke depan. Tentukan kelajuan dan arah sentakan senapan ke belakang sesaat setelah peluru ditembakkan!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Identifikasi data: m_s = 4 kg; m_p = 10 g = 0,01 kg; keadaan awal diam: v_s = v_p = 0.",
+            "Terapkan Hukum Kekekalan Momentum: Σp_awal = Σp_akhir  =>  0 = m_s · v_s' + m_p · v_p'.",
+            "Substitusikan angka: 0 = 4 · v_s' + (0,01 × 400)  =>  0 = 4 · v_s' + 4.",
+            "Isolasi v_s': 4 · v_s' = -4  =>  v_s' = -1 m/s.",
+            "Tanda minus menunjukkan arah berlawanan dengan peluru, yaitu menyentak ke belakang."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Senapan menyentak ke belakang dengan kelajuan 1 m/s."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua orang pemain sepatu roda A (massa 60 kg) dan B (massa 40 kg) berdiri diam berhadapan di atas lantai es licin. Jika A mendorong B sehingga B meluncur ke kanan dengan kelajuan 3 m/s, maka pemain A akan ....",
+          "options": {
+            "A": "Tetap diam di tempat",
+            "B": "Meluncur ke kiri dengan kelajuan 2 m/s",
+            "C": "Meluncur ke kiri dengan kelajuan 3 m/s",
+            "D": "Meluncur ke kanan dengan kelajuan 2 m/s"
+          },
+          "answer": "B",
+          "hint": "Gunakan kekekalan momentum: m_A·v_A' + m_B·v_B' = 0.",
+          "explanation": "Pilihan B benar karena 60·v_A' + 40·(+3) = 0  =>  60·v_A' = -120  =>  v_A' = -2 m/s (meluncur ke kiri dengan kelajuan 2 m/s)."
         }
       ]
     },
     {
-      "id": "tumbukan-pantulan-bola-lantai",
-      "title": "Pantulan Bola pada Lantai dan Rasio Ketinggian",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "id": "tumbukan-lenting-sempurna",
+      "title": "Tumbukan Lenting Sempurna (e = 1) dan Pertukaran Kecepatan",
+      "kind": "simulasi",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Pantulan Bola pada Lantai dan Rasio Ketinggian</b>: Menghitung koefisien restitusi lantai e = √(h_2 / h_1) dan memprediksi tinggi pantulan berikutnya.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
+          "html": "<h3>Ciri Khas Tumbukan Lenting Sempurna (Elastic Collision)</h3>\n<p>Tumbukan lenting sempurna adalah kondisi tumbukan ideal di mana <b>tidak ada energi kinetik yang hilang atau berubah menjadi energi termal (panas), bunyi, atau deformasi bentuk</b>.</p>\n<p>Dua hukum yang berlaku sekaligus pada tumbukan lenting sempurna:</p>\n<ol>\n  <li><b>Hukum Kekekalan Momentum Linier</b>: \\(\\Sigma p_{\text{awal}} = \\Sigma p_{\text{akhir}}\\).</li>\n  <li><b>Hukum Kekekalan Energi Kinetik</b>: \\(\\Sigma Ek_{\text{awal}} = \\Sigma Ek_{\text{akhir}} \\Rightarrow \frac{1}{2}m_1 v_1^2 + \frac{1}{2}m_2 v_2^2 = \frac{1}{2}m_1 v_1'^2 + \frac{1}{2}m_2 v_2'^2\\).</li>\n</ol>\n<h3>Koefisien Restitusi (\\(e = 1\\))</h3>\n<p>Koefisien restitusi (\\(e\\)) mengukur tingkat kelentingan tumbukan, yang didefinisikan sebagai perbandingan negatif antara kecepatan relatif kedua benda setelah tumbukan dan sebelum tumbukan:</p>\n<p>\\[ e = -\frac{v_1' - v_2'}{v_1 - v_2} = 1 \\quad \\Longleftrightarrow \\quad (v_2' - v_1') = (v_1 - v_2) \\]</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Rumus kunci",
-          "html": "<ul><li>\\(p = mv\\); \\(I = F\\,\\Delta t = \\Delta p = m(v' - v)\\).</li><li>Kekekalan: \\(m_1v_1 + m_2v_2 = m_1v_1' + m_2v_2'\\) (tanpa gaya luar).</li><li>\\(e = -\\dfrac{v_1' - v_2'}{v_1 - v_2}\\): lenting sempurna e = 1, sebagian 0 < e < 1, tidak lenting e = 0 (bergerak bersama).</li><li>Bola jatuh memantul: \\(e = \\sqrt{h_2/h_1}\\).</li></ul>"
+          "title": "Persamaan Tumbukan Lenting Sempurna & Koefisien Restitusi",
+          "html": "<div class=\"fc-display\">\n\\[ e = -\\frac{v_1' - v_2'}{v_1 - v_2} = 1 \\quad \\Longleftrightarrow \\quad v_1 + v_1' = v_2 + v_2' \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(e\\)</td><td>Koefisien restitusi (e = 1 untuk lenting sempurna)</td><td class=\"unit\">\\text{tanpa satuan}</td></tr>\n<tr><td class=\"sym\">\\(v_1, v_2\\)</td><td>Kecepatan benda 1 dan 2 sebelum tumbukan</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(v_1', v_2'\\)</td><td>Kecepatan benda 1 dan 2 setelah tumbukan</td><td class=\"unit\">\\text{m/s}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Kasus Istimewa Massa Sama (m₁ = m₂): Kedua benda akan SALING BERTUKAR KECEPATAN! v₁' = v₂ dan v₂' = v₁.</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Trik Cepat Dua Benda Massa Sama",
+          "html": "<p>Jika dua benda memiliki massa yang sama (\\(m_1 = m_2\\)) bertumbukan lenting sempurna: <b>kecepatan mereka langsung bertukar</b>! Misalnya bola A (2 kg melaju 6 m/s) menumbuk bola B (2 kg diam): setelah tumbukan bola A langsung diam (\\(v_A' = 0\\)) dan bola B melaju dengan kecepatan bola A (\\(v_B' = 6\text{ m/s}\\)). Fenomena ini terlihat jelas pada ayunan Newton's Cradle.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Pantulan Bola pada Lantai dan Rasio Ketinggian",
-          "question": "<p>Perhatikan permasalahan terkait <b>Pantulan Bola pada Lantai dan Rasio Ketinggian</b> berikut. Analisislah berdasarkan prinsip Menghitung koefisien restitusi lantai e = √(h_2 / h_1) dan memprediksi tinggi pantulan berikutnya..</p>",
+          "title": "Contoh Perhitungan Tumbukan Lenting Sempurna",
+          "question": "<p>Benda A (massa 1 kg melaju 4 m/s ke kanan) menumbuk lenting sempurna benda B (massa 2 kg yang mula-mula diam). Tentukan kecepatan kedua benda setelah tumbukan!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Tuliskan persamaan restitusi (e = 1): e = -(v_A' - v_B') / (v_A - v_B) = 1  =>  -(v_A' - v_B') = (4 - 0)  =>  v_B' - v_A' = 4  =>  v_B' = v_A' + 4.",
+            "Tuliskan hukum kekekalan momentum: m_A·v_A + m_B·v_B = m_A·v_A' + m_B·v_B'.",
+            "Substitusi angka: (1 × 4) + (2 × 0) = 1·v_A' + 2·v_B'  =>  4 = v_A' + 2·v_B'.",
+            "Substitusi v_B': 4 = v_A' + 2(v_A' + 4)  =>  4 = v_A' + 2v_A' + 8  =>  3v_A' = -4  =>  v_A' = -4/3 m/s.",
+            "Hitung v_B': v_B' = -4/3 + 4 = 8/3 m/s."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Setelah tumbukan, benda A memantul ke kiri dengan kecepatan 4/3 m/s, dan benda B melaju ke kanan dengan kecepatan 8/3 m/s."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Pantulan Bola pada Lantai dan Rasio Ketinggian, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Bola elastis A bermassa m bergerak dengan kelajuan v menumbuk lenting sempurna bola B identik bermassa m yang sedang diam di atas lantai licin. Kelajuan bola A dan B setelah tumbukan adalah ....",
           "options": {
-            "A": "Konsep Pantulan Bola pada Lantai dan Rasio Ketinggian berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "v_A = v/2, v_B = v/2",
+            "B": "v_A = 0, v_B = v",
+            "C": "v_A = -v, v_B = 0",
+            "D": "v_A = v, v_B = v"
           },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menghitung koefisien restitusi lantai e = √(h_2 / h_1) dan memprediksi tinggi pantulan berikutnya.."
+          "answer": "B",
+          "hint": "Ingat sifat khusus massa identik pada tumbukan lenting sempurna: kedua benda bertukar kecepatan.",
+          "explanation": "Pilihan B benar karena massa kedua bola sama (m_A = m_B) dan e = 1, sehingga bola A memberikan seluruh kecepatannya kepada bola B: v_A' = v_B = 0 dan v_B' = v_A = v."
         }
       ]
     },
     {
-      "id": "tumbukan-2d-bidang-datar",
-      "title": "Tumbukan Dua Dimensi pada Meja Biliar",
+      "id": "tumbukan-lenting-sebagian",
+      "title": "Tumbukan Lenting Sebagian (0 < e < 1) dan Pemantulan Bola",
       "kind": "simulasi",
-      "duration": "16 menit",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>Momentum adalah besaran vektor: tentukan arah positif di awal dan beri tanda negatif untuk arah sebaliknya.</p><table><tr><th>Topik</th><th>Yang perlu dikuasai</th><th>Dipelajari di</th></tr><tr><td>Momentum dan impuls</td><td>p = mv, I = FΔt = Δp, luas grafik F–t</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Kekekalan momentum</td><td>tumbukan, ledakan, tolakan senapan</td><td>Fisika Kelas 11 Bab 3</td></tr><tr><td>Tumbukan</td><td>lenting sempurna, sebagian, tidak lenting; koefisien restitusi</td><td>Fisika Kelas 11 Bab 3</td></tr></table>"
+          "html": "<h3>Karakteristik Tumbukan Sebagian dalam Realitas</h3>\n<p>Sebagian besar tumbukan di alam nyata tergolong <b>tumbukan lenting sebagian</b>. Ciri utamanya:</p>\n<ul>\n  <li>Hukum Kekekalan Momentum Linier <b>tetap berlaku</b>.</li>\n  <li><b>Hukum Kekekalan Energi Kinetik TIDAK berlaku</b> (\\(\\Sigma Ek_{\text{akhir}} < \\Sigma Ek_{\text{awal}}\\)). Sebagian energi kinetik terdisipasi menjadi energi kalor (panas saat deformasi material) dan energi akustik (bunyi benturan).</li>\n  <li>Nilai koefisien restitusi berada pada rentang: <b>\\(0 < e < 1\\)</b>.</li>\n</ul>\n<h3>Pemantulan Bola pada Lantai Keras</h3>\n<p>Ketika sebuah bola dijatuhkan bebas dari ketinggian \\(h_1\\) ke lantai keras (massa lantai/bumi sangat masif \\(M \to \\infty\\)), kecepatan sesaat sebelum tumbukan adalah \\(v_1 = \\sqrt{2gh_1}\\) (ke bawah), dan kecepatan pantul sesaat setelah tumbukan adalah \\(v_1' = \\sqrt{2gh_2}\\) (ke atas). Dari definisi koefisien restitusi:</p>\n<p>\\[ e = -\frac{v_{\text{pantul}}}{v_{\text{datang}}} = \frac{\\sqrt{2gh_2}}{\\sqrt{2gh_1}} = \\sqrt{\frac{h_2}{h_1}} \\]</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formula Koefisien Restitusi Pemantulan Bola",
+          "html": "<div class=\"fc-display\">\n\\[ e = \\sqrt{\\frac{h_2}{h_1}} = \\sqrt{\\frac{h_3}{h_2}} = \\dots = \\sqrt{\\frac{h_n}{h_{n-1}}} \\qquad (0 < e < 1) \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(e\\)</td><td>Koefisien restitusi lenting sebagian</td><td class=\"unit\">\\text{tanpa satuan (0 < e < 1)}</td></tr>\n<tr><td class=\"sym\">\\(h_1\\)</td><td>Ketinggian awal pelepasan bola</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(h_2\\)</td><td>Tinggi pantulan pertama bola dari lantai</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(h_3\\)</td><td>Tinggi pantulan kedua bola</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Tinggi pantulan ke-n memenuhi barisan geometri: h_n = h_1 · (e²)^(n-1) = h_1 · e^(2n-2).</small></p>"
         },
         {
           "type": "callout",
           "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tentukan arah positif; kecepatan berlawanan diberi tanda negatif.</li><li>Untuk tumbukan lenting sempurna, gunakan kekekalan momentum bersama e = 1 (lebih mudah daripada kekekalan energi kinetik).</li><li>Impuls dari grafik F–t = luas di bawah grafik.</li><li>Ledakan dan tolakan dimulai dari momentum total nol (atau momentum awal yang diketahui).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas11/Fisika/03 Dinamika Gerak Partikel/sim/tumbukan.html",
-          "title": "Tumbukan dua troli",
-          "height": 520,
-          "caption": "Bandingkan energi kinetik total sebelum dan sesudah tumbukan untuk e = 1 dan e = 0."
+          "title": "Rumus Cepat Pantulan Bertingkat TKA",
+          "html": "<p>Jika bola memantul berulang kali: \\(\frac{h_2}{h_1} = \frac{h_3}{h_2} = e^2 \\Rightarrow \\mathbf{h_2^2 = h_1 \\cdot h_3}\\). Tinggi pantulan pertama adalah rata-rata geometris dari tinggi awal dan tinggi pantulan kedua: \\(h_2 = \\sqrt{h_1 \\cdot h_3}\\).</p>"
         },
         {
           "type": "example",
-          "title": "Contoh Soal Penerapan: Tumbukan Dua Dimensi pada Meja Biliar",
-          "question": "<p>Perhatikan permasalahan terkait <b>Tumbukan Dua Dimensi pada Meja Biliar</b> berikut. Analisislah berdasarkan prinsip Menerapkan kekekalan momentum secara independen pada sumbu X dan sumbu Y..</p>",
+          "title": "Contoh Perhitungan Pemantulan Bola Basket",
+          "question": "<p>Sebuah bola basket dijatuhkan bebas dari ketinggian 4 meter di atas lantai. Setelah memantul dari lantai, bola hanya mampu mencapai ketinggian maksimum 2,56 meter. Tentukan: (a) koefisien restitusi antara bola dan lantai, dan (b) tinggi pantulan kedua bola!</p>",
           "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
+            "Hitung koefisien restitusi: e = √(h₂ / h₁) = √(2,56 / 4) = √0,64 = 0,8.",
+            "Gunakan rasio untuk pantulan kedua: h₃ / h₂ = e²  =>  h₃ = h₂ · e².",
+            "Hitung h₃: h₃ = 2,56 × (0,8)² = 2,56 × 0,64 = 1,6384 meter."
           ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        }
-      ]
-    },
-    {
-      "id": "aplikasi-keselamatan-airbag-roket",
-      "title": "Aplikasi Nyata: Airbag Kendaraan, Helm, dan Propulsi Roket",
-      "kind": "artikel",
-      "duration": "14 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Aplikasi Nyata: Airbag Kendaraan, Helm, dan Propulsi Roket</b>: Menjelaskan bagaimana memperpanjang waktu kontak (Δt) dapat memperkecil gaya impak fatal (F).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Fokus Konsep",
-          "html": "<p>Studi kasus rekayasa keselamatan otomotif dan dorongan gas roket bermassa variabel.</p>"
-        }
-      ]
-    },
-    {
-      "id": "latihan-dan-kuis-04",
-      "title": "Sintesis Momentum-Impuls dan Latihan Uji Kuis",
-      "kind": "latihan",
-      "duration": "20 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Sintesis Momentum-Impuls dan Latihan Uji Kuis</b>: Menyelesaikan soal komprehensif momentum dan menyelesaikan kuis bab 20 soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Strategi mengerjakan",
-          "html": "<ul><li>Tentukan arah positif; kecepatan berlawanan diberi tanda negatif.</li><li>Untuk tumbukan lenting sempurna, gunakan kekekalan momentum bersama e = 1 (lebih mudah daripada kekekalan energi kinetik).</li><li>Impuls dari grafik F–t = luas di bawah grafik.</li><li>Ledakan dan tolakan dimulai dari momentum total nol (atau momentum awal yang diketahui).</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Sintesis Momentum-Impuls dan Latihan Uji Kuis",
-          "question": "<p>Perhatikan permasalahan terkait <b>Sintesis Momentum-Impuls dan Latihan Uji Kuis</b> berikut. Analisislah berdasarkan prinsip Menyelesaikan soal komprehensif momentum dan menyelesaikan kuis bab 20 soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
+          "answer": "Koefisien restitusi bola adalah 0,8 dan tinggi pantulan kedua adalah 1,64 meter."
         },
         {
           "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Sintesis Momentum-Impuls dan Latihan Uji Kuis, pernyataan manakah yang paling tepat?",
+          "title": "Cek Pemahaman",
+          "question": "Sebuah bola tenis dilepaskan dari ketinggian h₁ dan memantul hingga ketinggian h₂ = 1/4 h₁. Nilai koefisien restitusi antara bola dan lantai adalah ....",
           "options": {
-            "A": "Konsep Sintesis Momentum-Impuls dan Latihan Uji Kuis berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
+            "A": "1/16",
+            "B": "1/4",
+            "C": "1/2",
+            "D": "3/4"
+          },
+          "answer": "C",
+          "hint": "Gunakan rumus e = √(h₂ / h₁).",
+          "explanation": "Pilihan C benar karena e = √(h₂ / h₁) = √(1/4) = 1/2 = 0,5."
+        }
+      ]
+    },
+    {
+      "id": "tumbukan-tidak-lenting-sama-sekali",
+      "title": "Tumbukan Tidak Lenting Sama Sekali (e = 0) dan Ayunan Balistik",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<h3>Karakteristik Tumbukan Tidak Lenting Sama Sekali (Inelastic Collision)</h3>\n<p>Tumbukan tidak lenting sama sekali (tumbukan inelastis sempurna) terjadi ketika <b>setelah bertumbukan kedua benda menempel (bergabung) menjadi satu dan bergerak bersama dengan kecepatan yang sama</b> (\\(v_1' = v_2' = v'\\)).</p>\n<p>Ciri-ciri fisis penting:</p>\n<ul>\n  <li><b>Koefisien restitusi bernilai nol (\\(e = 0\\))</b>, karena kecepatan relatif kedua benda setelah tumbukan adalah nol (\\(v_1' - v_2' = 0\\)).</li>\n  <li>Hukum Kekekalan Momentum Linier <b>tetap berlaku</b>.</li>\n  <li><b>Kehilangan energi kinetik mencapai nilai maksimum</b>. Sebagian besar energi kinetik awal terdisipasi menjadi energi deformasi permanen, panas, dan bunyi.</li>\n</ul>\n<h3>Ayunan Balistik (Ballistic Pendulum)</h3>\n<p>Alat klasik untuk mengukur kecepatan peluru yang melesat kencang. Peluru bermassa \\(m\\) ditembakkan ke balok kayu bermassa \\(M\\) yang tergantung pada tali. Peluru bersarang di dalam balok (\\(e = 0\\)), lalu balok dan peluru terayun naik bersama hingga ketinggian maksimum \\(h\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan Tumbukan Tidak Lenting Sama Sekali & Ayunan Balistik",
+          "html": "<div class=\"fc-display\">\n\\[ m_1 v_1 + m_2 v_2 = (m_1 + m_2) v', \\qquad v_{\\text{peluru}} = \\frac{m + M}{m} \\sqrt{2gh} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(v'\\)</td><td>Kecepatan gabungan kedua benda setelah tumbukan</td><td class=\"unit\">\\text{m/s}</td></tr>\n<tr><td class=\"sym\">\\(m\\)</td><td>Massa peluru</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(M\\)</td><td>Massa balok ayunan balistik</td><td class=\"unit\">\\text{kg}</td></tr>\n<tr><td class=\"sym\">\\(h\\)</td><td>Ketinggian maksimum ayunan balok + peluru</td><td class=\"unit\">\\text{meter (m)}</td></tr>\n<tr><td class=\"sym\">\\(g\\)</td><td>Percepatan gravitasi bumi</td><td class=\"unit\">\\text{m/s}^2</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Perhitungan energi: Energi kinetik hilang selama peluru bersarang di balok (tumbukan inelastis). Namun, dari saat balok mulai terayun hingga titik tertinggi berlaku Hukum Kekekalan Energi Mekanik (1/2 (m+M) v'² = (m+M)gh).</small></p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Jangan Gunakan Kekekalan Energi pada Saat Menumbuk!",
+          "html": "<p>Kesalahan fatal: Mencoba menyamakan energi kinetik peluru sebelum menumbuk dengan energi potensial balok di puncak: \\(\frac{1}{2}mv^2 \ne (m+M)gh\\). Persamaan ini SALAH BESAR karena energi kinetik TIDAK KEKAL saat tumbukan terjadi. Hubungkan dengan kecepatan balok \\(v' = \\sqrt{2gh}\\) terlebih dahulu!</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Perhitungan Ayunan Balistik",
+          "question": "<p>Peluru bermassa 20 gram ditembakkan horizontal ke dalam balok kayu bermassa 1,98 kg yang tergantung pada tali panjang. Peluru bersarang di dalam balok, dan sistem balok-peluru terayun naik hingga mencapai ketinggian maksimum 20 cm (g = 10 m/s²). Tentukan kelajuan peluru sesaat sebelum menumbuk balok!</p>",
+          "steps": [
+            "Identifikasi data: m = 20 g = 0,02 kg; M = 1,98 kg; m_total = 0,02 + 1,98 = 2,0 kg; h = 20 cm = 0,2 meter.",
+            "Gunakan kekekalan energi saat ayunan naik untuk mencari v': v' = √(2gh) = √(2 × 10 × 0,2) = √4 = 2 m/s.",
+            "Gunakan kekekalan momentum saat tumbukan (balok mula-mula diam): m·v = (m + M)·v'.",
+            "Substitusi angka: 0,02 · v = 2,0 · 2  =>  0,02 · v = 4  =>  v = 4 / 0,02 = 200 m/s."
+          ],
+          "answer": "Kelajuan peluru sebelum menumbuk balok adalah 200 m/s."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Dua mobil mainan A (massa 2 kg bergerak 6 m/s) dan B (massa 1 kg bergerak berlawanan arah dengan kecepatan 3 m/s) bertumbukan dan menempel menjadi satu. Kelajuan dan arah gerak kedua mobil setelah tumbukan adalah ....",
+          "options": {
+            "A": "3 m/s searah mobil A",
+            "B": "3 m/s searah mobil B",
+            "C": "1 m/s searah mobil A",
+            "D": "0 m/s (keduanya berhenti)"
           },
           "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menyelesaikan soal komprehensif momentum dan menyelesaikan kuis bab 20 soal.."
+          "hint": "Gunakan m_A·v_A + m_B·v_B = (m_A + m_B)·v' dengan memperhatikan tanda vektor berlawanan arah.",
+          "explanation": "Pilihan A benar. Tetapkan arah mobil A positif: (2 × 6) + (1 × (-3)) = (2 + 1)·v'  =>  12 - 3 = 3·v'  =>  9 = 3·v'  =>  v' = +3 m/s (searah mobil A)."
+        }
+      ]
+    },
+    {
+      "id": "gaya-rata-rata-dan-keselamatan",
+      "title": "Aplikasi Konsep Impuls dalam Rekayasa Keselamatan Transportasi",
+      "kind": "artikel",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "text",
+          "html": "<h3>Penerapan Fisika Impuls dalam Rekayasa Otomotif Modern</h3>\n<p>Konsep impuls dan momentum bukan sekadar teori abstrak, melainkan dasar ilmiah dari seluruh sistem keselamatan transportasi modern (Euro NCAP / ASEAN NCAP). Semua fitur keselamatan pasif mobil dirancang dengan satu prinsip fisika sederhana:</p>\n<p>\\[ F_{\text{rata-rata}} = \frac{\\Delta p}{\\Delta t} \\]</p>\n<p>Ketika kecelakaan terjadi, perubahan momentum penumpang (\\(\\Delta p\\)) sudah pasti terjadi dari kecepatan melaju hingga berhenti (\\(v \to 0\\)). Satu-satunya cara rekayasa untuk memperkecil gaya benturan fatal (\\(F\\)) pada organ tubuh manusia adalah dengan <b>membuat selang waktu perlambatan (\\(\\Delta t\\)) sebesar mungkin</b>.</p>\n<h3>Empat Teknologi Keselamatan Berbasis Impuls</h3>\n<ol>\n  <li><b>Crumple Zone (Zona Bentur Remuk)</b>: Bagian depan mobil sengaja dirancang agar dapat remuk secara bertahap saat tabrakan, menyerap energi kinetik dan memperpanjang waktu henti benturan \\(\\Delta t\\) dari milidetik menjadi pecahan detik yang aman bagi kabin penumpang.</li>\n  <li><b>Kantung Udara (Airbag)</b>: Mengembang dalam waktu 20-30 milidetik setelah sensor mendeteksi tabrakan. Airbag menyediakan permukaan deformasi lunak yang memperlambat kepala dan dada pengemudi secara bertahap.</li>\n  <li><b>Helm dan Matras Busa</b>: Struktur busa polystyrene (EPS) di dalam helm pecah meredam benturan saat jatuh, memperkecil gaya akselerasi tajam pada tengkorak kepala.</li>\n  <li><b>Sabuk Pengaman Bertegangan (Pretensioner)</b>: Menahan tubuh penumpang agar tidak terlempar menabrak kaca depan dan mendistribusikan gaya deselerasi pada tulang rusuk dan panggul yang kuat.</li>\n</ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Ringkasan Logika Fisika Keselamatan",
+          "html": "<p><b>\\(\\Delta p\\) Tetap  \\(\\Longrightarrow\\)  \\(\\Delta t\\) Diperbesar  \\(\\Longrightarrow\\)  Gaya \\(F\\) Mengecil</b>. Prinsip ini selalu diuji dalam soal penalaran analitis dan literasi sains TKA.</p>"
         },
         {
           "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<p>Ujilah pemahaman Anda mengenai momentum, impuls, dan hukum kekekalan tumbukan melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Fisika SMA topik Momentum dan Impuls. Setiap soal dilengkapi pembahasan."
+          "text": "Latihan soal TKA Fisika SMA topik Momentum dan Impuls. Setiap soal dilengkapi pembahasan mendalam."
         }
       ]
     }

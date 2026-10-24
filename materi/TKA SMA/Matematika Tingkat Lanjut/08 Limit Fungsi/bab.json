@@ -1,303 +1,177 @@
 {
   "title": "Limit Fungsi",
-  "summary": "Kalkulus diferensial dasar: konsep intuitif limit kiri dan limit kanan, limit fungsi aljabar bentuk tak tentu 0/0 (faktorisasi, perkalian sekawan akar, Teorema L'Hôpital), limit fungsi aljabar di tak hingga (∞ − ∞ dan ∞/∞), limit fungsi trigonometri dasar dan lanjutan (lim_{x→0} sin x / x = 1), serta kekontinuan fungsi.",
+  "summary": "Materi komprehensif TKA Matematika Tingkat Lanjut: konsep limit kiri dan kanan, metode faktorisasi dan teorema L'Hopital, limit di tak hingga formula kilat selisih dua akar, limit trigonometri, serta syarat kekontinuan fungsi.",
   "status": "lengkap",
   "lessons": [
     {
       "id": "konsep-intuitif-limit-kiri-kanan",
-      "title": "Konsep Intuitif Limit: Pendekatan Nilai, Limit Kiri, Limit Kanan, dan Syarat Keberadaan",
-      "kind": "simulasi",
-      "duration": "15 menit",
+      "title": "Konsep Intuitif Limit Fungsi, Limit Kiri, dan Limit Kanan",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Konsep Intuitif Limit: Pendekatan Nilai, Limit Kiri, Limit Kanan, dan Syarat Keberadaan</b>: Membuktikan limit ada jika dan hanya jika lim_{x→c⁻} f(x) = lim_{x→c⁺} f(x) = L dan memahami diskontinuitas loncat.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Limit</b>: limit fungsi aljabar dan limit fungsi trigonometri.</p><p><i>Batasan</i>: limit yang dapat diselesaikan tanpa teorema L'Hôpital.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/limit.html",
-          "title": "Mendekati nilai limit",
-          "height": 600,
-          "caption": "Pilih fungsi lalu perkecil h. Lihat tabel nilai dari kiri dan kanan. Pada fungsi bertangga, kedua sisi menuju nilai berbeda sehingga limit tidak ada."
-        },
-        {
-          "type": "example",
-          "title": "Contoh 1: faktorkan",
-          "question": "<p>\\(\\lim_{x\\to -1}\\dfrac{x^2 - 2x - 3}{x + 1}\\)</p>",
-          "steps": [
-            "Substitusi: 0/0.",
-            "(x − 3)(x + 1)/(x + 1) = x − 3 → −4."
-          ],
-          "answer": "−4"
-        },
-        {
-          "type": "check",
-          "question": "Jika \\(\\lim_{x\\to 3^-} f(x) = 5\\) dan \\(\\lim_{x\\to 3^+} f(x) = 5\\), sedangkan f(3) = 2, maka \\(\\lim_{x\\to 3} f(x)\\) ....",
-          "options": {
-            "A": "5",
-            "B": "2",
-            "C": "tidak ada",
-            "D": "7/2"
-          },
-          "answer": "A",
-          "hint": "Nilai f(3) tidak memengaruhi limit.",
-          "explanation": "Limit kiri = limit kanan = 5."
+          "html": "<h3>Definisi Keberadaan Nilai Limit</h3>\n<p>Limit fungsi \\(\\lim_{x \\to c} f(x) = L\\) ada jika dan hanya jika <b>limit kiri dan limit kanan keduanya ada dan bernilai sama</b>:</p>\n\\[ \\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = L \\]\n<p>Jika nilai limit kiri tidak sama dengan limit kanan (\\(\\lim_{x \\to c^-} f(x) \\ne \\lim_{x \\to c^+} f(x)\\)), maka \\(\\lim_{x \\to c} f(x)\\) <b>TIDAK ADA</b>.</p>"
         }
       ]
     },
     {
       "id": "limit-aljabar-tak-tentu-faktorisasi",
-      "title": "Limit Aljabar Bentuk Tak Tentu 0/0: Teknik Faktorisasi dan Perkalian Sekawan Akar",
+      "title": "Limit Aljabar Bentuk Tak Tentu (0/0): Faktorisasi dan Perkalian Sekawan",
       "kind": "artikel",
-      "duration": "16 menit",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>\\(\\lim_{x\\to a} f(x) = L\\) berarti nilai f(x) makin dekat ke L ketika x makin dekat ke a (dari kiri dan kanan), <b>tanpa</b> memedulikan nilai f(a) sendiri. Limit ada jika limit kiri = limit kanan.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Limit</b>: limit fungsi aljabar dan limit fungsi trigonometri.</p><p><i>Batasan</i>: limit yang dapat diselesaikan tanpa teorema L'Hôpital.</p>"
+          "html": "<h3>Penanganan Bentuk Tak Tentu 0/0</h3>\n<p>Jika substitusi langsung \\(x = c\\) menghasilkan bentuk \\(\\frac{0}{0}\\), artinya terdapat faktor pembuat nol \\((x - c)\\) pada pembilang dan penyebut. Selesaikan dengan:</p>\n<ol>\n  <li><b>Faktorisasi Aljabar</b>: faktorkan pembilang dan penyebut lalu coret pembuat nol \\((x - c)\\).</li>\n  <li><b>Perkalian Akar Sekawan</b>: jika memuat bentuk akar \\(\\sqrt{A} - \\sqrt{B}\\).</li>\n</ol>"
         },
         {
           "type": "example",
-          "title": "Contoh 2: sekawan",
-          "question": "<p>\\(\\lim_{x\\to 1}\\dfrac{\\sqrt{x + 3} - 2}{x - 1}\\)</p>",
+          "title": "Contoh Limit Bentuk 0/0 Faktorisasi",
+          "question": "<p>Hitung nilai dari: \\lim_{x \\to 3} \\frac{x^2 - x - 6}{x^2 - 9}!</p>",
           "steps": [
-            "Kalikan \\(\\frac{\\sqrt{x + 3} + 2}{\\sqrt{x + 3} + 2}\\): pembilang menjadi x − 1.",
-            "Sisa \\(\\frac{1}{\\sqrt{x + 3} + 2} \\to \\frac14\\)."
+            "Substitusi langsung x = 3: (9 - 3 - 6) / (9 - 9) = 0/0 (Bentuk Tak Tentu).",
+            "Faktorkan pembilang: x² - x - 6 = (x - 3)(x + 2).",
+            "Faktorkan penyebut: x² - 9 = (x - 3)(x + 3).",
+            "Coret faktor pembuat nol (x - 3): lim_{x \\to 3} (x + 2) / (x + 3).",
+            "Substitusi x = 3: = (3 + 2) / (3 + 3) = 5/6."
           ],
-          "answer": "1/4"
+          "answer": "Nilai limitnya adalah 5/6."
         },
         {
           "type": "check",
-          "question": "\\(\\lim_{x\\to\\infty}\\dfrac{5x^2 - 1}{2x^2 + 3x}\\) = ....",
+          "title": "Cek Pemahaman",
+          "question": "Nilai dari lim_{x \to 2} (x² - 4) / (x - 2) adalah ....",
           "options": {
-            "A": "5/2",
-            "B": "0",
-            "C": "−1/3",
-            "D": "∞"
+            "A": "0",
+            "B": "2",
+            "C": "4",
+            "D": "Tak terdefinisi"
           },
-          "answer": "A",
-          "hint": "Pangkat sama.",
-          "explanation": "5/2."
+          "answer": "C",
+          "hint": "(x² - 4) / (x - 2) = (x - 2)(x + 2) / (x - 2) = x + 2. Saat x -> 2: 2 + 2 = 4.",
+          "explanation": "Pilihan C benar."
         }
       ]
     },
     {
       "id": "teorema-lhopital-limit-0-0",
-      "title": "Teorema L'Hôpital: Turunan Pembilang dan Penyebut untuk Menyelesaikan Limit 0/0 dan ∞/∞",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Teorema L'Hôpital: Diferensiasi Turunan untuk Limit Bentuk Tak Tentu",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Teorema L'Hôpital: Turunan Pembilang dan Penyebut untuk Menyelesaikan Limit 0/0 dan ∞/∞</b>: Menerapkan lim f(x)/g(x) = lim f'(x)/g'(x) dengan syarat bentuk tak tentu terverifikasi.</p><p>Pelajari konsep melalui representasi visual dan simulasi interaktif di bawah ini untuk memperkuat pemahaman intuisi dan pembuktian prinsip dasar.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Limit</b>: limit fungsi aljabar dan limit fungsi trigonometri.</p><p><i>Batasan</i>: limit yang dapat diselesaikan tanpa teorema L'Hôpital.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/limit.html",
-          "title": "Mendekati nilai limit",
-          "height": 600,
-          "caption": "Pilih fungsi lalu perkecil h. Lihat tabel nilai dari kiri dan kanan. Pada fungsi bertangga, kedua sisi menuju nilai berbeda sehingga limit tidak ada."
-        },
-        {
-          "type": "example",
-          "title": "Contoh 3: tak hingga",
-          "question": "<p>\\(\\lim_{x\\to\\infty}\\left(\\sqrt{4x^2 + 8x} - 2x\\right)\\)</p>",
-          "steps": [
-            "Tulis 2x = √(4x²).",
-            "(8 − 0)/(2·2) = 2."
-          ],
-          "answer": "2"
-        },
-        {
-          "type": "check",
-          "question": "\\(\\lim_{x\\to 0}\\dfrac{\\tan 4x}{3x}\\) = ....",
-          "options": {
-            "A": "4/3",
-            "B": "3/4",
-            "C": "12",
-            "D": "1"
-          },
-          "answer": "A",
-          "hint": "a/b.",
-          "explanation": "4/3."
+          "html": "<h3>Kaidah Cepat L'Hôpital</h3>\n<p>Jika \\(\\lim_{x \\to c} \\frac{f(x)}{g(x)}\\) menghasilkan bentuk tak tentu \\(\\frac{0}{0}\\) atau \\(\\frac{\\infty}{\\infty}\\), maka:</p>\n\\[ \\lim_{x \\to c} \\frac{f(x)}{g(x)} = \\lim_{x \\to c} \\frac{f'(x)}{g'(x)} \\]\n<p>Turunkan pembilang secara mandiri dan turunkan penyebut secara mandiri (<b>BUKAN rumus turunan pecahan \\(u/v\\)</b>!).</p>"
         }
       ]
     },
     {
       "id": "limit-tak-hingga-aljabar",
-      "title": "Limit di Tak Hingga (x → ∞): Bentuk Rasional ∞/∞ dan Bentuk Selisih Akar √(ax^2+bx+c) − √(px^2+qx+r)",
-      "kind": "simulasi",
-      "duration": "16 menit",
+      "title": "Limit di Tak Hingga: Rasio Derajat Polinomial dan Selisih Dua Akar Kuadrat",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>\\(\\lim_{x\\to a} f(x) = L\\) berarti nilai f(x) makin dekat ke L ketika x makin dekat ke a (dari kiri dan kanan), <b>tanpa</b> memedulikan nilai f(a) sendiri. Limit ada jika limit kiri = limit kanan.</p>"
+          "html": "<h3>Dua Formula Kilat Limit Tak Hingga TKA</h3>\n<ol>\n  <li><b>Rasio Polinomial Pecahan</b>:\n  \\[ \\lim_{x \\to \\infty} \\frac{a x^m + \\dots}{b x^n + \\dots} = \\begin{cases} \\frac{a}{b}, & \\text{jika } m = n \\\\ 0, & \\text{jika } m < n \\\\ \\infty, & \\text{jika } m > n \\end{cases} \\]</li>\n  <li><b>Bentuk Selisih Dua Akar Kuadrat (\\(\\infty - \\infty\\))</b>:</li>\n</ol>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Limit</b>: limit fungsi aljabar dan limit fungsi trigonometri.</p><p><i>Batasan</i>: limit yang dapat diselesaikan tanpa teorema L'Hôpital.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/limit.html",
-          "title": "Mendekati nilai limit",
-          "height": 600,
-          "caption": "Pilih fungsi lalu perkecil h. Lihat tabel nilai dari kiri dan kanan. Pada fungsi bertangga, kedua sisi menuju nilai berbeda sehingga limit tidak ada."
+          "variant": "rumus",
+          "title": "Formula Kilat Selisih Dua Akar Kuadrat Tak Hingga",
+          "html": "<div class=\"fc-display\">\n\\[ \\lim_{x \\to \\infty} \\left(\\sqrt{a x^2 + b x + c} - \\sqrt{a x^2 + p x + q}\\right) = \\frac{b - p}{2\\sqrt{a}} \\]\n</div>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Keterangan Variabel</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(a\\)</td><td>Koefisien x² di dalam kedua akar (HARUS BERNILAI SAMA)</td><td class=\"unit\">a > 0</td></tr>\n<tr><td class=\"sym\">\\(b, p\\)</td><td>Koefisien suku x pada akar pertama dan kedua</td><td class=\"unit\">\\text{bilangan real}</td></tr>\n<tr><td class=\"sym\">\\(\\frac{b - p}{2\\sqrt{a}}\\)</td><td>Hasil nilai limit langsung tanpa perkalian sekawan</td><td class=\"unit\">\\text{bilangan real}</td></tr>\n\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan & Konvensi Tanda:</b> Jika koefisien x² berbeda: hasil langsung +∞ jika a₁ > a₂, atau -∞ jika a₁ < a₂.</small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh 1",
-          "question": "<p>\\(\\lim_{x\\to 0}\\dfrac{\\sin 6x}{\\tan 2x}\\)</p>",
+          "title": "Contoh Formula Kilat Tak Hingga",
+          "question": "<p>Hitung: \\lim_{x \\to \\infty} (\\sqrt{4x^2 + 8x - 1} - \\sqrt{4x^2 - 4x + 5})!</p>",
           "steps": [
-            "Bentuk sin ax/tan bx → a/b."
+            "Identifikasi koefisien: a = 4, b = 8, p = -4.",
+            "Terapkan rumus: L = (b - p) / (2√a).",
+            "L = [8 - (-4)] / (2√4) = (8 + 4) / (2 × 2) = 12 / 4 = 3."
           ],
-          "answer": "3"
+          "answer": "Nilai limit adalah 3."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Nilai dari lim_{x \to ∞} (√(x² + 6x) - √(x² - 2x)) adalah ....",
+          "options": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "8"
+          },
+          "answer": "B",
+          "hint": "a = 1, b = 6, p = -2. L = (b - p) / (2√a) = (6 - (-2)) / (2√1) = 8 / 2 = 4.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "limit-fungsi-trigonometri-dasar-lanjut",
-      "title": "Limit Fungsi Trigonometri: Fondasi lim_{x→0} (sin x)/x = 1, (tan x)/x = 1, dan Sudut Rangkap",
-      "kind": "simulasi",
-      "duration": "18 menit",
+      "title": "Limit Fungsi Trigonometri: Teorema Dasar dan Manipulasi Identitas",
+      "kind": "artikel",
+      "duration": "9 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p>\\(\\lim_{x\\to a} f(x) = L\\) berarti nilai f(x) makin dekat ke L ketika x makin dekat ke a (dari kiri dan kanan), <b>tanpa</b> memedulikan nilai f(a) sendiri. Limit ada jika limit kiri = limit kanan.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Limit</b>: limit fungsi aljabar dan limit fungsi trigonometri.</p><p><i>Batasan</i>: limit yang dapat diselesaikan tanpa teorema L'Hôpital.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/limit.html",
-          "title": "Mendekati nilai limit",
-          "height": 600,
-          "caption": "Pilih fungsi lalu perkecil h. Lihat tabel nilai dari kiri dan kanan. Pada fungsi bertangga, kedua sisi menuju nilai berbeda sehingga limit tidak ada."
+          "html": "<h3>Teorema Limit Dasar Trigonometri</h3>\n\\[ \\lim_{x \\to 0} \\frac{\\sin ax}{bx} = \\frac{a}{b} \\qquad \\Big| \\qquad \\lim_{x \\to 0} \\frac{\\tan ax}{bx} = \\frac{a}{b} \\qquad \\Big| \\qquad \\lim_{x \\to 0} \\frac{\\sin ax}{\\tan bx} = \\frac{a}{b} \\]\n<p>Kausus Identitas Kosinus: Bentuk \\(1 - \\cos(ax)\\) diubah menjadi \\(2\\sin^2\\left(\\frac{ax}{2}\\right)\\):</p>\n\\[ \\lim_{x \\to 0} \\frac{1 - \\cos(ax)}{x^2} = \\frac{a^2}{2} \\]"
         },
         {
           "type": "example",
-          "title": "Contoh 2",
-          "question": "<p>\\(\\lim_{x\\to 0}\\dfrac{1 - \\cos 6x}{x\\tan 3x}\\)</p>",
+          "title": "Contoh Limit Trigonometri Bentuk 1 - cos",
+          "question": "<p>Hitung: \\lim_{x \\to 0} \\frac{1 - \\cos 4x}{x \\tan 2x}!</p>",
           "steps": [
-            "\\(1 - \\cos 6x = 2\\sin^2 3x\\).",
-            "\\(\\dfrac{2\\sin 3x\\sin 3x}{x\\tan 3x} \\to 2\\cdot 3\\cdot 1 = 6\\)."
+            "Ubah 1 - cos 4x menjadi 2 sin²(2x) = 2 · sin(2x) · sin(2x).",
+            "Ekspresi limit: lim_{x \\to 0} [2 · sin(2x) · sin(2x)] / [x · tan(2x)].",
+            "Pecah limit: 2 × [lim sin(2x) / x] × [lim sin(2x) / tan(2x)].",
+            "= 2 × (2/1) × (2/2) = 2 × 2 × 1 = 4."
           ],
-          "answer": "6"
+          "answer": "Nilai limit tersebut adalah 4."
+        },
+        {
+          "type": "check",
+          "title": "Cek Pemahaman",
+          "question": "Nilai dari lim_{x \to 0} (sin 6x) / (tan 2x) adalah ....",
+          "options": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "6"
+          },
+          "answer": "B",
+          "hint": "lim_{x \\to 0} (sin 6x) / (tan 2x) = 6 / 2 = 3.",
+          "explanation": "Pilihan B benar."
         }
       ]
     },
     {
       "id": "kekontinuan-fungsi",
-      "title": "Kekontinuan Fungsi pada Suatu Titik dan Interval: Tiga Syarat Kontinu",
-      "kind": "latihan",
-      "duration": "15 menit",
+      "title": "Kekontinuan Fungsi pada Suatu Titik dan Interval",
+      "kind": "artikel",
+      "duration": "8 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Kekontinuan Fungsi pada Suatu Titik dan Interval: Tiga Syarat Kontinu</b>: Memeriksa f(c) terdefinisi, limit x→c ada, dan lim_{x→c} f(x) = f(c) pada fungsi sepotong-sepotong (piecewise).</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Limit</b>: limit fungsi aljabar dan limit fungsi trigonometri.</p><p><i>Batasan</i>: limit yang dapat diselesaikan tanpa teorema L'Hôpital.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Kekontinuan Fungsi pada Suatu Titik dan Interval: Tiga Syarat Kontinu",
-          "question": "<p>Perhatikan permasalahan terkait <b>Kekontinuan Fungsi pada Suatu Titik dan Interval: Tiga Syarat Kontinu</b> berikut. Analisislah berdasarkan prinsip Memeriksa f(c) terdefinisi, limit x→c ada, dan lim_{x→c} f(x) = f(c) pada fungsi sepotong-sepotong (piecewise)..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Kekontinuan Fungsi pada Suatu Titik dan Interval: Tiga Syarat Kontinu, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Kekontinuan Fungsi pada Suatu Titik dan Interval: Tiga Syarat Kontinu berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Memeriksa f(c) terdefinisi, limit x→c ada, dan lim_{x→c} f(x) = f(c) pada fungsi sepotong-sepotong (piecewise).."
+          "html": "<h3>Tiga Syarat Fungsi Kontinu di Titik x = c</h3>\n<ol>\n  <li>Nilai fungsi \\(f(c)\\) <b>terdefinisi</b>.</li>\n  <li>Nilai limit \\(\\lim_{x \\to c} f(x)\\) <b>ada</b>.</li>\n  <li>Nilai limit <b>sama persis dengan nilai fungsi</b>: \\(\\lim_{x \\to c} f(x) = f(c)\\).</li>\n</ol>"
         }
       ]
     },
     {
       "id": "latihan-dan-kuis-mtl-08",
-      "title": "Strategi Cepat Limit Fungsi dan Latihan Kuis Bab 8",
+      "title": "Latihan Mandiri dan Kuis Komprehensif Limit Fungsi",
       "kind": "latihan",
-      "duration": "20 menit",
+      "duration": "10 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p><b>Strategi Cepat Limit Fungsi dan Latihan Kuis Bab 8</b>: Menguasai seluruh spektrum limit aljabar & trigonometri dan menyelesaikan kuis bab 20 butir soal.</p><p>Latihan bertahap ini dirancang untuk mengasah keterampilan analitis dalam menyelesaikan model soal standar TKA berbasis penalaran mendalam.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Cakupan TKA",
-          "html": "<p><b>Limit</b>: limit fungsi aljabar dan limit fungsi trigonometri.</p><p><i>Batasan</i>: limit yang dapat diselesaikan tanpa teorema L'Hôpital.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal Penerapan: Strategi Cepat Limit Fungsi dan Latihan Kuis Bab 8",
-          "question": "<p>Perhatikan permasalahan terkait <b>Strategi Cepat Limit Fungsi dan Latihan Kuis Bab 8</b> berikut. Analisislah berdasarkan prinsip Menguasai seluruh spektrum limit aljabar & trigonometri dan menyelesaikan kuis bab 20 butir soal..</p>",
-          "steps": [
-            "Identifikasi informasi yang diketahui dan target yang ditanyakan pada soal.",
-            "Gunakan prinsip atau formula yang relevan untuk menyusun langkah penyelesaian matematis / analitis.",
-            "Lakukan verifikasi ulang terhadap konsistensi satuan atau kesesuaian dengan bukti teks bacaan."
-          ],
-          "answer": "Solusi terverifikasi sesuai analisis langkah di atas."
-        },
-        {
-          "type": "check",
-          "question": "Berdasarkan pembahasan mengenai Strategi Cepat Limit Fungsi dan Latihan Kuis Bab 8, pernyataan manakah yang paling tepat?",
-          "options": {
-            "A": "Konsep Strategi Cepat Limit Fungsi dan Latihan Kuis Bab 8 berlaku konsisten sesuai prinsip dasar yang telah dipelajari.",
-            "B": "Pernyataan hanya berlaku jika tidak ada pengaruh faktor eksternal sama sekali.",
-            "C": "Seluruh variabel dapat diabaikan jika tidak disebutkan secara eksplisit.",
-            "D": "Konsep tersebut bertentangan dengan kaidah umum literasi TKA."
-          },
-          "answer": "A",
-          "hint": "Ingat kembali prinsip utama pada materi ini.",
-          "explanation": "Pilihan A benar karena merangkum esensi utama dari Menguasai seluruh spektrum limit aljabar & trigonometri dan menyelesaikan kuis bab 20 butir soal.."
-        },
-        {
-          "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, ujilah kesiapan dan pemahaman mandiri Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<p>Uji penguasaan kalkulus limit aljabar dan trigonometri Anda melalui kuis resmi 20 butir soal bertarget TKA di bawah ini.</p>"
         },
         {
           "type": "kuis",
-          "text": "Latihan soal TKA Matematika Tingkat Lanjut topik Limit Fungsi. Setiap soal dilengkapi pembahasan."
+          "text": "Kuis Uji Kompetensi TKA Matematika Tingkat Lanjut: Limit Fungsi (20 Soal Pilihan Ganda Terstandar)."
         }
       ]
     }
