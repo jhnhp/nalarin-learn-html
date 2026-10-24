@@ -57,7 +57,7 @@
           "type": "callout",
           "variant": "rumus",
           "title": "SPLTV",
-          "html": "\\[\\begin{cases} a_1x + b_1y + c_1z = d_1 \\\\ a_2x + b_2y + c_2z = d_2 \\\\ a_3x + b_3y + c_3z = d_3 \\end{cases}\\]<p>Penyelesaiannya berupa tripel (x, y, z) yang memenuhi ketiga persamaan sekaligus.</p>"
+          "html": "<div class=\"fc-display\">\n\\[\\begin{cases} a_1x + b_1y + c_1z = d_1 \\\\ a_2x + b_2y + c_2z = d_2 \\\\ a_3x + b_3y + c_3z = d_3 \\end{cases}\\]\n</div><p>Penyelesaiannya berupa tripel (x, y, z) yang memenuhi ketiga persamaan sekaligus.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel Bebas dan Terikat</td><td class=\"unit\">\\(\\text{koordinat / nilai real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien dan Konstanta Persamaan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
@@ -172,7 +172,7 @@
           "type": "callout",
           "variant": "rumus",
           "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Mengenali persamaan yang menghasilkan kontradiksi (misal 0 = 5 berarti tidak ada solusi) atau tautologi identitas (0 = 0 berarti solusi parametrik tak terhingga).</p>"
+          "html": "<p>Mengenali persamaan yang menghasilkan kontradiksi (misal 0 = 5 berarti tidak ada solusi) atau tautologi identitas (0 = 0 berarti solusi parametrik tak terhingga).</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel Bebas dan Terikat</td><td class=\"unit\">\\(\\text{koordinat / nilai real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien dan Konstanta Persamaan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "example",
@@ -281,7 +281,7 @@
           "type": "callout",
           "variant": "rumus",
           "title": "Uji titik",
-          "html": "<p>Pilih titik yang tidak terletak pada garis batas, misalnya (0, 0). Substitusikan ke pertidaksamaan.</p><ul><li>Jika pernyataannya benar, sisi yang memuat titik itu adalah daerah penyelesaian.</li><li>Jika salah, daerah penyelesaiannya sisi yang lain.</li></ul>"
+          "html": "<p>Pilih titik yang tidak terletak pada garis batas, misalnya (0, 0). Substitusikan ke pertidaksamaan.</p><ul><li>Jika pernyataannya benar, sisi yang memuat titik itu adalah daerah penyelesaian.</li><li>Jika salah, daerah penyelesaiannya sisi yang lain.</li></ul>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(F\\)</td><td>Gaya / Besaran Terkait</td><td class=\"unit\">\\(\\text{Newton (N)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(s\\)</td><td>Jarak / Perpindahan</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(t\\)</td><td>Waktu</td><td class=\"unit\">\\(\\text{sekon (s)}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "callout",
@@ -405,7 +405,7 @@
           "type": "callout",
           "variant": "rumus",
           "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Menentukan persamaan garis batas dari titik potong sumbu (rumus bx + ay = a·b), lalu menentukan tanda ketidaksamaan berdasarkan arah arsiran.</p>"
+          "html": "<p>Menentukan persamaan garis batas dari titik potong sumbu (rumus bx + ay = a·b), lalu menentukan tanda ketidaksamaan berdasarkan arah arsiran.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(x, y\\)</td><td>Variabel Bebas dan Terikat</td><td class=\"unit\">\\(\\text{koordinat / nilai real}\\)</td></tr>\n    <tr><td class=\"sym\">\\(a, b, c\\)</td><td>Koefisien dan Konstanta Persamaan</td><td class=\"unit\">\\(\\text{bilangan real}\\)</td></tr>\n  </tbody>\n</table>"
         },
         {
           "type": "example",
@@ -521,6 +521,13 @@
         {
           "type": "text",
           "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+        },
+        {
+          "type": "cheatsheet",
+          "isMega": false,
+          "title": "Cheat Sheet: SPLDV, SPLTV & Pemodelan Program Linear",
+          "subtitle": "Metode penyelesaian sistem persamaan linear tiga variabel, daerah penyelesaian, dan uji titik pojok.",
+          "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Sistem Persamaan Linear Tiga Variabel (SPLTV)</h4>\n    \\[ \\begin{cases} a_1 x + b_1 y + c_1 z = d_1 \\\\ a_2 x + b_2 y + c_2 z = d_2 \\\\ a_3 x + b_3 y + c_3 z = d_3 \\end{cases} \\]\n    <ul>\n      <li><b>Metode Gabungan:</b> Eliminasi 1 variabel dari 2 pasang persamaan hingga menjadi SPLDV 2 variabel, selesaikan via substitusi balik.</li>\n      <li><b>Metode Determinan (Cramer):</b>\n        \\[ x = \\frac{D_x}{D}, \\quad y = \\frac{D_y}{D}, \\quad z = \\frac{D_z}{D} \\quad (D \\ne 0) \\]\n      </li>\n    </ul>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Pertidaksamaan Linear & Daerah Himpunan (DHP)</h4>\n    <ul>\n      <li>Garis batas \\(ax + by = c\\): Gunakan garis penuh jika pertidaksamaan memuat \\(\\le\\) atau \\(\\ge\\); garis putus-putus jika \\(<\\) atau \\(>\\).</li>\n      <li><b>Uji Titik Selidik:</b> Masukkan titik mudah, misal \\((0,0)\\). Jika pernyataan benar, arsirlah daerah yang memuat titik uji tersebut.</li>\n      <li><b>Optimasi Fungsi Sasaran \\(f(x, y) = ax + by\\):</b> Hitung nilai \\(f(x, y)\\) pada semua titik sudut/pojok DHP tertutup. Nilai terbesar adalah maksimum, terkecil adalah minimum.</li>\n    </ul>\n  </div>\n</div>\n"
         },
         {
           "type": "kuis",
