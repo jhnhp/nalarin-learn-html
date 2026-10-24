@@ -18,6 +18,7 @@ nalarin-learn/
 ├── assets/               ← logo Nalarin
 ├── katalog.json          ← daftar semua bab (dibuat otomatis)
 ├── buat-katalog.py       ← pembuat katalog.json
+├── scripts/validate_content.py ← pemeriksaan struktur materi dan aset
 ├── materi/               ← isi materi, folder sama persis dengan Kuis/
 │   └── Kelas11/Fisika/01 Vektor/
 │       ├── bab.json      ← isi bab
@@ -44,6 +45,14 @@ python3 buat-katalog.py       # samakan bab materi dan tulis katalog.json
 `buat-katalog.py` membuat `bab.json` berisi contoh (status `"draf"`) untuk kuis yang belum punya materi. Bab draf memiliki pemberitahuan "Materi masih draf". Skrip juga memeriksa jenis blok, file gambar dan simulasi yang dirujuk, kunci jawaban cek pemahaman, serta folder materi yang kuisnya sudah tidak ada.
 
 Bab unggulan di beranda diatur lewat `"unggulan"` di `katalog.json` (bawaan: `Kelas11/Fisika/01 Vektor`).
+
+Sebelum publikasi, jalankan pemeriksaan tambahan:
+
+```bash
+python3 scripts/validate_content.py
+```
+
+Pemeriksaan ini memvalidasi ID bab dan pelajaran, struktur blok, kunci jawaban, ID video, serta keberadaan aset. Peringatan perlu ditinjau; skrip tidak dapat menggantikan review akademik atas kebenaran materi.
 
 ## Format `bab.json`
 
