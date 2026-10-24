@@ -116,6 +116,7 @@ function block(bl, b){
     case 'sim': return sim(bl);
     case 'check': return check(bl);
     case 'example': return example(bl);
+    case 'cheatsheet': return cheatSheet(bl, b);
     case 'kuis': return quizCard(b, bl.text);
     default: console.warn('Blok tidak dikenal:', bl); return null;
   }
@@ -217,6 +218,48 @@ function quizCard(b, text){
   c.querySelector('p').textContent = text || `${k.questions} soal tentang ${b.title} di Nalarin Kuis. Ada pembahasan untuk setiap soal.`;
   c.querySelector('a').href = quizUrl(k.path);
   return c;
+}
+
+function cheatSheet(bl, b){
+  const c = mk('section', 'card cheatsheet-card');
+  const isMega = !!bl.isMega;
+  c.innerHTML = `
+    <div class="cs-header">
+      <div class="cs-titles">
+        <span class="cs-badge">${ic('sigma', 'width:12px;height:12px;vertical-align:-1px;margin-right:4px')}${isMega ? 'MEGA CHEAT SHEET TKA' : 'CHEAT SHEET UJIAN'}</span>
+        <h3 class="cs-title"></h3>
+        <p class="cs-sub"></p>
+      </div>
+      <button class="btn cs-print-btn" type="button" title="Cetak atau simpan sebagai PDF">
+        ${ic('printer', 'width:16px;height:16px')}
+        <span>Cetak Cheat Sheet (PDF)</span>
+      </button>
+    </div>
+    <div class="cs-body prose">
+      ${bl.html || ''}
+    </div>
+  `;
+  c.querySelector('.cs-title').textContent = bl.title || (isMega ? `Mega Cheat Sheet: Ringkasan Lengkap Materi TKA` : `Cheat Sheet: ${b.title}`);
+  c.querySelector('.cs-sub').textContent = bl.subtitle || (isMega ? 'Rangkuman terpadu rumus kunci, konsep esensial, dan jalan pintas cepat untuk seluruh bab TKA.' : 'Rangkuman cepat rumus inti, definisi variabel, dan tips eliminasi kilat.');
+  const printBtn = c.querySelector('.cs-print-btn');
+  printBtn.onclick = () => printCheatSheet(c);
+  fixLinks(c);
+  return c;
+}
+
+function printCheatSheet(cardEl){
+  cardEl.classList.add('is-printing-target');
+  document.body.classList.add('print-cheatsheet-only');
+  const cleanup = () => {
+    cardEl.classList.remove('is-printing-target');
+    document.body.classList.remove('print-cheatsheet-only');
+    window.removeEventListener('afterprint', cleanup);
+  };
+  window.addEventListener('afterprint', cleanup);
+  setTimeout(() => {
+    window.print();
+    setTimeout(cleanup, 1200);
+  }, 100);
 }
 
 // tautan dan gambar di teks: alamat relatif dihitung dari folder bab, tautan luar dibuka di tab baru

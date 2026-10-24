@@ -16,7 +16,7 @@ import json, os, re, sys, datetime
 ROOT = os.path.dirname(os.path.abspath(__file__))
 KUIS = os.path.join(ROOT, "Kuis")
 MATERI = os.path.join(ROOT, "materi")
-BLOCKS = {"h", "heading", "text", "image", "callout", "video", "sim", "check", "example", "kuis"}
+BLOCKS = {"h", "heading", "text", "image", "callout", "video", "sim", "check", "example", "cheatsheet", "kuis"}
 KINDS = {"artikel", "video", "simulasi", "latihan"}
 
 
