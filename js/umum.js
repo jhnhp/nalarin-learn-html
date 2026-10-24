@@ -22,8 +22,10 @@ function sanitizeHTML(html){
       }
       if(name === 'href' || name === 'src' || name === 'xlink:href' || name === 'action' || name === 'formaction'){
         const isImage = name === 'src' && el.tagName === 'IMG';
-        const allowed = /^(https?:|mailto:|#|\/|\.\/|\.\.\/)/i.test(value) && !/^\/\//.test(value);
-        if(!allowed || (!isImage && /^data:/i.test(value))){
+        const hasScheme = /^[a-z][a-z0-9+.-]*:/i.test(value);
+        const safeScheme = isImage ? /^https?:/i.test(value) : /^(https?:|mailto:|#)/i.test(value);
+        const allowed = !/^\/\//.test(value) && !/[\u0000-\u001f]/.test(value) && (!hasScheme || safeScheme);
+        if(!allowed){
           el.removeAttribute(attr.name);
         }
       }
