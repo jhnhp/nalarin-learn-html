@@ -14,63 +14,11 @@
           "html": "<p>Jika ruang sampelnya terlalu besar untuk didaftar, gunakan permutasi atau kombinasi dari Bab 3 untuk menghitung n(S) dan n(A).</p>"
         },
         {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Keamanan Password Enkripsi dan Analisis Risiko Asuransi",
-          "html": "<p>Mengapa password yang memuat kombinasi 12 karakter huruf besar, kecil, angka, dan simbol butuh waktu miliaran tahun bagi superkomputer untuk membobolnya secara brute force? Sebaliknya, mengapa perusahaan asuransi dapat memastikan bisnisnya untung stabil meskipun klaim kecelakaan terjadi secara acak?</p><p>Keduanya dikendalikan oleh hukum perhitungan kombinatorial: <b>Kaidah Pencacahan dan Teori Peluang</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Surat-Menyurat Pascal dan Fermat Memecahkan 'Problem of Points'",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Blaise Pascal & Pierre de Fermat</span>\n  <span class=\"h-tag\">Tahun: 1654 M (Paris & Toulouse, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian uang taruhan yang adil saat permainan dadu bangsawan terhenti mendadak sebelum selesai.</span>\n</div>\n<p>Pada musim panas tahun 1654, seorang bangsawan penjudi Chevalier de Méré mengajukan teka-teki pembagian hadiah permainan dadu kepada <b>Blaise Pascal</b>. Pascal lalu berkorespondensi secara intensif dengan pakar hukum dan matematikawan <b>Pierre de Fermat</b>.</p><p>Alih-alih mengandalkan intuisi atau takhayul nasib, Pascal dan Fermat menghitung seluruh kemungkinan skenario masa depan menggunakan Segitiga Pascal dan kombinasi permutasi. Surat-menyurat legendaris ini melahirkan cabang ilmu baru: <b>Teori Peluang Modern</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Ruang Sampel, Permutasi Urutan & Kombinasi Acak",
-          "html": "<p><b>Peluang Suatu Kejadian (\\(P(A)\\)):</b> Rasio antara banyaknya hasil yang diharapkan (\\(n(A)\\)) terhadap seluruh kemungkinan kejadian dalam ruang sampel semesta (\\(n(S)\\)).</p><p><b>Permutasi:</b> Penyusunan anggota himpunan di mana <b>urutan diperhatikan</b> (misal urutan juara 1, 2, 3 atau nomor antrean pin).</p><p><b>Kombinasi:</b> Pemilihan anggota himpunan di mana <b>urutan tidak diperhatikan</b> (misal memilih tim perwakilan lomba atau kartu remi).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Kaidah Pencacahan & Peluang",
-          "html": "<div class=\"fc-display\">\n\\[ P(A) = \\frac{n(A)}{n(S)}, \\qquad P(n, r) = \\frac{n!}{(n-r)!}, \\qquad C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">P(A)</td><td>Peluang terjadinya peristiwa A (rentang nilai 0 <= P(A) <= 1)</td><td class=\"unit\">probabilitas</td></tr>\n    <tr><td class=\"sym\">n(A)</td><td>Banyaknya titik sampel anggota kejadian A</td><td class=\"unit\">bilangan cacah</td></tr>\n    <tr><td class=\"sym\">n(S)</td><td>Banyaknya seluruh anggota dalam ruang sampel semesta S</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total unsur yang tersedia untuk dipilih</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Banyaknya unsur yang dipilih / dialokasikan</td><td class=\"unit\">r <= n</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai \\(P(A) = 0\\) menyatakan peristiwa mustahil, sedangkan \\(P(A) = 1\\) menyatakan peristiwa pasti terjadi.</small></p>"
-        },
-        {
           "type": "sim",
           "src": "sim/kantong.html",
           "title": "Pengambilan bola dari kantong",
           "height": 560,
           "caption": "Bandingkan pohon tanpa pengembalian dan dengan pengembalian. Lakukan 1.000 pengambilan dan cocokkan frekuensi relatif dengan peluang teoretis."
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal: Menghitung Peluang Pengambilan Dua Bola Menggunakan Kombinasi",
-          "question": "<p>Sebuah kotak berisi 5 bola merah dan 3 bola putih. Dari kotak tersebut diambil 2 bola sekaligus secara acak. Berapakah peluang terambilnya 1 bola merah dan 1 bola putih?</p>",
-          "steps": [
-            "Hitung total bola di dalam kotak: 5 + 3 = 8 bola.",
-            "Hitung total ruang sampel n(S) pengambilan 2 bola dari 8 bola menggunakan kombinasi: n(S) = C(8, 2) = 8! / (2! × 6!) = (8 × 7) / 2 = 28 cara.",
-            "Hitung banyak kejadian terambil 1 bola merah dari 5 bola merah: C(5, 1) = 5 cara.",
-            "Hitung banyak kejadian terambil 1 bola putih dari 3 bola putih: C(3, 1) = 3 cara.",
-            "Hitung titik sampel kejadian A: n(A) = C(5, 1) × C(3, 1) = 5 × 3 = 15 cara.",
-            "Hitung peluang: P(A) = n(A) / n(S) = 15 / 28."
-          ],
-          "answer": "Peluang terambilnya 1 bola merah dan 1 bola putih adalah 15/28 (sekitar 0,536)."
-        },
-        {
-          "type": "check",
-          "title": "Cek Pemahaman",
-          "question": "Dari 7 orang pengurus OSIS akan dipilih 3 orang untuk menduduki posisi Ketua, Sekretaris, dan Bendahara. Banyaknya susunan pengurus yang dapat dibentuk adalah ....",
-          "options": {
-            "A": "210 cara",
-            "B": "35 cara",
-            "C": "42 cara",
-            "D": "120 cara"
-          },
-          "answer": "A",
-          "hint": "Karena urutan jabatan diperhatikan (Ketua, Sekretaris, Bendahara), gunakan Permutasi P(7, 3).",
-          "explanation": "P(7, 3) = 7! / (7 - 3)! = 7 × 6 × 5 = 210 cara."
         }
       ]
     },
@@ -83,30 +31,6 @@
         {
           "type": "text",
           "html": "<p>Pelatih sepak bola memperkirakan peluang timnya mencetak gol dari tendangan penalti untuk menyusun strategi. Peluang mengukur seberapa mungkin suatu kejadian terjadi, dari 0 (mustahil) sampai 1 (pasti).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Keamanan Password Enkripsi dan Analisis Risiko Asuransi",
-          "html": "<p>Mengapa password yang memuat kombinasi 12 karakter huruf besar, kecil, angka, dan simbol butuh waktu miliaran tahun bagi superkomputer untuk membobolnya secara brute force? Sebaliknya, mengapa perusahaan asuransi dapat memastikan bisnisnya untung stabil meskipun klaim kecelakaan terjadi secara acak?</p><p>Keduanya dikendalikan oleh hukum perhitungan kombinatorial: <b>Kaidah Pencacahan dan Teori Peluang</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Surat-Menyurat Pascal dan Fermat Memecahkan 'Problem of Points'",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Blaise Pascal & Pierre de Fermat</span>\n  <span class=\"h-tag\">Tahun: 1654 M (Paris & Toulouse, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian uang taruhan yang adil saat permainan dadu bangsawan terhenti mendadak sebelum selesai.</span>\n</div>\n<p>Pada musim panas tahun 1654, seorang bangsawan penjudi Chevalier de Méré mengajukan teka-teki pembagian hadiah permainan dadu kepada <b>Blaise Pascal</b>. Pascal lalu berkorespondensi secara intensif dengan pakar hukum dan matematikawan <b>Pierre de Fermat</b>.</p><p>Alih-alih mengandalkan intuisi atau takhayul nasib, Pascal dan Fermat menghitung seluruh kemungkinan skenario masa depan menggunakan Segitiga Pascal dan kombinasi permutasi. Surat-menyurat legendaris ini melahirkan cabang ilmu baru: <b>Teori Peluang Modern</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Ruang Sampel, Permutasi Urutan & Kombinasi Acak",
-          "html": "<p><b>Peluang Suatu Kejadian (\\(P(A)\\)):</b> Rasio antara banyaknya hasil yang diharapkan (\\(n(A)\\)) terhadap seluruh kemungkinan kejadian dalam ruang sampel semesta (\\(n(S)\\)).</p><p><b>Permutasi:</b> Penyusunan anggota himpunan di mana <b>urutan diperhatikan</b> (misal urutan juara 1, 2, 3 atau nomor antrean pin).</p><p><b>Kombinasi:</b> Pemilihan anggota himpunan di mana <b>urutan tidak diperhatikan</b> (misal memilih tim perwakilan lomba atau kartu remi).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Kaidah Pencacahan & Peluang",
-          "html": "<div class=\"fc-display\">\n\\[ P(A) = \\frac{n(A)}{n(S)}, \\qquad P(n, r) = \\frac{n!}{(n-r)!}, \\qquad C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">P(A)</td><td>Peluang terjadinya peristiwa A (rentang nilai 0 <= P(A) <= 1)</td><td class=\"unit\">probabilitas</td></tr>\n    <tr><td class=\"sym\">n(A)</td><td>Banyaknya titik sampel anggota kejadian A</td><td class=\"unit\">bilangan cacah</td></tr>\n    <tr><td class=\"sym\">n(S)</td><td>Banyaknya seluruh anggota dalam ruang sampel semesta S</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total unsur yang tersedia untuk dipilih</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Banyaknya unsur yang dipilih / dialokasikan</td><td class=\"unit\">r <= n</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai \\(P(A) = 0\\) menyatakan peristiwa mustahil, sedangkan \\(P(A) = 1\\) menyatakan peristiwa pasti terjadi.</small></p>"
         },
         {
           "type": "callout",
@@ -133,7 +57,7 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
+          "title": "Contoh soal 2",
           "question": "<p>Kantong berisi 5 bola merah dan 3 bola biru. Dua bola diambil sekaligus. Tentukan peluang keduanya merah.</p>",
           "steps": [
             "Diambil sekaligus: urutan tidak penting, gunakan kombinasi.",
@@ -144,7 +68,7 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
+          "title": "Contoh soal 3",
           "question": "<p>Kantong berisi 4 bola merah dan 6 bola putih. Tiga bola diambil sekaligus. Tentukan peluang tepat 2 merah.</p>",
           "steps": [
             "n(S) = C(10, 3) = 120.",
@@ -155,7 +79,7 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
+          "title": "Contoh soal 4",
           "question": "<p>Satu kartu diambil. Tentukan peluang terambil As atau kartu hati.</p>",
           "steps": [
             "Ada As hati: tidak saling lepas.",
@@ -165,7 +89,7 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
+          "title": "Contoh soal 5",
           "question": "<p>Peluang penembak A mengenai sasaran 0,8 dan penembak B 0,7. Keduanya menembak sekali secara terpisah. Tentukan peluang keduanya mengenai sasaran dan peluang minimal satu mengenai sasaran.</p>",
           "steps": [
             "Keduanya: 0,8 × 0,7 = 0,56.",
@@ -211,30 +135,6 @@
         {
           "type": "text",
           "html": "<p><b>Tinjauan Peluang Majemuk: Saling Lepas dan Saling Bebas Stokastik</b>: Rekapitulasi rumus P(A ∪ B) = P(A) + P(B) untuk kejadian saling lepas dan P(A ∩ B) = P(A) · P(B) untuk dua kejadian independen terpisah.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Keamanan Password Enkripsi dan Analisis Risiko Asuransi",
-          "html": "<p>Mengapa password yang memuat kombinasi 12 karakter huruf besar, kecil, angka, dan simbol butuh waktu miliaran tahun bagi superkomputer untuk membobolnya secara brute force? Sebaliknya, mengapa perusahaan asuransi dapat memastikan bisnisnya untung stabil meskipun klaim kecelakaan terjadi secara acak?</p><p>Keduanya dikendalikan oleh hukum perhitungan kombinatorial: <b>Kaidah Pencacahan dan Teori Peluang</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Surat-Menyurat Pascal dan Fermat Memecahkan 'Problem of Points'",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Blaise Pascal & Pierre de Fermat</span>\n  <span class=\"h-tag\">Tahun: 1654 M (Paris & Toulouse, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian uang taruhan yang adil saat permainan dadu bangsawan terhenti mendadak sebelum selesai.</span>\n</div>\n<p>Pada musim panas tahun 1654, seorang bangsawan penjudi Chevalier de Méré mengajukan teka-teki pembagian hadiah permainan dadu kepada <b>Blaise Pascal</b>. Pascal lalu berkorespondensi secara intensif dengan pakar hukum dan matematikawan <b>Pierre de Fermat</b>.</p><p>Alih-alih mengandalkan intuisi atau takhayul nasib, Pascal dan Fermat menghitung seluruh kemungkinan skenario masa depan menggunakan Segitiga Pascal dan kombinasi permutasi. Surat-menyurat legendaris ini melahirkan cabang ilmu baru: <b>Teori Peluang Modern</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Ruang Sampel, Permutasi Urutan & Kombinasi Acak",
-          "html": "<p><b>Peluang Suatu Kejadian (\\(P(A)\\)):</b> Rasio antara banyaknya hasil yang diharapkan (\\(n(A)\\)) terhadap seluruh kemungkinan kejadian dalam ruang sampel semesta (\\(n(S)\\)).</p><p><b>Permutasi:</b> Penyusunan anggota himpunan di mana <b>urutan diperhatikan</b> (misal urutan juara 1, 2, 3 atau nomor antrean pin).</p><p><b>Kombinasi:</b> Pemilihan anggota himpunan di mana <b>urutan tidak diperhatikan</b> (misal memilih tim perwakilan lomba atau kartu remi).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Kaidah Pencacahan & Peluang",
-          "html": "<div class=\"fc-display\">\n\\[ P(A) = \\frac{n(A)}{n(S)}, \\qquad P(n, r) = \\frac{n!}{(n-r)!}, \\qquad C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">P(A)</td><td>Peluang terjadinya peristiwa A (rentang nilai 0 <= P(A) <= 1)</td><td class=\"unit\">probabilitas</td></tr>\n    <tr><td class=\"sym\">n(A)</td><td>Banyaknya titik sampel anggota kejadian A</td><td class=\"unit\">bilangan cacah</td></tr>\n    <tr><td class=\"sym\">n(S)</td><td>Banyaknya seluruh anggota dalam ruang sampel semesta S</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total unsur yang tersedia untuk dipilih</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Banyaknya unsur yang dipilih / dialokasikan</td><td class=\"unit\">r <= n</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai \\(P(A) = 0\\) menyatakan peristiwa mustahil, sedangkan \\(P(A) = 1\\) menyatakan peristiwa pasti terjadi.</small></p>"
         },
         {
           "type": "text",
@@ -318,30 +218,6 @@
           "html": "<p>Jika kita sudah mempunyai informasi sebagian, ruang sampelnya menyempit dan peluang berubah. Peluang B dengan syarat A sudah terjadi ditulis <b>P(B | A)</b>. Buku siswa menyebut situasi berurutan ini “kejadian majemuk saling bebas bersyarat”; secara umum dikenal sebagai <b>peluang bersyarat</b>.</p>"
         },
         {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Keamanan Password Enkripsi dan Analisis Risiko Asuransi",
-          "html": "<p>Mengapa password yang memuat kombinasi 12 karakter huruf besar, kecil, angka, dan simbol butuh waktu miliaran tahun bagi superkomputer untuk membobolnya secara brute force? Sebaliknya, mengapa perusahaan asuransi dapat memastikan bisnisnya untung stabil meskipun klaim kecelakaan terjadi secara acak?</p><p>Keduanya dikendalikan oleh hukum perhitungan kombinatorial: <b>Kaidah Pencacahan dan Teori Peluang</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Surat-Menyurat Pascal dan Fermat Memecahkan 'Problem of Points'",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Blaise Pascal & Pierre de Fermat</span>\n  <span class=\"h-tag\">Tahun: 1654 M (Paris & Toulouse, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian uang taruhan yang adil saat permainan dadu bangsawan terhenti mendadak sebelum selesai.</span>\n</div>\n<p>Pada musim panas tahun 1654, seorang bangsawan penjudi Chevalier de Méré mengajukan teka-teki pembagian hadiah permainan dadu kepada <b>Blaise Pascal</b>. Pascal lalu berkorespondensi secara intensif dengan pakar hukum dan matematikawan <b>Pierre de Fermat</b>.</p><p>Alih-alih mengandalkan intuisi atau takhayul nasib, Pascal dan Fermat menghitung seluruh kemungkinan skenario masa depan menggunakan Segitiga Pascal dan kombinasi permutasi. Surat-menyurat legendaris ini melahirkan cabang ilmu baru: <b>Teori Peluang Modern</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Ruang Sampel, Permutasi Urutan & Kombinasi Acak",
-          "html": "<p><b>Peluang Suatu Kejadian (\\(P(A)\\)):</b> Rasio antara banyaknya hasil yang diharapkan (\\(n(A)\\)) terhadap seluruh kemungkinan kejadian dalam ruang sampel semesta (\\(n(S)\\)).</p><p><b>Permutasi:</b> Penyusunan anggota himpunan di mana <b>urutan diperhatikan</b> (misal urutan juara 1, 2, 3 atau nomor antrean pin).</p><p><b>Kombinasi:</b> Pemilihan anggota himpunan di mana <b>urutan tidak diperhatikan</b> (misal memilih tim perwakilan lomba atau kartu remi).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Kaidah Pencacahan & Peluang",
-          "html": "<div class=\"fc-display\">\n\\[ P(A) = \\frac{n(A)}{n(S)}, \\qquad P(n, r) = \\frac{n!}{(n-r)!}, \\qquad C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">P(A)</td><td>Peluang terjadinya peristiwa A (rentang nilai 0 <= P(A) <= 1)</td><td class=\"unit\">probabilitas</td></tr>\n    <tr><td class=\"sym\">n(A)</td><td>Banyaknya titik sampel anggota kejadian A</td><td class=\"unit\">bilangan cacah</td></tr>\n    <tr><td class=\"sym\">n(S)</td><td>Banyaknya seluruh anggota dalam ruang sampel semesta S</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total unsur yang tersedia untuk dipilih</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Banyaknya unsur yang dipilih / dialokasikan</td><td class=\"unit\">r <= n</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai \\(P(A) = 0\\) menyatakan peristiwa mustahil, sedangkan \\(P(A) = 1\\) menyatakan peristiwa pasti terjadi.</small></p>"
-        },
-        {
           "type": "image",
           "src": "gambar/pohon-koin.svg",
           "alt": "Diagram pohon tiga koin dengan 8 hasil dari AAA sampai GGG",
@@ -382,20 +258,6 @@
             "P(voli | basket) = 5/18."
           ],
           "answer": "5/18"
-        },
-        {
-          "type": "check",
-          "title": "Cek Pemahaman: Peluang Bersyarat: P(A | B) = P(A ∩ B) / P(B)",
-          "question": "Dari 7 orang pengurus OSIS akan dipilih 3 orang untuk menduduki posisi Ketua, Sekretaris, dan Bendahara. Banyaknya susunan pengurus yang dapat dibentuk adalah ....",
-          "options": {
-            "A": "210 cara",
-            "B": "35 cara",
-            "C": "42 cara",
-            "D": "120 cara"
-          },
-          "answer": "A",
-          "hint": "Karena urutan jabatan diperhatikan (Ketua, Sekretaris, Bendahara), gunakan Permutasi P(7, 3).",
-          "explanation": "P(7, 3) = 7! / (7 - 3)! = 7 × 6 × 5 = 210 cara."
         }
       ]
     },
@@ -405,30 +267,6 @@
       "kind": "simulasi",
       "duration": "8 menit",
       "blocks": [
-        {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Keamanan Password Enkripsi dan Analisis Risiko Asuransi",
-          "html": "<p>Mengapa password yang memuat kombinasi 12 karakter huruf besar, kecil, angka, dan simbol butuh waktu miliaran tahun bagi superkomputer untuk membobolnya secara brute force? Sebaliknya, mengapa perusahaan asuransi dapat memastikan bisnisnya untung stabil meskipun klaim kecelakaan terjadi secara acak?</p><p>Keduanya dikendalikan oleh hukum perhitungan kombinatorial: <b>Kaidah Pencacahan dan Teori Peluang</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Surat-Menyurat Pascal dan Fermat Memecahkan 'Problem of Points'",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Blaise Pascal & Pierre de Fermat</span>\n  <span class=\"h-tag\">Tahun: 1654 M (Paris & Toulouse, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian uang taruhan yang adil saat permainan dadu bangsawan terhenti mendadak sebelum selesai.</span>\n</div>\n<p>Pada musim panas tahun 1654, seorang bangsawan penjudi Chevalier de Méré mengajukan teka-teki pembagian hadiah permainan dadu kepada <b>Blaise Pascal</b>. Pascal lalu berkorespondensi secara intensif dengan pakar hukum dan matematikawan <b>Pierre de Fermat</b>.</p><p>Alih-alih mengandalkan intuisi atau takhayul nasib, Pascal dan Fermat menghitung seluruh kemungkinan skenario masa depan menggunakan Segitiga Pascal dan kombinasi permutasi. Surat-menyurat legendaris ini melahirkan cabang ilmu baru: <b>Teori Peluang Modern</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Ruang Sampel, Permutasi Urutan & Kombinasi Acak",
-          "html": "<p><b>Peluang Suatu Kejadian (\\(P(A)\\)):</b> Rasio antara banyaknya hasil yang diharapkan (\\(n(A)\\)) terhadap seluruh kemungkinan kejadian dalam ruang sampel semesta (\\(n(S)\\)).</p><p><b>Permutasi:</b> Penyusunan anggota himpunan di mana <b>urutan diperhatikan</b> (misal urutan juara 1, 2, 3 atau nomor antrean pin).</p><p><b>Kombinasi:</b> Pemilihan anggota himpunan di mana <b>urutan tidak diperhatikan</b> (misal memilih tim perwakilan lomba atau kartu remi).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Kaidah Pencacahan & Peluang",
-          "html": "<div class=\"fc-display\">\n\\[ P(A) = \\frac{n(A)}{n(S)}, \\qquad P(n, r) = \\frac{n!}{(n-r)!}, \\qquad C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">P(A)</td><td>Peluang terjadinya peristiwa A (rentang nilai 0 <= P(A) <= 1)</td><td class=\"unit\">probabilitas</td></tr>\n    <tr><td class=\"sym\">n(A)</td><td>Banyaknya titik sampel anggota kejadian A</td><td class=\"unit\">bilangan cacah</td></tr>\n    <tr><td class=\"sym\">n(S)</td><td>Banyaknya seluruh anggota dalam ruang sampel semesta S</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total unsur yang tersedia untuk dipilih</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Banyaknya unsur yang dipilih / dialokasikan</td><td class=\"unit\">r <= n</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai \\(P(A) = 0\\) menyatakan peristiwa mustahil, sedangkan \\(P(A) = 1\\) menyatakan peristiwa pasti terjadi.</small></p>"
-        },
         {
           "type": "callout",
           "variant": "info",
@@ -447,7 +285,7 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
+          "title": "Contoh soal 2",
           "question": "<p>Dua kartu diambil berturut-turut tanpa pengembalian. Tentukan peluang keduanya hati.</p>",
           "steps": [
             "P(hati pertama) = 13/52.",
@@ -489,120 +327,14 @@
       "title": "Teorema Peluang Total dan Teorema Bayes (Bayesian Probability)",
       "kind": "simulasi",
       "duration": "8 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Keamanan Password Enkripsi dan Analisis Risiko Asuransi",
-          "html": "<p>Mengapa password yang memuat kombinasi 12 karakter huruf besar, kecil, angka, dan simbol butuh waktu miliaran tahun bagi superkomputer untuk membobolnya secara brute force? Sebaliknya, mengapa perusahaan asuransi dapat memastikan bisnisnya untung stabil meskipun klaim kecelakaan terjadi secara acak?</p><p>Keduanya dikendalikan oleh hukum perhitungan kombinatorial: <b>Kaidah Pencacahan dan Teori Peluang</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Surat-Menyurat Pascal dan Fermat Memecahkan 'Problem of Points'",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Blaise Pascal & Pierre de Fermat</span>\n  <span class=\"h-tag\">Tahun: 1654 M (Paris & Toulouse, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian uang taruhan yang adil saat permainan dadu bangsawan terhenti mendadak sebelum selesai.</span>\n</div>\n<p>Pada musim panas tahun 1654, seorang bangsawan penjudi Chevalier de Méré mengajukan teka-teki pembagian hadiah permainan dadu kepada <b>Blaise Pascal</b>. Pascal lalu berkorespondensi secara intensif dengan pakar hukum dan matematikawan <b>Pierre de Fermat</b>.</p><p>Alih-alih mengandalkan intuisi atau takhayul nasib, Pascal dan Fermat menghitung seluruh kemungkinan skenario masa depan menggunakan Segitiga Pascal dan kombinasi permutasi. Surat-menyurat legendaris ini melahirkan cabang ilmu baru: <b>Teori Peluang Modern</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Ruang Sampel, Permutasi Urutan & Kombinasi Acak",
-          "html": "<p><b>Peluang Suatu Kejadian (\\(P(A)\\)):</b> Rasio antara banyaknya hasil yang diharapkan (\\(n(A)\\)) terhadap seluruh kemungkinan kejadian dalam ruang sampel semesta (\\(n(S)\\)).</p><p><b>Permutasi:</b> Penyusunan anggota himpunan di mana <b>urutan diperhatikan</b> (misal urutan juara 1, 2, 3 atau nomor antrean pin).</p><p><b>Kombinasi:</b> Pemilihan anggota himpunan di mana <b>urutan tidak diperhatikan</b> (misal memilih tim perwakilan lomba atau kartu remi).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Kaidah Pencacahan & Peluang",
-          "html": "<div class=\"fc-display\">\n\\[ P(A) = \\frac{n(A)}{n(S)}, \\qquad P(n, r) = \\frac{n!}{(n-r)!}, \\qquad C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">P(A)</td><td>Peluang terjadinya peristiwa A (rentang nilai 0 <= P(A) <= 1)</td><td class=\"unit\">probabilitas</td></tr>\n    <tr><td class=\"sym\">n(A)</td><td>Banyaknya titik sampel anggota kejadian A</td><td class=\"unit\">bilangan cacah</td></tr>\n    <tr><td class=\"sym\">n(S)</td><td>Banyaknya seluruh anggota dalam ruang sampel semesta S</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total unsur yang tersedia untuk dipilih</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Banyaknya unsur yang dipilih / dialokasikan</td><td class=\"unit\">r <= n</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai \\(P(A) = 0\\) menyatakan peristiwa mustahil, sedangkan \\(P(A) = 1\\) menyatakan peristiwa pasti terjadi.</small></p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal: Teorema Peluang Total dan Teorema Bayes (Bayesian Probability)",
-          "question": "<p>Sebuah kotak berisi 5 bola merah dan 3 bola putih. Dari kotak tersebut diambil 2 bola sekaligus secara acak. Berapakah peluang terambilnya 1 bola merah dan 1 bola putih?</p>",
-          "steps": [
-            "Hitung total bola di dalam kotak: 5 + 3 = 8 bola.",
-            "Hitung total ruang sampel n(S) pengambilan 2 bola dari 8 bola menggunakan kombinasi: n(S) = C(8, 2) = 8! / (2! × 6!) = (8 × 7) / 2 = 28 cara.",
-            "Hitung banyak kejadian terambil 1 bola merah dari 5 bola merah: C(5, 1) = 5 cara.",
-            "Hitung banyak kejadian terambil 1 bola putih dari 3 bola putih: C(3, 1) = 3 cara.",
-            "Hitung titik sampel kejadian A: n(A) = C(5, 1) × C(3, 1) = 5 × 3 = 15 cara.",
-            "Hitung peluang: P(A) = n(A) / n(S) = 15 / 28."
-          ],
-          "answer": "Peluang terambilnya 1 bola merah dan 1 bola putih adalah 15/28 (sekitar 0,536)."
-        },
-        {
-          "type": "check",
-          "title": "Cek Pemahaman: Teorema Peluang Total dan Teorema Bayes (Bayesian Probability)",
-          "question": "Dari 7 orang pengurus OSIS akan dipilih 3 orang untuk menduduki posisi Ketua, Sekretaris, dan Bendahara. Banyaknya susunan pengurus yang dapat dibentuk adalah ....",
-          "options": {
-            "A": "210 cara",
-            "B": "35 cara",
-            "C": "42 cara",
-            "D": "120 cara"
-          },
-          "answer": "A",
-          "hint": "Karena urutan jabatan diperhatikan (Ketua, Sekretaris, Bendahara), gunakan Permutasi P(7, 3).",
-          "explanation": "P(7, 3) = 7! / (7 - 3)! = 7 × 6 × 5 = 210 cara."
-        }
-      ]
+      "blocks": []
     },
     {
       "id": "pengantar-distribusi-peluang-binomial",
       "title": "Pengantar Variabel Acak dan Distribusi Peluang Binomial (Percobaan Bernoulli)",
       "kind": "simulasi",
       "duration": "8 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Keamanan Password Enkripsi dan Analisis Risiko Asuransi",
-          "html": "<p>Mengapa password yang memuat kombinasi 12 karakter huruf besar, kecil, angka, dan simbol butuh waktu miliaran tahun bagi superkomputer untuk membobolnya secara brute force? Sebaliknya, mengapa perusahaan asuransi dapat memastikan bisnisnya untung stabil meskipun klaim kecelakaan terjadi secara acak?</p><p>Keduanya dikendalikan oleh hukum perhitungan kombinatorial: <b>Kaidah Pencacahan dan Teori Peluang</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Surat-Menyurat Pascal dan Fermat Memecahkan 'Problem of Points'",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Blaise Pascal & Pierre de Fermat</span>\n  <span class=\"h-tag\">Tahun: 1654 M (Paris & Toulouse, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian uang taruhan yang adil saat permainan dadu bangsawan terhenti mendadak sebelum selesai.</span>\n</div>\n<p>Pada musim panas tahun 1654, seorang bangsawan penjudi Chevalier de Méré mengajukan teka-teki pembagian hadiah permainan dadu kepada <b>Blaise Pascal</b>. Pascal lalu berkorespondensi secara intensif dengan pakar hukum dan matematikawan <b>Pierre de Fermat</b>.</p><p>Alih-alih mengandalkan intuisi atau takhayul nasib, Pascal dan Fermat menghitung seluruh kemungkinan skenario masa depan menggunakan Segitiga Pascal dan kombinasi permutasi. Surat-menyurat legendaris ini melahirkan cabang ilmu baru: <b>Teori Peluang Modern</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Ruang Sampel, Permutasi Urutan & Kombinasi Acak",
-          "html": "<p><b>Peluang Suatu Kejadian (\\(P(A)\\)):</b> Rasio antara banyaknya hasil yang diharapkan (\\(n(A)\\)) terhadap seluruh kemungkinan kejadian dalam ruang sampel semesta (\\(n(S)\\)).</p><p><b>Permutasi:</b> Penyusunan anggota himpunan di mana <b>urutan diperhatikan</b> (misal urutan juara 1, 2, 3 atau nomor antrean pin).</p><p><b>Kombinasi:</b> Pemilihan anggota himpunan di mana <b>urutan tidak diperhatikan</b> (misal memilih tim perwakilan lomba atau kartu remi).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Kaidah Pencacahan & Peluang",
-          "html": "<div class=\"fc-display\">\n\\[ P(A) = \\frac{n(A)}{n(S)}, \\qquad P(n, r) = \\frac{n!}{(n-r)!}, \\qquad C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">P(A)</td><td>Peluang terjadinya peristiwa A (rentang nilai 0 <= P(A) <= 1)</td><td class=\"unit\">probabilitas</td></tr>\n    <tr><td class=\"sym\">n(A)</td><td>Banyaknya titik sampel anggota kejadian A</td><td class=\"unit\">bilangan cacah</td></tr>\n    <tr><td class=\"sym\">n(S)</td><td>Banyaknya seluruh anggota dalam ruang sampel semesta S</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total unsur yang tersedia untuk dipilih</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Banyaknya unsur yang dipilih / dialokasikan</td><td class=\"unit\">r <= n</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai \\(P(A) = 0\\) menyatakan peristiwa mustahil, sedangkan \\(P(A) = 1\\) menyatakan peristiwa pasti terjadi.</small></p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh Soal: Pengantar Variabel Acak dan Distribusi Peluang Binomial (Percobaan Bernoulli)",
-          "question": "<p>Sebuah kotak berisi 5 bola merah dan 3 bola putih. Dari kotak tersebut diambil 2 bola sekaligus secara acak. Berapakah peluang terambilnya 1 bola merah dan 1 bola putih?</p>",
-          "steps": [
-            "Hitung total bola di dalam kotak: 5 + 3 = 8 bola.",
-            "Hitung total ruang sampel n(S) pengambilan 2 bola dari 8 bola menggunakan kombinasi: n(S) = C(8, 2) = 8! / (2! × 6!) = (8 × 7) / 2 = 28 cara.",
-            "Hitung banyak kejadian terambil 1 bola merah dari 5 bola merah: C(5, 1) = 5 cara.",
-            "Hitung banyak kejadian terambil 1 bola putih dari 3 bola putih: C(3, 1) = 3 cara.",
-            "Hitung titik sampel kejadian A: n(A) = C(5, 1) × C(3, 1) = 5 × 3 = 15 cara.",
-            "Hitung peluang: P(A) = n(A) / n(S) = 15 / 28."
-          ],
-          "answer": "Peluang terambilnya 1 bola merah dan 1 bola putih adalah 15/28 (sekitar 0,536)."
-        },
-        {
-          "type": "check",
-          "title": "Cek Pemahaman: Pengantar Variabel Acak dan Distribusi Peluang Binomial (Percobaan Bernoulli)",
-          "question": "Dari 7 orang pengurus OSIS akan dipilih 3 orang untuk menduduki posisi Ketua, Sekretaris, dan Bendahara. Banyaknya susunan pengurus yang dapat dibentuk adalah ....",
-          "options": {
-            "A": "210 cara",
-            "B": "35 cara",
-            "C": "42 cara",
-            "D": "120 cara"
-          },
-          "answer": "A",
-          "hint": "Karena urutan jabatan diperhatikan (Ketua, Sekretaris, Bendahara), gunakan Permutasi P(7, 3).",
-          "explanation": "P(7, 3) = 7! / (7 - 3)! = 7 × 6 × 5 = 210 cara."
-        }
-      ]
+      "blocks": []
     },
     {
       "id": "ringkasan-peta-konsep",
@@ -616,33 +348,27 @@
         },
         {
           "type": "callout",
-          "variant": "info",
+          "variant": "konteks",
           "title": "Misteri di Kehidupan Nyata: Hasil Tes Medis 99% Akurat: Mengapa Peluang Pasien Benar-Benar Sakit Justru di Bawah 10%?",
-          "content": "Bayangkan sebuah tes laboratorium untuk mendeteksi penyakit langka memiliki akurasi 99% (hanya 1% salah positif). Jika seorang pasien dites dan hasilnya positif, masyarakat awam menduga pasien itu pasti 99% menderita penyakit tersebut. Namun mengapa para dokter dan ahli statistika tahu bahwa peluang sesungguhnya pasien tersebut benar-benar sakit sering kali di bawah 10%? Paradoks ini dipecahkan oleh Teorema Bayes."
+          "html": "<p>Bayangkan sebuah tes laboratorium untuk mendeteksi penyakit langka memiliki akurasi 99% (hanya 1% salah positif). Jika seorang pasien dites dan hasilnya positif, masyarakat awam menduga pasien itu pasti 99% menderita penyakit tersebut. Namun mengapa para dokter dan ahli statistika tahu bahwa peluang sesungguhnya pasien tersebut benar-benar sakit sering kali di bawah 10%? Paradoks ini dipecahkan oleh Teorema Bayes.</p>"
         },
         {
           "type": "callout",
-          "variant": "tip",
+          "variant": "sejarah",
           "title": "Kilas Balik Sejarah: Thomas Bayes dan Pierre-Simon Laplace: Teori Peluang Bersyarat",
-          "content": "Pendeta dan matematikawan Inggris Thomas Bayes menulis risalah yang dipublikasikan setelah wafatnya pada tahun 1763 (An Essay towards solving a Problem in the Doctrine of Chances). Pierre-Simon Laplace menyempurnakan rumus Teorema Bayes yang memungkinkan kita memperbarui keyakinan probabilitas (posterior probability) setelah mendapatkan informasi bukti baru (evidence)."
+          "html": "<p>Pendeta dan matematikawan Inggris Thomas Bayes menulis risalah yang dipublikasikan setelah wafatnya pada tahun 1763 (An Essay towards solving a Problem in the Doctrine of Chances). Pierre-Simon Laplace menyempurnakan rumus Teorema Bayes yang memungkinkan kita memperbarui keyakinan probabilitas (posterior probability) setelah mendapatkan informasi bukti baru (evidence).</p>"
         },
         {
           "type": "callout",
-          "variant": "warning",
+          "variant": "definisi",
           "title": "Definisi Konseptual: Peluang Bersyarat, Hukum Peluang Total, dan Teorema Bayes",
-          "content": "1. Peluang Bersyarat ($P(A|B)$): Peluang terjadinya peristiwa $A$ dengan syarat peristiwa $B$ sudah pasti terjadi lebih dahulu.\n\\[ P(A|B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(B) > 0 \\]\n2. Hukum Peluang Total: Jika ruang sampel $S$ dipartisi oleh kejadian saling lepas $B_1, B_2, \\dots, B_k$, maka:\n\\[ P(A) = \\sum_{i=1}^k P(B_i) \\times P(A|B_i) \\]\n3. Teorema Bayes: Membalikkan arah probabilitas kondisi awal dari data yang teramati."
-        },
-        {
-          "type": "callout",
-          "variant": "success",
-          "title": "Formulasi Teorema Bayes dan Distribusi Binomial",
-          "content": "1. Teorema Bayes:\n\\[ P(B_i|A) = \\frac{P(B_i) \\cdot P(A|B_i)}{\\sum_{j=1}^k P(B_j) \\cdot P(A|B_j)} \\]\n2. Distribusi Peluang Binomial ($n$ percobaan Bernoulli independen dengan peluang sukses $p$):\n\\[ P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k} \\]"
+          "html": "<ol><li>Peluang Bersyarat (\\(P(A|B)\\)): Peluang terjadinya peristiwa \\(A\\) dengan syarat peristiwa \\(B\\) sudah pasti terjadi lebih dahulu.</li></ol><p>\\[ P(A|B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(B) &gt; 0 \\]</p><ol><li>Hukum Peluang Total: Jika ruang sampel \\(S\\) dipartisi oleh kejadian saling lepas \\(B_1, B_2, \\dots, B_k\\), maka:</li></ol><p>\\[ P(A) = \\sum_{i=1}^k P(B_i) \\times P(A|B_i) \\]</p><ol><li>Teorema Bayes: Membalikkan arah probabilitas kondisi awal dari data yang teramati.</li></ol>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Kaidah & Rumus Kunci",
-          "html": "<p>Peta konsep peluang bersyarat dan teorema Bayes serta bank soal analisis probabilitas.</p>\n<table class=\"var-table\">\n  <thead>\n    <tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan SI</th></tr>\n  </thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(P(A)\\)</td><td>Peluang Teoretik Kejadian A</td><td class=\"unit\">\\(\\text{skala 0 sampai 1}\\)</td></tr>\n    <tr><td class=\"sym\">\\(F_h\\)</td><td>Frekuensi Harapan Kejadian</td><td class=\"unit\">\\(\\text{kali kejadian}\\)</td></tr>\n  </tbody>\n</table>"
+          "title": "Formulasi Teorema Bayes dan Distribusi Binomial",
+          "html": "<ol><li>Teorema Bayes:</li></ol><p>\\[ P(B_i|A) = \\frac{P(B_i) \\cdot P(A|B_i)}{\\sum_{j=1}^k P(B_j) \\cdot P(A|B_j)} \\]</p><ol><li>Distribusi Peluang Binomial (\\(n\\) percobaan Bernoulli independen dengan peluang sukses \\(p\\)):</li></ol><p>\\[ P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k} \\]</p>"
         },
         {
           "type": "example",
@@ -657,20 +383,6 @@
             "Hitung peluang: P(A) = n(A) / n(S) = 15 / 28."
           ],
           "answer": "Peluang terambilnya 1 bola merah dan 1 bola putih adalah 15/28 (sekitar 0,536)."
-        },
-        {
-          "type": "check",
-          "title": "Uji Kemahiran: 04 Peluang",
-          "question": "Pada tinjauan menyeluruh materi 04 Peluang (Rangkuman Bab & Uji Kemahiran Teori Peluang), prinsip saintifik/matematis yang menjadi landasan utama adalah ....",
-          "options": {
-            "A": "210 cara",
-            "B": "35 cara",
-            "C": "42 cara",
-            "D": "120 cara"
-          },
-          "answer": "A",
-          "hint": "Fokus pada konsep kunci yang dibahas dalam bab 04 Peluang.",
-          "explanation": "P(7, 3) = 7! / (7 - 3)! = 7 × 6 × 5 = 210 cara."
         },
         {
           "type": "text",
