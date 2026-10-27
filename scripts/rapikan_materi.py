@@ -7,6 +7,7 @@
   python3 scripts/rapikan_materi.py judul-card  judul "Catatan buku" dan "Kesalahan yang sering terjadi" diseragamkan
   python3 scripts/rapikan_materi.py sapaan      sapaan "Anda" diganti "kamu"
   python3 scripts/rapikan_materi.py duplikat    card, contoh, atau cek yang sama disimpan sekali saja
+  python3 scripts/rapikan_materi.py judul-contoh  judul "Contoh soal N" dinomori ulang per pelajaran
 
 Tambahkan --coba untuk melihat jumlah perubahan tanpa menulis berkas. Setelah mengubah isi
 pelajaran, jalankan `meta`, lalu `python3 buat-katalog.py`.
@@ -148,6 +149,23 @@ def rapikan_judul_card(data: dict) -> int:
     return ubah
 
 
+# ---------- judul contoh ----------
+JUDUL_CONTOH = re.compile(r"^contoh soal( \d+)?$", re.I)
+
+
+def rapikan_judul_contoh(data: dict) -> int:
+    """Satu contoh berjudul "Contoh soal"; beberapa contoh dinomori "Contoh soal 1", "Contoh soal 2", dan seterusnya."""
+    ubah = 0
+    for p in data.get("lessons", []):
+        contoh = [b for b in p.get("blocks", []) if b.get("type") == "example" and JUDUL_CONTOH.match(b.get("title") or "")]
+        for i, b in enumerate(contoh, 1):
+            baru = "Contoh soal" if len(contoh) == 1 else f"Contoh soal {i}"
+            if b["title"] != baru:
+                b["title"] = baru
+                ubah += 1
+    return ubah
+
+
 # ---------- sapaan ----------
 # Kata sebelum "Anda" yang membuat "Anda" menjadi subjek klausa berikutnya: ditulis "kamu", bukan "-mu".
 SUBJEK = set("""jika bila apabila kalau ketika saat sewaktu sebelum setelah sesudah selama hingga sampai sejak
@@ -234,7 +252,7 @@ def rapikan_duplikat(semua: list) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("perintah", choices=("meta", "kunci", "templat", "judul-card", "sapaan", "duplikat"))
+    ap.add_argument("perintah", choices=("meta", "kunci", "templat", "judul-card", "judul-contoh", "sapaan", "duplikat"))
     ap.add_argument("--coba", action="store_true", help="hitung perubahan tanpa menulis berkas")
     args = ap.parse_args()
     total = berkas = 0
@@ -258,6 +276,8 @@ def main() -> int:
             n = rapikan_templat(data)
         elif args.perintah == "judul-card":
             n = rapikan_judul_card(data)
+        elif args.perintah == "judul-contoh":
+            n = rapikan_judul_contoh(data)
         else:
             n = rapikan_sapaan(data)
         if n:
