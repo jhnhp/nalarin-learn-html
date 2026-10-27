@@ -6,6 +6,7 @@
   python3 scripts/rapikan_materi.py templat     kalimat dan judul templat dihapus
   python3 scripts/rapikan_materi.py judul-card  judul "Catatan buku" dan "Kesalahan yang sering terjadi" diseragamkan
   python3 scripts/rapikan_materi.py sapaan      sapaan "Anda" diganti "kamu"
+  python3 scripts/rapikan_materi.py duplikat    card, contoh, atau cek yang sama disimpan sekali saja
 
 Tambahkan --coba untuk melihat jumlah perubahan tanpa menulis berkas. Setelah mengubah isi
 pelajaran, jalankan `meta`, lalu `python3 buat-katalog.py`.
@@ -20,7 +21,7 @@ import re
 import sys
 from collections import Counter
 
-from cek_kualitas import MATERI, batas_kunci, hitung_meta, polos
+from cek_kualitas import MATERI, batas_kunci, hitung_meta, kunci_duplikat, polos
 
 ACUAN_OPSI = re.compile(r"^\s*(semua|seluruh)\b.*\b(benar|salah)\b|\btidak ada (jawaban )?yang benar\b|"
                         r"\b(opsi|pilihan|jawaban)\s+[A-E]\b|^\s*[A-E]\s*(,|dan)\s*[A-E]\b", re.I)
@@ -195,12 +196,59 @@ def rapikan_sapaan(data: dict) -> int:
     return ubah
 
 
+# ---------- duplikat ----------
+def _kata_kunci(s: str) -> set[str]:
+    return {w for w in re.findall(r"[a-zà-ÿ]{4,}", polos(s).lower())}
+
+
+def rapikan_duplikat(semua: list) -> int:
+    """Simpan satu salinan per kelompok. Urutan prioritas: pelajaran yang tidak punya latihan lain,
+    pelajaran biasa (bukan Rangkuman), lalu pelajaran yang isinya paling mirip."""
+    kelompok = {}
+    for bab, _, _, data in semua:
+        for p in data.get("lessons", []):
+            konteks = _kata_kunci(p.get("title", "") + " " + " ".join(
+                b.get("html") or "" for b in p.get("blocks", []) if b.get("type") in ("text", "callout")))
+            rangkuman = p.get("id", "").startswith(("ringkasan", "rangkuman")) or p.get("title", "").startswith("Rangkuman")
+            latihan = sum(b.get("type") in ("example", "check") for b in p.get("blocks", []))
+            for b in p.get("blocks", []):
+                k = kunci_duplikat(b)
+                if k:
+                    isi = _kata_kunci(json.dumps({x: y for x, y in b.items() if x not in ("type", "title")}, ensure_ascii=False))
+                    satu_satunya = b.get("type") in ("example", "check") and latihan == 1
+                    skor = (satu_satunya, not rangkuman, len(konteks & isi) / (len(isi) ** 0.5 + 1))
+                    kelompok.setdefault(k, []).append((skor, id(b)))
+    buang = set()
+    for anggota in kelompok.values():
+        if len(anggota) > 1:
+            simpan = max(anggota, key=lambda x: x[0])[1]  # max() memilih yang pertama bila seri
+            buang.update(i for _, i in anggota if i != simpan)
+    ubah = 0
+    for _, _, _, data in semua:
+        for p in data.get("lessons", []):
+            sebelum = len(p.get("blocks", []))
+            p["blocks"] = [b for b in p.get("blocks", []) if id(b) not in buang]
+            ubah += sebelum - len(p["blocks"])
+    return ubah
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("perintah", choices=("meta", "kunci", "templat", "judul-card", "sapaan"))
+    ap.add_argument("perintah", choices=("meta", "kunci", "templat", "judul-card", "sapaan", "duplikat"))
     ap.add_argument("--coba", action="store_true", help="hitung perubahan tanpa menulis berkas")
     args = ap.parse_args()
     total = berkas = 0
+    if args.perintah == "duplikat":
+        semua = list(semua_bab())
+        before = {path: json.dumps(data, sort_keys=True) for _, path, _, data in semua}
+        total = rapikan_duplikat(semua)
+        for _, path, raw, data in semua:
+            if json.dumps(data, sort_keys=True) != before[path]:
+                berkas += 1
+                if not args.coba:
+                    tulis(path, data, raw)
+        print(f"duplikat: {total} salinan dibuang di {berkas} bab{' (coba, tidak ditulis)' if args.coba else ''}.")
+        return 0
     for bab, path, raw, data in semua_bab():
         if args.perintah == "meta":
             n = rapikan_meta(data)
