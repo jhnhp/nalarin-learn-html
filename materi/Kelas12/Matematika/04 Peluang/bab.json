@@ -7,7 +7,7 @@
       "id": "ruang-sampel-berbasis-kombinatorika",
       "title": "Menentukan Ruang Sampel dan Titik Sampel Menggunakan Kombinasi",
       "kind": "simulasi",
-      "duration": "8 menit",
+      "duration": "2 menit",
       "blocks": [
         {
           "type": "text",
@@ -26,7 +26,7 @@
       "id": "peluang-kejadian-sederhana-kombinasi",
       "title": "Perhitungan Peluang Kejadian Sederhana Menggunakan Kaidah Kombinasi",
       "kind": "simulasi",
-      "duration": "8 menit",
+      "duration": "11 menit",
       "blocks": [
         {
           "type": "text",
@@ -129,8 +129,8 @@
     {
       "id": "peluang-kejadian-majemuk-review",
       "title": "Tinjauan Peluang Majemuk: Saling Lepas dan Saling Bebas Stokastik",
-      "kind": "artikel",
-      "duration": "6 menit",
+      "kind": "simulasi",
+      "duration": "7 menit",
       "blocks": [
         {
           "type": "text",
@@ -196,12 +196,12 @@
           "type": "check",
           "question": "Kejadian A dan B saling lepas jika ....",
           "options": {
-            "A": "A ∩ B = ∅",
-            "B": "P(A ∩ B) = P(A) × P(B)",
+            "A": "P(A ∩ B) = P(A) × P(B)",
+            "B": "A ∩ B = ∅",
             "C": "A ∪ B = S",
             "D": "P(A) = P(B)"
           },
-          "answer": "A",
+          "answer": "B",
           "hint": "Saling lepas berarti tidak dapat terjadi bersamaan.",
           "explanation": "Irisannya kosong. P(A ∩ B) = P(A) × P(B) adalah syarat saling bebas."
         }
@@ -211,7 +211,7 @@
       "id": "konsep-peluang-bersyarat",
       "title": "Peluang Bersyarat: P(A | B) = P(A ∩ B) / P(B)",
       "kind": "simulasi",
-      "duration": "8 menit",
+      "duration": "7 menit",
       "blocks": [
         {
           "type": "text",
@@ -264,8 +264,8 @@
     {
       "id": "aturan-perkalian-peluang-bersyarat",
       "title": "Aturan Perkalian Peluang Bersyarat: P(A ∩ B) = P(B) · P(A | B)",
-      "kind": "simulasi",
-      "duration": "8 menit",
+      "kind": "latihan",
+      "duration": "4 menit",
       "blocks": [
         {
           "type": "callout",
@@ -325,22 +325,22 @@
     {
       "id": "teorema-peluang-total-dan-bayes",
       "title": "Teorema Peluang Total dan Teorema Bayes (Bayesian Probability)",
-      "kind": "simulasi",
-      "duration": "8 menit",
+      "kind": "artikel",
+      "duration": "2 menit",
       "blocks": []
     },
     {
       "id": "pengantar-distribusi-peluang-binomial",
       "title": "Pengantar Variabel Acak dan Distribusi Peluang Binomial (Percobaan Bernoulli)",
-      "kind": "simulasi",
-      "duration": "8 menit",
+      "kind": "artikel",
+      "duration": "2 menit",
       "blocks": []
     },
     {
       "id": "ringkasan-peta-konsep",
       "title": "Rangkuman Bab & Uji Kemahiran Teori Peluang",
       "kind": "latihan",
-      "duration": "10 menit",
+      "duration": "4 menit",
       "blocks": [
         {
           "type": "text",
@@ -371,22 +371,8 @@
           "html": "<ol><li>Teorema Bayes:</li></ol><p>\\[ P(B_i|A) = \\frac{P(B_i) \\cdot P(A|B_i)}{\\sum_{j=1}^k P(B_j) \\cdot P(A|B_j)} \\]</p><ol><li>Distribusi Peluang Binomial (\\(n\\) percobaan Bernoulli independen dengan peluang sukses \\(p\\)):</li></ol><p>\\[ P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k} \\]</p>"
         },
         {
-          "type": "example",
-          "title": "Contoh Soal Evaluasi: 04 Peluang",
-          "question": "<p>Dalam evaluasi pemahaman materi <b>04 Peluang</b>, tinjau kembali integrasi konsep pada subbab <i>Rangkuman Bab & Uji Kemahiran Teori Peluang</i>. Analisis langkah sistematis penyelesaian permasalahan kuantitatif/konseptual berikut ini:</p><p>Sebuah kotak berisi 5 bola merah dan 3 bola putih. Dari kotak tersebut diambil 2 bola sekaligus secara acak. Berapakah peluang terambilnya 1 bola merah dan 1 bola putih?</p>",
-          "steps": [
-            "Hitung total bola di dalam kotak: 5 + 3 = 8 bola.",
-            "Hitung total ruang sampel n(S) pengambilan 2 bola dari 8 bola menggunakan kombinasi: n(S) = C(8, 2) = 8! / (2! × 6!) = (8 × 7) / 2 = 28 cara.",
-            "Hitung banyak kejadian terambil 1 bola merah dari 5 bola merah: C(5, 1) = 5 cara.",
-            "Hitung banyak kejadian terambil 1 bola putih dari 3 bola putih: C(3, 1) = 3 cara.",
-            "Hitung titik sampel kejadian A: n(A) = C(5, 1) × C(3, 1) = 5 × 3 = 15 cara.",
-            "Hitung peluang: P(A) = n(A) / n(S) = 15 / 28."
-          ],
-          "answer": "Peluang terambilnya 1 bola merah dan 1 bola putih adalah 15/28 (sekitar 0,536)."
-        },
-        {
           "type": "text",
-          "html": "<p>Setelah menuntaskan seluruh subbab pada bab ini, uji kemahiran dan pemahaman mendalam Anda melalui kuis evaluasi 20 soal terpadu di bawah ini.</p>"
+          "html": "<p>Setelah menyelesaikan semua pelajaran di bab ini, uji pemahamanmu dengan kuis bab di bawah ini.</p>"
         },
         {
           "type": "cheatsheet",

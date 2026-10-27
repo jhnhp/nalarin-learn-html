@@ -53,6 +53,7 @@ CEK = {
     "karakter_kontrol": ("nol", "karakter kontrol di teks (biasanya \\t, \\f, \\a dari LaTeX yang tidak di-escape)"),
     "pembatas_bersarang": ("nol", "\\( atau \\[ di dalam rumus lain, atau tanpa penutup"),
     "pembatas_tanpa_pasangan": ("nol", "pembuka rumus ($, \\(, \\[) tanpa penutup di satu potong teks"),
+    "rumus_berisi_kata": ("nol", "rumus berisi kata biasa di luar \\text (tanda pembatas salah pasang)"),
     "kunci_menumpuk": ("rem", "bab yang kunci cek-nya menumpuk di satu huruf"),
     "jenis_tidak_sesuai": ("rem", "kind pelajaran tidak sesuai isinya"),
     "durasi_tidak_sesuai": ("rem", "durasi pelajaran jauh dari perkiraan isinya"),
@@ -63,6 +64,8 @@ CEK = {
     "tipis": ("rem", f"pelajaran dengan kurang dari {TIPIS} kata materi"),
     "tanpa_latihan": ("rem", "pelajaran tanpa contoh, cek, atau tautan kuis"),
     "contoh_generik": ("rem", "contoh soal dengan langkah templat"),
+    "latihan_templat": ("rem", "contoh atau cek templat (\"... dalam materi '...'?\")"),
+    "bagan_latex": ("rem", "bagan alir yang ditulis dengan \\begin{cases} (terpotong di layar)"),
     "tumpukan_card": ("rem", "pelajaran yang memuat tiga atau empat card kerangka"),
     "sejarah_tanpa_sumber": ("rem", "card Sejarah tanpa tautan sumber"),
     "cheatsheet_kembar": ("rem", "cheat sheet yang sama di lebih dari satu bab"),
@@ -79,6 +82,10 @@ LANGKAH_TEMPLAT = re.compile(
     r"|Identifikasi Unsur dan Konteks Wacana|Analisis Hubungan Logis antarelemen|Sintesis Simpulan dan Verifikasi"
     r"|Identifikasi Variabel dan Parameter yang Diketahui|Substitusi ke Persamaan / Model|Interpretasi Makna dan Validasi"
     r"|Identifikasi besaran, data yang diketahui|Terapkan konsep atau formula)")
+LATIHAN_TEMPLAT = re.compile(r"(dalam|pada) materi '[^']+'|dikemukakan oleh [^.?]+ (dalam|diterapkan)", re.I)
+KATA_DI_RUMUS = re.compile(r"(?<![\\A-Za-z])(atau|dan|dengan|yang|adalah|untuk|pada|dari|sehingga|maka|jika|karena|"
+                          r"bila|tidak|akan|ini|itu|oleh|setiap|sebesar|menjadi)(?![A-Za-z])")
+TEKS_RUMUS = re.compile(r"\\(text|mathrm|textbf|mathbf|operatorname|textit)\{[^{}]*\}")
 PEMBUKA_MATERI = ("setelah menuntaskan seluruh subbab", "materi bab ini disusun berdasarkan buku siswa")
 HIPERBOLA = re.compile(r"\b(luar biasa|mutlak|revolusioner|tak terbantahkan|mematikan|laksana|menakjubkan|"
                        r"sangat dahsyat|legendaris|abadi|jenius|ajaib|keajaiban)\b", re.I)
@@ -368,8 +375,12 @@ def kumpulkan(wajib_katex: bool = False):
                     if (rendah.startswith("catatan buku") and not judul.startswith("Catatan buku")) or rendah.startswith("koreksi buku") or (
                             rendah.startswith("kesalahan yang sering terjadi") and not judul.startswith("Kesalahan yang sering terjadi")):
                         temuan["judul_card_tidak_baku"].append(f"{lok}: {judul}")
+                    if "\\begin{cases}" in (b.get("html") or "") and "\\text" in (b.get("html") or ""):
+                        temuan["bagan_latex"].append(f"{lok}: {judul[:60]}")
                     if b.get("variant") == "sejarah" and "<a " not in (b.get("html") or ""):
                         temuan["sejarah_tanpa_sumber"].append(lok)
+                if t in ("example", "check") and LATIHAN_TEMPLAT.search(polos(b.get("question"))):
+                    temuan["latihan_templat"].append(lok)
                 if t == "example":
                     langkah = b.get("steps") or []
                     if sum(bool(LANGKAH_TEMPLAT.match(polos(s))) for s in langkah) >= 2:
@@ -396,6 +407,9 @@ def kumpulkan(wajib_katex: bool = False):
                         if yatim:
                             temuan["pembatas_tanpa_pasangan"].append(f"{lok} {jalur}: {yatim} … {potong.strip()[:60]}")
                         semua_rumus.extend((f"{lok} {jalur}", tex, disp) for tex, disp in rumus)
+                        for tex, _ in rumus:
+                            if KATA_DI_RUMUS.search(TEKS_RUMUS.sub("", tex)):
+                                temuan["rumus_berisi_kata"].append(f"{lok} {jalur}: {tex[:70]}")
                     isi = polos(s)
                     if TEMPLAT.search(isi):
                         temuan["teks_templat"].append(f"{lok} {jalur}: {TEMPLAT.search(isi).group(0)}")
