@@ -35,7 +35,7 @@ Repo ini berisi dua produk: **Nalarin Learn** (materi, `index.html`, `bab.html`,
 - Callout wajib memakai field `html`; renderer tidak membaca `body` atau `content`.
 - Jangan menyalin card, contoh, atau cek yang sama ke banyak pelajaran; tiap pelajaran menulis isinya sendiri.
 - Hindari `$` sebagai lambang mata uang (KaTeX membacanya sebagai pembuka rumus); tulis "dolar AS" atau "USD".
-- Setelah mengubah isi pelajaran, jalankan `python3 scripts/rapikan_materi.py meta` (jenis dan durasi mengikuti isi) dan `python3 buat-katalog.py`. Untuk cek pemahaman baru, `rapikan_materi.py kunci` meratakan kunci per bab. Sapaan ke siswa memakai "kamu".
+- Setelah mengubah isi pelajaran, jalankan `python3 scripts/rapikan_materi.py meta` (jenis dan durasi mengikuti isi) dan `python3 buat-katalog.py`. Untuk cek pemahaman baru, `rapikan_materi.py kunci` meratakan kunci per bab; setelah memindah contoh, `rapikan_materi.py judul-contoh` merapikan nomor judulnya. Sapaan ke siswa memakai "kamu".
 
 ## Gaya materi
 
