@@ -28,6 +28,14 @@ Repo ini berisi dua produk: **Nalarin Learn** (materi, `index.html`, `bab.html`,
 - Generator ada di `_gen/gen/` (satu berkas per bab; pustaka bersama `lib.py`, kelas `Quiz`). Jalankan dengan `python3`.
 - Pemeriksa: `_gen/cekbab.sh`, `_gen/jserr.sh`, `_gen/kuis.sh`.
 
+## Pemeriksaan kualitas materi (wajib sebelum commit)
+
+- Jalankan `python3 scripts/validate_content.py` dan `python3 scripts/cek_kualitas.py`; keduanya harus lolos (juga dijalankan GitHub Actions di setiap PR). Pemeriksaan "nol" (card tanpa `html`, card/contoh/cek duplikat, rumus gagal KaTeX, karakter kontrol, pembatas rumus) harus kosong; angka lain tidak boleh naik dari `scripts/baseline-kualitas.json`. Setelah memperbaiki masalah lama, jalankan `python3 scripts/cek_kualitas.py --perbarui-baseline` dan commit baseline-nya.
+- Tulis dan ubah `bab.json` lewat Python (`json.load`, lalu `json.dump(..., ensure_ascii=False, indent=2)`), jangan lewat heredoc shell atau JSON yang diketik tangan: `$n` hilang di shell, dan `\t`, `\n`, `\f` di rumus LaTeX berubah menjadi karakter kontrol.
+- Callout wajib memakai field `html`; renderer tidak membaca `body` atau `content`.
+- Jangan menyalin card, contoh, atau cek yang sama ke banyak pelajaran; tiap pelajaran menulis isinya sendiri.
+- Hindari `$` sebagai lambang mata uang (KaTeX membacanya sebagai pembuka rumus); tulis "dolar AS" atau "USD".
+
 ## Gaya materi
 
 - Tanpa video (pemilik akan menambah sendiri). Kesalahan di buku sumber diperbaiki di pelajaran dengan callout "Catatan buku".
