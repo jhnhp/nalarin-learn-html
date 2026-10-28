@@ -7,11 +7,23 @@
       "id": "ruang-sampel-dan-peluang-klasik",
       "title": "Ruang Sampel Percobaan dan Konsep Peluang Klasik",
       "kind": "simulasi",
-      "duration": "5 menit",
+      "duration": "8 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Undian Doorprize",
+          "html": "<p>Di acara sekolah ada 300 kupon undian, dan kamu memegang 3 kupon. Seberapa besar kesempatanmu menang? Jika setiap kupon punya kesempatan sama untuk terambil, jawabannya \\(\\tfrac{3}{300} = 1\\%\\). Menghitung peluang dimulai dari mendaftar semua hasil yang mungkin, lalu menghitung hasil yang kita inginkan.</p>"
+        },
+        {
           "type": "text",
-          "html": "<p><b>Ruang Sampel Percobaan dan Konsep Peluang Klasik</b>: Definisi ruang sampel S, titik sampel, kejadian sederhana vs majemuk, aksioma dasar peluang Kolmogorov 0 ≤ P(A) ≤ 1 dan P(S) = 1.</p>"
+          "html": "<p>Beberapa istilah dasar:</p><ul><li><b>percobaan</b>: kegiatan yang hasilnya tidak pasti, misalnya melempar dadu;</li><li><b>ruang sampel</b> S: himpunan semua hasil yang mungkin; anggotanya disebut <b>titik sampel</b>;</li><li><b>kejadian</b>: himpunan bagian dari ruang sampel, misalnya \"muncul angka genap\" = {2, 4, 6}.</li></ul>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Peluang Klasik",
+          "html": "<p>Jika setiap titik sampel berpeluang sama untuk muncul, peluang kejadian A adalah</p>\\[P(A) = \\frac{n(A)}{n(S)}, \\qquad 0 \\le P(A) \\le 1.\\]<p>P(A) = 0 berarti mustahil, P(A) = 1 berarti pasti. Peluang komplemen (bukan A) adalah \\(P(A^c) = 1 - P(A)\\).</p>"
         },
         {
           "type": "text",
@@ -25,16 +37,60 @@
           "caption": "Pilih kejadian A dan B, lalu hitung sel yang berwarna. Setelah itu tekan <b>Lempar 100 kali</b> beberapa kali dan bandingkan frekuensi relatif dengan peluang teoretis."
         },
         {
+          "type": "text",
+          "html": "<p>Jika semua kemungkinan jumlah mata dua dadu dicatat beserta peluangnya, kita mendapatkan <b>distribusi peluang</b>. Jumlah 7 paling mungkin karena paling banyak pasangan yang menghasilkannya.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/distribusi-jumlah.svg",
+          "alt": "Diagram batang peluang jumlah 2 sampai 12; naik dari 1/36 ke 6/36 pada jumlah 7 lalu turun lagi",
+          "width": 560,
+          "caption": "Distribusi peluang jumlah mata dua dadu. Jumlah semua peluang = 1."
+        },
+        {
           "type": "example",
-          "title": "Contoh Terpandu: Pemecahan Masalah Ruang Sampel Percobaan dan Konsep P",
-          "question": "<p>Diberikan permasalahan terkait konsep Ruang Sampel Percobaan dan Konsep Peluang Klasik. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "title": "Contoh soal 1",
+          "question": "<p>Tiga koin dilempar bersamaan. Tentukan ruang sampelnya dan peluang muncul tepat dua angka (A).</p>",
           "steps": [
-            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
-            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Formula Permutasi, Kombinasi & Peluang Teoretis yang menghubungkan variabel-variabel tersebut.",
-            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
-            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+            "Setiap koin punya 2 hasil, jadi \\(n(S) = 2 \\times 2 \\times 2 = 8\\): AAA, AAG, AGA, GAA, AGG, GAG, GGA, GGG.",
+            "Tepat dua angka: AAG, AGA, GAA, jadi \\(n(A) = 3\\).",
+            "\\(P = \\tfrac38\\)."
           ],
-          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Permutasi vs Kombinasi & Peluang Suatu Kejadian, solusi diperoleh secara terstruktur dan tepat."
+          "answer": "3/8"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Dua dadu dilempar sekali. Tentukan peluang jumlah mata dadu 11, dan peluang kedua mata dadu sama.</p>",
+          "steps": [
+            "Jumlah 11: (5, 6) dan (6, 5), jadi n = 2. P = 2/36 = 1/18.",
+            "Mata dadu sama: (1, 1), (2, 2), …, (6, 6), jadi n = 6. P = 6/36 = 1/6."
+          ],
+          "answer": "1/18 dan 1/6"
+        },
+        {
+          "type": "check",
+          "question": "Satu huruf diambil acak dari kata PELUANG. Peluang terambil huruf vokal adalah ....",
+          "options": {
+            "A": "\\(\\tfrac27\\)",
+            "B": "\\(\\tfrac37\\)",
+            "C": "\\(\\tfrac47\\)",
+            "D": "\\(\\tfrac35\\)"
+          },
+          "answer": "B",
+          "explanation": "Kata PELUANG punya 7 huruf; vokalnya E, U, A. Peluangnya 3/7."
+        },
+        {
+          "type": "check",
+          "question": "Dua dadu dilempar sekali. Peluang jumlah mata dadu <b>bukan</b> 12 adalah ....",
+          "options": {
+            "A": "\\(\\tfrac{1}{36}\\)",
+            "B": "\\(\\tfrac{11}{12}\\)",
+            "C": "\\(\\tfrac56\\)",
+            "D": "\\(\\tfrac{35}{36}\\)"
+          },
+          "answer": "D",
+          "explanation": "Jumlah 12 hanya dari (6, 6), peluangnya 1/36. Komplemennya 1 − 1/36 = 35/36."
         }
       ]
     },
@@ -42,109 +98,102 @@
       "id": "distribusi-frekuensi-relatif-harapan",
       "title": "Frekuensi Relatif, Hukum Bilangan Besar, dan Frekuensi Harapan",
       "kind": "artikel",
-      "duration": "7 menit",
+      "duration": "5 menit",
       "blocks": [
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Mengapa dalam 1.000 Kali Lemparan Koin, Munculnya Angka Selalu Mendekati 50%?",
+          "title": "Penerapan Konsep di Dunia Nyata: Lemparan Koin yang Makin Mendekati 50%",
           "html": "<p>Jika kamu melempar sekeping koin sebanyak 4 kali, kamu mungkin saja mendapatkan Gambar 4 kali berturut-turut (100%). Namun apa yang terjadi bila kamu melempar koin tersebut sebanyak 1.000 kali atau 100.000 kali? Perlahan tapi pasti, proporsi kemunculan sisi Angka akan bergerak stabil merapat ke angka 50% (0,5). Keteraturan statistik dari ketidakteraturan acak inilah yang menghubungkan frekuensi empiris dengan peluang teoretis.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Peluang juga bisa ditaksir dari percobaan. <b>Frekuensi relatif</b> kejadian A adalah banyak kemunculan A dibagi banyak percobaan: \\(f_r(A) = \\tfrac{f}{n}\\). Untuk percobaan sedikit, nilainya bisa jauh dari peluang teoretis. Makin banyak percobaan, frekuensi relatif makin mendekati peluang sebenarnya. Inilah <b>hukum bilangan besar</b>, dan karena itu peluang yang dihitung dari data besar disebut <b>peluang empiris</b>.</p><p>Sebaliknya, jika peluang diketahui, kita bisa memperkirakan berapa kali kejadian itu muncul. <b>Frekuensi harapan</b> kejadian A dalam n percobaan adalah</p>\\[F_h(A) = n \\times P(A).\\]<p>Frekuensi harapan adalah perkiraan rata-rata, bukan jaminan: dari 100 lemparan koin, hasilnya bisa 47 atau 53 angka.</p>"
         },
         {
           "type": "callout",
           "variant": "sejarah",
           "title": "Kilas Balik Sejarah: Jacob Bernoulli dan Hukum Bilangan Besar (Law of Large Numbers 1713)",
-          "html": "<p>Matematikawan Swiss Jacob Bernoulli mendedikasikan 20 tahun hidupnya untuk membuktikan teorema yang diterbitkan dalam Ars Conjectandi (1713): Hukum Bilangan Besar (Weak Law of Large Numbers). Bernoulli membuktikan secara matematis bahwa seiring bertambahnya jumlah percobaan acak mendekati tak terhingga (\\(n \\to \\infty\\)), frekuensi relatif empiris suatu kejadian pasti akan konvergen menuju peluang teoretis aslinya.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Frekuensi Relatif, Peluang Empiris, dan Frekuensi Harapan",
-          "html": "<ol><li>Frekuensi Relatif (\\(f_r\\)): Rasio banyaknya kejadian \\(A\\) yang teramati muncul (\\(f\\)) terhadap total seluruh percobaan (\\(n\\)).</li></ol><p>\\[ f_r(A) = \\frac{f}{n} \\]</p><ol><li>Frekuensi Harapan (\\(F_h\\)): Banyaknya kejadian \\(A\\) yang diharapkan terjadi secara matematis dalam \\(n\\) kali percobaan acak berulang.</li></ol><p>\\[ F_h(A) = n \\times P(A) \\]</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Frekuensi Relatif dan Frekuensi Harapan",
-          "html": "<p>\\[ \\begin{aligned} \\text{Frekuensi Relatif:} &amp; \\quad f_r(A) = \\frac{\\text{Banyaknya Kejadian } A}{\\text{Total Percobaan } (n)} \\\\ \\text{Frekuensi Harapan:} &amp; \\quad F_h(A) = n \\cdot P(A) \\end{aligned} \\] (Ketika jumlah percobaan \\(n\\) sangat besar, \\(f_r(A) \\approx P(A)\\)).</p>"
+          "html": "<p>Matematikawan Swiss Jacob Bernoulli mendedikasikan 20 tahun hidupnya untuk membuktikan teorema yang diterbitkan dalam Ars Conjectandi (1713): Hukum Bilangan Besar (Weak Law of Large Numbers). Bernoulli membuktikan secara matematis bahwa seiring bertambahnya jumlah percobaan acak mendekati tak terhingga (\\(n \\to \\infty\\)), frekuensi relatif empiris suatu kejadian pasti akan konvergen menuju peluang teoretis aslinya.</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/Law_of_large_numbers\">Law of large numbers, Wikipedia</a></small></p>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Dari 200 lampu yang diuji, 80 lampu menyala lebih dari 3.000 jam. Jika pabrik memproduksi 1.500 lampu, berapa yang diharapkan menyala lebih dari 3.000 jam?</p>",
+          "question": "<p>Dari 250 benih cabai yang disemai, 210 tumbuh. Jika petani menyemai 1.200 benih dengan cara yang sama, berapa benih yang diharapkan tumbuh?</p>",
           "steps": [
-            "Peluang empiris = 80/200 = 0,4.",
-            "Frekuensi harapan = 1.500 × 0,4 = 600 lampu."
+            "Peluang empiris tumbuh \\(= \\tfrac{210}{250} = 0{,}84\\).",
+            "Frekuensi harapan \\(= 1.200 \\times 0{,}84 = 1.008\\) benih."
           ],
-          "answer": "600 lampu"
+          "answer": "sekitar 1.008 benih"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Dua dadu dilempar. Tentukan peluang jumlah 8 atau kedua mata dadu sama.</p>",
+          "question": "<p>Tiga koin dilempar bersamaan sebanyak 160 kali. Berapa kali diharapkan muncul tepat dua angka?</p>",
           "steps": [
-            "Jumlah 8: 5 hasil. Mata sama: 6 hasil. Keduanya: (4, 4), 1 hasil.",
-            "P = 5/36 + 6/36 − 1/36 = 10/36 = 5/18."
+            "Dari pelajaran sebelumnya, P(tepat dua angka) = 3/8.",
+            "\\(F_h = 160 \\times \\tfrac38 = 60\\) kali."
           ],
-          "answer": "5/18"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Sebuah dadu dilempar tiga kali. Berapa peluang muncul setidaknya satu angka 6?</p>",
-          "steps": [
-            "Gunakan komplemen: tidak ada angka 6 pada ketiga lemparan.",
-            "P(tidak ada 6) = (5/6)³ = 125/216.",
-            "P(setidaknya satu 6) = 1 − 125/216 = 91/216."
-          ],
-          "answer": "91/216"
+          "answer": "60 kali"
         },
         {
           "type": "check",
-          "question": "Sebuah koin dilempar 200 kali. Frekuensi harapan muncul sisi angka adalah ....",
+          "question": "Sebuah dadu dilempar 120 kali. Frekuensi harapan muncul mata dadu bilangan prima adalah ....",
           "options": {
-            "A": "50",
-            "B": "100",
-            "C": "150",
-            "D": "200"
+            "A": "20",
+            "B": "40",
+            "C": "60",
+            "D": "80"
           },
-          "answer": "B",
-          "hint": "F<sub>h</sub> = n × P(A).",
-          "explanation": "200 × ½ = 100."
-        },
-        {
-          "type": "check",
-          "question": "Sebuah koin dan sebuah dadu dilempar bersamaan. Peluang muncul sisi angka dan mata dadu 6 adalah ....",
-          "options": {
-            "A": "1/12",
-            "B": "1/8",
-            "C": "2/3",
-            "D": "1/6"
-          },
-          "answer": "A",
-          "hint": "Kedua kejadian saling bebas.",
-          "explanation": "½ × 1/6 = 1/12."
+          "answer": "C",
+          "explanation": "Bilangan prima pada dadu: 2, 3, 5, jadi P = 3/6 = 1/2. F_h = 120 × 1/2 = 60."
         }
       ]
     },
     {
       "id": "kejadian-majemuk-dan-diagram-venn",
       "title": "Operasi Himpunan Kejadian Majemuk: Irisan (A ∩ B) dan Gabungan (A ∪ B)",
-      "kind": "simulasi",
-      "duration": "2 menit",
+      "kind": "artikel",
+      "duration": "4 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Representasi diagram Venn himpunan hasil; membedakan kejadian 'A DAN B' (irisan) serta 'A ATAU B' (gabungan).</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Siswa yang Ikut Dua Ekskul",
+          "html": "<p>Pembina OSIS mendata 30 siswa: ada yang ikut paduan suara, ada yang ikut futsal, ada yang ikut keduanya, dan ada yang tidak ikut keduanya. Jika siswa yang ikut keduanya dihitung dua kali, totalnya jadi lebih dari 30. Diagram Venn membantu menghitung dengan benar, dan cara yang sama dipakai untuk kejadian dalam peluang.</p>"
         },
         {
-          "type": "sim",
-          "src": "sim/model-luas.html",
-          "title": "Model luas dan diagram pohon",
-          "height": 600,
-          "caption": "Pilih contoh <b>Dobel dua kali</b>, lalu ubah peluangnya. Bandingkan luas persegi panjang A∩B dengan hasil perkalian pada diagram pohon."
+          "type": "text",
+          "html": "<p>Kejadian adalah himpunan, jadi operasi himpunan berlaku:</p><ul><li><b>A ∩ B</b> (irisan): A <i>dan</i> B terjadi bersamaan;</li><li><b>A ∪ B</b> (gabungan): A <i>atau</i> B terjadi, termasuk keduanya;</li><li><b>A<sup>c</sup></b> (komplemen): A <i>tidak</i> terjadi.</li></ul><p>Pada diagram Venn, ruang sampel digambar sebagai persegi panjang dan setiap kejadian sebagai lingkaran. Isi bagian irisan terlebih dahulu, baru bagian lainnya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Andrey Kolmogorov dan Aksiomatisasi Teori Peluang 1933",
+          "html": "<p>Sebelum abad ke-20, peluang dihitung dengan banyak cara yang tidak selalu sejalan. Pada 1933, matematikawan Rusia Andrey Kolmogorov menerbitkan <i>Grundbegriffe der Wahrscheinlichkeitsrechnung</i>, yang membangun teori peluang di atas teori himpunan. Kejadian adalah himpunan bagian ruang sampel, \"A dan B\" adalah irisan, \"A atau B\" adalah gabungan, dan semua aturan peluang diturunkan dari tiga aksioma: peluang tidak negatif, peluang ruang sampel 1, dan peluang gabungan kejadian saling lepas sama dengan jumlah peluangnya.</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/Probability_axioms\">Probability axioms, Wikipedia</a></small></p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Sebuah dadu dilempar. A = muncul angka genap, B = muncul angka lebih dari 3. Tentukan A ∩ B, A ∪ B, dan P(A ∪ B).</p>",
+          "steps": [
+            "A = {2, 4, 6} dan B = {4, 5, 6}.",
+            "A ∩ B = {4, 6}; A ∪ B = {2, 4, 5, 6}.",
+            "\\(P(A \\cup B) = \\tfrac46 = \\tfrac23\\)."
+          ],
+          "answer": "A ∩ B = {4, 6}, A ∪ B = {2, 4, 5, 6}, P(A ∪ B) = 2/3"
+        },
+        {
+          "type": "check",
+          "question": "Dari 30 siswa, 18 ikut paduan suara, 12 ikut futsal, dan 5 ikut keduanya. Seorang siswa dipilih acak. Peluang ia tidak ikut keduanya adalah ....",
+          "options": {
+            "A": "\\(\\tfrac16\\)",
+            "B": "\\(\\tfrac{1}{30}\\)",
+            "C": "\\(\\tfrac13\\)",
+            "D": "\\(\\tfrac{5}{6}\\)"
+          },
+          "answer": "A",
+          "explanation": "Yang ikut paling sedikit satu: 18 + 12 − 5 = 25. Yang tidak ikut keduanya 30 − 25 = 5, peluangnya 5/30 = 1/6."
         }
       ]
     },
@@ -152,11 +201,30 @@
       "id": "aturan-penjumlahan-saling-lepas",
       "title": "Aturan Penjumlahan 1: Kejadian Saling Lepas (Mutually Exclusive)",
       "kind": "simulasi",
-      "duration": "3 menit",
+      "duration": "6 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Hadiah Utama atau Hadiah Hiburan",
+          "html": "<p>Dalam satu undian, sebuah kupon hanya bisa memenangkan satu jenis hadiah: utama atau hiburan, tidak keduanya. Jika peluang menang hadiah utama 0,01 dan hadiah hiburan 0,05, peluang menang sesuatu tinggal dijumlahkan: 0,06. Penjumlahan langsung seperti ini hanya sah untuk kejadian yang tidak bisa terjadi bersamaan.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Pertanyaan dengan kata <b>“atau”</b> menanyakan gabungan dua kejadian: A ∪ B. Cara menghitungnya bergantung pada apakah A dan B dapat terjadi bersamaan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Kejadian Saling Lepas",
+          "html": "<p>A dan B <b>saling lepas</b> jika tidak dapat terjadi bersamaan, yaitu \\(A \\cap B = \\varnothing\\). Untuk kejadian saling lepas, \\(P(A \\cup B) = P(A) + P(B)\\).</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/venn.svg",
+          "alt": "Kiri dua lingkaran terpisah (saling lepas), kanan dua lingkaran beririsan",
+          "width": 600,
+          "caption": "Kejadian saling lepas tidak mempunyai irisan."
         },
         {
           "type": "sim",
@@ -168,12 +236,25 @@
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Dua dadu dilempar 180 kali. Berapa kali diharapkan muncul jumlah 5?</p>",
+          "question": "<p>Dua dadu dilempar. Tentukan peluang jumlah mata dadu 4 atau 10.</p>",
           "steps": [
-            "Jumlah 5: (1,4), (2,3), (3,2), (4,1), jadi P = 4/36 = 1/9.",
-            "F<sub>h</sub> = 180 × 1/9 = 20 kali."
+            "Jumlah 4: (1, 3), (2, 2), (3, 1), jadi 3 hasil. Jumlah 10: (4, 6), (5, 5), (6, 4), jadi 3 hasil.",
+            "Jumlahnya tidak mungkin 4 dan 10 sekaligus, jadi kedua kejadian saling lepas.",
+            "\\(P = \\tfrac{3}{36} + \\tfrac{3}{36} = \\tfrac{6}{36} = \\tfrac16\\)."
           ],
-          "answer": "20 kali"
+          "answer": "1/6"
+        },
+        {
+          "type": "check",
+          "question": "Dua dadu dilempar sekali. Pasangan kejadian yang saling lepas adalah ....",
+          "options": {
+            "A": "jumlah 12 dan kedua mata sama",
+            "B": "jumlah 7 dan dadu pertama 1",
+            "C": "jumlah genap dan kedua mata sama",
+            "D": "jumlah 3 dan kedua mata sama"
+          },
+          "answer": "D",
+          "explanation": "Jumlah 3 hanya dari (1, 2) dan (2, 1), keduanya tidak kembar, jadi tidak ada irisan. Pasangan lain beririsan: (6, 6), (1, 6), dan semua hasil kembar berjumlah genap."
         }
       ]
     },
@@ -181,60 +262,87 @@
       "id": "aturan-penjumlahan-tidak-saling-lepas",
       "title": "Aturan Penjumlahan 2: Kejadian Tidak Saling Lepas (Inklusi-Eksklusi)",
       "kind": "latihan",
-      "duration": "3 menit",
+      "duration": "4 menit",
       "blocks": [
         {
-          "type": "image",
-          "src": "gambar/venn.svg",
-          "alt": "Kiri dua lingkaran terpisah (saling lepas), kanan dua lingkaran beririsan",
-          "width": 600,
-          "caption": "Kejadian saling lepas tidak mempunyai irisan."
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Diskon untuk Pelajar atau Anggota",
+          "html": "<p>Toko buku memberi diskon kepada pelajar <i>atau</i> pemegang kartu anggota. Untuk memperkirakan berapa pembeli yang mendapat diskon, pemilik toko tidak boleh asal menjumlahkan: pelajar yang juga anggota akan terhitung dua kali. Bagian yang terhitung dua kali harus dikurangkan sekali.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika A dan B bisa terjadi bersamaan, \\(P(A) + P(B)\\) menghitung irisan \\(A \\cap B\\) dua kali. Karena itu irisan dikurangkan satu kali. Aturan ini disebut prinsip inklusi-eksklusi, dan berlaku juga untuk kejadian saling lepas (irisannya bernilai nol).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan Penjumlahan Peluang",
+          "html": "\\[P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\]"
         },
         {
           "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Satu kartu diambil dari 52 kartu remi. Tentukan peluang terambil kartu As atau kartu hati.</p>",
+          "title": "Contoh soal 1",
+          "question": "<p>Satu kartu diambil dari 52 kartu remi. Tentukan peluang terambil kartu King atau kartu merah.</p>",
           "steps": [
-            "P(As) = 4/52, P(hati) = 13/52, P(As hati) = 1/52.",
-            "P = (4 + 13 − 1)/52 = 16/52 = 4/13."
+            "P(King) = 4/52 dan P(merah) = 26/52.",
+            "King merah ada 2 (hati dan wajik), jadi P(King ∩ merah) = 2/52.",
+            "\\(P = \\tfrac{4 + 26 - 2}{52} = \\tfrac{28}{52} = \\tfrac{7}{13}\\)."
           ],
-          "answer": "4/13"
+          "answer": "7/13"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah dadu dilempar. Tentukan peluang muncul angka genap atau angka prima.</p>",
+          "steps": [
+            "Genap {2, 4, 6} dan prima {2, 3, 5}; irisannya {2}.",
+            "\\(P = \\tfrac36 + \\tfrac36 - \\tfrac16 = \\tfrac56\\)."
+          ],
+          "answer": "5/6"
         },
         {
           "type": "check",
-          "question": "Sebuah dadu dilempar sekali. Pasangan kejadian yang saling lepas adalah ....",
+          "question": "Dua dadu dilempar sekali. Peluang jumlah mata dadu 10 atau dadu pertama bermata 5 adalah ....",
           "options": {
-            "A": "muncul angka genap dan muncul angka prima",
-            "B": "muncul angka lebih dari 2 dan muncul angka 4",
-            "C": "muncul angka genap dan muncul angka 3",
-            "D": "muncul angka ganjil dan muncul angka kurang dari 3"
+            "A": "\\(\\tfrac14\\)",
+            "B": "\\(\\tfrac29\\)",
+            "C": "\\(\\tfrac{1}{12}\\)",
+            "D": "\\(\\tfrac{5}{18}\\)"
           },
-          "answer": "C",
-          "hint": "Saling lepas berarti tidak ada hasil yang memenuhi keduanya.",
-          "explanation": "3 bukan bilangan genap, jadi tidak ada irisan. Pasangan lain beririsan: 2 (genap dan prima), 4, dan 1."
+          "answer": "B",
+          "explanation": "Jumlah 10: 3 hasil. Dadu pertama 5: 6 hasil. Keduanya: (5, 5). P = (3 + 6 − 1)/36 = 8/36 = 2/9."
         }
       ]
     },
     {
       "id": "kejadian-saling-bebas-stokastik",
       "title": "Aturan Perkalian 1: Dua Kejadian Saling Bebas (Independent Events)",
-      "kind": "artikel",
-      "duration": "5 menit",
+      "kind": "simulasi",
+      "duration": "6 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p>Jika semua kemungkinan jumlah mata dua dadu dicatat beserta peluangnya, kita mendapatkan <b>distribusi peluang</b>. Jumlah 7 paling mungkin karena paling banyak pasangan yang menghasilkannya.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Dua Genset di Rumah Sakit",
+          "html": "<p>Rumah sakit memasang dua genset cadangan yang bekerja terpisah. Jika peluang satu genset gagal menyala 0,05, peluang <i>keduanya</i> gagal hanya \\(0{,}05 \\times 0{,}05 = 0{,}0025\\). Perkalian ini sah karena kegagalan satu genset tidak memengaruhi genset lainnya. Itulah alasan sistem penting selalu punya cadangan.</p>"
         },
         {
           "type": "text",
           "html": "<p>Pertanyaan dengan kata <b>“dan”</b> pada dua tahap percobaan (melempar dua kali, mengambil dua kali) menanyakan A ∩ B. Jika hasil tahap pertama tidak memengaruhi tahap kedua, kedua kejadian disebut <b>saling bebas</b>.</p>"
         },
         {
-          "type": "image",
-          "src": "gambar/distribusi-jumlah.svg",
-          "alt": "Diagram batang peluang jumlah 2 sampai 12; naik dari 1/36 ke 6/36 pada jumlah 7 lalu turun lagi",
-          "width": 560,
-          "caption": "Distribusi peluang jumlah mata dua dadu. Jumlah semua peluang = 1."
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan Perkalian untuk Kejadian Saling Bebas",
+          "html": "\\[P(A \\cap B) = P(A) \\times P(B)\\]<p>berlaku jika terjadinya A tidak mengubah peluang B.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/model-luas.html",
+          "title": "Model luas dan diagram pohon",
+          "height": 600,
+          "caption": "Pilih contoh <b>Dobel dua kali</b>, lalu ubah peluangnya. Bandingkan luas persegi panjang A∩B dengan hasil perkalian pada diagram pohon."
         },
         {
           "type": "callout",
@@ -243,43 +351,32 @@
           "html": "<p>Kejadian “bukan A” ditulis A<sup>c</sup>, dengan P(A<sup>c</sup>) = 1 − P(A). Cara ini praktis untuk soal “setidaknya satu”. Contoh: peluang setidaknya satu dadu angka 5 = 1 − P(tidak ada angka 5) = 1 − 25/36 = 11/36.</p>"
         },
         {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Peluang lampu lalu lintas pertama hijau saat kamu tiba 0,4, dan lampu kedua 0,5; keduanya saling bebas. Tentukan peluang kedua lampu hijau dan peluang setidaknya satu lampu hijau.</p>",
+          "steps": [
+            "Keduanya hijau: \\(0{,}4 \\times 0{,}5 = 0{,}2\\).",
+            "Setidaknya satu hijau = 1 − P(keduanya tidak hijau) \\(= 1 - 0{,}6 \\times 0{,}5 = 0{,}7\\)."
+          ],
+          "answer": "0,2 dan 0,7"
+        },
+        {
           "type": "callout",
           "variant": "awas",
           "title": "Kesalahan yang sering terjadi",
           "html": "<ul><li>Lupa mengurangkan irisan pada aturan penjumlahan.</li><li>Memakai aturan perkalian untuk kejadian yang tidak saling bebas.</li><li>Menganggap (2, 3) sama dengan (3, 2) pada dua dadu berbeda.</li></ul>"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dua dadu dilempar sekali. Tentukan peluang jumlah mata dadu 11, dan peluang kedua mata dadu sama.</p>",
-          "steps": [
-            "Jumlah 11: (5, 6) dan (6, 5), jadi n = 2. P = 2/36 = 1/18.",
-            "Mata dadu sama: (1, 1), (2, 2), …, (6, 6), jadi n = 6. P = 6/36 = 1/6."
-          ],
-          "answer": "1/18 dan 1/6"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Sepasang dadu dilempar dua kali. Berapa peluang mendapat dobel pertama kali tepat pada lemparan kedua?</p>",
-          "steps": [
-            "Lemparan 1 tidak dobel: 5/6. Lemparan 2 dobel: 1/6.",
-            "Kedua lemparan saling bebas: P = 5/6 × 1/6 = 5/36."
-          ],
-          "answer": "5/36"
-        },
-        {
           "type": "check",
-          "question": "Dua dadu dilempar. Peluang jumlah mata dadu 7 adalah ....",
+          "question": "Peluang pemanah A mengenai sasaran 0,7 dan pemanah B 0,6, saling bebas. Peluang keduanya meleset adalah ....",
           "options": {
-            "A": "1/12",
-            "B": "7/36",
-            "C": "1/36",
-            "D": "1/6"
+            "A": "0,42",
+            "B": "0,12",
+            "C": "0,28",
+            "D": "0,88"
           },
-          "answer": "D",
-          "hint": "Daftar pasangan yang jumlahnya 7.",
-          "explanation": "(1,6), (2,5), (3,4), (4,3), (5,2), (6,1): 6 hasil. P = 6/36 = 1/6."
+          "answer": "B",
+          "explanation": "P(A meleset) = 0,3 dan P(B meleset) = 0,4, jadi keduanya meleset 0,3 × 0,4 = 0,12. Nilai 0,42 adalah peluang keduanya kena."
         }
       ]
     },
@@ -290,28 +387,49 @@
       "duration": "3 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Undian Arisan",
+          "html": "<p>Di arisan, nama yang sudah keluar tidak dimasukkan lagi ke gelas kocokan. Peluang namamu keluar bulan depan jadi lebih besar daripada bulan ini, karena isi gelasnya berkurang. Hasil pengambilan pertama mengubah peluang pengambilan berikutnya: kejadiannya tidak saling bebas.</p>"
+        },
+        {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Peluang</td><td>P(A) = n(A)/n(S), 0 ≤ P(A) ≤ 1</td></tr><tr><td>Komplemen</td><td>P(A<sup>c</sup>) = 1 − P(A)</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = n × P(A)</td></tr><tr><td>“atau”</td><td>P(A ∪ B) = P(A) + P(B) − P(A ∩ B); saling lepas: tanpa irisan</td></tr><tr><td>“dan” (saling bebas)</td><td>P(A ∩ B) = P(A) × P(B)</td></tr><tr><td>Tanpa pengembalian</td><td>peluang tahap kedua berubah</td></tr></table>"
+          "html": "<p>Pada pengambilan <b>tanpa pengembalian</b>, banyak benda berkurang setelah setiap pengambilan, sehingga peluang tahap kedua bergantung pada hasil tahap pertama. Peluang B setelah A terjadi ditulis \\(P(B \\mid A)\\) dan dibaca \"peluang B dengan syarat A\". Hitung dengan membayangkan isi kantong setelah tahap pertama.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan Perkalian untuk Kejadian Tidak Saling Bebas",
+          "html": "\\[P(A \\cap B) = P(A) \\times P(B \\mid A)\\]"
         },
         {
           "type": "callout",
           "variant": "awas",
           "title": "Tidak saling bebas: pengambilan tanpa pengembalian",
-          "html": "<p>Kantong berisi 5 bola merah dan 3 biru. Dua bola diambil satu per satu <b>tanpa dikembalikan</b>. Setelah bola merah pertama terambil, tersisa 4 merah dari 7 bola, sehingga</p><p>P(merah, merah) = 5/8 × 4/7 = 20/56 = 5/14.</p><p>Jika bola pertama dikembalikan, kejadiannya saling bebas: P = 5/8 × 5/8 = 25/64.</p>"
+          "html": "<p>Kantong berisi 6 bola merah dan 4 biru. Dua bola diambil satu per satu <b>tanpa dikembalikan</b>. Setelah bola merah pertama terambil, tersisa 5 merah dari 9 bola, sehingga P(merah, merah) = \\(\\tfrac{6}{10} \\times \\tfrac59 = \\tfrac13\\). Jika bola pertama dikembalikan, kejadiannya saling bebas: \\(\\tfrac{6}{10} \\times \\tfrac{6}{10} = \\tfrac{9}{25}\\).</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Sebuah kotak berisi 5 bola merah dan 3 bola putih. Dari kotak tersebut diambil 2 bola sekaligus secara acak. Berapakah peluang terambilnya 1 bola merah dan 1 bola putih?</p>",
+          "question": "<p>Kotak berisi 4 kelereng merah dan 3 putih. Dua kelereng diambil satu per satu tanpa pengembalian. Berapa peluang kedua kelereng berbeda warna?</p>",
           "steps": [
-            "Hitung total bola di dalam kotak: 5 + 3 = 8 bola.",
-            "Hitung total ruang sampel n(S) pengambilan 2 bola dari 8 bola menggunakan kombinasi: n(S) = C(8, 2) = 8! / (2! × 6!) = (8 × 7) / 2 = 28 cara.",
-            "Hitung banyak kejadian terambil 1 bola merah dari 5 bola merah: C(5, 1) = 5 cara.",
-            "Hitung banyak kejadian terambil 1 bola putih dari 3 bola putih: C(3, 1) = 3 cara.",
-            "Hitung titik sampel kejadian A: n(A) = C(5, 1) × C(3, 1) = 5 × 3 = 15 cara.",
-            "Hitung peluang: P(A) = n(A) / n(S) = 15 / 28."
+            "Merah lalu putih: \\(\\tfrac47 \\times \\tfrac36 = \\tfrac{12}{42}\\).",
+            "Putih lalu merah: \\(\\tfrac37 \\times \\tfrac46 = \\tfrac{12}{42}\\).",
+            "Kedua urutan saling lepas, jadi dijumlahkan: \\(\\tfrac{24}{42} = \\tfrac47\\)."
           ],
-          "answer": "Peluang terambilnya 1 bola merah dan 1 bola putih adalah 15/28 (sekitar 0,536)."
+          "answer": "4/7"
+        },
+        {
+          "type": "check",
+          "question": "Dari 10 lampu, 3 di antaranya rusak. Dua lampu diambil satu per satu tanpa pengembalian. Peluang keduanya rusak adalah ....",
+          "options": {
+            "A": "\\(\\tfrac{9}{100}\\)",
+            "B": "\\(\\tfrac{3}{50}\\)",
+            "C": "\\(\\tfrac{1}{15}\\)",
+            "D": "\\(\\tfrac{2}{15}\\)"
+          },
+          "answer": "C",
+          "explanation": "3/10 × 2/9 = 6/90 = 1/15. Nilai 9/100 adalah jawaban jika lampu pertama dikembalikan."
         }
       ]
     },
@@ -319,62 +437,92 @@
       "id": "tabel-kontingensi-dua-arah",
       "title": "Penyelesaian Soal Peluang dengan Tabel Kontingensi Dua Arah",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Membaca tabel frekuensi silang dua atribut (misal jenis kelamin vs hobi olahraga); menentukan probabilitas marjinal dan gabungan.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Survei Kebiasaan Sarapan",
+          "html": "<p>Puskesmas mendata kebiasaan sarapan 200 siswa sekaligus jenis kelaminnya. Hasilnya disusun dalam tabel dua arah. Dari satu tabel itu bisa dijawab banyak pertanyaan: berapa persen siswa yang sarapan, apakah siswa perempuan lebih sering sarapan, dan seterusnya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Tabel kontingensi</b> mencatat frekuensi untuk dua atribut sekaligus:</p><table><tr><th></th><th>Sarapan</th><th>Tidak sarapan</th><th>Jumlah</th></tr><tr><th>Laki-laki</th><td>60</td><td>40</td><td>100</td></tr><tr><th>Perempuan</th><td>70</td><td>30</td><td>100</td></tr><tr><th>Jumlah</th><td>130</td><td>70</td><td>200</td></tr></table><p>Angka di dalam tabel adalah frekuensi gabungan (misalnya perempuan <i>dan</i> sarapan: 70). Angka di baris dan kolom Jumlah adalah frekuensi <b>marginal</b> (misalnya semua yang sarapan: 130). Peluang dihitung dengan membagi frekuensi dengan total yang sesuai. Jika pertanyaan membatasi kelompok (\"di antara siswa laki-laki ...\"), penyebutnya adalah total kelompok itu, bukan 200.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Seorang siswa dipilih acak dari survei di atas. Tentukan peluang (a) ia perempuan dan sarapan, (b) ia sarapan, (c) ia laki-laki atau tidak sarapan, (d) ia sarapan jika diketahui ia perempuan.</p>",
+          "steps": [
+            "(a) \\(\\tfrac{70}{200} = 0{,}35\\).",
+            "(b) \\(\\tfrac{130}{200} = 0{,}65\\).",
+            "(c) \\(\\tfrac{100 + 70 - 40}{200} = \\tfrac{130}{200} = 0{,}65\\).",
+            "(d) Kelompoknya hanya 100 siswa perempuan: \\(\\tfrac{70}{100} = 0{,}7\\)."
+          ],
+          "answer": "(a) 0,35; (b) 0,65; (c) 0,65; (d) 0,7"
+        },
+        {
+          "type": "check",
+          "question": "Berdasarkan tabel survei sarapan, jika yang dipilih seorang siswa laki-laki, peluang ia tidak sarapan adalah ....",
+          "options": {
+            "A": "0,2",
+            "B": "0,35",
+            "C": "0,4",
+            "D": "0,57"
+          },
+          "answer": "C",
+          "explanation": "Di antara 100 siswa laki-laki, 40 tidak sarapan: 40/100 = 0,4. Nilai 0,2 adalah peluang laki-laki dan tidak sarapan dari seluruh 200 siswa."
         }
       ]
     },
     {
       "id": "aplikasi-peluang-pengambilan-keputusan",
       "title": "Aplikasi Peluang: Teori Keputusan, Evaluasi Risiko, dan Uji Medis",
-      "kind": "artikel",
-      "duration": "4 menit",
+      "kind": "latihan",
+      "duration": "5 menit",
       "blocks": [
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Sintesis Penalaran Kuantitatif Menembus Seleksi Kampus Unggulan",
-          "html": "<p>Ujian seleksi masuk perguruan tinggi (UTBK-TKA) tidak pernah menguji seberapa banyak rumus yang kamu hafal mati di luar kepala. Yang diuji adalah kemampuan <b>bernalar kritis (Problem Solving)</b>: bagaimana kamu mengenali pola tersembunyi di balik soal cerita kompleks, menyederhanakannya ke dalam model matematika, dan mengambil keputusan kuantitatif yang presisi.</p>"
+          "title": "Penerapan Konsep di Dunia Nyata: Bagaimana Asuransi Tidak Bangkrut?",
+          "html": "<p>Perusahaan asuransi tidak tahu rumah mana yang akan terbakar tahun ini. Tetapi dari data ribuan rumah, mereka tahu peluangnya, misalnya 1 dari 2.000. Dengan frekuensi harapan, mereka memperkirakan berapa klaim yang akan masuk dari 100.000 polis, lalu menetapkan premi yang cukup untuk membayarnya. Ketidakpastian untuk satu rumah menjadi perkiraan yang cukup pasti untuk ribuan rumah.</p>"
         },
         {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Evolusi Bahasa Semesta dari Aljabar hingga Kalkulus",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Pythagoras, Al-Khwarizmi, Gauss, & Euler</span>\n  <span class=\"h-tag\">Tahun: 500 SM – 1800 M</span>\n  <span class=\"h-tag\">Krisis: Menyatukan pemahaman pola bilangan, relasi fungsi, geometri ruang, dan analisis ketidakpastian dalam satu kerangka penalaran komprehensif.</span>\n</div>\n<p>Dari keindahan simetri rasio segitiga Pythagoras di zaman kuno, kelahiran variabel aljabar Al-Khwarizmi di Baghdad, kecepatan komputasi deret Gauss di Jerman, hingga keanggunan analisis kalkulus Euler di Swiss; para matematikawan melatih peradaban manusia untuk <b>berpikir runut berbasis bukti</b>.</p><p>Ketika kamu memahami logika di balik sebuah rumus, kamu tidak akan pernah takut menghadapi variasi soal apapun di lembar ujian!</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Tiga Pilar Kompetensi Matematika",
-          "html": "<p><b>Tiga Pilar Kunci Penguasaan Matematika:</b></p><ul><li><b>Pemahaman Konseptual:</b> Memahami definisi dasar, representasi visual grafik, dan batasan syarat berlakunya suatu formula.</li><li><b>Kelancaran Prosedural:</b> Trampil melakukan operasi manipulasi aljabar, faktorisasi, dan eliminasi tanpa ceroboh.</li><li><b>Penalaran Strategis:</b> Mampu memecah masalah besar menjadi sub-masalah sederhana dan memilih taktik perhitungan paling efisien.</li></ul>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Pilar Hubungan Bilangan, Aljabar & Geometri",
-          "html": "<div class=\"fc-display\">\n\\[ e^{i\\pi} + 1 = 0, \\qquad x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}, \\qquad S_n = \\frac{n}{2}(a + U_n) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(e^{i\\pi} + 1 = 0\\)</td><td>Identitas Euler menyatukan 5 bilangan terpenting matematika (e, i, pi, 1, 0)</td><td class=\"unit\">keanggunan analisis</td></tr>\n    <tr><td class=\"sym\">\\(x_{1,2}\\)</td><td>Solusi kuadratik penyeimbang aljabar</td><td class=\"unit\">akar aljabar</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Akumulasi jumlah suku deret beraturan</td><td class=\"unit\">analisis diskret</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Fokus pada penalaran 'mengapa rumus ini bekerja', bukan sekadar mengingat simbol-simbolnya.</small></p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Menganalisis hasil positif palsu (false positive) pada tes medis skrining penyakit; estimasi risiko investasi.</p>"
+          "type": "text",
+          "html": "<p>Peluang dipakai untuk mengambil keputusan saat hasilnya tidak pasti. Dua alat yang paling sering dipakai:</p><ul><li><b>frekuensi harapan</b> untuk memperkirakan banyak kejadian dalam jumlah besar, misalnya produk cacat atau klaim asuransi;</li><li><b>nilai harapan</b> untuk menilai sebuah permainan atau investasi: kalikan setiap kemungkinan hasil dengan peluangnya, lalu jumlahkan.</li></ul><p>Dalam tes medis, peluang juga menjelaskan mengapa hasil positif belum tentu berarti sakit, terutama untuk penyakit yang jarang.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Sebuah pabrik lampu mengetahui bahwa peluang sebuah lampu cacat adalah 0,02. Pabrik akan mengirim 1.500 lampu dan memberi garansi Rp25.000 untuk setiap lampu yang cacat. Berapa banyak lampu cacat yang diharapkan, dan berapa dana garansi yang sebaiknya disiapkan?</p>",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebuah pabrik lampu mengetahui bahwa peluang sebuah lampu cacat adalah 0,02. Pabrik akan mengirim 2.000 lampu dan memberi garansi Rp25.000 untuk setiap lampu yang cacat. Berapa banyak lampu cacat yang diharapkan, dan berapa dana garansi yang sebaiknya disiapkan?</p>",
           "steps": [
-            "Banyak lampu cacat yang diharapkan adalah frekuensi harapan: \\(F_h = n \\times P(\\text{cacat}) = 1.500 \\times 0{,}02 = 30\\) lampu.",
-            "Dana garansi yang diperkirakan: 30 × Rp25.000 = Rp750.000.",
-            "Frekuensi harapan adalah rata-rata dalam jangka panjang, bukan jumlah yang pasti. Karena itu pabrik sebaiknya menyiapkan dana sedikit di atas Rp750.000 sebagai cadangan."
+            "Banyak lampu cacat yang diharapkan adalah frekuensi harapan: \\(F_h = n \\times P(\\text{cacat}) = 2.000 \\times 0{,}02 = 40\\) lampu.",
+            "Dana garansi yang diperkirakan: 40 × Rp25.000 = Rp1.000.000."
           ],
-          "answer": "Sekitar 30 lampu cacat; dana garansi yang perlu disiapkan minimal Rp750.000."
+          "answer": "Sekitar 40 lampu cacat; dana garansi sekitar Rp1.000.000"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Sebuah penyakit diderita 1% penduduk. Tesnya mendeteksi 90% orang yang sakit, tetapi juga memberi hasil positif palsu pada 5% orang sehat. Jika hasil tes seseorang positif, berapa peluang ia benar-benar sakit?</p>",
+          "steps": [
+            "Bayangkan 10.000 orang: 100 sakit dan 9.900 sehat.",
+            "Positif dari yang sakit: 90% × 100 = 90 orang. Positif palsu dari yang sehat: 5% × 9.900 = 495 orang.",
+            "Total positif 90 + 495 = 585. Yang benar-benar sakit \\(\\tfrac{90}{585} \\approx 0{,}154\\)."
+          ],
+          "answer": "Sekitar 15%; kebanyakan hasil positif justru positif palsu, sehingga perlu tes lanjutan"
+        },
+        {
+          "type": "check",
+          "question": "Undian berhadiah menjual 1.000 tiket seharga Rp2.000. Hadiahnya 1 × Rp500.000 dan 10 × Rp50.000. Nilai harapan hadiah untuk satu tiket adalah ....",
+          "options": {
+            "A": "Rp1.000",
+            "B": "Rp500",
+            "C": "Rp2.000",
+            "D": "Rp5.500"
+          },
+          "answer": "A",
+          "explanation": "Total hadiah Rp500.000 + Rp500.000 = Rp1.000.000 untuk 1.000 tiket, jadi nilai harapannya Rp1.000 per tiket. Karena harga tiket Rp2.000, rata-rata pembeli rugi Rp1.000."
         }
       ]
     },
@@ -386,31 +534,24 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 7 Peluang.</small></p>"
-        },
-        {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Bagaimana Industri Asuransi dan Kecerdasan Buatan Mengukur Ketidakpastian?",
-          "html": "<p>Perusahaan asuransi menanggung jutaan risiko kecelakaan kendaraan dan polis jiwa tanpa bangkrut. Sistem navigasi GPS dan filter spam AI memprediksi rute tercepat dan mengenali teks palsu di tengah miliaran data acak. Seluruh teknologi modern ini bertumpu pada satu bahasa matematika yang sama: teori probabilitas terpadu.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Andrey Kolmogorov dan Aksiomatisasi Teori Peluang 1933",
-          "html": "<p>Sebelum tahun 1933, teori peluang dipandang sebagai cabang matematika terapan informal yang penuh perdebatan filosofis. Matematikawan Soviet Andrey Nikolaevich Kolmogorov menerbitkan Grundbegriffe der Wahrscheinlichkeitsrechnung (1933), membangun teori peluang di atas fondasi teori himpunan dan teori ukuran (Measure Theory) dengan 3 aksioma dasar yang kokoh.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Sintesis Tiga Aksioma Peluang Kolmogorov dan Kaidah Peluang Majemuk",
-          "html": "<p>Tiga Aksioma Kolmogorov:</p><ol><li>Non-Negativitas: Peluang kejadian apa pun tidak pernah bernilai negatif (\\(0 \\le P(A) \\le 1\\)).</li><li>Kepastian: Peluang seluruh ruang sampel pasti terjadi (\\(P(S) = 1\\)).</li><li>Aditivitas Kejadian Saling Lepas: Jika \\(A \\cap B = \\emptyset\\), maka \\(P(A \\cup B) = P(A) + P(B)\\).</li></ol><p>Kaidah Peluang Umum:</p><ul><li>Komplemen: \\(P(A^c) = 1 - P(A)\\)</li><li>Penjumlahan Umum: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)</li><li>Kejadian Saling Bebas: \\(P(A \\cap B) = P(A) \\times P(B)\\)</li></ul>"
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Peluang</td><td>P(A) = n(A)/n(S), 0 ≤ P(A) ≤ 1</td></tr><tr><td>Komplemen</td><td>P(A<sup>c</sup>) = 1 − P(A)</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = n × P(A)</td></tr><tr><td>“atau”</td><td>P(A ∪ B) = P(A) + P(B) − P(A ∩ B); saling lepas: tanpa irisan</td></tr><tr><td>“dan” (saling bebas)</td><td>P(A ∩ B) = P(A) × P(B)</td></tr><tr><td>Tanpa pengembalian</td><td>peluang tahap kedua berubah</td></tr></table>"
         },
         {
           "type": "callout",
           "variant": "rumus",
           "title": "Ringkasan Peta Rumus Inti Teori Peluang Dasar",
           "html": "<table class=\"var-table\"><thead><tr><th>Konsep Peluang</th><th>Formulasi Matematis</th><th>Kondisi Penggunaan</th></tr></thead><tbody><tr><td>Peluang Teoretis Klasik</td><td>\\(P(A) = \\frac{n(A)}{n(S)}\\)</td><td>Titik sampel berbobot sama (ekiprobabel)</td></tr><tr><td>Peluang Komplemen</td><td>\\(P(A') = 1 - P(A)\\)</td><td>Kejadian ingkaran 'tidak terjadi \\(A\\)'</td></tr><tr><td>Saling Lepas (Mutually Exclusive)</td><td>\\(P(A \\cup B) = P(A) + P(B)\\)</td><td>\\(A\\) dan \\(B\\) mustahil terjadi bersamaan (\\(A \\cap B = \\emptyset\\))</td></tr><tr><td>Tidak Saling Lepas</td><td>\\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\)</td><td>Irisan kedua kejadian ada (\\(A \\cap B \\ne \\emptyset\\))</td></tr><tr><td>Bebas Stokastik (Independent)</td><td>\\(P(A \\cap B) = P(A) \\times P(B)\\)</td><td>Terjadinya \\(A\\) tidak memengaruhi peluang \\(B\\)</td></tr></tbody></table>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal campuran",
+          "question": "<p>Kotak berisi 3 bola merah dan 2 biru. Dua bola diambil tanpa pengembalian. Berapa peluang terambil setidaknya satu bola biru?</p>",
+          "steps": [
+            "Komplemennya: kedua bola merah.",
+            "P(merah, merah) \\(= \\tfrac35 \\times \\tfrac24 = \\tfrac{6}{20} = \\tfrac{3}{10}\\).",
+            "P(setidaknya satu biru) \\(= 1 - \\tfrac{3}{10} = \\tfrac{7}{10}\\)."
+          ],
+          "answer": "7/10"
         },
         {
           "type": "text",
@@ -422,6 +563,10 @@
           "title": "MEGA CHEAT SHEET: MATEMATIKA SMA KELAS 10 LENGKAP",
           "subtitle": "Kompilasi master seluruh bab Matematika Kelas 10: Eksponen, Barisan Deret, Trigonometri, SPLTV, Fungsi Kuadrat, Statistika, dan Teori Peluang.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Teori Peluang Kejadian</h4>\n    \\[ P(A) = \\frac{n(A)}{n(S)}, \\quad 0 \\le P(A) \\le 1, \\quad P(A') = 1 - P(A) \\]\n    \\[ F_h(A) = n \\cdot P(A) \\]\n    <p><b>Operasi Gabungan & Irisan Dua Kejadian:</b></p>\n    <ul>\n      <li><b>Kejadian Saling Lepas (\\(A \\cap B = \\emptyset\\)):</b>\n        \\[ P(A \\cup B) = P(A) + P(B) \\]\n      </li>\n      <li><b>Tidak Saling Lepas:</b>\n        \\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\]\n      </li>\n      <li><b>Saling Bebas Independen:</b>\n        \\[ P(A \\cap B) = P(A) \\cdot P(B) \\]\n      </li>\n      <li><b>Peluang Bersyarat:</b>\n        \\[ P(A|B) = \\frac{P(A \\cap B)}{P(B)} \\implies P(A \\cap B) = P(B) \\cdot P(A|B) \\]\n      </li>\n    </ul>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Intisari Aljabar & Analisis Eksponen</h4>\n    \\[ a^m \\cdot a^n = a^{m+n}, \\quad a^{\\frac{m}{n}} = \\sqrt[n]{a^m}, \\quad {}^a\\log b = c \\iff a^c = b \\]\n    \\[ ^a\\log(bc) = \\,{}^a\\log b + \\,{}^a\\log c, \\quad {}^{a^m}\\log b^n = \\frac{n}{m} \\cdot \\,{}^a\\log b \\]\n    <p><b>Fungsi & Persamaan Kuadrat:</b></p>\n    \\[ ax^2 + bx + c = 0 \\implies x_{1,2} = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} \\]\n    \\[ \\text{Puncak Parabola}: (x_p, y_p) = \\left(-\\frac{b}{2a}, -\\frac{D}{4a}\\right) \\]\n  </div>\n  <div class=\"cs-box\">\n    <h4>3. Barisan, Deret & Trigonometri</h4>\n    <p><b>Aritmetika vs Geometri:</b></p>\n    \\[ U_{n,\\text{ari}} = a + (n-1)b, \\quad S_{n,\\text{ari}} = \\frac{n}{2}(a + U_n) \\]\n    \\[ U_{n,\\text{geo}} = a \\cdot r^{n-1}, \\quad S_\\infty = \\frac{a}{1 - r} \\quad (|r| < 1) \\]\n    <p><b>Trigonometri & Aturan Segitiga:</b></p>\n    \\[ \\sin^2\\alpha + \\cos^2\\alpha = 1, \\quad \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R \\]\n    \\[ a^2 = b^2 + c^2 - 2bc\\cos A, \\quad L = \\frac{1}{2}ab\\sin C \\]\n  </div>\n  <div class=\"cs-box\">\n    <h4>4. Statistika & Pemodelan SPLTV</h4>\n    \\[ \\bar{x} = \\frac{\\sum x_i}{n}, \\quad IQR = Q_3 - Q_1, \\quad s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n}} \\]\n    <p><b>Aturan Emas Masalah Verbal SPLTV:</b></p>\n    <ol>\n      <li>Definisikan variabel \\(x, y, z\\) dengan satuan jelas.</li>\n      <li>Ubah kalimat syarat menjadi 3 persamaan linear.</li>\n      <li>Reduksi menjadi 2 variabel melalui substitusi/eliminasi berpasangan.</li>\n    </ol>\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 7 Peluang.</small></p>"
         },
         {
           "type": "kuis",
