@@ -7,23 +7,17 @@
       "id": "pola-bilangan-dan-notasi",
       "title": "Pola Bilangan, Konsep Barisan, dan Notasi Suku ke-n (Un)",
       "kind": "artikel",
-      "duration": "6 menit",
+      "duration": "4 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Pola Bilangan, Konsep Barisan, dan Notasi Suku ke-n (Un)</b>: Membedakan barisan bilangan berurutan dan deret (penjumlahan barisan); aturan formulasi rekursif vs eksplisit.</p>"
-        },
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Misteri di Kehidupan Nyata: Keajaiban Bunga Majemuk dan Tabungan Masa Depan",
-          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+          "title": "Misteri di Kehidupan Nyata: Pola di Tumpukan Kaleng",
+          "html": "<p>Di supermarket, kaleng sering ditumpuk membentuk segitiga: 1 kaleng di puncak, 2 di bawahnya, lalu 3, 4, dan seterusnya. Petugas tidak perlu menghitung satu per satu untuk tahu berapa kaleng di baris ke-15, karena susunannya mengikuti pola. Pola yang teratur seperti ini adalah barisan, dan menghitung total kalengnya adalah menjumlahkan deret.</p>"
         },
         {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Genius Cilik Carl Friedrich Gauss Berusia 10 Tahun",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Carl Friedrich Gauss</span>\n  <span class=\"h-tag\">Tahun: 1787 M (Braunschweig, Jerman)</span>\n  <span class=\"h-tag\">Krisis: Guru sekolah menugaskan penjumlahan angka 1 hingga 100 agar murid tenang selama dua jam.</span>\n</div>\n<p>Pada tahun 1787 di sekolah dasar Braunschweig, guru meminta seluruh murid menjumlahkan seluruh bilangan bulat dari 1 hingga 100. Guru mengira kelas akan hening berjam-jam. Namun dalam beberapa detik, bocah 10 tahun <b>Carl Friedrich Gauss</b> meletakkan batu tulisnya dengan angka tepat: <b>5.050</b>!</p><p>Gauss menyadari bahwa memasangkan angka ujung kiri dan kanan: \\(1 + 100 = 101\\), \\(2 + 99 = 101\\), ..., menghasilkan 50 pasang bernilai 101, sehingga jumlah totalnya adalah \\(50 \\times 101 = 5.050\\). Penalaran elegan ini melahirkan rumus deret aritmetika universal.</p>"
+          "type": "text",
+          "html": "<p><b>Barisan</b> adalah bilangan yang disusun berurutan menurut suatu aturan. Setiap bilangannya disebut <b>suku</b>: suku pertama \\(U_1\\), suku kedua \\(U_2\\), sampai suku ke-n \\(U_n\\). <b>Deret</b> adalah jumlah suku-suku barisan, ditulis \\(S_n = U_1 + U_2 + \\dots + U_n\\).</p><p>Aturan barisan bisa ditulis dua cara. Rumus <b>eksplisit</b> langsung memberi suku mana pun: pada barisan 3, 7, 11, 15, …, \\(U_n = 4n - 1\\), jadi \\(U_{10} = 39\\). Rumus <b>rekursif</b> memberi suku berikutnya dari suku sebelumnya: \\(U_1 = 3\\) dan \\(U_{n+1} = U_n + 4\\). Rumus eksplisit lebih cepat untuk suku yang jauh, rumus rekursif lebih mudah untuk melihat polanya.</p>"
         },
         {
           "type": "callout",
@@ -32,24 +26,66 @@
           "html": "<p><b>Barisan Bilangan:</b> Urutan bilangan real teratur yang dibentuk mengikuti suatu aturan matematis eksplisit atau rekursif tertutup.</p><p><b>Barisan Aritmetika:</b> Selisih antar dua suku berurutan (beda, \\(b\\)) selalu konstan melalui operasi penjumlahan.</p><p><b>Barisan Geometri:</b> Perbandingan antar dua suku berurutan (rasio, \\(r\\)) selalu konstan melalui operasi perkalian.</p>"
         },
         {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Pola titik membentuk persegi: 1, 4, 9, 16, …. Tentukan rumus suku ke-n dan banyak titik pada pola ke-12.</p>",
+          "steps": [
+            "Perhatikan bahwa 1 = 1², 4 = 2², 9 = 3², 16 = 4²: suku ke-n adalah kuadrat dari n.",
+            "Rumus eksplisitnya \\(U_n = n^2\\).",
+            "\\(U_{12} = 12^2 = 144\\)."
+          ],
+          "answer": "Uₙ = n², pola ke-12 berisi 144 titik"
+        },
+        {
+          "type": "check",
+          "question": "Barisan didefinisikan secara rekursif \\(U_1 = 2\\) dan \\(U_{n+1} = 3U_n\\). Nilai \\(U_4\\) adalah ....",
+          "options": {
+            "A": "18",
+            "B": "24",
+            "C": "54",
+            "D": "162"
+          },
+          "answer": "C",
+          "explanation": "U₁ = 2, U₂ = 6, U₃ = 18, U₄ = 54."
+        }
+      ]
+    },
+    {
+      "id": "barisan-aritmetika-beda",
+      "title": "Barisan Aritmetika: Beda Konstan (b) dan Rumus Suku ke-n",
+      "kind": "artikel",
+      "duration": "5 menit",
+      "blocks": [
+        {
           "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Barisan & Deret",
-          "html": "<div class=\"fc-display\">\n\\[ U_n = a + (n-1)b, \\qquad S_n = \\frac{n}{2}(2a + (n-1)b), \\qquad U_n = a \\cdot r^{n-1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(U_n\\)</td><td>Nilai suku ke-n dari barisan bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">\\(S_n\\)</td><td>Jumlah total n suku pertama dari deret bilangan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Suku awal pertama (U_1)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>b</i></td><td>Beda antarsuku aritmetika (U_{n} - U_{n-1})</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Rasio antarsuku geometri (U_{n} / U_{n-1})</td><td class=\"unit\">bilangan real != 0</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Indeks urutan suku yang ditinjau (domain bilangan asli)</td><td class=\"unit\">n in {1, 2, 3, ...}</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jumlah n suku pertama aritmetika adalah rata-rata suku awal dan suku akhir dikalikan banyaknya suku: \\(S_n = n \\times \\frac{U_1 + U_n}{2}\\).</small></p>"
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Tarif Ojek Daring",
+          "html": "<p>Sebuah aplikasi ojek memasang tarif Rp8.000 untuk kilometer pertama dan Rp2.500 untuk setiap kilometer berikutnya. Tarif untuk 1, 2, 3, … km adalah 8.000, 10.500, 13.000, …: setiap suku bertambah dengan jumlah yang sama. Aplikasi menghitung tarif perjalanan 12 km tanpa menuliskan semua suku sebelumnya.</p>"
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 2 Barisan dan Deret.</small></p>"
+          "html": "<p>Kursi pada sebuah gedung pertunjukan disusun 20 kursi di baris pertama, 24 di baris kedua, 28 di baris ketiga, dan seterusnya. Banyak kursi setiap baris bertambah dengan jumlah yang sama. Susunan bilangan seperti ini disebut <b>barisan aritmetika</b>.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Selisih dua suku berurutan pada barisan aritmetika selalu sama dan disebut <b>beda</b>: \\(b = U_n - U_{n-1}\\). Dari suku pertama \\(a\\), suku kedua \\(a + b\\), suku ketiga \\(a + 2b\\), dan seterusnya. Suku ke-n diperoleh setelah menambahkan beda sebanyak \\(n - 1\\) kali.</p><p>Pada contoh kursi, \\(a = 20\\) dan \\(b = 4\\), jadi baris ke-10 berisi \\(20 + 9 \\times 4 = 56\\) kursi.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus Suku ke-n Barisan Aritmetika",
+          "html": "<p>\\[U_n = a + (n - 1)b\\] dengan \\(a\\) suku pertama dan \\(b\\) beda. Jika dua suku diketahui, \\(b = \\dfrac{U_q - U_p}{q - p}\\).</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Tentukan jumlah semua bilangan kelipatan 3 antara 1 dan 100.</p>",
+          "question": "<p>Suku ke-3 sebuah barisan aritmetika 14 dan suku ke-7 adalah 30. Tentukan suku ke-20.</p>",
           "steps": [
-            "Barisannya 3, 6, …, 99: a = 3, b = 3, Uₙ = 99, sehingga n = 33.",
-            "S₃₃ = 33/2 × (3 + 99) = 33 × 51 = 1.683."
+            "U₇ − U₃ = 4b, sehingga 30 − 14 = 4b dan b = 4.",
+            "U₃ = a + 2b = 14, sehingga a = 6.",
+            "U₂₀ = 6 + 19 × 4 = 82."
           ],
-          "answer": "1.683"
+          "answer": "82"
         },
         {
           "type": "check",
@@ -64,49 +100,6 @@
           "answer": "A",
           "hint": "Gunakan Un = a + (n - 1)b. Beda b = (U8 - U3) / (8 - 3) = (26 - 11) / 5 = 3.",
           "explanation": "b = 15 / 5 = 3. Dari U3 = a + 2(3) = 11 ⇒ a = 5. Maka U20 = 5 + 19(3) = 5 + 57 = 62."
-        }
-      ]
-    },
-    {
-      "id": "barisan-aritmetika-beda",
-      "title": "Barisan Aritmetika: Beda Konstan (b) dan Rumus Suku ke-n",
-      "kind": "latihan",
-      "duration": "2 menit",
-      "blocks": [
-        {
-          "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Suku ke-3 sebuah barisan aritmetika 14 dan suku ke-7 adalah 30. Tentukan suku ke-20.</p>",
-          "steps": [
-            "U₇ − U₃ = 4b, sehingga 30 − 14 = 4b dan b = 4.",
-            "U₃ = a + 2b = 14, sehingga a = 6.",
-            "U₂₀ = 6 + 19 × 4 = 82."
-          ],
-          "answer": "82"
-        }
-      ]
-    },
-    {
-      "id": "suku-tengah-sisipan-aritmetika",
-      "title": "Suku Tengah dan Sisipan Bilangan pada Barisan Aritmetika",
-      "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Kursi pada sebuah gedung pertunjukan disusun 20 kursi di baris pertama, 24 di baris kedua, 28 di baris ketiga, dan seterusnya. Banyak kursi setiap baris bertambah dengan jumlah yang sama. Susunan bilangan seperti ini disebut <b>barisan aritmetika</b>.</p>"
-        }
-      ]
-    },
-    {
-      "id": "deret-aritmetika-rumus-gauss",
-      "title": "Deret Aritmetika: Penjumlahan n Suku Pertama (Sn)",
-      "kind": "latihan",
-      "duration": "2 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Deret</b> adalah jumlah suku-suku suatu barisan. Konon, Carl Friedrich Gauss kecil menjumlahkan 1 + 2 + … + 100 dalam sekejap: ia memasangkan 1 + 100, 2 + 99, …, sehingga ada 50 pasang yang masing-masing berjumlah 101. Hasilnya 5.050.</p>"
         },
         {
           "type": "check",
@@ -124,21 +117,147 @@
       ]
     },
     {
-      "id": "barisan-geometri-rasio",
-      "title": "Barisan Geometri: Rasio Konstan (r) dan Rumus Suku ke-n",
-      "kind": "latihan",
-      "duration": "2 menit",
+      "id": "suku-tengah-sisipan-aritmetika",
+      "title": "Suku Tengah dan Sisipan Bilangan pada Barisan Aritmetika",
+      "kind": "artikel",
+      "duration": "3 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Menyisipkan Tiang Lampu",
+          "html": "<p>Dua tiang lampu jalan berjarak 60 m. Petugas ingin menambah 5 tiang di antaranya dengan jarak yang sama. Posisi ketujuh tiang dari tiang pertama, 0, 10, 20, …, 60 m, membentuk barisan aritmetika. Menyisipkan bilangan di antara dua bilangan adalah soal yang sama.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika di antara bilangan \\(x\\) dan \\(y\\) disisipkan \\(k\\) bilangan sehingga terbentuk barisan aritmetika, barisan baru punya \\(k + 2\\) suku dan beda baru \\(b' = \\dfrac{y - x}{k + 1}\\). Pada contoh tiang, \\(b' = 60 : 6 = 10\\) m.</p><p>Jika banyak suku ganjil, ada satu <b>suku tengah</b>. Karena suku-suku aritmetika berjarak sama, suku tengah adalah rata-rata suku pertama dan suku terakhir.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Suku Tengah dan Sisipan Aritmetika",
+          "html": "<p>\\[U_t = \\frac{a + U_n}{2}, \\qquad b' = \\frac{y - x}{k + 1}\\] dengan \\(k\\) banyak bilangan yang disisipkan di antara \\(x\\) dan \\(y\\).</p>"
+        },
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Suku ke-2 barisan geometri 6 dan suku ke-5 adalah 162. Tentukan suku ke-7.</p>",
+          "question": "<p>Di antara 5 dan 41 disisipkan 5 bilangan sehingga terbentuk barisan aritmetika. Tentukan bedanya, barisannya, dan suku tengahnya.</p>",
           "steps": [
-            "U₅ : U₂ = r³, sehingga r³ = 27 dan r = 3.",
-            "a = U₂ : r = 2.",
-            "U₇ = 2 × 3⁶ = 1.458."
+            "\\(b' = \\dfrac{41 - 5}{5 + 1} = 6\\).",
+            "Barisannya 5, 11, 17, 23, 29, 35, 41 (7 suku).",
+            "Suku tengah \\(U_4 = \\dfrac{5 + 41}{2} = 23\\)."
           ],
-          "answer": "1.458"
+          "answer": "b = 6; suku tengah 23"
+        },
+        {
+          "type": "check",
+          "question": "Barisan aritmetika 3, …, 63 terdiri atas 11 suku. Suku tengahnya adalah ....",
+          "options": {
+            "A": "30",
+            "B": "33",
+            "C": "36",
+            "D": "66"
+          },
+          "answer": "B",
+          "explanation": "Suku tengah = (3 + 63) : 2 = 33."
+        }
+      ]
+    },
+    {
+      "id": "deret-aritmetika-rumus-gauss",
+      "title": "Deret Aritmetika: Penjumlahan n Suku Pertama (Sn)",
+      "kind": "artikel",
+      "duration": "3 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Tabungan yang Naik Tiap Minggu",
+          "html": "<p>Dewi menabung Rp5.000 pada minggu pertama dan menambah Rp1.000 setiap minggu: 5.000, 6.000, 7.000, …. Berapa tabungannya setelah 10 minggu? Ia perlu menjumlahkan 10 suku barisan aritmetika, yaitu menghitung deret aritmetika. Jawabannya Rp95.000.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Deret</b> adalah jumlah suku-suku suatu barisan. Konon, Carl Friedrich Gauss kecil menjumlahkan 1 + 2 + … + 100 dalam sekejap: ia memasangkan 1 + 100, 2 + 99, …, sehingga ada 50 pasang yang masing-masing berjumlah 101. Hasilnya 5.050.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Cara Gauss berlaku untuk setiap deret aritmetika. Tulis deretnya maju dan mundur, lalu jumlahkan berpasangan:</p><p>\\(S_n = a + (a + b) + \\dots + U_n\\)<br>\\(S_n = U_n + (U_n - b) + \\dots + a\\)</p><p>Setiap pasangan berjumlah \\(a + U_n\\), dan ada \\(n\\) pasangan, jadi \\(2S_n = n(a + U_n)\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Jumlah n Suku Pertama Deret Aritmetika",
+          "html": "<p>\\[S_n = \\frac{n}{2}(a + U_n) = \\frac{n}{2}\\big(2a + (n - 1)b\\big)\\]</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Hitung jumlah semua bilangan ganjil dari 1 sampai 49.</p>",
+          "steps": [
+            "Barisannya 1, 3, 5, …, 49 dengan \\(a = 1\\) dan \\(b = 2\\).",
+            "Banyak suku: \\(49 = 1 + (n - 1) \\times 2\\), jadi \\(n = 25\\).",
+            "\\(S_{25} = \\dfrac{25}{2}(1 + 49) = 625\\). Menarik: hasilnya \\(25^2\\)."
+          ],
+          "answer": "625"
+        },
+        {
+          "type": "check",
+          "question": "Jumlah 20 suku pertama deret \\(2 + 5 + 8 + \\dots\\) adalah ....",
+          "options": {
+            "A": "590",
+            "B": "610",
+            "C": "620",
+            "D": "1.220"
+          },
+          "answer": "B",
+          "explanation": "a = 2, b = 3, S₂₀ = 10 × (2·2 + 19·3) = 10 × 61 = 610."
+        }
+      ]
+    },
+    {
+      "id": "barisan-geometri-rasio",
+      "title": "Barisan Geometri: Rasio Konstan (r) dan Rumus Suku ke-n",
+      "kind": "artikel",
+      "duration": "3 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Bakteri yang Membelah",
+          "html": "<p>Satu bakteri E. coli dalam kondisi ideal bisa membelah menjadi dua kira-kira setiap 20 menit. Jumlahnya 1, 2, 4, 8, …: setiap suku adalah dua kali suku sebelumnya. Setelah 6 jam, atau 18 kali pembelahan, satu bakteri menjadi \\(2^{18} = 262.144\\) bakteri.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada barisan geometri, perbandingan dua suku berurutan selalu sama dan disebut <b>rasio</b>: \\(r = \\dfrac{U_n}{U_{n-1}}\\). Dari suku pertama \\(a\\), suku berikutnya \\(ar\\), \\(ar^2\\), \\(ar^3\\), dan seterusnya, sehingga suku ke-n adalah \\(a\\) dikalikan \\(r\\) sebanyak \\(n - 1\\) kali.</p><p>Jika \\(r > 1\\), barisannya tumbuh makin cepat. Jika \\(0 < r < 1\\), barisannya menyusut menuju 0. Jika \\(r\\) negatif, tandanya berganti-ganti, misalnya 3, −6, 12, −24.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Rumus Suku ke-n Barisan Geometri",
+          "html": "<p>\\[U_n = a \\cdot r^{n - 1}\\] Jika dua suku diketahui, \\(r^{q - p} = \\dfrac{U_q}{U_p}\\).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Suku ke-3 sebuah barisan geometri 12 dan suku ke-6 adalah 96. Tentukan suku ke-8.</p>",
+          "steps": [
+            "\\(r^{6 - 3} = \\dfrac{96}{12} = 8\\), jadi \\(r = 2\\).",
+            "\\(U_3 = a r^2 = 4a = 12\\), jadi \\(a = 3\\).",
+            "\\(U_8 = 3 \\cdot 2^7 = 384\\)."
+          ],
+          "answer": "384"
+        },
+        {
+          "type": "check",
+          "question": "Suku ke-6 barisan 5, 15, 45, … adalah ....",
+          "options": {
+            "A": "405",
+            "B": "1.215",
+            "C": "3.645",
+            "D": "90"
+          },
+          "answer": "B",
+          "explanation": "a = 5, r = 3, U₆ = 5 · 3⁵ = 1.215."
         }
       ]
     },
@@ -146,22 +265,117 @@
       "id": "suku-tengah-sisipan-geometri",
       "title": "Suku Tengah dan Sisipan Bilangan pada Barisan Geometri",
       "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
+      "duration": "3 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Dua Belas Nada dalam Satu Oktaf",
+          "html": "<p>Nada A di tengah piano bergetar 440 kali per detik, dan nada A satu oktaf di atasnya 880 kali per detik. Di antaranya ada 11 nada lain. Pada penalaan piano modern, frekuensi setiap nada adalah frekuensi nada sebelumnya dikali bilangan yang sama, \\(\\sqrt[12]{2} \\approx 1{,}0595\\). Jadi 11 nada itu adalah sisipan barisan geometri antara 440 dan 880.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika di antara \\(x\\) dan \\(y\\) disisipkan \\(k\\) bilangan sehingga terbentuk barisan geometri, suku terakhir \\(y = x \\cdot r'^{\\,k+1}\\), jadi rasio barunya adalah akar pangkat \\(k + 1\\) dari \\(y/x\\).</p><p>Pada barisan geometri bersuku positif dengan banyak suku ganjil, suku tengahnya adalah <b>rata-rata geometri</b> suku pertama dan suku terakhir: akar dari hasil kali keduanya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Suku Tengah dan Sisipan Geometri",
+          "html": "<p>\\[U_t = \\sqrt{a \\cdot U_n}, \\qquad r' = \\sqrt[k+1]{\\frac{y}{x}}\\]</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Di antara 3 dan 768 disisipkan 3 bilangan sehingga terbentuk barisan geometri. Tentukan rasio, barisan, dan suku tengahnya.</p>",
+          "steps": [
+            "\\(r'^{\\,4} = \\dfrac{768}{3} = 256\\), jadi \\(r' = 4\\).",
+            "Barisannya 3, 12, 48, 192, 768.",
+            "Suku tengah \\(\\sqrt{3 \\times 768} = \\sqrt{2.304} = 48\\)."
+          ],
+          "answer": "r = 4; suku tengah 48"
+        },
+        {
+          "type": "check",
+          "question": "Suku tengah barisan geometri 4, …, 324 yang semua sukunya positif dan banyak sukunya ganjil adalah ....",
+          "options": {
+            "A": "36",
+            "B": "164",
+            "C": "81",
+            "D": "18"
+          },
+          "answer": "A",
+          "explanation": "Uₜ = √(4 × 324) = √1.296 = 36."
+        }
+      ]
     },
     {
       "id": "deret-geometri-berhingga",
       "title": "Deret Geometri Berhingga: Rumus Sn untuk r > 1 dan r < 1",
       "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
+      "duration": "3 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Legenda Papan Catur",
+          "html": "<p>Sebuah legenda bercerita tentang penemu catur yang meminta hadiah gandum: 1 butir di petak pertama, 2 di petak kedua, 4 di petak ketiga, dan seterusnya sampai petak ke-64. Raja mengira itu permintaan kecil. Totalnya \\(2^{64} - 1\\), sekitar \\(1{,}8 \\times 10^{19}\\) butir, jauh melebihi panen gandum seluruh dunia.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Untuk menjumlahkan \\(S_n = a + ar + ar^2 + \\dots + ar^{n-1}\\), kalikan kedua ruas dengan \\(r\\), lalu kurangkan:</p><p>\\(rS_n - S_n = ar^n - a\\)</p><p>Hampir semua suku saling menghapus, sehingga \\(S_n(r - 1) = a(r^n - 1)\\). Pada legenda catur, \\(a = 1\\), \\(r = 2\\), \\(n = 64\\), jadi \\(S_{64} = 2^{64} - 1\\). Bentuk kedua lebih nyaman saat \\(r < 1\\), karena penyebutnya positif.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Jumlah n Suku Pertama Deret Geometri",
+          "html": "<p>\\[S_n = \\frac{a(r^n - 1)}{r - 1} \\;(r > 1), \\qquad S_n = \\frac{a(1 - r^n)}{1 - r} \\;(r < 1)\\]</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Hitung jumlah 8 suku pertama deret \\(3 + 6 + 12 + \\dots\\).</p>",
+          "steps": [
+            "\\(a = 3\\), \\(r = 2\\), \\(n = 8\\).",
+            "\\(S_8 = \\dfrac{3(2^8 - 1)}{2 - 1} = 3 \\times 255 = 765\\)."
+          ],
+          "answer": "765"
+        },
+        {
+          "type": "check",
+          "question": "Jumlah 5 suku pertama deret \\(81 + 27 + 9 + \\dots\\) adalah ....",
+          "options": {
+            "A": "117",
+            "B": "120",
+            "C": "121",
+            "D": "243"
+          },
+          "answer": "C",
+          "explanation": "a = 81, r = ⅓: S₅ = 81(1 − (⅓)⁵) : (1 − ⅓) = 81 + 27 + 9 + 3 + 1 = 121."
+        }
+      ]
     },
     {
       "id": "deret-geometri-tak-hingga",
       "title": "Deret Geometri Tak Hingga: Konsep Konvergen vs Divergen",
-      "kind": "latihan",
-      "duration": "2 menit",
+      "kind": "artikel",
+      "duration": "4 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Berjalan Setengah Jarak",
+          "html": "<p>Kamu berdiri 2 m dari tembok. Langkah pertama menempuh setengah jarak (1 m), langkah kedua setengah sisa jarak (½ m), lalu ¼ m, dan seterusnya. Langkahmu tidak pernah berhenti, tetapi jarak total yang kamu tempuh tidak pernah melebihi 2 m. Deret yang sukunya makin kecil seperti ini punya jumlah yang terbatas.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada deret geometri dengan \\(-1 < r < 1\\), suku \\(r^n\\) makin mendekati 0 ketika \\(n\\) makin besar. Akibatnya \\(S_n = \\dfrac{a(1 - r^n)}{1 - r}\\) mendekati \\(\\dfrac{a}{1 - r}\\). Deret seperti ini disebut <b>konvergen</b>. Jika \\(|r| \\ge 1\\), sukunya tidak mengecil dan jumlahnya tidak menuju satu bilangan; deretnya <b>divergen</b>.</p><p>Contoh menarik: \\(0{,}333\\ldots = 0{,}3 + 0{,}03 + 0{,}003 + \\dots\\) adalah deret geometri dengan \\(a = 0{,}3\\) dan \\(r = 0{,}1\\), jadi jumlahnya \\(\\dfrac{0{,}3}{0{,}9} = \\dfrac13\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Jumlah Deret Geometri Tak Hingga",
+          "html": "<p>\\[S_\\infty = \\frac{a}{1 - r}, \\qquad \\text{hanya jika } -1 < r < 1\\]</p>"
+        },
         {
           "type": "callout",
           "variant": "awas",
@@ -171,22 +385,23 @@
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Penduduk sebuah kota 200.000 jiwa dan bertambah 2% per tahun. Berapa jumlah penduduknya setelah 2 tahun?</p>",
+          "question": "<p>Nyatakan \\(0{,}777\\ldots\\) sebagai pecahan dengan deret geometri tak hingga.</p>",
           "steps": [
-            "P₂ = 200.000 × 1,02² = 200.000 × 1,0404 = 208.080 jiwa."
+            "\\(0{,}777\\ldots = 0{,}7 + 0{,}07 + 0{,}007 + \\dots\\), dengan \\(a = 0{,}7\\) dan \\(r = 0{,}1\\).",
+            "\\(S_\\infty = \\dfrac{0{,}7}{1 - 0{,}1} = \\dfrac{0{,}7}{0{,}9} = \\dfrac{7}{9}\\)."
           ],
-          "answer": "208.080 jiwa"
+          "answer": "7/9"
         },
         {
           "type": "check",
           "question": "Jumlah deret geometri tak hingga 12 + 6 + 3 + 1,5 + … adalah ....",
           "options": {
             "A": "22,5",
-            "B": "24",
-            "C": "36",
-            "D": "tak hingga"
+            "B": "36",
+            "C": "tak hingga",
+            "D": "24"
           },
-          "answer": "B",
+          "answer": "D",
           "hint": "a = 12, r = ½.",
           "explanation": "S∞ = 12 / (1 − ½) = 24."
         }
@@ -196,8 +411,14 @@
       "id": "aplikasi-bola-memantul",
       "title": "Aplikasi Geometri Tak Hingga: Menghitung Panjang Lintasan Bola Memantul",
       "kind": "artikel",
-      "duration": "3 menit",
+      "duration": "4 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Lintasan yang Panjangnya Terbatas",
+          "html": "<p>Bola basket yang dijatuhkan tidak pernah memantul setinggi semula, karena sebagian energinya hilang setiap kali menyentuh lantai. Secara teori bola memantul tanpa henti, tetapi lintasannya punya panjang yang terbatas. Deret geometri tak hingga bisa menghitungnya.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Sebuah bola dijatuhkan dari ketinggian 8 m dan setiap memantul tingginya tinggal ¾ tinggi sebelumnya: 8, 6, 4,5, …. Kali ini setiap suku diperoleh dengan <b>mengalikan</b> bilangan yang sama.</p>"
@@ -210,10 +431,8 @@
           "caption": "Tinggi pantulan bola membentuk barisan geometri."
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Pertumbuhan dan peluruhan",
-          "html": "<p>Besaran yang naik r% per periode: \\(P_n = P_0(1 + r)^n\\). Yang turun r% per periode: \\(P_n = P_0(1 - r)^n\\). Contoh: penduduk naik 2% per tahun, nilai mobil menyusut 15% per tahun.</p>"
+          "type": "text",
+          "html": "<p>Setelah dijatuhkan dari tinggi \\(h\\), bola naik lalu turun lagi pada setiap pantulan, jadi setiap tinggi pantulan ditempuh dua kali. Jika tinggi pantulan selalu \\(r\\) kali tinggi sebelumnya, panjang lintasan seluruhnya \\(h + 2 \\cdot \\dfrac{hr}{1 - r} = h\\cdot\\dfrac{1 + r}{1 - r}\\). Untuk \\(h = 8\\) m dan \\(r = \\tfrac34\\), hasilnya \\(8 \\cdot \\dfrac{1{,}75}{0{,}25} = 56\\) m.</p>"
         },
         {
           "type": "example",
@@ -231,11 +450,11 @@
           "question": "Tinggi pantulan bola: 8 m, 6 m, 4,5 m, …. Tinggi pantulan keempat (suku ke-4) adalah ....",
           "options": {
             "A": "3 m",
-            "B": "3,375 m",
-            "C": "3,5 m",
-            "D": "2,25 m"
+            "B": "3,5 m",
+            "C": "2,25 m",
+            "D": "3,375 m"
           },
-          "answer": "B",
+          "answer": "D",
           "hint": "r = 6/8 = 0,75.",
           "explanation": "U₄ = 8 × 0,75³ = 8 × 0,421875 = 3,375 m. 3 m diperoleh jika barisannya dianggap aritmetika (berkurang 1,5)."
         }
@@ -245,11 +464,23 @@
       "id": "aplikasi-finansial-bunga-pertumbuhan",
       "title": "Aplikasi Masalah Nyata: Bunga Tunggal, Bunga Majemuk, dan Pertumbuhan",
       "kind": "simulasi",
-      "duration": "5 menit",
+      "duration": "7 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Misteri di Kehidupan Nyata: Bunga yang Menghasilkan Bunga",
+          "html": "<p>Albert Einstein konon menyebut bunga majemuk sebagai <i>'keajaiban dunia kedelapan'</i>. Jika kamu menabung uang di instrumen investasi dengan imbal hasil majemuk berkala, bunga yang diperoleh akan ikut menghasilkan bunga baru pada periode berikutnya.</p><p>Pertambahan tabunganmu tidak berjalan konstan secara mendatar, melainkan membentuk pola deret bertingkat yang melipatgandakan kekayaan secara spektakuler seiring berjalannya waktu.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Barisan aritmetika dan geometri dipakai untuk menghitung bunga tabungan, pinjaman, pertumbuhan penduduk, dan penyusutan nilai barang.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pertumbuhan dan peluruhan",
+          "html": "<p>Besaran yang naik r% per periode: \\(P_n = P_0(1 + r)^n\\). Yang turun r% per periode: \\(P_n = P_0(1 - r)^n\\). Contoh: penduduk naik 2% per tahun, nilai mobil menyusut 15% per tahun.</p>"
         },
         {
           "type": "text",
@@ -264,7 +495,7 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal",
+          "title": "Contoh soal 1",
           "question": "<p>Modal Rp5.000.000,00 disimpan dengan bunga majemuk 8% per tahun. Berapa saldonya setelah 3 tahun?</p>",
           "steps": [
             "M₃ = 5.000.000 × 1,08³ = 5.000.000 × 1,259712.",
@@ -284,6 +515,15 @@
           "answer": "C",
           "hint": "Bunga tunggal: bunga setiap tahun selalu 6% dari modal awal.",
           "explanation": "Bunga per tahun Rp120.000,00. Setelah 5 tahun: 2.000.000 + 5 × 120.000 = Rp2.600.000,00. Rp2.676.451,00 adalah hasil bunga majemuk."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Penduduk sebuah kota 200.000 jiwa dan bertambah 2% per tahun. Berapa jumlah penduduknya setelah 2 tahun?</p>",
+          "steps": [
+            "P₂ = 200.000 × 1,02² = 200.000 × 1,0404 = 208.080 jiwa."
+          ],
+          "answer": "208.080 jiwa"
         }
       ]
     },
@@ -294,10 +534,8 @@
       "duration": "3 menit",
       "blocks": [
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Tabel perbandingan barisan aritmetika vs geometri dan bank soal HOTS.</p>"
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 2 Barisan dan Deret.</small></p>"
         },
         {
           "type": "sim",
