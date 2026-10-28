@@ -7,27 +7,25 @@
       "id": "tinjauan-barisan-deret-lanjut",
       "title": "Tinjauan Barisan dan Deret: Pola Aritmetika dan Geometri Bertingkat",
       "kind": "simulasi",
-      "duration": "14 menit",
+      "duration": "15 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Tinjauan Barisan dan Deret: Pola Aritmetika dan Geometri Bertingkat</b>: Membedakan pertumbuhan linier konstan vs eksponensial; formulasi sigma Σ dan sifat-sifat notasi sigma aljabar.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Pola di Tribun dan Pantulan Bola",
+          "html": "<p>Banyak kursi di tribun bertambah tetap setiap baris, sedangkan tinggi pantulan bola berkurang dengan perbandingan tetap. Dua pola sederhana ini, ditambah tetap dan dikali tetap, menjadi dasar perhitungan bunga bank, cicilan, dan pertumbuhan penduduk yang akan dibahas di bab ini.</p>"
         },
         {
           "type": "text",
-          "html": "<p>Kursi di sebuah gedung pertunjukan disusun bertingkat: baris pertama 20 kursi, baris kedua 24, baris ketiga 28, dan seterusnya. Selisih dua suku berurutan selalu sama, yaitu 4. Barisan seperti ini disebut <b>barisan aritmetika</b> dengan <b>beda</b> b = 4.</p>"
+          "html": "<p>Kursi di sebuah tribun disusun bertingkat: baris pertama 18 kursi, baris kedua 21, baris ketiga 24, dan seterusnya. Selisih dua suku berurutan selalu sama, yaitu 3. Barisan seperti ini disebut <b>barisan aritmetika</b>, dan selisihnya disebut beda.</p>"
         },
         {
           "type": "text",
-          "html": "<p>Sebuah bola dijatuhkan dari balkon setinggi 5 m. Setiap memantul, tingginya tinggal 3/5 tinggi sebelumnya: 5; 3; 1,8; 1,08; … Perbandingan dua suku berurutan selalu tetap. Barisan seperti ini disebut <b>barisan geometri</b> dengan <b>rasio</b> r.</p>"
+          "html": "<p>Sebuah bola dijatuhkan dari ketinggian 8 m. Setiap memantul, tingginya tinggal 3/4 tinggi sebelumnya: 8; 6; 4,5; 3,375; … Perbandingan dua suku berurutan selalu tetap. Barisan seperti ini disebut <b>barisan geometri</b>, dan perbandingannya disebut rasio.</p>"
         },
         {
           "type": "text",
           "html": "<p>Jumlah suku-suku barisan disebut <b>deret</b>. Konon, Carl Friedrich Gauss kecil menjumlahkan 1 sampai 100 dalam sekejap dengan memasangkan suku-sukunya.</p>"
-        },
-        {
-          "type": "text",
-          "html": "<table><tr><th></th><th>Aritmetika</th><th>Geometri</th></tr><tr><td>Pola</td><td>ditambah b</td><td>dikali r</td></tr><tr><td>Suku ke-n</td><td>a + (n − 1)b</td><td>a r<sup>n−1</sup></td></tr><tr><td>Jumlah n suku</td><td>½n(a + U<sub>n</sub>)</td><td>a(rⁿ − 1)/(r − 1)</td></tr><tr><td>Tak hingga</td><td>–</td><td>a/(1 − r), −1 &lt; r &lt; 1</td></tr><tr><td>Penerapan</td><td>bunga tunggal</td><td>bunga majemuk, pertumbuhan, peluruhan</td></tr></table>"
         },
         {
           "type": "image",
@@ -37,22 +35,8 @@
           "caption": "Ide Gauss: pasangkan suku pertama dengan suku terakhir."
         },
         {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Suku tengah dan sisipan",
-          "html": "<ul><li>Jika banyak suku ganjil, <b>suku tengah</b> U<sub>t</sub> = ½(a + U<sub>n</sub>).</li><li>Jika di antara dua bilangan x dan y disisipkan k bilangan sehingga membentuk barisan aritmetika, beda barunya b′ = (y − x)/(k + 1).</li></ul>"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Tidak mungkin negatif?",
-          "html": "<p>Galang berpendapat deret dengan suku pertama positif bisa mempunyai S∞ = −3. Ini salah: jika a &gt; 0 dan −1 &lt; r &lt; 1, maka 1 − r &gt; 0 sehingga S∞ = a/(1 − r) &gt; 0.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Memakai pangkat n, bukan n − 1, pada U<sub>n</sub> geometri.</li><li>Lupa mengalikan 2 lintasan naik-turun pada soal bola memantul.</li><li>Memakai S∞ ketika |r| ≥ 1.</li></ul>"
+          "type": "text",
+          "html": "<table><tr><th></th><th>Aritmetika</th><th>Geometri</th></tr><tr><td>Pola</td><td>ditambah b</td><td>dikali r</td></tr><tr><td>Suku ke-n</td><td>a + (n − 1)b</td><td>a r<sup>n−1</sup></td></tr><tr><td>Jumlah n suku</td><td>½n(a + U<sub>n</sub>)</td><td>a(rⁿ − 1)/(r − 1)</td></tr><tr><td>Tak hingga</td><td>–</td><td>a/(1 − r), −1 &lt; r &lt; 1</td></tr><tr><td>Penerapan</td><td>bunga tunggal</td><td>bunga majemuk, pertumbuhan, peluruhan</td></tr></table>"
         },
         {
           "type": "sim",
@@ -60,6 +44,71 @@
           "title": "Barisan aritmetika dan geometri",
           "height": 520,
           "caption": "Pilih barisan aritmetika, ubah a dan b, lalu tebak suku ke-n sebelum melihat hasilnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pada barisan aritmetika, U₄ = 17 dan U₉ = 37. Tentukan a, b, dan U₂₅.</p>",
+          "steps": [
+            "U₉ − U₄ = 5b = 20, sehingga b = 4.",
+            "a = U₄ − 3b = 17 − 12 = 5.",
+            "U₂₅ = 5 + 24 × 4 = 101."
+          ],
+          "answer": "a = 5, b = 4, U₂₅ = 101"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pada barisan geometri, U₃ = 12 dan U₆ = 96. Tentukan U₅.</p>",
+          "steps": [
+            "U₆/U₃ = r³ = 8, sehingga r = 2.",
+            "a = 12/2² = 3, jadi U₅ = 3 × 2⁴ = 48."
+          ],
+          "answer": "48"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Hitung jumlah 20 suku pertama deret 7 + 11 + 15 + ….</p>",
+          "steps": [
+            "a = 7, b = 4, n = 20.",
+            "S₂₀ = ½ × 20 × (2 × 7 + 19 × 4) = 10 × 90 = 900."
+          ],
+          "answer": "900"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Suku tengah dan sisipan",
+          "html": "<ul><li>Jika banyak suku ganjil, <b>suku tengah</b> U<sub>t</sub> = ½(a + U<sub>n</sub>).</li><li>Jika di antara dua bilangan x dan y disisipkan k bilangan sehingga membentuk barisan aritmetika, beda barunya b′ = (y − x)/(k + 1).</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Di antara bilangan 6 dan 30 disisipkan 3 bilangan sehingga terbentuk barisan aritmetika. Beda barisan itu adalah ....",
+          "options": {
+            "A": "8",
+            "B": "6",
+            "C": "4",
+            "D": "12"
+          },
+          "answer": "B",
+          "explanation": "Ada 5 suku, jadi 30 = 6 + 4b dan b = 6."
+        },
+        {
+          "type": "check",
+          "question": "Suku ke-12 barisan 5, 8, 11, 14, … adalah ....",
+          "options": {
+            "A": "38",
+            "B": "41",
+            "C": "36",
+            "D": "35"
+          },
+          "answer": "A",
+          "explanation": "U₁₂ = 5 + 11 × 3 = 38."
+        },
+        {
+          "type": "text",
+          "html": "<p>Bola yang memantul terus-menerus menempuh lintasan yang makin pendek. Apakah total lintasannya tak terbatas? Ternyata tidak, jika rasionya di antara −1 dan 1.</p>"
         },
         {
           "type": "sim",
@@ -70,86 +119,39 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Pada barisan aritmetika, U₃ = 10 dan U₇ = 22. Tentukan a, b, dan U₂₀.</p>",
+          "title": "Contoh soal 4",
+          "question": "<p>Sebuah bola dijatuhkan vertikal dari ketinggian 12 meter ke lantai datar. Setiap kali memantul, bola memantul kembali setinggi \\(\\frac{3}{4}\\) dari tinggi sebelumnya. Hitunglah total panjang lintasan yang ditempuh bola hingga berhenti total!</p>",
           "steps": [
-            "U₇ − U₃ = 4b = 12, sehingga b = 3.",
-            "a = U₃ − 2b = 4.",
-            "U₂₀ = 4 + 19 × 3 = 61."
+            "Pahami pola gerak bola: Lintasan turun pertama setinggi h₀ = 12 m. Lintasan berikutnya terdiri dari gerak naik dan turun berulang dengan rasio r = 3/4.",
+            "Rumus cepat total panjang lintasan pantulan bola: S = h₀ × \\frac{1 + r}{1 - r}.",
+            "Substitusikan nilai h₀ = 12 m dan r = 3/4:\nS = 12 \\times \\frac{1 + 3/4}{1 - 3/4} = 12 \\times \\frac{7/4}{1/4}.",
+            "Sederhanakan pecahan: S = 12 × 7 = 84 meter."
           ],
-          "answer": "a = 4, b = 3, U₂₀ = 61"
+          "answer": "Panjang total lintasan bola hingga berhenti adalah 84 meter."
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Pada barisan geometri, U₂ = 6 dan U₅ = 162. Tentukan U₄.</p>",
-          "steps": [
-            "U₅/U₂ = r³ = 27, sehingga r = 3.",
-            "a = 6/3 = 2, U₄ = 2 × 3³ = 54."
-          ],
-          "answer": "54"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Hitung jumlah 26 suku pertama deret 9 + 12 + 15 + ….</p>",
-          "steps": [
-            "a = 9, b = 3, n = 26.",
-            "S₂₆ = 13 × (18 + 25 × 3) = 13 × 93 = 1.209."
-          ],
-          "answer": "1.209"
+          "type": "callout",
+          "variant": "awas",
+          "title": "Tidak mungkin negatif?",
+          "html": "<p>Galang berpendapat deret dengan suku pertama positif bisa mempunyai S∞ = −3. Ini salah: jika a &gt; 0 dan −1 &lt; r &lt; 1, maka 1 − r &gt; 0 sehingga S∞ = a/(1 − r) &gt; 0.</p>"
         },
         {
           "type": "check",
-          "question": "Suku ke-10 barisan 3, 7, 11, 15, … adalah ....",
+          "question": "Jumlah tak hingga deret 27 + 9 + 3 + 1 + … adalah ....",
           "options": {
-            "A": "39",
-            "B": "40",
-            "C": "43",
-            "D": "36"
-          },
-          "answer": "A",
-          "hint": "a = 3, b = 4.",
-          "explanation": "U₁₀ = 3 + 9 × 4 = 39."
-        },
-        {
-          "type": "check",
-          "question": "Rasio barisan 2, 6, 18, 54, … adalah ....",
-          "options": {
-            "A": "2",
-            "B": "3",
-            "C": "4",
-            "D": "6"
+            "A": "40",
+            "B": "40,5",
+            "C": "36",
+            "D": "81"
           },
           "answer": "B",
-          "hint": "Bagi suatu suku dengan suku sebelumnya.",
-          "explanation": "6/2 = 18/6 = 3."
+          "explanation": "a = 27, r = 1/3: S∞ = 27/(1 − 1/3) = 27/(2/3) = 40,5."
         },
         {
-          "type": "check",
-          "question": "Jumlah 5 suku pertama deret 2 + 6 + 18 + … adalah ....",
-          "options": {
-            "A": "162",
-            "B": "242",
-            "C": "244",
-            "D": "486"
-          },
-          "answer": "B",
-          "hint": "a = 2, r = 3.",
-          "explanation": "S₅ = 2(3⁵ − 1)/2 = 243 − 1 = 242. 162 adalah U₅."
-        },
-        {
-          "type": "check",
-          "question": "Jumlah tak hingga deret 8 + 4 + 2 + 1 + … adalah ....",
-          "options": {
-            "A": "15",
-            "B": "24",
-            "C": "tak terbatas",
-            "D": "16"
-          },
-          "answer": "D",
-          "hint": "a = 8, r = ½.",
-          "explanation": "S∞ = 8/(1 − ½) = 16."
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai pangkat n, bukan n − 1, pada U<sub>n</sub> geometri.</li><li>Lupa mengalikan 2 lintasan naik-turun pada soal bola memantul.</li><li>Memakai S∞ ketika |r| ≥ 1.</li></ul>"
         }
       ]
     },
@@ -160,41 +162,52 @@
       "duration": "4 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Tabungan dengan Bunga Tetap",
+          "html": "<p>Koperasi sekolah memberi bunga tunggal 5% per tahun untuk tabungan anggota. Bunga dihitung dari setoran awal saja dan dibayarkan sama besar setiap tahun, sehingga saldo bertambah dengan jumlah yang tetap, persis seperti barisan aritmetika.</p>"
+        },
+        {
           "type": "text",
           "html": "<p>Pada <b>bunga tunggal</b>, bunga dihitung dari modal awal saja, sehingga besarnya sama setiap periode. Saldo tabungan membentuk barisan aritmetika dengan beda = bunga per periode.</p>"
         },
         {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bunga Tunggal",
+          "html": "\\[B = M_0 \\cdot i \\cdot n, \\qquad M_n = M_0(1 + i\\,n)\\]<p>M₀ modal awal, i suku bunga per periode, n banyak periode. Jika i per tahun dan waktu dalam bulan, pakai n = bulan/12.</p>"
+        },
+        {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Hitung 3 + 6 + 12 + … sampai 6 suku.</p>",
+          "question": "<p>Tabungan Rp3.000.000,00 mendapat bunga tunggal 5% per tahun. Tentukan bunga dan saldo setelah 3 tahun.</p>",
           "steps": [
-            "a = 3, r = 2, n = 6.",
-            "S₆ = 3(2⁶ − 1)/(2 − 1) = 3 × 63 = 189."
+            "B = 3.000.000 × 0,05 × 3 = Rp450.000,00.",
+            "M₃ = 3.000.000 + 450.000 = Rp3.450.000,00."
           ],
-          "answer": "189"
+          "answer": "Rp3.450.000,00"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Tabungan Rp2.000.000,00 menjadi Rp2.240.000,00 setelah 18 bulan dengan bunga tunggal. Berapa suku bunga per tahun?</p>",
+          "question": "<p>Tabungan Rp1.500.000,00 menjadi Rp1.620.000,00 setelah 16 bulan dengan bunga tunggal. Berapa suku bunga per tahun?</p>",
           "steps": [
-            "Bunga = 240.000 = 2.000.000 × i × 1,5.",
-            "i = 240.000/3.000.000 = 0,08."
+            "Bunga = Rp120.000,00.",
+            "120.000 = 1.500.000 × i × 16/12, sehingga i = 120.000 / 2.000.000 = 0,06."
           ],
-          "answer": "8% per tahun"
+          "answer": "6% per tahun"
         },
         {
           "type": "check",
-          "question": "Modal Rp1.000.000,00 dibungakan dengan bunga tunggal 6% per tahun selama 2 tahun. Besar bunganya adalah ....",
+          "question": "Modal Rp2.500.000,00 dibungakan dengan bunga tunggal 4% per tahun selama 3 tahun. Besar bunganya adalah ....",
           "options": {
-            "A": "Rp60.000,00",
-            "B": "Rp123.600,00",
-            "C": "Rp120.000,00",
-            "D": "Rp1.120.000,00"
+            "A": "Rp100.000,00",
+            "B": "Rp312.160,00",
+            "C": "Rp300.000,00",
+            "D": "Rp2.800.000,00"
           },
           "answer": "C",
-          "hint": "B = M · i · n.",
-          "explanation": "1.000.000 × 0,06 × 2 = 120.000. Rp123.600,00 adalah bunga majemuk."
+          "explanation": "B = 2.500.000 × 0,04 × 3 = 300.000. Nilai 2.800.000 adalah saldo akhirnya."
         }
       ]
     },
@@ -202,13 +215,23 @@
       "id": "bunga-majemuk-periode-tahunan",
       "title": "Matematika Keuangan 2: Bunga Majemuk Tahunan (Mn = M0 (1 + i)^n)",
       "kind": "simulasi",
-      "duration": "4 menit",
+      "duration": "5 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Konsep bunga berbunga; grafik kurva pertumbuhan eksponensial simpanan bank; membandingkan akumulasi bunga tunggal vs majemuk dalam jangka panjang.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Bunga Berbunga",
+          "html": "<p>Pada deposito bank, bunga tahun pertama ditambahkan ke saldo, lalu tahun berikutnya bunga dihitung dari saldo yang sudah lebih besar itu. Bunga ikut berbunga. Dalam jangka pendek selisihnya kecil, tetapi dalam puluhan tahun selisih bunga majemuk dan bunga tunggal sangat besar.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada <b>bunga majemuk</b>, saldo setiap akhir periode dikalikan (1 + i). Saldo membentuk barisan geometri dengan rasio (1 + i), sedangkan pada bunga tunggal saldo membentuk barisan aritmetika. Grafik bunga tunggal berupa garis lurus, grafik bunga majemuk melengkung naik makin curam.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bunga Majemuk",
+          "html": "\\[M_n = M_0(1 + i)^n\\]"
         },
         {
           "type": "sim",
@@ -220,44 +243,72 @@
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Bola dijatuhkan dari ketinggian 5 m dan memantul 3/5 tinggi sebelumnya. Tentukan panjang lintasan sampai bola berhenti.</p>",
+          "question": "<p>Uang Rp5.000.000,00 didepositokan dengan bunga majemuk 6% per tahun. Berapa saldonya setelah 3 tahun? Bandingkan dengan bunga tunggal.</p>",
           "steps": [
-            "Lintasan turun: 5 + 3 + 1,8 + …; lintasan naik: 3 + 1,8 + ….",
-            "Jumlah lintasan naik = 3/(1 − 3/5) = 7,5 m.",
-            "Total = 5 + 2 × 7,5 = 20 m."
+            "Majemuk: \\(M_3 = 5.000.000 \\times 1{,}06^3 = 5.000.000 \\times 1{,}191016 = 5.955.080\\).",
+            "Tunggal: \\(5.000.000 \\times (1 + 0{,}06 \\times 3) = 5.900.000\\).",
+            "Bunga majemuk Rp55.080,00 lebih banyak."
           ],
-          "answer": "20 m"
+          "answer": "Rp5.955.080,00 (majemuk) dan Rp5.900.000,00 (tunggal)"
         },
         {
           "type": "check",
-          "question": "Jumlah 100 bilangan asli pertama adalah ....",
+          "question": "Modal Rp1.000.000,00 dibungakan dengan bunga majemuk 10% per tahun. Setelah 2 tahun, modal menjadi ....",
           "options": {
-            "A": "5.050",
-            "B": "5.000",
-            "C": "10.100",
-            "D": "10.000"
+            "A": "Rp1.200.000,00",
+            "B": "Rp1.100.000,00",
+            "C": "Rp1.221.000,00",
+            "D": "Rp1.210.000,00"
           },
-          "answer": "A",
-          "hint": "Gunakan cara Gauss.",
-          "explanation": "S = 100/2 × (1 + 100) = 5.050."
+          "answer": "D",
+          "explanation": "1.000.000 × 1,1² = 1.210.000. Nilai 1.200.000 adalah hasil bunga tunggal."
         }
       ]
     },
     {
       "id": "bunga-majemuk-konversi-periode",
       "title": "Bunga Majemuk dengan Periode Majemuk Lebih dari Sekali Setahun",
-      "kind": "latihan",
-      "duration": "2 menit",
+      "kind": "artikel",
+      "duration": "3 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Deposito Bulanan atau Tahunan?",
+          "html": "<p>Dua bank menawarkan bunga 12% per tahun. Bank pertama menambahkan bunga setahun sekali, bank kedua setiap bulan 1%. Walaupun angkanya sama, bank kedua memberi hasil sedikit lebih besar, karena bunga bulan pertama sudah ikut berbunga di bulan berikutnya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika bunga majemuk i per tahun dihitung m kali setahun, suku bunga setiap periode adalah i/m dan banyak periode dalam n tahun adalah m·n. Makin sering bunga dihitung, makin besar saldo akhirnya, walaupun kenaikannya makin kecil.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Bunga Majemuk m Kali Setahun",
+          "html": "\\[M_n = M_0\\left(1 + \\frac{i}{m}\\right)^{m n}\\]"
+        },
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Sebuah akun media sosial menyebarkan pesan berantai. Setiap 2 jam, banyak akun yang terpengaruh menjadi 3 kali. Jika awalnya 5 akun, berapa akun setelah 8 jam?</p>",
+          "question": "<p>Rp10.000.000,00 didepositokan dengan bunga 12% per tahun. Bandingkan saldo setelah 1 tahun jika bunga dihitung tahunan dan bulanan.</p>",
           "steps": [
-            "8 jam = 4 periode, sehingga yang dicari U₅ dengan a = 5, r = 3.",
-            "U₅ = 5 × 3⁴ = 405."
+            "Tahunan: 10.000.000 × 1,12 = Rp11.200.000,00.",
+            "Bulanan: \\(10.000.000 \\times 1{,}01^{12} \\approx 11.268.250\\).",
+            "Bunga bulanan memberi sekitar Rp68.250,00 lebih banyak."
           ],
-          "answer": "405 akun"
+          "answer": "Rp11.200.000,00 dan sekitar Rp11.268.250,00"
+        },
+        {
+          "type": "check",
+          "question": "Rp4.000.000,00 didepositokan dengan bunga 8% per tahun yang dihitung setiap 3 bulan. Saldo setelah 1 tahun sekitar ....",
+          "options": {
+            "A": "Rp4.320.000,00",
+            "B": "Rp4.080.000,00",
+            "C": "Rp4.665.600,00",
+            "D": "Rp4.329.729,00"
+          },
+          "answer": "D",
+          "explanation": "Setiap kuartal 2%, 4 kali setahun: 4.000.000 × 1,02⁴ ≈ 4.329.729."
         }
       ]
     },
@@ -265,29 +316,45 @@
       "id": "future-value-dan-present-value",
       "title": "Konsep Nilai Masa Depan (Future Value) dan Nilai Sekarang (Present Value)",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Menabung untuk Biaya Kuliah",
+          "html": "<p>Orang tua ingin punya Rp20 juta untuk biaya kuliah anaknya 4 tahun lagi. Berapa yang harus didepositokan hari ini? Karena uang hari ini bisa berbunga, Rp20 juta empat tahun lagi setara dengan jumlah yang lebih kecil sekarang. Gagasan ini disebut nilai waktu uang.</p>"
+        },
+        {
           "type": "text",
-          "html": "<p>Bola yang memantul terus-menerus menempuh lintasan yang makin pendek. Apakah total lintasannya tak terbatas? Ternyata tidak, jika rasionya di antara −1 dan 1.</p>"
+          "html": "<p><b>Nilai masa depan</b> (future value, FV) adalah nilai uang hari ini setelah berbunga n periode. <b>Nilai sekarang</b> (present value, PV) adalah kebalikannya: berapa nilai hari ini dari sejumlah uang yang baru diterima n periode lagi. Membagi dengan \\((1 + i)^n\\) disebut mendiskon.</p>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Nilai waktu dari uang (Time Value of Money); diskonto arus kas masa depan PV = FV / (1 + i)^n; mengapa uang Rp 1 juta hari ini bernilai lebih tinggi dari Rp 1 juta 5 tahun mendatang.</p>"
+          "variant": "rumus",
+          "title": "Nilai Masa Depan dan Nilai Sekarang",
+          "html": "\\[FV = PV(1 + i)^n, \\qquad PV = \\frac{FV}{(1 + i)^n}\\]"
         },
         {
           "type": "example",
-          "title": "Contoh Soal: Menghitung Suku dan Jumlah Deret Geometri Tak Hingga",
-          "question": "<p>Sebuah bola dijatuhkan vertikal dari ketinggian 12 meter ke lantai datar. Setiap kali memantul, bola memantul kembali setinggi \\(\\frac{3}{4}\\) dari tinggi sebelumnya. Hitunglah total panjang lintasan yang ditempuh bola hingga berhenti total!</p>",
+          "title": "Contoh soal",
+          "question": "<p>Berapa yang harus didepositokan sekarang dengan bunga majemuk 5% per tahun agar menjadi Rp20.000.000,00 setelah 4 tahun?</p>",
           "steps": [
-            "Pahami pola gerak bola: Lintasan turun pertama setinggi h₀ = 12 m. Lintasan berikutnya terdiri dari gerak naik dan turun berulang dengan rasio r = 3/4.",
-            "Rumus cepat total panjang lintasan pantulan bola: S = h₀ × \\frac{1 + r}{1 - r}.",
-            "Substitusikan nilai h₀ = 12 m dan r = 3/4:\nS = 12 \\times \\frac{1 + 3/4}{1 - 3/4} = 12 \\times \\frac{7/4}{1/4}.",
-            "Sederhanakan pecahan: S = 12 × 7 = 84 meter."
+            "\\(PV = \\dfrac{20.000.000}{1{,}05^4} = \\dfrac{20.000.000}{1{,}21550625}\\).",
+            "PV ≈ Rp16.454.049,00."
           ],
-          "answer": "Panjang total lintasan bola hingga berhenti adalah 84 meter."
+          "answer": "sekitar Rp16.454.049,00"
+        },
+        {
+          "type": "check",
+          "question": "Nilai masa depan Rp8.000.000,00 setelah 2 tahun dengan bunga majemuk 5% per tahun adalah ....",
+          "options": {
+            "A": "Rp8.820.000,00",
+            "B": "Rp8.800.000,00",
+            "C": "Rp8.400.000,00",
+            "D": "Rp7.256.236,00"
+          },
+          "answer": "A",
+          "explanation": "8.000.000 × 1,05² = 8.820.000. Nilai 7.256.236 adalah nilai sekarangnya (dibagi, bukan dikali)."
         }
       ]
     },
@@ -295,8 +362,57 @@
       "id": "pertumbuhan-dan-peluruhan-matematis",
       "title": "Model Pertumbuhan dan Peluruhan Eksponensial Kontinu (N(t) = N0 · e^(kt))",
       "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
+      "duration": "4 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Kultur Bakteri di Laboratorium",
+          "html": "<p>Bakteri di cawan petri membelah diri sehingga banyaknya berlipat ganda setiap beberapa jam. Obat di dalam darah sebaliknya, berkurang dengan persentase tetap setiap jam. Keduanya mengikuti pola barisan geometri, hanya rasionya berbeda: lebih dari 1 untuk pertumbuhan, kurang dari 1 untuk peluruhan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika suatu besaran bertambah r persen setiap periode, setelah t periode besarnya \\(N_0(1 + r)^t\\); jika berkurang, \\(N_0(1 - r)^t\\). Jika besaran berlipat dua setiap T satuan waktu, \\(N = N_0 \\cdot 2^{t/T}\\). Jika pertumbuhan terjadi terus-menerus (kontinu) dengan laju k, dipakai bilangan e ≈ 2,718: \\(N = N_0 e^{kt}\\); peluruhan kontinu memakai k negatif.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Model Pertumbuhan dan Peluruhan",
+          "html": "\\[N = N_0(1 \\pm r)^t, \\qquad N = N_0 \\cdot 2^{t/T}, \\qquad N = N_0 e^{kt}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kultur berisi 500 bakteri yang berlipat dua setiap 3 jam. Berapa banyaknya setelah 12 jam?</p>",
+          "steps": [
+            "Dalam 12 jam terjadi 12/3 = 4 kali penggandaan.",
+            "\\(N = 500 \\times 2^4 = 8.000\\) bakteri."
+          ],
+          "answer": "8.000 bakteri"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Populasi 1.000 ekor tumbuh kontinu dengan laju 5% per tahun. Berapa populasinya setelah 10 tahun?</p>",
+          "steps": [
+            "\\(N = 1.000 \\cdot e^{0{,}05 \\times 10} = 1.000 \\cdot e^{0{,}5}\\).",
+            "\\(e^{0{,}5} \\approx 1{,}6487\\), jadi N ≈ 1.649 ekor."
+          ],
+          "answer": "sekitar 1.649 ekor"
+        },
+        {
+          "type": "check",
+          "question": "Penduduk sebuah kota 2.000.000 jiwa dan bertambah 2% setiap tahun. Setelah 2 tahun, penduduknya menjadi ....",
+          "options": {
+            "A": "2.040.000 jiwa",
+            "B": "2.080.000 jiwa",
+            "C": "2.080.800 jiwa",
+            "D": "2.400.000 jiwa"
+          },
+          "answer": "C",
+          "explanation": "2.000.000 × 1,02² = 2.080.800. Nilai 2.080.000 adalah hasil jika pertambahannya dihitung seperti bunga tunggal."
+        }
+      ]
     },
     {
       "id": "ringkasan-peta-konsep",
@@ -305,18 +421,14 @@
       "duration": "4 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 1 Barisan dan Deret.</small></p>"
-        },
-        {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Gedung pertunjukan mempunyai 15 baris kursi. Baris pertama 20 kursi dan setiap baris berikutnya bertambah 4. Berapa kapasitas gedung?</p>",
+          "question": "<p>Sebuah tribun mempunyai 12 baris kursi. Baris pertama 25 kursi dan setiap baris berikutnya bertambah 3 kursi. Berapa kapasitas tribun?</p>",
           "steps": [
-            "U₁₅ = 20 + 14 × 4 = 76.",
-            "S₁₅ = 15/2 × (20 + 76) = 720."
+            "U₁₂ = 25 + 11 × 3 = 58.",
+            "S₁₂ = ½ × 12 × (25 + 58) = 6 × 83 = 498."
           ],
-          "answer": "720 kursi"
+          "answer": "498 kursi"
         },
         {
           "type": "example",
@@ -338,6 +450,10 @@
           "title": "Cheat Sheet: Barisan Deret Lanjut, Pola Tingkat & Notasi Sigma",
           "subtitle": "Kompilasi barisan aritmetika bertingkat dua/tiga, pemodelan pertumbuhan & peluruhan eksponensial, dan manipulasi aljabar sigma.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Barisan Aritmetika Bertingkat Dua</h4>\n    \\[ U_n = an^2 + bn + c \\]\n    <p>Gunakan sistem koefisien baris pertama pola selisih:</p>\n    \\[ 2a = d_2, \\quad 3a + b = d_1, \\quad a + b + c = U_1 \\]\n    <p><b>Model Pertumbuhan & Peluruhan Eksponensial:</b></p>\n    <ul>\n      <li><b>Pertumbuhan (Bakteri, Penduduk):</b> \\(M_n = M_0 (1 + r)^n\\)</li>\n      <li><b>Peluruhan (Zat Radioaktif, Depresiasi):</b> \\(M_n = M_0 (1 - r)^n\\)</li>\n      <li>Waktu paruh radioaktif (\\(T_{1/2}\\)): \\(N_t = N_0 \\left(\\frac{1}{2}\\right)^{\\frac{t}{T_{1/2}}}\\)</li>\n    </ul>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Sifat-Sifat Aljabar Notasi Sigma (\\(\\sum\\))</h4>\n    \\[ \\sum_{i=1}^n c = n \\cdot c, \\quad \\sum_{i=1}^n c \\cdot a_i = c \\sum_{i=1}^n a_i \\]\n    \\[ \\sum_{i=1}^n (a_i \\pm b_i) = \\sum_{i=1}^n a_i \\pm \\sum_{i=1}^n b_i \\]\n    <p><b>Pergeseran Indeks Notasi Sigma:</b></p>\n    \\[ \\sum_{i=1}^n a_i = \\sum_{i=1+k}^{n+k} a_{i-k} = \\sum_{i=1-k}^{n-k} a_{i+k} \\]\n    <p><b>Jumlah Deret Khusus Terkenal:</b></p>\n    \\[ \\sum_{i=1}^n i = \\frac{n(n+1)}{2}, \\quad \\sum_{i=1}^n i^2 = \\frac{n(n+1)(2n+1)}{6} \\]\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 1 Barisan dan Deret.</small></p>"
         },
         {
           "type": "kuis",
