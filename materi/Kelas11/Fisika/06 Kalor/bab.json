@@ -7,21 +7,27 @@
       "id": "konsep-kalor-dan-kapasitas",
       "title": "Konsep Energi Termal Kalor dan Kapasitas Kalor Sistem",
       "kind": "simulasi",
-      "duration": "11 menit",
+      "duration": "8 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Konsep Energi Termal Kalor dan Kapasitas Kalor Sistem</b>: Kalor sebagai energi termal yang berpindah karena perbedaan suhu; kapasitas kalor C = Q/ΔT vs kalor jenis spesifik c = Q/(m·ΔT).</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Pasir Panas, Air Laut Sejuk",
+          "html": "<p>Di siang terik, pasir pantai terasa membakar telapak kaki, sedangkan air laut tetap sejuk, padahal keduanya menerima sinar matahari yang sama. Air memerlukan kalor jauh lebih banyak untuk naik suhunya satu derajat. Besaran yang membedakannya adalah kalor jenis.</p>"
         },
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Skala suhu</td><td>C : R : (F − 32) : (K − 273) = 5 : 4 : 9 : 5</td></tr><tr><td>Kalor</td><td>\\(Q = mc\\Delta T\\), \\(Q = mL\\), \\(C = mc\\)</td></tr><tr><td>Asas Black</td><td>\\(Q_{lepas} = Q_{terima}\\)</td></tr><tr><td>Pemuaian</td><td>\\(\\Delta L = \\alpha L_0\\Delta T\\), β = 2α, γ = 3α</td></tr><tr><td>Perpindahan</td><td>\\(H = kA\\Delta T/L\\), \\(H = hA\\Delta T\\), \\(P = e\\sigma AT^4\\)</td></tr></table>"
+          "html": "<p><b>Suhu</b> menyatakan derajat panas atau dingin benda. Secara mikroskopis, suhu sebanding dengan <b>energi kinetik rata-rata partikel</b>: makin panas, partikel bergerak makin cepat. Satuan SI suhu adalah kelvin (K).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Kalor</b> adalah energi yang berpindah karena perbedaan suhu, selalu dari benda bersuhu tinggi ke benda bersuhu rendah. Kalor yang diperlukan untuk menaikkan suhu sebanding dengan massa, kenaikan suhu, dan <b>kalor jenis</b> c, yaitu kalor untuk menaikkan suhu 1 kg zat sebesar 1 °C. <b>Kapasitas kalor</b> C adalah kalor untuk menaikkan suhu seluruh benda sebesar 1 °C.</p><p>Skala suhu dapat dikonversi dengan perbandingan C : R : (F − 32) : (K − 273) = 5 : 4 : 9 : 5.</p>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Percobaan Joule",
-          "html": "<p>Joule menunjukkan bahwa energi mekanik (beban yang turun memutar pengaduk) dapat diubah menjadi kalor yang menaikkan suhu air: \\(mgh = m_a c\\Delta T\\). Kalor adalah bentuk energi; 1 kalori = 4,2 J.</p>"
+          "variant": "rumus",
+          "title": "Kalor dan Kapasitas Kalor",
+          "html": "\\[Q = mc\\Delta T, \\qquad C = \\frac{Q}{\\Delta T} = mc\\]<p>1 kalori = 4,2 J; kalor jenis air 4.200 J/kg°C.</p>"
         },
         {
           "type": "sim",
@@ -29,13 +35,6 @@
           "title": "Membandingkan skala suhu",
           "height": 480,
           "caption": "Geser suhu dan bandingkan pembacaan keempat skala."
-        },
-        {
-          "type": "sim",
-          "src": "../../../Kelas7/IPA/03 Suhu, Kalor, dan Pemuaian/sim/kurva-pemanasan.html",
-          "title": "Kurva pemanasan es",
-          "height": 480,
-          "caption": "Panaskan es dan perhatikan bagian datar grafik: ke mana kalor digunakan?"
         },
         {
           "type": "example",
@@ -50,97 +49,6 @@
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Benda 0,4 kg memerlukan 4.800 J untuk naik dari 25 °C ke 55 °C. Tentukan kapasitas kalor dan kalor jenisnya.</p>",
-          "steps": [
-            "C = Q/ΔT = 4.800/30 = 160 J/°C.",
-            "c = C/m = 160/0,4."
-          ],
-          "answer": "160 J/°C dan 400 J/kg°C"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>50 g es 0 °C dicampur 200 g air 50 °C. Berapa suhu akhir (L = 336.000 J/kg)?</p>",
-          "steps": [
-            "Kalor untuk melebur es: 0,05 × 336.000 = 16.800 J.",
-            "Kalor air bila turun ke 0 °C: 0,2 × 4.200 × 50 = 42.000 J &gt; 16.800 J, jadi semua es melebur.",
-            "\\(0{,}2(4.200)(50 - T) = 16.800 + 0{,}05(4.200)(T - 0) \\Rightarrow 42.000 - 840T = 16.800 + 210T\\)."
-          ],
-          "answer": "T = 24 °C"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 4",
-          "question": "<p>Rel baja 20 m dipasang pada 25 °C. Suhu terpanas 55 °C, α = 12 × 10⁻⁶ /°C. Berapa celah minimum?</p>",
-          "steps": [
-            "ΔL = 12 × 10⁻⁶ × 20 × 30 = 7,2 × 10⁻³ m."
-          ],
-          "answer": "7,2 mm"
-        },
-        {
-          "type": "check",
-          "question": "Grafik pemanasan es menunjukkan bagian mendatar pada 0 °C karena ....",
-          "options": {
-            "A": "kalor tidak diserap",
-            "B": "kalor dipakai untuk mengubah wujud, bukan menaikkan suhu",
-            "C": "termometer rusak",
-            "D": "es memancarkan kalor"
-          },
-          "answer": "B",
-          "hint": "Kalor laten.",
-          "explanation": "Selama melebur, kalor digunakan untuk memutus ikatan antarpartikel sehingga suhu tetap."
-        }
-      ]
-    },
-    {
-      "id": "kalorimeter-dan-asas-black",
-      "title": "Asas Black Kuantitatif dan Kalorimeter Bom",
-      "kind": "simulasi",
-      "duration": "3 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "sim/asas-black.html",
-          "title": "Asas Black",
-          "height": 560,
-          "caption": "Campurkan logam panas ke air, lalu es ke air hangat. Perhatikan bagian datar grafik suhu es saat melebur."
-        },
-        {
-          "type": "check",
-          "question": "Ketika gas dalam wadah tertutup dipanaskan, ....",
-          "options": {
-            "A": "partikel gas membesar",
-            "B": "energi kinetik rata-rata partikel bertambah",
-            "C": "jumlah partikel bertambah",
-            "D": "massa gas bertambah"
-          },
-          "answer": "B",
-          "hint": "Suhu ↔ gerak partikel.",
-          "explanation": "Kenaikan suhu berarti partikel bergerak lebih cepat."
-        }
-      ]
-    },
-    {
-      "id": "perubahan-fase-dan-kalor-laten",
-      "title": "Diagram Transisi Fase Zat dan Analisis Kalor Laten",
-      "kind": "latihan",
-      "duration": "5 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Penerapan",
-          "html": "<p>Celah sambungan rel dan jembatan, pemasangan kawat listrik yang kendur, keping bimetal pada termostat setrika dan alarm kebakaran, serta lubang ring baut yang ikut membesar saat dipanaskan (seluruh bagian ring memuai). Air memiliki <b>anomali</b>: antara 0–4 °C volumenya justru menyusut saat dipanaskan, sehingga es terapung dan dasar danau tetap ±4 °C.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Lupa kalor laten ketika ada perubahan wujud.</li><li>Memakai °C pada rumus radiasi (harus kelvin).</li><li>Lupa mengubah tebal dari cm ke m pada rumus konduksi.</li></ul>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
           "question": "<p>Termometer X: titik beku air −20 °X, titik didih 180 °X. Berapa °X untuk 35 °C?</p>",
           "steps": [
             "\\(\\dfrac{X + 20}{200} = \\dfrac{35}{100}\\).",
@@ -149,97 +57,86 @@
           "answer": "50 °X"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Mengapa uap 100 °C lebih berbahaya daripada air 100 °C? Bandingkan kalor yang dilepas 5 g uap dan 5 g air hingga menjadi air 40 °C (L uap = 2,26 × 10⁶ J/kg, c = 4.200 J/kg°C).</p>",
-          "steps": [
-            "Air: Q = 0,005 × 4.200 × 60 = 1.260 J.",
-            "Uap: mengembun dulu (0,005 × 2,26 × 10⁶ = 11.300 J) lalu mendingin (1.260 J) = 12.560 J."
-          ],
-          "answer": "uap melepas ± 10 kali lebih banyak kalor"
+          "type": "callout",
+          "variant": "info",
+          "title": "Percobaan Joule",
+          "html": "<p>Joule menunjukkan bahwa energi mekanik (beban yang turun memutar pengaduk) dapat diubah menjadi kalor yang menaikkan suhu air: \\(mgh = m_a c\\Delta T\\). Kalor adalah bentuk energi; 1 kalori = 4,2 J.</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal 3",
+          "question": "<p>Benda 0,5 kg memerlukan 9.000 J untuk naik dari 20 °C ke 50 °C. Tentukan kapasitas kalor dan kalor jenisnya.</p>",
+          "steps": [
+            "C = Q/ΔT = 9.000/30 = 300 J/°C.",
+            "c = C/m = 300/0,5 = 600 J/kg°C."
+          ],
+          "answer": "300 J/°C dan 600 J/kg°C"
+        },
+        {
+          "type": "check",
+          "question": "Kalor yang diperlukan untuk menaikkan suhu 2 kg air sebesar 10 °C (c = 4.200 J/kg°C) adalah ....",
+          "options": {
+            "A": "8.400 J",
+            "B": "42.000 J",
+            "C": "84.000 J",
+            "D": "840 J"
+          },
+          "answer": "C",
+          "explanation": "Q = mcΔT = 2 × 4.200 × 10 = 84.000 J."
+        }
+      ]
+    },
+    {
+      "id": "kalorimeter-dan-asas-black",
+      "title": "Asas Black Kuantitatif dan Kalorimeter Bom",
+      "kind": "simulasi",
+      "duration": "8 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Mendinginkan Teh Panas dengan Es",
+          "html": "<p>Berapa banyak es yang perlu dimasukkan agar segelas teh panas pas diminum? Saat dicampur, teh melepas kalor dan es menerimanya sampai suhunya sama. Jika tidak ada kalor yang hilang ke lingkungan, kalor yang dilepas tepat sama dengan kalor yang diterima.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Asas Black</b>: pada pencampuran dua zat dalam sistem terisolasi, kalor yang dilepas zat bersuhu tinggi sama dengan kalor yang diterima zat bersuhu rendah, sampai keduanya mencapai suhu setimbang yang sama. Alat untuk mengukur kalor dengan prinsip ini disebut <b>kalorimeter</b>; dinding kalorimeter dibuat terisolasi agar kalor tidak keluar. Kalorimeter bom memakai prinsip yang sama untuk mengukur kalor pembakaran makanan dan bahan bakar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Asas Black",
+          "html": "\\[Q_{\\text{lepas}} = Q_{\\text{terima}}, \\qquad m_1c_1(T_1 - T_c) = m_2c_2(T_c - T_2)\\]<p>T_c suhu campuran, dengan \\(T_1 > T_c > T_2\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/asas-black.html",
+          "title": "Asas Black",
+          "height": 560,
+          "caption": "Campurkan logam panas ke air, lalu es ke air hangat. Perhatikan bagian datar grafik suhu es saat melebur."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Sebanyak 200 gram air bersuhu 80°C dicampurkan ke dalam bejana terisolasi yang berisi 100 gram air bersuhu 20°C (kalor jenis air c = 1 kal/g°C, kapasitas kalor bejana diabaikan). Berapakah suhu akhir termal campuran tersebut?</p>",
+          "steps": [
+            "Terapkan Asas Black: Kalor yang dilepas oleh zat bersuhu tinggi sama dengan kalor yang diserap oleh zat bersuhu rendah: Q_lepas = Q_terima.",
+            "Rumus kalor lepas (air panas m₁ = 200 g, T₁ = 80°C, suhu akhir Tc): Q_lepas = m₁ · c · (T₁ - Tc) = 200 × 1 × (80 - Tc).",
+            "Rumus kalor terima (air dingin m₂ = 100 g, T₂ = 20°C): Q_terima = m₂ · c · (Tc - T₂) = 100 × 1 × (Tc - 20).",
+            "Samakan persamaan: 200(80 - Tc) = 100(Tc - 20)  ⇒ 2(80 - Tc) = Tc - 20.",
+            "Selesaikan persamaan aljabar: 160 - 2Tc = Tc - 20  ⇒ 3Tc = 180  ⇒ Tc = 60°C."
+          ],
+          "answer": "Suhu akhir kesetimbangan termal campuran air adalah 60°C."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
           "question": "<p>Logam 0,4 kg (c = 400 J/kg°C) bersuhu 120 °C dimasukkan ke 200 g air 30 °C. Berapa suhu campuran?</p>",
           "steps": [
             "\\(0{,}4(400)(120 - T) = 0{,}2(4.200)(T - 30)\\).",
             "\\(160(120 - T) = 840(T - 30) \\Rightarrow 19.200 + 25.200 = 1.000T\\)."
           ],
           "answer": "T = 44,4 °C"
-        }
-      ]
-    },
-    {
-      "id": "pemuaian-panjang-luas-volume",
-      "title": "Pemuaian Termal Matematis: Koefisien α, β = 2α, γ = 3α",
-      "kind": "simulasi",
-      "duration": "4 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "sim/pemuaian.html",
-          "title": "Pemuaian dan bimetal",
-          "height": 460,
-          "caption": "Bandingkan pemuaian baja dan aluminium. Ke arah mana bimetal melengkung ketika dipanaskan dan didinginkan?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Pelat persegi sisi 50 cm (α = 2 × 10⁻⁵ /°C) dipanaskan 100 °C. Berapa pertambahan luasnya?</p>",
-          "steps": [
-            "A₀ = 2.500 cm², β = 4 × 10⁻⁵ /°C.",
-            "ΔA = 4 × 10⁻⁵ × 2.500 × 100."
-          ],
-          "answer": "10 cm²"
-        },
-        {
-          "type": "check",
-          "question": "Ring baja dipanaskan merata. Diameter lubangnya ....",
-          "options": {
-            "A": "mengecil",
-            "B": "tetap",
-            "C": "mula-mula mengecil lalu membesar",
-            "D": "membesar"
-          },
-          "answer": "D",
-          "hint": "Seluruh bagian memuai.",
-          "explanation": "Pemuaian seperti pembesaran foto: lubang ikut membesar."
-        }
-      ]
-    },
-    {
-      "id": "konduksi-dan-hukum-fourier",
-      "title": "Perpindahan Kalor Konduksi: Laju Aliran Panas Hukum Fourier",
-      "kind": "simulasi",
-      "duration": "6 menit",
-      "blocks": [
-        {
-          "type": "sim",
-          "src": "sim/perpindahan-kalor.html",
-          "title": "Perpindahan kalor",
-          "height": 560,
-          "caption": "Bandingkan laju konduksi melalui tembaga dan styrofoam. Pada mode radiasi, apa yang terjadi jika suhu (K) dijadikan dua kali?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Kotak styrofoam (k = 0,03 W/m·K) luas permukaan total 0,8 m², tebal 2 cm. Suhu luar 30 °C, dalam 0 °C. Berapa laju kalor masuk? Berapa es yang mencair dalam 1 jam?</p>",
-          "steps": [
-            "H = 0,03 × 0,8 × 30 / 0,02 = 36 W.",
-            "Q = 36 × 3.600 = 129.600 J; m = Q/L = 129.600/336.000."
-          ],
-          "answer": "36 W; ≈ 0,39 kg es"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Bola A dan B sama bahan, jari-jari B dua kali A, suhu mutlak B setengah A. Bandingkan daya radiasinya.</p>",
-          "steps": [
-            "P ∝ r²T⁴.",
-            "P_A : P_B = (1)²(2)⁴ : (2)²(1)⁴ = 16 : 4."
-          ],
-          "answer": "4 : 1"
         },
         {
           "type": "check",
@@ -257,14 +154,212 @@
       ]
     },
     {
+      "id": "perubahan-fase-dan-kalor-laten",
+      "title": "Diagram Transisi Fase Zat dan Analisis Kalor Laten",
+      "kind": "simulasi",
+      "duration": "7 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Keringat yang Mendinginkan",
+          "html": "<p>Saat berolahraga, tubuh mengeluarkan keringat. Untuk menguap, keringat menyerap kalor dalam jumlah besar dari kulit, sehingga tubuh menjadi lebih dingin. Kalor yang dipakai untuk mengubah wujud tanpa mengubah suhu ini disebut kalor laten.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Selama zat berubah wujud (melebur, membeku, menguap, mengembun), suhunya tetap walaupun kalor terus diberikan atau dilepas. Kalor itu dipakai untuk mengubah susunan partikel, bukan menaikkan energi kinetiknya. Karena itu grafik pemanasan mempunyai bagian mendatar. Kalor untuk melebur sama dengan kalor yang dilepas saat membeku, dan kalor untuk menguap sama dengan kalor yang dilepas saat mengembun.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kalor Laten",
+          "html": "\\[Q = mL\\]<p>Kalor lebur es \\(L_f \\approx 336.000\\) J/kg; kalor uap air \\(L_u \\approx 2{,}26 \\times 10^6\\) J/kg.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "../../../Kelas7/IPA/03 Suhu, Kalor, dan Pemuaian/sim/kurva-pemanasan.html",
+          "title": "Kurva pemanasan es",
+          "height": 480,
+          "caption": "Panaskan es dan perhatikan bagian datar grafik: ke mana kalor digunakan?"
+        },
+        {
+          "type": "check",
+          "question": "Grafik pemanasan es menunjukkan bagian mendatar pada 0 °C karena ....",
+          "options": {
+            "A": "kalor tidak diserap",
+            "B": "kalor dipakai untuk mengubah wujud, bukan menaikkan suhu",
+            "C": "termometer rusak",
+            "D": "es memancarkan kalor"
+          },
+          "answer": "B",
+          "hint": "Kalor laten.",
+          "explanation": "Selama melebur, kalor digunakan untuk memutus ikatan antarpartikel sehingga suhu tetap."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>50 g es 0 °C dicampur 200 g air 50 °C. Berapa suhu akhir (L = 336.000 J/kg)?</p>",
+          "steps": [
+            "Kalor untuk melebur es: 0,05 × 336.000 = 16.800 J.",
+            "Kalor air bila turun ke 0 °C: 0,2 × 4.200 × 50 = 42.000 J &gt; 16.800 J, jadi semua es melebur.",
+            "\\(0{,}2(4.200)(50 - T) = 16.800 + 0{,}05(4.200)(T - 0) \\Rightarrow 42.000 - 840T = 16.800 + 210T\\)."
+          ],
+          "answer": "T = 24 °C"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Mengapa uap 100 °C lebih berbahaya daripada air 100 °C? Bandingkan kalor yang dilepas 5 g uap dan 5 g air hingga menjadi air 40 °C (L uap = 2,26 × 10⁶ J/kg, c = 4.200 J/kg°C).</p>",
+          "steps": [
+            "Air: Q = 0,005 × 4.200 × 60 = 1.260 J.",
+            "Uap: mengembun dulu (0,005 × 2,26 × 10⁶ = 11.300 J) lalu mendingin (1.260 J) = 12.560 J."
+          ],
+          "answer": "uap melepas ± 10 kali lebih banyak kalor"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa kalor laten ketika ada perubahan wujud.</li><li>Memakai °C pada rumus radiasi (harus kelvin).</li><li>Lupa mengubah tebal dari cm ke m pada rumus konduksi.</li></ul>"
+        }
+      ]
+    },
+    {
+      "id": "pemuaian-panjang-luas-volume",
+      "title": "Pemuaian Termal Matematis: Koefisien α, β = 2α, γ = 3α",
+      "kind": "simulasi",
+      "duration": "7 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Celah di Sambungan Jembatan",
+          "html": "<p>Di jembatan panjang ada sambungan bergerigi yang tampak seperti celah. Saat siang panas, lantai jembatan memuai dan celahnya menyempit; saat malam, celah melebar. Tanpa celah itu, jembatan bisa retak atau melengkung. Perancang menghitung lebar celah dari koefisien muai bahan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Hampir semua zat memuai saat dipanaskan, karena partikelnya bergetar lebih kuat dan jarak rata-ratanya bertambah. Pertambahan ukuran sebanding dengan ukuran awal dan kenaikan suhu. Untuk zat padat, koefisien muai luas kira-kira dua kali koefisien muai panjang, dan koefisien muai volume tiga kali. Benda berlubang memuai seperti foto yang diperbesar: semua ukurannya, termasuk lubangnya, ikut membesar.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Pemuaian Zat Padat",
+          "html": "\\[\\Delta L = \\alpha L_0 \\Delta T, \\qquad \\Delta A = \\beta A_0 \\Delta T, \\qquad \\Delta V = \\gamma V_0 \\Delta T, \\qquad \\beta = 2\\alpha,\\; \\gamma = 3\\alpha\\]"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pemuaian.html",
+          "title": "Pemuaian dan bimetal",
+          "height": 460,
+          "caption": "Bandingkan pemuaian baja dan aluminium. Ke arah mana bimetal melengkung ketika dipanaskan dan didinginkan?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Rel baja 20 m dipasang pada 25 °C. Suhu terpanas 55 °C, α = 12 × 10⁻⁶ /°C. Berapa celah minimum?</p>",
+          "steps": [
+            "ΔL = 12 × 10⁻⁶ × 20 × 30 = 7,2 × 10⁻³ m."
+          ],
+          "answer": "7,2 mm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pelat persegi sisi 50 cm (α = 2 × 10⁻⁵ /°C) dipanaskan 100 °C. Berapa pertambahan luasnya?</p>",
+          "steps": [
+            "A₀ = 2.500 cm², β = 4 × 10⁻⁵ /°C.",
+            "ΔA = 4 × 10⁻⁵ × 2.500 × 100."
+          ],
+          "answer": "10 cm²"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Penerapan",
+          "html": "<p>Celah sambungan rel dan jembatan, pemasangan kawat listrik yang kendur, keping bimetal pada termostat setrika dan alarm kebakaran. Air memiliki <b>anomali</b>: antara 0–4 °C volumenya justru menyusut saat dipanaskan, sehingga es terapung dan dasar danau tetap ±4 °C.</p>"
+        },
+        {
+          "type": "check",
+          "question": "Keping bimetal tersusun dari besi dan tembaga (koefisien muai tembaga lebih besar). Saat dipanaskan, keping itu melengkung ke arah ....",
+          "options": {
+            "A": "tembaga",
+            "B": "besi",
+            "C": "tidak melengkung",
+            "D": "bergantung pada panjang keping"
+          },
+          "answer": "B",
+          "explanation": "Tembaga memuai lebih panjang daripada besi, sehingga tembaga berada di sisi luar lengkungan dan keping melengkung ke arah besi."
+        }
+      ]
+    },
+    {
+      "id": "konduksi-dan-hukum-fourier",
+      "title": "Perpindahan Kalor Konduksi: Laju Aliran Panas Hukum Fourier",
+      "kind": "simulasi",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Panci Bergagang Kayu",
+          "html": "<p>Badan panci dibuat dari aluminium atau baja agar kalor cepat merambat dari kompor ke masakan, tetapi gagangnya dari kayu atau plastik agar tangan tidak terbakar. Pemilihan bahan ini memanfaatkan perbedaan konduktivitas termal.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Konduksi</b> adalah perpindahan kalor melalui zat tanpa perpindahan partikel zat itu: partikel yang bergetar lebih kuat menumbuk tetangganya. Logam adalah konduktor yang baik karena elektron bebasnya ikut membawa energi; kayu, plastik, dan udara adalah isolator. Laju kalor sebanding dengan luas penampang dan beda suhu, dan berbanding terbalik dengan tebal bahan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Laju Konduksi",
+          "html": "\\[H = \\frac{Q}{t} = \\frac{k A \\Delta T}{L}\\]<p>k konduktivitas termal (W/m·K), L tebal atau panjang bahan.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/perpindahan-kalor.html",
+          "title": "Perpindahan kalor",
+          "height": 560,
+          "caption": "Bandingkan laju konduksi melalui tembaga dan styrofoam. Pada mode radiasi, apa yang terjadi jika suhu (K) dijadikan dua kali?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Dinding kayu (k = 0,12 W/m·K) seluas 10 m² dan setebal 2 cm memisahkan ruangan bersuhu 24 °C dari udara luar 30 °C. Berapa laju kalor yang masuk melalui dinding?</p>",
+          "steps": [
+            "\\(\\Delta T = 6\\) K dan \\(L = 0{,}02\\) m.",
+            "\\(H = \\dfrac{0{,}12 \\times 10 \\times 6}{0{,}02} = 360\\) W."
+          ],
+          "answer": "360 W"
+        },
+        {
+          "type": "check",
+          "question": "Batang logam dipanaskan di satu ujung. Jika panjang batang dijadikan 2 kali (bahan, luas, dan beda suhu sama), laju konduksinya menjadi ....",
+          "options": {
+            "A": "2 kali",
+            "B": "4 kali",
+            "C": "½ kali",
+            "D": "tetap"
+          },
+          "answer": "C",
+          "explanation": "H berbanding terbalik dengan panjang L, jadi menjadi setengahnya."
+        }
+      ]
+    },
+    {
       "id": "konveksi-alamiah-dan-paksa",
       "title": "Perpindahan Kalor Konveksi: Aliran Fluida Alamiah vs Paksa",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "4 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: AC di Atas, Pemanas di Bawah",
+          "html": "<p>AC dipasang tinggi di dinding, sedangkan pemanas ruangan diletakkan di lantai. Udara dingin lebih rapat dan turun, udara hangat lebih renggang dan naik. Dengan posisi itu, udara di seluruh ruangan ikut berputar dan suhunya cepat merata.</p>"
+        },
+        {
           "type": "text",
-          "html": "<p><b>Perpindahan Kalor Konveksi: Aliran Fluida Alamiah vs Paksa</b>: Laju konveksi H = h · A · ΔT; koefisien transfer kalor konveksi h; angin laut, radiator mobil, pemanasan air dalam panci.</p>"
+          "html": "<p><b>Konveksi</b> adalah perpindahan kalor yang disertai aliran fluida. Pada <b>konveksi alamiah</b>, aliran terjadi karena perbedaan massa jenis: fluida panas naik, fluida dingin turun (air mendidih di panci, angin laut). Pada <b>konveksi paksa</b>, aliran digerakkan alat seperti kipas atau pompa (radiator mobil, pengering rambut).</p>"
         },
         {
           "type": "text",
@@ -272,22 +367,31 @@
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Laju konveksi H = h · A · ΔT; koefisien transfer kalor konveksi h; angin laut, radiator mobil, pemanasan air dalam panci.</p>"
+          "variant": "rumus",
+          "title": "Laju Konveksi",
+          "html": "\\[H = h A \\Delta T\\]<p>h koefisien konveksi (W/m²·K), bergantung pada fluida dan kelajuan alirannya.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Kaca jendela seluas 2 m² bersuhu 10 °C lebih tinggi daripada udara di sekitarnya. Jika koefisien konveksi 8 W/m²·K, berapa laju kalor yang dilepas ke udara?</p>",
+          "steps": [
+            "\\(H = hA\\Delta T = 8 \\times 2 \\times 10\\).",
+            "H = 160 W."
+          ],
+          "answer": "160 W"
         },
         {
           "type": "check",
-          "question": "Konveksi paksa terjadi pada ....",
+          "question": "Angin laut bertiup dari laut ke darat pada siang hari karena ....",
           "options": {
-            "A": "air pendingin mesin yang dialirkan pompa",
-            "B": "angin laut",
-            "C": "panas matahari sampai ke bumi",
-            "D": "sendok yang dicelup ke teh panas"
+            "A": "daratan lebih cepat panas sehingga udara di atasnya naik dan digantikan udara dari laut",
+            "B": "laut lebih cepat panas daripada daratan",
+            "C": "tekanan udara di darat lebih tinggi pada siang hari",
+            "D": "air laut menguap dan mendorong udara ke darat"
           },
           "answer": "A",
-          "hint": "Aliran digerakkan alat.",
-          "explanation": "Pompa atau kipas membuat aliran fluida secara paksa."
+          "explanation": "Kalor jenis daratan lebih kecil, jadi siang hari daratan lebih cepat panas. Udara di atasnya memuai dan naik, lalu udara yang lebih sejuk dari laut mengalir mengisinya."
         }
       ]
     },
@@ -298,8 +402,20 @@
       "duration": "3 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Kamera Termal",
+          "html": "<p>Kamera termal di bandara dan pemadam kebakaran bisa \"melihat\" orang dalam gelap atau di balik asap. Setiap benda memancarkan gelombang inframerah, dan makin panas benda itu, makin kuat pancarannya. Kamera termal menerjemahkan kuat pancaran itu menjadi warna.</p>"
+        },
+        {
           "type": "text",
-          "html": "<p><b>Suhu</b> menyatakan derajat panas atau dingin benda. Secara mikroskopis, suhu sebanding dengan <b>energi kinetik rata-rata partikel</b>: makin panas, partikel bergerak makin cepat. Satuan SI suhu adalah kelvin (K).</p>"
+          "html": "<p><b>Radiasi</b> adalah perpindahan kalor dalam bentuk gelombang elektromagnetik, sehingga tidak memerlukan medium: kalor Matahari sampai ke Bumi melalui ruang hampa. Daya yang dipancarkan sebanding dengan pangkat empat suhu mutlak, jadi suhu harus dalam kelvin. <b>Emisivitas</b> e (0 sampai 1) menyatakan seberapa baik permukaan memancarkan dan menyerap radiasi: permukaan hitam kusam mendekati 1, permukaan mengilap mendekati 0.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Stefan–Boltzmann",
+          "html": "\\[P = e\\sigma A T^4, \\qquad \\sigma = 5{,}67 \\times 10^{-8}\\ \\text{W/m}^2\\text{K}^4\\]"
         },
         {
           "type": "callout",
@@ -310,15 +426,24 @@
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Sebanyak 200 gram air bersuhu 80°C dicampurkan ke dalam bejana terisolasi yang berisi 100 gram air bersuhu 20°C (kalor jenis air c = 1 kal/g°C, kapasitas kalor bejana diabaikan). Berapakah suhu akhir termal campuran tersebut?</p>",
+          "question": "<p>Bola A dan B dari bahan yang sama. Jari-jari B tiga kali jari-jari A, dan suhu mutlak B setengah suhu mutlak A. Bandingkan daya radiasinya.</p>",
           "steps": [
-            "Terapkan Asas Black: Kalor yang dilepas oleh zat bersuhu tinggi sama dengan kalor yang diserap oleh zat bersuhu rendah: Q_lepas = Q_terima.",
-            "Rumus kalor lepas (air panas m₁ = 200 g, T₁ = 80°C, suhu akhir Tc): Q_lepas = m₁ · c · (T₁ - Tc) = 200 × 1 × (80 - Tc).",
-            "Rumus kalor terima (air dingin m₂ = 100 g, T₂ = 20°C): Q_terima = m₂ · c · (Tc - T₂) = 100 × 1 × (Tc - 20).",
-            "Samakan persamaan: 200(80 - Tc) = 100(Tc - 20)  ⇒ 2(80 - Tc) = Tc - 20.",
-            "Selesaikan persamaan aljabar: 160 - 2Tc = Tc - 20  ⇒ 3Tc = 180  ⇒ Tc = 60°C."
+            "\\(P = e\\sigma A T^4\\) dengan luas \\(A \\propto r^2\\), jadi \\(P \\propto r^2T^4\\).",
+            "\\(P_A : P_B = (1)^2(2)^4 : (3)^2(1)^4 = 16 : 9\\)."
           ],
-          "answer": "Suhu akhir kesetimbangan termal campuran air adalah 60°C."
+          "answer": "P_A : P_B = 16 : 9"
+        },
+        {
+          "type": "check",
+          "question": "Jika suhu mutlak sebuah benda dijadikan 2 kali semula, daya radiasinya menjadi ....",
+          "options": {
+            "A": "2 kali",
+            "B": "4 kali",
+            "C": "8 kali",
+            "D": "16 kali"
+          },
+          "answer": "D",
+          "explanation": "P ∝ T⁴, jadi 2⁴ = 16 kali."
         }
       ]
     },
@@ -326,36 +451,86 @@
       "id": "hukum-pergeseran-wien",
       "title": "Hukum Pergeseran Wien dan Suhu Permukaan Bintang",
       "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
+      "duration": "3 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Warna Bintang dan Suhunya",
+          "html": "<p>Bintang Rigel tampak biru keputihan, sedangkan Betelgeuse kemerahan. Astronom bisa mengetahui suhu permukaan bintang dari warnanya tanpa pernah ke sana. Pandai besi memakai prinsip yang sama: besi merah membara lebih dingin daripada besi yang berpijar kuning keputihan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Benda panas memancarkan radiasi pada banyak panjang gelombang, tetapi intensitasnya paling besar pada satu panjang gelombang tertentu, \\(\\lambda_{\\text{maks}}\\). Makin tinggi suhu, \\(\\lambda_{\\text{maks}}\\) makin pendek: puncak bergeser dari inframerah ke merah, lalu ke kuning, putih, dan biru. Inilah <b>hukum pergeseran Wien</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Pergeseran Wien",
+          "html": "\\[\\lambda_{\\text{maks}}\\, T = b, \\qquad b = 2{,}898 \\times 10^{-3}\\ \\text{m}\\cdot\\text{K}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Spektrum Matahari mencapai puncak pada panjang gelombang sekitar 500 nm. Perkirakan suhu permukaan Matahari.</p>",
+          "steps": [
+            "\\(T = \\dfrac{b}{\\lambda_{\\text{maks}}} = \\dfrac{2{,}898 \\times 10^{-3}}{5 \\times 10^{-7}}\\).",
+            "T ≈ 5.800 K."
+          ],
+          "answer": "sekitar 5.800 K"
+        },
+        {
+          "type": "check",
+          "question": "Suhu kulit manusia sekitar 310 K. Panjang gelombang radiasi terkuat yang dipancarkan tubuh sekitar ....",
+          "options": {
+            "A": "9,3 μm (inframerah)",
+            "B": "500 nm (cahaya tampak)",
+            "C": "0,93 μm (cahaya merah)",
+            "D": "93 μm (gelombang mikro)"
+          },
+          "answer": "A",
+          "explanation": "λ = 2,898 × 10⁻³ / 310 ≈ 9,3 × 10⁻⁶ m = 9,3 μm, di daerah inframerah. Itulah sebabnya tubuh tidak tampak berpijar tetapi terlihat oleh kamera termal."
+        }
+      ]
     },
     {
       "id": "aplikasi-isolasi-termal",
       "title": "Rekayasa Termal: Termos Dewar, Desain Bangunan Hemat Energi, dan Efek Rumah Kaca",
-      "kind": "latihan",
-      "duration": "2 menit",
+      "kind": "artikel",
+      "duration": "4 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Rekayasa Termal: Termos Dewar, Desain Bangunan Hemat Energi, dan Efek Rumah Kaca</b>: Mencegah konduksi/konveksi dengan ruang hampa ganda, mencegah radiasi dengan dinding perak pemantul; material insulasi wol kaca.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Termos yang Menjaga Kopi Tetap Panas",
+          "html": "<p>Kopi dalam termos tetap panas berjam-jam. Termos dirancang untuk menghambat ketiga cara perpindahan kalor sekaligus. Prinsip yang sama dipakai pada rumah hemat energi, kotak pendingin vaksin, dan pakaian astronaut.</p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Mencegah konduksi/konveksi dengan ruang hampa ganda, mencegah radiasi dengan dinding perak pemantul; material insulasi wol kaca.</p>"
+          "type": "text",
+          "html": "<p>Desain isolasi termal menyerang setiap cara perpindahan kalor:</p><ul><li><b>Konduksi</b> dihambat bahan isolator (gabus, busa, wol kaca) atau ruang hampa.</li><li><b>Konveksi</b> dihambat ruang hampa atau udara yang terperangkap dalam rongga kecil, sehingga tidak bisa mengalir. Inilah sebabnya busa dan bulu hewan hangat.</li><li><b>Radiasi</b> dihambat permukaan mengilap yang memantulkan gelombang inframerah.</li></ul><p>Pada skala Bumi, <b>efek rumah kaca</b> terjadi karena gas seperti CO₂ dan uap air meneruskan cahaya Matahari tetapi menyerap sebagian radiasi inframerah yang dipancarkan permukaan Bumi, sehingga suhu rata-rata Bumi naik.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh Terpandu: Pemecahan Masalah Rekayasa Termal: Termos Dewar, Desa",
-          "question": "<p>Diberikan permasalahan terkait konsep Rekayasa Termal: Termos Dewar, Desain Bangunan Hemat Energi, dan Efek Rumah Kaca. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "title": "Contoh soal",
+          "question": "<p>Jelaskan fungsi tiga bagian termos: ruang hampa di antara dua dinding kaca, lapisan perak pada dinding, dan tutup gabus.</p>",
           "steps": [
-            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
-            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Formulasi Usaha dan Hukum Kekekalan Energi Mekanik yang menghubungkan variabel-variabel tersebut.",
-            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
-            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+            "Ruang hampa tidak berisi partikel, sehingga konduksi dan konveksi melalui dinding hampir tidak terjadi.",
+            "Lapisan perak yang mengilap memantulkan radiasi inframerah kembali ke dalam (atau ke luar untuk minuman dingin).",
+            "Tutup gabus adalah isolator yang menghambat konduksi dan mencegah udara panas keluar lewat konveksi."
           ],
-          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Usaha, Energi Kinetik & Energi Potensial, solusi diperoleh secara terstruktur dan tepat."
+          "answer": "Ruang hampa menahan konduksi dan konveksi, lapisan perak menahan radiasi, tutup gabus menahan konduksi dan konveksi di mulut termos"
+        },
+        {
+          "type": "check",
+          "question": "Rumah di daerah panas dianjurkan memakai atap berwarna terang. Alasannya adalah ....",
+          "options": {
+            "A": "warna terang menyerap lebih banyak radiasi",
+            "B": "warna terang memantulkan sebagian besar radiasi Matahari",
+            "C": "warna terang menghambat konveksi",
+            "D": "warna terang menambah konduktivitas atap"
+          },
+          "answer": "B",
+          "explanation": "Permukaan terang memantulkan sebagian besar radiasi, sehingga atap menyerap lebih sedikit kalor dan ruangan di bawahnya lebih sejuk."
         }
       ]
     },
@@ -367,7 +542,7 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 6 Kalor.</small></p>"
+          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Skala suhu</td><td>C : R : (F − 32) : (K − 273) = 5 : 4 : 9 : 5</td></tr><tr><td>Kalor</td><td>\\(Q = mc\\Delta T\\), \\(Q = mL\\), \\(C = mc\\)</td></tr><tr><td>Asas Black</td><td>\\(Q_{lepas} = Q_{terima}\\)</td></tr><tr><td>Pemuaian</td><td>\\(\\Delta L = \\alpha L_0\\Delta T\\), β = 2α, γ = 3α</td></tr><tr><td>Perpindahan</td><td>\\(H = kA\\Delta T/L\\), \\(H = hA\\Delta T\\), \\(P = e\\sigma AT^4\\)</td></tr></table>"
         },
         {
           "type": "text",
@@ -379,6 +554,10 @@
           "title": "Cheat Sheet: Kalor, Asas Black & Tiga Mekanisme Perpindahan",
           "subtitle": "Rangkuman rumus Q = mcΔT, kalor laten Q = mL, asas Black, konduksi Fourier, konveksi, dan radiasi Stefan-Boltzmann.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Kalor & Asas Black</h4>\n    <p>Kalor Sensibel: \\(Q = m c \\Delta T\\); Kalor Laten: \\(Q = m L\\)</p>\n    <p><b>Asas Black:</b> \\[ Q_{\\text{lepas}} = Q_{\\text{terima}} \\implies m_1 c_1 (T_1 - T_c) = m_2 c_2 (T_c - T_2) \\]</p>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Tiga Mekanisme Perpindahan Kalor</h4>\n    <ul>\n      <li><b>Konduksi:</b> \\(H = \\frac{Q}{t} = k \\cdot A \\cdot \\frac{\\Delta T}{L}\\)</li>\n      <li><b>Konveksi:</b> \\(H = \\frac{Q}{t} = h \\cdot A \\cdot \\Delta T\\)</li>\n      <li><b>Radiasi (Stefan-Boltzmann):</b> \\(P = \\frac{Q}{t} = e \\cdot \\sigma \\cdot A \\cdot T^4 \\quad (\\sigma = 5.67 \\times 10^{-8}\\text{ W/m}^2\\text{K}^4)\\)</li>\n    </ul>\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 6 Kalor.</small></p>"
         },
         {
           "type": "kuis",
