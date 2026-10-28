@@ -7,35 +7,27 @@
       "id": "tinjauan-fluida-statis-tekanan",
       "title": "Tekanan Hidrostatis dan Manometer Terbuka/Tertutup",
       "kind": "simulasi",
-      "duration": "10 menit",
+      "duration": "9 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Fluida</b> adalah zat yang dapat mengalir: zat cair dan gas. <b>Tekanan</b> adalah gaya per satuan luas, \\(P = F/A\\) (Pa = N/m²). Bata yang diletakkan pada sisi tersempitnya memberi tekanan terbesar.</p>"
-        },
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Kapal Kargo Baja 200.000 Ton Mengapung dan Daya Angkat Sayap Pesawat",
-          "html": "<p>Sebuah jarum jahit kecil yang terbuat dari besi padat langsung tenggelam ke dasar gelas saat dijatuhkan ke dalam air. Namun sebuah kapal kargo raksasa yang terbuat dari puluhan ribu ton baja padat dapat mengapung santai melintasi samudra luas tanpa tenggelam!</p><p>Di udara, sayap pesawat terbang dirancang melengkung di bagian atas untuk melaju kencang dan menciptakan daya angkat ke udara. Kedua keajaiban dunia transportasi ini diatur oleh <b>Fluida Statis dan Dinamis</b>.</p>"
+          "title": "Penerapan Konsep di Dunia Nyata: Dinding Bendungan Makin Tebal ke Bawah",
+          "html": "<p>Dinding bendungan selalu dibuat jauh lebih tebal di bagian bawah daripada di puncaknya. Alasannya tekanan air: makin dalam, makin besar tekanannya, tidak peduli seberapa luas waduk di belakangnya. Perancang bendungan menghitung tebal dinding dari tekanan hidrostatis di setiap kedalaman.</p>"
         },
         {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Teriakan 'Eureka!' Archimedes dari Bak Mandi",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Archimedes, Pascal, & Bernoulli</span>\n  <span class=\"h-tag\">Tahun: 250 SM – 1738 M (Sirakusa, Prancis, & Swiss)</span>\n  <span class=\"h-tag\">Krisis: Raja Hieron II Sirakusa mencurigai mahkota emasnya dicurangi dengan campuran perak murah tanpa boleh merusak mahkota.</span>\n</div>\n<p>Saat melangkah masuk ke bak mandinya yang penuh air, <b>Archimedes</b> menyadari air meluap keluar sebanding dengan volume tubuhnya yang tercelup. Ia begitu gembira menemukan solusi misteri mahkota emas raja hingga berlari telanjang di jalanan Sirakusa sambil berseru <i>'Eureka! Eureka!'</i> (Aku menemukannya!).</p><p>Abad ke-17 di Prancis, <b>Blaise Pascal</b> membuktikan bahwa tekanan zat cair di ruang tertutup diteruskan ke segala arah sama rata (Hukum Pascal penopang dongkrak hidrolik). Dan pada tahun 1738 di Swiss, <b>Daniel Bernoulli</b> merumuskan bahwa semakin cepat fluida mengalir, semakin rendah tekanannya.</p>"
+          "type": "text",
+          "html": "<p><b>Fluida</b> adalah zat yang dapat mengalir: zat cair dan gas. <b>Tekanan</b> adalah gaya per satuan luas, \\(P = F/A\\) (Pa = N/m²).</p>"
         },
         {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Tekanan Hidrostatis, Gaya Apung & Asas Bernoulli",
-          "html": "<p><b>Tekanan Hidrostatis (\\(P_h\\)):</b> Tekanan yang dialami suatu titik di dalam zat cair diam akibat berat kolom fluida di atasnya: \\(P_h = \\rho g h\\).</p><p><b>Hukum Archimedes:</b> Benda yang tercelup sebagian atau seluruhnya ke dalam fluida akan mengalami gaya angkat ke atas (gaya apung, \\(F_A\\)) yang besarnya tepat sama dengan berat fluida yang dipindahkan.</p><p><b>Asas Bernoulli:</b> Pada fluida ideal yang mengalir tunak tak termampatkan, jumlah tekanan, energi kinetik per satuan volume, dan energi potensial per satuan volume selalu konstan di sepanjang garis arus.</p>"
+          "type": "text",
+          "html": "<p>Di dalam zat cair diam, tekanan pada suatu titik disebabkan oleh berat kolom cairan di atasnya. Tekanan ini disebut <b>tekanan hidrostatis</b> dan hanya bergantung pada kedalaman, massa jenis cairan, dan g, bukan pada bentuk wadah. Jika permukaan cairan terbuka ke udara, tekanan total di kedalaman h adalah tekanan udara ditambah tekanan hidrostatis. Semua titik pada kedalaman yang sama dalam satu jenis cairan diam bertekanan sama; inilah dasar pipa U dan manometer.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Formulasi Utama Fluida Statis & Dinamis",
-          "html": "<div class=\"fc-display\">\n\\[ P_h = \\rho g h, \\qquad F_A = \\rho_f g V_{\\text{celup}}, \\qquad \\frac{F_1}{A_1} = \\frac{F_2}{A_2}, \\qquad P + \\frac{1}{2}\\rho v^2 + \\rho g h = \\text{konstan} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(P_h\\)</td><td>Tekanan hidrostatis zat cair pada kedalaman h</td><td class=\"unit\">\\(\\text{Pascal (Pa)} = \\text{N/m}^2\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\rho, \\rho_f\\)</td><td>Massa jenis fluida cairan</td><td class=\"unit\">\\(\\text{kg/m}^3\\)</td></tr>\n    <tr><td class=\"sym\">\\(F_A\\)</td><td>Gaya apung ke atas Archimedes</td><td class=\"unit\">Newton (N)</td></tr>\n    <tr><td class=\"sym\">\\(V_{\\text{celup}}\\)</td><td>Volume bagian benda yang tercelup ke dalam zat cair</td><td class=\"unit\">\\(\\text{m}^3\\)</td></tr>\n    <tr><td class=\"sym\">\\(A_1, A_2\\)</td><td>Luas penampang pengisap pipa hidrolik 1 dan 2</td><td class=\"unit\">\\(\\text{m}^2\\)</td></tr>\n    <tr><td class=\"sym\"><i>v</i></td><td>Kelajuan aliran fluida dinamis</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Benda akan terapung jika \\(\\rho_{\\text{benda}} < \\rho_{\\text{fluida}}\\), melayang jika \\(\\rho_{\\text{benda}} = \\rho_{\\text{fluida}}\\), dan tenggelam jika \\(\\rho_{\\text{benda}} > \\rho_{\\text{fluida}}\\).</small></p>"
+          "title": "Tekanan Hidrostatis",
+          "html": "\\[P_h = \\rho g h, \\qquad P = P_0 + \\rho g h\\]<p>\\(P_0 \\approx 1{,}0 \\times 10^5\\) Pa adalah tekanan udara di permukaan laut (1 atm = 76 cmHg).</p>"
         },
         {
           "type": "sim",
@@ -43,6 +35,84 @@
           "title": "Tekanan hidrostatis",
           "height": 480,
           "caption": "Ubah kedalaman dan jenis cairan; perhatikan bahwa tekanan tidak bergantung pada bentuk wadah."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Seorang penyelam berada 5 m di bawah permukaan laut (ρ = 1.030 kg/m³, g = 10 m/s², P₀ = 1,0 × 10⁵ Pa). Tentukan tekanan hidrostatis dan tekanan totalnya.</p>",
+          "steps": [
+            "\\(P_h = 1.030 \\times 10 \\times 5 = 51.500\\) Pa.",
+            "\\(P = 100.000 + 51.500 = 151.500\\) Pa, sekitar 1,5 atm."
+          ],
+          "answer": "51.500 Pa dan 151.500 Pa"
+        },
+        {
+          "type": "image",
+          "src": "gambar/pipa-u.svg",
+          "alt": "Pipa U berisi air dan minyak: tekanan pada garis batas sama",
+          "width": 520,
+          "caption": "Pipa U dengan dua cairan yang tidak bercampur."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pipa U berisi air (1.000 kg/m³). Minyak (800 kg/m³) setinggi 15 cm dituang di kaki kiri. Berapa selisih tinggi permukaan minyak dan air?</p>",
+          "steps": [
+            "Pada garis batas: \\(800 \\times 15 = 1.000 \\times h_{air} \\Rightarrow h_{air} = 12\\) cm.",
+            "Selisih = 15 − 12."
+          ],
+          "answer": "3 cm"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Barometer di permukaan laut menunjukkan 76 cmHg. Di sebuah gunung tingginya 57 cmHg. Berapa tekanan udara di gunung dalam atm?</p>",
+          "steps": [
+            "P = 57/76 atm."
+          ],
+          "answer": "0,75 atm"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Lupa menambahkan tekanan udara ketika ditanya tekanan total.</li><li>Memakai volume seluruh benda untuk benda yang terapung.</li><li>Lupa mengubah cm² menjadi m² atau mm menjadi m.</li></ul>"
+        },
+        {
+          "type": "check",
+          "question": "Tekanan hidrostatis di dasar kolam sedalam 2 m (ρ air = 1.000 kg/m³, g = 10 m/s²) adalah ....",
+          "options": {
+            "A": "2.000 Pa",
+            "B": "20.000 Pa",
+            "C": "120.000 Pa",
+            "D": "200 Pa"
+          },
+          "answer": "B",
+          "explanation": "P_h = ρgh = 1.000 × 10 × 2 = 20.000 Pa. Nilai 120.000 Pa adalah tekanan totalnya jika tekanan udara ikut dihitung."
+        }
+      ]
+    },
+    {
+      "id": "hukum-pascal-dan-archimedes-lanjut",
+      "title": "Hukum Pascal dan Archimedes pada Fluida Multilapis",
+      "kind": "simulasi",
+      "duration": "9 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Kapal Baja yang Mengapung",
+          "html": "<p>Sebuah jarum jahit kecil yang terbuat dari besi padat langsung tenggelam ke dasar gelas saat dijatuhkan ke dalam air. Namun sebuah kapal kargo raksasa yang terbuat dari puluhan ribu ton baja padat dapat mengapung santai melintasi samudra luas tanpa tenggelam!</p><p>Di udara, sayap pesawat terbang dirancang melengkung di bagian atas untuk melaju kencang dan menciptakan daya angkat ke udara. Kedua keajaiban dunia transportasi ini diatur oleh <b>Fluida Statis dan Dinamis</b>.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Hukum Pascal</b>: tekanan yang diberikan pada zat cair dalam ruang tertutup diteruskan sama besar ke segala arah. Pada dongkrak hidrolik, tekanan di piston kecil sama dengan di piston besar, sehingga gaya kecil di piston kecil menghasilkan gaya besar di piston besar.</p><p><b>Hukum Archimedes</b>: benda yang tercelup dalam fluida mendapat gaya apung ke atas seberat fluida yang dipindahkannya. Benda <b>terapung</b> jika massa jenisnya lebih kecil daripada fluida, <b>melayang</b> jika sama, dan <b>tenggelam</b> jika lebih besar. Benda terapung tercelup sebagian, dengan bagian tercelup \\(\\rho_{\\text{benda}}/\\rho_{\\text{fluida}}\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Hukum Pascal dan Gaya Apung",
+          "html": "\\[\\frac{F_1}{A_1} = \\frac{F_2}{A_2}, \\qquad F_A = \\rho_f\\, g\\, V_{\\text{tercelup}}\\]"
         },
         {
           "type": "sim",
@@ -53,45 +123,19 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Pipa U berisi air (1.000 kg/m³). Minyak (800 kg/m³) setinggi 15 cm dituang di kaki kiri. Berapa selisih tinggi permukaan minyak dan air?</p>",
+          "title": "Contoh soal 1",
+          "question": "<p>Dongkrak hidrolik mempunyai piston kecil seluas 10 cm² dan piston besar 500 cm². Berapa gaya di piston kecil untuk mengangkat mobil seberat 10.000 N?</p>",
           "steps": [
-            "Pada garis batas: \\(800 \\times 15 = 1.000 \\times h_{air} \\Rightarrow h_{air} = 12\\) cm.",
-            "Selisih = 15 − 12."
+            "\\(F_1 = F_2 \\dfrac{A_1}{A_2} = 10.000 \\times \\dfrac{10}{500}\\).",
+            "\\(F_1 = 200\\) N."
           ],
-          "answer": "3 cm"
+          "answer": "200 N"
         },
         {
-          "type": "check",
-          "question": "Gelembung udara dari penyelam makin besar saat naik ke permukaan karena ....",
-          "options": {
-            "A": "suhu air naik",
-            "B": "tekanan hidrostatis makin kecil",
-            "C": "gelembung menyerap air",
-            "D": "massa gelembung bertambah"
-          },
-          "answer": "B",
-          "hint": "P = ρgh.",
-          "explanation": "Makin dangkal, tekanan makin kecil sehingga volume gas mengembang (hukum Boyle)."
-        }
-      ]
-    },
-    {
-      "id": "hukum-pascal-dan-archimedes-lanjut",
-      "title": "Hukum Pascal dan Archimedes pada Fluida Multilapis",
-      "kind": "simulasi",
-      "duration": "7 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Fluida ideal</b>: tidak termampatkan (massa jenis tetap), tidak kental (viskositas nol), alirannya tunak (laminar), dan tidak berpusar.</p>"
-        },
-        {
-          "type": "image",
-          "src": "gambar/pipa-u.svg",
-          "alt": "Pipa U berisi air dan minyak: tekanan pada garis batas sama",
-          "width": 520,
-          "caption": "Pipa U dengan dua cairan yang tidak bercampur."
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Archimedes dan Mahkota Raja Hieron",
+          "html": "<p>Menurut cerita yang ditulis Vitruvius sekitar dua abad kemudian, Raja Hieron II dari Sirakusa curiga mahkota emasnya dicampur perak. Archimedes diminta memeriksanya tanpa merusak mahkota. Saat masuk ke bak mandi, ia melihat air tumpah sebanyak volume tubuhnya yang tercelup, dan sadar bahwa volume mahkota bisa diukur dengan cara yang sama. Ceritanya mungkin dibumbui, tetapi dalam bukunya <i>Tentang Benda Terapung</i> Archimedes memang merumuskan bahwa gaya apung sama dengan berat fluida yang dipindahkan.</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/Archimedes%27_principle\">Archimedes' principle, Wikipedia</a></small></p>"
         },
         {
           "type": "sim",
@@ -102,33 +146,13 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Tiga bola bervolume sama: P terapung, Q melayang, R tenggelam di air. Bandingkan gaya apungnya.</p>",
-          "steps": [
-            "Q dan R tercelup seluruhnya → V tercelup sama → F_A sama.",
-            "P hanya tercelup sebagian → F_A paling kecil."
-          ],
-          "answer": "F_P &lt; F_Q = F_R"
-        },
-        {
-          "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Es batu terapung di gelas berisi air sampai garis 300 mL. Setelah es mencair seluruhnya, berapa skala air?</p>",
+          "question": "<p>Balok kayu bervolume 500 cm³ dengan massa jenis 0,6 g/cm³ terapung di air (1 g/cm³). Berapa volume yang tercelup?</p>",
           "steps": [
-            "Es terapung: massa air yang dipindahkan = massa es.",
-            "Setelah mencair, es menjadi air dengan massa yang sama, sehingga volumenya tepat mengisi volume yang tadinya dipindahkan."
+            "Terapung: gaya apung = berat benda, sehingga \\(\\rho_{air} V_{celup} = \\rho_{kayu} V\\).",
+            "\\(V_{celup} = 0{,}6 \\times 500 = 300\\) cm³."
           ],
-          "answer": "tetap 300 mL"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 3",
-          "question": "<p>Saluran irigasi selebar 3 m dengan kedalaman 0,4 m mengalir 0,5 m/s, lalu menyempit menjadi lebar 1 m dan kedalaman 0,3 m. Berapa kelajuan air di bagian sempit?</p>",
-          "steps": [
-            "\\(A_1 = 1{,}2\\) m², \\(A_2 = 0{,}3\\) m².",
-            "\\(v_2 = 1{,}2 \\times 0{,}5 / 0{,}3\\)."
-          ],
-          "answer": "2 m/s"
+          "answer": "300 cm³ (60% volumenya)"
         },
         {
           "type": "check",
@@ -148,59 +172,75 @@
     {
       "id": "tegangan-permukaan-dan-meniskus",
       "title": "Tegangan Permukaan Zat Cair (γ = F/d) dan Sudut Kontak Meniskus",
-      "kind": "latihan",
+      "kind": "artikel",
       "duration": "4 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Serangga yang Berjalan di Atas Air",
+          "html": "<p>Anggang-anggang bisa berdiri dan berlari di permukaan kolam tanpa tenggelam. Kakinya menekan permukaan air seperti menekan selaput karet tipis. Selaput itu muncul karena tarikan antarmolekul air, dan bisa dilemahkan sabun: setetes deterjen membuat serangga itu langsung tenggelam.</p>"
+        },
         {
           "type": "text",
           "html": "<p><b>Tegangan permukaan</b> muncul karena molekul di permukaan zat cair ditarik ke dalam oleh molekul di sekitarnya, sehingga permukaan berperilaku seperti selaput tegang. Inilah yang menopang klip kertas dan serangga air (bukan gaya Archimedes). \\(\\gamma = F/L\\) (N/m).</p>"
         },
         {
+          "type": "text",
+          "html": "<p>Gaya tarik antarmolekul sejenis disebut <b>kohesi</b>, dan gaya tarik antara molekul cairan dengan dinding wadah disebut <b>adhesi</b>. Jika adhesi lebih besar daripada kohesi, cairan membasahi dinding dan permukaannya melengkung ke atas di tepi (<b>meniskus cekung</b>, seperti air dalam gelas kaca, sudut kontak kurang dari 90°). Jika kohesi lebih besar, cairan tidak membasahi dinding (<b>meniskus cembung</b>, seperti raksa, sudut kontak lebih dari 90°).</p>"
+        },
+        {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Gaya kohesi antarmolekul cairan; serangga berjalan di atas air; meniskus cekung (air membasahi kaca) vs meniskus cembung (raksa).</p>"
+          "variant": "rumus",
+          "title": "Tegangan Permukaan",
+          "html": "\\[\\gamma = \\frac{F}{L}\\]<p>Untuk selaput sabun pada kawat, selaput punya dua permukaan, sehingga \\(L = 2\\ell\\) dengan \\(\\ell\\) panjang kawat. Satuan γ adalah N/m.</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Pelat 0,2 m² ditarik 0,5 m/s di atas lapisan oli setebal 1 mm (η = 0,1 Pa·s). Berapa gayanya?</p>",
+          "question": "<p>Kawat sepanjang 10 cm ditarik pada lapisan sabun dengan gaya 0,006 N agar seimbang. Berapa tegangan permukaan larutan sabun?</p>",
           "steps": [
-            "\\(F = 0{,}1 \\times 0{,}2 \\times 0{,}5 / 0{,}001\\)."
+            "Lapisan sabun mempunyai dua permukaan: \\(L = 2 \\times 0{,}1 = 0{,}2\\) m.",
+            "\\(\\gamma = 0{,}006 / 0{,}2 = 0{,}03\\) N/m."
           ],
-          "answer": "10 N"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2 (Torricelli)",
-          "question": "<p>Permukaan air dalam tangki terbuka 1,8 m di atas keran. Luas lubang keran 2 cm². Berapa kelajuan air keluar dan debitnya?</p>",
-          "steps": [
-            "\\(v = \\sqrt{2gh} = \\sqrt{36} = 6\\) m/s.",
-            "\\(Q = Av = 2\\times10^{-4} \\times 6 = 1{,}2\\times10^{-3}\\) m³/s."
-          ],
-          "answer": "6 m/s; 1,2 L/s"
+          "answer": "0,03 N/m"
         },
         {
           "type": "check",
-          "question": "Klip kertas baja dapat diletakkan mendatar di permukaan air tanpa tenggelam karena ....",
+          "question": "Jarum yang terapung di permukaan air langsung tenggelam setelah setetes deterjen diteteskan di dekatnya. Penyebabnya adalah ....",
           "options": {
-            "A": "gaya Archimedes",
-            "B": "viskositas",
-            "C": "tekanan udara",
-            "D": "tegangan permukaan"
+            "A": "massa jenis air bertambah",
+            "B": "tegangan permukaan air berkurang",
+            "C": "gaya apung bertambah",
+            "D": "viskositas air bertambah"
           },
-          "answer": "D",
-          "hint": "Selaput permukaan.",
-          "explanation": "Tegangan permukaan menahan klip selama permukaan tidak tertembus."
+          "answer": "B",
+          "explanation": "Deterjen melemahkan kohesi molekul air di permukaan, sehingga tegangan permukaan turun dan tidak cukup lagi menahan jarum."
         }
       ]
     },
     {
       "id": "kapilaritas-pipa-sempit",
       "title": "Kapilaritas: Kenaikan dan Penurunan Zat Cair dalam Pipa Kapiler",
-      "kind": "latihan",
-      "duration": "2 menit",
+      "kind": "artikel",
+      "duration": "3 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Air Naik ke Pucuk Tanaman",
+          "html": "<p>Air tanah bisa naik ke batang tanaman, dan minyak tanah naik di sumbu kompor, tanpa dipompa. Keduanya bergerak melalui saluran yang sangat sempit. Di pipa sempit, adhesi antara cairan dan dinding cukup kuat untuk mengangkat kolom cairan melawan gravitasi.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Kapilaritas</b> adalah naik atau turunnya zat cair dalam pipa sempit (pipa kapiler). Cairan yang membasahi dinding (air pada kaca) naik; cairan yang tidak membasahi dinding (raksa pada kaca) turun. Makin sempit pipanya, makin tinggi kenaikannya, karena gaya tegangan permukaan di keliling pipa harus mengangkat kolom cairan yang massanya sebanding dengan luas penampang.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kenaikan Kapiler",
+          "html": "\\[h = \\frac{2\\gamma\\cos\\theta}{\\rho g r}\\]<p>θ sudut kontak, r jari-jari pipa. Jika θ &gt; 90°, h negatif (cairan turun).</p>"
+        },
         {
           "type": "callout",
           "variant": "awas",
@@ -215,27 +255,73 @@
             "\\(h = \\dfrac{2(0{,}072)(1)}{1.000(10)(4\\times10^{-4})} = 0{,}036\\) m."
           ],
           "answer": "3,6 cm"
+        },
+        {
+          "type": "check",
+          "question": "Jika jari-jari pipa kapiler dijadikan setengahnya (zat cair dan bahan pipa sama), kenaikan zat cair menjadi ....",
+          "options": {
+            "A": "setengahnya",
+            "B": "dua kali semula",
+            "C": "empat kali semula",
+            "D": "tetap"
+          },
+          "answer": "B",
+          "explanation": "h berbanding terbalik dengan r, jadi r setengah membuat h dua kali."
         }
       ]
     },
     {
       "id": "viskositas-dan-kecepatan-terminal",
       "title": "Viskositas Fluida (Kekentalan), Hukum Stokes, dan Kecepatan Terminal",
-      "kind": "latihan",
-      "duration": "2 menit",
+      "kind": "artikel",
+      "duration": "4 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Oli Mesin dan Madu",
+          "html": "<p>Madu mengalir jauh lebih lambat daripada air, dan oli mesin diberi kode kekentalan seperti 10W-40. Kekentalan menentukan seberapa besar gesekan di dalam fluida. Oli yang terlalu encer tidak melindungi mesin; yang terlalu kental membuat mesin berat diputar saat dingin.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Viskositas</b> (kekentalan) adalah ukuran gesekan di dalam fluida, dilambangkan η dengan satuan Pa·s. Benda yang bergerak dalam fluida kental mengalami gaya hambat. Untuk bola kecil yang bergerak lambat berlaku <b>hukum Stokes</b>. Bola yang dijatuhkan ke fluida mula-mula dipercepat, lalu gaya hambat bertambah sampai gaya hambat dan gaya apung tepat mengimbangi beratnya. Sejak itu bola bergerak dengan <b>kecepatan terminal</b> yang tetap.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Viskositas dan Hukum Stokes",
+          "html": "\\[F = \\eta\\frac{A v}{d}, \\qquad F_s = 6\\pi\\eta r v, \\qquad v_T = \\frac{2 r^2 g(\\rho_b - \\rho_f)}{9\\eta}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Pelat 0,2 m² ditarik 0,5 m/s di atas lapisan oli setebal 1 mm (η = 0,1 Pa·s). Berapa gayanya?</p>",
+          "steps": [
+            "\\(F = 0{,}1 \\times 0{,}2 \\times 0{,}5 / 0{,}001\\)."
+          ],
+          "answer": "10 N"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Bola baja berjari-jari 1 mm (ρ = 7.800 kg/m³) dijatuhkan ke gliserin (ρ = 1.260 kg/m³, η = 1,5 Pa·s). Berapa kecepatan terminalnya?</p>",
+          "steps": [
+            "\\(v_T = \\dfrac{2 (10^{-3})^2 \\times 10 \\times (7.800 - 1.260)}{9 \\times 1{,}5}\\).",
+            "\\(v_T = \\dfrac{0{,}1308}{13{,}5} \\approx 9{,}7 \\times 10^{-3}\\) m/s, sekitar 1 cm/s."
+          ],
+          "answer": "sekitar 9,7 mm/s"
+        },
+        {
           "type": "check",
-          "question": "Air yang dituang dari ceret tampak makin ramping saat makin ke bawah karena ....",
+          "question": "Jika jari-jari bola dijadikan 2 kali (bahan bola dan fluida sama), kecepatan terminalnya menjadi ....",
           "options": {
-            "A": "kelajuan air bertambah sementara debitnya tetap",
-            "B": "air menguap",
-            "C": "tekanan udara menekan air",
-            "D": "viskositas air bertambah"
+            "A": "2 kali",
+            "B": "½ kali",
+            "C": "4 kali",
+            "D": "8 kali"
           },
-          "answer": "A",
-          "hint": "Q = Av tetap.",
-          "explanation": "Kelajuan bertambah karena gravitasi, sehingga luas penampang aliran mengecil."
+          "answer": "C",
+          "explanation": "v_T sebanding dengan r², jadi 2² = 4 kali."
         }
       ]
     },
@@ -243,14 +329,56 @@
       "id": "fluida-ideal-dan-persamaan-kontinuitas",
       "title": "Karakteristik Fluida Ideal dan Persamaan Kontinuitas Debit Aliran",
       "kind": "simulasi",
-      "duration": "2 menit",
+      "duration": "5 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Ujung Selang yang Dipencet",
+          "html": "<p>Saat menyiram tanaman, kamu memencet ujung selang agar air memancar lebih jauh. Banyaknya air yang keluar tiap detik tidak berubah, karena ditentukan keran. Yang berubah adalah luas lubangnya: lubang lebih sempit memaksa air keluar lebih cepat.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Fluida ideal</b>: tidak termampatkan (massa jenis tetap), tidak kental (viskositas nol), alirannya tunak (laminar), dan tidak berpusar.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Debit</b> Q adalah volume fluida yang mengalir per satuan waktu (m³/s). Untuk fluida ideal yang mengalir dalam pipa tanpa kebocoran, volume yang masuk sama dengan volume yang keluar, sehingga debit di setiap penampang sama. Akibatnya kelajuan aliran berbanding terbalik dengan luas penampang: di bagian sempit aliran lebih cepat.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Debit dan Persamaan Kontinuitas",
+          "html": "\\[Q = \\frac{V}{t} = A v, \\qquad A_1 v_1 = A_2 v_2\\]"
+        },
         {
           "type": "sim",
           "src": "sim/bernoulli.html",
           "title": "Kontinuitas dan Bernoulli",
           "height": 520,
           "caption": "Persempit pipa dan perhatikan kelajuan serta tinggi kolom air. Lalu coba mode tangki bocor: di ketinggian berapa lubang memancarkan air paling jauh?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Saluran irigasi selebar 3 m dengan kedalaman 0,4 m mengalir 0,5 m/s, lalu menyempit menjadi lebar 1 m dan kedalaman 0,3 m. Berapa kelajuan air di bagian sempit?</p>",
+          "steps": [
+            "\\(A_1 = 1{,}2\\) m², \\(A_2 = 0{,}3\\) m².",
+            "\\(v_2 = 1{,}2 \\times 0{,}5 / 0{,}3\\)."
+          ],
+          "answer": "2 m/s"
+        },
+        {
+          "type": "check",
+          "question": "Air mengalir 1 m/s dalam pipa berdiameter 4 cm, lalu masuk ke pipa berdiameter 2 cm. Kelajuan air di pipa kecil adalah ....",
+          "options": {
+            "A": "2 m/s",
+            "B": "0,5 m/s",
+            "C": "4 m/s",
+            "D": "0,25 m/s"
+          },
+          "answer": "C",
+          "explanation": "Luas sebanding dengan kuadrat diameter. Diameter setengah berarti luas seperempat, jadi kelajuan 4 kali: 4 m/s."
         }
       ]
     },
@@ -258,51 +386,149 @@
       "id": "persamaan-bernoulli-penurunan",
       "title": "Persamaan Hukum Bernoulli: Konservasi Energi pada Fluida Bergerak",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Atap yang Terangkat Angin Kencang",
+          "html": "<p>Saat angin puting beliung, atap seng bisa terangkat dari rumah. Angin tidak mendorongnya dari bawah. Udara yang mengalir sangat cepat di atas atap bertekanan lebih rendah daripada udara diam di dalam rumah, dan selisih tekanan itu mendorong atap ke atas.</p>"
+        },
+        {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Tekanan</td><td>\\(P = F/A\\); \\(P = P_0 + \\rho gh\\)</td></tr><tr><td>Pascal</td><td>\\(F_1/A_1 = F_2/A_2\\)</td></tr><tr><td>Archimedes</td><td>\\(F_A = \\rho_f g V_{tercelup}\\)</td></tr><tr><td>Kapilaritas</td><td>\\(h = 2\\gamma\\cos\\theta/(\\rho g r)\\)</td></tr><tr><td>Viskositas</td><td>\\(F = \\eta Av/d\\); \\(v_T = 2r^2g(\\rho_b-\\rho_f)/9\\eta\\)</td></tr><tr><td>Kontinuitas</td><td>\\(A_1v_1 = A_2v_2\\)</td></tr><tr><td>Bernoulli</td><td>\\(P + \\tfrac12\\rho v^2 + \\rho gh\\) tetap; Torricelli \\(v = \\sqrt{2gh}\\)</td></tr></table>"
+          "html": "<p>Persamaan Bernoulli adalah hukum kekekalan energi untuk fluida ideal yang mengalir. Sepanjang satu garis arus, jumlah tekanan, energi kinetik per volume, dan energi potensial per volume selalu tetap. Akibatnya, pada pipa mendatar, <b>di tempat aliran lebih cepat, tekanannya lebih rendah</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan Bernoulli",
+          "html": "\\[P_1 + \\tfrac12\\rho v_1^2 + \\rho g h_1 = P_2 + \\tfrac12\\rho v_2^2 + \\rho g h_2\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Air mengalir dalam pipa mendatar. Di penampang besar tekanannya 1,2 × 10⁵ Pa dan kelajuannya 2 m/s; di penampang kecil kelajuannya 6 m/s. Berapa tekanan di penampang kecil?</p>",
+          "steps": [
+            "Pipa mendatar: \\(h_1 = h_2\\), suku ρgh hilang.",
+            "\\(P_2 = P_1 - \\tfrac12\\rho(v_2^2 - v_1^2) = 120.000 - \\tfrac12(1.000)(36 - 4)\\).",
+            "\\(P_2 = 104.000\\) Pa."
+          ],
+          "answer": "1,04 × 10⁵ Pa"
+        },
+        {
+          "type": "check",
+          "question": "Pada pipa mendatar yang menyempit, dibandingkan dengan bagian yang lebar, bagian yang sempit mempunyai ....",
+          "options": {
+            "A": "kelajuan lebih besar dan tekanan lebih kecil",
+            "B": "kelajuan lebih besar dan tekanan lebih besar",
+            "C": "kelajuan lebih kecil dan tekanan lebih besar",
+            "D": "kelajuan dan tekanan sama"
+          },
+          "answer": "A",
+          "explanation": "Kontinuitas membuat kelajuan di bagian sempit lebih besar; Bernoulli pada pipa mendatar membuat tekanannya lebih kecil."
         }
       ]
     },
     {
       "id": "teorema-torricelli-tangki-bocor",
       "title": "Teorema Torricelli: Kecepatan dan Jangkauan Pancaran Air Tangki Bocor",
-      "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
-    },
-    {
-      "id": "aplikasi-bernoulli-venturimeter-pitot",
-      "title": "Aplikasi Bernoulli: Venturimeter (dengan dan tanpa Manometer) dan Tabung Pitot",
       "kind": "latihan",
-      "duration": "3 menit",
+      "duration": "5 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Lupa menambahkan tekanan udara ketika ditanya tekanan total.</li><li>Memakai volume seluruh benda untuk benda yang terapung.</li><li>Lupa mengubah cm² menjadi m² atau mm menjadi m.</li></ul>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Tangki Air yang Bocor",
+          "html": "<p>Tandon air di atap yang bocor memancarkan air lebih kencang jika lubangnya jauh di bawah permukaan air. Saat air di tangki makin sedikit, pancarannya melemah. Kelajuan pancaran itu sama dengan kelajuan benda yang jatuh bebas dari permukaan air ke lubang.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Terapkan Bernoulli pada permukaan air di tangki terbuka yang lebar (kelajuannya hampir nol) dan pada lubang kecil. Keduanya bertekanan udara luar, sehingga yang tersisa hanya perubahan energi potensial menjadi energi kinetik. Hasilnya adalah <b>teorema Torricelli</b>. Setelah keluar, air bergerak seperti benda yang dilempar mendatar, sehingga jangkauannya di tanah bisa dihitung dengan gerak parabola.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Teorema Torricelli",
+          "html": "\\[v = \\sqrt{2gh}, \\qquad x = 2\\sqrt{h H}\\]<p>h: kedalaman lubang di bawah permukaan air; H: tinggi lubang dari tanah; x: jangkauan pancaran di tanah.</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Tekanan udara 1,0 × 10⁵ Pa. Pada kedalaman berapa tekanan total di danau menjadi 3 kali tekanan udara?</p>",
+          "question": "<p>Permukaan air dalam tangki terbuka 1,8 m di atas keran. Luas lubang keran 2 cm². Berapa kelajuan air keluar dan debitnya?</p>",
           "steps": [
-            "\\(P_0 + \\rho g h = 3P_0 \\Rightarrow \\rho g h = 2P_0\\).",
-            "\\(h = \\dfrac{2\\times10^5}{1.000\\times10}\\)."
+            "\\(v = \\sqrt{2gh} = \\sqrt{36} = 6\\) m/s.",
+            "\\(Q = Av = 2\\times10^{-4} \\times 6 = 1{,}2\\times10^{-3}\\) m³/s."
           ],
-          "answer": "20 m"
+          "answer": "6 m/s; 1,2 L/s"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Barometer di permukaan laut menunjukkan 76 cmHg. Di sebuah gunung tingginya 57 cmHg. Berapa tekanan udara di gunung dalam atm?</p>",
+          "question": "<p>Lubang kecil berada 0,8 m di bawah permukaan air dan 1,8 m di atas tanah (g = 10 m/s²). Tentukan kelajuan pancaran dan jangkauannya di tanah.</p>",
           "steps": [
-            "P = 57/76 atm."
+            "\\(v = \\sqrt{2 \\times 10 \\times 0{,}8} = 4\\) m/s.",
+            "Waktu jatuh dari 1,8 m: \\(t = \\sqrt{2 \\times 1{,}8/10} = 0{,}6\\) s.",
+            "\\(x = 4 \\times 0{,}6 = 2{,}4\\) m (sama dengan \\(2\\sqrt{0{,}8 \\times 1{,}8}\\))."
           ],
-          "answer": "0,75 atm"
+          "answer": "4 m/s dan 2,4 m"
+        },
+        {
+          "type": "check",
+          "question": "Tangki terbuka bocor pada lubang yang berada 5 m di bawah permukaan air (g = 10 m/s²). Kelajuan pancaran air adalah ....",
+          "options": {
+            "A": "5 m/s",
+            "B": "50 m/s",
+            "C": "100 m/s",
+            "D": "10 m/s"
+          },
+          "answer": "D",
+          "explanation": "v = √(2gh) = √100 = 10 m/s."
+        }
+      ]
+    },
+    {
+      "id": "aplikasi-bernoulli-venturimeter-pitot",
+      "title": "Aplikasi Bernoulli: Venturimeter (dengan dan tanpa Manometer) dan Tabung Pitot",
+      "kind": "artikel",
+      "duration": "4 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Tabung Pitot di Hidung Pesawat",
+          "html": "<p>Di bagian depan pesawat terdapat tabung kecil yang menghadap ke depan, disebut tabung pitot. Dari selisih tekanan udara yang masuk tabung dan udara di sampingnya, komputer pesawat menghitung kelajuan pesawat terhadap udara. Jika tabung ini tersumbat es, pilot bisa menerima angka kelajuan yang salah.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Venturimeter</b> mengukur kelajuan cairan dalam pipa. Pipa dibuat menyempit; karena kelajuan di bagian sempit lebih besar, tekanannya lebih kecil. Selisih tekanan itu terbaca sebagai selisih tinggi cairan h pada dua tabung tegak. Gabungan kontinuitas dan Bernoulli memberi kelajuan di bagian lebar.</p><p><b>Tabung pitot</b> mengukur kelajuan gas. Udara yang masuk lubang depan berhenti, sehingga tekanannya lebih besar daripada udara yang mengalir di lubang samping. Selisihnya dibaca dengan manometer berisi cairan bermassa jenis ρ'.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Venturimeter dan Tabung Pitot",
+          "html": "\\[v_1 = A_2\\sqrt{\\frac{2gh}{A_1^2 - A_2^2}} \\;(\\text{venturimeter tanpa manometer}), \\qquad v = \\sqrt{\\frac{2\\rho' g h}{\\rho_{\\text{udara}}}} \\;(\\text{pitot})\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Venturimeter mempunyai luas penampang 5 cm² dan 3 cm². Selisih tinggi air pada kedua tabung tegaknya 20 cm (g = 10 m/s²). Berapa kelajuan air di penampang besar?</p>",
+          "steps": [
+            "\\(v_1 = A_2\\sqrt{\\dfrac{2gh}{A_1^2 - A_2^2}} = 3\\sqrt{\\dfrac{2 \\times 10 \\times 0{,}2}{25 - 9}}\\).",
+            "\\(v_1 = 3 \\times \\sqrt{0{,}25} = 1{,}5\\) m/s. (Luas dalam cm² boleh dipakai karena satuannya saling menghilangkan.)"
+          ],
+          "answer": "1,5 m/s"
+        },
+        {
+          "type": "check",
+          "question": "Tabung pitot dengan manometer berisi air (1.000 kg/m³) menunjukkan selisih tinggi 5 cm saat mengukur aliran udara (1,25 kg/m³, g = 10 m/s²). Kelajuan udara sekitar ....",
+          "options": {
+            "A": "28 m/s",
+            "B": "800 m/s",
+            "C": "8,9 m/s",
+            "D": "40 m/s"
+          },
+          "answer": "A",
+          "explanation": "v = √(2ρ'gh/ρ_udara) = √(2 × 1.000 × 10 × 0,05 / 1,25) = √800 ≈ 28 m/s."
         }
       ]
     },
@@ -313,38 +539,26 @@
       "duration": "4 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Fisika Penerbangan: Gaya Angkat Sayap Pesawat (Aerodinamika) dan Alat Semprot</b>: Bentuk profil sayap aerofoil membuat laju udara di atas sayap lebih cepat sehingga tekanannya lebih rendah; F_angkat = 1/2 ρ A (v_atas^2 - v_bawah^2); karburator dan botol parfum.</p>"
-        },
-        {
           "type": "callout",
           "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Mengapa Sayap Pesawat Logam Seberat 500 Ton Mampu Terangkat Mengangkasa?",
+          "title": "Penerapan Konsep di Dunia Nyata: Pesawat Ratusan Ton yang Terangkat",
           "html": "<p>Sebuah pesawat Boeing 747 memiliki bobot lepas landas maksimum hampir 450 ton. Ketika melaju di landasan pacu dengan kecepatan 280 km/jam, badan pesawat logam raksasa itu mendadak terangkat melayang ke angkasa seolah-olah ditarik oleh tangan gaib dari langit. Kekuatan apa yang mengangkat bobot ratusan ton tersebut? Bentuk kelengkungan sayap aerofoil dan perbedaan kecepatan aliran udara adalah jawabannya.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Daniel Bernoulli dan Mahakarya Hydrodynamica 1738",
-          "html": "<p>Fisikawan dan matematikawan Swiss Daniel Bernoulli mempublikasikan mahakaryanya Hydrodynamica pada tahun 1738. Bernoulli membuktikan prinsip kekekalan energi fluida bergerak: di mana kecepatan aliran fluida meningkat, tekanan statis internal di titik tersebut pasti menurun.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Prinsip Bernoulli pada Aerofoil dan Pembentukan Gaya Angkat Sayap",
-          "html": "<p>Sayap pesawat dirancang dengan penampang melengkung di bagian atas (aerofoil):</p><ol><li>Udara yang mengalir di atas sayap melintasi jarak lengkung yang lebih jauh, sehingga melaju dengan kecepatan lebih tinggi (\\(v_{\\text{atas}} &gt; v_{\\text{bawah}}\\)).</li><li>Berdasarkan Asas Bernoulli, semakin tinggi kecepatan aliran udara, semakin rendah tekanannya, sehingga timbul perbedaan tekanan (\\(P_{\\text{bawah}} &gt; P_{\\text{atas}}\\)).</li><li>Perbedaan tekanan ini menghasilkan resultan Gaya Angkat ke atas (\\(F_{\\text{angkat}} = (P_{\\text{bawah}} - P_{\\text{atas}}) \\times A\\)) yang menopang seluruh bobot pesawat.</li></ol>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Gaya Angkat Aerofoil Bernoulli",
-          "html": "<p>\\[ F_{\\text{angkat}} = (P_1 - P_2) \\cdot A = \\frac{1}{2} \\rho_{\\text{udara}} \\cdot (v_2^2 - v_1^2) \\cdot A \\] di mana:</p><ul><li>\\(P_1, v_1\\) = Tekanan dan kecepatan udara di bagian BAWAH sayap</li><li>\\(P_2, v_2\\) = Tekanan dan kecepatan udara di bagian ATAS sayap (\\(v_2 &gt; v_1\\))</li><li>\\(\\rho_{\\text{udara}}\\) = Massa jenis udara sekitar</li><li>\\(A\\) = Luas total permukaan kedua sayap pesawat.</li></ul>"
         },
         {
           "type": "callout",
           "variant": "info",
           "title": "Gaya angkat sayap pesawat",
-          "html": "<p>Udara di atas sayap mengalir lebih cepat daripada di bawahnya, sehingga tekanan di atas lebih kecil. Gaya angkat \\(F = \\tfrac12\\rho(v_{atas}^2 - v_{bawah}^2)A\\). Prinsip yang sama menjelaskan dua balon yang saling mendekat ketika udara ditiup di antaranya.</p>"
+          "html": "<p>Udara di atas sayap mengalir lebih cepat daripada di bawahnya, sehingga tekanan di atas lebih kecil. Gaya angkat \\(F = \\tfrac12\\rho(v_{atas}^2 - v_{bawah}^2)A\\).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Prinsip yang sama bekerja pada alat semprot nyamuk dan karburator: udara yang ditiup cepat melewati ujung pipa membuat tekanan di sana rendah, sehingga cairan dari tabung terdorong naik oleh tekanan udara luar, lalu terpecah menjadi butiran halus.</p><p>Hati-hati dengan penjelasan populer bahwa udara di atas sayap \"harus menempuh jalur lebih panjang dalam waktu yang sama\". Pengukuran menunjukkan udara di atas sayap justru tiba lebih dulu di tepi belakang. Udara di atas memang lebih cepat, tetapi karena bentuk dan sudut sayap membelokkan aliran, bukan karena syarat waktu yang sama.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Daniel Bernoulli dan Mahakarya Hydrodynamica 1738",
+          "html": "<p>Fisikawan dan matematikawan Swiss Daniel Bernoulli mempublikasikan mahakaryanya Hydrodynamica pada tahun 1738. Bernoulli membuktikan prinsip kekekalan energi fluida bergerak: di mana kecepatan aliran fluida meningkat, tekanan statis internal di titik tersebut pasti menurun.</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/Hydrodynamica\">Hydrodynamica, Wikipedia</a></small></p>"
         },
         {
           "type": "example",
@@ -354,6 +568,18 @@
             "\\(F = \\tfrac12(1{,}2)(3.600 - 2.500)(20)\\)."
           ],
           "answer": "13.200 N"
+        },
+        {
+          "type": "check",
+          "question": "Alat semprot obat nyamuk dapat menyemburkan cairan karena ....",
+          "options": {
+            "A": "udara yang bergerak cepat di ujung pipa bertekanan rendah",
+            "B": "cairan ditarik oleh gaya gravitasi",
+            "C": "tekanan udara di atas cairan dalam tabung menjadi nol",
+            "D": "viskositas cairan berkurang saat ditekan"
+          },
+          "answer": "A",
+          "explanation": "Udara cepat di ujung pipa bertekanan lebih rendah daripada udara di atas permukaan cairan dalam tabung, sehingga cairan terdorong naik."
         }
       ]
     },
@@ -365,7 +591,7 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 4 Fluida.</small></p>"
+          "html": "<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Tekanan</td><td>\\(P = F/A\\); \\(P = P_0 + \\rho gh\\)</td></tr><tr><td>Pascal</td><td>\\(F_1/A_1 = F_2/A_2\\)</td></tr><tr><td>Archimedes</td><td>\\(F_A = \\rho_f g V_{tercelup}\\)</td></tr><tr><td>Kapilaritas</td><td>\\(h = 2\\gamma\\cos\\theta/(\\rho g r)\\)</td></tr><tr><td>Viskositas</td><td>\\(F = \\eta Av/d\\); \\(v_T = 2r^2g(\\rho_b-\\rho_f)/9\\eta\\)</td></tr><tr><td>Kontinuitas</td><td>\\(A_1v_1 = A_2v_2\\)</td></tr><tr><td>Bernoulli</td><td>\\(P + \\tfrac12\\rho v^2 + \\rho gh\\) tetap; Torricelli \\(v = \\sqrt{2gh}\\)</td></tr></table>"
         },
         {
           "type": "example",
@@ -388,6 +614,10 @@
           "title": "Cheat Sheet: Fluida Statis & Dinamis Lengkap",
           "subtitle": "Rangkuman tekanan hidrostatis, hukum Pascal, Archimedes, kontinuitas, asas Bernoulli, dan Torricelli.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Fluida Statis</h4>\n    <p>Tekanan Hidrostatis: \\[ P_h = \\rho g h, \\quad P = P_0 + \\rho g h \\]</p>\n    <p>Hukum Pascal: \\[ \\frac{F_1}{A_1} = \\frac{F_2}{A_2} \\]</p>\n    <p>Gaya Apung Archimedes: \\[ F_A = \\rho_f \\cdot V_{bf} \\cdot g \\]</p>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Fluida Dinamis</h4>\n    <p>Persamaan Kontinuitas: \\[ Q = A_1 v_1 = A_2 v_2 \\]</p>\n    <p>Asas Bernoulli: \\[ P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{konstan} \\]</p>\n    <p>Teorema Torricelli: \\[ v = \\sqrt{2gh}, \\quad x = 2\\sqrt{h(H - h)} \\]</p>\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 4 Fluida.</small></p>"
         },
         {
           "type": "kuis",
