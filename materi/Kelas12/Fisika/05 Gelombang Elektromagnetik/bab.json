@@ -7,15 +7,30 @@
       "id": "hipotesis-james-clerk-maxwell",
       "title": "Hipotesis James Clerk Maxwell: Perambatan Medan Listrik dan Medan Magnet",
       "kind": "simulasi",
-      "duration": "6 menit",
+      "duration": "5 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Hipotesis James Clerk Maxwell: Perambatan Medan Listrik dan Medan Magnet</b>: Perubahan medan magnet menghasilkan medan listrik (Faraday) dan perubahan medan listrik menghasilkan medan magnet (Maxwell); gelombang elektromagnetik merambat di ruang hampa tanpa medium materil.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Sinyal dari Voyager",
+          "html": "<p>Wahana Voyager 1 berada lebih dari 20 miliar kilometer dari Bumi, tetapi sinyal radionya masih diterima antena raksasa di Bumi setelah menempuh ruang hampa hampir sehari. Gelombang itu tidak memerlukan medium apa pun untuk merambat, berbeda dengan bunyi. Penjelasannya datang dari gagasan Maxwell.</p>"
         },
         {
           "type": "text",
           "html": "<p>James Clerk Maxwell (1864) menyatukan kelistrikan dan kemagnetan: <b>medan magnet yang berubah menimbulkan medan listrik</b> (Faraday) dan <b>medan listrik yang berubah menimbulkan medan magnet</b> (hipotesis Maxwell). Akibatnya, gangguan medan dapat merambat sendiri tanpa medium sebagai <b>gelombang elektromagnetik (GEM)</b>. Heinrich Hertz (1887) membuktikannya dengan menghasilkan dan mendeteksi gelombang radio.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Ramalan Maxwell dan Percikan Hertz",
+          "html": "<p>Pada 1865, James Clerk Maxwell menyatukan hukum listrik dan magnet dalam satu set persamaan dan meramalkan adanya gelombang elektromagnetik. Laju gelombang yang ia hitung dari konstanta listrik dan magnet ternyata sama dengan laju cahaya yang sudah diukur, sehingga ia menyimpulkan bahwa cahaya adalah gelombang elektromagnetik. Pada 1887, Heinrich Hertz membuktikannya: percikan listrik di satu rangkaian menimbulkan percikan di rangkaian penerima beberapa meter jauhnya, tanpa kabel penghubung.</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/Heinrich_Hertz\">Heinrich Hertz, Wikipedia</a></small></p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/gelombang-em.html",
+          "title": "Gelombang elektromagnetik",
+          "height": 500,
+          "caption": "Perhatikan bahwa E dan B mencapai puncak bersamaan. Gandakan E maks: berapa kali intensitasnya?"
         },
         {
           "type": "callout",
@@ -24,11 +39,44 @@
           "html": "<p>Buku menulis Grote Reber menemukan pancaran radio Matahari pada tahun 1957. Reber membangun teleskop radio pertamanya pada 1937 dan mendeteksi gelombang radio dari Matahari pada awal 1940-an. Nama Maxwell yang benar James <b>Clerk</b> Maxwell. Batas bawah ultraviolet umumnya disebut sekitar 10 nm (buku menulis 40 nm).</p>"
         },
         {
-          "type": "sim",
-          "src": "sim/gelombang-em.html",
-          "title": "Gelombang elektromagnetik",
-          "height": 500,
-          "caption": "Perhatikan bahwa E dan B mencapai puncak bersamaan. Gandakan E maks: berapa kali intensitasnya?"
+          "type": "check",
+          "question": "Laju gelombang elektromagnetik di ruang hampa bergantung pada ....",
+          "options": {
+            "A": "frekuensi gelombang",
+            "B": "amplitudo medan listrik",
+            "C": "permitivitas dan permeabilitas ruang hampa",
+            "D": "jenis sumber gelombang"
+          },
+          "answer": "C",
+          "explanation": "c = 1/√(μ₀ε₀), sama untuk semua frekuensi. Gelombang radio dan sinar gamma merambat dengan laju yang sama di ruang hampa."
+        }
+      ]
+    },
+    {
+      "id": "kecepatan-cahaya-dan-vektor-poynting",
+      "title": "Kecepatan Gelombang EM (c = 1 / √(ε0·μ0)) dan Rapat Energi Vektor Poynting",
+      "kind": "artikel",
+      "duration": "4 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Seberapa Kuat Sinar Matahari?",
+          "html": "<p>Di permukaan Bumi pada siang yang cerah, sinar Matahari membawa sekitar 1.000 watt untuk setiap meter persegi. Angka ini dipakai untuk menghitung luas panel surya yang dibutuhkan sebuah rumah. Daya per luas itu adalah intensitas gelombang elektromagnetik, dan bergantung pada kuat medan listriknya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada gelombang elektromagnetik, medan listrik E dan medan magnet B saling tegak lurus dan keduanya tegak lurus arah rambat; arah rambatnya searah \\(\\vec E \\times \\vec B\\). Kedua medan sefase, dan perbandingan besarnya selalu c. Energi yang dibawa gelombang per satuan luas per satuan waktu disebut <b>intensitas</b>; vektor yang menyatakan aliran energi itu disebut vektor Poynting. Intensitas sebanding dengan kuadrat amplitudo medan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Laju, Medan, dan Intensitas Gelombang Elektromagnetik",
+          "html": "<div class=\"fc-display\">\n\\[ c = \\frac{1}{\\sqrt{\\mu_0 \\varepsilon_0}} \\approx 3 \\times 10^8\\text{ m/s}, \\qquad c = \\lambda f, \\qquad \\frac{E}{B} = c, \\qquad \\vec{S} = \\frac{1}{\\mu_0} (\\vec{E} \\times \\vec{B}) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\"><i>c</i></td><td>Kelajuan rambat gelombang elektromagnetik di ruang hampa</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\mu_0\\)</td><td>Permeabilitas magnetik ruang hampa (\\(4\\pi \\times 10^{-7}\\))</td><td class=\"unit\">\\(\\text{T}\\cdot\\text{m/A}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\varepsilon_0\\)</td><td>Permitivitas listrik ruang hampa (\\(8{,}85 \\times 10^{-12}\\))</td><td class=\"unit\">\\(\\text{C}^2/(\\text{N}\\cdot\\text{m}^2)\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\vec{S}\\)</td><td>Vektor Poynting (laju aliran energi radiasi per satuan luas penampang)</td><td class=\"unit\">\\(\\text{Watt/m}^2\\)</td></tr>\n    <tr><td class=\"sym\">E, B</td><td>Kuat medan listrik dan medan magnet sesaat</td><td class=\"unit\">\\(\\text{N/C, Tesla}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Semakin tinggi frekuensi gelombang elektromagnetik (seperti Sinar-X dan Sinar Gamma), semakin pendek panjang gelombangnya dan semakin besar daya tembus energinya.</small></p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Intensitas rata-rata: \\(\\bar I = \\tfrac12 c\\varepsilon_0 E_m^2 = \\dfrac{E_mB_m}{2\\mu_0}\\).</p>"
         },
         {
           "type": "example",
@@ -42,71 +90,15 @@
         },
         {
           "type": "check",
-          "question": "Medan listrik suatu GEM bergetar sejajar sumbu z dan gelombang merambat ke arah sumbu x. Medan magnetnya bergetar sejajar sumbu ....",
+          "question": "Amplitudo medan listrik sebuah gelombang elektromagnetik di udara 600 N/C. Amplitudo medan magnetnya adalah ....",
           "options": {
-            "A": "x",
-            "B": "y",
-            "C": "z",
-            "D": "tidak bergetar"
+            "A": "2 × 10⁻⁶ T",
+            "B": "1,8 × 10¹¹ T",
+            "C": "2 × 10⁻⁸ T",
+            "D": "6 × 10⁻⁶ T"
           },
-          "answer": "B",
-          "hint": "E, B, dan arah rambat saling tegak lurus.",
-          "explanation": "B harus tegak lurus E (z) dan arah rambat (x), yaitu sumbu y."
-        },
-        {
-          "type": "check",
-          "question": "Jika amplitudo medan listrik GEM dijadikan dua kali, intensitasnya menjadi ....",
-          "options": {
-            "A": "2 kali",
-            "B": "√2 kali",
-            "C": "4 kali",
-            "D": "tetap"
-          },
-          "answer": "C",
-          "hint": "I ∝ E².",
-          "explanation": "Intensitas sebanding dengan kuadrat amplitudo, jadi 4 kali."
-        }
-      ]
-    },
-    {
-      "id": "kecepatan-cahaya-dan-vektor-poynting",
-      "title": "Kecepatan Gelombang EM (c = 1 / √(ε0·μ0)) dan Rapat Energi Vektor Poynting",
-      "kind": "artikel",
-      "duration": "4 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Sinyal WiFi 5 GHz, Remote TV Inframerah, dan Sinar Rontgen Rumah Sakit",
-          "html": "<p>Saat kamu menyalakan WiFi di smartphone, memanaskan makanan di microwave, mengganti saluran TV dengan remote infra merah, atau menjalani foto Rontgen tulang di rumah sakit, kamu sedang memanfaatkan spektrum yang sama persis: <b>Gelombang Elektromagnetik</b>!</p><p>Semua radiasi tersebut melesat menembus ruang hampa udara dengan kecepatan fantastis yang identik: <b>300.000 kilometer per detik</b>! Yang membedakannya hanyalah panjang gelombang dan energinya.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Prediksi Teoretis James Clerk Maxwell yang Diguncang Percikan Hertz",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: James Clerk Maxwell & Heinrich Hertz</span>\n  <span class=\"h-tag\">Tahun: 1865 – 1887 M (Skotlandia & Jerman)</span>\n  <span class=\"h-tag\">Krisis: Menyatukan misteri kelistrikan, kemagnetan, dan optika cahaya ke dalam satu teori komprehensif tunggal.</span>\n</div>\n<p>Fisikawan brilian Skotlandia <b>James Clerk Maxwell</b> menambahkan suku koreksi 'Arus Pergeseran' pada persamaan Ampere. Dari 4 persamaan matematika terpadu (<b>Persamaan Maxwell</b>), ia membuktikan bahwa medan listrik dan medan magnet yang berosilasi dapat merambat mandiri menembus ruang hampa.</p><p>Ketika Maxwell menghitung laju rambat gelombang tersebut dari konstanta listrik dan magnet (\\(c = 1/\\sqrt{\\mu_0 \\varepsilon_0}\\)), nilainya persis \\(3 \\times 10^8\\text{ m/s}\\)! Maxwell berseru kagum: <i>'Cahaya itu sendiri adalah gelombang elektromagnetik!'</i>. Prediksi ini dibuktikan secara eksperimen oleh Heinrich Hertz pada tahun 1887.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Gelombang Transversal Non-Medium & Spektrum Elektromagnetik",
-          "html": "<p><b>Gelombang Elektromagnetik:</b> Gelombang transversal perambatan medan listrik (\\(\\vec{E}\\)) dan medan magnet (\\(\\vec{B}\\)) yang saling tegak lurus satu sama lain dan tegak lurus terhadap arah rambat gelombang tanpa memerlukan medium materi apapun.</p><p><b>Urutan Spektrum Elektromagnetik (dari frekuensi terendah ke tertinggi):</b> Gelombang Radio \\(\\to\\) Gelombang Mikro (Microwave) \\(\\to\\) Inframerah \\(\\to\\) Cahaya Tampak \\(\\to\\) Ultraviolet \\(\\to\\) Sinar-X \\(\\to\\) Sinar Gamma.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Gelombang Elektromagnetik & Intensitas Poynting",
-          "html": "<div class=\"fc-display\">\n\\[ c = \\frac{1}{\\sqrt{\\mu_0 \\varepsilon_0}} \\approx 3 \\times 10^8\\text{ m/s}, \\qquad c = \\lambda f, \\qquad \\frac{E}{B} = c, \\qquad \\vec{S} = \\frac{1}{\\mu_0} (\\vec{E} \\times \\vec{B}) \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\"><i>c</i></td><td>Kelajuan rambat gelombang elektromagnetik di ruang hampa</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\mu_0\\)</td><td>Permeabilitas magnetik ruang hampa (\\(4\\pi \\times 10^{-7}\\))</td><td class=\"unit\">\\(\\text{T}\\cdot\\text{m/A}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\varepsilon_0\\)</td><td>Permitivitas listrik ruang hampa (\\(8{,}85 \\times 10^{-12}\\))</td><td class=\"unit\">\\(\\text{C}^2/(\\text{N}\\cdot\\text{m}^2)\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\vec{S}\\)</td><td>Vektor Poynting (laju aliran energi radiasi per satuan luas penampang)</td><td class=\"unit\">\\(\\text{Watt/m}^2\\)</td></tr>\n    <tr><td class=\"sym\">E, B</td><td>Kuat medan listrik dan medan magnet sesaat</td><td class=\"unit\">\\(\\text{N/C, Tesla}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Semakin tinggi frekuensi gelombang elektromagnetik (seperti Sinar-X dan Sinar Gamma), semakin pendek panjang gelombangnya dan semakin besar daya tembus energinya.</small></p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Hitung energi foton ultraviolet 250 nm dalam joule dan eV.</p>",
-          "steps": [
-            "E = hc/λ = 6,63 × 10⁻³⁴ × 3 × 10⁸ / 2,5 × 10⁻⁷ ≈ 7,96 × 10⁻¹⁹ J.",
-            "Dalam eV: 7,96 × 10⁻¹⁹ / 1,6 × 10⁻¹⁹."
-          ],
-          "answer": "≈ 4,97 eV"
+          "answer": "A",
+          "explanation": "B = E/c = 600 / (3 × 10⁸) = 2 × 10⁻⁶ T."
         }
       ]
     },
@@ -117,28 +109,14 @@
       "duration": "8 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Wi-Fi, Remote TV, dan Rontgen",
+          "html": "<p>Saat kamu menyalakan WiFi di smartphone, memanaskan makanan di microwave, mengganti saluran TV dengan remote infra merah, atau menjalani foto Rontgen tulang di rumah sakit, kamu sedang memanfaatkan spektrum yang sama persis: <b>Gelombang Elektromagnetik</b>!</p><p>Semua radiasi tersebut melesat menembus ruang hampa udara dengan kecepatan fantastis yang identik: <b>300.000 kilometer per detik</b>! Yang membedakannya hanyalah panjang gelombang dan energinya.</p>"
+        },
+        {
           "type": "text",
           "html": "<p>Urutan spektrum dari frekuensi tertinggi (panjang gelombang terpendek): <b>sinar gamma – sinar-X – ultraviolet – cahaya tampak – inframerah – gelombang mikro – gelombang radio</b>. Energi tiap foton \\(E = hf\\) (h = 6,63 × 10⁻³⁴ J s), sehingga sinar gamma paling berenergi.</p>"
-        },
-        {
-          "type": "text",
-          "html": "<table><tr><th>Gelombang</th><th>Sumber</th><th>Pemanfaatan</th><th>Bahaya</th></tr><tr><td>Sinar gamma</td><td>inti radioaktif, kosmik</td><td>radioterapi kanker, sterilisasi, pengawetan makanan</td><td>mengionisasi, merusak sel dan DNA</td></tr><tr><td>Sinar-X</td><td>perlambatan elektron cepat</td><td>rontgen, CT scan, pemeriksaan bagasi, kristalografi</td><td>mengionisasi bila berlebihan</td></tr><tr><td>Ultraviolet</td><td>Matahari, lampu UV</td><td>sterilisasi alat dan air, vitamin D, deteksi uang palsu</td><td>UV-B merusak kulit dan mata</td></tr><tr><td>Cahaya tampak</td><td>Matahari, lampu</td><td>penglihatan, fotosintesis, serat optik</td><td>—</td></tr><tr><td>Inframerah</td><td>semua benda bersuhu &gt; 0 K</td><td>termometer tembak, remote, kamera malam, satelit cuaca</td><td>panas berlebih</td></tr><tr><td>Gelombang mikro</td><td>magnetron, osilator</td><td>radar, oven microwave, ponsel, Wi-Fi, satelit</td><td>pemanasan jaringan</td></tr><tr><td>Gelombang radio</td><td>rangkaian osilator, antena</td><td>radio, TV, komunikasi, teleskop radio</td><td>—</td></tr></table>"
-        },
-        {
-          "type": "text",
-          "html": "<p><b>Telepon seluler</b>: suara diubah menjadi sinyal gelombang mikro yang dipancarkan ke menara BTS terdekat, diteruskan oleh pusat penyambungan (MSC) ke BTS di dekat penerima, lalu ke ponsel penerima. <b>Efek rumah kaca</b>: radiasi Matahari (± 43% cahaya tampak, ± 49% inframerah, sisanya UV) memanaskan permukaan Bumi, yang lalu memancarkan inframerah; gas rumah kaca seperti CO₂ menyerap sebagian inframerah itu sehingga Bumi menghangat.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Mengapa teleskop Hubble di luar atmosfer?",
-          "html": "<p>Atmosfer menyerap sebagian besar ultraviolet dan inframerah serta membuat cahaya bintang berkelip. Di orbit, teleskop dapat menangkap gelombang itu dengan jelas. Sebaliknya, gelombang radio menembus atmosfer sehingga teleskop radio dapat dibangun di Bumi.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Mengira GEM memerlukan medium seperti bunyi.</li><li>Menyangka frekuensi berubah saat GEM masuk medium lain; yang berubah laju dan panjang gelombangnya.</li><li>Lupa membagi dua waktu pantulan pada perhitungan radar.</li><li>Tertukar urutan spektrum: frekuensi tinggi berarti panjang gelombang pendek dan energi besar.</li></ul>"
         },
         {
           "type": "sim",
@@ -146,6 +124,10 @@
           "title": "Spektrum elektromagnetik",
           "height": 500,
           "caption": "Geser dari gelombang radio ke sinar gamma. Mulai dari daerah mana energi fotonnya cukup untuk merusak sel (beberapa eV ke atas)?"
+        },
+        {
+          "type": "text",
+          "html": "<table><tr><th>Gelombang</th><th>Sumber</th><th>Pemanfaatan</th><th>Bahaya</th></tr><tr><td>Sinar gamma</td><td>inti radioaktif, kosmik</td><td>radioterapi kanker, sterilisasi, pengawetan makanan</td><td>mengionisasi, merusak sel dan DNA</td></tr><tr><td>Sinar-X</td><td>perlambatan elektron cepat</td><td>rontgen, CT scan, pemeriksaan bagasi, kristalografi</td><td>mengionisasi bila berlebihan</td></tr><tr><td>Ultraviolet</td><td>Matahari, lampu UV</td><td>sterilisasi alat dan air, vitamin D, deteksi uang palsu</td><td>UV-B merusak kulit dan mata</td></tr><tr><td>Cahaya tampak</td><td>Matahari, lampu</td><td>penglihatan, fotosintesis, serat optik</td><td>—</td></tr><tr><td>Inframerah</td><td>semua benda bersuhu &gt; 0 K</td><td>termometer tembak, remote, kamera malam, satelit cuaca</td><td>panas berlebih</td></tr><tr><td>Gelombang mikro</td><td>magnetron, osilator</td><td>radar, oven microwave, ponsel, Wi-Fi, satelit</td><td>pemanasan jaringan</td></tr><tr><td>Gelombang radio</td><td>rangkaian osilator, antena</td><td>radio, TV, komunikasi, teleskop radio</td><td>—</td></tr></table>"
         },
         {
           "type": "example",
@@ -168,45 +150,72 @@
           "answer": "≈ 2,26 × 10⁸ m/s; ≈ 451 nm"
         },
         {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa teleskop Hubble di luar atmosfer?",
+          "html": "<p>Atmosfer menyerap sebagian besar ultraviolet dan inframerah serta membuat cahaya bintang berkelip. Di orbit, teleskop dapat menangkap gelombang itu dengan jelas. Sebaliknya, gelombang radio menembus atmosfer sehingga teleskop radio dapat dibangun di Bumi.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengira GEM memerlukan medium seperti bunyi.</li><li>Menyangka frekuensi berubah saat GEM masuk medium lain; yang berubah laju dan panjang gelombangnya.</li><li>Lupa membagi dua waktu pantulan pada perhitungan radar.</li><li>Tertukar urutan spektrum: frekuensi tinggi berarti panjang gelombang pendek dan energi besar.</li></ul>"
+        },
+        {
           "type": "check",
-          "question": "Gelombang elektromagnetik yang dipakai termometer tembak untuk mengukur suhu tubuh tanpa menyentuh adalah ....",
+          "question": "Urutan gelombang elektromagnetik berikut dari frekuensi terendah ke tertinggi yang benar adalah ....",
           "options": {
-            "A": "ultraviolet",
-            "B": "gelombang mikro",
-            "C": "sinar-X",
-            "D": "inframerah"
+            "A": "sinar-X, ultraviolet, cahaya tampak, inframerah",
+            "B": "gelombang radio, gelombang mikro, inframerah, cahaya tampak",
+            "C": "gelombang mikro, gelombang radio, ultraviolet, sinar gamma",
+            "D": "inframerah, cahaya tampak, sinar-X, ultraviolet"
           },
-          "answer": "D",
-          "hint": "Tubuh hangat memancarkannya.",
-          "explanation": "Tubuh memancarkan inframerah; intensitasnya bergantung pada suhu."
+          "answer": "B",
+          "explanation": "Dari frekuensi terendah: radio, mikro, inframerah, cahaya tampak, ultraviolet, sinar-X, sinar gamma."
         }
       ]
     },
     {
       "id": "gelombang-radio-dan-mikro-radar",
       "title": "Aplikasi Gelombang Radio dan Mikro: Komunikasi Seluler, Wi-Fi, Oven Microwave, dan RADAR",
-      "kind": "latihan",
-      "duration": "2 menit",
+      "kind": "artikel",
+      "duration": "4 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Aplikasi Gelombang Radio dan Mikro: Komunikasi Seluler, Wi-Fi, Oven Microwave, dan RADAR</b>: Gelombang radio AM/FM; gelombang mikro pada resonansi molekul air oven dapur; prinsip deteksi jarak dan kecepatan pesawat RADAR.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Microwave di Dapur",
+          "html": "<p>Oven microwave memanaskan makanan dengan gelombang mikro sekitar 2,45 GHz. Gelombang ini membuat molekul air di dalam makanan berputar bolak-balik sangat cepat, dan gerak itu berubah menjadi panas. Piring keramik kering hampir tidak ikut panas karena tidak mengandung air.</p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Gelombang radio AM/FM; gelombang mikro pada resonansi molekul air oven dapur; prinsip deteksi jarak dan kecepatan pesawat RADAR.</p>"
+          "type": "text",
+          "html": "<p><b>Gelombang radio</b> (panjang gelombang dari sentimeter sampai ratusan meter) dipakai untuk siaran radio AM dan FM, televisi, dan komunikasi jarak jauh. Gelombang AM yang panjang dapat dipantulkan lapisan ionosfer sehingga menjangkau tempat yang jauh, sedangkan FM memberi suara yang lebih jernih tetapi jangkauannya lebih pendek. <b>Gelombang mikro</b> dipakai untuk ponsel, Wi-Fi, komunikasi satelit, oven microwave, dan radar. <b>Radar</b> memancarkan pulsa gelombang mikro dan mengukur waktu pantulannya; jarak benda \\(s = \\tfrac12 ct\\).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Telepon seluler</b>: suara diubah menjadi sinyal gelombang mikro yang dipancarkan ke menara BTS terdekat, diteruskan oleh pusat penyambungan (MSC) ke BTS di dekat penerima, lalu ke ponsel penerima. <b>Efek rumah kaca</b>: radiasi Matahari (± 43% cahaya tampak, ± 49% inframerah, sisanya UV) memanaskan permukaan Bumi, yang lalu memancarkan inframerah; gas rumah kaca seperti CO₂ menyerap sebagian inframerah itu sehingga Bumi menghangat.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2 (radar)",
+          "title": "Contoh soal",
           "question": "<p>Pulsa radar dipantulkan pesawat dan diterima kembali 0,2 ms setelah dipancarkan. Berapa jarak pesawat?</p>",
           "steps": [
             "Gelombang menempuh jarak pergi-pulang: 2s = ct.",
             "s = 3 × 10⁸ × 2 × 10⁻⁴ / 2."
           ],
           "answer": "30 km"
+        },
+        {
+          "type": "check",
+          "question": "Pulsa radar diterima kembali 0,1 ms setelah dipancarkan. Jarak benda yang memantulkannya adalah ....",
+          "options": {
+            "A": "30 km",
+            "B": "15 km",
+            "C": "3 km",
+            "D": "1,5 km"
+          },
+          "answer": "B",
+          "explanation": "s = ½ct = ½ × 3 × 10⁸ × 10⁻⁴ = 1,5 × 10⁴ m = 15 km. Jangan lupa membagi dua karena gelombang pergi-pulang."
         }
       ]
     },
@@ -214,13 +223,39 @@
       "id": "inframerah-dan-cahaya-tampak",
       "title": "Aplikasi Inframerah dan Cahaya Tampak: Termografi, Remote Control, dan Spektrum Warna",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Kamera pencitraan termal inframerah, sensor remote; spektrum cahaya tampak monokromatik 'Me-Ji-Ku-Hi-Bi-Ni-U' (panjang gelombang 400 nm - 700 nm).</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Remote TV yang Bisa Dilihat Kamera Ponsel",
+          "html": "<p>Arahkan remote TV ke kamera ponsel lalu tekan tombolnya: di layar ponsel tampak lampu ujung remote berkedip, padahal matamu tidak melihat apa-apa. Remote memancarkan inframerah, sedikit di luar batas cahaya merah yang bisa dilihat mata, tetapi sensor kamera masih bisa menangkapnya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Inframerah</b> (sekitar 700 nm sampai 1 mm) dipancarkan setiap benda hangat. Pemanfaatannya: remote control, kamera termal dan termometer tanpa sentuh, serat optik, dan pemanas. <b>Cahaya tampak</b> (sekitar 400 nm sampai 700 nm) adalah satu-satunya bagian spektrum yang dapat dilihat mata. Cahaya putih Matahari terdiri atas semua warna, dari merah (panjang gelombang terpanjang) sampai ungu (terpendek), yang terurai jika dilewatkan prisma.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>LED remote TV memancarkan inframerah dengan panjang gelombang 940 nm. Berapa frekuensinya?</p>",
+          "steps": [
+            "\\(f = \\dfrac{c}{\\lambda} = \\dfrac{3\\times10^8}{9{,}4\\times10^{-7}}\\).",
+            "\\(f \\approx 3{,}2 \\times 10^{14}\\) Hz."
+          ],
+          "answer": "sekitar 3,2 × 10¹⁴ Hz"
+        },
+        {
+          "type": "check",
+          "question": "Di antara warna cahaya tampak berikut, yang panjang gelombangnya paling panjang adalah ....",
+          "options": {
+            "A": "ungu",
+            "B": "hijau",
+            "C": "biru",
+            "D": "merah"
+          },
+          "answer": "D",
+          "explanation": "Merah berada di ujung panjang gelombang terpanjang (sekitar 700 nm), berbatasan dengan inframerah."
         }
       ]
     },
@@ -228,17 +263,39 @@
       "id": "ultraviolet-dan-lapisan-pelindung",
       "title": "Sinar Ultraviolet (UV-A, UV-B, UV-C) dan Pengaruh Biologis",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Sinar Ultraviolet (UV-A, UV-B, UV-C) dan Pengaruh Biologis</b>: Manfaat UV-B merangsang sintesis vitamin D; bahaya katarak dan mutasi DNA pemicu kanker kulit; peran krusial ozon stratosfer menyerap UV berbahaya.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Indeks UV di Prakiraan Cuaca",
+          "html": "<p>Aplikasi cuaca kini menampilkan indeks UV. Pada indeks tinggi, kulit bisa terbakar dalam belasan menit dan dianjurkan memakai tabir surya. Indonesia yang berada di khatulistiwa sering mendapat indeks UV sangat tinggi di siang hari.</p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Manfaat UV-B merangsang sintesis vitamin D; bahaya katarak dan mutasi DNA pemicu kanker kulit; peran krusial ozon stratosfer menyerap UV berbahaya.</p>"
+          "type": "text",
+          "html": "<p><b>Ultraviolet</b> (sekitar 10 nm sampai 400 nm) dibagi tiga: <b>UV-A</b> (315–400 nm) menembus atmosfer dan menyebabkan penuaan kulit; <b>UV-B</b> (280–315 nm) sebagian besar diserap ozon, membantu tubuh membentuk vitamin D, tetapi paparan berlebih menyebabkan kulit terbakar, katarak, dan kanker kulit; <b>UV-C</b> (100–280 nm) hampir seluruhnya diserap atmosfer dan dipakai lampu sterilisasi karena merusak DNA mikroorganisme. Energi foton UV cukup besar untuk memutus ikatan kimia, berbeda dengan cahaya tampak.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Hitung energi foton ultraviolet 250 nm dalam joule dan eV.</p>",
+          "steps": [
+            "E = hc/λ = 6,63 × 10⁻³⁴ × 3 × 10⁸ / 2,5 × 10⁻⁷ ≈ 7,96 × 10⁻¹⁹ J.",
+            "Dalam eV: 7,96 × 10⁻¹⁹ / 1,6 × 10⁻¹⁹."
+          ],
+          "answer": "≈ 4,97 eV"
+        },
+        {
+          "type": "check",
+          "question": "Lapisan atmosfer yang menyerap sebagian besar sinar UV-B dan UV-C dari Matahari adalah ....",
+          "options": {
+            "A": "lapisan ozon di stratosfer",
+            "B": "ionosfer",
+            "C": "awan hujan di troposfer",
+            "D": "lapisan uap air"
+          },
+          "answer": "A",
+          "explanation": "Ozon (O₃) di stratosfer menyerap UV berenergi tinggi. Penipisan ozon meningkatkan UV yang sampai ke permukaan."
         }
       ]
     },
@@ -246,13 +303,39 @@
       "id": "sinar-x-dan-sinar-gamma-radiasi-pengion",
       "title": "Sinar-X (Röntgen) dan Sinar Gamma: Radiasi Pengion Berenergi Tinggi",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Sinar-X dihasilkan dari tabung katode elektron menumbuk target logam berat; radiografi medis computed tomography (CT Scan); sinar gamma dari peluruhan inti radioaktif untuk sterilisasi alat medis dan radioterapi kanker.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Pemindai Bagasi di Bandara",
+          "html": "<p>Tas yang masuk mesin pemindai bandara disinari sinar-X. Pakaian dan plastik mudah ditembus, sedangkan logam menyerap banyak sinar-X sehingga tampak gelap di layar. Prinsip yang sama dipakai foto rontgen dan CT scan di rumah sakit.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Sinar-X</b> (sekitar 0,01–10 nm) dihasilkan saat elektron yang dipercepat tegangan puluhan ribu volt menumbuk logam berat dan diperlambat mendadak. Sinar-X menembus jaringan lunak tetapi banyak diserap tulang yang mengandung kalsium, sehingga tulang tampak jelas pada foto rontgen. <b>Sinar gamma</b>, yang frekuensinya paling tinggi, dipancarkan inti atom radioaktif. Gamma dipakai untuk radioterapi kanker, sterilisasi alat medis, dan pengawetan makanan. Keduanya adalah <b>radiasi pengion</b>: fotonnya cukup kuat untuk melepas elektron dari atom.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Berapa energi foton sinar-X dengan panjang gelombang 0,1 nm (h = 6,63 × 10⁻³⁴ J s)?</p>",
+          "steps": [
+            "\\(E = \\dfrac{hc}{\\lambda} = \\dfrac{6{,}63\\times10^{-34} \\times 3\\times10^8}{10^{-10}} \\approx 2{,}0 \\times 10^{-15}\\) J.",
+            "Dalam eV: \\(2{,}0\\times10^{-15} / 1{,}6\\times10^{-19} \\approx 12.400\\) eV."
+          ],
+          "answer": "sekitar 12,4 keV"
+        },
+        {
+          "type": "check",
+          "question": "Tulang tampak jelas pada foto rontgen karena ....",
+          "options": {
+            "A": "tulang memancarkan sinar-X",
+            "B": "sinar-X dipantulkan kulit",
+            "C": "jaringan lunak menyerap semua sinar-X",
+            "D": "tulang menyerap sinar-X lebih banyak daripada jaringan lunak"
+          },
+          "answer": "D",
+          "explanation": "Tulang yang kaya kalsium menyerap sinar-X jauh lebih banyak, sehingga bagian film di belakangnya menerima lebih sedikit sinar."
         }
       ]
     },
@@ -260,17 +343,40 @@
       "id": "bahaya-radiasi-dan-proteksi",
       "title": "Analisis Dampak Radiasi EM Pengion vs Non-Pengion dan Standar Keselamatan",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Analisis Dampak Radiasi EM Pengion vs Non-Pengion dan Standar Keselamatan</b>: Dosis serapan radiasi (Sievert); perisai timbal (Pb); membedakan radiasi aman non-pengion HP/Wi-Fi vs bahaya radiasi pengion pengionisasi molekul.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Apakah Wi-Fi Berbahaya?",
+          "html": "<p>Banyak orang khawatir radiasi Wi-Fi dan ponsel merusak tubuh seperti sinar-X. Keduanya memang gelombang elektromagnetik, tetapi energi fotonnya berbeda ratusan juta kali. Yang menentukan bahaya bukan kata \"radiasi\", melainkan apakah fotonnya mampu mengionisasi atom.</p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Dosis serapan radiasi (Sievert); perisai timbal (Pb); membedakan radiasi aman non-pengion HP/Wi-Fi vs bahaya radiasi pengion pengionisasi molekul.</p>"
+          "type": "text",
+          "html": "<p><b>Radiasi non-pengion</b> (radio, mikro, inframerah, cahaya tampak) fotonnya terlalu lemah untuk melepas elektron dari atom; pengaruh utamanya pemanasan, yang aman pada intensitas biasa. <b>Radiasi pengion</b> (sebagian UV, sinar-X, gamma) fotonnya berenergi lebih dari sekitar 10 eV dan dapat merusak DNA. Dosis radiasi pengion diukur dalam sievert (Sv). Tiga prinsip proteksi: batasi <b>waktu</b> paparan, perbesar <b>jarak</b> dari sumber, dan pakai <b>perisai</b> seperti timbal atau beton.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Bandingkan energi foton Wi-Fi 5 GHz dengan energi sekitar 10 eV yang diperlukan untuk mengionisasi atom.</p>",
+          "steps": [
+            "\\(E = hf = 6{,}63\\times10^{-34} \\times 5\\times10^9 \\approx 3{,}3 \\times 10^{-24}\\) J \\(\\approx 2 \\times 10^{-5}\\) eV.",
+            "Perbandingan: \\(10 / (2\\times10^{-5}) \\approx 5 \\times 10^5\\). Foton Wi-Fi sekitar setengah juta kali terlalu lemah.",
+            "Menambah intensitas hanya menambah banyak foton, bukan energi tiap foton, sehingga tetap tidak mengionisasi."
+          ],
+          "answer": "Foton Wi-Fi sekitar 2 × 10⁻⁵ eV, jauh di bawah ambang ionisasi"
+        },
+        {
+          "type": "check",
+          "question": "Petugas radiologi menjauh dari sumber sinar-X dari 1 m menjadi 2 m. Jika radiasi menyebar ke segala arah, intensitas yang diterimanya menjadi ....",
+          "options": {
+            "A": "½ kali",
+            "B": "2 kali",
+            "C": "¼ kali",
+            "D": "tetap"
+          },
+          "answer": "C",
+          "explanation": "Intensitas sebanding dengan 1/r², jadi jarak 2 kali membuat intensitas ¼ kali."
         }
       ]
     },
@@ -282,10 +388,6 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 5 Gelombang Elektromagnetik.</small></p>"
-        },
-        {
-          "type": "text",
           "html": "<p>Setelah menyelesaikan semua pelajaran di bab ini, uji pemahamanmu dengan kuis bab di bawah ini.</p>"
         },
         {
@@ -294,6 +396,10 @@
           "title": "Cheat Sheet: Spektrum Gelombang Elektromagnetik & Maxwell",
           "subtitle": "Rangkuman hipotesis Maxwell, spektrum gelombang EM dari frekuensi terendah ke tertinggi, dan energi foton.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Ciri Gelombang Elektromagnetik (GEM)</h4>\n    <ul>\n      <li>Merupakan gelombang transversal yang dapat merambat di ruang hampa.</li>\n      <li>Cepat rambat konstan di ruang hampa: \\(c = \\frac{1}{\\sqrt{\\mu_0 \\varepsilon_0}} \\approx 3 \\times 10^8\\text{ m/s}\\).</li>\n      <li>Hubungan medan listrik dan magnet: \\(c = \\frac{E}{B}\\).</li>\n    </ul>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Urutan Spektrum GEM (Frekuensi Rendah ke Tinggi)</h4>\n    <p><b>Gelombang Radio \\(\\to\\) Gelombang Mikro (Radar/Microwave) \\(\\to\\) Inframerah \\(\\to\\) Cahaya Tampak (Me-Ji-Ku-Hi-Bi-Ni-U) \\(\\to\\) Ultraviolet \\(\\to\\) Sinar-X \\(\\to\\) Sinar Gamma (\\(\\gamma\\)).</b></p>\n    <small>Semakin tinggi frekuensi, panjang gelombang (\\(\\lambda\\)) makin pendek dan energi foton (\\(E = hf\\)) makin besar!</small>\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XII</i> (Kemendikbudristek), Bab 5 Gelombang Elektromagnetik.</small></p>"
         },
         {
           "type": "kuis",
