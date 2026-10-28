@@ -7,39 +7,21 @@
       "id": "aturan-penjumlahan-dan-perkalian",
       "title": "Aturan Dasar Pencacahan: Aturan Penjumlahan vs Aturan Perkalian",
       "kind": "artikel",
-      "duration": "6 menit",
+      "duration": "4 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Aturan Dasar Pencacahan: Aturan Penjumlahan vs Aturan Perkalian</b>: Kapan menggunakan aturan tambah (pilihan kejadian saling lepas 'ATAU') vs aturan perkalian (langkah berurutan majemuk 'DAN'); model diagram pohon dan diagram slot.</p>"
-        },
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Keamanan Password Enkripsi dan Analisis Risiko Asuransi",
-          "html": "<p>Mengapa password yang memuat kombinasi 12 karakter huruf besar, kecil, angka, dan simbol butuh waktu miliaran tahun bagi superkomputer untuk membobolnya secara brute force? Sebaliknya, mengapa perusahaan asuransi dapat memastikan bisnisnya untung stabil meskipun klaim kecelakaan terjadi secara acak?</p><p>Keduanya dikendalikan oleh hukum perhitungan kombinatorial: <b>Kaidah Pencacahan dan Teori Peluang</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Surat-Menyurat Pascal dan Fermat Memecahkan 'Problem of Points'",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Blaise Pascal & Pierre de Fermat</span>\n  <span class=\"h-tag\">Tahun: 1654 M (Paris & Toulouse, Prancis)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian uang taruhan yang adil saat permainan dadu bangsawan terhenti mendadak sebelum selesai.</span>\n</div>\n<p>Pada musim panas tahun 1654, seorang bangsawan penjudi Chevalier de Méré mengajukan teka-teki pembagian hadiah permainan dadu kepada <b>Blaise Pascal</b>. Pascal lalu berkorespondensi secara intensif dengan pakar hukum dan matematikawan <b>Pierre de Fermat</b>.</p><p>Alih-alih mengandalkan intuisi atau takhayul nasib, Pascal dan Fermat menghitung seluruh kemungkinan skenario masa depan menggunakan Segitiga Pascal dan kombinasi permutasi. Surat-menyurat legendaris ini melahirkan cabang ilmu baru: <b>Teori Peluang Modern</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Ruang Sampel, Permutasi Urutan & Kombinasi Acak",
-          "html": "<p><b>Peluang Suatu Kejadian (\\(P(A)\\)):</b> Rasio antara banyaknya hasil yang diharapkan (\\(n(A)\\)) terhadap seluruh kemungkinan kejadian dalam ruang sampel semesta (\\(n(S)\\)).</p><p><b>Permutasi:</b> Penyusunan anggota himpunan di mana <b>urutan diperhatikan</b> (misal urutan juara 1, 2, 3 atau nomor antrean pin).</p><p><b>Kombinasi:</b> Pemilihan anggota himpunan di mana <b>urutan tidak diperhatikan</b> (misal memilih tim perwakilan lomba atau kartu remi).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Kaidah Pencacahan & Peluang",
-          "html": "<div class=\"fc-display\">\n\\[ P(A) = \\frac{n(A)}{n(S)}, \\qquad P(n, r) = \\frac{n!}{(n-r)!}, \\qquad C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">P(A)</td><td>Peluang terjadinya peristiwa A (rentang nilai 0 <= P(A) <= 1)</td><td class=\"unit\">probabilitas</td></tr>\n    <tr><td class=\"sym\">n(A)</td><td>Banyaknya titik sampel anggota kejadian A</td><td class=\"unit\">bilangan cacah</td></tr>\n    <tr><td class=\"sym\">n(S)</td><td>Banyaknya seluruh anggota dalam ruang sampel semesta S</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>n</i></td><td>Jumlah total unsur yang tersedia untuk dipilih</td><td class=\"unit\">bilangan asli</td></tr>\n    <tr><td class=\"sym\"><i>r</i></td><td>Banyaknya unsur yang dipilih / dialokasikan</td><td class=\"unit\">r <= n</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Nilai \\(P(A) = 0\\) menyatakan peristiwa mustahil, sedangkan \\(P(A) = 1\\) menyatakan peristiwa pasti terjadi.</small></p>"
+          "title": "Penerapan Konsep di Dunia Nyata: Memilih Menu Paket",
+          "html": "<p>Kantin menawarkan paket: pilih satu makanan, satu minuman, dan satu pencuci mulut. Dengan 4 makanan, 3 minuman, dan 2 pencuci mulut, ada berapa paket berbeda? Mendaftar semuanya melelahkan; mengalikan jauh lebih cepat.</p>"
         },
         {
           "type": "text",
           "html": "<p>Ketika membuka kunci koper, menyusun jadwal, atau memilih pakaian, kita sering perlu tahu <b>banyak kemungkinan</b> tanpa mendaftar satu per satu. Dua aturan dasarnya adalah aturan penjumlahan dan aturan perkalian.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Aturan penjumlahan</b>: jika ada m cara untuk satu pilihan <i>atau</i> n cara untuk pilihan lain yang tidak bisa terjadi bersamaan, banyak caranya m + n. <b>Aturan perkalian</b>: jika suatu kegiatan terdiri atas beberapa tahap berurutan (<i>dan</i>), dengan m cara di tahap pertama dan n cara di tahap kedua, banyak caranya m × n. Diagram pohon menunjukkan mengapa perkalian bekerja: setiap cabang tahap pertama bercabang lagi n kali.</p>"
         },
         {
           "type": "image",
@@ -51,16 +33,172 @@
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Dari kota A ke kota B dapat ditempuh dengan 3 pilihan bus atau 2 pilihan kereta. Ada berapa cara?</p>",
+          "question": "<p>Dari rumah ke perpustakaan ada 4 jalur sepeda atau 3 rute angkot. Dari perpustakaan ke sekolah ada 2 jalan. Berapa cara pergi dari rumah ke sekolah lewat perpustakaan?</p>",
           "steps": [
-            "Pilih bus atau kereta: aturan penjumlahan.",
-            "3 + 2 = 5 cara."
+            "Rumah → perpustakaan: sepeda atau angkot, aturan penjumlahan: 4 + 3 = 7 cara.",
+            "Lalu perpustakaan → sekolah: 2 cara.",
+            "Dua tahap berurutan, aturan perkalian: 7 × 2 = 14 cara."
           ],
-          "answer": "5 cara"
+          "answer": "14 cara"
         },
         {
           "type": "check",
-          "title": "Cek Pemahaman",
+          "question": "Kantin menawarkan 4 makanan, 3 minuman, dan 2 pencuci mulut. Banyak paket berbeda yang berisi satu dari setiap jenis adalah ....",
+          "options": {
+            "A": "9",
+            "B": "24",
+            "C": "12",
+            "D": "14"
+          },
+          "answer": "B",
+          "explanation": "Tiga tahap berurutan: 4 × 3 × 2 = 24."
+        }
+      ]
+    },
+    {
+      "id": "pengisian-tempat-tersedia-filling-slots",
+      "title": "Kaidah Pengisian Tempat yang Tersedia (Filling Slots)",
+      "kind": "latihan",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Kekuatan Kata Sandi",
+          "html": "<p>Kata sandi 4 angka hanya punya 10.000 kemungkinan dan bisa ditebak komputer dalam sekejap. Kata sandi 12 karakter dari huruf besar, huruf kecil, angka, dan simbol punya lebih dari 10²³ kemungkinan. Menghitung banyak kemungkinan tanpa mendaftarnya satu per satu adalah inti kaidah pencacahan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Kaidah pengisian tempat</b> adalah aturan perkalian untuk menyusun objek ke dalam tempat-tempat berurutan. Buat kotak sebanyak tempat, tuliskan banyak pilihan untuk setiap kotak, lalu kalikan. Perhatikan apakah objek boleh dipakai berulang: jika tidak, pilihan berkurang satu setiap kotak.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Strategi",
+          "html": "<p>Buat kotak sebanyak tempat yang diisi. Isi dahulu kotak yang mempunyai syarat (misalnya angka pertama tidak boleh 0, angka terakhir genap), lalu kalikan banyak pilihan di setiap kotak.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Berapa banyak bilangan ganjil tiga angka berbeda yang dapat disusun dari angka 1, 2, 3, 4, 5, 6?</p>",
+          "steps": [
+            "Isi dahulu tempat bersyarat: satuan harus ganjil (1, 3, 5), 3 pilihan.",
+            "Ratusan: 5 angka tersisa. Puluhan: 4 angka tersisa.",
+            "Banyak bilangan: 5 × 4 × 3 = 60."
+          ],
+          "answer": "60"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Kode loker terdiri atas 4 angka (0–9). Berapa banyak kode jika angka boleh berulang, dan jika tidak boleh berulang?</p>",
+          "steps": [
+            "Boleh berulang: 10 × 10 × 10 × 10 = 10.000.",
+            "Tidak boleh berulang: 10 × 9 × 8 × 7 = 5.040."
+          ],
+          "answer": "10.000 dan 5.040"
+        },
+        {
+          "type": "check",
+          "question": "Banyak bilangan dua angka berbeda yang dapat disusun dari angka 1, 2, 3, 4, 5, 6 adalah ....",
+          "options": {
+            "A": "36",
+            "B": "30",
+            "C": "12",
+            "D": "15"
+          },
+          "answer": "B",
+          "explanation": "6 pilihan untuk puluhan dan 5 untuk satuan: 6 × 5 = 30. Nilai 36 jika angka boleh berulang."
+        }
+      ]
+    },
+    {
+      "id": "notasi-faktorial-dan-sifatnya",
+      "title": "Notasi Faktorial (n!) dan Operasi Aljabar Faktorial",
+      "kind": "artikel",
+      "duration": "3 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Berapa Cara Menyusun Rak Buku?",
+          "html": "<p>Lima buku berbeda di rak bisa disusun dalam 5 × 4 × 3 × 2 × 1 = 120 urutan. Sepuluh buku sudah lebih dari 3,6 juta urutan. Perkalian berurutan seperti ini begitu sering muncul sehingga diberi lambang khusus: tanda seru.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Faktorial</b> n, ditulis n!, adalah hasil kali semua bilangan asli dari 1 sampai n. Banyak cara menyusun n objek berbeda dalam satu baris adalah n!. Didefinisikan 0! = 1, agar rumus-rumus permutasi dan kombinasi tetap berlaku. Sifat yang sering dipakai untuk menyederhanakan: \\(n! = n \\times (n - 1)!\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Faktorial",
+          "html": "\\[n! = n \\times (n - 1) \\times \\dots \\times 2 \\times 1, \\qquad 0! = 1, \\qquad n! = n \\times (n - 1)!\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Hitung \\(\\dfrac{7!}{5!}\\) tanpa menghitung 7! seluruhnya.</p>",
+          "steps": [
+            "\\(7! = 7 \\times 6 \\times 5!\\).",
+            "\\(\\dfrac{7 \\times 6 \\times 5!}{5!} = 42\\)."
+          ],
+          "answer": "42"
+        },
+        {
+          "type": "check",
+          "question": "Nilai \\(\\dfrac{8!}{6!}\\) adalah ....",
+          "options": {
+            "A": "2",
+            "B": "48",
+            "C": "56",
+            "D": "1.344"
+          },
+          "answer": "C",
+          "explanation": "8!/6! = 8 × 7 = 56."
+        }
+      ]
+    },
+    {
+      "id": "permutasi-unsur-berbeda",
+      "title": "Permutasi dari n Unsur Berbeda: P(n, r) = n! / (n - r)!",
+      "kind": "simulasi",
+      "duration": "5 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Juara Satu, Dua, dan Tiga",
+          "html": "<p>Lomba cerdas cermat diikuti 9 regu. Panitia ingin tahu berapa susunan juara 1, 2, dan 3 yang mungkin, misalnya untuk menyiapkan undian hadiah tebakan. Karena urutannya penting, regu A juara 1 dan regu B juara 2 berbeda dengan sebaliknya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Permutasi</b> r unsur dari n unsur berbeda adalah banyak susunan terurut r unsur yang diambil dari n unsur. Dengan kaidah pengisian tempat, ada n pilihan untuk tempat pertama, n − 1 untuk tempat kedua, dan seterusnya sampai r tempat.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Permutasi",
+          "html": "\\[P(n, r) = \\frac{n!}{(n - r)!} = n(n - 1)\\cdots(n - r + 1)\\]"
+        },
+        {
+          "type": "sim",
+          "src": "sim/susunan.html",
+          "title": "Daftar semua susunan",
+          "height": 520,
+          "caption": "Mode permutasi: ubah n dan r, lalu hitung banyak susunan dengan aturan pengisian tempat sebelum membaca rumusnya."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Lomba diikuti 9 regu. Berapa banyak susunan juara 1, 2, dan 3?</p>",
+          "steps": [
+            "Urutan penting: permutasi.",
+            "P(9, 3) = 9 × 8 × 7 = 504."
+          ],
+          "answer": "504"
+        },
+        {
+          "type": "check",
           "question": "Dari 7 orang pengurus OSIS akan dipilih 3 orang untuk menduduki posisi Ketua, Sekretaris, dan Bendahara. Banyaknya susunan pengurus yang dapat dibentuk adalah ....",
           "options": {
             "A": "210 cara",
@@ -75,73 +213,82 @@
       ]
     },
     {
-      "id": "pengisian-tempat-tersedia-filling-slots",
-      "title": "Kaidah Pengisian Tempat yang Tersedia (Filling Slots)",
+      "id": "permutasi-dengan-unsur-yang-sama",
+      "title": "Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!)",
       "kind": "latihan",
       "duration": "4 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi",
-          "html": "<p>Buat kotak sebanyak tempat yang diisi. Isi dahulu kotak yang mempunyai syarat (misalnya angka pertama tidak boleh 0, angka terakhir genap), lalu kalikan banyak pilihan di setiap kotak.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Rute Terpendek di Jalan Berpetak",
+          "html": "<p>Di kota yang jalannya berpetak, kurir harus berjalan 3 blok ke timur dan 2 blok ke utara. Setiap rute terpendek adalah susunan dari T, T, T, U, U. Karena huruf T dan U berulang, banyak rutenya bukan 5!, melainkan jauh lebih sedikit.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika di antara n objek ada \\(k_1\\) yang sama, \\(k_2\\) yang sama, dan seterusnya, susunan yang hanya menukar objek-objek yang sama tidak menghasilkan susunan baru. Karena itu n! dibagi dengan faktorial banyak objek yang sama.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Permutasi dengan Unsur Sama",
+          "html": "\\[P = \\frac{n!}{k_1!\\,k_2!\\,\\cdots}\\]"
         },
         {
           "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Berapa banyak bilangan genap tiga angka berbeda yang dapat disusun dari angka 1, 2, 3, 4, 5?</p>",
+          "title": "Contoh soal 1",
+          "question": "<p>Berapa banyak susunan huruf berbeda dari kata KALKULUS?</p>",
           "steps": [
-            "Isi tempat yang bersyarat lebih dahulu: angka satuan harus genap, 2 pilihan (2 atau 4).",
-            "Ratusan: 4 pilihan (sisa angka). Puluhan: 3 pilihan.",
-            "2 × 4 × 3 = 24."
+            "8 huruf: K (2), A (1), L (2), U (2), S (1).",
+            "\\(\\dfrac{8!}{2!\\,2!\\,2!} = \\dfrac{40.320}{8} = 5.040\\)."
           ],
-          "answer": "24 bilangan"
+          "answer": "5.040"
         },
         {
           "type": "example",
-          "title": "Contoh soal 3 (kata sandi)",
-          "question": "<p>PIN 6 digit (0–9), angka tidak boleh berulang dan digit pertama bukan 0. Ada berapa PIN?</p>",
+          "title": "Contoh soal 2",
+          "question": "<p>Berapa banyak rute terpendek dari pojok A ke pojok B jika harus berjalan 3 blok ke timur dan 2 blok ke utara?</p>",
           "steps": [
-            "Digit pertama: 9 pilihan (1–9).",
-            "Digit berikutnya: 9, 8, 7, 6, 5 pilihan.",
-            "9 × 9 × 8 × 7 × 6 × 5 = 136.080."
+            "Setiap rute adalah susunan T, T, T, U, U.",
+            "\\(\\dfrac{5!}{3!\\,2!} = 10\\)."
           ],
-          "answer": "136.080 PIN"
+          "answer": "10 rute"
         },
         {
           "type": "check",
-          "question": "Nilai P(5, 2) adalah ....",
+          "question": "Banyak susunan huruf berbeda dari kata SEMESTA adalah ....",
           "options": {
-            "A": "10",
-            "B": "20",
-            "C": "60",
-            "D": "120"
+            "A": "5.040",
+            "B": "2.520",
+            "C": "1.260",
+            "D": "630"
           },
-          "answer": "B",
-          "hint": "P(5, 2) = 5!/3!.",
-          "explanation": "5 × 4 = 20. Nilai 10 adalah C(5, 2)."
+          "answer": "C",
+          "explanation": "7 huruf dengan S dan E masing-masing dua: 7!/(2! 2!) = 5.040/4 = 1.260."
         }
       ]
     },
     {
-      "id": "notasi-faktorial-dan-sifatnya",
-      "title": "Notasi Faktorial (n!) dan Operasi Aljabar Faktorial",
-      "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
-    },
-    {
-      "id": "permutasi-unsur-berbeda",
-      "title": "Permutasi dari n Unsur Berbeda: P(n, r) = n! / (n - r)!",
+      "id": "permutasi-siklis-melingkar",
+      "title": "Permutasi Siklis: Penyusunan Objek Melingkar P_siklis = (n - 1)!",
       "kind": "simulasi",
-      "duration": "9 menit",
+      "duration": "5 menit",
       "blocks": [
         {
-          "type": "sim",
-          "src": "sim/susunan.html",
-          "title": "Daftar semua susunan",
-          "height": 520,
-          "caption": "Mode permutasi: ubah n dan r, lalu hitung banyak susunan dengan aturan pengisian tempat sebelum membaca rumusnya."
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Duduk Mengelilingi Meja Bundar",
+          "html": "<p>Pada meja bundar tidak ada kursi \"pertama\". Jika semua orang bergeser satu kursi searah jarum jam, susunannya dianggap sama karena setiap orang tetap bertetangga dengan orang yang sama. Karena itu banyak susunan melingkar lebih sedikit daripada susunan dalam satu baris.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada <b>permutasi siklis</b>, satu orang dapat dianggap tetap di tempatnya sebagai patokan, lalu n − 1 orang lainnya disusun. Jika susunan yang dibalik (searah dan berlawanan jarum jam) juga dianggap sama, seperti manik-manik kalung yang bisa dibalik, hasilnya dibagi 2 lagi.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Permutasi Siklis",
+          "html": "\\[P_{\\text{siklis}} = (n - 1)!, \\qquad P_{\\text{kalung}} = \\frac{(n - 1)!}{2}\\]"
         },
         {
           "type": "sim",
@@ -151,76 +298,58 @@
           "caption": "Pilih mode <b>Permutasi siklis</b> dan centang tampilan susunan yang dicoret. Mengapa setiap susunan melingkar muncul n kali di daftar berjajar?"
         },
         {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Tujuh orang duduk mengelilingi meja bundar. Berapa susunannya, dan berapa jika dua orang tertentu harus selalu berdampingan?</p>",
+          "steps": [
+            "Tanpa syarat: (7 − 1)! = 720.",
+            "Berdampingan: gabungkan keduanya menjadi satu kelompok, jadi ada 6 unit melingkar: (6 − 1)! = 120.",
+            "Kedua orang itu bisa bertukar tempat: 120 × 2 = 240."
+          ],
+          "answer": "720 dan 240"
+        },
+        {
+          "type": "check",
+          "question": "Banyak cara 6 orang duduk mengelilingi meja bundar adalah ....",
+          "options": {
+            "A": "720",
+            "B": "120",
+            "C": "60",
+            "D": "36"
+          },
+          "answer": "B",
+          "explanation": "(6 − 1)! = 5! = 120."
+        }
+      ]
+    },
+    {
+      "id": "kombinasi-unsur-berbeda",
+      "title": "Kombinasi: Pemilihan Tanpa Memperhatikan Urutan C(n, r) = n! / (r! · (n - r)!)",
+      "kind": "simulasi",
+      "duration": "6 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Memilih Anggota Tim Debat",
+          "html": "<p>Guru memilih 4 siswa dari 9 calon untuk tim debat tanpa pembagian peran. Tim yang berisi Ani, Budi, Citra, dan Dodi sama saja dengan Dodi, Citra, Budi, dan Ani. Jika urutan tidak penting, kita menghitung kombinasi, bukan permutasi.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Memilih 2 anggota tim dari 4 orang, A dan B sama saja dengan B dan A. Jika <b>urutan tidak diperhatikan</b>, kita menghitung <b>kombinasi</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kombinasi",
+          "html": "\\[C(n, r) = \\binom{n}{r} = \\frac{n!}{r!\\,(n - r)!} = \\frac{P(n, r)}{r!}\\]<p>Pembagian dengan r! menghapus urutan, karena setiap kelompok r orang muncul r! kali dalam permutasi.</p>"
+        },
+        {
           "type": "sim",
           "src": "sim/susunan.html",
           "title": "Permutasi dan kombinasi",
           "height": 520,
           "caption": "Pilih mode kombinasi dan centang kotak untuk melihat susunan yang dianggap sama."
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Dari 8 calon akan dipilih ketua, sekretaris, dan bendahara. Ada berapa susunan pengurus?</p>",
-          "steps": [
-            "Jabatan berbeda, urutan penting: permutasi.",
-            "P(8, 3) = 8 × 7 × 6 = 336."
-          ],
-          "answer": "336 susunan"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Berapa banyak susunan huruf berbeda dari kata MATEMATIKA?</p>",
-          "steps": [
-            "10 huruf: M (2), A (3), T (2), E, I, K.",
-            "10!/(2! 3! 2!) = 3.628.800/24 = 151.200."
-          ],
-          "answer": "151.200 susunan"
-        },
-        {
-          "type": "check",
-          "question": "Banyak cara memilih 3 siswa dari 10 siswa untuk mewakili sekolah dalam lomba (tanpa jabatan) adalah ....",
-          "options": {
-            "A": "30",
-            "B": "120",
-            "C": "720",
-            "D": "1.000"
-          },
-          "answer": "B",
-          "hint": "Urutan tidak penting.",
-          "explanation": "C(10, 3) = 720/6 = 120. 720 adalah P(10, 3)."
-        }
-      ]
-    },
-    {
-      "id": "permutasi-dengan-unsur-yang-sama",
-      "title": "Permutasi yang Memuat Unsur-Unsur yang Sama: P = n! / (p! · q! · r!)",
-      "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": [
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Menyusun kata dari huruf-huruf dengan pengulangan (misal kata 'MATEMATIKA', 'INDONESIA'); rute terpendek kisi-kisi grid jalan.</p>"
-        }
-      ]
-    },
-    {
-      "id": "permutasi-siklis-melingkar",
-      "title": "Permutasi Siklis: Penyusunan Objek Melingkar P_siklis = (n - 1)!",
-      "kind": "artikel",
-      "duration": "4 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<table><tr><th>Situasi</th><th>Rumus</th></tr><tr><td>Tahap berurutan (“dan”)</td><td>m × n</td></tr><tr><td>Pilihan terpisah (“atau”)</td><td>m + n</td></tr><tr><td>Menyusun n objek</td><td>n!</td></tr><tr><td>Memilih r terurut</td><td>P(n, r) = n!/(n − r)!</td></tr><tr><td>Ada objek sama</td><td>n!/(k₁! k₂! …)</td></tr><tr><td>Melingkar</td><td>(n − 1)!</td></tr><tr><td>Memilih r tanpa urutan</td><td>C(n, r) = n!/(r!(n − r)!)</td></tr><tr><td>r benda identik ke n orang</td><td>C(n + r − 1, r)</td></tr></table>"
-        },
-        {
-          "type": "callout",
-          "variant": "tips",
-          "title": "Kombinasi berulang",
-          "html": "<p>Membagikan r benda <b>identik</b> kepada n orang (boleh tidak mendapat) dapat dilakukan dengan C(n + r − 1, r) cara. Contoh: 10 permen identik untuk 4 anak: C(13, 10) = C(13, 3) = 286 cara.</p>"
         },
         {
           "type": "callout",
@@ -229,96 +358,36 @@
           "html": "<ol><li>Apakah semua objek dipakai atau hanya sebagian?</li><li>Apakah <b>urutan/posisi</b> penting? Ya → permutasi; tidak → kombinasi.</li><li>Apakah ada objek yang sama, susunan melingkar, atau syarat khusus?</li><li>Apakah ada kata “atau” (jumlahkan kasus) dan “dan” (kalikan tahap)?</li></ol>"
         },
         {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Memakai permutasi saat urutan tidak penting (atau sebaliknya).</li><li>Lupa membagi dengan k! untuk objek yang sama.</li><li>Lupa mengisi tempat bersyarat lebih dahulu.</li></ul>"
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dari 9 calon dipilih 4 siswa untuk tim debat. Ada berapa cara?</p>",
+          "steps": [
+            "Urutan tidak penting: kombinasi.",
+            "\\(C(9, 4) = \\dfrac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1} = 126\\)."
+          ],
+          "answer": "126"
         },
         {
           "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>6 orang duduk mengelilingi meja bundar. Ada berapa susunan jika dua orang tertentu harus selalu berdampingan?</p>",
+          "title": "Contoh soal 2",
+          "question": "<p>Dua belas orang saling berjabat tangan tepat satu kali. Ada berapa jabat tangan?</p>",
           "steps": [
-            "Gabungkan kedua orang menjadi satu kelompok: ada 5 “objek” melingkar, (5 − 1)! = 24.",
-            "Kedua orang itu dapat bertukar tempat: × 2!.",
-            "24 × 2 = 48."
+            "Setiap jabat tangan melibatkan 2 orang tanpa urutan.",
+            "C(12, 2) = 12 × 11 / 2 = 66."
           ],
-          "answer": "48 susunan"
+          "answer": "66"
         },
         {
           "type": "check",
-          "question": "Banyak cara 5 orang duduk mengelilingi meja bundar adalah ....",
+          "question": "Banyak cara memilih 2 siswa dari 8 siswa untuk menjadi petugas piket (tanpa jabatan) adalah ....",
           "options": {
-            "A": "24",
-            "B": "60",
-            "C": "120",
-            "D": "5"
-          },
-          "answer": "A",
-          "hint": "Gunakan (n − 1)!.",
-          "explanation": "(5 − 1)! = 24. 120 = 5! adalah susunan berjajar."
-        },
-        {
-          "type": "check",
-          "question": "Banyak jabat tangan jika 10 orang saling berjabat tangan tepat satu kali adalah ....",
-          "options": {
-            "A": "20",
-            "B": "90",
-            "C": "45",
-            "D": "100"
+            "A": "16",
+            "B": "56",
+            "C": "28",
+            "D": "64"
           },
           "answer": "C",
-          "hint": "Setiap jabat tangan melibatkan 2 orang dan urutannya tidak penting.",
-          "explanation": "C(10, 2) = 45. Nilai 90 = P(10, 2) menghitung setiap jabat tangan dua kali."
-        }
-      ]
-    },
-    {
-      "id": "kombinasi-unsur-berbeda",
-      "title": "Kombinasi: Pemilihan Tanpa Memperhatikan Urutan C(n, r) = n! / (r! · (n - r)!)",
-      "kind": "latihan",
-      "duration": "4 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Memilih 2 anggota tim dari 4 orang, A dan B sama saja dengan B dan A. Jika <b>urutan tidak diperhatikan</b>, kita menghitung <b>kombinasi</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Pencacahan di mana urutan TIDAK BERPENGARUH (AB = BA); memilih anggota panitia komite, mengambil bola acak dari kotak, memilih soal ujian yang akan dikerjakan.</p>"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Dari 5 siswa putra dan 4 siswi akan dipilih tim yang terdiri atas 2 putra dan 2 putri. Ada berapa cara?</p>",
-          "steps": [
-            "Putra: C(5, 2) = 10. Putri: C(4, 2) = 6.",
-            "Keduanya dipilih bersamaan: 10 × 6 = 60."
-          ],
-          "answer": "60 cara"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1 (minimal)",
-          "question": "<p>Dari 4 putra dan 3 putri dipilih 3 orang dengan minimal 1 putri. Ada berapa cara?</p>",
-          "steps": [
-            "Komplemen: semua pilihan dikurangi pilihan tanpa putri.",
-            "C(7, 3) − C(4, 3) = 35 − 4 = 31."
-          ],
-          "answer": "31 cara"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2 (jabatan dan anggota)",
-          "question": "<p>Dari 12 siswa (7 putra, 5 putri) dibentuk panitia 4 orang dengan 1 ketua yang harus putri. Ada berapa cara?</p>",
-          "steps": [
-            "Ketua: 5 pilihan putri.",
-            "3 anggota dari 11 siswa sisanya, tanpa urutan: C(11, 3) = 165.",
-            "5 × 165 = 825."
-          ],
-          "answer": "825 cara"
+          "explanation": "C(8, 2) = 8 × 7 / 2 = 28. Nilai 56 adalah P(8, 2)."
         }
       ]
     },
@@ -326,26 +395,67 @@
       "id": "kombinasi-multikelompok-dan-pembagian",
       "title": "Kombinasi Multi-Kelompok, Pemilihan Tim, dan Masalah Titik Garis Geometri",
       "kind": "latihan",
-      "duration": "2 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Memilih anggota tim dengan kuota pria dan wanita tertentu; menentukan banyak segitiga atau garis yang dapat dibentuk dari n titik pada bidang.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Komposisi Tim yang Adil",
+          "html": "<p>Panitia lomba sering mensyaratkan tim berisi sejumlah putra dan sejumlah putri, atau minimal satu anggota dari kelas tertentu. Syarat seperti ini dihitung dengan mengalikan kombinasi dari setiap kelompok, atau dengan menghitung komplemennya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Jika pemilihan dilakukan dari beberapa kelompok sekaligus, hitung kombinasi tiap kelompok lalu kalikan. Untuk syarat \"minimal satu\", sering lebih cepat menghitung semua pilihan lalu mengurangkan pilihan yang tidak memenuhi. Kombinasi juga menghitung objek geometri: dari n titik yang tidak ada tiga segaris, banyak garis C(n, 2) dan banyak segitiga C(n, 3).</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Dari 6 putra dan 5 putri dipilih 3 putra dan 2 putri. Ada berapa cara?</p>",
+          "steps": [
+            "Putra: C(6, 3) = 20. Putri: C(5, 2) = 10.",
+            "Kedua pemilihan dilakukan bersama: 20 × 10 = 200."
+          ],
+          "answer": "200"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Dari 5 putra dan 4 putri dipilih 3 orang dengan minimal 1 putri. Ada berapa cara?</p>",
+          "steps": [
+            "Semua pilihan: C(9, 3) = 84.",
+            "Pilihan tanpa putri: C(5, 3) = 10.",
+            "Minimal 1 putri: 84 − 10 = 74."
+          ],
+          "answer": "74"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Dari 10 siswa (6 putra, 4 putri) dibentuk panitia 3 orang dengan satu ketua yang harus putra. Ada berapa cara?</p>",
+          "steps": [
+            "Pilih ketua putra: 6 cara.",
+            "Pilih 2 anggota lain dari 9 siswa tersisa: C(9, 2) = 36.",
+            "6 × 36 = 216."
+          ],
+          "answer": "216"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Kombinasi berulang",
+          "html": "<p>Membagikan r benda <b>identik</b> kepada n orang (boleh ada yang tidak mendapat) dapat dilakukan dengan C(n + r − 1, r) cara. Contoh: 8 bolpoin identik untuk 3 anak: C(10, 8) = C(10, 2) = 45 cara.</p>"
         },
         {
           "type": "check",
-          "question": "Rina mempunyai 3 baju dan 4 celana. Banyak pasangan baju dan celana yang dapat dipakai adalah ....",
+          "question": "Delapan titik terletak pada bidang dan tidak ada tiga titik yang segaris. Banyak segitiga yang dapat dibentuk adalah ....",
           "options": {
-            "A": "7",
-            "B": "24",
-            "C": "64",
-            "D": "12"
+            "A": "28",
+            "B": "336",
+            "C": "24",
+            "D": "56"
           },
           "answer": "D",
-          "hint": "Pilih baju dan celana.",
-          "explanation": "Aturan perkalian: 3 × 4 = 12. Nilai 7 adalah aturan penjumlahan."
+          "explanation": "Setiap segitiga ditentukan 3 titik tanpa urutan: C(8, 3) = 56."
         }
       ]
     },
@@ -353,13 +463,23 @@
       "id": "teorema-binomial-newton",
       "title": "Ekspansi Binomial Newton dan Segitiga Pascal: (a + b)^n = Σ C(n, k) a^(n-k) b^k",
       "kind": "simulasi",
-      "duration": "2 menit",
+      "duration": "5 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Hubungan koefisien aljabar ekspansi binomial dengan kombinasi C(n, k); menentukan koefisien suku ke-k tanpa perlu menjabarkan seluruh perkalian.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Segitiga Pascal di Mana-Mana",
+          "html": "<p>Bilangan 1, 4, 6, 4, 1 muncul saat menjabarkan (a + b)⁴, saat menghitung banyak cara mendapat 0 sampai 4 angka dari 4 lemparan koin, dan sebagai baris keempat segitiga Pascal. Ketiganya sama karena semuanya adalah banyak kombinasi.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Saat menjabarkan \\((a + b)^n\\), setiap suku dibentuk dengan memilih a atau b dari setiap faktor. Suku \\(a^{n-k}b^k\\) muncul sebanyak cara memilih k faktor yang memberi b, yaitu C(n, k). Koefisien-koefisien ini membentuk segitiga Pascal: setiap bilangan adalah jumlah dua bilangan di atasnya.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Teorema Binomial",
+          "html": "\\[(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k\\]"
         },
         {
           "type": "sim",
@@ -367,6 +487,34 @@
           "title": "Segitiga Pascal",
           "height": 480,
           "caption": "Klik sebuah bilangan dan periksa C(n, r)-nya. Temukan pola simetri dan jumlah setiap baris."
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Pascal, Fermat, dan Permainan yang Terhenti",
+          "html": "<p>Pada 1654, Blaise Pascal dan Pierre de Fermat saling berkirim surat tentang soal lama: bagaimana membagi taruhan secara adil jika permainan dihentikan sebelum ada pemenang? Mereka menjawabnya dengan menghitung semua cara permainan itu bisa berlanjut. Pascal memakai susunan bilangan yang kini disebut segitiga Pascal, yang isinya ternyata adalah banyak kombinasi C(n, r). Korespondensi ini dianggap awal teori peluang modern.</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/Problem_of_points\">Problem of points, Wikipedia</a></small></p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Tentukan koefisien \\(x^2\\) pada penjabaran \\((x + 2)^4\\).</p>",
+          "steps": [
+            "Suku dengan \\(x^2\\): \\(\\binom{4}{2} x^2 \\cdot 2^2\\).",
+            "Koefisiennya \\(6 \\times 4 = 24\\)."
+          ],
+          "answer": "24"
+        },
+        {
+          "type": "check",
+          "question": "Koefisien \\(x^3\\) pada penjabaran \\((x + 1)^5\\) adalah ....",
+          "options": {
+            "A": "10",
+            "B": "5",
+            "C": "20",
+            "D": "3"
+          },
+          "answer": "A",
+          "explanation": "Koefisiennya C(5, 3) × 1² = 10."
         }
       ]
     },
@@ -378,13 +526,13 @@
       "blocks": [
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 3 Kaidah Pencacahan.</small></p>"
+          "html": "<table><tr><th>Situasi</th><th>Rumus</th></tr><tr><td>Tahap berurutan (“dan”)</td><td>m × n</td></tr><tr><td>Pilihan terpisah (“atau”)</td><td>m + n</td></tr><tr><td>Menyusun n objek</td><td>n!</td></tr><tr><td>Memilih r terurut</td><td>P(n, r) = n!/(n − r)!</td></tr><tr><td>Ada objek sama</td><td>n!/(k₁! k₂! …)</td></tr><tr><td>Melingkar</td><td>(n − 1)!</td></tr><tr><td>Memilih r tanpa urutan</td><td>C(n, r) = n!/(r!(n − r)!)</td></tr><tr><td>r benda identik ke n orang</td><td>C(n + r − 1, r)</td></tr></table>"
         },
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Tabel ringkasan membedakan Permutasi vs Kombinasi dan bank soal HOTS.</p>"
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Memakai permutasi saat urutan tidak penting (atau sebaliknya).</li><li>Lupa membagi dengan k! untuk objek yang sama.</li><li>Lupa mengisi tempat bersyarat lebih dahulu.</li></ul>"
         },
         {
           "type": "text",
@@ -396,6 +544,10 @@
           "title": "Cheat Sheet: Kaidah Pencacahan, Permutasi & Kombinasi",
           "subtitle": "Kumpulan aturan pengisian tempat (filling slots), faktorial, permutasi siklis & unsur sama, kombinasi, dan binomial Newton.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Kaidah Dasar & Permutasi (Urutan Diperhatikan)</h4>\n    <p><b>Aturan Perkalian (Filling Slots):</b> Banyak cara memilih bertahap: \\(k_1 \\times k_2 \\times \\dots \\times k_n\\).</p>\n    <p><b>Permutasi \\(r\\) dari \\(n\\) unsur berbeda:</b></p>\n    \\[ P(n, r) = \\frac{n!}{(n-r)!} \\]\n    <p><b>Permutasi dengan Unsur yang Sama:</b></p>\n    \\[ P = \\frac{n!}{k_1! \\cdot k_2! \\cdot \\dots \\cdot k_m!} \\]\n    <p><b>Permutasi Siklis (Melingkar):</b></p>\n    \\[ P_{\\text{siklis}} = (n - 1)! \\]\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Kombinasi (Urutan Tidak Diperhatikan) & Binomial Newton</h4>\n    \\[ C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!}, \\quad \\binom{n}{r} = \\binom{n}{n-r} \\]\n    <p><b>Kapan Memakai Permutasi vs Kombinasi?</b></p>\n    <ul>\n      <li><b>Permutasi:</b> Jabatan (Ketua/Sekretaris/Bendahara), ranking juara, plat nomor mobil, kode sandi kata.</li>\n      <li><b>Kombinasi:</b> Memilih delegasi tim, jabat tangan antar-orang, mengambil kelereng dari kantong.</li>\n    </ul>\n    <p><b>Teorema Ekspansi Binomial Newton:</b></p>\n    \\[ (a + b)^n = \\sum_{k=0}^n \\binom{n}{k} a^{n-k} b^k \\]\n    <p>Suku ke-\\((k+1)\\): \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\).</p>\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 3 Kaidah Pencacahan.</small></p>"
         },
         {
           "type": "kuis",
