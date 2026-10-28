@@ -10,50 +10,47 @@
       "duration": "5 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Pengantar SPLTV dan Interpretasi Geometris Tiga Bidang Datar di Ruang 3D</b>: Bentuk umum ax + by + cz = d; solusi unik (titik temu 3 bidang), tak hingga solusi (perpotongan garis/bidang berimpit), dan tanpa solusi (bidang paralel).</p>"
-        },
-        {
           "type": "callout",
           "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Neraca Timbangan Pasar dan Keseimbangan Anggaran",
-          "html": "<p>Bayangkan kamu sedang menimbang belanjaan di pasar tradisional menggunakan neraca dua lengan bandul. Jika kamu menambahkan beban 2 kilogram di lengan kiri, kamu wajib menambahkan beban yang sama di lengan kanan agar jarum timbangan tetap setimbang di titik tengah.</p><p>Prinsip keadilan dan ekuivalensi ini adalah jiwa dari <b>Persamaan Linear</b>: kedua ruas memiliki relasi kesamaan mutlak yang tidak boleh dilanggar.</p>"
+          "title": "Penerapan Konsep di Dunia Nyata: Tiga Struk Belanja, Tiga Harga",
+          "html": "<p>Ibu membeli beras, gula, dan minyak goreng di warung tiga kali dengan jumlah berbeda, dan hanya menyimpan struk totalnya. Satu struk saja tidak cukup untuk mengetahui harga tiap barang. Tiga struk yang berbeda memberi tiga persamaan, dan dari tiga persamaan itu ketiga harga bisa ditemukan. Itulah inti sistem persamaan linear tiga variabel.</p>"
         },
         {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Kitab Al-Jabr karya Sang Bapak Aljabar Al-Khwarizmi",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Muhammad bin Musa Al-Khwarizmi</span>\n  <span class=\"h-tag\">Tahun: 820 M (Baghdad, Dinasti Abbasiyah)</span>\n  <span class=\"h-tag\">Krisis: Sengketa pembagian harta waris, luas tanah irigasi, dan perdagangan komoditas menuntut metode hitung variabel yang pasti.</span>\n</div>\n<p>Di perpustakaan akbar Baitul Hikmah (House of Wisdom) Baghdad, matematikawan <b>Muhammad bin Musa Al-Khwarizmi</b> menulis buku monumental <i>Al-Kitab al-mukhtasar fi hisab al-jabr wa'l-muqabala</i>.</p><p>Istilah <b>Aljabar</b> berasal dari kata <i>Al-Jabr</i> (pemulihan atau restorasi suku negatif) dan <i>Al-Muqabala</i> (penyeimbangan suku-suku serupa di kedua ruas). Karya ini meletakkan fondasi sains komputasi dan pemecahan variabel yang kita gunakan hingga hari ini.</p>"
+          "type": "text",
+          "html": "<p><b>Persamaan linear tiga variabel</b> berbentuk \\(ax + by + cz = d\\), dengan \\(a\\), \\(b\\), \\(c\\) tidak semuanya nol dan setiap variabel berpangkat satu. Satu persamaan seperti \\(x + y + z = 9\\) dipenuhi oleh banyak sekali tripel, misalnya \\((2, 3, 4)\\), \\((1, 1, 7)\\), dan \\((0, 9, 0)\\).</p><p>Jika tiga persamaan seperti itu harus dipenuhi bersama, kita mendapat <b>sistem persamaan linear tiga variabel</b> (SPLTV). Penyelesaiannya adalah tripel terurut \\((x, y, z)\\) yang membuat ketiga persamaan bernilai benar sekaligus.</p>"
         },
         {
           "type": "callout",
           "variant": "definisi",
-          "title": "Definisi Konseptual: Kalimat Terbuka Ekuivalen & Solusi Titik Potong Linear",
-          "html": "<p><b>Persamaan Linear:</b> Kalimat terbuka matematika yang dihubungkan dengan tanda sama dengan (=) di mana setiap variabel berpangkat satu (derajat satu).</p><p><b>Sistem Persamaan Linear (SPLDV):</b> Kumpulan dua atau lebih persamaan linear yang memuat variabel-variabel yang sama, di mana solusinya adalah nilai variabel yang memenuhi seluruh persamaan secara simultan (titik potong antar garis lurus pada bidang kartesius).</p>"
+          "title": "Definisi Konseptual: Sistem Persamaan Linear Tiga Variabel",
+          "html": "<p>SPLTV adalah tiga persamaan linear dengan tiga variabel yang sama:</p>\\[\\begin{aligned} a_1x + b_1y + c_1z &= d_1 \\\\ a_2x + b_2y + c_2z &= d_2 \\\\ a_3x + b_3y + c_3z &= d_3 \\end{aligned}\\]<p>Himpunan penyelesaiannya berisi semua tripel \\((x, y, z)\\) yang memenuhi ketiganya.</p>"
         },
         {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Sistem Persamaan Linear",
-          "html": "<div class=\"fc-display\">\n\\[ ax + by = c, \\qquad x = \\frac{D_x}{D} = \\frac{c_1 b_2 - c_2 b_1}{a_1 b_2 - a_2 b_1}, \\qquad y = \\frac{D_y}{D} = \\frac{a_1 c_2 - a_2 c_1}{a_1 b_2 - a_2 b_1} \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">x, y</td><td>Variabel yang belum diketahui nilainya</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\">a, b</td><td>Koefisien variabel x dan y (syarat D != 0 untuk solusi tunggal)</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>c</i></td><td>Konstanta suku bebas pada ruas kanan</td><td class=\"unit\">bilangan real</td></tr>\n    <tr><td class=\"sym\"><i>D</i></td><td>Determinan utama matriks koefisien SPLDV</td><td class=\"unit\">bilangan real != 0</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> SPLDV memiliki solusi tunggal jika garis berpotongan (\\(D \\ne 0\\)), tak hingga solusi jika garis berimpit, dan tidak punya solusi jika garis sejajar (\\(D = 0\\)).</small></p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Bentuk umum ax + by + cz = d; solusi unik (titik temu 3 bidang), tak hingga solusi (perpotongan garis/bidang berimpit), dan tanpa solusi (bidang paralel).</p>"
+          "type": "text",
+          "html": "<p>Secara geometris, satu persamaan linear tiga variabel adalah sebuah <b>bidang datar</b> di ruang tiga dimensi. Tiga bidang bisa bertemu dengan tiga cara:</p><ul><li>bertemu di <b>satu titik</b>, seperti dua dinding dan lantai di pojok kamar: penyelesaiannya tunggal;</li><li>bertemu di sepanjang <b>satu garis</b> atau berimpit, seperti lembaran buku yang bertemu di punggung buku: penyelesaiannya tak hingga banyak;</li><li><b>tidak bertemu bersama</b>, misalnya dua bidang sejajar: tidak ada penyelesaian.</li></ul><p>Sebagian besar soal di bab ini berpenyelesaian tunggal. Dua kasus lainnya dibahas di pelajaran Kasus Khusus.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh Terpandu: Pemecahan Masalah Pengantar SPLTV dan Interpretasi Ge",
-          "question": "<p>Diberikan permasalahan terkait konsep Pengantar SPLTV dan Interpretasi Geometris Tiga Bidang Datar di Ruang 3D. Bagaimanakah langkah analisis yang sistematis dan benar untuk memecahkan persoalan ini?</p>",
+          "title": "Contoh soal",
+          "question": "<p>Periksa apakah \\((2, 3, 4)\\) penyelesaian sistem \\(x + y + z = 9\\), \\(x - y + z = 3\\), dan \\(2x + y - z = 3\\).</p>",
           "steps": [
-            "Langkah 1 (Identifikasi Informasi): Tuliskan seluruh besaran atau variabel yang diketahui dari soal dan tetapkan target yang dicari.",
-            "Langkah 2 (Pilih Prinsip / Rumus Kunci): Gunakan persamaan Bentuk Baku Persamaan & Pertidaksamaan Linear Satu Variabel yang menghubungkan variabel-variabel tersebut.",
-            "Langkah 3 (Substitusi dan Komputasi): Masukkan nilai-nilai numerik ke dalam persamaan dan lakukan perhitungan aljabar secara cermat.",
-            "Langkah 4 (Evaluasi Fisis / Matematis): Verifikasi kebenaran satuan dan pastikan hasil akhir masuk akal secara logika nalar."
+            "Persamaan pertama: \\(2 + 3 + 4 = 9\\). Benar.",
+            "Persamaan kedua: \\(2 - 3 + 4 = 3\\). Benar.",
+            "Persamaan ketiga: \\(2 \\cdot 2 + 3 - 4 = 3\\). Benar."
           ],
-          "answer": "Dengan menerapkan prinsip dasar Definisi Konseptual: Variabel, Suku Sejenis & Persamaan Linear, solusi diperoleh secara terstruktur dan tepat."
+          "answer": "Ya, (2, 3, 4) memenuhi ketiga persamaan, jadi tripel itu penyelesaian sistem."
+        },
+        {
+          "type": "check",
+          "question": "Tripel yang merupakan penyelesaian sistem \\(x + y + z = 6\\), \\(x + y - z = 0\\), dan \\(x - y + z = 2\\) adalah ....",
+          "options": {
+            "A": "(2, 1, 3)",
+            "B": "(1, 2, 3)",
+            "C": "(3, 2, 1)",
+            "D": "(1, 3, 2)"
+          },
+          "answer": "B",
+          "explanation": "(1, 2, 3): 1 + 2 + 3 = 6, 1 + 2 − 3 = 0, 1 − 2 + 3 = 2. Semua benar. Tripel lain gagal di salah satu persamaan, misalnya (2, 1, 3) memberi 2 − 1 + 3 = 4 ≠ 2."
         }
       ]
     },
@@ -61,15 +58,21 @@
       "id": "metode-eliminasi-bertingkat-spltv",
       "title": "Menyelesaikan SPLTV: Metode Eliminasi Bertingkat (Mereduksi ke SPLDV)",
       "kind": "simulasi",
-      "duration": "6 menit",
+      "duration": "9 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p>Di SMP kamu sudah menyelesaikan sistem dengan dua variabel. Bagaimana jika ada tiga hal yang belum diketahui, misalnya harga apel, jeruk, dan mangga, dan kita mempunyai tiga informasi belanja? Kita memerlukan <b>sistem persamaan linear tiga variabel</b> (SPLTV).</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Harga Satuan dari Paket Belanja",
+          "html": "<p>Toko daring sering menjual paket: paket hemat, paket keluarga, paket lengkap. Jika kamu tahu isi dan harga tiga paket, kamu bisa menghitung harga satuan setiap barang, lalu menilai paket mana yang benar-benar hemat. Caranya dengan mengeliminasi satu barang demi satu barang.</p>"
         },
         {
           "type": "text",
-          "html": "<p>Selain eliminasi, SPLTV dapat diselesaikan dengan <b>substitusi</b>: nyatakan satu variabel dari persamaan yang paling sederhana, lalu masukkan ke persamaan lain. Cara ini efektif jika ada persamaan yang hanya memuat dua variabel atau berkoefisien 1.</p>"
+          "html": "<p>Di SMP kamu sudah menyelesaikan sistem dengan dua variabel. Bagaimana jika ada tiga hal yang belum diketahui, misalnya harga beras, gula, dan minyak goreng, dan kita mempunyai tiga informasi belanja? Kita memerlukan <b>sistem persamaan linear tiga variabel</b> (SPLTV).</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Eliminasi bertingkat</b> menurunkan masalah selangkah demi selangkah: tiga persamaan tiga variabel dijadikan dua persamaan dua variabel (SPLDV) dengan menghilangkan satu variabel yang <i>sama</i> dari dua pasang persamaan. SPLDV itu kamu selesaikan seperti di SMP, lalu hasilnya dimasukkan kembali untuk mendapatkan variabel ketiga.</p>"
         },
         {
           "type": "callout",
@@ -79,15 +82,9 @@
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Memodelkan soal cerita",
-          "html": "<ol><li>Tentukan tiga besaran yang dicari dan beri nama variabel (sertakan satuannya).</li><li>Terjemahkan setiap informasi menjadi satu persamaan.</li><li>Selesaikan, lalu jawab pertanyaan dalam kalimat dan periksa kewajarannya.</li></ol>"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Pada SPLTV, mengeliminasi variabel yang berbeda pada dua pasangan persamaan.</li><li>Mengarsir sisi yang salah tanpa menguji titik.</li><li>Lupa syarat x ≥ 0 dan y ≥ 0 pada soal cerita.</li></ul>"
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Bab Fangcheng dalam Sembilan Bab Seni Matematika",
+          "html": "<p>Buku Tiongkok kuno <i>Jiuzhang Suanshu</i> (Sembilan Bab Seni Matematika), yang disusun sekitar abad ke-2 SM sampai abad ke-1 M, memuat bab <i>Fangcheng</i> tentang sistem persamaan linear. Soal pertamanya: 3 ikat padi kualitas atas, 2 ikat kualitas sedang, dan 1 ikat kualitas bawah menghasilkan 39 dou gabah, dan dua ikatan lain menghasilkan 34 dan 26 dou. Koefisiennya disusun dalam kolom batang hitung, lalu satu kolom dikurangkan dari kolom lain sampai variabelnya habis satu per satu. Itulah eliminasi, jauh sebelum Gauss.</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/The_Nine_Chapters_on_the_Mathematical_Art\">The Nine Chapters on the Mathematical Art, Wikipedia</a></small></p>"
         },
         {
           "type": "sim",
@@ -99,53 +96,162 @@
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Jumlah tiga bilangan 21. Bilangan pertama ditambah dua kali bilangan kedua sama dengan 22, dan bilangan pertama 2 lebih besar daripada bilangan ketiga. Tentukan ketiga bilangan.</p>",
+          "question": "<p>Selesaikan sistem \\(x + y + z = 4\\) ... (1), \\(2x - y + z = 8\\) ... (2), dan \\(x + 2y - z = -3\\) ... (3).</p>",
           "steps": [
-            "a + b + c = 21, a + 2b = 22, a − c = 2.",
-            "Dari a − c = 2: c = a − 2. Substitusi ke persamaan pertama: 2a + b = 23.",
-            "Dari a + 2b = 22 dan 2a + b = 23: kalikan yang kedua dengan 2 lalu kurangkan, 3a = 24, a = 8.",
-            "b = 7 dan c = 6."
+            "Eliminasi z dari (1) dan (2): kurangkan, \\((x + y + z) - (2x - y + z) = 4 - 8\\), sehingga \\(-x + 2y = -4\\) ... (4).",
+            "Eliminasi z dari (1) dan (3): jumlahkan, \\(2x + 3y = 1\\) ... (5).",
+            "Kalikan (4) dengan 2 lalu jumlahkan dengan (5): \\(7y = -7\\), jadi \\(y = -1\\). Dari (4): \\(-x - 2 = -4\\), jadi \\(x = 2\\).",
+            "Dari (1): \\(z = 4 - 2 - (-1) = 3\\).",
+            "Periksa ke (2): \\(4 + 1 + 3 = 8\\). Benar."
           ],
-          "answer": "8, 7, dan 6"
+          "answer": "(x, y, z) = (2, −1, 3)"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Mengeliminasi variabel yang berbeda pada dua pasangan persamaan, misalnya z dari pasangan pertama tetapi y dari pasangan kedua. Hasilnya tetap tiga variabel dan tidak bisa diselesaikan.</li><li>Salah tanda saat mengurangkan persamaan: \\(-(-z) = +z\\).</li><li>Lupa memeriksa jawaban ke ketiga persamaan awal.</li></ul>"
         },
         {
           "type": "check",
-          "question": "Jika x + y = 5, y + z = 7, dan x + z = 6, nilai y adalah ....",
+          "question": "Jika \\(x + y = 8\\), \\(y + z = 11\\), dan \\(x + z = 9\\), nilai \\(y\\) adalah ....",
           "options": {
-            "A": "2",
-            "B": "3",
-            "C": "4",
-            "D": "9"
+            "A": "4",
+            "B": "6",
+            "C": "14",
+            "D": "5"
           },
-          "answer": "B",
-          "hint": "Hitung dahulu x + y + z dengan menjumlahkan ketiga persamaan.",
-          "explanation": "2(x + y + z) = 18, jadi x + y + z = 9. Maka y = 9 − (x + z) = 9 − 6 = 3."
+          "answer": "D",
+          "explanation": "Jumlahkan ketiganya: 2(x + y + z) = 28, jadi x + y + z = 14. Maka y = 14 − (x + z) = 14 − 9 = 5."
+        },
+        {
+          "type": "check",
+          "question": "Saat menyelesaikan SPLTV, Rudi mengeliminasi z dari pasangan (1) dan (2), tetapi mengeliminasi y dari pasangan (1) dan (3). Akibatnya ....",
+          "options": {
+            "A": "Dua persamaan barunya masih memuat x, y, dan z, sehingga belum menjadi SPLDV",
+            "B": "Hasilnya tetap benar karena variabel apa pun boleh dieliminasi",
+            "C": "Sistemnya pasti tidak mempunyai penyelesaian",
+            "D": "Nilai z langsung diperoleh tanpa langkah lain"
+          },
+          "answer": "A",
+          "explanation": "Persamaan pertama hanya memuat x dan y, persamaan kedua hanya memuat x dan z. Bersama-sama keduanya masih memuat tiga variabel. Kedua pasangan harus menghilangkan variabel yang sama agar terbentuk SPLDV."
         }
       ]
     },
     {
       "id": "metode-substitusi-dan-campuran-spltv",
       "title": "Menyelesaikan SPLTV: Metode Substitusi dan Campuran yang Efisien",
-      "kind": "artikel",
-      "duration": "2 menit",
+      "kind": "latihan",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi Pemecahan Masalah",
-          "html": "<p>Mengisolasi variabel tunggal koefisien 1; teknik campuran yang meminimalkan kerumitan hitungan.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Membagi Hadiah Lomba",
+          "html": "<p>Panitia lomba sering membagi hadiah dengan aturan seperti \"hadiah juara 2 dua kali hadiah juara 3\" atau \"hadiah juara 1 Rp4 juta lebih besar daripada juara 3\". Aturan seperti itu sudah berbentuk \"variabel = ...\", jadi lebih cepat disubstitusikan daripada dieliminasi. Cara yang sama dipakai untuk soal umur dan pembagian warisan.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Selain eliminasi, SPLTV dapat diselesaikan dengan <b>substitusi</b>: nyatakan satu variabel dari persamaan yang paling sederhana, lalu masukkan ke persamaan lain. Cara ini efektif jika ada persamaan yang hanya memuat dua variabel atau berkoefisien 1.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Dalam praktik, kedua cara sering digabung (<b>metode campuran</b>): eliminasi dipakai untuk menurunkan sistem menjadi SPLDV, lalu SPLDV diselesaikan dengan substitusi. Pilih cara yang membuat hitungan paling sedikit:</p><ul><li>ada persamaan berbentuk \\(y = 2x\\) atau \\(z = x + 4\\): langsung substitusi;</li><li>ada variabel berkoefisien 1 atau −1: isolasi variabel itu;</li><li>semua koefisien besar: eliminasi lebih rapi.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Hadiah lomba Rp12 juta dibagi untuk juara 1, 2, dan 3. Hadiah juara 2 dua kali hadiah juara 3, dan hadiah juara 1 Rp4 juta lebih besar daripada hadiah juara 3. Tentukan hadiah setiap juara.</p>",
+          "steps": [
+            "Misalkan hadiah juara 3 = x, juara 2 = y, juara 1 = z (juta rupiah).",
+            "Model: \\(x + y + z = 12\\), \\(y = 2x\\), \\(z = x + 4\\).",
+            "Substitusi: \\(x + 2x + (x + 4) = 12\\), sehingga \\(4x = 8\\) dan \\(x = 2\\).",
+            "\\(y = 4\\) dan \\(z = 6\\)."
+          ],
+          "answer": "Juara 1 Rp6 juta, juara 2 Rp4 juta, juara 3 Rp2 juta"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Selesaikan \\(x + y + z = 2\\) ... (1), \\(2x - y + z = -3\\) ... (2), dan \\(3x + 2y - z = 11\\) ... (3) dengan metode campuran.</p>",
+          "steps": [
+            "Eliminasi z: (1) − (2) memberi \\(-x + 2y = 5\\); (1) + (3) memberi \\(4x + 3y = 13\\).",
+            "Dari \\(-x + 2y = 5\\): \\(x = 2y - 5\\).",
+            "Substitusi: \\(4(2y - 5) + 3y = 13\\), sehingga \\(11y = 33\\) dan \\(y = 3\\). Lalu \\(x = 1\\).",
+            "Dari (1): \\(z = 2 - 1 - 3 = -2\\)."
+          ],
+          "answer": "(x, y, z) = (1, 3, −2)"
+        },
+        {
+          "type": "check",
+          "question": "Jumlah umur tiga bersaudara 36 tahun. Umur si sulung dua kali umur si bungsu, dan umur anak tengah 4 tahun lebih tua daripada si bungsu. Umur si sulung adalah ....",
+          "options": {
+            "A": "8 tahun",
+            "B": "12 tahun",
+            "C": "16 tahun",
+            "D": "18 tahun"
+          },
+          "answer": "C",
+          "explanation": "Misalkan umur bungsu x. Sulung 2x, tengah x + 4. x + 2x + x + 4 = 36, jadi 4x = 32 dan x = 8. Umur sulung 2 × 8 = 16 tahun."
         }
       ]
     },
     {
       "id": "kasus-khusus-spltv",
       "title": "Menganalisis SPLTV Khusus: Solusi Tak Hingga Banyak dan Tanpa Solusi",
-      "kind": "artikel",
-      "duration": "2 menit",
+      "kind": "latihan",
+      "duration": "6 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Keterangan yang Tidak Menambah Informasi",
+          "html": "<p>Tiga orang bercerita tentang belanjaan yang sama. Orang ketiga hanya menjumlahkan cerita dua orang pertama. Kedengarannya ada tiga keterangan, padahal informasi barunya hanya dua, sehingga harga tiap barang tidak bisa dipastikan. Sebaliknya, jika dua keterangan saling bertentangan, tidak ada harga yang cocok untuk semuanya. Dalam pengolahan data, kedua keadaan ini tanda bahwa datanya kurang atau ada yang salah catat.</p>"
+        },
+        {
           "type": "text",
-          "html": "<p>Toko kue memiliki 8 kg tepung dan 12 kg gula. Kue A memerlukan 1 kg tepung dan 2 kg gula per loyang, kue B memerlukan 1 kg tepung dan 1 kg gula. Banyak loyang yang mungkin dibuat (x loyang A, y loyang B) dibatasi oleh <b>pertidaksamaan</b>, bukan persamaan:</p>\\[x + y \\le 8, \\quad 2x + y \\le 12, \\quad x \\ge 0, \\quad y \\ge 0\\]"
+          "html": "<p>Saat mengeliminasi, perhatikan persamaan yang muncul:</p><ul><li>muncul <b>\\(0 = 0\\)</b>: satu persamaan ternyata kombinasi persamaan lain. Sistem mempunyai <b>tak hingga banyak</b> penyelesaian, yang dinyatakan dengan parameter;</li><li>muncul <b>\\(0 = k\\) dengan \\(k \\ne 0\\)</b>: ada persamaan yang saling bertentangan. Sistem <b>tidak mempunyai</b> penyelesaian, dan himpunan penyelesaiannya kosong \\(\\varnothing\\).</li></ul><p>Tanda cepatnya: jika satu persamaan sama dengan kelipatan persamaan lain (ruas kiri dan kanan), ada tak hingga banyak penyelesaian; jika hanya ruas kirinya yang kelipatan sedangkan ruas kanannya tidak, tidak ada penyelesaian.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Sistem Konsisten dan Tidak Konsisten",
+          "html": "<p>Sistem disebut <b>konsisten</b> jika mempunyai paling sedikit satu penyelesaian (tunggal atau tak hingga banyak), dan <b>tidak konsisten</b> jika tidak mempunyai penyelesaian sama sekali.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Selesaikan \\(x + y + z = 6\\) ... (1), \\(2x + y - z = 3\\) ... (2), dan \\(3x + 2y = 9\\) ... (3).</p>",
+          "steps": [
+            "(1) + (2) menghilangkan z: \\(3x + 2y = 9\\). Hasil ini sama persis dengan (3).",
+            "Jika (3) dikurangi hasil itu, diperoleh \\(0 = 0\\). Jadi hanya ada dua persamaan yang bebas.",
+            "Ambil \\(z = t\\) sebagai parameter. Dari (1) dan (2): \\(x = 2t - 3\\) dan \\(y = 9 - 3t\\).",
+            "Misalnya \\(t = 2\\) memberi \\((1, 3, 2)\\), dan \\(t = 3\\) memberi \\((3, 0, 3)\\). Keduanya memenuhi sistem."
+          ],
+          "answer": "Tak hingga banyak penyelesaian: (2t − 3, 9 − 3t, t) untuk setiap bilangan real t"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Selesaikan \\(x + y + z = 4\\), \\(x - y + z = 2\\), dan \\(2x + 2y + 2z = 10\\).</p>",
+          "steps": [
+            "Persamaan ketiga dibagi 2: \\(x + y + z = 5\\).",
+            "Kurangkan dari persamaan pertama: \\(0 = -1\\). Pernyataan ini salah.",
+            "Tidak ada tripel yang jumlahnya sekaligus 4 dan 5."
+          ],
+          "answer": "Tidak ada penyelesaian (himpunan penyelesaiannya kosong)"
+        },
+        {
+          "type": "check",
+          "question": "Sistem \\(x + y - z = 2\\), \\(3x + 3y - 3z = k\\), dan \\(x - y + z = 4\\) mempunyai tak hingga banyak penyelesaian jika k = ....",
+          "options": {
+            "A": "2",
+            "B": "4",
+            "C": "6",
+            "D": "12"
+          },
+          "answer": "C",
+          "explanation": "Ruas kiri persamaan kedua adalah 3 kali ruas kiri persamaan pertama. Jika k = 3 × 2 = 6, persamaan kedua tidak memberi informasi baru (muncul 0 = 0), sehingga penyelesaiannya tak hingga banyak. Untuk k ≠ 6 sistem tidak konsisten."
         }
       ]
     },
@@ -153,36 +259,60 @@
       "id": "pemodelan-matematis-spltv",
       "title": "Pemodelan Soal Cerita SPLTV dalam Masalah Nyata",
       "kind": "latihan",
-      "duration": "4 menit",
+      "duration": "6 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Soal paket harga tiket bioskop, komposisi racikan bahan kimia pupuk, perbandingan umur tiga anggota keluarga.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Merencanakan Lahan Tanam",
+          "html": "<p>Penyuluh pertanian membantu petani membagi lahan untuk beberapa tanaman sekaligus: luas total tetap, ada kebutuhan pasar, ada aturan rotasi tanaman. Setiap aturan itu ditulis sebagai satu persamaan. Setelah semua aturan tertulis, pembagian lahannya tinggal dihitung.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Memodelkan soal cerita",
+          "html": "<ol><li>Tentukan tiga besaran yang dicari dan beri nama variabel (sertakan satuannya).</li><li>Terjemahkan setiap informasi menjadi satu persamaan.</li><li>Selesaikan, lalu jawab pertanyaan dalam kalimat dan periksa kewajarannya.</li></ol>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Bagian tersulit soal cerita biasanya menerjemahkan kalimat. Beberapa pola yang sering muncul:</p><ul><li>\"jumlah ... adalah 10\": \\(x + y + z = 10\\);</li><li>\"x lebih 2 daripada y\": \\(x - y = 2\\);</li><li>\"y dua kali z\": \\(y = 2z\\), bukan \\(2y = z\\);</li><li>\"harga 2 kopi dan 1 teh Rp38.000\": \\(2k + t = 38.000\\), atau tulis dalam ribuan rupiah agar angkanya kecil.</li></ul><p>Setelah mendapat jawaban, periksa apakah masuk akal: harga dan banyak barang tidak boleh negatif, banyak orang harus bilangan cacah.</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Bu Ani membeli 2 kg apel, 1 kg jeruk, dan 1 kg mangga seharga Rp95.000,00. Bu Siti membeli 1 kg apel, 2 kg jeruk, dan 1 kg mangga seharga Rp85.000,00. Bu Rina membeli 1 kg apel, 1 kg jeruk, dan 2 kg mangga seharga Rp90.000,00. Berapa harga masing-masing per kg?</p>",
+          "question": "<p>Pak Hasan menanam padi, jagung, dan kedelai di lahan seluas 10 hektare. Lahan padi 2 hektare lebih luas daripada lahan jagung, dan lahan kedelai 1 hektare lebih sempit daripada lahan jagung. Berapa luas lahan setiap tanaman?</p>",
           "steps": [
-            "Dalam ribuan: 2a + j + m = 95 … (1), a + 2j + m = 85 … (2), a + j + 2m = 90 … (3).",
-            "Jumlahkan ketiganya: 4a + 4j + 4m = 270, sehingga a + j + m = 67,5 … (4).",
-            "(1) − (4): a = 27,5. (2) − (4): j = 17,5. (3) − (4): m = 22,5."
+            "Misalkan luas lahan padi x, jagung y, kedelai z (hektare).",
+            "Model: \\(x + y + z = 10\\), \\(x = y + 2\\), \\(z = y - 1\\).",
+            "Substitusi: \\((y + 2) + y + (y - 1) = 10\\), sehingga \\(3y = 9\\) dan \\(y = 3\\).",
+            "\\(x = 5\\) dan \\(z = 2\\). Periksa: \\(5 + 3 + 2 = 10\\)."
           ],
-          "answer": "apel Rp27.500,00; jeruk Rp17.500,00; mangga Rp22.500,00"
+          "answer": "Padi 5 ha, jagung 3 ha, kedelai 2 ha"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Rani membeli 1 pensil, 1 penghapus, dan 1 buku seharga Rp15.000,00. Dina membeli 2 pensil dan 1 penghapus seharga Rp14.000,00. Sari membeli 1 penghapus dan 3 buku seharga Rp21.000,00. Tentukan harga masing-masing.</p>",
+          "question": "<p>Di sebuah kafe, Dewi membayar Rp50.000 untuk 2 kopi, 1 teh, dan 1 roti. Fajar membayar Rp55.000 untuk 1 kopi, 2 teh, dan 2 roti. Gita membayar Rp59.000 untuk 1 kopi, 1 teh, dan 3 roti. Tentukan harga setiap menu.</p>",
           "steps": [
-            "Dalam ribuan: p + h + b = 15 … (1), 2p + h = 14 … (2), h + 3b = 21 … (3).",
-            "Dari (2): h = 14 − 2p. Dari (1): b = 15 − p − h = 15 − p − 14 + 2p = 1 + p.",
-            "Substitusi ke (3): (14 − 2p) + 3(1 + p) = 21, sehingga 17 + p = 21 dan p = 4.",
-            "h = 14 − 8 = 6 dan b = 5. Periksa (1): 4 + 6 + 5 = 15 ✓."
+            "Dalam ribuan rupiah, misalkan harga kopi k, teh t, roti r.",
+            "Model: \\(2k + t + r = 50\\) ... (1), \\(k + 2t + 2r = 55\\) ... (2), \\(k + t + 3r = 59\\) ... (3).",
+            "(2) − (3): \\(t - r = -4\\), jadi \\(t = r - 4\\).",
+            "2 × (3) − (1): \\(t + 5r = 68\\). Substitusi: \\((r - 4) + 5r = 68\\), sehingga \\(r = 12\\) dan \\(t = 8\\).",
+            "Dari (3): \\(k = 59 - 8 - 36 = 15\\)."
           ],
-          "answer": "pensil Rp4.000,00; penghapus Rp6.000,00; buku Rp5.000,00"
+          "answer": "Kopi Rp15.000, teh Rp8.000, roti Rp12.000"
+        },
+        {
+          "type": "check",
+          "question": "Celengan berisi 20 keping uang logam Rp200, Rp500, dan Rp1.000 dengan nilai total Rp9.600. Banyak keping Rp500 dua kali banyak keping Rp1.000. Banyak keping Rp1.000 adalah ....",
+          "options": {
+            "A": "8",
+            "B": "4",
+            "C": "6",
+            "D": "5"
+          },
+          "answer": "B",
+          "explanation": "Misalkan a, b, c banyak keping Rp200, Rp500, Rp1.000. a + b + c = 20, 200a + 500b + 1.000c = 9.600, b = 2c. Substitusi: a + 3c = 20 dan 200a + 2.000c = 9.600 (atau a + 10c = 48). Kurangkan: 7c = 28, jadi c = 4 (lalu b = 8, a = 8)."
         }
       ]
     },
@@ -193,64 +323,61 @@
       "duration": "5 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Anggaran Jajan",
+          "html": "<p>Kamu punya Rp50.000 untuk membeli nasi bungkus seharga Rp10.000 dan minuman seharga Rp5.000. Jika x bungkus nasi dan y minuman, syaratnya \\(10.000x + 5.000y \\le 50.000\\). Uangnya tidak harus habis, jadi pilihannya banyak: (3, 2), (5, 0), (2, 6), dan seterusnya. Kumpulan semua pilihan itu membentuk sebuah daerah, bukan satu titik.</p>"
+        },
+        {
           "type": "text",
           "html": "<p><b>Pertidaksamaan linear dua variabel</b> berbentuk ax + by ≤ c (atau &lt;, ≥, &gt;). Penyelesaiannya bukan satu titik, melainkan <b>setengah bidang</b>: semua titik di satu sisi garis ax + by = c.</p>"
         },
         {
-          "type": "image",
-          "src": "gambar/contoh-daerah.svg",
-          "alt": "Daerah penyelesaian x + y ≤ 8, 2x + y ≤ 12, x ≥ 0, y ≥ 0 berbentuk segi empat dengan titik pojok (0,0), (6,0), (4,4), dan (0,8)",
-          "width": 420,
-          "caption": "Daerah penyelesaian contoh toko kue."
-        },
-        {
           "type": "callout",
-          "variant": "tips",
-          "title": "Menentukan pertidaksamaan dari gambar",
-          "html": "<p>Garis yang memotong sumbu x di (a, 0) dan sumbu y di (0, b) adalah bx + ay = ab. Lalu uji (0, 0): jika (0, 0) berada di daerah arsir, tandanya ≤ (karena 0 ≤ ab).</p>"
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Daerah Penyelesaian",
+          "html": "<p><b>Daerah penyelesaian</b> pertidaksamaan linear dua variabel adalah himpunan semua titik \\((x, y)\\) yang memenuhi pertidaksamaan itu. Garis \\(ax + by = c\\) membagi bidang menjadi dua; daerah penyelesaiannya salah satu sisi, dengan atau tanpa garisnya.</p>"
         },
         {
           "type": "callout",
           "variant": "tips",
           "title": "Menggambar daerah penyelesaian",
-          "html": "<ol><li>Gambar garis batasnya (ganti tanda pertidaksamaan dengan =).</li><li>Uji satu titik yang tidak terletak pada garis, biasanya (0, 0). Jika memenuhi, daerah yang memuat titik itu termasuk penyelesaian.</li><li>Daerah penyelesaian sistem adalah irisan semua daerah. Garis penuh untuk ≤, ≥; garis putus-putus untuk &lt;, &gt;.</li></ol>"
+          "html": "<ol><li>Gambar garis batasnya (ganti tanda pertidaksamaan dengan =).</li><li>Uji satu titik yang tidak terletak pada garis, biasanya (0, 0). Jika memenuhi, daerah yang memuat titik itu termasuk penyelesaian.</li><li>Garis penuh untuk ≤, ≥; garis putus-putus untuk &lt;, &gt;.</li></ol>"
         },
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Gambarkan daerah penyelesaian 2x + 3y ≤ 12.</p>",
+          "question": "<p>Gambarkan daerah penyelesaian \\(x - 2y > 4\\).</p>",
           "steps": [
-            "Garis batas 2x + 3y = 12 memotong sumbu x di (6, 0) dan sumbu y di (0, 4).",
-            "Uji (0, 0): 0 ≤ 12 benar.",
-            "Daerah penyelesaian adalah sisi garis yang memuat (0, 0), termasuk garisnya (garis penuh)."
+            "Garis batas \\(x - 2y = 4\\) memotong sumbu x di (4, 0) dan sumbu y di (0, −2). Karena tandanya \\(>\\), garis digambar putus-putus.",
+            "Uji (0, 0): \\(0 - 0 > 4\\) salah. Jadi (0, 0) tidak termasuk penyelesaian.",
+            "Arsir sisi garis yang tidak memuat (0, 0), yaitu daerah di kanan bawah garis. Periksa dengan (6, 0): \\(6 > 4\\) benar."
           ],
-          "answer": "setengah bidang di bawah garis yang melalui (6, 0) dan (0, 4)"
+          "answer": "Daerah di kanan bawah garis putus-putus x − 2y = 4, tidak termasuk garisnya"
         },
         {
           "type": "check",
-          "question": "Titik berikut yang memenuhi pertidaksamaan 2x + 3y ≤ 12 adalah ....",
+          "question": "Titik berikut yang memenuhi pertidaksamaan \\(3x + 5y \\le 15\\) adalah ....",
           "options": {
-            "A": "(3, 3)",
-            "B": "(6, 1)",
-            "C": "(2, 2)",
-            "D": "(0, 5)"
+            "A": "(2, 2)",
+            "B": "(0, 4)",
+            "C": "(5, 1)",
+            "D": "(3, 1)"
+          },
+          "answer": "D",
+          "explanation": "(3, 1): 9 + 5 = 14 ≤ 15, benar. (2, 2) memberi 16, (0, 4) memberi 20, dan (5, 1) memberi 20; semuanya lebih dari 15."
+        },
+        {
+          "type": "check",
+          "question": "Pertidaksamaan yang daerah penyelesaiannya <b>tidak</b> memuat titik (0, 0) adalah ....",
+          "options": {
+            "A": "\\(x + y \\le 3\\)",
+            "B": "\\(3x + y < 6\\)",
+            "C": "\\(2x - y \\ge 4\\)",
+            "D": "\\(x - 4y \\le 8\\)"
           },
           "answer": "C",
-          "hint": "Substitusikan setiap titik.",
-          "explanation": "(2, 2): 4 + 6 = 10 ≤ 12. Titik lainnya menghasilkan 15."
-        },
-        {
-          "type": "check",
-          "question": "Titik berikut yang termasuk daerah penyelesaian x + y ≤ 8, 2x + y ≤ 12, x ≥ 0, y ≥ 0 adalah ....",
-          "options": {
-            "A": "(5, 4)",
-            "B": "(3, 4)",
-            "C": "(7, 0)",
-            "D": "(0, 9)"
-          },
-          "answer": "B",
-          "hint": "Substitusikan ke setiap pertidaksamaan.",
-          "explanation": "(3, 4): 3 + 4 = 7 ≤ 8 dan 6 + 4 = 10 ≤ 12. Titik (5, 4) melanggar keduanya, (7, 0) melanggar 2x + y ≤ 12, dan (0, 9) melanggar x + y ≤ 8."
+          "explanation": "Substitusi (0, 0): pada 2x − y ≥ 4 diperoleh 0 ≥ 4, salah. Pada tiga pertidaksamaan lain hasilnya benar (0 ≤ 3, 0 < 6, 0 ≤ 8)."
         }
       ]
     },
@@ -258,13 +385,17 @@
       "id": "sistem-pertidaksamaan-linear-sptldv",
       "title": "Sistem Pertidaksamaan Linear Dua Variabel (SPtLDV): Irisan Daerah Bersih",
       "kind": "simulasi",
-      "duration": "3 menit",
+      "duration": "7 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Strategi Pemecahan Masalah",
-          "html": "<p>Menentukan Daerah Himpunan Penyelesaian (DHP) yang memenuhi sekaligus beberapa pertidaksamaan linear; metode arsiran daerah penyelesaian.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Menu yang Memenuhi Semua Syarat",
+          "html": "<p>Ahli gizi menyusun menu dengan beberapa syarat sekaligus: kalori tidak boleh lebih dari batas, protein harus cukup, porsi tidak boleh negatif. Setiap syarat adalah satu pertidaksamaan. Menu yang boleh dipilih hanya yang memenuhi semuanya, yaitu irisan dari semua daerah.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Sistem pertidaksamaan linear dua variabel</b> (SPtLDV) terdiri atas dua atau lebih pertidaksamaan linear. Daerah penyelesaiannya adalah <b>irisan</b> daerah penyelesaian setiap pertidaksamaan. Langkahnya:</p><ol><li>Gambar setiap garis batas.</li><li>Tentukan sisi yang memenuhi setiap pertidaksamaan dengan uji titik.</li><li>Arsir bagian yang memenuhi semua pertidaksamaan. Syarat \\(x \\ge 0\\) dan \\(y \\ge 0\\) membatasi daerah di kuadran I.</li><li>Tentukan <b>titik pojok</b>: titik potong garis dengan sumbu dan titik potong antargaris.</li></ol>"
         },
         {
           "type": "sim",
@@ -274,17 +405,35 @@
           "caption": "Ubah koefisien dan tanda pertidaksamaan. Geser titik uji T ke dalam dan ke luar daerah biru. Coba tambahkan pertidaksamaan ketiga."
         },
         {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Tentukan daerah penyelesaian dan titik pojok sistem \\(x + y \\le 6\\), \\(x + 2y \\le 8\\), \\(x \\ge 0\\), \\(y \\ge 0\\).</p>",
+          "steps": [
+            "Garis \\(x + y = 6\\) melalui (6, 0) dan (0, 6). Uji (0, 0): \\(0 \\le 6\\) benar, arsir sisi yang memuat (0, 0).",
+            "Garis \\(x + 2y = 8\\) melalui (8, 0) dan (0, 4). Uji (0, 0): \\(0 \\le 8\\) benar, arsir sisi yang memuat (0, 0).",
+            "Irisan di kuadran I berbentuk segi empat. Titik potong kedua garis: kurangkan, \\(y = 2\\), lalu \\(x = 4\\).",
+            "Titik pojok: (0, 0), (6, 0), (4, 2), dan (0, 4). Perhatikan bahwa (8, 0) dan (0, 6) bukan titik pojok karena tidak memenuhi pertidaksamaan yang lain."
+          ],
+          "answer": "Segi empat dengan titik pojok (0, 0), (6, 0), (4, 2), (0, 4)"
+        },
+        {
+          "type": "image",
+          "src": "gambar/daerah-kerajinan.svg",
+          "width": 420,
+          "alt": "Daerah penyelesaian x + y ≤ 6, x + 2y ≤ 8, x ≥ 0, y ≥ 0 berbentuk segi empat dengan titik pojok (0, 0), (6, 0), (4, 2), dan (0, 4)",
+          "caption": "Daerah penyelesaian x + y ≤ 6, x + 2y ≤ 8, x ≥ 0, y ≥ 0."
+        },
+        {
           "type": "check",
-          "question": "Penyelesaian sistem x + y + z = 6, x − y = 1, dan y + z = 4 adalah ....",
+          "question": "Titik yang termasuk daerah penyelesaian \\(x + y \\le 6\\), \\(x + 2y \\le 8\\), \\(x \\ge 0\\), \\(y \\ge 0\\) adalah ....",
           "options": {
-            "A": "(2, 1, 3)",
-            "B": "(1, 2, 3)",
-            "C": "(3, 2, 1)",
-            "D": "(2, 3, 1)"
+            "A": "(4, 3)",
+            "B": "(2, 3)",
+            "C": "(1, 4)",
+            "D": "(5, 2)"
           },
-          "answer": "A",
-          "hint": "Kurangkan persamaan ketiga dari persamaan pertama.",
-          "explanation": "(x + y + z) − (y + z) = 6 − 4, sehingga x = 2. Dari x − y = 1, y = 1. Dari y + z = 4, z = 3."
+          "answer": "B",
+          "explanation": "(2, 3): 5 ≤ 6 dan 8 ≤ 8, keduanya benar. (4, 3) dan (5, 2) melanggar x + y ≤ 6; (1, 4) melanggar x + 2y ≤ 8 karena 9 > 8."
         }
       ]
     },
@@ -292,40 +441,54 @@
       "id": "menentukan-sistem-dari-grafik",
       "title": "Menentukan Sistem Pertidaksamaan Linear dari Grafik DHP yang Diketahui",
       "kind": "artikel",
-      "duration": "3 menit",
+      "duration": "5 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>SPLTV</td><td>Eliminasi satu variabel dari dua pasang persamaan, selesaikan SPLDV, lalu substitusi.</td></tr><tr><td>Pertidaksamaan linear</td><td>Garis batas + uji titik untuk menentukan sisi yang diarsir.</td></tr><tr><td>Sistem pertidaksamaan</td><td>Daerah penyelesaian = irisan semua daerah.</td></tr><tr><td>Titik pojok</td><td>Titik potong garis-garis batas yang membatasi daerah.</td></tr></table>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Membaca Zona di Peta",
+          "html": "<p>Peta tata ruang kota menandai zona boleh membangun dengan arsiran yang dibatasi garis-garis jalan dan sungai. Perencana kota perlu menulis batas itu sebagai aturan yang bisa diperiksa: apakah sebuah lokasi termasuk zona? Pekerjaan ini kebalikan dari menggambar daerah penyelesaian: dari gambar, kita menulis sistemnya.</p>"
         },
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 4 Sistem Persamaan dan Pertidaksamaan Linear.</small></p>"
+          "html": "<p>Langkah menentukan sistem pertidaksamaan dari gambar daerah:</p><ol><li>Tentukan persamaan setiap garis batas. Jika garis memotong sumbu di (a, 0) dan (0, b), persamaannya \\(bx + ay = ab\\). Jika tidak, pakai dua titik yang dilalui: \\(\\dfrac{y - y_1}{y_2 - y_1} = \\dfrac{x - x_1}{x_2 - x_1}\\).</li><li>Ambil satu titik di dalam daerah arsir (bukan di garis), lalu substitusikan ke ruas kiri setiap persamaan garis. Hasil itu menentukan tandanya (≤ atau ≥).</li><li>Tambahkan \\(x \\ge 0\\) dan \\(y \\ge 0\\) jika daerahnya di kuadran I.</li></ol>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Menentukan pertidaksamaan dari gambar",
+          "html": "<p>Garis yang memotong sumbu x di (a, 0) dan sumbu y di (0, b) adalah bx + ay = ab. Lalu uji (0, 0): jika (0, 0) berada di daerah arsir, tandanya ≤ (karena 0 ≤ ab).</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/daerah-dari-grafik.svg",
+          "width": 420,
+          "alt": "Daerah arsir di kuadran I yang dibatasi garis g melalui (5, 0) dan (0, 5) serta garis h melalui (0, 1) dan (2, 3); titik pojoknya (0, 0), (5, 0), (2, 3), dan (0, 1)",
+          "caption": "Garis g melalui (5, 0) dan (0, 5); garis h melalui (0, 1) dan (2, 3)."
         },
         {
           "type": "example",
           "title": "Contoh soal",
-          "question": "<p>Tentukan titik pojok daerah penyelesaian contoh toko kue.</p>",
+          "question": "<p>Tentukan sistem pertidaksamaan untuk daerah arsir pada gambar.</p>",
           "steps": [
-            "Titik potong dengan sumbu: (0, 0), (6, 0) dari 2x + y = 12, dan (0, 8) dari x + y = 8.",
-            "Titik potong kedua garis: kurangkan x + y = 8 dari 2x + y = 12, sehingga x = 4 dan y = 4.",
-            "Titik pojok: (0, 0), (6, 0), (4, 4), dan (0, 8)."
+            "Garis g memotong sumbu di (5, 0) dan (0, 5): \\(5x + 5y = 25\\), atau \\(x + y = 5\\).",
+            "Garis h melalui (0, 1) dan (2, 3): gradiennya \\(\\tfrac{3 - 1}{2 - 0} = 1\\), jadi \\(y = x + 1\\) atau \\(-x + y = 1\\).",
+            "Titik (2, 1) ada di dalam daerah arsir. Untuk g: \\(2 + 1 = 3 \\le 5\\), jadi \\(x + y \\le 5\\). Untuk h: \\(-2 + 1 = -1 \\le 1\\), jadi \\(-x + y \\le 1\\).",
+            "Daerahnya di kuadran I: \\(x \\ge 0\\), \\(y \\ge 0\\)."
           ],
-          "answer": "(0, 0), (6, 0), (4, 4), (0, 8)"
+          "answer": "x + y ≤ 5, −x + y ≤ 1, x ≥ 0, y ≥ 0"
         },
         {
           "type": "check",
-          "title": "Cek Pemahaman",
-          "question": "Penyelesaian dari persamaan \\(4(x - 2) + 5 = 2x + 9\\) adalah ....",
+          "question": "Daerah di kuadran I yang berada di bawah garis melalui (0, 5) dan (2, 0), termasuk garisnya, dinyatakan oleh \\(x \\ge 0\\), \\(y \\ge 0\\), dan ....",
           "options": {
-            "A": "\\(x = 6\\)",
-            "B": "\\(x = 4\\)",
-            "C": "\\(x = 8\\)",
-            "D": "\\(x = -3\\)"
+            "A": "\\(5x + 2y \\le 10\\)",
+            "B": "\\(2x + 5y \\le 10\\)",
+            "C": "\\(5x + 2y \\ge 10\\)",
+            "D": "\\(2x + 5y \\ge 10\\)"
           },
           "answer": "A",
-          "hint": "Distribusikan: 4x - 8 + 5 = 4x - 3 = 2x + 9.",
-          "explanation": "4x - 3 = 2x + 9 ⇒ 4x - 2x = 9 + 3 ⇒ 2x = 12 ⇒ x = 6."
+          "explanation": "Garis memotong sumbu x di (2, 0) dan sumbu y di (0, 5), jadi persamaannya 5x + 2y = 10. Daerah di bawahnya memuat (0, 0), dan 0 ≤ 10 benar, sehingga tandanya ≤."
         }
       ]
     },
@@ -333,13 +496,53 @@
       "id": "pengantar-program-linear-sederhana",
       "title": "Pengantar Optimasi Nilai Optimum Fungsi Objektif",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "4 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Menentukan titik-titik pojok (titik verteks) dari DHP tertutup dan menguji nilai fungsi tujuan f(x,y) = ax + by untuk mencari nilai maksimum/minimum.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Untung Terbesar dari Waktu yang Terbatas",
+          "html": "<p>Pengrajin kayu membuat rak buku dan meja kecil. Gudangnya hanya muat 6 barang, dan ia hanya punya 8 jam kerja; rak perlu 1 jam, meja 2 jam. Untung sebuah rak Rp200.000 dan sebuah meja Rp300.000. Berapa rak dan meja yang harus dibuat agar untungnya terbesar? Masalah seperti ini disebut <b>program linear</b>, dan dipakai pabrik, maskapai, dan perusahaan logistik setiap hari.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Program linear punya dua bagian:</p><ul><li><b>kendala</b>, berupa sistem pertidaksamaan linear. Pada masalah pengrajin: \\(x + y \\le 6\\), \\(x + 2y \\le 8\\), \\(x \\ge 0\\), \\(y \\ge 0\\);</li><li><b>fungsi objektif</b> yang ingin dimaksimumkan atau diminimumkan, di sini untung \\(f(x, y) = 2x + 3y\\) dalam ratusan ribu rupiah.</li></ul><p>Jika daerah penyelesaiannya tertutup, nilai maksimum dan minimum fungsi objektif selalu tercapai di salah satu <b>titik pojok</b>. Jadi cukup hitung \\(f\\) di setiap titik pojok, lalu bandingkan.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Fungsi Objektif dan Nilai Optimum",
+          "html": "<p><b>Fungsi objektif</b> \\(f(x, y) = ax + by\\) adalah besaran yang ingin dioptimumkan. <b>Nilai optimum</b> adalah nilai maksimum atau minimum \\(f\\) pada daerah penyelesaian kendala.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/daerah-kerajinan.svg",
+          "width": 420,
+          "alt": "Daerah penyelesaian x + y ≤ 6, x + 2y ≤ 8, x ≥ 0, y ≥ 0 berbentuk segi empat dengan titik pojok (0, 0), (6, 0), (4, 2), dan (0, 4)",
+          "caption": "Daerah penyelesaian x + y ≤ 6, x + 2y ≤ 8, x ≥ 0, y ≥ 0."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Tentukan untung maksimum pengrajin kayu di atas.</p>",
+          "steps": [
+            "Daerah penyelesaian kendalanya sudah digambar di pelajaran Sistem Pertidaksamaan; titik pojoknya (0, 0), (6, 0), (4, 2), (0, 4).",
+            "Hitung \\(f = 2x + 3y\\): \\(f(0, 0) = 0\\), \\(f(6, 0) = 12\\), \\(f(4, 2) = 14\\), \\(f(0, 4) = 12\\).",
+            "Nilai terbesar 14 di (4, 2)."
+          ],
+          "answer": "Buat 4 rak dan 2 meja; untung maksimum Rp1.400.000"
+        },
+        {
+          "type": "check",
+          "question": "Pada daerah penyelesaian \\(x + y \\le 6\\), \\(x + 2y \\le 8\\), \\(x \\ge 0\\), \\(y \\ge 0\\), nilai maksimum \\(f(x, y) = x + 3y\\) adalah ....",
+          "options": {
+            "A": "10",
+            "B": "6",
+            "C": "18",
+            "D": "12"
+          },
+          "answer": "D",
+          "explanation": "Titik pojok (0, 0), (6, 0), (4, 2), (0, 4) memberi f = 0, 6, 10, 12. Maksimumnya 12 di (0, 4)."
         }
       ]
     },
@@ -347,7 +550,7 @@
       "id": "ringkasan-peta-konsep",
       "title": "Rangkuman Bab & Uji Kemahiran Sistem Linear",
       "kind": "latihan",
-      "duration": "2 menit",
+      "duration": "4 menit",
       "blocks": [
         {
           "type": "text",
@@ -358,7 +561,23 @@
           "isMega": false,
           "title": "Cheat Sheet: SPLDV, SPLTV & Pemodelan Program Linear",
           "subtitle": "Metode penyelesaian sistem persamaan linear tiga variabel, daerah penyelesaian, dan uji titik pojok.",
-          "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Sistem Persamaan Linear Tiga Variabel (SPLTV)</h4>\n    \\[ \\begin{cases} a_1 x + b_1 y + c_1 z = d_1 \\\\ a_2 x + b_2 y + c_2 z = d_2 \\\\ a_3 x + b_3 y + c_3 z = d_3 \\end{cases} \\]\n    <ul>\n      <li><b>Metode Gabungan:</b> Eliminasi 1 variabel dari 2 pasang persamaan hingga menjadi SPLDV 2 variabel, selesaikan via substitusi balik.</li>\n      <li><b>Metode Determinan (Cramer):</b>\n        \\[ x = \\frac{D_x}{D}, \\quad y = \\frac{D_y}{D}, \\quad z = \\frac{D_z}{D} \\quad (D \\ne 0) \\]\n      </li>\n    </ul>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Pertidaksamaan Linear & Daerah Himpunan (DHP)</h4>\n    <ul>\n      <li>Garis batas \\(ax + by = c\\): Gunakan garis penuh jika pertidaksamaan memuat \\(\\le\\) atau \\(\\ge\\); garis putus-putus jika \\(<\\) atau \\(>\\).</li>\n      <li><b>Uji Titik Selidik:</b> Masukkan titik mudah, misal \\((0,0)\\). Jika pernyataan benar, arsirlah daerah yang memuat titik uji tersebut.</li>\n      <li><b>Optimasi Fungsi Sasaran \\(f(x, y) = ax + by\\):</b> Hitung nilai \\(f(x, y)\\) pada semua titik sudut/pojok DHP tertutup. Nilai terbesar adalah maksimum, terkecil adalah minimum.</li>\n    </ul>\n  </div>\n</div>\n"
+          "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Sistem Persamaan Linear Tiga Variabel (SPLTV)</h4>\n    \\[ \\begin{cases} a_1 x + b_1 y + c_1 z = d_1 \\\\ a_2 x + b_2 y + c_2 z = d_2 \\\\ a_3 x + b_3 y + c_3 z = d_3 \\end{cases} \\]\n    <ul>\n      <li><b>Eliminasi bertingkat:</b> hilangkan variabel yang sama dari 2 pasang persamaan, selesaikan SPLDV-nya, lalu substitusi balik.</li><li><b>Substitusi:</b> nyatakan satu variabel dari persamaan yang paling sederhana, lalu masukkan ke persamaan lain.</li><li><b>Kasus khusus:</b> muncul \\(0 = 0\\) berarti tak hingga banyak penyelesaian; muncul \\(0 = k\\) dengan \\(k \\ne 0\\) berarti tidak ada penyelesaian.</li>\n      \n    </ul>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Pertidaksamaan Linear & Daerah Himpunan (DHP)</h4>\n    <ul>\n      <li>Garis batas \\(ax + by = c\\): Gunakan garis penuh jika pertidaksamaan memuat \\(\\le\\) atau \\(\\ge\\); garis putus-putus jika \\(<\\) atau \\(>\\).</li>\n      <li><b>Uji Titik Selidik:</b> Masukkan titik mudah, misal \\((0,0)\\). Jika pernyataan benar, arsirlah daerah yang memuat titik uji tersebut.</li>\n      <li><b>Optimasi Fungsi Sasaran \\(f(x, y) = ax + by\\):</b> Hitung nilai \\(f(x, y)\\) pada semua titik sudut/pojok DHP tertutup. Nilai terbesar adalah maksimum, terkecil adalah minimum.</li>\n    </ul>\n  </div>\n</div>\n"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal campuran",
+          "question": "<p>Toko seragam menjual tiga paket. Paket A berisi 1 kaos, 1 topi, dan 1 tas seharga Rp85.000; paket B berisi 2 kaos dan 1 topi seharga Rp95.000; paket C berisi 1 topi dan 3 tas seharga Rp105.000. Tentukan harga satuan setiap barang, lalu tulis model jika panitia ingin membeli a kaos dan b topi tambahan, paling banyak 10 barang, dengan anggaran tidak lebih dari Rp300.000.</p>",
+          "steps": [
+            "Bagian pertama adalah SPLTV (ribuan rupiah): \\(k + t + s = 85\\), \\(2k + t = 95\\), \\(t + 3s = 105\\).",
+            "Substitusi: \\(t = 95 - 2k\\), lalu \\(s = 85 - k - t = k - 10\\). Masukkan ke persamaan ketiga: \\((95 - 2k) + 3(k - 10) = 105\\), sehingga \\(k = 40\\), \\(t = 15\\), \\(s = 30\\).",
+            "Bagian kedua adalah SPtLDV: \\(a + b \\le 10\\), \\(40a + 15b \\le 300\\), \\(a \\ge 0\\), \\(b \\ge 0\\).",
+            "Persamaan dipakai saat keterangannya pasti (\"seharga\"), pertidaksamaan saat ada batas (\"paling banyak\", \"tidak lebih dari\")."
+          ],
+          "answer": "Kaos Rp40.000, topi Rp15.000, tas Rp30.000; pembelian tambahan: a + b ≤ 10, 40a + 15b ≤ 300, a ≥ 0, b ≥ 0"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas X</i> (Kemendikbudristek), Bab 4 Sistem Persamaan dan Pertidaksamaan Linear.</small></p>"
         },
         {
           "type": "kuis",
