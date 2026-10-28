@@ -120,7 +120,7 @@ function block(bl, b){
         tips: ['bulb', 'Tips'],
         awas: ['alert', 'Hati-hati'],
         info: ['info', 'Ingat'],
-        konteks: ['globe', 'Konteks Nyata'],
+        konteks: ['globe', 'Penerapan Konsep di Dunia Nyata'],
         sejarah: ['history', 'Kilas Balik Sejarah'],
         definisi: ['book', 'Definisi Konseptual']
       }[bl.variant] || ['info', 'Ingat'];

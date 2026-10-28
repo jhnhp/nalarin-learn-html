@@ -39,5 +39,6 @@ Repo ini berisi dua produk: **Nalarin Learn** (materi, `index.html`, `bab.html`,
 
 ## Gaya materi
 
+- Card Konteks berjudul "Penerapan Konsep di Dunia Nyata: <topik>" (bukan "Misteri di Kehidupan Nyata") dan wajib memakai `"variant": "konteks"`; card Sejarah, Definisi, dan Rumus juga wajib punya `variant`.
 - Tanpa video (pemilik akan menambah sendiri). Kesalahan di buku sumber diperbaiki di pelajaran dengan callout "Catatan buku".
 - Contoh di pelajaran tidak boleh sama dengan soal di Evaluasi Akhir bab-bab sebelumnya.
