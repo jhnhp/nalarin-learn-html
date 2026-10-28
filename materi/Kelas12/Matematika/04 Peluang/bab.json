@@ -7,8 +7,18 @@
       "id": "ruang-sampel-berbasis-kombinatorika",
       "title": "Menentukan Ruang Sampel dan Titik Sampel Menggunakan Kombinasi",
       "kind": "simulasi",
-      "duration": "2 menit",
+      "duration": "5 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Undian dengan Ribuan Kemungkinan",
+          "html": "<p>Dalam undian, 3 pemenang dipilih dari 10 finalis. Ada 120 kemungkinan kelompok pemenang, terlalu banyak untuk didaftar dengan tangan tetapi mudah dihitung dengan kombinasi. Peluang di bab ini memakai kaidah pencacahan untuk menghitung ruang sampel yang besar.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Ruang sampel</b> S adalah himpunan semua hasil yang mungkin, dan setiap anggotanya disebut titik sampel. Ruang sampel kecil bisa didaftar dengan tabel atau diagram pohon. Jika banyak, banyak anggotanya n(S) dihitung dengan aturan perkalian, permutasi (jika urutan penting), atau kombinasi (jika urutan tidak penting).</p>"
+        },
         {
           "type": "text",
           "html": "<p>Jika ruang sampelnya terlalu besar untuk didaftar, gunakan permutasi atau kombinasi dari Bab 3 untuk menghitung n(S) dan n(A).</p>"
@@ -19,6 +29,28 @@
           "title": "Pengambilan bola dari kantong",
           "height": 560,
           "caption": "Bandingkan pohon tanpa pengembalian dan dengan pengembalian. Lakukan 1.000 pengambilan dan cocokkan frekuensi relatif dengan peluang teoretis."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Tentukan banyak titik sampel jika (a) 4 koin dilempar bersamaan, dan (b) 3 bola diambil sekaligus dari 10 bola berbeda.</p>",
+          "steps": [
+            "(a) Setiap koin punya 2 hasil: \\(2^4 = 16\\).",
+            "(b) Urutan tidak penting: \\(C(10, 3) = 120\\)."
+          ],
+          "answer": "16 dan 120"
+        },
+        {
+          "type": "check",
+          "question": "Dua dadu dan sekeping koin dilempar bersamaan. Banyak titik sampelnya adalah ....",
+          "options": {
+            "A": "14",
+            "B": "24",
+            "C": "72",
+            "D": "36"
+          },
+          "answer": "C",
+          "explanation": "6 × 6 × 2 = 72."
         }
       ]
     },
@@ -26,77 +58,55 @@
       "id": "peluang-kejadian-sederhana-kombinasi",
       "title": "Perhitungan Peluang Kejadian Sederhana Menggunakan Kaidah Kombinasi",
       "kind": "simulasi",
-      "duration": "11 menit",
+      "duration": "8 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Peluang Tendangan Penalti",
+          "html": "<p>Pelatih tim sepak bola mencatat keberhasilan penalti setiap pemain untuk memilih lima penendang terbaik. Peluang memberi angka antara 0 dan 1 untuk seberapa mungkin sesuatu terjadi, dan dengan kaidah pencacahan peluang itu bisa dihitung untuk situasi yang rumit.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Pelatih sepak bola memperkirakan peluang timnya mencetak gol dari tendangan penalti untuk menyusun strategi. Peluang mengukur seberapa mungkin suatu kejadian terjadi, dari 0 (mustahil) sampai 1 (pasti).</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Mengapa pindah lebih baik?",
-          "html": "<p>Peluang pilihan pertamamu benar 1/3. Pembawa acara selalu membuka pintu kosong, sehingga informasi itu “memindahkan” peluang 2/3 ke satu-satunya pintu lain yang tertutup.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/pintu-rahasia.html",
-          "title": "Permainan pintu rahasia",
-          "height": 560,
-          "caption": "Mainkan beberapa kali, lalu simulasikan ratusan permainan. Strategi mana yang lebih sering menang: tetap atau pindah?"
+          "variant": "rumus",
+          "title": "Peluang Kejadian",
+          "html": "\\[P(A) = \\frac{n(A)}{n(S)}, \\qquad P(A^c) = 1 - P(A)\\]"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Tiga koin dilempar. Tentukan peluang muncul minimal satu angka.</p>",
+          "question": "<p>Empat koin dilempar. Tentukan peluang muncul minimal satu angka.</p>",
           "steps": [
-            "n(S) = 8. Komplemennya “tidak ada angka”: hanya GGG.",
-            "P = 1 − 1/8 = 7/8."
+            "n(S) = 16. Komplemennya \"tidak ada angka\": hanya GGGG.",
+            "P = 1 − 1/16 = 15/16."
           ],
-          "answer": "7/8"
+          "answer": "15/16"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Kantong berisi 5 bola merah dan 3 bola biru. Dua bola diambil sekaligus. Tentukan peluang keduanya merah.</p>",
+          "question": "<p>Kantong berisi 6 bola merah dan 4 bola biru. Dua bola diambil sekaligus. Tentukan peluang keduanya merah.</p>",
           "steps": [
-            "Diambil sekaligus: urutan tidak penting, gunakan kombinasi.",
-            "n(S) = C(8, 2) = 28; n(A) = C(5, 2) = 10.",
-            "P = 10/28 = 5/14."
+            "Diambil sekaligus: urutan tidak penting.",
+            "n(S) = C(10, 2) = 45 dan n(A) = C(6, 2) = 15.",
+            "P = 15/45 = 1/3."
           ],
-          "answer": "5/14"
+          "answer": "1/3"
         },
         {
           "type": "example",
           "title": "Contoh soal 3",
-          "question": "<p>Kantong berisi 4 bola merah dan 6 bola putih. Tiga bola diambil sekaligus. Tentukan peluang tepat 2 merah.</p>",
+          "question": "<p>Kantong berisi 5 bola merah dan 7 bola putih. Tiga bola diambil sekaligus. Tentukan peluang tepat 1 merah.</p>",
           "steps": [
-            "n(S) = C(10, 3) = 120.",
-            "Tepat 2 merah dan 1 putih: C(4, 2) × C(6, 1) = 6 × 6 = 36.",
-            "P = 36/120 = 3/10."
+            "n(S) = C(12, 3) = 220.",
+            "Tepat 1 merah: C(5, 1) × C(7, 2) = 5 × 21 = 105.",
+            "P = 105/220 = 21/44."
           ],
-          "answer": "3/10"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 4",
-          "question": "<p>Satu kartu diambil. Tentukan peluang terambil As atau kartu hati.</p>",
-          "steps": [
-            "Ada As hati: tidak saling lepas.",
-            "P = 4/52 + 13/52 − 1/52 = 16/52 = 4/13."
-          ],
-          "answer": "4/13"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 5",
-          "question": "<p>Peluang penembak A mengenai sasaran 0,8 dan penembak B 0,7. Keduanya menembak sekali secara terpisah. Tentukan peluang keduanya mengenai sasaran dan peluang minimal satu mengenai sasaran.</p>",
-          "steps": [
-            "Keduanya: 0,8 × 0,7 = 0,56.",
-            "Keduanya meleset: 0,2 × 0,3 = 0,06.",
-            "Minimal satu: 1 − 0,06 = 0,94."
-          ],
-          "answer": "0,56 dan 0,94"
+          "answer": "21/44"
         },
         {
           "type": "check",
@@ -112,17 +122,17 @@
           "explanation": "n(A) = 6 × 4 = 24, n(S) = 45. P = 24/45 = 8/15."
         },
         {
-          "type": "check",
-          "question": "Peluang tim A menang 0,6 dan tim B (pertandingan lain) menang 0,5. Peluang keduanya menang adalah ....",
-          "options": {
-            "A": "0,3",
-            "B": "0,5",
-            "C": "0,55",
-            "D": "1,1"
-          },
-          "answer": "A",
-          "hint": "Pertandingan terpisah dianggap saling bebas.",
-          "explanation": "0,6 × 0,5 = 0,3. 1,1 tidak mungkin karena peluang paling besar 1."
+          "type": "callout",
+          "variant": "tips",
+          "title": "Mengapa pindah lebih baik?",
+          "html": "<p>Peluang pilihan pertamamu benar 1/3. Pembawa acara selalu membuka pintu kosong, sehingga informasi itu “memindahkan” peluang 2/3 ke satu-satunya pintu lain yang tertutup.</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/pintu-rahasia.html",
+          "title": "Permainan pintu rahasia",
+          "height": 560,
+          "caption": "Mainkan beberapa kali, lalu simulasikan ratusan permainan. Strategi mana yang lebih sering menang: tetap atau pindah?"
         }
       ]
     },
@@ -130,27 +140,23 @@
       "id": "peluang-kejadian-majemuk-review",
       "title": "Tinjauan Peluang Majemuk: Saling Lepas dan Saling Bebas Stokastik",
       "kind": "simulasi",
-      "duration": "7 menit",
+      "duration": "9 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p><b>Tinjauan Peluang Majemuk: Saling Lepas dan Saling Bebas Stokastik</b>: Rekapitulasi rumus P(A ∪ B) = P(A) + P(B) untuk kejadian saling lepas dan P(A ∩ B) = P(A) · P(B) untuk dua kejadian independen terpisah.</p>"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Dua Pertandingan pada Hari yang Sama",
+          "html": "<p>Dua pertandingan sepak bola di kota berbeda berlangsung bersamaan. Hasil satu pertandingan tidak memengaruhi yang lain, jadi peluang kedua tim tuan rumah menang adalah hasil kali peluangnya. Sebaliknya, satu tim tidak mungkin menang dan kalah sekaligus; untuk kejadian seperti itu peluangnya dijumlahkan.</p>"
         },
         {
           "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Peluang</td><td>P(A) = n(A)/n(S); P(A<sup>c</sup>) = 1 − P(A)</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = P × n</td></tr><tr><td>“atau”</td><td>P(A) + P(B) − P(A ∩ B); saling lepas: tanpa irisan</td></tr><tr><td>“dan”, saling bebas</td><td>P(A) × P(B)</td></tr><tr><td>“dan”, bersyarat</td><td>P(A) × P(B | A)</td></tr><tr><td>Diambil sekaligus</td><td>gunakan kombinasi untuk n(S) dan n(A)</td></tr></table>"
+          "html": "<p>Dua aturan pokok peluang majemuk:</p><ul><li><b>\"atau\"</b>: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\); untuk kejadian <b>saling lepas</b> (tidak bisa terjadi bersamaan), irisannya nol.</li><li><b>\"dan\"</b>: untuk kejadian <b>saling bebas</b> (terjadinya satu tidak memengaruhi yang lain), \\(P(A \\cap B) = P(A) \\times P(B)\\).</li></ul><p>Frekuensi harapan kejadian A dalam n percobaan adalah \\(n \\times P(A)\\).</p>"
         },
         {
           "type": "callout",
           "variant": "awas",
           "title": "Saling lepas ≠ saling bebas",
           "html": "<p>Dua kejadian saling lepas yang peluangnya positif justru <b>tidak</b> saling bebas: jika A terjadi, B pasti tidak terjadi, sehingga terjadinya A memengaruhi B.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menjumlahkan peluang kejadian yang tidak saling lepas tanpa mengurangkan irisan.</li><li>Mengalikan peluang pengambilan tanpa pengembalian seolah-olah saling bebas.</li><li>Tertukar antara saling lepas dan saling bebas.</li></ul>"
         },
         {
           "type": "sim",
@@ -162,48 +168,63 @@
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Sekeping koin dan sebuah dadu dilempar. Tentukan peluang muncul angka pada koin dan mata dadu lebih dari dua.</p>",
+          "question": "<p>Sekeping koin dan sebuah dadu dilempar. Tentukan peluang muncul gambar pada koin dan bilangan prima pada dadu.</p>",
           "steps": [
-            "P(angka) = 1/2, P(mata &gt; 2) = 4/6 = 2/3.",
-            "P = 1/2 × 2/3 = 1/3."
+            "P(gambar) = 1/2. Prima pada dadu: 2, 3, 5, jadi P = 3/6 = 1/2.",
+            "Saling bebas: P = 1/2 × 1/2 = 1/4."
           ],
-          "answer": "1/3"
+          "answer": "1/4"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Satu kartu diambil dari 52 kartu. Tentukan peluang terambil As atau King.</p>",
+          "question": "<p>Satu kartu diambil dari 52 kartu remi. Tentukan peluang terambil kartu bergambar (J, Q, K) atau kartu hati.</p>",
           "steps": [
-            "As dan King tidak mungkin sekaligus: saling lepas.",
-            "P = 4/52 + 4/52 = 8/52 = 2/13."
+            "Kartu bergambar 12, kartu hati 13, kartu bergambar hati 3: tidak saling lepas.",
+            "P = (12 + 13 − 3)/52 = 22/52 = 11/26."
           ],
-          "answer": "2/13"
+          "answer": "11/26"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 3",
+          "question": "<p>Peluang penembak A mengenai sasaran 0,9 dan penembak B 0,6, saling bebas. Tentukan peluang keduanya kena dan peluang minimal satu kena.</p>",
+          "steps": [
+            "Keduanya: 0,9 × 0,6 = 0,54.",
+            "Minimal satu = 1 − P(keduanya meleset) = 1 − 0,1 × 0,4 = 0,96."
+          ],
+          "answer": "0,54 dan 0,96"
         },
         {
           "type": "check",
-          "question": "Tiga koin dilempar 240 kali. Frekuensi harapan muncul tepat dua angka adalah ....",
+          "question": "Peluang tim A menang 0,6 dan tim B (pertandingan lain) menang 0,5. Peluang keduanya menang adalah ....",
           "options": {
-            "A": "60",
-            "B": "80",
-            "C": "90",
-            "D": "120"
+            "A": "0,3",
+            "B": "0,5",
+            "C": "0,55",
+            "D": "1,1"
           },
-          "answer": "C",
-          "hint": "Hitung dahulu P(tepat dua angka) dari 8 titik sampel.",
-          "explanation": "AAG, AGA, GAA: P = 3/8. F<sub>h</sub> = 3/8 × 240 = 90."
+          "answer": "A",
+          "hint": "Pertandingan terpisah dianggap saling bebas.",
+          "explanation": "0,6 × 0,5 = 0,3. 1,1 tidak mungkin karena peluang paling besar 1."
         },
         {
           "type": "check",
-          "question": "Kejadian A dan B saling lepas jika ....",
+          "question": "Dua dadu dilempar 180 kali. Frekuensi harapan muncul jumlah mata 7 adalah ....",
           "options": {
-            "A": "P(A ∩ B) = P(A) × P(B)",
-            "B": "A ∩ B = ∅",
-            "C": "A ∪ B = S",
-            "D": "P(A) = P(B)"
+            "A": "18",
+            "B": "30",
+            "C": "36",
+            "D": "60"
           },
           "answer": "B",
-          "hint": "Saling lepas berarti tidak dapat terjadi bersamaan.",
-          "explanation": "Irisannya kosong. P(A ∩ B) = P(A) × P(B) adalah syarat saling bebas."
+          "explanation": "P(jumlah 7) = 6/36 = 1/6, jadi 180 × 1/6 = 30."
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menjumlahkan peluang kejadian yang tidak saling lepas tanpa mengurangkan irisan.</li><li>Mengalikan peluang pengambilan tanpa pengembalian seolah-olah saling bebas.</li><li>Tertukar antara saling lepas dan saling bebas.</li></ul>"
         }
       ]
     },
@@ -211,11 +232,23 @@
       "id": "konsep-peluang-bersyarat",
       "title": "Peluang Bersyarat: P(A | B) = P(A ∩ B) / P(B)",
       "kind": "simulasi",
-      "duration": "7 menit",
+      "duration": "9 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Informasi Baru Mengubah Peluang",
+          "html": "<p>Peluang hujan besok mungkin 30%. Tetapi jika kamu tahu langit sudah mendung tebal sore ini, peluangnya naik. Informasi tambahan mempersempit kemungkinan dan mengubah peluang. Itulah peluang bersyarat, yang dipakai dalam prakiraan cuaca sampai diagnosis medis.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Jika kita sudah mempunyai informasi sebagian, ruang sampelnya menyempit dan peluang berubah. Peluang B dengan syarat A sudah terjadi ditulis <b>P(B | A)</b>. Buku siswa menyebut situasi berurutan ini “kejadian majemuk saling bebas bersyarat”; secara umum dikenal sebagai <b>peluang bersyarat</b>.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Peluang Bersyarat",
+          "html": "\\[P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{n(A \\cap B)}{n(B)}\\]<p>Ruang sampelnya menyempit menjadi B.</p>"
         },
         {
           "type": "image",
@@ -252,12 +285,25 @@
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Dari 30 siswa, 18 ikut basket, 12 ikut voli, dan 5 ikut keduanya. Seorang siswa anggota basket dipilih acak. Berapa peluang ia juga ikut voli?</p>",
+          "question": "<p>Dari 40 siswa, 22 ikut pramuka, 15 ikut PMR, dan 7 ikut keduanya. Seorang anggota PMR dipilih acak. Berapa peluang ia juga ikut pramuka?</p>",
           "steps": [
-            "Ruang sampel menyempit menjadi 18 anggota basket.",
-            "P(voli | basket) = 5/18."
+            "Ruang sampel menyempit menjadi 15 anggota PMR.",
+            "Yang juga ikut pramuka: 7.",
+            "P(pramuka | PMR) = 7/15."
           ],
-          "answer": "5/18"
+          "answer": "7/15"
+        },
+        {
+          "type": "check",
+          "question": "Dari 50 siswa, 30 suka matematika, dan 12 di antaranya juga suka fisika. Jika dipilih seorang siswa yang suka matematika, peluang ia juga suka fisika adalah ....",
+          "options": {
+            "A": "12/50",
+            "B": "12/30",
+            "C": "30/50",
+            "D": "18/30"
+          },
+          "answer": "B",
+          "explanation": "Ruang sampel menyempit menjadi 30 siswa penyuka matematika: 12/30 = 2/5."
         }
       ]
     },
@@ -265,60 +311,68 @@
       "id": "aturan-perkalian-peluang-bersyarat",
       "title": "Aturan Perkalian Peluang Bersyarat: P(A ∩ B) = P(B) · P(A | B)",
       "kind": "latihan",
-      "duration": "4 menit",
+      "duration": "5 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Pengambilan objek berturut-turut TANPA pengembalian; menghitung peluang kartu pertama As dan kartu kedua juga As.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Mengambil Kartu Tanpa Mengembalikan",
+          "html": "<p>Dalam permainan kartu, kartu yang sudah diambil tidak dikembalikan ke tumpukan. Peluang kartu kedua bergantung pada kartu pertama, karena isi tumpukan sudah berubah. Peluang beberapa pengambilan berturut-turut dihitung dengan aturan perkalian peluang bersyarat.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Dari rumus peluang bersyarat diperoleh <b>aturan perkalian</b>: peluang A lalu B terjadi sama dengan peluang A dikali peluang B setelah A terjadi. Jika A dan B saling bebas, \\(P(B \\mid A) = P(B)\\) dan rumusnya kembali menjadi perkalian biasa.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Aturan Perkalian Peluang",
+          "html": "\\[P(A \\cap B) = P(A) \\times P(B \\mid A), \\qquad P(A \\cap B \\cap C) = P(A)\\,P(B \\mid A)\\,P(C \\mid A \\cap B)\\]<p>Untuk pengambilan berturut-turut, setiap faktor dihitung dari isi yang tersisa.</p>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Dua dadu dilempar 360 kali. Berapa frekuensi harapan muncul mata 3 pada dadu pertama dan mata 5 pada dadu kedua?</p>",
+          "question": "<p>Dua kartu diambil berturut-turut tanpa pengembalian dari 52 kartu. Tentukan peluang keduanya As.</p>",
           "steps": [
-            "P = 1/6 × 1/6 = 1/36.",
-            "F<sub>h</sub> = 1/36 × 360 = 10 kali."
+            "P(As pertama) = 4/52.",
+            "Tersisa 3 As dari 51 kartu: P(As kedua | As pertama) = 3/51.",
+            "P = 4/52 × 3/51 = 12/2.652 = 1/221."
           ],
-          "answer": "10 kali"
+          "answer": "1/221"
         },
         {
           "type": "example",
           "title": "Contoh soal 2",
-          "question": "<p>Dua kartu diambil berturut-turut tanpa pengembalian. Tentukan peluang keduanya hati.</p>",
+          "question": "<p>Sebuah dadu dilempar dua kali, dan percobaan itu diulang 432 kali. Berapa frekuensi harapan lemparan pertama genap dan lemparan kedua bermata 6?</p>",
           "steps": [
-            "P(hati pertama) = 13/52.",
-            "Tersisa 12 hati dari 51 kartu: P(hati kedua | hati pertama) = 12/51.",
-            "P = 13/52 × 12/51 = 1/17."
+            "Saling bebas: P = 1/2 × 1/6 = 1/12.",
+            "Frekuensi harapan = 432 × 1/12 = 36."
           ],
-          "answer": "1/17"
+          "answer": "36 kali"
         },
         {
           "type": "check",
-          "question": "Satu kartu diambil dari 52 kartu remi. Peluang terambil kartu hati adalah ....",
+          "question": "Satu kartu diambil dari 52 kartu remi. Peluang terambil kartu bergambar (J, Q, atau K) adalah ....",
           "options": {
-            "A": "1/52",
+            "A": "3/52",
             "B": "1/13",
-            "C": "1/4",
-            "D": "1/2"
+            "C": "3/13",
+            "D": "1/4"
           },
           "answer": "C",
-          "hint": "Ada 13 kartu hati.",
-          "explanation": "13/52 = 1/4."
+          "explanation": "Ada 12 kartu bergambar: 12/52 = 3/13."
         },
         {
           "type": "check",
-          "question": "Kantong berisi 5 merah dan 3 biru. Dua bola diambil berturut-turut tanpa pengembalian. P(merah kedua | merah pertama) adalah ....",
+          "question": "Kantong berisi 7 bola merah dan 3 bola biru. Dua bola diambil berturut-turut tanpa pengembalian. P(merah kedua | merah pertama) adalah ....",
           "options": {
-            "A": "5/8",
-            "B": "4/7",
-            "C": "5/7",
-            "D": "4/8"
+            "A": "7/10",
+            "B": "2/3",
+            "C": "7/9",
+            "D": "6/10"
           },
           "answer": "B",
-          "hint": "Setelah satu merah diambil, berapa bola tersisa?",
-          "explanation": "Tersisa 4 merah dari 7 bola: 4/7."
+          "explanation": "Setelah satu merah terambil, tersisa 6 merah dari 9 bola: 6/9 = 2/3."
         }
       ]
     },
@@ -326,49 +380,103 @@
       "id": "teorema-peluang-total-dan-bayes",
       "title": "Teorema Peluang Total dan Teorema Bayes (Bayesian Probability)",
       "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
+      "duration": "4 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Hasil Tes Positif, Seberapa Pasti Sakit?",
+          "html": "<p>Sebuah tes penyakit mendeteksi 95% orang yang sakit dan hanya keliru positif pada 5% orang sehat. Kedengarannya sangat akurat. Tetapi jika penyakitnya jarang, sebagian besar hasil positif justru berasal dari orang sehat, karena orang sehat jauh lebih banyak. Teorema Bayes menghitung peluang yang sebenarnya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Peluang total</b>: jika ruang sampel terbagi atas kejadian-kejadian \\(B_1, B_2, \\dots\\) yang saling lepas dan menutupi semuanya, maka \\(P(A) = \\sum P(B_i)\\,P(A \\mid B_i)\\). <b>Teorema Bayes</b> membalik arah syaratnya: dari \\(P(A \\mid B_i)\\) yang diketahui, kita hitung \\(P(B_i \\mid A)\\).</p>\\[P(B_i \\mid A) = \\frac{P(B_i)\\,P(A \\mid B_i)}{\\sum_j P(B_j)\\,P(A \\mid B_j)}.\\]"
+        },
+        {
+          "type": "callout",
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Thomas Bayes dan Laplace",
+          "html": "<p>Pendeta dan matematikawan Inggris Thomas Bayes menulis risalah yang dipublikasikan setelah wafatnya pada tahun 1763 (An Essay towards solving a Problem in the Doctrine of Chances). Pierre-Simon Laplace menyempurnakan rumus Teorema Bayes yang memungkinkan kita memperbarui keyakinan probabilitas (posterior probability) setelah mendapatkan informasi bukti baru (evidence).</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/Bayes%27_theorem\">Bayes' theorem, Wikipedia</a></small></p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Mesin A membuat 60% produk dengan 3% cacat, dan mesin B membuat 40% produk dengan 5% cacat. Sebuah produk diambil acak dan ternyata cacat. Berapa peluang produk itu dari mesin A?</p>",
+          "steps": [
+            "Peluang total cacat: 0,6 × 0,03 + 0,4 × 0,05 = 0,018 + 0,020 = 0,038.",
+            "Bayes: P(A | cacat) = 0,018 / 0,038 ≈ 0,47."
+          ],
+          "answer": "sekitar 0,47"
+        },
+        {
+          "type": "check",
+          "question": "Penyakit diderita 2% penduduk. Tesnya positif pada 95% orang sakit dan pada 5% orang sehat. Jika hasil tes seseorang positif, peluang ia sakit sekitar ....",
+          "options": {
+            "A": "95%",
+            "B": "2%",
+            "C": "50%",
+            "D": "28%"
+          },
+          "answer": "D",
+          "explanation": "P(positif) = 0,02 × 0,95 + 0,98 × 0,05 = 0,019 + 0,049 = 0,068. P(sakit | positif) = 0,019 / 0,068 ≈ 0,28."
+        }
+      ]
     },
     {
       "id": "pengantar-distribusi-peluang-binomial",
       "title": "Pengantar Variabel Acak dan Distribusi Peluang Binomial (Percobaan Bernoulli)",
       "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
+      "duration": "3 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Tembakan Bebas Pemain Basket",
+          "html": "<p>Seorang pemain basket memasukkan 70% tembakan bebasnya. Jika ia mendapat 4 tembakan bebas, berapa peluang tepat 3 yang masuk? Setiap tembakan hanya punya dua hasil, masuk atau tidak, dan peluangnya sama setiap kali. Situasi seperti ini diatur oleh distribusi binomial.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p><b>Percobaan Bernoulli</b> hanya punya dua hasil, sukses (peluang p) atau gagal (peluang 1 − p). Jika percobaan itu diulang n kali secara saling bebas, banyak sukses X adalah <b>variabel acak binomial</b>. Untuk tepat k sukses, kita pilih k percobaan yang sukses (C(n, k) cara), dan setiap susunan berpeluang \\(p^k(1 - p)^{n-k}\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Distribusi Binomial",
+          "html": "\\[P(X = k) = \\binom{n}{k} p^k (1 - p)^{n - k}\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Peluang pemain memasukkan tembakan bebas 0,7. Dari 4 tembakan, berapa peluang tepat 3 masuk?</p>",
+          "steps": [
+            "n = 4, k = 3, p = 0,7.",
+            "\\(P = \\binom43 (0{,}7)^3 (0{,}3)^1 = 4 \\times 0{,}343 \\times 0{,}3 \\approx 0{,}412\\)."
+          ],
+          "answer": "sekitar 0,412"
+        },
+        {
+          "type": "check",
+          "question": "Sekeping koin dilempar 5 kali. Peluang muncul tepat 2 angka adalah ....",
+          "options": {
+            "A": "2/5",
+            "B": "1/16",
+            "C": "5/16",
+            "D": "1/4"
+          },
+          "answer": "C",
+          "explanation": "C(5, 2) × (½)⁵ = 10/32 = 5/16."
+        }
+      ]
     },
     {
       "id": "ringkasan-peta-konsep",
       "title": "Rangkuman Bab & Uji Kemahiran Teori Peluang",
       "kind": "latihan",
-      "duration": "4 menit",
+      "duration": "3 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 4 Peluang.</small></p>"
-        },
-        {
-          "type": "callout",
-          "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Hasil Tes Medis 99% Akurat: Mengapa Peluang Pasien Benar-Benar Sakit Justru di Bawah 10%?",
-          "html": "<p>Bayangkan sebuah tes laboratorium untuk mendeteksi penyakit langka memiliki akurasi 99% (hanya 1% salah positif). Jika seorang pasien dites dan hasilnya positif, masyarakat awam menduga pasien itu pasti 99% menderita penyakit tersebut. Namun mengapa para dokter dan ahli statistika tahu bahwa peluang sesungguhnya pasien tersebut benar-benar sakit sering kali di bawah 10%? Paradoks ini dipecahkan oleh Teorema Bayes.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Thomas Bayes dan Pierre-Simon Laplace: Teori Peluang Bersyarat",
-          "html": "<p>Pendeta dan matematikawan Inggris Thomas Bayes menulis risalah yang dipublikasikan setelah wafatnya pada tahun 1763 (An Essay towards solving a Problem in the Doctrine of Chances). Pierre-Simon Laplace menyempurnakan rumus Teorema Bayes yang memungkinkan kita memperbarui keyakinan probabilitas (posterior probability) setelah mendapatkan informasi bukti baru (evidence).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Peluang Bersyarat, Hukum Peluang Total, dan Teorema Bayes",
-          "html": "<ol><li>Peluang Bersyarat (\\(P(A|B)\\)): Peluang terjadinya peristiwa \\(A\\) dengan syarat peristiwa \\(B\\) sudah pasti terjadi lebih dahulu.</li></ol><p>\\[ P(A|B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(B) &gt; 0 \\]</p><ol><li>Hukum Peluang Total: Jika ruang sampel \\(S\\) dipartisi oleh kejadian saling lepas \\(B_1, B_2, \\dots, B_k\\), maka:</li></ol><p>\\[ P(A) = \\sum_{i=1}^k P(B_i) \\times P(A|B_i) \\]</p><ol><li>Teorema Bayes: Membalikkan arah probabilitas kondisi awal dari data yang teramati.</li></ol>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Teorema Bayes dan Distribusi Binomial",
-          "html": "<ol><li>Teorema Bayes:</li></ol><p>\\[ P(B_i|A) = \\frac{P(B_i) \\cdot P(A|B_i)}{\\sum_{j=1}^k P(B_j) \\cdot P(A|B_j)} \\]</p><ol><li>Distribusi Peluang Binomial (\\(n\\) percobaan Bernoulli independen dengan peluang sukses \\(p\\)):</li></ol><p>\\[ P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k} \\]</p>"
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Peluang</td><td>P(A) = n(A)/n(S); P(A<sup>c</sup>) = 1 − P(A)</td></tr><tr><td>Frekuensi harapan</td><td>F<sub>h</sub> = P × n</td></tr><tr><td>“atau”</td><td>P(A) + P(B) − P(A ∩ B); saling lepas: tanpa irisan</td></tr><tr><td>“dan”, saling bebas</td><td>P(A) × P(B)</td></tr><tr><td>“dan”, bersyarat</td><td>P(A) × P(B | A)</td></tr><tr><td>Diambil sekaligus</td><td>gunakan kombinasi untuk n(S) dan n(A)</td></tr></table>"
         },
         {
           "type": "text",
@@ -380,6 +488,10 @@
           "title": "MEGA CHEAT SHEET: MATEMATIKA SMA KELAS 12 LENGKAP",
           "subtitle": "Kompilasi master seluruh bab Matematika Kelas 12: Barisan Lanjut, Matematika Keuangan (Anuitas), Kaidah Pencacahan, Teorema Bayes, dan Distribusi Peluang Binomial.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Distribusi Peluang Acak & Teorema Bayes</h4>\n    <p><b>Peluang Bersyarat & Teorema Bayes:</b></p>\n    \\[ P(A|B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(B_k|A) = \\frac{P(A|B_k)P(B_k)}{\\sum_{i=1}^m P(A|B_i)P(B_i)} \\]\n    <p><b>Variabel Acak Diskrit & Nilai Harapan (Ekspektasi):</b></p>\n    \\[ \\sum P(X = x_i) = 1, \\quad \\mu = E(X) = \\sum x_i \\cdot P(X = x_i) \\]\n    \\[ \\text{Varians}: \\sigma^2 = Var(X) = E(X^2) - [E(X)]^2 \\]\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Distribusi Peluang Binomial</h4>\n    <p>Eksperimen Bernoulli dengan \\(n\\) percobaan independen, peluang sukses \\(p\\), dan peluang gagal \\(q = 1 - p\\):</p>\n    \\[ P(X = k) = \\binom{n}{k} p^k (1 - p)^{n-k} \\]\n    <table class=\"var-table\">\n      <thead><tr><th>Parameter</th><th>Rumus Analitik</th><th>Keterangan</th></tr></thead>\n      <tbody>\n        <tr><td>Nilai Rata-Rata (Mean)</td><td>\\(\\mu = n \\cdot p\\)</td><td>Ekspektasi banyak kejadian sukses</td></tr>\n        <tr><td>Varians</td><td>\\(\\sigma^2 = n \\cdot p \\cdot (1 - p)\\)</td><td>Tingkat sebaran data binomial</td></tr>\n        <tr><td>Simpangan Baku</td><td>\\(\\sigma = \\sqrt{n \\cdot p \\cdot (1 - p)}\\)</td><td>Deviasi standar peluang</td></tr>\n      </tbody>\n    </table>\n  </div>\n  <div class=\"cs-box\">\n    <h4>3. Kaidah Pencacahan & Kombinatorika</h4>\n    \\[ P(n, r) = \\frac{n!}{(n-r)!}, \\quad C(n, r) = \\frac{n!}{r!(n-r)!} \\]\n    \\[ P_{\\text{unsur sama}} = \\frac{n!}{k_1! k_2! \\dots}, \\quad P_{\\text{siklis}} = (n-1)! \\]\n    <p><b>Ekspansi Binomial:</b> \\((a+b)^n = \\sum_{k=0}^n \\binom{n}{k} a^{n-k} b^k\\).</p>\n  </div>\n  <div class=\"cs-box\">\n    <h4>4. Investasi, Pinjaman & Anuitas</h4>\n    \\[ \\text{Bunga Majemuk}: M_t = M_0(1 + i)^t \\]\n    \\[ \\text{Anuitas}: A = \\frac{M \\cdot i}{1 - (1+i)^{-t}} = a_t + b_t \\]\n    \\[ a_t = a_1 (1 + i)^{t-1}, \\quad b_t = S_{t-1} \\cdot i \\]\n    <p><b>Pertumbuhan & Peluruhan Eksponensial:</b></p>\n    \\[ M_t = M_0 (1 \\pm r)^t, \\quad N_t = N_0 \\left(\\frac{1}{2}\\right)^{\\frac{t}{T_{1/2}}} \\]\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/MA/SMK/MAK Kelas XII (Edisi Revisi)</i> (Kemendikbudristek), Bab 4 Peluang.</small></p>"
         },
         {
           "type": "kuis",
