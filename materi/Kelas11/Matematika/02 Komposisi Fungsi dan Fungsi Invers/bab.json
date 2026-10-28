@@ -7,84 +7,136 @@
       "id": "tinjauan-domain-kodomain-range",
       "title": "Tinjauan Ulang Pemetaan: Syarat Aljabar Domain Alami Fungsi",
       "kind": "artikel",
-      "duration": "7 menit",
+      "duration": "4 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<p><b>Tinjauan Ulang Pemetaan: Syarat Aljabar Domain Alami Fungsi</b>: Menentukan domain fungsi pecahan (penyebut ≠ 0) dan fungsi bentuk akar (radikan ≥ 0); uji garis vertikal.</p>"
-        },
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Konversi Mata Uang Bertingkat dan Enkripsi Data",
-          "html": "<p>Saat kamu berbelanja di situs luar negeri, tokomu mengubah Rupiah ke US Dollar via kurs bank, lalu mengenakan biaya pajak pertambahan nilai (PPN 11%). Hasil akhir belanjaanmu adalah keluaran dari dua proses berurutan: proses kedua memproses keluaran dari proses pertama!</p><p>Inilah inti dari <b>Komposisi Fungsi \\((g \\circ f)(x)\\)</b>. Dan ketika kamu membatalkan pesanan, bank melakukan <b>Fungsi Invers \\(f^{-1}(y)\\)</b> untuk mengembalikan uangmu ke bentuk semula.</p>"
+          "title": "Penerapan Konsep di Dunia Nyata: Kalkulator yang Menolak Menghitung",
+          "html": "<p>Ketik 1 ÷ 0 atau akar dari −4 di kalkulator biasa, dan layar menampilkan \"Error\". Kalkulator tidak rusak; ada masukan yang memang tidak punya keluaran bilangan real. Sebelum bekerja dengan fungsi, kita perlu tahu masukan mana yang boleh dipakai: itulah domain.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Fungsi f dari A ke B memasangkan <b>setiap</b> anggota A dengan <b>tepat satu</b> anggota B. A disebut <b>domain</b>, B <b>kodomain</b>, dan himpunan semua hasil f(x) disebut <b>range</b> (daerah hasil). Jika domain tidak disebut, kita memakai <b>domain alami</b>: semua bilangan real yang membuat rumus terdefinisi. Dua syarat yang paling sering muncul: penyebut pecahan tidak boleh nol, dan bilangan di dalam akar kuadrat tidak boleh negatif.</p>"
         },
         {
           "type": "callout",
           "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Dari Relasi Geometri Menuju Notasi Mesin Euler f(x)",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Gottfried Wilhelm Leibniz & Leonhard Euler</span>\n  <span class=\"h-tag\">Tahun: 1692 – 1748 M (Jerman & Swiss)</span>\n  <span class=\"h-tag\">Krisis: Matematika membutuhkan cara formal memetakan hubungan ketergantungan dinamis antar besaran di dunia fisik.</span>\n</div>\n<p>Kata <i>'function'</i> pertama kali dicetuskan oleh <b>Gottfried Wilhelm Leibniz</b> pada tahun 1692 untuk menggambarkan sifat garis singgung kurva geometri. Setengah abad kemudian, matematikawan jenius Swiss <b>Leonhard Euler</b> memformalkan konsep fungsi dalam bukunya <i>Introductio in analysin infinitorum</i> (1748).</p><p>Euler memperkenalkan notasi abadi \\(f(x)\\), menganalogikan fungsi sebagai mesin pengolah: memasukkan input \\(x\\) dari domain dan menghasilkan output unik \\(y\\) pada kodomain.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Mesin Pemetaan Unik, Komposisi Rantai & Operasi Invers",
-          "html": "<p><b>Fungsi (\\(f: A \\to B\\)):</b> Relasi khusus yang memasangkan setiap anggota himpunan domain \\(A\\) tepat satu kali ke anggota kodomain \\(B\\).</p><p><b>Komposisi Fungsi (\\((f \\circ g)(x)\\)):</b> Penggabungan dua fungsi secara berurutan di mana output fungsi dalam \\(g(x)\\) menjadi input fungsi luar \\(f\\): \\((f \\circ g)(x) = f(g(x))\\).</p><p><b>Fungsi Invers (\\(f^{-1}\\)):</b> Fungsi kebalikan yang memetakan kembali nilai kodomain ke nilai domain asalnya, dengan syarat fungsi tersebut bersifat bijektif (satu-satu dan pada).</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "rumus",
-          "title": "Formulasi Utama Komposisi & Invers Fungsi",
-          "html": "<div class=\"fc-display\">\n\\[ (f \\circ g)(x) = f(g(x)), \\qquad (f \\circ g)^{-1}(x) = (g^{-1} \\circ f^{-1})(x), \\qquad f(f^{-1}(x)) = x \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">f(x), g(x)</td><td>Fungsi pemeta input x ke daerah hasil (Range)</td><td class=\"unit\">relasi matematis</td></tr>\n    <tr><td class=\"sym\">(f \\circ g)(x)</td><td>Fungsi komposisi 'f bundaran g'</td><td class=\"unit\">fungsi majemuk</td></tr>\n    <tr><td class=\"sym\">\\(f^{-1}(x)\\)</td><td>Fungsi invers kebalikan dari f</td><td class=\"unit\">fungsi bijektif</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Perhatikan pembalikan urutan pada invers komposisi: \\((f \\circ g)^{-1} = g^{-1} \\circ f^{-1}\\) (seperti membuka sepatu lalu kaus kaki saat melepas pakaian).</small></p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Menentukan domain fungsi pecahan (penyebut ≠ 0) dan fungsi bentuk akar (radikan ≥ 0); uji garis vertikal.</p>"
+          "title": "Kilas Balik Sejarah: Euler dan Notasi f(x)",
+          "html": "<p>Kata \"fungsi\" dipakai Gottfried Leibniz sekitar 1692 untuk besaran yang bergantung pada titik pada kurva. Leonhard Euler kemudian mendefinisikan fungsi sebagai ekspresi yang dibangun dari variabel dan konstanta, dan pada 1734 memperkenalkan notasi f(x) yang kita pakai sampai sekarang. Definisi modern, yaitu aturan yang memasangkan setiap anggota domain dengan tepat satu anggota kodomain, baru dirumuskan pada abad ke-19.</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/History_of_the_function_concept\">History of the function concept, Wikipedia</a></small></p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>f(x) = x + 1 dan g(x) = x² − 4. Tentukan (f · g)(x) dan domain (f/g)(x).</p>",
+          "title": "Contoh soal",
+          "question": "<p>Tentukan domain alami \\(f(x) = \\dfrac{x + 2}{x^2 - 9}\\) dan \\(g(x) = \\sqrt{6 - 2x}\\).</p>",
           "steps": [
-            "(f · g)(x) = (x + 1)(x² − 4) = x³ + x² − 4x − 4.",
-            "(f/g)(x) = (x + 1)/(x² − 4). Penyebut nol saat x = 2 atau x = −2.",
-            "Domain: {x | x ≠ −2, x ≠ 2, x ∈ ℝ}."
+            "f: penyebut \\(x^2 - 9 \\ne 0\\), jadi \\(x \\ne 3\\) dan \\(x \\ne -3\\).",
+            "g: \\(6 - 2x \\ge 0\\), jadi \\(x \\le 3\\)."
           ],
-          "answer": "x³ + x² − 4x − 4; x ≠ ±2"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>f(x) = √x dan g(x) = x − 4. Tentukan domain (f ∘ g)(x).</p>",
-          "steps": [
-            "(f ∘ g)(x) = √(x − 4).",
-            "Syarat akar: x − 4 ≥ 0."
-          ],
-          "answer": "x ≥ 4"
+          "answer": "D_f = {x | x ≠ ±3}; D_g = {x | x ≤ 3}"
         },
         {
           "type": "check",
-          "question": "Jika f(x) = 2x + 3 dan g(x) = x − 1, maka (f − g)(x) = ....",
+          "question": "Domain alami fungsi \\(h(x) = \\dfrac{1}{\\sqrt{x + 4}}\\) adalah ....",
           "options": {
-            "A": "x + 2",
-            "B": "x + 4",
-            "C": "3x + 2",
-            "D": "x + 3"
+            "A": "x ≥ −4",
+            "B": "x > −4",
+            "C": "x ≠ −4",
+            "D": "x > 4"
           },
           "answer": "B",
-          "hint": "Kurangkan seluruh g(x); perhatikan tanda.",
-          "explanation": "(2x + 3) − (x − 1) = 2x + 3 − x + 1 = x + 4."
+          "explanation": "Isi akar harus ≥ 0 dan akar ada di penyebut sehingga tidak boleh nol: x + 4 > 0, jadi x > −4."
         }
       ]
     },
     {
       "id": "operasi-aljabar-fungsi",
       "title": "Operasi Aljabar pada Fungsi: Penjumlahan, Pengurangan, Perkalian, dan Pembagian",
-      "kind": "latihan",
-      "duration": "2 menit",
+      "kind": "artikel",
+      "duration": "3 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Laba Usaha Sablon Kaos",
+          "html": "<p>Pemilik usaha sablon menghitung pendapatan dan biaya sebagai fungsi banyak kaos yang dibuat. Labanya adalah selisih kedua fungsi itu, dan biaya rata-rata per kaos adalah hasil bagi biaya dengan banyak kaos. Menjumlah, mengurangi, mengalikan, dan membagi fungsi adalah operasi sehari-hari dalam bisnis.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Untuk fungsi f dan g, operasinya didefinisikan titik demi titik: \\((f \\pm g)(x) = f(x) \\pm g(x)\\), \\((f \\cdot g)(x) = f(x)\\,g(x)\\), dan \\(\\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{f(x)}{g(x)}\\). Domain hasil operasi adalah <b>irisan</b> domain f dan g; untuk pembagian, ditambah syarat \\(g(x) \\ne 0\\). Syarat domain ditentukan sebelum disederhanakan.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Diketahui \\(f(x) = x^2 - 1\\) dan \\(g(x) = x + 1\\). Tentukan \\((f + g)(x)\\) dan \\(\\left(\\dfrac{f}{g}\\right)(x)\\) beserta domainnya.</p>",
+          "steps": [
+            "\\((f + g)(x) = x^2 - 1 + x + 1 = x^2 + x\\), domain semua bilangan real.",
+            "\\(\\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{x^2 - 1}{x + 1} = \\dfrac{(x - 1)(x + 1)}{x + 1} = x - 1\\).",
+            "Syarat g(x) ≠ 0 tetap berlaku: x ≠ −1, walaupun bentuk sederhananya terdefinisi di −1."
+          ],
+          "answer": "(f + g)(x) = x² + x; (f/g)(x) = x − 1 dengan x ≠ −1"
+        },
+        {
+          "type": "check",
+          "question": "Jika \\(f(x) = 3x - 2\\) dan \\(g(x) = x + 4\\), maka \\((f - g)(x)\\) = ....",
+          "options": {
+            "A": "2x + 2",
+            "B": "2x − 6",
+            "C": "4x + 2",
+            "D": "2x − 2"
+          },
+          "answer": "B",
+          "explanation": "(3x − 2) − (x + 4) = 3x − 2 − x − 4 = 2x − 6. Tanda minus berlaku untuk seluruh g(x)."
+        }
+      ]
+    },
+    {
+      "id": "konsep-komposisi-fungsi",
+      "title": "Konsep Komposisi Fungsi: Mesin Pemroses Berurutan (g ∘ f)(x)",
+      "kind": "simulasi",
+      "duration": "7 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Diskon Bertingkat",
+          "html": "<p>Toko memberi diskon 10% lalu potongan Rp20.000. Untuk barang Rp200.000, urutan itu menghasilkan Rp160.000. Jika potongan Rp20.000 diberikan dulu lalu diskon 10%, hasilnya Rp162.000. Dua proses yang dijalankan berurutan adalah komposisi fungsi, dan urutannya penting.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Sebuah pabrik kertas mengolah kayu dalam dua tahap: mesin pertama mengubah kayu menjadi bubur kertas, mesin kedua mengubah bubur kertas menjadi kertas. Keluaran tahap pertama menjadi masukan tahap kedua. Inilah ide <b>komposisi fungsi</b>.</p>"
+        },
+        {
+          "type": "image",
+          "src": "gambar/alur-komposisi.svg",
+          "alt": "x dipetakan oleh g ke g(x), lalu oleh f ke f(g(x))",
+          "width": 560,
+          "caption": "Pada f ∘ g, fungsi g bekerja lebih dulu."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Komposisi Fungsi",
+          "html": "\\[(f \\circ g)(x) = f(g(x)), \\qquad (g \\circ f)(x) = g(f(x))\\]<p>Pada f ∘ g, fungsi g bekerja lebih dulu. Umumnya \\(f \\circ g \\ne g \\circ f\\).</p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/komposisi.html",
+          "title": "Mesin komposisi fungsi",
+          "height": 540,
+          "caption": "Pilih f dan g, lalu bandingkan (f ∘ g)(x) dan (g ∘ f)(x). Coba f(x) = √x atau 1/(x − 1) untuk melihat masukan yang tidak terdefinisi."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Diketahui \\(f(x) = x + 3\\) dan \\(g(x) = 2x^2\\). Tentukan \\((f \\circ g)(x)\\) dan \\((g \\circ f)(x)\\).</p>",
+          "steps": [
+            "\\((f \\circ g)(x) = f(2x^2) = 2x^2 + 3\\).",
+            "\\((g \\circ f)(x) = g(x + 3) = 2(x + 3)^2 = 2x^2 + 12x + 18\\).",
+            "Hasilnya berbeda: komposisi tidak komutatif."
+          ],
+          "answer": "2x² + 3 dan 2x² + 12x + 18"
+        },
         {
           "type": "check",
           "question": "Jika f(x) = x + 5 dan g(x) = 3x, maka (g ∘ f)(1) = ....",
@@ -97,44 +149,19 @@
           "answer": "B",
           "hint": "Hitung f(1) dahulu, lalu masukkan ke g.",
           "explanation": "f(1) = 6, g(6) = 18. Nilai 8 adalah (f ∘ g)(1)."
-        }
-      ]
-    },
-    {
-      "id": "konsep-komposisi-fungsi",
-      "title": "Konsep Komposisi Fungsi: Mesin Pemroses Berurutan (g ∘ f)(x)",
-      "kind": "simulasi",
-      "duration": "3 menit",
-      "blocks": [
-        {
-          "type": "text",
-          "html": "<p>Sebuah pabrik kertas mengolah kayu dalam dua tahap: mesin pertama mengubah kayu menjadi bubur kertas, mesin kedua mengubah bubur kertas menjadi kertas. Keluaran tahap pertama menjadi masukan tahap kedua. Inilah ide <b>komposisi fungsi</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Memasukkan luaran fungsi f(x) sebagai masukan ke fungsi g; notasi (g ∘ f)(x) = g(f(x)); membedakan (g ∘ f) vs (f ∘ g).</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/komposisi.html",
-          "title": "Mesin komposisi fungsi",
-          "height": 540,
-          "caption": "Pilih f dan g, lalu bandingkan (f ∘ g)(x) dan (g ∘ f)(x). Coba f(x) = √x atau 1/(x − 1) untuk melihat masukan yang tidak terdefinisi."
         },
         {
           "type": "check",
-          "question": "Jika f(x) = (x + 3)/2, maka f⁻¹(5) = ....",
+          "question": "Diketahui \\(f(x) = 2x - 3\\) dan \\(g(x) = x^2 + 1\\). Nilai komposisi \\((g \\circ f)(2)\\) adalah ....",
           "options": {
-            "A": "7",
-            "B": "4",
-            "C": "13",
-            "D": "2,5"
+            "A": "5",
+            "B": "7",
+            "C": "2",
+            "D": "1"
           },
-          "answer": "A",
-          "hint": "Cari x yang membuat f(x) = 5.",
-          "explanation": "(x + 3)/2 = 5 ⇔ x = 7. Jadi f⁻¹(5) = 7. Nilai 4 adalah f(5)."
+          "answer": "C",
+          "hint": "Hitung f(2) terlebih dahulu, lalu masukkan hasilnya ke fungsi g.",
+          "explanation": "f(2) = 2(2) - 3 = 1. Kemudian (g ∘ f)(2) = g(f(2)) = g(1) = 1² + 1 = 2."
         }
       ]
     },
@@ -142,34 +169,40 @@
       "id": "syarat-kelayakan-komposisi",
       "title": "Syarat Kelayakan Komposisi Fungsi: Irisan Range f dan Domain g (Rf ∩ Dg ≠ ∅)",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p>Tidak semua fungsi dapat “dibalik”. Agar setiap keluaran dapat dikembalikan ke tepat satu masukan, fungsinya harus memenuhi syarat tertentu.</p>"
-        },
-        {
-          "type": "text",
-          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Operasi fungsi</td><td>f ± g, f · g, f/g; domain = irisan, g(x) ≠ 0 untuk pembagian</td></tr><tr><td>Komposisi</td><td>(f ∘ g)(x) = f(g(x)); g dahulu; tidak komutatif</td></tr><tr><td>Bijektif</td><td>injektif + surjektif; syarat punya invers</td></tr><tr><td>Invers</td><td>y = f(x) → x dalam y → tukar; grafik dicerminkan terhadap y = x</td></tr><tr><td>Rasional</td><td>(ax + b)/(cx + d) → (−dx + b)/(cx − a)</td></tr><tr><td>Invers komposisi</td><td>(f ∘ g)⁻¹ = g⁻¹ ∘ f⁻¹</td></tr></table>"
-        },
-        {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menghitung f ∘ g dengan f lebih dulu.</li><li>Menganggap f⁻¹(x) sama dengan 1/f(x).</li><li>Lupa membatasi domain sebelum mencari invers fungsi yang tidak satu-satu.</li></ul>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Mesin yang Macet karena Bahan Salah",
+          "html": "<p>Dalam lini produksi, keluaran mesin pertama harus bisa diterima mesin kedua. Jika mesin pertama menghasilkan potongan yang terlalu besar untuk lubang mesin kedua, proses berhenti. Komposisi fungsi punya syarat yang sama: hasil fungsi pertama harus masuk domain fungsi kedua.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Komposisi \\(f \\circ g\\) hanya terdefinisi jika ada hasil g yang termasuk domain f, yaitu \\(R_g \\cap D_f \\ne \\varnothing\\). Domain \\(f \\circ g\\) adalah semua x di domain g yang hasil g(x)-nya termasuk domain f:</p>\\[D_{f \\circ g} = \\{x \\in D_g \\mid g(x) \\in D_f\\}.\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Diketahui \\(f(x) = \\sqrt{x}\\) dan \\(g(x) = 1 - x^2\\). Tentukan domain \\(f \\circ g\\).</p>",
+          "steps": [
+            "\\((f \\circ g)(x) = \\sqrt{1 - x^2}\\).",
+            "Syarat: \\(1 - x^2 \\ge 0\\), yaitu \\(x^2 \\le 1\\).",
+            "Jadi \\(-1 \\le x \\le 1\\)."
+          ],
+          "answer": "−1 ≤ x ≤ 1"
         },
         {
           "type": "check",
-          "question": "Fungsi f: {1, 2, 3} → {a, b, c, d} dengan f(1) = a, f(2) = b, f(3) = c bersifat ....",
+          "question": "Diketahui \\(f(x) = \\dfrac{1}{x - 2}\\) dan \\(g(x) = x + 1\\). Domain \\(f \\circ g\\) adalah ....",
           "options": {
-            "A": "injektif tetapi tidak surjektif",
-            "B": "surjektif tetapi tidak injektif",
-            "C": "bijektif",
-            "D": "bukan fungsi"
+            "A": "x ≠ 2",
+            "B": "x ≠ −1",
+            "C": "semua bilangan real",
+            "D": "x ≠ 1"
           },
-          "answer": "A",
-          "hint": "Apakah d mempunyai pasangan?",
-          "explanation": "Bayangannya berbeda-beda (injektif), tetapi d tidak mempunyai pasangan (tidak surjektif)."
+          "answer": "D",
+          "explanation": "(f ∘ g)(x) = 1/(x + 1 − 2) = 1/(x − 1), jadi x ≠ 1."
         }
       ]
     },
@@ -177,8 +210,41 @@
       "id": "sifat-komposisi-tiga-fungsi",
       "title": "Sifat-Sifat Komposisi Fungsi: Asosiatif dan Elemen Identitas I(x) = x",
       "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
+      "duration": "3 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Tiga Tahap Produksi",
+          "html": "<p>Sebuah pabrik roti punya tiga tahap: mengaduk, memanggang, mengemas. Manajer bisa memandang \"mengaduk lalu memanggang\" sebagai satu paket, atau \"memanggang lalu mengemas\" sebagai satu paket; hasil akhirnya sama selama urutannya tetap. Sifat ini dalam matematika disebut asosiatif.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Sifat-sifat komposisi fungsi:</p><ul><li><b>Tidak komutatif</b>: umumnya \\(f \\circ g \\ne g \\circ f\\).</li><li><b>Asosiatif</b>: \\((f \\circ g) \\circ h = f \\circ (g \\circ h)\\), sehingga cukup ditulis \\(f \\circ g \\circ h\\); h bekerja pertama, f terakhir.</li><li><b>Fungsi identitas</b> \\(I(x) = x\\) tidak mengubah apa pun: \\(f \\circ I = I \\circ f = f\\).</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Diketahui \\(f(x) = x + 1\\), \\(g(x) = 2x\\), dan \\(h(x) = x^2\\). Tentukan \\((f \\circ g \\circ h)(x)\\) dan nilainya untuk x = 3.</p>",
+          "steps": [
+            "h bekerja pertama: \\(h(x) = x^2\\); lalu g: \\(2x^2\\); lalu f: \\(2x^2 + 1\\).",
+            "\\((f \\circ g \\circ h)(3) = 2 \\times 9 + 1 = 19\\)."
+          ],
+          "answer": "2x² + 1; nilainya 19"
+        },
+        {
+          "type": "check",
+          "question": "Untuk fungsi identitas I(x) = x dan sembarang fungsi f, komposisi \\((f \\circ I)(x)\\) sama dengan ....",
+          "options": {
+            "A": "f(x)",
+            "B": "x",
+            "C": "1",
+            "D": "f(x) · x"
+          },
+          "answer": "A",
+          "explanation": "(f ∘ I)(x) = f(I(x)) = f(x)."
+        }
+      ]
     },
     {
       "id": "menentukan-komponen-fungsi",
@@ -187,29 +253,37 @@
       "duration": "4 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Menentukan fungsi yang belum diketahui"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Mencari Langkah yang Hilang",
+          "html": "<p>Kamu tahu harga akhir sebuah barang setelah dua tahap perhitungan dan tahu rumus tahap kedua. Berapa rumus tahap pertama? Masalah \"bekerja mundur\" seperti ini muncul saat mencari fungsi komponen dari fungsi komposisi yang sudah diketahui.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "tips",
+          "title": "Trik substitusi",
+          "html": "<p>Jika yang diketahui fungsi dalam g, tulis u = g(x), nyatakan x dalam u, lalu substitusikan. Jika yang diketahui fungsi luar f, tulis f(g(x)) dan selesaikan g(x) seperti persamaan.</p>"
         },
         {
           "type": "example",
-          "title": "Contoh soal 1 (fungsi luar diketahui)",
-          "question": "<p>f(x) = x + 2 dan (f ∘ g)(x) = 3x − 1. Tentukan g(x).</p>",
+          "title": "Contoh soal 1",
+          "question": "<p>Diketahui \\(f(x) = 3x + 1\\) dan \\((f \\circ g)(x) = 6x - 5\\). Tentukan g(x).</p>",
           "steps": [
-            "f(g(x)) = g(x) + 2 = 3x − 1.",
-            "g(x) = 3x − 3."
+            "\\(f(g(x)) = 3g(x) + 1 = 6x - 5\\).",
+            "\\(3g(x) = 6x - 6\\), jadi \\(g(x) = 2x - 2\\)."
           ],
-          "answer": "g(x) = 3x − 3"
+          "answer": "g(x) = 2x − 2"
         },
         {
           "type": "example",
-          "title": "Contoh soal 2 (fungsi dalam diketahui)",
-          "question": "<p>g(x) = 2x + 1 dan (f ∘ g)(x) = 4x² + 4x + 3. Tentukan f(x).</p>",
+          "title": "Contoh soal 2",
+          "question": "<p>Diketahui \\(g(x) = x - 2\\) dan \\((f \\circ g)(x) = x^2 - 4x + 7\\). Tentukan f(x).</p>",
           "steps": [
-            "Misalkan u = 2x + 1, sehingga x = (u − 1)/2.",
-            "f(u) = 4·((u − 1)/2)² + 4·(u − 1)/2 + 3 = (u − 1)² + 2(u − 1) + 3 = u² + 2.",
-            "Jadi f(x) = x² + 2. Periksa: (2x + 1)² + 2 = 4x² + 4x + 3 ✓."
+            "Misalkan \\(u = x - 2\\), sehingga \\(x = u + 2\\).",
+            "\\(f(u) = (u + 2)^2 - 4(u + 2) + 7 = u^2 + 4u + 4 - 4u - 8 + 7 = u^2 + 3\\).",
+            "Jadi \\(f(x) = x^2 + 3\\). Periksa: \\(f(x - 2) = (x - 2)^2 + 3 = x^2 - 4x + 7\\)."
           ],
-          "answer": "f(x) = x² + 2"
+          "answer": "f(x) = x² + 3"
         },
         {
           "type": "check",
@@ -233,8 +307,24 @@
       "duration": "5 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Pesan Rahasia yang Bisa Dibuka",
+          "html": "<p>Aplikasi pesan mengubah teks menjadi kode acak sebelum dikirim, lalu penerima mengubahnya kembali. Agar pesan bisa dibuka, setiap kode harus berasal dari tepat satu teks; jika dua teks berbeda menghasilkan kode yang sama, penerima tidak tahu mana yang dimaksud. Syarat ini adalah syarat fungsi punya invers.</p>"
+        },
+        {
           "type": "text",
           "html": "<p>Fungsi f(x) = 1,8x + 32 mengubah suhu Celsius ke Fahrenheit. Fungsi yang mengembalikan Fahrenheit ke Celsius disebut <b>invers</b> f, ditulis f⁻¹. Jika f(a) = b, maka f⁻¹(b) = a.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Tidak semua fungsi dapat “dibalik”. Agar setiap keluaran dapat dikembalikan ke tepat satu masukan, fungsinya harus memenuhi syarat tertentu.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "definisi",
+          "title": "Definisi Konseptual: Injektif, Surjektif, dan Bijektif",
+          "html": "<p>Fungsi f: A → B disebut <b>injektif</b> (satu-satu) jika anggota A yang berbeda selalu menghasilkan anggota B yang berbeda; <b>surjektif</b> (pada) jika setiap anggota B adalah hasil dari paling sedikit satu anggota A; <b>bijektif</b> jika injektif sekaligus surjektif. Hanya fungsi bijektif yang mempunyai fungsi invers.</p>"
         },
         {
           "type": "image",
@@ -257,27 +347,16 @@
           "caption": "Geser titik A dan perhatikan pasangannya A′. Pilih f(x) = x² − 2 lalu nyalakan uji garis mendatar: mengapa inversnya bukan fungsi? Bandingkan dengan pilihan x ≥ 0."
         },
         {
-          "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Berapa roti minimal yang harus terjual agar kantin untung?</p>",
-          "steps": [
-            "Untung jika P(x) &gt; 0: 900x &gt; 22.000.",
-            "x &gt; 24,4. Karena x bilangan bulat, x ≥ 25."
-          ],
-          "answer": "25 roti"
-        },
-        {
           "type": "check",
-          "question": "Invers fungsi f(x) = 3x − 5 adalah ....",
+          "question": "Fungsi f: {1, 2, 3} → {p, q, r} dengan f(1) = q, f(2) = r, dan f(3) = p bersifat ....",
           "options": {
-            "A": "f⁻¹(x) = (x − 5)/3",
-            "B": "f⁻¹(x) = 3x + 5",
-            "C": "f⁻¹(x) = 1/(3x − 5)",
-            "D": "f⁻¹(x) = (x + 5)/3"
+            "A": "injektif saja",
+            "B": "surjektif saja",
+            "C": "bijektif",
+            "D": "bukan fungsi"
           },
-          "answer": "D",
-          "hint": "Nyatakan x dalam y dari y = 3x − 5.",
-          "explanation": "x = (y + 5)/3, jadi f⁻¹(x) = (x + 5)/3. Ingat, f⁻¹ bukan 1/f."
+          "answer": "C",
+          "explanation": "Setiap anggota kodomain dipasangkan tepat satu kali, jadi f injektif dan surjektif sekaligus, yaitu bijektif."
         }
       ]
     },
@@ -285,24 +364,38 @@
       "id": "langkah-aljabar-menentukan-invers",
       "title": "Langkah Aljabar Menemukan Rumus Fungsi Invers f^-1(x)",
       "kind": "latihan",
-      "duration": "4 menit",
+      "duration": "6 menit",
       "blocks": [
         {
-          "type": "image",
-          "src": "gambar/alur-komposisi.svg",
-          "alt": "x dipetakan oleh g ke g(x), lalu oleh f ke f(g(x))",
-          "width": 560,
-          "caption": "Pada f ∘ g, fungsi g bekerja lebih dulu."
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Menghitung Mundur Tarif Ojek Daring",
+          "html": "<p>Tarif ojek daring dihitung dengan rumus Rp2.500 per km ditambah Rp5.000. Jika tagihanmu Rp30.000, berapa kilometer perjalananmu? Menjawabnya berarti membalik rumus tarif, yaitu mencari fungsi inversnya.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Langkah mencari rumus invers fungsi bijektif \\(y = f(x)\\):</p><ol><li>Tulis \\(y = f(x)\\).</li><li>Nyatakan x dalam y dengan operasi aljabar.</li><li>Ganti x dengan \\(f^{-1}(x)\\) dan y dengan x.</li><li>Periksa: \\(f(f^{-1}(x)) = x\\).</li></ol><p>Grafik \\(y = f^{-1}(x)\\) adalah pencerminan grafik \\(y = f(x)\\) terhadap garis \\(y = x\\).</p>"
         },
         {
           "type": "callout",
-          "variant": "tips",
-          "title": "Trik substitusi",
-          "html": "<p>Jika yang diketahui fungsi dalam g, tulis u = g(x), nyatakan x dalam u, lalu substitusikan. Jika yang diketahui fungsi luar f, tulis f(g(x)) dan selesaikan g(x) seperti persamaan.</p>"
+          "variant": "rumus",
+          "title": "Invers Fungsi Linear dan Pecahan Linear",
+          "html": "\\[f(x) = ax + b \\Rightarrow f^{-1}(x) = \\frac{x - b}{a}, \\qquad f(x) = \\frac{ax + b}{cx + d} \\Rightarrow f^{-1}(x) = \\frac{-dx + b}{cx - a}\\]"
         },
         {
           "type": "example",
-          "title": "Contoh soal",
+          "title": "Contoh soal 1",
+          "question": "<p>Tarif ojek \\(T(k) = 2.500k + 5.000\\) rupiah untuk k kilometer. Tentukan \\(T^{-1}\\) dan jarak untuk tagihan Rp30.000.</p>",
+          "steps": [
+            "\\(y = 2.500k + 5.000\\), jadi \\(k = \\dfrac{y - 5.000}{2.500}\\).",
+            "\\(T^{-1}(x) = \\dfrac{x - 5.000}{2.500}\\).",
+            "\\(T^{-1}(30.000) = \\dfrac{25.000}{2.500} = 10\\) km."
+          ],
+          "answer": "10 km"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
           "question": "<p>Diketahui fungsi \\(f(x) = \\frac{3x + 4}{2x - 5}\\) untuk \\(x \\neq \\frac{5}{2}\\). Tentukan rumus fungsi invers \\(f^{-1}(x)\\)!</p>",
           "steps": [
             "Ubah fungsi ke notasi y: y = \\frac{3x + 4}{2x - 5}.",
@@ -315,18 +408,35 @@
           "answer": "Fungsi inversnya adalah f⁻¹(x) = (5x + 4) / (2x - 3) dengan x ≠ 3/2."
         },
         {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menghitung f ∘ g dengan f lebih dulu.</li><li>Menganggap f⁻¹(x) sama dengan 1/f(x).</li><li>Lupa membatasi domain sebelum mencari invers fungsi yang tidak satu-satu.</li></ul>"
+        },
+        {
           "type": "check",
-          "title": "Cek Pemahaman",
-          "question": "Diketahui \\(f(x) = 2x - 3\\) dan \\(g(x) = x^2 + 1\\). Nilai komposisi \\((g \\circ f)(2)\\) adalah ....",
+          "question": "Jika f(x) = (x + 3)/2, maka f⁻¹(5) = ....",
           "options": {
-            "A": "5",
-            "B": "7",
-            "C": "2",
-            "D": "1"
+            "A": "7",
+            "B": "4",
+            "C": "13",
+            "D": "2,5"
           },
-          "answer": "C",
-          "hint": "Hitung f(2) terlebih dahulu, lalu masukkan hasilnya ke fungsi g.",
-          "explanation": "f(2) = 2(2) - 3 = 1. Kemudian (g ∘ f)(2) = g(f(2)) = g(1) = 1² + 1 = 2."
+          "answer": "A",
+          "hint": "Cari x yang membuat f(x) = 5.",
+          "explanation": "(x + 3)/2 = 5 ⇔ x = 7. Jadi f⁻¹(5) = 7. Nilai 4 adalah f(5)."
+        },
+        {
+          "type": "check",
+          "question": "Invers fungsi \\(f(x) = \\dfrac{x - 4}{5}\\) adalah ....",
+          "options": {
+            "A": "5x − 4",
+            "B": "(x + 4)/5",
+            "C": "x/5 + 4",
+            "D": "5x + 4"
+          },
+          "answer": "D",
+          "explanation": "y = (x − 4)/5 ⇔ x = 5y + 4, jadi f⁻¹(x) = 5x + 4."
         }
       ]
     },
@@ -334,13 +444,40 @@
       "id": "sifat-invers-fungsi-komposisi",
       "title": "Sifat-Sifat Invers Fungsi Komposisi: (f ∘ g)^-1 = g^-1 ∘ f^-1",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
           "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Membuktikan pembalikan urutan invers pada komposisi rantai; hubungan (f^-1)^-1 = f dan f(f^-1(x)) = x.</p>"
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Memakai dan Melepas Kaus Kaki dan Sepatu",
+          "html": "<p>Pagi hari kamu memakai kaus kaki dulu, lalu sepatu. Malam hari urutannya terbalik: lepas sepatu dulu, lalu kaus kaki. Membalik dua proses yang berurutan selalu dimulai dari proses terakhir. Itulah sifat invers dari fungsi komposisi.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Sifat-sifat invers:</p><ul><li>\\((f \\circ g)^{-1} = g^{-1} \\circ f^{-1}\\): urutannya terbalik.</li><li>\\((f^{-1})^{-1} = f\\).</li><li>\\((f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x\\), yaitu fungsi identitas.</li></ul>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Diketahui \\(f(x) = 3x + 1\\) dan \\(g(x) = x - 2\\). Tentukan \\((f \\circ g)^{-1}(x)\\) dengan dua cara.</p>",
+          "steps": [
+            "Cara 1: \\((f \\circ g)(x) = 3(x - 2) + 1 = 3x - 5\\), inversnya \\(\\dfrac{x + 5}{3}\\).",
+            "Cara 2: \\(f^{-1}(x) = \\dfrac{x - 1}{3}\\) dan \\(g^{-1}(x) = x + 2\\), sehingga \\(g^{-1}(f^{-1}(x)) = \\dfrac{x - 1}{3} + 2 = \\dfrac{x + 5}{3}\\).",
+            "Kedua cara memberi hasil yang sama."
+          ],
+          "answer": "(x + 5)/3"
+        },
+        {
+          "type": "check",
+          "question": "Diketahui \\(f(x) = 2x\\) dan \\(g(x) = x + 3\\). Nilai \\((f \\circ g)^{-1}(10)\\) adalah ....",
+          "options": {
+            "A": "2",
+            "B": "26",
+            "C": "8",
+            "D": "6,5"
+          },
+          "answer": "A",
+          "explanation": "(f ∘ g)(x) = 2x + 6. Cari x dengan 2x + 6 = 10, yaitu x = 2."
         }
       ]
     },
@@ -348,17 +485,40 @@
       "id": "pemodelan-kontekstual-fungsi",
       "title": "Pemodelan Masalah Nyata: Menggabungkan Dua Proses Produksi dan Konversi Mata Uang",
       "kind": "artikel",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
-          "type": "text",
-          "html": "<p>Pemilik kantin menjual roti seharga Rp4.800,00 per buah. Roti dipesan seharga Rp3.900,00 per buah ditambah ongkos antar Rp22.000,00. Untuk x roti, penjualan R(x) = 4.800x dan biaya C(x) = 3.900x + 22.000. Keuntungannya adalah <b>selisih dua fungsi</b>:</p>\\[P(x) = R(x) - C(x) = 900x - 22.000\\]"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Belanja dari Toko Luar Negeri",
+          "html": "<p>Saat kamu berbelanja di situs luar negeri, tokomu mengubah Rupiah ke US Dollar via kurs bank, lalu mengenakan biaya pajak pertambahan nilai (PPN 11%). Hasil akhir belanjaanmu adalah keluaran dari dua proses berurutan: proses kedua memproses keluaran dari proses pertama!</p><p>Inilah inti dari <b>Komposisi Fungsi \\((g \\circ f)(x)\\)</b>. Dan ketika kamu membatalkan pesanan, bank melakukan <b>Fungsi Invers \\(f^{-1}(y)\\)</b> untuk mengembalikan uangmu ke bentuk semula.</p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Komposisi diskon bertingkat toko retail; konversi mata uang berseri; invers fungsi perhitungan pajak.</p>"
+          "type": "text",
+          "html": "<p>Banyak perhitungan nyata adalah rangkaian fungsi. Belanja dari toko luar negeri misalnya: harga dalam dolar AS dikonversi ke rupiah, lalu ditambah pajak dan ongkos kirim. Menulis setiap tahap sebagai fungsi lalu mengomposisikannya membuat perhitungan untuk barang mana pun menjadi cepat, dan inversnya menjawab pertanyaan sebaliknya: berapa harga barang yang masih terjangkau dengan anggaran tertentu.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Kurs 1 dolar AS = Rp16.000, jadi \\(r(x) = 16.000x\\). Total biaya setelah pajak 10% dan ongkos kirim Rp50.000 adalah \\(p(r) = 1{,}1r + 50.000\\). Tentukan \\((p \\circ r)(x)\\), total untuk barang 20 dolar AS, dan harga barang jika totalnya Rp578.000.</p>",
+          "steps": [
+            "\\((p \\circ r)(x) = 1{,}1 \\times 16.000x + 50.000 = 17.600x + 50.000\\).",
+            "Untuk x = 20: 352.000 + 50.000 = Rp402.000.",
+            "Invers: \\(x = \\dfrac{578.000 - 50.000}{17.600} = 30\\) dolar AS."
+          ],
+          "answer": "17.600x + 50.000; Rp402.000; 30 dolar AS"
+        },
+        {
+          "type": "check",
+          "question": "Barang seharga Rp200.000 mendapat diskon 10%, lalu potongan Rp20.000. Harga akhirnya adalah ....",
+          "options": {
+            "A": "Rp162.000",
+            "B": "Rp170.000",
+            "C": "Rp158.000",
+            "D": "Rp160.000"
+          },
+          "answer": "D",
+          "explanation": "Diskon dulu: 200.000 × 0,9 = 180.000, lalu dikurangi 20.000 menjadi 160.000. Jika urutannya dibalik, hasilnya 162.000."
         }
       ]
     },
@@ -366,26 +526,15 @@
       "id": "ringkasan-peta-konsep",
       "title": "Rangkuman Bab & Uji Kemahiran Fungsi",
       "kind": "latihan",
-      "duration": "9 menit",
+      "duration": "5 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas XI</i> (Kemendikbudristek), Bab 2 Komposisi Fungsi dan Fungsi Invers.</small></p>"
+          "html": "<table><tr><th>Konsep</th><th>Inti</th></tr><tr><td>Operasi fungsi</td><td>f ± g, f · g, f/g; domain = irisan, g(x) ≠ 0 untuk pembagian</td></tr><tr><td>Komposisi</td><td>(f ∘ g)(x) = f(g(x)); g dahulu; tidak komutatif</td></tr><tr><td>Bijektif</td><td>injektif + surjektif; syarat punya invers</td></tr><tr><td>Invers</td><td>y = f(x) → x dalam y → tukar; grafik dicerminkan terhadap y = x</td></tr><tr><td>Rasional</td><td>(ax + b)/(cx + d) → (−dx + b)/(cx − a)</td></tr><tr><td>Invers komposisi</td><td>(f ∘ g)⁻¹ = g⁻¹ ∘ f⁻¹</td></tr></table>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>f(x) = 2x + 3 dan g(x) = x². Tentukan (f ∘ g)(x), (g ∘ f)(x), dan (f ∘ g)(2).</p>",
-          "steps": [
-            "(f ∘ g)(x) = f(x²) = 2x² + 3.",
-            "(g ∘ f)(x) = g(2x + 3) = (2x + 3)² = 4x² + 12x + 9.",
-            "(f ∘ g)(2) = 2(4) + 3 = 11."
-          ],
-          "answer": "2x² + 3; 4x² + 12x + 9; 11"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
           "question": "<p>Tentukan invers f(x) = 1,8x + 32.</p>",
           "steps": [
             "y = 1,8x + 32, sehingga x = (y − 32)/1,8.",
@@ -396,7 +545,7 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 3",
+          "title": "Contoh soal 2",
           "question": "<p>Tentukan invers f(x) = x² − 2 dengan domain x ≥ 0.</p>",
           "steps": [
             "y = x² − 2, sehingga x² = y + 2.",
@@ -404,28 +553,6 @@
             "f⁻¹(x) = √(x + 2), dengan x ≥ −2."
           ],
           "answer": "f⁻¹(x) = √(x + 2)"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 4",
-          "question": "<p>Tentukan invers f(x) = (2x + 1)/(x − 3), x ≠ 3.</p>",
-          "steps": [
-            "y(x − 3) = 2x + 1 ⇔ xy − 3y = 2x + 1 ⇔ x(y − 2) = 3y + 1.",
-            "x = (3y + 1)/(y − 2).",
-            "f⁻¹(x) = (3x + 1)/(x − 2), x ≠ 2."
-          ],
-          "answer": "(3x + 1)/(x − 2)"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 5",
-          "question": "<p>f(x) = 2x − 1 dan g(x) = x + 4. Tentukan (f ∘ g)⁻¹(x).</p>",
-          "steps": [
-            "(f ∘ g)(x) = 2(x + 4) − 1 = 2x + 7.",
-            "Inversnya (x − 7)/2.",
-            "Cek dengan g⁻¹ ∘ f⁻¹: f⁻¹(x) = (x + 1)/2, g⁻¹(x) = x − 4, sehingga (x + 1)/2 − 4 = (x − 7)/2 ✓."
-          ],
-          "answer": "(x − 7)/2"
         },
         {
           "type": "text",
@@ -437,6 +564,10 @@
           "title": "Cheat Sheet: Operasi Aljabar, Komposisi & Invers Fungsi",
           "subtitle": "Syarat domain komposisi fungsi, sifat non-komutatif, invers fungsi aljabar, dan trik rumus cepat.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Komposisi Fungsi & Syarat Keberadaan</h4>\n    \\[ (f \\circ g)(x) = f(g(x)), \\quad (g \\circ f)(x) = g(f(x)) \\]\n    <ul>\n      <li>Syarat agar \\((f \\circ g)(x)\\) terdefinisi: Irisan daerah hasil \\(g\\) dengan daerah asal \\(f\\) tidak boleh kosong (\\(R_g \\cap D_f \\ne \\emptyset\\)).</li>\n      <li><b>Sifat:</b>\n        <ul>\n          <li>Tidak komutatif: \\(f \\circ g \\ne g \\circ f\\)</li>\n          <li>Asosiatif: \\((f \\circ g) \\circ h = f \\circ (g \\circ h)\\)</li>\n          <li>Fungsi Identitas: \\(f \\circ I = I \\circ f = f\\)</li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Fungsi Invers & Rumus Cepat Aljabar</h4>\n    <p>Suatu fungsi memiliki invers \\(f^{-1}\\) jika dan hanya jika fungsi tersebut <b>bijektif (korespondensi satu-satu)</b>.</p>\n    \\[ (f \\circ f^{-1})(x) = (f^{-1} \\circ f)(x) = x, \\quad (f \\circ g)^{-1}(x) = (g^{-1} \\circ f^{-1})(x) \\]\n    <table class=\"var-table\">\n      <thead><tr><th>Bentuk Asal \\(f(x)\\)</th><th>Invers Cepat \\(f^{-1}(x)\\)</th><th>Syarat</th></tr></thead>\n      <tbody>\n        <tr><td>\\(ax + b\\)</td><td>\\(\\frac{x - b}{a}\\)</td><td>\\(a \\ne 0\\)</td></tr>\n        <tr><td>\\(\\frac{ax + b}{cx + d}\\)</td><td>\\(\\frac{-dx + b}{cx - a}\\)</td><td>\\(x \\ne \\frac{a}{c}\\)</td></tr>\n        <tr><td>\\(ax^2 + bx + c\\)</td><td>\\(-\\frac{b}{2a} \\pm \\sqrt{\\frac{x - y_p}{a}}\\)</td><td>Dibatasi pada domain monotan</td></tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Matematika untuk SMA/SMK Kelas XI</i> (Kemendikbudristek), Bab 2 Komposisi Fungsi dan Fungsi Invers.</small></p>"
         },
         {
           "type": "kuis",
