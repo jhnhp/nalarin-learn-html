@@ -10,8 +10,14 @@
       "duration": "7 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Aplikasi Lari di Ponsel",
+          "html": "<p>Aplikasi lari mencatat posisimu setiap detik lewat GPS. Dari deretan posisi itu ia menghitung jarak yang kamu tempuh, perpindahan dari titik start, dan kecepatan rata-rata. Semua hitungan itu memakai vektor posisi dan selisihnya.</p>"
+        },
+        {
           "type": "text",
-          "html": "<p><b>Vektor Posisi r(t), Perpindahan Δr, dan Kecepatan Rata-Rata</b>: Notasi r(t) = x(t)i + y(t)j; perpindahan sebagai selisih posisi; kecepatan rata-rata v_avg = Δr / Δt.</p>"
+          "html": "<p>Posisi benda pada bidang dinyatakan dengan <b>vektor posisi</b> \\(\\vec r = x\\,\\mathbf{i} + y\\,\\mathbf{j}\\), diukur dari titik acuan. Jika posisi berubah dari \\(\\vec r_1\\) ke \\(\\vec r_2\\), <b>perpindahannya</b> \\(\\Delta\\vec r = \\vec r_2 - \\vec r_1\\). Perpindahan hanya bergantung pada posisi awal dan akhir, tidak pada lintasannya.</p>"
         },
         {
           "type": "text",
@@ -23,6 +29,12 @@
           "alt": "Lintasan 6 m timur, 8 m utara, 6 m barat: jarak 20 m, perpindahan 8 m utara",
           "width": 640,
           "caption": "Jarak dan perpindahan."
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kecepatan Rata-Rata dan Kelajuan Rata-Rata",
+          "html": "\\[\\vec v_{\\text{rata}} = \\frac{\\Delta\\vec r}{\\Delta t}, \\qquad v_{\\text{kelajuan rata}} = \\frac{\\text{jarak}}{\\Delta t}\\]<p>Kecepatan rata-rata adalah vektor, searah perpindahan; kelajuan rata-rata adalah skalar.</p>"
         },
         {
           "type": "example",
@@ -48,22 +60,26 @@
         {
           "type": "example",
           "title": "Contoh soal 3",
-          "question": "<p>Bus melaju 60 km/jam ke barat, motor 45 km/jam ke barat. Berapa kecepatan motor menurut sopir bus? Bagaimana jika motor melaju 45 km/jam ke timur?</p>",
+          "question": "<p>Sebuah drone berpindah dari posisi \\((2\\mathbf{i} + \\mathbf{j})\\) m ke \\((8\\mathbf{i} + 9\\mathbf{j})\\) m dalam 2 s. Tentukan perpindahan dan besar kecepatan rata-ratanya.</p>",
           "steps": [
-            "Pilih barat positif. \\(v_{MB} = v_{MT} - v_{BT} = 45 - 60 = -15\\) km/jam → 15 km/jam ke timur (motor tampak mundur).",
-            "Jika motor ke timur: \\(v_{MB} = -45 - 60 = -105\\) km/jam → 105 km/jam ke timur."
+            "\\(\\Delta\\vec r = (8 - 2)\\mathbf{i} + (9 - 1)\\mathbf{j} = 6\\mathbf{i} + 8\\mathbf{j}\\) m.",
+            "\\(|\\Delta\\vec r| = \\sqrt{36 + 64} = 10\\) m.",
+            "\\(v_{\\text{rata}} = 10 / 2 = 5\\) m/s."
           ],
-          "answer": "15 km/jam ke timur; 105 km/jam ke timur"
+          "answer": "Δr = 6i + 8j m; kecepatan rata-rata 5 m/s"
         },
         {
-          "type": "example",
-          "title": "Contoh soal 4",
-          "question": "<p>Kipas berputar 300 rpm. Tentukan frekuensi, periode, dan kecepatan sudutnya.</p>",
-          "steps": [
-            "f = 300/60 = 5 Hz; T = 0,2 s.",
-            "ω = 2π × 5 = 10π rad/s."
-          ],
-          "answer": "5 Hz; 0,2 s; 10π rad/s"
+          "type": "check",
+          "question": "Seorang pelari menempuh tepat dua putaran lintasan 400 m. Perpindahannya adalah ....",
+          "options": {
+            "A": "800 m",
+            "B": "400 m",
+            "C": "0 m",
+            "D": "200 m"
+          },
+          "answer": "C",
+          "hint": "Posisi akhir sama dengan posisi awal.",
+          "explanation": "Kembali ke titik awal sehingga perpindahan nol, walaupun jaraknya 800 m."
         }
       ]
     },
@@ -74,9 +90,77 @@
       "duration": "6 menit",
       "blocks": [
         {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Tilang Kecepatan Rata-Rata di Jalan Tol",
+          "html": "<p>Beberapa jalan tol memasang dua kamera berjarak beberapa kilometer. Pengemudi yang mengerem tepat di depan kamera tetap tertangkap, karena sistem menghitung kecepatan rata-rata di antara kedua kamera. Speedometer di mobil, sebaliknya, menunjukkan kecepatan sesaat. Keduanya bisa sangat berbeda.</p>"
+        },
+        {
           "type": "text",
           "html": "<p><b>Kecepatan sesaat</b> adalah kecepatan pada satu saat tertentu, seperti yang ditunjukkan speedometer atau radar polisi. Jika percepatan <b>searah</b> kecepatan, benda makin cepat; jika <b>berlawanan arah</b>, benda makin lambat (diperlambat). Kelajuan bisa tetap sementara kecepatan berubah, misalnya ketika arah gerak berubah di tikungan.</p>"
         },
+        {
+          "type": "text",
+          "html": "<p>Kecepatan sesaat adalah kecepatan rata-rata untuk selang waktu yang sangat kecil. Pada grafik x–t, kecepatan rata-rata adalah kemiringan garis yang menghubungkan dua titik; makin dekat kedua titik, garis itu makin menjadi garis singgung. Jadi <b>kecepatan sesaat sama dengan kemiringan garis singgung grafik x–t</b> pada saat itu.</p><p>Percepatan rata-rata adalah perubahan kecepatan dibagi selang waktunya: \\(\\vec a = \\dfrac{\\Delta\\vec v}{\\Delta t}\\). Satuannya m/s².</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Mobil yang melaju 25 m/s ke utara direm hingga 15 m/s dalam 4 s. Tentukan percepatannya.</p>",
+          "steps": [
+            "\\(a = \\dfrac{15 - 25}{4} = -2{,}5\\ \\text{m/s}^2\\).",
+            "Tanda negatif: percepatan ke selatan, berlawanan dengan gerak."
+          ],
+          "answer": "2,5 m/s² ke selatan (diperlambat)"
+        },
+        {
+          "type": "check",
+          "question": "Kecepatan sebuah mobil bertambah dari 10 m/s menjadi 22 m/s dalam 4 s. Percepatan rata-ratanya adalah ....",
+          "options": {
+            "A": "3 m/s²",
+            "B": "8 m/s²",
+            "C": "5,5 m/s²",
+            "D": "12 m/s²"
+          },
+          "answer": "A",
+          "explanation": "a = (22 − 10)/4 = 3 m/s². Nilai 12 adalah perubahan kecepatannya, bukan percepatan."
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Pengayaan: kecepatan sebagai turunan",
+          "html": "<p>Bagian ini untuk kamu yang sudah belajar turunan di Matematika. Kecepatan sesaat adalah turunan posisi terhadap waktu, dan percepatan adalah turunan kecepatan:</p>\\[\\vec v = \\frac{d\\vec r}{dt}, \\qquad \\vec a = \\frac{d\\vec v}{dt}.\\]<p>Sebaliknya, kecepatan diperoleh dari integral percepatan ditambah kecepatan awal.</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh pengayaan",
+          "question": "<p>Posisi benda \\(x(t) = 2t^3 - 3t^2 + 4\\) (meter, t dalam sekon). Tentukan kecepatan dan percepatannya pada t = 2 s.</p>",
+          "steps": [
+            "\\(v = \\dfrac{dx}{dt} = 6t^2 - 6t\\), jadi \\(v(2) = 24 - 12 = 12\\) m/s.",
+            "\\(a = \\dfrac{dv}{dt} = 12t - 6\\), jadi \\(a(2) = 18\\) m/s²."
+          ],
+          "answer": "v = 12 m/s; a = 18 m/s²"
+        },
+        {
+          "type": "check",
+          "question": "Bola dilempar vertikal ke atas. Selama bola masih naik, arah percepatannya ....",
+          "options": {
+            "A": "ke atas",
+            "B": "nol",
+            "C": "ke bawah",
+            "D": "berubah-ubah"
+          },
+          "answer": "C",
+          "explanation": "Percepatan gravitasi selalu ke bawah. Saat naik, percepatan berlawanan arah kecepatan sehingga bola makin lambat."
+        }
+      ]
+    },
+    {
+      "id": "gerak-lurus-dan-grafik",
+      "title": "GLB dan GLBB: Analisis Grafik Posisi, Kecepatan, dan Percepatan",
+      "kind": "simulasi",
+      "duration": "9 menit",
+      "blocks": [
         {
           "type": "callout",
           "variant": "konteks",
@@ -84,16 +168,8 @@
           "html": "<p>Kereta Cepat Whoosh melesat di rel dengan kecepatan fantastis 350 km/jam (hampir 100 meter per detik!). Jika masinis melihat rintangan di rel dan menginjak rem darurat dengan perlambatan konstan, kereta tidak akan berhenti seketika dalam jarak 10 meter.</p><p>Kereta membutuhkan jarak pengereman lebih dari 3 kilometer sebelum roda benar-benar berhenti berputar total! Fenomena perlambatan jarak ini dijelaskan secara pasti oleh hukum <b>Gerak Lurus Berubah Beraturan (GLBB)</b>.</p>"
         },
         {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Eksperimen Bidang Miring Terdilusi Galileo Galilei",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Galileo Galilei</span>\n  <span class=\"h-tag\">Tahun: 1638 M (Pisa & Florence, Italia)</span>\n  <span class=\"h-tag\">Krisis: Dogma Aristoteles selama 2.000 tahun mengklaim benda yang dua kali lebih berat akan jatuh dua kali lebih cepat.</span>\n</div>\n<p>Alih-alih menjatuhkan benda secara vertikal, <b>Galileo Galilei</b> menggelindingkan bola perunggu halus pada papan kayu bidang miring berlapis perkamen licin untuk memperlambat efek gravitasi.</p><p>Galileo mengukur waktu menggunakan jam air tetes. Ia terkejut menemukan hukum alam semesta: jarak tempuh bola berbanding lurus dengan <b>kuadrat selang waktu</b> (\\(s \\propto t^2\\)). Galileo membuktikan bahwa percepatan jatuh bebas di ruang hampa bernilai identik untuk semua benda tanpa memandang massanya!</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: GLB, Kecepatan Sesaat & Percepatan Konstan",
-          "html": "<p><b>Gerak Lurus Beraturan (GLB):</b> Gerak benda pada lintasan lurus dengan kecepatan tetap (percepatan nol, \\(a = 0\\)), sehingga menempuh jarak yang sama pada setiap selang waktu yang sama.</p><p><b>Gerak Lurus Berubah Beraturan (GLBB):</b> Gerak benda pada lintasan lurus dengan nilai <b>percepatan (\\(a\\)) konstan</b>, sehingga kecepatannya bertambah atau berkurang secara teratur setiap detik.</p>"
+          "type": "text",
+          "html": "<p><b>Gerak lurus beraturan</b> (GLB) mempunyai kecepatan tetap: grafik x–t berupa garis lurus miring dan grafik v–t mendatar. <b>Gerak lurus berubah beraturan</b> (GLBB) mempunyai percepatan tetap: grafik v–t berupa garis lurus miring dan grafik x–t melengkung (parabola).</p><p>Dua aturan membaca grafik: <b>kemiringan</b> grafik x–t adalah kecepatan, kemiringan grafik v–t adalah percepatan; <b>luas</b> di bawah grafik v–t adalah perpindahan.</p>"
         },
         {
           "type": "callout",
@@ -102,20 +178,44 @@
           "html": "<div class=\"fc-display\">\n\\[ v_t = v_0 + at, \\qquad s = v_0 t + \\frac{1}{2}at^2, \\qquad v_t^2 = v_0^2 + 2as \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(v_t\\)</td><td>Kecepatan benda pada saat t (kecepatan akhir)</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n    <tr><td class=\"sym\">\\(v_0\\)</td><td>Kecepatan mula-mula benda saat t = 0</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n    <tr><td class=\"sym\"><i>a</i></td><td>Percepatan gerak benda (bernilai negatif jika mengalami perlambatan)</td><td class=\"unit\">\\(\\text{m/s}^2\\)</td></tr>\n    <tr><td class=\"sym\"><i>t</i></td><td>Selang waktu perjalanan gerak</td><td class=\"unit\">\\(\\text{sekon (s)}\\)</td></tr>\n    <tr><td class=\"sym\"><i>s</i></td><td>Perpindahan posisi yang ditempuh benda</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Pada gerak jatuh bebas tanpa kecepatan awal di bawah pengaruh gravitasi \\(g\\): \\(v_0 = 0, a = g\\), sehingga \\(v_t = \\sqrt{2gh}\\) dan \\(h = \\frac{1}{2}gt^2\\).</small></p>"
         },
         {
-          "type": "callout",
-          "variant": "info",
-          "title": "Konsep Esensial",
-          "html": "<p>Kecepatan sebagai turunan posisi v = dr/dt; percepatan sebagai turunan kecepatan a = dv/dt; sebaliknya posisi sebagai integral kecepatan r = ∫ v dt.</p>"
+          "type": "sim",
+          "src": "sim/gerak-lurus.html",
+          "title": "Gerak lurus dan grafiknya",
+          "height": 640,
+          "caption": "Buat GLB (a = 0), lalu GLBB dipercepat dan diperlambat. Perhatikan bentuk grafik x–t dan v–t. Coba juga mode jarak henti."
         },
         {
           "type": "example",
-          "title": "Contoh Soal: Menghitung Jarak Terjauh pada Gerak Parabola",
-          "question": "<p>Sebuah bola ditendang dari permukaan tanah datar dengan kecepatan awal \\(v_0 = 20\\) m/s dan sudut elevasi \\(\\alpha = 45^\\circ\\). Jika percepatan gravitasi bumi \\(g = 10\\) m/s², hitunglah ketinggian maksimum (\\(H_{\\text{max}}\\)) dan jangkauan terjauh (\\(X_{\\text{max}}\\)) yang dicapai bola!</p>",
+          "title": "Contoh soal 1",
+          "question": "<p>Grafik v–t sebuah mobil naik lurus dari 0 ke 10 m/s dalam 5 s, lalu mendatar di 10 m/s selama 5 s berikutnya. Tentukan percepatan pada 5 s pertama dan perpindahan selama 10 s.</p>",
           "steps": [
-            "Hitung ketinggian maksimum: H_max = \\frac{v_0^2 \\sin^2 \\alpha}{2g} = \\frac{20^2 \\times (\\sin 45^\\circ)^2}{2 \\times 10} = \\frac{400 \\times (1/2)}{20} = \\frac{200}{20} = 10 \\text{ meter}.",
-            "Hitung jangkauan mendatar terjauh: X_max = \\frac{v_0^2 \\sin 2\\alpha}{g} = \\frac{20^2 \\times \\sin(2 \\times 45^\\circ)}{10} = \\frac{400 \\times \\sin 90^\\circ}{10} = \\frac{400 \\times 1}{10} = 40 \\text{ meter}."
+            "Percepatan = kemiringan = 10/5 = 2 m/s².",
+            "Perpindahan = luas segitiga + luas persegi panjang = ½ × 5 × 10 + 5 × 10 = 25 + 50 = 75 m."
           ],
-          "answer": "Ketinggian maksimum bola adalah 10 meter dan jangkauan terjauhnya adalah 40 meter."
+          "answer": "2 m/s² dan 75 m"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Pengemudi melaju 25 m/s, waktu reaksinya 0,6 s, lalu mengerem dengan perlambatan 5 m/s². Berapa jarak hentinya?</p>",
+          "steps": [
+            "Jarak reaksi = 25 × 0,6 = 15 m.",
+            "Jarak pengereman = \\(v^2/2a = 625/10 = 62{,}5\\) m."
+          ],
+          "answer": "77,5 m"
+        },
+        {
+          "type": "check",
+          "question": "Pada grafik v–t, luas daerah di bawah grafik menyatakan ....",
+          "options": {
+            "A": "percepatan",
+            "B": "perpindahan",
+            "C": "kecepatan rata-rata",
+            "D": "waktu"
+          },
+          "answer": "B",
+          "hint": "v × t.",
+          "explanation": "Luas = kecepatan × waktu = perpindahan (luas di bawah sumbu t bernilai negatif)."
         },
         {
           "type": "check",
@@ -134,35 +234,16 @@
       ]
     },
     {
-      "id": "gerak-lurus-dan-grafik",
-      "title": "GLB dan GLBB: Analisis Grafik Posisi, Kecepatan, dan Percepatan",
-      "kind": "latihan",
-      "duration": "2 menit",
-      "blocks": [
-        {
-          "type": "check",
-          "question": "Pada grafik v–t, luas daerah di bawah grafik menyatakan ....",
-          "options": {
-            "A": "percepatan",
-            "B": "perpindahan",
-            "C": "kecepatan rata-rata",
-            "D": "waktu"
-          },
-          "answer": "B",
-          "hint": "v × t.",
-          "explanation": "Luas = kecepatan × waktu = perpindahan (luas di bawah sumbu t bernilai negatif)."
-        }
-      ]
-    },
-    {
       "id": "gerak-vertikal-dan-jatuh-bebas",
       "title": "Gerak Vertikal: Gerak Jatuh Bebas, Dilempar ke Atas, dan Ke Bawah",
-      "kind": "simulasi",
-      "duration": "8 menit",
+      "kind": "artikel",
+      "duration": "5 menit",
       "blocks": [
         {
-          "type": "h",
-          "text": "Gerak vertikal"
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Wahana Jatuh Bebas",
+          "html": "<p>Wahana menara jatuh di taman hiburan mengangkat penumpang puluhan meter, lalu melepasnya. Selama beberapa detik penumpang jatuh hampir bebas dengan percepatan sekitar 10 m/s², sebelum rem magnet memperlambatnya. Perancang wahana menghitung tinggi rem dengan persamaan gerak vertikal.</p>"
         },
         {
           "type": "text",
@@ -170,26 +251,19 @@
         },
         {
           "type": "callout",
-          "variant": "awas",
-          "title": "Kesalahan yang sering terjadi",
-          "html": "<ul><li>Menyamakan jarak dengan perpindahan.</li><li>Lupa tanda arah (negatif) pada perlambatan atau gerak vertikal.</li><li>Memakai rumus R = v₀² sin 2θ/g untuk benda yang dilempar dari ketinggian.</li><li>Lupa mengubah km/jam menjadi m/s (bagi 3,6).</li></ul>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/gerak-lurus.html",
-          "title": "Gerak lurus dan grafiknya",
-          "height": 640,
-          "caption": "Buat GLB (a = 0), lalu GLBB dipercepat dan diperlambat. Perhatikan bentuk grafik x–t dan v–t. Coba juga mode jarak henti."
+          "variant": "sejarah",
+          "title": "Kilas Balik Sejarah: Galileo dan Bola di Bidang Miring",
+          "html": "<p>Aristoteles mengajarkan bahwa benda berat jatuh lebih cepat. Galileo Galilei menguji gerak jatuh dengan cara yang lebih mudah diukur: ia menggelindingkan bola pada bidang miring yang landai, sehingga geraknya cukup lambat untuk diukur dengan jam air. Hasilnya, jarak tempuh sebanding dengan kuadrat waktu, tanda bahwa bola mengalami percepatan tetap, berapa pun beratnya. Temuan ini dimuat dalam bukunya <i>Dua Ilmu Pengetahuan Baru</i> (1638).</p><p><small>Sumber: <a href=\"https://en.wikipedia.org/wiki/Two_New_Sciences\">Two New Sciences, Wikipedia</a></small></p>"
         },
         {
           "type": "example",
           "title": "Contoh soal 1",
-          "question": "<p>Mobil yang melaju 25 m/s ke utara direm hingga 15 m/s dalam 4 s. Tentukan percepatannya.</p>",
+          "question": "<p>Bola dilempar vertikal ke atas dengan kecepatan 15 m/s (g = 10 m/s²). Tentukan waktu mencapai puncak dan tinggi maksimumnya.</p>",
           "steps": [
-            "\\(a = \\dfrac{15 - 25}{4} = -2{,}5\\ \\text{m/s}^2\\).",
-            "Tanda negatif: percepatan ke selatan, berlawanan dengan gerak."
+            "Di puncak v = 0: \\(0 = 15 - 10t\\), jadi \\(t = 1{,}5\\) s.",
+            "\\(h = \\dfrac{v_0^2}{2g} = \\dfrac{225}{20} = 11{,}25\\) m."
           ],
-          "answer": "2,5 m/s² ke selatan (diperlambat)"
+          "answer": "1,5 s dan 11,25 m"
         },
         {
           "type": "example",
@@ -202,14 +276,90 @@
           "answer": "t = 5 s"
         },
         {
+          "type": "check",
+          "question": "Batu dijatuhkan dari jembatan dan menyentuh air setelah 3 s (g = 10 m/s²). Tinggi jembatan dari permukaan air adalah ....",
+          "options": {
+            "A": "15 m",
+            "B": "30 m",
+            "C": "45 m",
+            "D": "90 m"
+          },
+          "answer": "C",
+          "explanation": "h = ½gt² = ½ × 10 × 9 = 45 m."
+        }
+      ]
+    },
+    {
+      "id": "gerak-parabola-proyektil",
+      "title": "Gerak Peluru / Parabola (Proyektil): Perpaduan GLB Sumbu-x dan GLBB Sumbu-y",
+      "kind": "simulasi",
+      "duration": "10 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Tembakan Tiga Angka di Bola Basket",
+          "html": "<p>Ketika seorang atlet bola basket melepaskan tembakan <i>three-point</i> dari jarak jauh, bola tidak melayang mendatar lurus. Bola melambung tinggi ke atas membentuk kurva lengkungan mulus sebelum menukik tajam menembus jaring ring basket.</p><p>Di taman hiburan, saat roller coaster meluncur kencang di lintasan lingkaran memutar (looping), mengapa tubuh penumpang tidak jatuh terlempar ke bawah saat posisi kepala terbalik di puncak lingkaran? Keduanya diatur oleh <b>Gerak Dua Dimensi: Parabola dan Gerak Melingkar</b>.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Gerak parabola adalah gabungan dua gerak yang tidak saling memengaruhi: pada sumbu x benda bergerak GLB dengan \\(v_x = v_0\\cos\\theta\\), pada sumbu y benda bergerak GLBB seperti gerak vertikal dengan \\(v_{0y} = v_0\\sin\\theta\\) dan percepatan g ke bawah. Kerjakan kedua sumbu terpisah, lalu hubungkan lewat waktu yang sama.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Formulasi Utama Gerak Parabola & Percepatan Sentripetal",
+          "html": "<div class=\"fc-display\">\n\\[ X_{\\text{maks}} = \\frac{v_0^2 \\sin(2\\alpha)}{g}, \\qquad H_{\\text{maks}} = \\frac{v_0^2 \\sin^2\\alpha}{2g}, \\qquad a_s = \\frac{v^2}{R} = \\omega^2 R \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(X_{\\text{maks}}\\)</td><td>Jarak jangkauan terjauh horizontal proyektil</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(H_{\\text{maks}}\\)</td><td>Ketinggian titik puncak tertinggi yang dicapai proyektil</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(v_0\\)</td><td>Kecepatan awal peluru ditembakkan</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\alpha\\)</td><td>Sudut elevasi penembakan terhadap sumbu horizontal</td><td class=\"unit\">derajat</td></tr>\n    <tr><td class=\"sym\">\\(a_s\\)</td><td>Percepatan sentripetal yang mengarah ke pusat lingkaran</td><td class=\"unit\">\\(\\text{m/s}^2\\)</td></tr>\n    <tr><td class=\"sym\"><i>R</i></td><td>Jari-jari lintasan lingkaran putar</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\omega\\)</td><td>Kecepatan sudut rotasi putaran</td><td class=\"unit\">\\(\\text{rad/s}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jangkauan terjauh gerak parabola di tanah datar selalu dicapai saat sudut elevasi penembakan tepat \\(\\alpha = 45^\\circ\\) karena nilai \\(\\sin(2 \\times 45^\\circ) = \\sin 90^\\circ = 1\\).</small></p>"
+        },
+        {
+          "type": "sim",
+          "src": "sim/parabola.html",
+          "title": "Gerak parabola",
+          "height": 620,
+          "caption": "Bandingkan sudut 30° dan 60° dengan v₀ sama. Lalu nyalakan perbandingan dengan bola yang dijatuhkan: mana yang lebih dulu sampai tanah?"
+        },
+        {
+          "type": "callout",
+          "variant": "info",
+          "title": "Lempar mendatar vs dijatuhkan",
+          "html": "<p>Bola yang dilempar mendatar dan bola yang dijatuhkan dari tinggi sama tiba di tanah <b>bersamaan</b>, karena gerak vertikalnya sama (v₀y = 0). Bola yang dilempar mendatar tiba dengan kelajuan lebih besar karena juga punya vₓ.</p>"
+        },
+        {
           "type": "example",
-          "title": "Contoh soal 3",
+          "title": "Contoh soal 1",
+          "question": "<p>Bola ditendang 20 m/s dengan sudut 37° (sin 37° = 0,6; cos 37° = 0,8). Tentukan tinggi maksimum dan jarak mendatarnya.</p>",
+          "steps": [
+            "\\(v_{0x} = 16\\) m/s, \\(v_{0y} = 12\\) m/s.",
+            "\\(t_{puncak} = 12/10 = 1{,}2\\) s; \\(h_{maks} = 12^2/20 = 7{,}2\\) m.",
+            "Waktu di udara = 2,4 s; R = 16 × 2,4 = 38,4 m."
+          ],
+          "answer": "7,2 m dan 38,4 m"
+        },
+        {
+          "type": "example",
+          "title": "Contoh Soal: Menghitung Jarak Terjauh pada Gerak Parabola",
+          "question": "<p>Sebuah bola ditendang dari permukaan tanah datar dengan kecepatan awal \\(v_0 = 20\\) m/s dan sudut elevasi \\(\\alpha = 45^\\circ\\). Jika percepatan gravitasi bumi \\(g = 10\\) m/s², hitunglah ketinggian maksimum (\\(H_{\\text{max}}\\)) dan jangkauan terjauh (\\(X_{\\text{max}}\\)) yang dicapai bola!</p>",
+          "steps": [
+            "Hitung ketinggian maksimum: H_max = \\frac{v_0^2 \\sin^2 \\alpha}{2g} = \\frac{20^2 \\times (\\sin 45^\\circ)^2}{2 \\times 10} = \\frac{400 \\times (1/2)}{20} = \\frac{200}{20} = 10 \\text{ meter}.",
+            "Hitung jangkauan mendatar terjauh: X_max = \\frac{v_0^2 \\sin 2\\alpha}{g} = \\frac{20^2 \\times \\sin(2 \\times 45^\\circ)}{10} = \\frac{400 \\times \\sin 90^\\circ}{10} = \\frac{400 \\times 1}{10} = 40 \\text{ meter}."
+          ],
+          "answer": "Ketinggian maksimum bola adalah 10 meter dan jangkauan terjauhnya adalah 40 meter."
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
           "question": "<p>Pesawat terbang mendatar 50 m/s pada ketinggian 320 m menjatuhkan paket. Di mana paket harus dilepas agar tepat sasaran?</p>",
           "steps": [
             "Waktu jatuh: \\(320 = 5t^2 \\Rightarrow t = 8\\) s.",
             "Paket ikut bergerak mendatar 50 m/s: x = 50 × 8."
           ],
           "answer": "400 m sebelum sasaran"
+        },
+        {
+          "type": "callout",
+          "variant": "awas",
+          "title": "Kesalahan yang sering terjadi",
+          "html": "<ul><li>Menyamakan jarak dengan perpindahan.</li><li>Lupa tanda arah (negatif) pada perlambatan atau gerak vertikal.</li><li>Memakai rumus R = v₀² sin 2θ/g untuk benda yang dilempar dari ketinggian.</li><li>Lupa mengubah km/jam menjadi m/s (bagi 3,6).</li></ul>"
         },
         {
           "type": "check",
@@ -227,87 +377,54 @@
       ]
     },
     {
-      "id": "gerak-parabola-proyektil",
-      "title": "Gerak Peluru / Parabola (Proyektil): Perpaduan GLB Sumbu-x dan GLBB Sumbu-y",
+      "id": "gerak-melingkar-beraturan",
+      "title": "Gerak Melingkar Beraturan (GMB): Besaran Sudut dan Percepatan Sentripetal",
       "kind": "simulasi",
-      "duration": "9 menit",
+      "duration": "6 menit",
       "blocks": [
-        {
-          "type": "text",
-          "html": "<table><tr><th>Gerak</th><th>Rumus kunci</th></tr><tr><td>Rata-rata</td><td>\\(\\bar v = \\Delta x/\\Delta t\\), \\(a = \\Delta v/\\Delta t\\)</td></tr><tr><td>Relatif</td><td>\\(\\vec v_{AT} = \\vec v_{AB} + \\vec v_{BT}\\)</td></tr><tr><td>GLB</td><td>\\(x = x_0 + vt\\)</td></tr><tr><td>GLBB</td><td>\\(v = v_0 + at\\), \\(x = v_0t + \\tfrac12at^2\\), \\(v^2 = v_0^2 + 2a\\Delta x\\)</td></tr><tr><td>Parabola</td><td>x: GLB; y: GLBB; \\(h_{maks} = v_0^2\\sin^2\\theta/2g\\), \\(R = v_0^2\\sin2\\theta/g\\)</td></tr><tr><td>GMB</td><td>\\(v = \\omega r\\), \\(\\omega = 2\\pi/T\\), \\(a_s = v^2/r\\)</td></tr></table>"
-        },
         {
           "type": "callout",
           "variant": "konteks",
-          "title": "Penerapan Konsep di Dunia Nyata: Tembakan Tiga Angka Bintang Basket dan Sensasi Roller Coaster",
-          "html": "<p>Ketika seorang atlet bola basket melepaskan tembakan <i>three-point</i> dari jarak jauh, bola tidak melayang mendatar lurus. Bola melambung tinggi ke atas membentuk kurva lengkungan mulus sebelum menukik tajam menembus jaring ring basket.</p><p>Di taman hiburan, saat roller coaster meluncur kencang di lintasan lingkaran memutar (looping), mengapa tubuh penumpang tidak jatuh terlempar ke bawah saat posisi kepala terbalik di puncak lingkaran? Keduanya diatur oleh <b>Gerak Dua Dimensi: Parabola dan Gerak Melingkar</b>.</p>"
+          "title": "Penerapan Konsep di Dunia Nyata: Satelit yang Terus Jatuh",
+          "html": "<p>Satelit komunikasi mengelilingi Bumi dengan kelajuan tetap, tetapi arah kecepatannya berubah setiap saat. Perubahan arah itu berarti ada percepatan yang selalu menuju pusat lingkaran. Hal yang sama dialami kabin bianglala dan mobil yang mengitari bundaran.</p>"
         },
         {
-          "type": "callout",
-          "variant": "sejarah",
-          "title": "Kilas Balik Sejarah: Galileo Menyatukan Dua Dimensi Independen",
-          "html": "<div class=\"history-meta\">\n  <span class=\"h-tag\">Tokoh: Galileo Galilei & Christiaan Huygens</span>\n  <span class=\"h-tag\">Tahun: 1638 – 1673 M (Italia & Belanda)</span>\n  <span class=\"h-tag\">Krisis: Para penembak meriam perang abad pertengahan mengira peluru meriam terbang lurus sebelum tiba-tiba jatuh tegak lurus ke bawah seperti batu.</span>\n</div>\n<p>Dalam mahakaryanya <i>Two New Sciences</i> (1638), <b>Galileo Galilei</b> mengumumkan terobosan revolusioner: lintasan peluru meriam adalah perpaduan dua gerak yang saling independen—gerak mendatar berkecepatan tetap (GLB) dan gerak vertikal yang ditarik gravitasi bumi (GLBB).</p><p>Tiga puluh tahun kemudian, fisikawan Belanda <b>Christiaan Huygens</b> dalam bukunya <i>Horologium Oscillatorium</i> (1673) membuktikan secara matematis bahwa benda yang berputar pada lintasan lingkaran terus-menerus ditarik ke pusat lingkaran oleh suatu percepatan yang ia namai <b>Percepatan Sentripetal</b>.</p>"
-        },
-        {
-          "type": "callout",
-          "variant": "definisi",
-          "title": "Definisi Konseptual: Superposisi Ortogonal Gerak Proyektil & Gaya Sentripetal",
-          "html": "<p><b>Gerak Parabola (Proyektil):</b> Gerak lengkung dua dimensi di mana percepatan hanya bekerja pada satu sumbu saja (sumbu vertikal Y akibat gravitasi \\(g\\)), sementara pada sumbu horizontal X percepatannya nol.</p><p><b>Gerak Melingkar Beraturan (GMB):</b> Gerak benda menyusuri lintasan lingkaran dengan kelajuan linier tetap, namun vektor kecepatannya terus berubah arah setiap detik akibat tarikan gaya sentripetal menuju pusat lingkaran.</p>"
+          "type": "text",
+          "html": "<p>Pada <b>gerak melingkar beraturan</b> (GMB), benda menempuh sudut yang sama dalam waktu yang sama. Besaran yang dipakai: <b>periode</b> T (waktu satu putaran), <b>frekuensi</b> f = 1/T, <b>kecepatan sudut</b> ω (rad/s), dan <b>kecepatan linear</b> v yang arahnya menyinggung lingkaran. Satu putaran sama dengan 2π rad.</p><p>Kelajuannya tetap, tetapi arah kecepatannya terus berubah, sehingga ada <b>percepatan sentripetal</b> yang selalu menuju pusat lingkaran.</p>"
         },
         {
           "type": "callout",
           "variant": "rumus",
-          "title": "Formulasi Utama Gerak Parabola & Percepatan Sentripetal",
-          "html": "<div class=\"fc-display\">\n\\[ X_{\\text{maks}} = \\frac{v_0^2 \\sin(2\\alpha)}{g}, \\qquad H_{\\text{maks}} = \\frac{v_0^2 \\sin^2\\alpha}{2g}, \\qquad a_s = \\frac{v^2}{R} = \\omega^2 R \\]\n</div>\n<table class=\"var-table\">\n  <thead><tr><th>Simbol</th><th>Besaran / Keterangan</th><th>Satuan / Domain</th></tr></thead>\n  <tbody>\n    <tr><td class=\"sym\">\\(X_{\\text{maks}}\\)</td><td>Jarak jangkauan terjauh horizontal proyektil</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(H_{\\text{maks}}\\)</td><td>Ketinggian titik puncak tertinggi yang dicapai proyektil</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(v_0\\)</td><td>Kecepatan awal peluru ditembakkan</td><td class=\"unit\">\\(\\text{m/s}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\alpha\\)</td><td>Sudut elevasi penembakan terhadap sumbu horizontal</td><td class=\"unit\">derajat</td></tr>\n    <tr><td class=\"sym\">\\(a_s\\)</td><td>Percepatan sentripetal yang mengarah ke pusat lingkaran</td><td class=\"unit\">\\(\\text{m/s}^2\\)</td></tr>\n    <tr><td class=\"sym\"><i>R</i></td><td>Jari-jari lintasan lingkaran putar</td><td class=\"unit\">\\(\\text{meter (m)}\\)</td></tr>\n    <tr><td class=\"sym\">\\(\\omega\\)</td><td>Kecepatan sudut rotasi putaran</td><td class=\"unit\">\\(\\text{rad/s}\\)</td></tr>\n  </tbody>\n</table>\n<p style=\"margin-top:10px;\"><small><b>Catatan Kunci:</b> Jangkauan terjauh gerak parabola di tanah datar selalu dicapai saat sudut elevasi penembakan tepat \\(\\alpha = 45^\\circ\\) karena nilai \\(\\sin(2 \\times 45^\\circ) = \\sin 90^\\circ = 1\\).</small></p>"
+          "title": "Besaran Gerak Melingkar Beraturan",
+          "html": "\\[\\omega = \\frac{2\\pi}{T} = 2\\pi f, \\qquad v = \\omega r, \\qquad a_s = \\frac{v^2}{r} = \\omega^2 r\\]"
         },
-        {
-          "type": "callout",
-          "variant": "info",
-          "title": "Lempar mendatar vs dijatuhkan",
-          "html": "<p>Bola yang dilempar mendatar dan bola yang dijatuhkan dari tinggi sama tiba di tanah <b>bersamaan</b>, karena gerak vertikalnya sama (v₀y = 0). Bola yang dilempar mendatar tiba dengan kelajuan lebih besar karena juga punya vₓ.</p>"
-        },
-        {
-          "type": "sim",
-          "src": "sim/parabola.html",
-          "title": "Gerak parabola",
-          "height": 620,
-          "caption": "Bandingkan sudut 30° dan 60° dengan v₀ sama. Lalu nyalakan perbandingan dengan bola yang dijatuhkan: mana yang lebih dulu sampai tanah?"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 1",
-          "question": "<p>Pengemudi melaju 25 m/s, waktu reaksinya 0,6 s, lalu mengerem dengan perlambatan 5 m/s². Berapa jarak hentinya?</p>",
-          "steps": [
-            "Jarak reaksi = 25 × 0,6 = 15 m.",
-            "Jarak pengereman = \\(v^2/2a = 625/10 = 62{,}5\\) m."
-          ],
-          "answer": "77,5 m"
-        },
-        {
-          "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Bola ditendang 20 m/s dengan sudut 37° (sin 37° = 0,6; cos 37° = 0,8). Tentukan tinggi maksimum dan jarak mendatarnya.</p>",
-          "steps": [
-            "\\(v_{0x} = 16\\) m/s, \\(v_{0y} = 12\\) m/s.",
-            "\\(t_{puncak} = 12/10 = 1{,}2\\) s; \\(h_{maks} = 12^2/20 = 7{,}2\\) m.",
-            "Waktu di udara = 2,4 s; R = 16 × 2,4 = 38,4 m."
-          ],
-          "answer": "7,2 m dan 38,4 m"
-        }
-      ]
-    },
-    {
-      "id": "gerak-melingkar-beraturan",
-      "title": "Gerak Melingkar Beraturan (GMB): Besaran Sudut dan Percepatan Sentripetal",
-      "kind": "simulasi",
-      "duration": "3 menit",
-      "blocks": [
         {
           "type": "sim",
           "src": "sim/melingkar.html",
           "title": "Gerak melingkar beraturan",
           "height": 480,
           "caption": "Ubah jari-jari dan kelajuan. Ke mana arah v dan aₛ? Apa yang terjadi pada aₛ jika v dijadikan 2 kali?"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Kipas berputar 300 rpm. Tentukan frekuensi, periode, dan kecepatan sudutnya.</p>",
+          "steps": [
+            "f = 300/60 = 5 Hz; T = 0,2 s.",
+            "ω = 2π × 5 = 10π rad/s."
+          ],
+          "answer": "5 Hz; 0,2 s; 10π rad/s"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 2",
+          "question": "<p>Mobil mengitari bundaran berjari-jari 25 m dengan kelajuan 54 km/jam. Hitung ω dan aₛ.</p>",
+          "steps": [
+            "v = 54 km/jam = 15 m/s.",
+            "ω = 15/25 = 0,6 rad/s.",
+            "aₛ = 15²/25 = 9 m/s²."
+          ],
+          "answer": "0,6 rad/s dan 9 m/s²"
         },
         {
           "type": "check",
@@ -328,18 +445,80 @@
       "id": "gerak-melingkar-berubah-beraturan",
       "title": "Gerak Melingkar Berubah Beraturan (GMBB) dan Percepatan Total",
       "kind": "artikel",
-      "duration": "2 menit",
-      "blocks": []
+      "duration": "4 menit",
+      "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Kipas Angin yang Mulai Berputar",
+          "html": "<p>Saat tombol kipas angin ditekan, baling-balingnya tidak langsung berputar kencang. Putarannya bertambah sedikit demi sedikit sampai mencapai kecepatan tetap. Selama tahap itu kipas mengalami gerak melingkar berubah beraturan, mirip GLBB tetapi untuk putaran.</p>"
+        },
+        {
+          "type": "text",
+          "html": "<p>Pada <b>gerak melingkar berubah beraturan</b> (GMBB), kecepatan sudut berubah dengan laju tetap yang disebut <b>percepatan sudut</b> α (rad/s²). Persamaannya sejajar dengan GLBB: ganti x dengan θ, v dengan ω, dan a dengan α.</p><p>Benda pada GMBB mempunyai dua percepatan: <b>percepatan tangensial</b> \\(a_t = \\alpha r\\) yang mengubah kelajuan, dan percepatan sentripetal \\(a_s = \\omega^2 r\\) yang mengubah arah. Keduanya tegak lurus, sehingga percepatan totalnya \\(a = \\sqrt{a_t^2 + a_s^2}\\).</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Persamaan GMBB",
+          "html": "\\[\\omega = \\omega_0 + \\alpha t, \\qquad \\theta = \\omega_0 t + \\tfrac12\\alpha t^2, \\qquad \\omega^2 = \\omega_0^2 + 2\\alpha\\theta\\]"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal",
+          "question": "<p>Kipas berputar dari diam hingga 300 rpm (10π rad/s) dalam 5 s dengan percepatan sudut tetap. Tentukan percepatan sudutnya dan banyak putaran selama 5 s itu.</p>",
+          "steps": [
+            "\\(\\alpha = \\dfrac{10\\pi - 0}{5} = 2\\pi\\) rad/s².",
+            "\\(\\theta = \\tfrac12 \\times 2\\pi \\times 5^2 = 25\\pi\\) rad.",
+            "Banyak putaran = 25π / 2π = 12,5 putaran."
+          ],
+          "answer": "α = 2π rad/s²; 12,5 putaran"
+        },
+        {
+          "type": "check",
+          "question": "Roda berjari-jari 0,5 m berputar dari diam dengan percepatan sudut 4 rad/s². Pada t = 2 s, percepatan total titik di tepi roda sekitar ....",
+          "options": {
+            "A": "2 m/s²",
+            "B": "32 m/s²",
+            "C": "34 m/s²",
+            "D": "32,1 m/s²"
+          },
+          "answer": "D",
+          "explanation": "ω = 4 × 2 = 8 rad/s. a_t = αr = 2 m/s² dan a_s = ω²r = 32 m/s². a = √(4 + 1.024) ≈ 32,1 m/s²."
+        }
+      ]
     },
     {
       "id": "kinematika-relatif-1d-2d",
       "title": "Gerak Relatif: Kecepatan Relatif pada Dua Kerangka Acuan Bergerak",
       "kind": "simulasi",
-      "duration": "9 menit",
+      "duration": "10 menit",
       "blocks": [
+        {
+          "type": "callout",
+          "variant": "konteks",
+          "title": "Penerapan Konsep di Dunia Nyata: Hujan Tampak Miring dari Mobil",
+          "html": "<p>Saat hujan turun tegak lurus, penumpang mobil yang melaju melihat butir hujan jatuh miring ke arah belakang. Hujannya tidak berubah; yang berubah adalah kerangka acuannya. Kecepatan hujan menurut penumpang adalah kecepatan hujan terhadap tanah dikurangi kecepatan mobil.</p>"
+        },
         {
           "type": "text",
           "html": "<p>Benda dikatakan <b>bergerak</b> jika posisinya berubah terhadap suatu <b>kerangka acuan</b> (titik patokan). Gerak bersifat relatif: penumpang kereta diam terhadap kursinya, tetapi bergerak terhadap orang di peron. Kesalahpahaman acuan bisa berbahaya; dua pesawat pernah hampir bertabrakan di landasan karena pilot dan petugas ATC memakai acuan yang berbeda.</p>"
+        },
+        {
+          "type": "callout",
+          "variant": "rumus",
+          "title": "Kecepatan Relatif",
+          "html": "\\[\\vec v_{AB} = \\vec v_{A} - \\vec v_{B}, \\qquad \\vec v_{A,\\text{tanah}} = \\vec v_{AB} + \\vec v_{B,\\text{tanah}}\\]<p>\\(\\vec v_{AB}\\) dibaca \"kecepatan A menurut B\".</p>"
+        },
+        {
+          "type": "example",
+          "title": "Contoh soal 1",
+          "question": "<p>Bus melaju 60 km/jam ke barat, motor 45 km/jam ke barat. Berapa kecepatan motor menurut sopir bus? Bagaimana jika motor melaju 45 km/jam ke timur?</p>",
+          "steps": [
+            "Pilih barat positif. \\(v_{MB} = v_{MT} - v_{BT} = 45 - 60 = -15\\) km/jam → 15 km/jam ke timur (motor tampak mundur).",
+            "Jika motor ke timur: \\(v_{MB} = -45 - 60 = -105\\) km/jam → 105 km/jam ke timur."
+          ],
+          "answer": "15 km/jam ke timur; 105 km/jam ke timur"
         },
         {
           "type": "sim",
@@ -350,7 +529,7 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 1",
+          "title": "Contoh soal 2",
           "question": "<p>Perahu melaju 5 m/s terhadap air, diarahkan tegak lurus tepi sungai selebar 100 m yang berarus 2 m/s. Tentukan kelajuan perahu terhadap tanah, waktu menyeberang, dan pergeserannya.</p>",
           "steps": [
             "\\(v = \\sqrt{5^2 + 2^2} = \\sqrt{29} \\approx 5{,}39\\) m/s.",
@@ -361,17 +540,17 @@
         },
         {
           "type": "example",
-          "title": "Contoh soal 2",
-          "question": "<p>Travelator sepanjang 60 m bergerak 1 m/s. Seseorang berjalan 2 m/s terhadap travelator searah geraknya. Berapa lama ia sampai di ujung?</p>",
+          "title": "Contoh soal 3",
+          "question": "<p>Travelator sepanjang 45 m bergerak 0,5 m/s. Seseorang berjalan 1 m/s terhadap travelator searah geraknya. Berapa lama ia sampai di ujung?</p>",
           "steps": [
-            "Kecepatan terhadap tanah = 2 + 1 = 3 m/s.",
-            "t = 60 / 3."
+            "Kecepatan terhadap tanah = 1 + 0,5 = 1,5 m/s.",
+            "t = 45 / 1,5 = 30 s."
           ],
-          "answer": "20 s"
+          "answer": "30 s"
         },
         {
           "type": "example",
-          "title": "Contoh soal 3",
+          "title": "Contoh soal 4",
           "question": "<p>Dua mobil terpisah 75 km bergerak saling mendekat dengan kecepatan tetap 90 km/jam dan 60 km/jam. Kapan dan di mana mereka bertemu?</p>",
           "steps": [
             "Jarak berkurang 90 + 60 = 150 km setiap jam.",
@@ -382,42 +561,15 @@
         },
         {
           "type": "check",
-          "question": "Seorang pelari menempuh tepat dua putaran lintasan 400 m. Perpindahannya adalah ....",
+          "question": "Mobil A melaju 80 km/jam ke utara dan mobil B 60 km/jam ke utara di jalur yang sama. Kecepatan A menurut pengemudi B adalah ....",
           "options": {
-            "A": "800 m",
-            "B": "400 m",
-            "C": "0 m",
-            "D": "200 m"
-          },
-          "answer": "C",
-          "hint": "Posisi akhir sama dengan posisi awal.",
-          "explanation": "Kembali ke titik awal sehingga perpindahan nol, walaupun jaraknya 800 m."
-        },
-        {
-          "type": "check",
-          "question": "Mobil bergerak ke timur sambil direm. Arah percepatannya ....",
-          "options": {
-            "A": "ke timur",
-            "B": "ke utara",
-            "C": "ke barat",
-            "D": "nol"
-          },
-          "answer": "C",
-          "hint": "Diperlambat = percepatan berlawanan arah gerak.",
-          "explanation": "Kecepatan berkurang, jadi percepatan berlawanan dengan arah gerak (ke barat)."
-        },
-        {
-          "type": "check",
-          "question": "Kereta A melaju 72 km/jam ke timur dan kereta B 54 km/jam ke barat. Kecepatan B relatif terhadap A adalah ....",
-          "options": {
-            "A": "126 km/jam ke barat",
-            "B": "18 km/jam ke barat",
-            "C": "126 km/jam ke timur",
-            "D": "18 km/jam ke timur"
+            "A": "20 km/jam ke utara",
+            "B": "140 km/jam ke utara",
+            "C": "20 km/jam ke selatan",
+            "D": "0 km/jam"
           },
           "answer": "A",
-          "hint": "v_BA = v_B − v_A.",
-          "explanation": "Timur positif: −54 − 72 = −126 km/jam, yaitu 126 km/jam ke barat."
+          "explanation": "Utara positif: v_AB = 80 − 60 = +20 km/jam. Menurut B, mobil A menjauh ke depan dengan 20 km/jam."
         }
       ]
     },
@@ -425,22 +577,22 @@
       "id": "ringkasan-peta-konsep",
       "title": "Rangkuman Bab & Uji Kemahiran Kinematika",
       "kind": "latihan",
-      "duration": "2 menit",
+      "duration": "3 menit",
       "blocks": [
         {
           "type": "text",
-          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 2 Kinematika.</small></p>"
+          "html": "<table><tr><th>Gerak</th><th>Rumus kunci</th></tr><tr><td>Rata-rata</td><td>\\(\\bar v = \\Delta x/\\Delta t\\), \\(a = \\Delta v/\\Delta t\\)</td></tr><tr><td>Relatif</td><td>\\(\\vec v_{AT} = \\vec v_{AB} + \\vec v_{BT}\\)</td></tr><tr><td>GLB</td><td>\\(x = x_0 + vt\\)</td></tr><tr><td>GLBB</td><td>\\(v = v_0 + at\\), \\(x = v_0t + \\tfrac12at^2\\), \\(v^2 = v_0^2 + 2a\\Delta x\\)</td></tr><tr><td>Parabola</td><td>x: GLB; y: GLBB; \\(h_{maks} = v_0^2\\sin^2\\theta/2g\\), \\(R = v_0^2\\sin2\\theta/g\\)</td></tr><tr><td>GMB</td><td>\\(v = \\omega r\\), \\(\\omega = 2\\pi/T\\), \\(a_s = v^2/r\\)</td></tr></table>"
         },
         {
           "type": "example",
-          "title": "Contoh soal",
-          "question": "<p>Mobil mengitari bundaran berjari-jari 25 m dengan kelajuan 54 km/jam. Hitung ω dan aₛ.</p>",
+          "title": "Contoh soal campuran",
+          "question": "<p>Bola dilempar mendatar dengan kelajuan 10 m/s dari atas gedung setinggi 20 m (g = 10 m/s²). Tentukan waktu di udara, jarak mendatar, dan kelajuan saat menyentuh tanah.</p>",
           "steps": [
-            "v = 54 km/jam = 15 m/s.",
-            "ω = 15/25 = 0,6 rad/s.",
-            "aₛ = 15²/25 = 9 m/s²."
+            "Sumbu y: \\(20 = 5t^2\\), jadi t = 2 s.",
+            "Sumbu x: x = 10 × 2 = 20 m.",
+            "Saat menyentuh tanah \\(v_x = 10\\) m/s dan \\(v_y = 10 \\times 2 = 20\\) m/s, sehingga \\(v = \\sqrt{100 + 400} \\approx 22{,}4\\) m/s."
           ],
-          "answer": "0,6 rad/s dan 9 m/s²"
+          "answer": "2 s; 20 m; sekitar 22,4 m/s"
         },
         {
           "type": "text",
@@ -452,6 +604,10 @@
           "title": "Cheat Sheet: Kinematika Gerak 1D, 2D & Melingkar",
           "subtitle": "Rangkuman GLB, GLBB, gerak peluru parabola, GMB, GMBB, dan gerak relatif kerangka acuan.",
           "html": "\n<div class=\"cs-grid\">\n  <div class=\"cs-box\">\n    <h4>1. Gerak Parabola (Proyektil)</h4>\n    <p>Sumbu-x (GLB): \\(x = (v_0 \\cos\\theta) t\\)</p>\n    <p>Sumbu-y (GLBB): \\(y = (v_0 \\sin\\theta) t - \\frac{1}{2}gt^2, \\quad v_y = v_0 \\sin\\theta - gt\\)</p>\n    \\[ h_{\\max} = \\frac{v_0^2 \\sin^2\\theta}{2g}, \\quad R = \\frac{v_0^2 \\sin 2\\theta}{g} \\]\n  </div>\n  <div class=\"cs-box\">\n    <h4>2. Gerak Melingkar (GMB & GMBB)</h4>\n    <p>GMB: \\(v = \\omega r, \\quad a_s = \\frac{v^2}{r} = \\omega^2 r\\)</p>\n    <p>GMBB: \\(\\omega_t = \\omega_0 + \\alpha t, \\quad \\theta = \\omega_0 t + \\frac{1}{2}\\alpha t^2\\)</p>\n    <p>Percepatan Total: \\(a_{\\text{tot}} = \\sqrt{a_s^2 + a_t^2} \\quad (a_t = \\alpha r)\\)</p>\n  </div>\n</div>\n"
+        },
+        {
+          "type": "text",
+          "html": "<p class=\"muted\"><small>Materi bab ini disusun berdasarkan Buku Siswa <i>Fisika untuk SMA/MA Kelas XI</i> (Kemendikbudristek), Bab 2 Kinematika.</small></p>"
         },
         {
           "type": "kuis",
