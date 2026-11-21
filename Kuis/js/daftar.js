@@ -1,10 +1,32 @@
-/* Daftar kuis (Kelas > Mapel > Kuis) dan titik mulai aplikasi. */
+/* Daftar kuis (Kelas > Mapel > Bab > Paket) dan titik mulai aplikasi. */
 
-/* ---------- daftar kuis: Kelas > Mapel > Kuis ---------- */
+/* ---------- daftar kuis: Kelas > Mapel > Bab > Paket ---------- */
 let LIST = [], QRY = '', LIMIT = 40;
 const mk = (tag, cls, text) => { const e = document.createElement(tag); if(cls) e.className = cls; if(text != null) e.textContent = text; return e; };
 const nat = (a, b) => a.localeCompare(b, 'id', {numeric: true});
 const goto = (kelas, mapel, kel) => '?' + (kelas ? 'kelas=' + encodeURIComponent(kelas) : '') + (kel ? '&kelompok=' + encodeURIComponent(kel) : '') + (mapel ? '&mapel=' + encodeURIComponent(mapel) : '');
+// Bab = folder tempat file soal berada (misalnya "TKA SMP/Matematika/01 Bilangan"); satu bab boleh berisi beberapa paket soal.
+const encPath = p => p.split('/').map(encodeURIComponent).join('/');
+const dirOf = k => k.path.split('/').slice(0, -1).join('/');
+const babHref = dir => '?bab=' + encPath(dir);
+const kuisHref = k => '?kuis=' + encPath(k.path);
+const babFolder = k => (k.topik && k.topik[0]) || dirOf(k).split('/').pop();
+const babName = k => babFolder(k).replace(/^\d+\s+/, '');      // "01 Bilangan" → "Bilangan"
+const babNo = k => (babFolder(k).match(/^(\d+)\s/) || [])[1];
+const PAKET_RE = /\s*\(Paket (\d+)\)\s*$/i;
+const paketNo = k => +((k.title.match(PAKET_RE) || [])[1] || 0);
+const shortTitle = t => t.includes(' - ') ? t.slice(t.indexOf(' - ') + 3) : t;   // buang awalan "Mapel Kelas - "
+// Urutan dan label kuis dalam satu bab. Jika semua kuis bab itu berjudul sama, labelnya "Paket 1", "Paket 2", dst.
+// (kuis tanpa "(Paket n)" dianggap Paket 1); jika judulnya berbeda-beda, pakai judulnya sendiri.
+const samaJudul = list => list.every(k => k.title.replace(PAKET_RE, '') === list[0].title.replace(PAKET_RE, ''));
+const jenisIsi = list => samaJudul(list) ? 'paket soal' : 'kuis';            // "3 paket soal" atau "7 kuis"
+function paketList(list){
+  const base = k => k.title.replace(PAKET_RE, '');
+  const sorted = [...list].sort((a, b) => nat(base(a), base(b)) || paketNo(a) - paketNo(b) || nat(a.path, b.path));
+  const same = sorted.every(k => base(k) === base(sorted[0]));
+  const polos = sorted.filter(k => !paketNo(k)).length, ada1 = sorted.some(k => paketNo(k) === 1);
+  return sorted.map(k => ({k, label: !same ? shortTitle(k.title) : paketNo(k) ? 'Paket ' + paketNo(k) : (polos === 1 && !ada1 ? 'Paket 1' : shortTitle(k.title))}));
+}
 // TKA SMA dibagi: mapel wajib dan mapel pilihan (kelas lain tidak dibagi)
 const TKA_WAJIB = ['Matematika', 'Bahasa Indonesia', 'Bahasa Inggris'];
 const kelompokOf = (kelas, mapel) => kelas === 'TKA SMA' ? (TKA_WAJIB.includes(mapel) ? 'Wajib' : 'Pilihan') : '';
@@ -42,7 +64,9 @@ function setBack(){
   fetch('daftar.json').then(r => r.json()).then(d => {
     const e = (d.kuis || []).find(k => k.path === JSON_PATH);
     if(e){
-      document.querySelectorAll('a[data-back]').forEach(a => a.href = goto(e.kelas, e.mapel));
+      // kembali ke pilihan paket jika bab ini punya beberapa paket, selain itu ke daftar bab
+      const paket = (d.kuis || []).filter(k => dirOf(k) === dirOf(e)).length;
+      document.querySelectorAll('a[data-back]').forEach(a => a.href = paket > 1 ? babHref(dirOf(e)) : goto(e.kelas, e.mapel));
       if(!review) $('badge').textContent = (e.kelas + ' ' + kelompokOf(e.kelas, e.mapel)).trim() + ' · ' + e.mapel;
     }
   }).catch(() => {});
@@ -55,25 +79,46 @@ function card(href, title, meta, mapel){
   a.insertAdjacentHTML('beforeend', `<span class="b-go">${CHEV}</span>`);
   return a;
 }
-function row(k, withCtx){
+function row(k, withCtx, label){
   const a = mk('a', 'b-item'); a.dataset.mapel = k.mapel;
-  a.href = '?kuis=' + k.path.split('/').map(encodeURIComponent).join('/');
+  a.href = kuisHref(k);
   const n = mk('div', 'b-n', k.questions || '–'); n.appendChild(mk('small', '', 'soal')); a.appendChild(n);
   const main = mk('div', 'b-main');
   if(withCtx){ const c = mk('div', 'b-ctx'); c.appendChild(mk('span', '', k.kelas)); c.appendChild(mk('span', '', k.mapel)); main.appendChild(c); }
-  main.appendChild(mk('div', 'b-title', k.title));
-  const meta = k.topic && !k.title.toLowerCase().includes(k.topic.toLowerCase()) ? k.topic : '';
+  main.appendChild(mk('div', 'b-title', label || k.title));
+  const meta = label ? (k.summary || '').split('. ')[0] : k.topic && !k.title.toLowerCase().includes(k.topic.toLowerCase()) ? k.topic : '';
   if(meta) main.appendChild(mk('div', 'b-meta', meta));
   a.appendChild(main);
   a.insertAdjacentHTML('beforeend', `<span class="b-go">${CHEV}</span>`);
   return a;
 }
 
+// satu baris bab: langsung ke kuisnya jika hanya satu, ke pilihan paket jika lebih dari satu
+function babRow(list, i){
+  const k0 = list[0], a = mk('a', 'b-item'); a.dataset.mapel = k0.mapel;
+  a.href = list.length > 1 ? babHref(dirOf(k0)) : kuisHref(k0);
+  const no = babNo(k0);
+  const n = mk('div', 'b-n', no ? String(+no) : String(i + 1)); n.appendChild(mk('small', '', 'bab')); a.appendChild(n);
+  const main = mk('div', 'b-main');
+  main.appendChild(mk('div', 'b-title', babName(k0)));
+  const qs = [...new Set(list.map(k => k.questions))];
+  main.appendChild(mk('div', 'b-meta', list.length > 1
+    ? list.length + ' ' + jenisIsi(list) + (qs.length === 1 && qs[0] ? ' · ' + qs[0] + ' soal per ' + (samaJudul(list) ? 'paket' : 'kuis') : '')
+    : (k0.questions || '–') + ' soal'));
+  a.appendChild(main);
+  a.insertAdjacentHTML('beforeend', `<span class="b-go">${CHEV}</span>`);
+  return a;
+}
+
 function draw(){
-  const kelas = _P.get('kelas') || '', mapel = _P.get('mapel') || '';
+  let kelas = _P.get('kelas') || '', mapel = _P.get('mapel') || '';
+  const bab = _P.get('bab') || '';
+  const babList = bab ? LIST.filter(k => dirOf(k) === bab) : [];
+  if(babList.length){ kelas = kelas || babList[0].kelas; mapel = mapel || babList[0].mapel; }
   const kp = _P.get('kelompok') || (mapel ? kelompokOf(kelas, mapel) : '');
   const kLabel = kelas + (kp ? ' ' + kp : '');      // "TKA SMA Wajib"
-  const scope = LIST.filter(k => (!kelas || k.kelas === kelas) && (!mapel || k.mapel === mapel) && (!kp || kelompokOf(k.kelas, k.mapel) === kp));
+  const bName = babList.length ? babName(babList[0]) : '';
+  const scope = bab ? babList : LIST.filter(k => (!kelas || k.kelas === kelas) && (!mapel || k.mapel === mapel) && (!kp || kelompokOf(k.kelas, k.mapel) === kp));
   const term = QRY.trim().toLowerCase();
   const box = $('blist'); box.innerHTML = '';
   $('more').classList.add('hidden'); $('bempty').classList.add('hidden'); $('bcount').classList.add('hidden');
@@ -88,15 +133,18 @@ function draw(){
     const add = (t, href) => { if(cr.children.length) cr.appendChild(mk('span', '', '›')); if(href){ const a = mk('a', '', t); a.href = href; cr.appendChild(a); } else cr.appendChild(mk('span', 'cur', t)); };
     add('Semua kelas', '?');
     add(kLabel, mapel ? goto(kelas, '', kp) : null);
-    if(mapel) add(mapel, null);
+    if(mapel) add(mapel, bab ? goto(kelas, mapel, kp) : null);
+    if(bab) add(bName, null);
   }
   if(!kelas) $('b-h1').innerHTML = 'Mau latihan apa <em>hari ini?</em>';
-  else $('b-h1').textContent = mapel ? mapel + ' · ' + kLabel : kLabel;
-  $('b-lead').textContent = !kelas ? 'Pilih kelas, lalu mata pelajaran, lalu kuis yang ingin dikerjakan.'
-    : !mapel ? 'Pilih mata pelajaran.' : `Pilih kuis ${mapel} ${kLabel} yang ingin dikerjakan.`;
-  $('search').placeholder = !kelas ? 'Cari kuis di semua kelas…' : 'Cari kuis di ' + (mapel ? kLabel + ' · ' + mapel : kLabel) + '…';
+  else $('b-h1').textContent = bab ? bName + ' · ' + mapel + ' ' + kLabel : mapel ? mapel + ' · ' + kLabel : kLabel;
+  $('b-lead').textContent = !kelas ? 'Pilih kelas, lalu mata pelajaran, bab, dan paket soal yang ingin dikerjakan.'
+    : !mapel ? 'Pilih mata pelajaran.'
+    : !bab ? `Pilih bab ${mapel} ${kLabel}.`
+    : babList.length > 1 && samaJudul(babList) ? 'Pilih paket soal. Setiap paket berisi soal yang berbeda, jadi kamu bisa berlatih lebih dari sekali.' : 'Pilih kuis yang ingin dikerjakan.';
+  $('search').placeholder = !kelas ? 'Cari kuis di semua kelas…' : 'Cari kuis di ' + (bab ? bName : mapel ? kLabel + ' · ' + mapel : kLabel) + '…';
 
-  if(kelas && !scope.length){
+  if((kelas || bab) && !scope.length){
     $('bempty').textContent = 'Belum ada kuis untuk pilihan ini.'; $('bempty').classList.remove('hidden'); return;
   }
 
@@ -146,12 +194,20 @@ function draw(){
     const grid = mk('div', 'b-cards');
     [...g.keys()].sort(nat).forEach(m => grid.appendChild(card(goto(kelas, m, kp), m, g.get(m) + ' kuis', m)));
     box.appendChild(grid);
-  } else {                                  // langkah 3: kuis
-    $('bcount').textContent = scope.length + ' kuis'; $('bcount').classList.remove('hidden');
+  } else if(!bab){                          // langkah 3: bab
+    const g = new Map();
+    scope.forEach(k => { const d = dirOf(k); if(!g.has(d)) g.set(d, []); g.get(d).push(k); });
+    const dirs = [...g.keys()].sort(nat);
+    $('bcount').textContent = dirs.length + ' bab · ' + scope.length + ' kuis'; $('bcount').classList.remove('hidden');
     const ul = mk('div', 'b-list'); ul.style.marginTop = '12px';
-    scope.slice(0, LIMIT).forEach(k => ul.appendChild(row(k, false)));
+    dirs.slice(0, LIMIT).forEach((d, i) => ul.appendChild(babRow(g.get(d), i)));
     box.appendChild(ul);
-    $('more').classList.toggle('hidden', scope.length <= LIMIT);
+    $('more').classList.toggle('hidden', dirs.length <= LIMIT);
+  } else {                                  // langkah 4: paket soal dalam satu bab
+    $('bcount').textContent = scope.length + ' ' + (scope.length > 1 ? jenisIsi(scope) : 'kuis'); $('bcount').classList.remove('hidden');
+    const ul = mk('div', 'b-list'); ul.style.marginTop = '12px';
+    paketList(scope).forEach(({k, label}) => ul.appendChild(row(k, false, scope.length > 1 ? label : '')));
+    box.appendChild(ul);
   }
 }
 

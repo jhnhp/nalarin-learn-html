@@ -38,6 +38,13 @@ const setSafeHTML = (el, html) => { el.innerHTML = sanitizeHTML(html); };
 /* ---------- tautan ---------- */
 const KUIS_DIR = 'Kuis/';                       // lokasi aplikasi Nalarin Kuis
 const quizUrl = path => KUIS_DIR + 'index.html?kuis=' + enc(path);
+// Bab dengan beberapa paket soal → halaman pilih paket di Nalarin Kuis; satu kuis → langsung ke kuisnya.
+const quizBabUrl = path => KUIS_DIR + 'index.html?bab=' + enc(path.split('/').slice(0, -1).join('/'));
+const kuisLink = list => list.length > 1 ? quizBabUrl(list[0].path) : quizUrl(list[0].path);
+const PAKET_RE = /\s*\(Paket \d+\)\s*$/i;
+const samaJudul = list => list.every(k => (k.title || '').replace(PAKET_RE, '') === (list[0].title || '').replace(PAKET_RE, ''));
+const jenisIsi = list => samaJudul(list) ? 'paket soal' : 'kuis';           // "3 paket soal" atau "7 kuis"
+const paketInfo = list => list.length + ' ' + jenisIsi(list) + (new Set(list.map(k => k.questions)).size === 1 ? ' · ' + list[0].questions + ' soal per ' + (samaJudul(list) ? 'paket' : 'kuis') : '');
 const babUrl = (id, lesson) => 'bab.html?bab=' + encodeURIComponent(id) + (lesson ? '&p=' + encodeURIComponent(lesson) : '');
 const courseUrl = (kelas, mapel, kel) => 'index.html?kelas=' + encodeURIComponent(kelas) + (kel ? '&kelompok=' + encodeURIComponent(kel) : '') + (mapel ? '&mapel=' + encodeURIComponent(mapel) : '');
 // TKA SMA dibagi: mapel wajib dan mapel pilihan (kelas lain tidak dibagi)

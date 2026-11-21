@@ -37,7 +37,7 @@ function render(b){
   const L = lessons[idx];
   document.body.dataset.mapel = b.mapel || '';
   document.title = (L ? L.title + ' · ' : '') + b.title + ' · Nalarin Learn';
-  if(b.kuis[0]) $('nav-kuis').href = quizUrl(b.kuis[0].path);
+  if(b.kuis[0]) $('nav-kuis').href = kuisLink(b.kuis);
 
   /* samping */
   const side = $('side');
@@ -58,12 +58,10 @@ function render(b){
   side.appendChild(ol);
   if(b.kuis.length){
     const q = mk('div', 'q');
-    b.kuis.forEach(k => {
-      const a = mk('a'); a.href = quizUrl(k.path);
-      a.innerHTML = `${ic('quiz')}<div>Uji pemahaman<small></small></div>`;
-      a.querySelector('small').textContent = k.questions + ' soal di Nalarin Kuis';
-      q.appendChild(a);
-    });
+    const a = mk('a'); a.href = kuisLink(b.kuis);
+    a.innerHTML = `${ic('quiz')}<div>Uji pemahaman<small></small></div>`;
+    a.querySelector('small').textContent = (b.kuis.length > 1 ? paketInfo(b.kuis) : b.kuis[0].questions + ' soal') + ' di Nalarin Kuis';
+    q.appendChild(a);
     side.appendChild(q);
   }
 
@@ -95,7 +93,7 @@ function render(b){
   const link = (l, cls, label) => { const a = mk('a', cls); a.href = babUrl(BAB, l.id); a.innerHTML = `<small>${label}</small><b></b>`; a.querySelector('b').textContent = l.title; return a; };
   pg.appendChild(idx > 0 ? link(lessons[idx - 1], 'prev', '← Sebelumnya') : mk('span'));
   if(idx < lessons.length - 1) pg.appendChild(link(lessons[idx + 1], 'next', 'Berikutnya →'));
-  else if(b.kuis[0]){ const a = mk('a', 'next'); a.href = quizUrl(b.kuis[0].path); a.innerHTML = '<small>Selesai membaca? →</small><b>Kerjakan kuis bab ini</b>'; pg.appendChild(a); }
+  else if(b.kuis[0]){ const a = mk('a', 'next'); a.href = kuisLink(b.kuis); a.innerHTML = '<small>Selesai membaca? →</small><b>' + (b.kuis.length > 1 ? 'Pilih ' + jenisIsi(b.kuis) + ' bab ini' : 'Kerjakan kuis bab ini') + '</b>'; pg.appendChild(a); }
   art.appendChild(pg);
 
   renderMath(art);
@@ -241,9 +239,14 @@ function example(bl){
 function quizCard(b, text){
   const k = b.kuis[0]; if(!k) return null;
   const c = mk('section', 'card quizcard');
-  c.innerHTML = `<img src="assets/icon.png" alt=""><div><h3>Siap menguji pemahamanmu?</h3><p></p></div><a class="btn">Kerjakan kuis ${ic('arrow')}</a>`;
-  c.querySelector('p').textContent = text || `${k.questions} soal tentang ${b.title} di Nalarin Kuis. Ada pembahasan untuk setiap soal.`;
-  c.querySelector('a').href = quizUrl(k.path);
+  const multi = b.kuis.length > 1;
+  c.innerHTML = `<img src="assets/icon.png" alt=""><div><h3>Siap menguji pemahamanmu?</h3><p></p></div><a class="btn">${multi ? 'Pilih ' + jenisIsi(b.kuis) : 'Kerjakan kuis'} ${ic('arrow')}</a>`;
+  c.querySelector('p').textContent = text || (multi
+    ? (samaJudul(b.kuis)
+      ? `${b.kuis.length} paket soal tentang ${b.title} di Nalarin Kuis, masing-masing ${k.questions} soal dengan pembahasan. Pilih salah satu paket, lalu coba paket lain untuk latihan tambahan.`
+      : `${b.kuis.length} kuis tentang ${b.title} di Nalarin Kuis, semuanya dengan pembahasan. Pilih kuis yang ingin dikerjakan.`)
+    : `${k.questions} soal tentang ${b.title} di Nalarin Kuis. Ada pembahasan untuk setiap soal.`);
+  c.querySelector('a').href = kuisLink(b.kuis);
   return c;
 }
 

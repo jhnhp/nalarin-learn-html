@@ -2,7 +2,7 @@
 
 **Versi 0.5**
 
-Satu halaman `index.html` untuk semuanya: menu pilihan kuis **dan** halaman mengerjakan kuis. Tampilan ada di `css/`, logika di `js/`. Menu bekerja dalam tiga langkah: **pilih kelas → pilih mata pelajaran → pilih kuis**. Setiap kuis cukup berupa folder berisi `soal.json` (dan folder `gambar/` jika perlu).
+Satu halaman `index.html` untuk semuanya: menu pilihan kuis **dan** halaman mengerjakan kuis. Tampilan ada di `css/`, logika di `js/`. Menu bekerja dalam empat langkah: **pilih kelas → pilih mata pelajaran → pilih bab → pilih paket soal**. Setiap kuis cukup berupa folder berisi `soal.json` (dan folder `gambar/` jika perlu).
 
 ## Struktur folder
 
@@ -54,18 +54,22 @@ Kuis/
 2. Tanpa parameter, `index.html` membaca `daftar.json` dan menampilkan:
    - **Langkah 1:** kartu kelas (misalnya "Kelas 9, 3 mapel · 3 kuis").
    - **Langkah 2:** kartu mata pelajaran di kelas itu.
-   - **Langkah 3:** daftar kuis untuk kelas dan mapel tersebut.
-   - **Jejak** di atas ("Semua kelas › Kelas 11 › Fisika") untuk kembali satu langkah.
+   - **Langkah 3:** daftar bab untuk kelas dan mapel tersebut. Satu bab = satu folder kuis. Bab yang hanya berisi satu kuis langsung membuka kuisnya.
+   - **Langkah 4:** pilihan paket soal di bab itu (jika folder bab berisi lebih dari satu file soal). Jika semua kuis di bab itu berjudul sama, labelnya "Paket 1", "Paket 2", dan seterusnya. Kuis tanpa akhiran "(Paket n)" dianggap Paket 1. Jika judulnya berbeda-beda, yang ditampilkan judul masing-masing kuis.
+   - **Jejak** di atas ("Semua kelas › TKA SMP › Matematika › Bilangan") untuk kembali satu langkah.
    - **Kolom pencarian** di setiap langkah. Pencarian dilakukan di dalam cakupan yang sedang dibuka: di halaman kelas mencari ke semua kelas, di halaman mapel mencari hanya di mapel itu.
 3. Setiap langkah punya alamat sendiri sehingga bisa dibagikan, dan tombol Back browser berfungsi:
 
 ```
 index.html?kelas=Kelas%2011                      ← mapel di Kelas 11
-index.html?kelas=Kelas%2011&mapel=Fisika         ← kuis Fisika Kelas 11
+index.html?kelas=Kelas%2011&mapel=Fisika         ← daftar bab Fisika Kelas 11
+index.html?bab=TKA%20SMP/Matematika/01%20Bilangan        ← pilihan paket soal satu bab (folder kuis)
 index.html?kuis=Kelas11/Fisika/Vektor/soal_vektor.json   ← langsung membuka satu kuis
 ```
 
-Setelah selesai mengerjakan, tombol **Kembali ke daftar kuis** membawa siswa ke daftar kelas dan mapel kuis itu.
+Setelah selesai mengerjakan, tombol **Kembali ke daftar kuis** membawa siswa ke pilihan paket bab itu, atau ke daftar bab jika bab itu hanya berisi satu kuis.
+
+Nalarin Learn memakai alamat `?bab=` ini: tombol kuis di halaman bab yang punya beberapa paket membuka halaman pilihan paket, bukan langsung Paket 1.
 
 Di halaman hasil, tombol **Unduh laporan (PDF)** membuat laporan berisi nilai, kunci jawaban, pembahasan, dan tanda benar/salah setiap soal (termasuk gambar dan teks bacaan). PDF dibuat di browser siswa memakai jsPDF dan html2canvas yang dimuat dari cdnjs saat tombol ditekan, jadi perlu koneksi internet.
 
@@ -89,7 +93,7 @@ python3 buat-daftar.py
 
 Skrip menampilkan ringkasan kuis yang ditemukan dan **memeriksa isi soal**: jumlah pilihan kurang dari dua, kunci `answer` yang tidak ada di `options`, teks soal kosong, atau `total_questions` yang tidak cocok. Bagian *Perhatian* di akhir hasil menunjukkan file dan nomor soal yang bermasalah. Folder yang kurang dalam dari pola `Kelas/Mapel/Kuis` juga diberi peringatan.
 
-Satu folder boleh berisi beberapa file soal. Masing-masing menjadi satu kuis.
+Satu folder boleh berisi beberapa file soal. Masing-masing menjadi satu kuis, dan di menu tampil sebagai pilihan paket dalam bab itu. Untuk paket tambahan, beri nama `soal_paket_2.json`, `soal_paket_3.json`, dan seterusnya, dengan judul berakhiran "(Paket 2)", "(Paket 3)".
 
 ## Pindah dari struktur lama (Mapel/Kelas/Kuis)
 

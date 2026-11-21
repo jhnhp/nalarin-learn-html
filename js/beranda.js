@@ -170,12 +170,12 @@ function renderCourse(bab){
     const f = u.querySelector('.unit-f');
     const go = mk('a', 'btn primary sm'); go.href = babUrl(b.id); go.innerHTML = `Mulai belajar ${ic('arrow', 'width:16px;height:16px')}`;
     f.appendChild(go);
-    b.kuis.forEach(k => {
-      const q = mk('a', 'quizlink'); q.href = quizUrl(k.path);
+    if(b.kuis.length){
+      const q = mk('a', 'quizlink'); q.href = kuisLink(b.kuis);
       q.innerHTML = `<span class="kind">${ic('quiz')}</span><div><b>Latihan: kuis bab ini</b><small></small></div>`;
-      q.querySelector('small').textContent = k.title + ' · ' + k.questions + ' soal';
+      q.querySelector('small').textContent = b.kuis.length > 1 ? paketInfo(b.kuis) : b.kuis[0].title + ' · ' + b.kuis[0].questions + ' soal';
       f.appendChild(q);
-    });
+    }
     units.appendChild(u);
   });
   if(location.hash){ const el = document.querySelector(location.hash); if(el) el.scrollIntoView(); }
